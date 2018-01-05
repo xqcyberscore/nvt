@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/079111.html");
   script_id(864178);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 10:33:10 +0530 (Thu, 26 Apr 2012)");
   script_cve_id("CVE-2012-2123", "CVE-2012-2121", "CVE-2012-2119", "CVE-2012-1601",
                 "CVE-2012-1568", "CVE-2012-1179", "CVE-2012-1146", "CVE-2012-1097",
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-6406");
   script_name("Fedora Update for kernel FEDORA-2012-6406");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

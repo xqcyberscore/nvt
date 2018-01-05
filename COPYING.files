@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 03 Jan 2018 08:11:36 +0100
+# Automatically created on:  Fri, 05 Jan 2018 08:16:20 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52955,6 +52955,25 @@
 2017/wso2/gb_wso2_governance_registry_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_storage_server_xss_vuln.nasl: GPLv2+
+2018/debian/deb_4075.nasl: GPLv2+
+2018/debian/deb_4076.nasl: GPLv2+
+2018/debian/deb_4077.nasl: GPLv2+
+2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
+2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
+2018/gb_b2evolution_rce_vuln.nasl: GPLv2+
+2018/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
+2018/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
+2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
+2018/microsoft/gb_ms_ie_mult_vuln_kb4056568.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056888.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056890.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056891.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056892.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056893.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056897.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056898.nasl: GPLv2+
+2018/webmin/gb_webmin_xss_vuln1_lin.nasl: GPLv2+
+2018/webmin/gb_webmin_xss_vuln1_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
@@ -53719,6 +53738,7 @@ gb_icq_detect.nasl: GPLv2+
 gb_icq_toolbar_detect.nasl: GPLv2+
 gb_ideal_administrator_detect.nasl: GPLv2+
 gb_igss_detect.nasl: GPLv2+
+gb_ikarus_anti_virus_detect.nasl: GPLv2+
 gb_ikiwiki_detect.nasl: GPLv2+
 gb_ilias_detect.nasl: GPLv2+
 gb_image_hosting_script_dpi_detect.nasl: GPLv2+
@@ -54766,6 +54786,21 @@ gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_win.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: GPLv2+
+gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_win.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056613.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056615.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056759.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056899.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056941.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056942.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4056944.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0030.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0031.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0032.nasl: GPLv2+
 gsf/gb_advantech_webaccess_mult_vuln_aug.nasl: GPLv2+
 gsf/gb_CISCO_CSCdi22941.nasl: GPLv2+
 gsf/gb_CISCO_CSCdi34061.nasl: GPLv2+

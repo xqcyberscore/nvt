@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-June/msg00040.html");
   script_id(870770);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:17 +0530 (Fri, 22 Jun 2012)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:N/A:N");
@@ -65,7 +65,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0997-01");
   script_name("RedHat Update for 389-ds-base RHSA-2012:0997-01");
 
-  script_summary("Check for the Version of 389-ds-base");
+  script_tag(name: "summary" , value: "Check for the Version of 389-ds-base");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

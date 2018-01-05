@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1980_1.nasl 6614 2017-07-07 12:09:12Z cfischer $
+# $Id: deb_1980_1.nasl 8287 2018-01-04 07:28:11Z teissa $
 # Description: Auto-generated from advisory DSA 1980-1 (ircd-hybrid/ircd-ratbox)
 #
 # Authors:
@@ -58,9 +58,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(66773);
- script_version("$Revision: 6614 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:12 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66773");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-01 18:25:19 +0100 (Mon, 01 Feb 2010)");
  script_cve_id("CVE-2009-4016", "CVE-2010-0300");
  script_tag(name:"cvss_base", value:"6.8");

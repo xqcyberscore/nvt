@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_38339.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: vBulletin_38339.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # vBulletin 4.0.2 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -38,9 +38,9 @@ affected.";
 
 if (description)
 {
- script_id(100501);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100501");
+ script_version("$Revision: 8274 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-22 14:49:01 +0100 (Mon, 22 Feb 2010)");
  script_bugtraq_id(38339);
  script_tag(name:"cvss_base", value:"2.6");

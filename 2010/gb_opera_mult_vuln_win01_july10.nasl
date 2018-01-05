@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win01_july10.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_opera_mult_vuln_win01_july10.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Opera Browser Multiple Vulnerabilities july-10 (Win01)
 #
@@ -47,9 +47,9 @@ tag_summary = "The host is installed with Opera web browser and is prone to
 
 if(description)
 {
-  script_id(801369);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801369");
+  script_version("$Revision: 8287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 18:57:03 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2657", "CVE-2010-2658", "CVE-2010-2662", "CVE-2010-2663",
                 "CVE-2010-2664");

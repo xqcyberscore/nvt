@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4055.nasl 8040 2017-12-08 07:24:37Z teissa $
+# $Id: deb_4055.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Auto-generated from advisory DSA 4055-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704055");
-  script_version("$Revision: 8040 $");
+  script_version("$Revision: 8291 $");
   script_cve_id("CVE-2017-17439");
   script_name("Debian Security Advisory DSA 4055-1 (heimdal - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:24:37 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 00:00:00 +0100 (Thu, 07 Dec 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-006.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-006.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)
 #
@@ -45,12 +45,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902900);
-  script_version("$Revision: 5341 $");
+  script_version("$Revision: 8276 $");
   script_cve_id("CVE-2011-3389");
   script_bugtraq_id(49778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:47:46 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2585542");
@@ -168,9 +168,9 @@ else if(hotfix_check_sp(win7:2) > 0)
 {
   ## Grep for Schannel.dll version
   if(version_is_less(version:sysVer, test_version:"6.1.7600.16915") ||
-     version_in_range(version:sysVer, test_version:"6.1.7600.21000", tes_version2:"6.1.7600.21091") ||
-     version_in_range(version:sysVer, test_version:"6.1.7601.17000", tes_version2:"6.1.7601.17724") ||
-     version_in_range(version:sysVer, test_version:"6.1.7601.21000", tes_version2:"6.1.7601.21860")){
+     version_in_range(version:sysVer, test_version:"6.1.7600.21000", test_version2:"6.1.7600.21091") ||
+     version_in_range(version:sysVer, test_version:"6.1.7601.17000", test_version2:"6.1.7601.17724") ||
+     version_in_range(version:sysVer, test_version:"6.1.7601.21000", test_version2:"6.1.7601.21860")){
     security_message(0);
   }
 }

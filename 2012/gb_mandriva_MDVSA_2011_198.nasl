@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-01/msg00000.php");
   script_id(831522);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-09 13:30:32 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -66,7 +66,7 @@ if(description)
   script_cve_id("CVE-2011-4107", "CVE-2011-4634", "CVE-2011-4782", "CVE-2011-4780");
   script_name("Mandriva Update for phpmyadmin MDVSA-2011:198 (phpmyadmin)");
 
-  script_summary("Check for the Version of phpmyadmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpmyadmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

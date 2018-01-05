@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1006_1.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_1006_1.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Ubuntu Update for webkit vulnerabilities USN-1006-1
 #
@@ -43,12 +43,12 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1006-1/");
-  script_id(840517);
+  script_oid("1.3.6.1.4.1.25623.1.0.840517");
   script_cve_id("CVE-2009-2797","CVE-2009-2841","CVE-2010-0046","CVE-2010-0047","CVE-2010-0048","CVE-2010-0049","CVE-2010-0050","CVE-2010-0051","CVE-2010-0052","CVE-2010-0053","CVE-2010-0054","CVE-2010-0314","CVE-2010-0647","CVE-2010-0650","CVE-2010-0651","CVE-2010-0656","CVE-2010-1386","CVE-2010-1387","CVE-2010-1389","CVE-2010-1390","CVE-2010-1391","CVE-2010-1392","CVE-2010-1393","CVE-2010-1394","CVE-2010-1395","CVE-2010-1396","CVE-2010-1397","CVE-2010-1398","CVE-2010-1400","CVE-2010-1401","CVE-2010-1402","CVE-2010-1403","CVE-2010-1404","CVE-2010-1405","CVE-2010-1406","CVE-2010-1407","CVE-2010-1408","CVE-2010-1409","CVE-2010-1410","CVE-2010-1412","CVE-2010-1414","CVE-2010-1415","CVE-2010-1416","CVE-2010-1417","CVE-2010-1418","CVE-2010-1419","CVE-2010-1421","CVE-2010-1422","CVE-2010-1664","CVE-2010-1665","CVE-2010-1758","CVE-2010-1759","CVE-2010-1760","CVE-2010-1761","CVE-2010-1762","CVE-2010-1764","CVE-2010-1766","CVE-2010-1767","CVE-2010-1770","CVE-2010-1771","CVE-2010-1772","CVE-2010-1773","CVE-2010-1774","CVE-2010-1780","CVE-2010-1781","CVE-2010-1782","CVE-2010-1783","CVE-2010-1784","CVE-2010-1785","CVE-2010-1786","CVE-2010-1787","CVE-2010-1788","CVE-2010-1790","CVE-2010-1792","CVE-2010-1793","CVE-2010-1807","CVE-2010-1812","CVE-2010-1814","CVE-2010-1815","CVE-2010-2264","CVE-2010-2647","CVE-2010-2648","CVE-2010-3113","CVE-2010-3114","CVE-2010-3115","CVE-2010-3116","CVE-2010-3248","CVE-2010-3257","CVE-2010-3259");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 16:42:09 +0200 (Fri, 22 Oct 2010)");
   script_xref(name: "USN", value: "1006-1");
   script_name("Ubuntu Update for webkit vulnerabilities USN-1006-1");

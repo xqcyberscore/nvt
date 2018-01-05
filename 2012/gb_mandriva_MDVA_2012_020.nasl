@@ -36,15 +36,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-02/msg00023.php");
   script_id(831543);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:55 +0530 (Tue, 21 Feb 2012)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_xref(name: "MDVA", value: "2012:020");
   script_name("Mandriva Update for mds MDVA-2012:020 (mds)");
 
-  script_summary("Check for the Version of mds");
+  script_tag(name: "summary" , value: "Check for the Version of mds");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

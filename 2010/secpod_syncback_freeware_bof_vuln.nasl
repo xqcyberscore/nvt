@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_syncback_freeware_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_syncback_freeware_bof_vuln.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # SyncBack Profile Import Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with SyncBack Freeware and is prone
 
 if(description)
 {
-  script_id(902057);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902057");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_cve_id("CVE-2010-1688");
   script_bugtraq_id(40311);

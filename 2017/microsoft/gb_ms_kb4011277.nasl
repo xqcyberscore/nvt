@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011277.nasl 8105 2017-12-13 13:39:08Z santu $
+# $Id: gb_ms_kb4011277.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4011277)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812249");
-  script_version("$Revision: 8105 $");
+  script_version("$Revision: 8291 $");
   script_cve_id("CVE-2017-11934");
   script_bugtraq_id(102064);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 14:39:08 +0100 (Wed, 13 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 12:08:40 +0530 (Wed, 13 Dec 2017)");
   script_name("Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4011277)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burning_board_39863.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_burning_board_39863.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Woltlab Burning Board Arbitrary File Upload Vulnerability
 #
@@ -39,9 +39,9 @@ vulnerable.";
 
 if (description)
 {
- script_id(100629);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100629");
+ script_version("$Revision: 8274 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
  script_bugtraq_id(39863);
  script_tag(name:"cvss_base", value:"6.8");

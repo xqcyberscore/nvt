@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BigAnt_37522.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: BigAnt_37522.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # BigAnt IM Server 'USV' Request Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ affected.";
 
 if (description)
 {
- script_id(100413);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100413");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_bugtraq_id(37520);
  script_tag(name:"cvss_base", value:"4.0");

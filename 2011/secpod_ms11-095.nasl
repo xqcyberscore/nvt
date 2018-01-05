@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-095.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-095.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # MS Windows Active Directory Remote Code Execution Vulnerability (2640045)
 #
@@ -45,12 +45,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902768);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 8276 $");
   script_cve_id("CVE-2011-3406");
   script_bugtraq_id(50959);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-12-13 11:15:13 +0530 (Tue, 13 Dec 2011)");
   script_name("MS Windows Active Directory Remote Code Execution Vulnerability (2640045)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47202/");
@@ -179,9 +179,9 @@ else if(hotfix_check_sp(win7:2) > 0)
 {
   ## Grep for Ntdsai.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7600.16900") ||
-     version_in_range(version:dllVer, test_version:"6.1.7600.21000", tes_version2:"6.1.7600.21070") ||
-     version_in_range(version:dllVer, test_version:"6.1.7601.17000", tes_version2:"6.1.7601.17708") ||
-     version_in_range(version:dllVer, test_version:"6.1.7601.21000", tes_version2:"6.1.7601.21840")){
+     version_in_range(version:dllVer, test_version:"6.1.7600.21000", test_version2:"6.1.7600.21070") ||
+     version_in_range(version:dllVer, test_version:"6.1.7601.17000", test_version2:"6.1.7601.17708") ||
+     version_in_range(version:dllVer, test_version:"6.1.7601.21000", test_version2:"6.1.7601.21840")){
     security_message(0);
   }
 }

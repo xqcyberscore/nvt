@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-June/017606.html");
   script_id(881293);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:18:59 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-1720");
   script_tag(name:"cvss_base", value:"6.8");
@@ -62,7 +62,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:0843");
   script_name("CentOS Update for postfix CESA-2011:0843 centos4 x86_64");
 
-  script_summary("Check for the Version of postfix");
+  script_tag(name: "summary" , value: "Check for the Version of postfix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

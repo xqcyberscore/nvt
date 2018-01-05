@@ -45,13 +45,13 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00045.php");
-  script_id(830901);
-  script_version("$Revision: 8130 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.830901");
+  script_version("$Revision: 8274 $");
   script_cve_id("CVE-2010-0164", "CVE-2010-0165", "CVE-2010-0167", "CVE-2010-0168",
                 "CVE-2010-0170", "CVE-2010-0172", "CVE-2010-0173", "CVE-2010-0174",
                 "CVE-2010-0175", "CVE-2010-0176", "CVE-2010-0177", "CVE-2010-0178",
                 "CVE-2010-0179", "CVE-2010-0181", "CVE-2010-0182", "CVE-2010-1122");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:38:33 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

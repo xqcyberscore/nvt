@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/078926.html");
   script_id(864169);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 11:53:01 +0530 (Mon, 23 Apr 2012)");
   script_cve_id("CVE-2011-3325", "CVE-2011-3323", "CVE-2011-3324", "CVE-2011-3326",
                 "CVE-2011-3327", "CVE-2012-0249", "CVE-2012-0250", "CVE-2012-0255");
@@ -55,7 +55,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-5436");
   script_name("Fedora Update for quagga FEDORA-2012-5436");
 
-  script_summary("Check for the Version of quagga");
+  script_tag(name: "summary" , value: "Check for the Version of quagga");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

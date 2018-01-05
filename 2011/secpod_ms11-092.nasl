@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-092.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-092.nasl 8278 2018-01-03 12:36:26Z asteins $
 #
 # Microsoft Windows Media Remote Code Execution Vulnerability (2648048)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902597);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 8278 $");
   script_bugtraq_id(50957);
   script_cve_id("CVE-2011-3401");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:36:26 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 10:10:10 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Windows Media Remote Code Execution Vulnerability (2648048)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47117");
@@ -138,7 +138,7 @@ else if(hotfix_check_sp(win7:2) > 0)
   ## Check for Encdec.dll version
   ## GDR 6.6.7600.16899 LDR 6.6.7600.21070
   ## GDR 6.6.7601.17708 LDR 6.6.7601.21840
-  if(version_in_range(version:dllVer, test_version:"6.6.7600.16899") ||
+  if(version_is_less(version:dllVer, test_version:"6.6.7600.16899") ||
      version_in_range(version:dllVer, test_version:"6.6.7600.20000", test_version2:"6.6.7600.21069")||
      version_in_range(version:dllVer, test_version:"6.6.7601.17000", test_version2:"6.6.7601.17707")||
      version_in_range(version:dllVer, test_version:"6.6.7601.21000", test_version2:"6.6.7601.21839")){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_04.nasl 8056 2017-12-08 12:47:50Z santu $
+# $Id: gb_apple_macosx_HT208331_04.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Apple MacOSX Security Updates(HT208331)-04
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812408");
-  script_version("$Revision: 8056 $");
+  script_version("$Revision: 8291 $");
   script_cve_id("CVE-2017-13876", "CVE-2017-13875", "CVE-2017-13871", "CVE-2017-13860",
 		"CVE-2017-13883", "CVE-2017-13848", "CVE-2017-13858", "CVE-2017-13878", 
 	        "CVE-2017-13865");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 13:47:50 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:33 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331)-04");
 

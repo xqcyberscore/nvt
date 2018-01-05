@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-July/msg00021.html");
   script_id(870795);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 10:46:39 +0530 (Mon, 23 Jul 2012)");
   script_cve_id("CVE-2012-1178", "CVE-2012-2318", "CVE-2012-3374");
   script_tag(name:"cvss_base", value:"7.5");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1102-01");
   script_name("RedHat Update for pidgin RHSA-2012:1102-01");
 
-  script_summary("Check for the Version of pidgin");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

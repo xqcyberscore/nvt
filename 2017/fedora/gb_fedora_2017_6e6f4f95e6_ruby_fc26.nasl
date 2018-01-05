@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_6e6f4f95e6_ruby_fc26.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_fedora_2017_6e6f4f95e6_ruby_fc26.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Fedora Update for ruby FEDORA-2017-6e6f4f95e6
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873953");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 08:05:08 +0100 (Fri, 29 Dec 2017)");
   script_cve_id("CVE-2017-14033", "CVE-2017-10784", "CVE-2017-0898");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ruby FEDORA-2017-6e6f4f95e6");
   script_tag(name: "summary", value: "Check the version of ruby");

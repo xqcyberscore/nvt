@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_captivate_insecure_lib_load_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_captivate_insecure_lib_load_vuln.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Adobe Captivate Insecure Library Loading Vulnerability
 #
@@ -46,9 +46,9 @@ Insecure Library Loading vulnerability.";
 
 if(description)
 {
-  script_id(801267);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801267");
+  script_version("$Revision: 8287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3191");
   script_tag(name:"cvss_base", value:"9.3");

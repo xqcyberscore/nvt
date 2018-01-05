@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018756.html");
   script_id(881215);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:47:59 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1178", "CVE-2012-2318", "CVE-2012-3374");
   script_tag(name:"cvss_base", value:"7.5");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1102");
   script_name("CentOS Update for finch CESA-2012:1102 centos5 ");
 
-  script_summary("Check for the Version of finch");
+  script_tag(name: "summary" , value: "Check for the Version of finch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

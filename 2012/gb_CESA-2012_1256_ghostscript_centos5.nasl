@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-September/018862.html");
   script_id(881501);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:50:28 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-4405");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1256");
   script_name("CentOS Update for ghostscript CESA-2012:1256 centos5 ");
 
-  script_summary("Check for the Version of ghostscript");
+  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

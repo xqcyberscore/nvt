@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-April/018601.html");
   script_id(881230);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:53:31 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3048");
   script_tag(name:"cvss_base", value:"6.8");
@@ -57,7 +57,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:0523");
   script_name("CentOS Update for libpng CESA-2012:0523 centos5 ");
 
-  script_summary("Check for the Version of libpng");
+  script_tag(name: "summary" , value: "Check for the Version of libpng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_groovy_media_player_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_groovy_media_player_bof_vuln.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Groovy Media Player '.m3u' File Remote Stack Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801405);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801405");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2009-4931");
   script_bugtraq_id(34621);

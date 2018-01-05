@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20170802-ms.nasl 6837 2017-08-03 04:09:02Z ckuersteiner $
+# $Id: gb_cisco_meeting_server_cisco-sa-20170802-ms.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # Cisco Meeting Server H.264 Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6763");
  script_tag(name: "cvss_base", value: "5.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6837 $");
+ script_version("$Revision: 8276 $");
 
  script_name("Cisco Meeting Server H.264 Protocol Denial of Service Vulnerability");
 
@@ -59,7 +59,7 @@ traffic for certain users could occur.");
  script_tag(name: "qod_type", value: "remote_banner");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-03 06:09:02 +0200 (Thu, 03 Aug 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name: "creation_date", value: "2017-08-03 10:44:03 +0700 (Thu, 03 Aug 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -76,7 +76,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-if (version_in_range(version: version, test_version: "2.1.0", test_version: "2.1.5")) {
+if (version_in_range(version: version, test_version: "2.1.0", test_version2: "2.1.5")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "2.1.6");
   security_message(port: 0, data: report);
   exit(0);

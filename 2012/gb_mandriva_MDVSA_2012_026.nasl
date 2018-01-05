@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:026");
   script_id(831557);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:20:41 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868");
   script_tag(name:"cvss_base", value:"6.8");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:026");
   script_name("Mandriva Update for postgresql MDVSA-2012:026 (postgresql)");
 
-  script_summary("Check for the Version of postgresql");
+  script_tag(name: "summary" , value: "Check for the Version of postgresql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

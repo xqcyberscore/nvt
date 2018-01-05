@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_web_server_39780.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_mini_web_server_39780.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Mini Web Server Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -41,9 +41,9 @@ affected.";
 
 if (description)
 {
- script_id(100614);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100614");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-30 13:41:49 +0200 (Fri, 30 Apr 2010)");
  script_bugtraq_id(39780);
  script_tag(name:"cvss_base", value:"2.6");

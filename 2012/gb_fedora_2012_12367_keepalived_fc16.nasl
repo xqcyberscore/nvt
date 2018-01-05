@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-September/085972.html");
   script_id(864694);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:25:23 +0530 (Fri, 07 Sep 2012)");
   script_cve_id("CVE-2011-1784");
   script_tag(name:"cvss_base", value:"3.6");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-12367");
   script_name("Fedora Update for keepalived FEDORA-2012-12367");
 
-  script_summary("Check for the Version of keepalived");
+  script_tag(name: "summary" , value: "Check for the Version of keepalived");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

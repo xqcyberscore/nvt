@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:084");
   script_id(831606);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:53:01 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2011-1089", "CVE-2011-1679", "CVE-2011-1680");
   script_tag(name:"cvss_base", value:"4.4");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:084");
   script_name("Mandriva Update for ncpfs MDVSA-2012:084 (ncpfs)");
 
-  script_summary("Check for the Version of ncpfs");
+  script_tag(name: "summary" , value: "Check for the Version of ncpfs");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

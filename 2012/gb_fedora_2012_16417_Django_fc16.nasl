@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-October/090904.html");
   script_id(864830);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 10:59:06 +0530 (Fri, 02 Nov 2012)");
   script_cve_id("CVE-2012-3442", "CVE-2012-3443", "CVE-2012-3444", "CVE-2012-4520");
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-16417");
   script_name("Fedora Update for Django FEDORA-2012-16417");
 
-  script_summary("Check for the Version of Django");
+  script_tag(name: "summary" , value: "Check for the Version of Django");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

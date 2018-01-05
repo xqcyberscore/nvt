@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:149");
   script_id(831731);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 11:39:57 +0530 (Tue, 04 Sep 2012)");
   script_cve_id("CVE-2011-3389", "CVE-2012-3482");
   script_tag(name:"cvss_base", value:"5.8");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:149");
   script_name("Mandriva Update for fetchmail MDVSA-2012:149 (fetchmail)");
 
-  script_summary("Check for the Version of fetchmail");
+  script_tag(name: "summary" , value: "Check for the Version of fetchmail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

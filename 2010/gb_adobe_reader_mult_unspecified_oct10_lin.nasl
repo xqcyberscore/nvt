@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_oct10_lin.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_reader_mult_unspecified_oct10_lin.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities -Oct10 (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Adobe Reader and is prone to multiple
 
 if(description)
 {
-  script_id(801525);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801525");
+  script_version("$Revision: 8287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-2887");
   script_bugtraq_id(43740);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_iframe_dos_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: secpod_mozilla_prdts_iframe_dos_vuln_win.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Mozilla Products 'IFRAME' Denial Of Service vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ prone to Denial of Service vulnerability.";
 
 if(description)
 {
-  script_id(902185);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902185");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-01 15:58:11 +0200 (Thu, 01 Jul 2010)");
   script_cve_id("CVE-2010-1990");
   script_tag(name:"cvss_base", value:"5.0");

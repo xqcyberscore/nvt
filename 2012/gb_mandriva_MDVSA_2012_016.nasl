@@ -39,14 +39,14 @@ if(description)
   script_id(831538);
   script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:32:52 +0530 (Mon, 13 Feb 2012)");
   script_cve_id("CVE-2012-1037");
   script_xref(name: "MDVSA", value: "2012:016");
   script_name("Mandriva Update for glpi MDVSA-2012:016 (glpi)");
 
-  script_summary("Check for the Version of glpi");
+  script_tag(name: "summary" , value: "Check for the Version of glpi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

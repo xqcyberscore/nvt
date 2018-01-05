@@ -84,8 +84,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-August/018822.html");
   script_id(881474);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 09:56:01 +0530 (Fri, 24 Aug 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2010-3702", "CVE-2010-3704", "CVE-2011-0433",
                 "CVE-2011-0764", "CVE-2011-1552", "CVE-2011-1553", "CVE-2011-1554");
@@ -94,7 +94,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1201");
   script_name("CentOS Update for tetex CESA-2012:1201 centos5 ");
 
-  script_summary("Check for the Version of tetex");
+  script_tag(name: "summary" , value: "Check for the Version of tetex");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

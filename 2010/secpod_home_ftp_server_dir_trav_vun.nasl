@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_home_ftp_server_dir_trav_vun.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_home_ftp_server_dir_trav_vun.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Home FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -44,9 +44,9 @@ traversal vulnerabilities.";
 
 if(description)
 {
-  script_id(902270);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902270");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

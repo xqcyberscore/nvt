@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_play_42340.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_play_42340.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Play! Framework Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ Play! 1.0.3.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100757);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100757");
+ script_version("$Revision: 8274 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-11 13:11:12 +0200 (Wed, 11 Aug 2010)");
  script_bugtraq_id(42340);
 

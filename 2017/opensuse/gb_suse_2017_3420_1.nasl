@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3420_1.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_suse_2017_3420_1.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2017:3420-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851668");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-23 07:47:42 +0100 (Sat, 23 Dec 2017)");
   script_cve_id("CVE-2017-11188", "CVE-2017-11478", "CVE-2017-11523", "CVE-2017-11527", 
                 "CVE-2017-11535", "CVE-2017-11640", "CVE-2017-11752", "CVE-2017-12140", 
@@ -38,8 +38,8 @@ if(description)
                 "CVE-2017-14341", "CVE-2017-14342", "CVE-2017-14531", "CVE-2017-14607", 
                 "CVE-2017-14682", "CVE-2017-14733", "CVE-2017-14989", "CVE-2017-15217", 
                 "CVE-2017-15930", "CVE-2017-16545", "CVE-2017-16546", "CVE-2017-16669");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2017:3420-1 (ImageMagick)");
   script_tag(name: "summary", value: "Check the version of ImageMagick");

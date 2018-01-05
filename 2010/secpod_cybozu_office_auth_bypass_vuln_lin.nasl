@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_office_auth_bypass_vuln_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_cybozu_office_auth_bypass_vuln_lin.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Cybozu Office Authentication Bypass Vulnerability (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Cybozu Office and is prone to
 
 if(description)
 {
-  script_id(902065);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902065");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-2029");
   script_tag(name:"cvss_base", value:"5.8");

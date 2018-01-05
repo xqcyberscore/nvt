@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:152-1");
   script_id(831734);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:25:17 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-4244");
   script_tag(name:"cvss_base", value:"7.8");
@@ -57,7 +57,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:152-1");
   script_name("Mandriva Update for bind MDVSA-2012:152-1 (bind)");
 
-  script_summary("Check for the Version of bind");
+  script_tag(name: "summary" , value: "Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

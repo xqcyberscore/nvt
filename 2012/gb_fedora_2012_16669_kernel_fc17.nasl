@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-October/090823.html");
   script_id(864823);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-29 11:02:13 +0530 (Mon, 29 Oct 2012)");
   script_cve_id("CVE-2012-0957", "CVE-2012-3520", "CVE-2012-3412", "CVE-2012-2390", "CVE-2012-2372", "CVE-2011-4131");
   script_tag(name:"cvss_base", value:"7.8");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-16669");
   script_name("Fedora Update for kernel FEDORA-2012-16669");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

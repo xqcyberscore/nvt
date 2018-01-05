@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-086.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-086.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # Microsoft Windows Active Directory LDAPS Authentication Bypass Vulnerability (2630837)
 #
@@ -48,11 +48,11 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902487);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 8276 $");
   script_cve_id("CVE-2011-2014");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-11-09 12:52:09 +0530 (Wed, 09 Nov 2011)");
   script_name("Microsoft Windows Active Directory LDAPS Authentication Bypass Vulnerability (2630837)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46755/");
@@ -181,9 +181,9 @@ else if(hotfix_check_sp(win7:2) > 0)
 {
   ## Grep for Ntdsai.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7600.16871") ||
-     version_in_range(version:dllVer, test_version:"6.1.7600.21000", tes_version2:"6.1.7600.21034") ||
-     version_in_range(version:dllVer, test_version:"6.1.7601.17000", tes_version2:"6.1.7601.17675") ||
-     version_in_range(version:dllVer, test_version:"6.1.7601.21000", tes_version2:"6.1.7601.21801")){
+     version_in_range(version:dllVer, test_version:"6.1.7600.21000", test_version2:"6.1.7600.21034") ||
+     version_in_range(version:dllVer, test_version:"6.1.7601.17000", test_version2:"6.1.7601.17675") ||
+     version_in_range(version:dllVer, test_version:"6.1.7601.21000", test_version2:"6.1.7601.21801")){
     security_message(0);
   }
 }

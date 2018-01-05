@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_sygate_personal_firewall_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_symantec_sygate_personal_firewall_bof_vuln.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Symantec Sygate Personal Firewall ActiveX Buffer Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ is prone to Buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(901125);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901125");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 14:43:46 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2305");
   script_tag(name:"cvss_base", value:"9.3");

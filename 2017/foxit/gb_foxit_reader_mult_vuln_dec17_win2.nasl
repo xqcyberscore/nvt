@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 8216 2017-12-21 12:25:55Z cfischer $
+# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Multiple vulnerabilities in Foxit Reader 8.3.2
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113073");
-  script_version("$Revision: 8216 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 13:25:55 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 11:48:49 +0100 (Thu, 21 Dec 2017)");
-  script_tag(name:"cvss_base", value:"4.4");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

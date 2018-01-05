@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_info_disc_vuln_dec17.nasl 8075 2017-12-11 10:32:06Z asteins $
+# $Id: gb_otrs_info_disc_vuln_dec17.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # OTRS Remote Code Execution Vulnerability - Dec '17
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112153");
-  script_version("$Revision: 8075 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-11 11:51:38 +0100 (Mon, 11 Dec 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-16854");
 

@@ -44,12 +44,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(67295);
+ script_oid("1.3.6.1.4.1.25623.1.0.67295");
  script_cve_id("CVE-2010-2272","CVE-2010-2273","CVE-2010-2274","CVE-2010-2275","CVE-2010-2276");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-21 03:31:17 +0200 (Wed, 21 Apr 2010)");
  script_name("FreeBSD Ports: dojo");
 

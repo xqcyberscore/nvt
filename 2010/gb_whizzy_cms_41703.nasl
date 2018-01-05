@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_whizzy_cms_41703.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_whizzy_cms_41703.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Whizzy CMS 'whizzycms1001.php' Local File Include Vulnerability
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if(description)
 {
- script_id(100739);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100739");
+ script_version("$Revision: 8274 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-03 13:36:27 +0200 (Tue, 03 Aug 2010)");
  script_bugtraq_id(41703);
  script_tag(name:"cvss_base", value:"5.1");

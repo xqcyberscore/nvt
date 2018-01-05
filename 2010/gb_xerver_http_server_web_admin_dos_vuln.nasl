@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_http_server_web_admin_dos_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_xerver_http_server_web_admin_dos_vuln.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Xerver HTTP Server Web Administration Denial of Service Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is running Xerver HTTP Server and is prone to the Denia
 
 if(description)
 {
-  script_id(800175);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800175");
+  script_version("$Revision: 8287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

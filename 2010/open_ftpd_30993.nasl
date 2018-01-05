@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: open_ftpd_30993.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: open_ftpd_30993.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Open-FTPD Multiple Buffer Overflow Vulnerabilities
 #
@@ -35,9 +35,9 @@ Open-FTPD 1.2 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100495);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100495");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
  script_bugtraq_id(30993);
  script_tag(name:"cvss_base", value:"7.5");

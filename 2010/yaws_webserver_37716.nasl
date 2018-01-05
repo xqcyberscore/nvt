@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yaws_webserver_37716.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: yaws_webserver_37716.nasl 8287 2018-01-04 07:28:11Z teissa $
 #
 # Yaws Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -35,9 +35,9 @@ Yaws 1.85 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100446);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100446");
+ script_version("$Revision: 8287 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
  script_bugtraq_id(37716);
  script_cve_id("CVE-2009-4495");

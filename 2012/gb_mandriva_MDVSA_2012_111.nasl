@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:111");
   script_id(831701);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-26 11:15:40 +0530 (Thu, 26 Jul 2012)");
   script_cve_id("CVE-2012-1177");
   script_tag(name:"cvss_base", value:"5.1");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:111");
   script_name("Mandriva Update for libgdata MDVSA-2012:111 (libgdata)");
 
-  script_summary("Check for the Version of libgdata");
+  script_tag(name: "summary" , value: "Check for the Version of libgdata");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mult_dos_vuln_jul17.nasl 6823 2017-08-01 04:55:14Z ckuersteiner $
+# $Id: gb_ibm_websphere_mq_mult_dos_vuln_jul17.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # IBM WebSphere MQ Multiple Denial of Service Vulnerabilities - Jul17
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:websphere_mq';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140259");
- script_version("$Revision: 6823 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-01 06:55:14 +0200 (Tue, 01 Aug 2017) $");
+ script_version("$Revision: 8276 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
  script_tag(name: "creation_date", value: "2017-08-01 09:50:24 +0700 (Tue, 01 Aug 2017)");
  script_tag(name: "cvss_base", value: "4.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -80,7 +80,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-if (version_in_range(version: version, test_version: "9.0.1", test_version: "9.0.2")) {
+if (version_in_range(version: version, test_version: "9.0.1", test_version2: "9.0.2")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "9.0.3");
   security_message(port: 0, data: report);
   exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_dir_trav_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_antiweb_dir_trav_vuln.nasl 8286 2018-01-04 06:51:01Z ckuersteiner $
 #
 # Anti-Web Directory Traversal Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:anti-web:anti-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106886");
-  script_version("$Revision: 7610 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8286 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-04 07:51:01 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_cve_id("CVE-2017-9097", "CVE-2017-9664");
+  script_cve_id("CVE-2017-9097", "CVE-2017-9664", "CVE-2017-17888");
 
   script_tag(name: "qod_type", value: "exploit");
 
@@ -61,6 +61,7 @@ regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://misteralfa-hack.blogspot.cl/2017/05/apps-industrial-ot-over-server-anti-web.html");
   script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-222-05");
+  script_xref(name: "URL", value: "https://github.com/ezelf/AntiWeb_testing-Suite/tree/master/RCE");
 
   exit(0);
 }

@@ -63,8 +63,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-May/017598.html");
   script_id(881435);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:51:54 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2009-1570", "CVE-2010-4540", "CVE-2010-4541", "CVE-2010-4542",
                 "CVE-2010-4543", "CVE-2011-1178");
@@ -73,7 +73,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:0838");
   script_name("CentOS Update for gimp CESA-2011:0838 centos5 x86_64");
 
-  script_summary("Check for the Version of gimp");
+  script_tag(name: "summary" , value: "Check for the Version of gimp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

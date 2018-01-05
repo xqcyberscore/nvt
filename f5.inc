@@ -23,7 +23,7 @@
 # USA.
 ###############################################################################
 
-valid_products = make_list( "LTM","AAM","AFM","APM","ASM","GTM","PEM","PSM","WOM","AVR","WAM","LC","DNS" );
+valid_products = make_list( "LTM","AAM","AFM","APM","ASM","GTM","PEM","PSM","WOM","AVR","WAM","LC" );
 
 if( ! hotfix = get_kb_item( "f5/big_ip/hotfix" ) ) hotfix = int( 0 );
 

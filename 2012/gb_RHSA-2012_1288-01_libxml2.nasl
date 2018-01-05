@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-September/msg00026.html");
   script_id(870835);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-22 11:57:20 +0530 (Sat, 22 Sep 2012)");
   script_cve_id("CVE-2011-3102", "CVE-2012-2807");
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1288-01");
   script_name("RedHat Update for libxml2 RHSA-2012:1288-01");
 
-  script_summary("Check for the Version of libxml2");
+  script_tag(name: "summary" , value: "Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

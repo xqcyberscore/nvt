@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_overflow_bug_lin.nasl 8062 2017-12-09 11:43:45Z teissa $
+# $Id: gb_openssl_overflow_bug_lin.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # OpenSSL Overflow Vulnerability - DEC 2017 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107269");
-  script_version("$Revision: 8062 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:43:45 +0100 (Sat, 09 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3738");
 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Overflow Vulnerability - DEC 2017 (Linux)");

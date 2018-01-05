@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_2fab3f12c4_sensible-utils_fc27.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_fedora_2017_2fab3f12c4_sensible-utils_fc27.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Fedora Update for sensible-utils FEDORA-2017-2fab3f12c4
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873950");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 08:05:03 +0100 (Fri, 29 Dec 2017)");
   script_cve_id("CVE-2017-17512");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sensible-utils FEDORA-2017-2fab3f12c4");
   script_tag(name: "summary", value: "Check the version of sensible-utils");

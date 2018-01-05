@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4067.nasl 8182 2017-12-19 14:34:53Z teissa $
+# $Id: deb_4067.nasl 8291 2018-01-04 09:51:36Z asteins $
 #
 # Auto-generated from advisory DSA 4067-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704067");
-  script_version("$Revision: 8182 $");
+  script_version("$Revision: 8291 $");
   script_cve_id("CVE-2016-4536", "CVE-2016-9772", "CVE-2017-17432");
   script_name("Debian Security Advisory DSA 4067-1 (openafs - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 15:34:53 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-17 00:00:00 +0100 (Sun, 17 Dec 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

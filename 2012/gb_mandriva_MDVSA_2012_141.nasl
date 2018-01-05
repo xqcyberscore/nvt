@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:141");
   script_id(831727);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 09:57:24 +0530 (Fri, 24 Aug 2012)");
   script_cve_id("CVE-2010-3609");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:141");
   script_name("Mandriva Update for openslp MDVSA-2012:141 (openslp)");
 
-  script_summary("Check for the Version of openslp");
+  script_tag(name: "summary" , value: "Check for the Version of openslp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

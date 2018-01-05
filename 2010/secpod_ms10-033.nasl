@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-033.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: secpod_ms10-033.nasl 8276 2018-01-03 12:29:18Z asteins $
 #
 # Microsoft Media Decompression Remote Code Execution Vulnerability (979902)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900246");
-  script_version("$Revision: 8187 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8276 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40432, 40464);
   script_cve_id("CVE-2010-1879", "CVE-2010-1880");
@@ -325,7 +325,7 @@ if(hotfix_check_sp(winVista:3) > 0)
     if("Service Pack 2" >< SP)
     {
       # Grep for Asycfilt.dll version
-      if(version_in_range(version:dllVer, test_version:"6.0.6002.18236")){
+      if(version_is_less(version:dllVer, test_version:"6.0.6002.18236")){
         security_message(0);
       }
      exit(0);
@@ -370,7 +370,7 @@ if(hotfix_check_sp(win2008:3) > 0)
     if("Service Pack 2" >< SP)
     {
       # Grep for Asycfilt.dll version
-      if(version_in_range(version:dllVer, test_version:"6.0.6002.18236")){
+      if(version_is_less(version:dllVer, test_version:"6.0.6002.18236")){
         security_message(0);
       }
      exit(0);
@@ -402,7 +402,7 @@ if(hotfix_check_sp(win7:1) > 0)
   if(dllVer)
   {
     # Grep for Asycfilt.dll version 
-    if(version_in_range(version:dllVer, test_version:"6.1.7600.16544")){
+    if(version_is_less(version:dllVer, test_version:"6.1.7600.16544")){
      security_message(0);
     }
   }

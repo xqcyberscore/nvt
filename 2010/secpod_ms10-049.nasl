@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-049.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-049.nasl 8274 2018-01-03 07:28:17Z teissa $
 #
 # Remote Code Execution Vulnerabilities in SChannel (980436)
 #
@@ -28,9 +28,9 @@
 
 if(description)
 {
-  script_id(900247);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900247");
+  script_version("$Revision: 8274 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_bugtraq_id(36935);
   script_cve_id("CVE-2009-3555");

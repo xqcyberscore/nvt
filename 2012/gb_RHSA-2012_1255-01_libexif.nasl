@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-September/msg00012.html");
   script_id(870825);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:40:08 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-2812", "CVE-2012-2813", "CVE-2012-2814", "CVE-2012-2836",
                 "CVE-2012-2837", "CVE-2012-2840", "CVE-2012-2841");
@@ -67,7 +67,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1255-01");
   script_name("RedHat Update for libexif RHSA-2012:1255-01");
 
-  script_summary("Check for the Version of libexif");
+  script_tag(name: "summary" , value: "Check for the Version of libexif");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

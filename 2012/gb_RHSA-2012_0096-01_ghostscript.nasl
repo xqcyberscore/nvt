@@ -61,8 +61,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-February/msg00015.html");
   script_id(870541);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8295 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 11:24:27 +0530 (Fri, 03 Feb 2012)");
   script_cve_id("CVE-2010-4054", "CVE-2010-4820");
   script_tag(name:"cvss_base", value:"4.4");
@@ -70,7 +70,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0096-01");
   script_name("RedHat Update for ghostscript RHSA-2012:0096-01");
 
-  script_summary("Check for the Version of ghostscript");
+  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
