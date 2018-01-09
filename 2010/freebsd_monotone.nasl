@@ -41,9 +41,9 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(68511);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.68511");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-17 03:33:48 +0100 (Wed, 17 Nov 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_40456.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_oscommerce_40456.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # osCommerce Online Merchant 'file_manager.php' Remote Arbitrary File Upload Vulnerability
 #
@@ -42,9 +42,9 @@ if (description)
 {
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/40456");
  script_xref(name : "URL" , value : "http://www.oscommerce.com");
- script_id(100661);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100661");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-01 17:39:02 +0200 (Tue, 01 Jun 2010)");
  script_bugtraq_id(40456);
  script_tag(name:"cvss_base", value:"4.6");

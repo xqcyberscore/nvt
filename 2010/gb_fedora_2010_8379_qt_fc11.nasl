@@ -36,9 +36,9 @@ tag_affected = "qt on Fedora 11";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-May/041432.html");
-  script_id(861955);
-  script_version("$Revision: 8153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.861955");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-17 16:00:10 +0200 (Mon, 17 May 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

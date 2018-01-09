@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 8323 2018-01-08 14:50:05Z gveerendra $
 #
 # Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)
 #
@@ -47,10 +47,10 @@ tag_summary = "This host is installed with Microsoft Windows operating system an
 if(description)
 {
   script_id(802912);
-  script_version("$Revision: 5346 $");
+  script_version("$Revision: 8323 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:50:05 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2728973");
@@ -75,6 +75,8 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variable Initialization
 certs = "";
@@ -90,6 +92,18 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win7:2,
 ## Untrusted Certificates Path
 key = "SOFTWARE\Microsoft\SystemCertificates\Disallowed\Certificates\";
 if(!registry_key_exists(key:key)) {
+  exit(0);
+}
+
+## Get System Path
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
+}
+
+##Fetch the version of 'advapi32.dll'
+fileVer = fetch_file_version(sysPath, file_name:"advpack.dll");
+if(!fileVer){
   exit(0);
 }
 
@@ -163,6 +177,7 @@ foreach cert (certs)
   }
 }
 
-if(flag){
+
+if(flag && version_is_less(version:fileVer, test_version:"6.0.2600.0")){
   security_message(0);
 }

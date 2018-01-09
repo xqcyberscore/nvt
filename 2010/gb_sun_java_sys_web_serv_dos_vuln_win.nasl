@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_dos_vuln_win.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_dos_vuln_win.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Sun Java System Web Server Denial of Service Vulnerability (Windows)
 #
@@ -45,9 +45,9 @@ tag_summary = "This host has Sun Java Web Server running which is prone to
 
 if(description)
 {
-  script_id(800161);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800161");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -59,8 +59,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:006");
   script_id(831527);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 11:08:57 +0530 (Fri, 20 Jan 2012)");
   script_cve_id("CVE-2011-4108", "CVE-2011-4109", "CVE-2011-4576", "CVE-2011-4619");
   script_tag(name:"cvss_base", value:"9.3");
@@ -68,7 +68,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:006");
   script_name("Mandriva Update for openssl MDVSA-2012:006 (openssl)");
 
-  script_summary("Check for the Version of openssl");
+  script_tag(name: "summary" , value: "Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

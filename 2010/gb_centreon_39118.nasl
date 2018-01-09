@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_39118.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_centreon_39118.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Centreon 'main.php' SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ Centreon 2.1.5 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100570);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100570");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

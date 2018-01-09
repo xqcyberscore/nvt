@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ns_tree_code_exec_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_ns_tree_code_exec_vuln_win.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Mozilla Products 'nsTreeSelection' Denial of Service vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 
 if(description)
 {
-  script_id(800751);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800751");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0175");
   script_tag(name:"cvss_base", value:"9.3");

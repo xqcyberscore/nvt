@@ -54,9 +54,9 @@ tag_affected = "avahi on Mandriva Linux 2009.0,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-10/msg00025.php");
-  script_id(831210);
-  script_version("$Revision: 8130 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831210");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-19 15:54:15 +0200 (Tue, 19 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

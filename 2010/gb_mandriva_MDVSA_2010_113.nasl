@@ -49,12 +49,12 @@ tag_affected = "wireshark on Mandriva Linux 2009.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-06/msg00009.php");
-  script_id(831071);
+  script_oid("1.3.6.1.4.1.25623.1.0.831071");
   script_cve_id("CVE-2010-2283","CVE-2010-2284","CVE-2010-2285","CVE-2010-2286","CVE-2010-2287");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 8153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
+ script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 13:46:51 +0200 (Fri, 11 Jun 2010)");
   script_xref(name: "MDVSA", value: "2010:113");
   script_name("Mandriva Update for wireshark MDVSA-2010:113 (wireshark)");

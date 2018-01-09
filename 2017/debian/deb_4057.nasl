@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4057.nasl 8064 2017-12-09 11:46:40Z teissa $
+# $Id: deb_4057.nasl 8307 2018-01-07 18:51:31Z asteins $
 #
 # Auto-generated from advisory DSA 4057-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704057");
-  script_version("$Revision: 8064 $");
+  script_version("$Revision: 8307 $");
   script_cve_id("CVE-2017-1000385");
   script_name("Debian Security Advisory DSA 4057-1 (erlang - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:40 +0100 (Sat, 09 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-07 19:51:31 +0100 (Sun, 07 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 00:00:00 +0100 (Fri, 08 Dec 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_986_3.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_986_3.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Ubuntu Update for dpkg vulnerability USN-986-3
 #
@@ -47,9 +47,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-986-3/");
-  script_id(840496);
-  script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840496");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-22 08:32:53 +0200 (Wed, 22 Sep 2010)");
   script_xref(name: "USN", value: "986-3");
   script_tag(name:"cvss_base", value:"5.1");

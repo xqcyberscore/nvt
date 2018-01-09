@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpthumb_cmd_inj_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_phpthumb_cmd_inj_vuln.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # phpThumb 'fltr[]' Parameter Command Injection Vulnerability
 #
@@ -47,9 +47,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(801233);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801233");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-11 07:48:04 +0100 (Thu, 11 Nov 2010)");
   script_cve_id("CVE-2010-1598");
   script_bugtraq_id(39605);

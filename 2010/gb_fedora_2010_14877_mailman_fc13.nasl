@@ -45,9 +45,9 @@ tag_affected = "mailman on Fedora 13";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-December/052297.html");
-  script_id(862743);
-  script_version("$Revision: 8153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.862743");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-28 07:11:56 +0100 (Tue, 28 Dec 2010)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");

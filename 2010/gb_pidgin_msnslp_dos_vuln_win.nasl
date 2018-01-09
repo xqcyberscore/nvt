@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msnslp_dos_vuln_win.nasl 5660 2017-03-21 11:29:28Z cfi $
+# $Id: gb_pidgin_msnslp_dos_vuln_win.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Pidgin MSN Protocol Plugin Denial Of Service Vulnerability (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host has Pidgin installed and is prone to Denial Of Service
 
 if(description)
 {
-  script_id(800423);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800423");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

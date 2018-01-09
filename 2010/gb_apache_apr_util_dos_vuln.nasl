@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_apr_util_dos_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_apr_util_dos_vuln.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Apache APR-util 'buckets/apr_brigade.c' Denial Of Service Vulnerability
 #
@@ -50,9 +50,9 @@ tag_summary = "The host is installed with Apache APR-Util and is prone to
 
 if(description)
 {
-  script_id(801521);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801521");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-07 09:42:58 +0200 (Thu, 07 Oct 2010)");
   script_cve_id("CVE-2010-1623");
   script_tag(name:"cvss_base", value:"5.0");

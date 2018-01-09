@@ -34,7 +34,7 @@ if(description)
                 "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 12:39:21 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 13:38:43 +0530 (Thu, 04 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4056568)");

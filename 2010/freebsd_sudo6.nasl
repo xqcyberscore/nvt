@@ -49,9 +49,9 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(67293);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67293");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-21 03:31:17 +0200 (Wed, 21 Apr 2010)");
  script_cve_id("CVE-2010-1163");
  script_tag(name:"cvss_base", value:"6.9");

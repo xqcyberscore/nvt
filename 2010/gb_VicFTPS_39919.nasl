@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VicFTPS_39919.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_VicFTPS_39919.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # VicFTPS Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ also be affected.";
 
 if (description)
 {
- script_id(100625);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100625");
+ script_version("$Revision: 8296 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-05 18:44:23 +0200 (Wed, 05 May 2010)");
  script_bugtraq_id(39919);
  script_tag(name:"cvss_base", value:"5.0");

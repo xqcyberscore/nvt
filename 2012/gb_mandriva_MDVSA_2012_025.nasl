@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-02/msg00034.php");
   script_id(831551);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:20:35 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2012-0870");
   script_tag(name:"cvss_base", value:"7.9");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:025");
   script_name("Mandriva Update for samba MDVSA-2012:025 (samba)");
 
-  script_summary("Check for the Version of samba");
+  script_tag(name: "summary" , value: "Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_rce_vuln.nasl 7879 2017-11-23 07:43:08Z asteins $
+# $Id: gb_pfsense_rce_vuln.nasl 8319 2018-01-08 09:51:03Z asteins $
 #
-# pfSense Remote Code Execution Vulnerability
+# pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -30,19 +30,21 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112135");
-  script_version("$Revision: 7879 $");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 08:43:08 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 8319 $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:51:03 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 08:35:21 +0100 (Thu, 23 Nov 2017)");
-  script_name("pfSense Remote Code Execution Vulnerability");
+  script_name("pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability");
+
+  script_cve_id("CVE-2017-1000479");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
 
   script_tag(name:"summary", value:"This host is running pfSense and is prone
-to a remote code execution vulnerability.");
+to a remote code execution and cross-site request forgery (csrf) vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
 of the detection NVT and check if the version is vulnerable or not.");
@@ -53,7 +55,7 @@ to execute arbitrary code in the WebGUI.");
 
   script_tag(name:"impact", value:"Since the WebGUI runs as the root user, this will result in a full compromise of the pfSense instance.");
 
-  script_tag(name: "affected" , value:"pfSense before version 2.4.2");
+  script_tag(name:"affected" , value:"pfSense before version 2.4.2");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.2 or later. For updates refer to https://www.pfsense.org");
 
@@ -61,7 +63,9 @@ to execute arbitrary code in the WebGUI.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://www.securify.nl/advisory/SFY20171101/clickjacking-vulnerability-in-csrf-error-page-pfsense.html");
+  script_xref(name:"URL", value:"https://www.securify.nl/advisory/SFY20171101/clickjacking-vulnerability-in-csrf-error-page-pfsense.html");
+  script_xref(name:"URL", value:"https://doc.pfsense.org/index.php/2.4.2_New_Features_and_Changes");
+  script_xref(name:"URL", value:"https://www.netgate.com/blog/pfsense-2-4-2-release-p1-and-2-3-5-release-p1-now-available.html");
 
   script_dependencies("gb_pfsense_detect.nasl");
   script_mandatory_keys("pfsense/installed");

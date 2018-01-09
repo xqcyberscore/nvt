@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:102");
   script_id(831693);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 10:12:22 +0530 (Tue, 10 Jul 2012)");
   script_cve_id("CVE-2012-1013");
   script_tag(name:"cvss_base", value:"4.0");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:102");
   script_name("Mandriva Update for krb5 MDVSA-2012:102 (krb5)");
 
-  script_summary("Check for the Version of krb5");
+  script_tag(name: "summary" , value: "Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

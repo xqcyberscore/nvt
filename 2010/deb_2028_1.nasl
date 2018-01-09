@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2028_1.nasl 6614 2017-07-07 12:09:12Z cfischer $
+# $Id: deb_2028_1.nasl 8314 2018-01-08 08:01:01Z teissa $
 # Description: Auto-generated from advisory DSA 2028-1 (xpdf)
 #
 # Authors:
@@ -77,9 +77,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(67264);
- script_version("$Revision: 6614 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:12 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67264");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-21 03:31:17 +0200 (Wed, 21 Apr 2010)");
  script_cve_id("CVE-2009-1188", "CVE-2009-3603", "CVE-2009-3604", "CVE-2009-3606", "CVE-2009-3608", "CVE-2009-3609");
  script_tag(name:"cvss_base", value:"9.3");

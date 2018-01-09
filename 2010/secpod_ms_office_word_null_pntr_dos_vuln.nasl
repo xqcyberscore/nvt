@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_word_null_pntr_dos_vuln.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: secpod_ms_office_word_null_pntr_dos_vuln.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Microsoft Word 2003 'MSO.dll' Null Pointer Dereference Vulnerability
 #
@@ -45,9 +45,9 @@ null pointer dereference vulnerability.";
 
 if(description)
 {
-  script_id(902250);
-  script_version("$Revision: 6523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902250");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

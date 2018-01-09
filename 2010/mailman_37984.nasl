@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailman_37984.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: mailman_37984.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # GNU Mailman Unspecified Privilege Escalation Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100475);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100475");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-29 17:41:41 +0100 (Fri, 29 Jan 2010)");
  script_bugtraq_id(37984);
  script_tag(name:"cvss_base", value:"7.2");

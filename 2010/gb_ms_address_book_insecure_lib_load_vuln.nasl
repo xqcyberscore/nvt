@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_address_book_insecure_lib_load_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms_address_book_insecure_lib_load_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Microsoft Windows Address Book Insecure Library Loading Vulnerability
 #
@@ -52,10 +52,10 @@ This NVT has been replaced by NVT secpod_ms10-096.nasl
 
 if(description)
 {
-  script_id(801457);
-  script_version("$Revision: 5368 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801457");
+  script_version("$Revision: 8296 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-3143");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_nov10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_nov10.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - Nov10
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 
 if(description)
 {
-  script_id(801641);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801641");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2010-3803", "CVE-2010-3804", "CVE-2010-3805", "CVE-2010-3808",
                 "CVE-2010-3809", "CVE-2010-3810", "CVE-2010-3811", "CVE-2010-3812",

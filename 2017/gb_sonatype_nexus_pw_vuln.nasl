@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_pw_vuln.nasl 8167 2017-12-19 07:04:10Z ckuersteiner $
+# $Id: gb_sonatype_nexus_pw_vuln.nasl 8307 2018-01-07 18:51:31Z asteins $
 #
 # Sonatype Nexus Repository Manager Weak Password Encryption Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:sonatype:nexus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140611");
-  script_version("$Revision: 8167 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:04:10 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8307 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-07 19:51:31 +0100 (Sun, 07 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-19 14:09:00 +0700 (Tue, 19 Dec 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-17717");
 

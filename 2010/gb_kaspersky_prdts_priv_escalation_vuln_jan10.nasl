@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_prdts_priv_escalation_vuln_jan10.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_kaspersky_prdts_priv_escalation_vuln_jan10.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Kaspersky Products Privilege Escalation Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with Kaspersky Products and is prone
 
 if(description)
 {
-  script_id(800979);
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800979");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-09 13:17:56 +0100 (Sat, 09 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");

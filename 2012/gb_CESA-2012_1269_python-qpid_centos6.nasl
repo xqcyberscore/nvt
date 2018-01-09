@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-September/018895.html");
   script_id(881503);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-22 11:58:03 +0530 (Sat, 22 Sep 2012)");
   script_cve_id("CVE-2012-2145");
   script_tag(name:"cvss_base", value:"5.0");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1269");
   script_name("CentOS Update for python-qpid CESA-2012:1269 centos6 ");
 
-  script_summary("Check for the Version of python-qpid");
+  script_tag(name: "summary" , value: "Check for the Version of python-qpid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

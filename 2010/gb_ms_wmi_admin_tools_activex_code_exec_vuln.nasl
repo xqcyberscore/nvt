@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_admin_tools_activex_code_exec_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms_wmi_admin_tools_activex_code_exec_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Microsoft WMI Administrative Tools ActiveX Control Remote Code Execution Vulnerabilities
 #
@@ -44,10 +44,10 @@ This NVT has been replaced by NVT secpod_ms11-027.nasl
 
 if(description)
 {
-  script_id(801677);
-  script_version("$Revision: 5364 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801677");
+  script_version("$Revision: 8296 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_bugtraq_id(45546);
   script_cve_id("CVE-2010-3973", "CVE-2010-4588");

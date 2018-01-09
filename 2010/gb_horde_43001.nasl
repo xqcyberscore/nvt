@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_43001.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_horde_43001.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # Horde Application Framework 'icon_browser.php' Cross-Site Scripting Vulnerability
 #
@@ -42,9 +42,9 @@ Contact the vendor for more information.";
 
 if (description)
 {
- script_id(100787);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100787");
+ script_version("$Revision: 8314 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
  script_cve_id("CVE-2010-3077", "CVE-2010-3694");
  script_bugtraq_id(43001);

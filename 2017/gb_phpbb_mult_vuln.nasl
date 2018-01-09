@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_mult_vuln.nasl 6946 2017-08-16 15:27:16Z cfischer $
+# $Id: gb_phpbb_mult_vuln.nasl 8321 2018-01-08 10:48:27Z ckuersteiner $
 #
 # phpBB Multiple Vulnerabilities
 #
@@ -30,11 +30,13 @@ CPE = 'cpe:/a:phpbb:phpbb';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140291");
-  script_version("$Revision: 6946 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 17:27:16 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 8321 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-08 11:48:27 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-08-10 16:43:53 +0700 (Thu, 10 Aug 2017)");
   script_tag(name: "cvss_base", value: "4.9");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:N");
+
+  script_cve_id("CVE-2017-1000419");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -57,7 +59,7 @@ if (description)
 
 - Server-side request forgery (SSRF) vulnerability in the remote avatar functionality which could be used to
 perform service discovery on internal and external networks as well as retrieve images which are usually
-restricted to local access.
+restricted to local access. (CVE-2017-1000419)
 
 - Cross-site scripting vulnerability via version check files.");
 

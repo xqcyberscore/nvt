@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1014_1.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_1014_1.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # Ubuntu Update for pidgin vulnerabilities USN-1014-1
 #
@@ -46,9 +46,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1014-1/");
-  script_id(840530);
-  script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840530");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-16 14:49:48 +0100 (Tue, 16 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

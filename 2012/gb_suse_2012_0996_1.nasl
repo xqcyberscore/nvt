@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0996_1.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_0996_1.nasl 8313 2018-01-08 07:02:11Z teissa $
 #
 # SuSE Update for flash-player openSUSE-SU-2012:0996-1 (flash-player)
 #
@@ -35,8 +35,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850312);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:01 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1535");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,7 +44,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:0996_1");
   script_name("SuSE Update for flash-player openSUSE-SU-2012:0996-1 (flash-player)");
 
-  script_summary("Check for the Version of flash-player");
+  script_tag(name: "summary" , value: "Check for the Version of flash-player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

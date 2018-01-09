@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssl_funcs.inc 8231 2017-12-22 09:17:27Z cfischer $
+# $Id: ssl_funcs.inc 8322 2018-01-08 13:17:36Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8231 $
+# $Revision: 8322 $
 #
 ###############################################################################
 
@@ -97,6 +97,7 @@ application_layer_protocol_negotiation['spdy/3']   = raw_string( 0x73, 0x70, 0x6
 application_layer_protocol_negotiation['spdy/3.1'] = raw_string( 0x73, 0x70, 0x64, 0x79, 0x2f, 0x33, 0x2e, 0x31 );
 application_layer_protocol_negotiation['spdy/4']   = raw_string( 0x73, 0x70, 0x64, 0x79, 0x2f, 0x34 );
 application_layer_protocol_negotiation['h2']       = raw_string( 0x68, 0x32 );
+npn_alpn_name_mapping['http/1.0'] = "HTTP/1.0"; # Not defined in the ALPN RFC, currently only seen on services supporting NPN
 npn_alpn_name_mapping['http/1.1'] = "HTTP/1.1";
 npn_alpn_name_mapping['spdy/1']   = "SPDY/1";
 npn_alpn_name_mapping['spdy/2']   = "SPDY/2";

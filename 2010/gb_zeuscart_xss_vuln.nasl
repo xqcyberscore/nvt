@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeuscart_xss_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zeuscart_xss_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # ZeusCart 'search' Parameter Cross Site Scripting Vulnerability
 #
@@ -47,9 +47,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(801249);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801249");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

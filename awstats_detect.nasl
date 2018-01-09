@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: awstats_detect.nasl 8083 2017-12-12 06:49:29Z ckuersteiner $
+# $Id: awstats_detect.nasl 8317 2018-01-08 09:24:18Z ckuersteiner $
 #
 # AWStats Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100376");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8083 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:49:29 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 8317 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:24:18 +0100 (Mon, 08 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 12:57:42 +0100 (Thu, 03 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -66,8 +66,13 @@ foreach dir (make_list_unique("/awstats", "/stats", "/logs", "/awstats/cgi-bin",
   url = dir + '/awstats.pl?framename=mainright';
   req = http_get(item:url, port:port);
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  if (buf == NULL)
-    continue;
+  if ('content="Awstats - Advanced Web Statistics' >!< buf && "AWStats UseFramesWhenCGI" >!<buf &&
+      "Created by awstats" >!< buf && "CreateDirDataIfNotExists" >!< buf ) {
+    buf = http_get_cache(port: port, item: "/");
+    if ('content="Awstats - Advanced Web Statistics' >!< buf && "AWStats UseFramesWhenCGI" >!<buf &&
+      "Created by awstats" >!< buf && "CreateDirDataIfNotExists" >!< buf )
+      continue;
+  }
 
   if ('content="Awstats - Advanced Web Statistics' >< buf || "AWStats UseFramesWhenCGI" ><buf ||
       "Created by awstats" >< buf || "CreateDirDataIfNotExists" >< buf ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_mult_dos_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_freetype_mult_dos_vuln_win.nasl 8314 2018-01-08 08:01:01Z teissa $
 #
 # FreeType Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed with FreeType and is prone to multiple Den
 
 if(description)
 {
-  script_id(901142);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901142");
+  script_version("$Revision: 8314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_bugtraq_id(42285);
   script_cve_id("CVE-2010-3053", "CVE-2010-2808", "CVE-2010-2807",

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mantisbt_nusoap_xss_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mantisbt_nusoap_xss_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # NuSOAP 'nusoap.php' Cross Site Scripting Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running NuSOAP and is prone to Cross-site scripting
 
 if(description)
 {
-  script_id(902318);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902318");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-3070");
   script_bugtraq_id(42959);

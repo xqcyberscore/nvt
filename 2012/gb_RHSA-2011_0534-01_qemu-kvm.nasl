@@ -75,14 +75,14 @@ if(description)
   script_id(870639);
   script_tag(name:"cvss_base", value:"7.4");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:38:30 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-1750", "CVE-2011-1751");
   script_xref(name: "RHSA", value: "2011:0534-01");
   script_name("RedHat Update for qemu-kvm RHSA-2011:0534-01");
 
-  script_summary("Check for the Version of qemu-kvm");
+  script_tag(name: "summary" , value: "Check for the Version of qemu-kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

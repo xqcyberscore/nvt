@@ -35,15 +35,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-August/064441.html");
   script_id(863792);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 12:16:34 +0530 (Mon, 19 Mar 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_xref(name: "FEDORA", value: "2011-10889");
   script_name("Fedora Update for setup FEDORA-2011-10889");
 
-  script_summary("Check for the Version of setup");
+  script_tag(name: "summary" , value: "Check for the Version of setup");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

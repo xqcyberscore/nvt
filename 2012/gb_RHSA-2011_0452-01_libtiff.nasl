@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-April/msg00017.html");
   script_id(870648);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:41:04 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2009-5022");
   script_tag(name:"cvss_base", value:"6.8");
@@ -57,7 +57,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0452-01");
   script_name("RedHat Update for libtiff RHSA-2011:0452-01");
 
-  script_summary("Check for the Version of libtiff");
+  script_tag(name: "summary" , value: "Check for the Version of libtiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

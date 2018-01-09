@@ -50,9 +50,9 @@ tag_affected = "php on Mandriva Linux 2009.0,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-11/msg00033.php");
-  script_id(831259);
-  script_version("$Revision: 8153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831259");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 15:30:07 +0100 (Tue, 23 Nov 2010)");
   script_xref(name: "MDVSA", value: "2010:239");
   script_tag(name:"cvss_base", value:"5.0");

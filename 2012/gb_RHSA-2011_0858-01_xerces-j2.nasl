@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-June/msg00004.html");
   script_id(870688);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:47:25 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2009-2625");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0858-01");
   script_name("RedHat Update for xerces-j2 RHSA-2011:0858-01");
 
-  script_summary("Check for the Version of xerces-j2");
+  script_tag(name: "summary" , value: "Check for the Version of xerces-j2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

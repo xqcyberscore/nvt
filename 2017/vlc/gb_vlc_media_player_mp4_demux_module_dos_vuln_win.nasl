@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_demux_module_dos_vuln_win.nasl 8239 2017-12-22 12:11:08Z santu $
+# $Id: gb_vlc_media_player_mp4_demux_module_dos_vuln_win.nasl 8299 2018-01-05 11:11:22Z asteins $
 #
 # VLC Media Player 'MP4 Demux Module' DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812504");
-  script_version("$Revision: 8239 $");
+  script_version("$Revision: 8299 $");
   script_cve_id("CVE-2017-17670");
   script_bugtraq_id(102214);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 13:11:08 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 12:11:22 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 11:58:25 +0530 (Wed, 20 Dec 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player 'MP4 Demux Module' DoS Vulnerability (Windows)");

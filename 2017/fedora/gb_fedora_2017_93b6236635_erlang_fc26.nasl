@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_93b6236635_erlang_fc26.nasl 8185 2017-12-20 04:08:16Z santu $
+# $Id: gb_fedora_2017_93b6236635_erlang_fc26.nasl 8307 2018-01-07 18:51:31Z asteins $
 #
 # Fedora Update for erlang FEDORA-2017-93b6236635
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873913");
-  script_version("$Revision: 8185 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 05:08:16 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8307 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-07 19:51:31 +0100 (Sun, 07 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 11:43:25 +0100 (Thu, 14 Dec 2017)");
   script_cve_id("CVE-2017-1000385");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for erlang FEDORA-2017-93b6236635");
   script_tag(name: "summary", value: "Check the version of erlang");

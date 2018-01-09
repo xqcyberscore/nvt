@@ -55,8 +55,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-February/msg00023.html");
   script_id(870647);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:40:19 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-2262", "CVE-2012-0075", "CVE-2012-0087", "CVE-2012-0101",
                 "CVE-2012-0102", "CVE-2012-0112", "CVE-2012-0113", "CVE-2012-0114",
@@ -68,7 +68,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0105-01");
   script_name("RedHat Update for mysql RHSA-2012:0105-01");
 
-  script_summary("Check for the Version of mysql");
+  script_tag(name: "summary" , value: "Check for the Version of mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

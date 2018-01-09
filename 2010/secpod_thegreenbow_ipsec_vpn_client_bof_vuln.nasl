@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_thegreenbow_ipsec_vpn_client_bof_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_thegreenbow_ipsec_vpn_client_bof_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
 #
 # TheGreenBow IPSec VPN Client Local Stack Overflow Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host has TheGreenBow IPSec VPN Client installed and is prone
 
 if(description)
 {
-  script_id(902104);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902104");
+  script_version("$Revision: 8296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
