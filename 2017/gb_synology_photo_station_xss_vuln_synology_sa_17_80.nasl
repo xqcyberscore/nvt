@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_photo_station_xss_vuln_synology_sa_17_80.nasl 8229 2017-12-22 08:48:01Z santu $
+# $Id: gb_synology_photo_station_xss_vuln_synology_sa_17_80.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # Synology Photo Station Cross-Site Scripting Vulnerability (Synology_SA_17_80)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:synology:synology_photo_station";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812358");
-  script_version("$Revision: 8229 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-12072");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:48:01 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 15:28:05 +0530 (Thu, 21 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Synology Photo Station Cross-Site Scripting Vulnerability (Synology_SA_17_80)");
@@ -83,7 +83,7 @@ if (!synport = get_app_port(cpe: CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:synport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:synport, exit_no_version:TRUE)) exit(0);
 synVer = infos['version'];
 synpath = infos['location'];
 

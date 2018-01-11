@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 09 Jan 2018 07:51:54 +0100
+# Automatically created on:  Thu, 11 Jan 2018 08:59:15 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52956,6 +52956,13 @@
 2017/wso2/gb_wso2_governance_registry_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_storage_server_xss_vuln.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-01_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-01_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-01_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-01_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-01_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-01_win.nasl: GPLv2+
+2018/adobe/gb_flash_player_for_ie_edge_jan17.nasl: GPLv2+
 2018/awstats/gb_awstats_dir_trav_vuln.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0008_kernel_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0013_microcode_ctl_centos6.nasl: GPLv2+
@@ -52967,6 +52974,14 @@
 2018/debian/deb_4077.nasl: GPLv2+
 2018/debian/deb_4078.nasl: GPLv2+
 2018/debian/deb_4079.nasl: GPLv2+
+2018/debian/deb_4080.nasl: GPLv2+
+2018/debian/deb_4081.nasl: GPLv2+
+2018/debian/deb_dla_1227.nasl: GPLv2+
+2018/debian/deb_dla_1228.nasl: GPLv2+
+2018/debian/deb_dla_1229.nasl: GPLv2+
+2018/debian/deb_dla_1230.nasl: GPLv2+
+2018/debian/deb_dla_1231.nasl: GPLv2+
+2018/debian/deb_dla_1232.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
 2018/debian/deb_dla_813.nasl: GPLv2+
 2018/debian/deb_dla_814.nasl: GPLv2+
@@ -53020,8 +53035,37 @@
 2018/gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl: GPLv2+
 2018/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
 2018/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
+2018/gb_malwarebytes_multiple_dos_vuln.nasl: GPLv2+
+2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
 2018/microsoft/gb_ms_ie_mult_vuln_kb4056568.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011201.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011213.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011273.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011580.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011602.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011605.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011606.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011607.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011610.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011611.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011626.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011627.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011636.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011637.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011639.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011643.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011651.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011657.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011659.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011660.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4054993.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4054994.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4054995.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4054996.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4054997.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4055000.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4055002.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4056888.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4056890.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4056891.nasl: GPLv2+
@@ -53029,6 +53073,7 @@
 2018/microsoft/gb_ms_kb4056893.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4056897.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4056898.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4056899.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_win.nasl: GPLv2+
 2018/opensuse/gb_suse_2017_3434_1.nasl: GPLv2+
@@ -53041,6 +53086,7 @@
 2018/opensuse/gb_suse_2018_0030_1.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2017-9_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2017-9_win.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_20171222.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0007-01_kernel.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0008-01_kernel.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0012-01_microcode_ctl.nasl: GPLv2+
@@ -53057,8 +53103,10 @@
 2018/webmin/gb_webmin_xss_vuln1_lin.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln1_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_add-link-to-facebook_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_gd-rating-system_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_simple-download-monitor_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_wp-inject_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
 adaptbb_detect.nasl: GPLv2+
@@ -54265,6 +54313,7 @@ gb_riverbed_steelhead_http_detect.nasl: GPLv2+
 gb_riverbed_steelhead_ssh_detect.nasl: GPLv2+
 gb_rmi_registry_detect.nasl: GPLv2+
 gb_robo_ftp_client_detect.nasl: GPLv2+
+gb_rockwell_micrologix_http_detect.nasl: GPLv2+
 gb_ros_detect.nasl: GPLv2+
 gb_rpi_cam_control_detect.nasl: GPLv2+
 gb_rsa_archer_detect.nasl: GPLv2+
@@ -54875,6 +54924,7 @@ gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_win.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180110-ucm.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
@@ -54884,12 +54934,29 @@ gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_win.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10828.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10829.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10830.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10831.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10832.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10833.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10834.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10835.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10836.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10837.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb3114998.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011579.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011599.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011609.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011615.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011642.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011648.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011653.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4052987.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4052987_remote.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056613.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056615.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056759.nasl: GPLv2+
-gsf/2018/microsoft/gb_ms_kb4056899.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056941.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056942.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056944.nasl: GPLv2+
@@ -54902,6 +54969,11 @@ gsf/2018/microsoft/gb_ms_kb4057122_remote.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0030.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0031.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0032.nasl: GPLv2+
+gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
+gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
+gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2+
+gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+
+gsf/2018/splunk/gb_splunk_enterprise_mult_saml_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0001.nasl: GPLv2+

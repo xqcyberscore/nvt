@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_detect.nasl 8288 2018-01-04 08:04:03Z asteins $
+# $Id: gb_ikarus_anti_virus_detect.nasl 8347 2018-01-09 15:41:09Z cfischer $
 #
 # IKARUS anti.virus Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112156");
-  script_version("$Revision: 8288 $");
+  script_version("$Revision: 8347 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 09:04:03 +0100 (Thu, 04 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 16:41:09 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:35:57 +0100 (Thu, 04 Jan 2018)");
 
   script_name("IKARUS anti.virus Detection (Windows)");
@@ -79,6 +79,7 @@ foreach item (registry_enum_keys(key:key)) {
   if("IKARUS anti.virus" >< product) {
     set_kb_item(name:"ikarus/anti.virus/detected", value:TRUE);
     version = "unknown";
+    installed = TRUE;
 
     ver = registry_get_sz(key:key + item, item:"DisplayVersion");
     path = registry_get_sz(key:key + item, item:"InstallLocation");
@@ -87,18 +88,21 @@ foreach item (registry_enum_keys(key:key)) {
   }
 }
 
-if(ver) {
-  version = ver;
-  set_kb_item(name:"ikarus/anti.virus/version", value:version);
-}
+if(installed) {
 
-if(!path) {
-  # InstallLocation not found, try getting MainPath from different registry entry
-  if(!path = registry_get_sz(key:"SOFTWARE\Ikarus\guardx", item:"MainPath")) {
-    path = "Could not get the install location from the registry";
+  if(ver) {
+    version = ver;
+    set_kb_item(name:"ikarus/anti.virus/version", value:version);
   }
-}
 
-register_and_report_cpe(app:"IKARUS anti.virus", ver:version, base:"cpe:/a:ikarus:anti.virus:", expr:"^([0-9.]+)", insloc:path);
+  if(!path) {
+    # InstallLocation not found, try getting MainPath from different registry entry
+    if(!path = registry_get_sz(key:"SOFTWARE\Ikarus\guardx", item:"MainPath")) {
+      path = "Could not get the install location from the registry";
+    }
+  }
+
+  register_and_report_cpe(app:"IKARUS anti.virus", ver:version, base:"cpe:/a:ikarus:anti.virus:", expr:"^([0-9.]+)", insloc:path);
+}
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storage_mirroring_unspecified_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_hp_storage_mirroring_unspecified_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # HP StorageWorks Storage Mirroring Unspecified Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with HP StorageWorks Storage Mirroring and
 
 if(description)
 {
-  script_id(801357);
-  script_version("$Revision: 8169 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801357");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-1962"); 
   script_bugtraq_id(40539); 

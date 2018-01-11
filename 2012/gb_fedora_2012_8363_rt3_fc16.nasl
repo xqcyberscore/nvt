@@ -38,15 +38,15 @@ if(description)
   script_id(864268);
   script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-04 11:05:43 +0530 (Mon, 04 Jun 2012)");
   script_cve_id("CVE-2011-2082", "CVE-2011-2083", "CVE-2011-2084", "CVE-2011-2085",
                 "CVE-2011-4458", "CVE-2011-4459", "CVE-2011-4460");
   script_xref(name: "FEDORA", value: "2012-8363");
   script_name("Fedora Update for rt3 FEDORA-2012-8363");
 
-  script_summary("Check for the Version of rt3");
+  script_tag(name: "summary" , value: "Check for the Version of rt3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

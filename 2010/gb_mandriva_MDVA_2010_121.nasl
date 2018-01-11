@@ -42,12 +42,12 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-04/msg00022.php");
-  script_id(830994);
+  script_oid("1.3.6.1.4.1.25623.1.0.830994");
   script_cve_id("CVE-2010-0164","CVE-2010-0165","CVE-2010-0167","CVE-2010-0168","CVE-2010-0170","CVE-2010-0172","CVE-2010-0173","CVE-2010-0174","CVE-2010-0175","CVE-2010-0176","CVE-2010-0177","CVE-2010-0178","CVE-2010-0179","CVE-2010-0181","CVE-2010-0182","CVE-2010-1122");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 8153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
+ script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-19 16:47:49 +0200 (Mon, 19 Apr 2010)");
   script_xref(name: "MDVA", value: "2010:121");
   script_name("Mandriva Update for firefox MDVA-2010:121 (firefox)");

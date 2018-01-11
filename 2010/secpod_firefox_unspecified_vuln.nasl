@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_unspecified_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_firefox_unspecified_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Mozilla Firefox Unspecified Vulnerability (Windows)
 #
@@ -35,9 +35,9 @@ tag_summary = "The host is running Mozilla Firefox and is prone to unspecified
 
 if(description)
 {
-  script_id(902027);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902027");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2010-1028");
   script_tag(name:"cvss_base", value:"9.3");

@@ -47,15 +47,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-September/018057.html");
   script_id(881344);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:30:44 +0530 (Mon, 30 Jul 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name: "CESA", value: "2011:1242");
   script_name("CentOS Update for xulrunner CESA-2011:1242 centos5 x86_64");
 
-  script_summary("Check for the Version of xulrunner");
+  script_tag(name: "summary" , value: "Check for the Version of xulrunner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

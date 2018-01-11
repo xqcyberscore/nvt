@@ -46,8 +46,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-November/019019.html");
   script_id(881546);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 09:43:37 +0530 (Tue, 04 Dec 2012)");
   script_cve_id("CVE-2012-5134");
   script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1512");
   script_name("CentOS Update for libxml2 CESA-2012:1512 centos6 ");
 
-  script_summary("Check for the Version of libxml2");
+  script_tag(name: "summary" , value: "Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

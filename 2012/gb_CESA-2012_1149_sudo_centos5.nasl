@@ -78,8 +78,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-August/018791.html");
   script_id(881468);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-09 10:21:39 +0530 (Thu, 09 Aug 2012)");
   script_cve_id("CVE-2012-3440");
   script_tag(name:"cvss_base", value:"5.6");
@@ -87,7 +87,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1149");
   script_name("CentOS Update for sudo CESA-2012:1149 centos5 ");
 
-  script_summary("Check for the Version of sudo");
+  script_tag(name: "summary" , value: "Check for the Version of sudo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

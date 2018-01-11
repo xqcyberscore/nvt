@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smartertrack_mult_xss_vuln.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: gb_smartertrack_mult_xss_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # SmarterTools SmarterTrack Cross-Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running SmarterTools SmarterTrack and is prone
 
 if(description)
 {
-  script_id(801453);
-  script_version("$Revision: 5347 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801453");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 08:47:45 +0200 (Wed, 15 Sep 2010)");
   script_cve_id("CVE-2009-4994", "CVE-2009-4995");
   script_tag(name:"cvss_base", value:"4.3");

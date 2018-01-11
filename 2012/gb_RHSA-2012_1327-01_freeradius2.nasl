@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-October/msg00004.html");
   script_id(870841);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:21:13 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-3547");
   script_tag(name:"cvss_base", value:"6.8");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1327-01");
   script_name("RedHat Update for freeradius2 RHSA-2012:1327-01");
 
-  script_summary("Check for the Version of freeradius2");
+  script_tag(name: "summary" , value: "Check for the Version of freeradius2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

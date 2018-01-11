@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_core_ftp_server_40422.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_core_ftp_server_40422.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Core FTP Server Directory Traversal Vulnerability
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if (description)
 {
- script_id(100660);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100660");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-31 18:31:53 +0200 (Mon, 31 May 2010)");
  script_bugtraq_id(40422);
  script_tag(name:"cvss_base", value:"5.0");

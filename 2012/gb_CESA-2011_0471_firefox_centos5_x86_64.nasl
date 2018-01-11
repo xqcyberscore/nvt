@@ -85,8 +85,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-April/017461.html");
   script_id(881346);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:30:49 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0065", "CVE-2011-0066", "CVE-2011-0067", "CVE-2011-0069",
                 "CVE-2011-0070", "CVE-2011-0071", "CVE-2011-0072", "CVE-2011-0073",
@@ -97,7 +97,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:0471");
   script_name("CentOS Update for firefox CESA-2011:0471 centos5 x86_64");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

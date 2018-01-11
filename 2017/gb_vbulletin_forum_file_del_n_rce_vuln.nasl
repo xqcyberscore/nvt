@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 8299 2018-01-05 11:11:22Z asteins $
+# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812354");
-  script_version("$Revision: 8299 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-17672");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 12:11:22 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-18 18:33:37 +0530 (Mon, 18 Dec 2017)");
   script_name("vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities");
 
@@ -85,7 +85,7 @@ if(!vPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:vPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:vPort, exit_no_version:TRUE)) exit(0);
 vVer = infos['version'];
 path = infos['location'];
 

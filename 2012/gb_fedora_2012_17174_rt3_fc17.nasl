@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-November/091188.html");
   script_id(864854);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 09:32:49 +0530 (Fri, 09 Nov 2012)");
   script_cve_id("CVE-2012-4730", "CVE-2012-4732", "CVE-2012-4734", "CVE-2012-4735",
                 "CVE-2012-4884");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-17174");
   script_name("Fedora Update for rt3 FEDORA-2012-17174");
 
-  script_summary("Check for the Version of rt3");
+  script_tag(name: "summary" , value: "Check for the Version of rt3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

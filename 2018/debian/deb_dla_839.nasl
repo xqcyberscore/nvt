@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_839.nasl 8329 2018-01-08 22:02:15Z teissa $
+# $Id: deb_dla_839.nasl 8337 2018-01-09 07:04:57Z teissa $
 #
 # Auto-generated from advisory DLA 839-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890839");
-  script_version("$Revision: 8329 $");
+  script_version("$Revision: 8337 $");
   script_cve_id("CVE-2017-6307", "CVE-2017-6308", "CVE-2017-6309", "CVE-2017-6310");
   script_name("Debian Lts Announce DLA 839-1 ([SECURITY] [DLA 839-1] tnef security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 23:02:15 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

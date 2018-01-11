@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_servletsecurity_annotation_sec_bypass_vuln_lin.nasl 8149 2017-12-15 14:58:09Z cfischer $
+# $Id: gb_apache_tomcat_servletsecurity_annotation_sec_bypass_vuln_lin.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # Apache Tomcat 'ServletSecurity' Annotations Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812257");
-  script_version("$Revision: 8149 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2011-1088", "CVE-2011-1419");
   script_bugtraq_id(46685);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-12 13:08:44 +0530 (Tue, 12 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'ServletSecurity' Annotations Security Bypass Vulnerability (Linux)");
@@ -84,7 +84,7 @@ if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:tomPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:tomPort, exit_no_version:TRUE)) exit(0);
 appVer = infos['version'];
 path = infos['location'];
 

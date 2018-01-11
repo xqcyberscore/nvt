@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-August/085415.html");
   script_id(864635);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 09:53:13 +0530 (Fri, 24 Aug 2012)");
   script_cve_id("CVE-2012-3463", "CVE-2012-3464", "CVE-2012-3465", "CVE-2012-3424", "CVE-2012-2694", "CVE-2012-2660", "CVE-2012-1098", "CVE-2012-1099", "CVE-2011-4319");
   script_tag(name:"cvss_base", value:"6.4");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-11870");
   script_name("Fedora Update for rubygem-actionpack FEDORA-2012-11870");
 
-  script_summary("Check for the Version of rubygem-actionpack");
+  script_tag(name: "summary" , value: "Check for the Version of rubygem-actionpack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-January/071523.html");
   script_id(863671);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-09 12:52:59 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,7 +60,7 @@ if(description)
   script_cve_id("CVE-2011-4780", "CVE-2011-4782");
   script_name("Fedora Update for phpMyAdmin FEDORA-2011-17370");
 
-  script_summary("Check for the Version of phpMyAdmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

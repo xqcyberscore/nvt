@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8156 2017-12-18 11:48:16Z cfischer $
+# $Id: host_details.inc 8360 2018-01-10 14:47:00Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8156 $
+# $Revision: 8360 $
 #
 ###############################################################################
 
@@ -850,7 +850,7 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
   {
     version_list = make_list();
 
-    ap = get_kb_list("get_app/" + base_cpe);
+    ap = get_kb_list( "get_app/" + base_cpe );
     if( ! ap ) return;
     foreach dt ( ap )
     {
@@ -863,16 +863,16 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
       version_list = make_list( version_list, app_versions );
     }
 
-    register_host_detail(name:"detected_by", value:t[0]);
+    register_host_detail( name:"detected_by", value:t[0] );
     if( ! isnull( t[2] ) )
-      register_host_detail(name:"detected_at", value:t[2]);
+      register_host_detail( name:"detected_at", value:t[2] );
 
     return version_list;
 
   }
   else if( nofork && typ == 'version' ) # nofork is currently only valid for get_app_version() and get_app_location
   {
-    ap = get_kb_list("get_app/" + base_cpe);
+    ap = get_kb_list( "get_app/" + base_cpe );
     if( ! ap ) return;
     foreach dt ( ap )
     {
@@ -886,44 +886,45 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
       if( version_regex )
         if( ! ereg( pattern:version_regex, string:app_versions ) ) continue;
 
-      register_host_detail(name:"detected_by", value:t[0]);
+      register_host_detail( name:"detected_by", value:t[0] );
       if( ! isnull( t[2] ) )
-        register_host_detail(name:"detected_at", value:t[2]);
+        register_host_detail( name:"detected_at", value:t[2] );
 
       return app_versions;
     }
     return; # no version...
   } else if( nofork && typ == 'location' ) { # nofork is currently only valid for get_app_version() and get_app_location
-    ap = get_kb_list("get_app/" + base_cpe);
+    ap = get_kb_list( "get_app/" + base_cpe );
     if( ! ap ) return;
     app_locations = make_list();
     foreach dt ( ap ) {
       t = split( dt, sep:'#-#', keep:FALSE );
-      t_oid  = t[0];
-      t_loc  = t[2];
+      t_oid = t[0];
+      t_loc = t[2];
       if( isnull( t_oid ) && isnull( t_loc ) ) continue;
 
-      register_host_detail(name:"detected_by", value:t_oid);
+      register_host_detail( name:"detected_by", value:t_oid );
       if( ! isnull( t[2] ) )
-        register_host_detail(name:"detected_at", value:t_loc);
+        register_host_detail( name:"detected_at", value:t_loc );
 
       app_locations = make_list( app_locations, t_loc );
     }
     return app_locations;
   }
   else
-    app_details = get_kb_item("get_app/" + base_cpe); # this could fork
+    app_details = get_kb_item( "get_app/" + base_cpe ); # this could fork
 
   if( ! app_details ) return;
 
   x = split( app_details, sep:'#-#', keep:FALSE );
 
-  x_oid  = x[0];
-  x_cpe  = x[1];
-  x_loc  = x[2];
-  x_port = x[3];
-  x_proto = x[4];
-  if( x[5] ) x_service = x[5];
+  x_oid       = x[0];
+  x_cpe       = x[1];
+  x_loc       = x[2];
+  x_port      = x[3];
+  x_proto     = x[4];
+  if( x[5] )
+    x_service = x[5];
 
   if( service )
     if( x_service != service ) return;
@@ -938,8 +939,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     if( version_regex )
       if( ! ereg( pattern:version_regex, string:app_versions ) ) return;
 
-    register_host_detail(name:"detected_by", value:x_oid);
-    if( x_loc ) register_host_detail(name:"detected_at", value:x_loc);
+    register_host_detail( name:"detected_by", value:x_oid );
+    if( x_loc ) register_host_detail( name:"detected_at", value:x_loc );
 
     return app_versions;
   }
@@ -948,8 +949,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
   {
     if( x_loc )
     {
-      register_host_detail(name:"detected_by", value:x_oid);
-      if( x_loc ) register_host_detail(name:"detected_at", value:x_loc);
+      register_host_detail( name:"detected_by", value:x_oid );
+      if( x_loc ) register_host_detail( name:"detected_at", value:x_loc );
 
       return x_loc;
     }
@@ -973,8 +974,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     else
       ret_arr['location'] = '';
 
-    register_host_detail(name:"detected_by", value:x_oid);
-    if( x_loc ) register_host_detail(name:"detected_at", value:x_loc);
+    register_host_detail( name:"detected_by", value:x_oid );
+    if( x_loc ) register_host_detail( name:"detected_at", value:x_loc );
 
     return ret_arr;
   }
@@ -996,8 +997,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     else
        ret_arr['proto'] = 'tcp';
 
-    register_host_detail(name:"detected_by", value:x_oid);
-    if( x_proto && x_port ) register_host_detail(name:"detected_at", value: x_port + "/" + x_proto);
+    register_host_detail( name:"detected_by", value:x_oid );
+    if( x_proto && x_port ) register_host_detail( name:"detected_at", value: x_port + "/" + x_proto );
 
     return ret_arr;
   }
@@ -1015,8 +1016,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     else
       ret_arr['location'] = '';
 
-    register_host_detail(name:"detected_by", value:x_oid);
-    if( x_loc ) register_host_detail(name:"detected_at", value:x_loc);
+    register_host_detail( name:"detected_by", value:x_oid );
+    if( x_loc ) register_host_detail( name:"detected_at", value:x_loc );
 
     return ret_arr;
   }
@@ -1029,12 +1030,13 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     ret_arr['location']    = x_loc;
     ret_arr['full_cpe']    = x_cpe;
     ret_arr['port']        = x_port;
-    ret_arr['proto']        = x_proto;
-    if(x_service) ret_arr['service'] = x_service;
+    ret_arr['proto']       = x_proto;
+    if( x_service )
+      ret_arr['service']   = x_service;
     ret_arr['detected_by'] = x_oid;
 
-    register_host_detail(name:"detected_by", value:x_oid);
-    if( x_loc ) register_host_detail(name:"detected_at", value:x_loc);
+    register_host_detail( name:"detected_by", value:x_oid );
+    if( x_loc ) register_host_detail( name:"detected_at", value:x_loc );
 
     return ret_arr;
   }
@@ -1275,6 +1277,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "+OK POP3 ready" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
+      banner == "X-Powered-By: Express" || # Express Framework is supported on Windows, Linux/Unix etc.
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
       "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
       " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl

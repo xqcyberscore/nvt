@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_mult_bof_vuln.nasl 7866 2017-11-22 13:19:49Z santu $
+# $Id: gb_intel_amt_mult_bof_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # Intel Active Management Technology Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/h:intel:active_management_technology';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812222");
-  script_version("$Revision: 7866 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-5711", "CVE-2017-5712");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 14:19:49 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 13:16:37 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Active Management Technology Multiple Buffer Overflow Vulnerabilities");
@@ -82,7 +82,7 @@ if(!imePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:imePort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:imePort, exit_no_version:TRUE)) exit(0);
 imeVer = infos['version'];
 imepath = infos['location'];
 

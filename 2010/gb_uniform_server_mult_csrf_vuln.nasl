@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uniform_server_mult_csrf_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_uniform_server_mult_csrf_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Uniform Server Multiple Cross-Site Request Forgery Vulnerabilities
 #
@@ -45,9 +45,9 @@ Cross-Site Request Forgery vulnerabilities.";
 
 if(description)
 {
-  script_id(800787);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800787");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_cve_id("CVE-2010-2113");
   script_tag(name:"cvss_base", value:"3.5");

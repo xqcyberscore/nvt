@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pligg_mult_sql_inj_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pligg_mult_sql_inj_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Pligg Multiple SQL Injection Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is running Pligg CMS and is prone to multiple SQL inject
 
 if(description)
 {
-  script_id(801258);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801258");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-2577", "CVE-2010-3013");
   script_bugtraq_id(42408);

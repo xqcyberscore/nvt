@@ -47,9 +47,9 @@ tag_summary = "The remote host is missing Mac OS X 10.5.4 Update / Mac OS X Secu
 
 if(description)
 {
- script_id(102032);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102032");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
  script_cve_id("CVE-2008-2308","CVE-2008-2309","CVE-2008-2310","CVE-2008-2314","CVE-2008-2311","CVE-2008-0960","CVE-2008-2662","CVE-2008-2663","CVE-2008-2664","CVE-2008-2725","CVE-2008-2726","CVE-2008-1145","CVE-2008-1105","CVE-2008-2313","CVE-2005-3164","CVE-2007-1355","CVE-2007-2449","CVE-2007-2450","CVE-2007-3382","CVE-2007-3383","CVE-2007-5333","CVE-2007-3385","CVE-2007-5461","CVE-2007-6276","CVE-2008-2307");
  script_name("Mac OS X 10.5.4 Update / Mac OS X Security Update 2008-004");

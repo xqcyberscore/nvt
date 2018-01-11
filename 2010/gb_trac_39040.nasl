@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trac_39040.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_trac_39040.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Trac Ticket Validation Security Bypass Vulnerability
 #
@@ -36,9 +36,9 @@ for details.";
 
 if (description)
 {
- script_id(100563);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100563");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-31 12:56:41 +0200 (Wed, 31 Mar 2010)");
  script_bugtraq_id(39040);
 

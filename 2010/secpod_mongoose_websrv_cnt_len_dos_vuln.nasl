@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mongoose_websrv_cnt_len_dos_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mongoose_websrv_cnt_len_dos_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Mongoose Webserver Content-Length Denial of Service Vulnerability
 #
@@ -44,9 +44,9 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(900268);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900268");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

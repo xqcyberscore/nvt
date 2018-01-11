@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-September/088220.html");
   script_id(864728);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 09:04:19 +0530 (Thu, 27 Sep 2012)");
   script_cve_id("CVE-2012-3955", "CVE-2012-3570", "CVE-2012-3571", "CVE-2012-3954");
   script_tag(name:"cvss_base", value:"7.1");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-14149");
   script_name("Fedora Update for dhcp FEDORA-2012-14149");
 
-  script_summary("Check for the Version of dhcp");
+  script_tag(name: "summary" , value: "Check for the Version of dhcp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

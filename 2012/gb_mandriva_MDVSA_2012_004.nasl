@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:004");
   script_id(831524);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-13 10:49:44 +0530 (Fri, 13 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -74,7 +74,7 @@ if(description)
   script_cve_id("CVE-2010-2642", "CVE-2011-0433", "CVE-2011-0764", "CVE-2011-1552", "CVE-2011-1553", "CVE-2011-1554");
   script_name("Mandriva Update for t1lib MDVSA-2012:004 (t1lib)");
 
-  script_summary("Check for the Version of t1lib");
+  script_tag(name: "summary" , value: "Check for the Version of t1lib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

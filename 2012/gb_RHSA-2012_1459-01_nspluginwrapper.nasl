@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-November/msg00008.html");
   script_id(870863);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-11-15 11:41:29 +0530 (Thu, 15 Nov 2012)");
   script_cve_id("CVE-2011-2486");
   script_tag(name:"cvss_base", value:"5.0");
@@ -69,7 +69,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1459-01");
   script_name("RedHat Update for nspluginwrapper RHSA-2012:1459-01");
 
-  script_summary("Check for the Version of nspluginwrapper");
+  script_tag(name: "summary" , value: "Check for the Version of nspluginwrapper");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

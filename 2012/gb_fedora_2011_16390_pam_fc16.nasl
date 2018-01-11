@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-December/070399.html");
   script_id(863946);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 12:37:45 +0530 (Mon, 02 Apr 2012)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2011-16390");
   script_name("Fedora Update for pam FEDORA-2011-16390");
 
-  script_summary("Check for the Version of pam");
+  script_tag(name: "summary" , value: "Check for the Version of pam");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

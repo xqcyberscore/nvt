@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_pulse_server_bof_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_disk_pulse_server_bof_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Disk Pulse Server Remote Stack Buffer Overflow Vulnerability
 #
@@ -46,9 +46,9 @@ stack buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801528);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801528");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stack_bof_vuln_dec17.nasl 8229 2017-12-22 08:48:01Z santu $
+# $Id: gb_ibm_db2_stack_bof_vuln_dec17.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # IBM DB2 Stack Buffer Overflow Vulnerability Dec17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812268");
-  script_version("$Revision: 8229 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2014-3094");
   script_bugtraq_id(69550);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:48:01 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-15 15:44:32 +0530 (Fri, 15 Dec 2017)");
   script_name("IBM DB2 Stack Buffer Overflow Vulnerability Dec17");
 
@@ -82,7 +82,7 @@ if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:ibmPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:ibmPort, exit_no_version:TRUE)) exit(0);
 ibmVer = infos['version'];
 path = infos['location'];
 

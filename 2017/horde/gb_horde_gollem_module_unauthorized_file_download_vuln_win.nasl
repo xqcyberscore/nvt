@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_gollem_module_unauthorized_file_download_vuln_win.nasl 8136 2017-12-15 10:59:51Z santu $
+# $Id: gb_horde_gollem_module_unauthorized_file_download_vuln_win.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # Horde Gollem Module Unauthorized File Download Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:horde:horde_groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812234");
-  script_version("$Revision: 8136 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-15235");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:59:51 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-06 18:23:41 +0530 (Wed, 06 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Horde Gollem Module Unauthorized File Download Vulnerability (Windows)");
@@ -91,7 +91,7 @@ if(!hordePort || !gollemPort){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:hordePort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:hordePort, exit_no_version:TRUE)) exit(0);
 hordeVer = infos['version'];
 hordePath = infos['location'];
 

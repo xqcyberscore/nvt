@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:112");
   script_id(831706);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 11:23:00 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1151");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:112");
   script_name("Mandriva Update for perl-DBD-Pg MDVSA-2012:112 (perl-DBD-Pg)");
 
-  script_summary("Check for the Version of perl-DBD-Pg");
+  script_tag(name: "summary" , value: "Check for the Version of perl-DBD-Pg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2017-9_win.nasl 8303 2018-01-05 13:16:49Z santu $
+# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2017-9_win.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # phpMyAdmin XSRF/CSRF Vulnerability - PMASA-2017-9 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812373");
-  script_version("$Revision: 8303 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-1000499");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 14:16:49 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 12:37:16 +0530 (Wed, 03 Jan 2018)");
   script_name("phpMyAdmin XSRF/CSRF Vulnerability - PMASA-2017-9 (Windows)");
 
@@ -83,7 +83,7 @@ if(!phpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:phpPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:phpPort, exit_no_version:TRUE)) exit(0);
 phpVer = infos['version'];
 path = infos['location'];
 

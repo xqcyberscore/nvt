@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-037.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-037.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Microsoft Windows OpenType Compact Font Format Driver Privilege Escalation Vulnerability (980218)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(901119);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901119");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40572);
   script_cve_id("CVE-2010-0819");

@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:153-1");
   script_id(831733);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:25:15 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-3955");
   script_tag(name:"cvss_base", value:"7.1");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:153-1");
   script_name("Mandriva Update for dhcp MDVSA-2012:153-1 (dhcp)");
 
-  script_summary("Check for the Version of dhcp");
+  script_tag(name: "summary" , value: "Check for the Version of dhcp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3514_1.nasl 8323 2018-01-08 14:50:05Z gveerendra $
+# $Id: gb_ubuntu_USN_3514_1.nasl 8337 2018-01-09 07:04:57Z teissa $
 #
 # Ubuntu Update for webkit2gtk USN-3514-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843406");
-  script_version("$Revision: 8323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:50:05 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 8337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:56:05 +0100 (Fri, 05 Jan 2018)");
   script_cve_id("CVE-2017-13856", "CVE-2017-13866", "CVE-2017-13870", "CVE-2017-7156");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for webkit2gtk USN-3514-1");
   script_tag(name: "summary", value: "Check the version of webkit2gtk");

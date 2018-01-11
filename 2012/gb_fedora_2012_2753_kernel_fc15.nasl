@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-March/074399.html");
   script_id(863753);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:15:34 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2012-1090", "CVE-2011-4086", "CVE-2012-0056", "CVE-2011-4127", "CVE-2012-0045", "CVE-2011-4347", "CVE-2011-4622", "CVE-2011-4131", "CVE-2011-4132", "CVE-2011-4097", "CVE-2011-4077", "CVE-2011-3347", "CVE-2011-1083", "CVE-2011-1161", "CVE-2011-1162", "CVE-2011-3191", "CVE-2011-2905");
   script_tag(name:"cvss_base", value:"10.0");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-2753");
   script_name("Fedora Update for kernel FEDORA-2012-2753");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

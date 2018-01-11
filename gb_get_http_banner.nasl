@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 8332 2018-01-09 05:14:21Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 8350 2018-01-10 05:26:32Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140170");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8332 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-09 06:14:21 +0100 (Tue, 09 Jan 2018) $");
+ script_version ("$Revision: 8350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 06:26:32 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
  script_name("HTTP Banner");
 
@@ -374,5 +374,6 @@ set_mandatory_key( key:"D-LinkDNS", regex: "Server: (lighttpd/|GoAhead-Webs)", b
 set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd/|WebServer)", banner:banner );
 set_mandatory_key( key:"Cohu", regex: "Server: Cohu Camera", banner:banner );
 set_mandatory_key( key:"HTTPserv", regex: "Server: .*HTTPserv:", banner:banner );
+set_mandatory_key( key:"ABwww", regex: "Server: A-B WWW", banner:banner );
 
 exit( 0 );

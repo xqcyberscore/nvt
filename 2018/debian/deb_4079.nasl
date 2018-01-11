@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4079.nasl 8315 2018-01-08 08:14:19Z teissa $
+# $Id: deb_4079.nasl 8337 2018-01-09 07:04:57Z teissa $
 #
 # Auto-generated from advisory DSA 4079-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704079");
-  script_version("$Revision: 8315 $");
+  script_version("$Revision: 8337 $");
   script_cve_id("CVE-2017-14517", "CVE-2017-14518", "CVE-2017-14519", "CVE-2017-14520", "CVE-2017-14975", "CVE-2017-14976", "CVE-2017-14977", "CVE-2017-15565", "CVE-2017-9406", "CVE-2017-9408", "CVE-2017-9775", "CVE-2017-9776", "CVE-2017-9865");
   script_name("Debian Security Advisory DSA 4079-1 (poppler - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:14:19 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-07 00:00:00 +0100 (Sun, 07 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

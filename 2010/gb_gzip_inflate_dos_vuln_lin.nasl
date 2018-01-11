@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gzip_inflate_dos_vuln_lin.nasl 6664 2017-07-11 10:20:11Z cfischer $
+# $Id: gb_gzip_inflate_dos_vuln_lin.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # GZip 'huft_build()' in 'inflate.c' Input Validation Vulnerability (Linux)
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with GZip and is prone to Input Validation
 
 if(description)
 {
-  script_id(800453);
-  script_version("$Revision: 6664 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800453");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

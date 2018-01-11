@@ -86,8 +86,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-February/018437.html");
   script_id(881101);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:08:31 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
                 "CVE-2012-0501", "CVE-2012-0502", "CVE-2012-0503", "CVE-2012-0505",
@@ -97,7 +97,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:0135");
   script_name("CentOS Update for java CESA-2012:0135 centos6 ");
 
-  script_summary("Check for the Version of java");
+  script_tag(name: "summary" , value: "Check for the Version of java");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

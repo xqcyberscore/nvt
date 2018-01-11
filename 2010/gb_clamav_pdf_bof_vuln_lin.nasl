@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_pdf_bof_vuln_lin.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_clamav_pdf_bof_vuln_lin.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # ClamAV 'find_stream_bounds() Buffer Overflow Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host has ClamAV installed, and is prone to buffer overflow
 
 if(description)
 {
-  script_id(801519);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801519");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-07 09:42:58 +0200 (Thu, 07 Oct 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

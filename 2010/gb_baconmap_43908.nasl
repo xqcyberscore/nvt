@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_baconmap_43908.nasl 5763 2017-03-29 11:54:30Z cfi $
+# $Id: gb_baconmap_43908.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # BaconMap Local File Include and SQL Injection Vulnerabilities
 #
@@ -41,9 +41,9 @@ BaconMap 1.0 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100853);
- script_version("$Revision: 5763 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100853");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-13 13:28:00 +0200 (Wed, 13 Oct 2010)");
  script_cve_id("CVE-2010-4800", "CVE-2010-4801");
  script_bugtraq_id(43908);

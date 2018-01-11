@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_oct10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_oct10_win.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Adobe Acrobat and Reader Multiple Vulnerabilities -Oct10 (Windows)
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to
 
 if(description)
 {
-  script_id(801524);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801524");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-2883", "CVE-2010-2884", "CVE-2010-2888", "CVE-2010-2889",
                 "CVE-2010-2890", "CVE-2010-3619", "CVE-2010-3620", "CVE-2010-3621",

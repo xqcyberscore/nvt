@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_timelib_meridian_heap_bof_vuln_win.nasl 7734 2017-11-10 11:35:05Z santu $
+# $Id: gb_php_timelib_meridian_heap_bof_vuln_win.nasl 8360 2018-01-10 14:47:00Z cfischer $
 #
 # PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812072");
-  script_version("$Revision: 7734 $");
+  script_version("$Revision: 8360 $");
   script_cve_id("CVE-2017-16642");
   script_bugtraq_id(101745);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 12:35:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 15:47:00 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 18:44:32 +0530 (Thu, 09 Nov 2017)");
   script_name("PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Windows)");
 
@@ -77,18 +77,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-fix = "";
-phpVers = "";
-phpPort = "";
-
-if(!phpPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-infos = get_app_version_and_location( cpe:CPE, port:phpPort, exit_no_version:TRUE);
+if(isnull(phpPort = get_app_port(cpe:CPE))) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, port:phpPort, exit_no_version:TRUE)) exit(0);
 phpVers = infos['version'];
 path = infos['location'];
-
 
 if(version_is_less(version:phpVers, test_version:"5.6.32")){
   fix = "5.6.32";

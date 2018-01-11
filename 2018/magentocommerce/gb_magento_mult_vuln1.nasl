@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mult_vuln1.nasl 8286 2018-01-04 06:51:01Z ckuersteiner $
+# $Id: gb_magento_mult_vuln1.nasl 8339 2018-01-09 08:49:00Z asteins $
 #
 # Magento XSS Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140649");
-  script_version("$Revision: 8286 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 07:51:01 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 8339 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-09 09:49:00 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 12:48:23 +0700 (Thu, 04 Jan 2018)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2016-10704");
+  script_cve_id("CVE-2016-10704", "CVE-2018-5301");
 
   script_tag(name: "qod_type", value: "remote_banner");
 

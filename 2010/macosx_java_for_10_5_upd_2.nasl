@@ -36,9 +36,9 @@ tag_summary = "The remote host is missing Java for Mac OS X 10.5 Update 2.
 
 if(description)
 {
- script_id(102040);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102040");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-28 13:49:16 +0200 (Fri, 28 May 2010)");
  script_cve_id("CVE-2008-3638","CVE-2008-3637","CVE-2008-1185","CVE-2008-1186","CVE-2008-1187","CVE-2008-1188","CVE-2008-1189","CVE-2008-1190","CVE-2008-1191","CVE-2008-1192","CVE-2008-1195","CVE-2008-1196","CVE-2008-3104","CVE-2008-3107","CVE-2008-3108","CVE-2008-3111","CVE-2008-3112","CVE-2008-3113","CVE-2008-3114","CVE-2008-1193","CVE-2008-1194","CVE-2008-3103","CVE-2008-3115","CVE-2008-3105","CVE-2008-3106","CVE-2008-3109","CVE-2008-3110");
  script_name("Java for Mac OS X 10.5 Update 2");

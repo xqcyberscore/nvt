@@ -53,9 +53,9 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(67218);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67218");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-06 21:31:38 +0200 (Tue, 06 Apr 2010)");
  script_cve_id("CVE-2010-0181", "CVE-2009-3555", "CVE-2010-0179", "CVE-2010-0178", "CVE-2010-0177", "CVE-2010-0176", "CVE-2010-0175", "CVE-2010-0174", "CVE-2010-0173");
  script_tag(name:"cvss_base", value:"10.0");

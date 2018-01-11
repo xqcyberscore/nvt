@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-June/082409.html");
   script_id(864455);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 09:35:40 +0530 (Thu, 30 Aug 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1717", "CVE-2012-1716", "CVE-2012-1713",
                 "CVE-2012-1719", "CVE-2012-1718", "CVE-2012-1723", "CVE-2012-1724",
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-9590");
   script_name("Fedora Update for java-1.7.0-openjdk FEDORA-2012-9590");
 
-  script_summary("Check for the Version of java-1.7.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

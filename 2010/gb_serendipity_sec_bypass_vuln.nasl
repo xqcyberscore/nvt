@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_sec_bypass_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: gb_serendipity_sec_bypass_vuln.nasl 8362 2018-01-10 15:35:33Z cfischer $
 #
 # Serendipity 'Xinha WYSIWYG' Editor Security Bypass Vulnerability
 #
@@ -41,15 +41,13 @@ tag_solution = "Upgrade to Serendipity version 1.5.3 or later.
 tag_summary = "This host is running Serendipity and is prone to security bypass
   vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801337";
 CPE = "cpe:/a:s9y:serendipity";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801337");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8362 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 16:35:33 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1916");
   script_tag(name:"cvss_base", value:"7.5");
@@ -78,18 +76,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-serPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!serPort){
-  exit(0);
-}
+if( ! serPort = get_app_port(cpe:CPE)) exit(0);
 
-infos = get_app_version_and_location( cpe:CPE, port:port );
-
+if( ! infos = get_app_version_and_location(cpe:CPE, port:serPort, exit_no_version:TRUE)) exit(0);
 ver = infos['version'];
 dir = infos['location'];
-
-if( ! ver || ! dir ) exit( 0 );
-
 
 # Check for Serendipity version < 1.5.2
 if(!isnull(ver) && (version_is_less_equal(version:ver, test_version:"1.5.2")))

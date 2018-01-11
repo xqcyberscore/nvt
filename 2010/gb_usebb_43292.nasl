@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_usebb_43292.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_usebb_43292.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # UseBB Forum and Topic Feed Security Bypass Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100812);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100812");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
  script_bugtraq_id(43292);
  script_tag(name:"cvss_base", value:"5.0");

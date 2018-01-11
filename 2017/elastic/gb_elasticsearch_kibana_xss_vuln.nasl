@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xss_vuln.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_elasticsearch_kibana_xss_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # Elasticsearch Kibana Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812277");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-11481");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 15:20:49 +0530 (Wed, 20 Dec 2017)");
   script_name("Elasticsearch Kibana Cross Site Scripting Vulnerability");
 
@@ -81,7 +81,7 @@ if(!kibanaPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:kibanaPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, port:kibanaPort, exit_no_version:TRUE)) exit(0);
 kibanaVer = infos['version'];
 path = infos['location'];
 

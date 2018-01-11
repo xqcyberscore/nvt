@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_quick_arcade_sql_injection_n_xss_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_php_quick_arcade_sql_injection_n_xss_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # PHP Quick Arcade SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -48,9 +48,9 @@ injection and cross site scripting Vulnerabilities.";
 
 if(description)
 {
-  script_id(801364);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801364");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-1661", "CVE-2010-1662");
   script_bugtraq_id(39733);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_jimtawl_44992.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_joomla_com_jimtawl_44992.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Joomla Component 'com_jimtawl' Local File Include Vulnerability
 #
@@ -39,9 +39,9 @@ com_jimtawl 1.0.2 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100919);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100919");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-29 13:18:51 +0100 (Mon, 29 Nov 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

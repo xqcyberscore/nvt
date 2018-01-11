@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fresh_ftp_client_dir_traversal_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_fresh_ftp_client_dir_traversal_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # FreshWebMaster Fresh FTP Filename Directory Traversal Vulnerability
 #
@@ -45,9 +45,9 @@ directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(801535);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801535");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_cve_id("CVE-2010-4149");
   script_bugtraq_id(44072);

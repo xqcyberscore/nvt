@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_dec17_lin.nasl 8118 2017-12-14 08:01:12Z asteins $
+# $Id: gb_postgresql_priv_esc_vuln_dec17_lin.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # PostgreSQL Privilege Escalation Vulnerability-Dec17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812314");
-  script_version("$Revision: 8118 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-12172");
   script_bugtraq_id(101949);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 16:58:49 +0530 (Mon, 04 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Privilege Escalation Vulnerability-Dec17 (Linux)");
@@ -96,7 +96,7 @@ if(!pgsqlPort){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE)) exit(0);
 pgsqlVer = infos['version'];
 pgsqlPath = infos['location'];
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_43294.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nagios_xi_43294.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Nagios XI 'users.php' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100811);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100811");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
  script_bugtraq_id(43294);
  script_tag(name:"cvss_base", value:"2.6");

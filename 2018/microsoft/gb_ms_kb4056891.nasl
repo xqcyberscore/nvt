@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4056891.nasl 8294 2018-01-05 03:43:40Z santu $
+# $Id: gb_ms_kb4056891.nasl 8364 2018-01-10 16:59:46Z gveerendra $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4056891)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812293");
-  script_version("$Revision: 8294 $");
+  script_version("$Revision: 8364 $");
   script_cve_id("CVE-2018-0743", "CVE-2018-0744", "CVE-2018-0745", "CVE-2018-0746", 
                 "CVE-2018-0747", "CVE-2018-0748", "CVE-2018-0749", "CVE-2018-0751", 
                 "CVE-2018-0752", "CVE-2018-0753", "CVE-2018-0754", "CVE-2018-0758", 
                 "CVE-2018-0762", "CVE-2018-0766", "CVE-2018-0767", "CVE-2018-0769", 
                 "CVE-2018-0770", "CVE-2018-0772", "CVE-2018-0776", "CVE-2018-0777", 
                 "CVE-2018-0780", "CVE-2018-0803", "CVE-2018-0781", "CVE-2017-5753",
-                "CVE-2017-5715", "CVE-2017-5754");
+                "CVE-2017-5715", "CVE-2017-5754", "CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 04:43:40 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 15:51:45 +0530 (Thu, 04 Jan 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4056891)");
 
@@ -73,7 +73,12 @@ if(description)
   - An integer overflow in Windows Subsystem for Linux.
 
   - Multiple errors leading to 'speculative execution side-channel attacks' that
-    affect many modern processors and operating systems including Intel, AMD, and ARM.");
+    affect many modern processors and operating systems including Intel, AMD, and ARM.
+
+  - Microsoft .NET Framework (and .NET Core) components do not completely validate
+    certificates.
+
+  - .NET, and .NET core, improperly process XML documents.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to elevate privileges, execute arbitrary code in the context of the current 

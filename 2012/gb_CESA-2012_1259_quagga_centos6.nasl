@@ -85,8 +85,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-September/018868.html");
   script_id(881497);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:48:27 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2011-3323", "CVE-2011-3324", "CVE-2011-3325", "CVE-2011-3326",
                 "CVE-2011-3327", "CVE-2012-0249", "CVE-2012-0250", "CVE-2012-0255",
@@ -96,7 +96,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1259");
   script_name("CentOS Update for quagga CESA-2012:1259 centos6 ");
 
-  script_summary("Check for the Version of quagga");
+  script_tag(name: "summary" , value: "Check for the Version of quagga");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

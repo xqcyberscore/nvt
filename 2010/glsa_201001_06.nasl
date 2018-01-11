@@ -44,9 +44,9 @@ advisory GLSA 201001-06.";
 
 if(description)
 {
- script_id(66739);
- script_version("$Revision: 6595 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:19:55 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66739");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-20 20:07:43 +0100 (Wed, 20 Jan 2010)");
  script_cve_id("CVE-2009-3575", "CVE-2009-3617");
  script_tag(name:"cvss_base", value:"10.0");

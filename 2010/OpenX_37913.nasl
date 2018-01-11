@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenX_37913.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: OpenX_37913.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # OpenX SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ OpenX 2.6.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100462);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100462");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-25 18:49:48 +0100 (Mon, 25 Jan 2010)");
  script_bugtraq_id(37913);
  script_tag(name:"cvss_base", value:"7.5");

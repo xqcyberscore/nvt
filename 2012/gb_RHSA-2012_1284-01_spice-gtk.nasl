@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-September/msg00025.html");
   script_id(870837);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-22 11:57:26 +0530 (Sat, 22 Sep 2012)");
   script_cve_id("CVE-2012-4425");
   script_tag(name:"cvss_base", value:"6.9");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1284-01");
   script_name("RedHat Update for spice-gtk RHSA-2012:1284-01");
 
-  script_summary("Check for the Version of spice-gtk");
+  script_tag(name: "summary" , value: "Check for the Version of spice-gtk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

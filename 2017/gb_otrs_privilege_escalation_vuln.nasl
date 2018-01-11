@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_privilege_escalation_vuln.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_otrs_privilege_escalation_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # OTRS Framework Privilege Escalation Vulnerability (OSA-2017-10)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812273");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-17476");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 13:32:26 +0530 (Tue, 26 Dec 2017)");
   ## Application is vulnerable only if system has cookie support disabled
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -79,7 +79,7 @@ if(!otPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:otPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:otPort, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

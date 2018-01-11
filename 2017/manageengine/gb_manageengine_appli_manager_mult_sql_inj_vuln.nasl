@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # ManageEngine Applications Manager Multiple SQL Injections Vulnerabilities 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812231");
-  script_version("$Revision: 8027 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-16846", "CVE-2017-16847", "CVE-2017-16848", "CVE-2017-16849",
                 "CVE-2017-16850", "CVE-2017-16851");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 18:51:22 +0530 (Wed, 29 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Applications Manager Multiple SQL Injections Vulnerabilities");
@@ -95,7 +95,7 @@ if(!manport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:manport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:manport, exit_no_version:TRUE)) exit(0);
 manVer = infos['version'];
 manpath = infos['location'];
 

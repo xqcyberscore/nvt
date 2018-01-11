@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 8215 2017-12-21 11:46:59Z cfischer $
+# $Id: os_detection.nasl 8360 2018-01-10 14:47:00Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 8215 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 8360 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 15:47:00 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,41 +116,46 @@ foreach oid( OS_CPE_SRC ) {
           port  = tmp[3];
           proto = tmp[4];
 
-          os_report = get_kb_item( key );
-          if( ! found_best ) {
-            report = 'Best matching OS:\n\n' + os_report;
-            found_best = TRUE;
-            best_match = entry;
-            best_match_oid = oid;
-            best_match_desc = desc;
+          # There might be multiple keys/entries for the same port (e.g. http)
+          # so using get_kb_list instead() of get_kb_item() here.
+          os_reports = get_kb_list( key );
+          foreach os_report( os_reports ) {
+            if( ! found_best ) {
+              report = 'Best matching OS:\n\n' + os_report;
+              found_best = TRUE;
+              best_match = entry;
+              best_match_oid = oid;
+              best_match_desc = desc;
+              best_match_report = os_report; # To avoid that it will be added to the "Other OS detections" text (see the checks down below)
 
-            host_runs_list = get_kb_list( "os_detection_report/host_runs/" + oid + "/" + port + "/" + proto );
+              host_runs_list = get_kb_list( "os_detection_report/host_runs/" + oid + "/" + port + "/" + proto );
 
-            # We could have multiple host_runs entries on the same port (e.g. http)
-            # Choose the first match here
-            foreach host_runs( host_runs_list ) {
-              if( host_runs == "unixoide" ) {
-                set_key = "Host/runs_unixoide";
-              } else if( host_runs == "windows" ) {
-                set_key = "Host/runs_windows";
-              } else {
-                # This makes sure that we still scheduling NVTs using Host/runs_unixoide as a fallback
-                set_key = "Host/runs_unixoide";
+              # We could have multiple host_runs entries on the same port (e.g. http)
+              # Choose the first match here
+              foreach host_runs( host_runs_list ) {
+                if( host_runs == "unixoide" ) {
+                  set_key = "Host/runs_unixoide";
+                } else if( host_runs == "windows" ) {
+                  set_key = "Host/runs_windows";
+                } else {
+                  # This makes sure that we still scheduling NVTs using Host/runs_unixoide as a fallback
+                  set_key = "Host/runs_unixoide";
+                }
+                if( ! get_kb_item( set_key ) ) {
+                  set_kb_item( name:set_key, value:TRUE );
+                  report += '\nSetting key "' + set_key + '" based on this information';
+                }
               }
-              if( ! get_kb_item( set_key ) ) {
-                set_kb_item( name:set_key, value:TRUE );
-                report += '\nSetting key "' + set_key + '" based on this information';
-              }
+            } else {
+              if( os_report >!< found_os && os_report >!< best_match_report )
+                found_os += os_report + '\n\n';
             }
-          } else {
-            if( os_report >!< found_os )
-              found_os += os_report + '\n\n';
           }
         }
       } else {
         os_reports = get_kb_list( "os_detection_report/reports/" + oid + "/*" );
         foreach os_report( os_reports ) {
-          if( os_report >!< found_os )
+          if( os_report >!< found_os && os_report >!< best_match_report )
             found_os += os_report + '\n\n';
         }
       }

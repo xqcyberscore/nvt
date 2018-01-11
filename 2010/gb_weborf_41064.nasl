@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_41064.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_weborf_41064.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Weborf HTTP Header Processing Denial Of Service Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100691);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100691");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-23 16:49:06 +0200 (Wed, 23 Jun 2010)");
  script_cve_id("CVE-2010-2435");
  script_bugtraq_id(41064);

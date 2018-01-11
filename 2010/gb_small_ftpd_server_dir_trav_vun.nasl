@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_small_ftpd_server_dir_trav_vun.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_small_ftpd_server_dir_trav_vun.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Small FTPD Server Directory Traversal Vulnerability
 #
@@ -45,9 +45,9 @@ traversal vulnerability.";
 
 if(description)
 {
-  script_id(801534);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801534");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");

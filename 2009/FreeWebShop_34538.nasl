@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FreeWebShop_34538.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: FreeWebShop_34538.nasl 8362 2018-01-10 15:35:33Z cfischer $
 #
 # FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability
 #
@@ -34,26 +34,21 @@ may aid in further attacks.
 FreeWebShop 2.2.9 R2 is vulnerable; other versions may also be
 affected.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100236";
 CPE = "cpe:/a:freewebshop:freewebshop";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100236");
+ script_version("$Revision: 8362 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 16:35:33 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-07-21 20:55:39 +0200 (Tue, 21 Jul 2009)");
  script_bugtraq_id(34538);
  script_cve_id("CVE-2009-2338");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-
  script_name("FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability");
-
-
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("FreeWebShop_detect.nasl");
@@ -70,8 +65,8 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-infos = get_app_version_and_location( cpe:CPE, port:port );
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!infos = get_app_version_and_location( cpe:CPE, port:port)) exit(0);
 
 dir = infos['location'];
 

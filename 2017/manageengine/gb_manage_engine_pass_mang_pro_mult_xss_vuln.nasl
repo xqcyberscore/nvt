@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_mult_xss_vuln.nasl 8175 2017-12-19 12:48:14Z santu $
+# $Id: gb_manage_engine_pass_mang_pro_mult_xss_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
 #
 # ManageEngine Password Manager Pro Multiple XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:manageengine:password_manager_pro";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812501");
-  script_version("$Revision: 8175 $");
+  script_version("$Revision: 8367 $");
   script_cve_id("CVE-2017-17698");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:48:14 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 10:23:27 +0530 (Tue, 19 Dec 2017)");
   script_name("ManageEngine Password Manager Pro Multiple XSS Vulnerabilities");
 
@@ -83,7 +83,7 @@ if(!mePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:mePort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:mePort, exit_no_version:TRUE)) exit(0);
 meVer = infos['version'];
 path = infos['location'];
 

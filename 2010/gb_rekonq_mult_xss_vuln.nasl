@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rekonq_mult_xss_vuln.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: gb_rekonq_mult_xss_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # rekonq 'Error Page' Cross-Site Scripting Vulnerabilities.
 #
@@ -47,9 +47,9 @@ scripting vulnerabilities.";
 
 if(description)
 {
-  script_id(801422);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801422");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_cve_id("CVE-2010-2536");
   script_tag(name:"cvss_base", value:"4.3");

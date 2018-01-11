@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sandbox_41420.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_sandbox_41420.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Sandbox Multiple Remote Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if(description)
 {
- script_id(100707);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100707");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-08 14:00:46 +0200 (Thu, 08 Jul 2010)");
  script_bugtraq_id(41420);
  script_tag(name:"cvss_base", value:"7.5");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nist_win_oval_sys_char_generator.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: gb_nist_win_oval_sys_char_generator.nasl 8346 2018-01-09 14:56:22Z cfischer $
 #
 # Create System Characteristics for NIST Windows OVAL Definitions
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802042");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8346 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 15:56:22 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-05 12:24:54 +0530 (Thu, 05 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,8 +41,12 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#oval-system-characteristics");
+
   script_tag(name:"summary", value:"Create a System Characteristics elements as defined by the OVAL specification
-  for NIST Windows.xml and store it in the Knowledge Base.");
+  for NIST Windows.xml and store it in the Knowledge Base.
+
+  Note: The created System Characteristics are shown in a separate NVT 'Show System Characteristics' (OID: 1.3.6.1.4.1.25623.1.0.103999).");
 
   script_tag(name:"qod_type", value:"registry");
 

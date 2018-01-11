@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_822.nasl 8309 2018-01-07 21:12:57Z teissa $
+# $Id: deb_dla_822.nasl 8337 2018-01-09 07:04:57Z teissa $
 #
 # Auto-generated from advisory DLA 822-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890822");
-  script_version("$Revision: 8309 $");
+  script_version("$Revision: 8337 $");
   script_cve_id("CVE-2017-5953");
   script_name("Debian Lts Announce DLA 822-1 ([SECURITY] [DLA 822-1] vim security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-07 22:12:57 +0100 (Sun, 07 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

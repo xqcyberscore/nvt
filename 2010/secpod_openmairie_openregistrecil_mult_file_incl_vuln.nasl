@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openmairie_openregistrecil_mult_file_incl_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_openmairie_openregistrecil_mult_file_incl_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # openMairie openRegistreCIL Multiple File Inclusion Vulnerabilities
 #
@@ -46,9 +46,9 @@ multiple file inclusion vulnerabilities.";
 
 if(description)
 {
-  script_id(902051);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902051");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1946", "CVE-2010-1947");
   script_bugtraq_id(39611);

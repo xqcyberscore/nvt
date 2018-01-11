@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_insecure_lib_load_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wireshark_insecure_lib_load_vuln_win.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Wireshark File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -43,9 +43,9 @@ loading vulnerability.";
 
 if(description)
 {
-  script_id(902239);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902239");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3133");
   script_tag(name:"cvss_base", value:"9.3");

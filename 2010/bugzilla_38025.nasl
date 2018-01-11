@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_38025.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: bugzilla_38025.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Bugzilla Directory Access Information Disclosure Vulnerability
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100482);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100482");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-02 21:07:02 +0100 (Tue, 02 Feb 2010)");
  script_bugtraq_id(38025);
  script_cve_id("CVE-2009-3989");

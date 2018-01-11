@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 8317 2018-01-08 09:24:18Z ckuersteiner $
+# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 8354 2018-01-10 07:30:33Z asteins $
 #
 # WordPress Add Link to Facebook Plugin Stored XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112178");
-  script_version("$Revision: 8317 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-08 10:24:18 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 8354 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-10 08:30:33 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-05 14:16:51 +0100 (Fri, 05 Jan 2018)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,6 @@ if (description)
   script_tag(name: "solution", value: "No solution or patch available as of January 05th, 2018. Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/Add-Link-to-Facebook.md");
-  script_xref(name: "URL", value: "https://wordpress.org/support/topic/stored-xss-bug-at-the-latest-version-of-add-link-to-facebook/");
 
   exit(0);
 }

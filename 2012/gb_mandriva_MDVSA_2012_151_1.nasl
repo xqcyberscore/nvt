@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:151-1");
   script_id(831744);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-09 10:02:01 +0530 (Tue, 09 Oct 2012)");
   script_cve_id("CVE-2012-4405");
   script_tag(name:"cvss_base", value:"6.8");
@@ -57,7 +57,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:151-1");
   script_name("Mandriva Update for ghostscript MDVSA-2012:151-1 (ghostscript)");
 
-  script_summary("Check for the Version of ghostscript");
+  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

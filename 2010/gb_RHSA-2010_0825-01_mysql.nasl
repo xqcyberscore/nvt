@@ -80,9 +80,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-November/msg00003.html");
-  script_id(870356);
-  script_version("$Revision: 8164 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.870356");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-16 14:49:48 +0100 (Tue, 16 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

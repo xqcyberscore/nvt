@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_imp_43515.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_horde_imp_43515.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Horde IMP Webmail 'fetchmailprefs.php' HTML Injection Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100826);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100826");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
  script_bugtraq_id(43515);
  script_cve_id("CVE-2010-3695", "CVE-2010-4778");

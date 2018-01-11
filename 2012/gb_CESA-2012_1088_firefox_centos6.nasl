@@ -86,8 +86,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018747.html");
   script_id(881201);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:41:42 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1950", "CVE-2012-1951", "CVE-2012-1952",
                 "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957",
@@ -99,7 +99,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1088");
   script_name("CentOS Update for firefox CESA-2012:1088 centos6 ");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

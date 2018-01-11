@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:177");
   script_id(831754);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-06 10:26:55 +0530 (Thu, 06 Dec 2012)");
   script_cve_id("CVE-2012-5688");
   script_tag(name:"cvss_base", value:"7.8");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:177");
   script_name("Mandriva Update for bind MDVSA-2012:177 (bind)");
 
-  script_summary("Check for the Version of bind");
+  script_tag(name: "summary" , value: "Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

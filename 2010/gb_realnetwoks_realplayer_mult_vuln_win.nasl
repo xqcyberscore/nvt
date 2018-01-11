@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realnetwoks_realplayer_mult_vuln_win.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_realnetwoks_realplayer_mult_vuln_win.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 
 if(description)
 {
-  script_id(801506);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801506");
+  script_version("$Revision: 8338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_bugtraq_id(42775);
   script_tag(name:"cvss_base", value:"9.3");

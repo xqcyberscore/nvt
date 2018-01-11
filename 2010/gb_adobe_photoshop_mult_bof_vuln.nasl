@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_bof_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_photoshop_mult_bof_vuln.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Adobe Photoshop Multiple Buffer Overflow Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Adobe Photoshop and is prone to Buffe
 
 if(description)
 {
-  script_id(801221);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801221");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_bugtraq_id(40389);
   script_cve_id("CVE-2010-1296");

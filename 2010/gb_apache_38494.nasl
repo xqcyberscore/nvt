@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_38494.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_38494.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Apache Multiple Security Vulnerabilities
 #
@@ -34,9 +34,9 @@ tag_solution = "Upgrade to  Apache 2.2.15 or Later.";
 
 if (description)
 {
- script_id(100514);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100514");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
  script_bugtraq_id(38494,38491);
  script_cve_id("CVE-2010-0425","CVE-2010-0434","CVE-2010-0408","CVE-2007-6750");

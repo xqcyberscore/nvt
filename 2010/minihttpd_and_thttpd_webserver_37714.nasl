@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: minihttpd_and_thttpd_webserver_37714.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: minihttpd_and_thttpd_webserver_37714.nasl 8338 2018-01-09 08:00:38Z teissa $
 #
 # Acme thttpd and mini_httpd Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -37,9 +37,9 @@ may also be affected.";
 
 if (description)
 {
- script_id(100447);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100447");
+ script_version("$Revision: 8338 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
  script_bugtraq_id(37714);
  script_cve_id("CVE-2009-4490","CVE-2009-4491");

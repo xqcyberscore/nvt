@@ -60,9 +60,9 @@ advisory GLSA 201001-03.";
 
 if(description)
 {
- script_id(66641);
- script_version("$Revision: 6595 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:19:55 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66641");
+ script_version("$Revision: 8356 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-07 13:59:33 +0100 (Thu, 07 Jan 2010)");
  script_cve_id("CVE-2008-5498", "CVE-2008-5514", "CVE-2008-5557", "CVE-2008-5624", "CVE-2008-5625", "CVE-2008-5658", "CVE-2008-5814", "CVE-2008-5844", "CVE-2008-7002", "CVE-2009-0754", "CVE-2009-1271", "CVE-2009-1272", "CVE-2009-2626", "CVE-2009-2687", "CVE-2009-3291");
  script_tag(name:"cvss_base", value:"10.0");

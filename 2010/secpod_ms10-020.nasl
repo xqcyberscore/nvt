@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-020.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-020.nasl 8356 2018-01-10 08:00:39Z teissa $
 #
 # Microsoft SMB Client Remote Code Execution Vulnerabilities (980232)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(902156);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902156");
+  script_version("$Revision: 8356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2009-3676", "CVE-2010-0269", "CVE-2010-0270", "CVE-2010-0476",
                 "CVE-2010-0477");
