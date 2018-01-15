@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_839.nasl 8337 2018-01-09 07:04:57Z teissa $
+# $Id: deb_dla_839.nasl 8409 2018-01-12 23:33:51Z teissa $
 #
-# Auto-generated from advisory DLA 839-1 using nvtgen 1.0
-# Script version:1.0
+# Auto-generated from advisory DLA 839-2 using nvtgen 1.0
+# Script version:2.3
 # #
 # Author:
 # Greenbone Networks
@@ -31,17 +31,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890839");
-  script_version("$Revision: 8337 $");
+  script_version("$Revision: 8409 $");
   script_cve_id("CVE-2017-6307", "CVE-2017-6308", "CVE-2017-6309", "CVE-2017-6310");
-  script_name("Debian Lts Announce DLA 839-1 ([SECURITY] [DLA 839-1] tnef security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
-  script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_name("Debian Lts Announce DLA 839-2 ([SECURITY] [DLA 839-2] tnef regression update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-13 00:33:51 +0100 (Sat, 13 Jan 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-13 00:00:00 +0100 (Sat, 13 Jan 2018)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name:"URL", value:"https://lists.debian.org/debian-lts-announce/2017/02/msg00029.html");
+  script_xref(name:"URL", value:"https://lists.debian.org/debian-lts-announce/2017/03/msg00027.html");
 
   script_category(ACT_GATHER_INFO);
 
@@ -52,30 +52,8 @@ if(description)
   script_tag(name:"affected", value:"tnef on Debian Linux");
   script_tag(name:"insight", value:"TNEF is a program for unpacking MIME attachments of type
 'application/ms-tnef'. This is typcially a Microsoft only attachment.");
-  script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
-1.4.9-1+deb7u1.
-
-We recommend that you upgrade your tnef packages.");
-  script_tag(name:"summary",  value:"CVE-2017-6307
-An issue was discovered in tnef before 1.4.13. Two OOB Writes have
-been identified in src/mapi_attr.c:mapi_attr_read(). These might
-lead to invalid read and write operations, controlled by an attacker.
-
-CVE-2017-6308
-An issue was discovered in tnef before 1.4.13. Several Integer
-Overflows, which can lead to Heap Overflows, have been identified
-in the functions that wrap memory allocation.
-
-CVE-2017-6309
-An issue was discovered in tnef before 1.4.13. Two type confusions
-have been identified in the parse_file() function. These might lead
-to invalid read and write operations, controlled by an attacker.
-
-CVE-2017-6310
-An issue was discovered in tnef before 1.4.13. Four type confusions
-have been identified in the file_add_mapi_attrs() function.
-These might lead to invalid read and write operations, controlled
-by an attacker.");
+  script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version 1.4.9-1+deb7u2. We recommend that you upgrade your tnef packages.");
+  script_tag(name:"summary",  value:"While fixing CVE-2017-6307 CVE-2017-6308 CVE-2017-6309 CVE-2017-6310, upstream introduced a regression. The new patches added for this upload take care of that. .");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -86,7 +64,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tnef", ver:"1.4.9-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"tnef", ver:"1.4.9-1+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 

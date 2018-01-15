@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4055000.nasl 8364 2018-01-10 16:59:46Z gveerendra $
+# $Id: gb_ms_kb4055000.nasl 8378 2018-01-11 14:38:57Z gveerendra $
 #
 # Microsoft .NET Framework DoS And Security Feature Bypas Vulnerability (KB4055000)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812703");
-  script_version("$Revision: 8364 $");
+  script_version("$Revision: 8378 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework DoS And Security Feature Bypas Vulnerability (KB4055000)");
 
@@ -110,11 +110,11 @@ foreach item (registry_enum_keys(key:key2))
     dllVer = fetch_file_version(sysPath:path, file_name:"system.identitymodel.dll");
     if(dllVer)
     {
-      if(version_in_range(version:dllVer, test_version:"4.7", test_version2:"4.7.2611"))
+      if(version_in_range(version:dllVer, test_version:"4.6", test_version2:"4.7.2611"))
       {
         report = 'File checked:     ' + path + "\system.identitymodel.dll" + '\n' +
                  'File version:     ' + dllVer  + '\n' +
-                 'Vulnerable range: 4.7 - 4.7.2611\n' ;
+                 'Vulnerable range: 4.6 - 4.7.2611\n' ;
         security_message(data:report);
         exit(0);
       }

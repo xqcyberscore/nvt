@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_php_inj_vuln.nasl 4109 2016-09-19 10:35:59Z mime $
+# $Id: gb_sugarcrm_php_inj_vuln.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # SugarCRM PHP Object Injection Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106124");
-  script_version("$Revision: 4109 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-19 12:35:59 +0200 (Mon, 19 Sep 2016) $");
+  script_version("$Revision: 8372 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-08 15:37:30 +0700 (Fri, 08 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -74,7 +74,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
 
-function do_ex( dir, file, ex )
+function do_ex( dir, file, ex, port )
 {
   f_len = strlen( file ) + 2;
   ex_len = strlen( ex );
@@ -113,12 +113,12 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 ex = '<?php phpinfo(); ?>';
 file = '/custom/openvas_' + rand() + '.php';
 
-buf = do_ex( dir:dir, file:file, ex:ex );
+buf = do_ex( dir:dir, file:file, ex:ex, port:port );
 
 if( "<title>phpinfo()" >< buf )
 {
   ex = '';
-  do_ex( dir:dir, file:file, ex:ex );
+  do_ex( dir:dir, file:file, ex:ex, port:port );
   report = 'By uploading the file ' + file + ' it was possible to execute `phpinfo()` on the remote host. Please delete this file.';
   security_message( port:port, data:report );
   exit( 0 );

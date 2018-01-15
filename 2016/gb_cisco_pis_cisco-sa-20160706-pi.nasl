@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160706-pi.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_cisco_pis_cisco-sa-20160706-pi.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Cisco Prime Infrastructure Administrative Web Interface HTML Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1442");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5877 $");
+ script_version ("$Revision: 8372 $");
 
  script_name("Cisco Prime Infrastructure Administrative Web Interface HTML Injection Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-07-07 13:42:52 +0200 (Thu, 07 Jul 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -71,7 +71,7 @@ if( version =~ "^3\." )
 if( fix )
 {
   report = report_fixed_ver(  installed_version:version, fixed_version:fix );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

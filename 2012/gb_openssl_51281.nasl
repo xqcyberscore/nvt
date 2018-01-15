@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_51281.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_openssl_51281.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities
 #
@@ -43,7 +43,7 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_tag(name:"solution_type", value: "VendorFix");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 8374 $");
 
  script_name("OpenSSL Multiple Vulnerabilities");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.openssl.org");
  script_xref(name : "URL" , value : "http://www.openssl.org/news/secadv_20120104.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
@@ -74,7 +74,7 @@ if(vers =~ "1\.0\.") {
     report = 'Installed version: ' + vers + '\n' + 
              'Fixed version:     1.0.0.f';
 
-    security_message(port:port, data:report);
+    security_message(port:0, data:report);
     exit(0);
   }
 }
@@ -83,7 +83,7 @@ if(vers =~ "0\.9\.") {
   if(version_is_less(version:vers, test_version:"0.9.8.s")) {
     report = 'Installed version: ' + vers + '\n' +
              'Fixed version:     0.9.8.s';
-    security_message(port:port, data:report);
+    security_message(port:0, data:report);
     exit(0);
   }
 }

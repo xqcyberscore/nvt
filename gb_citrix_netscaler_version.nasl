@@ -1,11 +1,13 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_version.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_citrix_netscaler_version.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
-# Citrix NetScaler Version Detection
+# Citrix NetScaler Detection Consolidation
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
+# Adrian Steins <adrian.steins@greenbone.net> 
+# Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2015 Greenbone Networks GmbH
@@ -28,101 +30,108 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105271");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8143 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
- script_tag(name:"creation_date", value:"2015-05-11 16:54:59 +0200 (Mon, 11 May 2015)");
- script_name("Citrix NetScaler Version Detection");
+ script_version ("$Revision: 8384 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
+ script_tag(name: "creation_date", value: "2015-05-11 16:54:59 +0200 (Mon, 11 May 2015)");
+ script_tag(name: "cvss_base", value: "0.0");
+ script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_summary("This script performs SSH based detection of Citrix NetScaler");
+ script_tag(name: "qod_type", value: "remote_banner");
 
- script_tag(name:"qod_type", value:"package");
+ script_name("Citrix NetScaler Detection Consolidation");
 
- script_summary("Checks for the presence of Citrix NetScaler");
+ script_tag(name: "summary", value: "The script reports a detected Citrix Netscaler including the version number
+and exposed services.");
+
  script_category(ACT_GATHER_INFO);
- script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl","netscaler_web_detect.nasl");
- script_mandatory_keys("citrix_netscaler/found");
+ script_family("Product detection");
+ script_dependencies("gb_netscaler_ssh_detect.nasl", "gb_netscaler_snmp_detect.nasl", "netscaler_web_detect.nasl");
+ script_mandatory_keys("citrix_netscaler/detected");
+
+ script_xref(name: "URL", value: "https://www.citrix.com/products/netscaler-adc/");
+
  exit(0);
 }
 
-
 include("host_details.inc");
 
-source = 'SSH';
-location = 'ssh';
+detected_version = "unknown";
 
-cpe = 'cpe:/a:citrix:netscaler';
-vers = 'unknown';
+foreach source (make_list("ssh", "snmp", "http")) {
+  if (detected_version != "unknown")
+    break;
 
-system = get_kb_item("citrix_netscaler/system");
-
-if( "NetScaler" >< system )
-{
-  ns = TRUE;
-  version = eregmatch( string:system, pattern:"NetScaler NS([^:]+):");
-
-  if( ! isnull( version[1] ) )
-  {
-    vers = version[1];
-    replace_kb_item( name:"citrix_netscaler/version", value:vers );
-    cpe += ':' + vers;
-  }
-
-  _build = eregmatch( string:system, pattern:'Build ([0-9]+\\.[0-9]+)\\.([^,]+)' );
-
-  if( ! isnull( _build[1] ) )
-  {
-    build = _build[1];
-    replace_kb_item( name:"citrix_netscaler/build", value:build);
-  }
-
-  if( ! isnull( _build[2] ) )
-  {
-    if( _build[2] == 'e' ) set_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
-  }
-} 
-else
-{
-  if( ! web_version = get_kb_item( "citrix_netscaler/web/version" ) ) exit( 0 );
-
-  ns = TRUE;
-  location = 'http';
-  source = 'HTTP';
-
-  v = split( web_version, sep:".", keep:FALSE );
-  if( max_index(v)  >= 4 )
-  {
-    vers = v[0] + '.' + v[1];
-    replace_kb_item( name:"citrix_netscaler/version", value:vers );
-    cpe += ':' + vers;
-
-    build = v[2] + '.' + v[3];
-    replace_kb_item( name:"citrix_netscaler/build", value:build);
-
-    if( v[4] && v[4] == 'e' ) set_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
+  version_list = get_kb_list("citrix_netscaler/" + source + "/*/version");
+  foreach version (version_list) {
+    if (version && detected_version == "unknown") {
+      detected_version = version;
+      set_kb_item(name: "citrix_netscaler/version", value: version);
+    }
   }
 }
 
-if( ns )
-{
-  register_product( cpe:cpe, location:location );
-
-  report = 'Detected Citrix NetScaler (' + location + ')\n\n' +
-           'Version: ' + vers + '\n';
-
-  if( !isnull( build ) )
-    report += 'Build:   ' + build + '\n';
-
-  report += 'CPE:     ' + cpe;
-
-  log_message( port:0, data:report );
-
-  exit( 0 );
+if (detected_version != "unknown") {
+  cpe = "cpe:/a:citrix:netscaler:" + detected_version;
+} else {
+  cpe = "cpe:/a:citrix:netscaler";
 }
 
-exit( 0 );
+# SSH
+if (ssh_ports = get_kb_list("citrix_netscaler/ssh/port")) {
+  foreach port (ssh_ports) {
+    extra += "SSH on port " + port + '/tcp\n';
 
+    concluded = get_kb_item("citrix_netscaler/ssh/" + port + "/concluded");
+    if (concluded)
+      extra += '  Concluded from: ' + concluded + '\n';
 
+    register_product(cpe: cpe, location: port + '/tcp', port: port, service: "ssh");
+  }
+}
+
+# SNMP
+if (snmp_ports = get_kb_list("citrix_netscaler/snmp/port")) {
+  foreach port (snmp_ports) {
+    extra += "SNMP on port " + port + '/udp\n';
+
+    concluded = get_kb_item("citrix_netscaler/snmp/" + port + "/concluded");
+    if (concluded)
+      extra += '  Concluded from SNMP SysDesc: ' + concluded + '\n';
+
+    register_product(cpe: cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
+  }
+}
+
+# HTTP
+if (http_ports = get_kb_list("citrix_netscaler/http/port")) {
+  foreach port (http_ports) {
+    extra += "HTTP(S) on port " + port + '/tcp\n';
+
+    concluded = get_kb_item("citrix_netscaler/http/" + port + "/concluded");
+    if (concluded)
+      extra += '  Concluded from: ' + concluded + '\n';
+    concUrl = get_kb_item("citrix_netscaler/http/" + port + "/concUrl");
+    if (concUrl)
+      extra += '  Concluded from version identification location: ' + concUrl + '\n';
+    detectUrl = get_kb_item("citrix_netscaler/http/" + port + "/detectUrl");
+      extra += '  Detected URL: ' + detectUrl + '\n';
+
+    register_product(cpe: cpe, location: port + '/tcp', port: port, service: "www");
+  }
+}
+
+enh_build = get_kb_item("citrix_netscaler/enhanced_build");
+if (enh_build)
+  enhanced = 'Enhanced Build\n';
+
+report = build_detection_report(app: "Citrix NetScaler", version: version, install: "/", cpe: cpe,
+                                extra: enhanced);
+if (extra) {
+  report += '\n\nDetection methods:\n';
+  report += '\n' + extra;
+}
+
+log_message(port: 0, data: report);
+
+exit(0);

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869357");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8419 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-15 08:50:24 +0100 (Mon, 15 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-05-11 05:51:49 +0200 (Mon, 11 May 2015)");
   script_cve_id("CVE-2014-8119");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for netcf FEDORA-2015-5872");
   script_tag(name: "summary", value: "Check the version of netcf");

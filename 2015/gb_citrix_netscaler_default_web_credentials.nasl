@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_default_web_credentials.nasl 4326 2016-10-24 06:19:49Z cfi $
+# $Id: gb_citrix_netscaler_default_web_credentials.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Web Management Interface Default Credentials
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105277");
-  script_version("$Revision: 4326 $");
+  script_version("$Revision: 8384 $");
   script_name("Citrix NetScaler Web Management Interface Default Credentials");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 08:19:49 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 18:01:07 +0200 (Tue, 12 May 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("netscaler_web_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("citrix_netscaler/webinterface/port");
+  script_mandatory_keys("citrix_netscaler/http/detected");
 
-  script_tag(name: "summary" , value: 'The remote Citrix NetScaler Web Management Interface is prone to a default account authentication
-  bypass vulnerability.');
+  script_tag(name: "summary" , value: 'The remote Citrix NetScaler Web Management Interface is prone to a default
+account authentication bypass vulnerability.');
 
   script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain
   access to sensitive information or modify system configuration.');
@@ -62,7 +62,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_kb_item( "citrix_netscaler/webinterface/port" ) ) exit( 0 );
+if( ! port = get_kb_item( "citrix_netscaler/http/port" ) ) exit( 0 );
 
 host = http_host_name( port:port );
 

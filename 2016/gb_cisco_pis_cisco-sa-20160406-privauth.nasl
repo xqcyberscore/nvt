@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160406-privauth.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_cisco_pis_cisco-sa-20160406-privauth.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Cisco Prime Infrastructure Privilege Escalation API Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1290");
  script_tag(name:"cvss_base", value:"5.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 5836 $");
+ script_version ("$Revision: 8372 $");
 
  script_name("Cisco Prime Infrastructure Privilege Escalation API Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-04-21 12:49:04 +0200 (Thu, 21 Apr 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -78,7 +78,7 @@ if( version =~ "^3\." )
 if( fix )
 {
   report = report_fixed_ver(  installed_version:version, fixed_version:fix );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

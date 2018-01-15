@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208324.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_apple_safari_HT208324.nasl 8401 2018-01-12 13:59:28Z gveerendra $
 #
 # Apple Safari Security Updates( HT208324 )
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812284");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8401 $");
   script_cve_id("CVE-2017-7156", "CVE-2017-7157", "CVE-2017-7160", "CVE-2017-13856", 
-                "CVE-2017-13866", "CVE-2017-13870");
+                "CVE-2017-13866", "CVE-2017-13870", "CVE-2017-5753", "CVE-2017-5715");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 14:59:28 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 14:26:04 +0530 (Thu, 28 Dec 2017)");
   script_name("Apple Safari Security Updates( HT208324 )");
 
@@ -45,11 +45,13 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to multiple
-  memory corruption issues.");
+  memory corruption issues and other multiple errors leading to 'speculative
+  execution side-channel attacks' that affect many modern processors and
+  operating systems including Intel, AMD, and ARM.");
 
   script_tag(name: "impact" , value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to execute arbitrary code or
-  cause a denial of service.
+  cause a denial of service or gain access to potentially sensitive information.
 
   Impact Level: System/Application");
 
@@ -61,6 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208324");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208403");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

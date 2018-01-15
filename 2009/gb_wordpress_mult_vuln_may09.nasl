@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_may09.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_wordpress_mult_vuln_may09.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # Wordpress Multiple Vulnerabilities
 #
@@ -36,14 +36,13 @@ tag_solution = "Upgrade your wordpress to the latest version 2.7.1
 tag_summary = "This host has Wordpress installed and is prone to Multiple
   Vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800704";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800704");
+  script_version("$Revision: 8374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,23 +65,17 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 
-
-wordpressPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+wordpressPort = get_app_port(cpe:CPE);
 if(!wordpressPort){
   exit(0);
 }
 
-if(!get_port_state(wordpressPort)){
-  exit(0);
-}
-
-if(!version = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!version = get_app_version(cpe:CPE, port:wordpressPort))exit(0);
 
 if(version_in_range(version:version, test_version:"2.6", test_version2:"2.6.3")){
-  security_message(wordpressPort);
+  security_message(port:wordpressPort);
 }

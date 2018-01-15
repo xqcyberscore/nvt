@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX213313.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_citrix_netscaler_CTX213313.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Login Form Hijacking Vulnerability in Citrix NetScaler Gateway (CTX213313)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-4945");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5650 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Login Form Hijacking Vulnerability in Citrix NetScaler Gateway (CTX213313)");
 
@@ -54,13 +54,13 @@ Versions 10.5, 10.5.e and 10.1 are unaffected by this vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-05-30 12:38:48 +0200 (Mon, 30 May 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -68,20 +68,16 @@ Versions 10.5, 10.5.e and 10.1 are unaffected by this vulnerability.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
-if( version_in_range( version:version, test_version:'11', test_version2:'11.0.66.10' ) )
+if( version_in_range( version:vers, test_version:'11', test_version2:'11.0.66.10' ) )
   fix = '11.0 build 66.11';
 
 
 if( fix )
 {
-  report = report_fixed_ver( installed_version:report_version, fixed_version:fix );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

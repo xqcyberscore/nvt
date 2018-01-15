@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bitweaver_dir_trav_n_code_inj_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_bitweaver_dir_trav_n_code_inj_vuln.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # Bitweaver Directory Traversal And Code Injection Vulnerabilities
 #
@@ -41,22 +41,19 @@ tag_solution = "Upgrade to Bitweaver version 2.6.1 or later
 tag_summary = "This host is running Bitweaver, which is prone to directory traversal and
   code injection vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900356";
 CPE = "cpe:/a:bitweaver:bitweaver";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900356");
+  script_version("$Revision: 8374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-1677", "CVE-2009-1678");
   script_bugtraq_id(34910);
   script_name("Bitweaver Directory Traversal And Code Injection Vulnerabilities");
-
-
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -80,9 +77,8 @@ include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!bitweaverPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!bitweaverPort = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:bitweaverPort))exit(0);
 
 if(dir != NULL)
 {

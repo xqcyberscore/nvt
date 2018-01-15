@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_priv_esc_vuln.nasl 5746 2017-03-28 10:02:45Z ckuerste $
+# $Id: gb_solarwinds_lem_priv_esc_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # SolarWinds Log and Event Manager SSH Jailbreak and Privilege Escalation Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106698");
-  script_version("$Revision: 5746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-28 12:02:45 +0200 (Tue, 28 Mar 2017) $");
+  script_version("$Revision: 8371 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
   script_tag(name: "cvss_base", value: "7.2");
   script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -78,7 +78,7 @@ if (!version = get_app_version(cpe: CPE))
 
 if (version_is_less(version: version, test_version: "6.3.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "6.3.1 Hotfix 3");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 
@@ -87,7 +87,7 @@ if (version_is_equal(version: version, test_version: "6.3.1")) {
   if (!hotfix || int(hotfix) < 3) {
     report = report_fixed_ver(installed_version: version, installed_patch: hotfix, fixed_version: "6.3.1",
                               fixed_patch: "3");
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
     exit(0);
   }
 }

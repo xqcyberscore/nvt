@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # Apache Struts2 Redirection and Security Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(803838);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8373 $");
   script_cve_id("CVE-2013-2248", "CVE-2013-2251");
   script_bugtraq_id(61196, 61189);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-07-24 11:58:54 +0530 (Wed, 24 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Redirection and Security Bypass Vulnerabilities");
@@ -125,6 +125,6 @@ if(asres && ">Struts2 Showcase<" >< asres && ">Welcome!<" >< asres)
     }
    else exit(0);
   }
-  security_message(port);
+  security_message(port:asport);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresence_te_ce736811.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_telepresence_te_ce736811.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities
 #
@@ -58,10 +58,10 @@ if (description)
  script_cve_id("CVE-2016-1387");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 5557 $");
+ script_version ("$Revision: 8372 $");
  script_name("Cisco TelePresence XML Application Programming Interface Authentication Bypass Vulnerability ");
  script_xref(name:"URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160504-tpxml");
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-05-13 16:46:52 +0200 (Fri, 13 May 2016)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -79,6 +79,7 @@ if (description)
 }
 include("host_details.inc");
 include("version_func.inc");
+
 if( ! vers =  get_app_version(cpe:CPE) ) exit( 0 ); 
 if( ! typ = get_kb_item( "cisco/telepresence/typ" ) ) exit( 0 );
 if( typ !~ ' EX(6|9)0$' && typ !~ ' C(2|4|6|9)0$' &&
@@ -101,7 +102,7 @@ if( ! fix ) exit( 0 );
 if( version_is_less( version:vers, test_version:fix ) )
 {
   report = 'Installed version: ' + vers + '\nFixed version:     ' + fix;
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

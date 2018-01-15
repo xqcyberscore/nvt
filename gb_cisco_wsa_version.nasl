@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_cisco_wsa_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # Cisco Web Security Appliance Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105441");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 13:54:40 +0100 (Mon, 09 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -78,6 +78,6 @@ if( model ) report += '\nModel: ' + model;
 
 report += '\nDetection source: ' + source;;
 
-log_message( port:port, data:report );
+log_message( port:0, data:report );
 exit( 0 );
 

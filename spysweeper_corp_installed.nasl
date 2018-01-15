@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: spysweeper_corp_installed.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: spysweeper_corp_installed.nasl 8370 2018-01-11 09:44:52Z cfischer $
 # Description: Webroot SpySweeper Enterprise Check
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80046");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -272,7 +272,7 @@ if (warning)
   report += "As a result, the remote host might be infected by spyware 
 received by browsing or other means.";
 
-  security_message(port:port, data:report);
+  security_message(port:0, data:report);
 }
 else
 {

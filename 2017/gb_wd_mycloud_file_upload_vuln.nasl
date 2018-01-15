@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_file_upload_vuln.nasl 8167 2017-12-19 07:04:10Z ckuersteiner $
+# $Id: gb_wd_mycloud_file_upload_vuln.nasl 8411 2018-01-13 09:54:05Z cfischer $
 #
 # WD MyCloud File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:western_digital:mycloud_nas";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140610");
-  script_version("$Revision: 8167 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:04:10 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8411 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-13 10:54:05 +0100 (Sat, 13 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-19 09:48:55 +0700 (Tue, 19 Dec 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_analysis");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("WD MyCloud File Upload Vulnerability");
 
@@ -64,9 +64,10 @@ root privileges in context of the affected application.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th December, 2017. Solution
-details will be updated once the updates are made available.");
+  script_tag(name: "solution", value: "The vendor has released firmware updates. Please see the reference for
+  more details and downloads.");
 
+  script_xref(name: "URL", value: "http://gulftech.org/advisories/WDMyCloud%20Multiple%20Vulnerabilities/125");
   script_xref(name: "URL", value: "https://www.exploitee.rs/index.php/Western_Digital_MyCloud");
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43356/");
   script_xref(name: "URL", value: "http://support.wdc.com/downloads.aspx?lang=en#firmware");
@@ -83,7 +84,10 @@ if (!port = get_app_port(cpe: CPE, service: "www"))
 
 url = '/web/jquery/uploader/multi_uploadify.php';
 
-req = http_get(port: port, item: url);
+# nb: If the target is accessed via a DNS name it might respond with something like:
+# <b>Warning</b>:  gethostbyaddr(): Address is not a valid IPv4 or IPv6 address
+# and a 200 status code instead of the expected response below
+req = http_get_req(port: port, url: url, host_header_use_ip: TRUE);
 res = http_keepalive_send_recv(port: port, data: req);
 
 if (res =~ "HTTP/1\.[01] 302" && "Location: ?status=1" >< res) {
@@ -92,4 +96,4 @@ if (res =~ "HTTP/1\.[01] 302" && "Location: ?status=1" >< res) {
   exit(0);
 }
 
-exit(0);
+exit(99);

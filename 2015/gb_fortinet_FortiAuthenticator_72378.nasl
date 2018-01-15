@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1456","CVE-2015-1455","CVE-2015-1457","CVE-2015-1459","CVE-2015-1458");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6404 $");
+ script_version ("$Revision: 8373 $");
 
  script_name("Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities");
 
@@ -60,7 +60,7 @@ credentials, execute arbitrary commands and gain access to potentially sensitive
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-03-02 10:40:16 +0100 (Mon, 02 Mar 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
@@ -85,7 +85,7 @@ if( ! vers ) exit( 0 );
 if( version_is_less( version: vers, test_version: "3.2.1" ) )
 {
   report = 'Installed Version: ' + vers + '\nFixed Version:     3.2.1\n';
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit (0 );
 }
 

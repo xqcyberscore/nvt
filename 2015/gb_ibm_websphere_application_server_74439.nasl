@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_74439.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_ibm_websphere_application_server_74439.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1920");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6211 $");
+ script_version ("$Revision: 8373 $");
 
  script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability");
 
@@ -55,7 +55,7 @@ instructions in a management-port session.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-06-03 09:34:17 +0200 (Wed, 03 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
@@ -83,7 +83,7 @@ if( vers =  get_app_version( cpe:CPE, nofork:TRUE ) )
       report = 'Installed version: ' + vers + '\n' +
                'Fixed version:     ' + fix + '\n';
 
-      security_message( port:port, data:report );
+      security_message( port:0, data:report );
       exit( 0 );
   }
 }

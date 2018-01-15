@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: http_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,9 +61,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 # TODO: Move to secpod_apache_detect.nasl
-function get_apache_version() {
+function get_apache_version(port) {
 
-  local_var req, soc, r, v;
+  local_var port,req, soc, r, v;
 
   req = http_get( item:"/nonexistent_please_dont_exist", port:port );
   res = http_keepalive_send_recv( port:port, data:req );
@@ -80,9 +80,9 @@ function get_apache_version() {
 }
 
 # TODO: Move to gb_lotus_domino_detect.nasl
-function get_domino_version() {
+function get_domino_version(port) {
 
-  local_var req, soc, r, v;
+  local_var port, req, soc, r, v;
 
   req = http_get( item:"/nonexistentdb.nsf", port:port );
   res = http_keepalive_send_recv( port:port, data:req );
@@ -137,7 +137,7 @@ if( soc ) {
       if( "Apache/" >< svr ) {
         report = report + svr + '\n\nSolution : You can set the directive "ServerTokens Prod" to limit\nthe information emanating from the server in its response headers.';
       } else {
-        svr2 = get_apache_version();
+        svr2 = get_apache_version(port:port);
         if( svr2 != NULL ) {
           report = report + svr2 + '\n\nThe "ServerTokens" directive is set to ProductOnly\n' +
                                    'however we could determine that the version of the remote\n' +
@@ -156,7 +156,7 @@ if( soc ) {
           if( egrep( pattern:"Lotus-Domino/[1-9]\.[0-9]", string:svr ) ) {
           report = report + svr;
         } else {
-          svr2 = get_domino_version();
+          svr2 = get_domino_version(port:port);
         }
         if( svr2 != NULL ) {
           report = report + svr2 + '\n\nThe product version is hidden but we could determine it by\n' +

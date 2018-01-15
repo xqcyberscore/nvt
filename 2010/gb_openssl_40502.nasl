@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_40502.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_openssl_40502.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # OpenSSL Cryptographic Message Syntax Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100668");
- script_version("$Revision: 5621 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 8374 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-04 13:05:19 +0200 (Fri, 04 Jun 2010)");
  script_bugtraq_id(40502);
  script_tag(name:"cvss_base", value:"7.5");
@@ -75,7 +75,7 @@ if( ! vers = get_app_version( cpe:CPE ) ) exit(0);
 if (vers =~ "^0\.9\.([0-7]([^0-9]|$)|8([^a-z0-9]|[a-n]|$))" ||
     vers =~ "^1\.0\.0(-beta|$)") {
 
-      security_message(port:port);
+      security_message(port:0);
       exit(0);
     }
 

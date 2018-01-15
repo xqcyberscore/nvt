@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms99-33_remote.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_ms99-33_remote.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability
 #
@@ -37,18 +37,17 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
 tag_summary = "This host is missing important security update according to
   Microsoft Bulletin MS99-033.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802440";
 CPE = "cpe:/a:microsoft:iis_ftp";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802440");
+  script_version("$Revision: 8374 $");
   script_cve_id("CVE-1999-0349");
   script_bugtraq_id(192);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/246545.php");
@@ -68,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("ftp_func.inc");
 include("host_details.inc");
 
@@ -80,13 +78,7 @@ soc3 = "";
 port2 = "";
 recv = "";
 
-## Get the FTP port
-if(!ftpPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-## Check for the port state
-if(!get_port_state(ftpPort)){
+if(!ftpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
@@ -124,7 +116,7 @@ if (!port2){
   exit(0);
 }
 
-soc2 = open_sock_tcp(port2, transport:get_port_transport(port));
+soc2 = open_sock_tcp(port2, transport:get_port_transport(ftpPort));
 
 ## Construct attack request
 command = strcat('NLST ', crap(320), '\r\n');

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871482");
-  script_version("$Revision: 6689 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8419 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-15 08:50:24 +0100 (Mon, 15 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:19:58 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-8119");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for netcf RHSA-2015:2248-03");
   script_tag(name: "summary", value: "Check the version of netcf");

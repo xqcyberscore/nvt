@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 8038 2017-12-08 06:37:32Z cfischer $
+# $Id: find_service1.nasl 8402 2018-01-12 14:03:40Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 8038 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 07:37:32 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8402 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -209,6 +209,8 @@ if( r_len == 0 ) {
     set_kb_item( name:k + "Hex", value:hexstr( r ) );
 }
 
+rhexstr = hexstr( r );
+
 # aka HTTP/0.9
 if( r =~ '^[ \t\r\n]*<HTML>.*</HTML>' ) {
   report_service( port:port, svc:"www", banner:r );
@@ -272,8 +274,8 @@ if( "Host" >< r && " is blocked " >< r && "mysqladmin flush-hosts" >< r ) {
 #0x60:  72                                                 r
 
 if( ( "mysql_native_password" >< r && "Got packets out of order" >< r ) ||
-    "001b000001ff8404476f74207061636b657473206f7574206f66206f72646572" >< hexstr( r ) ||
-    "006d7973716c5f6e61746976655f70617373776f726400" >< hexstr( r ) ) {
+    "001b000001ff8404476f74207061636b657473206f7574206f66206f72646572" >< rhexstr ||
+    "006d7973716c5f6e61746976655f70617373776f726400" >< rhexstr ) {
   register_service( port:port, proto:"mysql", message:"A MySQL/MariaDB server seems to be running on this port." );
   log_message( port:port, data:"A MySQL/MariaDB server seems to be running on this port." );
   exit( 0 );
@@ -425,7 +427,7 @@ if( port =~ "^929[0-2]$" && r =~ "^0[0-2]$") {
   exit( 0 );
 }
 
-if( port == 515 && hexstr( r ) =~ "^ff$") {
+if( port == 515 && rhexstr =~ "^ff$") {
   register_service( port:port, proto:"printer", message:"A LPD service seems to be running on this port." );
   log_message( port:port, data:"A LPD service seems to be running on this port." );
   exit( 0 );
@@ -533,10 +535,31 @@ if( port == 5556 && ":-ERR Error reading from socket: Unknown protocol exception
   exit( 0 );
 }
 
-#### Some spontaneous banners are coming slowly, so they are wronly
+# 0x00:  04 20 4E 73 75 72 65 20 41 75 64 69 74 20 4C 69    . Nsure Audit Li
+# 0x10:  6E 75 78 20 5B 37 66 35 31 32 32 30 32 3A 31 5D    nux [7f512202:1]
+# 0x20:  0D 0A                                           ..  
+# Running on 1289/tcp
+if( r =~ "Nsure Audit .* \[.*\]" ) {
+  register_service( port:port, proto:"naudit", message:"A Novell Audit Secure Logging Server service seems to be running on this port." );
+  log_message( port:port, data:"A Novell Audit Secure Logging Server service seems to be running on this port." );
+  exit( 0 );
+}
+
+#### Some spontaneous banners are coming slowly, so they are wrongly
 #### registered as answers to GET
 if( r =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$' ) {
   report_service( port:port, svc:"hddtemp" );
+  exit( 0 );
+}
+
+# Some services are responding with an SSL/TLS alert we currently don't recognize
+# e.g. 0x00:  15 03 01 00 02 02 0A                               .......
+# or 0x00:  15 03 01                                           ...
+# See also "Alert Protocol format" in http://blog.fourthbit.com/2014/12/23/traffic-analysis-of-an-ssl-slash-tls-session/
+if( rhexstr =~ "^15030[0-3]00020[1-2]..$" ||
+    rhexstr =~ "^150301$" ) {
+  register_service( port:port, proto:"ssl", message:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
+  log_message( port:port, data:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200206.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_citrix_netscaler_CTX200206.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-7140");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6600 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)");
 
@@ -55,13 +55,13 @@ vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:11:00 +0200 (Tue, 12 May 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -71,30 +71,25 @@ include("version_func.inc");
 
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) exit( 0 );
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE) ) exit( 0 );
 
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
-
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
-if( version =~ "^10\.1\." )
+if( vers =~ "^10\.1\." )
 {
-  if( version_is_less( version: version, test_version: "10.1.129.11" ) )
+  if( version_is_less( version: vers, test_version: "10.1.129.11" ) )
     fix = '10.1 build 129.11';
 }
-else if (version =~ "^10\.5\." || version =~ "^10\.0\.")
+else if (vers =~ "^10\.5\." || vers =~ "^10\.0\.")
 {
-  if( version_is_less( version: version, test_version: "10.5.50.10" ) )
+  if( version_is_less( version: vers, test_version: "10.5.50.10" ) )
     fix = '10.5 build 50.10';
 }
 
 if( fix )
 {
-  report = 'Installed version: ' + report_version + '\n' +
+  report = 'Installed version: ' + vers + '\n' +
            'Fixed version:     ' + fix + '\n';
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: patchlink_detection.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: patchlink_detection.nasl 8374 2018-01-11 10:55:51Z cfischer $
 # Description: Patchlink Detection
 #
 # Authors:
@@ -37,8 +37,8 @@ if(description)
 {
  script_id(80039);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_version("$Revision: 8374 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Patchlink Detection";
@@ -83,7 +83,7 @@ if (version)
 {
   info = string("Patchlink version ", version, " is installed on the remote host.");
 
-  log_message(port:port, data:info);
+  log_message(port:0, data:info);
 
   set_kb_item(name:"SMB/Patchlink/version", value:version);
   

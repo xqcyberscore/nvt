@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_detect.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_wampserver_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # WampServer Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800297");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("WampServer Version Detection");
@@ -79,6 +79,6 @@ register_product( cpe:cpe, location:"/", port:wampPort, service:'www' );
 
 report = build_detection_report( app:"WampServer", version:wv, install:"/", cpe:cpe, concluded:wampVer[0], concludedUrl:"/index.php" );
 
-log_message( port:port, data:report );
+log_message( port:wampPort, data:report );
 exit( 0 );
 

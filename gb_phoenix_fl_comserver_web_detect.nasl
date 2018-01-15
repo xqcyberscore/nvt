@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phoenix_fl_comserver_web_detect.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
+# $Id: gb_phoenix_fl_comserver_web_detect.nasl 8391 2018-01-12 09:46:50Z ckuersteiner $
 #
 # PHOENIX CONTACT FL COMSERVER Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140590");
-  script_version("$Revision: 8052 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8391 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-12 10:46:50 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-08 12:30:46 +0700 (Fri, 08 Dec 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,7 @@ if ('class="devicetyp">FL COMSERVER' >< res && "Phoenix Contact GmbH" >< res) {
 
   register_product(cpe: cpe, install: "/", port: port, service: "www");
 
-  log_message(data: build_detection_report(app: "PHOENIX CONTAC FL COMSERVER " + model, version: version,
+  log_message(data: build_detection_report(app: "PHOENIX CONTACT FL COMSERVER " + model, version: version,
                                            install: "/", cpe: cpe, concluded: vers[0], concludedUrl: concUrl,
                                            extra: extra),
               port: port);

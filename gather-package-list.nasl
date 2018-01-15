@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 8365 2018-01-11 05:01:08Z ckuersteiner $
+# $Id: gather-package-list.nasl 8402 2018-01-12 14:03:40Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 8365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 06:01:08 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 8402 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2669,7 +2669,7 @@ if( match = eregmatch( pattern:"SUSE Linux Enterprise Desktop ([0-9]+)", string:
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
   set_kb_item( name:"ssh/login/rpms", value:";" + buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Desktop " + match[1] + " SP" + patchlevel[1] );
-  register_detected_os( os:"SUSE Linux Enterprise Desktop " + match[1] + " SP" + patchlevel[1], oskey:"SLED" + match[1] + "SP" + patchlevel[1] );
+  register_detected_os( os:"SUSE Linux Enterprise Desktop " + match[1] + " SP" + patchlevel[1], oskey:"SLED" + match[1] + ".0SP" + patchlevel[1] );
   exit( 0 );
 }
 
@@ -2703,6 +2703,7 @@ if( "SUSE Linux Enterprise Server 11 " >< rls && "PATCHLEVEL = 0" >< rls ) {
   exit( 0 );
 }
 # For all other SLES releases...
+# e.g. SUSE Linux Enterprise Server 11 (x86_64)
 if( match = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9]+)", string:rls ) ) {
 
   patchlevel = eregmatch( pattern:"PATCHLEVEL = ([0-9]+)", string:rls );
@@ -2713,7 +2714,7 @@ if( match = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9]+)", string:r
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
   set_kb_item( name:"ssh/login/rpms", value:";" + buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Server " + match[1] + " SP" + patchlevel[1] );
-  register_detected_os( os:"SUSE Linux Enterprise Server " + match[1] + " SP" + patchlevel[1], oskey:"SLES" + match[1] + "SP" + patchlevel[1] );
+  register_detected_os( os:"SUSE Linux Enterprise Server " + match[1] + " SP" + patchlevel[1], oskey:"SLES" + match[1] + ".0SP" + patchlevel[1] );
   exit( 0 );
 }
 

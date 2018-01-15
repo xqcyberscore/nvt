@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aerospike_database_server_95415.nasl 5403 2017-02-23 10:50:31Z ckuerste $
+# $Id: gb_aerospike_database_server_95415.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # Aerospike Database Server Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-9050","CVE-2016-9054","CVE-2016-9052","CVE-2016-9049","CVE-2016-9051","CVE-2016-9053");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5403 $");
+ script_version ("$Revision: 8371 $");
 
  script_name("Aerospike Database Server Multiple Vulnerabilities");
 
@@ -89,7 +89,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 11:50:31 +0100 (Thu, 23 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2017-01-27 14:35:35 +0100 (Fri, 27 Jan 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
@@ -109,7 +109,7 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 if( version_is_less_equal( version: version, test_version: "3.10.0.3" ) )
 {
     report = report_fixed_ver( installed_version:version, fixed_version:"Ask vendor");
-    security_message( port:port, data:report );
+    security_message( port:0, data:report );
     exit (0 );
 }
 

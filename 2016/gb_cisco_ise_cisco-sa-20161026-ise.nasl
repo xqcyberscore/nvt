@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20161026-ise.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_cisco_ise_cisco-sa-20161026-ise.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6453");
  script_tag(name:"cvss_base", value:"4.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 5850 $");
+ script_version ("$Revision: 8372 $");
 
  script_name("Cisco Identity Services Engine SQL Injection Vulnerability");
 
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-10-27 11:19:11 +0530 (Thu, 27 Oct 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -68,7 +68,7 @@ if( ! patch = get_kb_item( "cisco_ise/patch" ) ) exit( 0 );
 if (version == "1.3.0.876") {
   if (int(patch) <= 7) {
     report = report_fixed_ver(installed_version: version, installed_patch: patch, fixed_version: 'See advisory');
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
     exit(0);
   }
 }

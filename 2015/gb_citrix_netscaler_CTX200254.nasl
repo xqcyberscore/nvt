@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200254.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_citrix_netscaler_CTX200254.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8580");
  script_tag(name:"cvss_base", value:"4.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 6534 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)");
 
@@ -61,13 +61,13 @@ Version 10.1.x 'Enhanced' between 10.1-120.1316.e and 10.1-128.8003.e");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -75,30 +75,26 @@ Version 10.1.x 'Enhanced' between 10.1-120.1316.e and 10.1-128.8003.e");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
 
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
 if( enhanced )
 {
-  report_version = report_version + '.e';
-  if( version_in_range( version:version, test_version:"10.1.120.1316", test_version2:"10.1.128.8003" ) )
+  if( version_in_range( version:vers, test_version:"10.1.120.1316", test_version2:"10.1.128.8003" ) )
   {
     fix = '10.1 build 129.1105.e';
+    vers = vers + '.e';
   }
 }
 else
 {
-  if( version_in_range( version:version, test_version:'10.5.50.10', test_version2:'10.5.51.10' ) )
+  if( version_in_range( version:vers, test_version:'10.5.50.10', test_version2:'10.5.51.10' ) )
   {
     fix = '10.5 build 52.11';
   }
 
-  if( version_in_range( version:version, test_version:'10.1.122.17', test_version2:'10.1.128.8' ) )
+  if( version_in_range( version:vers, test_version:'10.1.122.17', test_version2:'10.1.128.8' ) )
   {
     fix = '10.1 build 129.11';
   }
@@ -106,10 +102,10 @@ else
 
 if( fix )
 {
-  report = 'Installed version: ' + report_version + '\n' +
+  report = 'Installed version: ' + vers + '\n' +
            'Fixed version:     ' + fix + '\n';
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

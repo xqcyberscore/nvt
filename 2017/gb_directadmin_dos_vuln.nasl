@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_directadmin_dos_vuln.nasl 8075 2017-12-11 10:32:06Z asteins $
+# $Id: gb_directadmin_dos_vuln.nasl 8390 2018-01-12 09:27:12Z asteins $
 #
 # DirectAdmin DoS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:directadmin:directadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106501");
-  script_version("$Revision: 8075 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8390 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-12 10:27:12 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-01-09 10:12:05 +0700 (Mon, 09 Jan 2017)");
   script_tag(name:"cvss_base", value: "5.0");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("DirectAdmin DoS Vulnerability");
 
@@ -60,8 +60,11 @@ DirectAdmin with a overly long password which results in a denial of service con
 
   script_tag(name: "affected", value: "DirectAdmin 1.50.1 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 11th December, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+disable respective features, remove the product or replace the product by another one.
+
+A workaround is to mitigate the issue via firewalling.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40996");
 

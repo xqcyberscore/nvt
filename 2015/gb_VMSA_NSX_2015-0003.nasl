@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA_NSX_2015-0003.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_VMSA_NSX_2015-0003.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # VMSA-2015-0003: VMware NSX updates address critical information disclosure issue in JRE
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2014-6593");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 6229 $");
+ script_version ("$Revision: 8373 $");
  script_name("VMSA-2015-0003: VMware NSX updates address critical information disclosure issue in JRE");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0003.html");
@@ -47,7 +47,7 @@ if (description)
  script_tag(name: "affected" , value:"NSX for vSphere prior 6.1.4 Build 2691049
 NSX for Multi-Hypervisor prior to 4.2.4 Build 42965");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-10-27 17:31:18 +0100 (Tue, 27 Oct 2015)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
@@ -92,10 +92,9 @@ if( fix )
   report = 'Installed version: ' + version + '-' + build + '\n' + 
            'Fixed version:     ' + fix;
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 
 }
 
 exit(99);
-

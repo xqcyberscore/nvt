@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_central_cisco-sa-20160413-ucs.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_ucs_central_cisco-sa-20160413-ucs.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Cisco UCS Central Software Arbitrary Command Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1352");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5598 $");
+ script_version ("$Revision: 8372 $");
 
  script_name("Cisco UCS Central Software Arbitrary Command Execution Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-04-15 13:16:59 +0200 (Fri, 15 Apr 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -72,7 +72,7 @@ version = str_replace( string:version, find:")", replace:"");
 if( version_is_less_equal( version:version, test_version:'1.3.1b' ) )
 {
   report = report_fixed_ver(  installed_version:version, fixed_version:"1.3(1c)/1.4(1a)" );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

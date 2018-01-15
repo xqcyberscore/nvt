@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CCTX201149.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_citrix_netscaler_CCTX201149.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Arbitrary Command Injection (CTX201149)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5080");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6254 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler Arbitrary Command Injection (CTX201149)");
 
@@ -59,13 +59,13 @@ Version 10.1 earlier than 10.1.132.8");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-07-01 13:34:32 +0200 (Wed, 01 Jul 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -73,30 +73,25 @@ Version 10.1 earlier than 10.1.132.8");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
-
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
-
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
 
 if( enhanced )
 {
-  report_version = report_version + '.e';
-  if( version_in_range( version:version, test_version:"10.5", test_version2:"10.5.56.1504" ) )
+  if( version_in_range( version:vers, test_version:"10.5", test_version2:"10.5.56.1504" ) )
   {
     fix = '10.5 build 56.1504.e';
+    vers = vers + '.e';
   }
 }
 else
 {
-  if( version_in_range( version:version, test_version:'10.5', test_version2:'10.5.56.14' ) )
+  if( version_in_range( version:vers, test_version:'10.5', test_version2:'10.5.56.14' ) )
   {
     fix = '10.5 build 56.15';
   }
 
-  if( version_in_range( version:version, test_version:'10.1', test_version2:'10.1.132.7' ) )
+  if( version_in_range( version:vers, test_version:'10.1', test_version2:'10.1.132.7' ) )
   {
     fix = '10.1 build 132.8';
   }
@@ -104,10 +99,10 @@ else
 
 if( fix )
 {
-  report = 'Installed version: ' + report_version + '\n' +
+  report = 'Installed version: ' + vers + '\n' +
            'Fixed version:     ' + fix + '\n';
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

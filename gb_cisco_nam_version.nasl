@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nam_version.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_cisco_nam_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # Cisco Network Analysis Module Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105457");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 8370 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-11-18 12:57:00 +0100 (Wed, 18 Nov 2015)");
  script_name("Cisco Network Analysis Module Detection");
 
@@ -105,6 +105,6 @@ register_product( cpe:cpe );
 
 report = 'Detected Cisco Network Analysis Module\nVersion: ' + vers + '\nCPE: ' + cpe;
 
-log_message( port:port, data:report );
+log_message( port:0, data:report );
 exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_64719.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_qnap_qts_64719.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # QNAP QTS 'f' Parameter Directory Traversal Vulnerability
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103877";
-
 tag_insight = "QNAP QTS is a Network-Attached Storage (NAS) system
 accessible via a web interface. QNAP QTS 4.0.3 and possibly earlier
 versions contain a path traversal vulnerability via the cgi-bin/jc.cgi
@@ -48,19 +46,19 @@ tag_vuldetect = "Check the firmware version.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103877");
  script_bugtraq_id(64719);
  script_cve_id("CVE-2013-7174");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 8373 $");
 
  script_name("QNAP QTS 'f' Parameter Directory Traversal Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64719");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2014-01-09 18:58:01 +0100 (Thu, 09 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -88,7 +86,7 @@ if ( ! get_kb_item("qnap/qts") ) exit( 0 );
 if ( ! version = get_kb_item( "qnap/version" ) ) exit(0); 
 
 if ( version_is_less( version: version, test_version: "4.1.0")) {
-    security_message(port:port);
+    security_message(port:0);
     exit(0);
 }
 

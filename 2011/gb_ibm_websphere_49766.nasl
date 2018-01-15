@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_49766.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_ibm_websphere_49766.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # IBM WebSphere Application Server Cross-Site Request Forgery Vulnerability
 #
@@ -40,8 +40,8 @@ information.";
 if (description)
 {
  script_id(103277);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 8374 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(49766);
  script_tag(name:"cvss_base", value:"6.8");
@@ -75,7 +75,7 @@ if( ! vers = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 if(version_is_equal(version: vers, test_version: "8.0")) {
 
-  security_message(port:port);
+  security_message(port:0);
   exit(0);
 
 }

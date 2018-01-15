@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8360 2018-01-10 14:47:00Z cfischer $
+# $Id: host_details.inc 8402 2018-01-12 14:03:40Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8360 $
+# $Revision: 8402 $
 #
 ###############################################################################
 
@@ -681,7 +681,7 @@ function get_single_app_port_from_list( cpe_list, service ) {
 
 function get_all_app_port_from_list( cpe_list, service ) {
 
-  local_var cpe_list, service, cpe, base_cpe, port, ports, services, _service, infos, _infos, ret_arr;
+  local_var cpe_list, service, cpe, base_cpe, _port, _ports, services, _service, infos, _infos, ret_arr;
 
   if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_port_from_list" );
 
@@ -690,17 +690,17 @@ function get_all_app_port_from_list( cpe_list, service ) {
     if( ! base_cpe = get_base_cpe( cpe:cpe ) )
       continue;
 
-    if( isnull( ports = get_kb_list( "get_app/ports/" + base_cpe ) ) )
+    if( isnull( _ports = get_kb_list( "get_app/ports/" + base_cpe ) ) )
       continue;
 
-    foreach port( ports ) {
+    foreach _port( _ports ) {
       if( service ) {
-        services = get_kb_list( "get_app/services/" + port + "/" + base_cpe );
+        services = get_kb_list( "get_app/services/" + _port + "/" + base_cpe );
         foreach _service( services ) {
-          if( port =~ '^[0-9]{1,5}$' && _service >< service ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + port );
+          if( _port =~ '^[0-9]{1,5}$' && _service >< service ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
         }
       } else {
-        if( port =~ '^[0-9]{1,5}$' ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + port );
+        if( _port =~ '^[0-9]{1,5}$' ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
       }
     }
   }
@@ -1281,6 +1281,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
       "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
       " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
+      egrep( pattern:"^Server: DHost/([0-9.]+) HttpStk/([0-9.]+)$", string:banner ) || # DHost/9.0 HttpStk/1.0 from Novell / NetIQ eDirectory, runs on various OS variants
       egrep( pattern:"^MikroTik ", string:banner ) || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
       egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)a?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
       egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # e.g. 220 hostname ESMTP

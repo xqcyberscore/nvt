@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresence_te_tc_67170.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_telepresence_te_tc_67170.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities
 #
@@ -25,7 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.105026";
 CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 
 tag_impact = "Attackers can exploit these issues to execute arbitrary code in the
@@ -61,19 +60,19 @@ tag_vuldetect = "Check the Firmware-Version.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.105026");
  script_bugtraq_id(67170);
  script_cve_id("CVE-2014-2162","CVE-2014-2163","CVE-2014-2164","CVE-2014-2165","CVE-2014-2166","CVE-2014-2167","CVE-2014-2168","CVE-2014-2169","CVE-2014-2170","CVE-2014-2171","CVE-2014-2172","CVE-2014-2173","CVE-2014-2175");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6663 $");
+ script_version ("$Revision: 8373 $");
 
  script_name("Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67170");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140430-tcte");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2014-05-12 16:46:52 +0200 (Mon, 12 May 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -95,7 +94,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version(cpe:CPE, nvt:SCRIPT_OID ) ) exit( 0 ); 
+if( ! vers =  get_app_version(cpe:CPE) ) exit( 0 ); 
 if( ! typ = get_kb_item( "cisco/telepresence/typ" ) ) exit( 0 );
 
 if( typ !~ ' T(1|3)$' && typ !~ ' EX(6|9)0$' && typ !~ ' C(2|4|6|9)0$' &&
@@ -112,7 +111,7 @@ if( ! fix ) exit( 0 );
 if( version_is_less( version:vers, test_version:fix ) )
 {
   report = 'Installed version: ' + vers + '\nFixed version:     ' + fix;
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

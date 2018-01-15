@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpressmu_xss_vuln_apr09.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_wordpressmu_xss_vuln_apr09.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # WordPress MU Cross-Site Scripting Vulnerability - Apr09
 #
@@ -36,14 +36,13 @@ tag_solution = "Update to Version 2.7
 tag_summary = "The host is running WordPress MU and is prone to Cross-Site
   Scripting Vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800376";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800376");
+  script_version("$Revision: 8374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -73,13 +72,12 @@ include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-
-wpmuPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+wpmuPort = get_app_port(cpe:CPE);
 if(!wpmuPort){
   exit(0);
 }
 
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!ver = get_app_version(cpe:CPE, port:wpmuPort))exit(0);
 
 if(ver != NULL)
 {

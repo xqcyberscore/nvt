@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pca_cisco-sa-20170607-pca.nasl 6479 2017-06-29 07:59:07Z teissa $
+# $Id: gb_cisco_pca_cisco-sa-20170607-pca.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # Cisco Prime Collaboration Assurance Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6659");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6479 $");
+ script_version("$Revision: 8371 $");
 
  script_name("Cisco Prime Collaboration Assurance Cross-Site Request Forgery Vulnerability");
 
@@ -57,7 +57,7 @@ a targeted device via a web browser and with the privileges of the user.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name: "creation_date", value: "2017-06-08 13:13:16 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -76,7 +76,7 @@ if (!version = get_app_version(cpe: CPE))
 
 if (version =~ "^11\.[0-5]\.") {
   report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

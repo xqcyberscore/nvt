@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX220329.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_citrix_netscaler_CTX220329.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Vulnerability in Citrix NetScaler Application Delivery Controller and Citrix NetScaler Gateway GCM Nonce Generation
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-5933");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7076 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Vulnerability in Citrix NetScaler Application Delivery Controller and Citrix NetScaler Gateway GCM Nonce Generation");
 
@@ -56,13 +56,13 @@ Citrix NetScaler ADC and NetScaler Gateway version 10.5 Build 65.11 and later");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2017-02-08 12:46:21 +0100 (Wed, 08 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -70,28 +70,24 @@ Citrix NetScaler ADC and NetScaler Gateway version 10.5 Build 65.11 and later");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE) ) exit( 0 );
 
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
-
-version = vers + '.' + build;
-report_version = vers + ' Build ' + build;
 
 if( enhanced )
   exit( 99 );
 else
 {
-  if( version_in_range( version:version, test_version:'10.5', test_version2:'10.5.65.10' ) )
+  if( version_in_range( version:vers, test_version:'10.5', test_version2:'10.5.65.10' ) )
   {
     fix = '10.5 Build 65.11';
   }
 
-  if( version_in_range( version:version, test_version:'11.0', test_version2:'11.0.69.11' ) )
+  if( version_in_range( version:vers, test_version:'11.0', test_version2:'11.0.69.11' ) )
   {
     fix = '11.0 Build 69.12';
   }
-   if( version_in_range( version:version, test_version:'11.1', test_version2:'11.1.51.20' ) )
+   if( version_in_range( version:vers, test_version:'11.1', test_version2:'11.1.51.20' ) )
    {
      fix = '11.1 Build 51.21';
    }
@@ -99,7 +95,7 @@ else
 
 if( fix )
 {
-  report = report_fixed_ver( installed_version:report_version, fixed_version:fix );
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
 
   security_message( port: 0, data:report );
   exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smarterstats_xss.nasl 7493 2017-10-19 04:41:47Z teissa $
+# $Id: gb_smarterstats_xss.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # SmarterStats Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:smartertools:smarterstats";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107190");
-  script_version("$Revision: 7493 $");
+  script_version("$Revision: 8371 $");
   script_cve_id("CVE-2017-14620");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 06:41:47 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 10:31:53 +0200 (Wed, 18 Oct 2017)");
 
   script_name("SmarterStats Cross-Site Scripting Vulnerability");
@@ -67,14 +67,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if (!Port = get_app_port(cpe:CPE))
+if (!port = get_app_port(cpe:CPE))
   exit(0);
 
-if (!Ver = get_app_version(cpe: CPE, port: Port))
+if (!ver = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if( version_is_less(version:Ver, test_version:"11.3.6480") ) {
-  report = report_fixed_ver(installed_version:Ver, fixed_version:"11.3.6480");
+if( version_is_less(version:ver, test_version:"11.3.6480") ) {
+  report = report_fixed_ver(installed_version:ver, fixed_version:"11.3.6480");
   security_message(port: port, data: report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_42306.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_openssl_42306.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # OpenSSL 'ssl3_get_key_exchange()' Use-After-Free Memory Corruption Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:openssl:openssl";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100751");
- script_version("$Revision: 5621 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 8374 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
  script_bugtraq_id(42306);
  script_cve_id("CVE-2010-2939");
@@ -78,7 +78,7 @@ vers = ereg_replace(string:vers, pattern:"([a-z]$)", replace:".\1");
 if(!isnull(vers)) {
 
   if(version_is_equal(version: vers, test_version: "1.0.0.a")) {
-      security_message(port:port);
+      security_message(port:0);
       exit(0);
   }
 

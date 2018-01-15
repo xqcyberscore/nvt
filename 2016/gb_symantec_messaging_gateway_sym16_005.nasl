@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_005.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_sym16_005.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # Symantec Messaging Gateway Multiple Security Issues (SYM16-005)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105620");
-  script_version("$Revision: 6493 $");
+  script_version("$Revision: 8372 $");
   script_cve_id("CVE-2016-2203","CVE-2016-2204");
   script_bugtraq_id(86137,86138);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:M/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-04-22 10:36:01 +0200 (Fri, 22 Apr 2016)");
   script_name("Symantec Messaging Gateway Multiple Security Issues (SYM16-005)");
 
@@ -67,7 +67,7 @@ if( version =~ "^10\." )
   if( version_is_less( version:version, test_version:"10.6.1" ) )
   {
     report = report_fixed_ver( installed_version:version, fixed_version:'10.6.1' );
-    security_message( port:port, data:report );
+    security_message( port:0, data:report );
     exit(0);
   }
 }

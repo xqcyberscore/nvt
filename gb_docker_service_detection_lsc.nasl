@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_service_detection_lsc.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: gb_docker_service_detection_lsc.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # Docker Service Detection (LSC)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140119");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8144 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+ script_version ("$Revision: 8370 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2017-01-11 15:14:18 +0100 (Wed, 11 Jan 2017)");
  script_name("Docker Service Detection (LSC)");
  script_tag(name: "summary" , value: "This script performs ssh based detection of Docker");
@@ -88,7 +88,7 @@ if( ! isnull( v[1] ) )
   replace_kb_item( name:"docker/version", value:version );
 }
 
-register_product( cpe:cpe, location:'ssh', port:port );
+register_product( cpe:cpe, location:'ssh', port:0 );
 
 buf = ssh_cmd( socket:soc, cmd:"docker ps -a --no-trunc" );
 

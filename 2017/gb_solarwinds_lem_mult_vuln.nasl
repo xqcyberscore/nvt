@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_mult_vuln.nasl 6029 2017-04-26 07:02:41Z teissa $
+# $Id: gb_solarwinds_lem_mult_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # SolarWinds Log and Event Manager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106747");
-  script_version("$Revision: 6029 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 8371 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-04-12 16:22:13 +0200 (Wed, 12 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -88,7 +88,7 @@ if (!version = get_app_version(cpe: CPE))
 
 if (version_is_less(version: version, test_version: "6.3.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "6.3.1 Hotfix 4");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 
@@ -97,7 +97,7 @@ if (version_is_equal(version: version, test_version: "6.3.1")) {
   if (!hotfix || int(hotfix) < 4) {
     report = report_fixed_ver(installed_version: version, installed_patch: hotfix, fixed_version: "6.3.1",
                               fixed_patch: "4");
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
     exit(0);
   }
 }

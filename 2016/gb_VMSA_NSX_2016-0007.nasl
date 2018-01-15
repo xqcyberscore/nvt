@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA_NSX_2016-0007.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_VMSA_NSX_2016-0007.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # VMSA-2016-0007: VMware NSX product updates address a critical information disclosure vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-2079");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5867 $");
+ script_version ("$Revision: 8372 $");
  script_name("VMSA-2016-0007: VMware NSX product updates address a critical information disclosure vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0007.html");
@@ -48,7 +48,7 @@ to gain access to sensitive information.");
  script_tag(name: "affected" , value:"NSX 6.2 prior to 6.2.3
 NSX 6.1 prior to 6.1.7");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-06-10 12:47:00 +0200 (Fri, 10 Jun 2016)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
@@ -75,7 +75,7 @@ if( version_in_range( version:version, test_version:"6.1", test_version2:"6.1.6"
 if( fix )
 {
   report = report_fixed_ver( installed_version:version, fixed_version:fix );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX222657.nasl 6142 2017-05-17 09:56:17Z ckuerste $
+# $Id: gb_citrix_netscaler_CTX222657.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Gateway Heap Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:citrix:netscaler";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106808");
-  script_version("$Revision: 6142 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-17 11:56:17 +0200 (Wed, 17 May 2017) $");
+  script_version("$Revision: 8384 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-05-17 13:56:33 +0700 (Wed, 17 May 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_citrix_netscaler_version.nasl");
-  script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+  script_mandatory_keys("citrix_netscaler/detected");
 
   script_tag(name: "summary", value: "Citrix NetScaler Gateway is prone to a heap overflow vulnerability which
 allows remote authenticated attackers to run arbitrary commands.");
@@ -73,38 +73,32 @@ appliance as a root user.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!vers = get_app_version(cpe: CPE))
-  exit(0);
-
-if (!build = get_kb_item("citrix_netscaler/build"))
+if (!vers = get_app_version(cpe: CPE, nofork: TRUE))
   exit(0);
 
 if (get_kb_item("citrix_netscaler/enhanced_build"))
   exit(99);
 
-version = vers + '.' + build;
-report_version = vers + ' Build ' + build;
-
-if (version_in_range(version: version, test_version: "10.1", test_version2: "10.1.135.7")) {
-  report = report_fixed_ver(installed_version: report_version, fixed_version: "10.1 Build 135.8/135.12");
+if (version_in_range(version: vers, test_version: "10.1", test_version2: "10.1.135.7")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "10.1 Build 135.8/135.12");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "10.5", test_version2: "10.5.65.10")) {
-  report = report_fixed_ver(installed_version: report_version, fixed_version: "10.5 Build 65.11");
+if (version_in_range(version: vers, test_version: "10.5", test_version2: "10.5.65.10")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "10.5 Build 65.11");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "11.0", test_version2: "11.0.70.11")) {
-  report = report_fixed_ver(installed_version: report_version, fixed_version: "11.0 Build 70.12");
+if (version_in_range(version: vers, test_version: "11.0", test_version2: "11.0.70.11")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "11.0 Build 70.12");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "11.1", test_version2: "11.1.52.12")) {
-  report = report_fixed_ver(installed_version: report_version, fixed_version: "11.1 Build 52.13");
+if (version_in_range(version: vers, test_version: "11.1", test_version2: "11.1.52.12")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "11.1 Build 52.13");
   security_message(port: 0, data: report);
   exit(0);
 }

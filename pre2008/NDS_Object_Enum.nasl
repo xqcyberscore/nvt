@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: NDS_Object_Enum.nasl 4903 2017-01-02 12:13:57Z cfi $
+# $Id: NDS_Object_Enum.nasl 8392 2018-01-12 10:46:21Z cfischer $
 #
 # Netware NDS Object Enumeration
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10988");
-  script_version("$Revision: 4903 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:13:57 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 8392 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 11:46:21 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,8 +49,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Digital Defense, Inc");
   script_family("Netware");
-  script_dependencies("find_service.nasl");
-  script_require_ports(524);
+  script_dependencies("gb_netware_core_protocol_detect.nasl");
+  script_require_ports("Services/ncp", 524);
+  script_mandatory_keys("netware/ncp/detected");
 
   tag_solution = "The NDS object PUBLIC should not have Browse rights the tree should
   be restricted to authenticated users only.
@@ -75,9 +76,10 @@ if(description)
   exit(0);
 }
 
-port = 524;
-
+port = get_kb_item( "Services/ncp" );
+if( ! port ) port = 524;
 if( ! get_port_state( port ) ) exit( 0 );
+
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: secpod_limesurvey_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # LimeSurvey Version Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900352");
-  script_version("$Revision: 5815 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,10 +93,10 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
     if (isnull(cpe))
       cpe = "cpe:/a:limesurvey:limesurvey";
 
-    register_product(cpe: cpe, location: rep_dir, port: port);
+    register_product(cpe: cpe, location: rep_dir, port: surveyPort);
 
     log_message(data: build_detection_report(app: "LimeSurvey", version: version,
-                                             install: rep_dir, cpe: cpe), port: port);
+                                             install: rep_dir, cpe: cpe), port: surveyPort);
   }
   # PHPSurveyor or Surveyor are the product name of old LimeSurvey
   else if ("You have not provided a survey identification number" >< rcvRes) {
@@ -119,10 +119,10 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
     if (isnull(cpe))
       cpe = "cpe:/a:limesurvey:limesurvey";
 
-    register_product(cpe: cpe, location: rep_dir, port: port);
+    register_product(cpe: cpe, location: rep_dir, port: surveyPort);
 
     log_message(data: build_detection_report(app: "LimeSurvey", version: version,
-                                             install: rep_dir, cpe: cpe), port: port);
+                                             install: rep_dir, cpe: cpe), port: surveyPort);
   }
 }
 

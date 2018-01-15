@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX139017.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_citrix_netscaler_CTX139017.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Denial of Service Vulnerability (CTX139017)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2013-6011");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6132 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler Denial of Service Vulnerability (CTX139017)");
 
@@ -53,13 +53,13 @@ vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -68,21 +68,16 @@ include("host_details.inc");
 include("version_func.inc");
 
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) exit( 0 );
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
-
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
-if( version =~ "^10\.0\." )
+if( vers =~ "^10\.0\." )
 {
-  if( version_is_less( version:version, test_version: '10.0.76.7') )
+  if( version_is_less( version:vers, test_version: '10.0.76.7') )
   {
-    report = 'Installed version: ' + report_version + '\n' +
+    report = 'Installed version: ' + vers + '\n' +
              'Fixed version:     10.0 build 76.7\n';
 
-    security_message( port:port, data:report );
+    security_message( port:0, data:report );
     exit( 0 );
   }
 }

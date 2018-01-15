@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 8363 2018-01-10 15:48:33Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 8414 2018-01-13 11:55:11Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 8363 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 16:48:33 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 8414 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-13 12:55:11 +0100 (Sat, 13 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -234,6 +234,7 @@ testDirList = make_list(
 "admisapi",
 "agentes",
 "analog",
+"analytics",
 "anthill",
 "apache",
 "app",
@@ -568,6 +569,7 @@ testDirList = make_list(
 "manage",
 "manual",
 "marketing",
+"matomo",
 "member",
 "members",
 "mercuryboard",
@@ -587,6 +589,7 @@ testDirList = make_list(
 "ncadmin",
 "nchelp",
 "ncsample",
+"nds",
 "netbasic",
 "netcat",
 "netmagstats",
@@ -647,6 +650,7 @@ testDirList = make_list(
 "pma",
 "poll",
 "polls",
+"portal",
 "postgres",
 "ppwb",
 "printers",

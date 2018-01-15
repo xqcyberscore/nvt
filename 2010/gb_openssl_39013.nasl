@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_39013.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_openssl_39013.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # OpenSSL 'ssl3_get_record()' Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100587");
- script_version("$Revision: 5621 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 8374 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-20 13:41:39 +0200 (Tue, 20 Apr 2010)");
  script_bugtraq_id(39013);
  script_cve_id("CVE-2010-0740");
@@ -81,7 +81,7 @@ if(vers =~ "^0\.9\.") {
   if(!isnull(vers)) {
 
     if(version_is_less(version: vers, test_version: "0.9.8.n")) {
-        security_message(port:port);
+        security_message(port:0);
         exit(0);
     }
 

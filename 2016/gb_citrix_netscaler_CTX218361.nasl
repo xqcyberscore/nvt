@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX218361.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_citrix_netscaler_CTX218361.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9028");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5588 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack (CTX218361)");
 
@@ -53,13 +53,13 @@ Version 10.1 earlier than 10.1 Build 135.8");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-10-28 12:53:02 +0200 (Fri, 28 Oct 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -67,33 +67,28 @@ Version 10.1 earlier than 10.1 Build 135.8");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
-
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
-
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
 
 if( enhanced )
   exit( 99 );
 else
 {
-  if( version_in_range( version:version, test_version:'10.5', test_version2:'10.5.61.10' ) )
+  if( version_in_range( version:vers, test_version:'10.5', test_version2:'10.5.61.10' ) )
   {
     fix = '10.5 Build 61.11';
   }
 
-  if( version_in_range( version:version, test_version:'10.1', test_version2:'10.1.135.7' ) )
+  if( version_in_range( version:vers, test_version:'10.1', test_version2:'10.1.135.7' ) )
   {
     fix = '10.1 build 135.8';
   }
 
-  if( version_in_range( version:version, test_version:'11.0', test_version2:'11.0.65.30' ) )
+  if( version_in_range( version:vers, test_version:'11.0', test_version2:'11.0.65.30' ) )
   {
     fix = '11.0 Build 65.31';
   }
-   if( version_in_range( version:version, test_version:'11.1', test_version2:'11.1.47.13' ) )
+   if( version_in_range( version:vers, test_version:'11.1', test_version2:'11.1.47.13' ) )
    {
      fix = '11.1 Build 47.14';
    }
@@ -101,9 +96,9 @@ else
 
 if( fix )
 {
-  report = report_fixed_ver( installed_version:report_version, fixed_version:fix );
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

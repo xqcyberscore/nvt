@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_01.nasl 8192 2017-12-20 09:53:28Z teissa $
+# $Id: gb_apple_macosx_HT208331_01.nasl 8378 2018-01-11 14:38:57Z gveerendra $
 #
-# Apple MacOSX Security Updates(HT208331)-01
+# Apple MacOSX Security Updates(HT208331, HT208394)-01
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812400");
-  script_version("$Revision: 8192 $");
-  script_cve_id("CVE-2017-13872"); 
-  script_bugtraq_id(101981);
+  script_version("$Revision: 8378 $");
+  script_cve_id("CVE-2017-13872", "CVE-2017-5754"); 
+  script_bugtraq_id(101981, 102378);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:33 +0530 (Thu, 07 Dec 2017)");
-  script_name("Apple MacOSX Security Updates(HT208331)-01");
+  script_name("Apple MacOSX Security Updates(HT208331, HT208394)-01");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
@@ -43,12 +43,15 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The Security update resolves, a logic error
-  existed in the validation of credentials.");
+  existed in the validation of credentials and an error in systems with 
+  microprocessors utilizing speculative execution and indirect branch prediction.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code with kernel and system privileges. Also
   attacker may be able to bypass administrator authentication without supplying
-  the administrator's password.
+  the administrator's password and also allow unauthorized disclosure of 
+  information to an attacker with local user access via a side-channel analysis 
+  of the data cache.
 
   Impact Level: System");
 
@@ -60,6 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208331");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208394");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

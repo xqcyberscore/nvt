@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netware_ldap_search_request.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: netware_ldap_search_request.nasl 8402 2018-01-12 14:03:40Z cfischer $
 #
 # Netware LDAP search request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12104");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 8402 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,15 +64,9 @@ include("misc_func.inc");
 
 port = get_ldap_port( default:389 );
 
-flag = 0;
+flag = FALSE;
 
-warning = string("
-The server's directory base is set to NULL. This allows information to be 
-enumerated without any prior knowledge of the directory struture.
-
-The following information was pulled from the server via a LDAP request:\n");
-
-
+report = 'The following information was pulled from the server via a LDAP request:\n';
 
 senddata = raw_string(
 0x30, 0x25, 0x02, 0x01, 0x02, 0x63, 0x20, 0x04, 0x00, 0x0a, 
@@ -80,42 +74,44 @@ senddata = raw_string(
 0x00, 0x01, 0x01, 0x00, 0x87, 0x0b, 0x6f, 0x62, 0x6a, 0x65, 
 0x63, 0x74, 0x63, 0x6c, 0x61, 0x73, 0x73, 0x30, 0x00
 			);
+soc = open_sock_tcp( port );
+if ( ! soc ) exit( 0 );
 
-soc = open_sock_tcp(port);
-if ( ! soc ) exit(0);
-send(socket:soc, data:senddata);
-buf = recv(socket:soc, length:4096);
-close(soc);
-version = string(buf);
+send( socket:soc, data:senddata );
+buf = recv( socket:soc, length:4096 );
+close( soc );
+if( isnull( buf ) ) exit( 0 );
 
-if (buf == NULL) exit(0);
+version = string( buf );
+hbuf    = hexstr( buf );
 
-hbuf = hexstr(buf);
+if( "Novell" >< buf ) {
+  hostname = strstr( hbuf, "4c44415020536572766572" );
+  hostname = hostname - strstr( hostname, "304f302b04075665" );
+  if( hostname )
+    hostname = hex2raw( s:hostname );
 
-
-if ("Novell" >< buf) {
-	hostname = strstr(hbuf, "4c44415020536572766572");
-	hostname = hostname - strstr(hostname, "304f302b04075665");
-	hostname = hex2raw(s:hostname);
-	warning += string(hostname,"\n");
-	flag = 1;
-	}
-
-if ("LDAP Server" >< buf) {
-	version = strstr(hbuf, "4e6f76656c6c");
-	version = version - strstr(version, "300d");
-	version = hex2raw(s:version);
-	warning += string(version);
-	flag = 1;
-	}
-
-if (flag == 1) {
-	warning += 
-string("
-
-Solution: Disable or restrict anonymous binds in LDAP if not required
-See also: http://support.novell.com/cgi-bin/search/searchtid.cgi?/10077872.htm
-Risk Factor: Medium");
-security_message(port:port, data:warning);
+  if( hostname ) {
+    report += string( "Hostname: ", hostname, "\n" );
+    flag = TRUE;
+  }
 }
 
+if( "LDAP Server" >< buf ) {
+  version = strstr( hbuf, "4e6f76656c6c" );
+  version = version - strstr( version, "300d" );
+  if( version )
+    version = hex2raw( s:version );
+
+  if( version ) {
+    report += string( "LDAP Server Version: ", version, "\n" );
+    flag = TRUE;
+  }
+}
+
+if( flag ) {
+  security_message( port:port, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_xss_n_code_inj_vuln.nasl 4437 2016-11-08 07:18:47Z teissa $
+# $Id: gb_drupal_xss_n_code_inj_vuln.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # Drupal XSS and Code Injection Vulnerability
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:drupal:drupal";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800908");
-  script_version("$Revision: 4437 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 08:18:47 +0100 (Tue, 08 Nov 2016) $");
+  script_version("$Revision: 8374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-07-15 13:05:34 +0200 (Wed, 15 Jul 2009)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -80,9 +80,9 @@ if(!drPort){
   exit(0);
 }
 
-if( ! drupalVer = get_app_version( cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+" ) ) exit( 0 );
+if( ! drupalVer = get_app_version( cpe:CPE, port:drPort, version_regex:"^[0-9]\.[0-9]+" ) ) exit( 0 );
 
 # Check for Drupal Version 6.0 < 6.13
 if(version_in_range(version:drupalVer, test_version:"6.0", test_version2:"6.12")){
-  security_message(drPort);
+  security_message(port:drPort);
 }

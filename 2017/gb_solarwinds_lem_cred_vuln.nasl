@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_cred_vuln.nasl 6597 2017-07-07 09:33:30Z ckuersteiner $
+# $Id: gb_solarwinds_lem_cred_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # SolarWinds Log and Event Manager Hardcoded Credentials Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106931");
-  script_version("$Revision: 6597 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-07 11:33:30 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 8371 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-07-07 11:20:51 +0700 (Fri, 07 Jul 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:M/C:C/I:N/A:N");
@@ -77,7 +77,7 @@ if (version_is_equal(version: version, test_version: "6.3.1")) {
   if (!hotfix || int(hotfix) < 5) {
     report = report_fixed_ver(installed_version: version, installed_patch: hotfix, fixed_version: "6.3.1",
                               fixed_patch: "5");
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
     exit(0);
   }
 }

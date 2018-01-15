@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_mult_vuln.nasl 8372 2018-01-11 10:19:36Z cfischer $
 #
 # IBM Domino KeyView PDF Filter Buffer Overflow Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106112");
-  script_version("$Revision: 7575 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 8372 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-04 08:56:27 +0700 (Mon, 04 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -81,7 +81,7 @@ vers = ereg_replace(pattern: "IF", string: vers, replace: ".");
 
 if (version_in_range(version: vers, test_version: "8.5.0", test_version2: "8.5.3.6.12")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "8.5.3 FP6 IF13");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

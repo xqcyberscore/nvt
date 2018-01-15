@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_mse_cmx_version.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_cisco_mse_cmx_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # Cisco Mobility Services Engine Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105459");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version ("$Revision: 8370 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-11-19 16:21:45 +0100 (Thu, 19 Nov 2015)");
  script_name("Cisco Mobility Services Engine Detection");
 
@@ -72,6 +72,6 @@ register_product( cpe:cpe );
 
 report = 'Detected Cisco Mobility Service Engine\nVersion: ' + version + '\nCPE: ' + cpe + '\nDetection source: ' + source;
 
-log_message( port:port, data:report );
+log_message( port:0, data:report );
 exit( 0 );
 

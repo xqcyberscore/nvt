@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: netscaler_web_detect.nasl 8399 2018-01-12 13:03:38Z asteins $
 #
-# Citrix NetScaler Web Detection
+# Citrix NetScaler Detection (HTTP)
 #
 # Authors:
 # nnposter
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80024");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8399 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 14:03:38 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_name("Citrix NetScaler Web Detection");
+  script_name("Citrix NetScaler Detection (HTTP)");
 
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +54,6 @@ version.");
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -67,40 +66,30 @@ foreach url( make_list("/vpn/tmindex.html", "/vpn/index.html", "/", "/index.html
   if( ! res ) continue;
 
   if (("<title>Citrix Login</title>" >!< res || res !~ 'action="(/login/do_login|/ws/login\\.pl)"') &&
-      "<title>netscaler gateway</title>" >!< tolower( res ) && "<title>citrix access gateway</title>" >!< tolower( res ) )
+      "<title>netscaler gateway</title>" >!< tolower(res) &&
+      "<title>citrix access gateway</title>" >!< tolower(res))
     continue;
 
-  set_kb_item( name:"www/netscaler", value:TRUE );
-  set_kb_item( name:"www/netscaler/"+ port, value:TRUE );
-  set_kb_item( name:"Services/www/" + port + " /embedded", value:TRUE );
-  set_kb_item( name:"citrix_netscaler/webinterface/port", value:port );
+  set_kb_item(name: "citrix_netscaler/detected", value: TRUE);
+  set_kb_item(name: "citrix_netscaler/http/detected", value: TRUE);
+  set_kb_item(name: "citrix_netscaler/http/port", value: port);
+
+  version = 'unknown';
 
   url2 = '/epa/epa.html';
   req = http_get( item:url2, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  version = eregmatch( pattern:'var nsversion="([^;]+)";', string:buf );
-  vers = 'unknown';
-  cpe = 'cpe:/a:citrix:netscaler';
+  vers = eregmatch( pattern:'var nsversion="([^;]+)";', string:buf );
 
-  if( ! isnull( version[1] ) ) {
-    vers = str_replace( string:version[1], find:",", replace:"." );
-    replace_kb_item( name:"citrix_netscaler/web/version", value:vers );
-    set_kb_item( name:"citrix_netscaler/found", value:TRUE );
-    cpe += ':' + vers;
-    concUrl = url2;
+  if (!isnull(vers[1])) {
+    version = str_replace( string:vers[1], find:",", replace:"." );
+    set_kb_item(name: "citrix_netscaler/http/" + port + "/version", value: version);
+    set_kb_item(name: "citrix_netscaler/http/" + port + "/concluded", value: vers[0]);
+    set_kb_item(name: "citrix_netscaler/http/" + port + "/concUrl", value: report_vuln_url(port: port, url: url2, url_only: TRUE));
+    set_kb_item(name: "citrix_netscaler/http/" + port + "/detectUrl", value: report_vuln_url(port: port, url: url, url_only: TRUE));
   }
 
-  register_product( cpe:cpe, location:"/", port:port );
-
-  log_message( data:build_detection_report( app:"Citrix NetScaler",
-                                            version:vers,
-                                            install:"/",
-                                            cpe:cpe,
-                                            concluded:version[0],
-                                            concludedUrl: concUrl,
-                                            extra: "Detected URL: " + url),
-               port:port );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: novell_edirectory_detect.nasl 8392 2018-01-12 10:46:21Z cfischer $
 #
 # Novell/NetIQ eDirectory Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100339");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 8392 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-12 11:46:21 +0100 (Fri, 12 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-11-06 12:41:10 +0100 (Fri, 06 Nov 2009)");
   script_name("Novell/NetIQ eDirectory Detection");
   script_category(ACT_GATHER_INFO);
@@ -75,7 +75,7 @@ close( soc );
 
 str = bin2string( ddata:res, noprint_replacement:"#" );
 
-if( str !~ "LDAP Agent for (Novell|NetIQ) eDirectory" )
+if( str !~ "LDAP Agent for (Novell|NetIQ) eDirectory" && "Anonymous Simple Bind Disabled" >!< str )
   exit( 0 );
 
 version = 'unknown';
@@ -135,7 +135,3 @@ report = build_detection_report( app:product + " eDirectory", version:report_ver
 log_message( port:port, data:report );
 
 exit( 0 );
-
-
-
-

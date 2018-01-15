@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4055002.nasl 8364 2018-01-10 16:59:46Z gveerendra $
+# $Id: gb_ms_kb4055002.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # Microsoft .NET Framework Denial Of Service And Security Feature Bypass Vulnerabilities (KB4055002)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812713");
-  script_version("$Revision: 8364 $");
+  script_version("$Revision: 8371 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 13:15:49 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework Denial Of Service And Security Feature Bypass Vulnerabilities (KB4055002)");
 
@@ -109,7 +109,7 @@ foreach item (registry_enum_keys(key:key))
     {
       report = 'File checked:     ' + dotPath + "system.runtime.remoting.dll" + '\n' +
                'File version:     ' + sysdllVer  + '\n' +
-               'Vulnerable range: ' + vulnerable_range + '\n' ;
+               'Vulnerable range: 4.6 - 4.7.2116\n' ;
       security_message(data:report);
       exit(0);
     }

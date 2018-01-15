@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_73342.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_citrix_netscaler_73342.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-2840","CVE-2015-2838","CVE-2015-2839");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6534 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability");
 
@@ -75,13 +75,13 @@ to properly sanitize user-supplied input.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:10:00 +0200 (Tue, 12 May 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -89,21 +89,16 @@ to properly sanitize user-supplied input.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 
-if( vers !~ '10\\.5' ) exit( 99 );
+if( vers !~ '^10\\.5' ) exit( 99 );
 
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
-
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
-if( version_is_less( version: version, test_version: "10.5.52.3" ) )
+if( version_is_less( version: vers, test_version: "10.5.52.3" ) )
 {
-    report = 'Installed version: ' + report_version + '\n' +
+    report = 'Installed version: ' + vers + '\n' +
              'Fixed version:     10.5 build 52.3\n';
 
-    security_message( port:port, data:report );
+    security_message( port:0, data:report );
     exit (0 );
 }
 

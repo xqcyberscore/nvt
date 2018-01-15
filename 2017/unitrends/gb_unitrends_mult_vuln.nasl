@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_unitrends_mult_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # Unitrends Multiple Vulnerabilities 
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:unitrends:enterprise_backup';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140447");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 8371 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-10-23 15:52:55 +0700 (Mon, 23 Oct 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -83,7 +83,7 @@ if (!version = get_app_version(cpe: CPE))
 
 if (version_is_less(version: version, test_version: "10.0.0")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "10.0.0");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_login.nasl 6859 2017-08-07 09:59:48Z cfischer $
+# $Id: smb_login.nasl 8370 2018-01-11 09:44:52Z cfischer $
 #
 # SMB log in
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10394");
-  script_version("$Revision: 6859 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-07 11:59:48 +0200 (Mon, 07 Aug 2017) $");
+  script_version("$Revision: 8370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,9 +55,9 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-function remote_login( login, passwd, domain, name ) {
+function remote_login( login, passwd, domain, name, port ) {
 
-  local_var login, passwd, domain, name;
+  local_var login, passwd, domain, name, port;
   local_var login_defined, soc, r, prot, uid, tid;
 
   login_defined = 0;
@@ -188,9 +188,9 @@ if( domain && flag != 1 ) {
 }
 
 if( flag == 1 && ! strlen( user_domain ) ) {
-  login_defined = remote_login( login:login, passwd:password, domain:"", name:name );
+  login_defined = remote_login( login:login, passwd:password, domain:"", name:name, port:port );
 } else {
-  login_defined = remote_login( login:login, passwd:password, domain:domain, name:name );
+  login_defined = remote_login( login:login, passwd:password, domain:domain, name:name, port:port );
 }
 
 if( login_defined == 1 ) {

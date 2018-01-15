@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 8373 2018-01-11 10:29:41Z cfischer $
 #
 # Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(803837);
-  script_version("$Revision: 5842 $");
+  script_version("$Revision: 8373 $");
   script_cve_id("CVE-2013-1966", "CVE-2013-2115");
   script_bugtraq_id(60166, 60167);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-07-23 17:54:59 +0530 (Tue, 23 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities");
@@ -129,6 +129,6 @@ if(asres && ">Struts" >< asres && ">English<" >< asres)
 
       if(stop - start < i || stop - start > (i+5)) exit(0); # not vulnerable
     }
-    security_message(port:port);
+    security_message(port:asport);
     exit(0);
 }

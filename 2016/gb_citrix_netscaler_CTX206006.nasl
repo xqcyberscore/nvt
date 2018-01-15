@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX206006.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_citrix_netscaler_CTX206006.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
 #
 # Citrix NetScaler Service Delivery Appliance Multiple Security Updates
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-4163","CVE-2015-4106","CVE-2015-4105","CVE-2015-4104","CVE-2015-4103","CVE-2015-2756");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5557 $");
+ script_version ("$Revision: 8384 $");
 
  script_name("Citrix NetScaler Service Delivery Appliance Multiple Security Updates (CTX206006)");
 
@@ -57,13 +57,13 @@ CVE-2015-2756: Unmediated PCI command register access in qemu");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
  script_tag(name:"creation_date", value:"2016-08-01 13:12:14 +0200 (Mon, 01 Aug 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/version", "citrix_netscaler/build");
+ script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }
@@ -71,30 +71,26 @@ CVE-2015-2756: Unmediated PCI command register access in qemu");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE ) ) exit( 0 );
-if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
 
-version = vers + '.' + build;
-report_version = vers + ' build ' + build;
-
 if( enhanced )
 {
-  report_version = report_version + '.e';
-  if( version_in_range( version:version, test_version:"10.5", test_version2:"10.5.57.7004" ) )
+  if( version_in_range( version:vers, test_version:"10.5", test_version2:"10.5.57.7004" ) )
   {
     fix = '10.5 Build 57.7005.e';
+    vers = vers + '.e';
   }
 }
 else
 {
-  if( version_in_range( version:version, test_version:'10.5', test_version2:'10.5.58.10' ) )
+  if( version_in_range( version:vers, test_version:'10.5', test_version2:'10.5.58.10' ) )
   {
     fix = '10.5 Build 58.11';
   }
 
-  if( version_in_range( version:version, test_version:'10.1', test_version2:'10.1.133.8' ) )
+  if( version_in_range( version:vers, test_version:'10.1', test_version2:'10.1.133.8' ) )
   {
     fix = '10.1 build 133.9';
   }
@@ -102,9 +98,9 @@ else
 
 if( fix )
 {
-  report = report_fixed_ver( installed_version:report_version, fixed_version:fix );
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
 
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

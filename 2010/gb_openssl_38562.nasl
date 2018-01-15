@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_38562.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_openssl_38562.nasl 8374 2018-01-11 10:55:51Z cfischer $
 #
 # OpenSSL 'bn_wexpend()' Error Handling Unspecified Vulnerability
 #
@@ -38,10 +38,10 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100527");
  script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
  script_bugtraq_id(38562);
  script_cve_id("CVE-2009-3245");
- script_version ("$Revision: 5621 $");
+ script_version ("$Revision: 8374 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -77,7 +77,7 @@ if(vers =~ "^0\.9\.")
     if(version_is_less(version:vers , test_version: "0.9.8.m")) {
         report = 'Installed version: ' + vers + '\n' + 
                  'Fixed version:     0.9.8m';
-        security_message(port:port, data:report);
+        security_message(port:0, data:report);
         exit(0);
     }
  

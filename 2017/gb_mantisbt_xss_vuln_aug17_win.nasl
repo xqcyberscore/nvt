@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_aug17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_xss_vuln_aug17_win.nasl 8371 2018-01-11 09:58:13Z cfischer $
 #
 # MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - Aug17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811721");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 8371 $");
   script_cve_id("CVE-2015-2046");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 14:04:03 +0530 (Thu, 31 Aug 2017)");
   script_name("MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - Aug17 (Windows)");
 
@@ -95,7 +95,7 @@ if(!manVer = get_app_version(cpe:CPE, port:manPort)){
 if(version_in_range(version:manVer, test_version:"1.2.13", test_version2:"1.2.19"))
 {
   report = report_fixed_ver(installed_version: manVer, fixed_version: "1.2.20");
-  security_message(port: port, data: report);
+  security_message(port: manPort, data: report);
   exit(0);
 }
 exit(0);
