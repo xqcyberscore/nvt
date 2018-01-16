@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 8261 2017-12-29 09:13:46Z teissa $
+# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # ZKTeco ZKTime Web Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zkteco:zktime_web';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140579");
-  script_version("$Revision: 8261 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-05 12:03:16 +0700 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -64,7 +64,7 @@ if (description)
 
   script_tag(name: "affected", value: "ZKTeco ZKTime Web version 2.0.1.12280 and probably prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 5th December, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 16th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://packetstormsecurity.com/files/145159/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Scripting.html");

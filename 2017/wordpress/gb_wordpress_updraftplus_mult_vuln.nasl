@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # WordPress UpdraftPlus Plugin Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140535");
-  script_version("$Revision: 7992 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-11-24 13:22:19 +0700 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -71,8 +71,13 @@ regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/LoRexxar/CVE_Request/tree/master/wordpress%20plugin%20updraftplus%20vulnerablity");
 
+  # The CVE has been disputed
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_auth_bypass.nasl 7945 2017-11-30 12:17:23Z cfischer $
+# $Id: gb_wd_mycloud_auth_bypass.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # WD MyCloud Products Authentication Bypass and Remote Command Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:western_digital:mycloud_nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108305");
-  script_version("$Revision: 7945 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 13:17:23 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 08:00:00 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands with
   root privileges in context of the affected application.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 30th November, 2017. Solution details
+  script_tag(name:"solution", value:"No solution or patch is available as of 15th January, 2018. Solution details
   will be updated once the updates are made available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

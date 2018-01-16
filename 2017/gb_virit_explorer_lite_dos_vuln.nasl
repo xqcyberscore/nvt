@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 8192 2017-12-20 09:53:28Z teissa $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 8192 $");
+  script_version("$Revision: 8430 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
@@ -50,14 +50,15 @@ if(description)
 
   script_tag(name: "affected" , value:"TG Soft Vir.IT eXplorer Lite 8.5.42");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 27th November, 2017. Information
+  script_tag(name: "solution" , value:"No solution or patch is available as of 16th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://vuldb.com/fr/?id.109971");
+  script_xref(name: "URL", value: "https://vuldb.com/en/?id.109971");
+  script_xref(name: "URL", value: "https://github.com/k0keoyo/Vir.IT-explorer-Anti-Virus-Null-Pointer-Reference-PoC/tree/master/VirIT_NullPointerReference1");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_high_sierra_root_auth_bypass_vuln.nasl 7947 2017-11-30 12:36:50Z santu $
+# $Id: gb_apple_macosx_high_sierra_root_auth_bypass_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # Apple MacOSX High Sierra Local Root Authentication Bypass Vulnerability
 #
@@ -27,11 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812305");
-  script_version("$Revision: 7947 $");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 13:36:50 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 15:25:36 +0530 (Wed, 29 Nov 2017)");
+
+  script_cve_id("CVE-2017-13872");
+
   script_name("Apple MacOSX High Sierra Local Root Authentication Bypass Vulnerability");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X High
@@ -50,16 +53,14 @@ if(description)
 
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.13.x");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  29th Nov, 2017. Information regarding this issue will be updated once solution
-  details are available.
-  Currently users can set a password for the root user in order to avoid
-  unauthorized access to the system.");
+  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.13.2 or later.");
 
-  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://thehackernews.com/2017/11/mac-os-password-hack.html");
-  script_xref(name : "URL" , value : "https://techcrunch.com/2017/11/28/astonishing-os-x-bug-lets-anyone-log-into-a-high-sierra-machine");
+  script_xref(name: "URL", value: "https://thehackernews.com/2017/11/mac-os-password-hack.html");
+  script_xref(name: "URL", value: "https://techcrunch.com/2017/11/28/astonishing-os-x-bug-lets-anyone-log-into-a-high-sierra-machine");
+  script_xref(name: "URL", value: "https://support.apple.com/en-us/HT208315");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -99,7 +100,7 @@ else if(osVer == "10.13.1")
   if(buildVer)
   {
     ## Based on https://en.wikipedia.org/wiki/MacOS_High_Sierra
-    if(version_is_less_equal(version:buildVer, test_version:"17B48")){
+    if(version_is_less(version:buildVer, test_version:"17B48")){
       VULN = TRUE;
       install = osVer + ' build ' + buildVer;
     }
@@ -108,7 +109,7 @@ else if(osVer == "10.13.1")
 
 if(VULN)
 {
-  report = report_fixed_ver(installed_version:install, fixed_version:"Set a password for the root");
+  report = report_fixed_ver(installed_version:install, fixed_version:"10.13.2");
   security_message(data:report);
   exit(0);
 }

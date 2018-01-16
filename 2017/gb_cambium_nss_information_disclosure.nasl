@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_nss_information_disclosure.nasl 8011 2017-12-06 12:34:58Z jschulte $
+# $Id: gb_cambium_nss_information_disclosure.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # Cambium Networks Services Server Information Disclosure Vulnerability
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113060");
-  script_version("$Revision: 8011 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-06 13:34:58 +0100 (Wed, 06 Dec 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 11:49:50 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cambium Networks Services Server Information Disclosure Vulnerability");
 
@@ -52,8 +52,8 @@ if( description )
   script_tag(name:"vuldetect", value:"The script tries to access the critical files and directories.");
   script_tag(name:"insight", value:"Cambium Networks Services Server does not implement strict access control. This allows an unauthenticated attacker to access sensitive information, such as credentials.");
   script_tag(name:"impact", value:"The accessible files include user names and password hashes, potentially allowing an attacker to gain login credentials.");
-  script_tag(name:"affected", value:"Cambium Networks Services Server - all versions");
-  script_tag(name:"solution", value:"No solution available as of 30th November 2017. This will be updated once a solution is available.");
+  script_tag(name:"affected", value:"Cambium Networks Services Server prior to version 5.0.4.");
+  script_tag(name:"solution", value:"Update to version 5.0.4 or later.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3526");
 

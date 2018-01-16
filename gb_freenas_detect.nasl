@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freenas_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_freenas_detect.nasl 8431 2018-01-16 05:33:47Z ckuersteiner $
 #
 # FreeNAS Detection
 #
@@ -24,84 +24,70 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running FreeNAS, an embedded open source NAS
-(Network-Attached Storage) distribution based on FreeBSD.";
-
 if(description)
 {
- script_id(100911);
+ script_oid("1.3.6.1.4.1.25623.1.0.100911");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8431 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 06:33:47 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-19 13:40:50 +0100 (Fri, 19 Nov 2010)");
  script_tag(name:"cvss_base", value:"0.0");
+
  script_name("FreeNAS Detection");
+
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("lighttpd/banner");
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 80, 443);
+ script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://freenas.org/");
+ script_tag(name: "summary", value: "Detection of FreeNAS.
+
+The script sends a connection request to the server and attempts to detect FreeNAS and to extract its version.");
+
+ script_xref(name: "URL", value: "http://freenas.org/");
+
  exit(0);
 }
 
+include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100911";
-SCRIPT_DESC = "FreeNAS Detection";
-
 port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+if (!can_host_php(port: port))
+  exit(0);
 
-banner = get_http_banner(port:port);
-if(!banner || "Server: lighttpd" >!< banner)exit(0);
+res = http_get_cache(port: port, item: "/account/login/");
 
-foreach dir( make_list_unique( "/nas", "/freenas", cgi_dirs( port:port ) ) ) {
+if ('title="FreeNAS' >< res && 'title="iXsystems, Inc.">' >< res) {
+  version = "unknown";
 
- install = dir;
- if( dir == "/" ) dir = "";
- url = dir + "/login.php";
- buf = http_get_cache( item:url, port:port );
- if( buf == NULL ) continue;
+  url = '/docs/intro.html';
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
 
- if("<title>FreeNAS" >< buf && "Username" >< buf && "Password" >< buf)
- {
-    vers = string("unknown");
-    ### try to get version 
-
-    url = string(dir, "/CHANGES");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-    version = eregmatch(string: buf, pattern: "FreeNAS ([0-9bRC.]+)",icase:TRUE);
-
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-    }
-
-    set_kb_item(name: string("www/", port, "/freenas"), value: string(vers," under ",install));
-
-    if(vers == "unknown") {
-      register_host_detail(name:"App", value:string("cpe:/a:freenas:freenas"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-    } else {
-      register_host_detail(name:"App", value:string("cpe:/a:freenas:freenas:",vers), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-    }  
-
-    info = string("FreeNAS Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
-    log_message(port:port,data:info);
-    exit(0);
+  vers = eregmatch(pattern: "<p>Version ([0-9.]+)", string: res);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
   }
+
+  set_kb_item(name: "freenas/detected", value: TRUE);
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:freenas:freenas:");
+  if (!cpe)
+    cpe = 'cpe:/a:freenas:freenas';
+
+  register_product(cpe: cpe, location: "/", port: port);
+
+  log_message(data: build_detection_report(app: "FreeNAS", version: version, install: "/", cpe: cpe,
+                                           concluded: vers[0], concludedUrl: concUrl),
+              port: port);
+  exit(0);
 }
 
 exit(0);

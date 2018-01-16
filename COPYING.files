@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 15 Jan 2018 09:48:56 +0100
+# Automatically created on:  Tue, 16 Jan 2018 07:54:47 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52981,6 +52981,10 @@
 2018/debian/deb_4081.nasl: GPLv2+
 2018/debian/deb_4082.nasl: GPLv2+
 2018/debian/deb_4083.nasl: GPLv2+
+2018/debian/deb_4084.nasl: GPLv2+
+2018/debian/deb_4085.nasl: GPLv2+
+2018/debian/deb_4086.nasl: GPLv2+
+2018/debian/deb_4087.nasl: GPLv2+
 2018/debian/deb_dla_1227.nasl: GPLv2+
 2018/debian/deb_dla_1228.nasl: GPLv2+
 2018/debian/deb_dla_1229.nasl: GPLv2+
@@ -53028,6 +53032,30 @@
 2018/debian/deb_dla_844.nasl: GPLv2+
 2018/debian/deb_dla_845.nasl: GPLv2+
 2018/debian/deb_dla_846.nasl: GPLv2+
+2018/debian/deb_dla_847.nasl: GPLv2+
+2018/debian/deb_dla_848.nasl: GPLv2+
+2018/debian/deb_dla_849.nasl: GPLv2+
+2018/debian/deb_dla_850.nasl: GPLv2+
+2018/debian/deb_dla_851.nasl: GPLv2+
+2018/debian/deb_dla_852.nasl: GPLv2+
+2018/debian/deb_dla_853.nasl: GPLv2+
+2018/debian/deb_dla_854.nasl: GPLv2+
+2018/debian/deb_dla_855.nasl: GPLv2+
+2018/debian/deb_dla_856.nasl: GPLv2+
+2018/debian/deb_dla_857.nasl: GPLv2+
+2018/debian/deb_dla_858.nasl: GPLv2+
+2018/debian/deb_dla_859.nasl: GPLv2+
+2018/debian/deb_dla_860.nasl: GPLv2+
+2018/debian/deb_dla_861.nasl: GPLv2+
+2018/debian/deb_dla_862.nasl: GPLv2+
+2018/debian/deb_dla_863.nasl: GPLv2+
+2018/debian/deb_dla_864.nasl: GPLv2+
+2018/debian/deb_dla_865.nasl: GPLv2+
+2018/debian/deb_dla_866.nasl: GPLv2+
+2018/debian/deb_dla_867.nasl: GPLv2+
+2018/debian/deb_dla_868.nasl: GPLv2+
+2018/debian/deb_dla_869.nasl: GPLv2+
+2018/debian/deb_dla_870.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
 2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_01ad8b3946_heketi_fc27.nasl: GPLv2+
@@ -53085,6 +53113,7 @@
 2018/gb_malwarebytes_multiple_dos_vuln.nasl: GPLv2+
 2018/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
+2018/gb_yawcam_dir_trav_vuln.nasl: GPLv2+
 2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
 2018/microsoft/gb_ms_ie_mult_vuln_kb4056568.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3141547.nasl: GPLv2+
@@ -53616,6 +53645,10 @@ gb_codoforum_detect.nasl: GPLv2+
 gb_coldfusion_detect.nasl: GPLv2+
 gb_collabtive_detect.nasl: GPLv2+
 gb_colorado_ftp_server_detect.nasl: GPLv2+
+gb_communigatepro_consolidation.nasl: GPLv2+
+gb_communigatepro_http_detect.nasl: GPLv2+
+gb_communigatepro_imap_detect.nasl: GPLv2+
+gb_communigatepro_smtp_detect.nasl: GPLv2+
 gb_comodo_backup_detect_win.nasl: GPLv2+
 gb_comodo_internet_security_detect_win.nasl: GPLv2+
 gb_composr_cms_detect.nasl: GPLv2+
@@ -54710,6 +54743,7 @@ gb_xwiki_enterprise_detect.nasl: GPLv2+
 gb_xzeres_442SR_wind_turbine_detect.nasl: GPLv2+
 gb_yabsoft_aihs_detect.nasl: GPLv2+
 gb_yahoo_msg_detect.nasl: GPLv2+
+gb_yawcam_detect.nasl: GPLv2+
 gb_yealink_ip_phone_detect.nasl: GPLv2+
 gb_yokogawa_stardom_detect.nasl: GPLv2+
 gb_zarafa_webaccess_detect.nasl: GPLv2+
@@ -55012,6 +55046,8 @@ gsf/2018/citrix/gb_citrix_netscaler_CTX227928.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX230238.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX230612.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
+gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
+gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+

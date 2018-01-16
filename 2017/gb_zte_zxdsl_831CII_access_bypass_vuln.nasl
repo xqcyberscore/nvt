@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_831CII_access_bypass_vuln.nasl 8241 2017-12-22 13:40:20Z cfischer $
+# $Id: gb_zte_zxdsl_831CII_access_bypass_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # ZTE ZXDSL 831CII Access Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812228");
-  script_version("$Revision: 8241 $");
+  script_version("$Revision: 8430 $");
   script_cve_id("CVE-2017-16953");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 18:25:42 +0530 (Tue, 28 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ZTE ZXDSL 831CII Access Bypass Vulnerability");
@@ -53,14 +53,14 @@ if(description)
 
   script_tag(name:"affected", value:"ZTE ZXDSL 831CII");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  28th November, 2017. Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to http://zte.com.cn");
+  script_tag(name: "solution" , value:"As 831CII V6.2 was end of sale and service in 2011, and its replacement
+version 831CII V2.0 was also end of sale and service in March 2015, the vendor strongly recommend users to choose
+the replacement version H108N V2.5.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/43188");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43188");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43188");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -74,12 +74,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-url = "";
-report = "";
-banner = "";
-zteport = 0;
-telport = 0;
 
 if(!zteport = get_http_port(default:80)){
   exit(0);

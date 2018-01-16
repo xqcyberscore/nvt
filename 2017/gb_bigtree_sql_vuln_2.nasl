@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_sql_vuln_2.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_bigtree_sql_vuln_2.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
 #
 # BigTree CMS SQL Injection Vulnerability (2)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112141");
-  script_version("$Revision: 8091 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 8430 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-11-28 08:33:19 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("BigTree CMS SQL Injection Vulnerability (2)");
 
@@ -59,8 +59,7 @@ The attack uses an admin/trees/add/process request with a crafted _tags[] parame
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 28th November, 2017.
-Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 4.2.20 or later.");
 
   script_xref(name: "URL", value: "https://github.com/bigtreecms/BigTree-CMS/issues/323");
 
@@ -77,7 +76,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "4.2.19")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None Available");
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.2.20");
   security_message(port: port, data: report);
   exit(0);
 }
