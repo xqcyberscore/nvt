@@ -68,8 +68,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00047.html");
   script_id(870920);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:01:39 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-3955");
   script_bugtraq_id(55530);
@@ -78,7 +78,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0504-02");
   script_name("RedHat Update for dhcp RHSA-2013:0504-02");
 
-  script_summary("Check for the Version of dhcp");
+  script_tag(name: "summary" , value: "Check for the Version of dhcp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

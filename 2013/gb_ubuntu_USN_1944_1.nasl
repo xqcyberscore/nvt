@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1944_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1944_1.nasl 8448 2018-01-17 16:18:06Z teissa $
 #
 # Ubuntu Update for linux USN-1944-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841542);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:37:22 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2012-5374", "CVE-2012-5375", "CVE-2013-1060", "CVE-2013-2140",
                 "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-4162", "CVE-2013-4163");
@@ -87,7 +87,7 @@ to cause a denial of service (system crash). (CVE-2013-4163)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1944-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1944-1/");
-  script_summary("Check for the Version of linux");
+  script_tag(name: "summary" , value: "Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

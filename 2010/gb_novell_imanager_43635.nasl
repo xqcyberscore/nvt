@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_43635.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_novell_imanager_43635.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Novell iManager 'getMultiPartParameters()' Arbitrary File Upload Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100835);
- script_version("$Revision: 7573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100835");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_bugtraq_id(43635);
  script_tag(name:"cvss_base", value:"4.6");

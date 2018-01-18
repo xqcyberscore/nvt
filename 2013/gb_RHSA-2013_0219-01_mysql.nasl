@@ -56,8 +56,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-January/msg00066.html");
   script_id(870899);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:53:59 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-0572", "CVE-2012-0574", "CVE-2012-1702", "CVE-2012-1705",
                 "CVE-2013-0375", "CVE-2013-0383", "CVE-2013-0384", "CVE-2013-0385",
@@ -69,7 +69,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0219-01");
   script_name("RedHat Update for mysql RHSA-2013:0219-01");
 
-  script_summary("Check for the Version of mysql");
+  script_tag(name: "summary" , value: "Check for the Version of mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

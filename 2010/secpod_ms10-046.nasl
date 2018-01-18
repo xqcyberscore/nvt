@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-046.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-046.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Microsoft Windows Shell Remote Code Execution Vulnerability (2286198)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(902226);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902226");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_cve_id("CVE-2010-2568");
   script_bugtraq_id(41732);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_moodle_mult_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -47,9 +47,9 @@ tag_summary = "This host is running Moodle and is prone to multiple
 
 if(description)
 {
-  script_id(800766);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800766");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1614", "CVE-2010-1615",
                 "CVE-2010-1617", "CVE-2010-1618", "CVE-2010-1619");

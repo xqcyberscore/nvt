@@ -43,9 +43,9 @@ tag_affected = "sudo on Mandriva Linux 2009.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-09/msg00009.php");
-  script_id(831149);
-  script_version("$Revision: 8164 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831149");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-14 15:35:55 +0200 (Tue, 14 Sep 2010)");
   script_xref(name: "MDVSA", value: "2010:175");
   script_tag(name:"cvss_base", value:"6.2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: CoreHTTP_37454.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: CoreHTTP_37454.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # CoreHTTP CGI Support Remote Command Execution Vulnerability
 #
@@ -35,9 +35,9 @@ CoreHTTP 0.5.3.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100418);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100418");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_bugtraq_id(37454);
  script_tag(name:"cvss_base", value:"7.5");

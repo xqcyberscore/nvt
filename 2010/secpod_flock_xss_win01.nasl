@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_flock_xss_win01.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_flock_xss_win01.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Flock Browser RSS Feed Cross site scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Flock browser and is prone to cross
 
 if(description)
 {
-  script_id(902314);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902314");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3262");
   script_bugtraq_id(43225);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_telnet_detect.nasl 8111 2017-12-14 07:03:31Z cfischer $
+# $Id: gb_hirschmann_telnet_detect.nasl 8449 2018-01-17 17:04:52Z cfischer $
 #
 # Hirschmann Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108312");
-  script_version("$Revision: 8111 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:03:31 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 8449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:04:52 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-11 09:03:31 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,9 +62,9 @@ if( "Hirschmann Automation and Control GmbH" >< banner ) {
   set_kb_item( name:"hirschmann_device/telnet/detected", value:TRUE );
   set_kb_item( name:"hirschmann_device/telnet/port", value:port );
 
-  fw_version      = "unknown";
-  product_name    = "unknown";
-  model_shortname = "unknown";
+  fw_version    = "unknown";
+  product_name  = "unknown";
+  platform_name = "unknown";
 
   # MACH Rugged Switch Release L2P-09.0.12
   # MACH Release L2P-09.0.04
@@ -79,10 +79,10 @@ if( "Hirschmann Automation and Control GmbH" >< banner ) {
       product_name = vers_prod_nd_model[1];
       fw_version   = vers_prod_nd_model[4];
       if( vers_prod_nd_model[3] ) {
-        model_shortname  = vers_prod_nd_model[2] + "-";
-        model_shortname += ereg_replace( pattern:"-$", string:vers_prod_nd_model[3], replace:"" );
+        platform_name  = vers_prod_nd_model[2] + "-";
+        platform_name += ereg_replace( pattern:"-$", string:vers_prod_nd_model[3], replace:"" );
       } else {
-        model_shortname = vers_prod_nd_model[2];
+        platform_name = vers_prod_nd_model[2];
       }
       set_kb_item( name:"hirschmann_device/telnet/" + port + "/concluded", value:vers_prod_nd_model[0] );
     } else {
@@ -93,7 +93,7 @@ if( "Hirschmann Automation and Control GmbH" >< banner ) {
   }
   set_kb_item( name:"hirschmann_device/telnet/" + port + "/fw_version", value:fw_version );
   set_kb_item( name:"hirschmann_device/telnet/" + port + "/product_name", value:product_name );
-  set_kb_item( name:"hirschmann_device/telnet/" + port + "/model_shortname", value:model_shortname );
+  set_kb_item( name:"hirschmann_device/telnet/" + port + "/platform_name", value:platform_name );
 
   # Base-MAC   :  AA:00:11:22:33:44
   if( mac = eregmatch( pattern:"Base-MAC[ ]+:[ ]+([0-9a-fA-F:]{17})", string:banner ) ) {

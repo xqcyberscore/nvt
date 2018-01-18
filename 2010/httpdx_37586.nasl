@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_37586.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: httpdx_37586.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # httpdx Space Character Remote File Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ httpdx 1.5 is affected; other versions may be vulnerable as well.";
 
 if (description)
 {
- script_id(100421);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100421");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
  script_bugtraq_id(37586);
  script_tag(name:"cvss_base", value:"5.0");

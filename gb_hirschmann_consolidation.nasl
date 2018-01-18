@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_consolidation.nasl 8089 2017-12-12 14:51:20Z cfischer $
+# $Id: gb_hirschmann_consolidation.nasl 8449 2018-01-17 17:04:52Z cfischer $
 #
 # Hirschmann Devices Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108311");
-  script_version("$Revision: 8089 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 15:51:20 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 8449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:04:52 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-11 11:03:31 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,9 +52,9 @@ include("host_details.inc");
 
 if( ! get_kb_item( "hirschmann_device/detected" ) ) exit( 0 );
 
-detected_fw_version      = "unknown";
-detected_product_name    = "unknown";
-detected_model_shortname = "unknown";
+detected_fw_version    = "unknown";
+detected_product_name  = "unknown";
+detected_platform_name = "unknown";
 
 foreach source( make_list( "http", "telnet", "snmp" ) ) {
 
@@ -74,33 +74,38 @@ foreach source( make_list( "http", "telnet", "snmp" ) ) {
     }
   }
 
-  model_shortname_list = get_kb_list( "hirschmann_device/" + source + "/*/model_shortname" );
-  foreach model_shortname( model_shortname_list ) {
-    if( model_shortname != "unknown" && detected_model_shortname == "unknown" ) {
-      detected_model_shortname = model_shortname;
-      set_kb_item( name:"hirschmann_device/model_shortname", value:model_shortname );
+  platform_name_list = get_kb_list( "hirschmann_device/" + source + "/*/platform_name" );
+  foreach platform_name( platform_name_list ) {
+    if( platform_name != "unknown" && detected_platform_name == "unknown" ) {
+      detected_platform_name = platform_name;
+      set_kb_item( name:"hirschmann_device/platform_name", value:platform_name );
     }
   }
 }
 
-if( detected_model_shortname != "unknown" ) {
-  hw_cpe = "cpe:/h:belden:hirschmann:" + tolower( detected_model_shortname );
-  if( detected_product_name != "unknown" ) {
-    app_type = detected_product_name + " " + detected_model_shortname;
-  } else {
-    app_type = detected_model_shortname;
-  }
+hw_cpe = "cpe:/h:belden:hirschmann";
+if( detected_product_name != "unknown" ) {
+  _detected_product_name = str_replace( string:detected_product_name, find:" ", replace:"_" );
+  _detected_product_name = tolower( _detected_product_name );
+  hw_cpe += "_" + _detected_product_name;
+  hw_type = detected_product_name;
 } else {
-  hw_cpe = "cpe:/h:belden:hirschmann_unknown_model";
-  if( detected_product_name != "unknown" ) {
-    app_type = detected_product_name;
-  } else {
-    app_type = "Unknown";
-  }
+  hw_cpe += "_unknown_model";
+  hw_type = "Unknown Model";
+}
+
+sw_cpe = "cpe:/a:belden:hirschmann";
+if( detected_platform_name != "unknown" ) {
+  sw_cpe += "_" + tolower( detected_platform_name );
+  sw_type = detected_platform_name + " Platform";
+} else {
+  sw_cpe += "_unknown_platform";
+  sw_type = "Unknown Platform";
 }
 
 os_cpe = "cpe:/o:belden:hirschmann_firmware";
 if( detected_fw_version != "unknown" ) {
+  sw_cpe += ":" + detected_fw_version;
   os_cpe += ":" + detected_fw_version;
 }
 
@@ -117,6 +122,7 @@ if( http_ports = get_kb_list( "hirschmann_device/http/port" ) ) {
     }
     register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
     register_product( cpe:os_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:sw_cpe, location:location, port:port, service:"www" );
   }
 }
 
@@ -129,6 +135,7 @@ if( telnet_ports = get_kb_list( "hirschmann_device/telnet/port" ) ) {
     }
     register_product( cpe:hw_cpe, location:location, port:port, service:"telnet" );
     register_product( cpe:os_cpe, location:location, port:port, service:"telnet" );
+    register_product( cpe:sw_cpe, location:location, port:port, service:"telnet" );
   }
 }
 
@@ -144,6 +151,7 @@ if( snmp_ports = get_kb_list( "hirschmann_device/snmp/port" ) ) {
     }
     register_product( cpe:hw_cpe, location:location, port:port, service:"snmp", proto:"udp" );
     register_product( cpe:os_cpe, location:location, port:port, service:"snmp", proto:"udp" );
+    register_product( cpe:sw_cpe, location:location, port:port, service:"snmp", proto:"udp" );
   }
 }
 
@@ -151,10 +159,17 @@ report = build_detection_report( app:"Belden Hirschmann Firmware",
                                  version:detected_fw_version,
                                  install:location,
                                  cpe:os_cpe );
-report += '\n\n' + build_detection_report( app:"Hirschmann " + app_type + " Device",
+
+report += '\n\n' + build_detection_report( app:"Hirschmann " + hw_type,
+                                           version:detected_fw_version,
                                            install:location,
-                                           cpe:hw_cpe,
-                                           skip_version:TRUE );
+                                           cpe:hw_cpe );
+
+report += '\n\n' + build_detection_report( app:"Hirschmann " + sw_type,
+                                           version:detected_fw_version,
+                                           install:location,
+                                           cpe:sw_cpe );
+
 if( extra ) {
   report += '\n\nDetection methods:\n';
   report += '\n' + extra;

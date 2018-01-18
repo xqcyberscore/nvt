@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bozohttpd_42021.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_bozohttpd_42021.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # bozohttpd Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100750);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100750");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-09 13:36:05 +0200 (Mon, 09 Aug 2010)");
  script_bugtraq_id(42021);
  script_cve_id("CVE-2010-2195","CVE-2010-2320");

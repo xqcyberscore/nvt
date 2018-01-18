@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dl_stats_39592.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_dl_stats_39592.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # dl_stats Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -36,9 +36,9 @@ dl_stats 2.0 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100591);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100591");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

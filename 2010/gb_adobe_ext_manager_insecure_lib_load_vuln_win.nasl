@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_ext_manager_insecure_lib_load_vuln_win.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_ext_manager_insecure_lib_load_vuln_win.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Adobe Extension Manager CS5 Insecure Library Loading Vulnerability (Windows)
 #
@@ -45,9 +45,9 @@ prone to insecure library loading vulnerability.";
 
 if(description)
 {
-  script_id(801509);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801509");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-3154");
   script_tag(name:"cvss_base", value:"9.3");

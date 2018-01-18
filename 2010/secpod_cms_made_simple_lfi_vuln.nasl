@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cms_made_simple_lfi_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_cms_made_simple_lfi_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # CMS Made Simple 'modules/Printing/output.php' Local File Include Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running CMS Made Simple and is prone to local file
 
 if(description)
 {
-  script_id(901141);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901141");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-26 15:28:03 +0200 (Thu, 26 Aug 2010)");
   script_bugtraq_id(36005);
   script_tag(name:"cvss_base", value:"6.8");

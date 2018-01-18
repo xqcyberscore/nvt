@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cms_made_simple_38234.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: cms_made_simple_38234.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # CMS Made Simple Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -44,9 +44,9 @@ vulnerable.";
 
 if (description)
 {
- script_id(100498);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100498");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
  script_bugtraq_id(38234);
  script_tag(name:"cvss_base", value:"5.0");

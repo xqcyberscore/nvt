@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AjaXplorer_39334.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_AjaXplorer_39334.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # AjaXplorer Remote Command Injection and Local File Disclosure Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100574);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100574");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-13 13:16:59 +0200 (Tue, 13 Apr 2010)");
  script_bugtraq_id(39334);
  script_tag(name:"cvss_base", value:"5.1");

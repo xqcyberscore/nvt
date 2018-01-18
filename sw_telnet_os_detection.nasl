@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 8450 2018-01-17 17:42:13Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 7718 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 8450 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:42:13 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,7 +76,12 @@ if( "NetBSD/" >< banner && ( "(tty" >< banner || "(pts" >< banner ) ) {
 }
 
 if( "SunOS" >< banner && "login:" >< banner ) {
-  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  version = eregmatch( pattern:"SunOS ([0-9.]+)", string:banner );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"SunOS", version:version[1], cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
   exit( 0 );
 }
 
@@ -93,6 +98,11 @@ if( "CMC-TC-PU2" >< banner ) {
 }
 
 if( "login:" >< banner || "Kernel" >< banner ) {
+
+  if( "VxWorks login:" >< banner ) {
+    register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
 
   if( "Debian GNU/Linux" >< banner ) {
     version = eregmatch( pattern:"Debian GNU/Linux ([0-9.]+)", string:banner );

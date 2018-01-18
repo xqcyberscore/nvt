@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_huawei_switch_detect.nasl 8436 2018-01-16 10:23:04Z jschulte $
 #
 # Huawei Switch Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106156");
- script_version ("$Revision: 7236 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version ("$Revision: 8436 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-16 11:23:04 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name: "creation_date", value: "2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ if ("Huawei Versatile Routing Platform Software" >< sysdesc) {
   if (!isnull(mo[1]))
     model = mo[1];
   else {
-    mo = eregmatch(pattern: "^.([A-Z0-9-]+) ", string: sysdesc);
+    mo = eregmatch(pattern: "\(([A-Z0-9-]+) ", string: sysdesc);
     if (!isnull(mo[1]))
       model = mo[1];
     else

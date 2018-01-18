@@ -58,9 +58,9 @@ tag_summary = "The remote host is missing Security Update 2009-001.
 
 if(description)
 {
- script_id(102026);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102026");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
  script_cve_id("CVE-2009-0142","CVE-2009-0009","CVE-2009-0020","CVE-2009-0011","CVE-2008-5050","CVE-2008-5314","CVE-2009-0012","CVE-2008-5183","CVE-2009-0013","CVE-2007-4565","CVE-2008-2711","CVE-2009-0014","CVE-2009-0015","CVE-2008-1927","CVE-2009-0017","CVE-2008-1679","CVE-2008-1721","CVE-2008-1887","CVE-2008-2315","CVE-2008-2316","CVE-2008-3142","CVE-2008-3144","CVE-2008-4864","CVE-2007-4965","CVE-2008-5031","CVE-2009-0018","CVE-2009-0019","CVE-2009-0137","CVE-2009-0138","CVE-2009-0139","CVE-2009-0140","CVE-2008-2379","CVE-2008-3663","CVE-2008-1377","CVE-2008-1379","CVE-2008-2360","CVE-2008-2361","CVE-2008-2362","CVE-2006-1861","CVE-2006-3467","CVE-2007-1351","CVE-2008-1806","CVE-2008-1807","CVE-2008-1808","CVE-2007-1352","CVE-2007-1667","CVE-2009-0141");
  script_name("Mac OS X Security Update 2009-001");

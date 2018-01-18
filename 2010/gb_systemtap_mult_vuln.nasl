@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_systemtap_mult_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_systemtap_mult_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # SystemTap Multiple Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_summary = "This host has SystemTap installed and is prone to multiple
 
 if(description)
 {
-  script_id(800294);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800294");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbit_downloader_metalink_dir_traversal_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_orbit_downloader_metalink_dir_traversal_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Orbit Downloader metalink 'name' Directory Traversal Vulnerability
 #
@@ -46,9 +46,9 @@ directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(801214);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801214");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_cve_id("CVE-2010-2104");
   script_tag(name:"cvss_base", value:"4.3");

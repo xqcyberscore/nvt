@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 8147 2017-12-15 13:51:17Z cfischer $
+# $Id: smb_nativelanman.nasl 8451 2018-01-17 18:56:46Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 8147 $");
+  script_version("$Revision: 8451 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 19:56:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -165,6 +165,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         # The same above is also valid for SLES:
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
         # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
+        # SL12: os_str: ?; smb_str: Samba 3.6.7-48.12.1-2831-SUSE-SL12.2-x86_64
         if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && ( "debian" >< tolower( smb_str ) || "SUSE" >< smb_str || "ubuntu" >< tolower( smb_str ) ) ) ) ) {
           if( "debian" >< tolower( smb_str ) ) {
             # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
@@ -182,7 +183,12 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             } else if( "SLE_12" >< smb_str ) {
               os_str = "SUSE Linux Enterprise Server 12";
             } else {
-              os_str = "Unknown SUSE Release";
+              sl_ver = eregmatch( pattern:"SUSE-SL([0-9.]+)", string:smb_str );
+              if( sl_ver[1] ) {
+                os_str = "SUSE Linux Enterprise " + sl_ver[1];
+              } else {
+                os_str = "Unknown SUSE Release";
+              }
             }
           # Ubuntu pattern for new releases last checked on 11/2017 (up to 17.10, LTS releases: 12.04 up to 12.04.5, 14.04 up to 14.04.5, 16.04 up to 16.04.3)
           } else if( "ubuntu" >< tolower( smb_str ) ) {
@@ -371,10 +377,18 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           } else if( "SUSE Linux Enterprise Server 12" >< os_str ) {
             register_and_report_os( os:"SUSE Linux Enterprise Server", version:"12", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
-            register_and_report_os( os:"Unknown SUSE Linux release", cpe:"cpe:/o:suse:unknown_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            # nb: We want to report an unknown banner here as well to catch reports with more detailed info
-            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+            sl_ver = eregmatch( pattern:"SUSE Linux Enterprise ([0-9.]+)", string:os_str );
+            if( sl_ver[1] ) {
+              register_and_report_os( os:"SUSE Linux Enterprise", version:sl_ver[1], cpe:"cpe:/o:suse:linux_enterprise", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            } else {
+              register_and_report_os( os:"Unknown SUSE Linux release", cpe:"cpe:/o:suse:unknown_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+              # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+              register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+            }
           }
+        # OS String: QTS; SMB String: Samba 4.4.14
+        } else if( os_str == "QTS" ) {
+          register_and_report_os( os:"QNAP QTS", cpe:"cpe:/o:qnap:qts", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "unix" >< tolower( os_str ) ) {
           register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           # nb: We want to report an unknown banner here as well to catch reports with more detailed info

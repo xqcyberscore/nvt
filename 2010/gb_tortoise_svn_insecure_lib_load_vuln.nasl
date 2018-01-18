@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tortoise_svn_insecure_lib_load_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_tortoise_svn_insecure_lib_load_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # TortoiseSVN Insecure Library Loading Vulnerability
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is installed with TortoiseSVN and is prone to insecure
 
 if(description)
 {
-  script_id(801290);
-  script_version("$Revision: 8169 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801290");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3199");
   script_tag(name:"cvss_base", value:"9.3");

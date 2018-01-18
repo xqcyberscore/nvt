@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openmairie_opencimetiere_mult_file_incl_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_openmairie_opencimetiere_mult_file_incl_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # openMairie openCimetiere Multiple File Inclusion Vulnerabilities
 #
@@ -45,9 +45,9 @@ multiple file inclusion vulnerabilities.";
 
 if(description)
 {
-  script_id(902048);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902048");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1944");
   script_bugtraq_id(39883);

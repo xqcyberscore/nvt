@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmedia_explorer_44598.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_webmedia_explorer_44598.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Webmedia Explorer HTML Injection Vulnerability
 #
@@ -40,9 +40,9 @@ be affected.";
 
 if (description)
 {
- script_id(100891);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100891");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
  script_bugtraq_id(44598);
  script_tag(name:"cvss_base", value:"2.6");

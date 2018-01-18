@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 8446 2018-01-17 15:50:57Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 7718 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 8446 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 16:50:57 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -194,8 +194,14 @@ if( "220-OpenBSD" >< banner || "FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17)
   exit( 0 );
 }
 
+# FTP server (SunOS 5.8)
 if( "FTP server (SunOS" >< banner ) {
-  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  version = eregmatch( pattern:"FTP server \(SunOS ([0-9.]+)", string:banner );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", version:version[1], banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
   exit( 0 );
 }
 

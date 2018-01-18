@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sqlitemanager_xss_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sqlitemanager_xss_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # SQLiteManager Cross-Site Scripting Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is running SQLiteManager and is prone to Cross Site
 
 if(description)
 {
-  script_id(800281);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800281");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

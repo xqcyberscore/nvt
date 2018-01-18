@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swftools_mult_int_overflow_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_swftools_mult_int_overflow_vuln_lin.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # SWFTools Multiple Integer Overflow Vulnerabilities
 #
@@ -42,9 +42,9 @@ integer overflow vulnerabilities.";
 
 if(description)
 {
-  script_id(801439);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801439");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-1516");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_iframe_dos_vuln_win.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_opera_iframe_dos_vuln_win.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Opera 'IFRAME' Denial Of Service vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with Opera Browser and is prone to denial o
 
 if(description)
 {
-  script_id(801216);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801216");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_cve_id("CVE-2010-2121");
   script_tag(name:"cvss_base", value:"4.3");

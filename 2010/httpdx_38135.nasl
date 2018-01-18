@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_38135.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: httpdx_38135.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # httpdx 'USER' Command Remote Format String Vulnerability
 #
@@ -35,9 +35,9 @@ The issue affects httpdx 1.5.2; other versions may also be affected.";
 
 if (description)
 {
- script_id(100491);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100491");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-09 12:21:13 +0100 (Tue, 09 Feb 2010)");
  script_bugtraq_id(38135);
  script_tag(name:"cvss_base", value:"9.3");

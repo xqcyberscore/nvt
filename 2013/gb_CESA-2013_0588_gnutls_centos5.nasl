@@ -52,8 +52,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019262.html");
   script_id(881624);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-08 10:20:18 +0530 (Fri, 08 Mar 2013)");
   script_cve_id("CVE-2013-1619");
   script_tag(name:"cvss_base", value:"4.0");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0588");
   script_name("CentOS Update for gnutls CESA-2013:0588 centos5 ");
 
-  script_summary("Check for the Version of gnutls");
+  script_tag(name: "summary" , value: "Check for the Version of gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

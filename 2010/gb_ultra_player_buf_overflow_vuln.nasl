@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultra_player_buf_overflow_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ultra_player_buf_overflow_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # UltraPlayer Media Player Buffer Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with UltraPlayer Media Player and is
 
 if(description)
 {
-  script_id(801207);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801207");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_bugtraq_id(35956);
   script_cve_id("CVE-2009-4863");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_unrealircd_bof_vuln.nasl 5399 2017-02-23 07:02:00Z antu123 $
+# $Id: secpod_unrealircd_bof_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # UnrealIRCd Buffer Overflow Vulnerability
 #
@@ -28,9 +28,9 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 
 if(description)
 {
-  script_id(901126);
-  script_version("$Revision: 5399 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 08:02:00 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901126");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 14:43:46 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2009-4893");
   script_tag(name:"cvss_base", value:"6.8");

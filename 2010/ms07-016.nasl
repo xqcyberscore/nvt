@@ -32,9 +32,9 @@ tag_summary = "Microsoft Internet Explorer is affected by multiple critical vuln
 
 if(description)
 {
-  script_id(102054);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102054");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2006-4697", "CVE-2007-0217", "CVE-2007-0219");
   script_bugtraq_id(22486, 22489, 22504);

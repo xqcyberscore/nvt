@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PHPFinance_42230.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_PHPFinance_42230.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # PHPFinance 'group.php' SQL Injection and HTML Injection Vulnerabilities
 #
@@ -43,9 +43,9 @@ PHPFinance 0.6 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100771);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100771");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-01 14:30:27 +0200 (Wed, 01 Sep 2010)");
  script_bugtraq_id(42230);
  script_tag(name:"cvss_base", value:"6.5");

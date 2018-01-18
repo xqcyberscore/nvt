@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1995_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1995_1.nasl 8456 2018-01-18 06:58:40Z teissa $
 #
 # Ubuntu Update for linux-lts-raring USN-1995-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841602);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 16:32:47 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-2237", "CVE-2013-2888", "CVE-2013-2892", "CVE-2013-2896", "CVE-2013-2898", "CVE-2013-2899", "CVE-2013-4300");
   script_tag(name:"cvss_base", value:"7.2");
@@ -85,7 +85,7 @@ flaw to gain privileges. (CVE-2013-4300)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1995-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1995-1/");
-  script_summary("Check for the Version of linux-lts-raring");
+  script_tag(name: "summary" , value: "Check for the Version of linux-lts-raring");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

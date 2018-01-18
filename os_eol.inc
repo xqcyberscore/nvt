@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 8025 2017-12-07 08:54:14Z cfischer $
+# $Id: os_eol.inc 8451 2018-01-17 18:56:46Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8025 $
+# $Revision: 8451 $
 #
 ###############################################################################
 
@@ -80,6 +80,30 @@ eol_urls['cpe:/o:suse:linux_enterprise_server'] = 'http://www.softpanorama.org/C
 eol_names['cpe:/o:suse:linux_enterprise_server'] = 'SUSE Linux Enterprise Server';
 eol_cpes['cpe:/o:suse:linux_enterprise_server:10'] = '2016-07-31';
 eol_cpes['cpe:/o:suse:linux_enterprise_server:9'] = '2011-07-31';
+
+# SUSE Linux Enterprise (not Enterprise Server), (https://en.wikipedia.org/wiki/SUSE_Linux#Versions)
+eol_urls['cpe:/o:suse:linux_enterprise'] = 'https://en.wikipedia.org/wiki/SUSE_Linux#Versions';
+eol_names['cpe:/o:suse:linux_enterprise'] = 'SUSE Linux Enterprise';
+eol_cpes['cpe:/o:suse:linux_enterprise:12.1'] = '2017-05-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:12.0'] = '2016-06-30';
+eol_cpes['cpe:/o:suse:linux_enterprise:12']   = '2016-06-30';
+eol_cpes['cpe:/o:suse:linux_enterprise:11.4'] = '2019-03-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:11.3'] = '2016-01-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:11.2'] = '2014-01-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:11.1'] = '2012-08-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:11.0'] = '2010-12-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:11']   = '2010-12-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:10.4'] = '2013-07-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:10.3'] = '2011-10-11';
+eol_cpes['cpe:/o:suse:linux_enterprise:10.2'] = '2010-04-11';
+eol_cpes['cpe:/o:suse:linux_enterprise:10.1'] = '2008-11-30';
+eol_cpes['cpe:/o:suse:linux_enterprise:10.0'] = '2007-12-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:10']   = '2007-12-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:9.3']  = '2007-04-30';
+eol_cpes['cpe:/o:suse:linux_enterprise:9.2']  = '2006-10-31';
+eol_cpes['cpe:/o:suse:linux_enterprise:9.1']  = '2006-06-30';
+eol_cpes['cpe:/o:suse:linux_enterprise:9.0']  = '2005-12-15';
+eol_cpes['cpe:/o:suse:linux_enterprise:9']    = '2005-12-15';
 
 # Ubuntu (https://wiki.ubuntu.com/Releases)
 eol_urls['cpe:/o:canonical:ubuntu_linux'] = 'https://wiki.ubuntu.com/Releases';
@@ -499,6 +523,22 @@ eol_cpes['cpe:/o:openbsd:openbsd:5.7'] = '2016-03-29';
 eol_cpes['cpe:/o:openbsd:openbsd:5.8'] = '2016-09-01';
 eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '2017-04-11';
 eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
+
+# https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history
+eol_urls['cpe:/o:sun:sunos'] = 'https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history';
+eol_names['cpe:/o:sun:sunos'] = 'SunOS';
+eol_cpes['cpe:/o:sun:sunos:4.1'] = '2003-09-01';
+eol_cpes['cpe:/o:sun:sunos:5.0'] = '1999-01-01';
+eol_cpes['cpe:/o:sun:sunos:5.1'] = '1999-04-01';
+eol_cpes['cpe:/o:sun:sunos:5.2'] = '1999-05-01';
+eol_cpes['cpe:/o:sun:sunos:5.3'] = '2002-06-01';
+eol_cpes['cpe:/o:sun:sunos:5.4'] = '2003-09-01';
+eol_cpes['cpe:/o:sun:sunos:5.5'] = '2003-12-01';
+eol_cpes['cpe:/o:sun:sunos:5.5.1'] = '2003-09-01';
+eol_cpes['cpe:/o:sun:sunos:5.6'] = '2006-07-01';
+eol_cpes['cpe:/o:sun:sunos:5.7'] = '2008-08-01';
+eol_cpes['cpe:/o:sun:sunos:5.8'] = '2012-03-01';
+eol_cpes['cpe:/o:sun:sunos:5.9'] = '2014-10-01';
 
 # Greenbone OS (https://www.greenbone.net/roadmap-lifecycle/#tab-id-6)
 # 3.0+ have patchlevels like 3.0.39

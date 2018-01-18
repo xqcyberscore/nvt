@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novaStor_novaNET_39693.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_novaStor_novaNET_39693.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # NovaStor NovaNET Multiple Code Execution, Denial of Service, Information Disclosure Vulnerabilities
 #
@@ -38,9 +38,9 @@ Network 13 is affected by a denial-of-service vulnerability.";
 
 if (description)
 {
- script_id(100612);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100612");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-28 14:05:27 +0200 (Wed, 28 Apr 2010)");
  script_bugtraq_id(39693);
  script_tag(name:"cvss_base", value:"7.8");

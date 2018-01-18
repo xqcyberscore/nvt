@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00060.html");
   script_id(870934);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:02:19 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2011-3148", "CVE-2011-3149");
   script_bugtraq_id(50343);
@@ -75,7 +75,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0521-02");
   script_name("RedHat Update for pam RHSA-2013:0521-02");
 
-  script_summary("Check for the Version of pam");
+  script_tag(name: "summary" , value: "Check for the Version of pam");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

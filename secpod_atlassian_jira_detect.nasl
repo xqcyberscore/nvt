@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_atlassian_jira_detect.nasl 7083 2017-09-08 11:53:47Z teissa $
+# $Id: secpod_atlassian_jira_detect.nasl 8433 2018-01-16 08:59:34Z ckuersteiner $
 #
-# Atlassian JIRA Version Detection
+# Atlassian JIRA Detection
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -24,21 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Atlassian JIRA version and saves
-  the result in KB";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902046");
-  script_version("$Revision: 7083 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-08 13:53:47 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 8433 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 09:59:34 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
   
-  script_name("Atlassian JIRA Version Detection");
+  script_name("Atlassian JIRA Detection");
 
   script_tag(name: "summary" , value: "Detection of Atlassian JIRA
 

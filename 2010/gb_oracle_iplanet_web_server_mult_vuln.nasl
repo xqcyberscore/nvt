@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_iplanet_web_server_mult_vuln.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_oracle_iplanet_web_server_mult_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Oracle iPlanet Web Server Multiple Unspecified Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is running Oracle iPlanet Web Server and is prone to
 
 if(description)
 {
-  script_id(801607);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801607");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_bugtraq_id(43984);
   script_cve_id("CVE-2010-3544","CVE-2010-3545");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_info_disc_vuln.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_info_disc_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Microsoft Internet Explorer 'mshtml.dll' Information Disclosure Vulnerability
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(801606);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801606");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_bugtraq_id(41247);
   script_cve_id("CVE-2010-3886");

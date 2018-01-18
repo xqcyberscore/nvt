@@ -44,8 +44,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098092.html");
   script_id(865297);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:52:48 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-5649", "CVE-2012-5650");
   script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1387");
   script_name("Fedora Update for couchdb FEDORA-2013-1387");
 
-  script_summary("Check for the Version of couchdb");
+  script_tag(name: "summary" , value: "Check for the Version of couchdb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-028.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_ms10-028.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Microsoft Visio Remote Code Execution Vulnerabilities (980094)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902039);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902039");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0254", "CVE-2010-0256");
   script_bugtraq_id(39300, 39302);

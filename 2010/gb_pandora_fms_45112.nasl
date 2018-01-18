@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_45112.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_pandora_fms_45112.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Pandora FMS Authentication Bypass And Multiple Input Validation Vulnerabilities
 #
@@ -45,9 +45,9 @@ tag_solution = "Updates are available. Please see the reference for more details
 
 if (description)
 {
- script_id(100927);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100927");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-12-01 14:30:53 +0100 (Wed, 01 Dec 2010)");
  script_bugtraq_id(45112);
  script_cve_id("CVE-2010-4278","CVE-2010-4279","CVE-2010-4280","CVE-2010-4281","CVE-2010-4282","CVE-2010-4283");

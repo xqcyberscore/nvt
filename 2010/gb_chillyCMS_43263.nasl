@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chillyCMS_43263.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: gb_chillyCMS_43263.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # chillyCMS Arbitrary File Upload Vulnerability
 #
@@ -40,9 +40,9 @@ if(description)
 {
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/43263");
  script_xref(name : "URL" , value : "http://www.chillycms.bplaced.net/chillyCMS/");
- script_id(100809);
- script_version("$Revision: 5838 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100809");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
  script_bugtraq_id(43263);
  script_tag(name:"cvss_base", value:"4.6");

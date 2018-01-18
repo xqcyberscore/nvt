@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jan2017-2881727_01_win.nasl 7711 2017-11-09 10:31:37Z cfischer $
+# $Id: gb_java_jan2017-2881727_01_win.nasl 8443 2018-01-17 14:24:16Z gveerendra $
 #
 # Oracle Java SE Security Updates (jan2017-2881727) 01 - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809782");
-  script_version("$Revision: 7711 $");
+  script_version("$Revision: 8443 $");
   script_cve_id("CVE-2016-2183", "CVE-2017-3231", "CVE-2017-3261", "CVE-2016-5548", 
                 "CVE-2017-3253", "CVE-2017-3272", "CVE-2017-3252", "CVE-2017-3259", 
                 "CVE-2016-5552", "CVE-2016-5546", "CVE-2017-3241" );
@@ -37,7 +37,7 @@ if(description)
                     95506, 95488);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 11:31:37 +0100 (Thu, 09 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 15:24:16 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-01-18 18:42:10 +0530 (Wed, 18 Jan 2017)");
   script_name("Oracle Java SE Security Updates (jan2017-2881727) 01 - Windows");
 
@@ -81,6 +81,7 @@ vers = infos['version'];
 if( ! vers ) {
   CPE = "cpe:/a:sun:jre";
   infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+  vers = infos['version'];
 }
 
 path = infos['location'];

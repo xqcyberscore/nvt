@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866459);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-08-16 08:58:59 +0530 (Fri, 16 Aug 2013)");
   script_cve_id("CVE-2013-2882", "CVE-2013-2632", "CVE-2012-5120", "CVE-2012-5128");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ as specified in ECMA-262, 3rd edition.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-14205");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-August/114077.html");
-  script_summary("Check for the Version of v8");
+  script_tag(name: "summary" , value: "Check for the Version of v8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

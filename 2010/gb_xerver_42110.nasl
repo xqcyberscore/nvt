@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_42110.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_xerver_42110.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Xerver Multiple Vulnerabilities
 #
@@ -37,9 +37,9 @@ These issues affect Xerver versions up to and including 4.32.";
 
 if (description)
 {
- script_id(100736);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100736");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-02 19:12:50 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(42110);
  script_tag(name:"cvss_base", value:"5.0");

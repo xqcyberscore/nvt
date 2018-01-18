@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8402 2018-01-12 14:03:40Z cfischer $
+# $Id: host_details.inc 8450 2018-01-17 17:42:13Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8402 $
+# $Revision: 8450 $
 #
 ###############################################################################
 
@@ -1278,6 +1278,10 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       banner == "X-Powered-By: Express" || # Express Framework is supported on Windows, Linux/Unix etc.
+      banner == "Server: Embedded Web Server" ||
+      banner == "SSH-2.0-Mocana SSH" || # Cross-platform
+      banner == "login:" ||
+      banner == "Server: Embedded Web Server" ||
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
       "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
       " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
@@ -1300,6 +1304,10 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: nginx/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: lighttpd/([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+)$", string:banner ) || # HP SMH, cross-platform, e.g. Server: CompaqHTTPServer/2.1
+      egrep( pattern:"^Server: http server ([0-9.]+)$", string:banner ) || # e.g. Server: http server 1.0
+      egrep( pattern:"^Server: MiniServ/([0-9.]+)$", string:banner ) || # From Webmin/Usermin, cross-platform,  e.g. Server: MiniServ/1.550
+      egrep( pattern:"^Server: RealVNC/([0-9.]+)$", string:banner ) || # Cross-platform, e.g. Server: RealVNC/4.0
       egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
       egrep( pattern:"^Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Embedthis-http/([0-9.]+)$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0

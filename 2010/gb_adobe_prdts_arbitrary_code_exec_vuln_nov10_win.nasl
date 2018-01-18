@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_win.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Adobe Products Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -48,9 +48,9 @@ installed, and is prone to arbitrary code execution vulnerability.";
 
 if(description)
 {
-  script_id(801477);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801477");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-10 14:58:25 +0100 (Wed, 10 Nov 2010)");
   script_cve_id("CVE-2010-3654");
   script_bugtraq_id(44504);

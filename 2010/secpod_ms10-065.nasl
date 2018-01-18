@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-065.nasl 6605 2017-07-07 11:22:07Z cfischer $
+# $Id: secpod_ms10-065.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Microsoft Internet Information Services Remote Code Execution Vulnerabilities (2267960)
 #
@@ -52,9 +52,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(901151);
-  script_version("$Revision: 6605 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901151");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_cve_id("CVE-2010-1899", "CVE-2010-2730", "CVE-2010-2731");
   script_bugtraq_id(43140, 43138, 41314);

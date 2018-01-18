@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_unspecified_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: gb_ms_ie_unspecified_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Microsoft Internet Explorer Unspecified vulnerability
 #
@@ -45,9 +45,9 @@ prone to unspecified vulnerability.";
 
 if(description)
 {
-  script_id(800742);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800742");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1175");
   script_tag(name:"cvss_base", value:"9.3");

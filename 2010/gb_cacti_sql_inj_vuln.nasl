@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_sql_inj_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_cacti_sql_inj_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Cacti 'export_item_id' Parameter SQL Injection Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running Cacti and is prone to SQL injection
 
 if(description)
 {
-  script_id(800772);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800772");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1431");
   script_bugtraq_id(39653);

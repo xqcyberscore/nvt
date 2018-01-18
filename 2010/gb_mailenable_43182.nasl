@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_43182.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_mailenable_43182.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # MailEnable  'MESMTRPC.exe' SMTP Service Multiple Remote Denial of Service Vulnerabilities
 #
@@ -38,9 +38,9 @@ more information.";
 
 if (description)
 {
- script_id(100798);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100798");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-14 15:16:41 +0200 (Tue, 14 Sep 2010)");
  script_bugtraq_id(43182);
  script_tag(name:"cvss_base", value:"5.0");

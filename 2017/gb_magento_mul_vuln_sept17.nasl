@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mul_vuln_sept17.nasl 7375 2017-10-06 13:59:33Z teissa $
+# $Id: gb_magento_mul_vuln_sept17.nasl 8452 2018-01-17 19:29:04Z cfischer $
 #
 # Magento Multiple Security Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107186");
-  script_version("$Revision: 7375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 15:59:33 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 8452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 20:29:04 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 15:28:56 +0200 (Fri, 06 Oct 2017)");
   script_bugtraq_id(100869);
 
@@ -38,7 +38,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name(" Magento CMS Multiple Security Vulnerabilities");
+  script_name("Magento CMS Multiple Security Vulnerabilities");
 
   script_tag(name: "summary", value: "Magento CMS is prone to multiple security vulnerabilities.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
@@ -57,6 +57,7 @@ if(description)
 
   script_tag(name: "solution", value: "Update to Magento Commerce 1.14.3.6. For details refer to : https://magento.com/security/patches/supee-10266");
 
+  script_xref(name: "URL" , value: "https://magento.com/security/patches/supee-10266");
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/100869");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
@@ -73,21 +74,18 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
-if(!Port = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port:Port)){
+if(!ver = get_app_version(cpe:CPE, port:port)){
   exit(0);
 }
 
-if(version_is_less(version: Ver, test_version:"1.14.3.6"))
-{
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"1.14.3.6");
-  security_message(data:report);
+if(version_is_less(version:ver, test_version:"1.14.3.6")){
+  report = report_fixed_ver(installed_version:ver, fixed_version:"1.14.3.6");
+  security_message(port:port, data:report);
   exit(0);
 }
 
-exit (99);
-
+exit(99);

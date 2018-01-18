@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sync_breeze_server_bof_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sync_breeze_server_bof_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Sync Breeze Server Remote Stack Buffer Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ stack buffer overflow vulnerability";
 
 if(description)
 {
-  script_id(801529);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801529");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

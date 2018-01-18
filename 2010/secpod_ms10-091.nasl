@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-091.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-091.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Microsoft Windows OpenType Compact Font Format Driver Privilege Escalation Vulnerability (2296199)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(900263);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900263");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(45311, 45315, 45316);
   script_cve_id("CVE-2010-3956", "CVE-2010-3957", "CVE-2010-3959");

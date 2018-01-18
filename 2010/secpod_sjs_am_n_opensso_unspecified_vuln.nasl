@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sjs_am_n_opensso_unspecified_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_sjs_am_n_opensso_unspecified_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Sun JS Access Manager And OpenSSO Unspecified Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is running Access Manager or OpenSSO and is prone to
 
 if(description)
 {
-  script_id(902165);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902165");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-0894");
   script_bugtraq_id(39457);

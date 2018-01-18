@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: open_media_collectors_database_37941.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: open_media_collectors_database_37941.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Open Media Collectors Database Multiple Local File Include Vulnerabilities
 #
@@ -39,9 +39,9 @@ OpenDb 1.5.0.4 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100469);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100469");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
  script_bugtraq_id(37941);
  script_tag(name:"cvss_base", value:"6.8");

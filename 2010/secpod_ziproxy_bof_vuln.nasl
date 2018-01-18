@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_bof_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: secpod_ziproxy_bof_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Ziproxy PNG Image Processing Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is running Ziproxy server and is prone to buffer overflo
 
 if(description)
 {
-  script_id(901128);
-  script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901128");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_cve_id("CVE-2010-2350");
   script_tag(name:"cvss_base", value:"6.8");

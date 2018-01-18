@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1726_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_1726_1.nasl 8448 2018-01-17 16:18:06Z teissa $
 #
 # SuSE Update for openssh openSUSE-SU-2013:1726-1 (openssh)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850553);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 13:21:19 +0530 (Tue, 10 Dec 2013)");
   script_cve_id("CVE-2013-4548");
   script_tag(name:"cvss_base", value:"6.0");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2013:1726_1");
-  script_summary("Check for the Version of openssh");
+  script_tag(name: "summary" , value: "Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

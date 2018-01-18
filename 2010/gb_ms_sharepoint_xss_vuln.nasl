@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_xss_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms_sharepoint_xss_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Microsoft SharePoint Cross Site Scripting Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is running Microsoft SharePoint Server and is prone to
 
 if(description)
 {
-  script_id(800481);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800481");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");

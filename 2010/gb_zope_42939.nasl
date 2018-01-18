@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zope_42939.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_zope_42939.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Zope Unspecified Denial Of Service Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if (description)
 {
- script_id(100779);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100779");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-03 15:15:12 +0200 (Fri, 03 Sep 2010)");
  script_bugtraq_id(42939);
  script_tag(name:"cvss_base", value:"4.3");

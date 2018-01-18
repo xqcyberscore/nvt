@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_int_overflow_vuln_lin.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_reader_int_overflow_vuln_lin.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Adobe Reader Font Parsing Integer Overflow Vulnerability (Linux)
 #
@@ -43,9 +43,9 @@ parsing integer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801420);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801420");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

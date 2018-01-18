@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_file_read_line_function_win.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_wireshark_file_read_line_function_win.nasl 8443 2018-01-17 14:24:16Z gveerendra $
 #
 # Wireshark 'File_read_line' Function Denial of Service Vulnerability (Windows)
 #
@@ -29,26 +29,22 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812281");
-  script_version("$Revision: 8378 $");
-  script_cve_id("CVE-2017-17935", "CVE-2017-17997");
+  script_version("$Revision: 8443 $");
+  script_cve_id("CVE-2017-17935");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 15:24:16 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 12:42:26 +0530 (Thu, 28 Dec 2017)");
   script_name("Wireshark 'File_read_line' Function Denial of Service Vulnerability (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Wireshark
-  and is prone to multiple denial of service vulnerabilities.");
+  and is prone to denial of service vulnerability.");
 
   script_tag(name: "vuldetect" , value: "Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
-
-  - A buffer underflow error in 'File_read_line' function in 
-    'epan/wslua/wslua_file.c' file.
-
-  - The MRDISC dissector misuses a NULL pointer.");
+  script_tag(name: "insight" , value:"The flaw is due to a buffer underflow 
+  error in 'File_read_line' function in 'epan/wslua/wslua_file.c' file.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause a denial of service.
@@ -63,7 +59,6 @@ if(description)
   details are available. For updates refer to https://www.wireshark.org");
 
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14295");
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14299");
  
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");

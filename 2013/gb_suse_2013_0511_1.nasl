@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0511_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_0511_1.nasl 8456 2018-01-18 06:58:40Z teissa $
 #
 # SuSE Update for pidgin openSUSE-SU-2013:0511-1 (pidgin)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850547);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 13:21:25 +0530 (Tue, 10 Dec 2013)");
   script_cve_id("CVE-2013-0271", "CVE-2013-0272", "CVE-2013-0273", "CVE-2013-0274");
   script_tag(name:"cvss_base", value:"6.8");
@@ -120,7 +120,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2013:0511_1");
-  script_summary("Check for the Version of pidgin");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

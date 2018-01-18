@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_task_freak_xss_n_sql_inj_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_task_freak_xss_n_sql_inj_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Task Freak Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running Task Freak and is prone to Cross Site Script
 
 if(description)
 {
-  script_id(800788);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800788");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-07 07:04:19 +0200 (Wed, 07 Jul 2010)");
   script_cve_id("CVE-2010-1520", "CVE-2010-1521");
   script_bugtraq_id(41221, 41218);

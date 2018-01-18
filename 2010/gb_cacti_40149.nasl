@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_40149.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_cacti_40149.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Cacti 'rra_id' Parameter SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ Cacti versions 0.8.7e and prior are vulnerable.";
 
 if (description)
 {
- script_id(100639);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100639");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
  script_cve_id("CVE-2010-2092");
  script_bugtraq_id(40149);

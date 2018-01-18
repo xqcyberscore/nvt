@@ -33,9 +33,9 @@ tag_summary = "Multiple stack-based buffer overflows in CA (Computer Associates)
 
 if(description)
 {
-  script_id(102018);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102018");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-02 10:10:27 +0200 (Fri, 02 Apr 2010)");
   script_cve_id("CVE-2007-5003");
   script_bugtraq_id(24348);

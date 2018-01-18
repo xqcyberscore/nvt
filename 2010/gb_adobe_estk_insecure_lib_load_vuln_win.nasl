@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_estk_insecure_lib_load_vuln_win.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_adobe_estk_insecure_lib_load_vuln_win.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Adobe ExtendedScript Toolkit (ESTK) Insecure Library Loading Vulnerability (Windows)
 #
@@ -46,9 +46,9 @@ and is prone to insecure library loading vulnerability.";
 
 if(description)
 {
-  script_id(801510);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801510");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-3155");
   script_tag(name:"cvss_base", value:"9.3");

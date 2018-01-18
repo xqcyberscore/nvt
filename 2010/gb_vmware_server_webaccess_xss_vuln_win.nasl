@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_server_webaccess_xss_vuln_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
+# $Id: gb_vmware_server_webaccess_xss_vuln_win.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # VMware WebAccess Cross Site Scripting Vulnerability (Windows)
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is installed with VMWare Server and is prone to
 
 if(description)
 {
-  script_id(801315);
-  script_version("$Revision: 6518 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801315");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1137");
   script_bugtraq_id(39037);

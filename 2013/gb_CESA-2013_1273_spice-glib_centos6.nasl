@@ -42,8 +42,8 @@ which contain a backported patch to correct this issue.";
 if(description)
 {
   script_id(881797);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 11:45:25 +0530 (Tue, 24 Sep 2013)");
   script_cve_id("CVE-2013-4324");
   script_tag(name:"cvss_base", value:"4.6");
@@ -63,7 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1273");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-September/019950.html");
-  script_summary("Check for the Version of spice-glib");
+  script_tag(name: "summary" , value: "Check for the Version of spice-glib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

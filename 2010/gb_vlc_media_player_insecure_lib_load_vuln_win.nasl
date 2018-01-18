@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # VLC Media Player File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with VLC media player and is prone to inse
 
 if(description)
 {
-  script_id(801500);
-  script_version("$Revision: 8174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801500");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3124");
   script_tag(name:"cvss_base", value:"9.3");

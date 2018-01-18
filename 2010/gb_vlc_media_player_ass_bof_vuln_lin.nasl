@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ass_bof_vuln_lin.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vlc_media_player_ass_bof_vuln_lin.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # VLC Media Player ASS File Buffer Overflow Vulnerability (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 
 if(description)
 {
-  script_id(800445);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800445");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

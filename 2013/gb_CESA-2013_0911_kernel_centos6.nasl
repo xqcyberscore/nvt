@@ -62,8 +62,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(881747);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-13 10:06:02 +0530 (Thu, 13 Jun 2013)");
   script_cve_id("CVE-2013-1935", "CVE-2013-1943", "CVE-2013-2017");
   script_tag(name:"cvss_base", value:"7.8");
@@ -72,7 +72,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0911");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-June/019784.html");
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

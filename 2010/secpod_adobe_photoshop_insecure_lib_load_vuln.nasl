@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_photoshop_insecure_lib_load_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_adobe_photoshop_insecure_lib_load_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Adobe Photoshop Insecure Library Loading Vulnerability
 #
@@ -43,9 +43,9 @@ Insecure Library Loading vulnerability.";
 
 if(description)
 {
-  script_id(901147);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901147");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3127");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ultra_edit_insecure_library_loading_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_ultra_edit_insecure_library_loading_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # UltraEdit Insecure Library Loading Vulnerability
 #
@@ -48,9 +48,9 @@ to insecure library loading vulnerability.";
 
 if(description)
 {
-  script_id(902307);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902307");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3402");
   script_bugtraq_id(43183);

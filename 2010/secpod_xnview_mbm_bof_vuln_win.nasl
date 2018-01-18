@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: secpod_xnview_mbm_bof_vuln_win.nasl 6969 2017-08-21 05:56:59Z asteins $
+# $Id: secpod_xnview_mbm_bof_vuln_win.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # XnView 'MBM' Processing Buffer Overflow Vulnerability (Windows)
 #
@@ -41,9 +41,9 @@ tag_solution = "Update to XnView version 1.97.5
 
 if(description)
 {
-  script_id(902075);
-  script_version("$Revision: 6969 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-21 07:56:59 +0200 (Mon, 21 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902075");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-1932");
   script_bugtraq_id(40852);

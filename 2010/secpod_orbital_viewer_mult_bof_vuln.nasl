@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: secpod_orbital_viewer_mult_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_orbital_viewer_mult_bof_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Orbital Viewer File Processing Buffer Overflow Vulnerabilities
 #
@@ -47,9 +47,9 @@ features, remove the product or replace the product by another one.";
 
 if(description)
 {
-  script_id(900755);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900755");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-0688");
   script_bugtraq_id(38436);

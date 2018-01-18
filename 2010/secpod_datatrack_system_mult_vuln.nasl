@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_datatrack_system_mult_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_datatrack_system_mult_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # DataTrack System Multiple Vulnerabilities
 #
@@ -50,9 +50,9 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(902062);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902062");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-2043", "CVE-2010-2078", "CVE-2010-2079");
   script_bugtraq_id(40249);

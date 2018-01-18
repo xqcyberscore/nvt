@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_particle_wiki_18273.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_particle_wiki_18273.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Particle Wiki Index.PHP SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ information.";
 
 if (description)
 {
- script_id(100837);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100837");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_bugtraq_id(18273);
  script_tag(name:"cvss_base", value:"7.5");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_download_mang_mult_bof_vuln_may10.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_free_download_mang_mult_bof_vuln_may10.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Free Download Manager Multiple Buffer Overflow Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_summary = "This host has Free Download Manager installed and is prone to
 
 if(description)
 {
-  script_id(801339);
-  script_version("$Revision: 7585 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801339");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-0998", "CVE-2010-0999");
   script_tag(name:"cvss_base", value:"10.0");

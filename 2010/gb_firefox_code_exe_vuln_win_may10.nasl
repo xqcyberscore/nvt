@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_code_exe_vuln_win_may10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_firefox_code_exe_vuln_win_may10.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Mozilla Firefox Code Execution Vulnerability (Windows) - May10
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 
 if(description)
 {
-  script_id(801326);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801326");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-04 09:40:09 +0200 (Tue, 04 May 2010)");
   script_cve_id("CVE-2010-1585");
   script_tag(name:"cvss_base", value:"9.3");

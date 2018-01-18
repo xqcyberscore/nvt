@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2037_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_2037_1.nasl 8448 2018-01-17 16:18:06Z teissa $
 #
 # Ubuntu Update for linux-ec2 USN-2037-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841646);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8448 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 10:27:49 +0530 (Wed, 04 Dec 2013)");
   script_cve_id("CVE-2012-2121", "CVE-2013-4511");
   script_tag(name:"cvss_base", value:"6.9");
@@ -57,7 +57,7 @@ exploit this flaw to gain administrative privileges. (CVE-2013-4511)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2037-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2037-1/");
-  script_summary("Check for the Version of linux-ec2");
+  script_tag(name: "summary" , value: "Check for the Version of linux-ec2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 7732 2017-11-10 10:29:01Z cfischer $
+# $Id: sw_mail_os_detection.nasl 8446 2018-01-17 15:50:57Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 7732 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:29:01 +0100 (Fri, 10 Nov 2017) $");
+  script_version("$Revision: 8446 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 16:50:57 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -175,7 +175,8 @@ foreach port( ports ) {
         continue;
       }
 
-      if( "(SunOS" >< banner || " SunOS " >< banner ) {
+      # ESMTP Sendmail 8.11.7p3+Sun/8.11.7; Tue, 16 Jan 2018 10:50:39 +0100 (MET)
+      if( "(SunOS" >< banner || " SunOS " >< banner || "Sun/" >< banner ) {
         version = eregmatch( pattern:"\(SunOS ([0-9.]+)", string:banner );
         if( ! isnull( version[1] ) ) {
           register_and_report_os( os:"SunOS", version:version[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );

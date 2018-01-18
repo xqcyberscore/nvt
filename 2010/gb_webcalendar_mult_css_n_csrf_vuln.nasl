@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcalendar_mult_css_n_csrf_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_webcalendar_mult_css_n_csrf_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # WebCalendar Multiple CSS and CSRF Vulnerabilities
 #
@@ -44,9 +44,9 @@ tag_summary = "The host is running WebCalendar and is prone to multiple CSS and
 
 if(description)
 {
-  script_id(800472);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800472");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_37711.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: nginx_37711.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # nginx Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -36,9 +36,9 @@ This issue affects nginx 0.7.64; other versions may also be affected.";
 
 if (description)
 {
- script_id(100441);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100441");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
  script_bugtraq_id(37711);
  script_cve_id("CVE-2009-4487");

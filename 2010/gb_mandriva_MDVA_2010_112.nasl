@@ -35,10 +35,10 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00046.php");
-  script_id(830967);
-  script_version("$Revision: 8164 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.830967");
+  script_version("$Revision: 8438 $");
   script_cve_id("CVE-2009-4880", "CVE-2010-0015", "CVE-2010-0296", "CVE-2010-0830");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:56:44 +0200 (Tue, 06 Apr 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

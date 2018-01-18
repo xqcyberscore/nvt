@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_audistat_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: secpod_audistat_mult_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # AudiStat multiple vulnerabilities
 #
@@ -46,9 +46,9 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(902029);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902029");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-1050", "CVE-2010-1051", "CVE-2010-1052");
   script_tag(name:"cvss_base", value:"7.5");

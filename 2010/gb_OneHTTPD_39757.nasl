@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OneHTTPD_39757.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_OneHTTPD_39757.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # OneHTTPD Directory Traversal Vulnerability
 #
@@ -35,9 +35,9 @@ OneHTTPD 0.6 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100620);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100620");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-04 12:32:13 +0200 (Tue, 04 May 2010)");
  script_bugtraq_id(39757);
  script_tag(name:"cvss_base", value:"5.0");

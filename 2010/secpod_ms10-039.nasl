@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-039.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: secpod_ms10-039.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # Microsoft SharePoint Privilege Elevation Vulnerabilities (2028554)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902069);
-  script_version("$Revision: 7582 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902069");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-1257", "CVE-2010-1264");
   script_bugtraq_id(40409, 40559);

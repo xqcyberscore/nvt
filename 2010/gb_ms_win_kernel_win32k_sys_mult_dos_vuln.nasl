@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_kernel_win32k_sys_mult_dos_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms_win_kernel_win32k_sys_mult_dos_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Microsoft Windows Kernel 'win32k.sys' Multiple DOS Vulnerabilities
 #
@@ -51,9 +51,9 @@ tag_summary = "Windows XP/2000/2003 is prone to multiple Denial Of Service
 
 if(description)
 {
-  script_id(801333);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801333");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1734", "CVE-2010-1735");
   script_bugtraq_id(39630, 39631);

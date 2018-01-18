@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ghostscript_parser_bof_vuln_win.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ghostscript_parser_bof_vuln_win.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Ghostscript Parser Buffer Overflow Vulnerabilities (Windows)
 #
@@ -51,9 +51,9 @@ Buffer Overflow Vulnerability.";
 
 if(description)
 {
-  script_id(801336);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801336");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1869", "CVE-2010-1628");
   script_tag(name:"cvss_base", value:"9.3");

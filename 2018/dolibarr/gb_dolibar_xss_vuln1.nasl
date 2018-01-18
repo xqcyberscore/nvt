@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibar_xss_vuln1.nasl 8286 2018-01-04 06:51:01Z ckuersteiner $
+# $Id: gb_dolibar_xss_vuln1.nasl 8455 2018-01-18 06:12:11Z ckuersteiner $
 #
 # Dolibarr XSS Vulnerabilility
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140652");
-  script_version("$Revision: 8286 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 07:51:01 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 8455 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-18 07:12:11 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 13:51:40 +0700 (Thu, 04 Jan 2018)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if (description)
   script_tag(name: "insight", value: "The test_sql_and_script_inject function in htdocs/main.inc.php in Dolibarr
 ERP/CRM blocks some event attributes but neither onclick nor onscroll, which allows XSS.");
 
-  script_tag(name: "affected", value: "Webmin version 6.0.4 and prior.");
+  script_tag(name: "affected", value: "Dolibar ERP/CRM version 6.0.4 and prior.");
 
   script_tag(name: "solution", value: "No solution or patch is available as of 4th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");

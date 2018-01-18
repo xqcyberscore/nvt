@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsd_ftpd_38559.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: gb_bsd_ftpd_38559.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # FreeBSD and OpenBSD 'ftpd' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if (description)
 {
- script_id(100532);
- script_version("$Revision: 7297 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100532");
+ script_version("$Revision: 8440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
  script_bugtraq_id(38559);
  script_tag(name:"cvss_base", value:"7.1");

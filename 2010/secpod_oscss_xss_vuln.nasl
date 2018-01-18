@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oscss_xss_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_oscss_xss_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
 #
 # osCSS 'page' Parameter Cross Site Scripting Vulnerability
 #
@@ -46,9 +46,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(901134);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901134");
+  script_version("$Revision: 8440 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2856");
   script_bugtraq_id(41510);

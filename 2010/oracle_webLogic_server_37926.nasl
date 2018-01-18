@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_webLogic_server_37926.nasl 6449 2017-06-28 05:33:48Z santu $
+# $Id: oracle_webLogic_server_37926.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Oracle WebLogic Server Node Manager 'beasvc.exe' Remote Command Execution Vulnerability
 #
@@ -39,9 +39,9 @@ for details.";
 
 if (description)
 {
- script_id(100494);
- script_version("$Revision: 6449 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100494");
+ script_version("$Revision: 8447 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-14 12:35:00 +0100 (Sun, 14 Feb 2010)");
  script_bugtraq_id(37926);
  script_cve_id("CVE-2010-0073");

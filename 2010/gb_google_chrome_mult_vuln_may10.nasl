@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_may10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_google_chrome_mult_vuln_may10.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities Windows - May10
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Google Chrome Web Browser and is pron
 
 if(description)
 {
-  script_id(800770);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800770");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:36:02 +0200 (Fri, 07 May 2010)");
   script_cve_id("CVE-2010-1664", "CVE-2010-1663", "CVE-2010-1665");
   script_tag(name:"cvss_base", value:"10.0");

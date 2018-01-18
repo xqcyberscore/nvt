@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_security_bypass_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_firefox_security_bypass_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # Mozilla Firefox Security Bypass Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to securi
 
 if(description)
 {
-  script_id(801637);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801637");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2009-5017");
   script_tag(name:"cvss_base", value:"4.3");

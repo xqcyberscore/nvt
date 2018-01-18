@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firewall_builder_priv_esc_vuln_lin.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_firewall_builder_priv_esc_vuln_lin.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # Firewall Builder Privilege Escalation Vulnerability (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is running Firewall Builder and is prone to Privilege
 
 if(description)
 {
-  script_id(800996);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800996");
+  script_version("$Revision: 8438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");

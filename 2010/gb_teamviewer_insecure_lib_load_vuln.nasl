@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_insecure_lib_load_vuln.nasl 8101 2017-12-13 10:23:10Z teissa $
+# $Id: gb_teamviewer_insecure_lib_load_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # TeamViewer File Opening Insecure Library Loading Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with TeamViewer and is prone to insecure
 
 if(description)
 {
-    script_id(801436);
-    script_version("$Revision: 8101 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-12-13 11:23:10 +0100 (Wed, 13 Dec 2017) $");
+    script_oid("1.3.6.1.4.1.25623.1.0.801436");
+    script_version("$Revision: 8447 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
     script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
     script_cve_id("CVE-2010-3128");
     script_tag(name:"cvss_base", value:"9.3");

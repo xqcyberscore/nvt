@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bsplayer_mult_bof_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_bsplayer_mult_bof_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
 #
 # BS.Player '.bsl' File Buffer Overflow Vulnerabilities
 #
@@ -49,9 +49,9 @@ overflow vulnerabilities.";
 
 if(description)
 {
-  script_id(902055);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902055");
+  script_version("$Revision: 8447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-2004", "CVE-2010-2009");
   script_bugtraq_id(37831, 38568);

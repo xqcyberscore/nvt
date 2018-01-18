@@ -59,8 +59,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-March/msg00074.html");
   script_id(870974);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8456 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:26:27 +0530 (Tue, 02 Apr 2013)");
   script_cve_id("CVE-2013-2266");
   script_tag(name:"cvss_base", value:"7.8");
@@ -68,7 +68,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0689-01");
   script_name("RedHat Update for bind RHSA-2013:0689-01");
 
-  script_summary("Check for the Version of bind");
+  script_tag(name: "summary" , value: "Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_40277.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ibm_websphere_40277.nasl 8438 2018-01-16 17:38:23Z teissa $
 #
 # IBM WebSphere Application Server Long Filename Information Disclosure Vulnerability
 #
@@ -48,9 +48,9 @@ CPE = 'cpe:/a:ibm:websphere_application_server';
 
 if (description)
 {
- script_id(100647);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100647");
+ script_version("$Revision: 8438 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-21 13:16:55 +0200 (Fri, 21 May 2010)");
  script_bugtraq_id(40322, 40325, 40321, 40277);
  script_cve_id("CVE-2010-0774", "CVE-2010-0775", "CVE-2010-0776", "CVE-2010-0777");
