@@ -31,9 +31,9 @@ tag_summary = "Panda Software Antivirus/Internet Security before 20070402 allows
 
 if(description)
 {
-  script_id(102049);
-  script_version("$Revision: 8217 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 14:24:55 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102049");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1670");
   script_bugtraq_id(23823);

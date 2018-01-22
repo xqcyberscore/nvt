@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_vbscript_remote_code_exec_vuln.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_vbscript_remote_code_exec_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # MS Internet Explorer 'VBScript' Remote Code Execution Vulnerability (981169)
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is installed with Internet Explorer and VBScript and is
 
 if(description)
 {
-  script_id(800482);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800482");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");

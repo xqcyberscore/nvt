@@ -42,12 +42,12 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00019.php");
-  script_id(830947);
-  script_version("$Revision: 8205 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.830947");
+  script_version("$Revision: 8469 $");
   script_cve_id("CVE-2009-0146", "CVE-2009-0147", "CVE-2009-0166", "CVE-2009-0195",
                 "CVE-2009-1284", "CVE-2009-3608", "CVE-2010-0827", "CVE-2010-0829",
                 "CVE-2010-0739", "CVE-2010-1440");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-12 17:02:32 +0100 (Fri, 12 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

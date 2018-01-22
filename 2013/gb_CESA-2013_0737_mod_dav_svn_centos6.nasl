@@ -74,8 +74,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
   script_id(881711);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:13:14 +0530 (Mon, 15 Apr 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
@@ -86,7 +86,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0737");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-April/019688.html");
-  script_summary("Check for the Version of mod_dav_svn");
+  script_tag(name: "summary" , value: "Check for the Version of mod_dav_svn");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

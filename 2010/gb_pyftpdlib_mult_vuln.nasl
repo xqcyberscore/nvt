@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpdlib_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_pyftpdlib_mult_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # pyftpdlib FTP Server Multiple Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is running pyftpdlib FTP server and is prone to multipl
 
 if(description)
 {
-  script_id(801613);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801613");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3494", "CVE-2009-5012", "CVE-2009-5013", "CVE-2009-5011");
   script_tag(name:"cvss_base", value:"4.3");

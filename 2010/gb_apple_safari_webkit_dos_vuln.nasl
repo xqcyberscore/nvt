@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_apple_safari_webkit_dos_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Apple Safari 'webkit' Denial Of Service Vulnerability
 #
@@ -44,9 +44,9 @@ prone to to Denial of Service vulnerabilities.";
 
 if(description)
 {
-  script_id(801332);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801332");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1728");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_htmlscrubber_xss_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ikiwiki_htmlscrubber_xss_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Ikiwiki 'htmlscrubber' Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed Ikiwiki and is prone to Cross Site
 
 if(description)
 {
-  script_id(800746);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800746");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1195");
   script_tag(name:"cvss_base", value:"4.3");

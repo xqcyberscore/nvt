@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_45257.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_orion_npm_45257.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # SolarWinds Orion Network Performance Monitor (NPM) Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ other versions may also be affected.";
 
 if (description)
 {
- script_id(100941);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100941");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
  script_cve_id("CVE-2010-4828");
  script_bugtraq_id(45257);

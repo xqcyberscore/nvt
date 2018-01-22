@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 18 Jan 2018 08:30:23 +0100
+# Automatically created on:  Fri, 19 Jan 2018 12:51:58 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -53079,6 +53079,12 @@
 2018/debian/deb_dla_884.nasl: GPLv2+
 2018/debian/deb_dla_885.nasl: GPLv2+
 2018/debian/deb_dla_886.nasl: GPLv2+
+2018/debian/deb_dla_887.nasl: GPLv2+
+2018/debian/deb_dla_888.nasl: GPLv2+
+2018/debian/deb_dla_889.nasl: GPLv2+
+2018/debian/deb_dla_890.nasl: GPLv2+
+2018/debian/deb_dla_891.nasl: GPLv2+
+2018/debian/deb_dla_892.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
 2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_01ad8b3946_heketi_fc27.nasl: GPLv2+
@@ -53136,6 +53142,7 @@
 2018/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
 2018/gb_kerberos5_mult_vuln.nasl: GPLv2+
 2018/gb_malwarebytes_multiple_dos_vuln.nasl: GPLv2+
+2018/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/gb_yawcam_dir_trav_vuln.nasl: GPLv2+
@@ -53374,6 +53381,7 @@ gb_7zip_detect_lin.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
+gb_ab_ethernet_detect.nasl: GPLv2+
 gb_abyss_detect.nasl: GPLv2+
 gb_accellion_fta_detect.nasl: GPLv2+
 gb_achievo_detect.nasl: GPLv2+
@@ -55084,19 +55092,29 @@ gsf/2018/atlassian/gb_atlassian_jira_jraserver-66622.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-66624.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180110-ucm.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180117-ucm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180117-iess.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180117-ise.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos1.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nx-os.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-cpi.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-prime-infrastructure.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ucs_central_cisco-sa-20180117-ucs.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_wsa_cisco-sa-20180117-wsa1.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX227928.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX230238.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX230612.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
 gsf/2018/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
+gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+

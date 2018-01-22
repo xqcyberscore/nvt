@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-103.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms10-103.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Microsoft Publisher Remote Code Execution Vulnerability (2292970)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902274);
-  script_version("$Revision: 6538 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902274");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_cve_id("CVE-2010-2569", "CVE-2010-2570", "CVE-2010-2571", "CVE-2010-3954",
                 "CVE-2010-3955");

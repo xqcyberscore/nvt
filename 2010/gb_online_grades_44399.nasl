@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_online_grades_44399.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_online_grades_44399.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Online Grades Multiple Local File Include Vulnerabilities
 #
@@ -37,9 +37,9 @@ Online Grades 3.2.5 and prior are vulnerable.";
 
 if(description)
 {
- script_id(100875);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100875");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
  script_bugtraq_id(44399);
  script_tag(name:"cvss_base", value:"6.8");

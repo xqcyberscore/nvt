@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cowon_jetaudio_title_bof_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_cowon_jetaudio_title_bof_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # jetAudio jetCast Title Processing Buffer Overflow Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host has COWON Media Center JetAudio installed and is prone
 
 if(description)
 {
-  script_id(800994);
-  script_version("$Revision: 6532 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800994");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

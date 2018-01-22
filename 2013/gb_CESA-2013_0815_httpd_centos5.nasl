@@ -60,8 +60,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
   script_id(881733);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:40 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2012-3499", "CVE-2012-4558", "CVE-2013-1862");
   script_tag(name:"cvss_base", value:"5.1");
@@ -72,7 +72,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0815");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-May/019720.html");
-  script_summary("Check for the Version of httpd");
+  script_tag(name: "summary" , value: "Check for the Version of httpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pligg_cms_41729.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pligg_cms_41729.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Pligg 'search.php' Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ Pligg 1.0.4 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100719);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100719");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-16 12:38:11 +0200 (Fri, 16 Jul 2010)");
  script_bugtraq_id(41729);
 

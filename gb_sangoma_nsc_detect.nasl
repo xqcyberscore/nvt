@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sangoma_nsc_detect.nasl 8398 2018-01-12 12:20:16Z asteins $
+# $Id: gb_sangoma_nsc_detect.nasl 8465 2018-01-19 04:50:20Z ckuersteiner $
 #
 # Sangoma NetBorder/Vega Session Controller Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112183");
-  script_version("$Revision: 8398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 13:20:16 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8465 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 05:50:20 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 12:07:00 +0100 (Thu, 11 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,8 +83,8 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
       version = "unknown"; #tbd
 
       register_and_report_cpe( app: "Sangoma NetBorder/Vega Session Controller",
-                               cpename: "cpe:/o:sangoma:netborder%2fvega_session_firmware",
-                               base: "cpe:/o:sangoma:netborder%2fvega_session_firmware:",
+                               cpename: "cpe:/o:sangoma:netborder",
+                               base: "cpe:/o:sangoma:netborder:",
                                ver: version,
                                insloc: install,
                                regPort: port);

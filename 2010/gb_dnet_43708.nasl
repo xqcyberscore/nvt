@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnet_43708.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_dnet_43708.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # DNET Live-Stats 'team.rc5-72.php' Local File Include Vulnerability
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if(description)
 {
- script_id(100841);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100841");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-05 12:35:02 +0200 (Tue, 05 Oct 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

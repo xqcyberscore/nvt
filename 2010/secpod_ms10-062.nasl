@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-062.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_ms10-062.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # MPEG-4 Codec Remote Code Execution Vulnerability (975558)
 #
@@ -25,9 +25,9 @@
 
 if(description)
 {
-  script_id(900250);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900250");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_bugtraq_id(43039);
   script_cve_id("CVE-2010-0818");

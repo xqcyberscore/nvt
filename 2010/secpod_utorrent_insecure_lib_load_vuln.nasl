@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # uTorrent File Opening Insecure Library Loading Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with uTorrent and is prone to insecure lib
 
 if(description)
 {
-  script_id(902240);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902240");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3129");
   script_tag(name:"cvss_base", value:"9.3");

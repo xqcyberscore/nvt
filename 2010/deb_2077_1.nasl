@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2077_1.nasl 6614 2017-07-07 12:09:12Z cfischer $
+# $Id: deb_2077_1.nasl 8457 2018-01-18 07:58:32Z teissa $
 # Description: Auto-generated from advisory DSA 2077-1 (openldap)
 #
 # Authors:
@@ -61,9 +61,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(67833);
- script_version("$Revision: 6614 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:12 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67833");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-21 08:54:16 +0200 (Sat, 21 Aug 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

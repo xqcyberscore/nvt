@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1704_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1704_1.nasl 8466 2018-01-19 06:58:30Z teissa $
 #
 # Ubuntu Update for linux-lts-quantal USN-1704-1
 #
@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1704-1/");
   script_id(841292);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:37:29 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-4461", "CVE-2012-4508", "CVE-2012-4530",
                 "CVE-2012-4565", "CVE-2012-5517", "CVE-2012-5532");
@@ -75,7 +75,7 @@ if(description)
   script_xref(name: "USN", value: "1704-1");
   script_name("Ubuntu Update for linux-lts-quantal USN-1704-1");
 
-  script_summary("Check for the Version of linux-lts-quantal");
+  script_tag(name: "summary" , value: "Check for the Version of linux-lts-quantal");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

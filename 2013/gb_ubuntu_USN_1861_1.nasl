@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1861_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1861_1.nasl 8466 2018-01-19 06:58:30Z teissa $
 #
 # Ubuntu Update for libxp USN-1861-1
 #
@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841464);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-07 10:05:19 +0530 (Fri, 07 Jun 2013)");
   script_cve_id("CVE-2013-2062");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,7 @@ if(description)
 
   script_xref(name: "USN", value: "1861-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1861-1/");
-  script_summary("Check for the Version of libxp");
+  script_tag(name: "summary" , value: "Check for the Version of libxp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

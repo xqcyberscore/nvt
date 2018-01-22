@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmairie_opencominterne_lfi_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openmairie_opencominterne_lfi_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # openMairie openComInterne 'dsn[phptype]' Local File Inclusion Vulnerability
 #
@@ -44,9 +44,9 @@ local file inclusion vulnerability.";
 
 if(description)
 {
-  script_id(800784);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800784");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1936");
   script_tag(name:"cvss_base", value:"6.8");

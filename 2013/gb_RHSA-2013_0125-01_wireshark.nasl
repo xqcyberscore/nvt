@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-January/msg00008.html");
   script_id(870879);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-11 16:41:44 +0530 (Fri, 11 Jan 2013)");
   script_cve_id("CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2175", "CVE-2011-2698",
                 "CVE-2011-4102", "CVE-2012-0041", "CVE-2012-0042", "CVE-2012-0066",
@@ -78,7 +78,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0125-01");
   script_name("RedHat Update for wireshark RHSA-2013:0125-01");
 
-  script_summary("Check for the Version of wireshark");
+  script_tag(name: "summary" , value: "Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

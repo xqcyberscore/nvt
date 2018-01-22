@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-051.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-051.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Microsoft Window XML Core Services Remote Code Execution Vulnerability (2079403)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(902227);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902227");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-2561");
   script_bugtraq_id(42300);

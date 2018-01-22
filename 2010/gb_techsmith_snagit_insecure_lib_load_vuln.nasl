@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_techsmith_snagit_insecure_lib_load_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_techsmith_snagit_insecure_lib_load_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # TechSmith Snagit Insecure Library Loading Vulnerability
 #
@@ -46,9 +46,9 @@ insecure library loading vulnerability.";
 
 if(description)
 {
-  script_id(801274);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801274");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_cve_id("CVE-2010-3130");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ttwm_sql_inj_vuln.nasl 7806 2017-11-17 09:22:46Z cfischer $
+# $Id: secpod_ttwm_sql_inj_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # TT Web Site Manager 'tt_name' Remote SQL Injection Vulnerability
 #
@@ -44,9 +44,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(902135);
-  script_version("$Revision: 7806 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:22:46 +0100 (Fri, 17 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902135");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4732");
   script_tag(name:"cvss_base", value:"6.8");

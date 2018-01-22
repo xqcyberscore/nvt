@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perforce_38594.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_perforce_38594.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Perforce Socket Hijacking Vulnerability
 #
@@ -33,9 +33,9 @@ NOTE: For an exploit to succeed, the underlying operating system must
 
 if (description)
 {
- script_id(100520);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100520");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-09 14:33:24 +0100 (Tue, 09 Mar 2010)");
  script_bugtraq_id(38594);
  script_tag(name:"cvss_base", value:"4.3");

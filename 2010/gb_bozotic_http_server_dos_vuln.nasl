@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bozotic_http_server_dos_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_bozotic_http_server_dos_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # bozotic HTTP server Denial of Service Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running bozotic HTTP server and is prone to Denial o
 
 if(description)
 {
-  script_id(801245);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801245");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_cve_id("CVE-2010-2195");
   script_tag(name:"cvss_base", value:"5.0");

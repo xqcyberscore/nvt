@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_subtitle_translation_wizard_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_subtitle_translation_wizard_bof_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Subtitle Translation Wizard '.srt' File Stack Based Buffer Overflow Vulnerability
 #
@@ -46,9 +46,9 @@ prone to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801426);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801426");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-2440");
   script_bugtraq_id(41026);

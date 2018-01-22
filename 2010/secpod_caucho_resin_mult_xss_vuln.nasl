@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_caucho_resin_mult_xss_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_caucho_resin_mult_xss_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Caucho Resin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is running Caucho Resin and is prone to multiple
 
 if(description)
 {
-  script_id(901115);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901115");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_bugtraq_id(40251);
   script_cve_id("CVE-2010-2032");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_connector_net_ssl_cert_sec_bypass_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_mysql_connector_net_ssl_cert_sec_bypass_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # MySQL Connector/Net SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with MySQL Connector/Net and is prone to
 
 if(description)
 {
-  script_id(801205);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801205");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:36:02 +0200 (Fri, 07 May 2010)");
   script_bugtraq_id(35514);
   script_cve_id("CVE-2009-4833");

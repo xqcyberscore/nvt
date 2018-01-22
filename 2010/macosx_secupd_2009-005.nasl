@@ -48,9 +48,9 @@ tag_summary = "The remote host is missing Security Update 2009-005.
 
 if(description)
 {
- script_id(102028);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102028");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
  script_cve_id("CVE-2009-2800","CVE-2009-2803","CVE-2009-1241","CVE-2009-1270","CVE-2008-6680","CVE-2009-1371","CVE-2009-1372","CVE-2009-2804","CVE-2009-2805","CVE-2009-2468","CVE-2009-0949","CVE-2009-2807","CVE-2009-1862","CVE-2009-1863","CVE-2009-1864","CVE-2009-1865","CVE-2009-1866","CVE-2009-1867","CVE-2009-1868","CVE-2009-1869","CVE-2009-1870","CVE-2009-2809","CVE-2009-2811","CVE-2009-2812","CVE-2008-2079","CVE-2009-1271","CVE-2009-1272","CVE-2008-5498","CVE-2009-2813","CVE-2009-2814");
  script_name("Mac OS X Security Update 2009-005");

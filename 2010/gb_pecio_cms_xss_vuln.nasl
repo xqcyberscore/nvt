@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pecio_cms_xss_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
+# $Id: gb_pecio_cms_xss_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # pecio cms 'target' Parameter Cross Site Scripting Vulnerability
 #
@@ -48,9 +48,9 @@ tag_summary = "The host is running Pecio CMS and is prone to Cross-Site Scriptin
 
 if(description)
 {
-  script_id(801544);
-  script_version("$Revision: 5794 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801544");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

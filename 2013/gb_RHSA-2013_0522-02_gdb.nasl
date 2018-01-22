@@ -73,8 +73,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00061.html");
   script_id(870923);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:01:47 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2011-4355");
   script_bugtraq_id(50829);
@@ -83,7 +83,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0522-02");
   script_name("RedHat Update for gdb RHSA-2013:0522-02");
 
-  script_summary("Check for the Version of gdb");
+  script_tag(name: "summary" , value: "Check for the Version of gdb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

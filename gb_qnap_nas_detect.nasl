@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_detect.nasl 8342 2018-01-09 11:57:15Z jschulte $
+# $Id: gb_qnap_nas_detect.nasl 8462 2018-01-18 12:59:58Z cfischer $
 #
 # QNAP NAS Detection
 #
@@ -25,29 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_oid("1.3.6.1.4.1.25623.1.0.103875");
- script_version ("$Revision: 8342 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-09 12:57:15 +0100 (Tue, 09 Jan 2018) $");
- script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
- script_name("QNAP NAS Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.103875");
+  script_version("$Revision: 8462 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 13:59:58 +0100 (Thu, 18 Jan 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("QNAP NAS Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80, 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
- extract the version number from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80, 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"qod_type", value:"remote_banner");
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -55,20 +54,23 @@ include("host_details.inc");
 
 port = get_http_port( default:8080 );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 
 urls = make_list( '/cgi-bin/login.html', '/cgi-bin/html/login.html' , '/cgi-bin/authLogin.cgi' );
-foreach url ( urls )
-{
+
+foreach url ( urls ) {
+
   req = http_get( item:url, port:port );
   buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
   if ( "<title>Welcome to QNAP Turbo NAS" >!< buf ) continue;
 
-  if ( "QTS_REMEMBER_ME" >< buf || "QTS_SSL_LOGIN" >< buf )
+  is_qts = FALSE;
+
+  if ( "QTS_REMEMBER_ME" >< buf || "QTS_SSL_LOGIN" >< buf ) {
     set_kb_item( name:"qnap/qts", value:TRUE );
+    is_qts = TRUE;
+  }
 
   req = 'POST /cgi-bin/authLogin.cgi HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
@@ -115,11 +117,22 @@ foreach url ( urls )
   if ( cpe_model )
     cpe += ':' + cpe_model;
 
-  if ( vers != 'unknown')
+  if ( vers != 'unknown' )
     cpe += ':' + vers;
 
   if ( build )
     cpe += '_' + build;
+
+  if( is_qts ) {
+    os_cpe = "cpe:/o:qnap:qts";
+
+    # nb: The NVD is only using the version but not the build in the registered CPEs:
+    # https://nvd.nist.gov/products/cpe/search/results?keyword=cpe%3a%2fo%3aqnap%3aqts*&status=FINAL&orderBy=CPEURI&namingFormat=2.2
+    if ( vers != 'unknown' )
+      os_cpe += ':' + vers;
+
+    register_and_report_os(os:"QNAP QTS", cpe:os_cpe, banner_type:"HTTP(s) Login Page", port:port, desc:"QNAP NAS Detection", runs_key:"unixoide");
+  }
 
   set_kb_item(name:"qnap/model", value:model);
   set_kb_item(name:"qnap/version", value:vers);

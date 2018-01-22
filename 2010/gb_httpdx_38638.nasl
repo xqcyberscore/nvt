@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_38638.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_httpdx_38638.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # httpdx PNG File Handling Remote Denial of Service Vulnerability
 #
@@ -26,9 +26,9 @@
 
 if (description)
 {
- script_id(100525);
- script_version("$Revision: 5933 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100525");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
  script_bugtraq_id(38638);
  script_tag(name:"cvss_base", value:"5.0");

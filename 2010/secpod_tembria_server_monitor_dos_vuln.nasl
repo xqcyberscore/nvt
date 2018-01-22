@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tembria_server_monitor_dos_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_tembria_server_monitor_dos_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Tembria Server Monitor HTTP Request Denial of Service Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "The host is running Tembria Server Monitor and is prone to Denial
 
 if(description)
 {
-  script_id(901104);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901104");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-1316");
   script_tag(name:"cvss_base", value:"5.0");

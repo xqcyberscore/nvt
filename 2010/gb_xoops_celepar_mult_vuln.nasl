@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_celepar_mult_vuln.nasl 7144 2017-09-15 12:14:43Z cfischer $
+# $Id: gb_xoops_celepar_mult_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Xoops Celepar Multiple Vulnerabilities
 #
@@ -54,9 +54,9 @@ tag_summary = "This host is running Xoops Celepar and is prone to multiple
 
 if(description)
 {
-  script_id(801153);
-  script_version("$Revision: 7144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801153");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

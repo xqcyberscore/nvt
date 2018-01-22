@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SyndeoCMS_42978.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_SyndeoCMS_42978.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # SyndeoCMS Local File Include, Cross Site Scripting, and HTML Injection Vulnerabilities
 #
@@ -43,9 +43,9 @@ SyndeoCMS version 2.8.02 and prior are vulnerable.";
 
 if (description)
 {
- script_id(100784);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100784");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-06 14:44:23 +0200 (Mon, 06 Sep 2010)");
  script_bugtraq_id(42978);
 

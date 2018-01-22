@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_firefox_info_disc_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mozilla_firefox_info_disc_vuln_win.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Mozilla Firefox Information Disclosure Vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to Inform
 
 if(description)
 {
-  script_id(902305);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902305");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3171", "CVE-2010-3399");
   script_tag(name:"cvss_base", value:"5.8");

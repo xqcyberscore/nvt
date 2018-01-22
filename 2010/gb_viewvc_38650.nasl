@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viewvc_38650.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_viewvc_38650.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # ViewVC 'lib/viewvc.py' Cross Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Vendor updates are available. Please see the references for deta
 
 if (description)
 {
- script_id(100533);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100533");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
  script_cve_id("CVE-2010-0736");
  script_bugtraq_id(38650);

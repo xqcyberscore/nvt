@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uHTTP_38986.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_uHTTP_38986.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # uHTTP Server GET Request Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if (description)
 {
- script_id(100560);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100560");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-30 12:13:57 +0200 (Tue, 30 Mar 2010)");
  script_bugtraq_id(38986);
  script_tag(name:"cvss_base", value:"5.1");

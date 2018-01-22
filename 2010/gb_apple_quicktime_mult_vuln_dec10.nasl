@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_dec10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_quicktime_mult_vuln_dec10.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Apple QuickTime Multiple vulnerabilities - Dec10 (Windows)
 #
@@ -45,9 +45,9 @@ tag_summary = "The host is running QuickTime Player and is prone to multiple
 
 if(description)
 {
-  script_id(801680);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801680");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_cve_id("CVE-2010-1508", "CVE-2010-0530", "CVE-2010-3800",
                 "CVE-2010-3801", "CVE-2010-3802", "CVE-2010-4009");

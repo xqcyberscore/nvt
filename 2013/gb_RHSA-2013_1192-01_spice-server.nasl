@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871034);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-09-06 09:36:22 +0530 (Fri, 06 Sep 2013)");
   script_cve_id("CVE-2013-4130");
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,7 @@ update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1192-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-September/msg00000.html");
-  script_summary("Check for the Version of spice-server");
+  script_tag(name: "summary" , value: "Check for the Version of spice-server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

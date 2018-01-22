@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: barracuda_web_application_firewall_37432.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: barracuda_web_application_firewall_37432.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Barracuda Web Application Firewall 660 'cgi-mod/index.cgi' Multiple HTML Injection Vulnerabilities
 #
@@ -38,9 +38,9 @@ vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100420);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100420");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_bugtraq_id(37432);
  script_tag(name:"cvss_base", value:"4.3");

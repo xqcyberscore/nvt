@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcexam_file_upload_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_tcexam_file_upload_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # TCExam 'tce_functions_tcecode_editor.php' File Upload Vulnerability
 #
@@ -42,9 +42,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(800793);
-  script_version("$Revision: 5843 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800793");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-2153");
   script_bugtraq_id(40511);

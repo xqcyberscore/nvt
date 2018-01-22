@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_lfi.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_mantis_lfi.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # MantisBT <=1.2.3 (db_type) Local File Inclusion Vulnerability
 #
@@ -35,9 +35,9 @@ attack.";
 
 if (description)
 {
- script_id(100947);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100947");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-12-15 13:36:34 +0100 (Wed, 15 Dec 2010)");
  script_bugtraq_id(45399);
  script_tag(name:"cvss_base", value:"5.1");

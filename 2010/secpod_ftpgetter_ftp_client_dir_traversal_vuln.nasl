@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftpgetter_ftp_client_dir_traversal_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ftpgetter_ftp_client_dir_traversal_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # FTPGetter FTP Client Directory Traversal Vulnerability
 #
@@ -45,9 +45,9 @@ directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(902233);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902233");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-25 17:02:03 +0200 (Wed, 25 Aug 2010)");
   script_cve_id("CVE-2010-3103");
   script_tag(name:"cvss_base", value:"9.3");

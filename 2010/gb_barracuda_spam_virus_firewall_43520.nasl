@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_spam_virus_firewall_43520.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_barracuda_spam_virus_firewall_43520.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Barracuda Networks Multiple Products 'view_help.cgi' Directory Traversal Vulnerability
 #
@@ -46,9 +46,9 @@ Barracuda Web Filter 4.3.0.013 and earlier";
 
 if (description)
 {
- script_id(100847);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100847");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-06 12:55:58 +0200 (Wed, 06 Oct 2010)");
  script_bugtraq_id(43520);
  script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-036.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms09-036.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Microsoft Windows ASP.NET Denial of Service Vulnerability(970957)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801482);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801482");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-13 14:33:55 +0100 (Mon, 13 Dec 2010)");
   script_cve_id("CVE-2009-1536");
   script_bugtraq_id(35985);

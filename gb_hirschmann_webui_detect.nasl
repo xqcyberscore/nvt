@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_webui_detect.nasl 8449 2018-01-17 17:04:52Z cfischer $
+# $Id: gb_hirschmann_webui_detect.nasl 8463 2018-01-18 14:32:46Z cfischer $
 #
 # Hirschmann Devices Detection (Web UI)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140575");
-  script_version("$Revision: 8449 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-17 18:04:52 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8463 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-18 15:32:46 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-04 14:40:12 +0700 (Mon, 04 Dec 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,6 +58,8 @@ its version.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+
+known_platforms = make_list ("L2B", "L2E", "L2P", "L3E", "L3P", "HiOS-3S");
 
 port = get_http_port(default: 443);
 res = http_get_cache(port: port, item: "/");
@@ -94,6 +96,19 @@ if (res =~ "^HTTP/1\.[01] 200" &&
   if (!isnull(vers[1])) {
     fw_version = vers[1];
     concluded += vers[0] + '\n';
+  }
+
+  # "launchClass" VALUE="com.hirschmann.products.apps.marL2P.marL2P_Main
+  # "launchClass" VALUE="com.hirschmann.products.apps.rsrL2P.rsrL2P_Main
+  pltf_name = egrep(pattern: '"launchClass" VALUE="com\\.hirschmann\\.products\\.apps\\.', string: res);
+  if (!isnull(pltf_name)) {
+    foreach known_platform (known_platforms) {
+      if (known_platform >< pltf_name) {
+        platform_name = known_platform;
+        break;
+      }
+    }
+    concluded += pltf_name + '\n';
   }
 
   set_kb_item(name: "hirschmann_device/http/" + port + "/fw_version", value: fw_version);

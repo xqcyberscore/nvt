@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zervit_40132.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_zervit_40132.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Zervit HTTP Server Source Code Information Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ Zervit 0.4 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100637);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100637");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
  script_bugtraq_id(40132);
  script_tag(name:"cvss_base", value:"5.0");

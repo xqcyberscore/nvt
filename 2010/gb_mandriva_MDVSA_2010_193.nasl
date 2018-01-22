@@ -42,9 +42,9 @@ tag_affected = "qt-creator on Mandriva Linux 2010.0,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-10/msg00004.php");
-  script_id(831190);
-  script_version("$Revision: 8205 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831190");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-04 16:16:44 +0200 (Mon, 04 Oct 2010)");
   script_xref(name: "MDVSA", value: "2010:193");
   script_tag(name:"cvss_base", value:"6.9");

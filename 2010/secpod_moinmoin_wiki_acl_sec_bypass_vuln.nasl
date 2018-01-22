@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moinmoin_wiki_acl_sec_bypass_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_moinmoin_wiki_acl_sec_bypass_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # MoinMoin Wiki ACL Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running MoinMoin Wiki and is prone to security bypas
 
 if(description)
 {
-  script_id(902154);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902154");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-01 11:04:35 +0200 (Thu, 01 Apr 2010)");
   script_cve_id("CVE-2009-4762");
   script_tag(name:"cvss_base", value:"7.5");

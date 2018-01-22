@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vBulletin_41875.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_vBulletin_41875.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # vBulletin 'faq.php' Information Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ references for more information.";
 
 if (description)
 {
- script_id(100723);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100723");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-23 13:21:58 +0200 (Fri, 23 Jul 2010)");
  script_bugtraq_id(41875);
  script_tag(name:"cvss_base", value:"5.0");

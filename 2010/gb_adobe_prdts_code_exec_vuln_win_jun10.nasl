@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Adobe Products Remote Code Execution Vulnerability - jun10 (Windows)
 #
@@ -51,9 +51,9 @@ remote code execution vulnerability.";
 
 if(description)
 {
-  script_id(801360);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801360");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-1297");
   script_bugtraq_id(40586);

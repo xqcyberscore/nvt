@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocs_inventory_35593.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ocs_inventory_35593.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # OCS Inventory NG Agent 'Backend.pm' Perl Module Handling Code Execution Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100868);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100868");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-25 12:51:03 +0200 (Mon, 25 Oct 2010)");
  script_bugtraq_id(35593);
  script_cve_id("CVE-2009-0667");

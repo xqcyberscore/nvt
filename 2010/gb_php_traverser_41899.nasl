@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_traverser_41899.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_php_traverser_41899.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # PHP Traverser 'mp3_id.php' Remote File Include Vulnerability
 #
@@ -39,9 +39,9 @@ affected.";
 
 if(description)
 {
- script_id(100734);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100734");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(41899);
  script_tag(name:"cvss_base", value:"7.5");

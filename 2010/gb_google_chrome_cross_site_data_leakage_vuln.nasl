@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_cross_site_data_leakage_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_google_chrome_cross_site_data_leakage_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Google Chrome Cross Site Data Leakage Vulnerability (Windows)
 #
@@ -45,9 +45,9 @@ prone to cross site data leakage vulnerability.";
 
 if(description)
 {
-  script_id(801329);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801329");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1851");
   script_tag(name:"cvss_base", value:"4.3");

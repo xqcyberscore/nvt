@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_activex_mult_code_exec_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ca_activex_mult_code_exec_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Computer Associates WebScan ActiveX Control Multiple Remote Code Execution Vulnerabilities
 #
@@ -50,9 +50,9 @@ controls and is prone to multiple remote code execution vulnerabilities.";
 
 if(description)
 {
-  script_id(801225);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801225");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_bugtraq_id(40689, 40494);
   script_cve_id("CVE-2010-2193");

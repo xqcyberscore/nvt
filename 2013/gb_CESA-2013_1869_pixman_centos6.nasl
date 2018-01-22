@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(881849);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:44:57 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6425");
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +62,7 @@ must be restarted for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1869");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-December/020089.html");
-  script_summary("Check for the Version of pixman");
+  script_tag(name: "summary" , value: "Check for the Version of pixman");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

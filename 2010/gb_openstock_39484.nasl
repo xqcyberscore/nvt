@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openstock_39484.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_openstock_39484.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # openstock/opentel 'dsn[phptype]' Parameter Local File Include Vulnerability
 #
@@ -38,9 +38,9 @@ versions may also be affected.";
 
 if(description)
 {
- script_id(100578);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100578");
+ script_version("$Revision: 8469 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-15 19:15:10 +0200 (Thu, 15 Apr 2010)");
  script_bugtraq_id(39484,39486);
  script_tag(name:"cvss_base", value:"7.5");

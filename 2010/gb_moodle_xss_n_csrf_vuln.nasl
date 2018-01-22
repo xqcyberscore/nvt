@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_xss_n_csrf_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_moodle_xss_n_csrf_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Moodle Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -52,9 +52,9 @@ tag_summary = "This host is running Moodle and is prone to Cross-Site Scripting
 
 if(description)
 {
-  script_id(800798);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800798");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2229", "CVE-2010-2228",
                 "CVE-2010-2231", "CVE-2010-2230");

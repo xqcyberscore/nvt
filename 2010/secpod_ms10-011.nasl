@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-011.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-011.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Microsoft Client/Server Run-time Subsystem Privilege Elevation Vulnerability (978037)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing a critical security update according to Micr
 
 if(description)
 {
-  script_id(902116);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902116");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 16:06:43 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

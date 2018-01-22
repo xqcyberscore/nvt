@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 5112 2017-01-26 09:31:46Z ckuerste $
+# $Id: gb_modbus_detect.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
 #
 # Modbus Detection
 #
@@ -29,8 +29,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106522");
- script_version ("$Revision: 5112 $");
- script_tag(name: "last_modification", value: "$Date: 2017-01-26 10:31:46 +0100 (Thu, 26 Jan 2017) $");
+ script_version ("$Revision: 8471 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
  script_tag(name: "creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ Modbus is a serial communications protocol for use with programmable logic contr
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_family("Service detection");
  script_dependencies("find_service.nasl");
- script_require_ports(502);
+ script_require_ports("Services/unknown", 502, 503);
 
  script_xref(name: "URL", value: "http://www.modbus.org/");
 
@@ -57,8 +57,9 @@ Modbus is a serial communications protocol for use with programmable logic contr
 
 include("misc_func.inc");
 
-port = 502;
-if (!get_port_state(502))
+port = get_unknown_port(default: 502);
+
+if (!get_port_state(port))
   exit(0);
 
 sock = open_sock_tcp(port);

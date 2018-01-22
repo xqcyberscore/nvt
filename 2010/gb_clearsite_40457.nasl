@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clearsite_40457.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_clearsite_40457.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Clearsite 'header.php' Remote File Include Vulnerability
 #
@@ -34,9 +34,9 @@ possible.";
 
 if (description)
 {
- script_id(100756);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100756");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-11 13:11:12 +0200 (Wed, 11 Aug 2010)");
  script_bugtraq_id(40457);
  script_tag(name:"cvss_base", value:"7.5");

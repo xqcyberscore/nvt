@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_document_manager_info_disc_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_document_manager_info_disc_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Document Manager Information Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "The host is running Document Manager and is prone to Information
 
 if(description)
 {
-  script_id(800478);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800478");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

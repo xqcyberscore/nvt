@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_electric_modicon_m340_dos_vuln.nasl 5474 2017-03-03 08:32:02Z ckuerste $
+# $Id: gb_schneider_electric_modicon_m340_dos_vuln.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
 #
 # Schneider Electric Modicon M340 DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106630");
-  script_version("$Revision: 5474 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-03 09:32:02 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 8471 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-03-03 14:24:24 +0700 (Fri, 03 Mar 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -74,8 +74,6 @@ BMXP3420302, BMXP3420302H and BMXP342030H prior to firmware version 2.9.");
 }
 
 include("version_func.inc");
-
-port = 502;
 
 prod = get_kb_item("schneider_electric/product");
 if (!prod || prod !~ "^BMX")

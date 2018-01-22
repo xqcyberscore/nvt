@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1892_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1892_1.nasl 8466 2018-01-19 06:58:30Z teissa $
 #
 # Ubuntu Update for ubuntu-release-upgrader USN-1892-1
 #
@@ -36,8 +36,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841491);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:20:46 +0530 (Tue, 02 Jul 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:H/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,7 @@ if(description)
 
   script_xref(name: "USN", value: "1892-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1892-1/");
-  script_summary("Check for the Version of ubuntu-release-upgrader");
+  script_tag(name: "summary" , value: "Check for the Version of ubuntu-release-upgrader");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

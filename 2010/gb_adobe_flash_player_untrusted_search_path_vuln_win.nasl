@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_untrusted_search_path_vuln_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_untrusted_search_path_vuln_win.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # Adobe Flash Player Untrusted search path vulnerability (Windows)
 #
@@ -44,9 +44,9 @@ loading its external libraries 'dwmapi.dll'.";
 
 if(description)
 {
-  script_id(801465);
-  script_version("$Revision: 8178 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801465");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3976");
   script_tag(name:"cvss_base", value:"9.3");

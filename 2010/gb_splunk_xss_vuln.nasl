@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_xss_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_splunk_xss_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Splunk 'Referer' Header Cross-Site Scripting Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running Splunk and is prone to Cross-Site Scripting
 
 if(description)
 {
-  script_id(801226);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801226");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2429");
   script_tag(name:"cvss_base", value:"4.3");

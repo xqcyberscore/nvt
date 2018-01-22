@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modbus_detect.nasl 5250 2017-02-09 10:51:30Z ckuerste $
+# $Id: gb_schneider_modbus_detect.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
 #
 # Schneider Electric Devices Detection (modbus)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106542");
-  script_version("$Revision: 5250 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-02-09 11:51:30 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 8471 $");
+  script_tag(name:"last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ Tries to detect Schneider Electric devices over the Modbus protocol.");
   script_family("Product detection");
   script_dependencies("gb_modbus_detect.nasl");
   script_mandatory_keys("modbus/vendor", "modbus/prod_code");
-  script_require_ports(502);
+  script_require_ports("Services/modbus", 502);
 
   exit(0);
 }
@@ -57,8 +57,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 include("dump.inc");
-
-port = 502;
 
 vendor = get_kb_item("modbus/vendor");
 if (!vendor || "Schneider Electric" >!< vendor)
@@ -82,8 +80,10 @@ if (!isnull(vers[2])) {
 
 set_kb_item(name: "schneider_electric/detected", value: TRUE);
 
+port = get_port_for_service(default: 502, proto: "modbus");
+
 # Try to get some additional information over modbus
-if (get_port_state(502) && sock = open_sock_tcp(port)) {
+if (get_port_state(port) && sock = open_sock_tcp(port)) {
   # CPU module
   req = raw_string(0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x5a, 0x00, 0x02);
   send(socket: sock, data: req, length: strlen(req));
@@ -128,6 +128,6 @@ if (!cpe)
 register_product(cpe: cpe, port: port, service: "modbus");
 log_message(data: build_detection_report(app: "Schneider Electric " + prod, version: version, install: "502/tcp",
                                          cpe: cpe, concluded: vers[0], extra: report),
-            port: 502);
+            port: port);
 
 exit(0);

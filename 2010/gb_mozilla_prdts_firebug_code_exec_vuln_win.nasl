@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_firebug_code_exec_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_firebug_code_exec_vuln_win.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Mozilla Products Firebug Code Execution Vulnerability (Windows)
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey and is prone
 
 if(description)
 {
-  script_id(800755);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800755");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0179");
   script_tag(name:"cvss_base", value:"5.1");

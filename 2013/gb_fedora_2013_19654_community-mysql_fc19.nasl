@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867045);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:37:42 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-3839", "CVE-2013-5807");
   script_tag(name:"cvss_base", value:"4.9");
@@ -54,7 +54,7 @@ contains the standard MySQL client programs and generic MySQL files.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-19654");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/119965.html");
-  script_summary("Check for the Version of community-mysql");
+  script_tag(name: "summary" , value: "Check for the Version of community-mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

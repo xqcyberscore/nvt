@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_kernel_win32k_sys_bof_dos_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: secpod_ms_win_kernel_win32k_sys_bof_dos_vuln.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Microsoft Windows win32k.sys Driver 'CreateDIBPalette()' BOF Vulnerability
 #
@@ -47,9 +47,9 @@ tag_summary = "This host is prone to buffer ovreflow vulnerability.";
 
 if(description)
 {
-  script_id(902256);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902256");
+  script_version("$Revision: 8457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-2739");
   script_tag(name:"cvss_base", value:"7.2");

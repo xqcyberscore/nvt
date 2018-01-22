@@ -42,8 +42,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865582);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-25 10:16:59 +0530 (Thu, 25 Apr 2013)");
   script_cve_id("CVE-2013-1930", "CVE-2013-1931", "CVE-2013-1883", "CVE-2012-2691",
                 "CVE-2012-2692", "CVE-2012-1118", "CVE-2012-1119", "CVE-2012-1120",
@@ -55,7 +55,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-5833");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-April/103438.html");
-  script_summary("Check for the Version of mantis");
+  script_tag(name: "summary" , value: "Check for the Version of mantis");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

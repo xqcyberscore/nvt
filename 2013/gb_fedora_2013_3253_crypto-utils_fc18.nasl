@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/099840.html");
   script_id(865439);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8466 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:52:55 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-3504");
   script_tag(name:"cvss_base", value:"3.6");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-3253");
   script_name("Fedora Update for crypto-utils FEDORA-2013-3253");
 
-  script_summary("Check for the Version of crypto-utils");
+  script_tag(name: "summary" , value: "Check for the Version of crypto-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

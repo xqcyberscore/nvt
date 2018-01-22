@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 8402 2018-01-12 14:03:40Z cfischer $
+# $Id: gather-package-list.nasl 8470 2018-01-19 09:50:23Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 8402 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8470 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 10:50:23 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -405,6 +405,14 @@ function register_detected_os( os, oskey ) {
   } else {
     register_and_report_os( os:os, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
+}
+
+function register_packages( buf ) {
+  set_kb_item( name:"ssh/login/packages", value:buf );
+}
+
+function register_rpms( buf ) {
+  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
 }
 
 port = get_preference( "auth_port_ssh" );
@@ -1115,7 +1123,7 @@ if( "IPFire" >< rls ) { # IPFire 2.17 (i586) - core91
 if( "Amazon Linux AMI release" >< rls ) {
   set_kb_item( name:"ssh/login/amazon_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name: "ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Amazon Linux" );
   register_detected_os( os:"Amazon Linux", oskey:"AMAZON" );
   exit( 0 );
@@ -1131,7 +1139,7 @@ if( "EyesOfNetwork release" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
 
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
 
   buf = ssh_cmd( socket:sock, cmd:"cat /etc/system-release-cpe" );
 
@@ -1220,7 +1228,7 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 if( "oraclelinux-release-5" >< rls ) {
   set_kb_item( name:"ssh/login/oracle_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name: "ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running OracleLinux release 5" );
   register_detected_os( os:"OracleLinux release 5", oskey:"OracleLinux5" );
   exit( 0 );
@@ -1229,7 +1237,7 @@ if( "oraclelinux-release-5" >< rls ) {
 if( "oraclelinux-release-6" >< rls ) {
   set_kb_item( name:"ssh/login/oracle_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running OracleLinux release 6" );
   register_detected_os( os:"OracleLinux release 6", oskey:"OracleLinux6" );
   exit( 0 );
@@ -1238,7 +1246,7 @@ if( "oraclelinux-release-6" >< rls ) {
 if( "oraclelinux-release-7" >< rls ) {
   set_kb_item( name:"ssh/login/oracle_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running OracleLinux release 7" );
   register_detected_os( os:"OracleLinux release 7", oskey:"OracleLinux7" );
   exit( 0 );
@@ -1284,7 +1292,7 @@ if( rls =~ "^McAfee"  ) {
 if( "Red Hat Linux release 7.3" >< rls ) {
   set_kb_item( name:"ssh/login/redhat_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RH7.3" );
   exit( 0 );
@@ -1292,7 +1300,7 @@ if( "Red Hat Linux release 7.3" >< rls ) {
 if( "Red Hat Linux release 8.0 (Psyche)" >< rls ) {
   set_kb_item( name:"ssh/login/redhat_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RH8.0" );
   exit( 0 );
@@ -1300,7 +1308,7 @@ if( "Red Hat Linux release 8.0 (Psyche)" >< rls ) {
 if( "Red Hat Linux release 9 (Shrike)" >< rls ) {
   set_kb_item( name:"ssh/login/redhat_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RH9" );
   exit( 0 );
@@ -1309,7 +1317,7 @@ if( "Red Hat Linux release 9 (Shrike)" >< rls ) {
 if( "Fedora Core release 1 (Yarrow)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC1" );
   exit( 0 );
@@ -1317,7 +1325,7 @@ if( "Fedora Core release 1 (Yarrow)" >< rls ) {
 if( "Fedora Core release 2 (Tettnang)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC2" );
   exit( 0 );
@@ -1325,7 +1333,7 @@ if( "Fedora Core release 2 (Tettnang)" >< rls ) {
 if( "Fedora Core release 3 (Heidelberg)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC3" );
   exit( 0 );
@@ -1333,7 +1341,7 @@ if( "Fedora Core release 3 (Heidelberg)" >< rls ) {
 if( "Fedora Core release 4 (Stentz)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC4" );
   exit( 0 );
@@ -1341,7 +1349,7 @@ if( "Fedora Core release 4 (Stentz)" >< rls ) {
 if( "Fedora Core release 5 (Bordeaux)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC5" );
   exit( 0 );
@@ -1349,7 +1357,7 @@ if( "Fedora Core release 5 (Bordeaux)" >< rls ) {
 if( "Fedora Core release 6 (Zod)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora_core", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC6" );
   exit( 0 );
@@ -1357,7 +1365,7 @@ if( "Fedora Core release 6 (Zod)" >< rls ) {
 if( "Fedora release 7 (Moonshine)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC7" );
   exit( 0 );
@@ -1365,7 +1373,7 @@ if( "Fedora release 7 (Moonshine)" >< rls ) {
 if( "Fedora release 8 (Werewolf)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC8" );
   exit( 0 );
@@ -1373,7 +1381,7 @@ if( "Fedora release 8 (Werewolf)" >< rls ) {
 if( "Fedora release 9 (Sulphur)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC9" );
   exit( 0 );
@@ -1381,7 +1389,7 @@ if( "Fedora release 9 (Sulphur)" >< rls ) {
 if( "Fedora release 10 (Cambridge)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC10" );
   exit( 0 );
@@ -1389,7 +1397,7 @@ if( "Fedora release 10 (Cambridge)" >< rls ) {
 if( "Fedora release 11 (Leonidas)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC11" );
   exit( 0 );
@@ -1397,7 +1405,7 @@ if( "Fedora release 11 (Leonidas)" >< rls ) {
 if( "Fedora release 12 (Constantine)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC12" );
   exit( 0 );
@@ -1405,7 +1413,7 @@ if( "Fedora release 12 (Constantine)" >< rls ) {
 if( "Fedora release 13 (Goddard)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC13" );
   exit( 0 );
@@ -1413,7 +1421,7 @@ if( "Fedora release 13 (Goddard)" >< rls ) {
 if( "Fedora release 14 (Laughlin)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC14" );
   exit( 0 );
@@ -1421,7 +1429,7 @@ if( "Fedora release 14 (Laughlin)" >< rls ) {
 if( "Fedora release 15 (Lovelock)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC15" );
   exit( 0 );
@@ -1429,7 +1437,7 @@ if( "Fedora release 15 (Lovelock)" >< rls ) {
 if( "Fedora release 16 (Verne)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC16" );
   exit( 0 );
@@ -1437,7 +1445,7 @@ if( "Fedora release 16 (Verne)" >< rls ) {
 if( "Fedora release 17 (Beefy Miracle)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC17" );
   exit( 0 );
@@ -1445,7 +1453,7 @@ if( "Fedora release 17 (Beefy Miracle)" >< rls ) {
 if( "Fedora release 18 (Spherical Cow)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC18" );
   exit( 0 );
@@ -1453,7 +1461,7 @@ if( "Fedora release 18 (Spherical Cow)" >< rls ) {
 if( "Fedora release 19" >< rls && "Cat" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC19" );
   exit( 0 );
@@ -1461,7 +1469,7 @@ if( "Fedora release 19" >< rls && "Cat" >< rls ) {
 if( "Fedora release 20" >< rls && "(Heisenbug)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC20" );
   exit( 0 );
@@ -1469,7 +1477,7 @@ if( "Fedora release 20" >< rls && "(Heisenbug)" >< rls ) {
 if( "Fedora release 21" >< rls && "(Twenty One)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC21" );
   exit( 0 );
@@ -1477,7 +1485,7 @@ if( "Fedora release 21" >< rls && "(Twenty One)" >< rls ) {
 if( "Fedora release 22" >< rls && "(Twenty Two)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC22" );
   exit( 0 );
@@ -1485,7 +1493,7 @@ if( "Fedora release 22" >< rls && "(Twenty Two)" >< rls ) {
 if( "Fedora release 23" >< rls && "(Twenty Three)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC23" );
   exit( 0 );
@@ -1493,7 +1501,7 @@ if( "Fedora release 23" >< rls && "(Twenty Three)" >< rls ) {
 if( "Fedora release 24" >< rls && "(Twenty Four)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC24" );
   exit( 0 );
@@ -1501,7 +1509,7 @@ if( "Fedora release 24" >< rls && "(Twenty Four)" >< rls ) {
 if( "Fedora release 25" >< rls && "(Twenty Five)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC25" );
   exit( 0 );
@@ -1509,7 +1517,7 @@ if( "Fedora release 25" >< rls && "(Twenty Five)" >< rls ) {
 if( "Fedora release 26" >< rls && "(Twenty Six)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC26" );
   exit( 0 );
@@ -1517,7 +1525,7 @@ if( "Fedora release 26" >< rls && "(Twenty Six)" >< rls ) {
 if( "Fedora release 27" >< rls && "(Twenty Seven)" >< rls ) {
   set_kb_item( name:"ssh/login/fedora", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC27" );
   exit( 0 );
@@ -1531,7 +1539,7 @@ if( "Fedora release 27" >< rls && "(Twenty Seven)" >< rls ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 2\.1", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_2.1" );
   exit( 0 );
@@ -1539,7 +1547,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 2\.1", string:rls ) ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 3[ .]", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_3" );
   exit( 0 );
@@ -1547,7 +1555,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 3[ .]", string:rls ) ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 4[ .]", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_4" );
   exit( 0 );
@@ -1555,7 +1563,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 4[ .]", string:rls ) ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 5[ .]", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_5" );
   exit( 0 );
@@ -1563,7 +1571,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 5[ .]", string:rls ) ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 6[ .]", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_6" );
   exit( 0 );
@@ -1571,7 +1579,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 6[ .]", string:rls ) ) {
 if( egrep( pattern:"Red Hat Enterprise.*release 7[ .]", string:rls ) ) {
   set_kb_item( name:"ssh/login/rhel", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"RHENT_7" );
   exit( 0 );
@@ -1580,7 +1588,7 @@ if( egrep( pattern:"Red Hat Enterprise.*release 7[ .]", string:rls ) ) {
 if( "Mandriva Linux Enterprise Server release 5.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_mes5" );
   register_detected_os( os:rls, oskey:"MNDK_mes5.0" );
@@ -1589,7 +1597,7 @@ if( "Mandriva Linux Enterprise Server release 5.0" >< rls ) {
 if( "Mandriva Linux Enterprise Server release 5.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_mes5.1" );
   exit( 0 );
@@ -1597,7 +1605,7 @@ if( "Mandriva Linux Enterprise Server release 5.1" >< rls ) {
 if( "Mandriva Linux Enterprise Server release 5.2" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_mes5.2" );
   exit( 0 );
@@ -1605,7 +1613,7 @@ if( "Mandriva Linux Enterprise Server release 5.2" >< rls ) {
 if( "Mandriva Linux release 2011.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2011.0" );
   exit( 0 );
@@ -1613,7 +1621,7 @@ if( "Mandriva Linux release 2011.0" >< rls ) {
 if( "Mandriva Linux release 2010.2" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2010.2" );
   exit( 0 );
@@ -1621,7 +1629,7 @@ if( "Mandriva Linux release 2010.2" >< rls ) {
 if( "Mandriva Linux release 2010.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2010.1" );
   exit( 0 );
@@ -1629,7 +1637,7 @@ if( "Mandriva Linux release 2010.1" >< rls ) {
 if( "Mandriva Linux release 2010.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2010.0" );
   exit( 0 );
@@ -1637,7 +1645,7 @@ if( "Mandriva Linux release 2010.0" >< rls ) {
 if( "Mandriva Linux release 2009.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2009.1" );
   exit( 0 );
@@ -1645,7 +1653,7 @@ if( "Mandriva Linux release 2009.1" >< rls ) {
 if( "Mandriva Linux release 2009.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2009.0" );
   exit( 0 );
@@ -1653,7 +1661,7 @@ if( "Mandriva Linux release 2009.0" >< rls ) {
 if( "Mandriva Linux release 2008.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2008.1" );
   exit( 0 );
@@ -1661,7 +1669,7 @@ if( "Mandriva Linux release 2008.1" >< rls ) {
 if( "Mandriva Linux release 2008.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2008.0" );
   exit( 0 );
@@ -1669,7 +1677,7 @@ if( "Mandriva Linux release 2008.0" >< rls ) {
 if( "Mandriva Linux release 2007.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2007.1" );
   exit( 0 );
@@ -1677,7 +1685,7 @@ if( "Mandriva Linux release 2007.1" >< rls ) {
 if( "Mandriva Linux release 2007.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2007.0" );
   exit( 0 );
@@ -1685,7 +1693,7 @@ if( "Mandriva Linux release 2007.0" >< rls ) {
 if( "Mandriva Linux release 2006.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_2006.0" );
   exit( 0 );
@@ -1693,7 +1701,7 @@ if( "Mandriva Linux release 2006.0" >< rls ) {
 if( "Mandrakelinux release 10.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_10.1" );
   exit( 0 );
@@ -1701,7 +1709,7 @@ if( "Mandrakelinux release 10.1" >< rls ) {
 if( "Mandrake Linux release 10.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_10.0" );
   exit( 0 );
@@ -1709,7 +1717,7 @@ if( "Mandrake Linux release 10.0" >< rls ) {
 if( "Mandrake Linux release 9.2" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_9.2" );
   exit( 0 );
@@ -1717,7 +1725,7 @@ if( "Mandrake Linux release 9.2" >< rls ) {
 if( "Mandrake Linux release 9.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_9.1" );
   exit( 0 );
@@ -1725,7 +1733,7 @@ if( "Mandrake Linux release 9.1" >< rls ) {
 if( "Mandrake Linux release 9.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_9.0" );
   exit( 0 );
@@ -1733,7 +1741,7 @@ if( "Mandrake Linux release 9.0" >< rls ) {
 if( "Mandrake Linux release 8.2" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_8.2" );
   exit( 0 );
@@ -1741,7 +1749,7 @@ if( "Mandrake Linux release 8.2" >< rls ) {
 if( "Mandrake Linux release 8.1" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_8.1" );
   exit( 0 );
@@ -1749,7 +1757,7 @@ if( "Mandrake Linux release 8.1" >< rls ) {
 if( "Mandrake Linux release 8.0" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_8.0" );
   exit( 0 );
@@ -1757,7 +1765,7 @@ if( "Mandrake Linux release 8.0" >< rls ) {
 if( "Mandrake Linux release 7.2" >< rls ) {
   set_kb_item( name:"ssh/login/mandriva_mandrake_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"MNDK_7.2" );
   exit( 0 );
@@ -1766,7 +1774,7 @@ if( "Mandrake Linux release 7.2" >< rls ) {
 if( "Mageia release 6" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 6" );
   register_detected_os( os:"Mageia release 6", oskey:"MAGEIA6" );
   exit( 0 );
@@ -1774,7 +1782,7 @@ if( "Mageia release 6" >< rls ) {
 if( "Mageia release 5" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 5" );
   register_detected_os( os:"Mageia release 5", oskey:"MAGEIA5" );
   exit( 0 );
@@ -1782,7 +1790,7 @@ if( "Mageia release 5" >< rls ) {
 if( "Mageia release 4.1" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 4.1" );
   register_detected_os( os:"Mageia release 4.1", oskey:"MAGEIA4.1" );
   exit( 0 );
@@ -1790,7 +1798,7 @@ if( "Mageia release 4.1" >< rls ) {
 if( "Mageia release 4" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 4" );
   register_detected_os( os:"Mageia release 4", oskey:"MAGEIA4" );
   exit( 0 );
@@ -1798,7 +1806,7 @@ if( "Mageia release 4" >< rls ) {
 if( "Mageia release 3" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 3" );
   register_detected_os( os:"Mageia release 3", oskey:"MAGEIA3" );
   exit( 0 );
@@ -1806,7 +1814,7 @@ if( "Mageia release 3" >< rls ) {
 if( "Mageia release 2" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-  set_kb_item( name: "ssh/login/rpms", value:";" + buf);
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 2" );
   register_detected_os( os:"Mageia release 2", oskey:"MAGEIA2" );
   exit( 0 );
@@ -1814,7 +1822,7 @@ if( "Mageia release 2" >< rls ) {
 if( "Mageia release 1" >< rls ) {
   set_kb_item( name:"ssh/login/mageia_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Mageia release 1" );
   register_detected_os( os:"Mageia release 1", oskey:"MAGEIA1" );
   exit( 0 );
@@ -1830,7 +1838,7 @@ if( "Mageia release 1" >< rls ) {
 if( "CentOS Linux release 7" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 7" );
   register_detected_os( os:"CentOS release 7", oskey:"CentOS7" );
   exit( 0 );
@@ -1838,7 +1846,7 @@ if( "CentOS Linux release 7" >< rls ) {
 if( "CentOS release 6" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 6" );
   register_detected_os( os:"CentOS release 6", oskey:"CentOS6" );
   exit( 0 );
@@ -1846,7 +1854,7 @@ if( "CentOS release 6" >< rls ) {
 if( "CentOS release 5" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 5" );
   register_detected_os( os:"CentOS release 5", oskey:"CentOS5" );
   exit( 0 );
@@ -1854,7 +1862,7 @@ if( "CentOS release 5" >< rls ) {
 if( "CentOS release 4" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 4" );
   register_detected_os( os:"CentOS release 4", oskey:"CentOS4" );
   exit( 0 );
@@ -1862,7 +1870,7 @@ if( "CentOS release 4" >< rls ) {
 if( "CentOS release 3" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 3" );
   register_detected_os( os:"CentOS release 3", oskey:"CentOS3" );
   exit( 0 );
@@ -1870,7 +1878,7 @@ if( "CentOS release 3" >< rls ) {
 if( "CentOS release 2" >< rls ) {
   set_kb_item( name:"ssh/login/centos", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running CentOS release 2" );
   register_detected_os( os:"CentOS release 2", oskey:"CentOS2" );
   exit( 0 );
@@ -1885,7 +1893,7 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=4.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 4.10" );
   register_detected_os( os:"Ubuntu 4.10", oskey:"UBUNTU4.1" );
   exit( 0 );
@@ -1893,7 +1901,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=4.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=5.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 5.04" );
   register_detected_os( os:"Ubuntu 5.04", oskey:"UBUNTU5.04" );
   exit( 0 );
@@ -1901,7 +1909,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=5.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=5.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 5.10" );
   register_detected_os( os:"Ubuntu 5.10", oskey:"UBUNTU5.10" );
   exit( 0 );
@@ -1909,7 +1917,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=5.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=6.06" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 6.06" );
   register_detected_os( os:"Ubuntu 6.06", oskey:"UBUNTU6.06 LTS" );
   exit( 0 );
@@ -1917,7 +1925,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=6.06" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=6.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 6.10" );
   register_detected_os( os:"Ubuntu 6.10", oskey:"UBUNTU6.10" );
   exit( 0 );
@@ -1925,7 +1933,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=6.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=7.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 7.04" );
   register_detected_os( os:"Ubuntu 7.04", oskey:"UBUNTU7.04" );
   exit( 0 );
@@ -1933,7 +1941,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=7.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=7.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 7.10" );
   register_detected_os( os:"Ubuntu 7.10", oskey:"UBUNTU7.10" );
   exit( 0 );
@@ -1941,7 +1949,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=7.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=8.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 8.04 LTS" );
   register_detected_os( os:"Ubuntu 8.04 LTS", oskey:"UBUNTU8.04 LTS" );
   exit( 0 );
@@ -1949,7 +1957,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=8.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=8.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 8.10" );
   register_detected_os( os:"Ubuntu 8.10", oskey:"UBUNTU8.10" );
   exit( 0 );
@@ -1957,7 +1965,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=8.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=9.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 9.04" );
   register_detected_os( os:"Ubuntu 9.04", oskey:"UBUNTU9.04" );
   exit( 0 );
@@ -1965,7 +1973,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=9.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=9.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 9.10" );
   register_detected_os( os:"Ubuntu 9.10", oskey:"UBUNTU9.10" );
   exit( 0 );
@@ -1973,7 +1981,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=9.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=10.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 10.04 LTS" );
   register_detected_os( os:"Ubuntu 10.04 LTS", oskey:"UBUNTU10.04 LTS" );
   exit( 0 );
@@ -1981,7 +1989,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=10.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=10.10" >< rls) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 10.10" );
   register_detected_os( os:"Ubuntu 10.10", oskey:"UBUNTU10.10" );
   exit( 0 );
@@ -1989,7 +1997,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=10.10" >< rls) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=11.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 11.04" );
   register_detected_os( os:"Ubuntu 11.04", oskey:"UBUNTU11.04" );
   exit( 0 );
@@ -1997,7 +2005,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=11.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=11.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 11.10" );
   register_detected_os( os:"Ubuntu 11.10", oskey:"UBUNTU11.10" );
   exit( 0 );
@@ -2005,7 +2013,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=11.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=12.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 12.04 LTS" );
   register_detected_os( os:"Ubuntu 12.04 LTS", oskey:"UBUNTU12.04 LTS" );
   exit( 0 );
@@ -2013,7 +2021,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=12.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=12.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 12.10" );
   register_detected_os( os:"Ubuntu 12.10", oskey:"UBUNTU12.10" );
   exit( 0 );
@@ -2021,7 +2029,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=12.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=13.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 13.04" );
   register_detected_os( os:"Ubuntu 13.04", oskey:"UBUNTU13.04" );
   exit( 0 );
@@ -2029,7 +2037,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=13.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=13.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 13.10" );
   register_detected_os( os:"Ubuntu 13.10", oskey:"UBUNTU13.10" );
   exit( 0 );
@@ -2037,7 +2045,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=13.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=14.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 14.04 LTS" );
   register_detected_os( os:"Ubuntu 14.04 LTS", oskey:"UBUNTU14.04 LTS" );
   exit( 0 );
@@ -2045,7 +2053,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=14.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=14.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 14.10" );
   register_detected_os( os:"Ubuntu 14.10", oskey:"UBUNTU14.10" );
   exit( 0 );
@@ -2053,7 +2061,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=14.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=15.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 15.04" );
   register_detected_os( os:"Ubuntu 15.04", oskey:"UBUNTU15.04" );
   exit( 0 );
@@ -2061,7 +2069,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=15.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=15.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 15.10" );
   register_detected_os( os:"Ubuntu 15.10", oskey:"UBUNTU15.10" );
   exit( 0 );
@@ -2069,7 +2077,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=15.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=16.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 16.04 LTS" );
   register_detected_os( os:"Ubuntu 16.04 LTS", oskey:"UBUNTU16.04 LTS" );
   exit( 0 );
@@ -2077,7 +2085,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=16.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=16.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 16.10" );
   register_detected_os( os:"Ubuntu 16.10", oskey:"UBUNTU16.10" );
   exit( 0 );
@@ -2085,7 +2093,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=16.10" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.04" );
   register_detected_os( os:"Ubuntu 17.04", oskey:"UBUNTU17.04" );
   exit( 0 );
@@ -2093,7 +2101,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.04" >< rls ) {
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.10" );
   register_detected_os( os:"Ubuntu 17.10", oskey:"UBUNTU17.10" );
   exit( 0 );
@@ -2111,9 +2119,7 @@ if( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?' ) {
   ucs_description = eregmatch( string:rls, pattern:'DISTRIB_DESCRIPTION="([^"]*)"' );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
   if( ! isnull( buf ) && ! isnull( ucs_release ) && ! isnull( ucs_description ) ) {
-
-    set_kb_item(name: "ssh/login/packages", value:buf);
-
+    register_packages( buf:buf );
     log_message( port:port, data:"We are able to login and detect that you are running " + ucs_desrciption[1] );
     register_detected_os( os:ucs_description[1], oskey:"UCS" + ucs_release[1] );
     exit( 0 );
@@ -2129,9 +2135,7 @@ match = eregmatch( pattern:"^Univention (Managed Client|Mobile Client|DC Master|
 if( ! isnull( match ) ) {
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
   if( ! isnull( buf ) ) {
-
-    set_kb_item( name:"ssh/login/packages", value:buf );
-
+    register_packages( buf:buf );
     log_message( port:port, data:"We are able to login and detect that you are running " + match[0] );
     register_detected_os( os:"Univention Corporate Server " + match[2], oskey:"UCS" + match[2] );
     exit( 0 );
@@ -2146,14 +2150,14 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 
 if( "Conectiva Linux 9" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Conectiva Linux 9" );
   register_detected_os( os:"Conectiva Linux 9", oskey:"CL9" );
   exit( 0 );
 }
 if( "Conectiva Linux 10" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Conectiva Linux 10" );
   register_detected_os( os:"Conectiva Linux 10", oskey:"CL10" );
   exit( 0 );
@@ -2183,42 +2187,42 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 
 if( "Turbolinux Server 7.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLS7" );
   exit( 0 );
 }
 if( "Turbolinux Workstation 7.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLWS7" );
   exit( 0 );
 }
 if( "Turbolinux Server 8.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLS8" );
   exit( 0 );
 }
 if( "Turbolinux Workstation 8.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLWS8" );
   exit( 0 );
 }
 if( "Turbolinux Desktop 10.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLDT10" );
   exit( 0 );
 }
 if( "Turbolinux Server 10.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-  set_kb_item( name:"ssh/login/rpms", value:buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"TLS10" );
   exit( 0 );
@@ -2237,7 +2241,7 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 if( "1.1" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 1.1" );
   register_detected_os( os:"Debian 1.1", oskey:"DEB1.1" );
   exit( 0 );
@@ -2245,7 +2249,7 @@ if( "1.1" >< rls ) {
 if( "1.2" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 1.2" );
   register_detected_os( os:"Debian 1.2", oskey:"DEB1.2" );
   exit( 0 );
@@ -2253,7 +2257,7 @@ if( "1.2" >< rls ) {
 if( "1.3" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 1.3" );
   register_detected_os( os:"Debian 1.3", oskey:"DEB1.3" );
   exit( 0 );
@@ -2261,7 +2265,7 @@ if( "1.3" >< rls ) {
 if( "2.0" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 2.0" );
   register_detected_os( os:"Debian 2.0", oskey:"DEB2.0" );
   exit( 0 );
@@ -2269,7 +2273,7 @@ if( "2.0" >< rls ) {
 if( "2.1" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 2.1" );
   register_detected_os( os:"Debian 2.1", oskey:"DEB2.1" );
   exit( 0 );
@@ -2277,7 +2281,7 @@ if( "2.1" >< rls ) {
 if( "2.2" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 2.2 (Potato)" );
   register_detected_os( os:"Debian 2.2 (Potato)", oskey:"DEB2.2" );
   exit( 0 );
@@ -2285,7 +2289,7 @@ if( "2.2" >< rls ) {
 if( "3.0" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 3.0 (Woody)" );
   register_detected_os( os:"Debian 3.0 (Woody)", oskey:"DEB3.0" );
   exit( 0 );
@@ -2293,7 +2297,7 @@ if( "3.0" >< rls ) {
 if( "3.1" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 3.1 (Sarge)" );
   register_detected_os( os:"Debian 3.1 (Sarge)", oskey:"DEB3.1" );
   exit( 0 );
@@ -2301,7 +2305,7 @@ if( "3.1" >< rls ) {
 if( "4.0" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 4.0 (Etch)" );
   register_detected_os( os:"Debian 4.0 (Etch)", oskey:"DEB4.0" );
   exit( 0 );
@@ -2309,7 +2313,7 @@ if( "4.0" >< rls ) {
 if( "5.0" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 5.0 (Lenny)" );
   register_detected_os( os:"Debian 5.0 (Lenny)", oskey:"DEB5.0" );
   exit( 0 );
@@ -2317,7 +2321,7 @@ if( "5.0" >< rls ) {
 if( "6.0" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 6.0 (Squeeze)" );
   register_detected_os( os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0" );
   exit( 0 );
@@ -2326,7 +2330,7 @@ if( "6.0" >< rls ) {
 if( match = eregmatch( pattern:"^7\.([0-9]+)$", string:rls ) ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 7." + match[1] + " (Wheezy)" );
   register_detected_os( os:"Debian 7." + match[1] + " (Wheezy)", oskey:"DEB7." + match[1] );
   exit( 0 );
@@ -2335,7 +2339,7 @@ if( match = eregmatch( pattern:"^7\.([0-9]+)$", string:rls ) ) {
 if( match = eregmatch( pattern:"^8\.([0-9]+)$", string:rls ) ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 8." + match[1] + " (Jessie)" );
   register_detected_os( os:"Debian 8." + match[1] + " (Jessie)", oskey:"DEB8." + match[1] );
   exit( 0 );
@@ -2344,7 +2348,7 @@ if( match = eregmatch( pattern:"^8\.([0-9]+)$", string:rls ) ) {
 if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian 9." + match[1] + " (Stretch)" );
   register_detected_os( os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1] );
   exit( 0 );
@@ -2353,7 +2357,7 @@ if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
 if( "buster/sid" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  set_kb_item( name:"ssh/login/packages", value:buf );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Debian Buster/Sid" );
   register_detected_os( os:"Debian Buster/Sid", oskey:"DEB10.0" );
   exit( 0 );
@@ -2632,7 +2636,7 @@ if( "No such file or directory" >!< rls && strlen( rls ) )
 if( "openSUSE Leap 42.3" >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE Leap 42.3" );
   register_detected_os( os:"openSUSE Leap 42.3", oskey:"openSUSELeap42.3" );
   exit( 0 );
@@ -2640,7 +2644,7 @@ if( "openSUSE Leap 42.3" >< rls ) {
 if( "openSUSE Leap 42.2" >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE Leap 42.2" );
   register_detected_os(os:"openSUSE Leap 42.2", oskey:"openSUSELeap42.2" );
   exit( 0 );
@@ -2648,7 +2652,7 @@ if( "openSUSE Leap 42.2" >< rls ) {
 if( "openSUSE Leap 42.1" >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE Leap 42.1" );
   register_detected_os( os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1" );
   exit( 0 );
@@ -2667,7 +2671,7 @@ if( match = eregmatch( pattern:"SUSE Linux Enterprise Desktop ([0-9]+)", string:
 
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Desktop " + match[1] + " SP" + patchlevel[1] );
   register_detected_os( os:"SUSE Linux Enterprise Desktop " + match[1] + " SP" + patchlevel[1], oskey:"SLED" + match[1] + ".0SP" + patchlevel[1] );
   exit( 0 );
@@ -2678,7 +2682,7 @@ if( "SUSE Linux Enterprise Server 10 " >< rls ) {
   set_kb_item( name:"ssh/login/suse_sles", value:TRUE ); # For a few older LSCs
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Server 10" );
   register_detected_os( os:"SUSE Linux Enterprise Server 10", oskey:"SLES10.0" );
   exit( 0 );
@@ -2687,7 +2691,7 @@ if( "SUSE LINUX Enterprise Server 9 " >< rls ) {
   set_kb_item( name:"ssh/login/suse_sles", value:TRUE ); # For a few older LSCs
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Server 9" );
   register_detected_os( os:"SUSE Linux Enterprise Server 9", oskey:"SLES9.0" );
   exit( 0 );
@@ -2697,7 +2701,7 @@ if( "SUSE Linux Enterprise Server 11 " >< rls && "PATCHLEVEL = 0" >< rls ) {
   set_kb_item( name:"ssh/login/suse_sles", value:TRUE ); # For a few older LSCs
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Server 11" );
   register_detected_os( os:"SUSE Linux Enterprise Server 11", oskey:"SLES11.0" );
   exit( 0 );
@@ -2712,7 +2716,7 @@ if( match = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9]+)", string:r
   set_kb_item( name:"ssh/login/suse_sles", value:TRUE ); # For a few older LSCs
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SUSE Linux Enterprise Server " + match[1] + " SP" + patchlevel[1] );
   register_detected_os( os:"SUSE Linux Enterprise Server " + match[1] + " SP" + patchlevel[1], oskey:"SLES" + match[1] + ".0SP" + patchlevel[1] );
   exit( 0 );
@@ -2721,7 +2725,7 @@ if( match = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9]+)", string:r
 if( "openSUSE 13.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 13.2" );
   register_detected_os( os:"openSUSE 13.2", oskey:"openSUSE13.2" );
   exit( 0 );
@@ -2729,7 +2733,7 @@ if( "openSUSE 13.2 " >< rls ) {
 if( "openSUSE 13.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 13.1" );
   register_detected_os( os:"openSUSE 13.1", oskey:"openSUSE13.1" );
   exit( 0 );
@@ -2737,7 +2741,7 @@ if( "openSUSE 13.1 " >< rls ) {
 if( "openSUSE 12.3 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 12.3" );
   register_detected_os( os:"openSUSE 12.3", oskey:"openSUSE12.3" );
   exit( 0 );
@@ -2745,7 +2749,7 @@ if( "openSUSE 12.3 " >< rls ) {
 if( "openSUSE 12.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 12.2" );
   register_detected_os( os:"openSUSE 12.2", oskey:"openSUSE12.2" );
   exit( 0 );
@@ -2753,7 +2757,7 @@ if( "openSUSE 12.2 " >< rls ) {
 if( "openSUSE 12.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 12.1" );
   register_detected_os( os:"openSUSE 12.1", oskey:"openSUSE12.1" );
   exit( 0 );
@@ -2761,7 +2765,7 @@ if( "openSUSE 12.1 " >< rls ) {
 if( "openSUSE 11.4 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 11.4" );
   register_detected_os( os:"openSUSE 11.4", oskey:"openSUSE11.4" );
   exit( 0 );
@@ -2769,7 +2773,7 @@ if( "openSUSE 11.4 " >< rls ) {
 if( "openSUSE 11.3 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 11.3" );
   register_detected_os( os:"openSUSE 11.3", oskey:"openSUSE11.3" );
   exit( 0 );
@@ -2777,7 +2781,7 @@ if( "openSUSE 11.3 " >< rls ) {
 if( "openSUSE 11.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 11.2" );
   register_detected_os( os:"openSUSE 11.2", oskey:"openSUSE11.2" );
   exit( 0 );
@@ -2785,7 +2789,7 @@ if( "openSUSE 11.2 " >< rls ) {
 if( "openSUSE 11.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 11.1" );
   register_detected_os( os:"openSUSE 11.1", oskey:"openSUSE11.1" );
   exit( 0 );
@@ -2793,7 +2797,7 @@ if( "openSUSE 11.1 " >< rls ) {
 if( "openSUSE 11.0 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 11.0" );
   register_detected_os( os:"openSUSE 11.0", oskey:"openSUSE11.0" );
   exit( 0 );
@@ -2801,7 +2805,7 @@ if( "openSUSE 11.0 " >< rls ) {
 if( "openSUSE 10.3 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 10.3" );
   register_detected_os( os:"openSUSE 10.3", oskey:"openSUSE10.3" );
   exit( 0 );
@@ -2809,7 +2813,7 @@ if( "openSUSE 10.3 " >< rls ) {
 if( "openSUSE 10.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE 10.2" );
   register_detected_os( os:"openSUSE 10.2", oskey:"openSUSE10.2" );
   exit( 0 );
@@ -2817,7 +2821,7 @@ if( "openSUSE 10.2 " >< rls ) {
 if( "SUSE LINUX 10.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 10.1" );
   register_detected_os( os:"SuSE Linux 10.1", oskey:"SUSE10.1" );
   exit( 0 );
@@ -2825,7 +2829,7 @@ if( "SUSE LINUX 10.1 " >< rls ) {
 if( "SUSE LINUX 10.0 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 10.0" );
   register_detected_os( os:"SuSE Linux 10.0", oskey:"SUSE10.0" );
   exit( 0 );
@@ -2833,7 +2837,7 @@ if( "SUSE LINUX 10.0 " >< rls ) {
 if( "SuSE Linux 9.3 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 9.3" );
   register_detected_os( os:"SuSE Linux 9.3", oskey:"SUSE9.3" );
   exit( 0 );
@@ -2841,7 +2845,7 @@ if( "SuSE Linux 9.3 " >< rls ) {
 if( "SuSE Linux 9.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 9.2" );
   register_detected_os( os:"SuSE Linux 9.2", oskey:"SUSE9.2" );
   exit( 0 );
@@ -2849,7 +2853,7 @@ if( "SuSE Linux 9.2 " >< rls ) {
 if( "SuSE Linux 9.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 9.1" );
   register_detected_os( os:"SuSE Linux 9.1", oskey:"SUSE9.1" );
   exit( 0 );
@@ -2857,7 +2861,7 @@ if( "SuSE Linux 9.1 " >< rls ) {
 if( "SuSE Linux 9.0 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 9.0" );
   register_detected_os( os:"SuSE Linux 9.0", oskey:"SUSE9.0" );
   exit( 0 );
@@ -2865,7 +2869,7 @@ if( "SuSE Linux 9.0 " >< rls ) {
 if( "SuSE Linux 8.2 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 8.2" );
   register_detected_os( os:"SuSE Linux 8.2", oskey:"SUSE8.2" );
   exit( 0 );
@@ -2873,7 +2877,7 @@ if( "SuSE Linux 8.2 " >< rls ) {
 if( "SuSE Linux 8.1 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 8.1" );
   register_detected_os( os:"SuSE Linux 8.1", oskey:"SUSE8.1" );
   exit( 0 );
@@ -2881,7 +2885,7 @@ if( "SuSE Linux 8.1 " >< rls ) {
 if( "SuSE Linux 8.0 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 8.0" );
   register_detected_os( os:"SuSE Linux 8.0", oskey:"SUSE8.0" );
   exit( 0 );
@@ -2889,7 +2893,7 @@ if( "SuSE Linux 8.0 " >< rls ) {
 if( "SuSE Linux 7.3 " >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
-  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running SuSE Linux 7.3" );
   register_detected_os( os:"SuSE Linux 7.3", oskey:"SUSE7.3" );
   exit( 0 );
@@ -2907,7 +2911,7 @@ rls2 = ssh_cmd(socket:sock, cmd:"cat /etc/trustix-release");
 if("Trustix Secure Linux release 3.0.5"><rls ||
        "Trustix Secure Linux release 3.0.5"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 3.0.5"));
     register_detected_os(os:"Trustix 3.0.5", oskey:"TSL3.0.5");
     exit(0);
@@ -2915,7 +2919,7 @@ if("Trustix Secure Linux release 3.0.5"><rls ||
 if("Trustix Secure Linux release 3.0"><rls ||
        "Trustix Secure Linux release 3.0"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 3.0"));
     register_detected_os(os:"Trustix 3.0", oskey:"TSL3.0");
     exit(0);
@@ -2923,7 +2927,7 @@ if("Trustix Secure Linux release 3.0"><rls ||
 if("Trustix Secure Linux release 2.2"><rls ||
        "Trustix Secure Linux release 2.2"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.2"));
     register_detected_os(os:"Trustix 2.2", oskey:"TSL2.2");
     exit(0);
@@ -2931,7 +2935,7 @@ if("Trustix Secure Linux release 2.2"><rls ||
 if("Trustix Secure Linux release 2.1"><rls ||
        "Trustix Secure Linux release 2.1"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.1"));
     register_detected_os(os:"Trustix 2.1", oskey:"TSL2.1");
     exit(0);
@@ -2939,7 +2943,7 @@ if("Trustix Secure Linux release 2.1"><rls ||
 if("Trustix Secure Linux release 2.0"><rls ||
        "Trustix Secure Linux release 2.0"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.0"));
     register_detected_os(os:"Trustix 2.0", oskey:"TSL2.0");
     exit(0);
@@ -2947,7 +2951,7 @@ if("Trustix Secure Linux release 2.0"><rls ||
 if("Trustix Secure Linux release 1.5"><rls ||
        "Trustix Secure Linux release 1.5"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.5"));
     register_detected_os(os:"Trustix 1.5", oskey:"TSL1.5");
     exit(0);
@@ -2955,7 +2959,7 @@ if("Trustix Secure Linux release 1.5"><rls ||
 if("Trustix Secure Linux release 1.2"><rls ||
        "Trustix Secure Linux release 1.2"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.2"));
     register_detected_os(os:"Trustix 1.2", oskey:"TSL1.2");
     exit(0);
@@ -2963,7 +2967,7 @@ if("Trustix Secure Linux release 1.2"><rls ||
 if("Trustix Secure Linux release 1.1"><rls ||
        "Trustix Secure Linux release 1.1"><rls2) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    register_rpms( buf:buf );
     log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.1"));
     register_detected_os(os:"Trustix 1.1", oskey:"TSL1.1");
     exit(0);

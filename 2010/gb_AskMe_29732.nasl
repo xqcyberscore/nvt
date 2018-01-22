@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AskMe_29732.nasl 5769 2017-03-29 13:50:21Z cfi $
+# $Id: gb_AskMe_29732.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # AlstraSoft AskMe Pro 'forum_answer.php' and 'profile.php' Multiple SQL Injection Vulnerabilities
 #
@@ -37,9 +37,9 @@ vulnerable.";
 
 if(description)
 {
- script_id(100800);
- script_version("$Revision: 5769 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100800");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-14 15:16:41 +0200 (Tue, 14 Sep 2010)");
  script_bugtraq_id(29732);
  script_cve_id("CVE-2008-2902");

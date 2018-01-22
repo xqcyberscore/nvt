@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmscout_xss_vuln.nasl 7273 2017-09-26 11:17:25Z cfischer $
+# $Id: gb_cmscout_xss_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # CMScout Cross-Site Scripting Vulnerability
 #
@@ -44,9 +44,9 @@ Scripting Vulnerability.";
 
 if(description)
 {
-  script_id(800791);
-  script_version("$Revision: 7273 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800791");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2154");
   script_bugtraq_id(40442);

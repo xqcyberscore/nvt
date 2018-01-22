@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webMAID_38993.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_webMAID_38993.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # WebMaid CMS Multiple Remote and Local File Include Vulnerabilities
 #
@@ -39,9 +39,9 @@ be affected.";
 
 if (description)
 {
- script_id(100559);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100559");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-29 12:55:36 +0200 (Mon, 29 Mar 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

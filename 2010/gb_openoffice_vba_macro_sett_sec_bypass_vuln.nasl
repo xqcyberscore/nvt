@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_vba_macro_sett_sec_bypass_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openoffice_vba_macro_sett_sec_bypass_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
 #
 # OpenOffice VBA Macro Restrictions Remote Security Bypass Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host has OpenOffice running which is prone to remote
 
 if(description)
 {
-  script_id(800168);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800168");
+  script_version("$Revision: 8469 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

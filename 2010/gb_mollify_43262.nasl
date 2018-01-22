@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mollify_43262.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_mollify_43262.nasl 8457 2018-01-18 07:58:32Z teissa $
 #
 # Mollify 'index.php' Cross Site Scripting Vulnerability
 #
@@ -36,9 +36,9 @@ Mollify 1.6 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100806);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100806");
+ script_version("$Revision: 8457 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
