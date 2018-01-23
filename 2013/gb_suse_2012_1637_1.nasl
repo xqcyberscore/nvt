@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1637_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2012_1637_1.nasl 8494 2018-01-23 06:57:55Z teissa $
 #
 # SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)
 #
@@ -76,8 +76,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00011.html");
   script_id(850385);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:42 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5130", "CVE-2012-5131", "CVE-2012-5132", "CVE-2012-5133",
                 "CVE-2012-5134", "CVE-2012-5135", "CVE-2012-5136", "CVE-2012-5137",
@@ -87,7 +87,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:1637_1");
   script_name("SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)");
 
-  script_summary("Check for the Version of Chromium");
+  script_tag(name: "summary" , value: "Check for the Version of Chromium");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

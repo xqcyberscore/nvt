@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maildrop_priv_esc_vuln.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: gb_maildrop_priv_esc_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Maildrop Privilege Escalation Vulnerability.
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed Maildrop and is prone to Privilege Escalat
 
 if(description)
 {
-  script_id(800292);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800292");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

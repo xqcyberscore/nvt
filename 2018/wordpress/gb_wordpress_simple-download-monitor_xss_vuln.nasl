@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple-download-monitor_xss_vuln.nasl 8302 2018-01-05 12:50:57Z asteins $
+# $Id: gb_wordpress_simple-download-monitor_xss_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # WordPress Simple Download Monitor Plugin Stored XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112177");
-  script_version("$Revision: 8302 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-05 13:50:57 +0100 (Fri, 05 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-05 14:08:51 +0100 (Fri, 05 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5212", "CVE-2018-5213");
 

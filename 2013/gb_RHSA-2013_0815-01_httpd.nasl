@@ -59,8 +59,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(870998);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:50:33 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2012-3499", "CVE-2012-4558", "CVE-2013-1862");
   script_tag(name:"cvss_base", value:"5.1");
@@ -69,7 +69,7 @@ if(description)
 
   script_xref(name: "RHSA", value: "2013:0815-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-May/msg00006.html");
-  script_summary("Check for the Version of httpd");
+  script_tag(name: "summary" , value: "Check for the Version of httpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 8303 2018-01-05 13:16:49Z santu $
+# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Flir Brickstream Sensors Incorrect Access Control Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:flir:brickstream_sensor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812370");
-  script_version("$Revision: 8303 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2018-3813");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 14:16:49 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-02 17:29:37 +0530 (Tue, 02 Jan 2018)");
   script_name("Flir Brickstream Sensors Incorrect Access Control Vulnerability");
 

@@ -35,15 +35,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/095435.html");
   script_id(864978);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-08 09:59:29 +0530 (Tue, 08 Jan 2013)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_xref(name: "FEDORA", value: "2012-21069");
   script_name("Fedora Update for php-symfony2-HttpKernel FEDORA-2012-21069");
 
-  script_summary("Check for the Version of php-symfony2-HttpKernel");
+  script_tag(name: "summary" , value: "Check for the Version of php-symfony2-HttpKernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

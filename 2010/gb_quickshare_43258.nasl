@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickshare_43258.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_quickshare_43258.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # QuickShare Directory Traversal Vulnerability
 #
@@ -39,9 +39,9 @@ QuickShare 1.0 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100822);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100822");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
  script_cve_id("CVE-2010-3488");
  script_bugtraq_id(43258);

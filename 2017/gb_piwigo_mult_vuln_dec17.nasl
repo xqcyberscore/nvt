@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_vuln_dec17.nasl 8255 2017-12-29 04:47:47Z ckuersteiner $
+# $Id: gb_piwigo_mult_vuln_dec17.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Piwigo Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140626");
-  script_version("$Revision: 8255 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-29 05:47:47 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-22 15:02:56 +0700 (Fri, 22 Dec 2017)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17774", "CVE-2017-17775", "CVE-2017-17826", "CVE-2017-17827", "CVE-2017-17822",
                 "CVE-2017-17823", "CVE-2017-17824", "CVE-2017-17825");

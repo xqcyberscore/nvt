@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 8233 2017-12-22 09:37:31Z cfischer $
+# $Id: telnet.nasl 8478 2018-01-21 17:52:33Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 8233 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:37:31 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 8478 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:52:33 +0100 (Sun, 21 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,6 +92,9 @@ no_telnet = make_list( "<<<check_mk>>>", "\\check_mk\.ini", "<<<uptime>>>", "<<<
                        "\+HELLO v([0-9.]+) \$Name:", # e.g. +HELLO v1.1 $Name:  $, unknown service on 5600/tcp
                        "^ getnameinfo: Temporary failure in name resolution $", # rsh on 514/tcp, spaces at the begin and end are expected
                        "Welcome to the TeamSpeak 3 ServerQuery interface",
+                       "500 OOPS: could not bind listening IPv4 socket", # Probably PureFTPd
+                       "^ncacn_http/1\.0",
+                       "^RFB 00[0-9]\.00[0-9]", # VNC
                        "\(Eggdrop v.* Eggheads\)" ); # Eggdrop Bot
 
 function no_telnet_banner( banner ) {

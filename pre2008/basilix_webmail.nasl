@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: basilix_webmail.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: basilix_webmail.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
 #
 # Basilix Webmail Dummy Request Vulnerability
 #
@@ -24,18 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# References:
-# From: "karol _" <su@poczta.arena.pl>
-# To: bugtraq@securityfocus.com
-# CC: arslanm@Bilkent.EDU.TR
-# Date: Fri, 06 Jul 2001 21:04:55 +0200
-# Subject: basilix bug
+CPE = "cpe:/a:basilix:basilix_webmail";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11072");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 8487 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2995);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,10 +40,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl", "logins.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("imap/login", "imap/password");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("basilix_detect.nasl", "logins.nasl");
+  script_mandatory_keys("basilix/installed", "imap/login", "imap/password");
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2001-07/0114.html");
 
@@ -69,12 +62,13 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
 user = get_kb_item( "imap/login" );
 pass = get_kb_item( "imap/password" );

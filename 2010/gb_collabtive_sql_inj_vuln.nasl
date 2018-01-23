@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabtive_sql_inj_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_collabtive_sql_inj_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Collabtive 'managechat.php' SQL Injection Vulnerability
 #
@@ -46,9 +46,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(801548);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801548");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2010-4269");
   script_tag(name:"cvss_base", value:"7.5");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_bof_vuln_jan10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_shockwave_player_bof_vuln_jan10.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Adobe Shockwave Player 3D Model Buffer Overflow Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_summary = "This host has Adobe Shockwave Player installed and is prone to
 
 if(description)
 {
-  script_id(800443);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800443");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

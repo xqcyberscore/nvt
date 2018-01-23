@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1843_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1843_1.nasl 8483 2018-01-22 06:58:04Z teissa $
 #
 # Ubuntu Update for gnutls26 USN-1843-1
 #
@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841447);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-31 09:58:10 +0530 (Fri, 31 May 2013)");
   script_cve_id("CVE-2013-2116");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,7 @@ if(description)
 
   script_xref(name: "USN", value: "1843-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1843-1/");
-  script_summary("Check for the Version of gnutls26");
+  script_tag(name: "summary" , value: "Check for the Version of gnutls26");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

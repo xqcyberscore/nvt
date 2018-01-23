@@ -38,8 +38,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_id(865902);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-18 10:31:10 +0530 (Tue, 18 Jun 2013)");
   script_cve_id("CVE-2013-2076", "CVE-2013-2077", "CVE-2013-2078", "CVE-2013-2072",
                 "CVE-2013-1918", "CVE-2013-1952", "CVE-2013-1922", "CVE-2013-1919",
@@ -54,7 +54,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-10136");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/108918.html");
-  script_summary("Check for the Version of xen");
+  script_tag(name: "summary" , value: "Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

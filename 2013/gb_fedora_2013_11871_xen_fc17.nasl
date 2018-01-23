@@ -34,8 +34,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(866050);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-07-08 10:32:07 +0530 (Mon, 08 Jul 2013)");
   script_cve_id("CVE-2013-1918", "CVE-2013-1432", "CVE-2013-2211", "CVE-2013-2194",
                 "CVE-2013-2195", "CVE-2013-2196", "CVE-2013-2076", "CVE-2013-2077",
@@ -54,7 +54,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-11871");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-July/110866.html");
-  script_summary("Check for the Version of xen");
+  script_tag(name: "summary" , value: "Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

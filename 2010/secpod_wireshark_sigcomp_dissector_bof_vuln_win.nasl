@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_sigcomp_dissector_bof_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wireshark_sigcomp_dissector_bof_vuln_win.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Wireshark SigComp Universal Decompressor Virtual Machine dissector BOF Vulnerability (Windows)
 #
@@ -36,9 +36,9 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer over
 
 if(description)
 {
-  script_id(902199);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902199");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2287");
   script_tag(name:"cvss_base", value:"8.3");

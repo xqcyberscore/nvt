@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7b4149911a_python-mistune_fc26.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_fedora_2017_7b4149911a_python-mistune_fc26.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Fedora Update for python-mistune FEDORA-2017-7b4149911a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873958");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 08:05:34 +0100 (Fri, 29 Dec 2017)");
   script_cve_id("CVE-2017-15612", "CVE-2017-16876");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-mistune FEDORA-2017-7b4149911a");
   script_tag(name: "summary", value: "Check the version of python-mistune");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_42342.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_coldfusion_42342.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Adobe ColdFusion CVE-2010-2861 Directory Traversal Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100772);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100772");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
  script_bugtraq_id(42342);
  script_cve_id("CVE-2010-2861");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_privilege_escalation_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_otrs_privilege_escalation_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # OTRS Framework Privilege Escalation Vulnerability (OSA-2017-10)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812273");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-17476");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 13:32:26 +0530 (Tue, 26 Dec 2017)");
   ## Application is vulnerable only if system has cookie support disabled
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_rce_vuln.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_b2evolution_rce_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # b2evolution Remote PHP Code Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:b2evolution:b2evolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112176");
-  script_version("$Revision: 8291 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 11:10:00 +0100 (Thu, 04 Jan 2018)");
-  script_tag(name: "cvss_base", value: "9.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-1000423");
 

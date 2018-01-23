@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867089);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 10:20:46 +0530 (Tue, 26 Nov 2013)");
   script_cve_id("CVE-2013-4563", "CVE-2013-4348", "CVE-2013-4470", "CVE-2013-4387", "CVE-2013-4345", "CVE-2013-4350", "CVE-2013-4343", "CVE-2013-2888", "CVE-2013-2889", "CVE-2013-2891", "CVE-2013-2892", "CVE-2013-2893", "CVE-2013-2894", "CVE-2013-2895", "CVE-2013-2896", "CVE-2013-2897", "CVE-2013-2899", "CVE-2013-0343", "CVE-2013-4254", "CVE-2013-4125", "CVE-2013-2232", "CVE-2013-1059", "CVE-2013-2234");
   script_tag(name:"cvss_base", value:"7.8");
@@ -54,7 +54,7 @@ input and output, etc.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-21807");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/122543.html");
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

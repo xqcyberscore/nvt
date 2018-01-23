@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniwebsvr_40133.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_miniwebsvr_40133.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # MiniWebsvr URI Directory Traversal Vulnerability
 #
@@ -35,9 +35,9 @@ MiniWebsvr 0.0.10 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100638);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100638");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
  script_bugtraq_id(40133);
  script_tag(name:"cvss_base", value:"5.0");

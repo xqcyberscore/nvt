@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871089);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 10:07:26 +0530 (Wed, 04 Dec 2013)");
   script_cve_id("CVE-2013-4566");
   script_tag(name:"cvss_base", value:"4.0");
@@ -69,7 +69,7 @@ for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1779-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-December/msg00001.html");
-  script_summary("Check for the Version of mod_nss");
+  script_tag(name: "summary" , value: "Check for the Version of mod_nss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

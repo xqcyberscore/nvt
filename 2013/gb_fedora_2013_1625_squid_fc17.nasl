@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098426.html");
   script_id(865342);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 10:15:36 +0530 (Mon, 11 Feb 2013)");
   script_cve_id("CVE-2013-0189", "CVE-2012-5643");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1625");
   script_name("Fedora Update for squid FEDORA-2013-1625");
 
-  script_summary("Check for the Version of squid");
+  script_tag(name: "summary" , value: "Check for the Version of squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_project_jug_44569.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_project_jug_44569.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Project Jug Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ affected.";
 
 if (description)
 {
- script_id(100888);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100888");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-02 13:46:58 +0100 (Tue, 02 Nov 2010)");
  script_bugtraq_id(44569);
  script_tag(name:"cvss_base", value:"5.0");

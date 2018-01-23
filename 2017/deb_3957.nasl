@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3957.nasl 7031 2017-08-31 12:19:29Z teissa $
+# $Id: deb_3957.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 3957-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703957");
-  script_version("$Revision: 7031 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-11399", "CVE-2017-11665", "CVE-2017-11719", "CVE-2017-9608", "CVE-2017-9993");
   script_name("Debian Security Advisory DSA 3957-1 (ffmpeg - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 14:19:29 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-08-28 00:00:00 +0200 (Mon, 28 Aug 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

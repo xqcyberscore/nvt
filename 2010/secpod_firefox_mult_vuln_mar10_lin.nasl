@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_mult_vuln_mar10_lin.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_firefox_mult_vuln_mar10_lin.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Firefox Multiple Vulnerabilities Mar-10 (Linux)
 #
@@ -45,9 +45,9 @@ tag_summary = "The host is installed with firefox browser and is prone to multip
 
 if(description)
 {
-  script_id(902146);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902146");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-0164", "CVE-2010-0165", "CVE-2010-0170", "CVE-2010-0172");
   script_bugtraq_id(38918);

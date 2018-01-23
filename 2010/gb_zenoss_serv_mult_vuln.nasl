@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenoss_serv_mult_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zenoss_serv_mult_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Zenoss Server Multiple Vulnerabilities
 #
@@ -45,9 +45,9 @@ tag_summary = "The host is running Zenoss Server and is prone to multiple
 
 if(description)
 {
-  script_id(800990);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800990");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

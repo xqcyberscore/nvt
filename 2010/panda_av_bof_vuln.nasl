@@ -32,9 +32,9 @@ tag_summary = "Buffer overflow in Panda Antivirus before 20-07-2007
 
 if(description)
 {
- script_id(102052);
- script_version("$Revision: 8217 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-21 14:24:55 +0100 (Thu, 21 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102052");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
  script_cve_id("CVE-2007-3969");
  script_bugtraq_id(24989);

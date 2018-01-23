@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806597");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-11-06 06:01:04 +0100 (Fri, 06 Nov 2015)");
   script_cve_id("CVE-2015-8001", "CVE-2015-8002", "CVE-2015-8003", "CVE-2015-8004",
                 "CVE-2015-8005", "CVE-2015-8006", "CVE-2015-8007", "CVE-2015-8008",
                 "CVE-2015-8009");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mediawiki FEDORA-2015-97");
   script_tag(name: "summary", value: "Check the version of mediawiki");

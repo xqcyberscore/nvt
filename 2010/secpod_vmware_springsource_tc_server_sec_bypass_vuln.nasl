@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_springsource_tc_server_sec_bypass_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_vmware_springsource_tc_server_sec_bypass_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # SpringSource tc Server 'JMX' Interface Security Bypass Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is running SpringSource tc Server and is prone to secur
 
 if(description)
 {
-  script_id(902188);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902188");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1454");
   script_bugtraq_id(40205);

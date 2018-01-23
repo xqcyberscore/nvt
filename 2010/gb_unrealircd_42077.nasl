@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unrealircd_42077.nasl 5399 2017-02-23 07:02:00Z antu123 $
+# $Id: gb_unrealircd_42077.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # UnrealIRCd User Authentication Buffer Overflow Vulnerability
 #
@@ -28,9 +28,9 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 
 if (description)
 {
- script_id(100856);
- script_version("$Revision: 5399 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 08:02:00 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100856");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-15 13:28:27 +0200 (Fri, 15 Oct 2010)");
  script_bugtraq_id(42077);
  script_tag(name:"cvss_base", value:"6.8");

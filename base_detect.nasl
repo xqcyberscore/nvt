@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: base_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: base_detect.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
 #
 # Basic Analysis and Security Engine Detection
 #
@@ -28,16 +28,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Basic Analysis and Security Engine (BASE). BASE
-provides a web front-end to query and analyze the alerts coming from a
-SNORT IDS system.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100322");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 8487 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-10-29 12:31:54 +0100 (Thu, 29 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Basic Analysis and Security Engine Detection");
@@ -48,58 +44,52 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://base.secureideas.net");
+
+ script_tag(name: "summary", value: "This host is running Basic Analysis and Security Engine (BASE). BASE provides
+a web front-end to query and analyze the alerts coming from a SNORT IDS system.");
+
+ script_xref(name: "URL", value: "https://sourceforge.net/projects/secureideas/");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100322";
-SCRIPT_DESC = "Basic Analysis and Security Engine Detection";
-
 port = get_http_port(default:80);
+
 if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/base", "/snort/base", cgi_dirs( port:port ) ) ) {
+  install = dir;
+  if( dir == "/" ) dir = "";
 
- install = dir;
- if( dir == "/" ) dir = "";
- url = string(dir, "/base_main.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+  url = dir + "/";
+  buf = http_get_cache(port: port, item: url);
 
- if(egrep(pattern: "<title>Basic Analysis and Security Engine \(BASE\)", string: buf, icase: TRUE) )
- {
-    vers = string("unknown");
-    ### try to get version
+  if(egrep(pattern: "<title>Basic Analysis and Security Engine \(BASE\)", string: buf, icase: TRUE) ) {
+    vers = "unknown";
+    
     version = eregmatch(string: buf, pattern: "BASE[)</a>]* ([0-9.]+)",icase:TRUE);
 
-    if ( !isnull(version[1]) ) {
+    if (!isnull(version[1]))
       vers=chomp(version[1]);
-    }
 
     tmp_version = string(vers," under ",install);
     set_kb_item(name: string("www/", port, "/BASE"), value: tmp_version);
     set_kb_item(name:"BASE/installed",value:TRUE);
 
-    ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:secureideas:base:");
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:secureideas:base:");
+    if (!cpe)
+      cpe = 'cpe:/a:secureideas:base';
 
-    info = string("\n\nBasic Analysis and Security Engine (BASE) Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
+    register_product(cpe: cpe, location: install, port: port);
 
-    log_message(port:port,data:info);
+    log_message(data: build_detection_report(app: "Basic Analysis and Security Engine (BASE)", version: vers,
+                                             install: install, cpe: cpe, concluded: version[0]),
+                port: port);
     exit(0);
   }
 }

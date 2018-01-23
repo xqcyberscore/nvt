@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_xstatus_dos_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_pidgin_xstatus_dos_vuln_win.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Pidgin 'X-Status' Message Denial of Service Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Pidgin and is prone to denial of
 
 if(description)
 {
-  script_id(901137);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901137");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41881);
   script_cve_id("CVE-2010-2528");

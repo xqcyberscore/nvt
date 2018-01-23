@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: barracuda_web_application_firewall_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: barracuda_web_application_firewall_detect.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
 #
 # Barracuda Web Application Firewall Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100419");
- script_version("$Revision: 7076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version("$Revision: 8487 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,8 +64,7 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 
 url = "/cgi-mod/index.cgi";
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_get_cache(port: port, item: url);
 
 if (egrep(pattern: "<title>Barracuda Web Application Firewall", string: buf, icase: TRUE)) {
   version = 'unknown';

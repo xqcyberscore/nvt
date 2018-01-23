@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1228.nasl 8344 2018-01-09 13:13:38Z teissa $
+# $Id: deb_dla_1228.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1228-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891228");
-  script_version("$Revision: 8344 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-1000456");
   script_name("Debian Lts Announce DLA 1228-1 ([SECURITY] [DLA 1228-1] poppler security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 14:13:38 +0100 (Tue, 09 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-09 00:00:00 +0100 (Tue, 09 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

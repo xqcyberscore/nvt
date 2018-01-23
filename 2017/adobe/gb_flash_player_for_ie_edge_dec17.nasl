@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_dec17.nasl 8108 2017-12-14 06:10:17Z santu $
+# $Id: gb_flash_player_for_ie_edge_dec17.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Microsoft IE And Microsoft Edge Flash Player Security Update (KB4053577)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812256");
-  script_version("$Revision: 8108 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-11305");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:10:17 +0100 (Thu, 14 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 13:08:10 +0530 (Wed, 13 Dec 2017)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Security Update (KB4053577)");
 

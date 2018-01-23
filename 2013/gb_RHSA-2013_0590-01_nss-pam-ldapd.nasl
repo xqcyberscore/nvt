@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-March/msg00004.html");
   script_id(870947);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-05 09:42:53 +0530 (Tue, 05 Mar 2013)");
   script_cve_id("CVE-2013-0288");
   script_tag(name:"cvss_base", value:"6.8");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0590-01");
   script_name("RedHat Update for nss-pam-ldapd RHSA-2013:0590-01");
 
-  script_summary("Check for the Version of nss-pam-ldapd");
+  script_tag(name: "summary" , value: "Check for the Version of nss-pam-ldapd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -85,8 +85,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00049.html");
   script_id(870935);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:02:23 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-1182");
   script_bugtraq_id(52973);
@@ -95,7 +95,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0506-02");
   script_name("RedHat Update for samba4 RHSA-2013:0506-02");
 
-  script_summary("Check for the Version of samba4");
+  script_tag(name: "summary" , value: "Check for the Version of samba4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

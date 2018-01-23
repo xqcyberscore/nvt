@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_44158.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ibm_soliddb_44158.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # IBM solidDB Multiple Denial of Service Vulnerabilities
 #
@@ -34,9 +34,9 @@ solidDB 6.5.0.3 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100861);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100861");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
  script_bugtraq_id(44158);
  script_cve_id("CVE-2010-4055", "CVE-2010-4056", "CVE-2010-4057");

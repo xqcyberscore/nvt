@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-064.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms10-064.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Microsoft Outlook  TNEF Remote Code Execution Vulnerability (2315011)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902243);
-  script_version("$Revision: 6538 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902243");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_cve_id("CVE-2010-2728");
   script_tag(name:"cvss_base", value:"9.3");

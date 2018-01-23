@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_123_flash_chat_42478.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_123_flash_chat_42478.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # 123 Flash Chat Multiple Security Vulnerabilities
 #
@@ -40,9 +40,9 @@ attacks are also possible.
 
 if (description)
 {
- script_id(100766);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100766");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
  script_bugtraq_id(42478);
 

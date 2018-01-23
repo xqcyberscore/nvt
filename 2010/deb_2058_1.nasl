@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2058_1.nasl 6614 2017-07-07 12:09:12Z cfischer $
+# $Id: deb_2058_1.nasl 8495 2018-01-23 07:57:49Z teissa $
 # Description: Auto-generated from advisory DSA 2058-1 (glibc, eglibc)
 #
 # Authors:
@@ -73,9 +73,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(67542);
- script_version("$Revision: 6614 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:12 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67542");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-10 21:49:43 +0200 (Thu, 10 Jun 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

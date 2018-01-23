@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_server_webaccess_mult_vuln_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
+# $Id: gb_vmware_server_webaccess_mult_vuln_win.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # VMware WebAccess Multiple Vulnerabilities (Windows)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is installed with VMWare Server and is prone to
 
 if(description)
 {
-  script_id(801308);
-  script_version("$Revision: 6518 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801308");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0686", "CVE-2010-1193");
   script_bugtraq_id(39037,39105);

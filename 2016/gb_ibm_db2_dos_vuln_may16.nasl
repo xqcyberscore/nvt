@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dos_vuln_may16.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_ibm_db2_dos_vuln_may16.nasl 8473 2018-01-19 15:49:03Z gveerendra $
 #
-# IBM DB2 LUW Denial of Service Vulnerability - May16
+# IBM DB2 LUW Multiple Denial of Service Vulnerabilities - May16
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -28,22 +28,24 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807815");
-  script_version("$Revision: 5527 $");
-  script_cve_id("CVE-2016-0211");
+  script_version("$Revision: 8473 $");
+  script_cve_id("CVE-2016-0211", "CVE-2016-0215");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 14:34:01 +0530 (Mon, 02 May 2016)");
-  script_name("IBM DB2 LUW Denial of Service Vulnerability - May16");
+  script_name("IBM DB2 LUW Multiple Denial of Service Vulnerabilities - May16");
 
   script_tag(name: "summary" , value:"This host is running IBM DB2 and is
-  prone to denial of service vulnerability.");
+  prone to multiple denial of service vulnerabilities.");
 
   script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw exists due to some unspecified
-  error within application, while handling specially-crafted DRDA messages.");
+  error within application, while handling specially-crafted DRDA messages and
+  specially-crafted SELECT statement with subquery containing the AVG OLAP 
+  function.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker
   to terminate abnormally the application causing a denial of service condition.
@@ -55,15 +57,16 @@ if(description)
   IBM DB2 versions 10.1 through FP5
   IBM DB2 versions 10.5 through FP7");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below link,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21979984");
+  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
+  http://www-01.ibm.com/support/docview.wss?uid=swg21979984
+  http://www-01.ibm.com/support/docview.wss?uid=swg21979986");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21979984");
-
+  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21979986");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");
@@ -76,47 +79,32 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
 ibmVer  = "";
 ibmPort = "";
 
-##Fetch ibmdb2 port
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch ibmdb2 version
 if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
-##Check for IBM DB2 9.7 through FP11
 if(ibmVer =~ "^0907\.*")
 {
-  ## IBM DB2 9.7 through FP11
-  ## IBM DB2 9.7 FP11 => 090711
   if(version_is_less_equal(version:ibmVer, test_version:"090711")){
     VULN = TRUE;
   }
 }
-##Only Enterprise Server Edition V9.8 is vulnerable
-##Not considering that, as no way to confirm that
-
-##Check for IBM DB2 10.1 through FP5
 if(ibmVer =~ "^1001\.*")
 {
-  ## IBM DB2 10.1 through FP5
-  ## IBM DB2 10.1 FP5  => 10015
   if(version_is_less_equal(version:ibmVer, test_version:"10015")){
     VULN = TRUE;
   }
 }
 
-##Check for IBM DB2 10.5 through FP7
 if(ibmVer =~ "^1005\.*")
 {
-  ## IBM DB2 10.5 through FP7
-  ## IBM DB2 10.5 FP7 => 10057
   if(version_is_less_equal(version:ibmVer, test_version:"10057")){
     VULN = TRUE;
   }

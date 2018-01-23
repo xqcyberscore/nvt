@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867151);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 11:48:15 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-1438", "CVE-2013-1439");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,7 @@ downloaded from digital cameras.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-22929");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-December/124190.html");
-  script_summary("Check for the Version of dcraw");
+  script_tag(name: "summary" , value: "Check for the Version of dcraw");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

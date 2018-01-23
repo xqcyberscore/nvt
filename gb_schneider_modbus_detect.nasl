@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modbus_detect.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
+# $Id: gb_schneider_modbus_detect.nasl 8491 2018-01-22 19:14:47Z cfischer $
 #
 # Schneider Electric Devices Detection (modbus)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106542");
-  script_version("$Revision: 8471 $");
-  script_tag(name:"last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8491 $");
+  script_tag(name:"last_modification", value: "$Date: 2018-01-22 20:14:47 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -123,10 +123,12 @@ if (get_port_state(port) && sock = open_sock_tcp(port)) {
 
 cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/h:schneider-electric:" + cpe_prod + ":");
 if (!cpe)
-  cpe = 'cpe:/h:schneider-electric:' + cpe_prod + ':';
+  cpe = 'cpe:/h:schneider-electric:' + cpe_prod;
 
-register_product(cpe: cpe, port: port, service: "modbus");
-log_message(data: build_detection_report(app: "Schneider Electric " + prod, version: version, install: "502/tcp",
+install = port + "/tcp";
+
+register_product(cpe: cpe, location: install, port: port, service: "modbus");
+log_message(data: build_detection_report(app: "Schneider Electric " + prod, version: version, install: install,
                                          cpe: cpe, concluded: vers[0], extra: report),
             port: port);
 

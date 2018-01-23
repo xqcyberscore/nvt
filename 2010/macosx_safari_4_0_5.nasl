@@ -38,9 +38,9 @@ tag_summary = "Installed version of Safari on remote host is older than 4.0.5 an
 
 if(description)
 {
- script_id(102022);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102022");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-06 10:41:02 +0200 (Tue, 06 Apr 2010)");
  script_name("Safari 4.0.5 Update");
  script_tag(name:"cvss_base", value:"9.3");

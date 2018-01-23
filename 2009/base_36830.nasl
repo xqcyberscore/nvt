@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: base_36830.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: base_36830.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
 #
 # Basic Analysis and Security Engine Multiple Input Validation Vulnerabilities
 #
@@ -29,27 +29,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Basic Analysis and Security Engine (BASE) is prone to multiple input-
-validation vulnerabilities because it fails to adequately sanitize user-
-supplied input. These vulnerabilities include an SQL-injection issue,
-a cross-site scripting issue, and a local file-include issue.
-
-Exploiting these issues can allow an attacker to steal cookie-based
-authentication credentials, view and execute local files within the
-context of the webserver, compromise the application, access or modify
-data, or exploit latent vulnerabilities in the underlying database.
-Other attacks may also be possible.
-
-These issues affect versions prior to BASE 1.4.4.";
-
-
-tag_solution = "Updates are available. Please see the references for details.";
+CPE = "cpe:/a:secureideas:base";
 
 if (description)
 {
- script_id(100323);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100323");
+ script_version("$Revision: 8487 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-10-29 12:31:54 +0100 (Thu, 29 Oct 2009)");
  script_bugtraq_id(36830,18298);
  script_cve_id("CVE-2009-4590", "CVE-2009-4591", "CVE-2009-4592","CVE-2009-4837","CVE-2009-4838","CVE-2009-4839");
@@ -58,38 +44,45 @@ if (description)
 
  script_name("Basic Analysis and Security Engine Multiple Input Validation Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/36830");
- script_xref(name : "URL" , value : "http://secureideas.sourceforge.net/");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/36830");
+ script_xref(name: "URL", value: "http://secureideas.sourceforge.net/");
 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("base_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("BASE/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for details.");
+
+ script_tag(name: "summary", value: "Basic Analysis and Security Engine (BASE) is prone to multiple
+input-validation vulnerabilities because it fails to adequately sanitize user-supplied input. These
+vulnerabilities include an SQL-injection issue, a cross-site scripting issue, and a local file-include issue.
+
+Exploiting these issues can allow an attacker to steal cookie-based authentication credentials, view and execute
+local files within the context of the webserver, compromise the application, access or modify data, or exploit
+latent vulnerabilities in the underlying database. Other attacks may also be possible.
+
+These issues affect versions prior to BASE 1.4.4.");
+
  exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/BASE")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-vers = matches[1];
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_less(version: vers, test_version: "1.4.4")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: version, test_version: "1.4.4")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.4.4");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

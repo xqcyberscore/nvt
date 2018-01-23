@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_imp_info_disc_vuln.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: gb_horde_imp_info_disc_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Horde IMP Information Disclosure Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is running Horde IMP and is prone to Information Disclo
 
 if(description)
 {
-  script_id(800288);
-  script_version("$Revision: 5820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800288");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

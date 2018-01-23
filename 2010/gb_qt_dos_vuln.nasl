@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qt_dos_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_qt_dos_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Qt 'QSslSocketBackendPrivate::transmit()' Denial of Service Vulnerability
 #
@@ -44,9 +44,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(801235);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801235");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41250);
   script_cve_id("CVE-2010-2621");

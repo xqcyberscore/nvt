@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_MDaemon_39857.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_MDaemon_39857.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Alt-N MDaemon SUBSCRIBE Remote Information Disclosure Vulnerability
 #
@@ -35,9 +35,9 @@ MDaemon 11.0.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100630);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100630");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
  script_bugtraq_id(39857);
  script_tag(name:"cvss_base", value:"5.0");

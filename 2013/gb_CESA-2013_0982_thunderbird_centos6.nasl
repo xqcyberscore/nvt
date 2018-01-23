@@ -67,8 +67,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(881757);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 09:59:18 +0530 (Thu, 27 Jun 2013)");
   script_cve_id("CVE-2013-1682", "CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686",
                 "CVE-2013-1687", "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693",
@@ -79,7 +79,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0982");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-June/019807.html");
-  script_summary("Check for the Version of thunderbird");
+  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

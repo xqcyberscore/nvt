@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuralstorm_webmail_41559.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nuralstorm_webmail_41559.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # NuralStorm Webmail Multiple Security Vulnerabilities
 #
@@ -40,9 +40,9 @@ Webmail 0.985b is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100743);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100743");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-04 13:50:35 +0200 (Wed, 04 Aug 2010)");
  script_bugtraq_id(41559);
  script_name("NuralStorm Webmail Multiple Security Vulnerabilities");

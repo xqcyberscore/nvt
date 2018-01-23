@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866843);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-08-23 10:26:14 +0530 (Fri, 23 Aug 2013)");
   script_cve_id("CVE-2013-4751");
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ Optional dependencies: APC, DoctrineCommon
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-14590");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-August/114380.html");
-  script_summary("Check for the Version of php-symfony2-Validator");
+  script_tag(name: "summary" , value: "Check for the Version of php-symfony2-Validator");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

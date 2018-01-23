@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 8402 2018-01-12 14:03:40Z cfischer $
+# $Id: find_service1.nasl 8478 2018-01-21 17:52:33Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 8402 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8478 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:52:33 +0100 (Sun, 21 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,6 +74,23 @@ if( strlen( r0 ) > 0 ) { # We have a spontaneous banner
     debug_print( 'Fake IDENTD found on port ', port, '\n' );
     register_service( port:port, proto:"fake-identd" );
     set_kb_item( name:"fake_identd/" + port, value:TRUE );
+    exit( 0 );
+  }
+
+  # Running on 6600, should be handled already later by find_service2.nasl
+  # but the banner sometimes is also coming in "spontaneous".
+  # 00: 3c 3f 78 6d 6c 20 76 65 72 73 69 6f 6e 3d 22 31    <?xml version="1
+  # 10: 2e 30 22 20 65 6e 63 6f 64 69 6e 67 3d 22 49 53    .0" encoding="IS
+  # 20: 4f 2d 38 38 35 39 2d 31 22 20 73 74 61 6e 64 61    O-8859-1" standa
+  # 30: 6c 6f 6e 65 3d 22 79 65 73 22 3f 3e 0a 3c 21 44    lone="yes"?>.<!D
+  # 40: 4f 43 54 59 50 45 20 47 41 4e 47 4c 49 41 5f 58    OCTYPE GANGLIA_X
+  # 50: 4d 4c 20 5b 0a 20 20 20 3c 21 45 4c 45 4d 45 4e    ML [.   <!ELEMEN
+  # 60: 54 20 47 41 4e 47 4c 49 41 5f 58 4d 4c 20 28 47    T GANGLIA_XML (G
+  # 70: 52 49 44 29 2a 3e 0a 20 20 20 20 20 20 3c 21 41    RID)*>.      <!A
+  if( match( string:r0, pattern:'<?xml version=*') && " GANGLIA_XML " >< r0 &&
+      "ATTLIST HOST GMOND_STARTED" >< r0 ) {
+    register_service( port:port, proto:"gmond" );
+    log_message( port:port, data:"Ganglia monitoring daemon seems to be running on this port" );
     exit( 0 );
   }
 

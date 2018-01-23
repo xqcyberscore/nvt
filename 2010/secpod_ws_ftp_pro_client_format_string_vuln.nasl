@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ws_ftp_pro_client_format_string_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_ws_ftp_pro_client_format_string_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Ipswitch WS_FTP Professional 'HTTP' Response Format String Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with WS_FTP professinal client and is pron
 
 if(description)
 {
-  script_id(902171);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902171");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2009-4775");
   script_bugtraq_id(36297);

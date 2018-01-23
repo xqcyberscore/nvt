@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abtp_portal_45290.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_abtp_portal_45290.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Abtp Portal Project 'ABTPV_BLOQUE_CENT' Parameter Local and Remote File Include Vulnerabilities
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if(description)
 {
- script_id(100942);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100942");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
  script_bugtraq_id(45290);
 

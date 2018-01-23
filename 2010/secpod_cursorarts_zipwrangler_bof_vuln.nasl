@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cursorarts_zipwrangler_bof_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_cursorarts_zipwrangler_bof_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # CursorArts ZipWrangler 'ZIP Processing' Buffer Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(902071);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902071");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-1685");
   script_tag(name:"cvss_base", value:"9.3");

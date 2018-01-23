@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-034.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-034.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Description: Microsoft Data Analyzer and IE Developer Tools ActiveX Control Vulnerability (980195)
 #
@@ -54,9 +54,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900245);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900245");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(38045, 40490);
   script_cve_id("CVE-2010-0252", "CVE-2010-0811");

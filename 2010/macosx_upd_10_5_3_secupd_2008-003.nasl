@@ -58,9 +58,9 @@ tag_summary = "The remote host is missing Mac OS X 10.5.3 Update / Mac OS X Secu
 
 if(description)
 {
- script_id(102031);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102031");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
  script_cve_id("CVE-2008-1027","CVE-2005-3352","CVE-2005-3357","CVE-2006-3747","CVE-2007-1863","CVE-2007-3847","CVE-2007-4465","CVE-2007-5000","CVE-2007-6388","CVE-2008-1028","CVE-2008-1577","CVE-2008-1575","CVE-2008-1580","CVE-2008-1030","CVE-2008-1031","CVE-2008-1032","CVE-2008-1033","CVE-2007-5275","CVE-2007-6243","CVE-2007-6637","CVE-2007-6019","CVE-2007-0071","CVE-2008-1655","CVE-2008-1654","CVE-2008-1034","CVE-2008-1035","CVE-2008-1036","CVE-2008-1571","CVE-2008-1572","CVE-2008-1573","CVE-2007-5266","CVE-2007-5268","CVE-2007-5269","CVE-2008-1574","CVE-2008-0177","CVE-2007-6359","CVE-2008-1576","CVE-2007-6612","CVE-2008-1578","CVE-2008-1579");
  script_name("Mac OS X 10.5.3 Update / Mac OS X Security Update 2008-003");

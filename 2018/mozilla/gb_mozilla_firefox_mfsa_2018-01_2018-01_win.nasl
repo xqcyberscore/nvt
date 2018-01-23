@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812295");
-  script_version("$Revision: 8306 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715", "CVE-2017-5754");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-06 16:16:16 +0100 (Sat, 06 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 14:36:19 +0530 (Fri, 05 Jan 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-01_2018-01)-Windows");
 

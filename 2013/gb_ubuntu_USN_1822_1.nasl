@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1822_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1822_1.nasl 8494 2018-01-23 06:57:55Z teissa $
 #
 # Ubuntu Update for firefox USN-1822-1
 #
@@ -64,8 +64,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841427);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:54:38 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-0801", "CVE-2013-1669", "CVE-2013-1670", "CVE-2013-1671",
                 "CVE-2013-1674", "CVE-2013-1675", "CVE-2013-1676", "CVE-2013-1677",
@@ -76,7 +76,7 @@ if(description)
 
   script_xref(name: "USN", value: "1822-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1822-1/");
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

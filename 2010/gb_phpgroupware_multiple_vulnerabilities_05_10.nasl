@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpgroupware_multiple_vulnerabilities_05_10.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpgroupware_multiple_vulnerabilities_05_10.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # phpGroupWare Multiple Vulnerabilities
 #
@@ -40,9 +40,9 @@ Please see the references for more information.";
 
 if (description)
 {
- script_id(100640);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100640");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-17 12:46:01 +0200 (Mon, 17 May 2010)");
  script_bugtraq_id(40167,40168);
  script_cve_id("CVE-2010-0403", "CVE-2010-0404");

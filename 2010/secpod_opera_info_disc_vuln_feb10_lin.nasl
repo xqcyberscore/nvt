@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_vuln_feb10_lin.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_opera_info_disc_vuln_feb10_lin.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Opera Information Disclosure Vulnerability - (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to
 
 if(description)
 {
-  script_id(902123);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902123");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");

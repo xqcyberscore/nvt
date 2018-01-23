@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_skype_insecure_lib_load_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_skype_insecure_lib_load_vuln_win.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Skype Insecure Library Loading Vulnerability (Windows)
 #
@@ -46,9 +46,9 @@ loading vulnerability.";
 
 if(description)
 {
-  script_id(902238);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902238");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3136");
   script_tag(name:"cvss_base", value:"9.3");

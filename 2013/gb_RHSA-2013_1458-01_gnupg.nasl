@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871059);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 13:27:15 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2012-6085", "CVE-2013-4242", "CVE-2013-4351", "CVE-2013-4402");
   script_tag(name:"cvss_base", value:"5.8");
@@ -82,7 +82,7 @@ contains backported patches to correct these issues.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1458-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00027.html");
-  script_summary("Check for the Version of gnupg");
+  script_tag(name: "summary" , value: "Check for the Version of gnupg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

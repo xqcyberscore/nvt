@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_3997279e65_wireshark_fc27.nasl 8396 2018-01-12 11:39:41Z gveerendra $
+# $Id: gb_fedora_2017_3997279e65_wireshark_fc27.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Fedora Update for wireshark FEDORA-2017-3997279e65
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873992");
-  script_version("$Revision: 8396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 12:39:41 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 07:43:02 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2017-17084", "CVE-2017-17083", "CVE-2017-17085");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wireshark FEDORA-2017-3997279e65");
   script_tag(name: "summary", value: "Check the version of wireshark");

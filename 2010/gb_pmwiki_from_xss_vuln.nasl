@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pmwiki_from_xss_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pmwiki_from_xss_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # PmWiki 'from' Cross-Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running PmWiki and is prone to Cross Site
 
 if(description)
 {
-  script_id(801700);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801700");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_cve_id("CVE-2010-4748");
   script_tag(name:"cvss_base", value:"4.3");

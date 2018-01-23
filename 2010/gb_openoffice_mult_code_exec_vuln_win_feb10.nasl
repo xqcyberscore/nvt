@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # OpenOffice Multiple Remote Code Execution Vulnerabilities - Feb10
 #
@@ -42,9 +42,9 @@ tag_summary = "This host has OpenOffice running which is prone to multiple
 
 if(description)
 {
-  script_id(800167);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800167");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

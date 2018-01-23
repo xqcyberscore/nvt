@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0013_1.nasl 8323 2018-01-08 14:50:05Z gveerendra $
+# $Id: gb_suse_2018_0013_1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # SuSE Update for kernel-firmware openSUSE-SU-2018:0013-1 (kernel-firmware)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851673");
-  script_version("$Revision: 8323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:50:05 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:56:25 +0100 (Fri, 05 Jan 2018)");
   script_cve_id("CVE-2017-5715");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kernel-firmware openSUSE-SU-2018:0013-1 (kernel-firmware)");
   script_tag(name: "summary", value: "Check the version of kernel-firmware");

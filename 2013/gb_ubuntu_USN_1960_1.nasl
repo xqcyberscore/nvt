@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1960_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1960_1.nasl 8494 2018-01-23 06:57:55Z teissa $
 #
 # Ubuntu Update for software-properties USN-1960-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841561);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 11:49:05 +0530 (Tue, 24 Sep 2013)");
   script_cve_id("CVE-2013-1061");
   script_tag(name:"cvss_base", value:"4.6");
@@ -55,7 +55,7 @@ polkit authorizations.";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1960-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1960-1/");
-  script_summary("Check for the Version of software-properties");
+  script_tag(name: "summary" , value: "Check for the Version of software-properties");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

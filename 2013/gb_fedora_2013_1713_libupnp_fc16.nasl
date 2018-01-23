@@ -41,8 +41,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098665.html");
   script_id(865345);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-15 11:13:21 +0530 (Fri, 15 Feb 2013)");
   script_cve_id("CVE-2012-5958", "CVE-2012-5959", "CVE-2012-5960", "CVE-2012-5961",
                 "CVE-2012-5962", "CVE-2012-5963", "CVE-2012-5964", "CVE-2012-5965");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1713");
   script_name("Fedora Update for libupnp FEDORA-2013-1713");
 
-  script_summary("Check for the Version of libupnp");
+  script_tag(name: "summary" , value: "Check for the Version of libupnp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

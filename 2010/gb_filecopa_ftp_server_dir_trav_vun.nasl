@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filecopa_ftp_server_dir_trav_vun.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_filecopa_ftp_server_dir_trav_vun.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # FileCOPA FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is running FileCOPA ftp Server and is prone to directory
 
 if(description)
 {
-  script_id(801539);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801539");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-16 10:37:01 +0100 (Tue, 16 Nov 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_sjs_web_server_response_splitting_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_oracle_sjs_web_server_response_splitting_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Oracle Java System Web Server HTTP Response Splitting Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is running Oracle Java System Web Server and is prone to
 
 if(description)
 {
-  script_id(801532);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801532");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_cve_id("CVE-2010-3514");
   script_tag(name:"cvss_base", value:"4.3");

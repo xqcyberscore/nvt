@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/100286.html");
   script_id(865474);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-19 09:36:29 +0530 (Tue, 19 Mar 2013)");
   script_cve_id("CVE-2013-0785", "CVE-2013-0786", "CVE-2012-3981", "CVE-2012-1969");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2845");
   script_name("Fedora Update for bugzilla FEDORA-2013-2845");
 
-  script_summary("Check for the Version of bugzilla");
+  script_tag(name: "summary" , value: "Check for the Version of bugzilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

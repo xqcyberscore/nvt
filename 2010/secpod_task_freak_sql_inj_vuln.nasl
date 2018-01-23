@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_task_freak_sql_inj_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: secpod_task_freak_sql_inj_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # Task Freak 'loadByKey()' SQL Injection Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running Task Freak and is prone SQL Injection
 
 if(description)
 {
-  script_id(902052);
-  script_version("$Revision: 5838 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902052");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1583");
   script_bugtraq_id(39793);

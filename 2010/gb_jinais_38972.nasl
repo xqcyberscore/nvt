@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jinais_38972.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_jinais_38972.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # JINAIS IRC Message Remote Denial Of Service Vulnerability
 #
@@ -34,9 +34,9 @@ JINAIS 0.1.8 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100554);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100554");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-26 13:01:50 +0100 (Fri, 26 Mar 2010)");
  script_bugtraq_id(38972);
  script_tag(name:"cvss_base", value:"5.0");

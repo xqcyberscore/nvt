@@ -41,8 +41,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/099022.html");
   script_id(865371);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 09:59:05 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-5958", "CVE-2012-5959", "CVE-2012-5960", "CVE-2012-5961",
                 "CVE-2012-5962", "CVE-2012-5963", "CVE-2012-5964", "CVE-2012-5965");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2377");
   script_name("Fedora Update for mediatomb FEDORA-2013-2377");
 
-  script_summary("Check for the Version of mediatomb");
+  script_tag(name: "summary" , value: "Check for the Version of mediatomb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_indesign_bof_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_adobe_indesign_bof_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Adobe InDesign 'INDD' File Handling Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Adobe InDesign and is prone
 
 if(description)
 {
-  script_id(902085);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902085");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_cve_id("CVE-2010-2321");
   script_tag(name:"cvss_base", value:"9.3");

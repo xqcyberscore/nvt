@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871100);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 11:54:57 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-4408");
   script_tag(name:"cvss_base", value:"8.3");
@@ -70,7 +70,7 @@ update, the smb service will be restarted automatically.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1805-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-December/msg00013.html");
-  script_summary("Check for the Version of samba4");
+  script_tag(name: "summary" , value: "Check for the Version of samba4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

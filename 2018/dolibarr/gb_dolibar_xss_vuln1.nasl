@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibar_xss_vuln1.nasl 8455 2018-01-18 06:12:11Z ckuersteiner $
+# $Id: gb_dolibar_xss_vuln1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Dolibarr XSS Vulnerabilility
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140652");
-  script_version("$Revision: 8455 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-18 07:12:11 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 13:51:40 +0700 (Thu, 04 Jan 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-17971");
 

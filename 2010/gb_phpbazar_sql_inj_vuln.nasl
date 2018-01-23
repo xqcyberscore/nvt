@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbazar_sql_inj_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpbazar_sql_inj_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # phpBazar 'classified.php' SQL Injection Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is running phpBazar and is prone to SQL Injection
 
 if(description)
 {
-  script_id(800465);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800465");
+  script_version("$Revision: 8485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

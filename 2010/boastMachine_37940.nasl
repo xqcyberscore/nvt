@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: boastMachine_37940.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: boastMachine_37940.nasl 8485 2018-01-22 07:57:57Z teissa $
 #
 # boastMachine Arbitrary File Upload Vulnerability
 #
@@ -39,9 +39,9 @@ well.";
 
 if (description)
 {
- script_id(100461);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100461");
+ script_version("$Revision: 8485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-25 18:49:48 +0100 (Mon, 25 Jan 2010)");
  script_bugtraq_id(37940);
  script_tag(name:"cvss_base", value:"6.8");

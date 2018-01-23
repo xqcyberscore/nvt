@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_pfsense_detect.nasl 8475 2018-01-20 12:28:40Z cfischer $
 #
 # pfSense Detection (Version)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112118");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8475 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-20 13:28:40 +0100 (Sat, 20 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-13 08:56:05 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,12 +76,7 @@ extra = '\nDetection methods:\n';
 
 if( http_port = get_kb_list( "pfsense/http/port" ) ) {
   foreach port( http_port ) {
-    concluded = get_kb_item( "pfsense/http/" + port + "/concluded" );
-    concludedUrl = get_kb_item( "pfsense/http/" + port + "/concludedUrl" );
     extra += '\nHTTP(s) on port ' + port + '/tcp';
-    if( concluded && concludedUrl ) {
-      extra += '\nConcluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
-    }
     register_product( cpe:cpe, location:location, port:port, service:"www" );
   }
 }

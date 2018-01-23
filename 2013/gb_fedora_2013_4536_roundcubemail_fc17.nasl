@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865536);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 10:33:18 +0530 (Mon, 08 Apr 2013)");
   script_cve_id("CVE-2012-6121", "CVE-2013-1904");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-4536");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-April/101669.html");
-  script_summary("Check for the Version of roundcubemail");
+  script_tag(name: "summary" , value: "Check for the Version of roundcubemail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

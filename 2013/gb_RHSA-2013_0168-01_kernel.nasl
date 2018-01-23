@@ -68,8 +68,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-January/msg00038.html");
   script_id(870892);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:26:45 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-1568", "CVE-2012-4444", "CVE-2012-5515");
   script_tag(name:"cvss_base", value:"5.0");
@@ -79,7 +79,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0168-01");
   script_name("RedHat Update for kernel RHSA-2013:0168-01");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_mult_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_sun_java_dir_server_mult_vuln_win.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Sun Java System DSEE Multiple Vulnerabilities (Windows)
 #
@@ -47,9 +47,9 @@ tag_summary = "This host is running Sun Java System Directory Server Enterprise
 
 if(description)
 {
-  script_id(902011);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902011");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-04 15:26:56 +0100 (Mon, 04 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

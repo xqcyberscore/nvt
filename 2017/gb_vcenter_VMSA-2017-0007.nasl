@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2017-0007.nasl 5970 2017-04-18 16:07:13Z mime $
+# $Id: gb_vcenter_VMSA-2017-0007.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # VMSA-2017-0007: VMware vCenter Server updates resolve a remote code execution vulnerability via BlazeDS
 #
@@ -29,9 +29,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140254");
  script_cve_id("CVE-2017-5641");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5970 $");
+ script_tag(name:"cvss_base", value:"7.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+ script_version ("$Revision: 8493 $");
  script_name("VMSA-2017-0007: VMware vCenter Server updates resolve a remote code execution vulnerability via BlazeDS");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0007.html");
@@ -49,7 +49,7 @@ if (description)
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 18:07:13 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2017-04-18 11:03:22 +0200 (Tue, 18 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

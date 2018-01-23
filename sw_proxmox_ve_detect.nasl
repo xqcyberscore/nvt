@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_proxmox_ve_detect.nasl 7556 2017-10-25 07:28:33Z cfischer $
+# $Id: sw_proxmox_ve_detect.nasl 8474 2018-01-20 12:07:54Z cfischer $
 #
 # Proxmox Virtual Environment Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111090");
-  script_version("$Revision: 7556 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 09:28:33 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 8474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-20 13:07:54 +0100 (Sat, 20 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-03-17 10:42:39 +0100 (Thu, 17 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,13 +66,21 @@ if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >
   install = "/";
   set_kb_item( name:"ProxmoxVE/installed", value:TRUE );
 
-  # e.g "boxheadline">Proxmox Virtual Environment 1.9</a>
+  # e.g. "boxheadline">Proxmox Virtual Environment 1.9</a>
+  # nb: only available in quite old versions of Proxmox VE
   ver = eregmatch( pattern:'"boxheadline">Proxmox Virtual Environment ([0-9.]+)</a>', string:res );
   if( ver[1] ) version = ver[1];
 
   if( version == "unknown" ) {
+    # e.g. <link rel="stylesheet" type="text/css" href="/pve2/css/ext6-pve.css?ver=5.1-42" />
+    # or <script type="text/javascript" src="/pve2/js/pvemanagerlib.js?ver=5.1-42"></script>
+    ver = eregmatch( pattern:'"/pve2/(css/ext6-pve\\.css|js/pvemanagerlib\\.js)\\?ver=([0-9.\\-]+)"', string:res );
+    if( ver[2] ) version = ver[2];
+  }
+
+  if( version == "unknown" ) {
     # Only the major version but still better then nothing...
-    # Full version is only available via an authenticated API and would return something like 5.0-34
+    # At this point (if the css/js above failed) a full version is only available via an authenticated API and would return something like 5.0-34
     url = "/pve-docs/pve-admin-guide.html";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
@@ -86,7 +94,7 @@ if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >
   }
 
   # CPE not registered yet
-  cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:proxmox:ve:" );
+  cpe = build_cpe( value:version, exp:"([0-9.\-]+)", base:"cpe:/a:proxmox:ve:" );
   if( isnull( cpe ) )
       cpe = "cpe:/a:proxmox:ve";
 

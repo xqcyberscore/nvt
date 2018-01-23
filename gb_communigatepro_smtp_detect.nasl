@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_communigatepro_smtp_detect.nasl 8423 2018-01-15 10:43:49Z ckuersteiner $
+# $Id: gb_communigatepro_smtp_detect.nasl 8476 2018-01-20 12:30:42Z cfischer $
 #
 # CommuniGatePro Detection (SMTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140686");
-  script_version("$Revision: 8423 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-15 11:43:49 +0100 (Mon, 15 Jan 2018) $");
+  script_version("$Revision: 8476 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-20 13:30:42 +0100 (Sat, 20 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name: "summary" , value: "Detection of CommuniGate Pro.
 
 This script performs SMTP based detection of CommuniGate Pro.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -66,13 +66,13 @@ if ("CommuniGate Pro" >!< banner)
 
 set_kb_item(name: "communigatepro/detected", value: TRUE);
 set_kb_item(name: "communigatepro/smtp/detected", value: TRUE);
-set_kb_item(name: "communigatepro/smpt/port", value: port);
+set_kb_item(name: "communigatepro/smtp/port", value: port);
 
 vers = eregmatch(pattern: "CommuniGate Pro ([0-9.]+)", string: banner);
 if (!isnull(vers[1])) {
   version = vers[1];
   set_kb_item(name: "communigatepro/smtp/" + port + "/version", value: version);
-  set_kb_item(name: "communigatepro/smpt/" + port + "/concluded", value: vers[0]);
+  set_kb_item(name: "communigatepro/smtp/" + port + "/concluded", value: vers[0]);
 }
 
 exit(0);

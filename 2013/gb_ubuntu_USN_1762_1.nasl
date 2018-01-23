@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1762_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1762_1.nasl 8483 2018-01-22 06:58:04Z teissa $
 #
 # Ubuntu Update for apt USN-1762-1
 #
@@ -50,8 +50,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1762-1/");
   script_id(841358);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8483 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 10:05:22 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-1051");
   script_tag(name:"cvss_base", value:"4.3");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "USN", value: "1762-1");
   script_name("Ubuntu Update for apt USN-1762-1");
 
-  script_summary("Check for the Version of apt");
+  script_tag(name: "summary" , value: "Check for the Version of apt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

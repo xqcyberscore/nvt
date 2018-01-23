@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871055);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-10-23 11:18:03 +0530 (Wed, 23 Oct 2013)");
   script_cve_id("CVE-2013-5745");
   script_tag(name:"cvss_base", value:"7.1");
@@ -64,7 +64,7 @@ restarted (log out, then log back in) for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1452-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00023.html");
-  script_summary("Check for the Version of vino");
+  script_tag(name: "summary" , value: "Check for the Version of vino");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

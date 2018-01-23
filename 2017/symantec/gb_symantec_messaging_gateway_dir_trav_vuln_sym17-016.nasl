@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_dir_trav_vuln_sym17-016.nasl 8229 2017-12-22 08:48:01Z santu $
+# $Id: gb_symantec_messaging_gateway_dir_trav_vuln_sym17-016.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Symantec Messaging Gateway Directory Traversal Vulnerability (SYM17-016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812359");
-  script_version("$Revision: 8229 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-15532");
   script_bugtraq_id(102096);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:48:01 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 16:31:51 +0530 (Thu, 21 Dec 2017)");
   script_name("Symantec Messaging Gateway Directory Traversal Vulnerability (SYM17-016)");
 

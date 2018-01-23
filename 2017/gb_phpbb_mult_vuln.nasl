@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_mult_vuln.nasl 8321 2018-01-08 10:48:27Z ckuersteiner $
+# $Id: gb_phpbb_mult_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # phpBB Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:phpbb:phpbb';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140291");
-  script_version("$Revision: 8321 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-08 11:48:27 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-08-10 16:43:53 +0700 (Thu, 10 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.9");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-1000419");
 

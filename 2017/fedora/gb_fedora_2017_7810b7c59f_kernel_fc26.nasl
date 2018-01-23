@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7810b7c59f_kernel_fc26.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_fedora_2017_7810b7c59f_kernel_fc26.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Fedora Update for kernel FEDORA-2017-7810b7c59f
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873947");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-25 08:13:53 +0100 (Mon, 25 Dec 2017)");
   script_cve_id("CVE-2017-17741", "CVE-2017-17712");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2017-7810b7c59f");
   script_tag(name: "summary", value: "Check the version of kernel");

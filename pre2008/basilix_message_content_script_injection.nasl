@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basilix_message_content_script_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: basilix_message_content_script_injection.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
 # Description: BasiliX Message Content Script Injection Vulnerability
 #
 # Authors:
@@ -22,23 +22,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains PHP scripts that are prone to cross-site
-scripting attacks. 
-
-Description :
-
-The remote host appears to be running a BasiliX version 1.1.0 or lower. 
-Such versions are vulnerable to cross-scripting attacks since they do
-not filter HTML tags when showing a message.  As a result, an attacker
-can include arbitrary HTML and script code in a message and have that
-code executed by the user's browser when it is viewed.";
-
-tag_solution = "Upgrade to BasiliX version 1.1.1 or later.";
+CPE = "cpe:/a:basilix:basilix_webmail";
 
 if (description) {
-  script_id(14218);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14218");
+  script_version("$Revision: 8487 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,11 +35,7 @@ if (description) {
   script_cve_id("CVE-2002-1708");
   script_bugtraq_id(5060);
 
-  name = "BasiliX Message Content Script Injection Vulnerability";
-  script_name(name);
- 
- 
-  summary = "Checks for message content script injection vulnerability in BasiliX";
+  script_name("BasiliX Message Content Script Injection Vulnerability");
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,32 +44,38 @@ if (description) {
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
 
   script_dependencies("basilix_detect.nasl");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("basilix/installed");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/vulnwatch/2002-q2/0117.html");
+  script_tag(name: "solution", value: "Upgrade to BasiliX version 1.1.1 or later.");
+
+  script_tag(name: "summary", value: "The remote web server contains PHP scripts that are prone to cross-site
+scripting attacks. 
+
+Description :
+
+The remote host appears to be running a BasiliX version 1.1.0 or lower. Such versions are vulnerable to
+cross-scripting attacks since they do not filter HTML tags when showing a message.  As a result, an attacker can
+include arbitrary HTML and script code in a message and have that code executed by the user's browser when it is
+viewed.");
+
+  script_xref(name: "URL", value: "http://archives.neohapsis.com/archives/vulnwatch/2002-q2/0117.html");
+
   exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
-include("http_func.inc");
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
-if (!can_host_php(port:port)) exit(0);
-
-
-# Test an install.
-install = get_kb_item(string("www/", port, "/basilix"));
-if (isnull(install)) exit(0);
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  ver = matches[1];
-
-  if (ver =~ "^(0\..*|1\.(0.*|1\.0))$") {
-    security_message(port);
-    exit(0);
-  }
+if (version_is_less(version: version, test_version: "1.1.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.1.1");
+  security_message(port: port, data: report);
+  exit(0);
 }
+
+exit(99);

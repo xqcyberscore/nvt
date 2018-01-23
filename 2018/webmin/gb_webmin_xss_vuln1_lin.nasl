@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_xss_vuln1_lin.nasl 8286 2018-01-04 06:51:01Z ckuersteiner $
+# $Id: gb_webmin_xss_vuln1_lin.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # Webmin XSS Vulnerability (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:webmin:webmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140650");
-  script_version("$Revision: 8286 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 07:51:01 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 8493 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 13:28:09 +0700 (Thu, 04 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.7");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:M/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-17089");
   script_bugtraq_id(102339);

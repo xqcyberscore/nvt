@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinywebgallery_45025.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_tinywebgallery_45025.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # TinyWebGallery Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100915);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100915");
+ script_version("$Revision: 8495 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-25 12:46:25 +0100 (Thu, 25 Nov 2010)");
  script_bugtraq_id(45025);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_bof_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wireshark_mult_bof_vuln_win.nasl 8495 2018-01-23 07:57:49Z teissa $
 #
 # Wireshark Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple Bu
 
 if(description)
 {
-  script_id(800290);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800290");
+  script_version("$Revision: 8495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

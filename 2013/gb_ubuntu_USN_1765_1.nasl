@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1765_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1765_1.nasl 8494 2018-01-23 06:57:55Z teissa $
 #
 # Ubuntu Update for apache2 USN-1765-1
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1765-1/");
   script_id(841365);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-19 09:49:37 +0530 (Tue, 19 Mar 2013)");
   script_cve_id("CVE-2012-3499", "CVE-2012-4558", "CVE-2012-4557", "CVE-2013-1048");
   script_tag(name:"cvss_base", value:"5.0");
@@ -67,7 +67,7 @@ if(description)
   script_xref(name: "USN", value: "1765-1");
   script_name("Ubuntu Update for apache2 USN-1765-1");
 
-  script_summary("Check for the Version of apache2");
+  script_tag(name: "summary" , value: "Check for the Version of apache2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

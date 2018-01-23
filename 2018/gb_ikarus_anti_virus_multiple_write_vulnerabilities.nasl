@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl 8299 2018-01-05 11:11:22Z asteins $
+# $Id: gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
 #
 # IKARUS anti.virus Multiple Arbitrary/Out of Bounds Write Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112157");
-  script_version("$Revision: 8299 $");
+  script_version("$Revision: 8493 $");
   script_cve_id("CVE-2017-14961", "CVE-2017-14962", "CVE-2017-14963", "CVE-2017-14964", "CVE-2017-14965",
       "CVE-2017-14966", "CVE-2017-14967", "CVE-2017-14968", "CVE-2017-14969");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 12:11:22 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:34:01 +0100 (Thu, 04 Jan 2018)");
   script_name("IKARUS anti.virus Multiple Arbitrary/Out of Bounds Write Vulnerabilities");
 
