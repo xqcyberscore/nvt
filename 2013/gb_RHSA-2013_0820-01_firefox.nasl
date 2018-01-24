@@ -60,8 +60,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(870995);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:49:38 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-0801", "CVE-2013-1670", "CVE-2013-1674", "CVE-2013-1675",
                 "CVE-2013-1676", "CVE-2013-1677", "CVE-2013-1678", "CVE-2013-1679",
@@ -72,7 +72,7 @@ if(description)
 
   script_xref(name: "RHSA", value: "2013:0820-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-May/msg00007.html");
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

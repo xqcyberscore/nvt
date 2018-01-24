@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1758_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1758_1.nasl 8509 2018-01-24 06:57:46Z teissa $
 #
 # Ubuntu Update for firefox USN-1758-1
 #
@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1758-1/");
   script_id(841354);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:05:52 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2013-0787");
   script_tag(name:"cvss_base", value:"9.3");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "USN", value: "1758-1");
   script_name("Ubuntu Update for firefox USN-1758-1");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

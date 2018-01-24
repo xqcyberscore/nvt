@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 8450 2018-01-17 17:42:13Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 8503 2018-01-23 16:49:56Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 8450 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:42:13 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8503 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -165,8 +165,14 @@ if( "login:" >< banner || "Kernel" >< banner ) {
     exit( 0 );
   }
 
+  # Welcome to SuSE Linux 6.4 (i386) - Kernel 2.4.17 (0).
   if( "Welcome to SUSE Linux" >< banner || "Welcome to SuSE Linux" >< banner ) {
-    register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    version = eregmatch( pattern:"Welcome to S[uU]SE Linux ([0-9.]+)", string:banner );
+    if( ! isnull( version[1] ) ) {
+      register_and_report_os( os:"SUSE Linux", version:version[1], cpe:"cpe:/o:novell:suse_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
     exit( 0 );
   }
 

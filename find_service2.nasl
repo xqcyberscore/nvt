@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 8478 2018-01-21 17:52:33Z cfischer $
+# $Id: find_service2.nasl 8503 2018-01-23 16:49:56Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 8478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:52:33 +0100 (Sun, 21 Jan 2018) $");
+  script_version("$Revision: 8503 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -970,7 +970,7 @@ if( "ESTABLISHED" >< r && "TCP" >< r ) {
 
 if( "Charles Dickens" >< r || "George Bernard Shaw" >< r || "(Berthold Brecht)" >< r ||
     "(August von Kotzebue)" >< r || "(Mark Twain)" >< r || "(Bertrand Russell)" >< r || 
-    "(Helen Markel)" >< r || "(Federico Fellini)" >< r ) {
+    "(Helen Markel)" >< r || "(Federico Fellini)" >< r || "(Tschechisches Sprichwort)" >< r ) {
   register_service( port:port, proto:"qotd" );
   log_message( port:port, data:"qotd (Quote of the Day) seems to be running on this port" );
   exit( 0 );

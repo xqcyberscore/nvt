@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 8354 2018-01-10 07:30:33Z asteins $
+# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 8506 2018-01-24 03:45:11Z ckuersteiner $
 #
 # WordPress Add Link to Facebook Plugin Stored XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112178");
-  script_version("$Revision: 8354 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-10 08:30:33 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 8506 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-24 04:45:11 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-05 14:16:51 +0100 (Fri, 05 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5214");
 

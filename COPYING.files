@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 23 Jan 2018 09:31:28 +0100
+# Automatically created on:  Wed, 24 Jan 2018 08:31:37 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52965,6 +52965,7 @@
 2018/adobe/gb_flash_player_for_ie_edge_jan17.nasl: GPLv2+
 2018/apache/gb_apache_activemq_xss_lin.nasl: GPLv2+
 2018/apache/gb_apache_activemq_xss_win.nasl: GPLv2+
+2018/apache/gb_apache_hadoop_inf_disc_vuln.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT208397.nasl: GPLv2+
 2018/awstats/gb_awstats_dir_trav_vuln.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0008_kernel_centos6.nasl: GPLv2+
@@ -52997,6 +52998,7 @@
 2018/debian/deb_4090.nasl: GPLv2+
 2018/debian/deb_4091.nasl: GPLv2+
 2018/debian/deb_4092.nasl: GPLv2+
+2018/debian/deb_4093.nasl: GPLv2+
 2018/debian/deb_dla_1227.nasl: GPLv2+
 2018/debian/deb_dla_1228.nasl: GPLv2+
 2018/debian/deb_dla_1229.nasl: GPLv2+
@@ -53022,6 +53024,10 @@
 2018/debian/deb_dla_1249.nasl: GPLv2+
 2018/debian/deb_dla_1250.nasl: GPLv2+
 2018/debian/deb_dla_1251.nasl: GPLv2+
+2018/debian/deb_dla_1252.nasl: GPLv2+
+2018/debian/deb_dla_1253.nasl: GPLv2+
+2018/debian/deb_dla_1254.nasl: GPLv2+
+2018/debian/deb_dla_1255.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
 2018/debian/deb_dla_813.nasl: GPLv2+
@@ -53193,6 +53199,7 @@
 2018/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
 2018/gb_kerberos5_mult_vuln.nasl: GPLv2+
 2018/gb_malwarebytes_multiple_dos_vuln.nasl: GPLv2+
+2018/gb_prestashop_mult_vuln.nasl: GPLv2+
 2018/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
@@ -53289,6 +53296,7 @@
 2018/php/gb_php_phar_error_page_reflected_xss_n_dos_vuln_win.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2017-9_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2017-9_win.nasl: GPLv2+
+2018/powerdns/gb_pdns_dnssec_vuln.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_20171222.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0007-01_kernel.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0008-01_kernel.nasl: GPLv2+
@@ -53303,6 +53311,7 @@
 2018/redhat/gb_RHSA-2018_0093-01_microcode_ctl.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0094-01_linux-firmware.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0095-01_java-1.8.0-openjdk.nasl: GPLv2+
+2018/trendmicro/gb_trendmicro_3_2_mult_vuln.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3477_4.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3514_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3516_1.nasl: GPLv2+
@@ -54507,6 +54516,7 @@ gb_postfixadmin_detect.nasl: GPLv2+
 gb_postgres_tls_support.nasl: GPLv2+
 gb_powerfolder_detection.nasl: GPLv2+
 gb_pqi_air_pen_express_remote_detect.nasl: GPLv2+
+gb_prestashop_detect.nasl: GPLv2+
 gb_proconos_detect.nasl: GPLv2+
 gb_projectsend_remote_detect.nasl: GPLv2+
 gb_prtg_network_monitor_detect.nasl: GPLv2+
@@ -55195,6 +55205,8 @@ gsf/2018/citrix/gb_citrix_netscaler_CTX230612.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K00373024.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K08613310.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
@@ -55202,6 +55214,7 @@ gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
 gsf/2018/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+
@@ -55249,6 +55262,7 @@ gsf/2018/microsoft/gb_ms_kb4058562_remote.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-5186.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-7425.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0517.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_imanager_rce_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_ebusiness_suite_redirect_param_open_redirect_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_01.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_02.nasl: GPLv2+

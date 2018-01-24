@@ -83,8 +83,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(870982);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-19 09:55:28 +0530 (Fri, 19 Apr 2013)");
   script_cve_id("CVE-2013-0401", "CVE-2013-1488", "CVE-2013-1518", "CVE-2013-1537",
                 "CVE-2013-1557", "CVE-2013-1558", "CVE-2013-1569", "CVE-2013-2383",
@@ -98,7 +98,7 @@ if(description)
 
   script_xref(name: "RHSA", value: "2013:0752-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-April/msg00026.html");
-  script_summary("Check for the Version of java-1.7.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

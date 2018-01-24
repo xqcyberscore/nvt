@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gd-rating-system_mult_vuln.nasl 8354 2018-01-10 07:30:33Z asteins $
+# $Id: gb_wordpress_gd-rating-system_mult_vuln.nasl 8506 2018-01-24 03:45:11Z ckuersteiner $
 #
 # WordPress GD Rating System Plugin Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112180");
-  script_version("$Revision: 8354 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-10 08:30:33 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 8506 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-24 04:45:11 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-09 09:30:00 +0100 (Tue, 09 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-5286", "CVE-2018-5287", "CVE-2018-5288", "CVE-2018-5289",
       "CVE-2018-5290","CVE-2018-5291", "CVE-2018-5292", "CVE-2018-5293");

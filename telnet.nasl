@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 8478 2018-01-21 17:52:33Z cfischer $
+# $Id: telnet.nasl 8503 2018-01-23 16:49:56Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 8478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:52:33 +0100 (Sun, 21 Jan 2018) $");
+  script_version("$Revision: 8503 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,6 +94,8 @@ no_telnet = make_list( "<<<check_mk>>>", "\\check_mk\.ini", "<<<uptime>>>", "<<<
                        "Welcome to the TeamSpeak 3 ServerQuery interface",
                        "500 OOPS: could not bind listening IPv4 socket", # Probably PureFTPd
                        "^ncacn_http/1\.0",
+                       "220 .* FTP server .* ready",
+                       "220 Service ready",
                        "^RFB 00[0-9]\.00[0-9]", # VNC
                        "\(Eggdrop v.* Eggheads\)" ); # Eggdrop Bot
 

@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098529.html");
   script_id(865344);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 10:15:44 +0530 (Mon, 11 Feb 2013)");
   script_cve_id("CVE-2012-5564");
   script_tag(name:"cvss_base", value:"3.3");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1742");
   script_name("Fedora Update for android-tools FEDORA-2013-1742");
 
-  script_summary("Check for the Version of android-tools");
+  script_tag(name: "summary" , value: "Check for the Version of android-tools");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

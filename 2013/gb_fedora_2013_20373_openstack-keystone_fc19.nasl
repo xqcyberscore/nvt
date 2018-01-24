@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867038);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:25:11 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-4477", "CVE-2013-4294", "CVE-2013-2157");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ This package contains the Keystone daemon.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-20373");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/120205.html");
-  script_summary("Check for the Version of openstack-keystone");
+  script_tag(name: "summary" , value: "Check for the Version of openstack-keystone");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

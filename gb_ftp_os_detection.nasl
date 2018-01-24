@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 8446 2018-01-17 15:50:57Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 8503 2018-01-23 16:49:56Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 8446 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 16:50:57 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8503 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,6 +57,17 @@ port = get_ftp_port( default:21 );
 
 banner = get_ftp_banner( port:port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+
+# 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
+if( "VxWorks FTP server" >< banner ) {
+  version = eregmatch( pattern:"\(VxWorks ([0-9.]+)", string:banner );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"Wind River VxWorks", version:version[1], cpe:"cpe:/o:windriver:vxworks", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+  exit( 0 );
+}
 
 if( "Network Management Card AOS" >< banner ) {
   version = eregmatch( pattern:"Network Management Card AOS v([0-9.]+)", string:banner );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0504_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_0504_1.nasl 8509 2018-01-24 06:57:46Z teissa $
 #
 # SuSE Update for firebird openSUSE-SU-2013:0504-1 (firebird)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850456);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:31 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-2492");
   script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_summary("Check for the Version of firebird");
+  script_tag(name: "summary" , value: "Check for the Version of firebird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866473);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-08-20 12:43:07 +0530 (Tue, 20 Aug 2013)");
   script_cve_id("CVE-2013-2130");
   script_tag(name:"cvss_base", value:"4.0");
@@ -53,7 +53,7 @@ DCC bouncing, Perl and C++ module support to name a few.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-14123");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-August/114172.html");
-  script_summary("Check for the Version of znc");
+  script_tag(name: "summary" , value: "Check for the Version of znc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

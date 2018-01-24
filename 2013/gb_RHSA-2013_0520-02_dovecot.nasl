@@ -71,8 +71,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00059.html");
   script_id(870922);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:01:43 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2011-2166", "CVE-2011-2167", "CVE-2011-4318");
   script_bugtraq_id(48003, 50709);
@@ -81,7 +81,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0520-02");
   script_name("RedHat Update for dovecot RHSA-2013:0520-02");
 
-  script_summary("Check for the Version of dovecot");
+  script_tag(name: "summary" , value: "Check for the Version of dovecot");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

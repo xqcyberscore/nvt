@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2018-3236628_04_win.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_oracle_mysql_jan2018-3236628_04_win.nasl 8506 2018-01-24 03:45:11Z ckuersteiner $
 #
 # Oracle Mysql Security Updates (jan2018-3236628) 04 - Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812650");
-  script_version("$Revision: 8473 $");
+  script_version("$Revision: 8506 $");
   script_cve_id("CVE-2018-2562" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 04:45:11 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:44:12 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Mysql Security Updates (jan2018-3236628) 04 - Windows");
 
