@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yops_43156.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_yops_43156.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # YOPS (Your Own Personal [WEB] Server) Remote Buffer Overflow Vulnerability
 #
@@ -40,9 +40,9 @@ information.";
 
 if (description)
 {
- script_id(100917);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100917");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-26 13:31:06 +0100 (Fri, 26 Nov 2010)");
  script_bugtraq_id(43156);
  script_tag(name:"cvss_base", value:"7.5");

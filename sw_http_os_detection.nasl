@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 8450 2018-01-17 17:42:13Z cfischer $
+# $Id: sw_http_os_detection.nasl 8523 2018-01-24 17:21:13Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 8450 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:42:13 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 18:21:13 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,6 +63,24 @@ function check_http_banner( port ) {
   if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) ) {
 
     banner_type = "HTTP Server banner";
+
+    # Runs only on Unix/Linux/BSD
+    # e.g. Server: GoTTY/0.0.12
+    if( "Server: GoTTY" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return banner;
+    }
+
+    if( "Microsoft-WinCE" >< banner ) {
+      # e.g. Server: Microsoft-WinCE/5.0
+      version = eregmatch( pattern:"Microsoft-WinCE/([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Microsoft Windows CE", version:version[1], cpe:"cpe:/o:microsoft:windows_ce", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      } else {
+        register_and_report_os( os:"Microsoft Windows CE", cpe:"cpe:/o:microsoft:windows_ce", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      }
+      return;
+    }
 
     # Server: Jetty/4.2.x (VxWorks/WIND version 2.9 ppc java/1.1-rr-std-b12)
     if( "(VxWorks/" >< banner ) {
@@ -477,7 +495,7 @@ function check_php_banner( port ) {
         return;
       } else if( "~trusty" >< phpBanner ) {
         register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return;	
+        return;
       } else if( "~utopic" >< phpBanner ) {
         register_and_report_os( os:"Ubuntu", version:"14.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         return;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-100.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-100.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Consent User Interface Privilege Escalation Vulnerability (2442962)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900265);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900265");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(45318);
   script_cve_id("CVE-2010-3961");

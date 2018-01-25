@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbsedit_dos_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vbsedit_dos_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Adersoft VbsEdit '.vbs' File Denial Of Service Vulnerability
 #
@@ -44,9 +44,9 @@ Service vulnerability.";
 
 if(description)
 {
-  script_id(801440);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801440");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-25 17:02:03 +0200 (Wed, 25 Aug 2010)");
   script_bugtraq_id(42525);
   script_tag(name:"cvss_base", value:"7.5");

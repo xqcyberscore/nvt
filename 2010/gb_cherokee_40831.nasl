@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cherokee_40831.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_cherokee_40831.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Cherokee URI Directory Traversal Vulnerability and Information Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ Cherokee 0.5.4 and prior versions are vulnerable.";
 
 if (description)
 {
- script_id(100678);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100678");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-15 13:44:31 +0200 (Tue, 15 Jun 2010)");
  script_bugtraq_id(40831);
  script_tag(name:"cvss_base", value:"5.0");

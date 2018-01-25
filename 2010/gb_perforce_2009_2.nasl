@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perforce_2009_2.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_perforce_2009_2.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Perforce 2009.2 Multiple Vulnerabilities
 #
@@ -45,9 +45,9 @@ be affected.";
 
 if (description)
 {
- script_id(100519);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100519");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-09 14:33:24 +0100 (Tue, 09 Mar 2010)");
  script_bugtraq_id(38590,38591,38586);
  script_tag(name:"cvss_base", value:"5.0");

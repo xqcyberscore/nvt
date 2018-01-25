@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bournal_privilege_escalation_vuln.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: gb_bournal_privilege_escalation_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Bournal Privilege Escalation Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Bournal and is prone to privilege
 
 if(description)
 {
-  script_id(800730);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800730");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");

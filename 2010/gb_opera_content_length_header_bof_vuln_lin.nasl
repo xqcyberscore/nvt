@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_content_length_header_bof_vuln_lin.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_opera_content_length_header_bof_vuln_lin.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Opera Browser 'Content-Length' Header Buffer Overflow Vulnerability (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to
 
 if(description)
 {
-  script_id(801318);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801318");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1349");
   script_bugtraq_id(38519);

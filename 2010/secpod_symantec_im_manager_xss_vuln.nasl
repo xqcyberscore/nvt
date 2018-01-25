@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_im_manager_xss_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_symantec_im_manager_xss_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Symantec IM Manager Console Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Symantec IM Manager and is prone to
 
 if(description)
 {
-  script_id(902132);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902132");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

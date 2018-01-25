@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-048.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_ms10-048.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Microsoft Windows Kernel Mode Drivers Privilege Elevation Vulnerabilities (2160329)
 #
@@ -28,9 +28,9 @@
 
 if(description)
 {
-  script_id(902094);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902094");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-1887", "CVE-2010-1894", "CVE-2010-1895",
                 "CVE-2010-1896", "CVE-2010-1897");

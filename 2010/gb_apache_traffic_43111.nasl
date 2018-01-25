@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_43111.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_traffic_43111.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Apache Traffic Server Remote DNS Cache Poisoning Vulnerability
 #
@@ -40,9 +40,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100797);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100797");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-10 15:25:30 +0200 (Fri, 10 Sep 2010)");
  script_bugtraq_id(43111);
  script_tag(name:"cvss_base", value:"4.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Lussumo Vanilla 'definitions.php' Remote File Include Vulnerabilities
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is running Lussumo Vanilla and is prone remote file inc
 
 if(description)
 {
-  script_id(800757);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800757");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1337");
   script_bugtraq_id(38889);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_library_code_exec_vuln.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: gb_ms_windows_library_code_exec_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # MS Windows Insecure Library Loading Remote Code Execution Vulnerabilities (2269637)
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(801399);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801399");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

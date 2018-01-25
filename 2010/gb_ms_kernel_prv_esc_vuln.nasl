@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kernel_prv_esc_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms_kernel_prv_esc_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Microsoft Windows #GP Trap Handler Privilege Escalation Vulnerability
 #
@@ -52,10 +52,10 @@ This NVT has been replaced by NVT secpod_ms10-015.nasl
 
 if(description)
 {
-  script_id(800442);
-  script_version("$Revision: 5368 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800442");
+  script_version("$Revision: 8510 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-22 16:43:14 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

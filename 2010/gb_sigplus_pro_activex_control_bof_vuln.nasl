@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sigplus_pro_activex_control_bof_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sigplus_pro_activex_control_bof_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # SigPlus Pro ActiveX Control 'LCDWriteString()' Buffer Overflow Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with SigPlus Pro ActiveX Control and is
 
 if(description)
 {
-  script_id(801252);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801252");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_cve_id("CVE-2010-2931");
   script_bugtraq_id(42109);

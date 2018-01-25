@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_41963.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_41963.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Apache HTTP Server Multiple Remote Denial of Service Vulnerabilities
 #
@@ -37,9 +37,9 @@ references for more information.";
 
 if (description)
 {
- script_id(100725);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100725");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-27 20:48:46 +0200 (Tue, 27 Jul 2010)");
  script_bugtraq_id(41963);
  script_tag(name:"cvss_base", value:"5.0");

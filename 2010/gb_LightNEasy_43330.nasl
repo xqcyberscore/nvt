@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_LightNEasy_43330.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_LightNEasy_43330.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # LightNEasy 'LightNEasy.php' SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ LightNEasy 3.2.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100817);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100817");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-21 16:24:40 +0200 (Tue, 21 Sep 2010)");
  script_bugtraq_id(43330);
  script_cve_id("CVE-2010-3485", "CVE-2010-3484");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-063.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms09-063.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Microsoft Web Services on Devices API Remote Code Execution Vulnerability (973565)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801480);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801480");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-25 08:29:59 +0100 (Thu, 25 Nov 2010)");
   script_cve_id("CVE-2009-2512");
   script_bugtraq_id(36919);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-031.nasl 6413 2017-06-23 09:16:58Z cfischer $
+# $Id: secpod_ms10-031.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Microsoft Visual Basic Remote Code Execution Vulnerability (978213)
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902178);
-  script_version("$Revision: 6413 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902178");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-0815");
   script_tag(name:"cvss_base", value:"9.3");

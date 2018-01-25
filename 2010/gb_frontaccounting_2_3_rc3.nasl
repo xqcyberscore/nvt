@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_frontaccounting_2_3_rc3.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_frontaccounting_2_3_rc3.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # FrontAccounting Multiple Cross Site Scripting Vulnerabilities
 #
@@ -41,9 +41,9 @@ information.";
 
 if (description)
 {
- script_id(100883);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100883");
+ script_version("$Revision: 8510 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-01 13:16:04 +0100 (Mon, 01 Nov 2010)");
  script_bugtraq_id(44556,44557);
  script_tag(name:"cvss_base", value:"4.3");

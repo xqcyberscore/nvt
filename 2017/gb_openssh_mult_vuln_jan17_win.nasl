@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_mult_vuln_jan17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_openssh_mult_vuln_jan17_win.nasl 8519 2018-01-24 14:13:44Z gveerendra $
 #
 # OpenSSH Multiple Vulnerabilities Jan17 (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810325");
-  script_version("$Revision: 7543 $");
-  script_cve_id("CVE-2016-10009", "CVE-2016-10010", "CVE-2016-10011", "CVE-2016-10012");
+  script_version("$Revision: 8519 $");
+  script_cve_id("CVE-2016-10009", "CVE-2016-10010", "CVE-2016-10011", "CVE-2016-10012",
+                "CVE-2016-10708");
   script_bugtraq_id(94968, 94972, 94977, 94975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 15:13:44 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-01-06 10:55:34 +0530 (Fri, 06 Jan 2017)");
   script_name("OpenSSH Multiple Vulnerabilities Jan17 (Windows)");
 
@@ -51,11 +52,13 @@ if(description)
     does not ensure that a bounds check is enforced by all compilers.
   - The sshd in OpenSSH creates forwarded Unix-domain sockets as root, when
     privilege separation is not used.
-  - An untrusted search path vulnerability in ssh-agent.c in ssh-agent.");
+  - An untrusted search path vulnerability in ssh-agent.c in ssh-agent.
+  - NULL pointer dereference error due to an out-of-sequence NEWKEYS message.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows
   local users to obtain sensitive private-key information, to gain privileges,
-  and allows remote attackers to execute arbitrary local PKCS#11 modules.
+  conduct a senial-of-service condition and allows remote attackers to execute
+  arbitrary local PKCS#11 modules.
 
   Impact Level: Application");
 
@@ -63,10 +66,14 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.4 or later.
   For updates refer to http://www.openssh.com");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name : "URL" , value : "https://www.openssh.com/txt/release-7.4");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/12/19/2");
+  script_xref(name : "URL" , value : "http://blog.swiecki.net/2018/01/fuzzing-tcp-servers.html");
+  script_xref(name : "URL" , value : "https://anongit.mindrot.org/openssh.git/commit/?id=28652bca29046f62c7045e933e6b931de1d16737");
+
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -80,21 +87,17 @@ include("version_func.inc");
 include("host_details.inc");
 
 
-# Variable Initialization
 sshPort = "";
 sshVer = "";
 
-## get the port
 if(!sshPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
   exit(0);
 }
 
-##Check for vulnerable version
 if(version_is_less(version:sshVer, test_version:"7.4"))
 {
   report = report_fixed_ver(installed_version:sshVer, fixed_version:'7.4');

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_vuln_feb10_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_opera_info_disc_vuln_feb10_win.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # Opera Information Disclosure Vulnerability - (Windows)
 #
@@ -39,9 +39,9 @@ Information Disclosure vulnerability.";
 
 if(description)
 {
-  script_id(902122);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902122");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");

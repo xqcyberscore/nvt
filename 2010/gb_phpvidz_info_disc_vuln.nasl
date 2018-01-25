@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvidz_info_disc_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
+# $Id: gb_phpvidz_info_disc_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
 #
 # PHPvidz Administrative Credentials Disclosure Vulnerability
 #
@@ -45,9 +45,9 @@ credentials disclosure vulnerability.";
 
 if(description)
 {
-  script_id(801549);
-  script_version("$Revision: 5794 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801549");
+  script_version("$Revision: 8510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
