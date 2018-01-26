@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_info_disc_vuln_win_sep10.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: secpod_mozilla_prdts_info_disc_vuln_win_sep10.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Mozilla Products 'js_InitRandom' Information Disclosure Vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ Information Disclosure Vulnerability.";
 
 if(description)
 {
-  script_id(902306);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902306");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3400");
   script_tag(name:"cvss_base", value:"5.8");

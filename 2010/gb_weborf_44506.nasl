@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_44506.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_weborf_44506.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Weborf HTTP Request Denial Of Service Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100878);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100878");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
  script_bugtraq_id(44506);
  script_tag(name:"cvss_base", value:"5.0");

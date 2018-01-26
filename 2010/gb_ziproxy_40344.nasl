@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ziproxy_40344.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_ziproxy_40344.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Ziproxy Image Parsing Multiple Integer Overflow Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100650);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100650");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-25 13:42:13 +0200 (Tue, 25 May 2010)");
  script_bugtraq_id(40344);
  script_tag(name:"cvss_base", value:"6.8");

@@ -34,8 +34,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865698);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-07 10:03:10 +0530 (Fri, 07 Jun 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
@@ -43,7 +43,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-9170");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/107674.html");
-  script_summary("Check for the Version of slock");
+  script_tag(name: "summary" , value: "Check for the Version of slock");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orca_browser_detect.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: gb_orca_browser_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Orca Browser Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Orca Browser
 
 if(description)
 {
-  script_id(800900);
+  script_oid("1.3.6.1.4.1.25623.1.0.800900");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+ script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Orca Browser Version Detection");

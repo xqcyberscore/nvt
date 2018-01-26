@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rn_helix_39490.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_rn_helix_39490.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # RealNetworks Helix and Helix Mobile Server Multiple Remote Code Execution Vulnerabilities
 #
@@ -40,9 +40,9 @@ address these issues. Please see the references for more information.";
 
 if (description)
 {
- script_id(100579);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100579");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-15 19:15:10 +0200 (Thu, 15 Apr 2010)");
  script_bugtraq_id(39490);
  script_cve_id("CVE-2010-1317","CVE-2010-1318","CVE-2010-1319");

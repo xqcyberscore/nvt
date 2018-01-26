@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2020_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_2020_1.nasl 8542 2018-01-26 06:57:28Z teissa $
 #
 # Ubuntu Update for linux-lts-raring USN-2020-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841618);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 15:45:27 +0530 (Mon, 18 Nov 2013)");
   script_cve_id("CVE-2013-0343", "CVE-2013-2147", "CVE-2013-2889", "CVE-2013-2893",
                 "CVE-2013-2894", "CVE-2013-2895", "CVE-2013-2897", "CVE-2013-4343");
@@ -92,7 +92,7 @@ leverage this flaw to gain full admin privileges. (CVE-2013-4343)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2020-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2020-1/");
-  script_summary("Check for the Version of linux-lts-raring");
+  script_tag(name: "summary" , value: "Check for the Version of linux-lts-raring");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

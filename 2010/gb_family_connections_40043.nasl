@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_family_connections_40043.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_family_connections_40043.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Family Connections 2.2.3 Multiple SQL Injection Vulnerabilities
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if (description)
 {
- script_id(100634);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100634");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
  script_bugtraq_id(40043);
  script_tag(name:"cvss_base", value:"7.5");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eggdrop_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: eggdrop_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Eggdrop Detection
 #
@@ -28,10 +28,10 @@ tag_summary = "This Host is running Eggdrop, an Open Source IRC bot.";
 
 if (description)
 {
- script_id(100206);
+ script_oid("1.3.6.1.4.1.25623.1.0.100206");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 

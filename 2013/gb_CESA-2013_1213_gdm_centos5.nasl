@@ -49,8 +49,8 @@ issue. The system must be rebooted for this update to take effect.";
 if(description)
 {
   script_id(881788);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-09-06 09:37:00 +0530 (Fri, 06 Sep 2013)");
   script_cve_id("CVE-2013-4169");
   script_tag(name:"cvss_base", value:"6.9");
@@ -70,7 +70,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1213");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-September/019925.html");
-  script_summary("Check for the Version of gdm");
+  script_tag(name: "summary" , value: "Check for the Version of gdm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

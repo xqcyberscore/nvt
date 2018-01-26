@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_comments_xss_vuln.nasl 8242 2017-12-22 14:01:22Z cfischer $
+# $Id: gb_centreon_comments_xss_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811735");
-  script_version("$Revision: 8242 $");
+  script_version("$Revision: 8529 $");
   script_cve_id("CVE-2015-7672");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 15:01:22 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 13:47:50 +0530 (Mon, 11 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability");
@@ -54,8 +54,8 @@ if(description)
 
   script_tag(name:"affected", value:"Centreon version 2.6.1");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 22nd
-  December, 2017. Information regarding this issue will be updated once solution details
+  script_tag(name:"solution", value:"No solution or patch is available as of 25th
+  January, 2018. Information regarding this issue will be updated once solution details
   are available. For updates refer to https://www.centreon.com ");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

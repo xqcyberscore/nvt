@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_TextPattern_43055.nasl 5763 2017-03-29 11:54:30Z cfi $
+# $Id: gb_TextPattern_43055.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # TextPattern 'txplib_db.php' Cross Site Scripting Vulnerability
 #
@@ -36,9 +36,9 @@ TextPattern 4.2.0 is vulnerable; others versions may also be affected.";
 
 if(description)
 {
- script_id(100793);
- script_version("$Revision: 5763 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100793");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-09-09 16:30:22 +0200 (Thu, 09 Sep 2010)");
  script_bugtraq_id(43055);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_site_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
+# $Id: gb_open_site_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # openSite Detection
 #
@@ -29,10 +29,10 @@ software for making and operating powerful PHP/MySQL based websites.";
 
 if(description)
 {
- script_id(103021);
+ script_oid("1.3.6.1.4.1.25623.1.0.103021");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5735 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2011-01-10 13:28:19 +0100 (Mon, 10 Jan 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("openSite Detection");

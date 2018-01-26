@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1834_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1834_1.nasl 8542 2018-01-26 06:57:28Z teissa $
 #
 # Ubuntu Update for linux-lts-quantal USN-1834-1
 #
@@ -41,8 +41,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841438);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 11:55:47 +0530 (Mon, 27 May 2013)");
   script_cve_id("CVE-2013-1929", "CVE-2013-3301");
   script_tag(name:"cvss_base", value:"7.2");
@@ -51,7 +51,7 @@ if(description)
 
   script_xref(name: "USN", value: "1834-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1834-1/");
-  script_summary("Check for the Version of linux-lts-quantal");
+  script_tag(name: "summary" , value: "Check for the Version of linux-lts-quantal");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

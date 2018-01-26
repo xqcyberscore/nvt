@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_south_river_webdrive_loc_priv_esc_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_south_river_webdrive_loc_priv_esc_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # South River Technologies WebDrive Local Privilege Escalation Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with South River Technologies WebDrive and
 
 if(description)
 {
-  script_id(800159);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800159");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

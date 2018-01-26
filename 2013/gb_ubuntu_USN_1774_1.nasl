@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1774_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1774_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1774-1
 #
@@ -61,8 +61,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1774-1/");
   script_id(841371);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-22 10:41:42 +0530 (Fri, 22 Mar 2013)");
   script_cve_id("CVE-2013-0190", "CVE-2013-0216", "CVE-2013-0217", "CVE-2013-0231",
                 "CVE-2013-0290", "CVE-2013-0311");
@@ -71,7 +71,7 @@ if(description)
   script_xref(name: "USN", value: "1774-1");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1774-1");
 
-  script_summary("Check for the Version of linux-ti-omap4");
+  script_tag(name: "summary" , value: "Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

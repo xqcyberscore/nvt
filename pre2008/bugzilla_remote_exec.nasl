@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_remote_exec.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: bugzilla_remote_exec.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 # Description: Bugzilla remote arbitrary command execution
 #
 # Authors:
@@ -23,61 +23,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote Bugzilla bug tracking system, according to its version number, 
-is vulnerable to arbitrary commands execution flaws due to a lack of 
-sanitization of user-supplied data in process_bug.cgi";
-
-tag_solution = "Upgrade at version 2.12 or newer";
-
-#  Ref: Frank van Vliet karin@root66.nl.eu.org
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if(description)
 {
- script_id(15565);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15565");
+ script_version("$Revision: 8527 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1199);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2000-0421", "CVE-2001-0329");
  
-
- name = "Bugzilla remote arbitrary command execution";
- 
- script_name(name);
- 
-
- 
+ script_name("Bugzilla remote arbitrary command execution");
  
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl", "bugzilla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_family("Web application abuses");
+ script_dependencies("bugzilla_detect.nasl");
+ script_mandatory_keys("bugzilla/installed");
+
+ script_tag(name: "solution", value: "Upgrade at version 2.12 or newer.");
+
+ script_tag(name: "summary", value: "The remote Bugzilla bug tracking system, according to its version number, is
+vulnerable to arbitrary commands execution flaws due to a lack of sanitization of user-supplied data in
+process_bug.cgi");
+
  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("host_details.inc");
+include("version_func.inc");
 
-include("http_func.inc");
-include("http_keepalive.inc");
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-port = get_http_port(default:80);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!get_port_state(port))exit(0);
+if (version_is_less(version: vers, test_version: "2.12")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "2.12");
+  security_message(port: port, data: report);
+  exit(0);
+}
 
-version = get_kb_item(string("www/", port, "/bugzilla/version"));
-if(!version)exit(0);
-
-
-if(ereg(pattern:"^(2\.([0-9]|1[01]))[^0-9]*$", string:version))security_message(port);
-       
-       
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iwork_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_iwork_detect_macosx.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # iWork Version Detection (Mac OS X)
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed product version of iWork and sets
 
 if(description)
 {
-  script_id(802145);
+  script_oid("1.3.6.1.4.1.25623.1.0.802145");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6484 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+ script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("iWork Version Detection (Mac OS X)");

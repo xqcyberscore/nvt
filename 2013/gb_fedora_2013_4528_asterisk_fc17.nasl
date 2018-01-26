@@ -36,8 +36,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865538);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 10:33:25 +0530 (Mon, 08 Apr 2013)");
   script_cve_id("CVE-2013-2686", "CVE-2013-2264");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-4528");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-April/101684.html");
-  script_summary("Check for the Version of asterisk");
+  script_tag(name: "summary" , value: "Check for the Version of asterisk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

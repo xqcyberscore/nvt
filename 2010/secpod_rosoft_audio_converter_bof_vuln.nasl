@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rosoft_audio_converter_bof_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_rosoft_audio_converter_bof_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Rosoft Audio Converter '.M3U' file Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(902079);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902079");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 14:43:46 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2329");
   script_tag(name:"cvss_base", value:"9.3");

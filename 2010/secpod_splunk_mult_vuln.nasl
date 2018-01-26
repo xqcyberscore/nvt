@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_mult_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_splunk_mult_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Splunk Multiple vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running Splunk and is prone to multiple
 
 if(description)
 {
-  script_id(901152);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901152");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3322", "CVE-2010-3323");
   script_tag(name:"cvss_base", value:"6.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1907_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1907_1.nasl 8542 2018-01-26 06:57:28Z teissa $
 #
 # Ubuntu Update for openjdk-7 USN-1907-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841509);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 19:12:51 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-1500", "CVE-2013-2454", "CVE-2013-2458", "CVE-2013-1571",
                 "CVE-2013-2407", "CVE-2013-2412", "CVE-2013-2443", "CVE-2013-2446",
@@ -89,7 +89,7 @@ Ubuntu 12.10";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1907-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1907-1/");
-  script_summary("Check for the Version of openjdk-7");
+  script_tag(name: "summary" , value: "Check for the Version of openjdk-7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

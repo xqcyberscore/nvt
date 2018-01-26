@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swftools_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_swftools_detect_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # SWFTools Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed SWFTools version and saves
 
 if(description)
 {
-  script_id(801438);
+  script_oid("1.3.6.1.4.1.25623.1.0.801438");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SWFTools Version Detection");

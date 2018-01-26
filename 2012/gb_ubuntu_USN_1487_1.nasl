@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1487_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1487_1.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Ubuntu Update for linux USN-1487-1
 #
@@ -38,9 +38,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1487-1/");
-  script_id(841069);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841069");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-03 10:26:11 +0530 (Tue, 03 Jul 2012)");
   script_cve_id("CVE-2012-2375");
   script_tag(name:"cvss_base", value:"4.6");

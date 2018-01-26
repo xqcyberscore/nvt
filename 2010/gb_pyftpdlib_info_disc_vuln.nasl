@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpdlib_info_disc_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_pyftpdlib_info_disc_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # pyftpdlib FTP Server Information Disclosure Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running pyftpdlib FTP server and is prone to informa
 
 if(description)
 {
-  script_id(801618);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801618");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2007-6738");
   script_tag(name:"cvss_base", value:"5.0");

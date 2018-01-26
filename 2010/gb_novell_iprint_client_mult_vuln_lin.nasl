@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_mult_vuln_lin.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_novell_iprint_client_mult_vuln_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Novell iPrint Client Multiple Security Vulnerabilities (Linux)
 #
@@ -45,9 +45,9 @@ tag_summary = "The host is installed Novell iPrint Client and is prone to multip
 
 if(description)
 {
-  script_id(801424);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801424");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_bugtraq_id(42100);
   script_cve_id("CVE-2010-3106");

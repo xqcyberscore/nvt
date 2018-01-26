@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jb2_file_dos_vuln.nasl 8172 2017-12-19 09:32:03Z jschulte $
+# $Id: gb_xnview_jb2_file_dos_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # XnView 'jb2 file' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811952");
-  script_version("$Revision: 8172 $");
+  script_version("$Revision: 8529 $");
   script_cve_id("CVE-2017-14580");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 10:32:03 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:35:33 +0530 (Thu, 26 Oct 2017)");
   script_name("XnView 'jb2 file' DoS Vulnerability");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name: "affected" , value:"XnView Version 2.41");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  19th December, 2017. Information regarding this issue will be updated once the
+  25th January, 2018. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.xnview.com/en/");
 

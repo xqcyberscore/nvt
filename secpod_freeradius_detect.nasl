@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freeradius_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_freeradius_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # FreeRADIUS Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of FreeRADIUS and
 
 if(description)
 {
-  script_id(900855);
+  script_oid("1.3.6.1.4.1.25623.1.0.900855");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FreeRADIUS Version Detection");

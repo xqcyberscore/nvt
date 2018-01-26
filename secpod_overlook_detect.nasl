@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: secpod_overlook_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # OPEN IT OverLook Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "The script detects the version of OverLook on remote host and
 
 if(description)
 {
-  script_id(902513);
+  script_oid("1.3.6.1.4.1.25623.1.0.902513");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OPEN IT OverLook Version Detection");

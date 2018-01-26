@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867034);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:29:58 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-4466");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,7 @@ the proposed standards by the IETF's TLS working group.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-20052");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-October/119788.html");
-  script_summary("Check for the Version of gnutls");
+  script_tag(name: "summary" , value: "Check for the Version of gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

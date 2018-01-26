@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2040_1.nasl 6614 2017-07-07 12:09:12Z cfischer $
+# $Id: deb_2040_1.nasl 8528 2018-01-25 07:57:36Z teissa $
 # Description: Auto-generated from advisory DSA 2040-1 (squidguard)
 #
 # Authors:
@@ -53,9 +53,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(67341);
- script_version("$Revision: 6614 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:12 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.67341");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-05-04 05:52:15 +0200 (Tue, 04 May 2010)");
  script_cve_id("CVE-2009-3700", "CVE-2009-3826");
  script_tag(name:"cvss_base", value:"5.0");

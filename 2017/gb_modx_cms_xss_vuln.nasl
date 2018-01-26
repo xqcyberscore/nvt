@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 8242 2017-12-22 14:01:22Z cfischer $
+# $Id: gb_modx_cms_xss_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # MODX Revolution CMS XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140286");
-  script_version("$Revision: 8242 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-22 15:01:22 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 8529 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-08-08 15:39:24 +0700 (Tue, 08 Aug 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ when they visit this module.");
 
   script_tag(name: "affected", value: "MODX Revolution version 2.6.1 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 22nd December, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 25th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/modxcms/revolution/issues/13564");

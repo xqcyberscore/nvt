@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867087);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 10:17:30 +0530 (Tue, 26 Nov 2013)");
   script_cve_id("CVE-2013-4385");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ Scheme language standard, and includes many enhancements and extensions.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-17912");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/122680.html");
-  script_summary("Check for the Version of chicken");
+  script_tag(name: "summary" , value: "Check for the Version of chicken");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

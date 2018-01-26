@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1687_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1687_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # Ubuntu Update for nss USN-1687-1
 #
@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1687-1/");
   script_id(841278);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 18:08:00 +0530 (Tue, 15 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "USN", value: "1687-1");
   script_name("Ubuntu Update for nss USN-1687-1");
 
-  script_summary("Check for the Version of nss");
+  script_tag(name: "summary" , value: "Check for the Version of nss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

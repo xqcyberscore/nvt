@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blue_coat_reporter_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_blue_coat_reporter_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Blue Coat Reporter Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This host is running the Blue Coat Reporter.";
 if (description)
 {
  
- script_id(103245);
+ script_oid("1.3.6.1.4.1.25623.1.0.103245");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2011-09-08 15:23:37 +0200 (Thu, 08 Sep 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Blue Coat Reporter Detection");

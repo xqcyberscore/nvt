@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_38026.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: bugzilla_38026.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Group Selection During Bug Move Information Disclosure Vulnerability
 #
@@ -24,23 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Bugzilla is prone to an information-disclosure vulnerability.
-
-Exploits may allow attackers to obtain potentially sensitive
-information that may aid in other attacks.
-
-This issue affects the following:
-
-Bugzilla 3.3.1 through 3.4.4 Bugzilla 3.5.1 Bugzilla 3.5.2";
-
-
-tag_solution = "Updates are available. Please see the references for details.";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
- script_id(100481);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100481");
+ script_version("$Revision: 8527 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-02 21:07:02 +0100 (Tue, 02 Feb 2010)");
  script_bugtraq_id(38026);
  script_cve_id("CVE-2009-3387");
@@ -49,45 +39,44 @@ if (description)
 
  script_name("Bugzilla Group Selection During Bug Move Information Disclosure Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38026");
- script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=532493");
- script_xref(name : "URL" , value : "http://www.bugzilla.org");
- script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.0.10/");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/38026");
+ script_xref(name: "URL", value: "https://bugzilla.mozilla.org/show_bug.cgi?id=532493");
+ script_xref(name: "URL", value: "http://www.bugzilla.org");
+ script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.0.10/");
 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("bugzilla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("bugzilla/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for details.");
+
+ script_tag(name: "summary", value: "Bugzilla is prone to an information-disclosure vulnerability.
+
+Exploits may allow attackers to obtain potentially sensitive information that may aid in other attacks.
+
+This issue affects the following:
+
+Bugzilla 3.3.1 through 3.4.4 Bugzilla 3.5.1 Bugzilla 3.5.2");
+
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/bugzilla")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
-
-vers = matches[1];
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_in_range(version: vers, test_version: "3.3", test_version2: "3.4.4") ||
-     version_in_range(version: vers, test_version: "3.5", test_version2: "3.5.2")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_in_range(version: vers, test_version: "3.3", test_version2: "3.4.4") ||
+    version_in_range(version: vers, test_version: "3.5", test_version2: "3.5.2")) {
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);

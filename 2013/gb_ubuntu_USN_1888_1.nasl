@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1888_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1888_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # Ubuntu Update for mesa USN-1888-1
 #
@@ -42,8 +42,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841488);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 15:06:49 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-1872", "CVE-2013-1993");
   script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +52,7 @@ if(description)
 
   script_xref(name: "USN", value: "1888-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1888-1/");
-  script_summary("Check for the Version of mesa");
+  script_tag(name: "summary" , value: "Check for the Version of mesa");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_justsystems_ichitaro_unspecified_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_justsystems_ichitaro_unspecified_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # JustSystems Ichitaro Unspecified Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed JustSystems Ichitaro and is prone to
 
 if(description)
 {
-  script_id(902042);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902042");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-1424");
   script_tag(name:"cvss_base", value:"9.3");

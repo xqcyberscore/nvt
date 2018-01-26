@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: bugzilla_detect.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Detection
 #
@@ -27,16 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of Bugzilla.
-
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100093");
-  script_version("$Revision: 5820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 8527 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-03-31 18:59:35 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +44,11 @@ if (description)
   script_family("Product detection");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name: "summary", value: "Detection of Bugzilla.
+
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
+
   exit(0);
 }
 
@@ -61,94 +60,67 @@ include("host_details.inc");
 port = get_http_port(default:80);
 
 foreach dir (make_list_unique( "/bugzilla", "/bugs", cgi_dirs(port:port))) {
+ install = dir;
+ if (dir == "/")
+   dir = "";
 
- url = string(dir, "/index.cgi");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ url = dir + "/index.cgi";
+ buf = http_get_cache(port: port, item: url);
 
- if(egrep(pattern: "Bugzilla_login", string: buf) && egrep(pattern: "Bugzilla_password", string: buf) )
- {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
-    vers = string("unknown");
-
-    ### try to get version
+ if (egrep(pattern: "Bugzilla_login", string: buf) && egrep(pattern: "Bugzilla_password", string: buf) ) {
+    vers = "unknown";
 
     version = eregmatch(string: buf, pattern: "version ([0-9.]+)(.?rc([0-9]+)?)?",icase:TRUE);
-    if (!isnull(version[1]) )
-    {
+    if (!isnull(version[1]) ) {
       if(!isnull(version[2])){
         vers=version[1] + "." + version[2];
       }
     }
 
-    if(isnull(version[1]))
-    {
-      url = string(dir, "/docs/en/txt/Bugzilla-Guide.txt");
+    if (isnull(version[1])) {
+      url = dir + "/docs/en/txt/Bugzilla-Guide.txt";
       req = http_get(item:url, port:port);
       buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
       version = eregmatch(string: buf, pattern: "The Bugzilla Guide - ([0-9.]+)(.?rc([0-9]+)?)? Release");
 
-      if ( !isnull(version[1]) )
-      {
-        if(!isnull(version[2])){
+      if (!isnull(version[1]) ) {
+        if (!isnull(version[2]))
            vers=version[1] + "." + version[2];
-        }
+        concUrl = url;
       }
-      else
-     {
-
-       url = string(dir, "/CVS/Tag");
+      else {
+       url = dir + "/CVS/Tag";
        req = http_get(item:url, port:port);
        buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-       if( !isnull(buf))
-       {
+       if (!isnull(buf)) {
          version = eregmatch(string: buf, pattern: "BUGZILLA-([0-9._]+)(.?rc([0-9]+)?)? Release");
-         if ( !isnull(version[1]) )
-         {
-           if(version[1] = ereg_replace(pattern:"_", string:version[1], replace:"."))
-           {
-             if ( !isnull(version[2]) ){
-               vers=version[1] + "." + version[2];
+         if (!isnull(version[1])) {
+           if (version[1] = ereg_replace(pattern:"_", string:version[1], replace:".")) {
+             if (!isnull(version[2])) {
+               vers = version[1] + "." + version[2];
              }
            }
+           concUrl = url;
          }
        }
      }
-   }else{
-      vers=version[1];
-    }
+    } else
+      vers = version[1];
 
-    tmp_version = string(vers," under ",install);
-    set_kb_item(name: string("www/", port, "/bugzilla"), value: tmp_version);
-    set_kb_item(name:"bugzilla/installed",value:TRUE);
+    set_kb_item(name: "bugzilla/installed", value: TRUE);
 
-    ## build cpe and store it as host detail
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9._]+)", base:"cpe:/a:mozilla:bugzilla:");
-
-    set_kb_item(name:string("www/", port, "/bugzilla/version"),value:vers);
-
-    ## build cpe and store it as host detail
-    cpe = build_cpe(value:vers, exp:"^([0-9._]+)", base:"cpe:/a:mozilla:bugzilla:");
-
-    if(isnull(cpe))
+    cpe = build_cpe(value: vers, exp: "^([0-9._]+)", base: "cpe:/a:mozilla:bugzilla:");
+    if (!cpe)
       cpe = 'cpe:/a:mozilla:bugzilla';
 
-    register_product(cpe:cpe, location:install, port:port);
-    log_message(data: build_detection_report(app:"Bugzilla",
-                                             version: vers,
-                                             install:install,
-                                             cpe:cpe,
-                                             concluded: version[0]),
-                                             port: port);
+    register_product(cpe: cpe, location: install, port: port);
 
+    log_message(data: build_detection_report(app: "Bugzilla", version: vers, install: install, cpe: cpe,
+                                             concluded: version[0], concludedUrl: concUrl),
+                port: port);
   }
 }
+
 exit(0);

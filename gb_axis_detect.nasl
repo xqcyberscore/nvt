@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
+# $Id: gb_axis_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Axis Commerce Detection
 #
@@ -28,10 +28,10 @@ tag_summary = "This host is running Axis Commerce, an open source eCommerce solu
 
 if (description)
 {
- script_id(103223);
+ script_oid("1.3.6.1.4.1.25623.1.0.103223");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5721 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2011-08-24 15:44:33 +0200 (Wed, 24 Aug 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Axis Commerce Detection");

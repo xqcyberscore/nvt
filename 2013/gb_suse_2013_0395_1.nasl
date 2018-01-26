@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0395_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_0395_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0395-1 (kernel)
 #
@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00004.html");
   script_id(850425);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:24 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5374", "CVE-2013-0160", "CVE-2013-0216", "CVE-2013-0231",
                 "CVE-2013-1763");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2013:0395_1");
   script_name("SuSE Update for kernel openSUSE-SU-2013:0395-1 (kernel)");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

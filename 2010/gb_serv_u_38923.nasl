@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serv_u_38923.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_serv_u_38923.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Serv-U Multiple Security Vulnerabilities
 #
@@ -37,9 +37,9 @@ for details.";
 
 if (description)
 {
- script_id(100550);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100550");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-03-24 17:54:30 +0100 (Wed, 24 Mar 2010)");
  script_bugtraq_id(38923);
  script_tag(name:"cvss_base", value:"7.5");

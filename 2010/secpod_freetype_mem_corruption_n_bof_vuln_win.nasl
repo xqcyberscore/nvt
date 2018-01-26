@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_mem_corruption_n_bof_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_freetype_mem_corruption_n_bof_vuln_win.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # FreeType Memory Corruption and Buffer Overflow Vulnerabilities (Windows)
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is installed with FreeType and is prone to multiple
 
 if(description)
 {
-  script_id(901143);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901143");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-2497", "CVE-2010-2498", "CVE-2010-2499",
                 "CVE-2010-2500", "CVE-2010-2519", "CVE-2010-2520",

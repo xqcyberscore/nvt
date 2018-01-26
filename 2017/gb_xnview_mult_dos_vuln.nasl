@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_dos_vuln.nasl 8172 2017-12-19 09:32:03Z jschulte $
+# $Id: gb_xnview_mult_dos_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # XnView Multiple DoS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811951");
-  script_version("$Revision: 8172 $");
+  script_version("$Revision: 8529 $");
   script_cve_id("CVE-2017-15787", "CVE-2017-15788", "CVE-2017-15786", "CVE-2017-15785",
 		"CVE-2017-15784", "CVE-2017-15783", "CVE-2017-15782", "CVE-2017-15780",
 		"CVE-2017-15781", "CVE-2017-15779", "CVE-2017-15778", "CVE-2017-15777",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2017-15789");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 10:32:03 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 12:35:33 +0530 (Wed, 25 Oct 2017)");
   script_name("XnView Multiple DoS Vulnerabilities");
 
@@ -64,7 +64,7 @@ if(description)
   script_tag(name: "affected" , value:"XnView Version 2.43");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  19th December, 2017. Information regarding this issue will be updated once the
+  25th January, 2018. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.xnview.com/en/");
 

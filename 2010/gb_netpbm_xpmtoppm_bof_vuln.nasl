@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netpbm_xpmtoppm_bof_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_netpbm_xpmtoppm_bof_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # NetPBM 'xpmtoppm' Converter Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with NetPBM and is prone to Buffer Overflo
 
 if(description)
 {
-  script_id(800471);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800471");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

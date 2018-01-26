@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
+# $Id: mailman_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 # Description: Mailman Detection
 #
 # Authors:
@@ -30,10 +30,10 @@ Project.  See http://www.list.org/ for more information.";
  
 if(description)
 {
-  script_id(16338);
+  script_oid("1.3.6.1.4.1.25623.1.0.16338");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7560 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mailman Detection");

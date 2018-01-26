@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_office_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_microsoft_office_detect_macosx.nasl 8539 2018-01-25 14:37:09Z gveerendra $
 #
 # Microsoft Office Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802431");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 8539 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:50:16 +0530 (Wed, 09 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Version Detection (Mac OS X)");
@@ -100,7 +100,7 @@ if(!offVersion)
     offname = eregmatch( pattern:'([0-9.]+) .*Microsoft Corporation', string:offname);
  
     ## confirm office 2016
-    if(offname && offname[1] =~ "^15\.")
+    if(offname && offname[1] =~ "^(15|16)\.")
     {
       offVer = "2016";
       location =  "/Applications/Microsoft\ " + ver[0] + "/Contents/Info.plist";

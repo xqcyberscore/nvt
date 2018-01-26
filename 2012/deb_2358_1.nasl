@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2358_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2358_1.nasl 8528 2018-01-25 07:57:36Z teissa $
 # Description: Auto-generated from advisory DSA 2358-1 (openjdk-6)
 #
 # Authors:
@@ -134,12 +134,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70571);
+ script_oid("1.3.6.1.4.1.25623.1.0.70571");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2011-0862", "CVE-2011-0864", "CVE-2011-0865", "CVE-2011-0867", "CVE-2011-0868", "CVE-2011-0869", "CVE-2011-0871", "CVE-2011-3389", "CVE-2011-3521", "CVE-2011-3544", "CVE-2011-3547", "CVE-2011-3548", "CVE-2011-3551", "CVE-2011-3552", "CVE-2011-3553", "CVE-2011-3554", "CVE-2011-3556", "CVE-2011-3557", "CVE-2011-3560");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:33:46 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2358-1 (openjdk-6)");
 

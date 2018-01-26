@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_45982.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_bugzilla_45982.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Multiple Vulnerabilities
 #
@@ -24,33 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Bugzilla is prone to the following vulnerabilities:
-
-1. A security-bypass issue.
-2. Multiple cross-site scripting vulnerabilities.
-3. Multiple cross-site request-forgery vulnerabilities.
-
-Successfully exploiting these issues may allow an attacker to bypass
-certain security restrictions, execute arbitrary script code in the
-browser of an unsuspecting user, steal cookie-based authentication
-credentials or perform certain administrative actions and perform
-actions in the vulnerable application in the context of the victim.
-
-The following versions are vulnerable:
-
-3.1.x versions prior to 3.2.10
-3.2.x versions prior to 3.4.10
-3.3.x versions prior to 3.6.4
-4.x versions prior to 4.0rc2";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
- script_id(103045);
- script_version("$Revision: 7024 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103045");
+ script_version("$Revision: 8527 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2011-01-26 13:20:54 +0100 (Wed, 26 Jan 2011)");
  script_bugtraq_id(45982);
  script_cve_id("CVE-2010-4567","CVE-2010-4568","CVE-2010-4569","CVE-2010-4570","CVE-2011-0046","CVE-2011-0048");
@@ -59,41 +39,60 @@ if (description)
 
  script_name("Bugzilla Multiple Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45982");
- script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.2.9/");
+ script_xref(name: "URL", value: "https://www.securityfocus.com/bid/45982");
+ script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.2.9/");
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("bugzilla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("bugzilla/installed");
+
+ script_tag(name: "solution", value: "Vendor updates are available. Please see the references for more
+information.");
+
+ script_tag(name: "summary", value: "Bugzilla is prone to the following vulnerabilities:
+
+1. A security-bypass issue.
+
+2. Multiple cross-site scripting vulnerabilities.
+
+3. Multiple cross-site request-forgery vulnerabilities.
+
+Successfully exploiting these issues may allow an attacker to bypass certain security restrictions, execute
+arbitrary script code in the browser of an unsuspecting user, steal cookie-based authentication credentials or
+perform certain administrative actions and perform actions in the vulnerable application in the context of the
+victim.
+
+The following versions are vulnerable:
+
+3.1.x versions prior to 3.2.10
+
+3.2.x versions prior to 3.4.10
+
+3.3.x versions prior to 3.6.4
+
+4.x versions prior to 4.0rc2");
+
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"bugzilla/version")) {
-
-  if(version_in_range(version:vers, test_version: "3.6", test_version2:"3.6.3") ||
-     version_in_range(version:vers, test_version: "3.4", test_version2:"3.4.9") ||
-     version_in_range(version:vers, test_version: "3.2", test_version2:"3.2.9") ||
-     version_in_range(version:vers, test_version: "4.0", test_version2:"4.0rc1")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_in_range(version:vers, test_version: "3.6", test_version2:"3.6.3") ||
+    version_in_range(version:vers, test_version: "3.4", test_version2:"3.4.9") ||
+    version_in_range(version:vers, test_version: "3.2", test_version2:"3.2.9") ||
+    version_in_range(version:vers, test_version: "4.0", test_version2:"4.0rc1")) {
+  security_message(port: port);
+  exit(0);
 }
 
 exit(0);
-

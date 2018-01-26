@@ -1,6 +1,6 @@
 ###############################################################################
 # Openvas Vulnerability Test
-# $Id: gb_visualization_library_mult_vuln_lin.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_visualization_library_mult_vuln_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Visualization Library Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -36,9 +36,9 @@ tag_summary = "The host is running Visualization Library and is prone to multipl
 
 if(description)
 {
-  script_id(800998);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800998");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

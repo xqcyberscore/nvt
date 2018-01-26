@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1634_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_1634_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:1634-1 (Mozilla)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850537);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:33 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-5590", "CVE-2013-5591", "CVE-2013-5592", "CVE-2013-5593",
                 "CVE-2013-5595", "CVE-2013-5596", "CVE-2013-5597", "CVE-2013-5599",
@@ -118,7 +118,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2013:1634_1");
-  script_summary("Check for the Version of Mozilla");
+  script_tag(name: "summary" , value: "Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

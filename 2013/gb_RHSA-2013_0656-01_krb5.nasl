@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-March/msg00053.html");
   script_id(870966);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-19 09:37:58 +0530 (Tue, 19 Mar 2013)");
   script_cve_id("CVE-2012-1016", "CVE-2013-1415");
   script_tag(name:"cvss_base", value:"7.1");
@@ -69,7 +69,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0656-01");
   script_name("RedHat Update for krb5 RHSA-2013:0656-01");
 
-  script_summary("Check for the Version of krb5");
+  script_tag(name: "summary" , value: "Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

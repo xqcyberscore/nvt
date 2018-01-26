@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_xss_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_joomla_mult_xss_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Joomla! Multiple Cross-site Scripting Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running Joomla and is prone to multiple Cross-site
 
 if(description)
 {
-  script_id(901168);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901168");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-3712");
   script_tag(name:"cvss_base", value:"4.3");

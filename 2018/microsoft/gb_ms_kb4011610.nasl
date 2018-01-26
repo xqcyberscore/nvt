@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011610.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_ms_kb4011610.nasl 8539 2018-01-25 14:37:09Z gveerendra $
 #
 # Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerabilities (KB4011610)
 #
@@ -27,12 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812607");
-  script_version("$Revision: 8378 $");
+  script_version("$Revision: 8539 $");
   script_cve_id("CVE-2018-0798", "CVE-2018-0801", "CVE-2018-0802", "CVE-2018-0804",
-                "CVE-2018-0805", "CVE-2018-0806", "CVE-2018-0807", "CVE-2018-0812");
+                "CVE-2018-0805", "CVE-2018-0806", "CVE-2018-0807", "CVE-2018-0812",
+                "CVE-2018-0845", "CVE-2018-0848", "CVE-2018-0849", "CVE-2018-0862");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 08:33:23 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerabilities (KB4011610)");
 

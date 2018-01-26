@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TurboFTP_37726.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: TurboFTP_37726.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # TurboFTP 'DELE' FTP Command Remote Buffer Overflow Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100448);
- script_version("$Revision: 7573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100448");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-14 12:06:50 +0100 (Thu, 14 Jan 2010)");
  script_bugtraq_id(37726);
  script_tag(name:"cvss_base", value:"4.0");

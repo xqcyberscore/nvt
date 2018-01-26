@@ -41,8 +41,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(866019);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:49:08 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-1643", "CVE-2013-1635", "CVE-2012-2143", "CVE-2012-2386",
                                  "CVE-2012-2311", "CVE-2012-2329", "CVE-2012-1823");
@@ -52,7 +52,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-10233");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/109692.html");
-  script_summary("Check for the Version of php");
+  script_tag(name: "summary" , value: "Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

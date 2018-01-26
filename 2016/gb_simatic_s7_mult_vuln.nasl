@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_mult_vuln.nasl 6801 2017-07-26 07:08:15Z ckuersteiner $
+# $Id: gb_simatic_s7_mult_vuln.nasl 8540 2018-01-26 06:25:05Z ckuersteiner $
 #
 # Siemens SIMATIC S7-300/400 PLC Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106476");
-  script_version("$Revision: 6801 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-26 09:08:15 +0200 (Wed, 26 Jul 2017) $");
+  script_version("$Revision: 8540 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-26 07:25:05 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -63,8 +63,8 @@ Protection-level 2 is configured on the affected devices. (CVE-2016-9159)");
 
   script_tag(name: "impact", value: "A remote attacker may cause a DoS condition or obtain credentials.");
 
-  script_tag(name: "affected", value: "S7-300 CPU firmware version prior to 3.X.14, S7-CPU 410 CPU firmware
-version prior to 8.2.0.");
+  script_tag(name: "affected", value: "S7-300 CPU firmware version prior to 3.X.14, S7-400 PN V6 firmware version
+prior to 6.0.6, S7-400 V7 firmware version prior to 7.0.2 and S7-CPU 410 CPU firmware version prior to 8.2.0.");
 
   script_tag(name: "solution", value: "Siemens provides updated firmware versions.");
 
@@ -100,6 +100,18 @@ if (model =~ "^3") {
     security_message(port: 0, data: report);
     exit(0);
   }
+}
+
+if (moduleType =~ "^CPE 41(2|4|6).*PN/DP$" && version_is_less(version: fw, test_version: "6.0.6")) {
+  report = report_fixed_ver(installed_version: fw, fixed_version: "6.0.6");
+  security_message(port: 0, data: report);
+  exit(0);
+}
+
+if (moduleType =~ "^CPE 41(2|4|6)$" && version_in_range(version: fw, test_version: "7", test_version2: "7.0.1")) {
+  report = report_fixed_ver(installed_version: fw, fixed_version: "7.0.2");
+  security_message(port: 0, data: report);
+  exit(0);
 }
 
 if (moduleType =~ "^CPU 410" && version_is_less(version: fw, test_version: "8.2.0")) {

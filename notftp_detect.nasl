@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: notftp_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
+# $Id: notftp_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # NotFTP Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This host is running NotFTP, a Web-based HTTP-FTP gateway written
 
 if(description)
 {
- script_id(100160);
+ script_oid("1.3.6.1.4.1.25623.1.0.100160");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5737 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("NotFTP Detection");  

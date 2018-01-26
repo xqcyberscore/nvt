@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098071.html");
   script_id(865312);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:53:21 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2013-0762", "CVE-2013-0764");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1382");
   script_name("Fedora Update for seamonkey FEDORA-2013-1382");
 
-  script_summary("Check for the Version of seamonkey");
+  script_tag(name: "summary" , value: "Check for the Version of seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

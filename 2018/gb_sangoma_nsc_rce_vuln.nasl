@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sangoma_nsc_rce_vuln.nasl 8465 2018-01-19 04:50:20Z ckuersteiner $
+# $Id: gb_sangoma_nsc_rce_vuln.nasl 8531 2018-01-25 10:56:00Z asteins $
 #
 # Sangoma NetBorder/Vega Session Controller Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112184");
-  script_version("$Revision: 8465 $");
+  script_version("$Revision: 8531 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 05:50:20 +0100 (Fri, 19 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 11:56:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 12:32:00 +0100 (Thu, 11 Jan 2018)");
 
   script_cve_id("CVE-2017-17430");
@@ -81,8 +81,7 @@ post_data = '------WebKitFormBoundary7rCkcn7Zm8a4V1bH\r\nContent-Disposition: fo
 						'------WebKitFormBoundary7rCkcn7Zm8a4V1bH\r\nContent-Disposition: form-data; name="Login"\r\n\r\nLogin\r\n' +
 						'------WebKitFormBoundary7rCkcn7Zm8a4V1bH--\r\n';
 
-headers = make_array( "Cookie", "PHPSESSID=871dc15caa56e15923333683c1fda6bf",
-                      "Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7rCkcn7Zm8a4V1bH" );
+headers = make_array( "Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7rCkcn7Zm8a4V1bH" );
 
 req = http_post_req( port:port, url:'/', data:post_data, add_headers:headers );
 

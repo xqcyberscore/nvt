@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2011_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_2011_1.nasl 8526 2018-01-25 06:57:37Z teissa $
 #
 # Ubuntu Update for libav USN-2011-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841614);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:58:22 +0530 (Fri, 08 Nov 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ the program.";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2011-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2011-1/");
-  script_summary("Check for the Version of libav");
+  script_tag(name: "summary" , value: "Check for the Version of libav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

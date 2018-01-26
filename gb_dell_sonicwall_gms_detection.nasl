@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_gms_detection.nasl 5006 2017-01-14 13:13:01Z cfi $
+# $Id: gb_dell_sonicwall_gms_detection.nasl 8539 2018-01-25 14:37:09Z gveerendra $
 #
 # Dell SonicWALL Global Management System (GMS) / Analyzer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107120");
-  script_version("$Revision: 5006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-14 14:13:01 +0100 (Sat, 14 Jan 2017) $");
+  script_version("$Revision: 8539 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 10:12:05 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 8081);
+  script_require_ports("Services/www", 8081, 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of Dell SonicWALL Global Management System (GMS) / Analyzer. The script sends a HTTP
@@ -55,48 +55,50 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:8081 );
+if(!port){
+  exit(0);
+}
 
 res = http_get_cache( item:"/", port:port );
 
-if( res !~ "HTTP/1\.. 200" || "<TITLE>Dell SonicWALL Universal Management Suite" >!< res ) {
-  exit( 0 );
+if( res =~ "HTTP/1\.. 200" && (res =~ "<TITLE>(Dell )?SonicWALL Universal Management Suite"))
+{
+  version = "unknown";
+  product = "unknown";
+  install = "/";
+
+  vers = eregmatch( pattern:"<TITLE>(Dell )?SonicWALL Universal Management Suite v([0-9.]+)</TITLE>", string:res );
+  if(vers[2]) {
+    version = vers[2];
+  }
+
+  req = http_get( port:port, item:"/sgms/auth" );
+  res = http_keepalive_send_recv( port:port, data:req );
+  if(res =~ "HTTP/1\.. 200" && res =~ "<title>(Dell)?SonicW(ALL|all) (GMS|Global Management System) Login</title>")
+  {
+    product = "Global Management System";
+    cpe_part = "global_management_system";
+  } else if( res =~ "HTTP/1\.. 200" && "<title>Dell SonicWALL Analyzer Login</title>" >< res ) {
+    product = "Analyzer";
+    cpe_part = "analyzer";
+  }
+
+  set_kb_item( name:"sonicwall/" + cpe_part + "/version", value:version );
+  set_kb_item( name:"sonicwall/ums/detected", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/o:dell:sonicwall_" + cpe_part + ":" );
+
+  if( ! cpe )
+    cpe = 'cpe:/o:dell:sonicwall_' + cpe_part;
+
+  register_product( cpe:cpe, location:install, port:port, service:'www' );
+
+  log_message( data:build_detection_report( app: "Dell SonicWALL " + product,
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ),
+                                            port:port );
+  exit(0);
 }
-
-version = "unknown";
-product = "unknown";
-install = "/";
-
-vers = eregmatch( pattern:"<TITLE>Dell SonicWALL Universal Management Suite v([0-9.]+)</TITLE>", string:res );
-if( ! isnull( vers[1] ) ) {
-  version = vers[1];
-}
-
-req = http_get( port:port, item:"/sgms/auth" );
-res = http_keepalive_send_recv( port:port, data:req );
-
-if( res =~ "HTTP/1\.. 200" && "<title>Dell SonicWALL GMS Login</title>" >< res ) {
-  product = "Global Management System";
-  cpe_part = "global_management_system";
-} else if( res =~ "HTTP/1\.. 200" && "<title>Dell SonicWALL Analyzer Login</title>" >< res ) {
-  product = "Analyzer";
-  cpe_part = "analyzer";
-}
-
-set_kb_item( name:"sonicwall/" + cpe_part + "/version", value:version );
-set_kb_item( name:"sonicwall/ums/detected", value:TRUE );
-
-cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/o:dell:sonicwall_" + cpe_part + ":" );
-
-if( ! cpe )
-  cpe = 'cpe:/o:dell:sonicwall_' + cpe_part;
-
-register_product( cpe:cpe, location:install, port:port, service:'www' );
-
-log_message( data:build_detection_report( app: "Dell SonicWALL " + product,
-                                          version:version,
-                                          install:install,
-                                          cpe:cpe,
-                                          concluded:vers[0] ),
-                                          port:port );
-
 exit( 0 );

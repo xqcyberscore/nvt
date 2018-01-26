@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097125.html");
   script_id(865063);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:28:16 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-5655");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-0125");
   script_name("Fedora Update for drupal6-context FEDORA-2013-0125");
 
-  script_summary("Check for the Version of drupal6-context");
+  script_tag(name: "summary" , value: "Check for the Version of drupal6-context");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

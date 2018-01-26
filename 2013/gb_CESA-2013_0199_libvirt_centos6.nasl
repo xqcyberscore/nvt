@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-January/019215.html");
   script_id(881583);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:25:37 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2013-0170");
   script_tag(name:"cvss_base", value:"9.3");
@@ -60,7 +60,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0199");
   script_name("CentOS Update for libvirt CESA-2013:0199 centos6 ");
 
-  script_summary("Check for the Version of libvirt");
+  script_tag(name: "summary" , value: "Check for the Version of libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

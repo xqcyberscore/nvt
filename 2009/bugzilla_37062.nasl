@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_37062.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: bugzilla_37062.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Bug Alias Information Disclosure Vulnerability
 #
@@ -24,23 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Bugzilla is prone to an information-disclosure vulnerability.
-
-The issue may allow attackers to obtain potentially sensitive
-information that may aid in other attacks.
-
-The issue affects the following:
-
-Bugzilla 3.3.2 through 3.4.3 Bugzilla 3.5 through 3.5.1";
-
-
-tag_solution = "Updates are available. Please see the references for details.";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
- script_id(100358);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100358");
+ script_version("$Revision: 8527 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
  script_cve_id("CVE-2009-3386");
  script_bugtraq_id(37062);
@@ -49,45 +39,49 @@ if (description)
 
  script_name("Bugzilla Bug Alias Information Disclosure Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37062");
- script_xref(name : "URL" , value : "http://www.bugzilla.org");
- script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.4.3/");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/37062");
+ script_xref(name: "URL", value: "http://www.bugzilla.org");
+ script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.4.3/");
 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("bugzilla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("bugzilla/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for details.");
+
+ script_tag(name: "summary", value: "Bugzilla is prone to an information-disclosure vulnerability.
+
+The issue may allow attackers to obtain potentially sensitive information that may aid in other attacks.
+
+The issue affects the following:
+
+Bugzilla 3.3.2 through 3.4.3 Bugzilla 3.5 through 3.5.1");
+
  exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/bugzilla/version")))exit(0);
-
-if(!isnull(version) && version >!< "unknown") {
-
-  if(version =~ "3\.5") {
-    if(version_is_less(version: version, test_version: "3.5.2 ")) {
-     security_message(port:port);
-     exit(0);
-    }  
-  }
-  else if(version =~ "3\.(3|4)") { 
-    if(version_in_range(version: version, test_version: "3.3.2", test_version2: "3.4.3")) {
-     security_message(port:port);
-     exit(0);
-    }  
+if (version =~ "3\.5") {
+  if (version_is_less(version: version, test_version: "3.5.2 ")) {
+    security_message(port:port);
+    exit(0);
+  }  
+}
+else if (version =~ "3\.(3|4)") { 
+  if (version_in_range(version: version, test_version: "3.3.2", test_version2: "3.4.3")) {
+    security_message(port:port);
+    exit(0);
   }  
 }
 

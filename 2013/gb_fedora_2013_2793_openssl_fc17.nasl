@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/099759.html");
   script_id(865434);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-03-08 10:17:14 +0530 (Fri, 08 Mar 2013)");
   script_cve_id("CVE-2012-2333", "CVE-2013-0169", "CVE-2013-0166");
   script_tag(name:"cvss_base", value:"6.8");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2793");
   script_name("Fedora Update for openssl FEDORA-2013-2793");
 
-  script_summary("Check for the Version of openssl");
+  script_tag(name: "summary" , value: "Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

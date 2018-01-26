@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: hp_power_manager_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # HP Power Manager Detection
 #
@@ -29,10 +29,10 @@ monitoring utility.";
 
 if (description)
 {
- script_id(100456);
+ script_oid("1.3.6.1.4.1.25623.1.0.100456");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 

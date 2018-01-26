@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866539);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-08-20 15:15:21 +0530 (Tue, 20 Aug 2013)");
   script_cve_id("CVE-2013-4123", "CVE-2013-4115");
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,7 @@ lookup program (dnsserver), a program for retrieving FTP data
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-13468");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-August/113058.html");
-  script_summary("Check for the Version of squid");
+  script_tag(name: "summary" , value: "Check for the Version of squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

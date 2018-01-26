@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_car_mult_sql_inj_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_joomla_com_car_mult_sql_inj_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Joomla Car Component Multiple SQL Injection Vulnerabilities
 #
@@ -45,11 +45,11 @@ multiple SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802567);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802567");
+  script_version("$Revision: 8528 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:38:16 +0530 (Mon, 23 Jan 2012)");
   script_name("Joomla Car Component Multiple SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108909/joomlacarid-sql.txt");

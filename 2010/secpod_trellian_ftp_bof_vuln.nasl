@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trellian_ftp_bof_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: secpod_trellian_ftp_bof_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Trellian FTP 'PASV' Response Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ overflow vulnerability.";
 
 if(description)
 {
-  script_id(901106);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901106");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-1465");
   script_bugtraq_id(39598);

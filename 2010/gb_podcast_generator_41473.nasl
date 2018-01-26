@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_podcast_generator_41473.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_podcast_generator_41473.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Podcast Generator 'download.php' Directory Traversal Vulnerability
 #
@@ -36,9 +36,9 @@ may also be affected.";
 
 if (description)
 {
- script_id(100709);
- script_version("$Revision: 7550 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100709");
+ script_version("$Revision: 8528 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-09 12:33:08 +0200 (Fri, 09 Jul 2010)");
  script_bugtraq_id(41473);
 

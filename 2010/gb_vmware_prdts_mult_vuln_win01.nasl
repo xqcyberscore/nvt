@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_mult_vuln_win01.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vmware_prdts_mult_vuln_win01.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # VMware Products Multiple Vulnerabilities (Windows)
 #
@@ -55,9 +55,9 @@ tag_insight = "The multiple flaws are due to
 
 if(description)
 {
-  script_id(801319);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801319");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1139", "CVE-2009-1564", "CVE-2009-1565");
   script_bugtraq_id(39345, 39363, 39364);

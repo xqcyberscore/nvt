@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 8242 2017-12-22 14:01:22Z cfischer $
+# $Id: gb_mako_web_server_mult_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # Mako Web Server Multiple Vulnerabilities 
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 8242 $");
+  script_version("$Revision: 8529 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 15:01:22 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mako Web Server Multiple Vulnerabilities");
@@ -67,7 +67,7 @@ if(description)
   may also be affected.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  22nd December, 2017. Information regarding this issue will be updated once
+  25nd January, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to,
   https://makoserver.net");
 

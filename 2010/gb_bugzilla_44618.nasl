@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_44618.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: gb_bugzilla_44618.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
 #
 # Bugzilla Response Splitting and Security Bypass Vulnerabilities
 #
@@ -24,24 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Bugzilla is prone to a response-splitting vulnerability and a security-
-bypass vulnerability.
-
-Successfully exploiting these issues may allow an attacker to bypass
-certain security restrictions; obtain sensitive information; and
-influence or misrepresent how web content is served, cached, or
-interpreted. This could aid in various attacks that try to instill
-client users with a false sense of trust.
-
-These issues affect versions prior to 3.2.9, 3.4.9, and 3.6.3.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100892");
- script_version("$Revision: 8485 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+ script_version("$Revision: 8527 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44618);
  script_cve_id("CVE-2010-3172","CVE-2010-3764");
@@ -50,40 +39,45 @@ if (description)
 
  script_name("Bugzilla Response Splitting and Security Bypass Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44618");
- script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.2.8/");
- script_xref(name : "URL" , value : "http://www.bugzilla.org");
+ script_xref(name: "URL", value: "https://www.securityfocus.com/bid/44618");
+ script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.2.8/");
+ script_xref(name: "URL", value: "http://www.bugzilla.org");
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("bugzilla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("bugzilla/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for more information.");
+
+ script_tag(name: "summary", value: "Bugzilla is prone to a response-splitting vulnerability and a security-
+bypass vulnerability.
+
+Successfully exploiting these issues may allow an attacker to bypass certain security restrictions; obtain
+sensitive information; and influence or misrepresent how web content is served, cached, or interpreted. This could
+aid in various attacks that try to install client users with a false sense of trust.
+
+These issues affect versions prior to 3.2.9, 3.4.9, and 3.6.3.");
+
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"bugzilla/version")) {
-
-  if(version_in_range(version:vers, test_version: "3.6", test_version2:"3.6.2") ||
-     version_in_range(version:vers, test_version: "3.4", test_version2:"3.4.8") ||
-     version_in_range(version:vers, test_version: "3.2", test_version2:"3.2.8")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_in_range(version:vers, test_version: "3.6", test_version2:"3.6.2") ||
+    version_in_range(version:vers, test_version: "3.4", test_version2:"3.4.8") ||
+    version_in_range(version:vers, test_version: "3.2", test_version2:"3.2.8")) {
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);

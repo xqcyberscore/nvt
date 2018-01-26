@@ -45,8 +45,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(866028);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 09:56:02 +0530 (Thu, 27 Jun 2013)");
   script_cve_id("CVE-2012-6096");
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-10950");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/109779.html");
-  script_summary("Check for the Version of nagios");
+  script_tag(name: "summary" , value: "Check for the Version of nagios");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

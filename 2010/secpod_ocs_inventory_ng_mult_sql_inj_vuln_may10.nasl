@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ocs_inventory_ng_mult_sql_inj_vuln_may10.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ocs_inventory_ng_mult_sql_inj_vuln_may10.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # OCS Inventory NG Multiple SQL Injection Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is running OCS Inventory NG and is prone to multiple SQ
 
 if(description)
 {
-  script_id(902059);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902059");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-1733");
   script_tag(name:"cvss_base", value:"6.8");

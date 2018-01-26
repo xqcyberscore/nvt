@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_demux_module_dos_vuln_win.nasl 8299 2018-01-05 11:11:22Z asteins $
+# $Id: gb_vlc_media_player_mp4_demux_module_dos_vuln_win.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
 #
 # VLC Media Player 'MP4 Demux Module' DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812504");
-  script_version("$Revision: 8299 $");
+  script_version("$Revision: 8529 $");
   script_cve_id("CVE-2017-17670");
   script_bugtraq_id(102214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 12:11:22 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 11:58:25 +0530 (Wed, 20 Dec 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player 'MP4 Demux Module' DoS Vulnerability (Windows)");
@@ -61,7 +61,7 @@ if(description)
   on Windows.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of 
-  20th December, 2017. Information regarding this issue will be updated once the 
+  25th January, 2018. Information regarding this issue will be updated once the 
   solution details are available. For details refer to http://www.videolan.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

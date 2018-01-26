@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_mult_dos_vuln_win.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pidgin_libpurple_mult_dos_vuln_win.nasl 8528 2018-01-25 07:57:36Z teissa $
 #
 # Pidgin Libpurple 'purple_base64_decode()' Denial of Service Vulnerabilities (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host has Pidgin installed and is prone to Denial of Service
 
 if(description)
 {
-  script_id(801536);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801536");
+  script_version("$Revision: 8528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");

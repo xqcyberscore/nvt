@@ -79,8 +79,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(871005);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 09:18:31 +0530 (Tue, 04 Jun 2013)");
   script_cve_id("CVE-2013-2007");
   script_tag(name:"cvss_base", value:"6.9");
@@ -89,7 +89,7 @@ if(description)
 
   script_xref(name: "RHSA", value: "2013:0896-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-June/msg00002.html");
-  script_summary("Check for the Version of qemu-kvm");
+  script_tag(name: "summary" , value: "Check for the Version of qemu-kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

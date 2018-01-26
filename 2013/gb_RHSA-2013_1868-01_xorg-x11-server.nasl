@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871104);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:38:28 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6424");
   script_tag(name:"cvss_base", value:"5.0");
@@ -64,7 +64,7 @@ packages, which contain a backported patch to correct this issue.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1868-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-December/msg00043.html");
-  script_summary("Check for the Version of xorg-x11-server");
+  script_tag(name: "summary" , value: "Check for the Version of xorg-x11-server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
