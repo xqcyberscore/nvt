@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ab_ethernet_detect.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
+# $Id: gb_ab_ethernet_detect.nasl 8549 2018-01-26 12:33:14Z cfischer $
 #
 # AB Ethernet Protocol (CSP) Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140694");
- script_version ("$Revision: 8471 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
+ script_version ("$Revision: 8549 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-26 13:33:14 +0100 (Fri, 26 Jan 2018) $");
  script_tag(name: "creation_date", value: "2018-01-19 15:48:31 +0700 (Fri, 19 Jan 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ recv = recv(socket: soc, length: 512);
 close(soc);
 
 # Protocol response detection
-if (hexstr(substr(recv, 0, 1)) != "0201")
+if (!recv || hexstr(substr(recv, 0, 1)) != "0201")
   exit(0);
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);

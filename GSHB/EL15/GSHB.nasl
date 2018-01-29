@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 8165 2017-12-19 06:39:31Z cfischer $
+# $Id: GSHB.nasl 8545 2018-01-26 09:17:50Z emoss $
 #
 # IT-Grundschutz, 14. Ergänzungslieferung
 #
@@ -131,8 +131,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_id(94171);
-  script_version("$Revision: 8165 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:39:31 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8545 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 10:17:50 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -843,7 +843,7 @@ M5.177 Serverseitige Verwendung von SSL/TLS
 
 ";
 
-report = 'Prüfergebnisse gemäß IT-Grundschutz, 14. Ergänzungslieferung:\n\n\n';
+report = 'Prüfergebnisse gemäß IT-Grundschutz, 15. Ergänzungslieferung:\n\n\n';
 log = string('');
 
 foreach m (massnahmen) {

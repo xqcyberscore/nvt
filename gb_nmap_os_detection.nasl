@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 8524 2018-01-24 20:56:55Z cfischer $
+# $Id: gb_nmap_os_detection.nasl 8558 2018-01-27 16:36:00Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 8524 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 21:56:55 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 8558 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-27 17:36:00 +0100 (Sat, 27 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -211,8 +211,6 @@ foreach port( openPorts ) {
   # non_simult_ports so ignoring these here. Also removing 27960 which is known to crash (see find_service.nasl)
   if( port == "139" || port == "445" || port == "27960" ) continue;
 
-  # Includes e.g. PJL ports which are printing everything
-  # sent to them so continue for such a port here
   if( is_fragile_port( port:port ) ) continue;
 
   if( isnull ( portList ) ) {
@@ -224,6 +222,9 @@ foreach port( openPorts ) {
 
 # Also add a few low-ports as nmap OS detection behaves strange with only closed/filtered high ports
 foreach port( make_list( "21", "22", "25", "80", "135", "443" ) ) {
+
+  if( is_fragile_port( port:port ) ) continue;
+
   if( ! in_array( search:port, array:openPorts ) ) {
     # openPorts = get_all_tcp_ports_list(); above might be an empty list in some special cases causing
     # portList to be NULL. So make sure to create a valid portList in this case.
@@ -245,8 +246,10 @@ for( j = 1; j <= numClosedPorts; j++ ) {
 
   closedPort = rand_str( length:( 4 ), charset:'0123456789' );
 
-  # Choose the closed port in the range of i0000 - i9999 and make sure its not already in the list
-  while( j + closedPort >< portList ) {
+  # Choose the closed port in the range of i0000 - i9999 and make sure its not already in the list.
+  # nb: This might break if someone is specifying all ports in the range of e.g. 10000-19999 as fragile
+  # but this is quite unlikely...
+  while( j + closedPort >< portList || is_fragile_port( port:j + closedPort ) ) {
     closedPort = rand_str( length:( 4 ), charset:'0123456789' );
   }
   portList += "," + j + closedPort;

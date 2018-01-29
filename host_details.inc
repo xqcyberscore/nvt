@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8524 2018-01-24 20:56:55Z cfischer $
+# $Id: host_details.inc 8556 2018-01-27 11:28:01Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8524 $
+# $Revision: 8556 $
 #
 ###############################################################################
 
@@ -1257,7 +1257,6 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
   # Don't report known banner were we know that it doesn't contain info about an OS here
   if( banner == '* ID ("name" "Dovecot")' ||
       banner == "+OK Dovecot ready." ||
-      banner == "dnsmasq" ||
       banner == "220 Welcome message" || # Default welcome messages on some FTP servers
       banner == "220 Service ready for new user." || # Default welcome messages on some FTP servers
       banner == "Server:" ||
@@ -1307,7 +1306,6 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: gSOAP/([0-9.]+)$", string:banner ) || # Cross-platform
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
-      egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: Jetty\(([0-9.v]+\))$", string:banner ) || # e.g. Server: Jetty(7.3.1.v20110307)
       egrep( pattern:"^Server: nginx/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
@@ -1329,8 +1327,6 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^SSH-2\.0-RomSShell_([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
       egrep( pattern:"^([0-9.]+)(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
-      egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-dropbear_([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-Mocana SSH ([0-9.]+)$", string:banner ) || # platform independent
       egrep( pattern:"^SSH-1\.99-OpenSSH_([0-9.p]+)$", string:banner ) ||
@@ -1341,7 +1337,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
   }
 
   if( ! proto ) proto = "tcp";
-  if( ! port ) port = "0";
+  if( ! port )  port  = "0";
 
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner", value:banner );
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full", value:banner_type_name );

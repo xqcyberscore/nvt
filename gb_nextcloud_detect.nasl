@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: gb_nextcloud_detect.nasl 8557 2018-01-27 15:03:34Z cfischer $
 #
 # Nextcloud Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 8144 $");
+  script_version("$Revision: 8557 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-27 16:03:34 +0100 (Sat, 27 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
   script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +67,14 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
   url = dir + "/status.php";
   buf = http_get_cache( item:url, port:port );
 
-  # nb: Don't check for 200 as a 400 will be returned when accessing to an untrusted domain
+  # Try again with the IP which might be included in the trusted_domain setting.
+  # This could could allow us to gather the version.
+  if( "You are accessing the server from an untrusted domain" >< buf ) {
+    req = http_get_req( port:port, url:url, host_header_use_ip:TRUE );
+    buf = http_keepalive_send_recv( port:port, data:req );
+  }
+
+  # nb: Don't check for 200 as a 400 will be returned when accessing via an untrusted domain
   # Example responses:
   # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.0.29","versionstring":"12.0.0","edition":"","productname":"Nextcloud"}
   # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.1.3","versionstring":"12.0.1 RC4","edition":"","productname":"Nextcloud"}
@@ -88,7 +95,7 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
       req = http_get( item:authurl, port:port );
       buf2 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-      if( buf2 =~ "HTTP/1.. 401" ) {
+      if( buf2 =~ "^HTTP/1\.[01] 401" ) {
         set_kb_item( name:"www/content/auth_required", value:TRUE );
         set_kb_item( name:"www/" + port + "/content/auth_required", value:authurl );
         break;
@@ -107,7 +114,7 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
     if( '"productname":"Nextcloud"' >< buf ) isNC = TRUE;
 
     if( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" ) {
-      extra = "Nextcloud is blocking full access to this server because the scanner is accessing the server from an untrusted domain.";
+      extra = "Nextcloud is blocking full access to this server because the scanner is accessing the server via an untrusted domain.";
       extra += " To fix this configure the scanner to access the server on the expected domain.";
       isNC = TRUE;
     }

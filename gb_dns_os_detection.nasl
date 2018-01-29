@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_os_detection.nasl 7050 2017-09-04 09:50:25Z cfischer $
+# $Id: gb_dns_os_detection.nasl 8556 2018-01-27 11:28:01Z cfischer $
 #
 # DNS Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108014");
-  script_version("$Revision: 7050 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 11:50:25 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 8556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-27 12:28:01 +0100 (Sat, 27 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:13:48 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -92,7 +92,8 @@ foreach proto( make_list( "udp", "tcp" ) ) {
       continue;
     }
 
-    if( "for Fedora Linux" >< banner ) {
+    # PowerDNS Authoritative Server 3.4.11 (jenkins@autotest.powerdns.com built 20170116223245 mockbuild@buildhw-05.phx2.fedoraproject.org)
+    if( "for Fedora Linux" >< banner || ( "PowerDNS Authoritative Server" >< banner || "jenkins@autotest.powerdns.com" >< banner && ".fedoraproject.org" >< banner ) ) {
       register_and_report_os( os:"Fedora Linux", cpe:"cpe:/o:fedoraproject:fedora", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       continue;
     }
@@ -122,6 +123,19 @@ foreach proto( make_list( "udp", "tcp" ) ) {
       continue;
     }
 
+    # PowerDNS" "Authoritative" "Server" "3.4.11" "(jenkins@autotest.powerdns.com" "built" "20171130121213" "root@rpmb-64-centos-65)
+    # PowerDNS" "Authoritative" "Server" "3.4.10" "(jenkins@autotest.powerdns.com" "built" "20170306160718" "root@rpmbuild-64-centos-7.dev.cpanel.net)
+    if( "PowerDNS" >< banner || "jenkins@autotest.powerdns.com" >< banner && "-centos-" >< banner ) {
+      if( "-centos-7" >< banner ) {
+        register_and_report_os( os:"CentOS", version:"7", cpe:"cpe:/o:centos:centos", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "-centos-65" >< banner ) {
+        register_and_report_os( os:"CentOS", version:"6.5", cpe:"cpe:/o:centos:centos", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
     if( "-Debian" >< banner || ( "PowerDNS Authoritative Server" >< banner && "debian.org)" >< banner ) ) {
       if( "+deb8" >< banner ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -131,6 +145,20 @@ foreach proto( make_list( "udp", "tcp" ) ) {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
       continue;
+    }
+
+    # Those are only running on Unix-like OS variantes
+    # keep at the bottom so the pattern above are evaluated first
+    if( banner =~ "^dnsmasq" || banner =~ "^PowerDNS Authoritative Server" || banner =~ "^PowerDNS Recursor" || "jenkins@autotest.powerdns.com" >< banner || banner =~ "^Knot DNS" ) {
+      # Doesn't have any OS info so just reqister Linux/Unix
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      # Only continue here for the pattern without OS info so we register an unknown OS down below if there is any additional data in the banner we want to know
+      if( banner == "dnsmasq" || egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||
+          egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
+          egrep( pattern:"^PowerDNS Recursor ([0-9.]+)$", string:banner ) ||
+          egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ) {
+        continue;
+      }
     }
     register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"dns_banner", port:port, proto:proto );
   }
