@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 8529 2018-01-25 08:59:00Z ckuersteiner $
+# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 8589 2018-01-30 15:02:51Z cfischer $
 #
 # Panda Global Protection System Crash DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108315");
-  script_version("$Revision: 8529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 09:59:00 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 8589 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:02:51 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 12:31:33 +0100 (Wed, 20 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -49,7 +49,7 @@ if( description )
   script_dependencies("gb_panda_prdts_detect.nasl");
   script_mandatory_keys("Panda/GlobalProtection/Ver");
 
-  script_tag(name:"summary", value:"Panda Global Protection through 17.00.01 is vulnerable to multiple vulnerabilites that can cause a system crash.");
+  script_tag(name:"summary", value:"Panda Global Protection through 17.00.01 is vulnerable to multiple vulnerabilities that can cause a system crash.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the system.");
   script_tag(name:"insight", value:"A system crash can be caused through both a 0xb3702c04 or 0xb3702c44 DeviceIoControl request.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to crash the machine, effectively denying access to it.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3527_1.nasl 8396 2018-01-12 11:39:41Z gveerendra $
+# $Id: gb_ubuntu_USN_3527_1.nasl 8560 2018-01-29 07:24:45Z cfischer $
 #
 # Ubuntu Update for irssi USN-3527-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843417");
-  script_version("$Revision: 8396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 12:39:41 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 07:38:51 +0100 (Thu, 11 Jan 2018)");
   script_cve_id("CVE-2018-5205", "CVE-2018-5206", "CVE-2018-5207", "CVE-2018-5208");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for irssi USN-3527-1");
   script_tag(name: "summary", value: "Check the version of irssi");

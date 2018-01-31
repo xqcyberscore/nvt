@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_dir_trav_vuln.nasl 8286 2018-01-04 06:51:01Z ckuersteiner $
+# $Id: gb_antiweb_dir_trav_vuln.nasl 8586 2018-01-30 14:08:56Z cfischer $
 #
 # Anti-Web Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:anti-web:anti-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106886");
-  script_version("$Revision: 8286 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 07:51:01 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 8586 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Anti-Web Directory Traversal Vulnerability");
 
@@ -56,12 +56,14 @@ unauthenticated attacker can read arbitrary files.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Some vendors have started to provide firmware updates.
+  Please see the references or contact your vendor for more information or possible updates.");
 
   script_xref(name: "URL", value: "https://misteralfa-hack.blogspot.cl/2017/05/apps-industrial-ot-over-server-anti-web.html");
   script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-222-05");
   script_xref(name: "URL", value: "https://github.com/ezelf/AntiWeb_testing-Suite/tree/master/RCE");
+  script_xref(name: "URL", value: "http://search-ext.abb.com/library/Download.aspx?DocumentID=9AKK107045A1782&LanguageCode=en&DocumentPartId=&Action=Launch");
+  script_xref(name: "URL", value: "https://www.netbiter.com/docs/default-source/netbiter-english/software/hms-security-advisory-2017-05-24-001-ws100-ws200-ec150-ec250.zip");
 
   exit(0);
 }

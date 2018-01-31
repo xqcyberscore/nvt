@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_948.nasl 8554 2018-01-27 11:03:36Z teissa $
+# $Id: deb_dla_948.nasl 8560 2018-01-29 07:24:45Z cfischer $
 #
 # Auto-generated from advisory DLA 948-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890948");
-  script_version("$Revision: 8554 $");
+  script_version("$Revision: 8560 $");
   script_cve_id("CVE-2017-9079");
   script_name("Debian Lts Announce DLA 948-1 ([SECURITY] [DLA 948-1] dropbear security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-27 12:03:36 +0100 (Sat, 27 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

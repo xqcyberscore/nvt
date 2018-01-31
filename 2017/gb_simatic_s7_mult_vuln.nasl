@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_mult_vuln.nasl 7012 2017-08-25 13:16:07Z asteins $
+# $Id: gb_simatic_s7_mult_vuln.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
 #
 # Siemens SIMATIC S7 PLC Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140312");
-  script_version("$Revision: 7012 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-25 15:16:07 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 8570 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-08-18 11:51:47 +0700 (Fri, 18 Aug 2017)");
   script_tag(name: "cvss_base", value: "6.1");
   script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
@@ -114,13 +114,13 @@ if (model =~ "^4") {
   }
 }
 
-if ((model == "1200" || moduleType =~ "^1200") && version_is_less(version: fw, test_version: "4.2")) {
+if ((model == "1200" || moduleType =~ "^CPU.1200") && version_is_less(version: fw, test_version: "4.2")) {
   report = report_fixed_ver(installed_version: fw, fixed_version: "4.2");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if ((model == "1500" || moduleType =~ "^1500") && version_is_less(version: fw, test_version: "2.1.0")) {
+if ((model == "1500" || moduleType =~ "^CPU.1500") && version_is_less(version: fw, test_version: "2.1.0")) {
   report = report_fixed_ver(installed_version: fw, fixed_version: "2.1.0");
   security_message(port: 0, data: report);
   exit(0);

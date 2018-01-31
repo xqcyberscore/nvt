@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_vuln_dec17.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_piwigo_mult_vuln_dec17.nasl 8562 2018-01-29 08:13:27Z cfischer $
 #
 # Piwigo Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140626");
-  script_version("$Revision: 8493 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8562 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-29 09:13:27 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-12-22 15:02:56 +0700 (Fri, 22 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -84,7 +84,7 @@ request. An attacker can exploit this to hijack a client's browser along with th
 
   script_tag(name: "affected", value: "Piwigo version 2.9.2 and probably prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 29th December, 2017. Solution
+  script_tag(name: "solution", value: "No solution or patch is available as of 29th January, 2018. Solution
 details will be updated once the updates are made available.");
 
   script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/piwigo.md");

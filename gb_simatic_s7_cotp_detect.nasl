@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 7998 2017-12-06 04:32:22Z ckuersteiner $
+# $Id: gb_simatic_s7_cotp_detect.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 7998 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-06 05:32:22 +0100 (Wed, 06 Dec 2017) $");
+ script_version ("$Revision: 8570 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,8 +52,9 @@ based detection of Siemens SIMATIC S7 devices.");
  exit(0);
 }
 
-include("http_func.inc");     # for hex2dec
 include("byte_func.inc");
+include("http_func.inc");     # for hex2dec
+include("misc_func.inc");
 
 function cotp_send_recv( req, soc )
 {
@@ -157,13 +158,21 @@ if (hexstr(dataPacket[0]) != "ff")
 version = "unknown";
 
 if (strlen(dataPacket) >= 96) {
+  # Version
   ver = hexstr(substr(dataPacket, 93, 95));
 
   v1 = ver[0] + ver[1];
   v2 = ver[2] + ver[3];
   v3 = ver[4] + ver[5];
   version = hex2dec(xvalue: v1) + '.' + hex2dec(xvalue: v2) + '.' + hex2dec(xvalue: v3);
+
+  # Module
+  module = substr(dataPacket, 14, 32);
+  set_kb_item(name: "simatic_s7/cotp/module", value: module);
 }
+
+# Register the service since we can be quite sure that this talks COTP
+register_service(port: port, proto: "cotp", ipproto: "tcp");
 
 # Read the component identifications to extract the model
 readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
@@ -203,14 +212,13 @@ if (recv) {
        }
        else if (hexstr(element[1]) == "07") {
          moduleType = substr(element, 2);
-         # We get this just over COTP, therefore set the KB direct
-         set_kb_item(name: "simatic_s7/modtype", value: moduleType);
+         set_kb_item(name: "simatic_s7/cotp/modtype", value: moduleType);
        }
     }
   }
 }
 
-if (model != "unknown" || version != "unknown") {
+if (version != "unknown") {
   set_kb_item(name: "simatic_s7/detected", value: TRUE);
   if (model != "unknown") {
     if (egrep(string: model, pattern: "^3.."))
@@ -219,7 +227,7 @@ if (model != "unknown" || version != "unknown") {
   }
 
   if (version != "unknown")
-    set_kb_item(name: "simatic_s7/cotp/version", value: version);
+    set_kb_item(name: "simatic_s7/cotp/" + port + "/version", value: version);
 
   set_kb_item(name: "simatic_s7/cotp/port", value: port);
 }

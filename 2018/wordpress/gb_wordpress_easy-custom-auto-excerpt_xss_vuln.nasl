@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl 8395 2018-01-12 11:26:51Z asteins $
+# $Id: gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl 8578 2018-01-30 09:43:28Z asteins $
 #
 # WordPress Easy Custom Auto Excerpt Plugin XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112189");
-  script_version("$Revision: 8395 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-12 12:26:51 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 8578 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 10:43:28 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2018-01-12 12:10:00 +0100 (Fri, 12 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5311");
 

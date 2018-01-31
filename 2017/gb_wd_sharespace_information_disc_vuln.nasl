@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_sharespace_information_disc_vuln.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_wd_sharespace_information_disc_vuln.nasl 8568 2018-01-29 15:17:18Z cfischer $
 #
 # Western Digital ShareSpace WEB GUI Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:western_digital:sharespace";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812364");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8568 $");
   script_bugtraq_id(54068);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 16:17:18 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 20:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("Western Digital ShareSpace WEB GUI Information Disclosure Vulnerability");
 
@@ -57,12 +57,12 @@ if(description)
   script_tag(name:"affected", value:"WD ShareSpace versions through 2.3.02
   (D and E series).");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  26th Dec, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
-  https://support.wdc.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at
+  least one year since disclosure of this vulnerability. Likely none will be provided
+  anymore. General solution options are to upgrade to a newer release, disable
+  respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

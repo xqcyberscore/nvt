@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_file_read_line_function_macosx.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_wireshark_file_read_line_function_macosx.nasl 8562 2018-01-29 08:13:27Z cfischer $
 #
 # Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812282");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8562 $");
   script_cve_id("CVE-2017-17935");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 09:13:27 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 12:52:35 +0530 (Thu, 28 Dec 2017)");
   script_name("Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)");
 
@@ -54,13 +54,13 @@ if(description)
   script_tag(name: "affected" , value: "Wireshark version through 2.2.11 on 
   Mac OS X.");
 
-  script_tag(name: "solution" , value: "No solution or patch is available as of
-  28th Dec, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to https://www.wireshark.org");
+  script_tag(name: "solution" , value: "Update Wireshark to version 2.2.12 or later.
+  For updates refer to https://www.wireshark.org");
 
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14295");
+  script_xref(name : "URL" , value : "https://www.wireshark.org/docs/relnotes/wireshark-2.2.12.html");
  
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
   script_category(ACT_GATHER_INFO);

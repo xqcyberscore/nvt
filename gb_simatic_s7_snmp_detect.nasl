@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_simatic_s7_snmp_detect.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106097");
- script_version ("$Revision: 7236 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version ("$Revision: 8570 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:54:49 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,6 +58,8 @@ port    = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
+# Siemens, SIMATIC S7, CPU-1200, 6ES7 214-1BE30-0XB0 SZVA2YYY007305  , 1, V.1.0.2, SZVA2YYY007305
+# Siemens, SIMATIC S7, CPU315-2 PN/DP, 6ES7 315-2EH14-0AB0 , HW: 7, FW: V3.2.11, S C-H4C233962016
 if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC( S7,)|(, S7)")) {
   mo = eregmatch(pattern: "SIMATIC( S7)?, (S7-|CPU-|IM|CPU)([^,]+)", string: sysdesc);
   model = mo[3];
@@ -70,10 +72,18 @@ if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC( S7,)|(, S7)")) {
       version = ver[2];
   }
 
+  modtype = eregmatch(pattern: ", ((CPU-|IM|CPU)[^,]+)", string: sysdesc);
+  if (!isnull(modtype[1]))
+    set_kb_item(name: 'simatic_s7/snmp/modtype', value: modtype[1]);
+
+  module = eregmatch(pattern: "(6ES7 [^, ]+)", string: sysdesc);
+  if (!isnull(module[1]))
+    set_kb_item(name: 'simatic_s7/snmp/module', value: module[1]);
+
   set_kb_item(name: 'simatic_s7/detected', value: TRUE);
   set_kb_item(name: 'simatic_s7/snmp/model', value: model);
   if (version != 'unknown')
-    set_kb_item(name: 'simatic_s7/snmp/version', value: version);
+    set_kb_item(name: 'simatic_s7/snmp/' + port + '/version', value: version);
   set_kb_item(name: 'simatic_s7/snmp/port', value: port);
 }
 

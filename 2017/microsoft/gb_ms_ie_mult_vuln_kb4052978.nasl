@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id $
+# $Id: gb_ms_ie_mult_vuln_kb4052978.nasl 8587 2018-01-30 14:49:19Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4052978)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812336");
-  script_version("$Revision: 8105 $");
+  script_version("$Revision: 8587 $");
   script_cve_id("CVE-2017-11907", "CVE-2017-11912", "CVE-2017-11886", "CVE-2017-11887",
                 "CVE-2017-11890", "CVE-2017-11894", "CVE-2017-11895", "CVE-2017-11901",
                 "CVE-2017-11903", "CVE-2017-11906", "CVE-2017-11913", "CVE-2017-11919",
@@ -38,7 +38,7 @@ if(description)
                     102047, 102078, 102091, 102093, 102058);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 14:39:08 +0100 (Wed, 13 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-30 15:49:19 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 10:40:44 +0530 (Wed, 13 Dec 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4052978)");

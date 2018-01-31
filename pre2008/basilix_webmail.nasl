@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: basilix_webmail.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
+# $Id: basilix_webmail.nasl 8589 2018-01-30 15:02:51Z cfischer $
 #
 # Basilix Webmail Dummy Request Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:basilix:basilix_webmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11072");
-  script_version("$Revision: 8487 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 8589 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:02:51 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2995);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Web application abuses");
-  script_dependencies("basilix_detect.nasl", "logins.nasl");
+  script_dependencies("basilix_detect.nasl", "logins.nasl", "os_detection.nasl");
   script_mandatory_keys("basilix/installed", "imap/login", "imap/password");
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2001-07/0114.html");

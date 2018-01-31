@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_bc08435961_irssi_fc26.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_fedora_2018_bc08435961_irssi_fc26.nasl 8560 2018-01-29 07:24:45Z cfischer $
 #
 # Fedora Update for irssi FEDORA-2018-bc08435961
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874027");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:38:11 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2018-5205", "CVE-2018-5206", "CVE-2018-5207", "CVE-2018-5208");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for irssi FEDORA-2018-bc08435961");
   script_tag(name: "summary", value: "Check the version of irssi");

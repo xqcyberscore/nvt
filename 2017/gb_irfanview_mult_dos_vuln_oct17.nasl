@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_mult_dos_vuln_oct17.nasl 8172 2017-12-19 09:32:03Z jschulte $
+# $Id: gb_irfanview_mult_dos_vuln_oct17.nasl 8568 2018-01-29 15:17:18Z cfischer $
 #
 # IrfanView Multiple DoS Vulnerabilities Oct17
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:irfanview:irfanview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811954");
-  script_version("$Revision: 8172 $");
+  script_version("$Revision: 8568 $");
   script_cve_id("CVE-2017-14540", "CVE-2017-14539", "CVE-2017-14693");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 10:32:03 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 16:17:18 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 11:40:33 +0530 (Thu, 26 Oct 2017)");
   script_name("IrfanView Multiple DoS Vulnerabilities Oct17");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name: "affected" , value:"IrfanView Version 4.44 32bit version only");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  19th December, 2017. Information regarding this issue will be updated once the
+  29th January, 2018. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.irfanview.com/");
 

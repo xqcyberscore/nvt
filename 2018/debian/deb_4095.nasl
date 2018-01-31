@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4095.nasl 8530 2018-01-25 10:49:26Z teissa $
+# $Id: deb_4095.nasl 8560 2018-01-29 07:24:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4095-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704095");
-  script_version("$Revision: 8530 $");
+  script_version("$Revision: 8560 $");
   script_cve_id("CVE-2018-5345");
   script_name("Debian Security Advisory DSA 4095-1 (gcab - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 11:49:26 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 00:00:00 +0100 (Wed, 24 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

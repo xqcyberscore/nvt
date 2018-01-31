@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_statistics_xss_vuln.nasl 7613 2017-11-01 14:51:05Z asteins $
+# $Id: gb_wordpress_wp_statistics_xss_vuln.nasl 8588 2018-01-30 14:51:34Z asteins $
 #
 # WordPress WP Statistics Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106960");
-  script_version("$Revision: 7613 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 15:51:05 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8588 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:51:34 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-07-18 10:05:48 +0700 (Tue, 18 Jul 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ rangestart and rangeend parameters on the wps_referrers_page page.");
 
   script_tag(name: "affected", value: "WordPress WP Statistics plugin 12.0.9 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 01st November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://lorexxar.cn/2017/07/07/WordPress%20WP%20Statistics%20authenticated%20xss%20Vulnerability%28WP%20Statistics%20-=12.0.9%29/");

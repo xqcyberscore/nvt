@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_jenkins_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: sw_jenkins_detect.nasl 8590 2018-01-30 15:35:48Z asteins $
 #
 # Jenkins CI Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111001");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:35:48 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,13 +66,21 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
   if( "Welcome to Jenkins!" >< buf || "X-Jenkins:" >< buf || "<title>Dashboard [Jenkins]</title>" >< buf ) {
 
     version = 'unknown';
-    ver = eregmatch( pattern:'Jenkins ver. ([0-9.]+[0-9.]+[0-9.])', string:buf );
+    ver = eregmatch( pattern:'Jenkins ver. ([0-9\\.]+)', string:buf );
 
     if( ! isnull( ver[1] ) ) {
       version = ver[1];
     } else {
-      ver = eregmatch( pattern:'X-Jenkins: ([0-9.]+[0-9.]+[0-9.])', string:buf );
+      ver = eregmatch( pattern:'X-Jenkins: ([0-9\\.]+)', string:buf );
       if( ! isnull( ver[1] ) ) version = ver[1];
+    }
+
+    # set kb-item for LTS version of Jenkins to differentiate it from weekly version in the NVTs
+    # LTS: x.x.x - Weekly: x.x
+    if ( version && version != "unknown" ) {
+      if ( version =~ "^([0-9]+\.[0-9]+\.[0-9]+)") {
+        set_kb_item( name:"jenkins/" + port + "/is_lts", value:TRUE );
+      }
     }
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cloudbees:jenkins:");

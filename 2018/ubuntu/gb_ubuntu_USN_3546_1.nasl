@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3546_1.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_ubuntu_USN_3546_1.nasl 8560 2018-01-29 07:24:45Z cfischer $
 #
 # Ubuntu Update for gcab USN-3546-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843431");
-  script_version("$Revision: 8539 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 8560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 07:53:34 +0100 (Thu, 25 Jan 2018)");
   script_cve_id("CVE-2018-5345");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for gcab USN-3546-1");
   script_tag(name: "summary", value: "Check the version of gcab");

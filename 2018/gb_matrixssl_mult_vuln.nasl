@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 8516 2018-01-24 11:53:20Z jschulte $
+# $Id: gb_matrixssl_mult_vuln.nasl 8589 2018-01-30 15:02:51Z cfischer $
 #
 # MatrixSSL 3.7.2 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113090");
-  script_version("$Revision: 8516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 12:53:20 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 8589 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:02:51 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:37:48 +0100 (Wed, 24 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,7 +50,7 @@ if( description )
   script_require_ports("Services/www", 443);
   script_mandatory_keys("matrixssl/installed");
 
-  script_tag(name:"summary", value:"Multiple vulnerabilites exist in MatrixSSL.");
+  script_tag(name:"summary", value:"Multiple vulnerabilities exist in MatrixSSL.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MatrixSSL has an incorrect UTCTime date range validation in its X.509 certificate validation process resulting in some certificates have their expiration (beginning) year extended (delayed) by 100 years.
 

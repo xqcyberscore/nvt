@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 8524 2018-01-24 20:56:55Z cfischer $
+# $Id: gb_simatic_s7_version.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
 #
-# Siemens SIMATIC S7 Device Version
+# Siemens SIMATIC S7 Device Detection Consolidation
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,74 +28,153 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106096");
- script_version ("$Revision: 8524 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-24 21:56:55 +0100 (Wed, 24 Jan 2018) $");
+ script_version ("$Revision: 8570 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_active");
+ script_tag(name: "qod_type", value: "remote_banner");
 
- script_name("Siemens SIMATIC S7 Device Version");
+ script_name("Siemens SIMATIC S7 Device Detection Consolidation");
 
- script_tag(name: "summary" , value: "Report the Siemens SIMATIC S7 device model and firmware version");
+ script_tag(name: "summary" , value: "Report the Siemens SIMATIC S7 device model and firmware version.");
 
  script_category(ACT_GATHER_INFO);
 
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
- script_dependencies("gb_simatic_s7_cotp_detect.nasl", "gb_simatic_s7_snmp_detect.nasl", "gb_simatic_s7_http_detect.nasl");
+ script_dependencies("gb_simatic_s7_cotp_detect.nasl", "gb_simatic_s7_snmp_detect.nasl",
+                     "gb_simatic_s7_http_detect.nasl");
  script_mandatory_keys("simatic_s7/detected");
+
+ script_xref(name: "URL", value: "https://www.siemens.com/global/en/home/products/automation/systems/industrial/plc.html");
 
  exit(0);
 }
 
-include("host_details.inc");
 include("cpe.inc");
+include("host_details.inc");
 
-if (model = get_kb_item("simatic_s7/cotp/model")) {
-  source = "cotp";
-  proto = "tcp";
-}
-else
-  if (model = get_kb_item("simatic_s7/snmp/model")) {
-    source = "snmp";
-    proto = "udp";
+detected_version = "unknown";
+
+# Version
+foreach source (make_list("cotp", "snmp", "http")) {
+  if (detected_version != "unknown")
+    break;
+
+  version_list = get_kb_list("simatic_s7/" + source + "/*/version");
+  foreach version (version_list) {
+    if (version) {
+      detected_version = version;
+      set_kb_item(name: "simatic_s7/version", value: version);
+    }
   }
-  else 
-    if (model = get_kb_item("simatic_s7/http/model")) {
-      source = "http";
-      proto = "tcp";
+}
+
+# Model
+foreach source (make_list("cotp", "snmp", "http")) {
+  if (detected_model)
+    break;
+
+  model_list = get_kb_list("simatic_s7/" + source + "/model");
+  foreach model (model_list) {
+    if (model) {
+      detected_model = model;
+      set_kb_item(name: "simatic_s7/model", value: model);
+    }
+  }
+}
+
+# CPE
+if (detected_model) {
+  cpe_model = tolower(ereg_replace(pattern: "[ /]", string: detected_model, replace: "_"));
+
+  app_cpe = build_cpe(value: detected_version, exp:"([0-9.]+)",
+                      base: 'cpe:/a:siemens:simatic_s7_' + cpe_model + ':');
+  if (!app_cpe)
+    app_cpe = 'cpe:/a:siemens:simatic_s7_' + cpe_model;
+
+  os_cpe = build_cpe(value: detected_version, exp:"([0-9.]+)",
+                     base: 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware:');
+  if (!os_cpe)
+    os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware';
+}
+else {
+  if (detected_version != "unknown") {
+    app_cpe = 'cpe:/a:siemens:simatic_s7:' + detected_version;
+    os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_firmware:' + detected_version;
+  }
+  else {
+    app_cpe = 'cpe:/a:siemens:simatic_s7';
+    os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_firmware';
+  }
+}
+
+# COTP
+if (cotp_ports = get_kb_list("simatic_s7/cotp/port")) {
+  foreach port (cotp_ports) {
+    extra += 'COTP on port ' + port + '/tcp\n';
+
+    mod_type = get_kb_item("simatic_s7/cotp/modtype");
+    if (mod_type) {
+      extra += '  Module Type:   ' + mod_type + '\n';
+      replace_kb_item(name: "simatic_s7/modtype", value: mod_type);
     }
 
-if (!model)
-  exit(0);
-  
-set_kb_item(name: "simatic_s7/model", value: model);
+    module = get_kb_item("simatic_s7/cotp/module");
+    if (module)
+      extra += '  Module:        ' + module + '\n';
 
-if (version = get_kb_item("simatic_s7/" + source + "/version")) {
-  set_kb_item(name: "simatic_s7/version", value: version);
+    register_product(cpe: app_cpe, location: port + '/tcp', port: port, service: "cotp");
+    register_product(cpe: os_cpe, location: port + '/tcp', port: port, service: "cotp");
+  }
 }
 
-cpe_model = tolower(ereg_replace(pattern: "[ /]", string: model, replace: "_"));
+# SNMP
+if (snmp_ports = get_kb_list("simatic_s7/snmp/port")) {
+  foreach port (snmp_ports) {
+    extra += 'SNMP on port ' + port + '/udp\n';
 
-app_cpe = build_cpe(value: version, exp:"([0-9.]+)", base: 'cpe:/a:siemens:simatic_s7_' + cpe_model + ':');
-if (isnull(app_cpe))
-  app_cpe = 'cpe:/a:siemens:simatic_s7_' + cpe_model;
+    mod_type = get_kb_item("simatic_s7/snmp/modtype");
+    if (mod_type) {
+      extra += '  Module Type:   ' + mod_type + '\n';
+      replace_kb_item(name: "simatic_s7/modtype", value: mod_type);
+    }
 
-os_cpe = build_cpe(value: version, exp:"([0-9.]+)", base: 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware:');
-if (isnull(os_cpe))
-  os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware';
+    module = get_kb_item("simatic_s7/snmp/module");
+    if (module)
+      extra += '  Module:        ' + module + '\n';
+  }
+}
 
-port = get_kb_item("simatic_s7/" + source + "/port");
+# HTTP
+if (http_ports = get_kb_list("simatic_s7/http/port")) {
+  foreach port (http_ports) {
+    extra += 'HTTP(s) on port ' + port + '/tcp\n';
 
-register_product(cpe: app_cpe, location: source, port: port, proto: proto);
-register_product(cpe: os_cpe, location: source, port: port, proto: proto);
+    mod_type = get_kb_item("simatic_s7/http/modtype");
+    if (mod_type) {
+      extra += '  Module Type:   ' + mod_type + '\n';
+      replace_kb_item(name: "simatic_s7/modtype", value: mod_type);
+    }
 
-register_and_report_os(os: "Siemens SIMATIC S7 CPU Firmware", cpe: os_cpe, banner_type: toupper( source ) + " protocol", port: port, proto: proto, desc: "Siemens SIMATIC S7 Device Version", runs_key:"unixoide");
+    module = get_kb_item("simatic_s7/http/module");
+    if (module)
+      extra += '  Module:        ' + module + '\n';
+  }
+}
 
-log_message(data: build_detection_report(app: "Siemens SIMATIC S7-" + model, version: version,
-                                         install: source, cpe: app_cpe),
-            port: port, proto: proto);
+register_and_report_os(os: "Siemens SIMATIC S7 CPU Firmware", version: detected_version, cpe: os_cpe,
+                       desc: "Siemens SIMATIC S7 Device Version", runs_key:"unixoide");
+
+report = build_detection_report(app: "Siemens SIMATIC S7 " + detected_model, version: detected_version,
+                                install: "/", cpe: app_cpe);
+if (extra) {
+  report += '\n\nDetection methods:\n';
+  report += '\n' + extra;
+}
+
+log_message(port: 0, data: report);
 
 exit(0);

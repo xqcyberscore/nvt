@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sawmill_auth_bypass_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_sawmill_auth_bypass_vuln.nasl 8586 2018-01-30 14:08:56Z cfischer $
 #
 # Sawmill Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:sawmill:sawmill";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106618");
-  script_version("$Revision: 7610 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8586 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if (description)
 who gains access to the hashed user account passwords can login to the Sawmill interface using the raw MD5 hash
 values, allowing attackers to bypass the work of offline cracking account password hashes.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://hyp3rlinx.altervista.org/advisories/SAWMILL-PASS-THE-HASH-AUTHENTICATION-BYPASS.txt");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln2.nasl 7801 2017-11-17 07:10:11Z asteins $
+# $Id: gb_prtg_netmon_xss_vuln2.nasl 8586 2018-01-30 14:08:56Z cfischer $
 #
 # PRTG Network Monitor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140434");
-  script_version("$Revision: 7801 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8586 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-10-17 16:07:51 +0700 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("PRTG Network Monitor Multiple Vulnerabilities");
 
@@ -74,10 +74,10 @@ proceeding in spite of the error message (CVE-2017-15651)
 
   script_tag(name: "affected", value: "PRTG Network Monitor version 17.3.33.2830 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 17.4.35 or later.");
 
   script_xref(name: "URL", value: "https://medium.com/stolabs/security-issue-on-prtg-network-manager-ada65b45d37b");
+  script_xref(name: "URL", value: "https://www.paessler.com/prtg/history/prtg-17#17.4.35");
 
   exit(0);
 }

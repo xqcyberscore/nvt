@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telesquare_skt_lte_router_SDT-CS3B1_mult_vuln.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_telesquare_skt_lte_router_SDT-CS3B1_mult_vuln.nasl 8562 2018-01-29 08:13:27Z cfischer $
 #
 # Telesquare SKT LTE Router SDT-CS3B1 Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:telesquare:sdt-cs3b1";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812367");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8562 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-29 09:13:27 +0100 (Mon, 29 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 11:04:35 +0530 (Thu, 28 Dec 2017)");
   script_name("Telesquare SKT LTE Router SDT-CS3B1 Multiple Vulnerabilities");
 
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"affected", value:"Telesquare SKT LTE Router SDT-CS3B1");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  28th Dec, 2017. Information regarding this issue will be updated once solution
+  29th January, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to,
   http://www.telesquare.co.kr");
 
