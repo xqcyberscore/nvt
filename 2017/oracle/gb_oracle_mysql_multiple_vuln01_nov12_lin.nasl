@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln01_nov12_lin.nasl 7905 2017-11-24 12:58:24Z santu $
+# $Id: gb_oracle_mysql_multiple_vuln01_nov12_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812190");
-  script_version("$Revision: 7905 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2012-3197", "CVE-2012-3163", "CVE-2012-3158", "CVE-2012-3150");
   script_bugtraq_id(56036, 56017, 55990, 56005);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:58:24 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 19:08:06 +0530 (Wed, 22 Nov 2017)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
@@ -71,20 +71,13 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-sqlPort = "";
-mysqlVer = "";
+if(!sqlPort = get_app_port(cpe:CPE)) exit(0);
 
-sqlPort = get_app_port(cpe:CPE);
-if(!sqlPort){
-  sqlPort = 3306;
-}
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
 mysqlVer = infos['version'];
 mysqlPath = infos['location'];
 

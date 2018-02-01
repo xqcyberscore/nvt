@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: mailman_detect.nasl 8605 2018-01-31 12:57:41Z jschulte $
 # Description: Mailman Detection
 #
 # Authors:
@@ -32,8 +32,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16338");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 8605 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:57:41 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mailman Detection");
@@ -83,9 +83,10 @@ foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
 
     # Success!
     set_kb_item(
-      name:string("www/", port, "/Mailman"), 
+      name:string("www/", port, "/Mailman"),
       value:string(ver, " under ", dir)
     );
+
     installations[dir] = ver;
     ++installs;
 
@@ -93,6 +94,13 @@ foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
     break;
   }
   if (installs) break;
+}
+
+if(installs) {
+  set_kb_item(
+    name:"gnu_mailman/detected",
+    value:TRUE
+  );
 }
 
 # Report any instances found unless Report verbosity is "Quiet".

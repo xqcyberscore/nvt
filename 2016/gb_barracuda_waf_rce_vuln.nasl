@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_waf_rce_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_barracuda_waf_rce_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # Barracuda Web Application Firewall Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:barracuda:web_application_firewall';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106150");
-  script_version("$Revision: 5867 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 8597 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-25 12:59:46 +0700 (Mon, 25 Jul 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -75,7 +75,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "8.0.1.007")) {

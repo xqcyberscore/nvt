@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_actvx_ctrl_dos_vuln.nasl 4232 2016-10-07 10:08:54Z cfi $
+# $Id: gb_yahoo_msg_actvx_ctrl_dos_vuln.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # Yahoo! Messenger 'YahooBridgeLib.dll' ActiveX Control DOS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801150");
-  script_version("$Revision: 4232 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 12:08:54 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 8601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -64,6 +64,7 @@ if(description)
   script_tag(name:"solution", value:tag_solution);
   script_tag(name:"summary", value:tag_summary);
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
   exit(0);
@@ -81,7 +82,7 @@ if( ! ymsgVer ) exit( 0 );
 # Check for Yahoo! Messenger version 9.x to 9.0.0.2162
 if( version_in_range( version:ymsgVer, test_version:"9.0", test_version2:"9.0.0.2162" ) ) {
   report = report_fixed_ver( installed_version:ymsgVer, fixed_version:"10.0.0.1270" );
-  security_message( port:ymsgPort );
+  security_message( port:ymsgPort, data:report );
   exit( 0 );
 }
 

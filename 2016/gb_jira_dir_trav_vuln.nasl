@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jira_dir_trav_vuln.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_jira_dir_trav_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
 #
 # Atlassian JIRA Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:atlassian:jira';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106154");
-  script_version("$Revision: 7545 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 8596 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-27 15:23:00 +0700 (Wed, 27 Jul 2016)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -82,7 +82,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "6.0.4")) {

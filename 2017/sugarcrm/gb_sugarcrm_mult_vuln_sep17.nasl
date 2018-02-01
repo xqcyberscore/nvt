@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_mult_vuln_sep17.nasl 7269 2017-09-26 09:45:31Z ckuersteiner $
+# $Id: gb_sugarcrm_mult_vuln_sep17.nasl 8596 2018-01-31 08:17:43Z cfischer $
 #
 # SugarCRM Multiple Vulnerabilities (September 2017)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140402");
-  script_version("$Revision: 7269 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:45:31 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 8596 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-09-26 13:58:02 +0700 (Tue, 26 Sep 2017)");
   script_tag(name: "cvss_base", value: "6.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -80,7 +80,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version =~ "^7\.7\.") {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_code_execution_vuln_oct16.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ibm_was_code_execution_vuln_oct16.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # IBM Websphere Application Server Code Execution vulnerability Oct16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809349");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2016-5983");
   script_bugtraq_id(93162);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 14:40:54 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Code Execution vulnerability Oct16");
@@ -75,29 +75,20 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-wasVer = "";
-report = "";
-liberty = "";
-wasPort = 0;
-
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get port
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
 ##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
-## Check WAS vulnerable versions
 if (liberty)
 {
   if(version_is_less(version:wasVer, test_version:"16.0.0.4"))

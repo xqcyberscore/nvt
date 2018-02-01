@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_tc7200_information_disclose_vuln.nasl 7775 2017-11-15 14:08:06Z jschulte $
+# $Id: gb_technicolor_tc7200_information_disclose_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Technicolor TC7200 Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:technicolor:tc7200_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811656");
-  script_version("$Revision: 7775 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2014-1677");
   script_bugtraq_id(65774);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:08:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-09-08 17:01:34 +0530 (Fri, 08 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Technicolor TC7200 Information Disclosure Vulnerability");
@@ -78,17 +78,14 @@ include("version_func.inc");
 tecPort = "";
 vers = "";
 
-##Get Port
 if(!tecPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Version
-if(!vers = get_app_version(cpe:CPE)){
+if(!vers = get_app_version(cpe:CPE, port:tecPort)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(vers == "STD6.01.12")
 {
   report = report_fixed_ver(installed_version: vers, fixed_version: "STD6.02");

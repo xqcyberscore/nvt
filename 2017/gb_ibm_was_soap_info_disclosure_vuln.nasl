@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_soap_info_disclosure_vuln.nasl 6400 2017-06-22 05:47:08Z santu $
+# $Id: gb_ibm_was_soap_info_disclosure_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # IBM Websphere Application Server 'SOAP Requests' Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811129");
-  script_version("$Revision: 6400 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2016-9736");
   script_bugtraq_id(96076);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 16:24:33 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'SOAP Requests' Information Disclosure Vulnerability");
@@ -79,17 +79,14 @@ include("version_func.inc");
 fix  = "";
 wasVer = "";
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
-  exit(0);
-}
-
-## Get port
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Check for vulnerable versions
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
+  exit(0);
+}
+
 if(wasVer =~ "^(8|9)")
 {
   if(wasVer =~ "^8\.0\.0")

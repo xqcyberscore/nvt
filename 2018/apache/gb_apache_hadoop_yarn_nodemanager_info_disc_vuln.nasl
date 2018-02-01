@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # Apache Hadoop YARN NodeManager Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812673");
-  script_version("$Revision: 8539 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2017-15718");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 11:40:52 +0530 (Thu, 25 Jan 2018)");
   script_name("Apache Hadoop YARN NodeManager Information Disclosure Vulnerability");
 
@@ -76,14 +76,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-hadoopPort = "";
-hadoopVer = "";
-
 if(!hadoopPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:hadoopPort, exit_no_version:TRUE)) exit(0);
 hadoopVer = infos['version'];
 hadoopPath = infos['location'];
 

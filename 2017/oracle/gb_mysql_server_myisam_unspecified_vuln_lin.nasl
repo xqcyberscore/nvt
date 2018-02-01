@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 7905 2017-11-24 12:58:24Z santu $
+# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # MySQL Server Component MyISAM Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812181");
-  script_version("$Revision: 7905 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2012-0583");
   script_bugtraq_id(53061);
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:58:24 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 14:56:52 +0530 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -43,6 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
@@ -70,15 +71,9 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-sqlPort = "";
-mysqlVer = "";
+if(!sqlPort = get_app_port(cpe:CPE)) exit(0);
 
-sqlPort = get_app_port(cpe:CPE);
-if(!sqlPort){
-  sqlPort = 3306;
-}
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
 mysqlVer = infos['version'];
 mysqlPath = infos['location'];
 
@@ -88,7 +83,7 @@ if(mysqlVer && mysqlVer =~ "^(5\.(1|5))")
      version_in_range(version:mysqlVer, test_version:"5.5", test_version2:"5.5.19"))
   {
     report = report_fixed_ver( installed_version:mysqlVer, fixed_version: "Apply the patch", install_path:mysqlPath );
-    security_message(sqlPort);
+    security_message(port:sqlPort, data:report);
     exit(0);
   }
 }

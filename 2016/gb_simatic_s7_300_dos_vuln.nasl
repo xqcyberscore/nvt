@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_300_dos_vuln.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_simatic_s7_300_dos_vuln.nasl 8602 2018-01-31 12:19:39Z cfischer $
 #
 # Siemens SIMATIC S7-300 DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:siemens:simatic_s7_300';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106100");
-  script_version("$Revision: 5505 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 8602 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-06-20 09:41:29 +0700 (Mon, 20 Jun 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -77,7 +77,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "3.3.12")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
 #
 # Redis 4.0.2 and prior Buffer Overflow vulnerability
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113011");
-  script_version("$Revision: 7860 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 8596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-10 14:58:31 +0200 (Tue, 10 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,7 +76,7 @@ if( !port = get_app_port( cpe: CPE ) ) {
   exit( 0 );
 }
 
-if( !version = get_app_version( cpe: CPE ) ) {
+if( !version = get_app_version( cpe: CPE, port: port ) ) {
   exit( 0 );
 }
 

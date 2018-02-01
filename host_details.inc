@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8556 2018-01-27 11:28:01Z cfischer $
+# $Id: host_details.inc 8610 2018-01-31 15:08:13Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8556 $
+# $Revision: 8610 $
 #
 ###############################################################################
 
@@ -110,6 +110,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -174,6 +175,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.810608", # gb_mikrotik_router_routeros_consolidation.nasl
@@ -372,7 +374,7 @@ function host_runs() {
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
-                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|panos|pan-os|qnap|synology)';
+                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|panos|pan-os|qnap|synology|greenbone)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

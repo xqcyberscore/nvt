@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_mult_vuln.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_limesurvey_mult_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # LimeSurvey Multiple Vulnerabilities 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106064");
-  script_version ("$Revision: 5527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_version ("$Revision: 8598 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-05-13 09:53:01 +0700 (Fri, 13 May 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -88,10 +88,10 @@ include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE))
+if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!port = get_app_port(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if(version != "unknown") {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_mult_vuln.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_atlassian_bamboo_mult_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # Atlassian Bamboo Multiple Vulnerabilities Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:atlassian:bamboo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807266");
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2015-8361", "CVE-2014-9757");
   script_bugtraq_id(83104, 83107);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 10:03:11 +0530 (Fri, 19 Feb 2016)");
   script_name("Atlassian Bamboo Multiple Vulnerabilities Feb16");
 
@@ -75,24 +75,17 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-bambooVer = "";
 
 if(!bambooPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-
-## Get version
-if(!bambooVer = get_app_version(cpe:CPE)){
+if(!bambooVer = get_app_version(cpe:CPE, port:bambooPort)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:bambooVer, test_version:"2.4", test_version2:"5.9.8"))
 {
   report = report_fixed_ver(installed_version:bambooVer, fixed_version:"5.9.9");

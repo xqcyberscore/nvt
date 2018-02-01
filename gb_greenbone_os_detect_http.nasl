@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_http.nasl 8135 2017-12-15 10:45:19Z cfischer $
+# $Id: gb_greenbone_os_detect_http.nasl 8610 2018-01-31 15:08:13Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112137");
-  script_version("$Revision: 8135 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:45:19 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:50:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,10 +86,26 @@ if( buf =~ "HTTP/1\.. 200" && ( ( "<title>Greenbone Security Assistant" >< buf &
         concluded = version[0];
       }
     }
-   }
+  }
 
-  if( vers != "unknown" ) {
-    set_kb_item( name:"greenbone/gos/http/" + port + "/version", value:vers);
+  type = "unknown";
+  # e.g. <img src="/img/gsm-one_label.svg"></img>
+  # or <img src="/img/GSM_DEMO_logo_95x130.png" alt=""></td>
+  _type = eregmatch( string:buf, pattern:'<img src="/img/gsm-([^>]+)_label\\.svg"></img>', icase:FALSE );
+  if( ! _type[1] ) {
+    _type = eregmatch( string:buf, pattern:'<img src="/img/GSM_([^>]+)_logo_95x130\\.png" alt=""></td>', icase:FALSE );
+  }
+
+  if( _type[1] ) {
+    # nb: Products are named uppercase
+    type = toupper( _type[1] );
+    concluded += _type[0];
+  }
+
+  set_kb_item( name:"greenbone/gos/http/" + port + "/version", value:vers );
+  set_kb_item( name:"greenbone/gsm/http/" + port + "/type", value:type );
+
+  if( concluded ) {
     set_kb_item( name:"greenbone/gos/http/" + port + "/concluded", value:concluded );
     set_kb_item( name:"greenbone/gos/http/" + port + "/concludedUrl", value:report_vuln_url( port:port, url:url, url_only:TRUE ) );
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 8589 2018-01-30 15:02:51Z cfischer $
+# $Id: gb_matrixssl_mult_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # MatrixSSL 3.7.2 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113090");
-  script_version("$Revision: 8589 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:02:51 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:37:48 +0100 (Wed, 24 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -70,7 +70,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "3.7.2" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "3.8.2" );

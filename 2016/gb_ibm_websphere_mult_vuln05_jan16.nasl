@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln05_jan16.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_ibm_websphere_mult_vuln05_jan16.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities -05 Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806829");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2013-6323","CVE-2014-0859");
   script_bugtraq_id(67720,67335);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 13:56:59 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities -05 Jan16");
@@ -76,21 +76,17 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
-  exit(0);
-}
-
-## Get port
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Reader vulnerable versions
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
+  exit(0);
+}
+
 if(version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.32"))
 {
   fix = "7.0.0.33";

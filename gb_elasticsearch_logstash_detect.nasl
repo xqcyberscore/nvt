@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808093");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 15:38:36 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 12:44:48 +0530 (Tue, 21 Jun 2016)");
   script_name("Elasticsearch Logstash Version Detection");
 
@@ -62,14 +62,19 @@ port = get_http_port(default:9200);
 if(!port){
   exit(0);
 }
+url = "_cat/indices?v";
+buf = http_get_cache( item:url, port:port );
 
+if(!buf =~ "^HTTP/1\.[01] 200" && "logstash" >< buf ) {
+ exit(0);
+}
 if(!buf = http_get_cache( item:"/", port:port )){
  exit(0);
 }
 
 ##Confirm application
-if( "application/json" >< buf && "build_hash" >< buf && "build_timestamp" >< buf &&
-    "lucene_version" >< buf && "logstash" >< buf)
+if( "application/json" >< buf && "build_hash" >< buf && ( "build_timestamp" >< buf || "build_date" >< buf )&&
+    "lucene_version" >< buf )
 {
   ### try to get version 
   vers = eregmatch(string:buf, pattern:'number" : "([0-9a-z.]+)",', icase:TRUE);
@@ -87,7 +92,7 @@ if( "application/json" >< buf && "build_hash" >< buf && "build_timestamp" >< buf
   cpe = build_cpe(value:version, exp:"^([0-9a-z.]+)", base:"cpe:/a:elasticsearch:logstash:");
   if(!cpe)
     cpe= "cpe:/a:elasticsearch:logstash";
-  
+
   register_product(cpe:cpe, location:"/", port:port);
 
   log_message(data: build_detection_report( app:"Elasticsearch Logstash",

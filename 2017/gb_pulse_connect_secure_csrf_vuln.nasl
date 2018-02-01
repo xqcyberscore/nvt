@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pulse_connect_secure_csrf_vuln.nasl 7154 2017-09-15 15:30:54Z cfischer $
+# $Id: gb_pulse_connect_secure_csrf_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Pulse Connect Secure 'diag.cgi' Cross-Site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:juniper:pulse_connect_secure";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811738");
-  script_version("$Revision: 7154 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2017-11455");
   script_bugtraq_id(100530);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:30:54 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 10:21:00 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Pulse Connect Secure 'diag.cgi' Cross-Site Request Forgery Vulnerability");
@@ -84,17 +84,14 @@ include("revisions-lib.inc");
 pulPort = "";
 appVer = "";
 
-##Get Port
 if(!pulPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Version
-if(!appVer = get_app_version(cpe:CPE)){
+if(!appVer = get_app_version(cpe:CPE, port:pulPort)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(appVer =~ "^(8\.3)")
 {
   if(revcomp(a: appVer, b: "8.3R1") < 0){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_n_deserial_vuln_lin.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_apache_struts_dos_n_deserial_vuln_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # Apache Struts 'REST' Plugin Deserialization And DoS Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812321");
-  script_version("$Revision: 8027 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2017-15707", "CVE-2017-7525");
   script_bugtraq_id(102021, 99623);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 11:48:05 +0530 (Tue, 05 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'REST' Plugin Deserialization And DoS Vulnerability (Linux)");
@@ -79,15 +79,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-appVer = "";
-appPort = "";
-appPath = "";
-
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:appPort, exit_no_version:TRUE)) exit(0);
 appVer = infos['version'];
 appPath = infos['location'];
 

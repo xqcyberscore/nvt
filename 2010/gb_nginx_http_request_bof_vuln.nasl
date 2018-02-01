@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_request_bof_vuln.nasl 5823 2017-03-31 13:57:56Z mime $
+# $Id: gb_nginx_http_request_bof_vuln.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # nginx HTTP Request Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801636");
-  script_version("$Revision: 5823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 8601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_cve_id("CVE-2009-2629");
   script_bugtraq_id(36384);
@@ -79,9 +79,8 @@ if(version_in_range(version: version, test_version:"0.1.0", test_version2:"0.5.3
    version_in_range(version: version, test_version:"0.7.0", test_version2:"0.7.61"))
 {
    report = report_fixed_ver( installed_version:version, fixed_version:"0.5.37/0.6.38/0.7.61" );
-   security_message(port:port);
+   security_message(port:port, data:report);
    exit(0);
 }
 
 exit( 99 );
-

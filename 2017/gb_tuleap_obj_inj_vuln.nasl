@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tuleap_obj_inj_vuln.nasl 7542 2017-10-24 10:23:14Z jschulte $
+# $Id: gb_tuleap_obj_inj_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Tuleap Object Injection vulnerability before version 9.7
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113039");
-  script_version("$Revision: 7542 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 12:23:14 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-24 11:04:55 +0200 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -69,7 +69,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version= get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version= get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 # version_in_range is not possible here since the highest patch-level (e.g 9.6.99.[0-9]+) is unknown
 # test_version2: 9.6 would result in 9.6.10.1 (random example) to be classified as "fixed", which it is not

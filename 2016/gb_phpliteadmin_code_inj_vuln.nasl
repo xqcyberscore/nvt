@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpliteadmin_code_inj_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_phpliteadmin_code_inj_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # phpLiteAdmin PHP Code Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpliteadmin_project:phpliteadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106117");
-  script_version("$Revision: 5782 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 8597 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-05 12:29:33 +0700 (Tue, 05 Jul 2016)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:P/A:N");
@@ -75,7 +75,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "1.9.4")) {

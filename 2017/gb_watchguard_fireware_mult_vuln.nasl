@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_mult_vuln.nasl 5565 2017-03-14 07:18:33Z cfi $
+# $Id: gb_watchguard_fireware_mult_vuln.nasl 8602 2018-01-31 12:19:39Z cfischer $
 #
 # WatchGuard Fireware XTM Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106641");
-  script_version("$Revision: 5565 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-14 08:18:33 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 8602 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-03-13 13:02:48 +0700 (Mon, 13 Mar 2017)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -77,9 +77,10 @@ CVE-2016-5386)
 include("host_details.inc");
 include("version_func.inc");
 
-port = get_app_port(cpe: CPE);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "11.12.1")) {

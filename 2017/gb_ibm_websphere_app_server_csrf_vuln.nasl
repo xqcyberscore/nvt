@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_app_server_csrf_vuln.nasl 6144 2017-05-17 12:26:22Z antu123 $
+# $Id: gb_ibm_websphere_app_server_csrf_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # IBM Websphere Application Server CSRF Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811019");
-  script_version("$Revision: 6144 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2017-1194");
   script_bugtraq_id(98142);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 14:26:22 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 11:13:19 +0530 (Fri, 05 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # we are not able to get the interim fix version...
   script_name("IBM Websphere Application Server CSRF Vulnerability");
@@ -77,7 +77,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -87,13 +86,11 @@ fix = "";
 report = "";
 appPort = "";
 
-##Get Version
-if(!appVer = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get port
-if(!appPort = get_app_port(cpe:CPE)){
+if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 

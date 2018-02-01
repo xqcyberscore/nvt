@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_sendmail.nasl 5134 2017-01-30 08:20:15Z cfi $
+# $Id: sambar_sendmail.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # Sambar sendmail /session/sendmail
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10415");
-  script_version("$Revision: 5134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 8601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:N");
@@ -63,7 +63,7 @@ port = get_http_port( default:80 );
 url = "/session/sendmail";
 if( is_cgi_installed_ka( port:port, item:url ) ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port, report:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

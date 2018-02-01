@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812170");
-  script_version("$Revision: 7905 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2016-0609", "CVE-2016-0608", "CVE-2016-0606", "CVE-2016-0600",
                 "CVE-2016-0598", "CVE-2016-0597", "CVE-2016-0546", "CVE-2016-0505");
   script_bugtraq_id(81258, 81226, 81188, 81182, 81151, 81066, 81088);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:58:24 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 13:16:06 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Feb16 (Linux)");
@@ -75,9 +75,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-mysqlVer = "";
-sqlPort = "";
-
 if(!sqlPort = get_app_port(cpe:CPE)){
   CPE = "cpe:/a:mysql:mysql";
   if(!sqlPort = get_app_port(cpe:CPE)){
@@ -85,7 +82,7 @@ if(!sqlPort = get_app_port(cpe:CPE)){
   }
 }
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
 mysqlVer = infos['version'];
 mysqlPath = infos['location'];
 

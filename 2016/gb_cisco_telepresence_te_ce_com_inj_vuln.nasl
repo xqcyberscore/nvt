@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_te_ce_com_inj_vuln.nasl 4641 2016-11-29 06:07:56Z antu123 $
+# $Id: gb_cisco_telepresence_te_ce_com_inj_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809729");
-  script_version("$Revision: 4641 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2016-6459");
   script_bugtraq_id(94075);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-29 07:07:56 +0100 (Tue, 29 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 11:42:31 +0530 (Mon, 21 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)");
@@ -87,18 +87,11 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-##Variable Initialization
-version = "";
-ciscoVer = "";
-verscat = "";
-vers = "";
-cisport = "";
-
-if(!version =  get_app_version(cpe:CPE)){
+if(!cisport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!cisport = get_app_port(cpe:CPE)){
+if(!version =  get_app_version(cpe:CPE, port:cisport)){
   exit(0);
 }
 

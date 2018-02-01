@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808651");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2016-2960");
   script_bugtraq_id(92354);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 10:35:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability");
@@ -75,29 +75,20 @@ if(description)
   exit(0);
 }
 
-
-##Code starts here
 include("host_details.inc");
 include("version_func.inc");
 
-##variable initialization
-wasVer = "";
-wasPort = 0;
-
-##Get Port
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
 ##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
-## Check WAS vulnerable versions
 if(liberty)
 {
   if(version_in_range(version:wasVer, test_version:"8.5", test_version2:"16.0.0.2"))

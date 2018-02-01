@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_xss_vuln_nov17.nasl 7963 2017-12-01 07:19:17Z santu $
+# $Id: gb_apache_wicket_xss_vuln_nov17.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # Apache Wicket Cross-Site Scripting Vulnerability Nov17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812102");
-  script_version("$Revision: 7963 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2012-5636");
   script_bugtraq_id(101644);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:19:17 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-10 16:11:14 +0530 (Fri, 10 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket Cross-Site Scripting Vulnerability Nov17");
@@ -73,15 +73,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-wkPort = "";
-wkVer = "";
-wkpath = "";
-
 if(!wkPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:wkPort, exit_no_version:TRUE)) exit(0);
 wkVer = infos['version'];
 wkpath = infos['location'];
 

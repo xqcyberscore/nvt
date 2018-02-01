@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # SAP NetWeaver Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sap:netweaver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106104");
-  script_version("$Revision: 5813 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 8598 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-06-21 15:14:09 +0700 (Tue, 21 Jun 2016)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -88,7 +88,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_in_range(version: version, test_version: "7.10", test_version2: "7.50")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 7306 2017-09-28 01:28:51Z ckuersteiner $
+# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Foreman CVE-2017-2672 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107147");
-  script_version("$Revision: 7306 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-28 03:28:51 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2017-04-11 07:35:49 +0200 (Tue, 11 Apr 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -75,12 +75,11 @@ information that may aid in further attacks.");
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_http_session_id_reuse_info_disclosure_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ibm_was_http_session_id_reuse_info_disclosure_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
 #
 # IBM Websphere Application Server 'HttpSessionIdReuse' Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808677");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 8597 $");
   script_cve_id("CVE-2016-0385");
   script_bugtraq_id(92505);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-09-06 16:52:21 +0530 (Tue, 06 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("IBM Websphere Application Server 'HttpSessionIdReuse' Information Disclosure Vulnerability");
@@ -75,24 +75,20 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get port
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
 ##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
-## Check WAS vulnerable versions
 if (liberty)
 {
   if(version_is_less(version:wasVer, test_version:"16.0.0.3"))

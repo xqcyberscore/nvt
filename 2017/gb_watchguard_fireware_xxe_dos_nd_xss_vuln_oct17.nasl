@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_xxe_dos_nd_xss_vuln_oct17.nasl 7435 2017-10-13 13:45:29Z asteins $
+# $Id: gb_watchguard_fireware_xxe_dos_nd_xss_vuln_oct17.nasl 8602 2018-01-31 12:19:39Z cfischer $
 #
 # WatchGuard Fireware XTM XXE DOS and Stored XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811910");
-  script_version("$Revision: 7435 $");
+  script_version("$Revision: 8602 $");
   script_cve_id("CVE-2017-14615", "CVE-2017-14616");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:45:29 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:28:50 +0530 (Wed, 04 Oct 2017)");
   script_name("WatchGuard Fireware XTM XXE DOS and Stored XSS Vulnerabilities");
 
@@ -83,19 +83,14 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-##Variable Initialization
-watchPort = "";
-version = "";
+if(!watchPort = get_app_port(cpe:CPE)){
+  exit(0);
+}
 
-##Get Port
-watchPort = get_app_port(cpe:CPE);
-
-##Get Version
 if(!version = get_app_version(cpe:CPE, port:watchPort)){
   exit(0);
 }
 
-##Check for vulnerable versions
 if(version_is_less(version:version, test_version: "12.0"))
 {
   report = report_fixed_ver(installed_version:version, fixed_version:"12.0");

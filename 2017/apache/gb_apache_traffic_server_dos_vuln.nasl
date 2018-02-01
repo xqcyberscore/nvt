@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_dos_vuln.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_apache_traffic_server_dos_vuln.nasl 8600 2018-01-31 11:58:54Z cfischer $
 #
 # Apache Traffic Server (ATS) Denial of Service Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812229");
-  script_version("$Revision: 7968 $");
+  script_version("$Revision: 8600 $");
   script_cve_id("CVE-2015-3249");
-  script_tag(name:"last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value: "$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value: "2017-11-29 16:59:37 +0530 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,7 +76,7 @@ if (!port = get_app_port(cpe: CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE)) exit(0);
 atsVer = infos['version'];
 atsPath = infos['location'];
 

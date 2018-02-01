@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 7536 2017-10-24 05:28:23Z cfischer $
+# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Elasticsearch Kibana <= 5.6.0 Cross Site Scripting (XSS) Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113010");
-  script_version("$Revision: 7536 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 07:28:23 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-10-09 13:04:33 +0200 (Mon, 09 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -71,7 +71,7 @@ if( !port = get_app_port( cpe: CPE ) ) {
   exit( 0 );
 }
 
-if ( !version = get_app_version( cpe: CPE ) ) {
+if ( !version = get_app_version( cpe: CPE, port: port ) ) {
   exit( 0 );
 }
 

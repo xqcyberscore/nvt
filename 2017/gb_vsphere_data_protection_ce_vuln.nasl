@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_ce_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_vsphere_data_protection_ce_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # VMware vSphere Data Protection Command Execution and Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107217");
-  script_version("$Revision: 7571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 13:41:13 +0200 (Tue, 13 Jun 2017)");
   script_cve_id("CVE-2017-4914", "CVE-2017-4917");
   script_bugtraq_id(98939, 98936);
@@ -77,12 +77,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 

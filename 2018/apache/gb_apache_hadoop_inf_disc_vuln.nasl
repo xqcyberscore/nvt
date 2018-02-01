@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_inf_disc_vuln.nasl 8502 2018-01-23 13:19:24Z jschulte $
+# $Id: gb_apache_hadoop_inf_disc_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Apache Hadoop Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113089");
-  script_version("$Revision: 8502 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 14:19:24 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-23 13:34:37 +0100 (Tue, 23 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:N/A:N");
@@ -68,7 +68,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "0.23.0", test_version2: "0.23.11" )  || version_in_range( version: version, test_version: "2.0.0", test_version2: "2.7.4" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2.7.5" );

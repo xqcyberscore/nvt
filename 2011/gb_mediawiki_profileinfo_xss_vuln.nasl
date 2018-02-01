@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 6284 2017-06-06 11:43:39Z cfischer $
+# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # MediaWiki 'profileinfo.php' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801877");
-  script_version("$Revision: 6284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 8601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-2788");
   script_bugtraq_id(42024);
@@ -84,7 +84,7 @@ url = dir + '/profileinfo.php?filter="><script>alert(document.cookie)</script>';
 
 if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"><script>alert\(document\.cookie\)</script>" ) ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port, report:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

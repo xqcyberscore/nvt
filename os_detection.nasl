@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 8574 2018-01-30 07:08:18Z cfischer $
+# $Id: os_detection.nasl 8604 2018-01-31 12:42:53Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 8574 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 08:08:18 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 8604 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:42:53 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
                       "gb_arubaos_detect.nasl", "gb_cyberoam_umt_ngfw_detect.nasl",
                       "gb_aerohive_hiveos_detect.nasl", "gb_qnap_nas_detect.nasl",
                       "gb_synology_dsm_detect.nasl", "gb_simatic_s7_version.nasl",
-                      "gb_windows_cpe_detect.nasl",
+                      "gb_watchguard_fireware_detect.nasl", "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
                       "gb_ssh_os_detection.nasl", # nmap_net.nasl not added as this is in ACT_SCANNER (and doesn't use register_and_report_os yet)

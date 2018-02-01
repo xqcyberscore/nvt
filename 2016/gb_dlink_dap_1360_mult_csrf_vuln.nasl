@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dap_1360_mult_csrf_vuln.nasl 5708 2017-03-24 08:55:10Z teissa $
+# $Id: gb_dlink_dap_1360_mult_csrf_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # D-Link DAP-1360 Multiple CSRF Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/h:dlink:dap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810235");
-  script_version("$Revision: 5708 $");
+  script_version("$Revision: 8598 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:55:10 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-12-10 10:43:14 +0530 (Sat, 10 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("D-Link DAP-1360 Multiple CSRF Vulnerabilities");
@@ -69,27 +69,18 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-# Variable Initialization
-version = "";
-model = "";
-dlPort = 0;
-
-## Get port
 if(!dlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get model
 if(!model = get_kb_item("dlink/dap/model")){
   exit(0);
 }
 
-## Get firmware version
-if(!version =  get_app_version(cpe:CPE)){
+if(!version =  get_app_version(cpe:CPE, port:dlPort)){
   exit(0);
 }
 

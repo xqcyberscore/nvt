@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_arbitrary_code_exec_vuln_mar16.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_ibm_websphere_arbitrary_code_exec_vuln_mar16.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # IBM Websphere Apllication Server Arbitrary Code Execution Vulnerability Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806886");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 8598 $");
   script_cve_id("CVE-2014-4767");
   script_bugtraq_id(69297);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:53 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Arbitrary Code Execution Vulnerability Mar16");
@@ -73,21 +73,17 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
-  exit(0);
-}
-
-## Get port
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check WAS vulnerable versions
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
+  exit(0);
+}
+
 if(version_in_range(version:wasVer, test_version:"8.5", test_version2:"8.5.5.2"))
 {
   report = report_fixed_ver(installed_version:wasVer, fixed_version:"8.5.5.3");

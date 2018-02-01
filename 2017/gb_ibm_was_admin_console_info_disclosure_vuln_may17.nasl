@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_admin_console_info_disclosure_vuln_may17.nasl 6262 2017-06-01 11:47:33Z santu $
+# $Id: gb_ibm_was_admin_console_info_disclosure_vuln_may17.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # IBM WAS Administrative Console Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810979");
-  script_version("$Revision: 6262 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2017-1137");
   script_bugtraq_id(98419);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 16:47:45 +0530 (Mon, 22 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # we are not able to get the interim fix version...
   script_name("IBM WAS Administrative Console Information Disclosure Vulnerability");
@@ -86,17 +86,14 @@ fix = "";
 report = "";
 appPort = "";
 
-##Get Version
-if(!appVer = get_app_version(cpe:CPE, nofork:TRUE)){
-  exit(0);
-}
-
-## Get port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check WAS vulnerable versions
+if(!appVer = get_app_version(cpe:CPE, port:appPort)){
+  exit(0);
+}
+
 if( (appVer =~ "^8\.5") && (version_is_less(version:appVer, test_version:'8.5.5.12'))){
   fix = "8.5.5.12";
 }

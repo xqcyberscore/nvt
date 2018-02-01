@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_xxe_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_ibm_tiv_endpoint_manager_xxe_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # IBM Tivoli Endpoint Manager XML External Entity Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809367");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 8598 $");
   script_cve_id("CVE-2014-3066");
   script_bugtraq_id(78017);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-10-18 13:23:56 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Tivoli Endpoint Manager XML External Entity Injection Vulnerability");
@@ -75,21 +75,14 @@ if (description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable initialization
-tivPort = 0;
-tivVer = "";
-
-## Get port
 if(!tivPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get tiv version
-if(!tivVer = get_app_version(cpe:CPE)){
+if(!tivVer = get_app_version(cpe:CPE, port:tivPort)){
   exit(0);
 }
 

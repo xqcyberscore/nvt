@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsweeper_mult_vuln_aug15.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_netsweeper_mult_vuln_aug15.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # Netsweeper Multiple Vulnerabilities - Aug15
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:netsweeper:netsweeper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805962");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 8601 $");
   script_cve_id("CVE-2014-9612", "CVE-2014-9605", "CVE-2014-9610", "CVE-2014-9619");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-08-25 14:52:59 +0530 (Tue, 25 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Netsweeper Multiple Vulnerabilities - Aug15");
@@ -78,24 +78,14 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-
-## Variable Initialization
-netPort = "";
-url = "";
-
-# Get HTTP Port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Vulnerable Url
 url = '/remotereporter/load_logfiles.php?server="SQL-INJECTION-TEST&url=test';
 
 if(http_vuln_check(port:netPort, url:url, check_header:TRUE,
@@ -103,6 +93,6 @@ if(http_vuln_check(port:netPort, url:url, check_header:TRUE,
    extra_check: "You have an error in your SQL syntax"))
 {
   report = report_vuln_url( port:netPort, url:url);
-  security_message(port:netPort);
+  security_message(port:netPort, data:report);
   exit(0);
 }

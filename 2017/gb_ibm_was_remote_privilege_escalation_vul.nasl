@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_remote_privilege_escalation_vul.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ibm_was_remote_privilege_escalation_vul.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # IBM Websphere Application Server Remote Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811442");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8595 $");
   script_cve_id("CVE-2017-1151");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 11:32:43 +0530 (Fri, 04 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## Qod Reduced, IBM WAS should be configured with OpenID Connect (OIDC) Trust Association Interceptor (TAI)
@@ -81,17 +81,14 @@ include("version_func.inc");
 fix  = "";
 wasVer = "";
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
-  exit(0);
-}
-
-## Get port
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Check for vulnerable versions
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
+  exit(0);
+}
+
 if(wasVer =~ "^(8|9)")
 {
   if(wasVer =~ "^8\.0\.0\.1")

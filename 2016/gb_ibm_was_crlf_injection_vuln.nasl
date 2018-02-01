@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_crlf_injection_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_ibm_was_crlf_injection_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
 #
 # IBM Websphere Application Server CRLF Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807853");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 8596 $");
   script_cve_id("CVE-2016-0359");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:50:52 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server CRLF Injection Vulnerability");
@@ -74,24 +74,20 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Get version
-if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get port
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
 ##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
-## Check WAS vulnerable versions
 if (liberty)
 {
   if(version_in_range(version:wasVer, test_version:"8.5", test_version2:"8.5.5.9"))

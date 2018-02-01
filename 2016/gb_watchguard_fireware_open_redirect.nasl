@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_open_redirect.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_watchguard_fireware_open_redirect.nasl 8602 2018-01-31 12:19:39Z cfischer $
 #
 # WatchGuard Fireware XTM Web UI Open Redirect Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106080");
-  script_version("$Revision: 5557 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 8602 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-05-20 11:08:44 +0700 (Fri, 20 May 2016)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:P/I:P/A:N");
@@ -73,9 +73,10 @@ user's browser to an arbitrary site.");
 include("host_details.inc");
 include("version_func.inc");
 
-port = get_app_port(cpe: CPE);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "11.10.7")) {

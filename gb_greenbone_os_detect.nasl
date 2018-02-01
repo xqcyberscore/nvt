@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_greenbone_os_detect.nasl 8610 2018-01-31 15:08:13Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,9 +49,12 @@ if(description)
 
 include("host_details.inc");
 
+SCRIPT_DESC = "Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)";
+
 if( ! get_kb_item( "greenbone/gos/detected" ) ) exit( 0 );
 
 detected_version = "unknown";
+detected_type    = "unknown";
 
 foreach source( make_list( "ssh", "http", "snmp" ) ) {
 
@@ -62,37 +65,57 @@ foreach source( make_list( "ssh", "http", "snmp" ) ) {
       set_kb_item( name:"greenbone/gos/version", value:version );
     }
   }
+
+  type_list = get_kb_list( "greenbone/gsm/" + source + "/*/type" );
+  foreach type( type_list ) {
+    if( type != "unknown" && detected_type == "unknown" ) {
+      detected_type = type;
+      set_kb_item( name:"greenbone/gsm/type", value:type );
+    }
+  }
 }
 
-if( detected_version != "unknown" ) {
-  cpe = "cpe:/o:greenbone:greenbone_os:" + version;
+if( detected_type != "unknown" ) {
+  hw_cpe   = "cpe:/h:greenbone:gsm_" + tolower( detected_type );
+  app_type = detected_type;
 } else {
-  cpe = "cpe:/o:greenbone:greenbone_os";
+  hw_cpe   = "cpe:/h:greenbone:gsm_unknown_type";
+  app_type = "Unknown Type";
+}
+
+os_cpe = "cpe:/o:greenbone:greenbone_os";
+
+if( detected_version != "unknown" ) {
+  register_and_report_os( os:"Greenbone OS (GOS)", version:detected_version, cpe:os_cpe, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  os_cpe += ":" + detected_version;
+} else {
+  register_and_report_os( os:"Greenbone OS (GOS)", cpe:os_cpe, desc:SCRIPT_DESC, runs_key:"unixoide" );
 }
 
 location = "/";
-extra = '\nDetection methods:\n';
 
 if( http_port = get_kb_list( "greenbone/gos/http/port" ) ) {
   foreach port( http_port ) {
     concluded = get_kb_item( "greenbone/gos/http/" + port + "/concluded" );
     concludedUrl = get_kb_item( "greenbone/gos/http/" + port + "/concludedUrl" );
-    extra += '\nHTTP(s) on port ' + port + '/tcp';
+    extra += 'HTTP(s) on port ' + port + '/tcp\n';
     if( concluded && concludedUrl ) {
-      extra += '\nConcluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
+      extra += 'Concluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
     }
-    register_product( cpe:cpe, location:location, port:port, service:"www" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"www" );
   }
 }
 
 if( ssh_port = get_kb_list( "greenbone/gos/ssh/port" ) ) {
   foreach port( ssh_port ) {
     concluded = get_kb_item( "greenbone/gos/ssh/" + port + "/concluded" );
-    extra += '\nSSH on port ' + port + '/tcp';
+    extra += 'SSH on port ' + port + '/tcp\n';
     if( concluded ) {
-      extra += '\nConcluded: ' + concluded + '\n';
+      extra += 'Concluded: ' + concluded + '\n';
     }
-    register_product( cpe:cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"ssh" );
   }
 }
 
@@ -100,25 +123,29 @@ if( snmp_port = get_kb_list( "greenbone/gos/snmp/port" ) ) {
   foreach port( snmp_port ) {
     concluded    = get_kb_item( "greenbone/gos/snmp/" + port + "/concluded" );
     concludedOID = get_kb_item( "greenbone/gos/snmp/" + port + "/concludedOID" );
-    extra += '\nSNMP on port ' + port + '/udp';
+    extra += 'SNMP on port ' + port + '/udp\n';
     if( concluded && concludedOID ) {
-      extra += '\nConcluded from ' + concluded + ' via OID: ' + concludedOID + '\n';
+      extra += 'Concluded from ' + concluded + ' via OID: ' + concludedOID + '\n';
     } else if( concluded ) {
-      extra += '\nConcluded from SNMP SysDesc: ' + concluded + '\n';
+      extra += 'Concluded from SNMP SysDesc: ' + concluded + '\n';
     }
-    register_product( cpe:cpe, location:location, port:port, service:"snmp", proto:"udp" );
-
-    if( gsm_type = get_kb_item( "greenbone/gsm/snmp/" + port + "/type" ) ) {
-      register_product( cpe:"cpe:/h:greenbone:gsm_" + gsm_type, location:location, port:port, service:"snmp", proto:"udp" );
-    }
+    register_product( cpe:hw_cpe, location:location, port:port, service:"snmp", proto:"udp" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"snmp", proto:"udp" );
   }
 }
 
-log_message( data:build_detection_report( app:"Greenbone OS",
-                                          version:detected_version,
-                                          install:location,
-                                          cpe:cpe,
-                                          extra:extra ),
-                                          port:0 );
+report = build_detection_report( app:"Greenbone OS (GOS)",
+                                 version:detected_version,
+                                 install:location,
+                                 cpe:os_cpe );
+report += '\n\n' + build_detection_report( app:"Greenbone Security Manager (GSM) " + app_type,
+                                           install:location,
+                                           cpe:hw_cpe,
+                                           skip_version:TRUE );
+if( extra ) {
+  report += '\n\nDetection methods:\n';
+  report += '\n' + extra;
+}
 
+log_message( port:0, data:report );
 exit( 0 );

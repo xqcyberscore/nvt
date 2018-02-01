@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_auth_bypass.nasl 8361 2018-01-10 14:59:31Z jschulte $
+# $Id: gb_sitefinity_auth_bypass.nasl 8595 2018-01-31 08:04:59Z cfischer $
 #
 # Sitefinity Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113078");
-  script_version("$Revision: 8361 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 15:59:31 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 8595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 14:49:50 +0100 (Wed, 10 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:C");
@@ -69,7 +69,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "5.1.0.0", test_version2: "5.1.3459.9" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "5.1.3460.0" );

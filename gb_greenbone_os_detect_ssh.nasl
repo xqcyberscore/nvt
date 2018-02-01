@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_ssh.nasl 7902 2017-11-24 11:02:42Z cfischer $
+# $Id: gb_greenbone_os_detect_ssh.nasl 8610 2018-01-31 15:08:13Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (SSH)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112136");
-  script_version("$Revision: 7902 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 12:02:42 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 8610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:47:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,17 +59,30 @@ if( get_kb_item( "greenbone/gos" ) ) {
     set_kb_item( name:"greenbone/gos/ssh/detected", value:TRUE );
     set_kb_item( name:"greenbone/gos/ssh/port", value:port );
 
+    version = "unknown";
     vers = eregmatch( pattern:'Welcome to the Greenbone OS ([^ ]+) ', string:uname );
     if( ! isnull( vers[1] ) && vers[1] =~ "^([0-9.-]+)$" ) {
-      version = vers[1];
-      set_kb_item( name:"greenbone/gos/ssh/" + port + "/version", value:version );
-      set_kb_item( name:"greenbone/gos/ssh/" + port + "/concluded", value:vers[0] );
+      version   = vers[1];
+      concluded = vers[0];
     } else {
       # GOS 4.x+ doesn't report the version in its login banner
       banner = egrep( pattern:"^Welcome to the Greenbone OS.*", string:uname );
-      if( banner )
-        set_kb_item( name:"greenbone/gos/ssh/" + port + "/concluded", value:banner );
+      if( banner ) concluded = banner;
     }
+
+    type  = "unknown";
+    _type = eregmatch( pattern:'running on a Greenbone Security Manager ([^ \r\n]+)', string:uname );
+    if( _type[1] ) {
+      type       = _type[1];
+      concluded += _type[0];
+    }
+
+    set_kb_item( name:"greenbone/gsm/ssh/" + port + "/type", value:type );
+    set_kb_item( name:"greenbone/gos/ssh/" + port + "/version", value:version );
+
+    if( concluded )
+      set_kb_item( name:"greenbone/gos/ssh/" + port + "/concluded", value:concluded );
+
     exit( 0 );
   }
 }

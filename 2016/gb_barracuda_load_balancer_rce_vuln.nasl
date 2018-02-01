@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
 #
 # Barracuda Load Balancer Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:barracuda:load_balancer';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106152");
-  script_version("$Revision: 5759 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_version("$Revision: 8598 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -75,7 +75,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "5.4.0.004")) {

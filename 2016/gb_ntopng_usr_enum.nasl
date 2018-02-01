@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_usr_enum.nasl 5066 2017-01-23 15:24:59Z cfi $
+# $Id: gb_ntopng_usr_enum.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # ntopng Username Enumeration
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107111");
-  script_version("$Revision: 5066 $");
+  script_version("$Revision: 8601 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 16:24:59 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_name("ntopng Username Enumeration");
 
@@ -79,7 +79,7 @@ if(!ntopngVer = get_app_version(cpe:CPE, port: appPort)){
 if(version_is_equal(version:ntopngVer, test_version:"2.5.160805"))
 {
     report = report_fixed_ver(installed_version:ntopngVer, fixed_version:"See Vendor");
-    security_message(port: appPort);
+    security_message(port: appPort, data: report);
     exit(0);
 }
 

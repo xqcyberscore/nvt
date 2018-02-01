@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_mult_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_hp_service_manager_mult_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
 #
 # HP Service Manager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106126");
-  script_version("$Revision: 5836 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 8596 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
   script_tag(name: "creation_date", value: "2016-07-11 15:18:31 +0700 (Mon, 11 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -77,7 +77,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_in_range(version: version, test_version: "9.30.0000", test_version2: "9.35.0000") ||
