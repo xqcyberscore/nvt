@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailman_xss_vuln.nasl 8605 2018-01-31 12:57:41Z jschulte $
+# $Id: gb_mailman_xss_vuln.nasl 8622 2018-02-01 12:11:05Z cfischer $
 #
 # Mailman before 2.1.26 XSS Vulnerability
 #
@@ -25,16 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:gnu:mailman";
+
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113097");
-  script_version("$Revision: 8605 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:57:41 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8622 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:11:05 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 13:35:40 +0100 (Wed, 31 Jan 2018)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,21 +65,16 @@ if( description )
 
 include( "host_details.inc" );
 include( "version_func.inc" );
-include( "http_func.inc" );
 
-port = get_http_port( default: 80 );
+if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! info = get_app_version_and_location( cpe: CPE, port: port, exit_no_version: TRUE ) ) exit( 0 );
+vers = info['version'];
+path = info['location'];
 
-if( ! version_string = get_kb_item( string( "www/", port, "/Mailman" ) ) ) exit( 0 );
-if( ! matches = eregmatch( string: version_string, pattern: "^(.+) under (/.*)$" ) ) exit( 0 );
-
-version = matches[1];
-
-if( ! isnull( version ) && version >!< "unknown") {
-  if( version_is_less( version: version, test_version: "2.1.26" ) ) {
-    report = report_fixed_ver( installed_version: version, fixed_version: "2.1.26" );
-    security_message( data: report, port: port );
-    exit( 0 );
-  }
+if( version_is_less( version: vers, test_version: "2.1.26" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "2.1.26", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
 
 exit( 99 );

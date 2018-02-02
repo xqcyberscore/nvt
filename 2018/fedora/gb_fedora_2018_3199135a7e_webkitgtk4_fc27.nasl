@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3199135a7e_webkitgtk4_fc27.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_fedora_2018_3199135a7e_webkitgtk4_fc27.nasl 8614 2018-02-01 07:54:00Z emoss $
 #
 # Fedora Update for webkitgtk4 FEDORA-2018-3199135a7e
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874059");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:54:00 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 07:50:21 +0100 (Mon, 29 Jan 2018)");
-  script_cve_id("CVE-2018-4088", "CVE-2017-13885", "CVE-2017-1", "CVE-2017-7165", 
+  script_cve_id("CVE-2018-4088", "CVE-2017-13885", "CVE-2017-7165", 
                 "CVE-2017-13884", "CVE-2017-7160", "CVE-2017-7153", "CVE-2017-7161", 
                 "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"10.0");

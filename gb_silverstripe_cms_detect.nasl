@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverstripe_cms_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_silverstripe_cms_detect.nasl 8625 2018-02-01 13:03:12Z jschulte $
 #
 # SilverStripe CMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106794");
- script_version ("$Revision: 8078 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 8625 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-01 14:03:12 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name: "creation_date", value: "2017-04-27 14:38:21 +0200 (Thu, 27 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,9 +61,10 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-res = http_get_cache(port: port, item: "/Security/login");
+res = http_get_cache(port: port, item: "/");
+login_page = http_get_cache(port: port, item: "/Security/login");
 
-if ('<meta name="generator" content="SilverStripe' >< res && "MemberLoginForm_LoginForm" >< res) {
+if ('<meta name="generator" content="SilverStripe' >< res && "MemberLoginForm_LoginForm" >< login_page) {
   version = "unknown";
 
   set_kb_item(name: "silverstripe_cms/installed", value: TRUE);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_855_1.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_855_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_855_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_855_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-855-1 (libhtml-parser-perl)
 #
 # Authors:
@@ -62,8 +62,8 @@ announced via advisory USN-855-1.";
 if(description)
 {
  script_id(66305);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-11-23 20:51:51 +0100 (Mon, 23 Nov 2009)");
  script_cve_id("CVE-2009-3627");
  script_tag(name:"cvss_base", value:"4.3");
@@ -112,7 +112,7 @@ if ((res = isdpkgvuln(pkg:"libhtml-parser-perl", ver:"3.61-1ubuntu0.1", rls:"UBU
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

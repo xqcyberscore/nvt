@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3141547.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_ms_kb3141547.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # Microsoft SharePoint Foundation 2010 Service Pack 2 Information Disclosure Vulnerability (KB3141547)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812726");
-  script_version("$Revision: 8378 $");
+  script_version("$Revision: 8624 $");
   script_cve_id("CVE-2018-0790");
   script_bugtraq_id(102391);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft SharePoint Foundation 2010 Service Pack 2 Information Disclosure Vulnerability (KB3141547)");
 

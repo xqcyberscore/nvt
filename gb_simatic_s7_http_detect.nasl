@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_http_detect.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
+# $Id: gb_simatic_s7_http_detect.nasl 8619 2018-02-01 10:03:52Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106098");
- script_version ("$Revision: 8570 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
+ script_version ("$Revision: 8619 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-01 11:03:52 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-06-15 17:03:46 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,8 +57,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
-if (!get_port_state(port))
-  exit(0);
 
 url = '/Portal/Portal.mwsl?PriNav=Ident';
 req = http_get(item:url, port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rpi_cam_control_multiple_vuln.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_rpi_cam_control_multiple_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
 #
 # RPi Cam Control Multiple Vulnerabilities
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:rpi:cam_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812362");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 8627 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 14:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("RPi Cam Control Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is running RPi Cam Control
   and is prone to multiple vulnerabilities");
 
-  script_tag(name:"vuldetect", value:"Send the crafted http	POST request
+  script_tag(name:"vuldetect", value:"Send the crafted http POST request
   and check whether it is able to read the file or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple improper
@@ -52,10 +52,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"RPi Cam Control versions through 6.3.14");
+  script_tag(name:"affected", value:"RPi Cam Control versions through 6.4.14");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  26th Dec, 2017. Information regarding this issue will be updated once solution
+  01th February, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to,
   https://github.com/silvanmelchior/RPi_Cam_Web_Interface");
 

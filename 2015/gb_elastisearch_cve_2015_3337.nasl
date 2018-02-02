@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_cve_2015_3337.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_elastisearch_cve_2015_3337.nasl 8613 2018-02-01 07:35:27Z cfischer $
 #
 # Elasticsearch Directory Traversal Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-3337");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7577 $");
+ script_version ("$Revision: 8613 $");
 
  script_name("Elasticsearch Directory Traversal Vulnerability");
 
@@ -49,14 +49,14 @@ when a site plugin is enabled, allows remote attackers to read arbitrary files."
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9200);
- script_mandatory_keys("elastisearch/installed");
+ script_mandatory_keys("elasticsearch/installed");
 
  exit(0);
 }

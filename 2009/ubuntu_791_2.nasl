@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_791_2.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_791_2.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_791_2.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_791_2.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-791-2 (moodle)
 #
 # Authors:
@@ -52,8 +52,8 @@ announced via advisory USN-791-2.";
 if(description)
 {
  script_id(64321);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-06-30 00:29:55 +0200 (Tue, 30 Jun 2009)");
  script_cve_id("CVE-2009-1171");
  script_tag(name:"cvss_base", value:"4.3");
@@ -90,7 +90,7 @@ if ((res = isdpkgvuln(pkg:"moodle", ver:"1.9.4.dfsg-0ubuntu1.1", rls:"UBUNTU9.04
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

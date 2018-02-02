@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_724_1.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_724_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_724_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_724_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-724-1 (squid)
 #
 # Authors:
@@ -51,8 +51,8 @@ attacker could exploit this to cause a denial of service (assertion failure).";
 if(description)
 {
  script_id(63472);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-03-02 19:11:09 +0100 (Mon, 02 Mar 2009)");
  script_cve_id("CVE-2009-0478");
  script_tag(name:"cvss_base", value:"5.0");
@@ -94,7 +94,7 @@ if ((res = isdpkgvuln(pkg:"squid-cgi", ver:"2.7.STABLE3-1ubuntu2.1", rls:"UBUNTU
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

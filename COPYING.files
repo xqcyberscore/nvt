@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 01 Feb 2018 08:00:45 +0100
+# Automatically created on:  Fri, 02 Feb 2018 08:19:24 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52929,6 +52929,7 @@
 2018/debian/deb_4099.nasl: GPLv2+
 2018/debian/deb_4100.nasl: GPLv2+
 2018/debian/deb_4101.nasl: GPLv2+
+2018/debian/deb_4102.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -52972,6 +52973,9 @@
 2018/debian/deb_dla_1259.nasl: GPLv2+
 2018/debian/deb_dla_1260.nasl: GPLv2+
 2018/debian/deb_dla_1261.nasl: GPLv2+
+2018/debian/deb_dla_1262.nasl: GPLv2+
+2018/debian/deb_dla_1263.nasl: GPLv2+
+2018/debian/deb_dla_1264.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
 2018/debian/deb_dla_813.nasl: GPLv2+
@@ -53122,8 +53126,25 @@
 2018/debian/deb_dla_962.nasl: GPLv2+
 2018/debian/deb_dla_963.nasl: GPLv2+
 2018/debian/deb_dla_964.nasl: GPLv2+
+2018/debian/deb_dla_972.nasl: GPLv2+
+2018/debian/deb_dla_973.nasl: GPLv2+
+2018/debian/deb_dla_974.nasl: GPLv2+
+2018/debian/deb_dla_975.nasl: GPLv2+
+2018/debian/deb_dla_976.nasl: GPLv2+
+2018/debian/deb_dla_977.nasl: GPLv2+
+2018/debian/deb_dla_978.nasl: GPLv2+
+2018/debian/deb_dla_979.nasl: GPLv2+
+2018/debian/deb_dla_980.nasl: GPLv2+
+2018/debian/deb_dla_981.nasl: GPLv2+
+2018/debian/deb_dla_982.nasl: GPLv2+
+2018/debian/deb_dla_983.nasl: GPLv2+
+2018/debian/deb_dla_984.nasl: GPLv2+
+2018/debian/deb_dla_985.nasl: GPLv2+
+2018/debian/deb_dla_986.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
 2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_logstash_CVE-2015-5619_sec_bypass_lin.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_logstash_CVE-2015-5619_sec_bypass_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_win.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_01ad8b3946_heketi_fc27.nasl: GPLv2+
@@ -53269,6 +53290,7 @@
 2018/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
+2018/gb_superantispyware_mult_vuln.nasl: GPLv2+
 2018/gb_unbound_dos_vuln.nasl: GPLv2+
 2018/gb_yawcam_dir_trav_vuln.nasl: GPLv2+
 2018/gb_zimbra_zcs_xss_vuln.nasl: GPLv2+
@@ -53337,7 +53359,6 @@
 2018/microsoft/gb_ms_office_mult_rce_vuln_jan17_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_dos_n_sec_bypass_lin.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_dos_n_sec_bypass_macosx.nasl: GPLv2+
-2018/microsoft/gb_powershell_core_detect_lin.nasl: GPLv2+
 2018/microsoft/gb_spectre_variant2_branch_tar_inj_update_disable.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-02_2018-03_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-02_2018-03_win.nasl: GPLv2+
@@ -54731,6 +54752,9 @@ gb_sierrawireless_acemanager_detect.nasl: GPLv2+
 gb_siestta_detect.nasl: GPLv2+
 gb_sigplus_pro_activex_detect.nasl: GPLv2+
 gb_silverstripe_cms_detect.nasl: GPLv2+
+gb_simatic_cp_consolidation.nasl: GPLv2+
+gb_simatic_cp_http_detect.nasl: GPLv2+
+gb_simatic_cp_snmp_detect.nasl: GPLv2+
 gb_simatic_S7_1200_plc_detect.nasl: GPLv2+
 gb_simatic_s7_cotp_detect.nasl: GPLv2+
 gb_simatic_s7_http_detect.nasl: GPLv2+
@@ -54816,6 +54840,7 @@ gb_sun_java_sys_web_serv_mult_vuln.nasl: GPLv2+
 gb_sun_java_web_console_detect.nasl: GPLv2+
 gb_sunny_webbox_remote_detect.nasl: GPLv2+
 gb_sun_oracle_ilo_detect.nasl: GPLv2+
+gb_superantispyware_detect.nasl: GPLv2+
 gb_swftools_detect_lin.nasl: GPLv2+
 gb_swiftmailer_detect.nasl: GPLv2+
 gb_sybase_tcp_listen_detect.nasl: GPLv2+
@@ -55444,6 +55469,7 @@ gsf/2018/gb_pfsense_webgui_code_exec_n_xss_vuln.nasl: GPLv2+
 gsf/2018/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+

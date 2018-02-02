@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp-inject_mult_vuln.nasl 8354 2018-01-10 07:30:33Z asteins $
+# $Id: gb_wordpress_wp-inject_mult_vuln.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # WordPress ImageInject Plugin Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112181");
-  script_version("$Revision: 8354 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-10 08:30:33 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 8624 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-01-09 09:40:00 +0100 (Tue, 09 Jan 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-5284", "CVE-2018-5285");
 

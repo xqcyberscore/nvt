@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_code_execution_05_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_elastisearch_code_execution_05_14.nasl 8613 2018-02-01 07:35:27Z cfischer $
 #
 # Elastisearch Remote Code Execution Vulnerability
 #
@@ -25,17 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Elasticsearch has a flaw in its default configuration which makes
-it possible for any webpage to execute arbitrary code on visitors with
-Elasticsearch installed.";
-
-tag_impact = "An attacker can exploit this issue to execute arbitrary code";
-tag_affected = "Elasticsearch < 1.2";
-
-tag_summary = "Elasticsearch is prone to a remote-code-execution vulnerability.";
-
-tag_solution = "Ask the vendor for an update or disable 'dynamic scripting'";
-tag_vuldetect = "Send a special crafted HTTP GET request and check the response";
+CPE = "cpe:/a:elasticsearch:elasticsearch";
 
 if (description)
 {
@@ -43,22 +33,30 @@ if (description)
  script_cve_id("CVE-2014-3120");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 7577 $");
-
+ script_version ("$Revision: 8613 $");
  script_name("Elastisearch Remote Code Execution Vulnerability");
-
-
  script_xref(name:"URL", value:"http://bouk.co/blog/elasticsearch-rce/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-05-22 15:28:00 +0200 (Thu, 22 May 2014)");
  script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9200);
- script_mandatory_keys("elastisearch/installed");
+ script_mandatory_keys("elasticsearch/installed");
+
+ tag_insight = "Elasticsearch has a flaw in its default configuration which makes
+ it possible for any webpage to execute arbitrary code on visitors with
+ Elasticsearch installed.";
+
+ tag_impact = "An attacker can exploit this issue to execute arbitrary code";
+ tag_affected = "Elasticsearch < 1.2";
+
+ tag_summary = "Elasticsearch is prone to a remote-code-execution vulnerability.";
+
+ tag_solution = "Ask the vendor for an update or disable 'dynamic scripting'";
+
+ tag_vuldetect = "Send a special crafted HTTP GET request and check the response";
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -66,6 +64,9 @@ if (description)
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "affected" , value : tag_affected);
+
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"qod_type", value:"remote_vul");
 
  exit(0);
 }
@@ -75,9 +76,8 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port( default:9200 );
-
-if( ! get_kb_item("www/" + port + "/elastisearch") ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
 files = traversal_files();
 

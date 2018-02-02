@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 8615 2018-02-01 08:19:49Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805969");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 8615 $");
   script_cve_id("CVE-2015-3788", "CVE-2015-3789", "CVE-2015-3790", "CVE-2015-3791",
                 "CVE-2015-3792", "CVE-2015-5751", "CVE-2015-5779", "CVE-2015-5785",
                 "CVE-2015-5786");
   script_bugtraq_id(76340, 76443, 76444);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:19:49 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 17:24:20 +0530 (Tue, 01 Sep 2015)");
   script_name("Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -74,14 +74,9 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-quickVer = "";
-
-## Get version
 if(!quickVer = get_app_version(cpe:CPE)){
   exit(0);
 }
@@ -91,6 +86,6 @@ if(version_is_less(version:quickVer, test_version:"7.78.80.95"))
 {
   report = 'Installed version: ' + quickVer + '\n' +
            'Fixed version:     ' + "7.78.80.95" + '\n';
-  security_message(0);
+  security_message(port:0, data:report);
   exit(0);
 }

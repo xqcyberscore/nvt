@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_ssh_credentials_report.nasl 5467 2017-03-02 10:34:11Z cfi $
+# $Id: gb_default_ssh_credentials_report.nasl 8628 2018-02-01 15:23:45Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials Reporting
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103239");
-  script_version("$Revision: 5467 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 11:34:11 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 8628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:23:45 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 11:47:00 +0100 (Wed, 02 Nov 2016)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("SSH Brute Force Logins With Default Credentials Reporting");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_category(ACT_END);

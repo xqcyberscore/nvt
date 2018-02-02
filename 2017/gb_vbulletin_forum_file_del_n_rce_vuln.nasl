@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
 #
 # vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812354");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 8627 $");
   script_cve_id("CVE-2017-17672");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-12-18 18:33:37 +0530 (Mon, 18 Dec 2017)");
   script_name("vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"VBulletin versions through 5.3.4");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  18th December, 2017. Information regarding this issue will be updated once
+  01th February, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to http://www.vbulletin.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

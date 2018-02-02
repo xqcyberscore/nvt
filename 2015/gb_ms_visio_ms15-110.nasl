@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visio_ms15-110.nasl 5338 2017-02-18 16:20:24Z cfi $
+# $Id: gb_ms_visio_ms15-110.nasl 8615 2018-02-01 08:19:49Z cfischer $
 #
 # Microsoft Visio Multiple Remote Code Execution Vulnerabilities (3096440)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806121");
-  script_version("$Revision: 5338 $");
+  script_version("$Revision: 8615 $");
   script_cve_id("CVE-2015-2555", "CVE-2015-2557", "CVE-2015-2558");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:20:24 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:19:49 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:33:15 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Visio Multiple Remote Code Execution Vulnerabilities (3096440)");
@@ -76,23 +76,16 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-sysPath = "";
-exeVer = "";
-
-## Check for Office Visio
 sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                              "\App Paths\visio.exe", item:"Path");
 if(!sysPath){
   exit(0);
 }
 
-## Get file version
 excelVer = fetch_file_version(sysPath, file_name:"visio.exe");
 if(excelVer =~ "^(12|14)\..*")
 {
@@ -111,7 +104,7 @@ if(excelVer =~ "^(12|14)\..*")
              'File version:     ' + excelVer  + '\n' +
              'Vulnerable range: ' + Vulnerable_range + '\n' ;
 
-    security_message(0);
+    security_message(port:0, data:report);
     exit(0);
   }
 }

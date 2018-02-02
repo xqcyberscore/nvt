@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_800_1.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_800_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_800_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_800_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-800-1 (irssi)
 #
 # Authors:
@@ -60,8 +60,8 @@ announced via advisory USN-800-1.";
 if(description)
 {
  script_id(64440);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-07-29 19:28:37 +0200 (Wed, 29 Jul 2009)");
  script_cve_id("CVE-2009-1959");
  script_tag(name:"cvss_base", value:"5.0");
@@ -122,7 +122,7 @@ if ((res = isdpkgvuln(pkg:"irssi", ver:"0.8.12-6ubuntu1.1", rls:"UBUNTU9.04")) !
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

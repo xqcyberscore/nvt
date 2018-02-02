@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 8615 2018-02-01 08:19:49Z cfischer $
 # Description: Trend Micro OfficeScan Server cgiRecvFile.exe Buffer Overflow Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_id(900220);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8615 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:19:49 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31139);
  script_cve_id("CVE-2008-2437");
@@ -35,7 +35,8 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
+ script_tag(name:"qod_type", value:"registry");
+ script_tag(name:"solution_type", value:"VendorFix");
  script_family("Buffer overflow");
  script_name("Trend Micro OfficeScan Server cgiRecvFile.exe Buffer Overflow Vulnerability.");
  script_dependencies("secpod_reg_enum.nasl");
@@ -104,7 +105,7 @@ Impact Level : Application/System.");
  # For Trend Micro Client Server Messaging Security and Office Scan 8 or 7.0
  if(registry_key_exists(key:"SOFTWARE\TrendMicro\CSM") || 
                         scanVer =~ "^(8\..*|[0-7]\.[0-2](\..*)?)$"){
-        security_message(report);
+        security_message(port:0, data:report);
         exit(0);
  }
 
@@ -188,5 +189,5 @@ Impact Level : Application/System.");
  # grep for file version < 7.3.0.1367
  if(egrep(pattern:"^7\.3\.0\.(0?[0-9]?[0-9]?[0-9]|1[0-2][0-9][0-9]|" +
                   "13[0-5][0-9]|136[0-6])$", string:scanVer)){
-        security_message(0);
+        security_message(port:0);
  }

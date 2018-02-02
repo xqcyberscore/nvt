@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_738_1.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_738_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_738_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_738_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-738-1 (glib2.0)
 #
 # Authors:
@@ -60,8 +60,8 @@ announced via advisory USN-738-1.";
 if(description)
 {
  script_id(63619);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-03-20 00:52:38 +0100 (Fri, 20 Mar 2009)");
  script_cve_id("CVE-2008-4316");
  script_tag(name:"cvss_base", value:"4.6");
@@ -146,7 +146,7 @@ if ((res = isdpkgvuln(pkg:"libgio-fam", ver:"2.18.2-0ubuntu2.1", rls:"UBUNTU8.10
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

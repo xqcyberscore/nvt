@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1002.nasl 8581 2018-01-30 10:59:05Z teissa $
+# $Id: deb_dla_1002.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # Auto-generated from advisory DLA 1002-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891002");
-  script_version("$Revision: 8581 $");
+  script_version("$Revision: 8624 $");
   script_cve_id("CVE-2017-8849");
   script_name("Debian Lts Announce DLA 1002-1 ([SECURITY] [DLA 1002-1] smb4k security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 11:59:05 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

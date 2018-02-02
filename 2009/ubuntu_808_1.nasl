@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_808_1.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_808_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_808_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_808_1.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-808-1 (bind9)
 #
 # Authors:
@@ -60,8 +60,8 @@ announced via advisory USN-808-1.";
 if(description)
 {
  script_id(64572);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-08-17 16:54:45 +0200 (Mon, 17 Aug 2009)");
  script_cve_id("CVE-2009-0696");
  script_tag(name:"cvss_base", value:"4.3");
@@ -245,7 +245,7 @@ if ((res = isdpkgvuln(pkg:"lwresd", ver:"9.5.1.dfsg.P2-1ubuntu0.1", rls:"UBUNTU9
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_717_3.nasl 7969 2017-12-01 09:23:16Z santu $
-# $Id: ubuntu_717_3.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_717_3.nasl 8616 2018-02-01 08:24:13Z cfischer $
+# $Id: ubuntu_717_3.nasl 8616 2018-02-01 08:24:13Z cfischer $
 # Description: Auto-generated from advisory USN-717-3 (firefox)
 #
 # Authors:
@@ -54,8 +54,8 @@ announced via advisory USN-717-3.";
 if(description)
 {
  script_id(63398);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 8616 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:24:13 +0100 (Thu, 01 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-02-13 20:43:17 +0100 (Fri, 13 Feb 2009)");
  script_cve_id("CVE-2008-5510", "CVE-2009-0357");
  script_tag(name:"cvss_base", value:"5.0");
@@ -122,7 +122,7 @@ if ((res = isdpkgvuln(pkg:"firefox-dom-inspector", ver:"1.5.dfsg+1.5.0.15~prepat
 }
 
 if (report != "") {
-    security_message(0);
+    security_message(port:0, data:report);
 } else if (__pkg_match) {
     exit(99); # Not vulnerable.
 }

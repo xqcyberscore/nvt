@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_87971e3c98_gcab_fc27.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_fedora_2018_87971e3c98_gcab_fc27.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # Fedora Update for gcab FEDORA-2018-87971e3c98
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874072");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 07:58:36 +0100 (Wed, 31 Jan 2018)");
   script_cve_id("CVE-2018-5345");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gcab FEDORA-2018-87971e3c98");
   script_tag(name: "summary", value: "Check the version of gcab");

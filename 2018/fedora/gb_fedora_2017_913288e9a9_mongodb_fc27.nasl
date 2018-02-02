@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_913288e9a9_mongodb_fc27.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_fedora_2017_913288e9a9_mongodb_fc27.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # Fedora Update for mongodb FEDORA-2017-913288e9a9
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874069");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 07:58:29 +0100 (Wed, 31 Jan 2018)");
   script_cve_id("CVE-2017-15535");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mongodb FEDORA-2017-913288e9a9");
   script_tag(name: "summary", value: "Check the version of mongodb");

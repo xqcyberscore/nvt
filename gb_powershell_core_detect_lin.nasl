@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_core_detect_lin.nasl 8607 2018-01-31 13:32:54Z santu $
+# $Id: gb_powershell_core_detect_lin.nasl 8618 2018-02-01 08:39:03Z cfischer $
 #
 # PowerShell Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812746");
-  script_version("$Revision: 8607 $");
+  script_version("$Revision: 8618 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:32:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:39:03 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 10:53:40 +0530 (Wed, 31 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("PowerShell Version Detection (Linux)");
@@ -57,7 +57,7 @@ include("host_details.inc");
 ps_sock = ssh_login_or_reuse_connection();
 if(!ps_sock) exit( 0 );
 
-paths = find_bin(prog_name:"pwsh", sock:sock);
+paths = find_bin(prog_name:"pwsh", sock:ps_sock);
 foreach bin (paths)
 {
   psVer = get_bin_version(full_prog_name:chomp(bin), sock:ps_sock, version_argv:"-v",

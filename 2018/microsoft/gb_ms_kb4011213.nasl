@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011213.nasl 8364 2018-01-10 16:59:46Z gveerendra $
+# $Id: gb_ms_kb4011213.nasl 8624 2018-02-01 12:56:46Z cfischer $
 #
 # Microsoft Outlook 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011213)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812714");
-  script_version("$Revision: 8364 $");
+  script_version("$Revision: 8624 $");
   script_cve_id("CVE-2018-0791");
   script_bugtraq_id(102383);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:34:31 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Outlook 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011213)");
 

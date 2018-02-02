@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 8613 2018-02-01 07:35:27Z cfischer $
 #
 # Elasticsearch Directory Traversal Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808502");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 8613 $");
   script_cve_id("CVE-2015-5531");
   script_bugtraq_id(75935);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:11:01 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Directory Traversal Vulnerability (Linux)");
 
@@ -70,7 +70,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("elastisearch/installed","Host/runs_unixoide");
+  script_mandatory_keys("elasticsearch/installed","Host/runs_unixoide");
   script_require_ports("Services/www", 9200);
   exit(0);
 }
