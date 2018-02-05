@@ -46,12 +46,12 @@ advisory GLSA 201206-10.";
                                                                                 
 if(description)
 {
- script_id(71577);
+ script_oid("1.3.6.1.4.1.25623.1.0.71577");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2010-0305", "CVE-2011-1753", "CVE-2011-4320");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8649 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:55 -0400 (Fri, 10 Aug 2012)");
  script_name("Gentoo Security Advisory GLSA 201206-10 (ejabberd)");
 

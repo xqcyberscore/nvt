@@ -32,8 +32,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865615);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:46:54 +0530 (Fri, 17 May 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-8298");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/105704.html");
-  script_summary("Check for the Version of thunderbird");
+  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

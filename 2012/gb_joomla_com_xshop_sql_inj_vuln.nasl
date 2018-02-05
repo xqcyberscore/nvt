@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xshop_sql_inj_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_joomla_com_xshop_sql_inj_vuln.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Joomla com_x-shop 'idd' Parameter SQL Injection Vulnerability
 #
@@ -45,12 +45,12 @@ injection vulnerability.";
 
 if(description)
 {
-  script_id(802706);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802706");
+  script_version("$Revision: 8649 $");
   script_bugtraq_id(52077);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 19:12:57 +0530 (Mon, 12 Mar 2012)");
   script_name("Joomla com_x-shop 'idd' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17540");

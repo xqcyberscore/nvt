@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_xml_manifest_bof_vuln_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_libreoffice_xml_manifest_bof_vuln_macosx.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # LibreOffice XML Manifest Handling Buffer Overflow Vulnerabilities (Mac OS X)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with LibreOffice and is prone to buffer
 
 if(description)
 {
-  script_id(803087);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803087");
+  script_version("$Revision: 8649 $");
   script_cve_id("CVE-2012-2665");
   script_bugtraq_id(54769);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-12-24 17:40:15 +0530 (Mon, 24 Dec 2012)");
   script_name("LibreOffice XML Manifest Handling Buffer Overflow Vulnerabilities (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50142/");

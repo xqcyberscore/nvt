@@ -44,12 +44,12 @@ advisory GLSA 201210-01.";
                                                                                 
 if(description)
 {
- script_id(72517);
+ script_oid("1.3.6.1.4.1.25623.1.0.72517");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2010-2074");
- script_version("$Revision: 6593 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:14 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8649 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-10-22 08:43:43 -0400 (Mon, 22 Oct 2012)");
  script_name("Gentoo Security Advisory GLSA 201210-01 (w3m)");
 

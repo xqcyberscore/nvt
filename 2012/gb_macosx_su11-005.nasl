@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-005.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gb_macosx_su11-005.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)
 #
@@ -36,11 +36,11 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(802798);
-  script_version("$Revision: 6521 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802798");
+  script_version("$Revision: 8649 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-06-26 18:25:17 +0530 (Tue, 26 Jun 2012)");
   script_name("Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4920");

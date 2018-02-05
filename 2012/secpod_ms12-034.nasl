@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 8190 2017-12-20 09:44:30Z cfischer $
+# $Id: secpod_ms12-034.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -60,8 +60,8 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902832);
-  script_version("$Revision: 8190 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902832");
+  script_version("$Revision: 8649 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -69,7 +69,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49120");

@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867054);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 11:18:09 +0530 (Mon, 18 Nov 2013)");
   script_cve_id("CVE-2013-4348", "CVE-2013-4470", "CVE-2013-4387", "CVE-2013-4345",
                 "CVE-2013-4350", "CVE-2013-4343", "CVE-2013-2888", "CVE-2013-2889",
@@ -68,7 +68,7 @@ input and output, etc.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-20748");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/121586.html");
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0227_1.nasl 8245 2017-12-26 06:29:59Z teissa $
+# $Id: gb_suse_2012_0227_1.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # SuSE Update for xorg-x11-server openSUSE-SU-2012:0227-1 (xorg-x11-server)
 #
@@ -43,9 +43,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850266);
-  script_version("$Revision: 8245 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850266");
+  script_version("$Revision: 8649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:08:35 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-4028", "CVE-2011-4029");
   script_tag(name:"cvss_base", value:"1.9");

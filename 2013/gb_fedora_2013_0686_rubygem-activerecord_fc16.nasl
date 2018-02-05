@@ -42,8 +42,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097243.html");
   script_id(865235);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:25:22 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2013-0155", "CVE-2013-0156", "CVE-2012-6496",
                 "CVE-2012-2695", "CVE-2012-2661");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-0686");
   script_name("Fedora Update for rubygem-activerecord FEDORA-2013-0686");
 
-  script_summary("Check for the Version of rubygem-activerecord");
+  script_tag(name: "summary" , value: "Check for the Version of rubygem-activerecord");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

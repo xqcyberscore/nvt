@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1566_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1566_1.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Ubuntu Update for bind9 USN-1566-1
 #
@@ -42,9 +42,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1566-1/");
-  script_id(841146);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841146");
+  script_version("$Revision: 8649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:54:56 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-4244");
   script_tag(name:"cvss_base", value:"7.8");

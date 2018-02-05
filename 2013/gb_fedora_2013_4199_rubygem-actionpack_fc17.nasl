@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/101113.html");
   script_id(865515);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:25:29 +0530 (Tue, 02 Apr 2013)");
   script_cve_id("CVE-2013-1855", "CVE-2013-1857", "CVE-2013-0155", "CVE-2012-3463",
                 "CVE-2012-3464", "CVE-2012-3465", "CVE-2012-3424", "CVE-2012-2694",
@@ -48,7 +48,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-4199");
   script_name("Fedora Update for rubygem-actionpack FEDORA-2013-4199");
 
-  script_summary("Check for the Version of rubygem-actionpack");
+  script_tag(name: "summary" , value: "Check for the Version of rubygem-actionpack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

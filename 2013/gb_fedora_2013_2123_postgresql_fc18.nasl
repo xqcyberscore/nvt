@@ -45,8 +45,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098586.html");
   script_id(865352);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-02-15 11:14:10 +0530 (Fri, 15 Feb 2013)");
   script_cve_id("CVE-2013-0255");
   script_tag(name:"cvss_base", value:"6.8");
@@ -56,7 +56,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2123");
   script_name("Fedora Update for postgresql FEDORA-2013-2123");
 
-  script_summary("Check for the Version of postgresql");
+  script_tag(name: "summary" , value: "Check for the Version of postgresql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

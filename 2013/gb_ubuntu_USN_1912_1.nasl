@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1912_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1912_1.nasl 8650 2018-02-03 12:16:59Z teissa $
 #
 # Ubuntu Update for linux USN-1912-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841518);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:46:02 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-2164", "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-2237", "CVE-2013-2851");
   script_tag(name:"cvss_base", value:"6.0");
@@ -70,7 +70,7 @@ this flaw to gain kernel privileges. (CVE-2013-2851)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1912-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1912-1/");
-  script_summary("Check for the Version of linux");
+  script_tag(name: "summary" , value: "Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

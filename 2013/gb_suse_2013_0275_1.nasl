@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0275_1.nasl 8045 2017-12-08 08:39:37Z santu $
+# $Id: gb_suse_2013_0275_1.nasl 8650 2018-02-03 12:16:59Z teissa $
 #
 # SuSE Update for update openSUSE-SU-2013:0275-1 (update)
 #
@@ -40,8 +40,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00002.html");
   script_id(850428);
-  script_version("$Revision: 8045 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:47 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0170");
   script_tag(name:"cvss_base", value:"9.3");
@@ -49,7 +49,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2013:0275_1");
   script_name("SuSE Update for update openSUSE-SU-2013:0275-1 (update)");
 
-  script_summary("Check for the Version of update");
+  script_tag(name: "summary" , value: "Check for the Version of update");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

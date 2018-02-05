@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812751");
-  script_version("$Revision: 8607 $");
+  script_version("$Revision: 8642 $");
   script_cve_id("CVE-2018-5124");
   script_bugtraq_id(102843);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:32:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-02 14:14:25 +0100 (Fri, 02 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 11:32:23 +0530 (Wed, 31 Jan 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-MAC OS X");
 
@@ -84,7 +84,8 @@ if(!ffVer){
 }
 
 ffPath = infos['location'];
-if(version_is_less(version:ffVer, test_version:"58.0.1"))
+
+if(version_in_range(version:ffVer, test_version:"56", test_version2:"58.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"58.0.1", install_path:ffPath);
   security_message(data:report);

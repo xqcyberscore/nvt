@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871028);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:31:58 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-0791", "CVE-2013-1620");
   script_tag(name:"cvss_base", value:"5.0");
@@ -98,7 +98,7 @@ nss-softokn must be restarted for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1144-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-August/msg00008.html");
-  script_summary("Check for the Version of nss, nss-util, nss-softokn, and nspr");
+  script_tag(name: "summary" , value: "Check for the Version of nss, nss-util, nss-softokn, and nspr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

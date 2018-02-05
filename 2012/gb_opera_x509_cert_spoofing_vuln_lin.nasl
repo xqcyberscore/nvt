@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_x509_cert_spoofing_vuln_lin.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_opera_x509_cert_spoofing_vuln_lin.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Opera 'X.509' Certificates Spoofing Vulnerability (Linux)
 #
@@ -37,12 +37,12 @@ tag_summary = "The host is installed with Opera and is prone to spoofing
 
 if(description)
 {
-  script_id(802436);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802436");
+  script_version("$Revision: 8649 $");
   script_cve_id("CVE-2012-1251");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:15:21 +0530 (Tue, 12 Jun 2012)");
   script_name("Opera 'X.509' Certificates Spoofing Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN39707339/index.html");

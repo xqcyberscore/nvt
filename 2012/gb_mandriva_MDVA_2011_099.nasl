@@ -37,9 +37,9 @@ tag_affected = "mysql on Mandriva Linux 2010.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-12/msg00032.php");
-  script_id(831519);
-  script_version("$Revision: 8245 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831519");
+  script_version("$Revision: 8649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 13:29:30 +0530 (Mon, 02 Jan 2012)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

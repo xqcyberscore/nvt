@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/099552.html");
   script_id(865420);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-03-05 09:41:41 +0530 (Tue, 05 Mar 2013)");
   script_cve_id("CVE-2012-5560");
   script_tag(name:"cvss_base", value:"2.1");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2766");
   script_name("Fedora Update for mate-settings-daemon FEDORA-2013-2766");
 
-  script_summary("Check for the Version of mate-settings-daemon");
+  script_tag(name: "summary" , value: "Check for the Version of mate-settings-daemon");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

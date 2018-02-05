@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_mult_vuln.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
+# $Id: gb_simatic_s7_mult_vuln.nasl 8637 2018-02-02 10:23:08Z ckuersteiner $
 #
 # Siemens SIMATIC S7 PLC Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140312");
-  script_version("$Revision: 8570 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 8637 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-02 11:23:08 +0100 (Fri, 02 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-08-18 11:51:47 +0700 (Fri, 18 Aug 2017)");
   script_tag(name: "cvss_base", value: "6.1");
   script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
@@ -67,7 +67,7 @@ interfaces are not affected. (CVE-2017-2681)");
 
   script_tag(name: "solution", value: "Siemens provides updated firmware versions.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-129-02C");
+  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-129-02");
 
   exit(0);
 }

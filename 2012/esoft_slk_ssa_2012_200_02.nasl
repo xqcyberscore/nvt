@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2012_200_02.nasl 6581 2017-07-06 13:58:51Z cfischer $
+# $Id: esoft_slk_ssa_2012_200_02.nasl 8649 2018-02-03 12:16:43Z teissa $
 # Description: Auto-generated from advisory SSA:2012-200-02
 #
 # Authors:
@@ -35,11 +35,11 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
                                                                                 
 if(description)
 {
- script_id(71975);
- script_version("$Revision: 6581 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.71975");
+ script_version("$Revision: 8649 $");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:58:51 +0200 (Thu, 06 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:19 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2012-200-02 mozilla-firefox ");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_softperfect_bandwidth_manager_54182.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_softperfect_bandwidth_manager_54182.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # SoftPerfect Bandwidth Manager Authentication Bypass Vulnerability
 #
@@ -37,15 +37,15 @@ may also be affected.";
 
 if (description)
 {
- script_id(103500);
+ script_oid("1.3.6.1.4.1.25623.1.0.103500");
  script_bugtraq_id(54182);
- script_version ("$Revision: 5888 $");
+ script_version ("$Revision: 8649 $");
 
  script_name("SoftPerfect Bandwidth Manager Authentication Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54182");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-06-26 11:12:35 +0200 (Tue, 26 Jun 2012)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

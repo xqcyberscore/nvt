@@ -66,8 +66,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019646.html");
   script_id(881690);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 09:53:12 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-0228", "CVE-2013-0268");
   script_tag(name:"cvss_base", value:"6.2");
@@ -77,7 +77,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0630");
   script_name("CentOS Update for kernel CESA-2013:0630 centos6 ");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

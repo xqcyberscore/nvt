@@ -47,12 +47,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(71372);
+ script_oid("1.3.6.1.4.1.25623.1.0.71372");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2012-2369");
- script_version("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 8649 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
  script_name("FreeBSD Ports: pidgin-otr");
 

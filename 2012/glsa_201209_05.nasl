@@ -55,12 +55,12 @@ advisory GLSA 201209-05.";
                                                                                 
 if(description)
 {
- script_id(72422);
+ script_oid("1.3.6.1.4.1.25623.1.0.72422");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-2713", "CVE-2012-0037", "CVE-2012-1149", "CVE-2012-2665");
- script_version("$Revision: 6593 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:14 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8649 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-09-26 11:20:49 -0400 (Wed, 26 Sep 2012)");
  script_name("Gentoo Security Advisory GLSA 201209-05 (libreoffice)");
 

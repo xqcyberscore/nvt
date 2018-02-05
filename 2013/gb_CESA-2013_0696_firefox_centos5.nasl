@@ -73,8 +73,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(881704);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-04-05 13:47:18 +0530 (Fri, 05 Apr 2013)");
   script_cve_id("CVE-2013-0788", "CVE-2013-0793", "CVE-2013-0795", "CVE-2013-0796",
                 "CVE-2013-0800");
@@ -84,7 +84,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0696");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-April/019676.html");
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

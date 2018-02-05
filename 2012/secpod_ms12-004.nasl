@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-004.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-004.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)
 #
@@ -47,13 +47,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902807);
-  script_version("$Revision: 5341 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902807");
+  script_version("$Revision: 8649 $");
   script_bugtraq_id(51292, 51295);
   script_cve_id("CVE-2012-0003", "CVE-2012-0004");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:10:10 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47485");

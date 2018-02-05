@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_macosx.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 
 if(description)
 {
-  script_id(803016);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803016");
+  script_version("$Revision: 8649 $");
   script_cve_id("CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50088");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4101.nasl 8563 2018-01-29 10:24:13Z teissa $
+# $Id: deb_4101.nasl 8646 2018-02-02 16:20:32Z cfischer $
 #
 # Auto-generated from advisory DSA 4101-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704101");
-  script_version("$Revision: 8563 $");
+  script_version("$Revision: 8646 $");
   script_cve_id("CVE-2018-5334", "CVE-2018-5335", "CVE-2018-5336");
   script_name("Debian Security Advisory DSA 4101-1 (wireshark - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:24:13 +0100 (Mon, 29 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-02 17:20:32 +0100 (Fri, 02 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-28 00:00:00 +0100 (Sun, 28 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

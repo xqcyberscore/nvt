@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867538);
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-02 17:20:32 +0100 (Fri, 02 Feb 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:19:14 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2014-1858", "CVE-2014-1859");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Fedora Update for numpy FEDORA-2014-2387");
 
   tag_insight = "NumPy is a general-purpose array-processing package designed to

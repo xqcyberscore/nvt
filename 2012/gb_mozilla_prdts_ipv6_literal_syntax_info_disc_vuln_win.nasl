@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -47,13 +47,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 
 if(description)
 {
-  script_id(802579);
-  script_version("$Revision: 6444 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802579");
+  script_version("$Revision: 8649 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 

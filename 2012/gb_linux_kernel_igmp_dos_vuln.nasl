@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 7141 2017-09-15 09:58:49Z cfischer $
+# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Linux Kernel IGMP Remote Denial Of Service Vulnerability
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is running Linux and prone to remote denial of service
 
 if(description)
 {
-  script_id(802295);
-  script_version("$Revision: 7141 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802295");
+  script_version("$Revision: 8649 $");
   script_bugtraq_id(51343);
   script_cve_id("CVE-2012-0207");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:58:49 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 14:14:14 +0530 (Thu, 19 Jan 2012)");
   script_name("Linux Kernel IGMP Remote Denial Of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47472");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1387_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1387_1.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # Ubuntu Update for linux-lts-backport-maverick USN-1387-1
 #
@@ -62,9 +62,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1387-1/");
-  script_id(840912);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840912");
+  script_version("$Revision: 8649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:19:13 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2011-1927", "CVE-2011-0716", "CVE-2011-3353", "CVE-2011-3619",
                 "CVE-2011-4622", "CVE-2012-0038", "CVE-2012-0044");

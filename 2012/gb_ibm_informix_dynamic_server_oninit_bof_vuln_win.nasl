@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with IBM Informix Dynamic Server and is
 
 if(description)
 {
-  script_id(802292);
-  script_version("$Revision: 5888 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802292");
+  script_version("$Revision: 8649 $");
   script_bugtraq_id(44192);
   script_cve_id("CVE-2010-4053");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 17:17:17 +0530 (Thu, 12 Jan 2012)");
   script_name("IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41913");

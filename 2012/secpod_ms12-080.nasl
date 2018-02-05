@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-080.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms12-080.nasl 8649 2018-02-03 12:16:43Z teissa $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2784126)
 #
@@ -45,13 +45,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902697);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902697");
+  script_version("$Revision: 8649 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217", "CVE-2012-4791");
   script_bugtraq_id(55977 ,55993 ,56836);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 12:01:07 +0530 (Wed, 12 Dec 2012)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2784126)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51474");

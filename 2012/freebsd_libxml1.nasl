@@ -44,13 +44,13 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(70606);
+ script_oid("1.3.6.1.4.1.25623.1.0.70606");
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2009-2416");
- script_version("$Revision: 5888 $");
+ script_version("$Revision: 8649 $");
  script_name("FreeBSD Ports: libxml");
 
 

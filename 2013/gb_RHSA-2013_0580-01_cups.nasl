@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00082.html");
   script_id(870948);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-03-05 09:42:55 +0530 (Tue, 05 Mar 2013)");
   script_cve_id("CVE-2012-5519");
   script_tag(name:"cvss_base", value:"7.2");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0580-01");
   script_name("RedHat Update for cups RHSA-2013:0580-01");
 
-  script_summary("Check for the Version of cups");
+  script_tag(name: "summary" , value: "Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

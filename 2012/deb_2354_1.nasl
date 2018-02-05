@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2354_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2354_1.nasl 8649 2018-02-03 12:16:43Z teissa $
 # Description: Auto-generated from advisory DSA 2354-1 (cups)
 #
 # Authors:
@@ -48,12 +48,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70568);
+ script_oid("1.3.6.1.4.1.25623.1.0.70568");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-2896", "CVE-2011-3170");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8649 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:32:46 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2354-1 (cups)");
 

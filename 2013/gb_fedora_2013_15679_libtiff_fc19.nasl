@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866880);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:34:41 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2013-4244", "CVE-2013-4231", "CVE-2013-4232");
   script_tag(name:"cvss_base", value:"6.8");
@@ -57,7 +57,7 @@ format image files.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-15679");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-September/115260.html");
-  script_summary("Check for the Version of libtiff");
+  script_tag(name: "summary" , value: "Check for the Version of libtiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

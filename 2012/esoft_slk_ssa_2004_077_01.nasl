@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_077_01.nasl 6598 2017-07-07 09:36:44Z cfischer $
+# $Id: esoft_slk_ssa_2004_077_01.nasl 8649 2018-02-03 12:16:43Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -39,13 +39,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
                                                                                 
 if(description)
 {
- script_id(53942);
+ script_oid("1.3.6.1.4.1.25623.1.0.53942");
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:36:44 +0200 (Fri, 07 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
  script_cve_id("CVE-2004-0079", "CVE-2004-0112");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6598 $");
+ script_version("$Revision: 8649 $");
  name = "Slackware Advisory SSA:2004-077-01 OpenSSL security update ";
  script_name(name);
 
