@@ -44,12 +44,12 @@ advisory GLSA 201205-02.";
                                                                                 
 if(description)
 {
- script_id(71388);
+ script_oid("1.3.6.1.4.1.25623.1.0.71388");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-2320", "CVE-2012-2321", "CVE-2012-2322");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:54:20 -0400 (Thu, 31 May 2012)");
  script_name("Gentoo Security Advisory GLSA 201205-02 (ConnMan)");
 

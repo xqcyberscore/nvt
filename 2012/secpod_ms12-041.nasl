@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-041.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-041.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2709162)
 #
@@ -49,14 +49,14 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902917);
-  script_version("$Revision: 5341 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902917");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-1864", "CVE-2012-1865", "CVE-2012-1866", "CVE-2012-1867",
                 "CVE-2012-1868");
   script_bugtraq_id(53815, 53816, 53817, 53819, 53820);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 10:45:30 +0530 (Wed, 13 Jun 2012)");
   script_name("Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2709162)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49436/");

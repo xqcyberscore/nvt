@@ -61,12 +61,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(71290);
+ script_oid("1.3.6.1.4.1.25623.1.0.71290");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-0249", "CVE-2012-0250", "CVE-2012-0255");
- script_version("$Revision: 5912 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
  script_name("FreeBSD Ports: quagga");
 

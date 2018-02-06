@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_cisco_prime_data_center_network_manager_detect.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # Cisco Prime Data Center Network Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105255");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 8654 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-04-14 12:45:24 +0200 (Tue, 14 Apr 2015)");
  script_name("Cisco Prime Data Center Network Manager Detection");
 
@@ -43,7 +43,7 @@ extract the version number from the reply.");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -60,8 +60,7 @@ port = get_http_port( default:443 );
 url = '/';
 install = url;
 
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:url, port:port );
 
 if( "<title>Data Center Network Manager</title>" >!< buf ||
   ('productFamily">Cisco Prime' >!< buf && "Failed to get information about DCNM" >!< buf) )

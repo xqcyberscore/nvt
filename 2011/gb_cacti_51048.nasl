@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_51048.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_cacti_51048.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
 #
 # Cacti Multiple Input Validation Vulnerabilities
 #
@@ -25,68 +25,66 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cacti is prone to multiple multiple input-validation vulnerabilities
-including:
-
-1. Multiple cross-site scripting vulnerabilities.
-2. A cross-site request-forgery vulnerability.
-3. An HTML-injection vulnerability.
-
-An attacker can exploit these vulnerabilities to execute arbitrary
-script code in the browser of an unsuspecting user in the context of
-the affected site, steal cookie-based authentication credentials,
-disclose or modify sensitive information, or perform unauthorized
-actions. Other attacks are also possible.
-
-Versions prior to Cacti 0.8.7i are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
+CPE = "cpe:/a:cacti:cacti";
 
 if (description)
 {
- script_id(103365);
+ script_oid("1.3.6.1.4.1.25623.1.0.103365");
  script_bugtraq_id(51048);
- script_version ("$Revision: 7024 $");
+ script_version ("$Revision: 8674 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("Cacti Multiple Input Validation Vulnerabilities");
  script_cve_id("CVE-2011-5223");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_tag(name: "solution_type", value: "VendorFix");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2011-12-14 11:24:31 +0100 (Wed, 14 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("cacti_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51048");
- script_xref(name : "URL" , value : "http://cacti.net/");
- script_xref(name : "URL" , value : "http://forums.cacti.net/viewtopic.php?f=4&t=45871");
+ script_mandatory_keys("cacti/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for more information.");
+
+ script_tag(name: "summary", value: "Cacti is prone to multiple multiple input-validation vulnerabilities
+including:
+
+1. Multiple cross-site scripting vulnerabilities.
+
+2. A cross-site request-forgery vulnerability.
+
+3. An HTML-injection vulnerability.
+
+An attacker can exploit these vulnerabilities to execute arbitrary script code in the browser of an
+unsuspecting user in the context of the affected site, steal cookie-based authentication credentials, disclose
+or modify sensitive information, or perform unauthorized actions. Other attacks are also possible.
+
+Versions prior to Cacti 0.8.7i are vulnerable.");
+
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/51048");
+ script_xref(name: "URL", value: "http://cacti.net/");
+ script_xref(name: "URL", value: "http://forums.cacti.net/viewtopic.php?f=4&t=45871");
+
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
-
-if(vers = get_version_from_kb(port:port,app:"cacti")) {
-
-  if(version_is_less_equal(version: vers, test_version: "0.8.7i")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: vers, test_version: "0.8.7i")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "0.8.7i");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(0);

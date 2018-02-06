@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # IBM Endpoint Manager MDM Installed
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 8654 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-12-03 13:24:33 +0100 (Wed, 03 Dec 2014)");
  script_name("IBM Endpoint Manager MDM Installed");
 
@@ -50,17 +50,13 @@ component is installed.");
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 port = get_http_port( default:443 );
 
-url = '/';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:"/", port:port );
 
 if( ">Mobile Device Enrollment<" >< buf && "_mdm_session=" >< buf && "Server: Jetty" >< buf )
 {

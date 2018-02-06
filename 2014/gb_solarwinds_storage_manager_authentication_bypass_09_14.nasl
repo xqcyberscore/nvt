@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105090");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 6995 $");
+ script_version ("$Revision: 8654 $");
 
  script_name("SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability");
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-299/");
@@ -49,7 +49,7 @@ in the AuthenticationFilter class.");
 
  script_tag(name: "affected" , value:"Storage Manager Server before 5.7.2 is vulnerable;");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-09-16 15:55:12 +0200 (Tue, 16 Sep 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -67,19 +67,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:9000 );
-
-url = '/';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:"/", port:port );
 
 if( "<title>SolarWinds - Storage Manager" >!< buf ) exit( 0 );
 
 rand_str = "OpenVAS " + rand();
 file = '_OpenVAS_.jsp';
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 data = '\r\n' + 
       '--_Part_316_1523688081_377140406\r\n' + 

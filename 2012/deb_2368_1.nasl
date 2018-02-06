@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2368_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2368_1.nasl 8671 2018-02-05 16:38:48Z teissa $
 # Description: Auto-generated from advisory DSA 2368-1 (lighttpd)
 #
 # Authors:
@@ -71,12 +71,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70687);
+ script_oid("1.3.6.1.4.1.25623.1.0.70687");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2011-4362", "CVE-2011-3389");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 03:14:22 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2368-1 (lighttpd)");
 

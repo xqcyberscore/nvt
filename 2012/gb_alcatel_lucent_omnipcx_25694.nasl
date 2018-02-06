@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2007-3010");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 8654 $");
 
  script_name("Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability");
 
@@ -57,7 +57,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/479699");
  script_xref(name : "URL" , value : "http://www1.alcatel-lucent.com/psirt/statements/2007002/OXEUMT.htm");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-04-26 13:55:46 +0200 (Thu, 26 Apr 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -75,23 +75,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = "/index.html"; 
+buf = http_get_cache(port:port, item:url);
 
-if(http_vuln_check(port:port, url:url,pattern:"<title>OmniPCX")) {
+if("<title>OmniPCX" >< buf) {
 
   url = '/cgi-bin/masterCGI?ping=nomip&user=;id;';
 
   if(http_vuln_check(port:port, url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*",check_header:TRUE)) {
-     
     security_message(port:port);
     exit(0);
-
   } else {
     exit(99);
   }  
 }
 
 exit(0);
-

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2508_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2508_1.nasl 8671 2018-02-05 16:38:48Z teissa $
 # Description: Auto-generated from advisory DSA 2508-1 (kfreebsd-8)
 #
 # Authors:
@@ -47,12 +47,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(71492);
+ script_oid("1.3.6.1.4.1.25623.1.0.71492");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-0217");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:13:49 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2508-1 (kfreebsd-8)");
 

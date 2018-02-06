@@ -51,12 +51,12 @@ advisory GLSA 201207-10.";
                                                                                 
 if(description)
 {
- script_id(71590);
+ script_oid("1.3.6.1.4.1.25623.1.0.71590");
  script_tag(name:"cvss_base", value:"7.9");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2009-3553", "CVE-2010-0302", "CVE-2010-0393", "CVE-2010-0540", "CVE-2010-0542", "CVE-2010-1748", "CVE-2010-2431", "CVE-2010-2432", "CVE-2010-2941", "CVE-2011-3170");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:56 -0400 (Fri, 10 Aug 2012)");
  script_name("Gentoo Security Advisory GLSA 201207-10 (cups)");
 

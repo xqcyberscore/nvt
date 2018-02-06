@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 8655 2018-02-05 08:48:03Z cfischer $
 #
 # Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811547");
-  script_version("$Revision: 7610 $");
+  script_version("$Revision: 8655 $");
   script_cve_id("CVE-2017-10725", "CVE-2017-10726", "CVE-2017-10727", "CVE-2017-10728");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:48:03 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 16:51:17 +0530 (Wed, 02 Aug 2017)");
   script_name("Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name: "affected" , value:"Winamp version 5.666 Build 3516(x86).");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  1st November 2017, Information regarding this issue will be updated once the
+  05th February, 2018. Information regarding this issue will be updated once the
   solution details are available.");
 
   script_xref(name : "URL" , value : "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10725");
@@ -64,6 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"solution_type", value:"NoneAvailable");
   script_family("General");
   script_dependencies("secpod_winamp_detect.nasl");
   script_mandatory_keys("Winamp/Version");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 8659 2018-02-05 09:23:05Z asteins $
 #
 # Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810940");
-  script_version("$Revision: 7610 $");
+  script_version("$Revision: 8659 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:27:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability");
 
@@ -61,17 +61,15 @@ if(description)
   script_tag(name:"affected", value:" Bitdefender Internet Security 12.0
   (and earlier).");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 1st
-  November, 2017. Information regarding tis issue will be updated once the solution
-  details are available. For updates refer to
-  https://www.bitdefender.com");
+  script_tag(name:"solution", value:"Update Bitdefender to the latest version and ensure that the build version matches at least the following version: 21.0.24.62");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name : "URL" , value : "https://cybellum.com/doubleagent-taking-full-control-antivirus");
   script_xref(name : "URL" , value : "http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
+  script_xref(name : "URL" , value : "https://forum.bitdefender.com/index.php?/topic/75470-doubleagent/");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -94,7 +92,7 @@ if(!bitVer = get_app_version(cpe:CPE)){
 ## Grep for vulnerable version
 if(version_is_less_equal(version:bitVer, test_version:"12.0"))
 {
-  report = report_fixed_ver(installed_version:bitVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:bitVer, fixed_version:"Build: 21.0.24.62");
   security_message(data:report);
   exit(0);
 }

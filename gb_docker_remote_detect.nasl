@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_remote_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_docker_remote_detect.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # Docker Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105809");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8146 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+ script_version ("$Revision: 8654 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2016-07-13 16:11:18 +0200 (Wed, 13 Jul 2016)");
  script_name("Docker Detection");
 
@@ -55,8 +55,7 @@ include("host_details.inc");
 port = get_http_port( default:2375 );
 
 url = '/version';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:url, port:port );
 
 if( buf !~ "HTTP/1\.. 200" || "application/json" >!< buf || "ApiVersion" >!< buf || "Version" >!< buf ) exit( 0 );
 

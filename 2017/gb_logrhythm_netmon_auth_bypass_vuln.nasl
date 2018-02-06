@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logrhythm_netmon_auth_bypass_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_logrhythm_netmon_auth_bypass_vuln.nasl 8659 2018-02-05 09:23:05Z asteins $
 #
 # Logrhythm Network Monitor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:logrhythm:network_monitor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106798");
-  script_version("$Revision: 7610 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8659 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-04-28 15:23:53 +0200 (Fri, 28 Apr 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ Monitor web management interface.
 user-input used to dynamically construct system shell commands. These vulnerabilities can be exploited to run 
 arbitrary commands in the context of the root user and fully compromise the LogRhythm Network Monitor host.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 05th February, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.security-assessment.com/files/documents/advisory/Logrhythm-NetMonitor-Advisory.pdf");

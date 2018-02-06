@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln.nasl 8638 2018-02-02 11:14:59Z jschulte $
+# $Id: gb_puppet_enterprise_dos_vuln.nasl 8666 2018-02-05 12:52:45Z cfischer $
 #
 # Puppet Enterprise 2017 Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113101");
-  script_version("$Revision: 8638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 12:14:59 +0100 (Fri, 02 Feb 2018) $");
+  script_version("$Revision: 8666 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:52:45 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:40:38 +0100 (Fri, 02 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -66,7 +66,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( port: port, cpe: CPE ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "2017.1.0", test_version2: "2017.2.1" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2017.2.2" );

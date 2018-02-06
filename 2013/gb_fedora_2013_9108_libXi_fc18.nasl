@@ -32,8 +32,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865677);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 09:18:00 +0530 (Tue, 04 Jun 2013)");
   script_cve_id("CVE-2013-1984", "CVE-2013-1995", "CVE-2013-1998");
   script_tag(name:"cvss_base", value:"6.8");
@@ -42,7 +42,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-9108");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-June/107497.html");
-  script_summary("Check for the Version of libXi");
+  script_tag(name: "summary" , value: "Check for the Version of libXi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

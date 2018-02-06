@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # Samsung DVR Authentication Bypass
 #
@@ -48,7 +48,7 @@ tag_vuldetect = "Check if /cgi-bin/setup_user is accessible without authenticati
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6104 $");
+ script_version ("$Revision: 8654 $");
  script_cve_id("CVE-2013-3585", "CVE-2013-3586");
  script_bugtraq_id(61942, 61938);
  script_tag(name:"cvss_base", value:"7.6");
@@ -61,7 +61,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27753");
  script_xref(name:"URL", value:"http://www.andreafabrizi.it/?exploits:samsung:dvr");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2013-08-21 14:27:11 +0200 (Wed, 21 Aug 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -84,18 +84,14 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-url = '/';
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_get_cache(item:"/", port:port);
 
 if("<title>Web Viewer for Samsung DVR</title>" >!< buf)exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = 'GET /cgi-bin/setup_user HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +

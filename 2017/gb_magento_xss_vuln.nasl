@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_vuln.nasl 7613 2017-11-01 14:51:05Z asteins $
+# $Id: gb_magento_xss_vuln.nasl 8655 2018-02-05 08:48:03Z cfischer $
 #
 # Magento 1.9.0.1 Cross-Site Scripting Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:magentocommerce:magento";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112055");
-  script_version("$Revision: 7613 $");
+  script_version("$Revision: 8655 $");
   script_cve_id("CVE-2014-9758");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 15:51:05 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-05 09:48:03 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ if (description)
 
   script_tag(name: "affected", value: "Magento E-Commerce version 1.9.0.1.");
 
-  script_tag(name: "solution", value: "No solution available as of 01st November, 2017. Information
+  script_tag(name: "solution", value: "No solution available as of 05th February, 2018. Information
       regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.openwall.com/lists/oss-security/2015/12/05/4");

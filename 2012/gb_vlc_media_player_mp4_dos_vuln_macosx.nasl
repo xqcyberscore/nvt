@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_dos_vuln_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_vlc_media_player_mp4_dos_vuln_macosx.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # VLC Media Player 'MP4' Denial of Service Vulnerability (Mac OS X)
 #
@@ -42,13 +42,13 @@ denial of service vulnerability.";
 
 if(description)
 {
-  script_id(802921);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802921");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-2396");
   script_bugtraq_id(53535, 53169);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 13:33:36 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player 'MP4' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49159");

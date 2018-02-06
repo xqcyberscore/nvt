@@ -50,8 +50,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(870990);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 11:03:01 +0530 (Thu, 02 May 2013)");
   script_cve_id("CVE-2012-5614", "CVE-2013-1506", "CVE-2013-1521", "CVE-2013-1531",
                 "CVE-2013-1532", "CVE-2013-1544", "CVE-2013-1548", "CVE-2013-1552",
@@ -63,7 +63,7 @@ if(description)
 
   script_xref(name: "RHSA", value: "2013:0772-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-April/msg00037.html");
-  script_summary("Check for the Version of mysql");
+  script_tag(name: "summary" , value: "Check for the Version of mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

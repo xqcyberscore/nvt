@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Symantec Products CAB Files Memory Corruption Vulnerability
 #
@@ -46,11 +46,11 @@ tag_summary = "This host is installed with Symantec Product and is prone to
 
 if(description)
 {
-  script_id(803054);
-  script_version("$Revision: 6517 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803054");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-4953");
   script_bugtraq_id(56399);
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:16:15 +0530 (Thu, 22 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

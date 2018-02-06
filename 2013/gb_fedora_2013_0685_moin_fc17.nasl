@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097329.html");
   script_id(865229);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:24:43 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-6495", "CVE-2012-4404", "CVE-2012-6081",
                 "CVE-2012-6082", "CVE-2012-6080");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-0685");
   script_name("Fedora Update for moin FEDORA-2013-0685");
 
-  script_summary("Check for the Version of moin");
+  script_tag(name: "summary" , value: "Check for the Version of moin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

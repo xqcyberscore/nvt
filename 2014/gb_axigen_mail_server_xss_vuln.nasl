@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axigen_mail_server_xss_vuln.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
+# $Id: gb_axigen_mail_server_xss_vuln.nasl 8666 2018-02-05 12:52:45Z cfischer $
 #
 # AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gecad_technologies:axigen_mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804669");
-  script_version("$Revision: 8052 $");
+  script_version("$Revision: 8666 $");
   script_cve_id("CVE-2012-2592");
   script_bugtraq_id(54899);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:52:45 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 14:34:53 +0530 (Mon, 07 Jul 2014)");
 
   script_name("AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability");
@@ -73,7 +73,7 @@ http://www.axigen.com");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_version(cpe: CPE))
+if (!port = get_app_port(cpe: CPE))
   exit(0);
 
 if (!axigenVer = get_app_version(cpe: CPE, port: port))

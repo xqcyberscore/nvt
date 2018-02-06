@@ -50,8 +50,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865614);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-05-13 12:42:24 +0530 (Mon, 13 May 2013)");
   script_cve_id("CVE-2013-3238", "CVE-2013-3239");
   script_tag(name:"cvss_base", value:"6.0");
@@ -60,7 +60,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-7000");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/104725.html");
-  script_summary("Check for the Version of phpMyAdmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

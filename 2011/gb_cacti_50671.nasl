@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_50671.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_cacti_50671.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
 #
 # Cacti Unspecified SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -24,64 +24,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cacti is prone to an SQL-injection vulnerability and a cross-site
-scripting vulnerability because it fails to sufficiently sanitize user-
-supplied data.
-
-Exploiting these issues could allow an attacker to steal cookie-
-based authentication credentials, compromise the application,
-access or modify data, or exploit latent vulnerabilities in the
-underlying database.
-
-Cacti 0.8.7g is vulnerable; other versions may also be affected.";
-
-tag_solution = "The vendor has released fixes. Please see the references for details.";
+CPE = "cpe:/a:cacti:cacti";
 
 if (description)
 {
- script_id(103319);
+ script_oid("1.3.6.1.4.1.25623.1.0.103319");
  script_bugtraq_id(50671);
  script_cve_id("CVE-2011-4824", "CVE-2014-2326");
- script_version ("$Revision: 7015 $");
+ script_version ("$Revision: 8674 $");
+
+ script_tag(name: "solution_type", value: "VendorFix");
 
  script_name("Cacti Unspecified SQL Injection and Cross Site Scripting Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50671");
- script_xref(name : "URL" , value : "http://cacti.net/");
- script_xref(name : "URL" , value : "http://www.cacti.net/release_notes_0_8_7h.php");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/50671");
+ script_xref(name: "URL", value: "http://cacti.net/");
+ script_xref(name: "URL", value: "http://www.cacti.net/release_notes_0_8_7h.php");
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2011-11-15 08:09:39 +0100 (Tue, 15 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("cacti_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("cacti/installed");
+
+ script_tag(name: "solution", value: "The vendor has released fixes. Please see the references for details.");
+
+ script_tag(name: "summary", value: "Cacti is prone to an SQL-injection vulnerability and a cross-site scripting
+vulnerability because it fails to sufficiently sanitize user-supplied data.
+
+Exploiting these issues could allow an attacker to steal cookie-based authentication credentials, compromise the
+application, access or modify data, or exploit latent vulnerabilities in the underlying database.
+
+Cacti 0.8.7g is vulnerable; other versions may also be affected.");
+
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"cacti")) {
-
-  if(version_is_less(version: vers, test_version: "0.8.7h")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: vers, test_version: "0.8.7h")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "0.8.7h");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(0);

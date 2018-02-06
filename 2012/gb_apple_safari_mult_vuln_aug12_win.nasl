@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_aug12_win.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_apple_safari_mult_vuln_aug12_win.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Apple Safari Multiple Vulnerabilities - Aug 2012 (Windows)
 #
@@ -43,8 +43,8 @@ to multiple vulnerabilities.";
 
 if(description)
 {
-  script_id(802925);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802925");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-0678", "CVE-2012-0679", "CVE-2012-0680", "CVE-2012-0682",
                 "CVE-2012-1520", "CVE-2012-1521", "CVE-2012-3589", "CVE-2012-3590",
                 "CVE-2012-3591", "CVE-2012-3592", "CVE-2012-3593", "CVE-2012-3594",
@@ -69,7 +69,7 @@ if(description)
                     54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-01 10:16:52 +0530 (Wed, 01 Aug 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - Aug 2012 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5400");

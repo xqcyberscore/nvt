@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-060.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: secpod_ms12-060.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)
 #
@@ -53,13 +53,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(901211);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901211");
+  script_version("$Revision: 8671 $");
   script_bugtraq_id(54948);
   script_cve_id("CVE-2012-1856");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:46 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50247");

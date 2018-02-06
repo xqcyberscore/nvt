@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read
 #
@@ -45,7 +45,7 @@ tag_vuldetect = "Send a special crafted HTTP POST request and check the response
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6663 $");
+ script_version ("$Revision: 8654 $");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
@@ -54,7 +54,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -80,13 +80,11 @@ include("misc_func.inc");
 
 port = get_http_port( default:443 );
 
-url = '/';
-req = http_get( item:url, port:port );
-buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:"/", port:port );
 
 if( "EMC Cloud Tiering" >!< buf ) exit( 0 );
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 xxe = '<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [

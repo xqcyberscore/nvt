@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)
 #
@@ -48,13 +48,13 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 
 if(description)
 {
-  script_id(802650);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802650");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1200b/");

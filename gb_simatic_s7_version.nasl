@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
+# $Id: gb_simatic_s7_version.nasl 8661 2018-02-05 09:41:51Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106096");
- script_version ("$Revision: 8570 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
+ script_version ("$Revision: 8661 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:41:51 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,12 +90,12 @@ foreach source (make_list("cotp", "snmp", "http")) {
 if (detected_model) {
   cpe_model = tolower(ereg_replace(pattern: "[ /]", string: detected_model, replace: "_"));
 
-  app_cpe = build_cpe(value: detected_version, exp:"([0-9.]+)",
+  app_cpe = build_cpe(value: detected_version, exp:"^([0-9.]+)",
                       base: 'cpe:/a:siemens:simatic_s7_' + cpe_model + ':');
   if (!app_cpe)
     app_cpe = 'cpe:/a:siemens:simatic_s7_' + cpe_model;
 
-  os_cpe = build_cpe(value: detected_version, exp:"([0-9.]+)",
+  os_cpe = build_cpe(value: detected_version, exp:"^([0-9.]+)",
                      base: 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware:');
   if (!os_cpe)
     os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware';
@@ -145,6 +145,9 @@ if (snmp_ports = get_kb_list("simatic_s7/snmp/port")) {
     module = get_kb_item("simatic_s7/snmp/module");
     if (module)
       extra += '  Module:        ' + module + '\n';
+
+    register_product(cpe: app_cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
+    register_product(cpe: os_cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
   }
 }
 
@@ -162,6 +165,9 @@ if (http_ports = get_kb_list("simatic_s7/http/port")) {
     module = get_kb_item("simatic_s7/http/module");
     if (module)
       extra += '  Module:        ' + module + '\n';
+
+    register_product(cpe: app_cpe, location: '/', port: port, service: "www");
+    register_product(cpe: os_cpe, location: '/', port: port, service: "www");
   }
 }
 

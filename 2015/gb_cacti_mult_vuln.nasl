@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_cacti_mult_vuln.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
 #
 # Cacti Multiple Vulnerabilities-June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805664");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 8674 $");
   script_cve_id("CVE-2015-4454", "CVE-2015-4342", "CVE-2015-2665", "CVE-2015-2967");
   script_bugtraq_id(75270, 75108, 75669);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 10:16:48 +0530 (Mon, 20 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple Vulnerabilities-June15");
@@ -47,61 +47,51 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
   - The 'get_hash_graph_template' function in lib/functions.php script in Cacti.
-  - An insufficient sanitization of user-supplied data in HTTP request sent to
-    graphs.
+
+  - An insufficient sanitization of user-supplied data in HTTP request sent to graphs.
+
   - Unspecified vectors involving a cdef id
+
   - An insufficient sanitization of user-supplied data in settings.php in Cacti.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to execute arbitrary SQL commands, inject arbitrary web script or
-  HTML via unspecified vectors.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary SQL
+commands, inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"Cacti version before 0.8.8d.");
 
-  script_tag(name:"solution", value:"Upgrade to version 0.8.8d or later,
-  For updates refer to http://www.cacti.net");
+  script_tag(name:"solution", value:"Upgrade to version 0.8.8d or later, For updates refer to
+http://www.cacti.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/75108");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/75270");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/75669");
-  script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-VD-15-017/");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75108");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75270");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75669");
+  script_xref(name: "URL", value: "http://www.fortiguard.com/advisory/FG-VD-15-017/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl");
   script_mandatory_keys("cacti/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-cactiVer = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if (!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-# Get Version
-if(!cactiVer = get_app_version(cpe:CPE, port:http_port)){
+if (!cactiVer = get_app_version(cpe:CPE, port:http_port))
   exit(0);
-}
 
-# Checking for Vulnerable version
-if(version_is_less(version:cactiVer, test_version:"0.8.8d"))
-{
-  report = 'Installed version: ' + cactiVer + '\n' +
-           'Fixed version:     ' + "0.8.8d" + '\n';
+if (version_is_less(version:cactiVer, test_version:"0.8.8d")) {
+  report = report_fixed_ver(installed_version: cactiVer, fixed_version: "0.8.8d");
   security_message(data:report, port:http_port);
   exit(0);
 }
+
+exit(0);

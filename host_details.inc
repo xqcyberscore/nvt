@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8610 2018-01-31 15:08:13Z cfischer $
+# $Id: host_details.inc 8662 2018-02-05 10:57:36Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8610 $
+# $Revision: 8662 $
 #
 ###############################################################################
 
@@ -110,6 +110,8 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
+    "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
@@ -175,6 +177,8 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
+    "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl

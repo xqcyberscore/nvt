@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1807_1.nasl 7958 2017-12-01 06:47:47Z santu $
+# $Id: gb_ubuntu_USN_1807_1.nasl 8672 2018-02-05 16:39:18Z teissa $
 #
 # Ubuntu Update for mysql-5.5 USN-1807-1
 #
@@ -49,8 +49,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841406);
-  script_version("$Revision: 7958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-04-25 10:48:28 +0530 (Thu, 25 Apr 2013)");
   script_cve_id("CVE-2012-0553", "CVE-2012-4414", "CVE-2012-5613", "CVE-2012-5615",
                 "CVE-2012-5627", "CVE-2013-1492", "CVE-2013-1502", "CVE-2013-1506",
@@ -65,7 +65,7 @@ if(description)
 
   script_xref(name: "USN", value: "1807-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1807-1/");
-  script_summary("Check for the Version of mysql-5.5");
+  script_tag(name: "summary" , value: "Check for the Version of mysql-5.5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

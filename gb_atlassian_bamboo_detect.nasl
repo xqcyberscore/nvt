@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_atlassian_bamboo_detect.nasl 8668 2018-02-05 15:42:45Z asteins $
 #
 # Atlassian Bamboo Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807265");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 8668 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 16:42:45 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-02-17 09:47:57 +0530 (Wed, 17 Feb 2016)");
   script_name("Atlassian Bamboo Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,27 +56,34 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
+found = FALSE;
 
-##Iterate over possible paths
+## There exists a couple of different parameters after 'userlogin', so we're gonna check both.
+creds = make_list("/userlogin!default.action", "/userlogin!doDefault.action");
+
 foreach dir( make_list_unique( "/", "/bamboo", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## Send and receive response
-  sndReq = http_get( item:dir + "/userlogin!default.action", port:port );
-  rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
-  
-  ## Confirm the application
-  if( rcvRes && "title>Log in as a Bamboo user" >< rcvRes ) {
+  foreach cred( creds ) {
+    sndReq = http_get( item:dir + cred, port:port );
+    rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+
+    if ( rcvRes && "title>Log in as a Bamboo user" >< rcvRes ) {
+      found = TRUE;
+      break;
+    }
+  }
+
+  if( found ) {
 
     version = "unknown";
 
-    ## Grep for the version
-    ver = eregmatch( pattern:'version ([0-9.]+)', string:rcvRes );
+    ver = eregmatch( pattern:'version ([0-9.]+)( build ([0-9]+))?', string:rcvRes );
     if( ver[1] ) version = ver[1];
+    if( ver[3] ) build = "Build: " + ver[3];
 
     set_kb_item( name:"AtlassianBamboo/Installed", value:TRUE );
     set_kb_item( name:"www/" + port + "/AtlassianBamboo", value:version );
@@ -91,7 +98,8 @@ foreach dir( make_list_unique( "/", "/bamboo", cgi_dirs( port:port ) ) ) {
                                               version:version,
                                               install:install,
                                               cpe:cpe,
-                                              concluded:ver[0] ),
+                                              concluded:ver[0],
+                                              extra:build),
                                               port:port );
     exit( 0 );
   }

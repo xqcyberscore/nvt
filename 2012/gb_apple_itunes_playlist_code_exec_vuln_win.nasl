@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_playlist_code_exec_vuln_win.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_playlist_code_exec_vuln_win.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Apple iTunes '.m3u' Playlist Code Execution Vulnerabilities (Windows)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 
 if(description)
 {
-  script_id(802862);
-  script_version("$Revision: 8169 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802862");
+  script_version("$Revision: 8671 $");
   script_cve_id("CVE-2012-0677");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:25:52 +0530 (Tue, 12 Jun 2012)");
   script_name("Apple iTunes '.m3u' Playlist Code Execution Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5318");

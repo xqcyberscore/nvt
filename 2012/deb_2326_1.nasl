@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2326_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2326_1.nasl 8671 2018-02-05 16:38:48Z teissa $
 # Description: Auto-generated from advisory DSA 2326-1 (pam)
 #
 # Authors:
@@ -47,12 +47,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70541);
+ script_oid("1.3.6.1.4.1.25623.1.0.70541");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-3148", "CVE-2011-3149");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 8671 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:26:19 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2326-1 (pam)");
 

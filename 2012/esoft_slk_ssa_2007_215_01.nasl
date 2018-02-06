@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_215_01.nasl 6598 2017-07-07 09:36:44Z cfischer $
+# $Id: esoft_slk_ssa_2007_215_01.nasl 8671 2018-02-05 16:38:48Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -40,10 +40,10 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
                                                                                 
 if(description)
 {
- script_id(59006);
+ script_oid("1.3.6.1.4.1.25623.1.0.59006");
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:36:44 +0200 (Fri, 07 Jul 2017) $");
- script_version("$Revision: 6598 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+ script_version("$Revision: 8671 $");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  name = "Slackware Advisory SSA:2007-215-01 thunderbird ";

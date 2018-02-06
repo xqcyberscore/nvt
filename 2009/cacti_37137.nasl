@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cacti_37137.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: cacti_37137.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
 #
 # Cacti 'Linux - Get Memory Usage' Remote Command Execution Vulnerability
 #
@@ -24,62 +24,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cacti is prone to a remote command-execution vulnerability because the
-software fails to adequately sanitize user-supplied input.
-
-Successful attacks can compromise the affected software and possibly
-the computer.";
-
+CPE = "cpe:/a:cacti:cacti";
 
 if (description)
 {
- script_id(100365);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100365");
+ script_version("$Revision: 8674 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-12-01 12:01:39 +0100 (Tue, 01 Dec 2009)");
  script_bugtraq_id(37137);
  script_cve_id("CVE-2009-4112");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
+ script_tag(name: "solution_type", value: "VendorFix");
+
  script_name("Cacti 'Linux - Get Memory Usage' Remote Command Execution Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37137");
- script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/2009-11/0292.html");
- script_xref(name : "URL" , value : "http://cacti.net/");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/37137");
+ script_xref(name: "URL", value: "http://archives.neohapsis.com/archives/fulldisclosure/2009-11/0292.html");
+ script_xref(name: "URL", value: "http://cacti.net/");
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("cacti_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("cacti/installed");
+
+ script_tag(name: "summary", value: "Cacti is prone to a remote command-execution vulnerability because the
+software fails to adequately sanitize user-supplied input.
+
+Successful attacks can compromise the affected software and possibly the computer.");
+
  exit(0);
 }
 
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/cacti")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
-
-vers = matches[1];
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_less(version: vers, test_version: "0.8.7e")) {
-     security_message(port:port);
-     exit(0);
-   }  
-
+if (version_is_less(version: vers, test_version: "0.8.7e")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "0.8.7e");
+  security_message(port: port, data: report);
+  exit(0);
 } 
 
 exit(0);

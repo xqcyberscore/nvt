@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphite_61894.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_graphite_61894.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # Graphite Remote Code Execution Vulnerability
 #
@@ -52,14 +52,14 @@ if (description)
  script_cve_id("CVE-2013-5093");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6065 $");
+ script_version ("$Revision: 8654 $");
 
  script_name("Graphite Remote Code Execution Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
  script_tag(name:"qod_type", value:"remote_analysis");
  script_tag(name:"solution_type", value: "VendorFix");
@@ -82,18 +82,14 @@ if (description)
 }
 
 include("http_func.inc");
+include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-host = get_host_name();
-
-url = '/';
-req = http_get(item:url, port:port);
-buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_get_cache(item:"/", port:port);
 
 if("<title>Graphite Browser</title>" >!< buf)exit(0);
 
+host = http_host_name(port:port);
 url = '/render/local';
 req = http_get(item:url, port:port);
 buf = http_send_recv(port:port, data:req, bodyonly:FALSE);

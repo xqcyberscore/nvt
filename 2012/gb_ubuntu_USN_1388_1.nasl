@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1388_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1388_1.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Ubuntu Update for linux-ec2 USN-1388-1
 #
@@ -47,9 +47,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1388-1/");
-  script_id(840914);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840914");
+  script_version("$Revision: 8671 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:19:24 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2011-4127", "CVE-2011-4622", "CVE-2012-0038");
   script_tag(name:"cvss_base", value:"4.9");

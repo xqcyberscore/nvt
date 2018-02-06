@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servision_hvg_default_cred_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_servision_hvg_default_cred_vuln.nasl 8654 2018-02-05 08:19:22Z cfischer $
 #
 # SerVision HVG Default Credentials Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807072");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 8654 $");
   script_cve_id("CVE-2015-0930");
   script_bugtraq_id(72433);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 16:15:07 +0530 (Tue, 16 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("SerVision HVG Default Credentials Vulnerability");
@@ -67,8 +67,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -76,33 +78,16 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-host = "";
-hvgPort = 0;
+hvgPort = get_http_port(default:8080);
 
-# Get HTTP Port
-if(!hvgPort = get_http_port(default:8080)){
-  exit(0);
-}
-
-## Get host name or IP
-if(!host = http_host_name(port:hvgPort)){
-  exit(0);
-}
-
-##Construct url
 url = "/index.htm";
+buf = http_get_cache(item:url, port:hvgPort);
 
-##Send Request and Receive response
-req = http_get(item:url, port:hvgPort);
-buf = http_keepalive_send_recv(port:hvgPort, data:req);
-
-##Application confirmation
 if('user_username' >< buf && 'user_password' >< buf)
 {
+
+  host = http_host_name(port:hvgPort);
+
   ## Construct the crafted data
   postData = string('user_username=admin&user_password=Bantham&LOADED=1&TO_LOAD=index.htm');
 

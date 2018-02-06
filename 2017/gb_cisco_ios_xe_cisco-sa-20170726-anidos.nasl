@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anidos.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anidos.nasl 8659 2018-02-05 09:23:05Z asteins $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6663");
  script_tag(name: "cvss_base", value: "6.1");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 7610 $");
+ script_version("$Revision: 8659 $");
 
  script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect", value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
+ script_tag(name: "solution", value: "No solution or patch is available as of 05th February, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
  script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
@@ -58,7 +58,7 @@ affected system and consequently cause the affected device to reload, resulting 
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
  script_tag(name: "creation_date", value: "2017-07-28 09:17:33 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

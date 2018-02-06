@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2013:001");
   script_id(831761);
-  script_version("$Revision: 6572 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:53 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:54:28 +0530 (Fri, 04 Jan 2013)");
   script_cve_id("CVE-2012-6085");
   script_tag(name:"cvss_base", value:"5.8");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2013:001");
   script_name("Mandriva Update for gnupg MDVSA-2013:001 (gnupg)");
 
-  script_summary("Check for the Version of gnupg");
+  script_tag(name: "summary" , value: "Check for the Version of gnupg");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

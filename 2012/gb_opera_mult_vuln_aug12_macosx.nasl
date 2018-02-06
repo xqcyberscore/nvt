@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug12_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_opera_mult_vuln_aug12_macosx.nasl 8671 2018-02-05 16:38:48Z teissa $
 #
 # Opera Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is installed with Opera and is prone to multiple
 
 if(description)
 {
-  script_id(803003);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803003");
+  script_version("$Revision: 8671 $");
   script_bugtraq_id(54782, 54788, 54780);
   script_cve_id("CVE-2012-4142", "CVE-2012-4143", "CVE-2012-4144", "CVE-2012-4145");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 10:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50044");
