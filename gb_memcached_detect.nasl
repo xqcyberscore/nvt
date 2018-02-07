@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_detect.nasl 4688 2016-12-06 12:48:55Z cfi $
+# $Id: gb_memcached_detect.nasl 8695 2018-02-06 16:42:37Z cfischer $
 #
 # Memcached Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800714");
-  script_version("$Revision: 4688 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 13:48:55 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 8695 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,7 +92,7 @@ if(version[1] != NULL)
 
   log_message(data: build_detection_report(app:"MemCached", version:version[1], install:port + "/tcp",
             cpe:cpe, concluded:version[0]), port:port);
-  exit();
+  exit(0);
 
 }
 

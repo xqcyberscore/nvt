@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # CMS Made Simple Multiple Vulnerabilities - June16
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808061");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 8680 $");
   script_cve_id("CVE-2016-2784");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:53 +0530 (Tue, 07 Jun 2016)");
   script_name("CMS Made Simple Multiple Vulnerabilities - June16");
 
@@ -45,22 +45,19 @@ if (description)
   and check whether its able to read cookie value.");
 
   script_tag(name:"insight" , value:"The multiple flaws exist due to,
-  - Malicious content in a CMS Made Simple installation by poisoning the web
-    server cache when Smarty Cache is activated by modifying the Host HTTP
-    Header in his request.
+
+  - Malicious content in a CMS Made Simple installation by poisoning the web server cache when Smarty Cache is
+activated by modifying the Host HTTP Header in his request.
+
   - Lack of filtering of HTML entities in $_SERVER variable.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
-  attackers to obtain sensitive information or conduct cross site scripting
-  attacks.
+  script_tag(name:"impact" , value:"Successful exploitation will allow remote attackers to obtain sensitive
+information or conduct cross site scripting attacks.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"CMS Made Simple version 2.x prior to 2.1.3 and version 1.x prior to 1.12.2");
 
-  script_tag(name:"affected", value:"CMS Made Simple version 2.x prior to 2.1.3
-  and version 1.x prior to 1.12.2");
-
-  script_tag(name: "solution" , value:"Upgrade to CMS Made Simple version 2.1.3 or
-  1.12.2 or later. For updates refer to http://www.cmsmadesimple.org");
+  script_tag(name: "solution" , value:"Upgrade to CMS Made Simple version 2.1.3 or 1.12.2 or later. For updates
+refer to http://www.cmsmadesimple.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
  
@@ -83,21 +80,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-cmsPort = 0;
-cmsReq = "";
-cmsRes = "";
-dir= "";
-
-## Get port
-if(!cmsPort = get_app_port(cpe: CPE)){
+if(!cmsPort = get_app_port(cpe: CPE))
   exit(0);
-}
 
-## Get location
-if(!dir = get_app_location(cpe:CPE, port:cmsPort)){
+if(!dir = get_app_location(cpe:CPE, port:cmsPort))
   exit(0);
-}
 
 if(dir == "/") dir = "";
 
@@ -116,3 +103,5 @@ if(cmsRes =~ "HTTP/1\.. 200" && "alert(document.cookie)" >< cmsRes &&
   security_message(port:cmsPort);
   exit(0);
 }
+
+exit(0);

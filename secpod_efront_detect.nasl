@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_efront_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_efront_detect.nasl 8690 2018-02-06 14:17:04Z jschulte $
 #
 # eFront Version Detection
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901044");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8690 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("eFront Version Detection");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 15:17:04 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-31 09:54:01 +0100 (Sat, 31 Oct 2009)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -68,6 +68,8 @@ foreach dir( make_list_unique( "/", "/www", "/efront", "/eFront", "/efront/www",
   if( rcvRes =~ "HTTP/1.. 200" && ( 'http://www.efrontlearning.net">eFront' >< rcvRes ||
       "<title>eFront | Refreshing eLearning</title>" >< rcvRes || 'content = "Collaborative Elearning Platform"' >< rcvRes ||
       "index.php?ctg=lesson_info&lessons_ID=1" >< rcvRes ) ) {
+
+    set_kb_item( name: "efront/detected", value: TRUE );
 
     version = "unknown";
 

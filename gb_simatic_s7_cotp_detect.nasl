@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 8570 2018-01-30 03:06:39Z ckuersteiner $
+# $Id: gb_simatic_s7_cotp_detect.nasl 8695 2018-02-06 16:42:37Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 8570 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-30 04:06:39 +0100 (Tue, 30 Jan 2018) $");
+ script_version ("$Revision: 8695 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,23 +59,23 @@ include("misc_func.inc");
 function cotp_send_recv( req, soc )
 {
   local_var req, soc;
- 
+
   send(socket: soc, data:req);
   recv = recv(socket: soc, length: 6, min: 6);
- 
+
   if (strlen(recv) < 6)
     return;
- 
+
   len = (getword(blob: recv, pos: 2) - 6);
- 
+
   if (len < 1 || len > 65535)
     return;
- 
+
   recv += recv(socket: soc, length: len);
- 
+
   if (strlen( recv ) != (len + 6))
     return;
- 
+
   return recv;
 }
 
@@ -99,8 +99,8 @@ if (!get_port_state(port))
   exit(0);
 
 soc = open_sock_tcp(port);
-if (!soc) 
-  exit();
+if (!soc)
+  exit(0);
 
 # COTP connection request
 connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
@@ -114,8 +114,8 @@ if (!recv || hexstr(recv[5]) != "d0") {
   close(soc);
 
   soc = open_sock_tcp(port);
-  if (!soc) 
-    exit();
+  if (!soc)
+    exit(0);
 
   # Try an alternative request
   connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,

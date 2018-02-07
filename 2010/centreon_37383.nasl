@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: centreon_37383.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: centreon_37383.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Centreon Authentication Mechanism Security Bypass Vulnerability
 #
@@ -24,67 +24,59 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Centreon is prone to a security-bypass vulnerability.
-
-An attacker can exploit this issue to bypass certain security
-restrictions and gain unauthorized access to certain functionality,
-which may lead to further attacks.
-
-Versions prior to Centreon 2.1.4 are vulnerable.";
-
-
-tag_solution = "Updates are available. Please see the references for details.";
+CPE = "cpe:/a:centreon:centreon";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100428");
- script_version("$Revision: 8447 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+ script_version("$Revision: 8680 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2010-01-06 10:44:19 +0100 (Wed, 06 Jan 2010)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2009-4368");
  script_bugtraq_id(37383);
 
+ script_tag(name: "solution_type", value: "VendorFix");
+
  script_name("Centreon Authentication Mechanism Security Bypass Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37383");
- script_xref(name : "URL" , value : "http://www.centreon.com/Development/changelog-2x.html");
- script_xref(name : "URL" , value : "http://www.centreon.com/");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/37383");
+ script_xref(name: "URL", value: "http://www.centreon.com/Development/changelog-2x.html");
+ script_xref(name: "URL", value: "http://www.centreon.com/");
 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("centreon_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("centreon/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for details.");
+
+ script_tag(name: "summary", value: "Centreon is prone to a security-bypass vulnerability.
+
+An attacker can exploit this issue to bypass certain security restrictions and gain unauthorized access to certain
+functionality, which may lead to further attacks.
+
+Versions prior to Centreon 2.1.4 are vulnerable.");
+
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/centreon")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
-
-vers = matches[1];
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_less(version: vers, test_version: "2.1.4")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: vers, test_version: "2.1.4")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "2.1.4");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(0);

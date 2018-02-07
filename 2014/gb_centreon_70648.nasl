@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_70648.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_centreon_70648.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-3828","CVE-2014-3829");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6769 $");
+ script_version ("$Revision: 8680 $");
 
  script_name("Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities");
 
@@ -58,7 +58,7 @@ Centreon Enterprise Server 2.2 and prior versions");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-10-28 12:37:14 +0100 (Tue, 28 Oct 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_analysis");
@@ -73,7 +73,6 @@ Centreon Enterprise Server 2.2 and prior versions");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
@@ -87,4 +86,3 @@ if( http_vuln_check( port:port, url:url, pattern:"sh: graph: command not found" 
 }
 
 exit( 99 );
-

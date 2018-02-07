@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_50568.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_centreon_50568.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Centreon 'command_name' Parameter Remote Command Execution Vulnerability
 #
@@ -24,59 +24,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Centreon is prone to a remote command-injection vulnerability.
-
-Attackers can exploit this issue to execute arbitrary commands in the
-context of the application.
-
-Centreon 2.3.1 is affected; other versions may also be vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
+CPE = "cpe:/a:centreon:centreon";
 
 if (description)
 {
- script_id(103338);
+ script_oid("1.3.6.1.4.1.25623.1.0.103338");
  script_bugtraq_id(50568);
- script_version ("$Revision: 7044 $");
+ script_version ("$Revision: 8680 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+
+ script_tag(name: "solution_type", value: "VendorFix");
+
  script_name("Centreon 'command_name' Parameter Remote Command Execution Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50568");
- script_xref(name : "URL" , value : "http://www.centreon.com/");
- script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2011-017.txt");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/50568");
+ script_xref(name: "URL", value: "http://www.centreon.com/");
+ script_xref(name: "URL", value: "https://www.trustwave.com/spiderlabs/advisories/TWSL2011-017.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2011-11-16 09:31:56 +0100 (Wed, 16 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("centreon_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("centreon/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for more information.");
+
+ script_tag(name: "summary", value: "Centreon is prone to a remote command-injection vulnerability.
+
+Attackers can exploit this issue to execute arbitrary commands in the context of the application.
+
+Centreon 2.3.1 is affected; other versions may also be vulnerable.");
+
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"centreon")) {
-
-  if(version_is_less_equal(version: vers, test_version: "2.3.1")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less_equal(version: vers, test_version: "2.3.1")) {
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);

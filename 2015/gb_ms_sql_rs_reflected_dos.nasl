@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sql_rs_reflected_dos.nasl 5740 2017-03-28 03:23:03Z ckuerste $
+# $Id: gb_ms_sql_rs_reflected_dos.nasl 8695 2018-02-06 16:42:37Z cfischer $
 #
 # MS SQL Server Resolution Service Amplification Reflected DRDoS
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105187");
- script_version ("$Revision: 5740 $");
+ script_version ("$Revision: 8695 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
@@ -36,7 +36,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://kurtaubuchon.blogspot.de/2015/01/mc-sqlr-amplification-ms-sql-server.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-01-26 13:45:36 +0100 (Mon, 26 Jan 2015)");
 
  script_category(ACT_ATTACK);
@@ -64,7 +64,7 @@ port = 1434;
 if( islocalnet() || islocalhost() ) exit( 0 );
 
 soc = open_sock_udp( port );
-if( ! soc )  exit();
+if( ! soc ) exit(0);
 
 byte = raw_string( 0x02 );
 

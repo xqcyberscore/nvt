@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_rce_11_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_centreon_rce_11_14.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Centreon Remote Code Execution 
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105125");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 8680 $");
 
  script_name("Centreon Remote Code Execution ");
 
@@ -44,22 +44,20 @@ arbitrary code within the context of the affected application.");
  script_tag(name: "vuldetect" , value:"Send a special crafted login request.");
  script_tag(name: "solution" , value:"Updates are available.");
  script_tag(name: "summary" , value:"Centreon is affected by two vulnerabilities:
+
 1. Unauthenticated remote command execution
 
-This vulnerability allows an unauthenticated user to execute arbitrary
-commands on the remote system.
+This vulnerability allows an unauthenticated user to execute arbitrary commands on the remote system.
 
 2. Information disclosure (local)
 
-A specific command-line utility allows local users to escalate
-privileges and retrieve sensitive files on the system, such as
-/etc/shadow. This vulnerability provides a root user access on files
-(read only)");
+A specific command-line utility allows local users to escalate privileges and retrieve sensitive files on the
+system, such as /etc/shadow. This vulnerability provides a root user access on files(read only)");
 
  script_tag(name: "affected" , value:"Centreon <= 2.5.3");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name:"creation_date", value:"2014-11-29 11:50:21 +0100 (Sat, 29 Nov 2014)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

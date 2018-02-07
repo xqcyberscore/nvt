@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 7997 2017-12-05 15:36:22Z cfischer $
+# $Id: products_eol.inc 8692 2018-02-06 14:56:14Z jschulte $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7997 $
+# $Revision: 8692 $
 #
 ###############################################################################
 
@@ -217,6 +217,12 @@ eol_cpes[ 'cpe:/a:typo3:typo3' ]             = make_array(
 # https://codex.wordpress.org/WordPress_Versions
 eol_cpes[ 'cpe:/a:wordpress:wordpress' ]     = make_array(
                                                            'versions', '0.7:2004-01-03;1.0:2004-05-22;1.2:2005-02-17;1.5:2005-31-26;2.0:2007-08-05;2.1:2007-05-16;2.2:2007-09-24;2.3:2008-03-29;2.5:2008-07-15;2.6:2008-12-10;2.7:2009-06-10;2.8:2009-12-18;2.9:2010-06-17;3.0:2011-04-26;3.1:2011-07-04;3.2:2011-12-12;3.3:2012-06-27;3.4:2012-12-11;3.5:2013-08-01;3.6:2013-10-14',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
+
+# https://www.efrontlearning.com/migration
+eol_cpes[ 'cpe:/a:efrontlearning:efront' ]   = make_array(
+                                                           'versions', '3.6:2017-09-15',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 

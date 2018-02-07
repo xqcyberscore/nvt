@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: clearswift_mimesweeper_smtp_detect.nasl 5992 2017-04-20 14:42:07Z cfi $
+# $Id: clearswift_mimesweeper_smtp_detect.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Clearswift MIMEsweeper manager console detection
 #
@@ -27,30 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18219");
-  script_version("$Revision: 5992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 8680 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Clearswift MIMEsweeper manager console detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
-  script_family("Service detection");
+  script_family("Product detection");
   # nb: Don't add a dependency to http_version.nasl to avoid cyclic dependency to embedded_web_server_detect.nasl
   script_dependencies("find_service.nasl", "httpver.nasl");
-  script_require_ports("Services/www", 80);
+  script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host appears to be running MIMEsweeper for SMTP, connections 
-  are allowed to the web MIMEsweeper manager console.
+  script_tag(name:"solution", value:"The remote host appears to be running MIMEsweeper for SMTP, connections are
+allowed to the web MIMEsweeper manager console.
 
-  Letting attackers know that you are using this software will help them 
-  to focus their attack or will make them change their strategy.";
+Letting attackers know that you are using this software will help them to focus their attack or will make them
+change their strategy.");
 
-  tag_solution = "Filter incoming traffic to this port";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Filter incoming traffic to this port");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -69,7 +66,7 @@ req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
 if( isnull( rep ) ) exit( 0 );
 
-if( "<title>MIMEsweeper Manager</title>" >< rep ) {
+if( "MIMEsweeper Manager" >< rep && "infoTimeout_persistant" >< rep ) {
   log_message( port:port );
   set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
 }

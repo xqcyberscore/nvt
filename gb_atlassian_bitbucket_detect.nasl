@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bitbucket_detect.nasl 5969 2017-04-18 14:59:34Z ckuerste $
+# $Id: gb_atlassian_bitbucket_detect.nasl 8687 2018-02-06 13:51:01Z asteins $
 #
 # Atlassian Bitbucket Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106759");
- script_version ("$Revision: 5969 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-18 16:59:34 +0200 (Tue, 18 Apr 2017) $");
+ script_version ("$Revision: 8687 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-06 14:51:01 +0100 (Tue, 06 Feb 2018) $");
  script_tag(name: "creation_date", value: "2017-04-18 10:53:03 +0200 (Tue, 18 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,7 +63,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
 
-foreach dir (make_list_unique("/", "/bitbucket", cgi_dirs(port: port))) {
+foreach dir (make_list_unique("/", "/bitbucket", "/stash", cgi_dirs(port: port))) {
   install = dir;
   if (dir == "/")
     dir = "";

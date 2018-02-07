@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_bash_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_gnu_bash_detect_lin.nasl 8686 2018-02-06 13:38:19Z emoss $
 #
 # GNU Bash Version Detection (Linux)
 #
@@ -29,10 +29,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108258");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 8686 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 14:38:19 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 12:31:0 +0200 (Fri, 20 Oct 2017)");
-  script_name("GCC Version Detection (Linux)");
+  script_name("GNU Bash Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");

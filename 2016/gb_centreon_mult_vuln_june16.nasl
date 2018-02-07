@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_june16.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_centreon_mult_vuln_june16.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
 #
 # Centreon 'POST' Parameter Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807337");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 8680 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:49 +0530 (Tue, 07 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'POST' Parameter Multiple Vulnerabilities");
@@ -44,10 +44,13 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws are due to,
+
   - An insufficient validation of user supplied input via post parameter 
     'img_comment' to 'main.php' script.
+
   - An improper verification of uploaded files via the 'filename' POST 
     parameter.
+
   - The validity checks are not performed to verify the HTTP requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -74,31 +77,19 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-cenPort = "";
-cenVer = "";
-
-## Get HTTP Port
-if(!cenPort = get_app_port(cpe:CPE)){
+if (!cenPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get the version
-if(!cenVer = get_app_version(cpe:CPE, port:cenPort)){
+if (!cenVer = get_app_version(cpe:CPE, port:cenPort))
   exit(0);
-}
 
-##Check for vulnerable version
-if(version_is_equal(version:cenVer, test_version:"2.6.1"))
-{
+if (version_is_equal(version:cenVer, test_version:"2.6.1")) {
   report = report_fixed_ver(installed_version:cenVer, fixed_version:"2.6.3 or 2.7 or later");
   security_message(data:report, port:cenPort);
   exit(0);
 }
+
+exit(0);

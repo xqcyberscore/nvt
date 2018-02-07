@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_padding_oracle_vul.nasl 7578 2017-10-26 11:00:21Z cfischer $
+# $Id: gb_openssl_padding_oracle_vul.nasl 8695 2018-02-06 16:42:37Z cfischer $
 #
 # Another Padding Oracle in OpenSSL CBC Ciphersuites CVE-2016-2107
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107141");
-  script_version("$Revision: 7578 $");
+  script_version("$Revision: 8695 $");
   script_cve_id("CVE-2016-2107");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 12:21:46 +0100 (Thu, 30 Mar 2017)");
   script_name("OpenSSL Padding Oracle vulnerability.");
 
@@ -103,7 +103,7 @@ if(  defined_func( 'prf_sha256' ) &&
   if (! hello )
   {
     close( soc );
-    exit();
+    exit(0);
   }
 
   send( socket: soc, data: hello );
