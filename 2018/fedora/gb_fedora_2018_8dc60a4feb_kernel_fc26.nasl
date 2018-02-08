@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_8dc60a4feb_kernel_fc26.nasl 8566 2018-01-29 10:57:43Z santu $
+# $Id: gb_fedora_2018_8dc60a4feb_kernel_fc26.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # Fedora Update for kernel FEDORA-2018-8dc60a4feb
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874045");
-  script_version("$Revision: 8566 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:57:43 +0100 (Mon, 29 Jan 2018) $");
+  script_version("$Revision: 8699 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 07:46:44 +0100 (Wed, 24 Jan 2018)");
   script_cve_id("CVE-2018-5333", "CVE-2018-5332", "CVE-2018-5344");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2018-8dc60a4feb");
   script_tag(name: "summary", value: "Check the version of kernel");

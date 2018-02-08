@@ -24,11 +24,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102001");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4232 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 12:08:54 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 8704 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:34:11 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Yahoo Messenger Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 LSS");
@@ -158,13 +158,13 @@ if( sock ) {
 
   send( socket:sock, data:yahoo_pkt, length:yahoo_pkt_len );
   recv_buffer = recv( socket:sock, length:256 );
+  close( sock );
 
   if( "YMSG" >< recv_buffer ) {
-      set_kb_item( name:"yahoo_messenger/installed", value:TRUE );
-      register_service( port:port, proto:"yahoo_messenger");
-      log_message( port:port );
+    set_kb_item( name:"yahoo_messenger/installed", value:TRUE );
+    register_service( port:port, proto:"yahoo_messenger" );
+    log_message( port:port );
   }
-  close( sock );
 }
 
 exit( 0 );

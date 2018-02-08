@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1245.nasl 8439 2018-01-16 22:13:34Z teissa $
+# $Id: deb_dla_1245.nasl 8709 2018-02-08 06:30:35Z cfischer $
 #
 # Auto-generated from advisory DLA 1245-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891245");
-  script_version("$Revision: 8439 $");
+  script_version("$Revision: 8709 $");
   script_cve_id("CVE-2018-5685");
   script_name("Debian Lts Announce DLA 1245-1 ([SECURITY] [DLA 1245-1] graphicsmagick security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 23:13:34 +0100 (Tue, 16 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 07:30:35 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-16 00:00:00 +0100 (Tue, 16 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

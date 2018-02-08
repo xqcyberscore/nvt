@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 7631 2017-11-02 13:36:10Z jschulte $
+# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 8708 2018-02-07 16:37:35Z asteins $
 #
 # VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811078");
-  script_version("$Revision: 7631 $");
+  script_version("$Revision: 8708 $");
   script_cve_id("CVE-2017-9301","CVE-2017-9300");
   script_bugtraq_id(98747, 98746);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-06-05 14:29:56 +0530 (Mon, 05 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)");
@@ -59,8 +59,8 @@ if(description)
 
   script_tag(name: "affected" , value:"VideoLAN VLC media player 2.2.4 on Mac OS X");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 2nd
-  November, 2017. Information regarding this issue will be updated once the solution
+  script_tag(name: "solution" , value:"No solution or patch is available as of 8th
+  February, 2018. Information regarding this issue will be updated once the solution
   details are available. For details refer to http://www.videolan.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

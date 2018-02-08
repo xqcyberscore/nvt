@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ef9e28d9e4_poco_fc27.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_fedora_2018_ef9e28d9e4_poco_fc27.nasl 8709 2018-02-08 06:30:35Z cfischer $
 #
 # Fedora Update for poco FEDORA-2018-ef9e28d9e4
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874058");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8709 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 07:30:35 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-27 07:51:19 +0100 (Sat, 27 Jan 2018)");
   script_cve_id("CVE-2017-1000472");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for poco FEDORA-2018-ef9e28d9e4");
   script_tag(name: "summary", value: "Check the version of poco");

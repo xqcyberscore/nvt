@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection_tcp.nasl 7934 2017-11-29 14:51:02Z cfischer $
+# $Id: sip_detection_tcp.nasl 8704 2018-02-07 14:32:07Z cfischer $
 #
 # Detect SIP Compatible Hosts (TCP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108020");
-  script_version("$Revision: 7934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 15:51:02 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 8704 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -70,7 +70,7 @@ if( ! get_port_state( port ) ) exit( 0 );
 
 req = construct_sip_options_req( port:port, proto:proto );
 res = sip_send_recv( port:port, data:req, proto:proto );
-if( "SIP/2.0" >!< res ) exit( 0 );
+if( res !~ "^SIP/2\.0" && res !~ "^Via: SIP/2\.0" ) exit( 0 );
 
 replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:res );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4054993.nasl 8364 2018-01-10 16:59:46Z gveerendra $
+# $Id: gb_ms_kb4054993.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # Microsoft .NET Framework 4.5.2 Multiple Vulnerabilities (KB4054993)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812626");
-  script_version("$Revision: 8364 $");
+  script_version("$Revision: 8699 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_bugtraq_id(102387, 102380);
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 14:26:54 +0530 (Wed, 10 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework 4.5.2 Multiple Vulnerabilities (KB4054993)");

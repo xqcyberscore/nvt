@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1014.nasl 8682 2018-02-06 10:13:44Z teissa $
+# $Id: deb_dla_1014.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # Auto-generated from advisory DLA 1014-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891014");
-  script_version("$Revision: 8682 $");
+  script_version("$Revision: 8699 $");
   script_cve_id("CVE-2017-7520");
   script_name("Debian Lts Announce DLA 1014-1 ([SECURITY] [DLA 1014-1] libclamunrar security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 11:13:44 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 00:00:00 +0100 (Mon, 05 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

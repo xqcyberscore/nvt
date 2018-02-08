@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 7414 2017-10-12 14:22:07Z cfischer $
+# $Id: find_service5.nasl 8704 2018-02-07 14:32:07Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 7414 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 16:22:07 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 8704 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -83,7 +83,7 @@ set_kb_item( name:k, value:r );
 if( '\0' >< r )
   set_kb_item( name:k + "Hex", value:hexstr( r ) );
 
-if( "SIP/2.0" >< r ) {
+if( r =~ "^SIP/2\.0" || r =~ "^Via: SIP/2\.0" ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
   log_message( port:port, data:"A service supporting the SIP protocol was idendified." );
   exit( 0 );

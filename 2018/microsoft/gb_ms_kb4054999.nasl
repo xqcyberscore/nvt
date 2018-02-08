@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4054999.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_ms_kb4054999.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # Microsoft .NET Framework DoS And Security Feature Bypass Vulnerability (KB4054999)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812725");
-  script_version("$Revision: 8378 $");
+  script_version("$Revision: 8699 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework DoS And Security Feature Bypass Vulnerability (KB4054999)");
 

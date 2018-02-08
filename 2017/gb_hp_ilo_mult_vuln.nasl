@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_mult_vuln.nasl 7001 2017-08-25 02:23:41Z ckuersteiner $
+# $Id: gb_hp_ilo_mult_vuln.nasl 8701 2018-02-07 09:32:55Z ckuersteiner $
 #
 # HP Integrated Lights-Out 4 Multiple Remote Vulnerabilities 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:hp:integrated_lights-out";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140325");
-  script_version("$Revision: 7001 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-25 04:23:41 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 8701 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-07 10:32:55 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-08-25 09:17:16 +0700 (Fri, 25 Aug 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("ilo_detect.nasl");
   script_mandatory_keys("HP_ILO/installed");
 
-  script_tag(name: "summary", value: "HP Integrated Lights-Out 3 is prone to multiple remote vulnerabilities.");
+  script_tag(name: "summary", value: "HP Integrated Lights-Out 4 is prone to multiple remote vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_mult_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
+# $Id: gb_mult_ip_cameras_mult_vuln.nasl 8708 2018-02-07 16:37:35Z asteins $
 #
 # Multiple IP-Cameras (P2P) WIFICAM Cameras Multiple Vulnerabilities
 #
@@ -28,9 +28,9 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106636");
-  script_version("$Revision: 7664 $");
+  script_version("$Revision: 8708 $");
   script_cve_id("CVE-2017-8224", "CVE-2017-8222", "CVE-2017-8225", "CVE-2017-8223", "CVE-2017-8221");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,7 +75,7 @@ the response.");
   script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code and read arbitrary
 files.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 8th February, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://pierrekim.github.io/blog/2017-03-08-camera-goahead-0day.html");

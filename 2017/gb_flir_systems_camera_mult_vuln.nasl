@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_systems_camera_mult_vuln.nasl 7613 2017-11-01 14:51:05Z asteins $
+# $Id: gb_flir_systems_camera_mult_vuln.nasl 8708 2018-02-07 16:37:35Z asteins $
 #
 # FLIR Systems Cameras Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:flir_systems:camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140401");
-  script_version("$Revision: 7613 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 15:51:05 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8708 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-09-26 16:38:33 +0700 (Tue, 26 Sep 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,7 +65,7 @@ PT-Series are prone to multiple vulnerabilities:
 
 - Hard-coded Credentials");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 01st November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 08th February, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");

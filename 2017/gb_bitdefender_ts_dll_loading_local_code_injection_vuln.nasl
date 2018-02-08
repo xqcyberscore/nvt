@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 8707 2018-02-07 16:00:48Z cfischer $
 #
 # Bitdefender Total Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810939");
-  script_version("$Revision: 7610 $");
+  script_version("$Revision: 8707 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 17:00:48 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:17:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Total Security DLL Loading Local Code Injection Vulnerability");
 
@@ -61,8 +61,8 @@ if(description)
   script_tag(name:"affected", value:" Bitdefender Total Security 12.0
   (and earlier).");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 1st
-  November, 2017. Information regarding tis issue will be updated once the solution
+  script_tag(name:"solution", value:"No solution or patch is available as of 07th February, 2018.
+  Information regarding tis issue will be updated once the solution
   details are available. For updates refer to
   https://www.bitdefender.com");
 

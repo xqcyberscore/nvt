@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0095-01_java-1.8.0-openjdk.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_RHSA-2018_0095-01_java-1.8.0-openjdk.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # RedHat Update for java-1.8.0-openjdk RHSA-2018:0095-01
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.910002");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8699 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:34:59 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2018-2579", "CVE-2018-2582", "CVE-2018-2588", "CVE-2018-2599",
                 "CVE-2018-2602", "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629",
                 "CVE-2018-2633", "CVE-2018-2634", "CVE-2018-2637", "CVE-2018-2641",
                 "CVE-2018-2663", "CVE-2018-2677", "CVE-2018-2678");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.8.0-openjdk RHSA-2018:0095-01");
   script_tag(name: "summary", value: "Check the version of java-1.8.0-openjdk");

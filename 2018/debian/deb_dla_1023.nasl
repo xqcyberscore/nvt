@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1023.nasl 8691 2018-02-06 14:27:22Z teissa $
+# $Id: deb_dla_1023.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # Auto-generated from advisory DLA 1023-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891023");
-  script_version("$Revision: 8691 $");
+  script_version("$Revision: 8699 $");
   script_cve_id("CVE-2017-9936");
   script_name("Debian Lts Announce DLA 1023-1 ([SECURITY] [DLA 1023-1] tiff3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 15:27:22 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 00:00:00 +0100 (Mon, 05 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

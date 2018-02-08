@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_ms_ie_mult_vuln_kb4056568.nasl 8705 2018-02-07 15:38:30Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4056568)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812289");
-  script_version("$Revision: 8294 $");
+  script_version("$Revision: 8705 $");
   script_cve_id("CVE-2018-0762", "CVE-2018-0772", "CVE-2017-5753", "CVE-2017-5715",
                 "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 15:49:19 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 16:38:30 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 13:38:43 +0530 (Thu, 04 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4056568)");
@@ -47,8 +47,8 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-  - A new publicly disclosed class of vulnerabilities referred to as 
-    'speculative execution side-channel attacks' that affect many modern 
+  - A new publicly disclosed class of vulnerabilities referred to as
+    'speculative execution side-channel attacks' that affect many modern
     processors and operating systems including Intel, AMD, and ARM.
 
   - Multiple errors exists in the way the scripting engine handles objects in

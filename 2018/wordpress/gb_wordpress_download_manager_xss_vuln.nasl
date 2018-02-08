@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_download_manager_xss_vuln.nasl 8492 2018-01-23 04:46:52Z ckuersteiner $
+# $Id: gb_wordpress_download_manager_xss_vuln.nasl 8699 2018-02-07 08:01:50Z asteins $
 #
 # WordPress Download Manager Plugin XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140719");
-  script_version("$Revision: 8492 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-23 05:46:52 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8699 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-01-23 10:22:04 +0700 (Tue, 23 Jan 2018)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-18032");
 

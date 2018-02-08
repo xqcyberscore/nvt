@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yawcam_dir_trav_vuln.nasl 8423 2018-01-15 10:43:49Z ckuersteiner $
+# $Id: gb_yawcam_dir_trav_vuln.nasl 8709 2018-02-08 06:30:35Z cfischer $
 #
 # yawcam Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:yawcam:yawcam';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140684");
-  script_version("$Revision: 8423 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-15 11:43:49 +0100 (Mon, 15 Jan 2018) $");
+  script_version("$Revision: 8709 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-08 07:30:35 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-01-15 14:43:14 +0700 (Mon, 15 Jan 2018)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-17662");
 

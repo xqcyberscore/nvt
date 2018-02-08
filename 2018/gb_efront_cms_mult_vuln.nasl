@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_cms_mult_vuln.nasl 8693 2018-02-06 14:58:11Z jschulte $
+# $Id: gb_efront_cms_mult_vuln.nasl 8706 2018-02-07 15:48:30Z cfischer $
 #
 # eFront CMS 3.6.15.4 Multiple Vulnerabilities
 #
@@ -33,8 +33,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113104");
-  script_version("$Revision: 8693 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 15:58:11 +0100 (Tue, 06 Feb 2018) $");
+  script_version("$Revision: 8706 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-07 16:48:30 +0100 (Wed, 07 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 15:00:00 +0100 (Tue, 06 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -77,7 +77,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( port: port, cpe: CPE ) ) exit( 0 );
 
 if( version_is_less( version: version, test_version: "3.6.15.5" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "3.6.15.5" );
