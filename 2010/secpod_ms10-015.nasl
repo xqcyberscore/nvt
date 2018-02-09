@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-015.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: secpod_ms10-015.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Kernel Could Allow Elevation of Privilege (977165)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900740");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 16:06:43 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,19 +51,27 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code with
   kernel-level privilege.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior.
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "- Windows Kernel is not properly handling certain exceptions, which can be
     exploited to execute arbitrary code with kernel privileges.
+
   - Windows Kernel is not correctly resetting a pointer when freeing memory,
     which can be exploited to trigger a double-free condition.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-015.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-015.");

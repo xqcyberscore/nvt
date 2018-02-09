@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8662 2018-02-05 10:57:36Z cfischer $
+# $Id: host_details.inc 8720 2018-02-08 13:20:07Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8662 $
+# $Revision: 8720 $
 #
 ###############################################################################
 
@@ -93,7 +93,6 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.105261", # gb_palo_alto_webgui_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
@@ -169,7 +168,6 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.105261", # gb_palo_alto_webgui_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.2.nasl 8094 2017-12-13 06:44:33Z emoss $
+# $Id: GSHB_SYS.2.2.2.nasl 8725 2018-02-08 15:16:38Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.2 Clients unter Windows 8.1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109037");
-  script_version("$Revision: 8094 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:44:33 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 8725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:16:38 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 07:42:28 +0200 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -57,7 +57,7 @@ Windows_Name = get_kb_item("WMI/WMI_OSNAME");
 
 if( Windows_Version != "6.3" ||  "windows 8.1" >!< tolower(Windows_Name) ){
   set_kb_item(name:"GSHB/SYS.2.2.2", value:"error");
-  log_message(data:"Auf dem Host scheint kein Microsft Windows 8.1 Betriebsystem installiert zu sein,
+  log_message(data:"Auf dem Host scheint kein Microsoft Windows 8.1 Betriebsystem installiert zu sein,
       oder es konnte keine Verbindung zum Host hergestellt werden.");
   exit(0);
 }

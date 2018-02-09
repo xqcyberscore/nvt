@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-061.nasl 8207 2017-12-21 07:30:12Z teissa $
+# $Id: secpod_ms10-061.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Print Spooler Service Remote Code Execution Vulnerability (2347290)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901150");
-  script_version("$Revision: 8207 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_cve_id("CVE-2010-2729");
   script_bugtraq_id(43073);
@@ -48,12 +48,17 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to take complete control
   of an affected system.
+
   Impact Level: System/Application");
   script_tag(name : "affected" , value : "Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.
-  Micorsoft Windows 7");
+
+  Microsoft Windows 7");
   script_tag(name : "insight" , value : "The flaw is due to the Windows Print Spooler insufficiently
   restricting user permissions to access print spoolers, which could allow
   remote unauthenticated attackers to create a malicious file in a Windows
@@ -61,6 +66,7 @@ if(description)
   printer.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-061.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-061.");

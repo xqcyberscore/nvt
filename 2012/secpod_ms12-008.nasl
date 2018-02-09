@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-008.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-008.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)
 #
@@ -26,22 +26,30 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to cause a denial of
   service and possibly execute arbitrary code with kernel-level privileges.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior.
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "Multiple flaws are due to
+
   - An error in win32k.sys when validating input passed from user mode through
     the kernel component of GDI can be exploited to corrupt memory via a
     specially crafted web page containing an IFRAME with an overly large
     'height' attribute viewed using the Apple Safari browser.
+
   - A use-after-free error in win32k.sys when handling certain keyboard layouts
     can be exploited to dereference already freed memory and gain escalated
     privileges.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms12-008";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS12-008.";
@@ -49,12 +57,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902810);
-  script_version("$Revision: 5341 $");
+  script_version("$Revision: 8724 $");
   script_cve_id("CVE-2012-0154", "CVE-2011-5046");
   script_bugtraq_id(51122, 51920);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 09:09:09 +0530 (Wed, 15 Feb 2012)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47237");

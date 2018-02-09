@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-055.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-055.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)
 #
@@ -29,6 +29,7 @@
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link.
+
   http://www.microsoft.com/technet/security/bulletin/ms09-055.mspx
 
   Workaround:
@@ -45,10 +46,14 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
 
 tag_impact = "Successful exploitation will let the remote attackers execute arbitrary code,
   and can compromise a vulnerable system.
+
   Impact Level: System.";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows 2K SP4/XP SP3/2K3 SP2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior";
 tag_insight = "The flaw is due to ane errors in the ATL headers that handle
   instantiation of an object from data streams, which could allow attackers to
@@ -60,12 +65,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900880);
-  script_version("$Revision: 5363 $");
+  script_version("$Revision: 8724 $");
   script_cve_id("CVE-2009-2493");
   script_bugtraq_id(35828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-14 18:36:58 +0200 (Wed, 14 Oct 2009)");
   script_name("Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)");
 

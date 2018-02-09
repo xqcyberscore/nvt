@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-002.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-002.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Data Access Components Remote Code Execution Vulnerabilities (2451910)
 #
@@ -26,22 +26,30 @@
 
 tag_impact = "Successful exploitation will allow the attacker to execute arbitrary code on
   the targeted system.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "The flaws are due to:
+
   - A buffer overflow error in the Data Source Name (DSN) argument of an Open
     Database Connectivity (ODBC) API that may be used by third-party applications,
     which could allow attackers to execute arbitrary code by convincing a user to
     visit a specially crafted web page.
+
   - A memory corruption error in the Microsoft Data Access Components (MDAC) when
     handling internal data structures, which could be exploited by remote attackers
     to execute arbitrary code via a specially crafted web page.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS11-002.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-002.";
@@ -49,8 +57,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902281);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-01-12 13:59:47 +0100 (Wed, 12 Jan 2011)");
   script_cve_id("CVE-2011-0026", "CVE-2011-0027");
   script_bugtraq_id(45698, 45695);

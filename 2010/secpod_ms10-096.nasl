@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-096.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: secpod_ms10-096.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Address Book Remote Code Execution Vulnerability (2423089)
 #
@@ -25,11 +25,16 @@
 ###############################################################################
 
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "The Address Book (wab.exe) application insecurely loads certain librairies
   from the current working directory, which could allow attackers to execute
@@ -37,6 +42,7 @@ tag_insight = "The Address Book (wab.exe) application insecurely loads certain l
   share.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-096.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-096.";
@@ -44,8 +50,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901169");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(42648);
   script_cve_id("CVE-2010-3147");

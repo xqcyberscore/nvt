@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-095.nasl 8207 2017-12-21 07:30:12Z teissa $
+# $Id: secpod_ms10-095.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows BranchCache Remote Code Execution Vulnerability (2385678)
 #
@@ -26,13 +26,15 @@
 
 tag_impact = "Successful exploitation will allows attackers to execute arbitrary code by
   tricking a user into opening a file from a network share.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7";
+tag_affected = "Microsoft Windows 7";
 tag_insight = "The issue is caused by an error when loading librairies from the current
   working directory on platforms that do not support the BranchCache
   functionality.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-095.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-095.";
@@ -40,8 +42,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902280");
-  script_version("$Revision: 8207 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_cve_id("CVE-2010-3966");
   script_tag(name:"cvss_base", value:"9.3");

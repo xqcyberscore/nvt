@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-051.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: secpod_ms10-051.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Window XML Core Services Remote Code Execution Vulnerability (2079403)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902227");
-  script_version("$Revision: 8457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-2561");
   script_bugtraq_id(42300);
@@ -48,17 +48,23 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
   code by tricking a user into visiting a specially crafted web page.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
   script_tag(name : "insight" , value : "The issue is caused by a memory corruption error in the Microsoft 'XML'
   Core Services (MSXML) when handling HTTP responses via the Msxml2.XMLHTTP.3.0
   ActiveX control.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-051.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-051.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-031.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-031.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft JScript and VBScript Scripting Engines Remote Code Execution Vulnerability (2514666)
 #
@@ -27,11 +27,16 @@
 tag_impact = "Successful exploitation could allow remote attackers to crash an affected
   system or execute arbitrary code by tricking a user into visiting a specially
   crafted web page.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 2 and prior
+
   Microsoft Windows Server 2008 Service Pack 2 and prior";
 tag_insight = "The flaw is caused by an integer overflow error in the JScript and VBScript
   scripting engines when reallocating memory while decoding a script in order
@@ -39,6 +44,7 @@ tag_insight = "The flaw is caused by an integer overflow error in the JScript an
   code via a malicious web page.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms11-031.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-031.";
@@ -46,8 +52,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902501);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0663");
   script_bugtraq_id(47249);

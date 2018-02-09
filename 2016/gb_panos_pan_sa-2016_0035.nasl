@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0035.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2016_0035.nasl 8721 2018-02-08 13:40:24Z cfischer $
 #
 # Palo Alto PAN-OS Buffer Overflow in the Management Web Interface (PAN-SA-2016-0035)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9150");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8015 $");
+ script_version ("$Revision: 8721 $");
 
  script_name("Palo Alto PAN-OS Buffer Overflow in the Management Web Interface (PAN-SA-2016-0035)");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
  script_tag(name:"creation_date", value:"2016-11-21 11:16:24 +0100 (Mon, 21 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Palo Alto PAN-OS Local Security Checks");
@@ -63,7 +63,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 

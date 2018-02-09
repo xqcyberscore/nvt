@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_version_api.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_palo_alto_version_api.nasl 8720 2018-02-08 13:20:07Z cfischer $
 #
-# Palo Alto PanOS Version Detection (XML-API)
+# Palo Alto PAN-OS Version Detection (XML-API)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -25,38 +25,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105262");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
- script_tag(name:"creation_date", value:"2015-04-22 13:23:32 +0200 (Wed, 22 Apr 2015)");
- script_name("Palo Alto PanOS Version Detection (XML-API)");
+  script_oid("1.3.6.1.4.1.25623.1.0.105262");
+  script_version("$Revision: 8720 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2015-04-22 13:23:32 +0200 (Wed, 22 Apr 2015)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Palo Alto PAN-OS Version Detection (XML-API)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_webgui_detect.nasl");
+  script_mandatory_keys("palo_alto/webui/detected");
 
- script_tag(name: "summary" , value: "This script performs XML-API based detection of the Palo Alto PanOS Version");
+  script_add_preference(name:"API Username: ", value:"", type:"entry");
+  script_add_preference(name:"API Password: ", type:"password", value:"");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"summary", value:"This script performs XML-API based detection of the Palo Alto PAN-OS Version.");
 
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_webgui_detect.nasl", "gather-package-list.nasl");
- script_mandatory_keys("palo_alto/webui");
- script_exclude_keys("panOS/system");
+  script_tag(name:"qod_type", value:"package");
 
- script_add_preference(name:"API Username: ", value:"", type:"entry");
- script_add_preference(name:"API Password: ", type:"password", value:"");
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
-
-if( get_kb_item( "panOS/system" ) ) exit( 0 ); # already discovered by ssh
 
 if( ! port = get_kb_item( "palo_alto/webui/port" ) ) exit( 0 );
 
@@ -68,7 +64,7 @@ if( ! user || ! pass ) exit( 0 );
 url = '/api/?type=keygen&user=' + user + '&password=' + pass;
 
 req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
 if( "success" >!< buf || "<key>" >!< buf ) exit( 0 );
 
@@ -83,8 +79,10 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
 if( "success" >!< buf || "<result>" >!< buf ) exit( 0 );
 
-set_kb_item( name:"panOS/system", value: buf );
-set_kb_item( name:"panOS/detected_by", value:"XML-API" );
+set_kb_item( name:"palo_alto/detected", value:TRUE );
+set_kb_item( name:"palo_alto/xml-api/detected", value:TRUE );
+set_kb_item( name:"palo_alto/xml-api/port", value:port );
+set_kb_item( name:"palo_alto/xml-api/" + port + "/system", value:buf );
+set_kb_item( name:"palo_alto/xml-api/" + port + "/concluded", value:report_vuln_url( port:port, url:"/api/", url_only:TRUE ) );
 
 exit( 0 );
-

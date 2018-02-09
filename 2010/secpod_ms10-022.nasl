@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-022.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: secpod_ms10-022.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft VBScript Scripting Engine Remote Code Execution Vulnerability (980232)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902159");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0483");
   script_bugtraq_id(38463);
@@ -52,12 +52,18 @@ if(description)
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to crash an affected
   system or execute arbitrary code by tricking a user into visiting a specially
   crafted web page.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2000 Service Pack 4 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2003 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "The flaw exists in the way 'VBScript' interacts with Windows Help files
   when using Internet Explorer. If a malicious Web site displayed a specially
@@ -65,6 +71,7 @@ if(description)
   to be executed in the security context of the currently logged-on user.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-022.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-022.");

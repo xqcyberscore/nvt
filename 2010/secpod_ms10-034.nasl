@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-034.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: secpod_ms10-034.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Description: Microsoft Data Analyzer and IE Developer Tools ActiveX Control Vulnerability (980195)
 #
@@ -29,21 +29,29 @@
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-034.mspx
 
   Workaround:
   Set the killbit for the following CLSIDs,
   {14FD1463-1F3F-4357-9C03-2080B442F503},{E9CB13DB-20AB-43C5-B283-977C58FB5754}
   {8fe85d00-4647-40b9-87e4-5eb8a52f4759}
+
   http://support.microsoft.com/kb/240797";
 
 tag_impact = "Successful exploitation will let the remote attackers execute arbitrary code.
+
   Impact Level: System.";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "An unspecified error exists in the Microsoft Data Analyzer ActiveX control
   (max3activex.dll) and Internet Explorer Developer Tools ActiveX Control
@@ -55,8 +63,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900245");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(38045, 40490);
   script_cve_id("CVE-2010-0252", "CVE-2010-0811");

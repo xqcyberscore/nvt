@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-012.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-012.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2479628)
 #
@@ -26,11 +26,16 @@
 
 tag_impact = "Successful exploitation could allow local attackers to gain elevated
   privileges.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "The flaws are caused by input validation errors, improper pointer validation,
   pointer confusions, and memory corruption errors in the Windows kernel-mode
@@ -39,6 +44,7 @@ tag_insight = "The flaws are caused by input validation errors, improper pointer
   privileges.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms11-012.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-012.";
@@ -46,8 +52,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(901182);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-02-09 17:14:46 +0100 (Wed, 09 Feb 2011)");
   script_cve_id("CVE-2011-0086", "CVE-2011-0087", "CVE-2011-0088",
                 "CVE-2011-0089", "CVE-2011-0090");

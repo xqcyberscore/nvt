@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-046.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: secpod_ms10-046.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Shell Remote Code Execution Vulnerability (2286198)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902226");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_cve_id("CVE-2010-2568");
   script_bugtraq_id(41732);
@@ -56,17 +56,23 @@ if(description)
   a malicious binary by tricking a user into browsing a remote network or WebDAV
   share, or opening in Windows Explorer a removable drive containing a specially
   crafted shortcut file.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "The flaw is due to an error in Windows 'Shell' when parsing shortcuts
   (.lnk or .pif), certain parameters are not properly validated when attempting
   to load the icon.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-046.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-046.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-092.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: secpod_ms10-092.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Task Scheduler Elevation of Privilege Vulnerability (2305420)
 #
@@ -25,14 +25,18 @@
 ###############################################################################
 
 tag_impact = "Successful exploition will allows elevation of privilege.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "The flaw is caused by an error in task scheduler when performing integrity
   checks to validate tasks run with the intended user privilege.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-092.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-092.";
@@ -40,8 +44,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902276");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_cve_id("CVE-2010-3338");
   script_tag(name:"cvss_base", value:"7.2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-058.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: secpod_ms10-058.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (978886)
 #
@@ -26,19 +26,25 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to cause a denial of service
   or by local attackers to gain elevated privileges.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "The multiple flaws are due to,
+
   - An integer overflow error in the Windows 'TCP/IP' stack when handling data
     copied from user mode, which could be exploited by malicious users to execute
     arbitrary code with elevated privileges.
+
   - An error in the Windows Networking stack when processing malformed packets,
     which could be exploited by remote attackers to cause an affected system
     to stop responding.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/MS10-058";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-058.";
@@ -46,8 +52,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902232");
-  script_version("$Revision: 8187 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-26 14:31:12 +0200 (Thu, 26 Aug 2010)");
   script_cve_id("CVE-2010-1892", "CVE-2010-1893");
   script_tag(name:"cvss_base", value:"7.8");

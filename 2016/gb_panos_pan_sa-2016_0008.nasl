@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0008.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2016_0008.nasl 8721 2018-02-08 13:40:24Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0008
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105793");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 8015 $");
+ script_version ("$Revision: 8721 $");
 
  script_name("Palo Alto PAN-OS PAN-SA-2016-0008");
 
@@ -50,7 +50,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
  script_tag(name:"creation_date", value:"2016-07-05 16:55:13 +0200 (Tue, 05 Jul 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Palo Alto PAN-OS Local Security Checks");
@@ -64,7 +64,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 

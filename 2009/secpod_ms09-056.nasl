@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-056.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms09-056.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows CryptoAPI X.509 Spoofing Vulnerabilities (974571)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_id(900876);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-14 16:47:08 +0200 (Wed, 14 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,22 +51,30 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attacker to conduct spoofing attacks on
   the affected system.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior.
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "- The issue is due to the Windows CryptoAPI incorrectly parsing a null
     terminator as the end of any values identified by an Object Identifier (OID)
     when processing ASN.1 information from X.509 certificates.
+
   - An integer overflow error in the Windows CryptoAPI when parsing ASN.1 object
     identifiers from X.509 certificates, which could allow an attacker to
     generate a malicious certificate that would be parsed incorrectly by the
     Windows CryptoAPI.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link.
+
   http://www.microsoft.com/technet/security/bulletin/ms09-056.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS09-056.");

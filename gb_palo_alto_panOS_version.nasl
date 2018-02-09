@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_panOS_version.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_palo_alto_panOS_version.nasl 8720 2018-02-08 13:20:07Z cfischer $
 #
-# Palo Alto PAN-OS Version Detection
+# Palo Alto PAN-OS Version Detection Consolidation
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105263");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8720 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 14:02:11 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Palo Alto PAN-OS Version Detection");
+  script_name("Palo Alto PAN-OS Version Detection Consolidation");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl", "gb_palo_alto_version_api.nasl");
-  script_mandatory_keys("panOS/system");
+  script_mandatory_keys("palo_alto/detected");
 
   script_tag(name:"summary", value:"This script detect the PAN-OS Version through SSH or XML-API");
 
@@ -47,71 +47,123 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 
-if( ! system = get_kb_item( "panOS/system" ) ) exit( 0 );
-set_kb_item( name:"palo_alto_pan_os/installed", value:TRUE );
+if( ! system = get_kb_item( "palo_alto/detected" ) ) exit( 0 );
 
-detected_by = get_kb_item( "panOS/detected_by" );
+detected_fw_version = "unknown";
+detected_fw_hotfix  = "unknown";
+detected_model      = "unknown";
 
-if( detected_by == "XML-API" )
-{
-  vpattern = '<sw-version>([^<]+)</sw-version>';
-  mpattern = '<model>([^<]+)</model>';
-}
-else if( detected_by == "SSH" )
-{
-  vpattern = 'sw-version: ([^ \r\n]+)';
-  mpattern = 'model: ([^ \r\n]+)';
-}
-else
- exit( 0 );
+foreach source( make_list( "ssh", "xml-api", "webui" ) ) {
 
-app = 'Palo Alto PAN-OS';
-vers = 'unknown';
-cpe = 'cpe:/o:paloaltonetworks:pan-os';
-
-version = eregmatch( pattern:vpattern, string:system );
-if( ! isnull( version[1] ) )
-{
-  vers = version[1];
-  if( "-h" >< vers )
-  {
-    v_h = split( vers, sep:"-h", keep:FALSE );
-    vers = v_h[0];
-    hotfix = v_h[1];
+  if( source == "ssh" ) {
+    vpattern = 'sw-version: ([^ \r\n]+)';
+    mpattern = 'model: ([^ \r\n]+)';
+  } else if( source == "xml-api" ) {
+    vpattern = '<sw-version>([^<]+)</sw-version>';
+    mpattern = '<model>([^<]+)</model>';
+  } else {
+    continue;
   }
-  set_kb_item( name:"palo_alto_pan_os/version", value:vers );
-  cpe += ':' + vers;
+
+  system_list = get_kb_list( "palo_alto/" + source + "/*/system" );
+  foreach system( system_list ) {
+
+    version = eregmatch( pattern:vpattern, string:system );
+    if( ! isnull( version[1] ) && detected_fw_version == "unknown" ) {
+      detected_fw_version = version[1];
+      if( "-h" >< detected_fw_version ) {
+        version_and_hotfix  = split( detected_fw_version, sep:"-h", keep:FALSE );
+        detected_fw_version = version_and_hotfix[0];
+        detected_fw_hotfix  = version_and_hotfix[1];
+      }
+    }
+
+    model = eregmatch( pattern:mpattern, string:system );
+    if( ! isnull( model[1] ) && detected_model == "unknown" ) {
+      detected_model = model[1];
+    }
+  }
 }
 
-rep_vers = vers;
+os_app = "Palo Alto PAN-OS";
+os_cpe = "cpe:/o:paloaltonetworks:pan-os";
+hw_app = "Palo Alto";
+hw_cpe = "cpe:/h:paloaltonetworks";
 
-if( hotfix )
-{
-  set_kb_item( name:"palo_alto_pan_os/hotfix", value:hotfix );
-  rep_vers = vers + '-h' + hotfix;
+if( detected_fw_version != "unknown" ) {
+  set_kb_item( name:"palo_alto_pan_os/version", value:detected_fw_version );
+  os_cpe     += ':' + detected_fw_version;
+  os_version  = detected_fw_version;
 }
 
-mod = eregmatch( pattern:mpattern, string:system );
-if( ! isnull( mod[1] ) )
-{
-  model = mod[1];
-  set_kb_item( name:"palo_alto_pan_os/model", value:model);
-  app += ' (' + model + ')';
+if( detected_model != "unknown" ) {
+  set_kb_item( name:"palo_alto_pan_os/model", value:detected_model );
+  hw_app += " " + detected_model;
+  hw_cpe += ":" + tolower( detected_model );
+} else {
+  hw_app += " Unknown Model";
+  hw_cpe += ":unknown_model";
 }
 
-register_product( cpe:cpe, location:detected_by );
+if( detected_fw_hotfix != "unknown" && detected_fw_version != "unknown" ) {
+  set_kb_item( name:"palo_alto_pan_os/hotfix", value:detected_fw_hotfix );
+  os_cpe     += '-h' + detected_fw_hotfix;
+  os_version  = detected_fw_version + " Hotfix " + detected_fw_hotfix;
+}
 
-register_and_report_os( os:"PAN-OS (" + vers + ")", cpe:cpe, banner_type:detected_by, desc:"Palo Alto PAN-OS Version Detection", runs_key:"unixoide" );
+register_and_report_os( os:"Palo Alto PAN-OS", version:os_version, cpe:os_cpe, desc:"Palo Alto PAN-OS Version Detection Consolidation", runs_key:"unixoide" );
 
-log_message( data: build_detection_report( app:app,
-                                           version:rep_vers,
-                                           install:detected_by,
-                                           cpe:cpe,
-                                           concluded: version[0] ),
-             port:0 );
+location = "/";
+
+if( webui_ports = get_kb_list( "palo_alto/webui/port" ) ) {
+  foreach port( webui_ports ) {
+    concluded = get_kb_item( "palo_alto/webui/" + port + "/concluded" );
+    extra += "HTTP(s) on port " + port + '/tcp\n';
+    if( concluded ) {
+      extra += 'Concluded from: ' + concluded + '\n';
+    }
+    register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"www" );
+  }
+}
+
+if( xml_api_ports = get_kb_list( "palo_alto/xml-api/port" ) ) {
+  foreach port( xml_api_ports ) {
+    concluded = get_kb_item( "palo_alto/xml-api/" + port + "/concluded" );
+    extra += "HTTP(s) on port " + port + '/tcp\n';
+    if( concluded ) {
+      extra += 'Concluded from: ' + concluded + '\n';
+    }
+    register_product( cpe:hw_cpe, location:location, port:port, service:"xml-api" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"xml-api" );
+  }
+}
+
+if( ssh_ports = get_kb_list( "palo_alto/ssh/port" ) ) {
+  foreach port( ssh_ports ) {
+    extra += "SSH Login on port " + port + '/tcp\n';
+    register_product( cpe:hw_cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"ssh" );
+  }
+}
+
+report = build_detection_report( app:os_app,
+                                 version:os_version,
+                                 install:location,
+                                 cpe:os_cpe );
+
+report += '\n\n' + build_detection_report( app:hw_app,
+                                           skip_version:TRUE,
+                                           install:location,
+                                           cpe:hw_cpe );
+
+if( extra ) {
+  report += '\n\nDetection methods:\n';
+  report += '\n' + extra;
+}
+
+log_message( port:0, data:report );
 
 exit( 0 );
-

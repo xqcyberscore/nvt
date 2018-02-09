@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-001.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: secpod_ms10-001.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Embedded OpenType Font Engine Remote Code Execution Vulnerabilities (972270)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901095");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,18 +51,25 @@ if(description)
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to crash an affected
   system or execute arbitrary code by tricking a user into visiting a specially
   crafted web page.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2000 Service Pack 4 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "An integer overflow error in the LZCOMP decompressor within the Embedded
   OpenType Font Engine (EOT) when decompressing malformed files and content
   containing embedded fonts.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-001.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-001.");

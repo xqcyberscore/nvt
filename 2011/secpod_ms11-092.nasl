@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-092.nasl 8278 2018-01-03 12:36:26Z asteins $
+# $Id: secpod_ms11-092.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Media Remote Code Execution Vulnerability (2648048)
 #
@@ -26,15 +26,19 @@
 
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code
   with the privileges of the user running the application.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows Vista Service Pack 2 and prior";
 tag_insight = "The flaw is due to an error in Windows Media Player and Windows Media
   Center when parsing Microsoft Digital Video Recording files (DVR-MS) and can
   be exploited to corrupt memory.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms11-092";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-092.";
@@ -42,12 +46,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902597);
-  script_version("$Revision: 8278 $");
+  script_version("$Revision: 8724 $");
   script_bugtraq_id(50957);
   script_cve_id("CVE-2011-3401");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:36:26 +0100 (Wed, 03 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 10:10:10 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Windows Media Remote Code Execution Vulnerability (2648048)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47117");

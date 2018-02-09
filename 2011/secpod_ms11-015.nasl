@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-015.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-015.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Media Remote Code Execution Vulnerabilities (2510030)
 #
@@ -26,20 +26,27 @@
 
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code
   in the context of the user running the application.
+
   Impact Level: System/Application";
 tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
-  Micorsoft Windows 7 Service Pack 1 and prior.
+
+  Microsoft Windows 7 Service Pack 1 and prior.
+
   Microsoft Windows XP Media Center Edition 2005 Service Pack 3.";
 tag_insight = "The flaws are caused by,
+
   - An error in the way DirectShow loads external libraries, which could allow
     attackers to load a malicious DLL by tricking a user into opening a file
     from a malicious location.
+
   - A memory corruption error in Windows Media Player and Windows Media Center
     when parsing '.dvr-ms' media files, which could allow attackers to execute
     arbitrary code by tricking a user into opening a malicious '.dvr-ms' file.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms11-015.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-015.";
@@ -47,8 +54,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(901193);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 15:35:07 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-0032", "CVE-2011-0042");
   script_bugtraq_id(46682,46680);

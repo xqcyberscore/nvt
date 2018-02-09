@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-076.nasl 8244 2017-12-25 07:29:28Z teissa $
+# $Id: secpod_ms10-076.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Embedded OpenType Font Engine Remote Code Execution Vulnerability (982132)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902321");
-  script_version("$Revision: 8244 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-1883");
   script_bugtraq_id(43775);
@@ -48,17 +48,23 @@ if(description)
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute arbitrary
   code by tricking a user into visiting a malicious web page or opening a
   specially crafted email or Office document.
+
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
   script_tag(name : "insight" , value : "The flaw is due to an integer overflow error in the Embedded OpenType
   Font Engine when parsing certain tables within specially crafted files and
   content containing embedded fonts.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-076.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-076.");

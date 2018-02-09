@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-081.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: secpod_ms10-081.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Windows Common Control Library Remote Code Execution Vulnerability (2296011)
 #
@@ -26,12 +26,17 @@
 
 tag_impact = "Successful exploitation will allow the attacker to execute arbitrary code on
   the targeted system.
+
   Impact Level: System/Application";
 tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.
-  Micorsoft Windows 7";
+
+  Microsoft Windows 7";
 tag_insight = "The flaw is caused by a heap overflow error in the Windows common control
   library 'Comctl32.dll' when handling certain messages while rendering scalable
   vector graphics passed from a third-party scalable vector graphics viewer,
@@ -39,6 +44,7 @@ tag_insight = "The flaw is caused by a heap overflow error in the Windows common
   rendering malformed scalable vector graphics via a third-party application.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-081.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-081.";
@@ -46,8 +52,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901165");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2746");
   script_tag(name:"cvss_base", value:"7.6");

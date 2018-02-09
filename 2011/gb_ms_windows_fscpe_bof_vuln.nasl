@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_fscpe_bof_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_windows_fscpe_bof_vuln.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Fax Cover Page Editor BOF Vulnerabilities
 #
@@ -26,11 +26,15 @@
 
 tag_impact = "Successful exploitation will allow the attacker to cause a heap-based buffer
   overflow via a Fax Cover Page file containing specially crafted content.
+
   Impact Level: System/Application";
 tag_affected = "Fax Services Cover Page Editor 5.2 r2 on,
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
-  Micorsoft Windows 7";
+
+  Microsoft Windows 7";
 tag_insight = "The flaw is due to an input validation error and a use-after-free
   error in the Fax Cover Page Editor 'fxscover.exe' when a function
   'CDrawPoly::Serialize()' reads in data from a Fax Cover Page file ('.cov').";
@@ -48,9 +52,9 @@ tag_summary = "This host is installed with Fax Cover Page Editor and is prone to
 if(description)
 {
   script_id(801580);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 8724 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2010-4701");
   script_tag(name:"cvss_base", value:"7.6");

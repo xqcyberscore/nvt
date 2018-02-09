@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-033.nasl 8276 2018-01-03 12:29:18Z asteins $
+# $Id: secpod_ms10-033.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Media Decompression Remote Code Execution Vulnerability (979902)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900246");
-  script_version("$Revision: 8276 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40432, 40464);
   script_cve_id("CVE-2010-1879", "CVE-2010-1880");
@@ -49,6 +49,7 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
   code.
+
   Impact Level: System");
   script_tag(name : "insight" , value : "An unspecified error exists while processing media files with a specially
   crafted compression data. An attacker can exploit this vulnerability by
@@ -57,24 +58,36 @@ if(description)
   Microsoft Bulletin MS10-033.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-033.mspx");
   script_tag(name : "affected" , value : "DirectX, Windows Media Encoder 9 and COM component on,
-  Micorsoft Windows 7
+
+  Microsoft Windows 7
+
   Microsoft Windows 2000 SP4
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.
 
   Windows Media Format Runtime 9 on,
+
   Microsoft Windows 2000 SP4
+
   Microsoft Windows XP Service Pack 3 and prior
 
   Windows Media Format Runtime 9.5 on,
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
 
   Windows Media Format Runtime 11 on,
+
   Microsoft Windows XP Service Pack 3 and prior");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_forefront_security_sharepoint_rce_vuln.nasl 6197 2017-05-23 11:14:19Z teissa $
+# $Id: gb_ms_forefront_security_sharepoint_rce_vuln.nasl 8725 2018-02-08 15:16:38Z cfischer $
 #
 # Microsoft Forefront Security for SharePoint Remote Code Execution Vulnerability (KB4022344)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811120");
-  script_version("$Revision: 6197 $");
+  script_version("$Revision: 8725 $");
   script_cve_id("CVE-2017-0290");
   script_bugtraq_id(98330);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 13:14:19 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:16:38 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 09:28:37 +0530 (Wed, 17 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Forefront Security for SharePoint Remote Code Execution Vulnerability (KB4022344)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
-  update according to Microsof tKB4022344.");
+  update according to Microsoft KB4022344.");
 
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");

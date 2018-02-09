@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.3.nasl 8179 2017-12-19 14:03:44Z emoss $
+# $Id: GSHB_SYS.2.2.3.nasl 8725 2018-02-08 15:16:38Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.3 Clients unter Windows 10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109034");
-  script_version("$Revision: 8179 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 15:03:44 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:16:38 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 07:42:28 +0200 (Wed, 13 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ Windows_Architecture = get_kb_item("WMI/WMI_OSArchitecture");
 
 if( Windows_Version != "10.0" ||  "windows 10" >!< tolower(Windows_Name) ){
   set_kb_item(name:"GSHB/SYS.2.2.3", value:"error");
-  log_message(data:"Auf dem Host scheint kein Microsft Windows 10 Betriebsystem installiert zu sein,
+  log_message(data:"Auf dem Host scheint kein Microsoft Windows 10 Betriebsystem installiert zu sein,
       oder es konnte keine Verbindung zum Host hergestellt werden.");
   exit(0);
 }

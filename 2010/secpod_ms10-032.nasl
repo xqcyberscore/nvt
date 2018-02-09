@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-032.nasl 8246 2017-12-26 07:29:20Z teissa $
+# $Id: secpod_ms10-032.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Kernel Mode Drivers Privilege Escalation Vulnerabilities (979559)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902067");
-  script_version("$Revision: 8246 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-0484", "CVE-2010-0485", "CVE-2010-1255");
   script_bugtraq_id(40508, 40569, 40570);
@@ -50,20 +50,30 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code
   with kernel privileges.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior.
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "The flaws are due to an error in the kernel-mode device driver 'Win32k.sys', which
+
   - does not properly validate changes in certain 'kernel objects'.
+
   - does not properly validate all callback parameters when creating a
     'new window' or
+
   - when providing 'glyph' outline information to applications.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-032.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-032.");

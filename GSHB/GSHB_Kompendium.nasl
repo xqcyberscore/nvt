@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Kompendium.nasl 8665 2018-02-05 12:24:26Z emoss $
+# $Id: GSHB_Kompendium.nasl 8730 2018-02-09 07:15:55Z emoss $
 #
 # IT-Grundschutz Kompendium
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109040");
-  script_version("$Revision: 8665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:24:26 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 8730 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:15:55 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 10:14:11 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -113,7 +113,7 @@ foreach m (mtitle) {
   log_desc = ereg_replace(pattern:'\n',replace:' ', string:desc);
   log_desc = ereg_replace(pattern:'\\\\n',replace:' ', string:log_desc);
 
-  log = log + string('"' + ip + '"|"' + m_num + " " + m_title + '"|"' + result + '"|"' + log_desc + '"') + '\n'; 
+  log = log + string('"' + ip + '"|"' + m_num + '"|"' + result + '"|"' + log_desc + '"') + '\n'; 
 
 }
 

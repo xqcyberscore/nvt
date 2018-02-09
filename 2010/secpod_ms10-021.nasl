@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-021.nasl 8244 2017-12-25 07:29:28Z teissa $
+# $Id: secpod_ms10-021.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Kernel Could Allow Elevation of Privilege (979683)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900236");
-  script_version("$Revision: 8244 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_bugtraq_id(39297, 39309, 39323, 39324, 39318, 39319, 39320, 39322);
   script_tag(name:"cvss_base", value:"7.2");
@@ -52,27 +52,41 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow local users to cause a Denial of Service
   or gain escalated privileges.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior.
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "Multiple error exists in the Windows kernel due to,
+
   - the way that the kernel handles certain exceptions
+
   - improper validation of specially crafted image files
+
   - the manner in which the kernel processes the values of symbolic links
+
   - insufficient validation of registry keys passed to a Windows kernel system
     call
+
   - the manner in which memory is allocated when extracting a symbolic link
     from a registry key
+
   - the way that the kernel resolves the real path for a registry key from its
     virtual path
+
   - not properly restricting symbolic link creation between untrusted and
     trusted registry hives");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-021.mspx");
   script_tag(name : "summary" , value : "This host is missing an important security update according to
   Microsoft Bulletin MS10-021.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-073.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: secpod_ms10-073.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (981957)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902323");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2549", "CVE-2010-2743", "CVE-2010-2744");
   script_bugtraq_id(41280, 43774, 43773);
@@ -47,19 +47,28 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to run arbitrary
   code in the kernel mode.
+
   Impact Level: System/Application");
   script_tag(name : "affected" , value : "Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.
-  Micorsoft Windows 7");
+
+  Microsoft Windows 7");
   script_tag(name : "insight" , value : "The flaw is due to an error in the kernel-mode device driver 'Win32k.sys'
+
   - when handling the reference count for an object.
+
   - which fails to properly index a table of function pointers when loading a
     keyboard layout from disk.
+
   - which fails to properly manage a window class.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-073.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-073.");

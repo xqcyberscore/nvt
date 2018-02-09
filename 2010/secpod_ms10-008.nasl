@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-008.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: secpod_ms10-008.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Data Analyzer ActiveX Control Vulnerability (978262)
 #
@@ -29,6 +29,7 @@
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-008.mspx
 
   Workaround:
@@ -36,16 +37,23 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
   {E0ECA9C3-D669-4EF4-8231-00724ED9288F}, {C05A1FBC-1413-11D1-B05F-00805F4945F6},
   {5D80A6D1-B500-47DA-82B8-EB9875F85B4D}, {0CCA191D-13A6-4E29-B746-314DEE697D83},
   {2d8ed06d-3c30-438b-96ae-4d110fdc1fb8}
+
   http://support.microsoft.com/kb/240797";
 
 tag_impact = "Successful exploitation will let the remote attackers execute arbitrary code
   and can compromise a vulnerable system.
+
   Impact Level: System.";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "An unspecified error exists in the Microsoft Data Analyzer ActiveX control
   (max3activex.dll) when used with Internet Explorer. Attackers can execute
@@ -56,8 +64,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900229");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 16:06:43 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

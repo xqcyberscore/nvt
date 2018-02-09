@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-003.nasl 5863 2017-04-05 07:38:11Z antu123 $
+# $Id: secpod_ms09-003.nasl 8725 2018-02-08 15:16:38Z cfischer $
 #
 # Vulnerabilities in Microsoft Exchange Could Allow Remote Code Execution (959239)
 #
@@ -25,14 +25,17 @@
 
 tag_impact = "Successful exploitation allows remote arbitrary code execution sending
   a specially crafted MAPI command using the EMSMDB32 provider.
+
   Impact Level: System";
 tag_affected = "Microsoft Exchange Server 2000/2003/2007 on Windows Servers";
 tag_insight = "- Error exists within the decoding of Transport Neutral Encapsulation
     Format (TNEF) data that causes memory corruption when a user opens or
     previews a specially crafted e-mail message sent in TNEF format.
+
   - Error exists within the processing of MAPI commands in the EMSMDB2.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms09-003.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS09-003.";
@@ -40,8 +43,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900079);
-  script_version("$Revision: 5863 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 8725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:16:38 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -101,7 +104,7 @@ function Get_FileVersion()
 }
 
 
-if("Micrsoft Exchange Server 2003" >< appName)
+if("Microsoft Exchange Server 2003" >< appName)
 {
   if(hotfix_missing(name:"959897") == 0){
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-027.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-027.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft IE Developer Tools WMITools and Windows Messenger ActiveX Control Vulnerability (2508272)
 #
@@ -26,21 +26,28 @@
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS11-027.mspx
 
   Workaround:
   Set the killbit for the following CLSIDs,
   {1a6fe369-f28c-4ad9-a3e6-2bcb50807cf1}, {2745E5F5-D234-11D0-847A-00C04FD7BB08}
   {FB7199AB-79BF-11d2-8D94-0000F875C541}
+
   http://support.microsoft.com/kb/240797";
 
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
   code.
+
   Impact Level: System.";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior";
 tag_insight = "An unspecified error exists in the IE Developer Tools(iedvtool.dll), WMITools
   (WBEMSingleView.OCX) and Windows Messenger (msgsc.dll) ActiveX Controls when
@@ -52,8 +59,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900281);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(40490, 45546, 47197);
   script_cve_id("CVE-2010-0811", "CVE-2010-3973", "CVE-2011-1243", "CVE-2010-4588");

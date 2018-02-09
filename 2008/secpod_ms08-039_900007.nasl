@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-039_900007.nasl 6382 2017-06-20 15:08:09Z cfischer $
+# $Id: secpod_ms08-039_900007.nasl 8725 2018-02-08 15:16:38Z cfischer $
 # Description: Outlook Web Access for Exchange Server Elevation of Privilege (953747)
 #
 # Authors:
@@ -26,17 +26,18 @@
 tag_impact = "Successful execution of exploit leads to arbitrary HTML and
         acript code execution in a user's browser session in the context of
         affected system.
+
  Impact Level : SYSTEM";
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
  update mentioned hotfixes in the advisory from the below link.
+
  http://www.microsoft.com/technet/security/bulletin/ms08-039.mspx";
 
 tag_affected = "Microsoft Exchange Server (2003 and 2007) on Windows (2K and 2003).";
 
 tag_insight = "The flaws are due to insufficient validation of certain e-mail fields
         and HTML in e-mail messages.";
-
 
 tag_summary = "This host is missing critical security update according to
  Microsoft Bulletin MS08-039.";
@@ -45,8 +46,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
  script_id(900007);
- script_version("$Revision: 6382 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 17:08:09 +0200 (Tue, 20 Jun 2017) $");
+ script_version("$Revision: 8725 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:16:38 +0100 (Thu, 08 Feb 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30130);
  script_cve_id("CVE-2008-2247", "CVE-2008-2248");
@@ -194,7 +195,7 @@ if(description)
 	exit(0);
  }
 
- if("Micrsoft Exchange Server 2003" >< appName)
+ if("Microsoft Exchange Server 2003" >< appName)
  {
 	if(hotfix_missing(name:"950159") == 0){
         	exit(0);

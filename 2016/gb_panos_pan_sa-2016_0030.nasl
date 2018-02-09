@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0030.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2016_0030.nasl 8722 2018-02-08 13:57:53Z cfischer $
 #
 # Palo Alto PAN-OS OpenSSL Vulnerabilities (PAN-SA-2016-0030)
 #
@@ -32,8 +32,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140017");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 8015 $");
-
+ script_version ("$Revision: 8722 $");
+ script_cve_id("CVE-2016-0703", "CVE-2016-0704", "CVE-2016-0800");
  script_name("Palo Alto PAN-OS OpenSSL Vulnerabilities (PAN-SA-2016-0030)");
 
  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/63");
@@ -48,7 +48,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:57:53 +0100 (Thu, 08 Feb 2018) $");
  script_tag(name:"creation_date", value:"2016-10-25 14:27:55 +0200 (Tue, 25 Oct 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Palo Alto PAN-OS Local Security Checks");
@@ -62,7 +62,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 

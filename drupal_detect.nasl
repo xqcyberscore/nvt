@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: drupal_detect.nasl 8726 2018-02-08 18:09:08Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 8726 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 19:09:08 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,8 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
         egrep( pattern:"drupal", string:res, icase:TRUE ) ) ||
       '<meta name="Generator" content="Drupal' >< res2 ||
       '<meta name="generator" content="Drupal' >< res2 ||
-      "/misc/drupal.js?" >< res2 ) {
+      "/misc/drupal.js?" >< res2 ||
+      "jQuery.extend(Drupal.settings" >< res2 ) {
 
     if( dir == "" ) rootInstalled = TRUE;
     version = "unknown";

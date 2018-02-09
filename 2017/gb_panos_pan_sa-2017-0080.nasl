@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0080.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2017-0080.nasl 8721 2018-02-08 13:40:24Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107162");
-  script_version("$Revision: 8015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8721 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-05-02 11:40:28 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7126");
   script_bugtraq_id(97590);
@@ -69,8 +69,7 @@ exit(66);
 include("host_details.inc");
 include("version_func.inc");
 
-
-if(!Ver = get_app_version(cpe:CPE)){
+if(!Ver = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }
 

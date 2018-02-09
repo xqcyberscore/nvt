@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-047.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: secpod_ms10-047.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (981852)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902093");
-  script_version("$Revision: 8250 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_bugtraq_id(42211, 42213, 42221);
   script_tag(name:"cvss_base", value:"7.2");
@@ -48,17 +48,25 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation could allow attackers to run arbitrary code in
   kernel level privileges.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "Multiple error exists due to,
+
   - The way kernal deals with specific thread creation attempts.
+
   - An error in initializing the objects while handling certain exceptions.
+
   - An error in validating access control lists on kernel objects.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-047.mspx");
   script_tag(name : "summary" , value : "This host is missing an important security update according to
   Microsoft Bulletin MS10-047.");

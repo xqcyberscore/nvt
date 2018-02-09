@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-082.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: secpod_ms10-082.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Media Player Remote Code Execution Vulnerability (2378111)
 #
@@ -27,15 +27,24 @@
 tag_impact = "Successful exploitation will allow the attacker to execute arbitrary code in
   the context of the user running the application, which can compromise the
   application and possibly the system.
+
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows Media Player 10
+
   Microsoft Windows Media Player 11
+
   Microsoft Windows Media Player 12
+
   Microsoft Windows Media Player 9 Series
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "The flaw is caused by a memory corruption error in Windows Media Player when
   deallocating objects during a reload operation via a web browser, which could
@@ -43,6 +52,7 @@ tag_insight = "The flaw is caused by a memory corruption error in Windows Media 
   specially crafted web page.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-082.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-082.";
@@ -50,8 +60,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901163");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2745");
   script_bugtraq_id(43772);

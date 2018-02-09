@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-012.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: secpod_ms10-012.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities (971468)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900230");
-  script_version("$Revision: 8338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 16:06:43 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,24 +54,33 @@ if(description)
   code or cause a denial of service or bypass the authentication mechanism
   via brute force technique.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "- An input validation error exists while processing SMB requests and can
     be exploited to cause a buffer overflow via a specially crafted SMB packet.
+
   - An error exists in the SMB implementation while parsing SMB packets during
     the Negotiate phase causing memory corruption via a specially crafted SMB
     packet.
+
   - NULL pointer dereference error exists in SMB while verifying the 'share'
     and 'servername' fields in SMB packets causing denial of service.
+
   - A lack of cryptographic entropy when the SMB server generates challenges
     during SMB NTLM authentication and can be exploited to bypass the
     authentication mechanism.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms10-012.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-012.");

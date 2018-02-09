@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-024.nasl 6235 2017-05-29 13:45:48Z cfi $
+# $Id: secpod_ms11-024.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Windows Fax Cover Page Editor Remote Code Execution Vulnerability (2527308)
 #
@@ -33,7 +33,7 @@ tag_impact = "Successful exploitation could allow attackers to gain the same use
   administrative user rights.
 
   Impact Level: System/Application";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior
 
   Microsoft Windows XP Service Pack 3 and prior
 
@@ -48,6 +48,7 @@ tag_insight = "The flaw is due to error in fax cover page editor, when user open
   (fxscover.exe) and execute arbitrary code on the target system.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms11-024.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-024.";
@@ -55,8 +56,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902408);
-  script_version("$Revision: 6235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2010-3974");
   script_tag(name:"cvss_base", value:"7.6");

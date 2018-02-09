@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-049.nasl 8274 2018-01-03 07:28:17Z teissa $
+# $Id: secpod_ms10-049.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Remote Code Execution Vulnerabilities in SChannel (980436)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900247");
-  script_version("$Revision: 8274 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_bugtraq_id(36935);
   script_cve_id("CVE-2009-3555");
@@ -51,17 +51,23 @@ if(description)
   man-in-the-middle attacks to inject data into the beginning of the
   application protocol stream to execute HTTP transactions, bypass
   authentication.
+
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "A flaw exists in the Microsoft Windows SChannel (Secure Channel)
   authentication component when using certificate based authentication, which
   allows spoofing.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-049.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS10-049.");

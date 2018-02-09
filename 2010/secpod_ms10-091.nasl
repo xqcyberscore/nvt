@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-091.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: secpod_ms10-091.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows OpenType Compact Font Format Driver Privilege Escalation Vulnerability (2296199)
 #
@@ -26,19 +26,28 @@
 
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/MS10-091.mspx";
 
 tag_impact = "Successful exploitation could allow an attacker to run arbitrary code in
   kernel mode.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "The flaw is due to OpenType Font (OTF) driver which does not properly,
+
   - index an array when parsing OpenType fonts
+
   - parse the CMAP table when rendering a specially crafted OpenType font
+
   - reset a pointer when freeing memory, which results in a 'double free'
     condition.";
 tag_summary = "This host is missing an important security update according to
@@ -47,8 +56,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900263");
-  script_version("$Revision: 8447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(45311, 45315, 45316);
   script_cve_id("CVE-2010-3956", "CVE-2010-3957", "CVE-2010-3959");

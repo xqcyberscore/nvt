@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-063.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-063.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2567680)
 #
@@ -27,16 +27,22 @@
 tag_impact = "Successful exploitation could allow attacker to execute arbitrary code with
   system-level privileges. Successfully exploiting this issue will result in
   the complete compromise of affected computers.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior.
+tag_affected = "Microsoft Windows 7 Service Pack 1 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.";
 tag_insight = "The flaw is due to error in the Client/Server Run-time Subsystem
   (CSRSS) when evaluates inter-process device event message permissions.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/bulletin/ms11-063.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-063.";
@@ -44,8 +50,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902463);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_cve_id("CVE-2011-1967");
   script_bugtraq_id(48992);

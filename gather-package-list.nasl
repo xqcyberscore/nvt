@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 8470 2018-01-19 09:50:23Z cfischer $
+# $Id: gather-package-list.nasl 8720 2018-02-08 13:20:07Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 8470 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 10:50:23 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8720 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -823,8 +823,10 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
   system = ssh_cmd( socket:sock, cmd:'show system info', nosh:TRUE, pty:TRUE, pattern:"model: PA", retry:8 );
   if( eregmatch( pattern:'model: PA-', string:system ) && "family:" >< system )
   {
-    set_kb_item( name:"panOS/system", value: system );
-    set_kb_item( name:"panOS/detected_by", value:"SSH" );
+    set_kb_item( name:"palo_alto/detected", value:TRUE );
+    set_kb_item( name:"palo_alto/ssh/detected", value:TRUE );
+    set_kb_item( name:"palo_alto/ssh/port", value:port );
+    set_kb_item( name:"palo_alto/ssh/" + port + "/system", value:system );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     exit( 0 );

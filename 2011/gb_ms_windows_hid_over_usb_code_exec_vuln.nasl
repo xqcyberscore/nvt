@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_hid_over_usb_code_exec_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_windows_hid_over_usb_code_exec_vuln.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # MS Windows HID Functionality(Over USB) Code Execution Vulnerability
 #
@@ -29,11 +29,16 @@ execute arbitrary programs via crafted USB data.
 
 Impact Level: System/Application";
 
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
 Microsoft Windows XP Service Pack 2 and prior
+
 Microsoft Windows 2k Service Pack 4 and prior
+
 Microsoft Windows 2K3 Service Pack 2 and prior
+
 Microsoft Windows 2k8 Service Pack 4 and prior
+
 Microsoft Windows Vista service Pack 2 and prior";
 
 tag_insight = "The flaw is due to error in USB device driver, which does not
@@ -51,8 +56,8 @@ prone to code execution vulnerability.";
 if(description)
 {
   script_id(801581);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2011-0638");
   script_tag(name:"cvss_base", value:"6.9");

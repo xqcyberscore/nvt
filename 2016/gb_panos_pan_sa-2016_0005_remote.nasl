@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0005_remote.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2016_0005_remote.nasl 8723 2018-02-08 14:30:04Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0005 (Remote Check)
 #
@@ -25,15 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:paloaltonetworks:pan-os';
+CPE = "cpe:/o:paloaltonetworks:pan-os";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105627");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8015 $");
-
+ script_version ("$Revision: 8723 $");
+ script_cve_id("CVE-2016-3657");
  script_name("Palo Alto PAN-OS PAN-SA-2016-0005 (Remote Check)");
 
  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/38");
@@ -50,23 +50,26 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-08 15:30:04 +0100 (Thu, 08 Feb 2018) $");
  script_tag(name:"creation_date", value:"2016-04-29 10:43:26 +0200 (Fri, 29 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
+ script_category(ACT_ATTACK);
+ script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_webgui_detect.nasl");
- script_mandatory_keys("palo_alto/webui");
+ script_dependencies("gb_palo_alto_panOS_version.nasl"); # Don't use gb_palo_alto_webgui_detect.nasl directly as this won't set the CPE
+ script_mandatory_keys("palo_alto/webui/detected");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-if( ! port = get_kb_item( "palo_alto/webui/port" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-url = '/global-protect/login.esp';
+if( dir == "/" ) dir = "";
+url = dir + "/global-protect/login.esp";
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
@@ -83,7 +86,7 @@ data = 'prot=https%3A' +
        '&ok=Login';
 
 req = http_post_req( port:port,
-                     url:"/global-protect/login.esp",
+                     url:url,
                      data:data,
                      add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" )
                    );

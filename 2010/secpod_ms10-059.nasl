@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-059.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: secpod_ms10-059.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows Tracing Feature Privilege Elevation Vulnerabilities (982799)
 #
@@ -26,17 +26,23 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary code
   with elevated privileges.
+
   Impact Level: System";
-tag_affected = "Micorsoft Windows 7
+tag_affected = "Microsoft Windows 7
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
 tag_insight = "The multiple flaws are due to,
+
    - Windows placing incorrect access control lists (ACLs) on registry keys for
      the Tracing Feature for Services.
+
    - A memory corruption error in the Tracing Feature for Services when handling
      certain strings read from the registry.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://www.microsoft.com/technet/security/Bulletin/MS10-059.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS10-059.";
@@ -44,8 +50,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902231");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-26 14:31:12 +0200 (Thu, 26 Aug 2010)");
   script_cve_id("CVE-2010-2555", "CVE-2010-2554");
   script_tag(name:"cvss_base", value:"6.8");

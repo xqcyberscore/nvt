@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-059.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms09-059.nasl 8724 2018-02-08 15:02:56Z cfischer $
 #
 # Microsoft Windows LSASS Denial of Service Vulnerability (975467)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_id(900877);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 8724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-14 16:47:08 +0200 (Wed, 14 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,11 +51,16 @@ if(description)
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a Denial of
   Service on the victim's system.
+
   Impact Level: System");
-  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  script_tag(name : "affected" , value : "Microsoft Windows 7
+
   Microsoft Windows XP  Service Pack 3 and prior.
+
   Microsoft Windows 2K3 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name : "insight" , value : "This issue is caused by an integer underflow error in the Windows NTLM
   implementation in LSASS (Local Security Authority Subsystem Service) when
@@ -63,6 +68,7 @@ if(description)
   allow attackers to cause an affected system to automatically reboot.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link.
+
   http://www.microsoft.com/technet/security/bulletin/ms09-059.mspx");
   script_tag(name : "summary" , value : "This host is missing a critical security update according to
   Microsoft Bulletin MS09-059.");
