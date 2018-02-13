@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2299cfb708_keycloak-httpd-client-install_fc27.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_fedora_2018_2299cfb708_keycloak-httpd-client-install_fc27.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # Fedora Update for keycloak-httpd-client-install FEDORA-2018-2299cfb708
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874034");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-19 07:45:32 +0100 (Fri, 19 Jan 2018)");
   script_cve_id("CVE-2017-15111", "CVE-2017-15112");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for keycloak-httpd-client-install FEDORA-2018-2299cfb708");
   script_tag(name: "summary", value: "Check the version of keycloak-httpd-client-install");

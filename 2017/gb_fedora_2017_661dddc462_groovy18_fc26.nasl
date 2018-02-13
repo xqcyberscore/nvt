@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_661dddc462_groovy18_fc26.nasl 7032 2017-08-31 12:58:05Z santu $
+# $Id: gb_fedora_2017_661dddc462_groovy18_fc26.nasl 8746 2018-02-09 14:31:43Z cfischer $
 #
 # Fedora Update for groovy18 FEDORA-2017-661dddc462
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873283");
-  script_version("$Revision: 7032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 14:58:05 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 8746 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:31:43 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 07:50:20 +0200 (Fri, 18 Aug 2017)");
   script_cve_id("CVE-2016-6814");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for groovy18 FEDORA-2017-661dddc462");
   script_tag(name: "summary", value: "Check the version of groovy18");

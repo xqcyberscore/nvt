@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_40549.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: gb_moinmoin_40549.nasl 8755 2018-02-12 06:56:14Z cfischer $
 #
 # MoinMoin 'PageEditor.py' Cross-Site Scripting Vulnerability
 #
@@ -27,62 +27,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "MoinMoin is prone to a cross-site scripting vulnerability because it
-fails to sufficiently sanitize user-supplied input data.
+CPE = "cpe:/a:moinmo:moinmoin";
 
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may help the attacker steal cookie-based authentication
-credentials and launch other attacks.
-
-MoinMoin 1.9.2 and prior are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100696");
- script_version("$Revision: 8250 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
- script_cve_id("CVE-2010-2969", "CVE-2010-2970", "CVE-2010-2487");
- script_bugtraq_id(40549);
- script_name("MoinMoin 'PageEditor.py' Cross-Site Scripting Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.100696");
+  script_version("$Revision: 8755 $");
+  script_cve_id("CVE-2010-2969", "CVE-2010-2970", "CVE-2010-2487");
+  script_bugtraq_id(40549);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-12 07:56:14 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
+  script_name("MoinMoin 'PageEditor.py' Cross-Site Scripting Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_moinmoin_wiki_detect.nasl");
+  script_require_ports("Services/www", 8080);
+  script_mandatory_keys("moinmoinWiki/installed");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/40549");
- script_xref(name : "URL" , value : "http://moinmo.in/");
- script_xref(name : "URL" , value : "http://moinmo.in/MoinMoinBugs/1.9.2UnescapedInputForThemeAddMsg");
+  script_xref(name:"URL", value:"http://moinmo.in/SecurityFixes");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40549");
+  script_xref(name:"URL", value:"http://moinmo.in/MoinMoinBugs/1.9.2UnescapedInputForThemeAddMsg");
 
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_moinmoin_wiki_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_summary = "MoinMoin is prone to a cross-site scripting vulnerability because it
+  fails to sufficiently sanitize user-supplied input data.";
+
+  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may help the attacker steal cookie-based authentication
+  credentials and launch other attacks.";
+
+  tag_affected = "MoinMoin 1.9.2 and prior are vulnerable.";
+
+  tag_solution = "Updates are available. Please see the references for more information.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if (!can_host_php(port:port)) exit(0);
-
-if(vers = get_version_from_kb(port:port,app:"moinmoinWiki")) {
-
-  if(version_is_less_equal(version: vers, test_version: "1.9.2")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if( version_is_less_equal( version:vers, test_version:"1.9.2" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.9.3" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1034.nasl 8728 2018-02-08 19:26:27Z teissa $
+# $Id: deb_dla_1034.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # Auto-generated from advisory DLA 1034-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891034");
-  script_version("$Revision: 8728 $");
+  script_version("$Revision: 8731 $");
   script_cve_id("CVE-2016-10397", "CVE-2017-11143", "CVE-2017-11144", "CVE-2017-11145", "CVE-2017-11147");
   script_name("Debian Lts Announce DLA 1034-1 ([SECURITY] [DLA 1034-1] php5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 20:26:27 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

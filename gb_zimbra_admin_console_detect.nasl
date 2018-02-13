@@ -1,15 +1,15 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_admin_console_detect.nasl 5157 2017-02-01 14:51:31Z cfi $
+# $Id: gb_zimbra_admin_console_detect.nasl 8745 2018-02-09 14:30:40Z santu $
 #
 # Zimbra Collaboration Detection (WebGUI)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
-#
+# 
 # Copyright:
 # Copyright (c) 2013 Greenbone Networks GmbH
-#
+# 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103852");
-  script_version("$Revision: 5157 $");
+  script_version("$Revision: 8745 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:51:31 +0100 (Wed, 01 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:30:40 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 11:35:08 +0100 (Wed, 11 Dec 2013)");
   script_name("Zimbra Collaboration Detection (WebGUI)");
   script_category(ACT_GATHER_INFO);
@@ -41,8 +41,9 @@ if(description)
   script_require_ports("Services/www", 80, 443, 7071, 7072);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
-  detect a Zimbra Collaboration WebGUI from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to
+  the server and attempts to detect a Zimbra Collaboration WebGUI from the
+  reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,12 +68,21 @@ foreach dir( make_list_unique( "/", "/zimbraAdmin", cgi_dirs( port:port ) ) ) {
       "Zimbra Collaboration Suite Web Client" >< buf || 
       "<title>Zimbra Administration" >< buf ||
       "<title>Zimbra Web Client Sign In" >< buf ) ) {
-
+ 
     version = "unknown";
 
     url = dir + "/js/zimbraMail/share/model/ZmSettings.js";
     req = http_get( port:port, item:url );
     res = http_keepalive_send_recv( port:port, data:req );
+
+    #Modified to detect version if link doesn't go via zimbraAdmin directory.
+    if(res  !~ "HTTP/1.. 200 OK")
+    {
+      url = "/js/zimbraMail/share/model/ZmSettings.js";
+      req = http_get( port:port, item:url );
+      res = http_keepalive_send_recv( port:port, data:req );
+    }
+
     if( ! isnull ( res ) ) {
       vers = egrep( string:res, pattern:"CLIENT_VERSION" );
       if( !isnull ( vers)  ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_panOS_version.nasl 8720 2018-02-08 13:20:07Z cfischer $
+# $Id: gb_palo_alto_panOS_version.nasl 8743 2018-02-09 13:10:26Z cfischer $
 #
 # Palo Alto PAN-OS Version Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105263");
-  script_version("$Revision: 8720 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8743 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 14:10:26 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 14:02:11 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -113,7 +113,11 @@ if( detected_fw_hotfix != "unknown" && detected_fw_version != "unknown" ) {
   os_version  = detected_fw_version + " Hotfix " + detected_fw_hotfix;
 }
 
-register_and_report_os( os:"Palo Alto PAN-OS", version:os_version, cpe:os_cpe, desc:"Palo Alto PAN-OS Version Detection Consolidation", runs_key:"unixoide" );
+if( os_version ) {
+  register_and_report_os( os:"Palo Alto PAN-OS " + os_version, cpe:os_cpe, desc:"Palo Alto PAN-OS Version Detection Consolidation", runs_key:"unixoide" );
+} else {
+  register_and_report_os( os:"Palo Alto PAN-OS", cpe:os_cpe, desc:"Palo Alto PAN-OS Version Detection Consolidation", runs_key:"unixoide" );
+}
 
 location = "/";
 
@@ -123,6 +127,12 @@ if( webui_ports = get_kb_list( "palo_alto/webui/port" ) ) {
     extra += "HTTP(s) on port " + port + '/tcp\n';
     if( concluded ) {
       extra += 'Concluded from: ' + concluded + '\n';
+    }
+    # nb: Its expected to have this in here as the XML-API NVT is using
+    # "palo_alto/webui/port" and will log all failed reasons to the key below
+    failed = get_kb_item( "palo_alto/xml-api/" + port + "/fail_reason" );
+    if( failed ) {
+      failed_reasons += failed + '\n';
     }
     register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
     register_product( cpe:os_cpe, location:location, port:port, service:"www" );
@@ -162,6 +172,12 @@ report += '\n\n' + build_detection_report( app:hw_app,
 if( extra ) {
   report += '\n\nDetection methods:\n';
   report += '\n' + extra;
+}
+
+if( failed_reasons ) {
+  report += '\n\nXML-API credentials where provided via "Palo Alto PAN-OS Version Detection (XML-API)" ';
+  report += '(OID:1.3.6.1.4.1.25623.1.0.105262) but the login at the XML-API failed for the following reasons:\n';
+  report += '\n' + failed_reasons;
 }
 
 log_message( port:0, data:report );

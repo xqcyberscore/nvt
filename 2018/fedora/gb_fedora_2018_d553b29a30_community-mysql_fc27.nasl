@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d553b29a30_community-mysql_fc27.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_fedora_2018_d553b29a30_community-mysql_fc27.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # Fedora Update for community-mysql FEDORA-2018-d553b29a30
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874101");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 08:08:01 +0100 (Wed, 07 Feb 2018)");
   script_cve_id("CVE-2018-2696", "CVE-2018-2703", "CVE-2018-2565", "CVE-2018-2573", 
                 "CVE-2018-2576", "CVE-2018-2583", "CVE-2018-2586", "CVE-2018-2590", 
                 "CVE-2018-2600", "CVE-2018-2612", "CVE-2018-2622", "CVE-2018-2640", 
                 "CVE-2018-2645", "CVE-2018-2646", "CVE-2018-2647", "CVE-2018-2665", 
                 "CVE-2018-2667", "CVE-2018-2668");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for community-mysql FEDORA-2018-d553b29a30");
   script_tag(name: "summary", value: "Check the version of community-mysql");

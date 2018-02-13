@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untrusted_ca_detect.nasl 7884 2017-11-23 12:54:50Z cfischer $
+# $Id: gb_untrusted_ca_detect.nasl 8740 2018-02-09 11:36:38Z cfischer $
 #
-# Untrusted SSL/TLS Certificate Authorities
+# SSL/TLS: Untrusted Certificate Authorities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113054");
-  script_version("$Revision: 7884 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 13:54:50 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 8740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 12:36:38 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 10:13:14 +0100 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -38,7 +38,7 @@ if( description )
 
   script_tag(name:"solution_type", value:"Mitigation");
 
-  script_name("Untrusted SSL/TLS Certificate Authorities");
+  script_name("SSL/TLS: Untrusted Certificate Authorities");
 
   script_category(ACT_GATHER_INFO);
 

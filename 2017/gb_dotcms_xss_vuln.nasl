@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_xss_vuln.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_dotcms_xss_vuln.nasl 8733 2018-02-09 08:17:27Z asteins $
 #
 # dotCMS Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106572");
-  script_version("$Revision: 7676 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 8733 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-09 09:17:27 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-02-07 11:43:11 +0700 (Tue, 07 Feb 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("dotCMS Multiple XSS Vulnerabilities");
 
@@ -65,8 +65,8 @@ if (description)
 
   script_tag(name: "affected", value: "Version 3.7.0 and previous versions.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://github.com/dotCMS/core/issues/10643");
 

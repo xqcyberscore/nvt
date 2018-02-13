@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 8451 2018-01-17 18:56:46Z cfischer $
+# $Id: os_eol.inc 8743 2018-02-09 13:10:26Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8451 $
+# $Revision: 8743 $
 #
 ###############################################################################
 
@@ -353,6 +353,25 @@ eol_cpes['cpe:/a:citrix:xenserver:6.0.0'] = '2016-09-26';
 eol_cpes['cpe:/a:citrix:xenserver:5.6'] = '2014-03-31';
 eol_cpes['cpe:/a:citrix:xenserver:5.5'] = '2013-09-15';
 eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '2013-09-15';
+
+# Palo Alto PAN-OS (https://www.paloaltonetworks.com/services/support/end-of-life-announcements/end-of-life-summary)
+eol_urls['cpe:/o:paloaltonetworks:pan-os'] = 'https://www.paloaltonetworks.com/services/support/end-of-life-announcements/end-of-life-summary';
+eol_names['cpe:/o:paloaltonetworks:pan-os'] = 'Palo Alto PAN-OS';
+eol_regex['cpe:/o:paloaltonetworks:pan-os'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:8.0'] = '2019-01-29';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:7.1'] = '2020-03-29';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:7.0'] = '2017-12-04';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:6.1'] = '2018-10-25';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:6.0'] = '2017-03-19';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:5.1'] = '2017-05-09';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:5.0'] = '2016-11-13';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:4.1'] = '2015-04-30';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:4.0'] = '2014-12-31';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:3.1'] = '2013-06-30';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:3.0'] = '2010-12-17';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:2.1'] = '2012-01-05';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:2.0'] = '2009-05-20';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:1.3'] = '2008-11-20';
 
 # Cisco IOS XR (http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html)
 eol_urls['cpe:/o:cisco:ios_xr'] = 'http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squid_detect.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: secpod_squid_detect.nasl 8740 2018-02-09 11:36:38Z cfischer $
 #
 # Squid Proxy Server Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900611");
-  script_version("$Revision: 6891 $");
+  script_version("$Revision: 8740 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 12:36:38 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_name("Squid Proxy Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -53,47 +53,54 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-port = get_kb_item("Services/http_proxy");
-
+port = get_kb_item( "Services/http_proxy" );
 if( ! port ) port = 3128;
 if( ! get_port_state( port ) ) port = 8080;
 if( ! get_port_state( port ) ) exit( 0 );
 
-req = http_get( item:"http://www.$$$$$", port:port );
-res = http_keepalive_send_recv( port:port, data:req );
+req     = http_get( item:"http://www.$$$$$", port:port );
+res     = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+res2    = http_get_cache( item:"/", port:port );
+pattern = "^Server: squid";
 
-if( data = egrep( pattern:"^Server: squid", string:res, icase: TRUE ) ) {
+if( data = egrep( pattern:pattern, string:res, icase:TRUE )  ) {
+  installed = TRUE;
+} else {
+  if( data = egrep( pattern:pattern, string:res2, icase:TRUE )  ) {
+    installed = TRUE;
+  }
+}
 
-  version = eregmatch( pattern:"^Server: squid/([0-9a-zA-Z.]+)", string:data, icase: TRUE );
+if( installed ) {
 
-  if(version[1]) {
-    ver = version[1];
-    set_kb_item( name:"www/" + port + "/Squid", value:ver );
-  } else {
-    ver = "unknown";
+  vers    = "unknown";
+  install = port + "/tcp";
+  version = eregmatch( pattern:"^Server: squid/([0-9a-zA-Z.]+)", string:data, icase:TRUE );
+
+  if( version[1] ) {
+    vers = version[1];
+    set_kb_item( name:"www/" + port + "/Squid", value:vers );
   }
 
   set_kb_item( name:"squid_proxy_server/installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
-  cpe = build_cpe( value:ver, exp:"^([0-9.]+.[a-zA-Z0-9]+)", base:"cpe:/a:squid-cache:squid:" );
+  cpe = build_cpe( value:vers, exp:"^([0-9.]+.[a-zA-Z0-9]+)", base:"cpe:/a:squid-cache:squid:" );
   if( isnull( cpe ) )
-     cpe = "cpe:/a:squid-cache:squid";
+    cpe = "cpe:/a:squid-cache:squid";
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  register_product( cpe:cpe, location:install, port:port );
 
-  log_message( data: build_detection_report( app:"Squid Proxy Server",
-                                             version:ver,
-                                             install:port + '/tcp',
-                                             cpe:cpe,
-                                             concluded: version[0] ),
-                                             port:port );
+  log_message( data:build_detection_report( app:"Squid Proxy Server",
+                                            version:vers,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:version[0] ),
+                                            port:port );
 }
 
 exit( 0 );

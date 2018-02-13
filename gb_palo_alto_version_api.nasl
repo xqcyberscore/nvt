@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_version_api.nasl 8720 2018-02-08 13:20:07Z cfischer $
+# $Id: gb_palo_alto_version_api.nasl 8741 2018-02-09 12:30:28Z cfischer $
 #
 # Palo Alto PAN-OS Version Detection (XML-API)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105262");
-  script_version("$Revision: 8720 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8741 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 13:30:28 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 13:23:32 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_mandatory_keys("palo_alto/webui/detected");
 
   script_add_preference(name:"API Username: ", value:"", type:"entry");
-  script_add_preference(name:"API Password: ", type:"password", value:"");
+  script_add_preference(name:"API Password: ", value:"", type:"password");
 
   script_tag(name:"summary", value:"This script performs XML-API based detection of the Palo Alto PAN-OS Version.");
 
@@ -54,22 +54,45 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
 
+function exit_and_report_fail( port, reason ) {
+
+  local_var port, reason;
+
+  set_kb_item( name:"palo_alto/xml-api/" + port + "/fail_reason", value:reason );
+  exit( 0 );
+}
+
 if( ! port = get_kb_item( "palo_alto/webui/port" ) ) exit( 0 );
 
 user = script_get_preference( "API Username: " );
 pass = script_get_preference( "API Password: " );
 
-if( ! user || ! pass ) exit( 0 );
+if( ! user || ! pass ) {
+  if( ! user && pass )
+    exit_and_report_fail( port:port, reason:"API Password provided but API Username missing." );
+
+  if( user && ! pass )
+    exit_and_report_fail( port:port, reason:"API Username provided but API Password missing." );
+
+  exit( 0 );
+}
 
 url = '/api/?type=keygen&user=' + user + '&password=' + pass;
 
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-if( "success" >!< buf || "<key>" >!< buf ) exit( 0 );
+if( "success" >!< buf || "<key>" >!< buf ) {
+  if( reason = egrep( pattern:"<msg>.*</msg>", string:buf ) ) {
+    exit_and_report_fail( port:port, reason:reason );
+  }
+  exit_and_report_fail( port:port, reason:"Unknown error occured while trying to generate an Access Key via '/api/?type=keygen'." );
+}
 
 match = eregmatch( pattern:'<key>([^<]+)</key>', string:buf );
-if( isnull( match[1] ) ) exit( 0 );
+if( isnull( match[1] ) ) {
+  exit_and_report_fail( port:port, reason:"Failed to fetch generated Access Key from '/api/?type=keygen'." );
+}
 
 key = urlencode( str:match[1] );
 
@@ -77,7 +100,12 @@ url = '/api/?type=op&cmd=%3Cshow%3E%3Csystem%3E%3Cinfo%3E%3C%2Finfo%3E%3C%2Fsyst
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-if( "success" >!< buf || "<result>" >!< buf ) exit( 0 );
+if( "success" >!< buf || "<result>" >!< buf ) {
+  if( reason = egrep( pattern:"<msg>.*</msg>", string:buf ) ) {
+    exit_and_report_fail( port:port, reason:reason );
+  }
+  exit_and_report_fail( port:port, reason:"Unknown error occured while trying to access '/api/?type=op' via the previously generated Access Key." );
+}
 
 set_kb_item( name:"palo_alto/detected", value:TRUE );
 set_kb_item( name:"palo_alto/xml-api/detected", value:TRUE );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln_oct17.nasl 7497 2017-10-19 07:06:06Z santu $
+# $Id: gb_oracle_db_mult_unspecified_vuln_oct17.nasl 8746 2018-02-09 14:31:43Z cfischer $
 #
 # Oracle Database Server 'WLM' And 'Spatial' Components Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811871");
-  script_version("$Revision: 7497 $");
+  script_version("$Revision: 8746 $");
   script_cve_id("CVE-2016-6814", "CVE-2016-8735");
   script_bugtraq_id(94463, 95429);
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:31:43 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 14:48:23 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Database Server 'WLM' And 'Spatial' Components Multiple Unspecified Vulnerabilities");
 

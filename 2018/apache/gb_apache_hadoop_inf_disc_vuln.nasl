@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_inf_disc_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_apache_hadoop_inf_disc_vuln.nasl 8746 2018-02-09 14:31:43Z cfischer $
 #
 # Apache Hadoop Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113089");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8746 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:31:43 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-23 13:34:37 +0100 (Tue, 23 Jan 2018)");
-  script_tag(name:"cvss_base", value:"5.2");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

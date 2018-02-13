@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0326_1.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_suse_2018_0326_1.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2018:0326-1 (webkit2gtk3)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851693");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 07:49:36 +0100 (Thu, 01 Feb 2018)");
   script_cve_id("CVE-2016-4692", "CVE-2016-4743", "CVE-2016-7586", "CVE-2016-7587", 
                 "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7598", "CVE-2016-7599", 
@@ -53,8 +53,8 @@ if(description)
                 "CVE-2017-7104", "CVE-2017-7107", "CVE-2017-7109", "CVE-2017-7111", 
                 "CVE-2017-7117", "CVE-2017-7120", "CVE-2017-7142", "CVE-2017-7156", 
                 "CVE-2017-7157");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2018:0326-1 (webkit2gtk3)");
   script_tag(name: "summary", value: "Check the version of webkit2gtk3");

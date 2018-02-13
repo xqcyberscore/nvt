@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_034101216d_rsync_fc26.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_fedora_2018_034101216d_rsync_fc26.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # Fedora Update for rsync FEDORA-2018-034101216d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874091");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 07:56:55 +0100 (Tue, 06 Feb 2018)");
   script_cve_id("CVE-2018-5764");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for rsync FEDORA-2018-034101216d");
   script_tag(name: "summary", value: "Check the version of rsync");

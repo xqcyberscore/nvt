@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0329_1.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_suse_2018_0329_1.nasl 8731 2018-02-09 07:50:57Z asteins $
 #
 # SuSE Update for freeimage openSUSE-SU-2018:0329-1 (freeimage)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851695");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 07:53:54 +0100 (Thu, 01 Feb 2018)");
   script_cve_id("CVE-2016-5684");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for freeimage openSUSE-SU-2018:0329-1 (freeimage)");
   script_tag(name: "summary", value: "Check the version of freeimage");

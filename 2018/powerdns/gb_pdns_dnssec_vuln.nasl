@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dnssec_vuln.nasl 8508 2018-01-24 06:14:25Z ckuersteiner $
+# $Id: gb_pdns_dnssec_vuln.nasl 8746 2018-02-09 14:31:43Z cfischer $
 #
 # PowerDNS Recursor DNSSEC Signatures Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140725");
-  script_version("$Revision: 8508 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-24 07:14:25 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 8746 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-09 15:31:43 +0100 (Fri, 09 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-01-24 11:29:30 +0700 (Wed, 24 Jan 2018)");
-  script_tag(name: "cvss_base", value: "3.3");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-1000003");
 
