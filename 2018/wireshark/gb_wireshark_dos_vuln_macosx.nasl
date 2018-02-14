@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_macosx.nasl 8751 2018-02-09 16:34:10Z cfischer $
+# $Id: gb_wireshark_dos_vuln_macosx.nasl 8783 2018-02-13 10:08:14Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability (MacOSX)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112214");
-  script_version("$Revision: 8751 $");
+  script_version("$Revision: 8783 $");
   script_cve_id("CVE-2018-6836");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 17:34:10 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:08:14 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 15:34:57 +0100 (Fri, 09 Feb 2018)");
 
   script_name("Wireshark Denial of Service Vulnerability (MacOSX)");
@@ -69,18 +69,20 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
-ver = infos['version'];
-path = infos['location'];
-
-if(version_is_less_equal(version:ver, test_version:"2.4.4")) {
-  report = report_fixed_ver(installed_version:ver, fixed_version:"NoneAvailable", install_path:path);
-  security_message(data:report);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) {
   exit(0);
 }
 
-exit(0);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less_equal(version:vers, test_version:"2.4.4")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"NoneAvailable", install_path:path);
+  security_message(port:0, data:report);
+  exit(0);
+}
+
+exit(99);

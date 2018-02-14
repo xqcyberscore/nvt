@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln.nasl 8719 2018-02-08 13:10:15Z jschulte $
+# $Id: gb_foxit_phantompdf_mult_vuln.nasl 8781 2018-02-13 10:01:09Z cfischer $
 #
 # Foxit PhantomPDF 7.3.4.311 Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113108");
-  script_version("$Revision: 8719 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:10:15 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8781 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:01:09 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"executable_version");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,10 +68,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe: CPE, exit_no_version: TRUE ) ) exit( 0 );
+vers = infos['version'];
+path = infos['location'];
 
-if( version_is_less_equal( version: version, test_version: "7.3.4.311" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "8.0" );
+if( version_is_less_equal( version: vers, test_version: "7.3.4.311" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "8.0", install_path: path );
   security_message( data: report, port: 0 );
   exit( 0 );
 }

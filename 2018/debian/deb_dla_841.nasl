@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_841.nasl 8760 2018-02-12 09:35:59Z asteins $
+# $Id: deb_dla_841.nasl 8762 2018-02-12 10:21:29Z asteins $
 #
 # Auto-generated from advisory DLA 841-2 using nvtgen 1.0
 # Script version:2.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890841");
-  script_version("$Revision: 8760 $");
+  script_version("$Revision: 8762 $");
   script_cve_id("CVE-2015-0253", "CVE-2016-8743");
   script_name("Debian Lts Announce DLA 841-2 ([SECURITY] [DLA 841-2] apache2 regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 10:35:59 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-12 11:21:29 +0100 (Mon, 12 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

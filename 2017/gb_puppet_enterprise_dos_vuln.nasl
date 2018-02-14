@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln.nasl 5558 2017-03-13 10:17:05Z antu123 $
+# $Id: gb_puppet_enterprise_dos_vuln.nasl 8786 2018-02-13 10:48:03Z cfischer $
 #
-# Puppet Enterprise DoS Vulnerability 
+# Puppet Enterprise < 2016.4.3 / 2016.5 < 2016.5.2 DoS Vulnerability 
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:puppet:enterprise";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106582");
-  script_version("$Revision: 5558 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:17:05 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 8786 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-13 11:48:03 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-02-09 13:27:28 +0700 (Thu, 09 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("Puppet Enterprise DoS Vulnerability");
+  script_name("Puppet Enterprise < 2016.4.3 / 2016.5 < 2016.5.2 DoS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 

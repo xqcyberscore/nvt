@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_rce_vuln_jan17_macosx.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_ms_office_mult_rce_vuln_jan17_macosx.nasl 8764 2018-02-12 10:43:25Z asteins $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities - Jan18 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812729");
-  script_version("$Revision: 8539 $");
-  script_cve_id("CVE-2018-0792", "CVE-2018-0794", "CVE-2018-0793");
+  script_version("$Revision: 8764 $");
+  script_cve_id("CVE-2018-0792", "CVE-2018-0794", "CVE-2018-0793", "CVE-2018-0819");
   script_bugtraq_id(102381, 102373, 102375);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-12 11:43:25 +0100 (Mon, 12 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 14:22:59 +0530 (Thu, 11 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities - Jan18 (Mac OS X)");

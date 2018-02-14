@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_dos_vuln_win.nasl 8736 2018-02-09 10:37:00Z asteins $
+# $Id: gb_graphicsmagick_dos_vuln_win.nasl 8781 2018-02-13 10:01:09Z cfischer $
 #
 # GraphicsMagick Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112212");
-  script_version("$Revision: 8736 $");
+  script_version("$Revision: 8781 $");
   script_cve_id("CVE-2018-6799");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 11:37:00 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:01:09 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 11:31:13 +0100 (Fri, 09 Feb 2018)");
   script_name("GraphicsMagick Denial of Service Vulnerability (Windows)");
 
@@ -71,13 +71,17 @@ to cause a denial of service (heap overwrite) or possibly have unspecified other
 include("version_func.inc");
 include("host_details.inc");
 
-if(!ver = get_app_version(cpe:CPE)){
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)){
   exit(0);
 }
 
-if(version_is_less(version:ver, test_version:"1.3.28"))
-{
-  report = report_fixed_ver(installed_version:ver, fixed_version:"1.3.28");
-  security_message(data:report);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less(version:vers, test_version:"1.3.28")){
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.3.28", install_path:path);
+  security_message(port:0, data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: webmirror.nasl 8770 2018-02-12 15:29:07Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8770 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-12 16:29:07 +0100 (Mon, 12 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -747,7 +747,26 @@ function parse_form( elements, current ) {
 
 function pre_parse( data, src_page ) {
 
-  local_var php_path, fp_save, data2;
+  local_var php_path, fp_save, data2, js_data;
+
+  if( js_data = eregmatch( string:data, pattern:"<script>(.*)</script>", icase:TRUE ) ) {
+    # https://coinhive.com/documentation/miner
+    if( "CoinHive.Anonymous" >< js_data || "CoinHive.User" >< js_data || "CoinHive.Token" >< js_data ) {
+      set_kb_item( name:"www/coinhive/detected", value:TRUE );
+      if( ! Misc[src_page] ) {
+        # nb: The javascript might be embedded into web page by the owner on purpose.
+        if( ".didOptOut" >< js_data ) {
+          set_kb_item( name:"www/" + port + "/content/coinhive_optout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+        # The "AuthedMine" (https://coinhive.com/documentation/authedmine) won't run the JS without asking the user.
+        } else if( "https://authedmine.com/lib/authedmine.min.js" >< js_data ) {
+          set_kb_item( name:"www/" + port + "/content/coinhive_optin", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+        } else {
+          set_kb_item( name:"www/" + port + "/content/coinhive_nooptout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+        }
+        Misc[src_page] = 1;
+      }
+    }
+  }
 
   if( "Index of /" >< data ) {
     if( ! Misc[src_page] ) {
@@ -775,7 +794,7 @@ function pre_parse( data, src_page ) {
     php_path = ereg_replace( pattern:"in <b>([^<]*)</b>.*", string:data2, replace:"\1" );
     if( php_path != data2 ) {
       if( ! Misc[src_page] ) {
-        set_kb_item( name:"www/" + port + "/content/php_pysical_path", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + php_path + ")" );
+        set_kb_item( name:"www/" + port + "/content/php_physical_path", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + php_path + ")" );
         Misc[src_page] = 1;
       }
     }

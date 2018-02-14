@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 8478 2018-01-21 17:52:33Z cfischer $
+# $Id: find_service1.nasl 8779 2018-02-13 09:34:34Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 8478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:52:33 +0100 (Sun, 21 Jan 2018) $");
+  script_version("$Revision: 8779 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 10:34:34 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -559,6 +559,24 @@ if( port == 5556 && ":-ERR Error reading from socket: Unknown protocol exception
 if( r =~ "Nsure Audit .* \[.*\]" ) {
   register_service( port:port, proto:"naudit", message:"A Novell Audit Secure Logging Server service seems to be running on this port." );
   log_message( port:port, data:"A Novell Audit Secure Logging Server service seems to be running on this port." );
+  exit( 0 );
+}
+
+# nb: Keep in sync with find_service2.nasl.
+# Daytime seems to be responding late or even not to the HELP
+# request there so trying to detect it here.
+if( ereg( pattern:"^(Mon|Tue|Wed|Thu|Fri|Sat|Sun|Lun|Mar|Mer|Jeu|Ven|Sam|Dim) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|D[eé]c|F[eé]v|Avr|Mai|Ao[uû]) *(0?[0-9]|[1-3][0-9]) [0-9]+:[0-9]+(:[0-9]+)?( *[ap]m)?( +[A-Z]+)? [1-2][0-9][0-9][0-9].?.?$",
+          string:r ) ||
+    ereg( pattern:"^[0-9][0-9] +(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|D[eé]c|F[eé]v|Avr|Mai|Ao[uû]) +[1-2][0-9][0-9][0-9] +[0-9]+:[0-9]+:[0-9]+( *[ap]m)? [A-Z0-9]+.?.?$", string:r, icase:TRUE ) ||
+    r =~ '^(0?[0-9]|[1-2][0-9]|3[01])-(0[1-9]|1[0-2])-20[0-9][0-9][\r\n]*$' ||
+    r =~ '^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9] (19|20)[0-9][0-9]-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])[ \t\r\n]*$' ||
+    ereg( pattern:"^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (January|February|March|April|May|June|July|August|September|October|November|December) ([0-9]|[1-3][0-9]), [1-2][0-9][0-9][0-9] .*", string:r ) ||
+    # MS flavor of daytime
+    ereg(pattern:"^[0-9][0-9]?:[0-9][0-9]:[0-9][0-9] [AP]M [0-9][0-9]?/[0-9][0-9]?/[0-2][0-9][0-9][0-9].*$", string:r ) ||
+    # e.g. 0:00:42 07.02.2018 or 14:07:03 16.01.2018
+    r =~ '^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9] +(0[1-9]|[12][0-9]|3[01])\\.(0[1-9]|1[0-2])\\.(19|20)[0-9][0-9][ \t\r\n]*$' ) {
+  register_service( port:port, proto:"daytime" );
+  log_message( port:port, data:"Daytime is running on this port" );
   exit( 0 );
 }
 

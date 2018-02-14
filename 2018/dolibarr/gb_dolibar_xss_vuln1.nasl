@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibar_xss_vuln1.nasl 8757 2018-02-12 08:44:48Z asteins $
+# $Id: gb_dolibar_xss_vuln1.nasl 8784 2018-02-13 10:23:33Z cfischer $
 #
-# Dolibarr XSS Vulnerability
+# Dolibarr <= 6.0.4 XSS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,19 +30,19 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140652");
-  script_version("$Revision: 8757 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-12 09:44:48 +0100 (Mon, 12 Feb 2018) $");
+  script_version("$Revision: 8784 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-13 11:23:33 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 13:51:40 +0700 (Thu, 04 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-17971");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "NoneAvailable");
 
-  script_name("Dolibarr XSS Vulnerability");
+  script_name("Dolibarr <= 6.0.4 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 

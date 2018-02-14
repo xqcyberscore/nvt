@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_mult_vuln.nasl 8666 2018-02-05 12:52:45Z cfischer $
+# $Id: gb_puppet_enterprise_mult_vuln.nasl 8787 2018-02-13 10:52:33Z cfischer $
 #
-# Puppet Enterprise 2016.4.4, 2017.2.0 Multiple Vulnerabilities
+# Puppet Enterprise < 2016.4.4 / 2017 < 2017.2.1 Multiple Vulnerabilities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113100");
-  script_version("$Revision: 8666 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:52:45 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 8787 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:52:33 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:11:11 +0100 (Fri, 02 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2017-2297", "CVE-2017-2293");
 
-  script_name("Puppet Enterprise 2016.4.4, 2017.2.0 Multiple Vulnerabilities");
+  script_name("Puppet Enterprise < 2016.4.4 / 2017 < 2017.2.1 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -49,7 +49,9 @@ if( description )
   script_dependencies("gb_puppet_enterprise_detect.nasl");
   script_mandatory_keys("puppet_enterprise/installed");
 
-  script_tag(name:"summary", value:"Versions of Puppet Enterprise prior to 2016.4.5 or 2017.2.1 are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Versions of Puppet Enterprise prior to 2016.4.5 or 2017.2.1 are prone to multiple vulnerabilities.
+
+  This NVT has duplicated the existing NVT 'Puppet Enterprise < 2016.4.5 / < 2017.2.1 Multiple Vulnerabilities' (OID: 1.3.6.1.4.1.25623.1.0.106929).");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The affected versions shipped with an MCollective configuration that allowed the package plugin to install or remove arbitrary packages on all managed agents.
 
@@ -60,8 +62,12 @@ if( description )
   script_xref(name:"URL", value:"https://puppet.com/security/cve/cve-2017-2293");
   script_xref(name:"URL", value:"https://puppet.com/security/cve/cve-2017-2297");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit( 0 );
 }
+
+exit(66);
 
 CPE = "cpe:/a:puppet:enterprise";
 

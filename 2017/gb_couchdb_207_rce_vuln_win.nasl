@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_207_rce_vuln_win.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: gb_couchdb_207_rce_vuln_win.nasl 8778 2018-02-13 08:10:09Z asteins $
 #
-# CrouchDB Multiple Vulnerabilities (Windows)
+# CouchDB Multiple Vulnerabilities (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -31,14 +31,14 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107259");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 8018 $");
+  script_version("$Revision: 8778 $");
 
-  script_name("CrouchDB Multiple Vulnerabilities (Windows)");
+  script_name("CouchDB Multiple Vulnerabilities (Windows)");
 
   script_cve_id("CVE-2017-12635", "CVE-2017-12636");
   script_xref(name:"URL", value:"https://blog.couchdb.org/2017/11/14/apache-couchdb-cve-2017-12635-and-cve-2017-12636/");
   script_xref(name:"URL", value:"https://justi.cz/security/2017/11/14/couchdb-rce-npm.html");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 09:10:09 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:20:26 +0700 (Thu, 16 Nov 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

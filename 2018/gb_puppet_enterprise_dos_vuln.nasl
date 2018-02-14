@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln.nasl 8666 2018-02-05 12:52:45Z cfischer $
+# $Id: gb_puppet_enterprise_dos_vuln.nasl 8787 2018-02-13 10:52:33Z cfischer $
 #
-# Puppet Enterprise 2017 Denial of Service Vulnerability
+# Puppet Enterprise 2017 < 2017.2.2 Denial of Service Vulnerability
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113101");
-  script_version("$Revision: 8666 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:52:45 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 8787 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:52:33 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:40:38 +0100 (Fri, 02 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2017-2296");
 
-  script_name("Puppet Enterprise 2017 Denial of Service Vulnerability");
+  script_name("Puppet Enterprise 2017 < 2017.2.2 Denial of Service Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -49,7 +49,9 @@ if( description )
   script_dependencies("gb_puppet_enterprise_detect.nasl");
   script_mandatory_keys("puppet_enterprise/installed");
 
-  script_tag(name:"summary", value:"Puppet Enterprise before 2017.2.2 is prone to a Denial of Service Vulnerability.");
+  script_tag(name:"summary", value:"Puppet Enterprise before 2017.2.2 is prone to a Denial of Service Vulnerability.
+
+  This NVT has duplicated the existing NVT 'Puppet Enterprise 2017 < 2017.2.2 DoS Vulnerability' (OID: 1.3.6.1.4.1.25623.1.0.106930).");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"In the affected versions, using specially formatted strings with certain formatting characters as Classifier node group names or RBAC role display names causes errors, effectively causing a DoS to the service.");
   script_tag(name:"affected", value:"Puppet Enterprise from 2017.1.0 through 2017.2.1");
@@ -57,8 +59,12 @@ if( description )
 
   script_xref(name:"URL", value:"https://puppet.com/security/cve/cve-2017-2296");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit( 0 );
 }
+
+exit(66);
 
 CPE = "cpe:/a:puppet:enterprise";
 

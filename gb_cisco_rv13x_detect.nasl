@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_rv13x_detect.nasl 8754 2018-02-12 05:59:02Z ckuersteiner $
+# $Id: gb_cisco_rv13x_detect.nasl 8765 2018-02-12 10:44:36Z ckuersteiner $
 #
 # Cisco Small Business RV13x Series Router Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140762");
-  script_version("$Revision: 8754 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-12 06:59:02 +0100 (Mon, 12 Feb 2018) $");
+  script_version("$Revision: 8765 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-12 11:44:36 +0100 (Mon, 12 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-12 11:15:29 +0700 (Mon, 12 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
 
   script_name("Cisco Small Business RV13x Series Router Detection");
 
-  script_tag(name: "summary" , value: "Cisco Small Business RV13x Series Router.
+  script_tag(name: "summary" , value: "Detection of Cisco Small Business RV13x Series Router.
 
 The script sends a connection request to the server and attempts to detect Cisco Small Business RV13x Series
 Router.");

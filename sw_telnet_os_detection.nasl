@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 8503 2018-01-23 16:49:56Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 8777 2018-02-13 07:55:44Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 8503 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8777 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 08:55:44 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -195,6 +195,8 @@ if( "login:" >< banner || "Kernel" >< banner ) {
     }
     exit( 0 );
   }
+
+  if( "Fabric OS" >< banner ) exit( 0 ); # Covered by gb_brocade_fabricos_telnet_detect.nasl
 
   register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );
 }
