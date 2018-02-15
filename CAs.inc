@@ -1,4 +1,7 @@
 ###############################################################################
+# OpenVAS Include File
+# $Id: CAs.inc 8810 2018-02-14 12:36:00Z cfischer $
+#
 # CA functions
 #
 # Authors:
@@ -21,6 +24,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
+#
+# $Revision: 8810 $
+#
 ###############################################################################
 
 owner            = 0;
@@ -214,12 +220,14 @@ known_CAs = make_list(
 "WoSign CA Limited##WoSign CA Limited####Certification Authority of WoSign G2##FBEDDC9065B7272037BC550C9C56DEBBF27894E1##2014 Nov 08##2044 Nov 08##2048##SHA-256",
 "Internet Security Research Group (ISRG)##Internet Security Research Group##ISRG Root X1##Approved, Pending Inclusion##CABD2A79A1076A31F21D253635CB039D4329A5E8##2015 Jun 04##2035 Jun 04##4096##SHA-256");
 
-function is_known_rootCA( fingerprint )
-{
+function is_known_rootCA( fingerprint ) {
+
+  local_var fingerprint, ka, v;
+
   if( ! fingerprint ) return;
 
-  foreach ka ( known_CAs )
-  {
+  foreach ka( known_CAs ) {
+
     v = split( ka, sep:"##", keep:FALSE );
 
     if( ! v ) return;
@@ -229,5 +237,4 @@ function is_known_rootCA( fingerprint )
   }
 
   return;
-
 }

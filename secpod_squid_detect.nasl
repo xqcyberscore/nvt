@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squid_detect.nasl 8740 2018-02-09 11:36:38Z cfischer $
+# $Id: secpod_squid_detect.nasl 8800 2018-02-13 17:01:31Z cfischer $
 #
 # Squid Proxy Server Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900611");
-  script_version("$Revision: 8740 $");
+  script_version("$Revision: 8800 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 12:36:38 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-13 18:01:31 +0100 (Tue, 13 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_name("Squid Proxy Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,13 +65,13 @@ if( ! get_port_state( port ) ) exit( 0 );
 
 req     = http_get( item:"http://www.$$$$$", port:port );
 res     = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-res2    = http_get_cache( item:"/", port:port );
+banner  = get_http_banner( port:port );
 pattern = "^Server: squid";
 
 if( data = egrep( pattern:pattern, string:res, icase:TRUE )  ) {
   installed = TRUE;
 } else {
-  if( data = egrep( pattern:pattern, string:res2, icase:TRUE )  ) {
+  if( data = egrep( pattern:pattern, string:banner, icase:TRUE )  ) {
     installed = TRUE;
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Apache Hadoop YARN NodeManager Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812673");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 8811 $");
   script_cve_id("CVE-2017-15718");
-  script_tag(name:"cvss_base", value:"5.2");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 11:40:52 +0530 (Thu, 25 Jan 2018)");
   script_name("Apache Hadoop YARN NodeManager Information Disclosure Vulnerability");
 

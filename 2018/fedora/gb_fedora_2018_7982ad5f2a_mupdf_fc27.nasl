@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_7982ad5f2a_mupdf_fc27.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_fedora_2018_7982ad5f2a_mupdf_fc27.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Fedora Update for mupdf FEDORA-2018-7982ad5f2a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874103");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8811 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 08:08:46 +0100 (Wed, 07 Feb 2018)");
   script_cve_id("CVE-2017-17858", "CVE-2018-5686");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mupdf FEDORA-2018-7982ad5f2a");
   script_tag(name: "summary", value: "Check the version of mupdf");

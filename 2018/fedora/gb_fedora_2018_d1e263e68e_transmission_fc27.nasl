@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d1e263e68e_transmission_fc27.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_fedora_2018_d1e263e68e_transmission_fc27.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Fedora Update for transmission FEDORA-2018-d1e263e68e
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874030");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8811 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:38:22 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2018-5702");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for transmission FEDORA-2018-d1e263e68e");
   script_tag(name: "summary", value: "Check the version of transmission");

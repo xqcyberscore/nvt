@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_detect.nasl 7269 2017-09-26 09:45:31Z ckuersteiner $
+# $Id: gb_sugarcrm_detect.nasl 8806 2018-02-14 10:03:59Z jschulte $
 #
 # SugarCRM Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106122");
- script_version ("$Revision: 7269 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:45:31 +0200 (Tue, 26 Sep 2017) $");
+ script_version ("$Revision: 8806 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-14 11:03:59 +0100 (Wed, 14 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-07-08 14:44:45 +0700 (Fri, 08 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,8 +73,7 @@ foreach dir (make_list_unique("/sugarcrm", "/SugarCRM", "/sugar", cgi_dirs(port:
   # for version 7 and later
   res2 = http_get_cache(port: port, item: dir + "/");
 
-  if ((res =~ "<title>(.*)?SugarCRM</title>" &&
-       ("alt='Powered By SugarCRM'>" >< res || "Set-Cookie: sugar_user_them" >< res )) ||
+  if ("alt='Powered By SugarCRM'>" >< res || "Set-Cookie: sugar_user_them" >< res ||
       (res2 =~ "<title>(.*)?SugarCRM</title>" && "var parentIsSugar" >< res2)) {
     version = "unknown";
     edition = "";

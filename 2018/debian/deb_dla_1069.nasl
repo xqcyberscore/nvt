@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1069.nasl 8775 2018-02-13 07:40:39Z teissa $
+# $Id: deb_dla_1069.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Auto-generated from advisory DLA 1069-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891069");
-  script_version("$Revision: 8775 $");
+  script_version("$Revision: 8811 $");
   script_cve_id("CVE-2017-11746");
   script_name("Debian Lts Announce DLA 1069-1 ([SECURITY] [DLA 1069-1] tenshi security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 08:40:39 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

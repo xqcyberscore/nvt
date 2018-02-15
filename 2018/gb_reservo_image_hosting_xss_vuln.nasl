@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reservo_image_hosting_xss_vuln.nasl 8547 2018-01-26 12:05:54Z jschulte $
+# $Id: gb_reservo_image_hosting_xss_vuln.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Reservo Image Hosting XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113086");
-  script_version("$Revision: 8547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 13:05:54 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 8811 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 10:46:47 +0100 (Thu, 18 Jan 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_app");
 

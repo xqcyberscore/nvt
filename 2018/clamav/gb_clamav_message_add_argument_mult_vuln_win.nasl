@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_message_add_argument_mult_vuln_win.nasl 8607 2018-01-31 13:32:54Z santu $
+# $Id: gb_clamav_message_add_argument_mult_vuln_win.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # ClamAV 'messageAddArgument' Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812509");
-  script_version("$Revision: 8607 $");
+  script_version("$Revision: 8811 $");
   script_cve_id("CVE-2017-12374", "CVE-2017-12375", "CVE-2017-12376", "CVE-2017-12377",
                 "CVE-2017-12378", "CVE-2017-12379", "CVE-2017-12380");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:32:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 12:57:18 +0530 (Mon, 29 Jan 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV 'messageAddArgument' Multiple Vulnerabilities (Windows)");

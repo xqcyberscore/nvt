@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1246.nasl 8490 2018-01-22 16:23:34Z teissa $
+# $Id: deb_dla_1246.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Auto-generated from advisory DLA 1246-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891246");
-  script_version("$Revision: 8490 $");
+  script_version("$Revision: 8811 $");
   script_cve_id("CVE-2018-5702");
   script_name("Debian Lts Announce DLA 1246-1 ([SECURITY] [DLA 1246-1] transmission security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 17:23:34 +0100 (Mon, 22 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 00:00:00 +0100 (Mon, 22 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

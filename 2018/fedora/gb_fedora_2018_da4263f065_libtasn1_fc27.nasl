@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_da4263f065_libtasn1_fc27.nasl 8566 2018-01-29 10:57:43Z santu $
+# $Id: gb_fedora_2018_da4263f065_libtasn1_fc27.nasl 8811 2018-02-14 12:41:44Z cfischer $
 #
 # Fedora Update for libtasn1 FEDORA-2018-da4263f065
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874048");
-  script_version("$Revision: 8566 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:57:43 +0100 (Mon, 29 Jan 2018) $");
+  script_version("$Revision: 8811 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 07:46:54 +0100 (Wed, 24 Jan 2018)");
   script_cve_id("CVE-2018-6003");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libtasn1 FEDORA-2018-da4263f065");
   script_tag(name: "summary", value: "Check the version of libtasn1");
