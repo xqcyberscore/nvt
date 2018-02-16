@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_fabricos_telnet_detect.nasl 8777 2018-02-13 07:55:44Z cfischer $
+# $Id: gb_brocade_fabricos_telnet_detect.nasl 8826 2018-02-15 11:12:22Z cfischer $
 #
 # Brocade Fabric OS Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140765");
-  script_version("$Revision: 8777 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 08:55:44 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8826 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-15 12:12:22 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-12 16:06:34 +0700 (Mon, 12 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,37 +55,27 @@ Fabric OS and to extract its version.");
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
 include("telnet_func.inc");
 
 port = get_telnet_port(default: 23);
 
 banner = get_telnet_banner(port: port);
 
+# Fabric OS (Device/Hostname)
 if ("Fabric OS" >< banner) {
   version = "unknown";
+  set_kb_item(name: "brocade_fabricos/detected", value: TRUE);
+  set_kb_item(name: "brocade_fabricos/telnet/detected", value: TRUE);
+  set_kb_item(name: "brocade_fabricos/telnet/port", value: port);
 
   # Fabric OS (tm)  Release v3.1.0
+  # Fabos Version 6.4.3g
   vers = eregmatch(pattern: "(Fabos Version |Fabric OS.*Release v)([0-9a-z.]+)", string: banner);
   if (!isnull(vers[2]))
     version = vers[2];
 
-  set_kb_item(name: "brocade_fabricos/detected", value: TRUE);
-
-  cpe = build_cpe(value: version, exp: "^([0-9a-z.]+)", base: "cpe:/o:brocade:fabric_os:");
-  if (!cpe)
-    cpe = 'cpe:/o:brocade:fabric_os';
-
-  register_product(cpe: cpe, location: port + '/tcp', port: port, service: "telnet");
-  register_and_report_os(os: "Brocade Fabric OS", version: version, cpe: cpe, banner_type: "Telnet banner",
-                         port: port, banner: banner, desc: "Brocade Fabric OS Detection (Telnet)",
-                         runs_key: "unixoide");
-
-  log_message(data: build_detection_report(app: "Brocade Fabric OS", version: version, install: port + '/tcp',
-                                           cpe: cpe, concluded: vers[0]),
-              port: port);
-  exit(0);
+  set_kb_item(name: "brocade_fabricos/telnet/" + port + "/concluded", value: banner);
+  set_kb_item(name: "brocade_fabricos/telnet/" + port + "/version", value: version);
 }
 
 exit(0);

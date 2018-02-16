@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8765 2018-02-12 10:44:36Z ckuersteiner $
+# $Id: host_details.inc 8829 2018-02-15 12:23:34Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8765 $
+# $Revision: 8829 $
 #
 ###############################################################################
 
@@ -103,7 +103,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl
     "1.3.6.1.4.1.25623.1.0.140058", # gb_brocade_netiron_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.140765", # gb_brocade_fabricos_telnet_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108335", # gb_brocade_fabricos_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105244", # gb_arubaos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106864", # gb_cyberoam_umt_ngfw_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
@@ -186,7 +186,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl
     "1.3.6.1.4.1.25623.1.0.140058", # gb_brocade_netiron_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.140765", # gb_brocade_fabricos_telnet_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108335", # gb_brocade_fabricos_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105244", # gb_arubaos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106864", # gb_cyberoam_umt_ngfw_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl

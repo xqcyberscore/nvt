@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 8765 2018-02-12 10:44:36Z ckuersteiner $
+# $Id: os_detection.nasl 8829 2018-02-15 12:23:34Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 8765 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 11:44:36 +0100 (Mon, 12 Feb 2018) $");
+  script_version("$Revision: 8829 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-15 13:23:34 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ if(description)
                       "gb_hirschmann_consolidation.nasl", "gb_mikrotik_router_routeros_consolidation.nasl",
                       "gb_xenserver_version.nasl", "gb_cisco_ios_xe_version.nasl",
                       "gb_mcafee_email_gateway_version.nasl", "gb_brocade_netiron_snmp_detect.nasl",
-                      "gb_brocade_fabricos_telnet_detect.nasl",
+                      "gb_brocade_fabricos_consolidation.nasl",
                       "gb_arubaos_detect.nasl", "gb_cyberoam_umt_ngfw_detect.nasl",
                       "gb_aerohive_hiveos_detect.nasl", "gb_qnap_nas_detect.nasl",
                       "gb_synology_dsm_detect.nasl", "gb_simatic_s7_version.nasl",

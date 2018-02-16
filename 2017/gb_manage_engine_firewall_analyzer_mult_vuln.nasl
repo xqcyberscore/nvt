@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_firewall_analyzer_mult_vuln.nasl 6796 2017-07-25 05:18:17Z santu $
+# $Id: gb_manage_engine_firewall_analyzer_mult_vuln.nasl 8825 2018-02-15 10:45:17Z ckuersteiner $
 #
 # ManageEngine Firewall Analyzer Access Bypass And Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zohocorp:manageengine_firewall_analyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811534");
-  script_version("$Revision: 6796 $");
+  script_version("$Revision: 8825 $");
   script_cve_id("CVE-2015-7780", "CVE-2015-7781");
   script_bugtraq_id(78211, 78213);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-25 07:18:17 +0200 (Tue, 25 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-15 11:45:17 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 14:54:04 +0530 (Wed, 19 Jul 2017)");
   script_name("ManageEngine Firewall Analyzer Access Bypass And Directory Traversal Vulnerabilities");
 
@@ -67,38 +67,31 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN12991684/index.html");
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN21968837/index.html");
+  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN12991684/index.html");
+  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN21968837/index.html");
+
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_manage_engine_firewall_analyzer_detect.nasl");
-  script_mandatory_keys("Firewall/Analyzer/installed");
+  script_mandatory_keys("me_firewall_analyzer/installed");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-zhport = "";
-zhver = "";
-
-## Get port
-if(!zhport = get_app_port(cpe:CPE)){
+if (!zhport = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get the version
-if(!zhver = get_app_version(cpe:CPE, port:zhport)){
+if (!zhver = get_app_version(cpe:CPE, port:zhport))
   exit(0);
-}
 
-## Check for vulnerable version
-if(version_is_less(version:zhver, test_version:"8.0"))
-{
+if (version_is_less(version:zhver, test_version:"8.0")) {
   report = report_fixed_ver(installed_version:zhver, fixed_version:"8.0");
   security_message(data:report, port:zhport);
   exit(0);
 }
+
+exit(0);

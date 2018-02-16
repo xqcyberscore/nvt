@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_imagemagick_detect_lin.nasl 8830 2018-02-15 13:14:42Z jschulte $
 #
 # ImageMagick Version Detection (Linux)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900563");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 8830 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-15 14:14:42 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick version Detection (Linux)");
@@ -76,7 +76,7 @@ foreach executableFile (getPath)
 {
   executableFile = chomp(executableFile);
   imageVer = get_bin_version(full_prog_name:chomp(executableFile), version_argv:"-version",
-                          ver_pattern:"ImageMagick ([0-9.]+\-?[0-9]?)", sock:sock);
+                          ver_pattern:"ImageMagick ([0-9.]+\-?[0-9]{0,3})", sock:sock);
 
   if(imageVer[1] != NULL)
   {
@@ -85,17 +85,13 @@ foreach executableFile (getPath)
     ssh_close_connection();
 
     ## build cpe and store it as host_detail
-    cpe = build_cpe(value:imageVer[1], exp:"^([0-9.]+)", base:"cpe:/a:imagemagick:imagemagick:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:imagemagick:imagemagick";
+    log_message( data: register_and_report_cpe( app: "ImageMagick",
+                                                ver: imageVer[1],
+                                                concluded: imageVer[0],
+                                                base: "cpe:/a:imagemagick:imagemagick:",
+                                                expr: "^([0-9.]+)",
+                                                insloc: executableFile ) );
 
-    ## Register Product
-    register_product(cpe:cpe, location:executableFile);
-    log_message(data: build_detection_report(app: "ImageMagick",
-                                             version: imageVer[1],
-                                             install: executableFile,
-                                             cpe: cpe,
-                                             concluded: imageVer[max_index(imageVer)-1]));
     exit(0);
   }
 }

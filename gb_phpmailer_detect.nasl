@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_phpmailer_detect.nasl 8814 2018-02-14 16:51:31Z cfischer $
 #
 # PHPMailer Detection
 #
@@ -27,12 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809841");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 8814 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 17:51:31 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-12-27 15:57:31 +0530 (Tue, 27 Dec 2016)");
   script_name("PHPMailer Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of PHPMailer Library.
 
@@ -40,12 +46,7 @@ if(description)
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -54,45 +55,29 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-achPort = 0;
-rcvRes = "";
-version = "";
+port = get_http_port(default:80);
+if(!can_host_php(port:port)) exit(0);
 
-##Get HTTP Port
-if(!achPort = get_http_port(default:80)){
-  exit(0);
-}
-
-if(!can_host_php(port:achPort)) exit(0);
-
-##Iterate over possible paths
-foreach dir(make_list_unique("/PHPMailer-master", "/PHPMailer", "/phpmailer", cgi_dirs(port:achPort))) 
+foreach dir(make_list_unique("/PHPMailer-master", "/PHPMailer", "/phpmailer", cgi_dirs(port:port)))
 {
   install = dir;
   if(dir == "/") dir = "";
 
   foreach path (make_list("", "/lib"))
   {
-    ## Send and receive response
-    sndReq = http_get(item: dir + path + "/composer.json", port:achPort);
-    rcvRes = http_send_recv(port:achPort, data:sndReq);
+    rcvRes = http_get_cache(item: dir + path + "/composer.json", port:port);
 
-    ##Confirm application
-    if(rcvRes =~ "^HTTP/.* 200 OK" && '"name": "phpmailer/phpmailer"' >< rcvRes
-                                   && 'class.phpmailer.php' >< rcvRes) 
+    if(rcvRes =~ "^HTTP/1\.[01] 200" && '"name": "phpmailer/phpmailer"' >< rcvRes
+                                     && 'class.phpmailer.php' >< rcvRes)
     {
-      mailer = TRUE;      
-      ## Send and receive response
+      mailer = TRUE;
+
       foreach file (make_list("/VERSION", "/version"))
       {
-        sndReq1 = http_get(item: dir + path + file, port:achPort);
-        rcvRes1 = http_send_recv(port:achPort, data:sndReq1);
+        rcvRes1 = http_get_cache(item: dir + path + file, port:port);
 
-        if(rcvRes1 =~ "^HTTP/.* 200 OK")
+        if(rcvRes1 =~ "^HTTP/1\.[01] 200")
         {
-          ##Grep for version
           version = eregmatch(pattern:'\n([0-9.]+)', string: rcvRes1);
           if(version[1])
           {
@@ -111,44 +96,36 @@ foreach dir(make_list_unique("/PHPMailer-master", "/PHPMailer", "/phpmailer", cg
 
   if(!version)
   {
-    ## Send and receive response
-    sndReq = http_get(item: dir + "/README", port:achPort);
-    rcvRes = http_send_recv(port:achPort, data:sndReq);
+    rcvRes = http_get_cache(item: dir + "/README", port:port);
 
-    ##Confirm application
-    if(rcvRes =~ "^HTTP/.* 200 OK" && 'class.phpmailer.php' >< rcvRes
-                                   && 'PHPMailer!' >< rcvRes)
+    if(rcvRes =~ "^HTTP/1\.[01] 200" && 'class.phpmailer.php' >< rcvRes
+                                     && 'PHPMailer!' >< rcvRes)
     {
       mailer = TRUE;
-      sndReq1 = http_get(item: dir + "/changelog.txt", port:achPort);
-      rcvRes1 = http_send_recv(port:achPort, data:sndReq1);
+      rcvRes1 = http_get_cache(item: dir + "/changelog.txt", port:port);
 
-      if(rcvRes1 =~ "^HTTP/.* 200 OK" && "Intial public release" >< rcvRes1)
-
-      ##Grep for version
-      version = eregmatch(pattern:'Version ([0-9.]+)', string: rcvRes1);
-      if(version[1]){
-        version = version[1];
+      # The "Intial" typo is expected as this typo exists in the changelog.txt
+      if(rcvRes1 =~ "^HTTP/1\.[01] 200" && "Intial public release" >< rcvRes1) {
+        version = eregmatch(pattern:'Version ([0-9.]+)', string: rcvRes1);
+        if(version[1]){
+          version = version[1];
+        }
       }
     }
   }
 
   if(!version)
   {
-    ## Send and receive response
-    sndReq = http_get(item: dir + "/extras", port:achPort);
-    rcvRes = http_send_recv(port:achPort, data:sndReq);
-    ##Confirm application
-    if(rcvRes =~ "^HTTP/.* 200 OK" && rcvRes =~ "title>Index of.*extras"
-                                   && '"EasyPeasyICS.php' >< rcvRes)
+    rcvRes = http_get_cache(item: dir + "/extras", port:port);
+
+    if(rcvRes =~ "^HTTP/1\.[01] 200" && rcvRes =~ "title>Index of.*extras"
+                                     && '"EasyPeasyICS.php' >< rcvRes)
     {
       mailer = TRUE;
-      sndReq1 = http_get(item: dir + "/VERSION", port:achPort);
-      rcvRes1 = http_send_recv(port:achPort, data:sndReq1);
+      rcvRes1 = http_get_cache(item: dir + "/VERSION", port:port);
 
-      if(rcvRes1 =~ "^HTTP/.* 200 OK")
+      if(rcvRes1 =~ "^HTTP/1\.[01] 200")
       {
-        ##Grep for version
         version = eregmatch(pattern:'\n([0-9.]+)', string: rcvRes1);
         if(version[1]){
           version = version[1];
@@ -158,30 +135,29 @@ foreach dir(make_list_unique("/PHPMailer-master", "/PHPMailer", "/phpmailer", cg
   }
 
   if(mailer && !version){
-    version = "Unknown";
+    version = "unknown";
   }
 
   if(version)
-  { 
-    ## Set the KB value
-    set_kb_item(name:"www/" + achPort + "/phpmailer", value:version);
+  {
+    set_kb_item(name:"www/" + port + "/phpmailer", value:version);
     set_kb_item(name:"phpmailer/Installed", value:TRUE);
-
 
     # CPE not registered yet
     cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:phpmailer:phpmailer:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpmailer:phpmailer';
-        
-    register_product(cpe:cpe, location:install, port:achPort);
+
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message( data:build_detection_report( app:"PHPMailer",
                                               version:version,
                                               install:install,
                                               cpe:cpe,
                                               concluded:version),
-                                              port:achPort);
+                                              port:port);
     exit(0);
   }
 }
+
 exit(0);

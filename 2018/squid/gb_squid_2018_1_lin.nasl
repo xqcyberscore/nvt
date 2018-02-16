@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_2018_1_lin.nasl 8737 2018-02-09 10:41:19Z teissa $
+# $Id: gb_squid_2018_1_lin.nasl 8818 2018-02-14 21:55:04Z teissa $
 #
 # Squid Proxy Cache Security Update Advisory SQUID-2018:1 (Linux) 
 #
@@ -30,8 +30,9 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107293");
-  script_version("$Revision: 8737 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 11:41:19 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 8818 $");
+  script_cve_id("CVE-2018-1000024");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-14 22:55:04 +0100 (Wed, 14 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-07 13:28:30 +0100 (Wed, 07 Feb 2018)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
