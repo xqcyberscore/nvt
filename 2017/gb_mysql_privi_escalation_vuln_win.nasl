@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_privi_escalation_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mysql_privi_escalation_vuln_win.nasl 8842 2018-02-16 09:52:40Z asteins $
 #
 # MySQL Privilege Escalation Vulnerability - Windows
 #
@@ -29,12 +29,11 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811631");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 8842 $");
   script_cve_id("CVE-2008-4098");
-  script_bugtraq_id();
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:52:40 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-08-14 17:50:12 +0530 (Mon, 14 Aug 2017)");
   script_name("MySQL Privilege Escalation Vulnerability - Windows");
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1866.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: ELSA-2013-1866.nasl 8842 2018-02-16 09:52:40Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,16 +24,15 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123490");
-script_version("$Revision: 6600 $");
+script_version("$Revision: 8842 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:34 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:52:40 +0100 (Fri, 16 Feb 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1866");
 script_tag(name: "insight", value: "ELSA-2013-1866 -  ca-certificates security update - [2013.1.95-65.1]- Update to CKBI 1.95 from NSS 3.15.3.1"); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2013-1866");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2013-1866.html");
-script_cve_id();
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");

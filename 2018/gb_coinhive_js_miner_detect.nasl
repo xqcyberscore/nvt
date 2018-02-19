@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coinhive_js_miner_detect.nasl 8771 2018-02-12 15:30:39Z asteins $
+# $Id: gb_coinhive_js_miner_detect.nasl 8834 2018-02-15 16:37:15Z cfischer $
 #
 # Coinhive JavaScript Miner Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108334");
-  script_version("$Revision: 8771 $");
+  script_version("$Revision: 8834 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 16:30:39 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-15 17:37:15 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 15:41:40 +0100 (Mon, 12 Feb 2018)");
   script_name("Coinhive JavaScript Miner Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,10 @@ if(description)
   - CoinHive.Token
 
   NOTE: There are various obfuscation technologies available to hide such JavaScript from the scanner, thus the mentioned
-  'rudimentary checks' above.");
+  'rudimentary checks' above.
+  
+  NOTE2: No vulnerability is reported if the Coinhive JavaScript is loaded from the authedmine.com domain. This JavaScript
+  code only run after an explicit opt-in / agreement from the user.");
 
   script_tag(name:"impact", value:"If the Coinhive JavaScript Miner is started without a configured OptOut possibility for the
   client, unauthorized resouces of this client will be used.");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0374.nasl 6556 2017-07-06 11:54:54Z cfischer $
+# $Id: ELSA-2011-0374.nasl 8842 2018-02-16 09:52:40Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,16 +24,15 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122213");
-script_version("$Revision: 6556 $");
+script_version("$Revision: 8842 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:53 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:52:40 +0100 (Fri, 16 Feb 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0374");
 script_tag(name: "insight", value: "ELSA-2011-0374 -  thunderbird security and bug fix update - [3.1.9-3.0.1.el6_0]- Replaced thunderbird-redhat-default-prefs.js with thunderbird-oracle-default-prefs.js- Replace clean.gif in tarball[3.1.9-3]- Added fixes for mozbz#642395 - ignore bogus Comodo certificates[3.1.9-2]- Update to 3.1.9"); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2011-0374");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2011-0374.html");
-script_cve_id();
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");

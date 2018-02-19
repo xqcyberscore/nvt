@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_modems_default_telnet_credentials.nasl 7927 2017-11-29 09:32:09Z asteins $
+# $Id: gb_zyxel_modems_default_telnet_credentials.nasl 8841 2018-02-16 09:26:13Z cfischer $
 #
 # ZyXEL Modems Backup Telnet Account and Default Root Credentials
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112100");
-  script_version("$Revision: 7927 $");
+  script_version("$Revision: 8841 $");
   script_cve_id("CVE-2016-10401");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_name("ZyXEL Modems Backup Telnet Account and Default Root Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:32:09 +0100 (Wed, 29 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:26:13 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 09:19:00 +0200 (Thu, 02 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -51,6 +51,8 @@ if(description)
   access to sensitive information or modify system configuration.");
   script_tag(name:"vuldetect", value:"Connect to the telnet service and try to login with default credentials.");
   script_tag(name:"solution", value:"It is recommended to disable the telnet access and change the backup and default credentials.");
+  script_tag(name:"insight", value:"In February 2018 it was discovered that this vulnerability is being exploited by the
+  'DoubleDoor' Internet of Things (IoT) Botnet.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");

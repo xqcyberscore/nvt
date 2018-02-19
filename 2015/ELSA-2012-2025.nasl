@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2025.nasl 6557 2017-07-06 11:55:33Z cfischer $
+# $Id: ELSA-2012-2025.nasl 8842 2018-02-16 09:52:40Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,16 +24,16 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123866");
-script_version("$Revision: 6557 $");
+script_version("$Revision: 8842 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:36 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:52:40 +0100 (Fri, 16 Feb 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2012-2025");
 script_tag(name: "insight", value: "ELSA-2012-2025 - Unbreakable Enterprise kernel Security update - [2.6.39-200.29.2] - epoll: clear the tfile_check_list on -ELOOP (Joe Jin) {CVE-2012-3375} - Don't limit non-nested epoll paths (Jason Baron) - epoll: kabi fixups for epoll limit wakeup paths (Joe Jin) {CVE-2011-1083} - epoll: limit paths (Jason Baron) {CVE-2011-1083} - cred: copy_process() should clear child->replacement_session_keyring (Oleg Nesterov) {CVE-2012-2745}"); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2012-2025");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2012-2025.html");
-script_cve_id();
+script_cve_id("CVE-2012-3375", "CVE-2011-1083", "CVE-2012-2745");
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");

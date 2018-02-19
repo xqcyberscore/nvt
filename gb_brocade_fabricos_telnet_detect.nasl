@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_fabricos_telnet_detect.nasl 8826 2018-02-15 11:12:22Z cfischer $
+# $Id: gb_brocade_fabricos_telnet_detect.nasl 8832 2018-02-15 14:22:19Z cfischer $
 #
 # Brocade Fabric OS Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140765");
-  script_version("$Revision: 8826 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-15 12:12:22 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8832 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-15 15:22:19 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-12 16:06:34 +0700 (Mon, 12 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,8 +49,6 @@ Fabric OS and to extract its version.");
   script_family("Product detection");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
-
-  script_xref(name: "URL", value: "http://www.brocade.com/en/products-services/storage-networking/fibre-channel.html");
 
   exit(0);
 }

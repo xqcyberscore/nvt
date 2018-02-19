@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 8841 2018-02-16 09:26:13Z cfischer $
 #
-# Backdoor in ScreenOS
+# Backdoor in ScreenOS (SSH)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -31,16 +31,19 @@ if (description)
  script_cve_id("CVE-2015-7755", "CVE-2015-7754");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6431 $");
+ script_version ("$Revision: 8841 $");
 
- script_name("Backdoor in ScreenOS");
+ script_name("Backdoor in ScreenOS (SSH)");
 
  script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10713&actp=RSS");
  script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10712&actp=RSS");
 
  script_tag(name: "vuldetect" , value:"Try to login with backdoor credentials");
 
- script_tag(name: "insight" , value:"It was possible to login using any username and the password: <<< %s(un='%s') = %u");
+ script_tag(name: "insight" , value:"It was possible to login using any username and the password: <<< %s(un='%s') = %u
+
+ In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
+ (IoT) Botnet.");
 
  script_tag(name:  "solution" , value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
 
@@ -50,7 +53,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:26:13 +0100 (Fri, 16 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-12-21 10:33:33 +0100 (Mon, 21 Dec 2015)");
  script_category(ACT_ATTACK);
  script_family("General");

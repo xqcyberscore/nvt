@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_fabricos_consolidation.nasl 8829 2018-02-15 12:23:34Z cfischer $
+# $Id: gb_brocade_fabricos_consolidation.nasl 8833 2018-02-15 15:04:13Z cfischer $
 #
 # Brocade Fabric OS Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108335");
-  script_version("$Revision: 8829 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 13:23:34 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-15 16:04:13 +0100 (Thu, 15 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 11:09:51 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_brocade_fabricos_telnet_detect.nasl", "gb_brocade_fabricos_http_detect.nasl", "gb_brocade_fabricos_snmp_detect.nasl");
   script_mandatory_keys("brocade_fabricos/detected");
+
+  script_xref(name:"URL", value:"http://www.brocade.com/en/products-services/storage-networking/fibre-channel.html");
 
   script_tag(name:"summary", value:"The script reports a detected device running Brocade Fabric OS
   including the version number and exposed services.");
@@ -66,7 +68,7 @@ foreach source( make_list( "telnet", "http", "snmp" ) ) {
 }
 
 if( detected_version != "unknown" ) {
-  cpe     = "cpe:/o:brocade:fabric_os:" + version;
+  cpe     = "cpe:/o:brocade:fabric_os:" + detected_version;
   os_name = "Brocade Fabric OS " + detected_version;
 } else {
   cpe     = "cpe:/o:brocade:fabric_os";

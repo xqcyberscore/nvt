@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10713.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_juniper_screenos_JSA10713.nasl 8841 2018-02-16 09:26:13Z cfischer $
 #
 # Multiple Security issues with ScreenOS (JSA10713)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7755", "CVE-2015-7754", "CVE-2015-7756");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6443 $");
+ script_version ("$Revision: 8841 $");
 
  script_name("Multiple Security issues with ScreenOS (JSA10713)");
 
@@ -46,7 +46,10 @@ if (description)
 of the affected system. The second issue may allow a knowledgeable attacker who can monitor VPN traffic to decrypt that traffic. It is independent of the first issue.
 
 The third issue may result in a system crash during a crafted SSH negotiation when ssh-pka is configured and enabled on the firewall. In the worst case scenario, the unhandled SSH exception resulting
-in a system crash could lead to remote code execution. This issue can affect any product or platform running ScreenOS 6.3.0r20.");
+in a system crash could lead to remote code execution. This issue can affect any product or platform running ScreenOS 6.3.0r20.
+
+ In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
+ (IoT) Botnet.");
 
  script_tag(name:  "solution" , value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
 
@@ -56,7 +59,7 @@ in a system crash could lead to remote code execution. This issue can affect any
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:26:13 +0100 (Fri, 16 Feb 2018) $");
  script_tag(name:"creation_date", value:"2015-12-18 09:58:55 +0100 (Fri, 18 Dec 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
