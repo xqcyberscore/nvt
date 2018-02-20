@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fbe4017846_dnsmasq_fc27.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_fedora_2018_fbe4017846_dnsmasq_fc27.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Fedora Update for dnsmasq FEDORA-2018-fbe4017846
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874078");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 07:59:02 +0100 (Wed, 31 Jan 2018)");
   script_cve_id("CVE-2017-15107");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dnsmasq FEDORA-2018-fbe4017846");
   script_tag(name: "summary", value: "Check the version of dnsmasq");

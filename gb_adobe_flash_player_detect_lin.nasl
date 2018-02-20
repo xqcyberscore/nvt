@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_lin.nasl 8197 2017-12-20 12:50:38Z cfischer $
+# $Id: gb_adobe_flash_player_detect_lin.nasl 8863 2018-02-19 11:01:14Z emoss $
 #
 # Adobe Flash Player/AIR Version Detection (Linux)
 #
@@ -33,15 +33,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800032");
-  script_version("$Revision: 8197 $");
+  script_version("$Revision: 8863 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 12:01:14 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player/AIR Version Detection (Linux)");
 
-  tag_summary = "Detection of installed version of Adobe Flash Player/AIR on Windows.
+  tag_summary = "Detection of installed version of Adobe Flash Player/AIR on Linux.
 
 The script logs in via ssh, extracts the version from the binary file
 and set it in KB.";

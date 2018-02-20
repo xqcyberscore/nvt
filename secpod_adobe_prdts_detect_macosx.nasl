@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_macosx.nasl 8159 2017-12-18 15:10:39Z cfischer $
+# $Id: secpod_adobe_prdts_detect_macosx.nasl 8845 2018-02-16 10:57:50Z santu $
 #
 # Adobe Products Version Detection (Mac OS X)
 #
@@ -39,11 +39,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902711");
-  script_version("$Revision: 8159 $");
+  script_version("$Revision: 8845 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Products Version Detection (Mac OS X)");
@@ -174,11 +174,19 @@ if(!isnull(airVer) && "does not exist" >!< airVer)
 readerVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
             "Adobe\ Reader.app/Contents/Info CFBundleShortVersionString"));
 
+app = "Adobe Reader";
+if(isnull(readerVer) || "does not exist" >< readerVer)
+{
+  readerVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+              "Adobe\ Acrobat\ Reader\ 2017.app/Contents/Info CFBundleShortVersionString"));
+  app = "Adobe Reader 2017";
+}
+
 if(!isnull(readerVer) && "does not exist" >!< readerVer)
 {
   set_kb_item(name: "Adobe/Reader/MacOSX/Version", value:readerVer);
   set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-  register_and_report_cpe( app:"Adobe Reader", ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Reader.app" );
+  register_and_report_cpe( app:app, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Reader.app" );
 }
 
 
@@ -187,11 +195,18 @@ if(!isnull(readerVer) && "does not exist" >!< readerVer)
 ## Get the version of Adobe Acrobat
 ##
 ####################################
-foreach ver (make_list("XI", "X", "10", "9", "8"))
+foreach ver (make_list("2017", "XI", "X", "10", "9", "8"))
 {
-  acrobatVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
-               "Adobe\ Acrobat\ " + ver + "\ Pro/Adobe\ Acrobat\ Pro.app/" +
-               "Contents/Info CFBundleShortVersionString"));
+  if(ver == "2017"){
+    acrobatVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+                 "Adobe\ Acrobat\ 2017/Adobe\ Acrobat.app/Contents/Info CFBundleShortVersionString"));
+  } else {
+
+    acrobatVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+                 "Adobe\ Acrobat\ " + ver + "\ Pro/Adobe\ Acrobat\ Pro.app/" +
+                 "Contents/Info CFBundleShortVersionString"));
+  }
+
   if("does not exist" >!< acrobatVer){
        break;
   }
@@ -202,7 +217,7 @@ if(!isnull(acrobatVer) && "does not exist" >!< acrobatVer)
 {
   set_kb_item(name: "Adobe/Acrobat/MacOSX/Version", value:acrobatVer);
   set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-  register_and_report_cpe( app:"Adobe Acrobat", ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Acrobat" );
+  register_and_report_cpe( app:"Adobe Acrobat " + ver, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Acrobat" );
 }
 
 close(sock);

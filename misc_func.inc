@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 8230 2017-12-22 08:51:56Z cfischer $
+# $Id: misc_func.inc 8859 2018-02-19 07:31:18Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8230 $
+# $Revision: 8859 $
 #
 ###############################################################################
 
@@ -1273,9 +1273,9 @@ function eol_date_reached( eol_date ) {
   return;
 }
 
-function build_eol_message( eol_type, name, cpe, version, eol_version, eol_date, eol_url ) {
+function build_eol_message( eol_type, name, cpe, version, skip_version, eol_version, eol_date, eol_url ) {
 
-  local_var eol_type, name, cpe, version, eol_version, eol_date, report;
+  local_var eol_type, name, cpe, version, skip_version, eol_version, eol_date, report;
 
   if( eol_type != "prod" && eol_type != "os" ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#build_prod_eol_message: Wrong value passed to eol_type. Valid values are: prod, os" );
@@ -1286,15 +1286,25 @@ function build_eol_message( eol_type, name, cpe, version, eol_version, eol_date,
 
     if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#build_eol_message" );
     if( isnull( cpe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#build_eol_message" );
-    if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#build_eol_message" );
+    if( isnull( version ) && ! skip_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#build_eol_message" );
     if( isnull( eol_version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_version#-#build_eol_message" );
     if( isnull( eol_date ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_date#-#build_eol_message" );
 
-    report = 'The "' + name + '" version on the remote host has reached the end of life.\n\n' +
-             'CPE:               ' + cpe + ':' + version + '\n' +
-             'Installed version: ' + version + '\n' +
-             'EOL version:       ' + eol_version + '\n' +
-             'EOL date:          ' + eol_date;
+    if( ! skip_version ) {
+      report = 'The "' + name + '" version on the remote host has reached the end of life.\n\n' +
+               'CPE:               ' + cpe + ':' + version + '\n' +
+               'Installed version: ' + version + '\n';
+    } else {
+      report = 'The "' + name + '" product on the remote host has reached the end of life.\n\n' +
+               'CPE:               ' + cpe + '\n';
+    }
+
+    report +=   'EOL version:       ' + eol_version + '\n' +
+                'EOL date:          ' + eol_date;
+
+    if( eol_url )
+      report += '\nEOL info:          ' + eol_url;
+
   } else if( eol_type == "os" ) {
 
     if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#build_eol_message" );

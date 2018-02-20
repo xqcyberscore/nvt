@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 8720 2018-02-08 13:20:07Z cfischer $
+# $Id: gather-package-list.nasl 8864 2018-02-19 11:02:17Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 8720 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:20:07 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8864 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 12:02:17 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -458,12 +458,16 @@ if( "Welcome to pfSense" >< uname ) {
 if( "Welcome to the Greenbone OS" >< uname ) {
   set_kb_item( name:"greenbone/gos/uname", value:uname );
   set_kb_item( name:"greenbone/gos", value:TRUE );
-}
 
-# nb: Don't save the text based login menu of GOS in here
-if( "Welcome to the Greenbone OS" >!< uname ) {
-set_kb_item( name:"ssh/login/uname", value:uname );
-set_kb_item( name:"Host/uname", value:uname );
+  # Don't use a pty which avoids that we're getting the GOS admin menu back in our uname command
+  # and to save the "real" uname later
+  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:FALSE, pty:FALSE, timeout:20, retry:10 );
+
+  # This is from GOS 3.1.x where we need to use a pty and pass an extra command for each ssh_cmd call
+  if( "Type 'gos-admin-menu' to start the Greenbone OS Administration tool" >< uname ) {
+    replace_kb_item( name:"ssh/send_extra_cmd", value:'shell\n' );
+    uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:FALSE, pty:TRUE, timeout:20, retry:10 );
+  }
 }
 
 if( "linux" >< tolower( uname ) ) {
@@ -480,13 +484,14 @@ if( "linux" >< tolower( uname ) ) {
 
 if( "(Cisco Controller)" >< uname ) exit( 0 );
 
+# To catch the uname above before doing an exit
+if( get_kb_item( "greenbone/gos" ) ) exit( 0 );
+
+# nb: It wasn't clear if this was only seen on GOS so keep this for now
 if( "restricted: cannot specify" >< uname ) {
   set_kb_item( name:"ssh/restricted_shell", value:TRUE );
   exit( 0 );
 }
-
-# To catch the restricted shell and uname stuff above before doing an exit
-if( get_kb_item( "greenbone/gos" ) ) exit( 0 );
 
 if( "TANDBERG Video Communication Server" >< uname ) {
   set_kb_item( name:"cisco/ssh/vcs", value:TRUE );

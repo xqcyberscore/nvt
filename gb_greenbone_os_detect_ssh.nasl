@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_ssh.nasl 8610 2018-01-31 15:08:13Z cfischer $
+# $Id: gb_greenbone_os_detect_ssh.nasl 8864 2018-02-19 11:02:17Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (SSH)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112136");
-  script_version("$Revision: 8610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 8864 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 12:02:17 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:47:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,7 +67,16 @@ if( get_kb_item( "greenbone/gos" ) ) {
     } else {
       # GOS 4.x+ doesn't report the version in its login banner
       banner = egrep( pattern:"^Welcome to the Greenbone OS.*", string:uname );
-      if( banner ) concluded = banner;
+      if( banner ) {
+        sock = ssh_login_or_reuse_connection();
+        # Available since GOS 4+
+        cmd = "gsmctl info gsm-info.full_version";
+        gsm_info = ssh_cmd( socket:sock, cmd:cmd, return_errors:FALSE, pty:FALSE );
+        if( gsm_info && gsm_info =~ "^([0-9.]+)$" ) {
+          version = gsm_info;
+          concluded += '\nCommand: ' + cmd;
+        }
+      }
     }
 
     type  = "unknown";
@@ -75,6 +84,15 @@ if( get_kb_item( "greenbone/gos" ) ) {
     if( _type[1] ) {
       type       = _type[1];
       concluded += _type[0];
+    } else {
+      # Available since GOS 4+
+      sock = ssh_login_or_reuse_connection();
+      cmd = "gsmctl info gsm-info.type";
+      gsm_info = ssh_cmd( socket:sock, cmd:cmd, return_errors:FALSE, pty:FALSE );
+      if( gsm_info && gsm_info =~ "^([a-zA-Z0-9.]+)$" ) {
+        type = toupper( gsm_info ); # nb: This has e.g. "one" in lower case
+        concluded += '\nCommand: ' + cmd;
+      }
     }
 
     set_kb_item( name:"greenbone/gsm/ssh/" + port + "/type", value:type );

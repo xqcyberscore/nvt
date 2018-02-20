@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 6419 2017-06-23 12:48:13Z santu $
+# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 8867 2018-02-19 13:00:56Z cfischer $
 #
 # Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811219");
-  script_version("$Revision: 6419 $");
+  script_version("$Revision: 8867 $");
   script_cve_id("CVE-2014-0244", "CVE-2014-3493");
   script_bugtraq_id(68148, 68150);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 14:48:13 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 14:00:56 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-06-22 12:27:14 +0530 (Thu, 22 Jun 2017)");
   script_name("Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities");
 
@@ -70,9 +70,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("smb_nativelanman.nasl");
-  script_mandatory_keys("samba/detected");
+  script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_require_ports(139, 445);
+  script_mandatory_keys("samba/detected");
   exit(0);
 }
 

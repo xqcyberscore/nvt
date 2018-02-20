@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1948.nasl 8842 2018-02-16 09:52:40Z asteins $
+# $Id: ELSA-2014-1948.nasl 8849 2018-02-16 14:02:28Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123238");
-script_version("$Revision: 8842 $");
+script_version("$Revision: 8849 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:08 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:52:40 +0100 (Fri, 16 Feb 2018) $");
+script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1948");
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2014-1948");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2014-1948.html");
 script_cve_id("CVE-2014-1568", "CVE-2013-1740", "CVE-2013-5605", "CVE-2013-5606", "CVE-2013-1741");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

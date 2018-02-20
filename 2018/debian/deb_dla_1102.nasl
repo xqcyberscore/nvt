@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1102.nasl 8836 2018-02-15 20:21:53Z teissa $
+# $Id: deb_dla_1102.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Auto-generated from advisory DLA 1102-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891102");
-  script_version("$Revision: 8836 $");
+  script_version("$Revision: 8849 $");
   script_cve_id("CVE-2017-9798");
   script_name("Debian Lts Announce DLA 1102-1 ([SECURITY] [DLA 1102-1] apache2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 21:21:53 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

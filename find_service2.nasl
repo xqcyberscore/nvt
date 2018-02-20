@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 8779 2018-02-13 09:34:34Z cfischer $
+# $Id: find_service2.nasl 8847 2018-02-16 13:34:20Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 8779 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 10:34:34 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8847 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:34:20 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -973,9 +973,10 @@ if( "ESTABLISHED" >< r && "TCP" >< r ) {
   exit( 0 );
 }
 
-if( "Charles Dickens" >< r || "George Bernard Shaw" >< r || "(Berthold Brecht)" >< r ||
-    "(August von Kotzebue)" >< r || "(Mark Twain)" >< r || "(Bertrand Russell)" >< r || 
-    "(Helen Markel)" >< r || "(Federico Fellini)" >< r || "(Tschechisches Sprichwort)" >< r ) {
+# nb: It is expected to have the first authors with a leading space and without the round bracket
+if( r =~ " (A\. A\. Milne|Albert Einstein|Autor desconocido|Charles Dickens|Francisco de Quevedo y Villegas|George Bernard Shaw|Jaime Balmes|Johann Wolfgang von Goethe|Juana de Asbaje|Montaigne|Petrarca)" ||
+    r =~ "\((August von Kotzebue|Berthold Brecht|Bertrand Russell|Federico Fellini|Fritz Muliar|Helen Markel|Mark Twain|Tschechisches Sprichwort)\)" ||
+    "(Juliette Gr" >< r || "Dante (Inferno)" >< r || "Semel in anno licet insanire." >< r || "Oh the nerves, the nerves; the mysteries of this machine called man" >< r ) {
   register_service( port:port, proto:"qotd" );
   log_message( port:port, data:"qotd (Quote of the Day) seems to be running on this port" );
   exit( 0 );

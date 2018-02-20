@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: samba_38326.nasl 4387 2016-10-31 09:50:40Z cfi $
+# $Id: samba_38326.nasl 8867 2018-02-19 13:00:56Z cfischer $
 #
 # Samba 'client/mount.cifs.c' Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100499");
-  script_version("$Revision: 4387 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-31 10:50:40 +0100 (Mon, 31 Oct 2016) $");
+  script_version("$Revision: 8867 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 14:00:56 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 14:49:01 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,9 +40,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("smb_nativelanman.nasl");
-  script_mandatory_keys("SMB/SERVER");
+  script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_require_ports(139, 445);
+  script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38326");
   script_xref(name:"URL", value:"http://git.samba.org/?p=samba.git;a=commit;h=a065c177dfc8f968775593ba00dffafeebb2e054");

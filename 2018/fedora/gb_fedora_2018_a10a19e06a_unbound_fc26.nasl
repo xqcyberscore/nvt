@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a10a19e06a_unbound_fc26.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_fedora_2018_a10a19e06a_unbound_fc26.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Fedora Update for unbound FEDORA-2018-a10a19e06a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874104");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 08:08:54 +0100 (Wed, 07 Feb 2018)");
   script_cve_id("CVE-2017-15105");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for unbound FEDORA-2018-a10a19e06a");
   script_tag(name: "summary", value: "Check the version of unbound");

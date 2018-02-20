@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4109.nasl 8766 2018-02-12 11:02:28Z teissa $
+# $Id: deb_4109.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Auto-generated from advisory DSA 4109-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704109");
-  script_version("$Revision: 8766 $");
+  script_version("$Revision: 8849 $");
   script_cve_id("CVE-2017-18076");
   script_name("Debian Security Advisory DSA 4109-1 (ruby-omniauth - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 12:02:28 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 00:00:00 +0100 (Fri, 09 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

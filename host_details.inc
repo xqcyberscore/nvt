@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8829 2018-02-15 12:23:34Z cfischer $
+# $Id: host_details.inc 8859 2018-02-19 07:31:18Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8829 $
+# $Revision: 8859 $
 #
 ###############################################################################
 
@@ -113,6 +113,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -143,6 +144,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
+    "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -189,6 +191,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108335", # gb_brocade_fabricos_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105244", # gb_arubaos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106864", # gb_cyberoam_umt_ngfw_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -219,6 +222,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
+    "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -652,9 +656,9 @@ function get_highest_app_version( cpe ) {
   return ret_version;
 }
 
-function get_app_location( cpe, port, nofork ) {
+function get_app_location( cpe, port, nofork, skip_port ) {
 
-  local_var cpe, port, nofork;
+  local_var cpe, port, nofork, skip_port;
 
   # To report if get_app_version() and get_app_location() is used together in one single NVT
   _get_app_location_used = TRUE;
@@ -663,7 +667,7 @@ function get_app_location( cpe, port, nofork ) {
   }
 
   if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location" );
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
+  if( ! port && ! nofork && ! skip_port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
 
   return get_app_details( cpe:cpe, typ:"location", port:port, nofork:nofork );
 }
@@ -909,7 +913,7 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     ap = get_kb_list( "get_app/" + base_cpe );
     if( ! ap ) return;
     app_locations = make_list();
-    foreach dt ( ap ) {
+    foreach dt( ap ) {
       t = split( dt, sep:'#-#', keep:FALSE );
       t_oid = t[0];
       t_loc = t[2];
@@ -1285,6 +1289,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: Embedthis-http" || # Is running under various OS variants
       banner == "Server: GoAhead-Webs" || # Is running under various OS variants
       banner == "Server: Mojolicious (Perl)" || # Cross-platform
+      banner == "Server: Java/0.0" || # Cross-platform, running on e.g. VIBNODE devices
       banner == "+OK POP3 ready" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS

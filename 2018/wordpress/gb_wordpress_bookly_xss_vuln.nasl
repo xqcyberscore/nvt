@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_bookly_xss_vuln.nasl 8776 2018-02-13 07:46:11Z asteins $
+# $Id: gb_wordpress_bookly_xss_vuln.nasl 8861 2018-02-19 09:25:25Z asteins $
 #
 # WordPress Bookly Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112220");
-  script_version("$Revision: 8776 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 08:46:11 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8861 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-19 10:25:25 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-13 08:46:00 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("WordPress Bookly Plugin XSS Vulnerability");
 

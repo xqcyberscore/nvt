@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 8661 2018-02-05 09:41:51Z ckuersteiner $
+# $Id: gb_simatic_s7_version.nasl 8864 2018-02-19 11:02:17Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106096");
- script_version ("$Revision: 8661 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:41:51 +0100 (Mon, 05 Feb 2018) $");
+ script_version ("$Revision: 8864 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-19 12:02:17 +0100 (Mon, 19 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,6 +57,7 @@ include("cpe.inc");
 include("host_details.inc");
 
 detected_version = "unknown";
+detected_model   = "unknown";
 
 # Version
 foreach source (make_list("cotp", "snmp", "http")) {
@@ -74,7 +75,7 @@ foreach source (make_list("cotp", "snmp", "http")) {
 
 # Model
 foreach source (make_list("cotp", "snmp", "http")) {
-  if (detected_model)
+  if (detected_model != "unknown")
     break;
 
   model_list = get_kb_list("simatic_s7/" + source + "/model");
@@ -87,7 +88,9 @@ foreach source (make_list("cotp", "snmp", "http")) {
 }
 
 # CPE
-if (detected_model) {
+if (detected_model != "unknown") {
+  app_name = "Siemens SIMATIC S7 " + detected_model;
+
   cpe_model = tolower(ereg_replace(pattern: "[ /]", string: detected_model, replace: "_"));
 
   app_cpe = build_cpe(value: detected_version, exp:"^([0-9.]+)",
@@ -101,6 +104,8 @@ if (detected_model) {
     os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_' + cpe_model + '_firmware';
 }
 else {
+  app_name = "Siemens SIMATIC S7 Unknown Model";
+
   if (detected_version != "unknown") {
     app_cpe = 'cpe:/a:siemens:simatic_s7:' + detected_version;
     os_cpe = 'cpe:/o:siemens:simatic_s7_cpu_firmware:' + detected_version;
@@ -174,7 +179,7 @@ if (http_ports = get_kb_list("simatic_s7/http/port")) {
 register_and_report_os(os: "Siemens SIMATIC S7 CPU Firmware", version: detected_version, cpe: os_cpe,
                        desc: "Siemens SIMATIC S7 Device Version", runs_key:"unixoide");
 
-report = build_detection_report(app: "Siemens SIMATIC S7 " + detected_model, version: detected_version,
+report = build_detection_report(app: app_name, version: detected_version,
                                 install: "/", cpe: app_cpe);
 if (extra) {
   report += '\n\nDetection methods:\n';

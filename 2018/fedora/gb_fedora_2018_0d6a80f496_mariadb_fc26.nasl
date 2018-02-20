@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0d6a80f496_mariadb_fc26.nasl 8566 2018-01-29 10:57:43Z santu $
+# $Id: gb_fedora_2018_0d6a80f496_mariadb_fc26.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Fedora Update for mariadb FEDORA-2018-0d6a80f496
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874037");
-  script_version("$Revision: 8566 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:57:43 +0100 (Mon, 29 Jan 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 07:46:11 +0100 (Wed, 24 Jan 2018)");
   script_cve_id("CVE-2017-15365");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mariadb FEDORA-2018-0d6a80f496");
   script_tag(name: "summary", value: "Check the version of mariadb");

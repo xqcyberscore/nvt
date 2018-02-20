@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4113.nasl 8835 2018-02-15 20:19:35Z teissa $
+# $Id: deb_4113.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Auto-generated from advisory DSA 4113-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704113");
-  script_version("$Revision: 8835 $");
+  script_version("$Revision: 8849 $");
   script_cve_id("CVE-2017-14632", "CVE-2017-14633");
   script_name("Debian Security Advisory DSA 4113-1 (libvorbis - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 21:19:35 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 00:00:00 +0100 (Wed, 14 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

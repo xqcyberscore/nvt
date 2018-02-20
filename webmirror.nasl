@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 8770 2018-02-12 15:29:07Z cfischer $
+# $Id: webmirror.nasl 8852 2018-02-16 15:23:12Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 8770 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 16:29:07 +0100 (Mon, 12 Feb 2018) $");
+  script_version("$Revision: 8852 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 16:23:12 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -749,20 +749,33 @@ function pre_parse( data, src_page ) {
 
   local_var php_path, fp_save, data2, js_data;
 
-  if( js_data = eregmatch( string:data, pattern:"<script>(.*)</script>", icase:TRUE ) ) {
+  if( js_data = eregmatch( string:data, pattern:'<script( type=(\'text/javascript\'|"text/javascript"|\'application/javascript\'|"application/javascript"))?>(.*)</script>', icase:TRUE ) ) {
+
     # https://coinhive.com/documentation/miner
-    if( "CoinHive.Anonymous" >< js_data || "CoinHive.User" >< js_data || "CoinHive.Token" >< js_data ) {
+    if( "CoinHive.Anonymous" >< js_data[3] || "CoinHive.User" >< js_data[3] || "CoinHive.Token" >< js_data[3] ) {
       set_kb_item( name:"www/coinhive/detected", value:TRUE );
       if( ! Misc[src_page] ) {
         # nb: The javascript might be embedded into web page by the owner on purpose.
-        if( ".didOptOut" >< js_data ) {
+        if( ".didOptOut" >< js_data[3] ) {
           set_kb_item( name:"www/" + port + "/content/coinhive_optout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
         # The "AuthedMine" (https://coinhive.com/documentation/authedmine) won't run the JS without asking the user.
-        } else if( "https://authedmine.com/lib/authedmine.min.js" >< js_data ) {
+        } else if( "https://authedmine.com/lib/authedmine.min.js" >< js_data[3] ) {
           set_kb_item( name:"www/" + port + "/content/coinhive_optin", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
         } else {
           set_kb_item( name:"www/" + port + "/content/coinhive_nooptout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
         }
+        Misc[src_page] = 1;
+      }
+    }
+
+    # https://raw.githubusercontent.com/sizeofcat/malware-scripts/master/javascript/2-obfuscated.js
+    # and the pages from https://badpackets.net/how-to-find-cryptojacking-malware/ have
+    # this code in common.
+    if( '();","\\x7C","\\x73\\x70\\x6C\\x69\\x74","' >< js_data[3] &&
+        "\x43\x72\x79\x70\x74\x6F\x6E\x69\x67\x68\x74\x57\x41\x53\x4D\x57\x72\x61\x70\x70\x65\x72" >< js_data[3] ) {
+      set_kb_item( name:"www/coinhive/detected", value:TRUE );
+      if( ! Misc[src_page] ) {
+        set_kb_item( name:"www/" + port + "/content/coinhive_obfuscated", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
         Misc[src_page] = 1;
       }
     }

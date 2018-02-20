@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2018-3236628_03_lin.nasl 8551 2018-01-26 14:15:40Z asteins $
+# $Id: gb_oracle_mysql_jan2018-3236628_03_lin.nasl 8865 2018-02-19 12:25:45Z cfischer $
 #
 # Oracle Mysql Security Updates (jan2018-3236628) 03 - Linux
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812649");
-  script_version("$Revision: 8551 $");
+  script_version("$Revision: 8865 $");
   script_cve_id("CVE-2018-2573", "CVE-2017-3737", "CVE-2018-2696", "CVE-2018-2590", 
                 "CVE-2018-2583", "CVE-2018-2612", "CVE-2018-2645", "CVE-2018-2703", 
                 "CVE-2018-2647");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 15:15:40 +0100 (Fri, 26 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 13:25:45 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:43:54 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Mysql Security Updates (jan2018-3236628) 03 - Linux");
 
@@ -98,7 +98,10 @@ if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:sqlPort);
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort)){
+  exit(0);
+}
+
 mysqlVer = infos['version'];
 path = infos['location'];
 

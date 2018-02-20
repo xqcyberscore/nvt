@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_xss_vuln.nasl 8583 2018-01-30 13:09:12Z jschulte $
+# $Id: gb_hp_printers_xss_vuln.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # HP Printers XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113096");
-  script_version("$Revision: 8583 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 14:09:12 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 11:50:00 +0100 (Tue, 30 Jan 2018)");
-  script_tag(name:"cvss_base", value:"6.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

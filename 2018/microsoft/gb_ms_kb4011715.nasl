@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011715.nasl 8813 2018-02-14 14:19:45Z santu $
+# $Id: gb_ms_kb4011715.nasl 8850 2018-02-16 14:27:45Z cfischer $
 #
 # Microsoft Office 2007 Service Pack 2 Remote Code Execution Vulnerability (KB4011715)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812908");
-  script_version("$Revision: 8813 $");
+  script_version("$Revision: 8850 $");
   script_cve_id("CVE-2018-0851");
   script_bugtraq_id(102870);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 15:19:45 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:27:45 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 10:46:24 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Office 2007 Service Pack 2 Remote Code Execution Vulnerability (KB4011715)");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to run arbitrary code in the context
-  of the current user. 
+  of the current user.
 
   Impact Level: System/Application");
 
@@ -101,7 +101,7 @@ if(officeVer =~ "^(12\.)")
   if(offexeVer && version_in_range(version:offexeVer, test_version:"12.0", test_version2:"12.0.6785.4999"))
   {
     report = report_fixed_ver( file_checked:offPath + "\Mso.dl",
-                               file_version:offdllVer, vulnerable_range:"12.0 - 12.0.6785.4999");
+                               file_version:offexeVer, vulnerable_range:"12.0 - 12.0.6785.4999");
     security_message(data:report);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: secpod_adobe_prdts_detect_win.nasl 8845 2018-02-16 10:57:50Z santu $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900319");
-  script_version("$Revision: 8210 $");
+  script_version("$Revision: 8845 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -146,14 +146,13 @@ foreach key (keylist)
 
           set_kb_item(name:"Adobe/Acrobat/Win/Installed", value:TRUE);
           set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+          set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
+          register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
 
           ## Set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
             register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );
-          } else {
-            set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
-            register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
           }
         }
       }
@@ -175,14 +174,13 @@ foreach key (keylist)
 
           set_kb_item(name:"Adobe/Reader/Win/Installed", value:TRUE);
           set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+          set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
+          register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:insPath );
 
           # set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Reader64/Win/Ver", value:readerVer);
             register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:x64:", expr:"^([0-9.]+)", insloc:insPath );
-          } else {
-            set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
-            register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:insPath );
           }
         }
       }
@@ -229,14 +227,13 @@ foreach key (adkeylist)
 
           checkdupAud  += audVer + ", ";
           set_kb_item(name:"Adobe/Audition/Win/Installed", value:TRUE);
+          set_kb_item(name:"Adobe/Audition/Win/Ver", value:audVer);
+          register_and_report_cpe( app:audName, ver:audVer, base:"cpe:/a:adobe:audition:", expr:"^([0-9.]+)", insloc:insPath );
 
           ## set version for 64 bit Adobe Audition on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Audition64/Win/Ver", value:audVer);
             register_and_report_cpe( app:audName, ver:audVer, base:"cpe:/a:adobe:audition:x64:", expr:"^([0-9.]+)", insloc:insPath );
-          } else {
-            set_kb_item(name:"Adobe/Audition/Win/Ver", value:audVer);
-            register_and_report_cpe( app:audName, ver:audVer, base:"cpe:/a:adobe:audition:", expr:"^([0-9.]+)", insloc:insPath );
           }
         }
       }

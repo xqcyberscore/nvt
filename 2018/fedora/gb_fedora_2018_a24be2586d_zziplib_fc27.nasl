@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a24be2586d_zziplib_fc27.nasl 8714 2018-02-08 08:05:41Z santu $
+# $Id: gb_fedora_2018_a24be2586d_zziplib_fc27.nasl 8858 2018-02-19 06:07:22Z cfischer $
 #
 # Fedora Update for zziplib FEDORA-2018-a24be2586d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874092");
-  script_version("$Revision: 8714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 09:05:41 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 8858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 07:07:22 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 08:07:21 +0100 (Wed, 07 Feb 2018)");
   script_cve_id("CVE-2018-6381");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for zziplib FEDORA-2018-a24be2586d");
   script_tag(name: "summary", value: "Check the version of zziplib");

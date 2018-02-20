@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3566_1.nasl 8840 2018-02-16 08:25:58Z santu $
+# $Id: gb_ubuntu_USN_3566_1.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Ubuntu Update for php5 USN-3566-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843445");
-  script_version("$Revision: 8840 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 09:25:58 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 08:39:35 +0100 (Wed, 14 Feb 2018)");
   script_cve_id("CVE-2018-5712", "CVE-2017-12933", "CVE-2017-16642");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-3566-1");
   script_tag(name: "summary", value: "Check the version of php5");

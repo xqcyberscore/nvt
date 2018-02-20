@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unbound_dos_vuln.nasl 8520 2018-01-24 14:25:45Z jschulte $
+# $Id: gb_unbound_dos_vuln.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # Unbound DNS Resolver Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113091");
-  script_version("$Revision: 8520 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 15:25:45 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 15:09:10 +0100 (Wed, 24 Jan 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

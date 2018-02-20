@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_online_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_libreoffice_online_detect.nasl 8854 2018-02-17 16:06:28Z cfischer $
 #
 # LibreOffice Online Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8854 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-17 17:06:28 +0100 (Sat, 17 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 09:00:00 +0200 (Thu, 15 Sep 2016)");
   script_name("LibreOffice Online Detection");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( buf =~ "HTTP/1.. 200" && ( "User-Agent: LOOLWSD WOPI Agent" >< buf ||
+  if( buf =~ "^HTTP/1\.[01] 200" && ( "User-Agent: LOOLWSD WOPI Agent" >< buf ||
       ( "wopi-discovery" >< buf && "application/vnd." >< buf && "loleaflet.html" >< buf ) ) ) {
 
     version = "unknown";
@@ -77,12 +77,14 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     reportUrl = 'The following URLs were identified:\n\n' +
                 report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
 
-    verUrl = egrep( string:buf, pattern:'<action ext="lwp" name=".*" urlsrc=".*"/>', icase:TRUE );
-    ver = eregmatch( string:verUrl, pattern:'urlsrc="(https?://.*/([0-9.]+)/.*)"/>', icase:TRUE );
-    if( ! isnull( ver[2] ) ) {
-      version = ver[2];
-      reportUrl += ver[1] + '\n';
-    }
+    # TODO: Find a way to detect the LOOL version. This format has changed in between releases
+    # and is e.g. currently only returning something like 8a1761a as a version.
+    #verUrl = egrep( string:buf, pattern:'<action ext="lwp" name=".*" urlsrc=".*"/>', icase:TRUE );
+    #ver = eregmatch( string:verUrl, pattern:'urlsrc="(https?://.*/([0-9.]+)/.*)"/>', icase:TRUE );
+    #if( ! isnull( ver[2] ) ) {
+    #  version = ver[2];
+    #  reportUrl += ver[1] + '\n';
+    #}
 
     #Basic auth check for default_http_auth_credentials.nasl
     foreach url( make_list( dir + "/dist/admin/admin.html", dir + "/loleaflet/dist/admin/admin.html" ) ) {
@@ -90,7 +92,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
       req = http_get( item:url, port:port );
       buf2 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-      if( buf2 =~ "HTTP/1.. 401" ) {
+      if( buf2 =~ "^HTTP/1\.[01] 401" ) {
         set_kb_item( name:"www/content/auth_required", value:TRUE );
         set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
         reportUrl += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';

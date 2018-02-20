@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_freetype_detect_lin.nasl 8846 2018-02-16 13:29:15Z jschulte $
 #
 # FreeType Version Detection (Linux)
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8846 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:29:15 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -75,14 +75,12 @@ foreach executableFile (binFiles)
   if(ftVer[0] != NULL)
   {
     set_kb_item(name:"FreeType/Linux/Ver", value:ftVer[0]);
-    cpe = build_cpe(value:ftVer[0], exp:"^([0-9.]+)", base:"cpe:/a:freetype:freetype:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
-
-    log_message(data:'Detected FreeType version: ' + ftVer[0] +
-        '\nLocation: ' + executableFile +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + ftVer[max_index(ftVer)-1]);
+    log_message( data: register_and_report_cpe( app: "FreeType",
+                                                ver: ftVer[1],
+                                                concluded: ftVer[0],
+                                                base: "cpe:/a:freetype:freetype:",
+                                                expr: "^([0-9.]+)",
+                                                insloc: executableFile ) );
   }
 }
 

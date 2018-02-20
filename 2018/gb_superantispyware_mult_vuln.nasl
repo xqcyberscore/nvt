@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_superantispyware_mult_vuln.nasl 8625 2018-02-01 13:03:12Z jschulte $
+# $Id: gb_superantispyware_mult_vuln.nasl 8849 2018-02-16 14:02:28Z asteins $
 #
 # SuperAntiSpyware 6.0.1254 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113099");
-  script_version("$Revision: 8625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 14:03:12 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 8849 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 13:06:12 +0100 (Thu, 01 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"registry");
 
