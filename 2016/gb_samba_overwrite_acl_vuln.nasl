@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_overwrite_acl_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_samba_overwrite_acl_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Overwrite ACLs Vulnerability
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807711");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:53 +0530 (Wed, 06 Apr 2016)");
   script_name("Samba Overwrite ACLs Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_tag(name:"summary", value:"This host is running Samba and is prone

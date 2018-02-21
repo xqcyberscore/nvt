@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_snmp_detect.nasl 8619 2018-02-01 10:03:52Z ckuersteiner $
+# $Id: gb_simatic_cp_snmp_detect.nasl 8873 2018-02-20 08:28:02Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140736");
- script_version ("$Revision: 8619 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-01 11:03:52 +0100 (Thu, 01 Feb 2018) $");
+ script_version ("$Revision: 8873 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-20 09:28:02 +0100 (Tue, 20 Feb 2018) $");
  script_tag(name: "creation_date", value: "2018-02-01 15:08:26 +0700 (Thu, 01 Feb 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,6 +62,7 @@ if (!sysdesc)
 # Siemens, SIMATIC NET, CP 343-1 Lean, 6GK7 343-1CX10-0XE0, HW: Version 3, FW: Version V2.2.20, VPA2517023
 if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC NET, CP")) {
   set_kb_item(name: 'simatic_cp/detected', value: TRUE);
+  set_kb_item(name: "simatic_cp/snmp/detected", value: TRUE);
   set_kb_item(name: 'simatic_cp/snmp/port', value: port);
 
   sp = split(sysdesc, sep: ",", keep: FALSE);
@@ -70,7 +71,7 @@ if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC NET, CP")) {
   if (!isnull(sp[2])) {
     model = eregmatch(pattern: '(CP.*)', string: sp[2]);
     if (!isnull(model[1]))
-      set_kb_item(name: 'simatic_cp/snmp/model', value: model[1]);
+      set_kb_item(name: 'simatic_cp/snmp/' + port + '/model', value: model[1]);
   }
 
   # Version
@@ -83,15 +84,14 @@ if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC NET, CP")) {
   # Module
   if (!isnull(sp[3])) {
     module = eregmatch(pattern: '^ (.*)', string: sp[3]);
-    set_kb_item(name: 'simatic_cp/snmp/module', value: module[1]);
+    set_kb_item(name: 'simatic_cp/snmp/' + port + '/module', value: module[1]);
   }
 
   # HW Version
   if (!isnull(sp[4])) {
     hw = eregmatch(pattern: "HW: Version ([0-9]+)", string: sp[4]);
-    set_kb_item(name: 'simatic_cp/snmp/hw_version', value: hw[1]);
+    set_kb_item(name: 'simatic_cp/snmp/' + port + '/hw_version', value: hw[1]);
   }
 }
 
 exit(0);
-

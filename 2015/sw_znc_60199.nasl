@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_znc_60199.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: sw_znc_60199.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # ZNC WebAdmin Multiple NULL Pointer Dereference Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111032");
-  script_version("$Revision: 6534 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-08-29 12:00:00 +0200 (Sat, 29 Aug 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -41,7 +41,6 @@ if(description)
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_dependencies("znc_detect.nasl");
-  script_require_ports("Services/irc", "Services/www", 6667);
   script_mandatory_keys("znc/version");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/60199");

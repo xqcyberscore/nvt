@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: samba_32494.nasl 4393 2016-11-01 08:08:10Z cfi $
+# $Id: samba_32494.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Arbitrary Memory Contents Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100337");
-  script_version("$Revision: 4393 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 09:08:10 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-11-04 20:13:20 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:P");
@@ -41,7 +41,6 @@ if (description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/32494");

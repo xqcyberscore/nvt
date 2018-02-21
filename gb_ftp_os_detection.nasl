@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 8503 2018-01-23 16:49:56Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 8877 2018-02-20 09:05:58Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 8503 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 17:49:56 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 8877 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 10:05:58 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,6 +57,8 @@ port = get_ftp_port( default:21 );
 
 banner = get_ftp_banner( port:port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+
+if( banner =~ "CP ([0-9\-]+) (IT )?FTP-Server V([0-9.]+) ready for new user" ) exit( 0 ); # Covered by gb_simatic_cp_ftp_detect.nasl
 
 # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
 if( "VxWorks FTP server" >< banner ) {
@@ -153,6 +155,18 @@ if( "OS=Windows Server 2012;" >< banner ) {
   exit( 0 );
 }
 
+# 220-Debian GNU/Linux 7
+# 220-Debian GNU/Linux 6.0
+if( "220-Debian GNU/Linux" >< banner ) {
+  version = eregmatch( pattern:"Debian GNU/Linux ([0-9.]+)", string:banner );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+  exit( 0 );
+}
+
 if( "ProFTPD" >< banner ) {
   if( "(Debian)" >< banner || "(Raspbian)" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -164,7 +178,7 @@ if( "ProFTPD" >< banner ) {
     exit( 0 );
   }
 
-  if( "(powered by SuSE Linux)" ) {
+  if( "(powered by SuSE Linux)" >< banner ) {
     register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
@@ -200,7 +214,10 @@ if( "FTP server (NetBSD-ftpd" >< banner ) {
   exit( 0 );
 }
 
-if( "220-OpenBSD" >< banner || "FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17)" >< banner ) {
+# 220 localhost FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.16) ready.
+# 220 example.com FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.
+# nb: "Version 6.4" is not the OpenBSD Version...
+if( "220-OpenBSD" >< banner || banner =~ "FTP server \(Version ([0-9.]+)/OpenBSD/Linux-ftpd-([0-9.]+)\) ready" ) {
   register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
@@ -247,6 +264,18 @@ if( "ManageUPSnet FTP server" >< banner ) {
 
 # Zimbra runs only on Unix-like systems
 if( "Zimbra LMTP server ready" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# localhost FTP server (Version 6.4/ARMLinux/Linux-ftpd-0.17) ready.
+# nb: "Version 6.4" is not the OS Version...
+if( banner =~ "FTP server \(Version ([0-9.]+)/ARMLinux/Linux-ftpd-([0-9.]+)\) ready" ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+if( "FTP server (Linux-ftpd) ready." >< banner ) {
   register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }

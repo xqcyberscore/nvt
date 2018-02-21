@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_samba_dos_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Denial of Service Vulnerability
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807710");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2016-0771");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:59 +0530 (Wed, 06 Apr 2016)");
   script_name("Samba Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2016-0771.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: embedded_web_server_detect.nasl 4840 2016-12-22 13:02:22Z cfi $
+# $Id: embedded_web_server_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
 #
 # Embedded Web Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19689");
-  script_version("$Revision: 4840 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 14:02:22 +0100 (Thu, 22 Dec 2016) $");
+  script_version("$Revision: 8869 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 TNS");
   script_family("Web Servers");
-  # nb: Don't add a dependency to http_version.nasl to avoid cyclic dependency to this NVT
+  # nb: Don't add a dependency to http_version.nasl or gb_get_http_banner.nasl to avoid cyclic dependency to this NVT
   script_dependencies("ciscoworks_detect.nasl", "clearswift_mimesweeper_smtp_detect.nasl",
                       "imss_detect.nasl", "interspect_detect.nasl", "intrushield_console_detect.nasl",
                       "iwss_detect.nasl", "linuxconf_detect.nasl", "securenet_provider_detect.nasl",

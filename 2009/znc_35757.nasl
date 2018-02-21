@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: znc_35757.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: znc_35757.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # ZNC File Upload Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100244");
-  script_version("$Revision: 5231 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_cve_id("CVE-2009-2658");
   script_bugtraq_id(35757);
@@ -41,7 +41,6 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("znc_detect.nasl");
-  script_require_ports("Services/irc", "Services/www", 6667);
   script_mandatory_keys("znc/version");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35757");

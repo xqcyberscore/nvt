@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_mim_security_bypass_vuln.nasl 8867 2018-02-19 13:00:56Z cfischer $
+# $Id: gb_samba_mim_security_bypass_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Man in the Middle Security Bypass Vulnerability (Heimdal)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811522");
-  script_version("$Revision: 8867 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2017-11103");
   script_bugtraq_id(99551);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 14:00:56 +0100 (Mon, 19 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 12:28:31 +0530 (Thu, 13 Jul 2017)");
   script_name("Samba Man in the Middle Security Bypass Vulnerability (Heimdal)");
 
@@ -74,7 +74,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
   exit(0);
 }
@@ -82,23 +81,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable Initialization
-sambaPort = "";
-sambaVer = "";
-fix = "";
-report = "";
-
-##Fetch Port
 if(!sambaPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch Version
 if(!sambaVer = get_app_version(cpe:CPE, port:sambaPort)){
   exit(0);
 }
 
-##Check for vulnerable versions
 if(sambaVer =~ "^4\.")
 {
   if(version_is_less(version:sambaVer, test_version:"4.4.15")){

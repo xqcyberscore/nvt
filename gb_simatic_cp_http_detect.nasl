@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_http_detect.nasl 8619 2018-02-01 10:03:52Z ckuersteiner $
+# $Id: gb_simatic_cp_http_detect.nasl 8873 2018-02-20 08:28:02Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140737");
- script_version ("$Revision: 8619 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-01 11:03:52 +0100 (Thu, 01 Feb 2018) $");
+ script_version ("$Revision: 8873 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-20 09:28:02 +0100 (Tue, 20 Feb 2018) $");
  script_tag(name: "creation_date", value: "2018-02-01 17:03:54 +0700 (Thu, 01 Feb 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,11 +60,12 @@ res = http_get_cache(port: port, item: '/Portal0000.htm');
 
 if ('Title_Area_Name">CP ' >< res && '"Simatic S7 CP"' >< res) {
   set_kb_item(name: "simatic_cp/detected", value: TRUE);
+  set_kb_item(name: "simatic_cp/http/detected", value: TRUE);
   set_kb_item(name: "simatic_cp/http/port", value: port);
 
   mod = eregmatch(pattern: 'Title_Area_Name">(CP [^<]+)', string: res);
   if (!isnull(mod[1]))
-    set_kb_item(name: "simatic_cp/http/model", value: mod[1]);
+    set_kb_item(name: "simatic_cp/http/" + port + "/model", value: mod[1]);
 
   url = '/Portal1000.htm';
   req = http_get(port: port, item: url);
@@ -77,7 +78,7 @@ if ('Title_Area_Name">CP ' >< res && '"Simatic S7 CP"' >< res) {
       ver = eregmatch(pattern: ">V([^<]+)<", string: lines[x+1]);
       if (!isnull(ver[1])) {
         set_kb_item(name: "simatic_cp/http/" + port + "/version", value: ver[1]);
-        replace_kb_item(name: "simatic_cp/http/concluded", value: url);
+        replace_kb_item(name: "simatic_cp/http/" + port + "/concluded", value: url);
         break;
       }
     }
@@ -89,7 +90,7 @@ if ('Title_Area_Name">CP ' >< res && '"Simatic S7 CP"' >< res) {
     if ("Order number" >< line) {
       module = eregmatch(pattern: ">([^<]+)", string: lines[x+1]);
       if (!isnull(module[1])) {
-        set_kb_item(name: "simatic_cp/http/module", value: module[1]);
+        set_kb_item(name: "simatic_cp/http/" + port + "/module", value: module[1]);
         break;
       }
     }
@@ -101,7 +102,7 @@ if ('Title_Area_Name">CP ' >< res && '"Simatic S7 CP"' >< res) {
     if ("Hardware:" >< line) {
       hw = eregmatch(pattern: ">([0-9]+)", string: lines[x+1]);
       if (!isnull(hw[1])) {
-        set_kb_item(name: "simatic_cp/http/hw_version", value: hw[1]);
+        set_kb_item(name: "simatic_cp/http/" + port + "/hw_version", value: hw[1]);
         break;
       }
     }

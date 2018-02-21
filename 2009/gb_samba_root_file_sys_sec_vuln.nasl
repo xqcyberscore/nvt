@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_root_file_sys_sec_vuln.nasl 4393 2016-11-01 08:08:10Z cfi $
+# $Id: gb_samba_root_file_sys_sec_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Root File System Access Security Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800404");
-  script_version("$Revision: 4393 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 09:08:10 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
@@ -41,7 +41,6 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Remote file access");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/33379");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_72711.nasl 4398 2016-11-01 10:14:32Z cfi $
+# $Id: gb_samba_72711.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba 'TALLOC_FREE()' Function Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105231");
-  script_version("$Revision: 4398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 11:14:32 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-03-04 10:23:51 +0100 (Wed, 04 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72711");

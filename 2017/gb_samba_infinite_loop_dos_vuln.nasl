@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_infinite_loop_dos_vuln.nasl 6396 2017-06-21 15:28:58Z teissa $
+# $Id: gb_samba_infinite_loop_dos_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba 'fd_open_atomic infinite loop' Denial-of-Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811083");
-  script_version("$Revision: 6396 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2017-9461");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-06-07 17:35:53 +0530 (Wed, 07 Jun 2017)");
   script_name("Samba 'fd_open_atomic infinite loop' Denial-of-Service Vulnerability");
 
@@ -69,25 +69,17 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_mandatory_keys("samba/detected");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable Initialization
-sambaPort = "";
-sambaVer = "";
-fix = "";
-report = "";
-
-##Fetch Port
 if(!sambaPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch Version
 if(!sambaVer = get_app_version(cpe:CPE, port:sambaPort)){
   exit(0);
 }

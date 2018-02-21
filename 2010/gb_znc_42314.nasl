@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_znc_42314.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_znc_42314.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # ZNC Multiple Denial Of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100758");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-08-13 12:44:16 +0200 (Fri, 13 Aug 2010)");
   script_bugtraq_id(42314);
   script_cve_id("CVE-2010-2812","CVE-2010-2934");
@@ -41,7 +41,6 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("znc_detect.nasl");
-  script_require_ports("Services/irc", "Services/www", 6667);
   script_mandatory_keys("znc/version");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42314");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_eol.nasl 8031 2017-12-07 13:03:33Z teissa $
+# $Id: gb_ms_ie_eol.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Microsoft Internet Explorer End Of Life Detection
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806657");
-  script_version("$Revision: 8031 $");
+  script_version("$Revision: 8882 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 14:03:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-01-12 15:30:21 +0530 (Tue, 12 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer End Of Life Detection");
@@ -47,7 +47,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -55,16 +55,12 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("host_details.inc");
 
-## Variables Initialization
-ieVer   = "";
-
 ## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get IE Version
 ieVer = get_app_version(cpe:CPE);
 if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
   exit(0);

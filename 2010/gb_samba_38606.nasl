@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_38606.nasl 4396 2016-11-01 09:04:50Z cfi $
+# $Id: gb_samba_38606.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba 'CAP_DAC_OVERRIDE' File Permissions Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100522");
-  script_version("$Revision: 4396 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 10:04:50 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-03-09 22:32:06 +0100 (Tue, 09 Mar 2010)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -41,7 +41,6 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38606");

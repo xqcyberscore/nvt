@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_consolidation.nasl 8864 2018-02-19 11:02:17Z cfischer $
+# $Id: gb_simatic_cp_consolidation.nasl 8873 2018-02-20 08:28:02Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140738");
- script_version ("$Revision: 8864 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-19 12:02:17 +0100 (Mon, 19 Feb 2018) $");
+ script_version ("$Revision: 8873 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-20 09:28:02 +0100 (Tue, 20 Feb 2018) $");
  script_tag(name: "creation_date", value: "2018-02-01 16:07:00 +0700 (Thu, 01 Feb 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,7 @@ if (description)
 
  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
  script_family("Product detection");
- script_dependencies("gb_simatic_cp_snmp_detect.nasl", "gb_simatic_cp_http_detect.nasl");
+ script_dependencies("gb_simatic_cp_snmp_detect.nasl", "gb_simatic_cp_http_detect.nasl", "gb_simatic_cp_ftp_detect.nasl");
  script_mandatory_keys("simatic_cp/detected");
 
  script_xref(name: "URL", value: "https://www.siemens.com");
@@ -59,13 +59,13 @@ detected_version = "unknown";
 detected_model   = "unknown";
 
 # Version
-foreach source (make_list("snmp", "http")) {
+foreach source (make_list("snmp", "http", "ftp")) {
   if (detected_version != "unknown")
     break;
 
   version_list = get_kb_list("simatic_cp/" + source + "/*/version");
   foreach version (version_list) {
-    if (version) {
+    if (version && version != "unknown") {
       detected_version = version;
       set_kb_item(name: "simatic_cp/version", value: version);
     }
@@ -73,13 +73,13 @@ foreach source (make_list("snmp", "http")) {
 }
 
 # Model
-foreach source (make_list("snmp", "http")) {
+foreach source (make_list("snmp", "http", "ftp")) {
   if (detected_model != "unknown")
     break;
 
-  model_list = get_kb_list("simatic_cp/" + source + "/model");
+  model_list = get_kb_list("simatic_cp/" + source + "/*/model");
   foreach model (model_list) {
-    if (model) {
+    if (model && model != "unknown") {
       detected_model = model;
       set_kb_item(name: "simatic_cp/model", value: model);
     }
@@ -120,11 +120,11 @@ if (snmp_ports = get_kb_list("simatic_cp/snmp/port")) {
   foreach port (snmp_ports) {
     extra += 'SNMP on port ' + port + '/udp\n';
 
-    module = get_kb_item("simatic_cp/snmp/module");
+    module = get_kb_item("simatic_cp/snmp/" + port + "/module");
     if (module)
       extra += '  Module:         ' + module + '\n';
 
-    hw_version = get_kb_item("simatic_cp/snmp/hw_version");
+    hw_version = get_kb_item("simatic_cp/snmp/" + port + "/hw_version");
     if (hw_version) {
       extra += '  HW Version:     ' + hw_version + '\n';
       replace_kb_item(name: "simatic_cp/hw_version", value: hw_version);
@@ -140,17 +140,17 @@ if (http_ports = get_kb_list("simatic_cp/http/port")) {
   foreach port (http_ports) {
     extra += 'HTTP(s) on port ' + port + '/tcp\n';
 
-    module = get_kb_item("simatic_cp/http/module");
+    module = get_kb_item("simatic_cp/http/" + port + "/module");
     if (module)
       extra += '  Module:         ' + module + '\n';
 
-    hw_version = get_kb_item("simatic_cp/http/hw_version");
+    hw_version = get_kb_item("simatic_cp/http/" + port + "/hw_version");
     if (hw_version) {
       extra += '  HW Version:     ' + hw_version + '\n';
       replace_kb_item(name: "simatic_cp/hw_version", value: hw_version);
     }
 
-    concluded = get_kb_item("simatic_cp/http/concluded");
+    concluded = get_kb_item("simatic_cp/http/" + port + "/concluded");
     if (concluded)
       extra += '  Concluded URL:  ' + concluded + '\n';
 
@@ -159,11 +159,31 @@ if (http_ports = get_kb_list("simatic_cp/http/port")) {
   }
 }
 
-register_and_report_os(os: "Siemens SIMATIC S7 CP Firmware", version: detected_version, cpe: os_cpe,
+# FTP
+if (ftp_ports = get_kb_list("simatic_cp/ftp/port")) {
+  foreach port (ftp_ports) {
+    extra += 'FTP on port ' + port + '/tcp\n';
+
+    concluded = get_kb_item("simatic_cp/ftp/" + port + "/concluded");
+    if (concluded)
+      extra += '  Concluded:  ' + concluded + '\n';
+
+    register_product(cpe: app_cpe, location: '/', port: port, service: "ftp");
+    register_product(cpe: os_cpe, location: '/', port: port, service: "ftp");
+  }
+}
+
+os_name = "Siemens SIMATIC S7 CP Firmware";
+
+register_and_report_os(os: os_name, version: detected_version, cpe: os_cpe,
                        desc: "Siemens SIMATIC CP Device Detection Consolidation", runs_key: "unixoide");
 
-report = build_detection_report(app: app_name, version: detected_version,
-                                install: "/", cpe: app_cpe);
+report  = build_detection_report(app: app_name, version: detected_version,
+                                 install: "/", cpe: app_cpe);
+report += '\n\n';
+report += build_detection_report(app: os_name, version: detected_version,
+                                 install: "/", cpe: os_cpe);
+
 if (extra) {
   report += '\n\nDetection methods:\n';
   report += '\n' + extra;

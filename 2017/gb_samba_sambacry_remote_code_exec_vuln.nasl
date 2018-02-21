@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_sambacry_remote_code_exec_vuln.nasl 6336 2017-06-14 13:49:57Z teissa $
+# $Id: gb_samba_sambacry_remote_code_exec_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Remote Code Execution Vulnerability (SambaCry)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811055");
-  script_version("$Revision: 6336 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2017-7494");
   script_bugtraq_id(98636);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-05-25 10:55:47 +0530 (Thu, 25 May 2017)");
   script_name("Samba Remote Code Execution Vulnerability (SambaCry)");
 
@@ -76,30 +76,20 @@ if(description)
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_mandatory_keys("samba/detected");
-  script_require_ports(139, 445);
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable Initialization
-sambaPort = "";
-sambaVer = "";
-fix = "";
-report = "";
-
-##Fetch Port
 if(!sambaPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch Version
 if(!sambaVer = get_app_version(cpe:CPE, port:sambaPort)){
   exit(0);
 }
 
-##Check for vulnerable versions
 if(version_in_range(version:sambaVer, test_version:"3.5.0", test_version2:"4.4.13")){
   fix = "4.4.14";
 }

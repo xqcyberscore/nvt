@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smbxcli_base_mima_vuln.nasl 4401 2016-11-01 15:46:19Z cfi $
+# $Id: gb_samba_smbxcli_base_mima_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba 'libcli/smb/smbXcli_base.c' Man In The Middle (MIMA) Vulnerability
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807345");
-  script_version("$Revision: 4401 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2016-2119");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 16:46:19 +0100 (Tue, 01 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 12:51:22 +0530 (Tue, 12 Jul 2016)");
   script_name("Samba 'libcli/smb/smbXcli_base.c' Man In The Middle (MIMA) Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2016-2119.html");

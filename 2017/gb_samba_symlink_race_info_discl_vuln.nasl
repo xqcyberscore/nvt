@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 5846 2017-04-04 06:32:57Z antu123 $
+# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Server Symlink Race Information Disclosure Vulnerability
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810729");
-  script_version("$Revision: 5846 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2017-2619");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 08:32:57 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-04-04 11:09:27 +0530 (Tue, 04 Apr 2017)");
   script_name("Samba Server Symlink Race Information Disclosure Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41740/");
@@ -76,12 +75,10 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
 if(!sambaPort = get_app_port(cpe:CPE)) exit(0);
-
 if(!sambaVer = get_app_version(cpe:CPE, port:sambaPort)) exit(0);
 
 if(version_is_equal( version:sambaVer, test_version:"4.6.0" )) 

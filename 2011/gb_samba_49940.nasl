@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_49940.nasl 4398 2016-11-01 10:14:32Z cfi $
+# $Id: gb_samba_49940.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba 'mtab' Lock File Handling Local Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103283");
-  script_version("$Revision: 4398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 11:14:32 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 8882 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-10-05 13:15:09 +0200 (Wed, 05 Oct 2011)");
   script_bugtraq_id(49940);
   script_cve_id("CVE-2011-3585");
@@ -41,7 +41,6 @@ if(description)
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49940");

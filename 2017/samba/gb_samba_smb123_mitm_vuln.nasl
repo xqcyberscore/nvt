@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smb123_mitm_vuln.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_samba_smb123_mitm_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
 #
 # Samba Server 'SMB 1/2/3' MitM Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811907");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 8882 $");
   script_cve_id("CVE-2017-12150");
   script_bugtraq_id(100918);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 13:29:22 +0530 (Fri, 22 Sep 2017)");
   script_name("Samba Server 'SMB 1/2/3' MitM Vulnerability");
 
@@ -65,16 +65,13 @@ if(description)
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_mandatory_keys("samba/detected");
-  script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
 if(!sambaPort = get_app_port(cpe:CPE)) exit(0);
-
 if(!sambaVer = get_app_version(cpe:CPE, port:sambaPort)) exit(0);
 
 #Since patch is given as 4.5.14 4.4.16 also.

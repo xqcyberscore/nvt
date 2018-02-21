@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photogallery_sql_vuln.nasl 7085 2017-09-08 15:01:13Z cfischer $
+# $Id: gb_wordpress_photogallery_sql_vuln.nasl 8881 2018-02-20 10:30:22Z asteins $
 #
 # WordPress Photo Gallery Plugin SQL Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112029");
-  script_version("$Revision: 7085 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 8881 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-20 11:30:22 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-08-25 10:34:31 +0200 (Fri, 25 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -81,7 +81,7 @@ if (dir == "/")
 
 res = http_get_cache(port: port, item: dir + "/wp-content/plugins/photo-gallery/readme.txt");
 
-if ("Photo Gallery by WD - Responsive Photo Gallery for WordPress" >< res && "Changelog" >< res) {
+if ("Photo Gallery by WD - Responsive Photo Gallery" >< res && "Changelog" >< res) {
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
   if (!isnull(vers[1])) {
     if (version_is_less(version: vers[1], test_version: "1.3.51")) {
