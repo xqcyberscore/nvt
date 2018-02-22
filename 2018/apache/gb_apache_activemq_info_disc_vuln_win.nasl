@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_info_disc_vuln_win.nasl 8831 2018-02-15 13:53:53Z asteins $
+# $Id: gb_apache_activemq_info_disc_vuln_win.nasl 8901 2018-02-21 11:43:14Z cfischer $
 #
 # Apache Active MQ 5.14.0 - 5.15.2 Information Disclosure Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112225");
-  script_version("$Revision: 8831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 14:53:53 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 12:43:14 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 14:55:00 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -66,7 +66,7 @@ CPE = "cpe:/a:apache:activemq";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "5.14.0", test_version2: "5.15.2" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "5.15.3" );

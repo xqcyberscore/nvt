@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4085.nasl 8422 2018-01-15 09:03:42Z teissa $
+# $Id: deb_4085.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # Auto-generated from advisory DSA 4085-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704085");
-  script_version("$Revision: 8422 $");
+  script_version("$Revision: 8893 $");
   script_cve_id("CVE-2018-0486");
   script_name("Debian Security Advisory DSA 4085-1 (xmltooling - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-15 10:03:42 +0100 (Mon, 15 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 00:00:00 +0100 (Fri, 12 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

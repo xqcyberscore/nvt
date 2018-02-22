@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3480_1.nasl 7809 2017-11-17 09:43:26Z santu $
+# $Id: gb_ubuntu_USN_3480_1.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # Ubuntu Update for apport USN-3480-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843364");
-  script_version("$Revision: 7809 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:43:26 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 07:28:49 +0100 (Thu, 16 Nov 2017)");
   script_cve_id("CVE-2017-14177", "CVE-2017-14180");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for apport USN-3480-1");
   script_tag(name: "summary", value: "Check the version of apport");

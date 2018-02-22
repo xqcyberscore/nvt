@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_weak_passwords.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_postgresql_weak_passwords.nasl 8889 2018-02-20 14:16:20Z cfischer $
 #
 # PostgreSQL weak password 
 #
@@ -24,40 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "It was possible to login into the remote PostgreSQL as user postgres using weak credentials.";
-
-tag_solution = "Change the password as soon as possible.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103552";
 CPE = "cpe:/a:postgresql:postgresql";
 
-if (description)
+if(description)
 {
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_oid(SCRIPT_OID);
- script_version("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
- script_tag(name:"creation_date", value:"2012-08-23 14:28:02 +0200 (Thu, 23 Aug 2012)");
- script_name("PostgreSQL weak password");
- script_category(ACT_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.103552");
+  script_version("$Revision: 8889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:16:20 +0100 (Tue, 20 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-23 14:28:02 +0200 (Thu, 23 Aug 2012)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_name("PostgreSQL weak password");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("postgresql_detect.nasl");
+  script_require_ports("Services/postgresql", 5432);
+  script_mandatory_keys("PostgreSQL/installed");
+
+  script_tag(name:"summary", value:"It was possible to login into the remote PostgreSQL as user
+  postgres using weak credentials.");
+
+  script_tag(name:"solution", value:"Change the password as soon as possible.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("postgresql_detect.nasl");
- script_require_ports("Services/postgresql", 5432);
- script_mandatory_keys("PostgreSQL/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 include("host_details.inc");
 
-port = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-
-if(!port)port = 5432;
-if(!get_tcp_port_state(port))exit(0);
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!get_app_location(cpe:CPE, port:port, nofork:TRUE)) exit(0); # To have a reference to the Detection-NVT
 
 function check_login(user, password, port) {
 
@@ -190,4 +189,4 @@ foreach password (passwords) {
   }  
 }  
 
-exit(0);
+exit(99);

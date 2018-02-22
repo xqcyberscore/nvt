@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_weak_passwords.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mysql_weak_passwords.nasl 8888 2018-02-20 14:11:44Z cfischer $
 #
 # MySQL / MariaDB weak password 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103551");
-  script_version("$Revision: 6788 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_version("$Revision: 8888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:11:44 +0100 (Tue, 20 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 10:38:09 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -40,12 +40,10 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
 
-  tag_summary = "It was possible to login into the remote MySQL as root using weak credentials.";
+  script_tag(name:"solution", value:"Change the password as soon as possible.");
 
-  tag_solution = "Change the password as soon as possible.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"It was possible to login into the remote MySQL as
+  root using weak credentials.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
@@ -64,8 +62,10 @@ cpe_list = make_list( "cpe:/a:mysql:mysql",
 
 if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
 port = infos['port'];
+cpe  = infos['cpe'];
 
 if( get_kb_item( "MySQL/" + port + "/blocked" ) ) exit( 0 );
+if( ! get_app_location( cpe:cpe, port:port, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
 username = "root";
 passwords = make_list("admin", "root", "mysql", "password", "passw0rd", "123456", "12345678", "mysqladmin", "qwerty", "letmein", "database", "");
@@ -80,7 +80,7 @@ foreach password (passwords) {
   sock = open_sock_tcp(port);
   if(!sock)exit(0);
 
-  res =  recv(socket:sock, length:4);
+  res = recv(socket:sock, length:4);
   if(!res) {
     close(sock);
     exit(0);
@@ -211,10 +211,9 @@ foreach password (passwords) {
       security_message(port:port,data:data);
       exit(0);
     }  
-
   }
-
   close(sock);  
 }
 
 close(sock);
+exit(99);

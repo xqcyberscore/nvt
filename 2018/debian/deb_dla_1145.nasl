@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1145.nasl 8885 2018-02-20 12:15:55Z teissa $
+# $Id: deb_dla_1145.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # Auto-generated from advisory DLA 1145-1 using nvtgen 1.0
 # Script version:1.2
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891145");
-  script_version("$Revision: 8885 $");
+  script_version("$Revision: 8893 $");
   script_cve_id("CVE-2017-5595");
   script_name("Debian Lts Announce DLA 1145-1 ([SECURITY] [DLA 1145-1] zoneminder security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 13:15:55 +0100 (Tue, 20 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3534_1.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_ubuntu_USN_3534_1.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # Ubuntu Update for glibc USN-3534-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843422");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 8893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:36:12 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2018-1000001", "CVE-2017-1000409", "CVE-2017-1000408", 
                 "CVE-2017-15670", "CVE-2017-15804", "CVE-2017-16997", "CVE-2017-17426"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for glibc USN-3534-1");
   script_tag(name: "summary", value: "Check the version of glibc");

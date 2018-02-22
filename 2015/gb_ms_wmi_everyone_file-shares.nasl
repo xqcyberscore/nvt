@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 7186 2017-09-19 07:32:35Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 8897 2018-02-21 09:04:23Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -29,20 +29,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# kb: Keep above the description part as it is used there
+# nb: Keep above the description part as it is used there
 include("gos_funcs.inc");
 include("version_func.inc");
-gos_version = get_local_gos_version();
-if( ! strlen( gos_version ) > 0 ||
-    version_is_less( version:gos_version, test_version:"4.2.4" ) ) {
-  old_routine = TRUE;
+
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# onwards so checking for the defined_func and default to FALSE below if the funcs are undefined
+if( defined_func( "get_local_gos_version" ) &&
+    defined_func( "version_is_less" ) ) {
+  gos_version = get_local_gos_version();
+  if( ! strlen( gos_version ) > 0 ||
+      version_is_less( version:gos_version, test_version:"4.2.4" ) ) {
+    old_routine = TRUE;
+  } else {
+    old_routine = FALSE;
+  }
+} else {
+  old_routine = FALSE;
 }
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 7186 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 8897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

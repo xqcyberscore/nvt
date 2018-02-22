@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
+# $Id: gb_policy_cpe_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
 #
 # CPE-based Policy Check Violations
 #
@@ -26,12 +26,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# kb: Keep above the description part as it is used there
+# nb: Keep above the description part as it is used there
 include("gos_funcs.inc");
 include("version_func.inc");
-gos_version = get_local_gos_version();
-if( strlen( gos_version ) > 0 &&
-    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
+if( defined_func( "get_local_gos_version" ) &&
+    defined_func( "version_is_greater_equal" ) ) {
+  gos_version = get_local_gos_version();
+  if( strlen( gos_version ) > 0 &&
+      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+    use_severity = TRUE;
+  } else {
+    use_severity = FALSE;
+  }
+} else {
   use_severity = TRUE;
 }
 
@@ -45,9 +55,9 @@ if(description)
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_version("$Revision: 7783 $");
+  script_version("$Revision: 8897 $");
   script_name("CPE-based Policy Check Violations");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:43:01 +0700 (Mon, 06 Jan 2014)");
   script_category(ACT_END);
   script_family("Policy");
@@ -58,6 +68,7 @@ if(description)
   script_tag(name:"summary", value:"Shows all CPEs which are either present or missing (depending on what to check for) from CPE-based Policy Check.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

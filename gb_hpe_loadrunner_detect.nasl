@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_detect.nasl 4983 2017-01-11 10:22:37Z antu123 $
+# $Id: gb_hpe_loadrunner_detect.nasl 8895 2018-02-21 07:54:44Z santu $
 #
 # HPE LoadRunner Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810327");
-  script_version("$Revision: 4983 $");
+  script_version("$Revision: 8895 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 11:22:37 +0100 (Wed, 11 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 11:07:22 +0530 (Tue, 10 Jan 2017)");
   script_name("HPE LoadRunner Version Detection (Windows)");
 
@@ -69,23 +69,14 @@ if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
-if("x86" >< os_arch){
-  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-}
-
-## Check for 64 bit platform
-else if("x64" >< os_arch){
-  key =  "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-}
-
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 
 foreach item (registry_enum_keys(key:key))
 {
   hpName = registry_get_sz(key:key + item, item:"DisplayName");
 
   ## Confirm the application
-  if("HP LoadRunner" >< hpName)
+  if("HP LoadRunner" >< hpName || "HPE LoadRunner" >< hpName)
   {
     hpVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 

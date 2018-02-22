@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_tls_violation.nasl 7178 2017-09-18 13:49:12Z cfischer $
+# $Id: gb_policy_tls_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
 #
 # SSL/TLS: Policy Check Violations
 #
@@ -25,19 +25,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# kb: Keep above the description part as it is used there
+# nb: Keep above the description part as it is used there
 include("gos_funcs.inc");
 include("version_func.inc");
-gos_version = get_local_gos_version();
-if( strlen( gos_version ) > 0 &&
-    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
+if( defined_func( "get_local_gos_version" ) &&
+    defined_func( "version_is_greater_equal" ) ) {
+  gos_version = get_local_gos_version();
+  if( strlen( gos_version ) > 0 &&
+      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+    use_severity = TRUE;
+  } else {
+    use_severity = FALSE;
+  }
+} else {
   use_severity = TRUE;
 }
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105780");
-  script_version("$Revision: 7178 $");
+  script_version("$Revision: 8897 $");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +55,7 @@ if(description)
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 15:49:12 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 14:30:12 +0200 (Tue, 28 Jun 2016)");
   script_name("SSL/TLS: Policy Check Violations");
   script_category(ACT_END);
@@ -57,6 +67,7 @@ if(description)
   script_tag(name:"summary", value:"SSL/TLS Policy Check Violations");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

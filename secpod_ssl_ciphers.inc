@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.inc 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: secpod_ssl_ciphers.inc 8899 2018-02-21 10:29:08Z cfischer $
 #
 # Check SSL Weak Ciphers and Supported Ciphers
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8137 $
+# $Revision: 8899 $
 #
 ###############################################################################
 
@@ -65,6 +65,8 @@ sslv2_ciphers['SSL2_UNKNOWN : Weak cipher'] = raw_string( 0x06, 0x00, 0x80 );
 ## nb2: If adding or modifying ciphers here you also need to raise the svn revision of secpod_ssl_ciphers_setting.nasl
 ##      to have the script preferences for custom overrides updated within the cache.
 ##
+##
+## IMPORTANT: Keep in sync with the duplicated list in secpod_ssl_ciphers_setting.nasl
 
 sslv3_tls_ciphers['TLS_NULL_WITH_NULL_NULL : Null cipher, no authentication'] = raw_string( 0x00, 0x00 );
 sslv3_tls_ciphers['TLS_RSA_WITH_NULL_MD5 : Null cipher'] = raw_string( 0x00, 0x01 );

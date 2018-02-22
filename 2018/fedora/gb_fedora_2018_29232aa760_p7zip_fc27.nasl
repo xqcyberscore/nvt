@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_29232aa760_p7zip_fc27.nasl 8848 2018-02-16 13:40:24Z santu $
+# $Id: gb_fedora_2018_29232aa760_p7zip_fc27.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # Fedora Update for p7zip FEDORA-2018-29232aa760
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874118");
-  script_version("$Revision: 8848 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:40:24 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 8893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 08:49:40 +0100 (Thu, 15 Feb 2018)");
   script_cve_id("CVE-2017-17969");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for p7zip FEDORA-2018-29232aa760");
   script_tag(name: "summary", value: "Check the version of p7zip");

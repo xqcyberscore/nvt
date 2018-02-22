@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 8830 2018-02-15 13:14:42Z jschulte $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 8900 2018-02-21 10:36:29Z jschulte $
 #
 # ImageMagick 7.0.7.22 DoS Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113112");
-  script_version("$Revision: 8830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 14:14:42 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 11:36:29 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 12:44:44 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
@@ -65,11 +65,7 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_app_version( cpe: CPE ) ) {
-  if( ! version = get_app_version( cpe: CPE + ":x64" ) ) {
-    exit( 0 );
-  }
-}
+if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "7.0.7.22" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );

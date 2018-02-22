@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_lin.nasl 8830 2018-02-15 13:14:42Z jschulte $
+# $Id: gb_imagemagick_dos_vuln_lin.nasl 8900 2018-02-21 10:36:29Z jschulte $
 #
 # ImageMagick 7.0.7.22 DoS Vulnerability (Linux)
 #
@@ -28,14 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113113");
-  script_version("$Revision: 8830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 14:14:42 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 11:36:29 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 13:34:44 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 
-  # "registry", but unreliable, as backports exist => 47%
-  script_tag(name:"qod", value:"47");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0158_1.nasl 8566 2018-01-29 10:57:43Z santu $
+# $Id: gb_suse_2018_0158_1.nasl 8893 2018-02-21 06:36:27Z cfischer $
 #
 # SuSE Update for xmltooling openSUSE-SU-2018:0158-1 (xmltooling)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851684");
-  script_version("$Revision: 8566 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:57:43 +0100 (Mon, 29 Jan 2018) $");
+  script_version("$Revision: 8893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-21 07:41:19 +0100 (Sun, 21 Jan 2018)");
   script_cve_id("CVE-2018-0486");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xmltooling openSUSE-SU-2018:0158-1 (xmltooling)");
   script_tag(name: "summary", value: "Check the version of xmltooling");

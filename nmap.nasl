@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 8163 2017-12-19 06:26:30Z cfischer $
+# $Id: nmap.nasl 8897 2018-02-21 09:04:23Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -30,14 +30,30 @@
 # Nmap can be found at :
 # <http://nmap.org>
 
+# nb: Keep above the description part as it is used there
 include("gos_funcs.inc");
 include("version_func.inc");
+
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
+if( defined_func( "get_local_gos_version" ) &&
+    defined_func( "version_is_greater_equal" ) ) {
+  gos_version = get_local_gos_version();
+  if( strlen( gos_version ) > 0 &&
+      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+    use_new_timing = TRUE;
+  } else {
+    use_new_timing = FALSE;
+  }
+} else {
+  use_new_timing = TRUE;
+}
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 8163 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:26:30 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,9 +73,7 @@ if(description)
   script_add_preference(name:"Do not randomize the  order  in  which ports are scanned", type:"checkbox", value:"no");
   script_add_preference(name:"Source port :", value:"", type:"entry");
 
-  gos_version = get_local_gos_version();
-  if( strlen( gos_version ) > 0 &&
-      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  if( use_new_timing ) {
     script_add_preference(name:"Timing policy :", type:"radio", value:"Aggressive;Insane;Normal;Polite;Sneaky;Paranoid;Custom");
   } else {
     script_add_preference(name:"Timing policy :", type:"radio", value:"Normal;Insane;Aggressive;Polite;Sneaky;Paranoid;Custom");

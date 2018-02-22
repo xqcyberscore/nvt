@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_BSI-TR-03116-4_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
+# $Id: policy_BSI-TR-03116-4_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
 #
 # List negative results from Policy for BSI-TR-03116-4 Test
 #
@@ -24,20 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# kb: Keep above the description part as it is used there
+# nb: Keep above the description part as it is used there
 include("gos_funcs.inc");
 include("version_func.inc");
-gos_version = get_local_gos_version();
-if( strlen( gos_version ) > 0 &&
-    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
+if( defined_func( "get_local_gos_version" ) &&
+    defined_func( "version_is_greater_equal" ) ) {
+  gos_version = get_local_gos_version();
+  if( strlen( gos_version ) > 0 &&
+      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+    use_severity = TRUE;
+  } else {
+    use_severity = FALSE;
+  }
+} else {
   use_severity = TRUE;
 }
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96179");
-  script_version("$Revision: 7783 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 8897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-03-07 09:23:42 +0100 (Mon, 07 Mar 2016)");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
