@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42591.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_phpmyadmin_42591.nasl 8916 2018-02-22 07:55:37Z cfischer $
 #
-# phpMyAdmin Configuration File PHP Code Injection Vulnerability
+# phpMyAdmin 'CVE-2010-3055' Configuration File PHP Code Injection Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -24,47 +24,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpMyAdmin is prone to a remote PHP code-injection vulnerability.
-
-An attacker can exploit this issue to inject and execute arbitrary PHP
-code in the context of the webserver process. This may facilitate a
-compromise of the application and the underlying computer; other
-attacks are also possible.
-
-Versions prior to phpMyAdmin 2.11.10.1 are affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100760";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
-if (description)
+if(description)
 {
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42591");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php");
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
- script_bugtraq_id(42591);
- script_cve_id("CVE-2010-3055");
+  script_oid("1.3.6.1.4.1.25623.1.0.100760");
+  script_version("$Revision: 8916 $");
+  script_bugtraq_id(42591);
+  script_cve_id("CVE-2010-3055");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:55:37 +0100 (Thu, 22 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("phpMyAdmin 'CVE-2010-3055' Configuration File PHP Code Injection Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpMyAdmin/installed");
 
- script_name("phpMyAdmin Configuration File PHP Code Injection Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42591");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php");
 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpMyAdmin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_summary = "phpMyAdmin is prone to a remote PHP code-injection vulnerability.";
+
+  tag_impact = "An attacker can exploit this issue to inject and execute arbitrary PHP
+  code in the context of the webserver process. This may facilitate a
+  compromise of the application and the underlying computer; other
+  attacks are also possible.";
+
+  tag_affected = "Versions prior to phpMyAdmin 2.11.10.1 are affected.";
+
+  tag_solution = "Vendor updates are available. Please see the references for more
+  information.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -72,7 +76,7 @@ include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
 
 vers = infos['version'];

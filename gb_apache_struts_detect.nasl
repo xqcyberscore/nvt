@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_detect.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_apache_struts_detect.nasl 8915 2018-02-22 07:21:54Z cfischer $
 #
 # Apache Struts Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800276");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7424 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 8915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:21:54 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Struts Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-
 asPort = get_http_port( default:8080 );
 
 foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) ) 
@@ -77,24 +76,23 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
     sndReq1 = http_get(item:url + "/struts2-core-apidocs/help-doc.html", port:asPort);
     rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
 
-
-    if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
+    if(rcvRes1 !~ "^HTTP/1\.[01] 200" || "Struts 2 Core" >!< rcvRes1)
     {
       ##Apache Struts2 Version Check from /struts2-core-apidocs/overview-summary.html
       sndReq1 = http_get(item:url + "/struts2-core-apidocs/overview-summary.html", port:asPort);
       rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
-      if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
+      if(rcvRes1 !~ "^HTTP/1\.[01] 200" || "Struts 2 Core" >!< rcvRes1)
       {
         ##Apache Struts2 Version Check from /struts2-core-apidocs/index-all.html
         sndReq1 = http_get(item:url + "/struts2-core-apidocs/index-all.html", port:asPort);
         rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
 
-        if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
+        if(rcvRes1 !~ "^HTTP/1\.[01] 200" || "Struts 2 Core" >!< rcvRes1)
         {
           ##src dir
           sndReq2 = http_get(item:dir + "/src/pom.xml", port:asPort);
           rcvRes2 = http_keepalive_send_recv(port:asPort, data:sndReq2);
-          if(rcvRes2 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes2)
+          if(rcvRes2 !~ "^HTTP/1\.[01] 200" || "Struts 2 Core" >!< rcvRes2)
           {
             sndReq2 = http_get(item:dir + "/src/apps/pom.xml", port:asPort);
             rcvRes2 = http_keepalive_send_recv(port:asPort, data:sndReq2);
@@ -108,7 +106,7 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
     rcvRes3 = http_keepalive_send_recv(port:asPort, data:sndReq3);
 
     ##For some versions path is different
-    if(rcvRes3 !~ "HTTP/1.. 200 OK")
+    if(rcvRes3 !~ "^HTTP/1\.[01] 200")
     {
       rcvRes3 = http_get_cache( item:url + "/home.html", port:asPort );
     }
@@ -117,9 +115,8 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
     sndReq4 = http_get(item:url + "/WW/cwiki.apache.org/WW/guides.html", port:asPort);
     rcvRes4 = http_keepalive_send_recv(port:asPort, data:sndReq4);
 
-
     ##For some versions path is different
-    if(rcvRes4 !~ "HTTP/1.. 200 OK")
+    if(rcvRes4 !~ "^HTTP/1\.[01] 200")
     {
       sndReq = http_get(item:url + "/guides.html", port:asPort );
       rcvRes4 = http_keepalive_send_recv( port:asPort, data:sndReq );
@@ -129,10 +126,8 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
     sndReq5 = http_get( item:dir + "/src/src/site/xdoc/index.xml", port:asPort );
     rcvRes5 = http_keepalive_send_recv( port:asPort, data:sndReq5 );
 
-
     sndReq6 = http_get( item:dir + "/utils.js", port:asPort );
     rcvRes6 = http_keepalive_send_recv( port:asPort, data:sndReq6 );
-
 
     if(("Struts" >< rcvRes && ("Apache" >< rcvRes || "apache" >< rcvRes ) ) ||
         ((("title>API Help" >< rcvRes1) || ('"overviewSummary"' >< rcvRes1) ||
@@ -192,7 +187,6 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
       set_kb_item( name:"www/" + asPort + "/Apache/Struts", value:tmp_version);
       set_kb_item( name:"ApacheStruts/installed", value:TRUE);
 
-      ## Build CPE
       cpe = build_cpe( value:strutsVersion, exp: "^([0-9A-Z.-]+)", base: "cpe:/a:apache:struts:" );
       if(isnull(cpe))
         cpe = 'cpe:/a:apache:struts';
@@ -203,10 +197,11 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
                                                  version: strutsVersion,
                                                  install: install,
                                                  cpe: cpe,
-                                                 concluded: tmp_version),
+                                                 concluded: strutsVer[0]),
                                                  port: asPort);
       exit(0);
     }
   }
 }
+
 exit(0);

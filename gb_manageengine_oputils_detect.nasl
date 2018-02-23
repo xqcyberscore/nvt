@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_oputils_detect.nasl 8825 2018-02-15 10:45:17Z ckuersteiner $
+# $Id: gb_manageengine_oputils_detect.nasl 8914 2018-02-22 05:24:11Z ckuersteiner $
 #
 # ManageEngine OpUtils Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140776");
-  script_version("$Revision: 8825 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-15 11:45:17 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 8914 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-22 06:24:11 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-15 16:53:54 +0700 (Thu, 15 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/apiclient/ember/Login.jsp");
 
-if ("OpUtils" >< res && "'info'>IP Address Management Software") {
+if ("OpUtils" >< res && "'info'>IP Address Management Software" >< res) {
   version = "unknown";
 
   # <h2>OpUtils<span>v 12.0</span></h2>

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ethernetip_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
+# $Id: gb_ethernetip_detect.nasl 8903 2018-02-21 12:51:37Z cfischer $
 #
 # EtherNet/IP Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106850");
- script_version ("$Revision: 7268 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
+ script_version ("$Revision: 8903 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-21 13:51:37 +0100 (Wed, 21 Feb 2018) $");
  script_tag(name: "creation_date", value: "2017-06-09 12:24:29 +0700 (Fri, 09 Jun 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,14 +90,14 @@ function queryEthernetIP(proto, soc) {
 
   register_service(port: port, ipproto: "tcp", proto: "ethernetip");
 
-  report = "A EtherNet/IP service is running at this port.\n\nThe following information was extracted:\n\n" +
-           "Product Name:            " + product_name + "\n" +
-           "Product Code:            " + prod_code + "\n" +
-           "Vendor:                  " + vendor + "\n" +
-           "Device Type:             " + dev_type + "\n" +
-           "Revision:                " + revision + "\n" +
-           "Serial Number:           " + serialno + "\n" + 
-           "IP:                      " + ip + "\n";
+  report = 'A EtherNet/IP service is running at this port.\n\nThe following information was extracted:\n\n' +
+           "Product Name:            " + product_name + '\n' +
+           "Product Code:            " + prod_code + '\n' +
+           "Vendor:                  " + vendor + '\n' +
+           "Device Type:             " + dev_type + '\n' +
+           "Revision:                " + revision + '\n' +
+           "Serial Number:           " + serialno + '\n' + 
+           "IP:                      " + ip + '\n';
 
   log_message(data: report, port: port, proto: proto);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crucible_detect.nasl 8870 2018-02-19 14:12:10Z asteins $
+# $Id: gb_atlassian_crucible_detect.nasl 8905 2018-02-21 14:03:26Z cfischer $
 #
 # Atlassian Crucible Detection
 #
@@ -28,9 +28,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.112229");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8870 $");
+ script_version("$Revision: 8905 $");
  script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:12:10 +0100 (Mon, 19 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-21 15:03:26 +0100 (Wed, 21 Feb 2018) $");
  script_tag(name:"creation_date", value:"2018-02-19 14:40:26 +0100 (Mon, 19 Feb 2018)");
  script_name("Atlassian Crucible Detection");
  script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ foreach dir(make_list_unique("/", "/crucible", cgi_dirs(port:port))) {
   if( res == NULL )
     continue;
 
-  if("<title>Log in to Crucible" >< res) {
+  if(res =~ "^HTTP/1\.[01] 200" && ('display-name="Crucible"' >< res || "<title>Log in to Crucible" >< res)) {
 
      vers = "unknown";
      version = eregmatch(string:res, pattern:"\(Version:([0-9.]+)");
