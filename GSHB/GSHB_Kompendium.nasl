@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Kompendium.nasl 8863 2018-02-19 11:01:14Z emoss $
+# $Id: GSHB_Kompendium.nasl 8933 2018-02-23 08:08:09Z emoss $
 #
 # IT-Grundschutz Kompendium
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109040");
-  script_version("$Revision: 8863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 12:01:14 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 8933 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:08:09 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 10:14:11 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,8 +38,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Compliance");
   script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
-  script_require_keys("GSHB/silence", "Compliance/Launch/GSHB-ITG");
-  script_dependencies("compliance_tests.nasl", "GSHB/GSHB_SYS.1.3.nasl", "GSHB/GSHB_SYS.2.3.nasl");
+  script_mandatory_keys("GSHB/silence", "Compliance/Launch/GSHB-ITG");
+  script_dependencies("compliance_tests.nasl", "GSHB/GSHB_SYS.1.3.nasl", "GSHB/GSHB_SYS.2.2.2.nasl", "GSHB/GSHB_SYS.2.2.3.nasl", "GSHB/GSHB_SYS.2.3.nasl");
   script_tag(name : "summary" , value :
 "Zusammenfassung von Tests gem‰ﬂ IT-Grundschutz Kompendium.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freetype_dos_vuln_win.nasl 8846 2018-02-16 13:29:15Z jschulte $
+# $Id: gb_freetype_dos_vuln_win.nasl 8924 2018-02-22 13:20:54Z jschulte $
 #
 # FreeType 2 DoS Vulnerability (Windows)
 #
@@ -28,13 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113115");
-  script_version("$Revision: 8846 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:29:15 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 8924 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:20:54 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 12:00:00 +0100 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"registry");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -66,11 +66,7 @@ CPE = "cpe:/a:freetype:freetype";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_app_version( cpe: CPE ) ) {
-  if( ! version = get_app_version( cpe: CPE + ":x64" ) ) {
-    exit( 0 );
-  }
-}
+if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "2.0.0.0", test_version2: "2.9.0.0" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );

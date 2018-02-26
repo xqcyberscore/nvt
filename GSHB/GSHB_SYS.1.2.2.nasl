@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.2.2.nasl 7980 2017-12-04 10:36:47Z emoss $
+# $Id: GSHB_SYS.1.2.2.nasl 8925 2018-02-22 13:39:46Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.1.2.2 Windows Server 2012
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109035");
-  script_version("$Revision: 7980 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 11:36:47 +0100 (Mon, 04 Dec 2017) $");
+  script_version("$Revision: 8925 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -54,8 +54,12 @@ include("smb_nt.inc");
 
 Windows_Version = get_kb_item("WMI/WMI_OSNAME");
 if( "windows server 2012" >!< tolower(Windows_Version) ){
-  set_kb_item(name:"GSHB/SYS.1.2.2", value:"error");
-  log_message(data:"Der Host scheint kein Windows Server 2012 zu sein, oder es konnte keine Verbindung zum Host hergestellt werden.");
+  for( i=1; i<=14; i++){
+    set_kb_item(name:"GSHB/SYS.1.2.2.A" + i + "/result", value:"nicht zutreffend");
+    set_kb_item(name:"GSHB/SYS.1.2.2.A" + i + "/desc", value:"Auf dem Host ist kein Windows Server 2012 installiert.");
+  }
+
+  log_message(data:"Der Host ist kein Windows Server 2012 oder es konnte keine Verbindung zum Host hergestellt werden.");
   exit(0);
 }
 
@@ -67,57 +71,77 @@ if( domain ){
 }
 passwd  = kb_smb_password();
 
-# SYS.1.2.2.A1 Planung von Windows Server 2012
-SYS_1_2_2_A1 = 'SYS.1.2.2.A1 Planung von Windows Server 2012:\nDiese Vorgabe kann nicht implementiert werden.\n\n';
-
-# SYS.1.2.2.A2 Sichere Installation von Windows Server 2012
 handle = wmi_connect(host:host, username:usrname, password:passwd);
 if( !handle ){
-  set_kb_item(name:"ITG/SYS.1.2.2", value:"error");
+  for( i=1; i<=14; i++){
+    set_kb_item(name:"GSHB/SYS.1.2.2.A" + i + "/result", value:"error");
+    set_kb_item(name:"GSHB/SYS.1.2.2.A" + i + "/desc", value:"Es konnte keine Verbindung zum Host hergestellt werden.");
+  }
   wmi_close(wmi_handle:handle);
-  message = "Es war nicht möglich, sich mit dem Host zu verbinden.";
-  log_message(data:message);
+  log_message(data:"Es konnte keine Verbindung zum Host hergestellt werden.");
   exit(0);
 }
 
+# SYS.1.2.2.A1 Planung von Windows Server 2012
+SYS_1_2_2_A1 = 'SYS.1.2.2.A1 Planung von Windows Server 2012:\n';
+SYS_1_2_2_A1 = 'Diese Vorgabe muss manuell überprüft werden.\n\n';
+
+# SYS.1.2.2.A2 Sichere Installation von Windows Server 2012
+SYS_1_2_2_A2 = 'SYS.1.2.2.A2 Sichere Installation von Windows Server 2012:\n';
 query = "SELECT * FROM Win32_ServerFeature WHERE ID = '478' OR ID = '99'";
+result = 'erfüllt';
 res = wmi_query(wmi_handle:handle, query:query);
 if( res ){
-  SYS_1_2_2_A2 = 'SYS.1.2.2.A2 Sichere Installation von Windows Server 2012:\nDie Server-Core-Variante ist nicht installiert. Dies muss begründet sein.\n\n';
+  desc = 'Die Server-Core-Variante ist nicht installiert. Dies muss begründet werden.\n';
+  result = 'nicht erfüllt';
 }else{
-  SYS_1_2_2_A2 = 'SYS.1.2.2.A2 Sichere Installation von Windows Server 2012:\nDie Server-Core-Variante ist installiert.\n\n';
+  desc = 'Die Server-Core-Variante ist installiert.\n';
 }
+
+SYS_1_2_2_A3 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A3/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A3/desc", value:desc);
 
 # SYS.1.2.2.A3 Sichere Administration von Windows Server 2012
 SYS_1_2_2_A3 = 'SYS.1.2.2.A3 Sichere Administration von Windows Server 2012:\n';
+result = 'erfüllt';
 query = "SELECT Name, PasswordChangeable, PasswordExpires, PasswordRequired, SID FROM Win32_UserAccount WHERE LocalAccount = 'True'";
 res = wmi_query(wmi_handle:handle, query:query);
 if( res == '' ){
-  SYS_1_2_2_A3 += 'Es konnte kein lokaler Account identifiziert werden.\n\n';
+  desc = 'Es konnte kein lokaler Account identifiziert werden.\n\n';
+  result = 'erfüllt';
 }else{
   res = split(res, keep:FALSE);
   foreach line (res){
     line = split(line, sep:"|", keep:FALSE);
     if( line[5] =~ 'S-1-5-21-[0-9,-]+-(500|512|544)$' ){
-      SYS_1_2_2_A3 += line[1];
-      if( tolower(line[4]) == 'true' ){
-        SYS_1_2_2_A3 += ' : benötigt ein Passwort.\n';
-      }else{
-        SYS_1_2_2_A3 += ' : benötigt kein Passwort.\n';
+      if( tolower(line[4]) != 'true' ){
+        InsecureLocalAccount += line[1] + '\n';
+        result = 'nicht erfüllt';
       }
     }
   }
-  SYS_1_2_2_A3 += 'Stellen Sie sicher, dass es sich um sichere Passwörter handelt.\n\n';
+  
+  if( result == 'nicht erfüllt'){
+    desc = 'Folgende lokale Accounts benötigen kein Passwort zum Log-In:\n' + InsecureLocalAccount;
+  }else{
+    desc = 'Alle lokalen Accounts bedürfen eines Passworts zum Log-In. Bitte stellen Sie sicher,\n';
+    desc += 'dass es sich hierbei um sichere Passwörter handelt.\n';
+  }
 }
+
+SYS_1_2_2_A3 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A3/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A3/desc", value:desc);
 
 
 # SYS.1.2.2.A4  Sichere Konfiguration von Windows Server 2012
 SYS_1_2_2_A4 = 'SYS.1.2.2.A4 Sichere Konfiguration von Windows Server 2012:\n';
-SYS_1_2_2_A4 += get_kb_item("GSHB/M4_097/desc") + '\n\n';
+desc = get_kb_item("GSHB/M4_097/desc") + '\n';
+result = get_kb_item("GSHB/M4_097/result");
 
 Installed_IE = get_kb_item("MS/IE/Installed");
 if( Installed_IE ){
-  SYS_1_2_2_A4 += 'Der Internet Explorer ist installiert.';
   # Enhanced Security Configuration for Admins
   reg_key = "SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}";
   if( registry_key_exists(key:reg_key, type:"HKLM") ){
@@ -125,9 +149,10 @@ if( Installed_IE ){
   }
   
   if( ESC_Admins != '1' ){
-    SYS_1_2_2_A4 += '\nDie Enhanced Security Configuration ist für Administratoren nicht aktiviert.';
+    desc += 'Die Enhanced Security Configuration des Internet Explorers ist nicht für Administratoren aktiviert.\n';
+    result = 'nicht erfüllt';
   }else{
-    SYS_1_2_2_A4 += '\nDie Enhanced Security Configuration ist für Administratoren aktiviert.';
+    desc += 'Die Enhanced Security Configuration des Internet Explorers ist für Administratoren aktiviert.\n';
   }
 
   # Enhanced Security Configuration for Users
@@ -137,9 +162,10 @@ if( Installed_IE ){
   }
   
   if( ESC_Users != '1' ){
-    SYS_1_2_2_A4 += '\nDie Enhanced Security Configuration ist für User nicht aktiviert.';
+    desc += 'Die Enhanced Security Configuration ist nicht für User aktiviert.\n';
+    result = 'nicht erfüllt';
   }else{
-    SYS_1_2_2_A4 += '\nDie Enhanced Security Configuration ist für User aktiviert.';
+    desc += 'Die Enhanced Security Configuration ist für User aktiviert.';
   }
 
   # Enhanced Protected Mode
@@ -149,23 +175,26 @@ if( Installed_IE ){
   }
   
   if( EPM != 'PMEM' ){
-    SYS_1_2_2_A4 += '\nDer Enhanced Protected Mode wird nicht genutzt.';
+    desc += 'Der Enhanced Protected Mode wird nicht genutzt.\n';
+    result = 'nicht erfüllt';
   }else{
-    SYS_1_2_2_A4 += '\nDer Enhanced Protected Mode wird genutzt.';
+    desc += 'Der Enhanced Protected Mode wird genutzt.\n';
   }
-  SYS_1_2_2_A4 += '\n\n';
+}else{
+  desc = 'Der Internet Explorer ist nicht installiert.\n';
 }
 
-if( ! Installed_IE ){
-  SYS_1_2_2_A4 += 'Der Internet Explorer scheint nicht installiert zu sein.\n';
-}
+SYS_1_2_2_A4 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A4/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A4/desc", value:desc);
 
 # SYS.1.2.2.A5 Schutz vor Schadsoftware
-SYS_1_2_2_A5 = 'SYS.1.2.2.A5 Schutz vor Schadsoftware:\nDiese Vorgabe kann nicht implementiert werden.\n\n';
-
+SYS_1_2_2_A5 = 'SYS.1.2.2.A5 Schutz vor Schadsoftware:\n';
+SYS_1_2_2_A5 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 
 # SYS.1.2.2.A6 Sichere Authentisierung und Autorisierung in Windows Server 2012
 SYS_1_2_2_A6 += 'SYS.1.2.2.A6 Sichere Authentisierung und Autorisierung in Windows Server 2012:\n';
+result = 'erfüllt';
 
 GROUPUSER = wmi_user_groupuser(handle:handle);
 GROUPUSER = split(GROUPUSER, sep:'\n', keep:FALSE);                                                                                                                                                                                                                        
@@ -195,46 +224,61 @@ if( registry_key_exists(key:reg_key, type:"HKLM") ){
 }
 
 if( NotValidUser ){
-  SYS_1_2_2_A6 += 'Folgende Benutzer sind nicht Mitglied der Gruppen "Administrator", "Guest" oder "Protected User":\n' + NotValidUser + '\n';
+  desc = 'Folgende Benutzer sind nicht Mitglied der Gruppen "Administrator", "Guest" oder "Protected User":\n' + NotValidUser + '\n';
+  result = 'nicht erfüllt';
 }else{
-  SYS_1_2_2_A6 += 'Es wurden keine Benutzer gefunden, die nicht Mitglied der Gruppen "Administrator", "Guest" oder "Protected User" sind.\n';
+  desc = 'Es wurden keine Benutzer gefunden, die nicht Mitglied der Gruppen "Administrator", "Guest" oder "Protected User" sind.\n';
 }
 
 if( SystemAccountWrongGroup ){
-  SYS_1_2_2_A6 += 'Folgende System Accounts sind Mitglieder der Gruppe "Protected User":\n' + SystemAccountWrongGroup + '\n\n';
+  desc += 'Folgende System Accounts sind Mitglieder der Gruppe "Protected User":\n' + SystemAccountWrongGroup + '\n';
+  result = 'nicht erfüllt';
 }else{
-  SYS_1_2_2_A6 += 'Es wurde kein System Account in der Gruppe "Protected User" gefunden.\n';
+  desc += 'Es wurde kein System Account in der Gruppe "Protected User" gefunden.\n';
 }
 
 if( PPL =="1" ){
-  SYS_1_2_2_A6 += 'Ein zusätzlicher LSA-Schutz wurde aktiviert,\n\n';
+  desc += 'Der zusätzliche LSA-Schutz wurde aktiviert.\n';
 }else{
-  SYS_1_2_2_A6 += 'Es wurde kein zusätzlicher LSA-Schutz aktiviert.\n\n';
+  desc += 'Der zusätzliche LSA-Schutz ist nicht aktiviert. Dies sollte aktiviert werden.';
+  result = 'nicht erfüllt';
 }
+
+SYS_1_2_2_A6 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A6/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A6/desc", value:desc);
 
 
 # SYS.1.2.2.A7 Sicherheitsprüfung von Windows Server 2012
-SYS_1_2_2_A7 = 'SYS.1.2.2.A7 Sicherheitsprüfung von Windows Server 2012:\nDiese Vorgabe kann nicht implementiert werden.\n\n';
+SYS_1_2_2_A7 = 'SYS.1.2.2.A7 Sicherheitsprüfung von Windows Server 2012:\n';
+SYS_1_2_2_A7 += 'Diese Maßnahme muss manuell überprüft werden.\n\n';
 
 # SYS.1.2.2.A8 Schutz der Systemintegrität
 SYS_1_2_2_A8 = 'SYS.1.2.2.A8 Schutz der Systemintegrität:\n';
+result = 'erfüllt';
 reg_key = "System\CurrentControlSet\Control\SecureBoot\State";
 if( registry_key_exists(key:reg_key, type:"HKLM") ){
   SecureBoot = registry_get_dword(key:reg_key, item:"UEFISecureBootEnabled", type:"HKLM" );
 }
 
 if( SecureBoot == "1" ){
-  SYS_1_2_2_A8 += 'Secure Boot ist aktiv.\n';
+  desc = 'Secure Boot ist aktiv.\n';
 }else{
-  SYS_1_2_2_A8 += 'Secure Boot ist nicht aktiv.\n';
+  desc = 'Secure Boot ist nicht aktiv. Dies sollte aktiviert werden.\n';
+  result = 'nicht erfüllt';
 }
 
 reg_key = "Software\Policies\Microsoft\Windows\SrpV2";
 if( registry_key_exists(key:reg_key, type:"HKLM") ){
-  SYS_1_2_2_A8 += 'AppLocker scheint aktiviert zu sein. Bitte überprüfen Sie die effektiven Richtlinien.\n\n';
+  desc += 'AppLocker ist aktiviert. Die Konfiguration muss manuell überprüft werden.\n';
 }else{
-  SYS_1_2_2_A8 += 'AppLocker scheint nicht aktiviert zu sein.\n\n';
+  desc += 'AppLocker ist nicht aktiv. Dies sollte aktiviert werden.\n';
+  result = 'nicht erfüllt';
 }
+
+SYS_1_2_2_A8 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A8/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A8/desc", value:desc);
 
 
 # SYS.1.2.2.A9 Lokale Kommunikationsfilterung (CI)
@@ -242,6 +286,7 @@ SYS_1_2_2_A9 = 'SYS_1_2_2_A9 Lokale Kommunikationsfilterung (CI):\n';
 Firewall_Private = "netsh advfirewall show private state";
 Firewall_Public = "netsh advfirewall show public state";
 Firewall_Domain = "netsh advfirewall show domain state";
+result = 'erfüllt';
 
 usrname = get_kb_item("SMB/login");
 domain = get_kb_item("SMB/domain");
@@ -252,35 +297,44 @@ if ( domain ){
 Firewall_Private_Stat = win_cmd_exec(cmd:Firewall_Private, password:passwd, username:usrname);
 Firewall_Private_Stat = eregmatch(string:Firewall_Private_Stat, pattern:'State[ ]+(ON|OFF)');
 if( Firewall_Private_Stat[1] ){
-  SYS_1_2_2_A9 += 'Der Status des privaten Firewallprofils ist: ' + Firewall_Private_Stat[1] + '\n';
+  desc = 'Der Status des privaten Firewallprofils ist: ' + Firewall_Private_Stat[1] + '\n';
 }else{
-  SYS_1_2_2_A9 += 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
+  desc = 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
+  result = 'error';
 }
 
 
 Firewall_Public_Stat = win_cmd_exec(cmd:Firewall_Public, password:passwd, username:usrname);
 Firewall_Public_Stat = eregmatch(string:Firewall_Public_Stat, pattern:'State[ ]+(ON|OFF)');
 if( Firewall_Public_Stat[1] ){
-  SYS_1_2_2_A9 += 'Der Status des öffentlichen Firewallprofils ist: ' + Firewall_Public_Stat[1] + '\n';
+  desc += 'Der Status des öffentlichen Firewallprofils ist: ' + Firewall_Public_Stat[1] + '\n';
 }else{
-  SYS_1_2_2_A9 += 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
+  desc += 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
+  result = 'error';
 }
 
 Firewall_Domain_Stat = win_cmd_exec(cmd:Firewall_Domain, password:passwd, username:usrname);
 Firewall_Domain_Stat = eregmatch(string:Firewall_Domain_Stat, pattern:'State[ ]+(ON|OFF)');
 if( Firewall_Domain_Stat[1] ){
-  SYS_1_2_2_A9 += 'Der Status des domänen Firewallprofils ist: ' + Firewall_Domain_Stat[1] + '\n\n';
+  desc += 'Der Status des Firewallprofils "Domäne" ist: ' + Firewall_Domain_Stat[1] + '\n';
 }else{
-  SYS_1_2_2_A9 += 'Das domänen Firewallprofil konnte nicht ermittelt werden.\n\n';
+  desc += 'Das domänen Firewallprofil konnte nicht ermittelt werden.\n';
+  result = 'error';
 }
 
+SYS_1_2_2_A9 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A9/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A9/desc", value:desc);
 
 # SYS_1_2_2_A10 Festplattenverschlüsselung bei Windows Server 2012
 SYS_1_2_2_A10 = 'SYS.1.2.2.A10 Festplattenverschlüsselung bei Windows Server 2012 (C):\n';
+result = 'erfüllt';
+desc = '';
 cmd = "wmic logicaldisk get caption,drivetype";
 res = win_cmd_exec(cmd:cmd, password:passwd, username:usrname);
 if( "not recognized" >< res ){
-  SYS_1_2_2_A10 += '"wmic" wurde auf dem Host nicht erkannt.\n\n';
+  desc = '"wmic" wurde auf dem Host nicht erkannt.\n\n';
+  result = 'error';
 }else{
   res = split(res, keep:FALSE);
   BitLockerInstalled = FALSE;
@@ -290,16 +344,15 @@ if( "not recognized" >< res ){
       cmd = "manage-bde -status " + name[0];
       BitLocker = win_cmd_exec(cmd:cmd, password:passwd, username:usrname);
       if( "not recognized" >< BitLocker ){
-        continue; 
+        continue;
       }else{
         BitLockerInstalled = TRUE;
         BitLocker = split(BitLocker, keep:FALSE);
         foreach INFO (BitLocker){
           if( "protection status" >< tolower(INFO) ){
-            if( "protection on" >< tolower(INFO) ){
-              SYS_1_2_2_A10 += 'Der Datentäger: "' + name[0] + '" ist mittels BitLocker geschützt.\n\n';
-            }else{
-              SYS_1_2_2_A10 += 'Der Datentäger: "' + name[0] + '" ist nicht mittels BitLocker geschützt.\n\n';
+            if( "protection on" >!< tolower(INFO) ){
+              desc += 'Der Datentäger: "' + name[0] + '" ist nicht mit BitLocker geschützt.\n';
+              result = 'nicht erfüllt';
             }
           }
         }
@@ -308,24 +361,29 @@ if( "not recognized" >< res ){
   }
 }
 if( ! BitLockerInstalled ){
-  SYS_1_2_2_A10 += 'BitLocker ist nicht auf dem Server installiert.\n\n';
+  desc = 'BitLocker wird nicht verwendet.\n';
+  result = 'nicht erfüllt';
 }
+
+SYS_1_2_2_A10 += desc + '\n';
+set_kb_item(name:"GSHB/SYS.1.2.2.A10/result", value:result);
+set_kb_item(name:"GSHB/SYS.1.2.2.A10/desc", value:desc);
 
 # SYS.1.2.2.A11 Angriffserkennung bei Windows Server 2012 (CIA)
 SYS_1_2_2_A11 = 'SYS.1.2.2.A11 Angriffserkennung bei Windows Server 2012 (CIA):\n';
-SYS_1_2_2_A11 += 'Diese Vorgabe kann nicht implementiert werden.\n\n';
+SYS_1_2_2_A11 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 
 # SYS.1.2.2.A12 Redundanz und Hochverfügbarkeit (A)
 SYS_1_2_2_A12 = 'SYS.1.2.2.A12 Redundanz und Hochverfügbarkeit (A):\n';
-SYS_1_2_2_A12 += 'Diese Vorgabe kann nicht implementiert werden.\n\n';
+SYS_1_2_2_A12 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 
 # SYS.1.2.2.A13 Starke Authentifizierung bei Windows Server 2012 (CI)
 SYS_1_2_2_A13 = 'SYS.1.2.2.A13 Starke Authentifizierung bei Windows Server 2012 (CI):\n';
-SYS_1_2_2_A13 += 'Diese Vorgabe kann nicht implementiert werden.\n\n';
+SYS_1_2_2_A13 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 
 # SYS.1.2.2.A14 Herunterfahren verschlüsselter Server und virtueller Maschinen (CI)
 SYS_1_2_2_A14 = 'SYS.1.2.2.A14 Herunterfahren verschlüsselter Server und virtueller Maschinen (CI):\n';
-SYS_1_2_2_A14 += 'Diese Vorgabe kann nicht implementiert werden.\n\n';
+SYS_1_2_2_A14 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 
 
 
@@ -338,6 +396,8 @@ if( LEVEL == 'Kern' ){
   message += '\n\nKern-Absicherung:\n\n' + SYS_1_2_2_A9 + SYS_1_2_2_A10 + SYS_1_2_2_A11 + SYS_1_2_2_A12 + SYS_1_2_2_A13 + SYS_1_2_2_A14;
 }
 
-log_message(port:0, data:message);
+silence = get_kb_item("GSHB/silence");
+if (!silence) log_message(port:0, data: message);
+
 wmi_close(wmi_handle:handle);
 exit(0);

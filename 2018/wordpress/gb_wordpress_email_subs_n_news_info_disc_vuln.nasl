@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 8923 2018-02-22 12:33:50Z asteins $
+# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 8934 2018-02-23 08:17:33Z asteins $
 #
 # WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812672");
-  script_version("$Revision: 8923 $");
+  script_version("$Revision: 8934 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 13:33:50 +0100 (Thu, 22 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:17:33 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 10:24:30 +0530 (Thu, 25 Jan 2018)");
   script_name("WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability");
 
@@ -103,4 +103,5 @@ if(res =~ "HTTP/1.. 200 OK" && res =~ "email-subscribers.*csv" &&
   security_message(port: port, data: report);
   exit(0);
 }
+exit( 0 );
 exit(0);

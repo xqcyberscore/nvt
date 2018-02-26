@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freetype_dos_vuln_lin.nasl 8846 2018-02-16 13:29:15Z jschulte $
+# $Id: gb_freetype_dos_vuln_lin.nasl 8924 2018-02-22 13:20:54Z jschulte $
 #
 # FreeType 2 DoS Vulnerability (Linux)
 #
@@ -28,13 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113116");
-  script_version("$Revision: 8846 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:29:15 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 8924 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:20:54 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 14:32:33 +0100 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

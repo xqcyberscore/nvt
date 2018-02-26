@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.3.nasl 8665 2018-02-05 12:24:26Z emoss $
+# $Id: GSHB_SYS.1.3.nasl 8925 2018-02-22 13:39:46Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.1.3 Server unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109036");
-  script_version("$Revision: 8665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:24:26 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 8925 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_AppArmor_SeLinux.nasl");
-  script_mandatory_keys("Compliance/Launch/GSHB");
+  script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_tag(name : "summary" , value : 'Zielsetzung des Bausteins ist der Schutz von Informationen, die von Unix-Servern verarbeitet werden.');
   
   exit(0);
@@ -49,6 +49,18 @@ if(description)
 
 include("ssh_func.inc");
 include("misc_func.inc");
+
+Distribution = get_kb_item("ssh/login/release");
+if( ! Distribution ){
+  log_message(port:0, data:'Der Host ist kein Linux System. Maßnahme trifft nicht für das Zielsystem zu.\n');
+  req = make_list("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
+      "A11", "A12", "A13", "A14", "A15", "A16", "A17");
+  foreach r (req){
+    set_kb_item(name:"GSHB/SYS.1.3." + r + "/result", value:"nicht zutreffend");
+    set_kb_item(name:"GSHB/SYS.1.3." + r + "/desc", value:"Auf dem Host ist kein Linux installiert.");
+  }
+  exit(0);
+}
 
 port = kb_ssh_transport();
 host_ip = get_host_ip();
@@ -62,17 +74,6 @@ if( !sock ) {
     exit(0); 
 }
 
-Distribution = get_kb_item("ssh/login/release");
-if( ! Distribution ){
-  log_message(port:0, data:'Der Host ist kein Linux System. Maßnahme trifft nicht für das Zielsystem zu.\n');
-  req = make_list("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
-      "A11", "A12", "A13", "A14", "A15", "A16", "A17");
-  foreach r (req){
-    set_kb_item(name:"GSHB/SYS.1.3." + r + "/result", value:"nicht zutreffend");
-    set_kb_item(name:"GSHB/SYS.1.3." + r + "/desc", value:"Diese Maßnahme ist für Linux implementiert.");
-  }
-  exit(0);
-}
 
 debian_version = get_kb_item("ssh/login/release");
 

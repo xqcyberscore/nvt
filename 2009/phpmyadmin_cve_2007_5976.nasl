@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_cve_2007_5976.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: phpmyadmin_cve_2007_5976.nasl 8930 2018-02-23 07:28:32Z cfischer $
 #
 # phpMyAdmin DB_Create.PHP Multiple Input Validation Vulnerabilities
 #
@@ -24,58 +24,61 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpMyAdmin is prone to multiple input-validation vulnerabilities, including a
-  cross-site scripting and a SQL-injection issue.
-
-  A successful exploit may allow an attacker to steal cookie-based
-  authentication credentials, compromise the application, access or modify data,
-  or exploit latent vulnerabilities in the underlying database.
-
-  These issues affect versions prior to phpMyAdmin 2.11.2.1.";
-
-tag_solution = "Vendor updates are available. Please see http://www.phpmyadmin.net for more
-  Information.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100067";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2009-03-21 10:04:15 +0100 (Sat, 21 Mar 2009)");
- script_bugtraq_id(26512);
- script_cve_id("CVE-2007-5976","CVE-2007-5977");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100067");
+  script_version("$Revision: 8930 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:28:32 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2009-03-21 10:04:15 +0100 (Sat, 21 Mar 2009)");
+  script_bugtraq_id(26512);
+  script_cve_id("CVE-2007-5976","CVE-2007-5977");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_name("phpMyAdmin DB_Create.PHP Multiple Input Validation Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpMyAdmin/installed");
 
- script_name("phpMyAdmin DB_Create.PHP Multiple Input Validation Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/26512");
 
+  tag_summary = "phpMyAdmin is prone to multiple input-validation vulnerabilities, including a
+  cross-site scripting and a SQL-injection issue.";
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpMyAdmin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/26512");
- exit(0);
+  tag_impact = "A successful exploit may allow an attacker to steal cookie-based
+  authentication credentials, compromise the application, access or modify data,
+  or exploit latent vulnerabilities in the underlying database.";
+
+  tag_affected = "These issues affect versions prior to phpMyAdmin 2.11.2.1.";
+
+  tag_solution = "Vendor updates are available. Please see http://www.phpmyadmin.net for more
+  Information.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!version = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
- if (version_is_less_equal(version:version, test_version:"2.11.1") ) { 
-      security_message(port:port);
-      exit(0);
-  }
+if( version_is_less_equal( version:vers, test_version:"2.11.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.11.2.1" );
+  security_message( port:port, data:report );
+  exit( 0 );
+}
 
-exit(0);
+exit( 99 );

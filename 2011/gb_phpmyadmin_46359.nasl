@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_46359.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_phpmyadmin_46359.nasl 8926 2018-02-22 14:56:01Z cfischer $
 #
 # phpMyAdmin Bookmark Security Bypass Vulnerability
 #
@@ -24,70 +24,73 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpMyAdmin is prone to a security-bypass vulnerability that affects
-bookmarks.
-
-Successfully exploiting this issue allows a remote attacker to bypass
-certain security restrictions and perform unauthorized actions.
-
-Versions prior to phpMyAdmin 3.3.9.2 and 2.11.11.3 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for details.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103076";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
- script_bugtraq_id(46359);
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103076");
+  script_version("$Revision: 8926 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 15:56:01 +0100 (Thu, 22 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
+  script_bugtraq_id(46359);
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2011-0986", "CVE-2011-0987");
+  script_name("phpMyAdmin Bookmark Security Bypass Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpMyAdmin/installed");
 
- script_name("phpMyAdmin Bookmark Security Bypass Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46359");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46359");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php");
+  tag_summary = "phpMyAdmin is prone to a security-bypass vulnerability that affects
+  bookmarks.";
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpMyAdmin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_impact = "Successfully exploiting this issue allows a remote attacker to bypass
+  certain security restrictions and perform unauthorized actions.";
+
+  tag_affected = "Versions prior to phpMyAdmin 3.3.9.2 and 2.11.11.3 are vulnerable.";
+
+  tag_solution = "Updates are available. Please see the references for details.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-  if(vers =~ "^3\.") {
-    if(version_is_less(version: vers, test_version: "3.3.9.2")) {
-        security_message(port:port);
-        exit(0);
-    }
-  } 
-  
-  else if(vers =~ "^2\.") {
-    if(version_is_less(version: vers, test_version: "2.11.11.3")) {
-      security_message(port:port);
-      exit(0);
-    }  
+if( vers =~ "^3\." ) {
+  if( version_is_less( version:vers, test_version:"3.3.9.2" ) ) {
+    VULN = TRUE;
+    fix = "3.3.9.2";
+  }
+} else if(vers =~ "^2\.") {
+  if( version_is_less( version:vers, test_version:"2.11.11.3" ) ) {
+    VULN = TRUE;
+    fix = "2.11.11.3";
   }  
+}  
 
+if( VULN ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

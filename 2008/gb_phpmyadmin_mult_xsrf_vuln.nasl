@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xsrf_vuln.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_phpmyadmin_mult_xsrf_vuln.nasl 8931 2018-02-23 07:42:47Z cfischer $
 #
 # phpMyAdmin Multiple CSRF SQL Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800210");
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 8931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:42:47 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("phpMyAdmin/installed");
+  script_mandatory_keys("phpMyAdmin/installed");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/7382");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2008-10.php");

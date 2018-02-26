@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_37826.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: phpmyadmin_37826.nasl 8930 2018-02-23 07:28:32Z cfischer $
 #
 # phpMyAdmin Insecure Temporary File and Directory Creation Vulnerabilities
 #
@@ -24,67 +24,65 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpMyAdmin creates temporary directories and files in an insecure way.
-
-An attacker with local access could potentially exploit this issue to
-perform symbolic-link attacks, overwriting arbitrary files in the
-context of the affected application.
-
-Successful attacks may corrupt data or cause denial-of-service
-conditions. Other unspecified attacks are also possible.
-
-This issue affects phpMyAdmin 2.11.x (prior to 2.11.10.)";
-
-tag_solution = "Updates are available. Please see the references for details.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100450";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2010-01-18 11:34:48 +0100 (Mon, 18 Jan 2010)");
- script_bugtraq_id(37826);
- script_cve_id("CVE-2008-7251","CVE-2008-7252");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.100450");
+  script_version("$Revision: 8930 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:28:32 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2010-01-18 11:34:48 +0100 (Mon, 18 Jan 2010)");
+  script_bugtraq_id(37826);
+  script_cve_id("CVE-2008-7251", "CVE-2008-7252");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("phpMyAdmin Insecure Temporary File and Directory Creation Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpMyAdmin/installed");
 
- script_name("phpMyAdmin Insecure Temporary File and Directory Creation Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37826");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/index.php");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-1.php");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-2.php");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37826");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/index.php");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2010-1.php");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2010-2.php");
+  tag_summary = "phpMyAdmin creates temporary directories and files in an insecure way.
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpMyAdmin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  An attacker with local access could potentially exploit this issue to
+  perform symbolic-link attacks, overwriting arbitrary files in the
+  context of the affected application.";
+
+  tag_impact = "Successful attacks may corrupt data or cause denial-of-service
+  conditions. Other unspecified attacks are also possible.";
+
+  tag_affected = "This issue affects phpMyAdmin 2.11.x (prior to 2.11.10.)";
+
+  tag_solution = "Updates are available. Please see the references for details.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_less(version: vers, test_version: "2.11.10")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if( version_is_less( version:vers, test_version:"2.11.10" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.11.10" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

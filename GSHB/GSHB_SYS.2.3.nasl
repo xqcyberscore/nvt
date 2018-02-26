@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.3.nasl 8665 2018-02-05 12:24:26Z emoss $
+# $Id: GSHB_SYS.2.3.nasl 8925 2018-02-22 13:39:46Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.2.3 Clients unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109038");
-  script_version("$Revision: 8665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 13:24:26 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 8925 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 15:30:28 +0100 (Tue, 19 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_family("IT-Grundschutz");
   script_dependencies("GSHB/GSHB_SSH_AppArmor_SeLinux.nasl",
       "GSHB/GSHB_SSH_quota.nasl");
-  script_mandatory_keys("ssh/login/packages", "Compliance/Launch/GSHB");
+  script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen,
       die auf Unix-Clients erstellt, bearbeitet, gespeichert oder versendet werden");
   exit(0);
@@ -48,6 +48,18 @@ if(description)
 
 include("ssh_func.inc");
 include("misc_func.inc");
+
+Distribution = get_kb_item("ssh/login/release");
+if( ! Distribution ){
+  log_message(data:'Es konnte keine Linux-Distribution erkannt werden.\n', port:0);
+  req = make_list("A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","A11",
+      "A12","A13","A14","A15","A16","A17","A18","A19","A20");
+  foreach r (req){
+    set_kb_item(name:"GSHB/SYS.2.3." + r + "/result", value:"nicht zutreffend");
+    set_kb_item(name:"GSHB/SYS.2.3." + r + "/desc", value:"Auf dem Host ist kein Linux installiert.");
+  }
+  exit(0);
+}
 
 port = kb_ssh_transport();
 host_ip = get_host_ip();
@@ -62,17 +74,6 @@ if( !sock ) {
   }
 }
 
-Distribution = get_kb_item("ssh/login/release");
-if( ! Distribution ){
-  log_message(data:'Es konnte keine Linux-Distribution erkannt werden.\n', port:0);
-  req = make_list("A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","A11",
-      "A12","A13","A14","A15","A16","A17","A18","A19","A20");
-  foreach r (req){
-    set_kb_item(name:"GSHB/SYS.2.3." + r + "/result", value:"nicht zutreffend");
-    set_kb_item(name:"GSHB/SYS.2.3." + r + "/desc", value:"Diese Maßnahme ist für Unix Clients implementiert.");
-  }
-  exit(0);
-}
 
 # SYS.2.3.A1 Authentisierung von Administratoren und Benutzer [Benutzer]
 SYS_2_3_A1 = 'SYS.2.3.A1 Authentisierung von Administratoren und Benutzer:\n';

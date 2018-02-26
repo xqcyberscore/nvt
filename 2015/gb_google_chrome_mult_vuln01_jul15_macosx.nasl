@@ -1,11 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul15_macosx.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_jul15_macosx.nasl 8932 2018-02-23 08:01:57Z santu $
 #
 # Google Chrome Multiple Vulnerabilities-01 July15 (Mac OS X)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
+#
+# Updated By: Rajat Mishra <rajatm@secpod.com> on 2018-02-21
+# - Updated to include Installation path in the report.
 #
 # Copyright:
 # Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,16 +32,17 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805935");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 8932 $");
   script_cve_id("CVE-2015-1271", "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276",
                 "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1282",
                 "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1286", "CVE-2015-1287",
                 "CVE-2015-1270", "CVE-2015-1272", "CVE-2015-1277", "CVE-2015-1278",
-                "CVE-2015-1285", "CVE-2015-1288", "CVE-2015-1289", "CVE-2015-5605");
+                "CVE-2015-1285", "CVE-2015-1288", "CVE-2015-1289", "CVE-2015-5605",
+                "CVE-2015-1290");
   script_bugtraq_id(75973, 76007);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:01:57 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 14:49:13 +0530 (Thu, 23 Jul 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July15 (Mac OS X)");
 
@@ -96,23 +100,22 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
 ## Variable Initialization
-chromeVer = "";
+vers = "";
 
 ## Get version
-if(!chromeVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Grep for vulnerable version
-if(version_is_less(version:chromeVer, test_version:"44.0.2403.89"))
+if(version_is_less(version:vers, test_version:"44.0.2403.89"))
 {
-  report = 'Installed version: ' + chromeVer + '\n' +
-           'Fixed version:     44.0.2403.89'  + '\n';
+  report = report_fixed_ver(installed_version:vers, fixed_version:"44.0.2403.89", install_path:path);
   security_message(data:report);
   exit(0);
 }
+exit(0); 

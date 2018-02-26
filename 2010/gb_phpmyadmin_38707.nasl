@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_38707.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_phpmyadmin_38707.nasl 8930 2018-02-23 07:28:32Z cfischer $
 #
 # phpMyAdmin 'db_create.php' Cross Site Scripting Vulnerability
 #
@@ -24,60 +24,62 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpMyAdmin is prone to a cross-site scripting vulnerability because it
-fails to sufficiently sanitize user-supplied data.
-
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and to launch other attacks.
-
-phpMyAdmin 3.3.0 is vulnerable; other versions may also be affected.";
-
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100530";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
- script_bugtraq_id(38707);
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100530");
+  script_version("$Revision: 8930 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:28:32 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
+  script_bugtraq_id(38707);
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_name("phpMyAdmin 'db_create.php' Cross Site Scripting Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpMyAdmin/installed");
 
- script_name("phpMyAdmin 'db_create.php' Cross Site Scripting Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38707");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/510052");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38707");
- script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/510052");
+  tag_summary = "phpMyAdmin is prone to a cross-site scripting vulnerability because it
+  fails to sufficiently sanitize user-supplied data.";
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpMyAdmin/installed");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials and to launch other attacks.";
+
+  tag_affected = "phpMyAdmin 3.3.0 is vulnerable; other versions may also be affected.";
+
+  tag_solution = "Updates are available. Please see the references for more information.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!isnull(vers) && vers >!< "unknown") {
+if( version_is_equal( version:vers, test_version:"3.3.0" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  security_message( port:port, data:report );
+  exit( 0 );
+}
 
-  if(version_is_equal(version: vers, test_version: "3.3.0")) {
-    security_message(port:port);
-    exit(0);
-  }   
-
-}  
-exit(0);
+exit( 99 );
