@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_scalance_snmp_detect.nasl 8661 2018-02-05 09:41:51Z ckuersteiner $
+# $Id: gb_simatic_scalance_snmp_detect.nasl 8948 2018-02-26 10:31:59Z ckuersteiner $
 #
 # Siemens SIMATIC SCALANCE Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140748");
- script_version ("$Revision: 8661 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:41:51 +0100 (Mon, 05 Feb 2018) $");
+ script_version ("$Revision: 8948 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-26 11:31:59 +0100 (Mon, 26 Feb 2018) $");
  script_tag(name: "creation_date", value: "2018-02-05 15:43:30 +0700 (Mon, 05 Feb 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,6 +48,8 @@ devices.");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
  script_mandatory_keys("SNMP/sysdesc/available");
+
+ script_xref(name: "URL", value: "http://w3.siemens.com/mcms/industrial-communication/en/scalance/Pages/default.aspx");
 
  exit(0);
 }

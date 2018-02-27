@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 8941 2018-02-23 14:26:50Z cfischer $
 #
 # SugarCRM Multiple SQL Injection Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812802");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 8941 $");
   script_cve_id("CVE-2018-6308");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 15:40:09 +0530 (Thu, 08 Feb 2018)");
   script_name("SugarCRM Multiple SQL Injection Vulnerabilities");
  

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 8951 2018-02-26 11:47:22Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8951 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:47:22 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -475,6 +475,10 @@ if( "Cisco Adaptive Security Appliance" >< sysdesc ) {
 
 if( "Arista Networks EOS" >< sysdesc ) {
   exit( 0 ); # 1.3.6.1.4.1.25623.1.0.106494 (gb_arista_eos_snmp_detect.nasl)
+}
+
+if( sysdesc =~ "^HyperIP" ) {
+  exit( 0 ); # 1.3.6.1.4.1.25623.1.0.108349 (gb_hyperip_snmp_detect.nasl)
 }
 
 if( "WatchGuard Fireware" >< sysdesc ) {

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_sql_inj_dec17.nasl 8241 2017-12-22 13:40:20Z cfischer $
+# $Id: gb_piwigo_sql_inj_dec17.nasl 8950 2018-02-26 11:17:43Z asteins $
 #
 # Piwigo Sql Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107271");
-  script_version("$Revision: 8241 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 8950 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-26 12:17:43 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-12-11 11:11:04 +0700 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
-  script_cve_id("CVE-2017-16893");
+  script_cve_id("CVE-2017-16893", "CVE-2018-6883");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Piwigo Sql Injection Vulnerability");
 
@@ -51,18 +51,20 @@ if (description)
   script_dependencies("gb_piwigo_detect.nasl");
   script_mandatory_keys("piwigo/installed");
 
-  script_tag(name: "summary", value: "Piwigo is prone to sql injection vulnerability.");
+  script_tag(name: "summary", value: "Piwigo is prone to sql injection vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "The flaw is exist because values of the edit_list parameters are not sanitized; these are used to construct an SQL query and retrieve a list of registered users into the application.");
+  script_tag(name: "insight", value: "Values of the edit_list parameters are not sanitized; these are used to construct an SQL query and retrieve a list of registered users into the application.
+
+  Another sql injection is possible in admin/tags.php in the administration panel, via the tags array parameter in an admin.php?page=tags request. The attacker must be an administrator.");
 
   script_tag(name: "affected", value: "Piwigo version 2.9.2 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 11th December, 2017.
-Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to Piwigo 2.9.3 or later.");
 
   script_xref(name: "URL", value: "https://www.fortify24x7.com/cve-2017-16893/");
+  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/839")
 
   exit(0);
 }
@@ -77,7 +79,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "2.9.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None Available");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.9.3");
   security_message(port: port, data: report);
   exit(0);
 }

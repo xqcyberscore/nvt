@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 8941 2018-02-23 14:26:50Z cfischer $
 #
 # HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:web_jetadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812518");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 8941 $");
   script_cve_id("CVE-2012-2011");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:30:33 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_detect.nasl 7161 2017-09-18 07:43:57Z cfischer $
+# $Id: gb_hp_diagnostics_server_detect.nasl 8952 2018-02-26 11:51:34Z santu $
 #
 # HP Diagnostics Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802389");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7161 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 8952 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:51:34 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 10:43:19 +0530 (Thu, 02 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("HP Diagnostics Server Version Detection");
@@ -63,9 +63,13 @@ if(!get_port_state(hpdsPort)){
 ## Confirm the application
 rcvRes = http_get_cache(item: "/", port:hpdsPort);
 
-if (">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes)
+if ((">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes) ||
+    (">HPE Diagnostics" >< rcvRes && 'diagName">Diagnostics Server' >< rcvRes))
 {
   hpdiagVer = eregmatch(pattern:">Server ([0-9.]+)", string:rcvRes);
+  if(!hpdiagVer){
+    hpdiagVer = eregmatch(pattern:'version">Version ([0-9.]+)', string:rcvRes);
+  }
 
   if(hpdiagVer[1])
   {
@@ -87,11 +91,9 @@ if (">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes)
 
   register_product(cpe:cpe, location:"/", port:hpdsPort);
 
-  log_message(data:'Detected HP Diagnostics Server version: ' + hpdiagVer +
-     '\nLocation: /' +
-     '\nCPE: '+ cpe +
-     '\n\nConcluded from version identification result:\n' +
-     'HP Diagnostics Server '+ hpdiagVer, port:hpdsPort);
+  log_message(data: build_detection_report(app: "HP Diagnostics Server", version: hpdiagVer, install: "/",
+                                           cpe: cpe, concluded: 'HP Diagnostics Server '+ hpdiagVer),
+              port:hpdsPort);
+  exit(0);
 }
-
 exit(0);

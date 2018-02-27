@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_smtp_starttls_pl_inj.nasl 8937 2018-02-23 11:25:34Z cfischer $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -25,87 +25,89 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103935";
-
-tag_impact = "An attacker can exploit this issue to execute arbitrary commands in
-the context of the user running the application. Successful exploits
-can allow attackers to obtain email usernames and passwords.";
-
-tag_affected = "The following vendors are affected:
-
-Ipswitch
-Kerio
-Postfix
-Qmail-TLS
-Oracle
-SCO Group
-spamdyke
-ISC";
-
-tag_summary = "Multiple vendors' implementations of STARTTLS are prone to a
-vulnerability that lets attackers inject arbitrary commands.";
-
-tag_solution = "Updates are available.";
-
-tag_vuldetect = "Send a special crafted STARTTLS request and check the response.";
-
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(46767);
- script_cve_id("CVE-2011-0411","CVE-2011-1430","CVE-2011-1431","CVE-2011-1432","CVE-2011-1575","CVE-2011-1926","CVE-2011-2165");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6769 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103935");
+  script_version("$Revision: 8937 $");
+  script_bugtraq_id(46767);
+  script_cve_id("CVE-2011-0411", "CVE-2011-1430", "CVE-2011-1431", "CVE-2011-1432",
+                "CVE-2011-1506", "CVE-2011-1575", "CVE-2011-1926", "CVE-2011-2165");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 12:25:34 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
+  script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("SMTP problems");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "gb_starttls_smtp.nasl");
+  script_require_ports("Services/smtp", 25);
+  script_mandatory_keys("SMTP/STARTTLS/supported");
 
- script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46767");
+  script_xref(name:"URL", value:"http://kolab.org/pipermail/kolab-announce/2011/000101.html");
+  script_xref(name:"URL", value:"http://bugzilla.cyrusimap.org/show_bug.cgi?id=3424");
+  script_xref(name:"URL", value:"http://cyrusimap.org/mediawiki/index.php/Bugs_Resolved_in_2.4.7");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/MAPG-8D9M4P");
+  script_xref(name:"URL", value:"http://files.kolab.org/server/release/kolab-server-2.3.2/sources/release-notes.txt");
+  script_xref(name:"URL", value:"http://www.postfix.org/CVE-2011-0411.html");
+  script_xref(name:"URL", value:"http://www.pureftpd.org/project/pure-ftpd/news");
+  script_xref(name:"URL", value:"http://www.watchguard.com/support/release-notes/xcs/9/en-US/EN_ReleaseNotes_XCS_9_1_1/EN_ReleaseNotes_WG_XCS_9_1_TLS_Hotfix.pdf");
+  script_xref(name:"URL", value:"http://www.spamdyke.org/documentation/Changelog.txt");
+  script_xref(name:"URL", value:"http://datatracker.ietf.org/doc/draft-josefsson-kerberos5-starttls/?include_text=1");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/516901");
+  script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100134676");
+  script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100141041");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
+  script_xref(name:"URL", value:"http://inoa.net/qmail-tls/vu555316.patch");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/555316");
 
+  tag_impact = "An attacker can exploit this issue to execute arbitrary commands in
+  the context of the user running the application. Successful exploits
+  can allow attackers to obtain email usernames and passwords.";
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46767");
- script_xref(name:"URL", value:"http://kolab.org/pipermail/kolab-announce/2011/000101.html");
- script_xref(name:"URL", value:"http://bugzilla.cyrusimap.org/show_bug.cgi?id=3424");
- script_xref(name:"URL", value:"http://cyrusimap.org/mediawiki/index.php/Bugs_Resolved_in_2.4.7");
- script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/MAPG-8D9M4P");
- script_xref(name:"URL", value:"http://files.kolab.org/server/release/kolab-server-2.3.2/sources/release-notes.txt");
- script_xref(name:"URL", value:"http://www.postfix.org/CVE-2011-0411.html");
- script_xref(name:"URL", value:"http://www.pureftpd.org/project/pure-ftpd/news");
- script_xref(name:"URL", value:"http://www.watchguard.com/support/release-notes/xcs/9/en-US/EN_ReleaseNotes_XCS_9_1_1/EN_ReleaseNotes_WG_XCS_9_1_TLS_Hotfix.pdf");
- script_xref(name:"URL", value:"http://www.spamdyke.org/documentation/Changelog.txt");
- script_xref(name:"URL", value:"http://datatracker.ietf.org/doc/draft-josefsson-kerberos5-starttls/?include_text=1");
- script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/516901");
- script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100134676");
- script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100141041");
- script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
- script_xref(name:"URL", value:"http://inoa.net/qmail-tls/vu555316.patch");
- script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/555316");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
- script_category(ACT_ATTACK);
+  tag_affected = "The following vendors are affected:
+
+  Ipswitch
+
+  Kerio
+
+  Postfix
+
+  Qmail-TLS
+
+  Oracle
+
+  SCO Group
+
+  spamdyke
+
+  ISC";
+
+  tag_summary = "Multiple vendors' implementations of STARTTLS are prone to a
+  vulnerability that lets attackers inject arbitrary commands.";
+
+  tag_solution = "Updates are available.";
+
+  tag_vuldetect = "Send a special crafted STARTTLS request and check the response.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:tag_affected);
+
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("SMTP problems");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "gb_starttls_smtp.nasl");
- script_require_ports("Services/smtp", 25);
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
-
- exit(0);
+  exit(0);
 }
 
 if( ! defined_func( 'socket_negotiate_ssl' ) ) exit( 0 );
 
 include("smtp_func.inc");
 
-port = get_kb_item( "Services/smtp" );
-if( ! port ) port = 25;
-
-if( ! get_port_state( port ) ) exit( 0 );
-if( get_kb_item( 'SMTP/' + port + '/broken' ) ) exit( 0 );
+port = get_smtp_port( default:25 );
 
 if( ! get_kb_item( 'smtp/' + port + '/starttls' ) ) exit( 0 );
 if( ! soc = smtp_open( port:port, helo:this_host() ) ) exit( 0 );

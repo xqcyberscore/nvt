@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_hp_support_assistant_detect.nasl 8952 2018-02-26 11:51:34Z santu $
 #
 # HP Support Assistant Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807804");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 8952 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:51:34 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-04-20 16:08:25 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Version Detection (Windows)");
 
@@ -116,6 +116,37 @@ foreach item (registry_enum_keys(key:key))
       register_product(cpe:cpe, location:hpPath);
 
       log_message(data: build_detection_report(app: "HP Support Assistant",
+                                                 version: hpVer,
+                                                 install: hpPath,
+                                                 cpe: cpe,
+                                                 concluded: hpVer));
+    }
+  }
+
+  ## Confirm the application
+  if("HP Support Solutions Framework" >< hpName)
+  {
+    hpVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+
+    if(hpVer)
+    {
+      hpPath = registry_get_sz(key:key + item, item:"InstallLocation");
+      if(!hpPath){
+        hpPath = "Couldn find the install location from registry";
+      }
+
+      ## Set the version in KB
+      set_kb_item(name:"HP/Support/Assistant/FW/Win/Ver", value:hpVer);
+
+     ## build cpe and store it as host_detail
+      cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:support_solution_framework:");
+      if(isnull(cpe))
+        cpe = "cpe:/a:hp:support_solution_framework";
+
+      ## Register Product and Build Report
+      register_product(cpe:cpe, location:hpPath);
+
+      log_message(data: build_detection_report(app: "HP Support Assistant Framework",
                                                  version: hpVer,
                                                  install: hpPath,
                                                  cpe: cpe,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_meetings_server_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_cisco_webex_meetings_server_detect.nasl 8940 2018-02-23 13:47:02Z santu $
 #
 # Cisco WebEx Meetings Server Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106191");
- script_version ("$Revision: 7000 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version ("$Revision: 8940 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
  script_tag(name: "creation_date", value: "2016-08-19 11:08:48 +0700 (Fri, 19 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,8 @@ url = "/orion/login";
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req);
 
-if ("Cisco WebEx</title>" >< res && 'title="Cisco WebEx Meetings Server"' >< res) {
+if (("Cisco WebEx</title>" >< res || ">Cisco WebEx Meetings Server</title>" >< res) &&
+     'title="Cisco WebEx Meetings Server"' >< res) {
   version = "unknown";
 
   vers = eregmatch(pattern: "CWMS\/([0-9_]+)\/FAQs.html", string: res);

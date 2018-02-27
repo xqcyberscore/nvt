@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1273.nasl 8907 2018-02-21 14:20:37Z teissa $
+# $Id: deb_dla_1273.nasl 8941 2018-02-23 14:26:50Z cfischer $
 #
 # Auto-generated from advisory DLA 1273-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891273");
-  script_version("$Revision: 8907 $");
+  script_version("$Revision: 8941 $");
   script_cve_id("CVE-2017-18121", "CVE-2017-18122", "CVE-2018-6521");
   script_name("Debian Lts Announce DLA 1273-1 ([SECURITY] [DLA 1273-1] simplesamlphp security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 15:20:37 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_xss_vuln_900134.nasl 8931 2018-02-23 07:42:47Z cfischer $
+# $Id: secpod_phpmyadmin_xss_vuln_900134.nasl 8941 2018-02-23 14:26:50Z cfischer $
 # Description: phpMyAdmin Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -28,14 +28,14 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900134");
-  script_version("$Revision: 8931 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:42:47 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 8941 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-10-03 15:12:54 +0200 (Fri, 03 Oct 2008)");
   script_bugtraq_id(31327);
   script_cve_id("CVE-2008-4326");
   script_copyright("Copyright (C) 2008 SecPod");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_name("phpMyAdmin Cross-Site Scripting Vulnerability");

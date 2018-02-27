@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl 8711 2018-02-08 07:34:16Z santu $
+# $Id: gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl 8941 2018-02-23 14:26:50Z cfischer $
 #
 # MantisBT 'view_all_bug_page' Path Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812755");
-  script_version("$Revision: 8711 $");
+  script_version("$Revision: 8941 $");
   script_cve_id("CVE-2018-6526");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 08:34:16 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 11:55:27 +0530 (Mon, 05 Feb 2018)");
   script_name("MantisBT 'view_all_bug_page' Path Disclosure Vulnerability (Windows)");
 

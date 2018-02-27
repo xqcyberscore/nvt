@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 4683 2016-12-06 08:45:07Z cfi $
+# $Id: gb_starttls_smtp.nasl 8937 2018-02-23 11:25:34Z cfischer $
 #
 # SMTP STARTTLS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 4683 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 09:45:07 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 8937 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-23 12:25:34 +0100 (Fri, 23 Feb 2018) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,12 +60,13 @@ if( ! r = smtp_recv_line( socket:soc ) ) exit( 0 );
 smtp_close( socket:soc );
 
 if( "220" >< r ) {
+  set_kb_item( name:"SMTP/STARTTLS/supported", value:TRUE );
   set_kb_item( name:"smtp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"smtp" );
   log_message( port:port, data:"The remote Mailserver supports the STARTTLS command." );
   exit(0);
 } else {
-  set_kb_item( name:'SMTP/STARTTLS/not_supported', value:TRUE );
-  set_kb_item( name:'SMTP/STARTTLS/not_supported/port', value:port) ;
+  set_kb_item( name:"SMTP/STARTTLS/not_supported", value:TRUE );
+  set_kb_item( name:"SMTP/STARTTLS/not_supported/port", value:port) ;
   exit( 0 );
 }

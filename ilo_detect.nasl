@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: ilo_detect.nasl 8940 2018-02-23 13:47:02Z santu $
 # Description: HP Integrated Lights-Out Detection
 #
 # Authors:
@@ -32,8 +32,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.20285");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version("$Revision: 8940 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("HP Integrated Lights-Out Detection");
@@ -67,6 +67,7 @@ if( r == NULL )exit(0);
 if((r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett-Packard Development Company" >< r) ||
    ("HP Integrated Lights-Out" >< r && egrep(pattern:"Copyright .+ Hewlett-Packard Development Company", string:r)) ||
    ("<title>HP Remote Insight<" >< r &&  egrep(pattern:"Hewlett-Packard Development Company", string:r) ) ||
+   (r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
    "Server: HP-iLO-Server" >< r) {
 
   vers = 'unknown';
