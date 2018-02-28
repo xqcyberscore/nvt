@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_sql_inj_dec17.nasl 8950 2018-02-26 11:17:43Z asteins $
+# $Id: gb_piwigo_sql_inj_dec17.nasl 8953 2018-02-26 11:57:17Z cfischer $
 #
 # Piwigo Sql Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107271");
-  script_version("$Revision: 8950 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-26 12:17:43 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 8953 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-26 12:57:17 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-12-11 11:11:04 +0700 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -64,7 +64,7 @@ if (description)
   script_tag(name: "solution", value: "Update to Piwigo 2.9.3 or later.");
 
   script_xref(name: "URL", value: "https://www.fortify24x7.com/cve-2017-16893/");
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/839")
+  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/839");
 
   exit(0);
 }

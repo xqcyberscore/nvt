@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 7077 2017-09-07 13:41:54Z santu $
+# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
 #
 # IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811728");
-  script_version("$Revision: 7077 $");
+  script_version("$Revision: 8957 $");
   script_cve_id("CVE-2017-9757");
   script_bugtraq_id(99173);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 15:41:54 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 16:29:23 +0530 (Wed, 06 Sep 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability");
@@ -43,7 +43,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Check the version of IPFire"); 
 
-  script_tag(name:"insight", value:"The flaw is exists as the file 'ids.cgi'
+  script_tag(name:"insight", value:"The flaw exists as the file 'ids.cgi'
   doesn't sanitize the 'OINKCODE' parameter and input gets passed to a system
   call which call wget.");
 

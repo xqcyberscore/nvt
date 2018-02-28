@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8951 2018-02-26 11:47:22Z cfischer $
+# $Id: host_details.inc 8959 2018-02-26 17:20:39Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8951 $
+# $Revision: 8959 $
 #
 ###############################################################################
 
@@ -112,7 +112,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.140811", # gb_siements_ruggedcom_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.140811", # gb_siemens_ruggedcom_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108347", # gb_hyperip_consolidation.nasl
@@ -182,7 +182,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.140811", # gb_siements_ruggedcom_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.140811", # gb_siemens_ruggedcom_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl

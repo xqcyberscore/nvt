@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minihttpd_buffer_overflow_vuln.nasl 8929 2018-02-23 05:05:21Z ckuersteiner $
+# $Id: gb_minihttpd_buffer_overflow_vuln.nasl 8955 2018-02-26 12:10:00Z cfischer $
 #
 # mini_httpd Buffer Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:acme:mini_httpd';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140803");
-  script_version("$Revision: 8929 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-23 06:05:21 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 8955 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-26 13:10:00 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name: "creation_date", value: "2018-02-23 11:59:29 +0700 (Fri, 23 Feb 2018)");
   script_tag(name: "cvss_base", value: "6.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -44,10 +44,10 @@ if (description)
 
   script_name("mini_httpd Buffer Overflow Vulnerability");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("gb_minihttpd_detect.nasl");
   script_mandatory_keys("mini_httpd/installed");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_dir_trav_n_header_inj_vuln.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_trend_micro_officescan_dir_trav_n_header_inj_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
 #
 # Trend Micro OfficeScan Path Traversal and HTTP Header Injection Vulnerability
 # 
@@ -29,27 +29,27 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809141");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 8957 $");
   script_cve_id("CVE-2016-1223");
   script_bugtraq_id(91288);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-08-22 15:40:21 +0530 (Mon, 22 Aug 2016)");
   script_name("Trend Micro OfficeScan Path Traversal and HTTP Header Injection Vulnerability");
 
   script_tag(name: "summary" , value: "This host is installed with Trend Micro
-  OfficeScan and is prone to path traversal and HTTP header injection
+  OfficeScan and is prone to a path traversal and HTTP header injection
   vulnerability.");
 
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw is exist due to unintended file
-  could be accessed and potential unintended script executed.");
+  script_tag(name: "insight" , value: "The flaw exists due to unintended file access
+  and potential script execution.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow attackers
-  to cause path traversal and HTTP header injection Vulnerability.
+  to cause path traversal and HTTP header injection vulnerabilities.
 
   Impact Level: System/Application.");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 8957 2018-02-26 14:41:13Z asteins $
 # Description: Microsoft iExplorer '&NBSP;' Address Bar URI Spoofing Vulnerability
 #
 # Authors:
@@ -24,13 +24,14 @@
 ##############################################################################
 
 tag_summary = "This host is installed with Microsoft Internet Explorer and is prone
-  to URI spoofing vulnerability.
+  to an URI spoofing vulnerability.";
 
-  The flaw is exists due to failure to adequately handle specific combination
-  of the non-breaking space character like '&NBSP;'.";
+tag_insight = "The flaw exists due to inadequately handling specific combinations
+  of non-breaking space characters like '&NBSP;'.";
 
-tag_impact = "Attacker may leverage this issue to spoof the source URI of a site which leads
+tag_impact = "An attacker may leverage this issue to spoof the source URI of a site which leads
   to false sense of trust.
+
   Impact Level: System";
 tag_affected = "Microsoft Internet Explorer versions 6.0 SP1 and prior";
 tag_solution = "No solution or patch was made available for at least one year
@@ -42,8 +43,8 @@ For updates refer to http://windows.microsoft.com/en-us/internet-explorer/downlo
 if(description)
 {
   script_id(900170);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 8957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2008-11-05 06:52:23 +0100 (Wed, 05 Nov 2008)");
   script_bugtraq_id(31960);
   script_cve_id("CVE-2008-4787");
@@ -59,6 +60,7 @@ if(description)
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight", value: tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"qod_type", value:"registry");

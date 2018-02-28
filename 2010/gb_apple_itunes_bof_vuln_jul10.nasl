@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_bof_vuln_jul10.nasl 8228 2017-12-22 07:29:52Z teissa $
+# $Id: gb_apple_itunes_bof_vuln_jul10.nasl 8957 2018-02-26 14:41:13Z asteins $
 #
 # Apple iTunes 'itpc:' URI Buffer Overflow Vulnerability
 #
@@ -29,21 +29,22 @@ CPE = "cpe:/a:apple:itunes";
 tag_impact = "Successful exploitation could allow the attacker to execute arbitrary code in
   the context of an application. Failed exploit attempts will result in a
   denial-of-service condition.
+
   Impact Level: Application";
 tag_affected = "Apple iTunes version prior to 9.2.1";
-tag_insight = "The flaw is exists in the handling of 'itpc:' URL, when loaded by the user
+tag_insight = "The flaw exists in the handling of 'itpc:' URL, when loaded by the user
   will trigger a buffer overflow and execute arbitrary code on the target
   system.";
 tag_solution = "Upgrade to Apple iTunes version 9.2.1 or later,
   For updates refer to http://www.apple.com/itunes/download/";
-tag_summary = "This host has iTunes installed, which is prone to buffer overflow
+tag_summary = "This host has iTunes installed and is prone to a buffer overflow
   vulnerability.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801409");
-  script_version("$Revision: 8228 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 8957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41789);
   script_cve_id("CVE-2010-1777");
@@ -64,6 +65,7 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution_type", value : "VendorFix");
   exit(0);
 }
 

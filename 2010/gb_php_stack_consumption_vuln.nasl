@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stack_consumption_vuln.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_stack_consumption_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
 #
 # PHP 'filter_var()' function Stack Consumption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801547");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 8957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2010-3710", "CVE-2010-3709");
   script_tag(name:"cvss_base", value:"4.3");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=646684");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/514562/30/150/threaded");
 
-  tag_impact = "Successful exploitation could allows remote attackers to
+  tag_impact = "Successful exploitation could allow remote attackers to
   cause a denial of service (memory consumption and application crash)
   via a long e-mail address string.
 
@@ -55,14 +55,14 @@ if(description)
 
   tag_affected = "PHP version 5.2 through 5.2.14 and 5.3 through 5.3.3";
 
-  tag_insight = "- The flaw exists due to error in 'filter_var()' function, when
-  FILTER_VALIDATE_EMAIL mode is used while processing the long e-mail address string. 
-  - A NULL pointer dereference vulnerability is exists in 'ZipArchive::getArchiveComment'.";
+  tag_insight = "- The flaw exists due to an error in 'filter_var()' function, when
+  FILTER_VALIDATE_EMAIL mode is used while processing the long e-mail address string.
+  - A NULL pointer dereference vulnerability exists in 'ZipArchive::getArchiveComment'.";
 
   tag_solution = "Upgrade to PHP version 5.2.15/5.3.4 or later,
   For updates refer to http://www.php.net/downloads.php";
 
-  tag_summary = "This host is running PHP and is prone to stack consumption
+  tag_summary = "This host is running PHP and is prone to a stack consumption
   vulnerability";
 
   script_tag(name:"impact", value:tag_impact);

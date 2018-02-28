@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 8965 2018-02-27 11:35:42Z cfischer $
 #
 # H2O HTTP Server CRLF Injection Vulnerability
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:h2o_project:h2o";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806994");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 8965 $");
   script_cve_id("CVE-2016-1133");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 12:35:42 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 15:37:05 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server CRLF Injection Vulnerability");
 
@@ -64,9 +65,9 @@ if(description)
   script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000003.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("gb_h2o_http_server_detect.nasl");
-  script_mandatory_keys("h2o/Installed");
+  script_mandatory_keys("h2o/installed");
   script_require_ports("Services/www", 443);
   exit(0);
 }
@@ -75,18 +76,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-h2oPort = "";
-h2oVer = "";
-
-if(!h2oPort = get_app_port(cpe:CPE)){
+if (!h2oPort = get_app_port(cpe:CPE))
  exit(0);
-}
 
-## Get the version
-if(!h2oVer = get_app_version(cpe:CPE, port:h2oPort)){
+if (!h2oVer = get_app_version(cpe:CPE, port:h2oPort))
  exit(0);
-}
 
 ## some versions contains '-' in version
 h2oVer = ereg_replace(string:h2oVer, pattern:"-", replace:".");

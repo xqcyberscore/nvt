@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_debut_dos_vuln.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
+# $Id: gb_debut_dos_vuln.nasl 8967 2018-02-27 11:59:36Z jschulte $
 #
 # Debut Embedded Server DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140295");
-  script_version("$Revision: 7674 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 8967 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:59:36 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-08-14 12:10:48 +0700 (Mon, 14 Aug 2017)");
   script_tag(name: "cvss_base", value: "7.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -66,7 +66,7 @@ send this malformed request to keep the device inaccessible to legitimate traffi
 
   script_tag(name: "affected", value: "Debut embedded httpd 1.20 and prior (Brother/HP printer http admin)");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 27th February, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://gist.github.com/tipilu/53f142466507b2ef4c8ceb08d22d1278");

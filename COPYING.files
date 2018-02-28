@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 26 Feb 2018 13:04:22 +0100
+# Automatically created on:  Tue, 27 Feb 2018 13:57:04 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -49281,6 +49281,7 @@
 2018/apache/gb_apache_couchdb_priv_esc_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_inf_disc_vuln.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl: GPLv2+
+2018/apache/gb_apache_openmeetings_crud_acl_vuln.nasl: GPLv2+
 2018/apple/gb_apple_icloud_HT208473.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208474.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT208397.nasl: GPLv2+
@@ -49323,6 +49324,7 @@
 2018/cloudbees/gb_jenkins_20171214_2_win.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_20180214_lin.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_20180214_win.nasl: GPLv2+
+2018/concrete5/gb_concrete5_auth_bypass_vuln.nasl: GPLv2+
 2018/debian/deb_4075.nasl: GPLv2+
 2018/debian/deb_4076.nasl: GPLv2+
 2018/debian/deb_4077.nasl: GPLv2+
@@ -49764,6 +49766,7 @@
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
+2018/dokuwiki/gb_dokuwiki_file_download_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_mult_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_xss_vuln2.nasl: GPLv2+
 2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
@@ -50020,6 +50023,10 @@
 2018/google/gb_google_chrome_unspecified_vuln_feb18_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_unspecified_vuln_feb18_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_unspecified_vuln_feb18_win.nasl: GPLv2+
+2018/h2o/gb_h2o_dos_vuln1.nasl: GPLv2+
+2018/h2o/gb_h2o_dos_vuln2.nasl: GPLv2+
+2018/h2o/gb_h2o_mult_vuln1.nasl: GPLv2+
+2018/h2o/gb_h2o_mult_vuln2.nasl: GPLv2+
 2018/hp/gb_hp_diagnostics_xss_n_click_jack_vuln.nasl: GPLv2+
 2018/hp/gb_hpe_loadrunner_mms_prot_bof_vuln.nasl: GPLv2+
 2018/hp/gb_hpe_loadrunner_vts_comp_xss_vuln.nasl: GPLv2+
@@ -51084,6 +51091,7 @@ gb_ibm_doors_web_access_detect.nasl: GPLv2+
 gb_ibm_endpoint_manager_mdm_installed.nasl: GPLv2+
 gb_ibm_endpoint_manager_web_detect.nasl: GPLv2+
 gb_ibm_gcm_kvm_webinterface_detect.nasl: GPLv2+
+gb_ibm_guardium_detect.nasl: GPLv2+
 gb_ibm_install_manager_detect_win.nasl: GPLv2+
 gb_ibm_integration_bus_detect.nasl: GPLv2+
 gb_ibm_lotus_notes_detect_macosx.nasl: GPLv2+
@@ -51268,6 +51276,7 @@ gb_merak_mail_server_detect.nasl: GPLv2+
 gb_metasploit_detect_lin.nasl: GPLv2+
 gb_Meteocontrol_detect.nasl: GPLv2+
 gb_microsoft_edge_detect.nasl: GPLv2+
+gb_microsoft_identity_manager_detect.nasl: GPLv2+
 gb_microsoft_lync_detect_macosx.nasl: GPLv2+
 gb_microsoft_office_detect_macosx.nasl: GPLv2+
 gb_mikrotik_router_routeros_consolidation.nasl: GPLv2+
@@ -55992,6 +56001,7 @@ gsf/2018/f5/gb_f5_big_ip_K54610514.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K90803619.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
+gsf/2018/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
 gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/gb_efront_cms_eol.nasl: GPLv2+
@@ -56010,6 +56020,7 @@ gsf/2018/hp/gb_hp_network_automation_mult_vuln_hpesbgn03740.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_info_disc_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_doors_web_access_mult_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_guardium_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_was_virtual_member_manager_sec_bypass_vuln.nasl: GPLv2+
@@ -56039,6 +56050,7 @@ gsf/2018/juniper/gb_junos_jsa10837.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
 gsf/2018/kaspersky/gb_kaspersky_smg_mult_vuln.nasl: GPLv2+
 gsf/2018/logicaldoc/gb_logicaldoc_mult_vuln.nasl: GPLv2+
+gsf/2018/microsoft/gb_microsoft_identity_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114998.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011579.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011599.nasl: GPLv2+
@@ -56076,6 +56088,9 @@ gsf/2018/microsoft/gb_ms_kb4074593.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4074603.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4074836.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4074851.nasl: GPLv2+
+gsf/2018/netex/gb_hyperip_auth_bypass_vuln.nasl: GPLv2+
+gsf/2018/netex/gb_hyperip_default_http_credentials.nasl: GPLv2+
+gsf/2018/netex/gb_hyperip_default_ssh_credentials.nasl: GPLv2+
 gsf/2018/netgain/gb_netgain_em_mult_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-5186.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-7425.nasl: GPLv2+

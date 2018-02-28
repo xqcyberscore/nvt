@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_h2o_http_server_detect.nasl 8962 2018-02-27 09:44:31Z ckuersteiner $
 #
 # H2O HTTP Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806993");
-  script_version("$Revision: 6701 $");
+  script_version("$Revision: 8962 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 10:44:31 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 13:12:26 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server Version Detection");
 
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_require_ports("Services/www", 443);
+  script_require_ports("Services/www", 80, 443);
   script_mandatory_keys("h2o/banner");
 
   exit(0);
@@ -56,43 +56,27 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-#Variable initialize
-h2oport = "";
-banner = "";
-version = "unknown";
-
-## Get HTTP Port
 h2oport = get_http_port(default:443);
 
-## Confirm the application from banner
 banner = get_http_banner(port: h2oport);
-if("Server: h2o" >!< banner) {
+if ("Server: h2o" >!< banner)
   exit(0);
-}
 
-## Grep the version from banner
+version = "unknown";
+
 vers = eregmatch(pattern:"Server: h2o/([0-9a-zA-Z.-]+)", string:banner);
-if(vers[1]){
+if (!isnull(vers[1]))
   version = vers[1];
-}else{
-  version ="Unknown";
-}
 
-## Set the KB
-set_kb_item(name:"www/" + h2oport + "/", value:version);
-set_kb_item(name:"h2o/Installed", value:TRUE);
+set_kb_item(name:"h2o/installed", value:TRUE);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value:tolower(version), exp:"^([0-9a-zA-Z.-]+)", base:"cpe:/a:h2o_project:h2o:");
-if(!cpe)
+if (!cpe)
   cpe= "cpe:/a:h2o_project:h2o";
 
 register_product(cpe:cpe, location:"/", port:h2oport);
 
-log_message(data: build_detection_report(app: "H2O HTTP Server",
-                                         version: version,
-                                         install: "/",
-                                         cpe: cpe,
-                                         concluded: version),
-                                         port: h2oport);
+log_message(data: build_detection_report(app: "H2O HTTP Server", version: version, install: "/", cpe: cpe,
+                                         concluded: vers[0]),
+            port: h2oport);
 exit(0);

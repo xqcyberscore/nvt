@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_wiki_bypass_vuln.nasl 8755 2018-02-12 06:56:14Z cfischer $
+# $Id: gb_moinmoin_wiki_bypass_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
 #
 # MoinMoin Wiki Security Bypass Vulnerability
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801306");
-  script_version("$Revision: 8755 $");
+  script_version("$Revision: 8957 $");
   script_cve_id("CVE-2010-1238");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 07:56:14 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -54,15 +54,15 @@ if(description)
 
   tag_affected = "MoinMoin Wiki version 1.7.1 and prior";
 
-  tag_insight = "The flaw is exists due to an error in handling of 'textcha' protection mechanism,
+  tag_insight = "The flaw exists due to an error in handling of 'textcha' protection mechanism,
   which can be bypassed by modifying the 'textcha-question' and 'textcha-answer fields'
   to have empty values.";
 
-  tag_solution = "Upgrade MoinMoin Wiki 1.7.1-3 or latest,
+  tag_solution = "Upgrade MoinMoin Wiki to 1.7.1-3 or later,
 
   For updates refer to http://moinmo.in/MoinMoinDownload";
 
-  tag_summary = "This host is running MoinMoin Wiki and is prone to security bypass
+  tag_summary = "This host is running MoinMoin Wiki and is prone to a security bypass
   vulnerability.";
 
   script_tag(name:"impact", value:tag_impact);

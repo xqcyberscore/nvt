@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlxspot_mult_vuln.nasl 7631 2017-11-02 13:36:10Z jschulte $
+# $Id: gb_dlxspot_mult_vuln.nasl 8967 2018-02-27 11:59:36Z jschulte $
 #
 # Tecnovision DlxSpot Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:tecnovision:dlxspot";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140378");
-  script_version("$Revision: 7631 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
+  script_version("$Revision: 8967 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:59:36 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name: "creation_date", value: "2017-09-20 13:15:09 +0700 (Wed, 20 Sep 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Tecnovision DlxSpot Multiple Vulnerabilities");
 
@@ -61,8 +61,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 2nd November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "The Vendor has ignored many communication attempts made by security professionals. It is highly unlikely that a fix will become available in the future.");
 
   script_xref(name: "URL", value: "https://github.com/unknownpwn/unknownpwn.github.io/blob/master/README.md");
 

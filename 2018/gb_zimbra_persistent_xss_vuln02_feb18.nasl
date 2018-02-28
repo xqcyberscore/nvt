@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_persistent_xss_vuln02_feb18.nasl 8745 2018-02-09 14:30:40Z santu $
+# $Id: gb_zimbra_persistent_xss_vuln02_feb18.nasl 8966 2018-02-27 11:39:18Z cfischer $
 #
 # Zimbra Collaboration Suite Persistent XSS Vulnerability-02 Feb18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812801");
-  script_version("$Revision: 8745 $");
+  script_version("$Revision: 8966 $");
   script_cve_id("CVE-2017-17703");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:30:40 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 12:39:18 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 15:10:19 +0530 (Wed, 07 Feb 2018)");
   script_name("Zimbra Collaboration Suite Persistent XSS Vulnerability-02 Feb18");
   

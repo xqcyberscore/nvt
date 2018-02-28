@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_ssh.nasl 8864 2018-02-19 11:02:17Z cfischer $
+# $Id: gb_greenbone_os_detect_ssh.nasl 8953 2018-02-26 11:57:17Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (SSH)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112136");
-  script_version("$Revision: 8864 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 12:02:17 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 8953 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:57:17 +0100 (Mon, 26 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:47:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -112,7 +112,7 @@ if( banner && "Greenbone OS" >< banner ) {
   set_kb_item( name:"greenbone/gos/ssh/port", value:port );
 
   vers = eregmatch( pattern:"Greenbone OS ([0-9.-]+)", string:banner );
-  if( ! isnull( version[1] ) ) {
+  if( ! isnull( vers[1] ) ) {
     version = vers[1];
     set_kb_item( name:"greenbone/gos/ssh/" + port + "/version", value:version );
     set_kb_item( name:"greenbone/gos/ssh/" + port + "/concluded", value:vers[0] );

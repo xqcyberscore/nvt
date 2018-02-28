@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 8952 2018-02-26 11:51:34Z santu $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 8961 2018-02-27 07:17:58Z cfischer $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 8952 $");
+  script_version("$Revision: 8961 $");
   script_cve_id("CVE-2018-7305");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:51:34 +0100 (Mon, 26 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Tue, 22 Feb 2018)");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 08:17:58 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
   script_name("MyBB Cross Site Request Forgery Vulnerability");
   
   script_tag(name:"summary", value:"The host is installed with MyBB and is
@@ -59,7 +59,7 @@ if (description)
   solution details are available. For updates refer to https://mybb.com");
   
   script_tag(name:"solution_type", value:"NoneAvailable");
-  script_tag(name:"qod_type", value:"remote-banner");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://websecnerd.blogspot.in/2018/02/mybb-forum-1_21.html");
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
