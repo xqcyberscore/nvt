@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl 8940 2018-02-23 13:47:02Z santu $
+# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl 8998 2018-03-01 12:47:58Z cfischer $
 #
 # WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812809");
-  script_version("$Revision: 8940 $");
+  script_version("$Revision: 8998 $");
   script_cve_id("CVE-2015-2329");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:47:58 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 16:53:22 +0530 (Tue, 20 Feb 2018)");
   script_name("WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Windows)");
   

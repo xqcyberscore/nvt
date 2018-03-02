@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: os_fingerprint.nasl 8959 2018-02-26 17:20:39Z cfischer $
+# $Id: os_fingerprint.nasl 8968 2018-02-27 12:55:48Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 8959 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 18:20:39 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 8968 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 13:55:48 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,7 +74,8 @@ if(description)
                       "gb_sip_os_detection.nasl", "gb_check_mk_agent_detect.nasl",
                       "ms_rdp_detect.nasl", "gb_apache_activemq_detect.nasl",
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
-                      "ident_process_owner.nasl", "gb_pihole_detect.nasl"); # but without gb_nmap_os_detection.nasl and the own os_fingerprint.nasl
+                      "ident_process_owner.nasl", "gb_pihole_detect.nasl",
+                      "gb_dropbear_ssh_detect.nasl"); # but without gb_nmap_os_detection.nasl and the own os_fingerprint.nasl
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.phrack.org/issues.html?issue=57&id=7#article");

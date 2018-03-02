@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln.nasl 8789 2018-02-13 11:11:02Z jschulte $
+# $Id: gb_mybb_xss_vuln.nasl 8998 2018-03-01 12:47:58Z cfischer $
 #
 # MyBB 1.8.14 XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113109");
-  script_version("$Revision: 8789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 12:11:02 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:47:58 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 10:50:30 +0100 (Tue, 13 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_857.nasl 8426 2018-01-15 12:35:36Z teissa $
+# $Id: deb_dla_857.nasl 8969 2018-02-27 14:32:32Z cfischer $
 #
 # Auto-generated from advisory DLA 857-1 using nvtgen 1.0
 # Script version:1.1
@@ -31,10 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890857");
-  script_version("$Revision: 8426 $");
-  
+  script_version("$Revision: 8969 $");
   script_name("Debian Lts Announce DLA 857-1 ([SECURITY] [DLA 857-1] libdatetime-timezone-perl new upstream version)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-15 13:35:36 +0100 (Mon, 15 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 15:32:32 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-15 00:00:00 +0100 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,11 +58,17 @@ zone calculations.");
 
 We recommend that you upgrade your libdatetime-timezone-perl packages.");
   script_tag(name:"summary",  value:"This update includes the changes in tzdata 2017a for the
-Perl bindings. For the list of changes, see DLA-856-1.");
+Perl bindings. For the list of changes, see DLA-856-1.
+
+  This NVT has been deprecated as it doesn't have any security relevance.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
+
+exit(66);
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");

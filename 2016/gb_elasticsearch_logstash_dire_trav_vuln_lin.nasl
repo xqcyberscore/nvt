@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_dire_trav_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_elasticsearch_logstash_dire_trav_vuln_lin.nasl 9000 2018-03-01 13:59:11Z cfischer $
 #
-# Elasticsearch Logstash Directory Traversal Vulnerability (Linux)
+# Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability (Linux)
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -29,17 +29,20 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808504");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9000 $");
   script_cve_id("CVE-2015-4152");
   script_bugtraq_id(75112);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:59:11 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:29:19 +0530 (Tue, 28 Jun 2016)");
-  script_name("Elasticsearch Logstash Directory Traversal Vulnerability (Linux)");
+  script_name("Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch Logstash
-  and is prone to directory traversal vulnerability.");
+  and is prone to directory traversal vulnerability.
+
+  This script has been merged into the NVT 'Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability'
+  (OID: 1.3.6.1.4.1.25623.1.0.808094)");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
@@ -59,6 +62,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Logstash version 1.4.3,
   or later.
+
   For updates refer to https://www.elastic.co");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,26 +72,20 @@ if(description)
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_elasticsearch_logstash_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Elastisearch/Logstash/Installed","Host/runs_unixoide");
-  script_require_ports("Services/www", 9200);
+  script_family("General");
+  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("logstash/installed", "Host/runs_unixoide");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-esPort = "";
-esVer = "";
-
-## Get Port
-if(!esPort = get_app_port(cpe:CPE)){
+if(isnull(esPort = get_app_port(cpe:CPE))){
  exit(0);
 }
 
-## Get the version
 if(!esVer = get_app_version(cpe:CPE, port:esPort)){
  exit(0);
 }

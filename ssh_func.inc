@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: ssh_func.inc 8968 2018-02-27 12:55:48Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8144 $
+# $Revision: 8968 $
 #
 ###############################################################################
 
@@ -214,11 +214,11 @@ function raw_int32(i)
  local_var buf;
 
  buf = raw_string (
-		 (i>>24) & 255,
+        (i>>24) & 255,
         (i>>16) & 255,
         (i>>8) & 255,
         (i) & 255
-		 );
+                  );
  return buf;
 }
 
@@ -231,7 +231,7 @@ function raw_int8(i)
 
  buf = raw_string (
         (i) & 255
-		 );
+                  );
  return buf;
 }
 
@@ -679,18 +679,18 @@ function putbignum(buffer)
 function ssh_rsa_verify(e, n, signature, data)
 {
  local_var hash, id_sha1, sigtype, nlen,
-	next, tmp_sig, siglen, len, sig,
-	hdecoid, hshaoid, hhash, decrypted ;
+           next, tmp_sig, siglen, len, sig,
+           hdecoid, hshaoid, hhash, decrypted ;
 
 #comes directly from OpenBSD
  id_sha1 = raw_string(
-	0x30, 0x21,
-	0x30, 0x09,
-	0x06, 0x05,
-	0x2b, 0x0e, 0x03, 0x02, 0x1a,
-	0x05, 0x00,
-	0x04, 0x14
-	);
+        0x30, 0x21,
+        0x30, 0x09,
+        0x06, 0x05,
+        0x2b, 0x0e, 0x03, 0x02, 0x1a,
+        0x05, 0x00,
+        0x04, 0x14
+        );
 
  if (!n)
    return 0;
@@ -842,7 +842,7 @@ function dh_gen_key(p, g)
  if (!p)
    return keys;
 
- # { "blowfish-cbc", 	SSH_CIPHER_SSH2, 8, 16, EVP_bf_cbc }
+ # { "blowfish-cbc", SSH_CIPHER_SSH2, 8, 16, EVP_bf_cbc }
  # hash = sha1 = 20 (len) = 20 * 8 (bits)
  need = 20 * 8;
 
@@ -1198,35 +1198,35 @@ function ssh_kex2(socket,server_version)
 
  # hash data
  to_hash =
-	# client version
-	putstring(buffer:client_version) +
-	# server version
-	putstring(buffer:server_version) +
-	# client cookie (cookielen,SSH_MSG_KEXINIT,cookie)
-	raw_int32(i:(strlen(cinit)+1)) + raw_int8(i:20) + cinit +
-	# server cookie (cookielen,SSH_MSG_KEXINIT,cookie)
-	raw_int32(i:(strlen(sinit)+1)) + raw_int8(i:20) + sinit +
-	# server host key blob
-	putstring(buffer:server_host_key_blob);
+        # client version
+        putstring(buffer:client_version) +
+        # server version
+        putstring(buffer:server_version) +
+        # client cookie (cookielen,SSH_MSG_KEXINIT,cookie)
+        raw_int32(i:(strlen(cinit)+1)) + raw_int8(i:20) + cinit +
+        # server cookie (cookielen,SSH_MSG_KEXINIT,cookie)
+        raw_int32(i:(strlen(sinit)+1)) + raw_int8(i:20) + sinit +
+        # server host key blob
+        putstring(buffer:server_host_key_blob);
 
  if (groupex)
  {
   to_hash +=
-	# min,wantbits,max
-	raw_string(0x00,0x00,0x04,0x00,0x00,0x00,0x08,0x00,0x00,0x00,0x20,0x00) +
-	# p bignum
-	putbignum(buffer:p) +
-	# g bignum
-	putbignum(buffer:g);
+        # min,wantbits,max
+        raw_string(0x00,0x00,0x04,0x00,0x00,0x00,0x08,0x00,0x00,0x00,0x20,0x00) +
+        # p bignum
+        putbignum(buffer:p) +
+        # g bignum
+        putbignum(buffer:g);
  }
 
  to_hash +=
-	# public key bignum
-	putbignum(buffer:dh_pub) +
-	# server dh public key bignum
-	putbignum(buffer:server_dh_public_key) +
-	# shared bignum
-	putbignum(buffer:shared);
+        # public key bignum
+        putbignum(buffer:dh_pub) +
+        # server dh public key bignum
+        putbignum(buffer:server_dh_public_key) +
+        # shared bignum
+        putbignum(buffer:shared);
 
  hash = SHA1(to_hash);
 
@@ -1295,7 +1295,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
  # code 50 (SSH_MSG_USERAUTH_REQUEST)
  # none request: we need to know what authentication server supports
  payload = putstring(buffer:server_user) + putstring(buffer:"ssh-connection") +
-	putstring(buffer:"none");
+           putstring(buffer:"none");
  send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:50));
 
  # (51 == SSH_MSG_USERAUTH_FAILURE)
@@ -1345,8 +1345,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
   ###### need extra pad !!!! ######
   ###### Is it useful ?? #####
   payload = putstring(buffer:server_user) + putstring(buffer:"ssh-connection") +
-	putstring(buffer:"password") + raw_int8(i:0) + putstring(buffer:password)
-	;
+            putstring(buffer:"password") + raw_int8(i:0) + putstring(buffer:password);
 
   send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:50));
 
@@ -1365,8 +1364,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
  {
   # code 50 (SSH_MSG_USERAUTH_REQUEST)
   payload = putstring(buffer:server_user) + putstring(buffer:"ssh-connection") +
-	putstring(buffer:"keyboard-interactive") + putstring(buffer:"en-US") + putstring(buffer:"")
-	;
+            putstring(buffer:"keyboard-interactive") + putstring(buffer:"en-US") + putstring(buffer:"");
 
   send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:50));
 
@@ -1468,8 +1466,8 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
   {
     # OpenSSH Public key file format
     public = ereg_replace(pattern:"[^ ]* ([^ ]*) [^ ]*$",
-	                  string:pub,
-		          replace:"\1");
+                          string:pub,
+                          replace:"\1");
   }
 
   blobpub = base64decode(str:public);
@@ -1479,7 +1477,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
   ###### Is it useful ?? #####
 
   payload = putstring(buffer:server_user) + putstring(buffer:"ssh-connection") +
-	putstring(buffer:"publickey") + raw_int8(i:1) ;
+            putstring(buffer:"publickey") + raw_int8(i:1);
 
   to_hash = putstring(buffer:session_id) + raw_int8(i:50);
 
@@ -1623,7 +1621,7 @@ function ssh_open_channel(socket)
  l_window_size = 32768;
  received_size = 0;
  payload = putstring(buffer:"session") + raw_int32(i:local_channel) +
-	raw_int32(i:32768) + raw_int32(i:32768);
+           raw_int32(i:32768) + raw_int32(i:32768);
 
  # SSH_MSG_CHANNEL_OPEN == 90
  send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:90));
@@ -1653,7 +1651,7 @@ function ssh_open_channel(socket)
    for (i=local_channel+1; i < 11; i++)
    {
       payload = putstring(buffer:"session") + raw_int32(i:i) +
-	  raw_int32(i:32768) + raw_int32(i:32768);
+                raw_int32(i:32768) + raw_int32(i:32768);
 
       send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:90));
 
@@ -1920,7 +1918,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
 
   if( get_kb_item( "ssh/no_linux_shell" ) ) {
     nosh = TRUE;
-    if( cmd =~ "^(/bin|/sbin|cat |perl |cmd /|netstat |find |which |whereis |locate |/opt/slad)" ) return FALSE; # don't run find, which ... if target doesn't support it
+    if( cmd =~ "^(/bin|/sbin|cat |perl |cmd /|netstat |find |which |whereis |locate |/opt/slad|dmidecode )" ) return FALSE; # don't run find, which ... if target doesn't support it
   }
 
   if( ! nosh ) {
@@ -1990,7 +1988,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
  }
 
  payload = raw_int32(i:remote_channel) + putstring(buffer:"exec") + raw_int8(i:0) +
-	   putstring(buffer:cmd);
+           putstring(buffer:cmd);
 
  # SSH_MSG_CHANNEL_REQUEST == 98
  send_ssh_packet(socket:socket, payload:payload, code:raw_int8(i:98));
@@ -2240,11 +2238,11 @@ function ssh_reconnect( sock ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ssh_port" );
     return;
   }
- 
+
   ssh_disconnect( ssh_session_id_from_sock( sock ) );
   sleep( 1 );
   sock = ssh_login_or_reuse_connection();
-  
+
   if( ! sock ) return;
 
   return sock;

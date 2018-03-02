@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2942.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: deb_2942.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 2942-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -48,13 +48,13 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702942);
-    script_version("$Revision: 6750 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2014-3941", "CVE-2014-3942", "CVE-2014-3943", "CVE-2014-3944", "CVE-2014-3945", "CVE-2014-3946");
     script_name("Debian Security Advisory DSA 2942-1 (typo3-src - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name: "creation_date", value:"2014-06-01 00:00:00 +0200 (Sun, 01 Jun 2014)");
-    script_tag(name: "cvss_base", value:"10.0");
-    script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"6.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2942.html");
 

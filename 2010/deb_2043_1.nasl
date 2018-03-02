@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2043_1.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: deb_2043_1.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Description: Auto-generated from advisory DSA 2043-1 (vlc)
 #
 # Authors:
@@ -51,14 +51,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.67397");
- script_version("$Revision: 8469 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+ script_version("$Revision: 8972 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
  script_tag(name:"creation_date", value:"2010-06-03 22:55:24 +0200 (Thu, 03 Jun 2010)");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+ script_tag(name:"cvss_base", value:"7.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Debian Security Advisory DSA 2043-1 (vlc)");
-
-
+ script_cve_id("CVE-2010-2062");
 
  script_category(ACT_GATHER_INFO);
 

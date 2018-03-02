@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_imc_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_hp_imc_detect.nasl 8975 2018-02-28 10:27:08Z santu $
 #
 # HP Intelligent Management Center (iMC) Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809282");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8975 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 16:43:00 +0530 (Thu, 22 Sep 2016)");
   script_name("HP Intelligent Management Center (iMC) Version Detection (Windows)");
 
@@ -71,50 +71,67 @@ if(!os_arch){
 
 ##Key based on architecture
 if("x86" >< os_arch){
-  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-# Check for 64 bit platform, Currently only 32-bit application is available
+# Check for 64 bit platform
 else if("x64" >< os_arch){
-  key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-foreach item (registry_enum_keys(key:key))
+foreach key(key_list)
 {
-  hpName = registry_get_sz(key:key + item, item:"DisplayName");
-
-  ## Confirm the application
-  if("HP Intelligent Management Center" >< hpName)
+  foreach item (registry_enum_keys(key:key))
   {
-    hpVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-
-    if(hpVer)
+    hpName = registry_get_sz(key:key + item, item:"DisplayName");
+    ## Confirm the application
+    if("HP Intelligent Management Center" >< hpName || "HPE Intelligent Management Center" >< hpName)
     {
       hpPath = registry_get_sz(key:key + item, item:"UninstallString");
-      hpPath = eregmatch(pattern:".*.exe", string:hpPath);
-      if(!hpPath){
-        hpPath = "Couldn find the install location from registry";
+      if(hpPath)
+      {
+        hpPath = eregmatch(pattern:"(.*iMC)\\deploy\\jdk", string:hpPath);
+        logPath = hpPath[1] + "\deploy\log\deploylog.txt";
+        install = hpPath[1];
+        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:logPath);
+        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:logPath);
+        txtRead = read_file(share:share, file:file, offset:0, count:1000);
+
+        fileVer = eregmatch(pattern:"Version: iMC PLAT ([0-9.]+ \([A-Za-z0-9]+)\)", string:txtRead);
+        hpVer = ereg_replace(pattern:"\(", replace:"", string:fileVer[1]);
       }
 
-      hpVer = ereg_replace(pattern:" ", string:hpVer, replace: ".");
+      if(!hpVer)
+      {
+        ##Version from registry is only Major like 7.3
+        hpVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+        hpPath = eregmatch(pattern:".*.exe", string:hpPath);
+        install = hpPath[0];
+        if(!hpPath){
+          hpPath = "Couldn find the install location from registry";
+        }
+      }
 
-      ## Set the version in KB
-      set_kb_item(name:"HPE/iMC/Win/Ver", value:hpVer);
+      if(hpVer)
+      {
+        hpVer = ereg_replace(pattern:" ", string:hpVer, replace: ".");
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:hpVer, exp:"([0-9A-Z. ]+)", base:"cpe:/a:hp:intelligent_management_center:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:hp:intelligent_management_center";
+        set_kb_item(name:"HPE/iMC/Win/Ver", value:hpVer);
 
-      ## Register Product and Build Report
-      register_product(cpe:cpe, location:hpPath[0]);
+        cpe = build_cpe(value:hpVer, exp:"([0-9A-Z. ]+)", base:"cpe:/a:hp:intelligent_management_center:");
+        if(isnull(cpe))
+          cpe = "cpe:/a:hp:intelligent_management_center";
 
-      log_message(data: build_detection_report(app: "HP Intelligent Management Center",
-                                               version: hpVer,
-                                               install: hpPath[0],
-                                               cpe: cpe,
-                                               concluded: hpVer));
-      exit(0);
+        register_product(cpe:cpe, location:install);
+
+        log_message(data: build_detection_report(app: "HP Intelligent Management Center",
+                                                 version: hpVer,
+                                                 install: install,
+                                                 cpe: cpe,
+                                                 concluded: hpVer));
+        exit(0);
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 7732 2017-11-10 10:29:01Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 8968 2018-02-27 12:55:48Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 7732 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:29:01 +0100 (Fri, 10 Nov 2017) $");
+  script_version("$Revision: 8968 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 13:55:48 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,6 +60,11 @@ if( ! get_port_state( port ) ) exit( 0 );
 banner = get_kb_item( "SSH/banner/" + port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
 textbanner = get_kb_item( "SSH/textbanner/" + port );
+
+if( egrep( pattern:"^SSH-([0-9.]+)-dropbear[_-]([0-9.]+)$", string:banner ) ||
+    banner == "SSH-2.0-dropbear" ) {
+  exit( 0 ); # Generic banner without OS info covered by gb_dropbear_ssh_detect.nasl
+}
 
 #For banners see e.g. https://github.com/BetterCrypto/Applied-Crypto-Hardening/blob/master/unsorted/ssh/ssh_version_strings.txt
 

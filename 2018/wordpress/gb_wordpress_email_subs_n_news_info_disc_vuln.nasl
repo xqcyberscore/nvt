@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 8934 2018-02-23 08:17:33Z asteins $
+# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 8995 2018-03-01 10:16:04Z cfischer $
 #
 # WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812672");
-  script_version("$Revision: 8934 $");
+  script_version("$Revision: 8995 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:17:33 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:16:04 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 10:24:30 +0530 (Thu, 25 Jan 2018)");
   script_name("WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability");
 
@@ -63,7 +63,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name : "URL" , value : "www.exploit-db.com/exploits/43872");
+  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/43872");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -103,5 +103,5 @@ if(res =~ "HTTP/1.. 200 OK" && res =~ "email-subscribers.*csv" &&
   security_message(port: port, data: report);
   exit(0);
 }
-exit( 0 );
-exit(0);
+
+exit(99);

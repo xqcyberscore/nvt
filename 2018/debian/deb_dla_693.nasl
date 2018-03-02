@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_693.nasl 8298 2018-01-05 10:26:25Z teissa $
+# $Id: deb_dla_693.nasl 8969 2018-02-27 14:32:32Z cfischer $
 #
 # Auto-generated from advisory DLA 693-2 using nvtgen 1.0
 # Script version:2.0
@@ -31,10 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890693");
-  script_version("$Revision: 8298 $");
-  
+  script_version("$Revision: 8969 $");
+  script_cve_id("CVE-2014-8128", "CVE-2015-7554", "CVE-2015-8668", "CVE-2016-3186",
+                "CVE-2016-3619", "CVE-2016-3620", "CVE-2016-3621", "CVE-2016-3631",
+		"CVE-2016-3632", "CVE-2016-3633", "CVE-2016-3634", "CVE-2016-5102",
+		"CVE-2016-5318", "CVE-2016-5319", "CVE-2016-5652", "CVE-2016-6223",
+		"CVE-2016-8331");
   script_name("Debian Lts Announce DLA 693-2 ([SECURITY] [DLA 693-2] tiff regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 11:26:25 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 15:32:32 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

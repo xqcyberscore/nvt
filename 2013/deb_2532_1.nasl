@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2532_1.nasl 6611 2017-07-07 12:07:20Z cfischer $
+# $Id: deb_2532_1.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 2532-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -45,13 +45,13 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892532);
-    script_version("$Revision: 6611 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2012-3526");
     script_name("Debian Security Advisory DSA 2532-1 (libapache2-mod-rpaf - denial of service)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
-    script_tag(name: "cvss_base", value:"10.0");
-    script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2012/dsa-2532.html");
 

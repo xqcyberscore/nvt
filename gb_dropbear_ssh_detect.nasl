@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_detect.nasl 7909 2017-11-24 15:53:14Z cfischer $
+# $Id: gb_dropbear_ssh_detect.nasl 8968 2018-02-27 12:55:48Z cfischer $
 #
 # Dropbear SSH Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105112");
-  script_version("$Revision: 7909 $");
+  script_version("$Revision: 8968 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 16:53:14 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 13:55:48 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2014-11-11 10:04:39 +0100 (Tue, 11 Nov 2014)");
   script_name("Dropbear SSH Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,9 +40,8 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
 
-  script_tag(name:"summary", value:"The script sends a connection
-  request to the server and attempts to extract the version number
-  from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server
+  and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -70,6 +69,9 @@ if( banner && "dropbear" >< tolower( banner ) ) {
     cpe = "cpe:/a:matt_johnston:dropbear_ssh_server";
 
   register_product( cpe:cpe, location:install, port:port );
+
+  # nb: Dropbear runs only on Unix-like OS variants
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", port:port, desc:"Dropbear SSH Detection", runs_key:"unixoide" );
 
   log_message( data:build_detection_report( app:"Dropbear",
                                             version:version,

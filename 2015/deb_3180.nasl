@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3180.nasl 6609 2017-07-07 12:05:59Z cfischer $
+# $Id: deb_3180.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 3180-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,17 +30,17 @@
 if(description)
 {
     script_id(703180);
-    script_version("$Revision: 6609 $");
+    script_version("$Revision: 8972 $");
     
     script_name("Debian Security Advisory DSA 3180-1 (libarchive - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name: "creation_date", value: "2015-03-05 00:00:00 +0100 (Thu, 05 Mar 2015)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"6.4");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3180.html");
-
+    script_cve_id("CVE-2015-2304");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2346_2.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2346_2.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Description: Auto-generated from advisory DSA 2346-2 (proftpd-dfsg)
 #
 # Authors:
@@ -43,13 +43,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(70560);
-  script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"9.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+ script_version("$Revision: 8972 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:30:05 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2346-2 (proftpd-dfsg)");
-
+ script_cve_id("CVE-2011-4130");
 
  script_category(ACT_GATHER_INFO);
 

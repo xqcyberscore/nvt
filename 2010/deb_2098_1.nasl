@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2098_1.nasl 8269 2018-01-02 07:28:22Z teissa $
+# $Id: deb_2098_1.nasl 8970 2018-02-27 15:16:18Z cfischer $
 # Description: Auto-generated from advisory DSA 2098-1 (typo3-src)
 #
 # Authors:
@@ -51,14 +51,16 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.67985");
- script_version("$Revision: 8269 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
+ script_version("$Revision: 8970 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-27 16:16:18 +0100 (Tue, 27 Feb 2018) $");
  script_tag(name:"creation_date", value:"2010-10-10 19:35:00 +0200 (Sun, 10 Oct 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P"); 
  script_name("Debian Security Advisory DSA 2098-1 (typo3-src)");
-
-
+ script_cve_id("CVE-2010-3659", "CVE-2010-3660", "CVE-2010-3661", "CVE-2010-3662", "CVE-2010-3663",
+               "CVE-2010-3664", "CVE-2010-3665", "CVE-2010-3666", "CVE-2010-3667", "CVE-2010-3668",
+               "CVE-2010-3669", "CVE-2010-3670", "CVE-2010-3671", "CVE-2010-3672", "CVE-2010-3673",
+               "CVE-2010-3674");
 
  script_category(ACT_GATHER_INFO);
 

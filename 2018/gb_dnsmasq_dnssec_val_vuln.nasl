@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 8533 2018-01-25 11:18:39Z asteins $
+# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 8980 2018-02-28 12:03:05Z jschulte $
 #
 # Dnsmasq DNSSEC Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112193");
-  script_version("$Revision: 8533 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 12:18:39 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 8980 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-28 13:03:05 +0100 (Wed, 28 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 12:15:27 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Dnsmasq up to and including version 2.78");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 25th January, 2018. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 28th February, 2018. Information regarding this issue will be updated once the solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

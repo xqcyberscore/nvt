@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_freak_attack_win.nasl 8609 2018-01-31 14:44:19Z teissa $
+# $Id: gb_elasticsearch_logstash_freak_attack_win.nasl 9000 2018-03-01 13:59:11Z cfischer $
 #
-# Logstash CVE-2015-5378 Man in the Middle Security Bypass Vulnerability (Windows)
+# Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,74 +29,77 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107278");
-  script_version("$Revision: 8609 $");
+  script_version("$Revision: 9000 $");
   script_bugtraq_id(76015);
   script_cve_id("CVE-2015-5378");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 15:44:19 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:59:11 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 14:18:58 +0100 (Wed, 31 Jan 2018)");
-  script_name("Logstash CVE-2015-5378 Man in the Middle Security Bypass Vulnerability (Windows)");
+  script_name("Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability");
 
-     script_tag(name:"summary", value:"Logstash is prone to security-bypass vulnerability.");
+  script_tag(name:"summary", value:"Elasticsearch Logstash is prone to security-bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of a detection NVT and check whether the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to the usage of Lumberjack input (in combination with Logstash Forwarder agent)");
+  script_tag(name:"insight", value:"The flaw is due to the usage of Lumberjack input
+  (in combination with Logstash Forwarder agent)");
 
-  script_tag(name:"impact", value:"Successfully exploiting these issues may allow attackers to perform unauthorized actions by conducting a man-in-the-middle attack. This may lead to other attacks.");
+  script_tag(name:"impact", value:"Successfully exploiting these issues may allow attackers
+  to perform unauthorized actions by conducting a man-in-the-middle attack. This may lead
+  to other attacks.");
 
-
+  # The Logstash version might differ from the Elasticsearch version detected
+  # by gb_elastsearch_detect.nasl
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"affected", value:"Elasticsearch Logstash version prior to
-  1.5.3 or 1.4.4 on Windows.");
+  1.5.3 or 1.4.4.");
 
-  script_tag(name:"solution", value:"Users should upgrade to 1.5.3 or 1.4.4. Users that do not want to upgrade can address the vulnerability by disabling the Lumberjack input.");
+  script_tag(name:"solution", value:"Users should upgrade to 1.5.3 or 1.4.4. Users that do not
+  want to upgrade can address the vulnerability by disabling the Lumberjack input.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://www.elastic.co/community/security/");
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/76015/");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_elasticsearch_logstash_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Elastisearch/Logstash/Installed","Host/runs_windows");
-  script_require_ports("Services/www", 9200);
+  script_family("General");
+  script_dependencies("gb_elastsearch_detect.nasl");
+  script_mandatory_keys("logstash/installed");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE)){
- exit(0);
+if(isnull(port = get_app_port(cpe:CPE))){
+  exit(0);
 }
 
 if(!version = get_app_version(cpe:CPE, port:port)){
- exit(0);
+  exit(0);
 }
-if(version =~ "^1\.4\.") {
 
-    if(version_is_less(version:version, test_version:"1.4.3"))
-    {
-      report = report_fixed_ver(installed_version:version, fixed_version:"1.4.3");
-    
-    }
+if(version =~ "^1\.4\."){
+  if(version_is_less(version:version, test_version:"1.4.3")){
+    report = report_fixed_ver(installed_version:version, fixed_version:"1.4.3");
+  }
 }
-if(version =~ "^1\.5\.") {
 
-    if(version_is_less(version:version, test_version:"1.5.3"))
-    {
-      report = report_fixed_ver(installed_version:version, fixed_version:"1.5.3");
-    }
+if(version =~ "^1\.5\."){
+  if(version_is_less(version:version, test_version:"1.5.3")){
+    report = report_fixed_ver(installed_version:version, fixed_version:"1.5.3");
+  }
 }
 
 if (report != "") {
-
- security_message(data:report, port:port);
- exit(0);
+  security_message(data:report, port:port);
+  exit(0);
 }
 
 exit(99);

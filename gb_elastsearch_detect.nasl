@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastsearch_detect.nasl 8613 2018-02-01 07:35:27Z cfischer $
+# $Id: gb_elastsearch_detect.nasl 8997 2018-03-01 12:45:32Z cfischer $
 #
-# Elasticsearch Detection
+# Elasticsearch and Logstash Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105031");
-  script_version("$Revision: 8613 $");
+  script_version("$Revision: 8997 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:45:32 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 15:00:02 +0200 (Thu, 22 May 2014)");
-  script_name("Elasticsearch Detection");
+  script_name("Elasticsearch and Logstash Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"summary", value:"Check for the version of Elasticsearch.
 
   The script sends a connection request to the server and attempts to extract
-  the version number from the reply.");
+  the version number from the reply. Once a Elasticsearch service was detected
+  it is assumed that Logstash is installed in the same version (ELK Stack).");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -58,18 +59,19 @@ include("host_details.inc");
 port = get_http_port( default:9200 );
 if( ! buf = http_get_cache( item:"/", port:port ) ) exit( 0 );
 
-if( "application/json" >< buf && ( "build_hash" >< buf || "build_timestamp" >< buf ) &&
+if( "application/json" >< buf && ( "build_hash" >< buf || "build_timestamp" >< buf || "build_date" >< buf ) &&
     "lucene_version" >< buf && ( "elasticsearch" >< buf || "You Know, for Search" >< buf ) ) {
 
-  vers    = "unknown";
-  cpe     = "cpe:/a:elasticsearch:elasticsearch";
-  install = "/";
+  version      = "unknown";
+  elastic_cpe  = "cpe:/a:elasticsearch:elasticsearch";
+  logstash_cpe = "cpe:/a:elasticsearch:logstash";
+  install      = "/";
 
-  version = eregmatch( string:buf, pattern:'number" : "([0-9a-z.]+)",', icase:TRUE );
-
-  if( ! isnull( version[1] ) ) {
-    vers = chomp( version[1] );
-    cpe += ':' + vers;
+  vers = eregmatch( string:buf, pattern:'number" : "([0-9a-z.]+)",', icase:TRUE );
+  if( ! isnull( vers[1] ) ) {
+    version       = chomp( vers[1] );
+    elastic_cpe  += ':' + version;
+    logstash_cpe += ':' + version;
   }
 
   url = "/_cat/indices?v";
@@ -80,18 +82,30 @@ if( "application/json" >< buf && ( "build_hash" >< buf || "build_timestamp" >< b
     extra += substr( buf, 0, 1000 );
   }
 
+  # nb: Note that we're registering Logstash here as well until
+  # we're finding a way to detect Logstash on port 5044/tcp
   set_kb_item( name:"www/" + port + "/elasticsearch", value:vers );
   set_kb_item( name:"elasticsearch/installed", value:TRUE );
+  set_kb_item( name:"www/" + port + "/logstash", value:vers );
+  set_kb_item( name:"logstash/installed", value:TRUE );
 
-  register_product( cpe:cpe, location:install, port:port );
+  register_product( cpe:elastic_cpe, location:install, port:port );
+  register_product( cpe:logstash_cpe, location:install, port:0 );
 
-  log_message( data:build_detection_report( app:"Elasticsearch",
-                                            version:vers,
-                                            install:install,
-                                            cpe:cpe,
-                                            extra:extra,
-                                            concluded:version[0] ),
-             				    port:port );
+  report  = build_detection_report( app:"Elasticsearch",
+                                    version:version,
+                                    install:install,
+                                    cpe:elastic_cpe,
+                                    extra:extra,
+                                    concluded:vers[0] );
+  report += '\n\n';
+  report += build_detection_report( app:"Logstash",
+                                    version:version,
+                                    install:install,
+                                    cpe:logstash_cpe,
+                                    concluded:"Existence of Elasticsearch service, the actual version of the Logstash service might differ." );
+
+  log_message( port:port, data:report );
 }
 
 exit( 0 );

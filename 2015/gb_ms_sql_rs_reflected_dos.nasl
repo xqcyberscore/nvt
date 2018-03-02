@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sql_rs_reflected_dos.nasl 8695 2018-02-06 16:42:37Z cfischer $
+# $Id: gb_ms_sql_rs_reflected_dos.nasl 8989 2018-03-01 07:41:40Z cfischer $
 #
 # MS SQL Server Resolution Service Amplification Reflected DRDoS
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105187");
- script_version ("$Revision: 8695 $");
+ script_version ("$Revision: 8989 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
@@ -36,7 +36,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://kurtaubuchon.blogspot.de/2015/01/mc-sqlr-amplification-ms-sql-server.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:41:40 +0100 (Thu, 01 Mar 2018) $");
  script_tag(name:"creation_date", value:"2015-01-26 13:45:36 +0100 (Mon, 26 Jan 2015)");
 
  script_category(ACT_ATTACK);
@@ -45,7 +45,7 @@ if (description)
  script_dependencies("mssql_ping.nasl");
  script_require_udp_ports(1434);
  script_mandatory_keys("mssql/remote_version");
- script_exclude_keys("keys/islocalhost","keys/islocalnet");
+ script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
 
  script_tag(name:"impact" , value: "Successfully exploiting this vulnerability allows attackers to
 cause denial-of-service conditions against remote hosts");
@@ -53,15 +53,17 @@ cause denial-of-service conditions against remote hosts");
  script_tag(name:"vuldetect" , value: "Send a request with a single byte and check the length of the response");
  script_tag(name:"solution" , value: "Restrict access to this port.");
  script_tag(name:"summary" , value: "The remote MS SQL Server allows distributed reflection and amplification (DRDoS) attacks");
- script_tag(name:"qod_type", value:"registry");
- script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"solution_type", value:"Mitigation");
 
  exit(0);
 }
 
+include("network_func.inc");
+
 port = 1434;
 
-if( islocalnet() || islocalhost() ) exit( 0 );
+if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
 
 soc = open_sock_udp( port );
 if( ! soc ) exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3498.nasl 8115 2017-12-14 07:30:22Z teissa $
+# $Id: deb_3498.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 3498-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703498");
-    script_version("$Revision: 8115 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2016-3162", "CVE-2016-3163", "CVE-2016-3164", "CVE-2016-3168", "CVE-2016-3169", "CVE-2016-3170");
     script_name("Debian Security Advisory DSA 3498-1 (drupal7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:50 +0530 (Tue, 08 Mar 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"8.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

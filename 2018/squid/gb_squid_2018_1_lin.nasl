@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_2018_1_lin.nasl 8818 2018-02-14 21:55:04Z teissa $
+# $Id: gb_squid_2018_1_lin.nasl 8996 2018-03-01 10:32:27Z cfischer $
 #
 # Squid Proxy Cache Security Update Advisory SQUID-2018:1 (Linux) 
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107293");
-  script_version("$Revision: 8818 $");
+  script_version("$Revision: 8996 $");
   script_cve_id("CVE-2018-1000024");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 22:55:04 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:32:27 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-07 13:28:30 +0100 (Wed, 07 Feb 2018)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,22 +50,34 @@ if (description)
   script_dependencies("secpod_squid_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("squid_proxy_server/installed","Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "Squid is vulnerable to denial of service attack when processing ESI responses.");
+  script_tag(name: "summary", value: "Squid is vulnerable to denial of service attack when
+  processing ESI responses.
+
+  This NVT has been deprecated and merged into 'Squid Proxy Cache Security Update Advisory SQUID-2018:1'
+  (OID:1.3.6.1.4.1.25623.1.0.107294)");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "Due to unrelated changes Squid-3.5 has become vulnerable to some  regular ESI server responses also triggering this issue. This problem is limited to the Squid custom ESI parser.");
-  script_tag(name: "impact", value: "This problem allows a remote server delivering certain ESI response syntax to trigger a denial of service for all clients accessing the Squid service.");
+  script_tag(name: "insight", value: "Due to unrelated changes Squid-3.5 has become vulnerable
+  to some regular ESI server responses also triggering this issue. This problem is limited to
+  the Squid custom ESI parser.");
 
-  script_tag(name: "affected", value: "Squid 3.x -> 3.5.27
-                                       Squid 4.x -> 4.0.22.");
+  script_tag(name: "impact", value: "This problem allows a remote server delivering certain ESI
+  response syntax to trigger a denial of service for all clients accessing the Squid service.");
 
-  script_tag(name: "solution", value: "Upgrade to 4.0.23 or later. Patches are available. For details, refer to : http://www.squid-cache.org/Advisories/SQUID-2018_1.txt.");
+  script_tag(name: "affected", value: "Squid 3.x -> 3.5.27, Squid 4.x -> 4.0.22.");
+
+  script_tag(name: "solution", value: "Upgrade to 4.0.23 or later. Patches are available. For
+  details, refer to : http://www.squid-cache.org/Advisories/SQUID-2018_1.txt.");
 
   script_xref(name: "URL", value: "http://www.squid-cache.org/Advisories/SQUID-2018_1.txt");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

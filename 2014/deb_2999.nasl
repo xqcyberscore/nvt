@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2999.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: deb_2999.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 2999-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -54,13 +54,13 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702999);
-    script_version("$Revision: 6769 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2014-5265", "CVE-2014-5266", "CVE-2014-5267");
     script_name("Debian Security Advisory DSA 2999-1 (drupal7 - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name: "creation_date", value:"2014-08-09 00:00:00 +0200 (Sat, 09 Aug 2014)");
-    script_tag(name: "cvss_base", value:"10.0");
-    script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"6.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2999.html");
 

@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808093");
-  script_version("$Revision: 8608 $");
+  script_version("$Revision: 8997 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 15:38:36 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:45:32 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 12:44:48 +0530 (Tue, 21 Jun 2016)");
   script_name("Elasticsearch Logstash Version Detection");
 
@@ -38,7 +38,10 @@ if(description)
   Logstash.
 
   This script sends HTTP GET request and try to get the version of
-  Elasticsearch Logstash from the response, and sets the result in KB.");
+  Elasticsearch Logstash from the response, and sets the result in KB.
+
+  This plugin has been deprecated and merged into the NVT 'Elasticsearch and Logstash Detection'
+  (OID: 1.3.6.1.4.1.25623.1.0.105031)");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -47,8 +50,17 @@ if(description)
   script_dependencies("find_service.nasl","http_version.nasl");
   script_require_ports("Services/www", 9200);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+# This had only detected Elasticsearch and assumed that "Logstash" is installed.
+# However port 9200 is the Elasticsearch service and the version gathering
+# method below just gathered the Elasticsearch version once a "logstash" index
+# was available.
+exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");

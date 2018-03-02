@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 8961 2018-02-27 07:17:58Z cfischer $
+# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 8995 2018-03-01 10:16:04Z cfischer $
 #
 # Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:openmeetings";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808658");
-  script_version("$Revision: 8961 $");
+  script_version("$Revision: 8995 $");
   script_cve_id("CVE-2016-3089", "CVE-2016-8736");
   script_bugtraq_id(92442, 94145);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 08:17:58 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:16:04 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:09:03 +0530 (Tue, 23 Aug 2016)");
   script_name("Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -58,7 +58,7 @@ if (description)
 
   - an improper sanitization of input to 'swf'query parameter in swf panel (CVE-2016-3089)
 
-  - a remote code execution vulnerabilitiy via RMI deserialization attack (CVE-2016-8736).");
+  - a remote code execution vulnerability via RMI deserialization attack (CVE-2016-8736).");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute:

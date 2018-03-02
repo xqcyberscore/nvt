@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3984.nasl 7334 2017-10-02 09:55:56Z teissa $
+# $Id: deb_3984.nasl 8972 2018-02-28 07:02:10Z cfischer $
 #
 # Auto-generated from advisory DSA 3984-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703984");
-  script_version("$Revision: 7334 $");
-  
+  script_version("$Revision: 8972 $");
+  script_cve_id("CVE-2017-14867");
   script_name("Debian Security Advisory DSA 3984-1 (git - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-02 11:55:56 +0200 (Mon, 02 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
   script_tag(name:"creation_date", value:"2017-09-26 00:00:00 +0200 (Tue, 26 Sep 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

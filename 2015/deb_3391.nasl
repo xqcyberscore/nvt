@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3391.nasl 6609 2017-07-07 12:05:59Z cfischer $
+# $Id: deb_3391.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 3391-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703391);
-    script_version("$Revision: 6609 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2015-7984");
     script_name("Debian Security Advisory DSA 3391-1 (php-horde - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name: "creation_date", value: "2015-11-03 00:00:00 +0100 (Tue, 03 Nov 2015)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"6.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

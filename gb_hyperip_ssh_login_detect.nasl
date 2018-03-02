@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hyperip_ssh_login_detect.nasl 8951 2018-02-26 11:47:22Z cfischer $
+# $Id: gb_hyperip_ssh_login_detect.nasl 8968 2018-02-27 12:55:48Z cfischer $
 #
 # NetEx HyperIP Detection (SSH-Login)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108351");
-  script_version("$Revision: 8951 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:47:22 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 8968 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 13:55:48 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 12:49:56 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +66,7 @@ if( ! show_version && ! uname ) exit( 0 );
 vers = eregmatch( pattern:"Product Version([^\n]+)HyperIP ([0-9.]+)", string:show_version );
 if( vers[2] ) { 
   version = vers[2];
-  set_kb_item( name:"hyperip/ssh-login/" + port + "/concluded", value:vers[0] );
+  set_kb_item( name:"hyperip/ssh-login/" + port + "/concluded", value:vers[0] + " from 'showVersion' command" );
 } else {
   set_kb_item( name:"hyperip/ssh-login/" + port + "/concluded", value:uname );
 }

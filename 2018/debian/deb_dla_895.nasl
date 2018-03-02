@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_895.nasl 8489 2018-01-22 12:57:37Z teissa $
+# $Id: deb_dla_895.nasl 8969 2018-02-27 14:32:32Z cfischer $
 #
 # Auto-generated from advisory DLA 895-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890895");
-  script_version("$Revision: 8489 $");
-  
+  script_version("$Revision: 8969 $");
   script_name("Debian Lts Announce DLA 895-1 ([SECURITY] [DLA 895-1] openoffice.org-dictionaries update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 13:57:37 +0100 (Mon, 22 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 15:32:32 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,11 +58,17 @@ against the thunderbird package (which so far was not part of wheezy).
 
 Since the next update of Icedove introduces a thunderbird package the
 dictionaries would become unusable in Icedove so the (unneeded) conflict
-was dropped.");
+was dropped.
+
+  This NVT has been deprecated as it doesn't have any security relevance.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
+
+exit(66);
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");

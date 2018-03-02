@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2338_1.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: deb_2338_1.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Description: Auto-generated from advisory DSA 2338-1 (moodle)
 #
 # Authors:
@@ -55,13 +55,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.70552");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 8528 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_tag(name:"cvss_base", value:"6.8");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+ script_version("$Revision: 8972 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:27:54 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2338-1 (moodle)");
-
+ script_cve_id("CVE-2011-4294", "CVE-2011-4301", "CVE-2011-4302", "CVE-2011-4305", "CVE-2011-4306");
 
  script_category(ACT_GATHER_INFO);
 

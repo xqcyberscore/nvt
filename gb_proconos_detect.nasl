@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proconos_detect.nasl 7738 2017-11-13 02:50:25Z ckuersteiner $
+# $Id: gb_proconos_detect.nasl 8971 2018-02-28 06:08:38Z ckuersteiner $
 #
 # ProConOS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140498");
- script_version ("$Revision: 7738 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-13 03:50:25 +0100 (Mon, 13 Nov 2017) $");
+ script_version ("$Revision: 8971 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-02-28 07:08:38 +0100 (Wed, 28 Feb 2018) $");
  script_tag(name: "creation_date", value: "2017-11-13 10:14:34 +0700 (Mon, 13 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -101,12 +101,12 @@ set_kb_item(name: "proconos/detected", value: TRUE);
 
 register_service( port: port, proto: "proconos");
 
-report = "A ProConOS service is running at this port.\n\nThe following information was extracted:\n\n" +
-         "Ladder Logic Runtime:  " + llr + "\n" +
-         "PLC Type:              " + type + "\n" +
-         "Project Name:          " + prj_name + "\n" +
-         "Boot Project:          " + boot_prj + "\n" +
-         "Project Source Code:   " + src + "\n";
+report = 'A ProConOS service is running at this port.\n\nThe following information was extracted:\n\n' +
+         "Ladder Logic Runtime:  " + llr + '\n' +
+         "PLC Type:              " + type + '\n' +
+         "Project Name:          " + prj_name + '\n' +
+         "Boot Project:          " + boot_prj + '\n' +
+         "Project Source Code:   " + src + '\n';
 
 log_message(port: port, data: report);
 

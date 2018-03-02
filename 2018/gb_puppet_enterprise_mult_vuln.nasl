@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_mult_vuln.nasl 8787 2018-02-13 10:52:33Z cfischer $
+# $Id: gb_puppet_enterprise_mult_vuln.nasl 8990 2018-03-01 07:43:09Z cfischer $
 #
 # Puppet Enterprise < 2016.4.4 / 2017 < 2017.2.1 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113100");
-  script_version("$Revision: 8787 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:52:33 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8990 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:43:09 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:11:11 +0100 (Fri, 02 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

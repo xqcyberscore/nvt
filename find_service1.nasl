@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 8779 2018-02-13 09:34:34Z cfischer $
+# $Id: find_service1.nasl 8977 2018-02-28 10:59:57Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 8779 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 10:34:34 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 8977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:59:57 +0100 (Wed, 28 Feb 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -559,6 +559,14 @@ if( port == 5556 && ":-ERR Error reading from socket: Unknown protocol exception
 if( r =~ "Nsure Audit .* \[.*\]" ) {
   register_service( port:port, proto:"naudit", message:"A Novell Audit Secure Logging Server service seems to be running on this port." );
   log_message( port:port, data:"A Novell Audit Secure Logging Server service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  45 52 52 4F 52 0D 0A 45 52 52 4F 52 0D 0A 45 52    ERROR..ERROR..ER
+# 0x10:  52 4F 52 0D 0A                                     ROR.. 
+if( r =~ '^ERROR\r\nERROR\r\nERROR\r\n$' ) {
+  register_service( port:port, proto:"memcached", message:"A Memcached service seems to be running on this port." );
+  log_message( port:port, data:"A Memcached service seems to be running on this port." );
   exit( 0 );
 }
 

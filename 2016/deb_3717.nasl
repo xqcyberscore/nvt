@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3717.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: deb_3717.nasl 8972 2018-02-28 07:02:10Z cfischer $
 # Auto-generated from advisory DSA 3717-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703717");
-    script_version("$Revision: 8168 $");
-    
+    script_version("$Revision: 8972 $");
+    script_cve_id("CVE-2016-9445", "CVE-2016-9446");
     script_name("Debian Security Advisory DSA 3717-1 (gst-plugins-bad1.0 / gst-plugins-bad0.10 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-02-28 08:02:10 +0100 (Wed, 28 Feb 2018) $");
     script_tag(name: "creation_date", value: "2016-11-17 00:00:00 +0100 (Thu, 17 Nov 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

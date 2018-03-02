@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_2018_2_lin.nasl 8818 2018-02-14 21:55:04Z teissa $
+# $Id: gb_squid_2018_2_lin.nasl 8996 2018-03-01 10:32:27Z cfischer $
 #
 # Squid Proxy Cache Security Update Advisory SQUID-2018:2 (Linux) 
 #
@@ -31,8 +31,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107296");
   script_cve_id("CVE-2018-1000027");
-  script_version("$Revision: 8818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 22:55:04 +0100 (Wed, 14 Feb 2018) $");
+  script_version("$Revision: 8996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:32:27 +0100 (Thu, 01 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-09 19:08:28 +0100 (Fri, 09 Feb 2018)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,40 +51,47 @@ if (description)
   script_mandatory_keys("squid_proxy_server/installed","Host/runs_unixoide");
 
   script_tag(name: "summary", value: "Squid is vulnerable to denial of service attack 
-                    when processing ESI responses.");
+  when processing ESI responses.
+
+  This NVT has been deprecated and merged into 'Squid Proxy Cache Security Update Advisory SQUID-2018:2'
+  (OID:1.3.6.1.4.1.25623.1.0.107297)");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "Due to incorrect pointer handling Squid is vulnerable to denial
- of service attack when processing ESI responses or downloading
- intermediate CA certificates.");
-  script_tag(name: "impact", value: "This problem allows a remote server delivering certain 
-ESI response syntax to trigger a denial of service for all clients accessing the Squid service.");
+  script_tag(name: "insight", value: "Due to incorrect pointer handling Squid is vulnerable
+  to denial of service attack when processing ESI responses or downloading intermediate CA
+  certificates.");
 
-  script_tag(name: "affected", value: "Squid 3.x -> 3.5.27
-                                       Squid 4.x -> 4.0.22.");
+  script_tag(name: "impact", value: "This problem allows a remote server delivering certain 
+  ESI response syntax to trigger a denial of service for all clients accessing the Squid service.");
+
+  script_tag(name: "affected", value: "Squid 3.x -> 3.5.27, Squid 4.x -> 4.0.22.");
 
   script_tag(name: "solution", value: "Updated Packages:
 
- This bug is fixed by Squid version 4.0.23.
+  This bug is fixed by Squid version 4.0.23.
 
- In addition, patches addressing this problem for the stable
- releases can be found in our patch archives:
+  In addition, patches addressing this problem for the stable
+  releases can be found in our patch archives:
 
- Squid 3.5:
- <http://www.squid-cache.org/Versions/v3/3.5/changesets/SQUID-2018_2.patch>
+  Squid 3.5:
+  <http://www.squid-cache.org/Versions/v3/3.5/changesets/SQUID-2018_2.patch>
 
- Squid 4:
- <http://www.squid-cache.org/Versions/v4/changesets/SQUID-2018_2.patch>
+  Squid 4:
+  <http://www.squid-cache.org/Versions/v4/changesets/SQUID-2018_2.patch>
 
- If you are using a prepackaged version of Squid then please refer
- to the package vendor for availability information on updated
- packages.");
+  If you are using a prepackaged version of Squid then please refer
+  to the package vendor for availability information on updated
+  packages.");
 
   script_xref(name: "URL", value: "http://www.squid-cache.org/Advisories/SQUID-2018_2.txt");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

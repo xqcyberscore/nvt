@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_903.nasl 8515 2018-01-24 11:16:13Z teissa $
+# $Id: deb_dla_903.nasl 8969 2018-02-27 14:32:32Z cfischer $
 #
 # Auto-generated from advisory DLA 903-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890903");
-  script_version("$Revision: 8515 $");
-  
+  script_version("$Revision: 8969 $");
   script_name("Debian Lts Announce DLA 903-1 ([SECURITY] [DLA 903-1] hunspell-en-us update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 12:16:13 +0100 (Wed, 24 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 15:32:32 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,11 +56,17 @@ if(description)
 We recommend that you upgrade your hunspell-en-us packages.");
   script_tag(name:"summary",  value:"The dictionary provided by this package had an unnecessary unversioned
 conflict against the thunderbird package which recently got reintroduced
-into Wheezy.");
+into Wheezy.
+
+  This NVT has been deprecated as it doesn't have any security relevance.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
+
+exit(66);
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");

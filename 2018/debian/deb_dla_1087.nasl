@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1087.nasl 8816 2018-02-14 18:30:55Z teissa $
+# $Id: deb_dla_1087.nasl 8969 2018-02-27 14:32:32Z cfischer $
 #
 # Auto-generated from advisory DLA 1087-2 using nvtgen 1.0
 # Script version:2.0
@@ -31,10 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891087");
-  script_version("$Revision: 8816 $");
-  
+  script_version("$Revision: 8969 $");
+  script_cve_id("CVE-2017-7753", "CVE-2017-7779", "CVE-2017-7784", "CVE-2017-7785",
+                "CVE-2017-7786", "CVE-2017-7787", "CVE-2017-7791", "CVE-2017-7792",
+                "CVE-2017-7800", "CVE-2017-7801", "CVE-2017-7802", "CVE-2017-7803",
+                "CVE-2017-7804", "CVE-2017-7807", "CVE-2017-7809");
   script_name("Debian Lts Announce DLA 1087-2 ([SECURITY] [DLA 1087-2] icedove/thunderbird regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 19:30:55 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-02-27 15:32:32 +0100 (Tue, 27 Feb 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
