@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3579_1.nasl 8978 2018-02-28 11:44:41Z santu $
+# $Id: gb_ubuntu_USN_3579_1.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Ubuntu Update for libreoffice USN-3579-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843456");
-  script_version("$Revision: 8978 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 12:44:41 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 9023 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:56:29 +0100 (Thu, 22 Feb 2018)");
   script_cve_id("CVE-2018-6871");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libreoffice USN-3579-1");
   script_tag(name: "summary", value: "Check the version of libreoffice");

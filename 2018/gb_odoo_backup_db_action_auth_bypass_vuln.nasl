@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 8845 2018-02-16 10:57:50Z santu $
+# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Odoo 'Backup Database Action' Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:odoo:odoo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812757");
-  script_version("$Revision: 8845 $");
+  script_version("$Revision: 9023 $");
   script_cve_id("CVE-2018-6620");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
   script_name("Odoo 'Backup Database Action' Authentication Bypass Vulnerability");
 

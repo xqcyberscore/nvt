@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 8545 2018-01-26 09:17:50Z emoss $
+# $Id: GSHB.nasl 9015 2018-03-02 15:20:47Z emoss $
 #
 # IT-Grundschutz, 14. Erg‰nzungslieferung
 #
@@ -131,12 +131,12 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_id(94171);
-  script_version("$Revision: 8545 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 10:17:50 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 9015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz");
+  script_name("IT-Grundschutz, 15. EL");
   # Dependency GSHB_M4_007.nasl is running in ACT_ATTACK because it depends on
   # GSHB_SSH_TELNET_BruteForce.nasl which is in ACT_ATTACK as well.
   script_category(ACT_ATTACK);
@@ -149,7 +149,7 @@ if(description)
   script_dependencies("compliance_tests.nasl");
   foreach d (depend) script_dependencies("GSHB/EL15/GSHB_" + d + ".nasl");
   script_tag(name : "summary" , value :
-"Zusammenfassung von Tests gem‰ﬂ IT-Grundschutz
+"Zusammenfassung von Tests gem‰ﬂ der IT-Grundschutz Kataloge
 mit Stand 15. Erg‰nzungslieferung.
 
 
@@ -857,8 +857,6 @@ foreach m (massnahmen) {
   sm = mn + '.' + mz + ' ';
   name = egrep(pattern:sm, string:mtitel );
   name = ereg_replace(string:name, pattern: '^M(.....)', replace:'Maﬂnahme \\1:');
-
-
 
 if (!result){
   if (name =~ "M(4|5)\.... Diese Maﬂnahme ist entfallen!") result = 'Diese Maﬂnahme ist entfallen.';

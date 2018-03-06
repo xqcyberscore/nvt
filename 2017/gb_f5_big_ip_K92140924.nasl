@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K92140924.nasl 6171 2017-05-19 09:50:38Z teissa $
+# $Id: gb_f5_big_ip_K92140924.nasl 9022 2018-03-05 04:29:53Z ckuersteiner $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2017-6128
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6128");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6171 $");
+ script_version("$Revision: 9022 $");
 
  script_name("F5 BIG-IP - TMM vulnerability CVE-2017-6128");
 
@@ -42,22 +42,26 @@ if (description)
  script_tag(name: "vuldetect" , value:"Check the version.");
 
  script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"An undisclosed traffic pattern received on an F5 management interface may cause the Secure Shell Daemon (sshd) to stop responding, resulting in a Denial-of-Service (DoS). (CVE-2017-6128)");
 
- script_tag(name: "impact", value:"An attacker may be able to cause a denial-of-service (DoS) attack against the sshd service.");
+ script_tag(name: "summary", value:"An undisclosed traffic pattern received on an F5 management interface may
+cause the Secure Shell Daemon (sshd) to stop responding, resulting in a Denial-of-Service (DoS). (CVE-2017-6128)");
+
+ script_tag(name: "impact", value:"An attacker may be able to cause a denial-of-service (DoS) attack against the
+sshd service.");
 
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:50:38 +0200 (Fri, 19 May 2017) $");
-
+ script_tag(name:"last_modification", value:"$Date: 2018-03-05 05:29:53 +0100 (Mon, 05 Mar 2018) $");
  script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
+
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_f5_big_ip_version.nasl");
  script_require_ports("Services/ssh", 22);
  script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+
  exit(0);
 }
 
@@ -69,38 +73,36 @@ include("f5.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 check_f5['LTM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['AAM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
-
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['AFM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
-
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['AVR'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
-
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['APM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
-
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['ASM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
+check_f5['GTM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
+                              'unaffected', '11.6.1_HF2;11.5.4_HF3;');
  
-check_f5['LC'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
-
+check_f5['LC'] = make_array(  'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;11.2.1;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
 check_f5['PEM'] = make_array( 'affected',   '11.6.0-11.6.1;11.5.0-11.5.4;11.4.0-11.4.1;',
-                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1 HF2;11.5.4 HF3;');
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.4_HF3;');
 
+check_f5['PSM'] = make_array('affected',   '11.4.0-11.4.1;',
+                             'unaffected', '');
 
-if( report = is_f5_vulnerable( ca:check_f5, version:version ) )
-{
+if( report = is_f5_vulnerable( ca:check_f5, version:version ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }

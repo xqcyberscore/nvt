@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 9011 2018-03-02 13:09:15Z cfischer $
 #
 # Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808501");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9011 $");
   script_cve_id("CVE-2015-8131");
   script_bugtraq_id(77657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 16:01:44 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)");
 
@@ -72,28 +72,21 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed","Host/runs_unixoide");
-  script_require_ports("Services/www", 9200, 5601);
+  script_require_ports("Services/www", 5601);
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-kibanaPort = "";
-kibanaVer = "";
-
-## Get Port
 if(!kibanaPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!kibanaVer = get_app_version(cpe:CPE, port:kibanaPort)){
  exit(0);
 }
 
-## Check for vulnerable versions
 if(version_is_less(version:kibanaVer, test_version:"4.1.3"))
 {
   fix = "4.1.3";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4118.nasl 8855 2018-02-18 12:10:00Z teissa $
+# $Id: deb_4118.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4118-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704118");
-  script_version("$Revision: 8855 $");
+  script_version("$Revision: 9023 $");
   script_cve_id("CVE-2017-15698");
   script_name("Debian Security Advisory DSA 4118-1 (tomcat-native - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-18 13:10:00 +0100 (Sun, 18 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-17 00:00:00 +0100 (Sat, 17 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

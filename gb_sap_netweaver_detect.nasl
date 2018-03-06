@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: gb_sap_netweaver_detect.nasl 9025 2018-03-05 07:59:30Z cfischer $
 #
 # SAP NetWeaver Application Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105302");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7166 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+ script_version ("$Revision: 9025 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:59:30 +0100 (Mon, 05 Mar 2018) $");
  script_tag(name:"creation_date", value:"2015-06-22 11:54:01 +0200 (Mon, 22 Jun 2015)");
  script_name("SAP NetWeaver Application Server Detection");
 
@@ -58,7 +58,7 @@ include("host_details.inc");
 port = get_http_port( default:443 );
 
 req = http_get(item: "/irj/portal", port: port);
-buf =  http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
+buf = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
 
 if ("TITLE>SAP NetWeaver Application Server" >!< buf && "server: SAP NetWeaver Application Server" >!< buf && ("<title>Application Server Error" >!< buf && "SAP AG" >!< buf && "<title>SAP&#x20;NetWeaver&#x20;Portal</title>" >!< buf))
 
@@ -66,10 +66,10 @@ if ("TITLE>SAP NetWeaver Application Server" >!< buf && "server: SAP NetWeaver A
 
 version = 'unknown';
 
+# /com.sap.portal.design.portaldesigndata/themes/portal/sap_tradeshow_plus/prtl_std/prtl_std_nn7.css?v=7.31.6.0.0" />
 vers = eregmatch(pattern: 'com.sap.portal.design.portaldesigndata/themes/portal/.*v=([0-9.]+).*/>', string: buf);
 
 #add check for new sap netweaver versions.
-
 if (isnull(vers)) vers = eregmatch(pattern: 'com.sap.portal.theming.webdav.themeswebdavlistener/Portal/.*v=([0-9.]+).*/>', string: buf);
 
 if (! isnull(vers)) version = vers[1];

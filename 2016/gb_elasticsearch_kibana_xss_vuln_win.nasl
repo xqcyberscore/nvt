@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xss_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_elasticsearch_kibana_xss_vuln_win.nasl 9011 2018-03-02 13:09:15Z cfischer $
 #
 # Elasticsearch Kibana Cross-site scripting (XSS) Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808090");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9011 $");
   script_cve_id("CVE-2015-4093");
   script_bugtraq_id(75107);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-22 12:58:48 +0530 (Wed, 22 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site scripting (XSS) Vulnerability (Windows)");
 
@@ -70,26 +70,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Elasticsearch/Kibana/Installed","Host/runs_windows");
-  script_require_ports("Services/www", 9200, 5601);
+  script_mandatory_keys("Elasticsearch/Kibana/Installed", "Host/runs_windows");
+  script_require_ports("Services/www", 5601);
   exit(0);
 }
 
-include("http_func.inc");
 include("version_func.inc");
-include("http_keepalive.inc");
 include("host_details.inc");
 
-#Variable initialize
-kibanaPort = "";
-kibanaVer = "";
-
-## Get Port
 if(!kibanaPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!kibanaVer = get_app_version(cpe:CPE, port:kibanaPort)){
  exit(0);
 }

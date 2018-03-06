@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_detect_udp.nasl 8989 2018-03-01 07:41:40Z cfischer $
+# $Id: gb_memcached_detect_udp.nasl 9020 2018-03-04 08:51:48Z cfischer $
 #
 # Memcached Version Detection (UDP)
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108356");
-  script_version("$Revision: 8989 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:41:40 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9020 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-04 09:51:48 +0100 (Sun, 04 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 09:06:33 +0100 (Wed, 28 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,6 +50,11 @@ if(description)
 
   The script sends a UDP connection request to the server and attempts to
   extract the version number from the reply.");
+
+  script_tag(name:"insight", value:"A public available Memcached service with enabled UDP support
+  might be misused for Distributed Denial of Service (DDoS) attacks, dubbed 'Memcrashed'. This
+  vulnerability is separately checked and reported in the NVT 'Memcached Amplification Attack
+  (Memcrashed)' OID: 1.3.6.1.4.1.25623.1.0.108357.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

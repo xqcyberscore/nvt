@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_n_deserial_vuln_win.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_apache_struts_dos_n_deserial_vuln_win.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Apache Struts 'REST' Plugin Deserialization And DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812320");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 9023 $");
   script_cve_id("CVE-2017-15707", "CVE-2017-7525");
   script_bugtraq_id(102021, 99623);
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 11:36:43 +0530 (Tue, 05 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts 'REST' Plugin Deserialization And DoS Vulnerability (Windows)");

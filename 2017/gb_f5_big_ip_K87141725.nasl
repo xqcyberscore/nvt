@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K87141725.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
+# $Id: gb_f5_big_ip_K87141725.nasl 9022 2018-03-05 04:29:53Z ckuersteiner $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2017-0302
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-0302");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
- script_version ("$Revision: 6826 $");
+ script_version ("$Revision: 9022 $");
 
  script_name("F5 BIG-IP - TMM vulnerability CVE-2017-0302");
 
@@ -42,23 +42,27 @@ if (description)
  script_tag(name: "vuldetect" , value:"Check the version.");
 
  script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"Insufficient boundary checks on the request URL may cause the tmm process to assert when the user is redirected back to the original request URL following successful authentication to the BIG-IP APM system.(CVE-2017-0302)
-");
 
- script_tag(name: "impact", value:"An authenticated user with an established access session to the BIG-IP APM system may be able to cause a traffic disruption if the length of the requested URL is less than 16 characters.");
+ script_tag(name: "summary", value:"Insufficient boundary checks on the request URL may cause the tmm process to
+assert when the user is redirected back to the original request URL following successful authentication to the
+BIG-IP APM system.(CVE-2017-0302)");
+
+ script_tag(name: "impact", value:"An authenticated user with an established access session to the BIG-IP APM
+system may be able to cause a traffic disruption if the length of the requested URL is less than 16 characters.");
 
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
-
+ script_tag(name:"last_modification", value:"$Date: 2018-03-05 05:29:53 +0100 (Mon, 05 Mar 2018) $");
  script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
+
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_f5_big_ip_version.nasl");
  script_require_ports("Services/ssh", 22);
  script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+
  exit(0);
 }
 
@@ -70,10 +74,9 @@ include("f5.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 check_f5['APM'] = make_array( 'affected',   '13.0.0;12.1.0-12.1.2;',
-                              'unaffected', '13.0.0_HF2;12.1.2_HF1;12.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.1.0;13.0.0_HF2;12.1.2_HF1;12.0.0;11.4.0-11.6.1;11.2.1;');
 
-if( report = is_f5_vulnerable( ca:check_f5, version:version ) )
-{
+if( report = is_f5_vulnerable( ca:check_f5, version:version ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }

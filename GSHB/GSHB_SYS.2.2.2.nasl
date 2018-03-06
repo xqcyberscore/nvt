@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.2.nasl 8925 2018-02-22 13:39:46Z emoss $
+# $Id: GSHB_SYS.2.2.2.nasl 9015 2018-03-02 15:20:47Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.2.2.2 Clients unter Windows 8.1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109037");
-  script_version("$Revision: 8925 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 9015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 07:42:28 +0200 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "logins.nasl", "netbios_name_get.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
   script_tag(name : "summary" , value : 'Zielsetzung dieses Bausteins ist der Schutz von Informationen, 
       die durch und auf Windows 8.1-Clients verarbeiten werden.');
   
@@ -55,7 +55,7 @@ include("wmi_rsop.inc");
 Windows_Version = get_kb_item("WMI/WMI_OSVER");
 Windows_Name = get_kb_item("WMI/WMI_OSNAME");
 
-if( Windows_Version != "6.3" &&  "windows 8.1" >!< tolower(Windows_Name) ){
+if( Windows_Version != "6.3" || "windows 8.1" >!< tolower(Windows_Name) ){
   for( i=1; i<=21; i++){
     set_kb_item(name:"GSHB/SYS.2.2.2.A" + i + "/result", value:"nicht zutreffend");
     set_kb_item(name:"GSHB/SYS.2.2.2.A" + i + "/desc", value:"Auf dem Host ist kein Microsoft Windows 8.1 Betriebsystem installiert.");

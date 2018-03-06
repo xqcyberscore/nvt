@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webexarf_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_cisco_webexarf_detect_win.nasl 9030 2018-03-06 07:03:50Z ckuersteiner $
 #
 # Cisco WebEx ARF (Advanced Recording Formate) Player Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107078");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 9030 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-06 08:03:50 +0100 (Tue, 06 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-11-10 11:19:11 +0100 (Thu, 10 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco WebEx ARF (Advanced Recording Formate) Player Version Detection (Windows)");
@@ -52,14 +52,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-wpPath = "";
-wpVer = "";
-wpName = "";
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -127,3 +119,4 @@ foreach key (key_list)
   }
 }
 
+exit(0);

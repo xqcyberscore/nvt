@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: ping_host.nasl 9006 2018-03-02 08:08:10Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 09:08:10 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,14 +47,17 @@ if(description)
   script_add_preference(name:"Use ARP", type:"checkbox", value:"no");
   script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no");
   script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no");
+  script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no");
   script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes");
-  script_add_preference(name:"nmap additional ports for -PA", type:"entry", value: "137,587,3128,8081");
-  script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value: "no");
-  script_add_preference(name:"Log nmap output", value:"no", type:"checkbox");
+  script_add_preference(name:"nmap additional ports for -PA", type:"entry", value:"137,587,3128,8081");
+  script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no");
+  script_add_preference(name:"Log nmap output", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This check tries to determine whether a remote host is up (alive).
+
   Several methods are used for this depending on configuration of this check.");
-  script_tag(name:"vuldetect", value:"Whether a host is up can be detected in 3 different ways:
+
+  script_tag(name:"insight", value:"Whether a host is up can be detected in 3 different ways:
 
   - A ICMP message is sent to the host and a response is taken as alive sign.
 
@@ -68,16 +71,21 @@ if(description)
   Therefore the methods are configurable.
 
   If you select to not mark unreachable hosts as dead, no alive detections are
-  executed and the host is assumed to be available for scanning.");
-
-  script_tag(name:"insight", value:"The available methods might fail for the following reasons:
-
-  - ICMP: This might be disabled for a environment and would then cause false
-  negatives as hosts are believed to be dead that actually are alive.
+  executed and the host is assumed to be available for scanning.
 
   In case it is configured that hosts are never marked as dead, this can cause
   considerable timeouts and therefore a long scan duration in case the hosts
-  are in fact not available.");
+  are in fact not available.
+
+  The available methods might fail for the following reasons:
+
+  - ICMP: This might be disabled for a environment and would then cause false
+  negatives as hosts are believed to be dead that actually are alive. In constrast
+  it is also possible that a Firewall between the scanner and the target host is answering
+  to the ICMP message and thus hosts are believed to be alive that actually are dead.
+
+  - TCP ping: Similar to the ICMP case a Firewall between the scanner and the target might
+  answer to the sent probes and thus hosts are believed to be alive that actually are dead.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -105,18 +113,44 @@ function check_pa_port_list( list ) {
   return TRUE;
 }
 
-use_nmap     = script_get_preference("Use nmap");
-report_up    = script_get_preference("Report about reachable Hosts");
+function run_tcp_syn_ping( argv, pa_ports, ip, pattern, report_up, log_output ) {
+
+  local_var argv, pa_ports, ip, pattern, report_up, log_output;
+  local_var argv_tcp_syn, res, report;
+
+  argv_tcp_syn = argv;
+  argv_tcp_syn[x++] = '-PS' + pa_ports;
+  argv_tcp_syn[x++] = ip;
+
+  res = pread( cmd:"nmap", argv:argv_tcp_syn );
+
+  if( res && egrep( pattern:pattern, string:res ) && "Host seems down" >!< res ) {
+    if( "yes" >< report_up || "yes" >< log_output ) {
+      report = "";
+      if( "yes" >< report_up )
+        report += 'Host is up (successful TCP SYN service ping), Method: nmap\n';
+      if( "yes" >< log_output )
+        report += 'nmap command: ' + join( list:argv_tcp_syn ) + '\n' + res;
+      log_message( port:0, data:report );
+    }
+    set_kb_item( name:"/tmp/ping/TCP", value:1 );
+    exit( 0 );
+  }
+}
+
+use_nmap          = script_get_preference("Use nmap");
+report_up         = script_get_preference("Report about reachable Hosts");
 ### In the following two lines, unreachable is spelled incorectly.
 ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
-report_dead  = script_get_preference("Report about unrechable Hosts");
-mark_dead    = script_get_preference("Mark unrechable Hosts as dead (not scanning)");
-icmp_ping    = script_get_preference("Do an ICMP ping");
-tcp_ping     = script_get_preference("Do a TCP ping");
-tcp_syn_ping = script_get_preference("TCP ping tries also TCP-SYN ping");
-arp_ping     = script_get_preference("Use ARP");
-sp_only      = script_get_preference("nmap: try also with only -sP");
-log_output   = script_get_preference("Log nmap output");
+report_dead       = script_get_preference("Report about unrechable Hosts");
+mark_dead         = script_get_preference("Mark unrechable Hosts as dead (not scanning)");
+icmp_ping         = script_get_preference("Do an ICMP ping");
+tcp_ping          = script_get_preference("Do a TCP ping");
+tcp_syn_ping      = script_get_preference("TCP ping tries also TCP-SYN ping");
+tcp_syn_ping_only = script_get_preference("TCP ping tries only TCP-SYN ping");
+arp_ping          = script_get_preference("Use ARP");
+sp_only           = script_get_preference("nmap: try also with only -sP");
+log_output        = script_get_preference("Log nmap output");
 
 set_kb_item( name:"/ping_host/mark_dead", value:mark_dead );
 set_kb_item( name:"/tmp/start_time", value:unixtime() );
@@ -230,43 +264,29 @@ if( "yes" >< use_nmap ) {
       }
     }
 
-    argv_tcp[x++] = '-PA' + pa_ports;
-    argv_tcp[x++] = ip;
-
-    res = pread( cmd:"nmap", argv:argv_tcp );
-
-    if( res && egrep( pattern:pattern, string:res ) && "Host seems down" >!< res ) {
-      if( "yes" >< report_up || "yes" >< log_output ) {
-        report = "";
-        if( "yes" >< report_up )
-          report += 'Host is up (successful TCP service ping), Method: nmap\n';
-        if( "yes" >< log_output )
-          report += 'nmap command: ' + join( list:argv_tcp ) + '\n' + res;
-        log_message( data:report, port:0 );
-      }
-      set_kb_item( name:"/tmp/ping/TCP", value:1 );
-      exit(0);
+    if( "yes" >< tcp_syn_ping_only ) {
+      run_tcp_syn_ping( argv:argv, pa_ports:pa_ports, ip:ip, pattern:pattern, report_up:report_up, log_output:log_output );
     } else {
 
-      if( "yes" >< tcp_syn_ping ) {
+      argv_tcp[x++] = '-PA' + pa_ports;
+      argv_tcp[x++] = ip;
 
-        argv_tcp_syn = argv;
-        argv_tcp_syn[x++] = '-PS' + pa_ports;
-        argv_tcp_syn[x++] = ip;
+      res = pread( cmd:"nmap", argv:argv_tcp );
 
-        res = pread( cmd:"nmap", argv:argv_tcp_syn );
-
-        if( res && egrep( pattern:pattern, string:res ) && "Host seems down" >!< res ) {
-          if( "yes" >< report_up || "yes" >< log_output ) {
-            report = "";
-            if( "yes" >< report_up )
-              report += 'Host is up (successful TCP SYN service ping), Method: nmap\n';
-            if( "yes" >< log_output )
-              report += 'nmap command: ' + join( list:argv_tcp_syn ) + '\n' + res;
-            log_message( data:report, port:0 );
-          }
-          set_kb_item( name:"/tmp/ping/TCP", value:1 );
-          exit( 0 );
+      if( res && egrep( pattern:pattern, string:res ) && "Host seems down" >!< res ) {
+        if( "yes" >< report_up || "yes" >< log_output ) {
+          report = "";
+          if( "yes" >< report_up )
+            report += 'Host is up (successful TCP service ping), Method: nmap\n';
+          if( "yes" >< log_output )
+            report += 'nmap command: ' + join( list:argv_tcp ) + '\n' + res;
+          log_message( data:report, port:0 );
+        }
+        set_kb_item( name:"/tmp/ping/TCP", value:1 );
+        exit( 0 );
+      } else {
+        if( "yes" >< tcp_syn_ping ) {
+          run_tcp_syn_ping( argv:argv, pa_ports:pa_ports, ip:ip, pattern:pattern, report_up:report_up, log_output:log_output );
         }
       }
     }

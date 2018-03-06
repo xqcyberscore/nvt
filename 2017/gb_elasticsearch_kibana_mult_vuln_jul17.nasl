@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_mult_vuln_jul17.nasl 6618 2017-07-07 14:17:52Z cfischer $
+# $Id: gb_elasticsearch_kibana_mult_vuln_jul17.nasl 9011 2018-03-02 13:09:15Z cfischer $
 #
 # Elasticsearch Kibana Multiple Vulnerabilities - Jul17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811414");
-  script_version("$Revision: 6618 $");
+  script_version("$Revision: 9011 $");
   script_cve_id("CVE-2016-1000219", "CVE-2016-1000220");
   script_bugtraq_id(99179, 99178);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 16:17:52 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:40:53 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Multiple Vulnerabilities - Jul17");
 
@@ -45,6 +45,7 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to
+
   - when a custom output is configured for logging in, cookies and authorization
     headers could be written to the log files.
 
@@ -70,24 +71,17 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed");
-  script_require_ports("Services/www", 9200, 5601);
+  script_require_ports("Services/www", 5601);
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-kibanaPort = "";
-kibanaVer = "";
-fix = "";
-
-## Get Port
 if(!kibanaPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!kibanaVer = get_app_version(cpe:CPE, port:kibanaPort)){
  exit(0);
 }

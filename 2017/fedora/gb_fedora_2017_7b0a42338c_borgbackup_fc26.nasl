@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7b0a42338c_borgbackup_fc26.nasl 8085 2017-12-12 10:25:30Z santu $
+# $Id: gb_fedora_2017_7b0a42338c_borgbackup_fc26.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Fedora Update for borgbackup FEDORA-2017-7b0a42338c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873898");
-  script_version("$Revision: 8085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 11:25:30 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 9023 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-12-11 08:05:03 +0100 (Mon, 11 Dec 2017)");
   script_cve_id("CVE-2017-15914");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for borgbackup FEDORA-2017-7b0a42338c");
   script_tag(name: "summary", value: "Check the version of borgbackup");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9d6a122887_sblim-sfcb_fc27.nasl 8986 2018-03-01 04:16:23Z santu $
+# $Id: gb_fedora_2018_9d6a122887_sblim-sfcb_fc27.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Fedora Update for sblim-sfcb FEDORA-2018-9d6a122887
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874164");
-  script_version("$Revision: 8986 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 05:16:23 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9023 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 08:40:06 +0100 (Wed, 28 Feb 2018)");
   script_cve_id("CVE-2018-6644");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sblim-sfcb FEDORA-2018-9d6a122887");
   script_tag(name: "summary", value: "Check the version of sblim-sfcb");

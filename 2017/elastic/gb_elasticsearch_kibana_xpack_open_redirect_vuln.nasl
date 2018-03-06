@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xpack_open_redirect_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_elasticsearch_kibana_xpack_open_redirect_vuln.nasl 9011 2018-03-02 13:09:15Z cfischer $
 #
 # Elasticsearch Kibana X-Pack Open Redirect Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812276");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 9011 $");
   script_cve_id("CVE-2017-11482");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 15:25:49 +0530 (Wed, 20 Dec 2017)");
   script_name("Elasticsearch Kibana X-Pack Open Redirect Vulnerability");
 
@@ -58,23 +58,19 @@ if(description)
   6.0.1 or 5.6.5 or later. For updates refer to https://www.elastic.co");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name:"URL", value:"https://www.elastic.co/community/security");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed", "Elasticsearch/Kibana/X-Pack/Installed");
-  script_require_ports("Services/www", 9200, 5601);
+  script_require_ports("Services/www", 5601);
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-kibanaPort = "";
-kibanaVer = "";
-fix = "";
 
 if(!kibanaPort = get_app_port(cpe:CPE)){
  exit(0);

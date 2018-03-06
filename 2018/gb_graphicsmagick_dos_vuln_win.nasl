@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_dos_vuln_win.nasl 8781 2018-02-13 10:01:09Z cfischer $
+# $Id: gb_graphicsmagick_dos_vuln_win.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # GraphicsMagick Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112212");
-  script_version("$Revision: 8781 $");
+  script_version("$Revision: 9023 $");
   script_cve_id("CVE-2018-6799");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:01:09 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 11:31:13 +0100 (Fri, 09 Feb 2018)");
   script_name("GraphicsMagick Denial of Service Vulnerability (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_webservice_rfd_win.nasl 8767 2018-02-12 11:25:33Z cfischer $
+# $Id: gb_libreoffice_webservice_rfd_win.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108332");
-  script_version("$Revision: 8767 $");
+  script_version("$Revision: 9023 $");
   script_cve_id("CVE-2018-6871");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 12:25:33 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 12:24:46 +0100 (Mon, 12 Feb 2018)");
   script_name("LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

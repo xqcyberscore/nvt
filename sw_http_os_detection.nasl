@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 8922 2018-02-22 10:43:36Z cfischer $
+# $Id: sw_http_os_detection.nasl 9017 2018-03-02 19:02:17Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 8922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 11:43:36 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 9017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-02 20:02:17 +0100 (Fri, 02 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,6 +63,9 @@ function check_http_banner( port ) {
   if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) ) {
 
     banner_type = "HTTP Server banner";
+
+    # API TCP listener is cross-platform
+    if( "Server: Icinga" >< banner ) return;
 
     # Runs only on Unix/Linux/BSD
     # e.g. Server: GoTTY/0.0.12

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_amplification_attack.nasl 8989 2018-03-01 07:41:40Z cfischer $
+# $Id: gb_memcached_amplification_attack.nasl 9019 2018-03-03 09:59:21Z cfischer $
 #
 # Memcached Amplification Attack (Memcrashed)
 #
@@ -32,8 +32,9 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108357");
-  script_version("$Revision: 8989 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:41:40 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9019 $");
+  script_cve_id("CVE-2018-1000115");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-03 10:59:21 +0100 (Sat, 03 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-01 08:31:24 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

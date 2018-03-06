@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ac2e276c76_tomcat_fc26.nasl 8939 2018-02-23 13:10:16Z santu $
+# $Id: gb_fedora_2018_ac2e276c76_tomcat_fc26.nasl 9023 2018-03-05 07:08:45Z cfischer $
 #
 # Fedora Update for tomcat FEDORA-2018-ac2e276c76
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874132");
-  script_version("$Revision: 8939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:10:16 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 9023 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:52:00 +0100 (Wed, 21 Feb 2018)");
   script_cve_id("CVE-2017-15706");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for tomcat FEDORA-2018-ac2e276c76");
   script_tag(name: "summary", value: "Check the version of tomcat");
