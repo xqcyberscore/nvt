@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 06 Mar 2018 08:29:11 +0100
+# Automatically created on:  Wed, 07 Mar 2018 08:48:59 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -50073,6 +50073,7 @@
 2018/gb_mybb_xss_vuln.nasl: GPLv2+
 2018/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/gb_openemr_mult_vuln.nasl: GPLv2+
+2018/gb_otrs_rce_vuln.nasl: GPLv2+
 2018/gb_pihole_mult_vuln_feb18.nasl: GPLv2+
 2018/gb_portscanner_missing.nasl: GPLv2+
 2018/gb_prestashop_mult_vuln.nasl: GPLv2+
@@ -56105,6 +56106,7 @@ gsf/2018/dell/gb_sonicwall_gms_multiple_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_cookie_info_discl_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00373024.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K02652550.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05513373.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K08613310.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K09052213.nasl: GPLv2+
@@ -56113,6 +56115,7 @@ gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K21462542.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25552364.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30971148.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K31211252.nasl: GPLv2+
@@ -56134,6 +56137,7 @@ gsf/2018/f5/gb_f5_big_ip_K77508618.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K90803619.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
 gsf/2018/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
 gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
@@ -56261,6 +56265,8 @@ gsf/2018/rhel/gb_RHSA-2018_0378-01_ruby.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_auth_bypass_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_xss_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_struxureon_file_upload_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_desigo_auth_vuln.nasl: GPLv2+

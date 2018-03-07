@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_detect.nasl 9025 2018-03-05 07:59:30Z cfischer $
+# $Id: gb_sap_netweaver_detect.nasl 9033 2018-03-06 10:37:18Z jschulte $
 #
 # SAP NetWeaver Application Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105302");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9025 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:59:30 +0100 (Mon, 05 Mar 2018) $");
+ script_version ("$Revision: 9033 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-06 11:37:18 +0100 (Tue, 06 Mar 2018) $");
  script_tag(name:"creation_date", value:"2015-06-22 11:54:01 +0200 (Mon, 22 Jun 2015)");
  script_name("SAP NetWeaver Application Server Detection");
 
@@ -72,7 +72,13 @@ vers = eregmatch(pattern: 'com.sap.portal.design.portaldesigndata/themes/portal/
 #add check for new sap netweaver versions.
 if (isnull(vers)) vers = eregmatch(pattern: 'com.sap.portal.theming.webdav.themeswebdavlistener/Portal/.*v=([0-9.]+).*/>', string: buf);
 
-if (! isnull(vers)) version = vers[1];
+if (! isnull(vers)) {
+  version = vers[1];
+}
+
+# Even though it might be tempting to use the server-banner for version detection => DON'T.
+# The definitions of the versions in that banner are inconclusive and don't supply accurate results
+# Maybe in the future SAP will release a list of what the numbers mean, but until then, the server banner is not a reliable source for the version number
 
 set_kb_item(name: "sap_netweaver/version", value: version);
 set_kb_item(name: "sap_netweaver/installed", value: TRUE);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: tcp_timestamps.nasl 9035 2018-03-06 12:28:45Z cfischer $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 7277 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 9035 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-06 13:28:45 +0100 (Tue, 06 Mar 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -124,7 +124,7 @@ function tcp_extract_timestamp( ip ) {
   tcp = substr( ip, hlen );
 
   if( debug ) {
-    dump( ddata:i, dtitle:'IP' );
+    dump( ddata:ip, dtitle:'IP' );
     dump( ddata:tcp, dtitle:'TCP' );
   }
 
