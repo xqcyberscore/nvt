@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
-# Description: Open WebMail Detection
+# $Id: openwebmail_detect.nasl 9045 2018-03-07 13:52:25Z cfischer $
+#
+# Open WebMail Detection
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
@@ -20,44 +22,48 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script detects whether the target is running Open WebMail and
-extracts version numbers and locations of any instances found. 
-
-Open WebMail is a webmail package written in Perl that provides access
-to mail accounts via POP3 or IMAP.  See <http://www.openwebmail.org/>
-for more information.";
+###############################################################################
 
 if(description)
 {
-  script_id(14221);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7560 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14221");
+  script_version("$Revision: 9045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Open WebMail Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-  script_family("General");
-  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_xref(name:"URL", value:"http://www.openwebmail.org");
+
+  tag_summary = "This script detects whether the target is running Open WebMail and
+  extracts version numbers and locations of any instances found.
+
+  Open WebMail is a webmail package written in Perl that provides access
+  to mail accounts via POP3 or IMAP.";
+
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
 
 # Search for Open WebMail in a couple of different locations.
 #
-# NB: Directories beyond cgi_dirs() come from a Google search - 
+# NB: Directories beyond cgi_dirs() come from a Google search -
 #     'inurl:openwebmail.pl userid' - and represent the more popular
 #     installation paths currently. Still, cgi_dirs() should catch
 #     the directory if its referenced elsewhere on the target.
@@ -67,120 +73,92 @@ rel = NULL;
 
 foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", cgi_dirs( port:port ) ) ) {
 
-  url = string(dir, "/openwebmail.pl");
-  if (debug_level) display("debug: retrieving ", url, "...\n");
-  req = http_get(item:url, port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
-  if (isnull(res)) exit(0);             # can't connect
-  if (debug_level) display("debug: res =>>", res, "<<\n");
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/openwebmail.pl";
+  req = http_get( item:url, port:port );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  if( isnull( res ) ) continue; # can't connect
 
   # If the page refers to Open WebMail, try to get its version number.
-  if (
-    egrep(string:res, pattern:"^HTTP/.* 200 OK") &&
-    egrep(string:res, pattern:"(http://openwebmail\.org|Open WebMail)")
-  ) {
-    # First see if version's included in the form. If it is, Open WebMail 
+  if( egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) && egrep( string:res, pattern:"(http://openwebmail\.org|Open WebMail)" ) ) {
+
+    version = "unknown";
+
+    # First see if version's included in the form. If it is, Open WebMail
     # puts it on a line by itself, prefixed by the word "version".
     pat = "^version (.+)$";
-    if (debug_level) display("debug: grepping results for =>>", pat, "<<\n");
-    matches = egrep(pattern:pat, string:res);
-    foreach match (split(matches)) {
-      match = chomp(match);
-      if (debug_level) display("debug: grepping >>", match, "<< for =>>", pat, "<<\n");
-      ver = eregmatch(pattern:pat, string:match);
-      if (!isnull(ver)) ver = ver[1];
-      break;                            # nb: only worried about first match.
+    matches = egrep( pattern:pat, string:res );
+    foreach match( split( matches ) ) {
+      match = chomp( match );
+      vers = eregmatch( pattern:pat, string:match );
+      if( ! isnull( vers[1] ) ) version = vers[1];
+      break; # nb: only worried about first match.
     }
 
     # If that didn't work, looking for it in doc/changes.txt,
     # under the Open WebMail data directory.
-    if (isnull(ver)) {
+    if( version == "unknown" ) {
       # Identify data directory from links to images or help files.
       pat = '([^\'"]*/openwebmail)/(images|help)/';
-      if (debug_level) display("debug: grepping results for =>>", pat, "<<\n");
-      matches = egrep(pattern:pat, string:res);
-      foreach match (split(matches)) {
-        match = chomp(match);
-        if (debug_level) display("debug: grepping >>", match, "<< for =>>", pat, "<<\n");
-        data_url = eregmatch(string:match, pattern:pat);
-        if (!isnull(data_url)) data_url = data_url[1];
-        break;                          # nb: only worried about first match.
+      matches = egrep( pattern:pat, string:res );
+      foreach match( split( matches ) ) {
+        match = chomp( match );
+        data_url = eregmatch( string:match, pattern:pat );
+        if( ! isnull( data_url ) ) data_url = data_url[1];
+        break; # nb: only worried about first match.
       }
       # Try to get doc/changes.txt under data directory.
-      if (!isnull(data_url)) {
-        if (debug_level) display("debug: url for data files =>>", data_url, "<<\n");
-        url = string(data_url, "/doc/changes.txt");
-        if (debug_level) display("debug: retrieving ", url, "...\n");
-        req = http_get(item:url, port:port);
-        res = http_keepalive_send_recv(port:port, data:req);
-        if (isnull(res)) exit(0);       # can't connect
-        if (debug_level) display("debug: res =>>", res, "<<\n");
+      if( ! isnull( data_url ) ) {
+        url = data_url + "/doc/changes.txt";
+        req = http_get( item:url, port:port );
+        res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
         # Try to get version number.
-        #
         # nb: this won't identify intermediate releases, only full ones.
-        if (egrep(string:res, pattern:"^HTTP/.* 200 OK")) {
+        if( ! isnull( res ) && egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) ) {
           pat = "^[0-1][0-9]/[0-3][0-9]/20[0-9][0-9]( +.version .+)?";
-          if (debug_level) display("debug: grepping results for =>>", pat, "<<\n");
-          matches = egrep(pattern:pat, string:res);
-          foreach match (split(matches)) {
-            match = chomp(match);
-            if (debug_level) display("debug: grepping >>", match, "<< for =>>", pat, "<<\n");
-            ver = eregmatch(pattern:"version +(.+).$", string:match);
-            if (isnull(ver)) {
+          matches = egrep( pattern:pat, string:res );
+          foreach match( split( matches ) ) {
+            match = chomp( match );
+            vers = eregmatch( pattern:"version +(.+).$", string:match );
+            if( isnull( vers[1] ) ) {
               # nb: only first release date matters.
-              if (isnull(rel)) {
+              if( isnull( rel ) ) {
                 # Rearrange date: mm/dd/yyyy -> yyyyddmm.
-                parts = split(match, sep:"/", keep:FALSE);
-                rel = string(parts[2], parts[0], parts[1]);
+                parts = split( match, sep:"/", keep:FALSE );
+                rel = string( parts[2], parts[0], parts[1] );
               }
-            }
-            else {
-              ver = ver[1];
-              if (!isnull(rel)) ver = string(ver, " ", rel);
-              break;                    # nb: only worried about first match.
+            } else {
+              version = vers[1];
+              if( ! isnull( rel ) ) version += " " + rel;
+              break; # nb: only worried about first match.
             }
           }
         }
       }
     }
 
-    # nb: in the event the version number is still unknown, I want 
-    #     to record the fact that there's *some* version installed.
-    if (isnull(ver)) {
-      ver = "*** VERSION UNKNOWN ***";
-      if (log_verbosity > 1) display("Can't determine version of Open WebMail installed under ", dir, " on ", host, ":", port, "!\n");
+    tmp_version = version + " under " + install;
+    set_kb_item( name:"www/" + port + "/OpenWebMail", value:tmp_version );
+    set_kb_item( name:"OpenWebMail/detected", value:TRUE );
+
+    if( version != "unknown" ) {
+      cpe = "cpe:/a:openwebmail.acatysmoof:openwebmail:" + version;
+    } else {
+      cpe = "cpe:/a:openwebmail.acatysmoof:openwebmail";
     }
 
-    if (debug_level) display("debug: Open WebMail version =>>", ver, "<<\n");
-    set_kb_item(
-      name:string("www/", port, "/openwebmail"), 
-      value:string(ver, " under ", dir)
-    );
-    installations[dir] = ver;
-    ++installs;
+    register_product( cpe:cpe, location:install, port:port );
+
+    log_message( data:build_detection_report( app:"Open WebMail",
+                                              version:version,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:vers[0] ),
+                                              port:port );
+
   }
-  if (installs) break;
 }
 
-# Report any instances found unless Report verbosity is "Quiet".
-if (installs && report_verbosity > 0) {
-  if (installs == 1) {
-    foreach dir (keys(installations)) {
-      # empty - just need to set 'dir'.
-    }
-    info = string("Open WebMail ", ver, " was detected on the remote host under the path ", dir, ".");
-  }
-  else {
-    info = string(
-      "Multiple instances of Open WebMail were detected on the remote host:\n",
-      "\n"
-    );
-    foreach dir (keys(installations)) {
-      info = info + string("    ", installations[dir], ", installed under ", dir, "\n");
-    }
-    info = chomp(info);
-  }
-
-  log_message(port:port, data:info);
-}
+exit( 0 );

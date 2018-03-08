@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_userstat_command_execution.nasl 6063 2017-05-03 09:03:05Z teissa $
-# Description: Open WebMail userstat.pl Arbitrary Command Execution
+# $Id: openwebmail_userstat_command_execution.nasl 9045 2018-03-07 13:52:25Z cfischer $
+#
+# Open WebMail userstat.pl Arbitrary Command Execution
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>
@@ -20,93 +22,74 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The target is running at least one instance of Open WebMail in which
-the userstat.pl component fails to sufficiently validate user input. 
-This failure enables remote attackers to execute arbitrary programs on
-the target using the privileges under which the web server operates. 
-For further information, see :
+CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 
-  http://www.openwebmail.org/openwebmail/download/cert/advisories/SA-04:01.txt";
-
-tag_solution = "Upgrade to Open WebMail version 2.30 20040127 or later.";
-
-if (description) {
-  script_id(15529);
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.15529");
+  script_version("$Revision: 9045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
   script_bugtraq_id(10316);
   script_xref(name:"OSVDB", value:"4201");
-
-  name = "Open WebMail userstat.pl Arbitrary Command Execution";
-  script_name(name);
- 
-  summary = "Checks for Arbitrary Command Execution flaw in Open WebMail's userstat.pl";
- 
+  script_name("Open WebMail userstat.pl Arbitrary Command Execution");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-
-  family = "Gain a shell remotely";
-  script_family(family);
-
-  script_dependencies("global_settings.nasl", "openwebmail_detect.nasl");
+  script_family("Gain a shell remotely");
+  script_dependencies("openwebmail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("OpenWebMail/detected");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://www.openwebmail.org/openwebmail/download/cert/advisories/SA-04:01.txt");
+
+  tag_summary = "The target is running at least one instance of Open WebMail in which
+  the userstat.pl component fails to sufficiently validate user input.";
+
+  tag_impact = "This failure enables remote attackers to execute arbitrary programs on
+  the target using the privileges under which the web server operates.";
+
+  tag_solution = "Upgrade to Open WebMail version 2.30 20040127 or later.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-host = get_host_name();
-port = get_http_port(default:80);
-
-if (!get_port_state(port)) exit(0);
-if (debug_level) display("debug: checking for Arbitrary Command Execution flaw in userstat.pl in Open WebMail on ", host, ":", port, ".\n");
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
 # We test whether the hole exists by trying to echo magic (urlencoded
 # as alt_magic for http) and checking whether we get it back.
 magic = "userstat.pl is vulnerable";
-alt_magic = str_replace(string:magic, find:" ", replace:"%20");
+alt_magic = str_replace( string:magic, find:" ", replace:"%20" );
 
-# Check each installed instance, stopping if we find a vulnerability.
-installs = get_kb_list(string("www/", port, "/openwebmail"));
-if (isnull(installs)) exit(0);
-foreach install (installs) {
-  matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-  if (!isnull(matches)) {
-    ver = matches[1];
-    dir = matches[2];
-    if (debug_level) display("debug: checking version ", ver, " under ", dir, ".\n");
+# nb: more interesting exploits are certainly possible, but my
+# concern is in verifying whether the flaw exists and by echoing
+# magic along with the phrase "has mail" I can do that.
 
-    # nb: more interesting exploits are certainly possible, but my
-    #     concern is in verifying whether the flaw exists and by
-    #     echoing magic along with the phrase "has mail" I can
-    #     do that.
-    url = string(
-      dir, 
-      "/userstat.pl?loginname=|echo%20'",
-      alt_magic,
-      "%20has%20mail'"
-    );
-    if (debug_level) display("debug: retrieving ", url, "...\n");
-    req = http_get(item:url, port:port);
-    res = http_keepalive_send_recv(port:port, data:req);
-    if (isnull(res)) exit(0);           # can't connect
-    if (debug_level) display("debug: res =>>", res, "<<\n");
+url = string( dir, "/userstat.pl?loginname=|echo%20'", alt_magic, "%20has%20mail'" );
+req = http_get( item:url, port:port );
+res = http_keepalive_send_recv( port:port, data:req );
+if( isnull( res ) ) exit( 0 ); # can't connect
 
-    if (egrep(string:res, pattern:magic)) {
-      security_message(port);
-      exit(0);
-    }
-  }
+if( egrep( string:res, pattern:magic ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

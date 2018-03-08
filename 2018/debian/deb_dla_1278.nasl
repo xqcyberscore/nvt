@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1278.nasl 8909 2018-02-21 15:21:22Z teissa $
+# $Id: deb_dla_1278.nasl 9041 2018-03-07 11:55:11Z cfischer $
 #
 # Auto-generated from advisory DLA 1278-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891278");
-  script_version("$Revision: 8909 $");
+  script_version("$Revision: 9041 $");
   script_cve_id("CVE-2018-1000041");
   script_name("Debian Lts Announce DLA 1278-1 ([SECURITY] [DLA 1278-1] librsvg security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 16:21:22 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:55:11 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

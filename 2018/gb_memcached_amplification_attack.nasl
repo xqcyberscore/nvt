@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_amplification_attack.nasl 9019 2018-03-03 09:59:21Z cfischer $
+# $Id: gb_memcached_amplification_attack.nasl 9044 2018-03-07 13:38:46Z cfischer $
 #
 # Memcached Amplification Attack (Memcrashed)
 #
@@ -32,9 +32,9 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108357");
-  script_version("$Revision: 9019 $");
+  script_version("$Revision: 9044 $");
   script_cve_id("CVE-2018-1000115");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-03 10:59:21 +0100 (Sat, 03 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:38:46 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-01 08:31:24 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -119,7 +119,9 @@ buf = recv( socket:soc, length:4096 );
 close( soc );
 if( ! buf ) exit( 0 );
 # nb: The raw_string above with uppercase STAT
-if( hexstr( buf ) !~ "^00010000000100005354415420" ) exit( 0 );
+# Take care of the ResponseID which sometimes
+# seems to be the next number of the initial request.
+if( hexstr( buf ) !~ "^0001000000[0-9][0-9]00005354415420" ) exit( 0 );
 
 resp_len = strlen( buf );
 

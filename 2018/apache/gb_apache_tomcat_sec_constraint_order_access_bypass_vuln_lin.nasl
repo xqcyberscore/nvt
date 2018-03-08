@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_lin.nasl 8975 2018-02-28 10:27:08Z santu $
+# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_lin.nasl 9039 2018-03-07 10:56:54Z santu $
 #
-# Apache Tomcat Security Constraint Order of Processing Access Bypass Vulnerability (Linux)
+# Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Linux)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,27 +29,33 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812785");
-  script_version("$Revision: 8975 $");
-  script_cve_id("CVE-2018-1305");
-  script_bugtraq_id(103144);
+  script_version("$Revision: 9039 $");
+  script_cve_id("CVE-2018-1305", "CVE-2018-1304");
+  script_bugtraq_id(103144, 103170);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 18:10:55 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Apache Tomcat Security Constraint Order of Processing Access Bypass Vulnerability (Linux)");
+  script_name("Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
-  and is prone to an access bypass vulnerability.");
+  and is prone to an multiple access bypass vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists as system does not properly
-  enforce security constraints that defined by annotations of Servlets in certain 
-  cases, depending on the order that Servlets are loaded.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  script_tag(name:"impact", value:"Successfully exploiting this issue will allow
+  - The system does not properly enforce security constraints that defined by 
+    annotations of Servlets in certain cases, depending on the order that Servlets 
+    are loaded.
+
+  - The URL pattern of '' (the empty string) which exactly maps to the context 
+    root was not correctly handled when used as part of a security constraint 
+    definition.");
+
+  script_tag(name:"impact", value:"Successfully exploiting these issues will allow
   remote attackers to bypass security constraints to access ostensibly restricted 
   resources on the target system.
 
@@ -70,6 +76,7 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-9.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
+  script_xref(name:"URL", value:"https://lists.apache.org/thread.html/b1d7e2425d6fd2cebed40d318f9365b44546077e10949b01b1f8a0fb@%3Cannounce.tomcat.apache.org%3E");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");

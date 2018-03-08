@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0570_1.nasl 9012 2018-03-02 13:12:29Z santu $
+# $Id: gb_suse_2018_0570_1.nasl 9041 2018-03-07 11:55:11Z cfischer $
 #
 # SuSE Update for freexl openSUSE-SU-2018:0570-1 (freexl)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851712");
-  script_version("$Revision: 9012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:12:29 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 9041 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:55:11 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 08:42:04 +0100 (Fri, 02 Mar 2018)");
   script_cve_id("CVE-2018-7435", "CVE-2018-7436", "CVE-2018-7437", "CVE-2018-7438", 
                 "CVE-2018-7439");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for freexl openSUSE-SU-2018:0570-1 (freexl)");
   script_tag(name: "summary", value: "Check the version of freexl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-36_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_reader_apsb17-36_win.nasl 9039 2018-03-07 10:56:54Z santu $
 #
 # Adobe Reader Security Updates(apsb17-36)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811353");
-  script_version("$Revision: 8210 $");
+  script_version("$Revision: 9039 $");
   script_cve_id("CVE-2017-16377", "CVE-2017-16378", "CVE-2017-16360", "CVE-2017-16388", 
 		"CVE-2017-16389", "CVE-2017-16390", "CVE-2017-16393", "CVE-2017-16398", 
 		"CVE-2017-16381", "CVE-2017-16385", "CVE-2017-16392", "CVE-2017-16395", 
@@ -45,12 +45,13 @@ if(description)
 		"CVE-2017-16361", "CVE-2017-16366", "CVE-2017-16369", "CVE-2017-16380", 
 		"CVE-2017-16419", "CVE-2017-16367", "CVE-2017-16379", "CVE-2017-16406", 
 		"CVE-2017-16364", "CVE-2017-16371", "CVE-2017-16372", "CVE-2017-16373", 
-		"CVE-2017-16375", "CVE-2017-16411");
+		"CVE-2017-16375", "CVE-2017-16411", "CVE-2017-11307", "CVE-2017-11308",
+                "CVE-2017-11240", "CVE-2017-11250", "CVE-2017-11306", "CVE-2017-11253");
   script_bugtraq_id(101821, 101818, 101831, 101824, 101816, 101823, 101819, 101812,
                     101830, 101820, 101814, 101817, 101815, 101813);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:56:52 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe Reader Security Updates(apsb17-36)-Windows");
 
@@ -60,7 +61,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name: "insight" , value:"Multiple flaws exist due to,
 
   - Two access of uninitialized point vulnerabilities that could result in
     remote could execution,
@@ -69,10 +70,10 @@ if(description)
 
   - Five buffer access with incorrect length value vulnerabilities that could
     result in remote code execution.
- 
+
   - Six buffer over-read vulnerabilities that could result in remote code
     execution.
- 
+
   - A buffer overflow vulnerability that could result in remote code execution.
 
   - A heap overflow vulnerability that could result in remote code execution.
@@ -87,23 +88,27 @@ if(description)
     execution.
 
   - Two security bypass vulnerabilities that could result in drive-by-downloads.
- 
+
   - A security bypass vulnerability that could result in information disclosure.
 
   - A security bypass vulnerability that could result in remote code execution.
 
   - A stack exhaustion vulnerability that could result in excessive resource
     consumption.
- 
- - Three type confusion vulnerabilities that could result in remote code
+
+  - Three type confusion vulnerabilities that could result in remote code
     execution.
 
   - Six untrusted pointer dereference vulnerabilities that could result in remote
-    code execution.");
+    code execution.
+
+  - For more details, refer the reference links mentioned.");
 
   script_tag(name:"impact" , value:"Successful exploitation will allow remote
-  attackers to  to execute arbitrary code in the context of the application.
-  Failed attacks may cause a denial-of-service condition.);
+  attackers to execute arbitrary code in the context of the application.
+  Failed attacks may cause a denial-of-service condition. Also attackers will be
+  able to gain access to potentially sensitive information, get excessive resource
+  consumption and get unintentional download of malicious softwares);
 
   Impact Level: System/Application.");
 
