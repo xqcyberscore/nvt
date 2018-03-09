@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_accessible_shares.nasl 7051 2017-09-04 11:38:56Z cfischer $
+# $Id: gb_ms_wmi_accessible_shares.nasl 9055 2018-03-08 12:53:10Z cfischer $
 #
-# Get Windows shares over WMI
+# Get Windows File-Shares over WMI
 #
 # Authors:
 # Thomas Rotter <Thomas.Rotter@greenbone.net>
@@ -13,7 +13,6 @@
 # Set in an Workgroup Environment under Windows Vista and greater,
 # with enabled UAC this DWORD to access WMI:
 # HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -32,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96199");
-  script_version("$Revision: 7051 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 9055 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-08 13:53:10 +0100 (Thu, 08 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:32:24 +0200 (Wed, 12 Mar 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Get Windows Shares over WMI");
+  script_name("Get Windows File-Shares over WMI");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
   script_family("Windows");
@@ -45,7 +44,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("WMI/access_successful");
 
-  script_tag(name:"summary", value:"Get Windows Shares over WMI");
+  script_tag(name:"summary", value:"Get Windows File-Shares over WMI.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -58,20 +57,25 @@ host    = get_host_ip();
 usrname = get_kb_item( "SMB/login" );
 passwd  = get_kb_item( "SMB/password" );
 if( ! host || ! usrname || ! passwd ) exit( 0 );
+
 domain  = get_kb_item( "SMB/domain" );
 if( domain ) usrname = domain + '\\' + usrname;
 
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-query = "select Name, Path from Win32_share";
+# nb: 2015/gb_ms_wmi_everyone_file-shares.nasl relies on the
+# three items returned here so update this as well if more
+# objects are queried here.
+query = "select Description, Name, Path from Win32_share";
+
 sharelist = wmi_query( wmi_handle:handle, query:query );
 wmi_close( wmi_handle:handle );
 
 if( sharelist ) {
   set_kb_item( name:"WMI/Accessible_Shares", value:sharelist );
-  report = 'The following shares were found\n' + sharelist;
-  log_message( data:report );
+  report = 'The following File-Shares were found:\n\n' + sharelist;
+  log_message( port:0, data:report );
 }
 
 exit( 0 );

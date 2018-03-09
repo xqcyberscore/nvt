@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 08 Mar 2018 08:25:50 +0100
+# Automatically created on:  Fri, 09 Mar 2018 09:36:11 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -49625,6 +49625,7 @@
 2018/elasticsearch/gb_elasticsearch_logstash_CVE-2018-3817_info_discl.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_win.nasl: GPLv2+
+2018/exim/gb_exim_CVE-2018-6789_ver.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_01ad8b3946_heketi_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_0ad0e2f390_webkitgtk4_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_14f5c6cdac_qpid-cpp_fc27.nasl: GPLv2+
@@ -49855,6 +49856,8 @@
 2018/gb_dlink_dsl6850U_mult_vuln.nasl: GPLv2+
 2018/gb_dnsmasq_dnssec_val_vuln.nasl: GPLv2+
 2018/gb_efront_cms_mult_vuln.nasl: GPLv2+
+2018/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
+2018/gb_exponent_cms_mult_vuln.nasl: GPLv2+
 2018/gb_ffmpeg_info_disc_vuln.nasl: GPLv2+
 2018/gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl: GPLv2+
 2018/gb_freetype_dos_vuln_lin.nasl: GPLv2+
@@ -49897,6 +49900,7 @@
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/gb_sitefinity_mult_vuln.nasl: GPLv2+
 2018/gb_superantispyware_mult_vuln.nasl: GPLv2+
+2018/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/gb_thttpd_buffer_overflow_vuln.nasl: GPLv2+
 2018/gb_unbound_dos_vuln.nasl: GPLv2+
 2018/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
@@ -49904,6 +49908,9 @@
 2018/gb_zimbra_persistent_xss_vuln01_feb18.nasl: GPLv2+
 2018/gb_zimbra_persistent_xss_vuln02_feb18.nasl: GPLv2+
 2018/gb_zimbra_zcs_xss_vuln.nasl: GPLv2+
+2018/google/gb_google_chrome_mult_vuln_mar18_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_mult_vuln_mar18_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_mult_vuln_mar18_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl: GPLv2+
@@ -50034,6 +50041,10 @@
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_win.nasl: GPLv2+
 2018/mybb/gb_mybb_csrf_vuln_feb18.nasl: GPLv2+
+2018/ntp/gb_ntp_auth_symmetric_passv_peering_vuln.nasl: GPLv2+
+2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
+2018/ntp/gb_ntp_dos_vuln_mar18.nasl: GPLv2+
+2018/ntp/gb_ntp_protocol_engine_dos_vuln.nasl: GPLv2+
 2018/opensuse/gb_suse_2017_3434_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2017_3448_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_0013_1.nasl: GPLv2+
@@ -56293,6 +56304,7 @@ gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_auth_bypass_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_code_inj_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_xss_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_struxureon_file_upload_vuln.nasl: GPLv2+
@@ -56318,6 +56330,7 @@ gsf/2018/vmware/gb_vmware_workstation_nat_service_mult_code_exec_vuln_win.nasl: 
 gsf/2018/vmware/gb_vmware_workstation_virtua_printing_out_of_bounds_read_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0001.nasl: GPLv2+
 gsf/2018/wowza/gb_wowza_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_ncm_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_netflow_analyzer_mult_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 7525 2017-10-20 08:57:52Z ckuersteiner $
+# $Id: gb_ilias_detect.nasl 9060 2018-03-08 18:56:33Z cfischer $
 #
 # ILIAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 7525 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-20 10:57:52 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 9060 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-08 19:56:33 +0100 (Thu, 08 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,41 +66,48 @@ port = get_http_port(default: 443);
 if (!can_host_php(port: port))
   exit(0);
 
-# login.php often needs some parameters so we check over setup.php
-url = "/ilias/setup/setup.php";
-# http_get_cache() doesn't make sense here since we get a unique session id anyway
-req = http_get(port: port, item: url);
-res = http_keepalive_send_recv(port: port, data: req);
+foreach dir (make_list_unique("/", "/ilias", cgi_dirs(port: port))) {
 
-# We should get a redirect with a session id
-loc = extract_location_from_redirect(port: port, data: res);
-if (isnull(loc))
-  exit(0);
+  install = dir;
+  if (dir == "/")
+    dir = "";
 
-req = http_get(port: port, item: loc);
-res = http_keepalive_send_recv(port: port, data: req);
+  # login.php often needs some parameters so we check over setup.php
+  url = dir + "/setup/setup.php";
+  # http_get_cache() doesn't make sense here since we get a unique session id anyway
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
 
-if ("<title>ILIAS Setup</title>" >< res && "std setup ilSetupLogin" >< res) {
-  version = "unknown";
+  # We should get a redirect with a session id
+  loc = extract_location_from_redirect(port: port, data: res);
+  if (isnull(loc))
+    continue;
 
-  vers = eregmatch(pattern: 'class="row">ILIAS ([0-9.]+)', string: res);
-  if (!isnull(vers[1])) {
-    version = vers[1];
-    set_kb_item(name: "ilias/version", value: version);
+  req = http_get(port: port, item: loc);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  if ("<title>ILIAS Setup</title>" >< res && "std setup ilSetupLogin" >< res) {
+    version = "unknown";
+
+    vers = eregmatch(pattern: 'class="row">ILIAS ([0-9.]+)', string: res);
+    if (!isnull(vers[1])) {
+      version = vers[1];
+      set_kb_item(name: "ilias/version", value: version);
+    }
+
+    set_kb_item(name: "ilias/installed", value: TRUE);
+
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ilias:ilias:");
+    if (!cpe)
+      cpe = 'cpe:/a:ilias:ilias';
+
+    register_product(cpe: cpe, location: install, port: port);
+
+    log_message(data: build_detection_report(app: "ILIAS", version: version, install: install, cpe: cpe,
+                                             concluded: vers[0], concludedUrl: report_vuln_url(port: port, url: url, url_only: TRUE )),
+                port: port);
+    exit(0);
   }
-
-  set_kb_item(name: "ilias/installed", value: TRUE);
-
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ilias:ilias:");
-  if (!cpe)
-    cpe = 'cpe:/a:ilias:ilias';
-
-  register_product(cpe: cpe, location: "/ilias", port: port);
-
-  log_message(data: build_detection_report(app: "ILIAS", version: version, install: "/ilias", cpe: cpe,
-                                           concluded: vers[0], concludedUrl: url),
-              port: port);
-  exit(0);
 }
 
 exit(0);

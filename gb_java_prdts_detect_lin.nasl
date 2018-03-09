@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_java_prdts_detect_lin.nasl 9057 2018-03-08 15:45:54Z cfischer $
 #
-# Sun Java Products Version Detection (Linux)
+# Multiple Java Products Version Detection (Linux)
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -30,14 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-08 16:45:54 +0100 (Thu, 08 Mar 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_name("Sun Java Products Version Detection (Linux)");
-  
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Multiple Java Products Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -45,11 +43,24 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Java products
-  on Linux systems. It covers Sun Java, IBM Java and GCJ.
+  script_tag(name:"summary", value:"Detection of installed version of Java products
+  on Linux systems. It covers the following:
+
+  - Sun Java
+
+  - Oracle Java
+
+  - IBM Java
+
+  - GCJ
+
+  - OpenJDK
 
   The script logs in via ssh, searches for executables 'javaaws' and
   'java' and queries the found executables via command line option '-fullversion'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -59,71 +70,101 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
-  exit(-1);
-}
+if( ! sock ) exit( 0 );
 
 # Check for Java Web Start
-jwspaths = find_bin(prog_name:"javaws", sock:sock);
-if(jwspaths)
-{
-  foreach executableFile (jwspaths)
-  {
-    jwsVer = get_bin_version(full_prog_name:chomp(executableFile), sock:sock,
-                             version_argv:"-fullversion",
-                             ver_pattern:"Java\(TM\) Web Start ([0-9_.]+)");
-    if(jwsVer[1] != NULL)
-    {
-      set_kb_item(name:"Java/WebStart/Linux/Ver", value:jwsVer[1]);
-
-      register_and_report_cpe(app:"Java WebStart", ver:jwsVer[1], base:"cpe:/a:sun:java_web_start:",
-                              expr:"^([0-9]\.[0-9_.]+)", insloc:executableFile);
+jwspaths = find_bin( prog_name:"javaws", sock:sock );
+if( jwspaths ) {
+  foreach executableFile( jwspaths ) {
+    jwsVer = get_bin_version( full_prog_name:chomp(executableFile), sock:sock, version_argv:"-fullversion", ver_pattern:"Java\(TM\) Web Start ([0-9_.]+)" );
+    if( ! isnull( jwsVer[1] ) ) {
+      set_kb_item( name:"Java/WebStart/Linux/Ver", value:jwsVer[1] );
+      register_and_report_cpe( app:"Java WebStart", ver:jwsVer[1], concluded:jwsVer[0], base:"cpe:/a:sun:java_web_start:", expr:"^([0-9]\.[0-9_.]+)", insloc:executableFile );
     }
   }
 }
 
 # Check for Java JRE
-javapaths = find_bin(prog_name:"java", sock:sock);
-if(javapaths)
-{
-  foreach executableFile (javapaths)
-  {
-    javaVer = get_bin_version(full_prog_name:chomp(executableFile), sock:sock,
-                              version_argv:"-fullversion ",
-                              ver_pattern:'java.? full version \"(.*)\"');
+javapaths = find_bin( prog_name:"java", sock:sock );
+if( javapaths ) {
+  foreach executableFile( javapaths ) {
+    javaVer = get_bin_version( full_prog_name:chomp( executableFile ), sock:sock, version_argv:"-fullversion ", ver_pattern:'java.? full version \"(.*)\"' );
     # LibGCJ
-    if("gcj" >< javaVer[1])
-    {
-      gcjVer = eregmatch(pattern:"([0-9]\.[0-9_.]+)", string:javaVer[2]);
-      if(gcjVer[1] != NULL)
-      {
-        set_kb_item(name:"Java/JRE/Linux/LibGCJ/Ver", value:gcjVer[1]);
-        log_message(data:'Detected Java JRE version: ' + gcjVer[1] +
-          '\nLocation: ' + executableFile +
-          '\n\nConcluded from version identification result:\n' +
-          javaVer[max_index(javaVer)-1]);
+    if( "gcj" >< javaVer[1] ) {
+      gcjVer = eregmatch( pattern:"([0-9]\.[0-9_.]+)", string:javaVer[2] ); # TODO: This doesn't match the regex in get_bin_version above...
+      if( ! isnull( gcjVer[1] ) ) {
+        set_kb_item( name:"Java/JRE/Linux/LibGCJ/Ver", value:gcjVer[1] );
+        log_message( data:'Detected Java JRE version: ' + gcjVer[1] + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1] );
       }
     }
     # IBM Java
-    else if("IBM" >< javaVer[1]){
-      ibmVer = eregmatch(pattern:"([0-9]\.[0-9._]+).*(SR[0-9]+)", string:javaVer[1]);
-      if((ibmVer[1] && ibmVer[2]) != NULL)
-      {
+    else if( "IBM" >< javaVer[1] ) {
+      ibmVer = eregmatch( pattern:"([0-9]\.[0-9._]+).*(SR[0-9]+)", string:javaVer[1] );
+      if( ibmVer[1] && ! isnull( ibmVer[2] ) ) {
         ibmVer = ibmVer[1] + "." + ibmVer[2];
-        set_kb_item(name:"IBM/Java/JRE/Linux/Ver", value:ibmVer);
-        log_message(data:'Detected IBM Java JRE version: ' + ibmVer +
-          '\nLocation: ' + executableFile +
-          '\n\nConcluded from version identification result:\n' +
-          javaVer[max_index(javaVer)-1]);
+        set_kb_item( name:"IBM/Java/JRE/Linux/Ver", value:ibmVer );
+        log_message( data:'Detected IBM Java JRE version: ' + ibmVer + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1]);
       }
     }
-    # Sun Java
-    else if(javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)")
-    {
-      set_kb_item(name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1]);
-      set_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
-      register_and_report_cpe(app:"Sun Java JRE", ver:javaVer[1], base:"cpe:/a:sun:jre:",
-                              expr:"^([0-9._]+)", insloc:executableFile);
+    # Sun/Oracle Java
+    else if( javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)" ) {
+
+      jvVer    = ereg_replace( pattern:"_|-", string:javaVer[1], replace:"." );
+      javaVer1 = eregmatch( pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jvVer );
+      if( javaVer1[1] && javaVer1[3] ) {
+        javaVer_or = javaVer1[1] + ":update_" + javaVer1[3];
+      } else if( javaVer1[1] ) {
+        javaVer_or = javaVer1[1];
+      }
+
+      if( version_is_less( version:jvVer, test_version:"1.4.2.38" ) ||
+          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" ) ||
+          version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
+        java_name = "Sun Java";
+        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:jre:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:sun:jre";
+      } else {
+        java_name = "Oracle Java";
+        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:jre:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:oracle:jre";
+      }
+
+      set_kb_item( name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1] );
+      set_kb_item( name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
+      register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer[0], cpename:cpe, insloc:executableFile );
+    }
+
+    # OpenJDK
+    javaVer = get_bin_version( full_prog_name:chomp( executableFile ), sock:sock, version_argv:"-fullversion ", ver_pattern:'openjdk full version \"(.*)\"' );
+    if( javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)" ) {
+
+      jvVer    = ereg_replace( pattern:"_|-", string:javaVer[1], replace:"." );
+      javaVer1 = eregmatch( pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jvVer );
+      if( javaVer1[1] && javaVer1[3] ) {
+        javaVer_or = javaVer1[1] + ":update_" + javaVer1[3];
+      } else if( javaVer1[1] ) {
+        javaVer_or = javaVer1[1];
+      }
+
+      if( version_is_less( version:jvVer, test_version:"1.4.2.38" ) ||
+          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" ) ||
+          version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
+        java_name = "Sun OpenJDK";
+        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:opendjk:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:sun:opendjk";
+      } else {
+        java_name = "Oracle OpenJDK";
+        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:opendjk:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:oracle:opendjk";
+      }
+
+      set_kb_item( name:"OpenJDK/Java/JRE/Linux/Ver", value:javaVer[1] );
+      set_kb_item( name:"OpenJDK/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
+      register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer[0], cpename:cpe, insloc:executableFile );
     }
   }
 }

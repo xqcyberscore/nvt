@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 8066 2017-12-10 09:01:59Z cfischer $
+# $Id: gather-package-list-docker-container.inc 9053 2018-03-08 10:03:14Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 8066 $
+# $Revision: 9053 $
 #
 ###############################################################################
 
@@ -262,16 +262,49 @@ OS_CPE = make_array(
     "AMAZON",     "cpe:/o:amazon:linux",
 
     # Oracle Linux
+    "OracleLinux7.4",  "cpe:/o:oraclelinux:oraclelinux:7.4",
+    "OracleLinux7.3",  "cpe:/o:oraclelinux:oraclelinux:7.3",
+    "OracleLinux7.2",  "cpe:/o:oraclelinux:oraclelinux:7.2",
+    "OracleLinux7.1",  "cpe:/o:oraclelinux:oraclelinux:7.1",
+    "OracleLinux7.0",  "cpe:/o:oraclelinux:oraclelinux:7.0",
     "OracleLinux7",  "cpe:/o:oraclelinux:oraclelinux:7",
+    "OracleLinux6.9",  "cpe:/o:oraclelinux:oraclelinux:6.9",
+    "OracleLinux6.8",  "cpe:/o:oraclelinux:oraclelinux:6.8",
+    "OracleLinux6.7",  "cpe:/o:oraclelinux:oraclelinux:6.7",
+    "OracleLinux6.6",  "cpe:/o:oraclelinux:oraclelinux:6.6",
+    "OracleLinux6.5",  "cpe:/o:oraclelinux:oraclelinux:6.5",
+    "OracleLinux6.4",  "cpe:/o:oraclelinux:oraclelinux:6.4",
+    "OracleLinux6.3",  "cpe:/o:oraclelinux:oraclelinux:6.3",
+    "OracleLinux6.2",  "cpe:/o:oraclelinux:oraclelinux:6.2",
+    "OracleLinux6.1",  "cpe:/o:oraclelinux:oraclelinux:6.1",
+    "OracleLinux6.0",  "cpe:/o:oraclelinux:oraclelinux:6.0",
     "OracleLinux6",  "cpe:/o:oraclelinux:oraclelinux:6",
+    "OracleLinux5.11",  "cpe:/o:oraclelinux:oraclelinux:5.11",
+    "OracleLinux5.10",  "cpe:/o:oraclelinux:oraclelinux:5.10",
+    "OracleLinux5.9",  "cpe:/o:oraclelinux:oraclelinux:5.9",
+    "OracleLinux5.8",  "cpe:/o:oraclelinux:oraclelinux:5.8",
+    "OracleLinux5.7",  "cpe:/o:oraclelinux:oraclelinux:5.7",
+    "OracleLinux5.6",  "cpe:/o:oraclelinux:oraclelinux:5.6",
+    "OracleLinux5.5",  "cpe:/o:oraclelinux:oraclelinux:5.5",
+    "OracleLinux5.4",  "cpe:/o:oraclelinux:oraclelinux:5.4",
+    "OracleLinux5.3",  "cpe:/o:oraclelinux:oraclelinux:5.3",
+    "OracleLinux5.2",  "cpe:/o:oraclelinux:oraclelinux:5.2",
+    "OracleLinux5.1",  "cpe:/o:oraclelinux:oraclelinux:5.1",
+    "OracleLinux5.0",  "cpe:/o:oraclelinux:oraclelinux:5.0",
     "OracleLinux5",  "cpe:/o:oraclelinux:oraclelinux:5",
+    "OracleLinux4.9",  "cpe:/o:oraclelinux:oraclelinux:4.9",
+    "OracleLinux4.8",  "cpe:/o:oraclelinux:oraclelinux:4.8",
+    "OracleLinux4.7",  "cpe:/o:oraclelinux:oraclelinux:4.7",
+    "OracleLinux4.6",  "cpe:/o:oraclelinux:oraclelinux:4.6",
+    "OracleLinux4.5",  "cpe:/o:oraclelinux:oraclelinux:4.5",
+    "OracleLinux4",  "cpe:/o:oraclelinux:oraclelinux:4",
 
     # Gentoo
     "GENTOO", "cpe:/o:gentoo:linux"
 );
 
 
-function register_detected_docker_os( container_id,  os, oskey ) {
+function register_detected_docker_os( container_id, os, oskey ) {
 
   local_var container_id, os, oskey;
 
@@ -303,22 +336,48 @@ function get_container_os( container_id, soc ) {
   # oraclelinux is almost like rhel .. but ..
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "rpm -qf /etc/redhat-release");
 
+  if( "oraclelinux-release-4" >< rls ) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if( match = eregmatch( pattern:"oraclelinux-release-4.([0-9]+)", string:rls ) ) {
+      version = "4." + match[1];
+    } else {
+      version = "4";
+    }
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
+    return ret;
+  }
   if( "oraclelinux-release-5" >< rls ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"OracleLinux release 5", oskey:"OracleLinux5" );
+    if( match = eregmatch( pattern:"oraclelinux-release-5.([0-9]+)", string:rls ) ) {
+      version = "5." + match[1];
+    } else {
+      version = "5";
+    }
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
     return ret;
   }
   if( "oraclelinux-release-6" >< rls ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"OracleLinux release 6", oskey:"OracleLinux6" );
+    if( match = eregmatch( pattern:"oraclelinux-release-6.([0-9]+)", string:rls ) ) {
+      version = "6." + match[1];
+    } else {
+      version = "6";
+    }
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
     return ret;
   }
   if( "oraclelinux-release-7" >< rls ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"OracleLinux release 7", oskey:"OracleLinux7" );
+    if( match = eregmatch( pattern:"oraclelinux-release-7.([0-9]+)", string:rls ) ) {
+      version = "7." + match[1];
+    } else {
+      version = "7";
+    }
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
     return ret;
   }
 

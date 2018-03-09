@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: testlink_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
+# $Id: testlink_detect.nasl 9051 2018-03-08 08:56:52Z jschulte $
 #
 # TestLink Detection
 #
@@ -25,7 +25,7 @@
 ###############################################################################
 
 tag_summary = "Detection of Testlink
-                    
+
 The script sends a connection request to the server and attempts to
 extract the version number from the reply.";
 
@@ -35,8 +35,8 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5744 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 9051 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-08 09:56:52 +0100 (Thu, 08 Mar 2018) $");
  script_tag(name:"creation_date", value:"2009-12-10 18:09:58 +0100 (Thu, 10 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("TestLink Detection");
@@ -72,11 +72,17 @@ foreach dir( make_list_unique( "/testlink", cgi_dirs( port:port ) ) ) {
     egrep(pattern: "Please log in", string: buf))  {
 
       vers = string("unknown");
-      ### try to get version 
-      version = eregmatch(string: buf, pattern: "TestLink ([0-9.]+)",icase:TRUE);
+      ### try to get version
+      version = eregmatch(string: buf, pattern: "TestLink[Prague ]{0,7} ([0-9.]+)",icase:TRUE);
 
       if ( !isnull(version[1]) ) {
          vers=chomp(version[1]);
+      }
+      else {
+        version = eregmatch(string: buf, pattern: '<br[ ]?/>([0-9.]+) \\([A-Za-z]+\\)</p>',  icase: TRUE);
+        if( !isnull(version[1]) ) {
+          vers=chomp(version[1]);
+        }
       }
 
       set_kb_item(name: string("www/", port, "/testlink"), value: string(vers," under ",install));
