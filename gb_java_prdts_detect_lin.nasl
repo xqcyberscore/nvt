@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 9057 2018-03-08 15:45:54Z cfischer $
+# $Id: gb_java_prdts_detect_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
 #
 # Multiple Java Products Version Detection (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_version("$Revision: 9057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 16:45:54 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9064 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,8 +53,6 @@ if(description)
   - IBM Java
 
   - GCJ
-
-  - OpenJDK
 
   The script logs in via ssh, searches for executables 'javaaws' and
   'java' and queries the found executables via command line option '-fullversion'.");
@@ -133,37 +131,6 @@ if( javapaths ) {
 
       set_kb_item( name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1] );
       set_kb_item( name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
-      register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer[0], cpename:cpe, insloc:executableFile );
-    }
-
-    # OpenJDK
-    javaVer = get_bin_version( full_prog_name:chomp( executableFile ), sock:sock, version_argv:"-fullversion ", ver_pattern:'openjdk full version \"(.*)\"' );
-    if( javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)" ) {
-
-      jvVer    = ereg_replace( pattern:"_|-", string:javaVer[1], replace:"." );
-      javaVer1 = eregmatch( pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jvVer );
-      if( javaVer1[1] && javaVer1[3] ) {
-        javaVer_or = javaVer1[1] + ":update_" + javaVer1[3];
-      } else if( javaVer1[1] ) {
-        javaVer_or = javaVer1[1];
-      }
-
-      if( version_is_less( version:jvVer, test_version:"1.4.2.38" ) ||
-          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" ) ||
-          version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
-        java_name = "Sun OpenJDK";
-        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:opendjk:" );
-        if( isnull( cpe ) )
-          cpe = "cpe:/a:sun:opendjk";
-      } else {
-        java_name = "Oracle OpenJDK";
-        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:opendjk:" );
-        if( isnull( cpe ) )
-          cpe = "cpe:/a:oracle:opendjk";
-      }
-
-      set_kb_item( name:"OpenJDK/Java/JRE/Linux/Ver", value:javaVer[1] );
-      set_kb_item( name:"OpenJDK/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
       register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer[0], cpename:cpe, insloc:executableFile );
     }
   }

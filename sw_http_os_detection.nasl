@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9057 2018-03-08 15:45:54Z cfischer $
+# $Id: sw_http_os_detection.nasl 9072 2018-03-09 13:12:47Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 16:45:54 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9072 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 14:12:47 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -370,7 +370,7 @@ function check_http_banner( port ) {
       }
 
       if( "(Oracle)" >< banner ) {
-        register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oraclelinux:oraclelinux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oracle:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         return banner;
       }
 
@@ -673,7 +673,7 @@ function check_default_page( port ) {
       check = "on Oracle Linux</title>";
 
       if( check >< buf ) {
-        register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oraclelinux:oraclelinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oracle:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
         return buf;
       }
 

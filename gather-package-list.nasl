@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9053 2018-03-08 10:03:14Z cfischer $
+# $Id: gather-package-list.nasl 9079 2018-03-10 09:47:28Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9053 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 11:03:14 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9079 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-10 10:47:28 +0100 (Sat, 10 Mar 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -217,6 +217,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
@@ -1255,8 +1256,8 @@ if( "oraclelinux-release-4" >< rls ) {
   } else {
     version = "4";
   }
-  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux release " + version );
-  register_and_report_os( os:"Oracle Linux release " + version, cpe:"cpe:/o:oraclelinux:oraclelinux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux " + version );
+  register_and_report_os( os:"Oracle Linux " + version, cpe:"cpe:/o:oracle:linux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   set_kb_item( name:"ssh/login/release", value:"OracleLinux4" ); # nb: Special handling as the Oracle / ELSA LSCs are using just the major release
   exit( 0 );
 }
@@ -1270,8 +1271,8 @@ if( "oraclelinux-release-5" >< rls ) {
   } else {
     version = "5";
   }
-  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux release " + version );
-  register_and_report_os( os:"Oracle Linux release " + version, cpe:"cpe:/o:oraclelinux:oraclelinux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux " + version );
+  register_and_report_os( os:"Oracle Linux " + version, cpe:"cpe:/o:oracle:linux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   set_kb_item( name:"ssh/login/release", value:"OracleLinux5" ); # nb: Special handling as the Oracle / ELSA LSCs are using just the major release
   exit( 0 );
 }
@@ -1285,8 +1286,8 @@ if( "oraclelinux-release-6" >< rls ) {
   } else {
     version = "6";
   }
-  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux release " + version );
-  register_and_report_os( os:"Oracle Linux release " + version, cpe:"cpe:/o:oraclelinux:oraclelinux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux " + version );
+  register_and_report_os( os:"Oracle Linux " + version, cpe:"cpe:/o:oracle:linux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   set_kb_item( name:"ssh/login/release", value:"OracleLinux6" ); # nb: Special handling as the Oracle / ELSA LSCs are using just the major release
   exit( 0 );
 }
@@ -1300,8 +1301,8 @@ if( "oraclelinux-release-7" >< rls ) {
   } else {
     version = "7";
   }
-  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux release " + version );
-  register_and_report_os( os:"Oracle Linux release " + version, cpe:"cpe:/o:oraclelinux:oraclelinux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  log_message( port:port, data:"We are able to login and detect that you are running Oracle Linux " + version );
+  register_and_report_os( os:"Oracle Linux " + version, cpe:"cpe:/o:oracle:linux:" + version, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   set_kb_item( name:"ssh/login/release", value:"OracleLinux7" ); # nb: Special handling as the Oracle / ELSA LSCs are using just the major release
   exit( 0 );
 }

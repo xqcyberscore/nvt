@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_147d33439c_php-phpmyadmin-motranslator_fc26.nasl 9012 2018-03-02 13:12:29Z santu $
+# $Id: gb_fedora_2018_147d33439c_php-phpmyadmin-motranslator_fc26.nasl 9076 2018-03-09 14:58:13Z cfischer $
 #
 # Fedora Update for php-phpmyadmin-motranslator FEDORA-2018-147d33439c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874176");
-  script_version("$Revision: 9012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:12:29 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 9076 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 15:58:13 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 08:45:53 +0100 (Fri, 02 Mar 2018)");
   script_cve_id("CVE-2018-7260");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-phpmyadmin-motranslator FEDORA-2018-147d33439c");
   script_tag(name: "summary", value: "Check the version of php-phpmyadmin-motranslator");

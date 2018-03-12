@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_2018_2_lin.nasl 8996 2018-03-01 10:32:27Z cfischer $
+# $Id: gb_squid_2018_2_lin.nasl 9081 2018-03-12 07:31:35Z cfischer $
 #
 # Squid Proxy Cache Security Update Advisory SQUID-2018:2 (Linux) 
 #
@@ -31,11 +31,11 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107296");
   script_cve_id("CVE-2018-1000027");
-  script_version("$Revision: 8996 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:32:27 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9081 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 08:31:35 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-09 19:08:28 +0100 (Fri, 09 Feb 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 

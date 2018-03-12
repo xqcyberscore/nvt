@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga2_mult_vuln.nasl 9018 2018-03-02 21:18:09Z cfischer $
+# $Id: gb_icinga2_mult_vuln.nasl 9073 2018-03-09 13:29:54Z cfischer $
 #
-# Icinga2 Multiple Vulnerabilities
+# Icinga2 <= 2.8.1 Multiple Vulnerabilities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113121");
-  script_version("$Revision: 9018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 22:18:09 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 9073 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 14:29:54 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 11:56:30 +0100 (Fri, 02 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -38,9 +38,9 @@ if( description )
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_cve_id("CVE-2018-6532", "CVE-2018-6533", "CVE-2018-6534", "CVE-2018-6535", "CVE-2018-6536");
+  script_cve_id("CVE-2018-6532", "CVE-2018-6533", "CVE-2018-6534", "CVE-2018-6535", "CVE-2018-6536", "CVE-2017-16933");
 
-  script_name("Icinga2 Multiple Vulnerabilities");
+  script_name("Icinga2 <= 2.8.1 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -62,6 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/issues/5991");
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/6103");
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/6104");
+  script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/issues/5793");
   script_xref(name:"URL", value:"https://www.icinga.com/category/releases/");
 
   exit( 0 );

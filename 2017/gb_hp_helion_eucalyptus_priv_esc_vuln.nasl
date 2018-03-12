@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_helion_eucalyptus_priv_esc_vuln.nasl 5163 2017-02-02 08:32:24Z ckuerste $
+# $Id: gb_hp_helion_eucalyptus_priv_esc_vuln.nasl 9081 2018-03-12 07:31:35Z cfischer $
 #
 # HP Helion Eucalyptus Remote Privilege Escalation Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:eucalyptus:eucalyptus';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106558");
-  script_version("$Revision: 5163 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-02 09:32:24 +0100 (Thu, 02 Feb 2017) $");
+  script_version("$Revision: 9081 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-12 08:31:35 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-02-02 13:27:22 +0700 (Thu, 02 Feb 2017)");
-  script_tag(name:"cvss_base", value: "6.0");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8528");
 

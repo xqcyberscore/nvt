@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_sentinel_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_netiq_sentinel_detect.nasl 9065 2018-03-09 09:57:38Z ckuersteiner $
 #
 # NetIQ Sentinel Detection
 #
@@ -30,12 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105618");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 9065 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:57:38 +0100 (Fri, 09 Mar 2018) $");
  script_tag(name:"creation_date", value:"2016-04-21 16:30:22 +0200 (Thu, 21 Apr 2016)");
  script_name("NetIQ Sentinel Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name: "summary" , value: "Detection of NetIQ Sentinel
+
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -45,6 +47,7 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8443);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  exit(0);
 }
 
@@ -56,8 +59,7 @@ include("host_details.inc");
 port = get_http_port( default:8443 );
 
 url = '/sentinel/views/logon.html';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:url, port:port );
 
 if( buf !~ "HTTP/1\.. 200" || "<title>NetIQ Sentinel Login" >!< buf ) exit( 0 );
 
@@ -73,11 +75,11 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "version" >< buf )
 {
   version = eregmatch( pattern:'"version":"([0-9]+[^"]+)"', string:buf );
-  if( ! isnull( version[1] ) )
-  {
+  if( ! isnull( version[1] ) ) {
     vers = version[1];
     cpe += ':' + vers;
     set_kb_item( name:"netiq_sentinel/version", value:vers );
+    concUrl = url;
   }
 }
 
@@ -93,13 +95,9 @@ if( '"rev":"' >< buf )
 
 register_product( cpe:cpe, location:'/sentinel', port:port );
 
-report = 'Detected NetIQ Sentinel\n' + 
-         'Version: ' + vers + '\n';
-if( revision ) report += 'Revision: ' + revision + '\n';
-report += 'CPE: ' + cpe + '\n' + 
-          'Concluded from version identification result:\n' + version[0];
-
-log_message( port:port, data:report );
+log_message(data: build_detection_report(app: "NetIQ Sentinel", version: vers, install: "/sentinel", cpe: cpe,
+                                         concluded: version[0], concludedUrl: concUrl,
+                                         extra: "Revision: " + revision),
+            port: port);
 
 exit(0);
-

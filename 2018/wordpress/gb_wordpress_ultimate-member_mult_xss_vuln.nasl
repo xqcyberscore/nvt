@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ultimate-member_mult_xss_vuln.nasl 8861 2018-02-19 09:25:25Z asteins $
+# $Id: gb_wordpress_ultimate-member_mult_xss_vuln.nasl 9076 2018-03-09 14:58:13Z cfischer $
 #
 # WordPress Ultimate Member Plugin 2.0 Multiple XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112226");
-  script_version("$Revision: 8861 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-19 10:25:25 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 9076 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-09 15:58:13 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-19 10:15:00 +0100 (Mon, 19 Feb 2018)");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-6943", "CVE-2018-6944");
 

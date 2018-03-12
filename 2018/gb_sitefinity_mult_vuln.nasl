@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_mult_vuln.nasl 8793 2018-02-13 13:01:43Z asteins $
+# $Id: gb_sitefinity_mult_vuln.nasl 9067 2018-03-09 10:13:17Z cfischer $
 #
 # Sitefinity < 10.1 Multiple Vulnerabilities
 #
@@ -33,11 +33,11 @@ CPE = 'cpe:/a:telerik:sitefinity_cms';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112222");
-  script_version("$Revision: 8793 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 14:01:43 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 9067 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-09 11:13:17 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-13 13:52:34 +0100 (Tue, 13 Feb 2018)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-18175", "CVE-2017-18176", "CVE-2017-18177", "CVE-2017-18178", "CVE-2017-18179");
 

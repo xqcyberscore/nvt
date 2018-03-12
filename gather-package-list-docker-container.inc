@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 9053 2018-03-08 10:03:14Z cfischer $
+# $Id: gather-package-list-docker-container.inc 9079 2018-03-10 09:47:28Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9053 $
+# $Revision: 9079 $
 #
 ###############################################################################
 
@@ -146,6 +146,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
@@ -262,42 +263,42 @@ OS_CPE = make_array(
     "AMAZON",     "cpe:/o:amazon:linux",
 
     # Oracle Linux
-    "OracleLinux7.4",  "cpe:/o:oraclelinux:oraclelinux:7.4",
-    "OracleLinux7.3",  "cpe:/o:oraclelinux:oraclelinux:7.3",
-    "OracleLinux7.2",  "cpe:/o:oraclelinux:oraclelinux:7.2",
-    "OracleLinux7.1",  "cpe:/o:oraclelinux:oraclelinux:7.1",
-    "OracleLinux7.0",  "cpe:/o:oraclelinux:oraclelinux:7.0",
-    "OracleLinux7",  "cpe:/o:oraclelinux:oraclelinux:7",
-    "OracleLinux6.9",  "cpe:/o:oraclelinux:oraclelinux:6.9",
-    "OracleLinux6.8",  "cpe:/o:oraclelinux:oraclelinux:6.8",
-    "OracleLinux6.7",  "cpe:/o:oraclelinux:oraclelinux:6.7",
-    "OracleLinux6.6",  "cpe:/o:oraclelinux:oraclelinux:6.6",
-    "OracleLinux6.5",  "cpe:/o:oraclelinux:oraclelinux:6.5",
-    "OracleLinux6.4",  "cpe:/o:oraclelinux:oraclelinux:6.4",
-    "OracleLinux6.3",  "cpe:/o:oraclelinux:oraclelinux:6.3",
-    "OracleLinux6.2",  "cpe:/o:oraclelinux:oraclelinux:6.2",
-    "OracleLinux6.1",  "cpe:/o:oraclelinux:oraclelinux:6.1",
-    "OracleLinux6.0",  "cpe:/o:oraclelinux:oraclelinux:6.0",
-    "OracleLinux6",  "cpe:/o:oraclelinux:oraclelinux:6",
-    "OracleLinux5.11",  "cpe:/o:oraclelinux:oraclelinux:5.11",
-    "OracleLinux5.10",  "cpe:/o:oraclelinux:oraclelinux:5.10",
-    "OracleLinux5.9",  "cpe:/o:oraclelinux:oraclelinux:5.9",
-    "OracleLinux5.8",  "cpe:/o:oraclelinux:oraclelinux:5.8",
-    "OracleLinux5.7",  "cpe:/o:oraclelinux:oraclelinux:5.7",
-    "OracleLinux5.6",  "cpe:/o:oraclelinux:oraclelinux:5.6",
-    "OracleLinux5.5",  "cpe:/o:oraclelinux:oraclelinux:5.5",
-    "OracleLinux5.4",  "cpe:/o:oraclelinux:oraclelinux:5.4",
-    "OracleLinux5.3",  "cpe:/o:oraclelinux:oraclelinux:5.3",
-    "OracleLinux5.2",  "cpe:/o:oraclelinux:oraclelinux:5.2",
-    "OracleLinux5.1",  "cpe:/o:oraclelinux:oraclelinux:5.1",
-    "OracleLinux5.0",  "cpe:/o:oraclelinux:oraclelinux:5.0",
-    "OracleLinux5",  "cpe:/o:oraclelinux:oraclelinux:5",
-    "OracleLinux4.9",  "cpe:/o:oraclelinux:oraclelinux:4.9",
-    "OracleLinux4.8",  "cpe:/o:oraclelinux:oraclelinux:4.8",
-    "OracleLinux4.7",  "cpe:/o:oraclelinux:oraclelinux:4.7",
-    "OracleLinux4.6",  "cpe:/o:oraclelinux:oraclelinux:4.6",
-    "OracleLinux4.5",  "cpe:/o:oraclelinux:oraclelinux:4.5",
-    "OracleLinux4",  "cpe:/o:oraclelinux:oraclelinux:4",
+    "OracleLinux7.4",  "cpe:/o:oracle:linux:7.4",
+    "OracleLinux7.3",  "cpe:/o:oracle:linux:7.3",
+    "OracleLinux7.2",  "cpe:/o:oracle:linux:7.2",
+    "OracleLinux7.1",  "cpe:/o:oracle:linux:7.1",
+    "OracleLinux7.0",  "cpe:/o:oracle:linux:7.0",
+    "OracleLinux7",    "cpe:/o:oracle:linux:7",
+    "OracleLinux6.9",  "cpe:/o:oracle:linux:6.9",
+    "OracleLinux6.8",  "cpe:/o:oracle:linux:6.8",
+    "OracleLinux6.7",  "cpe:/o:oracle:linux:6.7",
+    "OracleLinux6.6",  "cpe:/o:oracle:linux:6.6",
+    "OracleLinux6.5",  "cpe:/o:oracle:linux:6.5",
+    "OracleLinux6.4",  "cpe:/o:oracle:linux:6.4",
+    "OracleLinux6.3",  "cpe:/o:oracle:linux:6.3",
+    "OracleLinux6.2",  "cpe:/o:oracle:linux:6.2",
+    "OracleLinux6.1",  "cpe:/o:oracle:linux:6.1",
+    "OracleLinux6.0",  "cpe:/o:oracle:linux:6.0",
+    "OracleLinux6",    "cpe:/o:oracle:linux:6",
+    "OracleLinux5.11", "cpe:/o:oracle:linux:5.11",
+    "OracleLinux5.10", "cpe:/o:oracle:linux:5.10",
+    "OracleLinux5.9",  "cpe:/o:oracle:linux:5.9",
+    "OracleLinux5.8",  "cpe:/o:oracle:linux:5.8",
+    "OracleLinux5.7",  "cpe:/o:oracle:linux:5.7",
+    "OracleLinux5.6",  "cpe:/o:oracle:linux:5.6",
+    "OracleLinux5.5",  "cpe:/o:oracle:linux:5.5",
+    "OracleLinux5.4",  "cpe:/o:oracle:linux:5.4",
+    "OracleLinux5.3",  "cpe:/o:oracle:linux:5.3",
+    "OracleLinux5.2",  "cpe:/o:oracle:linux:5.2",
+    "OracleLinux5.1",  "cpe:/o:oracle:linux:5.1",
+    "OracleLinux5.0",  "cpe:/o:oracle:linux:5.0",
+    "OracleLinux5",    "cpe:/o:oracle:linux:5",
+    "OracleLinux4.9",  "cpe:/o:oracle:linux:4.9",
+    "OracleLinux4.8",  "cpe:/o:oracle:linux:4.8",
+    "OracleLinux4.7",  "cpe:/o:oracle:linux:4.7",
+    "OracleLinux4.6",  "cpe:/o:oracle:linux:4.6",
+    "OracleLinux4.5",  "cpe:/o:oracle:linux:4.5",
+    "OracleLinux4",    "cpe:/o:oracle:linux:4",
 
     # Gentoo
     "GENTOO", "cpe:/o:gentoo:linux"
@@ -344,7 +345,7 @@ function get_container_os( container_id, soc ) {
     } else {
       version = "4";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
     return ret;
   }
   if( "oraclelinux-release-5" >< rls ) {
@@ -355,7 +356,7 @@ function get_container_os( container_id, soc ) {
     } else {
       version = "5";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
     return ret;
   }
   if( "oraclelinux-release-6" >< rls ) {
@@ -366,7 +367,7 @@ function get_container_os( container_id, soc ) {
     } else {
       version = "6";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
     return ret;
   }
   if( "oraclelinux-release-7" >< rls ) {
@@ -377,7 +378,7 @@ function get_container_os( container_id, soc ) {
     } else {
       version = "7";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux release " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
     return ret;
   }
 

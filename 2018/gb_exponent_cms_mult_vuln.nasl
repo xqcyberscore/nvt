@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 9056 2018-03-08 13:11:09Z jschulte $
+# $Id: gb_exponent_cms_mult_vuln.nasl 9067 2018-03-09 10:13:17Z cfischer $
 #
 # Exponent CMS 2.3.9 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113127");
-  script_version("$Revision: 9056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 14:11:09 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9067 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 11:13:17 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-08 13:45:55 +0100 (Thu, 08 Mar 2018)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

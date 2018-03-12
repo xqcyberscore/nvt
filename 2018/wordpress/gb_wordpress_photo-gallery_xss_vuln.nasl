@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 8881 2018-02-20 10:30:22Z asteins $
+# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 9067 2018-03-09 10:13:17Z cfischer $
 #
 # WordPress Photo Gallery Plugin XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112236");
-  script_version("$Revision: 8881 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-20 11:30:22 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 9067 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-09 11:13:17 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-20 11:30:00 +0100 (Tue, 20 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-2324");
 

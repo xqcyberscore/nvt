@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0651.nasl 6552 2017-07-06 11:49:41Z cfischer $
+# $Id: ELSA-2016-0651.nasl 9066 2018-03-09 10:10:37Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122936");
-script_version("$Revision: 6552 $");
+script_version("$Revision: 9066 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:52 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-03-09 11:10:37 +0100 (Fri, 09 Mar 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0651");
 script_tag(name: "insight", value: "ELSA-2016-0651 -  java-1.8.0-openjdk security update - [1:1.8.0.91-1.b03]- Update to u91b14.- Resolves: rhbz#1325420"); 
 script_tag(name : "solution", value : "update software");
@@ -69,7 +69,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo-debug", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -77,7 +77,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel-debug", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -85,7 +85,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless-debug", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -93,7 +93,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc-debug", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -101,7 +101,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src-debug", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.91~0.b14.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }

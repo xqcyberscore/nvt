@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 9060 2018-03-08 18:56:33Z cfischer $
+# $Id: gb_ilias_detect.nasl 9080 2018-03-10 10:38:40Z cfischer $
 #
 # ILIAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 9060 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-08 19:56:33 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9080 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-10 11:38:40 +0100 (Sat, 10 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,15 +86,33 @@ foreach dir (make_list_unique("/", "/ilias", cgi_dirs(port: port))) {
   req = http_get(port: port, item: loc);
   res = http_keepalive_send_recv(port: port, data: req);
 
-  if ("<title>ILIAS Setup</title>" >< res && "std setup ilSetupLogin" >< res) {
+  # <title>ILIAS Setup</title>
+  # <title>ILIAS 3 Setup</title>
+  if (res =~ "<title>ILIAS ([0-9] )?Setup</title>" && 
+      ("std setup ilSetupLogin" >< res || 'class="ilSetupLogin">' >< res ||
+       'class="ilLogin">' >< res || 'class="il_Header">' >< res)) {
     version = "unknown";
 
-    vers = eregmatch(pattern: 'class="row">ILIAS ([0-9.]+)', string: res);
-    if (!isnull(vers[1])) {
-      version = vers[1];
-      set_kb_item(name: "ilias/version", value: version);
+    # <small>ILIAS 3.10.5 2009-03-06 (Setup Version 2 Revision: 17651)</small>
+    # <small>ILIAS 4.4.6 2014-11-22 (Setup Version 2 Revision: 49592)</small>
+    # <div class="row">ILIAS 5.1.13 2016-12-22 (Setup Version 2 Revisio)</div>
+    vers = eregmatch(pattern: '(class="row">|<small>)ILIAS ([0-9.]+)', string: res);
+    if (!isnull(vers[2])) {
+      version = vers[2];
+    } else {
+      # Some versions requires another request to the login.php to get the real version
+      # e.g. 3.4 had only <small>ILIAS3 - setup Version 2.1.61.4.5</small> on the setup page
+      url = "/login.php?lang=en";
+      req = http_get(port: port, item: url);
+      res = http_keepalive_send_recv(port: port, data: req);
+      # <p class="very_small">powered by <b>ILIAS</b> (v3.4.3 2005-06-15)</p>
+      vers = eregmatch(pattern: ">powered by <b>ILIAS</b> \(v([0-9.]+)", string: res);
+      if (!isnull(vers[1])) {
+        version = vers[1];
+      }
     }
 
+    set_kb_item(name: "ilias/version", value: version);
     set_kb_item(name: "ilias/installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ilias:ilias:");

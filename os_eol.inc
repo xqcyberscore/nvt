@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 8743 2018-02-09 13:10:26Z cfischer $
+# $Id: os_eol.inc 9078 2018-03-09 17:47:09Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8743 $
+# $Revision: 9078 $
 #
 ###############################################################################
 
@@ -108,6 +108,7 @@ eol_cpes['cpe:/o:suse:linux_enterprise:9']    = '2005-12-15';
 # Ubuntu (https://wiki.ubuntu.com/Releases)
 eol_urls['cpe:/o:canonical:ubuntu_linux'] = 'https://wiki.ubuntu.com/Releases';
 eol_names['cpe:/o:canonical:ubuntu_linux'] = 'Ubuntu';
+eol_cpes['cpe:/o:canonical:ubuntu_linux:17.04'] = '2018-01-13';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:16.10'] = '2017-07-20';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:15.10'] = '2016-07-28';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:15.04'] = '2016-02-04';
@@ -161,6 +162,7 @@ eol_cpes['cpe:/o:centos:centos:2'] = '2009-05-31';
 # Fedora (https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL)
 eol_urls['cpe:/o:fedoraproject:fedora'] = 'https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL';
 eol_names['cpe:/o:fedoraproject:fedora'] = 'Fedora';
+eol_cpes['cpe:/o:fedoraproject:fedora:25'] = '2017-12-12';
 eol_cpes['cpe:/o:fedoraproject:fedora:24'] = '2017-08-08';
 eol_cpes['cpe:/o:fedoraproject:fedora:23'] = '2016-12-20';
 eol_cpes['cpe:/o:fedoraproject:fedora:22'] = '2016-07-19';
@@ -203,8 +205,8 @@ eol_cpes['cpe:/o:debian:debian_linux:1.3'] = 'unknown';
 eol_cpes['cpe:/o:debian:debian_linux:1.2'] = 'unknown';
 eol_cpes['cpe:/o:debian:debian_linux:1.1'] = 'unknown';
 
-# Mandriva (https://en.wikipedia.org/wiki/Mandriva_Linux#Table_of_versions)
-eol_urls['cpe:/o:mandriva:linux'] = 'https://en.wikipedia.org/wiki/Mandriva_Linux#Table_of_versions';
+# Mandriva (https://en.wikipedia.org/wiki/Mandriva_Linux#Versions)
+eol_urls['cpe:/o:mandriva:linux'] = 'https://en.wikipedia.org/wiki/Mandriva_Linux#Versions';
 eol_names['cpe:/o:mandriva:linux'] = 'Mandriva Linux';
 eol_cpes['cpe:/o:mandriva:linux:2011.0'] = '2013-02-29';
 eol_cpes['cpe:/o:mandriva:linux:2010.2'] = 'unknown';
@@ -217,7 +219,7 @@ eol_cpes['cpe:/o:mandriva:linux:2008.0'] = '2010-10-09';
 eol_cpes['cpe:/o:mandriva:linux:2007.1'] = 'unknown';
 eol_cpes['cpe:/o:mandriva:linux:2007.0'] = 'unknown';
 eol_cpes['cpe:/o:mandriva:linux:2006.0'] = 'unknown';
-eol_urls['cpe:/o:mandriva:enterprise_server'] = 'https://en.wikipedia.org/wiki/Mandriva_Linux#Table_of_versions';
+eol_urls['cpe:/o:mandriva:enterprise_server'] = 'https://en.wikipedia.org/wiki/Mandriva_Linux#Versions';
 eol_names['cpe:/o:mandriva:enterprise_server'] = 'Mandriva Enterprise Server';
 eol_cpes['cpe:/o:mandriva:enterprise_server:5.2'] = 'unknown';
 eol_cpes['cpe:/o:mandriva:enterprise_server:5.1'] = 'unknown';
@@ -343,6 +345,7 @@ eol_cpes['cpe:/o:fortinet:fortios:3.3'] = '2009-10-02';
 # Xenserver (https://www.citrix.de/support/product-lifecycle/product-matrix.html)
 eol_urls['cpe:/a:citrix:xenserver'] = 'https://www.citrix.de/support/product-lifecycle/product-matrix.html';
 eol_names['cpe:/a:citrix:xenserver'] = 'Xenserver';
+eol_cpes['cpe:/a:citrix:xenserver:7.3'] = '2018-06-12';
 eol_cpes['cpe:/a:citrix:xenserver:7.2'] = '2018-03-16';
 eol_cpes['cpe:/a:citrix:xenserver:7.0'] = '2021-05-19';
 eol_cpes['cpe:/a:citrix:xenserver:6.5'] = '2018-06-26';
@@ -473,6 +476,7 @@ eol_cpes['cpe:/o:freebsd:freebsd:9.3'] = '2016-12-31';
 # eol_cpes['cpe:/o:freebsd:freebsd:10.0'] = '2015-02-28'; # nb: Don't add 10.0 for now as gb_ssh_os_detection.nasl can't detect the differences between 10.x and would throw false positives
 eol_cpes['cpe:/o:freebsd:freebsd:10.1'] = '2016-12-31';
 eol_cpes['cpe:/o:freebsd:freebsd:10.2'] = '2016-12-31';
+# eol_cpes['cpe:/o:freebsd:freebsd:11.0'] = '2017-12-30'; # nb: Same as above
 
 # NetBSD (https://en.wikipedia.org/wiki/NetBSD#Releases)
 eol_urls['cpe:/o:netbsd:netbsd'] = 'https://en.wikipedia.org/wiki/NetBSD#Releases';
@@ -573,6 +577,15 @@ eol_cpes['cpe:/o:greenbone:greenbone_os:2.1'] = '2014-05-31';
 eol_cpes['cpe:/o:greenbone:greenbone_os:2.0'] = '2014-01-31';
 eol_cpes['cpe:/o:greenbone:greenbone_os:1.7'] = '2013-06-30';
 eol_cpes['cpe:/o:greenbone:greenbone_os:1.6'] = 'unknown';
+
+# Oracle Linux (http://www.oracle.com/us/support/library/elsp-lifetime-069338.pdf)
+# nb: Use the "Extended support Ends" date
+eol_urls['cpe:/o:oracle:linux'] = 'http://www.oracle.com/us/support/library/elsp-lifetime-069338.pdf';
+eol_names['cpe:/o:oracle:linux'] = 'Oracle Linux';
+eol_regex['cpe:/o:oracle:linux'] = '^([0-9]+)';
+eol_cpes['cpe:/o:oracle:linux:5'] = '2018-06-30';
+eol_cpes['cpe:/o:oracle:linux:4'] = '2013-02-28';
+eol_cpes['cpe:/o:oracle:linux:3'] = '2011-10-31';
 
 # General notes for windows: https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet
 
@@ -895,7 +908,7 @@ function os_reached_eol( cpe, debug ) {
       return;
     } else {
       final_cpe = base_cpe + ":" + v[0];
-      if( debug ) display( "DEBUG: Final CPE to check agains EOL versions: " + final_cpe + " ." );
+      if( debug ) display( "DEBUG: Final CPE to check against EOL versions: " + final_cpe + " ." );
     }
   # Full match for a CPE
   } else {
@@ -924,7 +937,7 @@ function get_eol_url( cpe ) {
     pattern = eol_regex[base_cpe];
     version = get_version_from_cpe( cpe:cpe );
     v = eregmatch( pattern:pattern, string:version );
-    if( !isnull(v[0])) {
+    if( ! isnull( v[0] ) ) {
       _cpe = base_cpe + ":" + v[0];
       if( eol_urls[_cpe] )
         return eol_urls[_cpe];
@@ -947,11 +960,22 @@ function get_eol_url( cpe ) {
 
 function get_eol_date( cpe ) {
 
-  local_var cpe, eol_date;
+  local_var cpe, base_cpe, pattern, version, v, eol_date;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_eol_date" );
     return FALSE;
+  }
+
+  base_cpe = get_base_cpe( cpe:cpe );
+
+  if( eol_regex[base_cpe] ) {
+    pattern = eol_regex[base_cpe];
+    version = get_version_from_cpe( cpe:cpe );
+    v = eregmatch( pattern:pattern, string:version );
+    if( ! isnull( v[0] ) ) {
+      cpe = base_cpe + ":" + v[0];
+    }
   }
 
   if( ! eol_cpes[cpe] ) return FALSE;

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1919.nasl 6560 2017-07-06 11:58:38Z cfischer $
+# $Id: ELSA-2015-1919.nasl 9066 2018-03-09 10:10:37Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122717");
-script_version("$Revision: 6560 $");
+script_version("$Revision: 9066 $");
 script_tag(name:"creation_date", value:"2015-10-22 08:30:58 +0300 (Thu, 22 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-03-09 11:10:37 +0100 (Fri, 09 Mar 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1919");
 script_tag(name: "insight", value: "ELSA-2015-1919 -  java-1.8.0-openjdk security update - [1:1.8.0.65-0.b17]- October 2015 security update to u65b17.- Add script for generating OpenJDK tarballs from a local Mercurial tree.- Update RH1191652 patch to build against current AArch64 tree.- Use appropriate source ID to avoid unpacking both tarballs on AArch64.- Fix library removal script so jpeg, giflib and png sources are removed.- Update system-lcms.patch to regenerated upstream (8042159) version.- Drop LCMS update from rhel6-built.patch- Resolves: rhbz#1257654[1:1.8.0.51-4.b16]- bumped release to do an build, so test whether 1251560 was really fixed- Resolves: rhbz#1254197[1:1.8.0.60-4.b27]- updated to u60 (1255352)- Resolves: rhbz#1257654"); 
 script_tag(name : "solution", value : "update software");
@@ -98,7 +98,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo-debug", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -106,7 +106,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel-debug", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -114,7 +114,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless-debug", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -122,7 +122,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc-debug", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -130,7 +130,7 @@ if(release == "OracleLinux6")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src-debug", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.65~0.b17.el6_7", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
     exit(0);  
   }

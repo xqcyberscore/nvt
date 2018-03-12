@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0650.nasl 6552 2017-07-06 11:49:41Z cfischer $
+# $Id: ELSA-2016-0650.nasl 9066 2018-03-09 10:10:37Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122937");
-script_version("$Revision: 6552 $");
+script_version("$Revision: 9066 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:53 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-03-09 11:10:37 +0100 (Fri, 09 Mar 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0650");
 script_tag(name: "insight", value: "ELSA-2016-0650 -  java-1.8.0-openjdk security update - [1:1.8.0.91-0.b14]- Add additional fix to Zero patch to properly handle result on 64-bit big-endian- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Revert settings to production defaults so we can at least get a build.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Switch to a slowdebug build to try and unearth remaining issue on s390x.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add missing comma in 8132051 patch.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add 8132051 port to Zero.- Turn on bootstrap build for all to ensure we are now good to go.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add 8132051 port to AArch64.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Enable a full bootstrap on JIT archs. Full build held back by Zero archs anyway.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Update to u91b14.- Resolves: rhbz#1325422"); 
 script_tag(name : "solution", value : "update software");
@@ -65,7 +65,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-accessibility", rpm:"java-1.8.0-openjdk-accessibility~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-accessibility-debug", rpm:"java-1.8.0-openjdk-accessibility~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -77,7 +77,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-demo-debug", rpm:"java-1.8.0-openjdk-demo~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -85,7 +85,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-devel-debug", rpm:"java-1.8.0-openjdk-devel~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -93,7 +93,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-headless-debug", rpm:"java-1.8.0-openjdk-headless~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -101,7 +101,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-javadoc-debug", rpm:"java-1.8.0-openjdk-javadoc~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }
@@ -109,7 +109,7 @@ if(release == "OracleLinux7")
     security_message(data:res);
     exit(0);  
   }
-  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
+  if ((res = isrpmvuln(pkg:"java-1.8.0-openjdk-src-debug", rpm:"java-1.8.0-openjdk-src~debug~1.8.0.91~0.b14.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
     exit(0);  
   }

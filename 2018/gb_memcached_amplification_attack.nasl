@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_amplification_attack.nasl 9044 2018-03-07 13:38:46Z cfischer $
+# $Id: gb_memcached_amplification_attack.nasl 9077 2018-03-09 15:00:29Z cfischer $
 #
 # Memcached Amplification Attack (Memcrashed)
 #
@@ -32,9 +32,9 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108357");
-  script_version("$Revision: 9044 $");
+  script_version("$Revision: 9077 $");
   script_cve_id("CVE-2018-1000115");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:38:46 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-09 16:00:29 +0100 (Fri, 09 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-01 08:31:24 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -94,6 +94,8 @@ if(description)
 
 include("network_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
 
@@ -115,15 +117,21 @@ data += string("stats\r\n");
 req_len = strlen( data );
 
 send( socket:soc, data:data );
-buf = recv( socket:soc, length:4096 );
+res = recv( socket:soc, length:4096 );
 close( soc );
-if( ! buf ) exit( 0 );
-# nb: The raw_string above with uppercase STAT
-# Take care of the ResponseID which sometimes
-# seems to be the next number of the initial request.
-if( hexstr( buf ) !~ "^0001000000[0-9][0-9]00005354415420" ) exit( 0 );
+if( ! res || strlen( res ) < 8 ) exit( 0 );
+res_str = bin2string( ddata:res, noprint_replacement:' ' );
 
-resp_len = strlen( buf );
+# nb: The service normally will answer with the same "req" raw_string above following by the stat output:
+# 0x0000:  00 01 00 00 00 02 00 00 53 54 41 54 20 70 69 64    ........STAT pid
+# 0x0010:  20 31 37 39 37 0D 0A 53 54 41 54 20 75 70 74 69     1797..STAT upti
+# but the check here is done more generic as some servers have responded
+# with malloc_fails messages like the one below:
+# 0x0000:  00 01 00 01 00 02 00 00 53 54 41 54 20 6D 61 6C    ........STAT mal
+# 0x0010:  6C 6F 63 5F 66 61 69 6C 73 20 30 0D 0A 53 54 41    loc_fails 0..STA
+if( hexstr( substr( res, 0, 7 ) ) !~ "^([0-9]+)" || res_str !~ "STAT " ) exit( 0 );
+
+resp_len = strlen( res );
 
 if( resp_len > ( 20 * req_len ) ) {
   report = 'We send a query request of ' + req_len + ' bytes and received a response of ' + resp_len + ' bytes.';
