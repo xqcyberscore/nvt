@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mambo_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: mambo_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
 # Description: Mambo Site Server 4.0.10 XSS
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to a newer version.";
 if(description)
 {
   script_id(11441);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 9087 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-1203");
   script_bugtraq_id(7135);
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Mambo Site Server 4.0.10 XSS");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2003 k-otik.com");

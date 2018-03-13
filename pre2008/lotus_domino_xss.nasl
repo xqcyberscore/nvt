@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: lotus_domino_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: lotus_domino_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
 # Description: Lotus Domino Src and BaseTarget XSS
 #
 # Authors:
@@ -25,15 +25,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19764");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 9087 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3015");
   script_bugtraq_id(14845, 14846);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Lotus Domino Src and BaseTarget XSS");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);

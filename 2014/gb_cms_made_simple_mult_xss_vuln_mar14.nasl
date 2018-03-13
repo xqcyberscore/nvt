@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 9086 2018-03-12 11:54:08Z cfischer $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities Mar14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804327");
-  script_version("$Revision: 8680 $");
+  script_version("$Revision: 9086 $");
   script_cve_id("CVE-2014-0334", "CVE-2014-2092");
   script_bugtraq_id(65746, 65898);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-03-18 13:06:25 +0530 (Tue, 18 Mar 2014)");
   script_name("CMS Made Simple Multiple XSS Vulnerabilities Mar14");
 
@@ -81,12 +81,6 @@ if (!http_port = get_app_port(cpe:CPE))
 if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
 
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Extract Cookie
 url = dir + "/install/index.php";
 
 cmsRes = http_get(item:url,port:http_port);
@@ -102,7 +96,7 @@ if(cookie)
   postData = "default_cms_lang='%3e" +
              '"%3e%3cbody%2fonload%3dalert(document.cookie)%3e&submit=Submit';
 
-  ## Construct the POST data with the crafted request
+  host = http_host_name(port:http_port);
   cmsReq = string("POST ",url," HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
                "Cookie: PHPSESSID=",cookie[1],"\r\n",
@@ -110,12 +104,11 @@ if(cookie)
                "Content-Length: ", strlen(postData),"\r\n",
                "\r\n",
                postData);
-  ## Send the crafted request and receive the response
-  cmsRes = http_keepalive_send_recv(port:http_port, data:cmsReq, bodyonly:TRUE);
-  if(cmsRes =~ "HTTP/1\.. 200" && "onload=alert(document.cookie)>" >< cmsRes &&
+  cmsRes = http_keepalive_send_recv(port:http_port, data:cmsReq, bodyonly:FALSE);
+  if(cmsRes =~ "^HTTP/1\.[01] 200" && "onload=alert(document.cookie)>" >< cmsRes &&
       ">CMS Made Simple" >< cmsRes)
   {
-    security_message(http_port);
+    security_message(port:http_port);
     exit(0);
   }
 }

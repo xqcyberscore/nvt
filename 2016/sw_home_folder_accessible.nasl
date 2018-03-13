@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_home_folder_accessible.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: sw_home_folder_accessible.nasl 9089 2018-03-12 19:51:54Z cfischer $
 #
 # Linux Home Folder Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111108");
-  script_version("$Revision: 5867 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 9089 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 20:51:54 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,36 +36,60 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "webmirror.nasl", "DDI_Directory_Scanner.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script attempts to identify files of a linux home folder accessible
   at the webserver.");
+
   script_tag(name:"insight", value:"Currently the script is checking for the following files:
+
   - /.ssh/authorized_keys
+
   - /.ssh/known_hosts
+
   - /.ssh/identity
+
   - /.ssh/id_rsa
+
   - /.ssh/id_rsa.pub
+
   - /.ssh/id_dsa
+
   - /.ssh/id_dsa.pub
+
   - /.ssh/id_dss
+
   - /.ssh/id_dss.pub
+
   - /.ssh/id_ecdsa
+
   - /.ssh/id_ecdsa.pub
+
   - /.ssh/id_ed25519
+
   - /.ssh/id_ed25519.pub
+
   - /.mysql_history
+
   - /.sqlite_history
+
   - /.psql_history
+
   - /.sh_history
+
   - /.bash_history
+
   - /.profile
+
   - /.bashrc");
+
   script_tag(name:"vuldetect", value:"Check the response if files from a home folder are accessible.");
+
   script_tag(name:"impact", value:"Based on the information provided in this files an attacker might
   be able to gather additional info.");
+
   script_tag(name:"solution", value:"A users home folder shouldn't be accessible via a webserver. Restrict access to it or remove it completely.");
 
   script_tag(name:"solution_type", value:"Mitigation");

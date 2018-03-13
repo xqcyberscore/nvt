@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sonicwall_soho_10_xss.nasl 4326 2016-10-24 06:19:49Z cfi $
+# $Id: sonicwall_soho_10_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
 #
 # SonicWall SOHO Web Interface XSS
 #
@@ -29,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17972");
-  script_version("$Revision: 4326 $");
+  script_version("$Revision: 9087 $");
   script_name("SonicWall SOHO Web Interface XSS");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 08:19:49 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2005-1006");
   script_bugtraq_id(12984);
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_require_ports("Services/www",80);

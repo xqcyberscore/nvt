@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_lin.nasl 9085 2018-03-12 10:33:10Z cfischer $
 #
 # phpMyAdmin Content spoofing vulnerability Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806736");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 9085 $");
   script_cve_id("CVE-2015-7873");
   script_bugtraq_id(77299);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 11:33:10 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-11-27 12:26:46 +0530 (Fri, 27 Nov 2015)");
   script_name("phpMyAdmin Content spoofing vulnerability Nov15 (Linux)");
 
@@ -54,7 +54,7 @@ if(description)
   Impact Level: Application");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.4.x before 4.4.15.1
-  and 4.5.x before 4.5.1 on Windows");
+  and 4.5.x before 4.5.1 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.4.15.1 or 4.5.1
   or later. For updates refer http://www.phpmyadmin.net");
@@ -75,17 +75,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-phpPort = "";
-phpVer = "";
-
-## get the port
 if(!phpPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get the version
 if(!phpVer = get_app_version(cpe:CPE, port:phpPort)) exit(0);
 
-##Check for version  4.4.x before 4.4.15.1
 if(phpVer =~ "^(4\.4)")
 {
   if(version_is_less(version:phpVer, test_version:"4.4.15.1"))
@@ -95,7 +88,6 @@ if(phpVer =~ "^(4\.4)")
   }
 }
 
-##Check for version 4.5.x before 4.5.1
 else if(phpVer =~ "^(4\.5)")
 {
   if(version_is_less(version:phpVer, test_version:"4.5.1"))

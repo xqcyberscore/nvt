@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_xss2.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: vbulletin_xss2.nasl 9087 2018-03-12 17:24:24Z cfischer $
 # Description: vBulletin XSS(2)
 #
 # Authors:
@@ -45,28 +45,19 @@ tag_solution = "Upgrade to latest version";
 if(description)
 {
  script_id(14833);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_version("$Revision: 9087 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2004-1824");
  script_bugtraq_id(6226);
  script_xref(name:"OSVDB", value:"3280");
-  
- name = "vBulletin XSS(2)";
- script_name(name);
- 
-
-
- 
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_name("vBulletin XSS(2)");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("cross_site_scripting.nasl", "vbulletin_detect.nasl");
  script_require_ports("Services/www", 80);
  script_require_keys("vBulletin/installed");
@@ -74,8 +65,6 @@ if(description)
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-# Check starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");

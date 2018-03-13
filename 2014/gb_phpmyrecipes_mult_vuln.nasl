@@ -24,15 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804056";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5790 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804056");
+  script_version("$Revision: 9086 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 13:15:19 +0530 (Fri, 03 Jan 2014)");
   script_name("phpMyRecipes Multiple Vulnerabilities");
 
@@ -42,20 +40,33 @@ if(description)
   and conduct other attacks.
 
   Impact Level: Application");
+
   script_tag(name : "affected" , value : "phpMyRecipes version 1.x.x");
+
   script_tag(name : "insight" , value : "Multiple flaws are due to,
+
   An improper validation of user supplied inputs passed via
+
   - 'r_id' parameter to index.php and textrecipe.php.
+
   - 'from' parameter to ingredients.php.
+
   - 'categories' parameter to dosearch.php.
+
   - 'r_arecipes' parameter to domenutext.php.
+
   - All the POST parameters.
+
   All forms were missing CSRF tokens.");
+
   script_tag(name : "solution" , value : "No Solution or patch is available as of 3rd January, 2014. Information
   regarding this issue will be updated once the solution details are available.
+
   For updates refer to http://php-myrecipes.sourceforge.net");
+
   script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
   the cookie or not.");
+
   script_tag(name : "summary" , value : "This host is installed with phpMyRecipes and is prone to multiple
   vulnerabilities.");
 
@@ -76,19 +87,11 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-phpPort = "";
-req = "";
-res = "";
-url = "";
-
 phpPort = get_http_port(default:80);
 
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
-
-host = http_host_name(port:phpPort);
 
 foreach dir (make_list_unique("/", "/phpmyrecipes", "/recipes", cgi_dirs(port:phpPort)))
 {
@@ -97,25 +100,20 @@ foreach dir (make_list_unique("/", "/phpmyrecipes", "/recipes", cgi_dirs(port:ph
 
   res = http_get_cache(item:string(dir,"/index.php"),  port:phpPort);
 
-  ## Confirm the application
   if('>phpMyRecipes' >< res)
   {
-    ## Construct the attack request
     url = dir + '/login.php';
 
     postData = 'username="><script>alert(document.cookie)</script>';
-
+    host = http_host_name(port:phpPort);
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData, "\r\n");
+    rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq, bodyonly:FALSE);
 
-    ## Send request and receive the response
-    rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq, bodyonly:TRUE);
-
-    ## Confirm exploit worked by checking the response
-    if(rcvRes =~ "HTTP/1\.. 200" && '><script>alert(document.cookie)</script>' >< rcvRes)
+    if(rcvRes =~ "^HTTP/1\.[01] 200" && '><script>alert(document.cookie)</script>' >< rcvRes)
     {
       security_message(port:phpPort);
       exit(0);

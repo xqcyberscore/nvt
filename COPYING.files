@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 12 Mar 2018 09:10:26 +0100
+# Automatically created on:  Tue, 13 Mar 2018 08:32:47 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -49940,6 +49940,7 @@
 2018/gb_icinga2_mult_vuln.nasl: GPLv2+
 2018/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
 2018/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
+2018/gb_ilias_eol.nasl: GPLv2+
 2018/gb_invoiceplane_xss_vuln.nasl: GPLv2+
 2018/gb_kentico_cms_xss_vuln.nasl: GPLv2+
 2018/gb_kerberos5_mult_vuln.nasl: GPLv2+

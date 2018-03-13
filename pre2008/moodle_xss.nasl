@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: moodle_xss.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: moodle_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
 # Description: Moodle XSS
 #
 # Authors:
@@ -36,36 +36,24 @@ legitimate users of this site.";
 if(description)
 {
  script_id(12222);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_version("$Revision: 9087 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1978");
  script_bugtraq_id(10251);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- name = "Moodle XSS";
-
- script_name(name);
- 
-
- 
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_name("Moodle XSS");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("gb_moodle_cms_detect.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
  script_require_keys("Moodle/Version");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 8446 2018-01-17 15:50:57Z cfischer $
+# $Id: sw_mail_os_detection.nasl 9088 2018-03-12 18:49:45Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 8446 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 16:50:57 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 9088 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 19:49:45 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -215,6 +215,12 @@ foreach port( ports ) {
         register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         continue;
       }
+
+      # Runs only on Unix-like OS variants
+      if( " ESMTP Exim " >< banner ) {
+        register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        continue;
+      }
     }
 
     # Cisco Unity Connection
@@ -360,7 +366,7 @@ foreach port( ports ) {
           register_and_report_os( os:"CentOS", version:version[2], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
           register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }  
+        }
         continue;
       } else if( "CentOS release" >< banner ) {
         version = eregmatch( pattern:"CentOS release ([0-9.]+)", string:banner );
@@ -368,7 +374,7 @@ foreach port( ports ) {
           register_and_report_os( os:"CentOS", version:version[1], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
           register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }  
+        }
         continue;
       } else if( "Red Hat Enterprise Linux" >< banner ) {
         version = eregmatch( pattern:"Red Hat Enterprise Linux (Server|ES|AS|Client) release ([0-9.]+)", string:banner );
@@ -376,7 +382,7 @@ foreach port( ports ) {
           register_and_report_os( os:"Red Hat Enterprise Linux " + version[1], version:version[2], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
           register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }  
+        }
         continue;
       } else if( '"OpenBSD"' >< banner ) {
         version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
@@ -415,11 +421,15 @@ foreach port( ports ) {
         # Zimbra runs only on Unix-like systems
         register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         continue;
+      # Runs only on Unix-like OS variants
+      } else if( " Dovecot ready." >< banner ) {
+        register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        continue;
       }
     }
 
     if( "The Microsoft Exchange IMAP4 service is ready" >< banner || "Microsoft Exchange Server" >< banner || "for Windows ready" >< banner ||
-        ( "service is ready" >< banner && ( "(Windows/x64)" >< banner || "(Windows/x86)" >< banner ) ) || 
+        ( "service is ready" >< banner && ( "(Windows/x64)" >< banner || "(Windows/x86)" >< banner ) ) ||
         "Winmail Mail Server" >< banner ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
       continue;
@@ -500,6 +510,12 @@ if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
   # Zimbra runs only on Unix-like systems
   if( "Zimbra POP3 server ready" >< banner ) {
     register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # Runs only on Unix-like OS variants
+  if( "OK Dovecot ready." >< banner ) {
+    register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 7482 2017-10-18 12:30:38Z cfischer $
+# $Id: smb_nt.inc 9089 2018-03-12 19:51:54Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7482 $
+# $Revision: 9089 $
 #
 ###############################################################################
 
@@ -182,6 +182,7 @@ function get_version_from_build( string, win_name ) {
     if( "15063" >< string ) return "1703";
     if( "16299" >< string ) return "1709";
     #if( "1xxxx" >< string ) return "1803"; # Available early 2018
+    #if( "1xxxx" >< string ) return "1809"; # Available late 2018
   }
   return;
 }

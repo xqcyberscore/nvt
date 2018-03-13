@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: postnuke_news_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: postnuke_news_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
 # Description: Post-Nuke News module XSS
 #
 # Authors:
@@ -36,15 +36,15 @@ tag_solution = "Upgrade to the latest version of postnuke";
 if(description)
 {
   script_id(14727);
-  script_version("$Revision: 6702 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 9087 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5809);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Post-Nuke News module XSS");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

