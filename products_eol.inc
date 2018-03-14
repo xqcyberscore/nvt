@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 9084 2018-03-12 09:40:48Z cfischer $
+# $Id: products_eol.inc 9092 2018-03-13 11:58:20Z jschulte $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9084 $
+# $Revision: 9092 $
 #
 ###############################################################################
 
@@ -233,6 +233,24 @@ eol_cpes[ 'cpe:/a:wordpress:wordpress' ] = make_array(
 # https://www.efrontlearning.com/migration
 eol_cpes[ 'cpe:/a:efrontlearning:efront' ] = make_array(
   'versions',      '3.6:2017-09-15;3.5:unknown;2.5:unknown',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.elastic.co/support/eol
+eol_cpes[ 'cpe:/a:elasticsearch:elasticsearch' ] = make_array(
+  'versions',      '6.2:2019-08-06;6.1:2019-06-13;6.0:2019-05-14;5.6:2019-03-11;5.5:2019-01-06;5.4:2018-11-04;5.3:2018-09-28;5.2:2018-07-31;5.1:2018-06-08;5.0:2018-04-26;2.4:2018-02-28;2.3:2017-09-30;2.2:2017-08-02;2.1:2017-05-24;2.0:2017-04-28;1.7:2017-01-16;1.6:2016-12-09;1.5:2016-09-23;1.4:2016-05-05;1.3:2016-01-23;1.2:2015-11-22;1.1:2015-09-25;1.0:2015-08-12',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.elastic.co/support/eol
+eol_cpes[ 'cpe:/a:elasticsearch:kibana' ] = make_array(
+  'versions',      '6.2:2019-08-06;6.1:2019-06-13;6.0:2019-05-14;5.6:2019-03-11;5.5:2019-01-06;5.4:2018-11-04;5.3:2018-09-28;5.2:2018-07-31;5.1:2018-06-08;5.0:2018-04-26;4.6:2018-02-28;4.5:2017-09-30;4.4:2017-08-02;4.3:2017-05-24;4.2:2017-04-28;4.1:2016-11-10;4.0:2016-07-19;3.1:2015-11-15;3.0:2015-09-18',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.elastic.co/support/eol
+eol_cpes[ 'cpe:/a:elasticsearch:logstash' ] = make_array(
+  'versions',      '6.2:2019-08-06;6.1:2019-06-13;6.0:2019-05-14;5.6:2019-03-11;5.5:2019-01-06;5.4:2018-11-04;5.3:2018-09-28;5.2:2018-07-31;5.1:2018-06-08;5.0:2018-04-26;2.4:2018-02-28;2.3:2017-09-30;2.2:2017-08-02;2.1:2017-05-24;2.0:2017-04-28;1.5:2016-11-14;1.4:2015-09-20;1.3:2015-06-11',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

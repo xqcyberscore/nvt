@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 13 Mar 2018 08:32:47 +0100
+# Automatically created on:  Wed, 14 Mar 2018 08:17:21 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -49671,6 +49671,7 @@
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-001_lin.nasl: GPLv2+
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-001_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2015-4165.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_eol.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2016-1000218.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_win.nasl: GPLv2+
@@ -49684,6 +49685,7 @@
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3820_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3821_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3821_win.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_kibana_eol.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_CVE-2015-5619_sec_bypass_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_CVE-2015-5619_sec_bypass_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_CVE-2016-1000221_info_discl.nasl: GPLv2+
@@ -56265,6 +56267,7 @@ gsf/2018/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/gb_vibnode_eol.nasl: GPLv2+
 gsf/2018/gb_zabbix_xxe_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
+gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo2_multiple_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-12542.nasl: GPLv2+
