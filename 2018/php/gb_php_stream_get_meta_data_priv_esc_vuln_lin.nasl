@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_lin.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_lin.nasl 9094 2018-03-14 07:52:16Z cfischer $
 #
 # PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812512");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 9094 $");
   script_cve_id("CVE-2016-10712");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 12:02:20 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Linux)");
 

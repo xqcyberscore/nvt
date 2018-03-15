@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_rce_95201.nasl 7942 2017-11-30 11:48:20Z cfischer $
+# $Id: gb_wd_mycloud_rce_95201.nasl 9103 2018-03-14 15:23:32Z cfischer $
 #
 # WD MyCloud Products Multiple Remote Command Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:western_digital:mycloud_nas';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108035");
-  script_version("$Revision: 7942 $");
+  script_version("$Revision: 9103 $");
   script_cve_id("CVE-2016-10107", "CVE-2016-10108");
   script_bugtraq_id(95200, 95201);
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:48:20 +0100 (Thu, 30 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-14 16:23:32 +0100 (Wed, 14 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 10:00:00 +0100 (Wed, 04 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check the response.");
 
   script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands with root privileges
-  in context of the affected application. .");
+  in context of the affected application.");
 
   script_tag(name:"insight", value:"It is possible to inject arbitrary commands via:
 

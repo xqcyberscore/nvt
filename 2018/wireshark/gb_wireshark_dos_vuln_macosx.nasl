@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_macosx.nasl 8783 2018-02-13 10:08:14Z cfischer $
+# $Id: gb_wireshark_dos_vuln_macosx.nasl 9094 2018-03-14 07:52:16Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability (MacOSX)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112214");
-  script_version("$Revision: 8783 $");
+  script_version("$Revision: 9094 $");
   script_cve_id("CVE-2018-6836");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:08:14 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 15:34:57 +0100 (Fri, 09 Feb 2018)");
 
   script_name("Wireshark Denial of Service Vulnerability (MacOSX)");

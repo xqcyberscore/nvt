@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_mms_prot_bof_vuln.nasl 8932 2018-02-23 08:01:57Z santu $
+# $Id: gb_hpe_loadrunner_mms_prot_bof_vuln.nasl 9094 2018-03-14 07:52:16Z cfischer $
 #
 # HPE LoadRunner MMS Protocol Buffer Overflow RCE Vulnerability
 # 
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812940");
-  script_version("$Revision: 8932 $");
+  script_version("$Revision: 9094 $");
   script_cve_id("CVE-2016-8512");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:01:57 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 18:29:57 +0530 (Wed, 21 Feb 2018)");
   script_name("HPE LoadRunner MMS Protocol Buffer Overflow RCE Vulnerability");
 

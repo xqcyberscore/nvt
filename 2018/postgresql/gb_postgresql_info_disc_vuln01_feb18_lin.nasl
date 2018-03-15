@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_info_disc_vuln01_feb18_lin.nasl 8975 2018-02-28 10:27:08Z santu $
+# $Id: gb_postgresql_info_disc_vuln01_feb18_lin.nasl 9094 2018-03-14 07:52:16Z cfischer $
 #
 # PostgreSQL Information Disclosure Vulnerability-01 Feb18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812957");
-  script_version("$Revision: 8975 $");
+  script_version("$Revision: 9094 $");
   script_cve_id("CVE-2018-1052");
   script_bugtraq_id(102987);
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 11:29:21 +0530 (Wed, 28 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Information Disclosure Vulnerability-01 Feb18 (Linux)");
