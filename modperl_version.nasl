@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modperl_version.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: modperl_version.nasl 9115 2018-03-15 18:21:22Z cfischer $
 #
-# mod_perl version Detection
+# mod_perl Version Detection
 #
 # Authors:
 # Michael Meyer
@@ -24,53 +24,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Get the Version of mod_perl and store it in KB.";
-
-if (description)
+if(description)
 {
- script_id(100129);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5785 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
- script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("mod_perl version Detection");  
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("apache/banner");
- script_require_ports("Services/www", 80);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.100129");
+  script_version("$Revision: 9115 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 19:21:22 +0100 (Thu, 15 Mar 2018) $");
+  script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("mod_perl Version Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("secpod_apache_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/installed");
+
+  script_tag(name:"summary", value:"Get the Version of mod_perl and store it in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100129";
-SCRIPT_DESC = "mod_perl version Detection";
+port = get_http_port( default:80 );
 
-port = get_http_port(default:80);
-if(get_kb_item("Services/www/" + port + "/embedded"))exit(0);
+if( ! banner = get_http_banner( port:port ) ) exit( 0 );
+if( ! banner = egrep( pattern:"Server: .*Apache", string:banner ) ) exit( 0 );
+if( ! matches = eregmatch( string:banner, pattern:"mod_perl/([0-9.]+)" ) ) exit( 0 );
 
-if(!banner = get_http_banner(port:port))exit(0);
-if(!egrep(pattern:"Server: .*Apache", string:banner))exit(0);
+if( ! isnull( matches[1] ) ) {
 
-if(!matches = eregmatch(string:banner, pattern:"mod_perl/([0-9.]+)"))exit(0);
+  version = matches[1];
+  install = "/";
+  set_kb_item( name:"www/" + port + "/mod_perl", value:version );
 
-if(!isnull(matches[1])) {
-    
-  tmp_version = string(matches[1]);
-  set_kb_item(name: string("www/", port, "/mod_perl"), value: tmp_version);
+  cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:mod_perl:");
+  if( isnull( cpe ) )
+    cpe = "cpe:/a:apache:mod_perl";
 
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:apache:mod_perl:");
-  if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+  register_product( cpe:cpe, location:install, port:port );
+  log_message( data:build_detection_report( app:"mod_perl",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:banner ),
+                                            port:port );
 }
 
-exit(0);
+exit( 0 );

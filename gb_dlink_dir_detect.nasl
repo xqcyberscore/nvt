@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 7853 2017-11-21 15:12:03Z cfischer $
+# $Id: gb_dlink_dir_detect.nasl 9111 2018-03-15 15:16:12Z cfischer $
 #
 # D-Link DIR Devices Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103689");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7853 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-21 16:12:03 +0100 (Tue, 21 Nov 2017) $");
+ script_version("$Revision: 9111 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-15 16:16:12 +0100 (Thu, 15 Mar 2018) $");
  script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
  script_name("D-Link DIR Devices Detection");
  script_category(ACT_GATHER_INFO);
@@ -79,9 +79,9 @@ if(banner =~ "Server: Linux, ((HTTP/1.1)|(WEBACCESS/1.0)), DIR-[0-9]+[^ ]++ Ver"
   if (!isnull(hw_version[2])) {
     hw = hw_version[2];
   } else {
-    hw_version = eregmatch(pattern:'class="hwv">.*((A|B|C|D)(1|2))<', string:res);
-    if (!isnull(hw_version[1]))
-      hw = hw_version[1];
+    hw_version = eregmatch(pattern:'class="(hwv|hwversion)">.*((A|B|C|D)(1|2))<', string:res);
+    if (!isnull(hw_version[2]))
+      hw = hw_version[2];
   }
 
 }  else {

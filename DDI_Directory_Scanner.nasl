@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 8414 2018-01-13 11:55:11Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 9107 2018-03-15 12:51:40Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 8414 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-13 12:55:11 +0100 (Sat, 13 Jan 2018) $");
+  script_version("$Revision: 9107 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:51:40 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -390,6 +390,8 @@ testDirList = make_list(
 "dev",
 "devel",
 "development",
+"dialup",
+"dialup_admin",
 "dir",
 "directory",
 "directorymanager",
@@ -636,6 +638,7 @@ testDirList = make_list(
 "php_classes",
 "phpclassifieds",
 "phpimageview",
+"phpip",
 "phpldapadmin",
 "phpmyadmin",
 "phpMyAdmin",
@@ -1138,7 +1141,7 @@ foreach cdir( testDirList ) {
     if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, "\n" );
     add_auth_dir_list( dir:ScanRootDir + cdir, port:port );
   }
-  #TBD: Make this configureable?
+  #TBD: Make this configurable?
   if( unixtime() - start > 80 ) exit( 0 );
 }
 

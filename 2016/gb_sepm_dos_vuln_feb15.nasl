@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_dos_vuln_feb15.nasl 5501 2017-03-06 13:59:39Z teissa $
+# $Id: gb_sepm_dos_vuln_feb15.nasl 9114 2018-03-15 16:06:15Z cfischer $
 #
 # Symantec Endpoint Protection 'ccSvcHst.exe' File Denial of Service Vulnerability Feb15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807056");
-  script_version("$Revision: 5501 $");
+  script_version("$Revision: 9114 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:59:39 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 17:06:15 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:27 +0530 (Tue, 01 Mar 2016)");
   script_name("Symantec Endpoint Protection 'ccSvcHst.exe' File Denial of Service Vulnerability Feb15");
 
@@ -71,14 +71,9 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sepVer= "";
-
-## Get version
 if(!sepVer = get_app_version(cpe:CPE)){
     exit(0);
 }
@@ -93,8 +88,10 @@ if(isnull(sepType) && sepVer =~ "^(12\.1)")
 {
   if(version_is_equal(version:sepVer, test_version:"12.1.4013.4013"))
   {
-    report_fixed_ver(installed_version:sepVer, fixed_version:"WillNotFix");
+    report = report_fixed_ver(installed_version:sepVer, fixed_version:"WillNotFix");
     security_message(data:report);
     exit(0);
   }
 }
+
+exit(99);

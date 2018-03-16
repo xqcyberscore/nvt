@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpip_detect.nasl 9093 2018-03-14 07:51:01Z cfischer $
+# $Id: gb_phpip_detect.nasl 9107 2018-03-15 12:51:40Z cfischer $
 #
 # phpIP Management Detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108429");
-  script_version("$Revision: 9093 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:51:01 +0100 (Wed, 14 Mar 2018) $");
+  script_version("$Revision: 9107 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:51:40 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-13 10:52:49 +0100 (Tue, 13 Mar 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,11 +69,11 @@ foreach dir( make_list_unique( "/", "/phpip", cgi_dirs( port:port ) ) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  url = dir + "/";
+  url = dir + "/login.php";
   res = http_get_cache( port:port, item:url );
 
-  # <div id="logo"><a id="logo" href="/">phpIP</a></div>
-  if( egrep( string:res, pattern:'<div id="logo"><a id="logo" href=".*">phpIP</a></div>' ) ) {
+  if( egrep( string:res, pattern:"<TITLE>phpIP Management : Login</TITLE>", icase:TRUE ) ||
+      egrep( string:res, pattern:'<META NAME="GENERATOR" CONTENT="phpIP Management">', icase:TRUE ) ) {
 
     # Version isn't exposed by the application
     version = "unknown";

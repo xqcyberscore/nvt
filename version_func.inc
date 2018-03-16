@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 8051 2017-12-08 09:51:24Z santu $
+# $Id: version_func.inc 9111 2018-03-15 15:16:12Z cfischer $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8051 $
+# $Revision: 9111 $
 #
 ###############################################################################
 
@@ -399,7 +399,7 @@ function get_version( dllPath, string, offs ) {
 function report_fixed_ver( installed_version, installed_build, installed_patch, vulnerable_range, file_checked,
                            file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url ) {
 
-  local_var installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
+  local_var report, installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
   local_var file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url;
 
   if( ! installed_version && ! file_checked ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version/file_checked#-#report_fixed_ver" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_adobe_coldfusion_mult_vuln.nasl 9114 2018-03-15 16:06:15Z cfischer $
 #
 # Adobe ColdFusion Multiple Vulnerabilities(march-2016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807014");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 9114 $");
   script_cve_id("CVE-2015-8052", "CVE-2015-8053", "CVE-2015-5255");
   script_bugtraq_id(77625, 77626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 17:06:15 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-03-11 14:43:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(march-2016)");
@@ -75,26 +75,18 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cfPort = 0;
-cfdVer = "";
-
-## Get HTTP Port
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 cfdVer = get_app_version(cpe:CPE, port:cfPort);
 if(!cfdVer || "unknown" >< cfdVer){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.18.296329"))
 {
   fix = "10.0.18.296330";
@@ -106,7 +98,9 @@ else if(version_in_range(version:cfdVer, test_version:"11.0", test_version2:"11.
 
 if(fix)
 {
-  report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
   security_message(data:report, port:cfPort);
   exit(0);
 }
+
+exit(99);

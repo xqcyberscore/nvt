@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9072 2018-03-09 13:12:47Z cfischer $
+# $Id: sw_http_os_detection.nasl 9107 2018-03-15 12:51:40Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9072 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 14:12:47 +0100 (Fri, 09 Mar 2018) $");
+  script_version("$Revision: 9107 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:51:40 +0100 (Thu, 15 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -324,7 +324,12 @@ function check_http_banner( port ) {
       }
 
       if( "(Debian)" >< banner || "(Debian GNU/Linux)" >< banner || "devel-debian" >< banner || "~dotdeb+" >< banner || "(Raspbian)" >< banner ) {
-        register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        # Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch16 mod_perl/2.0.2 Perl/v5.8.8
+        if( "PHP" >< banner && "+etch" >< banner ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
         return banner;
       }
 
@@ -541,6 +546,12 @@ function check_php_banner( port ) {
 
     if( "ubuntu" >< phpBanner ) {
       register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
+    # Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch16 mod_perl/2.0.2 Perl/v5.8.8
+    if( "+etch" >< phpBanner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
 
