@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl 8745 2018-02-09 14:30:40Z santu $
+# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Mac OS X
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812698");
-  script_version("$Revision: 8745 $");
+  script_version("$Revision: 9119 $");
   script_cve_id("CVE-2018-6654");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:30:40 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 16:22:37 +0530 (Thu, 08 Feb 2018)");
   script_name("Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Mac OS X");
 

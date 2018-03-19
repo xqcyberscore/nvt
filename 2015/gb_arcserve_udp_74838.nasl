@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_74838.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_arcserve_udp_74838.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Arcserve Unified Data Protection Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4069","CVE-2015-4068");
  script_tag(name:"cvss_base", value:"9.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
- script_version ("$Revision: 6431 $");
+ script_version ("$Revision: 9121 $");
 
  script_name("Arcserve Unified Data Protection Multiple Vulnerabilities");
 
@@ -47,13 +47,13 @@ that may lead to further attacks.");
  script_tag(name: "vuldetect" , value:"Check the version");
  script_tag(name: "solution" , value:"Updates are available");
  script_tag(name: "summary" , value:"Arcserve Unified Data Protection is prone to multiple information-
-disclosure vulnerabilities and multiple directory traversal vulnerabilities..");
+disclosure vulnerabilities and multiple directory traversal vulnerabilities.");
  script_tag(name: "affected" , value:"Arcserve UDP before 5.0 Update 4");
  script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
  script_tag(name:"creation_date", value:"2015-06-11 17:46:01 +0200 (Thu, 11 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");

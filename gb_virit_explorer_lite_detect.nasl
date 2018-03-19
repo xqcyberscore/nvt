@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_detect.nasl 8074 2017-12-11 10:01:33Z teissa $
+# $Id: gb_virit_explorer_lite_detect.nasl 9133 2018-03-19 11:52:45Z asteins $
 #
 # TG Soft Vir.IT eXplorer Lite Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107265");
-  script_version("$Revision: 8074 $");
+  script_version("$Revision: 9133 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 11:01:33 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:52:45 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TG Soft Vir.IT eXplorer Lite Detection");
@@ -46,56 +46,46 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
 os_arch = get_kb_item("SMB/Windows/Arch");
 
-if(!os_arch){
-  exit(-1);
-}
+if(!os_arch)
+  exit(0);
 
-if("x86" >< os_arch)
-{
+if("x86" >< os_arch) {
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-}
-else if("x64" >< os_arch)
-{
+} else if("x64" >< os_arch) {
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 if(isnull(key))
-{
   exit(0);
-}
 
-foreach item (registry_enum_keys(key: key))
-{
+foreach item (registry_enum_keys(key: key)) {
   prdtName = registry_get_sz(key: key + item, item: "DisplayName");
 
-  if("VirIT eXplorer Lite" >< prdtName)
-  {
-      Ver = registry_get_sz(key: key + item, item: "DisplayVersion");
-      loc = registry_get_sz(key: key + item, item: "InstallLocation");
-      if(!loc){
-        loc = "Could not determine install Path";
-      }
+  if("VirIT eXplorer Lite" >< prdtName) {
+    Ver = registry_get_sz(key: key + item, item: "DisplayVersion");
+    loc = registry_get_sz(key: key + item, item: "InstallLocation");
+    if(!loc) {
+      loc = "Could not determine install path";
+    }
 
-      if(Ver != NULL)
-      {
-        set_kb_item(name: "Virit/explorer/Ver", value: Ver);
+    if(Ver != NULL) {
+      set_kb_item(name: "Virit/explorer/Ver", value: Ver);
 
-        register_and_report_cpe(app: "VirIT eXplorer Lite", ver: Ver, base: "cpe:/a:tg_soft:vir.it_explorer_lite:",
+      register_and_report_cpe(app: "VirIT eXplorer Lite", ver: Ver, base: "cpe:/a:tg_soft:vir.it_explorer_lite:",
                                   expr: "^([0-9.]+)", insloc: loc);
-        exit(0);
-      }
+      exit(0);
+    }
   }
 }
 exit(99);

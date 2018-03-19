@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-20_macosx.nasl 6987 2017-08-22 13:34:14Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-20_macosx.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2017-20 )-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811712");
-  script_version("$Revision: 6987 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2017-7800", "CVE-2017-7801", "CVE-2017-7809", "CVE-2017-7784",
                 "CVE-2017-7802", "CVE-2017-7785", "CVE-2017-7786", "CVE-2017-7753",
                 "CVE-2017-7787", "CVE-2017-7807", "CVE-2017-7792", "CVE-2017-7791",
@@ -38,7 +38,7 @@ if(description)
                     100240, 100243, 100201);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 15:34:14 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 12:56:34 +0530 (Mon, 21 Aug 2017)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2017-20 )-MAC OS X");
 
@@ -49,20 +49,34 @@ if(description)
   help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws exist due to,
+
   - Use-after-free in WebSockets during disconnection.
+
   - Use-after-free with marquee during window resizing.
+
   - Use-after-free while deleting attached editor DOM node.
+
   - Use-after-free with image observers.
+
   - Use-after-free resizing image elements.
+
   - Buffer overflow manipulating ARIA attributes in DOM.
+
   - Buffer overflow while painting non-displayable SVG.
+
   - Out-of-bounds read with cached style data and pseudo-elements.
+
   - Same-origin policy bypass with iframes through page reloads.
+
   - Domain hijacking through AppCache fallback.
+
   - Buffer overflow viewing certificates with an extremely long OID.
+
   - Spoofing following page navigation with data: protocol and modal alerts.
+
   - CSP containing sandbox improperly applied.
-  - Memory safety bugs fixed in Firefox 55, Firefox ESR 52.3, and Thunderbird 52.3..");
+
+  - Memory safety bugs fixed in Firefox 55, Firefox ESR 52.3, and Thunderbird 52.3.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   will allow remote attackers to gain access to potentially sensitive information,
@@ -73,7 +87,8 @@ if(description)
   script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
   52.3 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.3
+  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.3,
+
   For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

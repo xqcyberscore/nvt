@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_cms_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_zenbership_cms_detect.nasl 9133 2018-03-19 11:52:45Z asteins $
 #
 # Zenbership CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107220");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:52:45 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,9 +40,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Zenbership CMS
+  script_tag(name:"summary", value:"Detection of installed version of Zenbership CMS.
 
-  The script detects the version of Zenbership CMS remote host and sets the KB.");
+  The script sends an HTTP request to the server and attempts to detect the application from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -56,7 +56,11 @@ include("host_details.inc");
 
 appPort = get_http_port(default: 80);
 
-foreach dir(make_list_unique( "/", cgi_dirs( port: appPort ) ) ) {
+rootInstalled = FALSE;
+
+foreach dir (make_list_unique("/", "/zenbership", "/membership", "/member", "/zen", "zenbership-master", cgi_dirs(port: appPort))) {
+
+  if (rootInstalled) break;
 
   install = dir;
   if (dir == "/") dir = "";
@@ -65,33 +69,37 @@ foreach dir(make_list_unique( "/", cgi_dirs( port: appPort ) ) ) {
 
   rcvRes = http_get_cache(item: url, port: appPort);
 
-  if (rcvRes !~ "^HTTP/1\.[01] 200" || "<title>Welcome to Zenbership" >!< rcvRes || "Zenbership Membership Software" >!< rcvRes) continue;
+  if (rcvRes !~ "^HTTP/1\.[01] 200" && "<title>Welcome to Zenbership" >!< rcvRes &&
+      ('content="Zenbership Membership Software"' >!< rcvRes || 'a href="http://documentation.zenbership.com/"' >!< rcvRes))
+    continue;
 
-  Ver = 'unknown';
+  if (dir == "" ) rootInstalled = TRUE;
+  vers = 'unknown';
 
   tmpVer = eregmatch(pattern: ">v([0-9a-z]+)",
-                     string: rcvRes);
+                   string: rcvRes);
 
-  if(tmpVer[1]) {
-    Ver = tmpVer[1];
+  if (tmpVer[1]) {
+    vers = tmpVer[1];
   }
 
   set_kb_item(name: "zenbership/installed", value: TRUE);
-  set_kb_item(name: "zenbership/version", value: Ver);
+  set_kb_item(name: "zenbership/version", value: vers);
 
-  cpe = build_cpe(value: Ver, exp: "^([0-9a-z]+)", base: "cpe:/a:castlamp:zenbership:");
+  cpe = build_cpe(value: vers, exp: "^([0-9a-z]+)", base: "cpe:/a:castlamp:zenbership:");
 
-  if(!cpe)
+  if (!cpe)
     cpe = 'cpe:/a:castlamp:zenbership';
 
   register_product(cpe: cpe, location: install, port: appPort);
 
   log_message(data:build_detection_report(app: "Zenbership",
-                                          version: Ver,
-                                          install: install,
-                                          cpe: cpe,
-                                          concluded: tmpVer[0]),
-                                          port: appPort);
+                                            version: vers,
+                                            install: install,
+                                            cpe: cpe,
+                                            concluded: tmpVer[0]),
+                                            port: appPort);
+
 }
 
 exit(0);

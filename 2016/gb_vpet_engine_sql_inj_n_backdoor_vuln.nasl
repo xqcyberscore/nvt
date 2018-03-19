@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 6586 2017-07-07 06:23:25Z cfischer $
+# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # VPet Engine SQL Injection and Backdoor Account Vulnerabilities
 #
@@ -30,21 +30,23 @@ CPE = "cpe:/a:vpet:vpet_engine";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808174");
-  script_version("$Revision: 6586 $");
+  script_version("$Revision: 9121 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("VPet Engine SQL Injection and Backdoor Account Vulnerabilities");
 
   script_tag(name: "summary" , value:"The host is installed with vPet Engine and is
-  prone to sql injection and backdoor account vulnerabilities..");
+  prone to sql injection and backdoor account vulnerabilities.");
 
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
   whether it is able to execute sql query or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to
+
   - An improper validation of user supplied input to 'game' parameter.
+
   - A backdoor accounts 'admin' and password as 'admin'.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

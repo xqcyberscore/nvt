@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_109.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_M5_109.nasl 9124 2018-03-17 14:24:35Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.109
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(95071);
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 9124 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:24:35 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,10 +70,10 @@ if(Eicar >< "error" && port == "25"){
   desc = string("Das System wurde nicht als Mailserver erkannt.");
 }else if(Eicar == "true"){
   result = string("unvollständig");
-  desc = string('Es wurde erfolgreich eine Mail mit Eicar-Testfiles verschickt.\nBitte prüfen Sie das in der Scan Konfiguration konfigurierte\nEmpfängerpostfach sowie den konfigurierten MTA..');
+  desc = string('Es wurde erfolgreich eine Mail mit Eicar-Testfiles verschickt.\nBitte prüfen Sie das in der Scan Konfiguration konfigurierte\nEmpfängerpostfach sowie den konfigurierten MTA.');
 }else if(Eicar == "fail"){
   result = string("unvollständig");
-  desc = string('Es konnte anscheinend keine Mail mit Eicar-Testfiles verschickt\nwerden. Bitte prüfen Sie trotzdem das in der Scan Konfiguration\nkonfigurierte Empfängerpostfach sowie den konfigurierten MTA..');
+  desc = string('Es konnte anscheinend keine Mail mit Eicar-Testfiles verschickt\nwerden. Bitte prüfen Sie trotzdem das in der Scan Konfiguration\nkonfigurierte Empfängerpostfach sowie den konfigurierten MTA.');
 } 
 
 set_kb_item(name:"GSHB/M5_109/result", value:result);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln01_jan16.nasl 7724 2017-11-10 07:05:05Z santu $
+# $Id: gb_java_unspecified_vuln01_jan16.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806670");
-  script_version("$Revision: 7724 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2016-0475");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:24:06 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
-  JRE and is prone to unspecified vulnerability..");
+  JRE and is prone to unspecified vulnerability.");
 
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
@@ -55,6 +55,7 @@ if(description)
   Windows.");
 
   script_tag(name: "solution" , value:"Apply the patch from below link,
+
   http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

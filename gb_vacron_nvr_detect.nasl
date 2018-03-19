@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_vacron_nvr_detect.nasl 9133 2018-03-19 11:52:45Z asteins $
 #
 # Vacron NVR IP Surveillance Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107189");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:52:45 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8089);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_require_ports("Services/www", 8081);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of Vacron NVR.
 
@@ -54,12 +54,11 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-appPort = get_http_port(default: 8089);
+appPort = get_http_port(default: 8081);
 
 res = http_get_cache(item: "/", port: appPort);
 
-if ("<title>VACRON NVR LOGIN</title>" >< res && "<strong>ADVANCES IN SECURITY SOLUTION</strong>" >< res && "vacron nvr login" >< res)
-{
+if ("<title>VACRON NVR LOGIN</title>" >< res && "<strong>ADVANCES IN SECURITY SOLUTION</strong>" >< res) {
     version = "unknown";
     set_kb_item(name:"vacron_nvr/installed", value:TRUE);
 

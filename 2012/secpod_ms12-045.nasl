@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-045.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms12-045.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Windows Data Access Components Remote Code Execution Vulnerability (2698365)
 #
@@ -26,13 +26,20 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the current user.
+
   Impact Level: System";
 tag_affected = "Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior";
 tag_insight = "Vulnerability is due to the way that Microsoft Data Access Components
   accesses an object in memory that has been improperly initialized when
@@ -46,14 +53,14 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902687);
-  script_version("$Revision: 5346 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2012-1891");
   script_bugtraq_id(54308);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 10:42:59 +0530 (Wed, 11 Jul 2012)");
-  script_name(" Microsoft Windows Data Access Components Remote Code Execution Vulnerability (2698365)");
+  script_name("Microsoft Windows Data Access Components Remote Code Execution Vulnerability (2698365)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49743");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2698365");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027227");

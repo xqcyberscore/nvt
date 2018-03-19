@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_475_mul_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_wordpress_prior_475_mul_vuln_win.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Win)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107200");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:40:57 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-9061", "CVE-2017-9062", "CVE-2017-9063", "CVE-2017-9064", "CVE-2017-9065", "CVE-2017-9066");
 
@@ -39,13 +39,24 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name(" WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Win)");
+  script_name("WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Win)");
   script_tag(name: "summary", value: "WordPress is prone to the following security vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "WordPress is prone to the following security vulnerabilities:                 1. An open-redirect vulnerability     2. Multiple security-bypass vulnerabilities     3. Multiple cross-site scripting vulnerabilities     4. A cross-site request-forgery vulnerability");
+  script_tag(name: "insight", value: "WordPress is prone to the following security vulnerabilities:
 
-  script_tag(name: "impact" , value: " attacker may leverage these issues to execute HTML and script code in  the browser of an unsuspecting user in the context of the affected  site, perform certain unauthorized actions actions, or bypass certain  security restrictions.");
+  1. An open-redirect vulnerability
+
+  2. Multiple security-bypass vulnerabilities
+
+  3. Multiple cross-site scripting vulnerabilities
+
+  4. A cross-site request-forgery vulnerability");
+
+  script_tag(name: "impact" , value: " attacker may leverage these issues to execute HTML and script
+  code in  the browser of an unsuspecting user in the context of the affected  site, perform certain
+  unauthorized actions actions, or bypass certain  security restrictions.");
 
   script_tag(name: "affected", value: "WordPress prior to 4.7.5 versions are vulnerable");
 

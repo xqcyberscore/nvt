@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K71282001.nasl 6157 2017-05-18 08:15:25Z teissa $
+# $Id: gb_f5_big_ip_K71282001.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2016-9249
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9249");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6157 $");
+ script_version ("$Revision: 9121 $");
 
  script_name("F5 BIG-IP - TMM vulnerability CVE-2016-9249");
 
@@ -42,14 +42,18 @@ if (description)
  script_tag(name: "vuldetect" , value:"Check the version.");
 
  script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"An undisclosed traffic pattern received by a BIG-IP Virtual Server with TCP Fast Open enabled may cause the Traffic Management Microkernel (TMM) to restart, resulting in a Denial-of-Service (DoS).");
+ script_tag(name: "summary", value:"An undisclosed traffic pattern received by a BIG-IP Virtual
+ Server with TCP Fast Open enabled may cause the Traffic Management Microkernel (TMM) to restart,
+ resulting in a Denial-of-Service (DoS).");
 
- script_tag(name: "impact", value:"If the Fast Open option is enabled in a TCP profile assigned to a BIG-IP virtual server, an attacker could cause the Traffic Management Microkernel (TMM) to restart, resulting in a denial-of-service (DoS)..");
+ script_tag(name: "impact", value:"If the Fast Open option is enabled in a TCP profile assigned
+ to a BIG-IP virtual server, an attacker could cause the Traffic Management Microkernel (TMM) to
+ restart, resulting in a denial-of-service (DoS).");
 
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
 
  script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
  script_category(ACT_GATHER_INFO);

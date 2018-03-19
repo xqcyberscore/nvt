@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 6196 2017-05-23 10:20:03Z emoss $
+# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107199");
-  script_version("$Revision: 6196 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 12:20:03 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:05:17 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-7464");
   script_bugtraq_id(98450);
@@ -39,16 +39,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name(" RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability");
-  script_tag(name: "summary", value: " RedHat JBoss Enterprise Application Platform (EAP) is prone to an XML External Entity injection vulnerability. ");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "When parsing XML which does entity expansion the SAXParserFactory used in EAP expands external entities, even when XMLConstants.FEATURE_SECURE_PROCESSING is set to true.");
+  script_name("RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability");
+  script_tag(name: "summary", value: " RedHat JBoss Enterprise Application Platform (EAP) is prone to an
+  XML External Entity injection vulnerability. ");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
+  if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "When parsing XML which does entity expansion the SAXParserFactory
+  used in EAP expands external entities, even when XMLConstants.FEATURE_SECURE_PROCESSING is set to true.");
 
-  script_tag(name: "impact" , value: "Attackers can exploit this  issue to gain access to sensitive information or cause denial-of-service conditions.");
+  script_tag(name: "impact" , value: "Attackers can exploit this  issue to gain access to sensitive information
+  or cause denial-of-service conditions.");
 
   script_tag(name: "affected", value: "Red Hat JBoss EAP server EAP 7.0.5 and 7.1.0");
 
-  script_tag(name: "solution", value: "Mitigation: Enable the security features of the DocumentBuilderFactory or SaxParserFactory as described by OWASP:
+  script_tag(name: "solution", value: "Mitigation: Enable the security features of the DocumentBuilderFactory or
+  SaxParserFactory as described by OWASP:
 
 https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet#JAXP_DocumentBuilderFactory.2C_SAXParserFactory_and_DOM4J.");
 

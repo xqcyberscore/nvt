@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-03_2017-03_macosx.nasl 5121 2017-01-27 12:07:15Z antu123 $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-03_2017-03_macosx.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2017-03_2017-03)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809880");
-  script_version("$Revision: 5121 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378", "CVE-2017-5380", 
 		"CVE-2017-5390", "CVE-2017-5396", "CVE-2017-5383", "CVE-2017-5373" );
   script_bugtraq_id(95757, 95758, 95769, 95762);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:07:15 +0100 (Fri, 27 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 12:20:32 +0530 (Fri, 27 Jan 2017)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2017-03_2017-03)-MAC OS X");
 
@@ -46,14 +46,22 @@ if(description)
   help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws exist due to,
+
   - Excessive JIT code allocation allows bypass of ASLR and DEP.
+
   - Use-after-free in XSL.
+
   - Pointer and frame data leakage of Javascript objects.
+
   - Potential use-after-free during DOM manipulations.
+
   - Insecure communication methods in Developer Tools JSON viewer.
+
   - Use-after-free with Media Decoder.
+
   - Location bar spoofing with unicode characters.
-  - Memory safety bugs fixed in Thunderbird 45.7..");
+
+  - Memory safety bugs fixed in Thunderbird 45.7.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute arbitrary code, to delete arbitrary files
@@ -65,7 +73,8 @@ if(description)
   script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
   45.7 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 45.7
+  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 45.7,
+
   For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

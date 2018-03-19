@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # MailEnable IMAP Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900104");
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3449");
   script_bugtraq_id(30498);
@@ -37,7 +37,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
-  script_name(" MailEnable IMAP Denial of Service Vulnerability");
+  script_name("MailEnable IMAP Denial of Service Vulnerability");
   script_dependencies("secpod_reg_enum.nasl", "find_service.nasl", "smtpserver_detect.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445, "Services/imap", 143);

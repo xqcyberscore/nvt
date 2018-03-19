@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-047.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-047.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Windows Media Format Remote Code Execution Vulnerability (973812)
 #
@@ -29,21 +29,29 @@
 
 tag_impact = "Successful exploitation will let the attacker execute arbitrary code or
   compromise a affected system.
+
   Impact Level: System/Application";
 tag_affected = "Windows Media Service 9.1 on Windows 2k3 SP2 and prior
+
   Windows Media Format  9.0 on Windows 2k SP4/XP SP3/2k3 SP2 and prior
+
   Windows Media Format  9.5 on Windows XP SP3/2k3 SP2 and prior
+
   Windows Media Format 11.0 on Windows XP SP3 and prior
+
   Windows Media Format 11.0 on Windows Vista SP2 and prior
+
   Windows Media Format 11.0 on Windows 2008 server SP2 and prior";
 tag_insight = "- An error exists in the handling of ASF file headers and can be exploited
     to trigger an invalid call to freed memory via a specially crafted file
     or specially crafted streaming content from a web site.
+
   - An error in the processing of MP3 meta-data can be exploited to corrupt
     memory via a specially crafted MP3 file or specially crafted streaming
     content from a web site.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link.
+
   http://www.microsoft.com/technet/security/bulletin/ms09-047.mspx";
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS09-047.";
@@ -51,14 +59,14 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(901012);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2009-09-10 15:23:12 +0200 (Thu, 10 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-2498", "CVE-2009-2499");
   script_bugtraq_id(36225, 36228);
-  script_name(" Microsoft Windows Media Format Remote Code Execution Vulnerability (973812)");
+  script_name("Microsoft Windows Media Format Remote Code Execution Vulnerability (973812)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/968816");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2566");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms09-047.mspx");

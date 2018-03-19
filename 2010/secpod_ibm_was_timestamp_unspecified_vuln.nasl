@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_was_timestamp_unspecified_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: secpod_ibm_was_timestamp_unspecified_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # IBM WebSphere Application Server WS-Security Policy Unspecified vulnerability
 #
@@ -45,18 +45,19 @@ CPE = 'cpe:/a:ibm:websphere_application_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902251");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3186");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name(" IBM WebSphere Application Server WS-Security Policy Unspecified vulnerability");
+  script_name("IBM WebSphere Application Server WS-Security Policy Unspecified vulnerability");
 
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2215");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24027708");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24027709");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");

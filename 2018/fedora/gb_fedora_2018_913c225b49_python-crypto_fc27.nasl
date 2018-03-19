@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_913c225b49_python-crypto_fc27.nasl 8986 2018-03-01 04:16:23Z santu $
+# $Id: gb_fedora_2018_913c225b49_python-crypto_fc27.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Fedora Update for python-crypto FEDORA-2018-913c225b49
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874167");
-  script_version("$Revision: 8986 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 05:16:23 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9119 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 08:40:10 +0100 (Wed, 28 Feb 2018)");
   script_cve_id("CVE-2018-6594");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-crypto FEDORA-2018-913c225b49");
   script_tag(name: "summary", value: "Check the version of python-crypto");

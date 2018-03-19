@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_mailwise_mul_vuln_aug16.nasl 6116 2017-05-12 10:10:27Z teissa $
+# $Id: gb_cybozu_mailwise_mul_vuln_aug16.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Cybozu Mailwise Multiple Vulnerabilities Aug-2016
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:mailwise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107163");
-  script_version("$Revision: 6116 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 12:10:27 +0200 (Fri, 12 May 2017) $");
+  script_version("$Revision: 9121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-05-11 12:30:22 +0200 (Thu, 11 May 2017)");
   script_cve_id("CVE-2016-4842", "CVE-2016-4844", "CVE-2016-4843", "CVE-2016-4841");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "insight", value: "Cybozu Mailwise is prone to Multiple Vulnerabilities.
 ");
   script_tag(name: "impact" , value: "Successful exploitation will allow remote attackers to : 
-  obtain information on when an email is read, conduct clickjacking attacks, obtain sensitive cookie information and inject arbitrary email headers..");
+  obtain information on when an email is read, conduct clickjacking attacks, obtain sensitive cookie information and inject arbitrary email headers.");
   script_tag(name: "affected", value: "Cybozu Mailwise before 5.4.0 are vulnerable");
   script_tag(name: "solution", value: "Update to Cybozu Mailwise 5.4.0.");
 

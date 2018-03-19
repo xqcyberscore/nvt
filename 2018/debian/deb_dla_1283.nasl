@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1283.nasl 8909 2018-02-21 15:21:22Z teissa $
+# $Id: deb_dla_1283.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Auto-generated from advisory DLA 1283-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891283");
-  script_version("$Revision: 8909 $");
+  script_version("$Revision: 9119 $");
   script_cve_id("CVE-2018-6594");
   script_name("Debian Lts Announce DLA 1283-1 ([SECURITY] [DLA 1283-1] python-crypto security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 16:21:22 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

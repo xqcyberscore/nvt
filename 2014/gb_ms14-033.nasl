@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-033.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_ms14-033.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)
 #
@@ -27,43 +27,46 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804635");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2014-1816");
   script_bugtraq_id(67895);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
-  script_name(" Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)");
+  script_name("Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)");
 
-   tag_summary =
-"This host is missing an important security update according to Microsoft
+   tag_summary = "This host is missing an important security update according to Microsoft
 Bulletin MS14-033.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
+  tag_vuldetect = "Get the vulnerable file version and check appropriate patch is applied
 or not.";
 
-  tag_insight =
-"The flaw is due to an error when parsing XML entities that is triggered
+  tag_insight = "The flaw is due to an error when parsing XML entities that is triggered
 when handling specially crafted XML content on a webpage.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to disclose sensitive
+  tag_impact = "Successful exploitation will allow remote attackers to disclose sensitive
 information.
 
 Impact Level: Application ";
 
-  tag_affected =
-"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+  tag_affected = "Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
 Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
 Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
 Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior
+
 Microsoft Windows 8 x32/x64
+
 Microsoft Windows 8.1 x32/x64
+
 Microsoft Windows Server 2012
+
 Microsoft Windows Server 2012 R2";
 
   tag_solution =

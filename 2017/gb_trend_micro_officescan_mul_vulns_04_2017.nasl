@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 7511 2017-10-20 05:14:51Z asteins $
+# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107154");
-  script_version("$Revision: 7511 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2017-5481", "CVE-2017-8801");
   script_bugtraq_id(98007);
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:14:51 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-04-26 11:00:00 +0200 (Wed, 26 Apr 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -40,20 +40,22 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_name(" Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities");
+  script_name("Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary", value: "Trend Micro OfficeScan is prone to a privilege escalation vulnerability and multiple cross-site scripting vulnerabilities");
+  script_tag(name: "summary", value: "Trend Micro OfficeScan is prone to a privilege escalation vulnerability
+  and multiple cross-site scripting vulnerabilities");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the
+  version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "
-
-");
-  script_tag(name: "impact" , value: "An attacker can exploit these issues to execute arbitrary script code in the browser of an unsuspecting user in the context of the affected site, steal cookie-based authentication credentials, access or modify data, or gain sensitive information to gain elevated privileges.");
+  script_tag(name: "impact" , value: "An attacker can exploit these issues to execute arbitrary script code in
+  the browser of an unsuspecting user in the context of the affected site, steal cookie-based authentication
+  credentials, access or modify data, or gain sensitive information to gain elevated privileges.");
 
   script_tag(name: "affected", value: "Trend Micro OfficeScan XG (12.0) and 11.0 are affected.");
 
-  script_tag(name: "solution", value: "Trend Micro OfficeScan XG (12.0) users should update to XG CP 1352. Trend Micro OfficeScan XG 11.0 users should update to Version 11.0 SP1 CP 6325 .");
+  script_tag(name: "solution", value: "Trend Micro OfficeScan XG (12.0) users should update to XG CP 1352.
+  Trend Micro OfficeScan XG 11.0 users should update to Version 11.0 SP1 CP 6325 .");
 
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/98007");
   script_tag(name:"solution_type", value:"VendorFix");

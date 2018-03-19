@@ -1,8 +1,8 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_ipam_detect.nasl 9116 2018-03-16 13:04:55Z cfischer $
 #
-# PHPIPAM Web Application Detection
+# phpIPAM Web Application Detection
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107046");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8142 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 9116 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:04:55 +0100 (Fri, 16 Mar 2018) $");
  script_tag(name:"creation_date", value:"2016-09-12 13:18:59 +0200 (Mon, 12 Sep 2016)");
- script_name("PHPIPAM Web Application Detection");
+ script_name("phpIPAM Web Application Detection");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of PHPIPAM Web Application");
+ script_tag(name: "summary" , value: "This script performs HTTP based detection of phpIPAM Web Application");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -53,9 +53,13 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("cpe.inc");
 
-http_port = get_http_port(default:80);
+http_port = get_http_port( default:80 );
+
+rootInstalled = FALSE;
 
 foreach dir( make_list_unique( "/", "/phpipam", cgi_dirs( port:http_port ) ) ) {
+
+  if( rootInstalled ) break;
 
   install = dir;
   if( dir == "/" ) dir = "";
@@ -65,21 +69,33 @@ foreach dir( make_list_unique( "/", "/phpipam", cgi_dirs( port:http_port ) ) ) {
   buf = http_keepalive_send_recv( port:http_port, data:req );
   if( isnull( buf ) ) continue;
  
-  if( buf =~ "HTTP/1\.. 200" && "phpIPAM IP address management" >< buf ) {
+  if( buf =~ "^HTTP/1\.[01] 200" && "phpIPAM IP address management" >< buf ) {
+
+    if( dir == "" ) rootInstalled = TRUE;
 
     vers = 'unknown';
-    version = eregmatch( pattern:'phpIPAM IP address management \\[v([0-9].[0-9])\\] rev([0-9]+)', string:buf );
-    if( version[1] && version[2]) vers = version[1] + "." + version[2];
 
-    set_kb_item( name:"ipam/" + http_port + "/version", value:vers );
-    set_kb_item( name:"ipam/installed", value:TRUE );
+    #<a href="http://phpipam.net">phpIPAM IP address management [v1.3]</a>
+    #</span>
+    #phpIPAM IP address management [v1.1] rev010
+    #<span
+    version = eregmatch( pattern:'phpIPAM IP address management \\[v([0-9.]+)\\]( rev([0-9]+))?', string:buf );
 
-    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:ipam:ipam:" );
+    if( version[1] && version[3] ) {
+      vers = version[1] + "." + version[3];
+    } else if( version[1] ) {
+      vers = version[1];
+    }
+
+    set_kb_item( name:"phpipam/" + http_port + "/version", value:vers );
+    set_kb_item( name:"phpipam/installed", value:TRUE );
+
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:phpipam:phpipam:" );
     if( isnull( cpe ) )
-      cpe = "cpe:/a:ipam:ipam";
+      cpe = "cpe:/a:phpipam:phpipam";
 
     register_product( cpe:cpe, location:install, port:http_port, service:'www' );
-    log_message( data:build_detection_report( app:'PHPIPAM',
+    log_message( data:build_detection_report( app:'phpIPAM',
                                               version:vers,
                                               install:install,
                                               cpe:cpe,

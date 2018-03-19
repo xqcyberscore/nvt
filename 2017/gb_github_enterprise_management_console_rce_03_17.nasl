@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 5800 2017-03-30 17:07:21Z mime $
+# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Remote code execution in GitHub Enterprise Management Console
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:github:github_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140196");
-  script_version("$Revision: 5800 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 19:07:21 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 9121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:11:03 +0100 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,9 +49,9 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Send some HTTP requests with a special crafted Cookie and check the response.");
 
-  script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands in context of the affected application. .");
+  script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands in context of the affected application.");
 
-  script_tag(name:"insight", value:"It is possible to inject arbitrary commands via modified cookie");
+  script_tag(name:"insight", value:"It is possible to inject arbitrary commands via modified cookie.");
 
   script_tag(name:"solution", value:"Update to 2.8.6 or newer.");
 

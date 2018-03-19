@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_server_webaccess_xss_vuln_lin.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: gb_vmware_server_webaccess_xss_vuln_lin.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # VMware WebAccess Cross Site Scripting Vulnerability (Linux)
 #
@@ -33,6 +33,7 @@ tag_solution = "Apply workaround,
 
 tag_impact = "Successful exploitation will lets attackers to execute arbitrary web script
   or HTML.
+
   Impact Level: Application";
 tag_affected = "VMware Server version 1.0";
 tag_insight = "The flaws is due to error in 'Server Console' which is not properly validating
@@ -44,14 +45,14 @@ tag_summary = "This host is installed with VMWare Server and is prone to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801316");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1137");
   script_bugtraq_id(39037);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_name(" VMware WebAccess Cross Site Scripting vulnerability (Linux)");
+  script_name("VMware WebAccess Cross Site Scripting vulnerability (Linux)");
 
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2010-0005.html");
   script_xref(name : "URL" , value : "http://lists.vmware.com/pipermail/security-announce/2010/000086.html");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 8451 2018-01-17 18:56:46Z cfischer $
+# $Id: smb_nativelanman.nasl 9125 2018-03-17 15:45:54Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 8451 $");
+  script_version("$Revision: 9125 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 19:56:46 +0100 (Wed, 17 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 16:45:54 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -160,7 +160,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
 
         # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessie and stretch has a os_str of "Windows 6.1"
         # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
-        # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian
+        # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian. nb: This isn't valid for at least etch (4.0)
         # Ubuntu 17.10: os_str: Windows 6.1 smb_str: Samba 4.6.7-Ubuntu
         # The same above is also valid for SLES:
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64

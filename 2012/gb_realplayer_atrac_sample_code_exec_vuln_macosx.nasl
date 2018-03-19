@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -26,12 +26,14 @@
 
 tag_impact = "Successful exploitation allows remote attackers to execute arbitrary
   code.
+
   Impact Level: Application";
 tag_affected = "RealPlayer versions 12.X through 12.0.0.1701 on Mac OS X";
 tag_insight = "The flaw is due to an improper decoding of samples by ATRAC codec,
   which allows remote attackers to execute arbitrary code via a crafted ATRAC
   audio file.";
 tag_solution = "Upgrade to RealPlayer version 12.0.0.1703 or later,
+
   For updates refer to http://www.real.com/player";
 tag_summary = "This host is installed with RealPlayer which is prone to remote
   code execution vulnerability.";
@@ -39,14 +41,14 @@ tag_summary = "This host is installed with RealPlayer which is prone to remote
 if(description)
 {
   script_id(802802);
-  script_version("$Revision: 6521 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2012-0928");
   script_bugtraq_id(51890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:31:43 +0530 (Tue, 21 Feb 2012)");
-  script_name(" RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)");
+  script_name("RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026643");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51890");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/02062012_player/en/");

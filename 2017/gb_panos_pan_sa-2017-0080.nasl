@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0080.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2017-0080.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107162");
-  script_version("$Revision: 8721 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-05-02 11:40:28 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7126");
   script_bugtraq_id(97590);
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"package");
-  script_name(" Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability");
+  script_name("Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability");
   script_tag(name: "summary", value: "Palo Alto Networks PAN-OS is prone to an information-disclosure vulnerability. ");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "The Management Web Interface does not properly validate specific request parameters which can potentially allow for Information Disclosure.");

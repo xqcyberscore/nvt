@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-011.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: secpod_ms10-011.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Client/Server Run-time Subsystem Privilege Elevation Vulnerability (978037)
 #
@@ -26,9 +26,12 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to monitor all actions
   performed by other logged-in users or run arbitrary code in kernel mode.
+
   Impact Level: System";
 tag_affected = "Microsoft Windows 2000 Service Pack 4 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2003 Service Pack 2 and prior";
 tag_insight = "The issue is caused by an error in the 'Client/Server Run-time Subsystem' (CSRSS)
   that does not properly terminate user processes when a user logs out.";
@@ -41,14 +44,14 @@ tag_summary = "This host is missing a critical security update according to Micr
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902116");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 16:06:43 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-0023");
   script_bugtraq_id(38098);
-  script_name(" Microsoft Client/Server Run-time Subsystem Privilege Elevation Vulnerability (978037)");
+  script_name("Microsoft Client/Server Run-time Subsystem Privilege Elevation Vulnerability (978037)");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/0344");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms10-011.mspx");
 

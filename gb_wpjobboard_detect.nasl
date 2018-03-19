@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpjobboard_detect.nasl 7073 2017-09-07 07:53:45Z teissa $
+# $Id: gb_wpjobboard_detect.nasl 9133 2018-03-19 11:52:45Z asteins $
 #
 #  WPJobBoard Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107234");
-  script_version("$Revision: 7073 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-07 09:53:45 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 9133 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-19 12:52:45 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-09-05 16:22:38 +0700 (Tue, 05 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,10 +49,10 @@ extract its version.");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_require_ports("Services/www", 80, 81);
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Sep/0");
+  script_xref(name: "URL", value: "https://wpjobboard.net/");
 
   exit(0);
 }
@@ -64,15 +64,14 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-
 res = http_get_cache(port: port, item: "/");
 
-if ( 'target="_blank">WPJobBoard</a></p>' >< res )
-{
-  version = "unknown";
-  ver = eregmatch( pattern: "wpjobboard/public/js/frontend.js\?ver=([0-9.]+)'></script>", string: res);
+if ('target="_blank">WPJobBoard</a></p>' >< res || 'wp-content/plugins/wpjobboard/public/' >< res) {
 
-  if ( ! isnull( ver[1] ) ) {
+  version = "unknown";
+  ver = eregmatch(pattern: "wpjobboard/public/js/frontend.js\?ver=([0-9.]+)'></script>", string: res);
+
+  if (!isnull(ver[1])) {
     version = ver[1];
     set_kb_item(name: "wpjobboard/version", value: version);
   }
@@ -91,5 +90,3 @@ if ( 'target="_blank">WPJobBoard</a></p>' >< res )
 }
 
 exit(0);
-
-

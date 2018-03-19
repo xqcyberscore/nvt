@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_ce_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_vsphere_data_protection_ce_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # VMware vSphere Data Protection Command Execution and Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107217");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 9121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 13:41:13 +0200 (Tue, 13 Jun 2017)");
   script_cve_id("CVE-2017-4914", "CVE-2017-4917");
   script_bugtraq_id(98939, 98936);
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"package");
-  script_name(" VMware vSphere Data Protection CVE-2017-4914 Command Execution Vulnerability");
+  script_name("VMware vSphere Data Protection CVE-2017-4914 Command Execution Vulnerability");
 
   script_tag(name: "summary", value: " VMware vSphere Data Protection is prone
   to an arbitrary command-execution and information disclosure vulnerabilities.");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name: "insight", value: "VMware vSphere Data Protection is prone to
   an arbitrary command-execution and information disclosure vulnerabilities.
   An attacker can exploit this issue to execute arbitrary command on the affected
-  system. This may aid in further attacks..");
+  system. This may aid in further attacks.");
 
   script_tag(name: "impact" , value: "An attacker can exploit this issue to execute
   arbitrary command on the affected system. This may aid in further attacks.

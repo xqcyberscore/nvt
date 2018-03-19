@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_ms16-029.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_ms_outlook_ms16-029.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Office Outlook Remote Code Execution Vulnerability (3141806)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807517");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:58:26 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
-  script_name(" Microsoft Office Outlook Remote Code Execution Vulnerability (3141806)");
+  script_name("Microsoft Office Outlook Remote Code Execution Vulnerability (3141806)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-029.");
@@ -51,14 +51,17 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Outlook 2007 Service Pack 3 and prior,
+  script_tag(name:"affected", value:"Microsoft Outlook 2007 Service Pack 3 and prior,
+
   Microsoft Outlook 2010 Service Pack 2 and prior,
+
   Microsoft Outlook 2013 Service Pack 1 and prior,
+
   Microsoft Outlook 2016.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
+
   https://technet.microsoft.com/library/security/MS16-029");
 
   script_tag(name:"solution_type", value:"VendorFix");

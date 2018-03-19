@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_eol.nasl 9092 2018-03-13 11:58:20Z jschulte $
+# $Id: gb_elasticsearch_eol.nasl 9130 2018-03-19 08:53:23Z asteins $
 #
 # Elasticsearch End of Life Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113131");
-  script_version("$Revision: 9092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-13 12:58:20 +0100 (Tue, 13 Mar 2018) $");
+  script_version("$Revision: 9130 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 09:53:23 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-13 11:50:59 +0100 (Tue, 13 Mar 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if( description )
   script_mandatory_keys("elasticsearch/installed");
 
   script_tag(name:"summary", value:"The script checks if the target host runs End of Life software. End of Life software doesn't receive any more updates and is highly prone to zero-day vulnerabilities.");
-  script_tag(name:"solution", value:"Update Kibana to a version that still receives technical support and updates.");
+  script_tag(name:"solution", value:"Update Elasticsearch to a version that still receives technical support and updates.");
 
   script_xref(name:"URL", value:"https://www.elastic.co/support/eol");
 

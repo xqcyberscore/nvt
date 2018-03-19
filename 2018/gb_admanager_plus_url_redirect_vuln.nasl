@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_admanager_plus_url_redirect_vuln.nasl 8717 2018-02-08 11:19:22Z asteins $
+# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # ManageEngine AD Manager Plus URL Redirection Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113106");
-  script_version("$Revision: 8717 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 12:19:22 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 9119 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 11:30:00 +0100 (Thu, 08 Feb 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

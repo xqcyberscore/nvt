@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 9054 2018-03-08 12:44:26Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 9128 2018-03-19 07:45:38Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -50,8 +50,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 9054 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 13:44:26 +0100 (Thu, 08 Mar 2018) $");
+  script_version("$Revision: 9128 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 08:45:38 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -155,7 +155,7 @@ for( a = 1; a < max_index( sl ); a++ ) {
 }
 
 if( result ) {
-  report  = 'The following File-Shares are shared for Everyone (local name: "' + se + '"):\n\n';
+  report  = "The following File-Shares are shared for Everyone (local name: '" + se + "'):" + '\n\n';
   report += 'Name|Path|Access|Description\n' + result;
   log_message( port:0, data:report );
 }

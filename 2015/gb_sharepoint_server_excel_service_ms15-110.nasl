@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms15-110.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_sharepoint_server_excel_service_ms15-110.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (3096440)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805991");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2015-2555", "CVE-2015-2558", "CVE-2015-6037");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:12:27 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (3096440)");
@@ -45,9 +45,11 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple memory corruption errors failing application to properly handle
   objects in memory.
-  - Improper sanitization of specially crafted request..");
+
+  - Improper sanitization of specially crafted request.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory, execute arbitrary code on
@@ -55,14 +57,17 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2007 Service Pack 3 Excel Services,
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3 Excel Services,
+
   Microsoft SharePoint Server 2010 Service Pack 2 Excel Services,
+
   Microsoft SharePoint Server 2013 Service Pack 1 Excel Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/library/security/MS15-110");
+  below link,
+
+  https://technet.microsoft.com/en-us/library/security/MS15-110");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

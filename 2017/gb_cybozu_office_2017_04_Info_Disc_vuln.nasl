@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_2017_04_Info_Disc_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_cybozu_office_2017_04_Info_Disc_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Cybozu Office CVE-2016-4871 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107151");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 9122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-04-24 08:56:53 +0200 (Mon, 24 Apr 2017)");
   script_cve_id("CVE-2016-4871");
 
@@ -38,13 +38,14 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name(" Cybozu Office CVE-2016-4871 Denial of Service Vulnerability");
+  script_name("Cybozu Office CVE-2016-4871 Denial of Service Vulnerability");
   script_tag(name: "summary", value: "Cybozu Office is prone to a denial-of-service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "Cybozu Office is prone to a denial-of-service vulnerability.                                                   Successful exploitation of the issue will cause excessive system resource consumption, resulting in a denial-of-service condition.                           Cybozu Office 9.0.0 through 10.4.0 are vulnerable..");
-  script_tag(name: "impact" , value: "Successful exploitation of the issue will cause excessive system resource consumption, resulting in a denial-of-service condition. ");
+  script_tag(name: "impact" , value: "Successful exploitation of the issue will cause excessive system
+  resource consumption, resulting in a denial-of-service condition.");
 
   script_tag(name: "affected", value: "Cybozu Office 9.0.0 through 10.4.0 are vulnerable");
   script_tag(name: "solution", value: "Update to Cybozu Office 10.4.0.");

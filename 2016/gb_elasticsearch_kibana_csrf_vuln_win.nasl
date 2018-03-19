@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_csrf_vuln_win.nasl 9011 2018-03-02 13:09:15Z cfischer $
+# $Id: gb_elasticsearch_kibana_csrf_vuln_win.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808088");
-  script_version("$Revision: 9011 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2015-8131");
   script_bugtraq_id(77657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-06-22 11:52:53 +0530 (Wed, 22 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Windows)");
 
@@ -55,10 +55,11 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"affected", value:"Elasticsearch Kibana version before 4.1.3 and
-  4.2.x before 4.2.1 on Windows..");
+  4.2.x before 4.2.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version 4.1.3,
   or 4.2.1 or later.
+
   For updates refer to https://www.elastic.co");
 
   script_tag(name:"solution_type", value:"VendorFix");

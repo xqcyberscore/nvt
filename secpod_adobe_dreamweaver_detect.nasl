@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_dreamweaver_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: secpod_adobe_dreamweaver_detect.nasl 9117 2018-03-16 13:48:01Z santu $
 #
 # Adobe Dreamweaver Version Detection
 #
@@ -9,6 +9,8 @@
 #
 # Updated By: Thanga Prakash S <tprakash@secpod.com> on 2014-05-28
 # Updated according to CR57 and to support 32 and 64 bit.
+# Updated By: Rinu Kuriakose <krinu@secpod.com>
+# Updated to support Dreamweaver CC 2018
 #
 # Copyright:
 # Copyright (c) 2010 SecPod, http://www.secpod.com
@@ -30,22 +32,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901148");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 9117 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Version Detection");
 
-  tag_summary =
-"Detection of installed version of Adobe Dreamweaver on Windows.
+  script_tag(name : "summary" , value : "Detection of installed version of Adobe Dreamweaver on 
+  Windows.
 
-The script logs in via smb, searches for Adobe Dreamweaver in the
-registry and gets the version from the registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  The script logs in via smb, searches for Adobe Dreamweaver in the
+  registry and gets the version from the registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -56,27 +55,26 @@ registry and gets the version from the registry.";
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
-if(!registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver\"))
+##Registry key is different for Dreamweaver CC 2018
+if(!registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver\") &&
+   !registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver CC 2018\"))
 {
-  if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver\")){
+  if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver\") &&
+     !registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver CC 2018\")){
     exit(0);
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -91,7 +89,6 @@ if(!registry_key_exists(key:key)){
     exit(0);
 }
 
-## Get Adobe Dreamweaver version from registry
 foreach item (registry_enum_keys(key:key))
 {
   AppName = registry_get_sz(key:key + item, item:"DisplayName");
@@ -110,7 +107,6 @@ foreach item (registry_enum_keys(key:key))
       tmp_version = AppVer + " " +AppName;
       set_kb_item(name:"Adobe/Dreamweaver/Ver", value:tmp_version);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:AppVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:dreamweaver:");
       if(isnull(cpe))
         cpe = "cpe:/a:adobe:dreamweaver";
@@ -122,6 +118,8 @@ foreach item (registry_enum_keys(key:key))
                                                install: appPath,
                                                cpe: cpe,
                                                concluded: tmp_version));
+      exit(0);
     }
   }
 }
+exit(0);

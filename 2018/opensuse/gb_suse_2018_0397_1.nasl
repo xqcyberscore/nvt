@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0397_1.nasl 8840 2018-02-16 08:25:58Z santu $
+# $Id: gb_suse_2018_0397_1.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # SuSE Update for plasma5-workspace openSUSE-SU-2018:0397-1 (plasma5-workspace)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851697");
-  script_version("$Revision: 8840 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 09:25:58 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 9119 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-10 07:53:58 +0100 (Sat, 10 Feb 2018)");
   script_cve_id("CVE-2018-6790", "CVE-2018-6791");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for plasma5-workspace openSUSE-SU-2018:0397-1 (plasma5-workspace)");
   script_tag(name: "summary", value: "Check the version of plasma5-workspace");

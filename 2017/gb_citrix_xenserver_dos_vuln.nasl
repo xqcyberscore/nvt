@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenserver_dos_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_citrix_xenserver_dos_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:citrix:xenserver';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107212");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 9121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-05-31 19:18:23 +0200 (Wed, 31 May 2017)");
   script_cve_id("CVE-2017-5572");
 
@@ -39,12 +39,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   
-  script_name(" Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability");
+  script_name("Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability");
   script_tag(name: "summary", value: " Citrix XenServer is prone to a denial-of-service vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Citrix XenServer is prone to a denial-of-service vulnerability.                  Attackers can exploit this issue to cause denial-of-service condition..");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
+  if the version is vulnerable or not.");
   script_tag(name: "impact" , value: "Attackers can exploit this issue to cause denial-of-service condition.");
-  script_tag(name: "affected", value: "Citrix XenServer 6.0.2, Citrix XenServer 7.0,Citrix XenServer 6.5 SP1, Citrix XenServer 6.5, Citrix XenServer 6.2.0 Sp1, Citrix XenServer 6.2");
+  script_tag(name: "affected", value: "Citrix XenServer 6.0.2, Citrix XenServer 7.0,Citrix XenServer 6.5 SP1,
+  Citrix XenServer 6.5, Citrix XenServer 6.2.0 Sp1, Citrix XenServer 6.2");
   script_tag(name: "solution", value: "Updates are available. check https://support.citrix.com/article/CTX220112.");
 
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/95801");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2712.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_junos_cve_2014-2712.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # Junos J-Web XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105905");
-  script_version ("$Revision: 6663 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_version ("$Revision: 9121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 16:10:41 +0700 (Tue, 29 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,7 +44,6 @@ if (description)
   script_bugtraq_id(66767);
 
   script_name("Junos J-Web XSS Vulnerability");
-
 
   script_category(ACT_GATHER_INFO);
 
@@ -65,12 +64,11 @@ passed as arguments to index.php can result in the execution of scripting tags w
   script_tag(name : "affected" , value : "Junos OS 10.0, 10.4, 11.4, 12.1 and 12.2.");
 
   script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
-workaround disable J-Web..");
+workaround disable J-Web.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10521");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66767");
 
- 
   exit(0);
 }
 

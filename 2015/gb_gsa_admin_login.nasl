@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 6845 2017-08-03 14:41:54Z cfischer $
+# $Id: gb_gsa_admin_login.nasl 9128 2018-03-19 07:45:38Z cfischer $
 #
 # GSA Default Admin Credentials
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 6845 $");
+  script_version("$Revision: 9128 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 16:41:54 +0200 (Thu, 03 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 08:45:38 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -43,15 +43,15 @@ if(description)
   script_dependencies("gb_gsa_detect.nasl");
   script_mandatory_keys("gsa/installed");
 
-  script_tag(name:"summary", value:'The remote GSA is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:"The remote GSA is prone to a default account authentication bypass vulnerability.");
 
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.");
 
-  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"vuldetect", value:"Try to login with default credentials.");
 
-  script_tag(name:"insight", value:'It was possible to login with default credentials: admin/admin or admin/openvas');
+  script_tag(name:"insight", value:"It was possible to login with default credentials: admin/admin, sadmin/changeme or admin/openvas");
 
-  script_tag(name:"solution", value:'Change the password.');
+  script_tag(name:"solution", value:"Change the password.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Workaround");
@@ -64,23 +64,26 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-url = "/omp";
+if( dir == "/" ) dir = "";
+url = dir + "/omp";
 
-creds = make_array( "admin", "admin", # OpenVAS Virtual Appliance
-                    "admin", "openvas" ); # Docker image from https://github.com/mikesplain/openvas-docker#usage
+creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
+                    "sadmin", "changeme", # Docker image from https://github.com/falegk/openvas_pg#usage
+                    "admin",  "openvas" ); # Docker image from https://github.com/mikesplain/openvas-docker#usage
 
-host = http_host_name( port:port );
-vuln = FALSE;
-report = 'It was possible to login using the following credentials:';
+host   = http_host_name( port:port );
+vuln   = FALSE;
+report = "It was possible to login using the following credentials:";
 
-foreach cred ( keys( creds ) ) {
+foreach cred( keys( creds ) ) {
 
   bound = rand();
 
   post_data = '-----------------------------' + bound + '\r\n' +
               'Content-Disposition: form-data; name="cmd"\r\n' +
-              '\r\n' + 
+              '\r\n' +
               'login\r\n' +
               '-----------------------------' + bound + '\r\n' +
               'Content-Disposition: form-data; name="text"\r\n' +
@@ -93,25 +96,23 @@ foreach cred ( keys( creds ) ) {
               '-----------------------------' + bound + '\r\n' +
               'Content-Disposition: form-data; name="password"\r\n' +
               '\r\n' +
-              creds[cred] + '\r\n' + 
+              creds[cred] + '\r\n' +
               '-----------------------------' + bound + '--\r\n';
 
   len = strlen( post_data );
 
-  req = 'POST ' + url + ' HTTP/1.1\r\n' + 
-        'Host: ' + host + '\r\n' + 
+  req = 'POST ' + url + ' HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' + 
-        'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' + 
+        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
+        'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
         'Accept-Encoding: identity\r\n' +
-        'DNT: 1\r\n' + 
-        'Referer: http://' + host + '/login/login.html\r\n' + 
+        'Referer: http://' + host + '/login/login.html\r\n' +
         'Connection: close\r\n' +
-        'Content-Type: multipart/form-data; boundary=---------------------------' + bound + '\r\n' + 
+        'Content-Type: multipart/form-data; boundary=---------------------------' + bound + '\r\n' +
         'Content-Length: ' + len + '\r\n' +
         '\r\n' +
         post_data;
-
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
   if( "HTTP/1.1 303" >!< buf ) continue;
@@ -122,7 +123,7 @@ foreach cred ( keys( creds ) ) {
   cookie = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
   if( isnull( cookie[1] ) ) continue;
 
-  url = url + '?r=1&token=' + token[1];
+  url += '?r=1&token=' + token[1];
 
   if( http_vuln_check( port:port, url:url, pattern:">Logged in as<", extra_check:make_list( ">Tasks<", ">Targets<", ">Logout<" ), cookie:cookie[1] ) ) {
     vuln = TRUE;

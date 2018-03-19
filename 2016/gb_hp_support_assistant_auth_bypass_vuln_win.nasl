@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_auth_bypass_vuln_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_hp_support_assistant_auth_bypass_vuln_win.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # HP Support Assistant Authentication Bypass Vulnerability (Windows)
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:hp:support_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807805");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2016-2245");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-04-20 17:05:22 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Authentication Bypass Vulnerability (Windows)");
 
   script_tag(name:"summary" , value:"This host is installed with HP Support
-  Assistant and is prone to authentication bypass vulnerability..");
+  Assistant and is prone to authentication bypass vulnerability.");
 
   script_tag(name:"vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:solarwinds:storage_resource_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809427");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 9121 $");
   script_cve_id("CVE-2016-4350");
   script_bugtraq_id(89557);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:36:59 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities");
 
@@ -42,7 +42,7 @@ if(description)
   Resource Monitor and is prone to multiple SQL injection vulnerabilities.");
 
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
-  whether it is able to execute sql query or not..");
+  whether it is able to execute sql query or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to Web Services
   web server does not validate state parameter properly.
@@ -58,6 +58,7 @@ if(description)
 
   script_tag(name: "solution" , value:"Upgrade to SolarWinds Storage Resource
   Monitor 6.2.3 or later.
+
   For updates refer to http://www.solarwinds.com");
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4116.nasl 8855 2018-02-18 12:10:00Z teissa $
+# $Id: deb_4116.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Auto-generated from advisory DSA 4116-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704116");
-  script_version("$Revision: 8855 $");
+  script_version("$Revision: 9119 $");
   script_cve_id("CVE-2018-6791");
   script_name("Debian Security Advisory DSA 4116-1 (plasma-workspace - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-18 13:10:00 +0100 (Sun, 18 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 00:00:00 +0100 (Fri, 16 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mariadb_os_detection.nasl 7669 2017-11-06 15:08:30Z cfischer $
+# $Id: gb_mysql_mariadb_os_detection.nasl 9125 2018-03-17 15:45:54Z cfischer $
 #
 # MySQL/MariaDB Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108192");
-  script_version("$Revision: 7669 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 16:08:30 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 9125 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 16:45:54 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-07-17 09:13:48 +0100 (Mon, 17 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,12 +74,16 @@ if( "ubuntu" >< banner ) {
   exit( 0 );
 }
 
+# 5.0.32-Debian_7etch12-log
 if( "+deb" >< banner || "~jessie" >< banner || "~wheezy" >< banner || "~stretch" >< banner ||
+    "etch" >< banner || "-Debian" >< banner ||
     "squeeze" >< banner || "lenny" >< banner || # squeeze has .squeeze or ~squeeze versions, lenny as well
     "~bpo" >< banner ) { # Banners for debian backports like 5.6.30-1~bpo8+1-log
 
   # nb: The order matters in case of backports which might have something like +deb9~bpo8
-  if( "lenny" >< banner ) {
+  if( "etch" >< banner ) {
+    register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "lenny" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else if( "squeeze" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );

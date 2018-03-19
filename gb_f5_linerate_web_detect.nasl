@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_linerate_web_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_f5_linerate_web_detect.nasl 9121 2018-03-17 13:28:53Z cfischer $
 #
 # F5 LineRate Web Configuration Detection
 #
@@ -30,12 +30,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105307");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 9121 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
  script_tag(name:"creation_date", value:"2015-06-24 15:27:54 +0200 (Wed, 24 Jun 2015)");
  script_name("F5 LineRate Web Configuration Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to detect F5 LineRate from the reply..");
+ script_tag(name: "summary" , value: "The script sends a connection request to the server and
+ attempts to detect F5 LineRate from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 8991 2018-03-01 07:47:09Z cfischer $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Tiki Wiki Multiple Vulnerabilities Feb18 
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 8991 $");
+  script_version("$Revision: 9119 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:47:09 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
   

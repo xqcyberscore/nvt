@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_file_download_vuln.nasl 8960 2018-02-27 06:03:41Z ckuersteiner $
+# $Id: gb_dokuwiki_file_download_vuln.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # DokuWiki Reflected File Download Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:dokuwiki:dokuwiki";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140814");
-  script_version("$Revision: 8960 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 07:03:41 +0100 (Tue, 27 Feb 2018) $");
+  script_version("$Revision: 9119 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-27 10:06:40 +0700 (Tue, 27 Feb 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-18123");
 

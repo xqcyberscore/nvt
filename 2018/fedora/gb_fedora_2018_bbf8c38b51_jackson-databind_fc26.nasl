@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_bbf8c38b51_jackson-databind_fc26.nasl 8744 2018-02-09 13:42:01Z santu $
+# $Id: gb_fedora_2018_bbf8c38b51_jackson-databind_fc26.nasl 9119 2018-03-16 15:21:49Z cfischer $
 #
 # Fedora Update for jackson-databind FEDORA-2018-bbf8c38b51
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874108");
-  script_version("$Revision: 8744 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 14:42:01 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 9119 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 07:58:47 +0100 (Thu, 08 Feb 2018)");
   script_cve_id("CVE-2017-17485", "CVE-2018-5968", "CVE-2017-15095", "CVE-2017-7525");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for jackson-databind FEDORA-2018-bbf8c38b51");
   script_tag(name: "summary", value: "Check the version of jackson-databind");

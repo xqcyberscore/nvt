@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-055_lync_server.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_ms14-055_lync_server.nasl 9122 2018-03-17 14:01:04Z cfischer $
 #
 # Microsoft Lync Server Remote Denial of Service Vulnerability (2990928)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804762");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 9122 $");
   script_cve_id("CVE-2014-4068", "CVE-2014-4070", "CVE-2014-4071");
   script_bugtraq_id(69586, 69579, 69592);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 11:42:19 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
-  script_name(" Microsoft Lync Server Remote Denial of Service Vulnerability (2990928)");
+  script_name("Microsoft Lync Server Remote Denial of Service Vulnerability (2990928)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-055.");
@@ -45,9 +45,12 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An unspecified error when handling exceptions.
+
   - Certain unspecified input is not properly sanitised before being returned
     to the user.
+
   - Another unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -56,10 +59,12 @@ if(description)
   Impact Level: Application");
 
   script_tag(name:"affected", value:"Microsoft Lync Server 2010,
+
   Microsoft Lync Server 2013");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes
   or download and update mentioned hotfixes in the advisory from the below link,
+
   https://technet.microsoft.com/en-us/security/bulletin/ms14-055");
   script_tag(name:"qod_type", value:"registry");
 
