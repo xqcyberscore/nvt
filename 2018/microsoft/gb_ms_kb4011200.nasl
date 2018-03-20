@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011200.nasl 8813 2018-02-14 14:19:45Z santu $
+# $Id: gb_ms_kb4011200.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Microsoft Outlook 2007 Service Pack 3 Multiple Vulnerabilities (KB4011200)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812909");
-  script_version("$Revision: 8813 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2018-0850", "CVE-2018-0852");
   script_bugtraq_id(102866, 102871);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 15:19:45 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 10:54:29 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Outlook 2007 Service Pack 3 Multiple Vulnerabilities (KB4011200)");
 

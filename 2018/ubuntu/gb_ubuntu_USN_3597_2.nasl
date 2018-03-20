@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3597_2.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_ubuntu_USN_3597_2.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Ubuntu Update for linux-hwe USN-3597-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843474");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 08:47:42 +0100 (Thu, 15 Mar 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2017-5753", "CVE-2017-5754");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-hwe USN-3597-2");
   script_tag(name: "summary", value: "Check the version of linux-hwe");

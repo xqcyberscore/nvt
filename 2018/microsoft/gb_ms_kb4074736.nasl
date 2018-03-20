@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4074736.nasl 8813 2018-02-14 14:19:45Z santu $
+# $Id: gb_ms_kb4074736.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Microsoft Windows Internet Explorer Multiple RCE Vulnerabilities (KB4074736)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812765");
-  script_version("$Revision: 8813 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2018-0840", "CVE-2018-0866");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 15:19:45 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 08:59:04 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Windows Internet Explorer Multiple RCE Vulnerabilities (KB4074736)");
 

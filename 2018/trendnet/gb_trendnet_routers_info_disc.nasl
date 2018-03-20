@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_routers_info_disc.nasl 9014 2018-03-02 14:23:06Z cfischer $
+# $Id: gb_trendnet_routers_info_disc.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # TrendNet Routers AUTHORIZED_GROUP Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107299");
-  script_version("$Revision: 9014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 15:23:06 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 9144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 19:23:07 +0100 (Thu, 15 Feb 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2018-7034");
 
   script_tag(name: "qod_type", value: "remote_active");

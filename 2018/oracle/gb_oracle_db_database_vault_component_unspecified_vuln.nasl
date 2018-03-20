@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_database_vault_component_unspecified_vuln.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_oracle_db_database_vault_component_unspecified_vuln.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Oracle Database Server Database Vault Component Unspecified Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813003");
-  script_version("$Revision: 9117 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2011-2238");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 15:14:30 +0530 (Wed, 07 Mar 2018)");
   script_name("Oracle Database Server Database Vault Component Unspecified Vulnerability");
 

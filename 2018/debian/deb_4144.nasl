@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4144.nasl 9131 2018-03-19 08:57:13Z cfischer $
+# $Id: deb_4144.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Auto-generated from advisory DSA 4144-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704144");
-  script_version("$Revision: 9131 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2018-2579", "CVE-2018-2582", "CVE-2018-2588", "CVE-2018-2599", "CVE-2018-2602",
                 "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629", "CVE-2018-2633", "CVE-2018-2634",
                 "CVE-2018-2637", "CVE-2018-2641", "CVE-2018-2663", "CVE-2018-2677", "CVE-2018-2678");
   script_name("Debian Security Advisory DSA 4144-1 (openjdk-8 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 09:57:13 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-17 00:00:00 +0100 (Sat, 17 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

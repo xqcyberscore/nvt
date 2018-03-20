@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_actiontec_c1000a_default_telnet_credentials.nasl 7717 2017-11-09 14:09:12Z jschulte $
+# $Id: gb_actiontec_c1000a_default_telnet_credentials.nasl 9138 2018-03-19 14:18:29Z cfischer $
 #
 # Actiontec C1000A Modem Backup Telnet Account
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112104");
-  script_version("$Revision: 7717 $");
+  script_version("$Revision: 9138 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Actiontec C1000A Modem Backup Telnet Account");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 15:09:12 +0100 (Thu, 09 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 15:18:29 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-11-06 10:23:00 +0200 (Mon, 06 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -57,34 +57,30 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
-
 if( "===Actiontec xDSL Router===" >!< banner ) exit( 0 );
 
 login = "admin";
-pass = "CenturyL1nk";
+pass  = "CenturyL1nk";
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
 recv = recv( socket:soc, length:2048 );
 
-if ( "Login:" >< recv ) {
-  send( socket:soc, data: tolower( login ) + '\r\n' );
+if( "Login:" >< recv ) {
+  send( socket:soc, data:login + '\r\n' );
   recv = recv( socket:soc, length:128 );
 
   if( "Password:" >< recv ) {
-    send( socket:soc, data: pass + '\r\n\r\n' );
+    send( socket:soc, data:pass + '\r\n\r\n' );
     recv = recv( socket:soc, length:1024 );
 
-    send( socket:soc, data:'sh\r\n');
+    send( socket:soc, data:'sh\r\n' );
     recv = recv( socket:soc, length:1024 );
 
-    if ( "BusyBox" >< recv && "built-in shell" >< recv) {
+    if( "BusyBox" >< recv && "built-in shell" >< recv) {
       VULN = TRUE;
       report = 'It was possible to login via telnet using the following backup credentials:\n\n';
       report += 'Login: ' + login + ', Password: ' + pass;

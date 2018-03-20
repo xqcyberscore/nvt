@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0684_1.nasl 9132 2018-03-19 11:22:37Z santu $
+# $Id: gb_suse_2018_0684_1.nasl 9141 2018-03-20 06:46:48Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:0684-1 (java-1_7_0-openjdk)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851717");
-  script_version("$Revision: 9132 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:22:37 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 9141 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 07:46:48 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-17 08:44:55 +0100 (Sat, 17 Mar 2018)");
   script_cve_id("CVE-2018-2579", "CVE-2018-2588", "CVE-2018-2599", "CVE-2018-2602", 
                 "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629", "CVE-2018-2633", 
                 "CVE-2018-2634", "CVE-2018-2637", "CVE-2018-2641", "CVE-2018-2663", 
                 "CVE-2018-2677", "CVE-2018-2678");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:0684-1 (java-1_7_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");

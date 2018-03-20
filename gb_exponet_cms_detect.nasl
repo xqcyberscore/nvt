@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponet_cms_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_exponet_cms_detect.nasl 9150 2018-03-20 12:57:43Z jschulte $
 #
 # Exponent CMS Detection
 #
@@ -26,11 +26,11 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.100937"); 
-  script_version("$Revision: 8139 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100937");
+  script_version("$Revision: 9150 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 13:57:43 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_name("Exponent CMS Detection");
   script_category(ACT_GATHER_INFO);
@@ -84,6 +84,10 @@ foreach dir( make_list_unique( "/", "/exponent", "/cms", cgi_dirs( port:port ) )
         } else {
           version2 = eregmatch( string:version[1], pattern:'([0-9.]+)' );
           if( version2 ) vers = version2[1];
+        }
+        patch = eregmatch( string: version[0], pattern:'patch([0-9]+)');
+        if( patch[1] && vers != "unknown" ){
+          vers += "." + patch[1];
         }
       }
 

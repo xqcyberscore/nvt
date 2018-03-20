@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgain_em_cmd_inj_vuln.nasl 8588 2018-01-30 14:51:34Z asteins $
+# $Id: gb_netgain_em_cmd_inj_vuln.nasl 9137 2018-03-19 13:14:57Z asteins $
 #
 # NetGain Enterprise Manager OS Command Injection Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:netgain:enterprise_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106632");
-  script_version("$Revision: 8588 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:51:34 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9137 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:14:57 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("NetGain Enterprise Manager OS Command Injection Vulnerability");
 
@@ -56,8 +56,9 @@ vulnerability.");
 
   script_tag(name: "affected", value: "NetGain Enterprise Manager v7.2.562 build 853 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+      Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+      disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://packetstormsecurity.com/files/141430/NetGain-Enterprise-Manager-7.2.562-Command-Execution.html");
 

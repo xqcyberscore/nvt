@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_07a3e36499_freetype_fc27.nasl 8939 2018-02-23 13:10:16Z santu $
+# $Id: gb_fedora_2018_07a3e36499_freetype_fc27.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # Fedora Update for freetype FEDORA-2018-07a3e36499
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874135");
-  script_version("$Revision: 8939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:10:16 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 9144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:52:13 +0100 (Wed, 21 Feb 2018)");
   script_cve_id("CVE-2018-6942");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for freetype FEDORA-2018-07a3e36499");
   script_tag(name: "summary", value: "Check the version of freetype");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_1.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_openemr_mult_vuln_0517_1.nasl 9137 2018-03-19 13:14:57Z asteins $
 #
 # OpenEMR Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106635");
-  script_version("$Revision: 7992 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 9137 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:14:57 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("OpenEMR Multiple Vulnerabilities");
 
@@ -67,8 +67,11 @@ context of the vulnerable website orgain access to sensitive information.");
 
   script_tag(name: "affected", value: "OpenEMR 5.0.1-dev and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 20th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+      Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+      disable respective features, remove the product or replace the product by another one.
+
+      A workaround is to apply the latest patch once it becomes available or to upgrade manually via the official OpenEMR git repository that is being linked to in the references.");
 
 
   script_xref(name: "URL", value: "https://github.com/openemr/openemr/issues/498");

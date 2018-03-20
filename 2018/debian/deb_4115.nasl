@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4115.nasl 8855 2018-02-18 12:10:00Z teissa $
+# $Id: deb_4115.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Auto-generated from advisory DSA 4115-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704115");
-  script_version("$Revision: 8855 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2018-5378", "CVE-2018-5379", "CVE-2018-5380", "CVE-2018-5381");
   script_name("Debian Security Advisory DSA 4115-1 (quagga - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-18 13:10:00 +0100 (Sun, 18 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 00:00:00 +0100 (Thu, 15 Feb 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

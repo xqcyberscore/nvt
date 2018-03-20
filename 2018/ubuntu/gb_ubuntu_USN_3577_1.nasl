@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3577_1.nasl 8978 2018-02-28 11:44:41Z santu $
+# $Id: gb_ubuntu_USN_3577_1.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Ubuntu Update for cups USN-3577-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843453");
-  script_version("$Revision: 8978 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 12:44:41 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 9135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:47:26 +0100 (Wed, 21 Feb 2018)");
   script_cve_id("CVE-2017-18190");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for cups USN-3577-1");
   script_tag(name: "summary", value: "Check the version of cups");

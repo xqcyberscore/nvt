@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_netiq_access_manager_detect.nasl 9139 2018-03-19 15:04:54Z asteins $
 #
 # NetIQ Access Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105148");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 9139 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-19 16:04:54 +0100 (Mon, 19 Mar 2018) $");
  script_tag(name:"creation_date", value:"2014-12-19 14:59:27 +0100 (Fri, 19 Dec 2014)");
  script_name("NetIQ Access Manager Detection");
 
@@ -47,9 +47,13 @@ NetIQ Access Manager from the response.");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
+ script_xref(name:"URL", value:"https://www.netiq.com/products/access-manager/");
+
  exit(0);
 }
 
+include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -63,11 +67,17 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "<title>NetIQ Access Manager" >!< buf || "" >!< buf ) exit( 0 );
 
 set_kb_item(name:"netiq_access_manager/installed", value:TRUE);
+version = "unknown";
+version_url = "/nidp/html/help/en/bookinfo.html";
 
-cpe = 'cpe:/a:netiq:access_manager';
+version_resp = http_get_cache( item:version_url, port:port );
+version_match = eregmatch ( pattern:"NetIQ Access Manager ([0-9.]+) User Portal Help", string:version_resp );
 
-register_product( cpe:cpe, location:url, port:port );
+if ( version_match[1] ) {
+  version = version_match[1];
+  concluded_url = report_vuln_url( port:port, url:version_url, url_only:TRUE);
+}
 
-log_message(data: build_detection_report(app:"Netiq Access Manager", install:url, cpe:cpe),
-            port:port);
+register_and_report_cpe( app: "NetIQ Access Manager", ver: version, concluded: version_match[0], base: "cpe:/a:netiq:acess_manager:" , expr: '([0-9.]+)', insloc: url, regPort: port, conclUrl: concluded_url );
+
 exit( 0 );

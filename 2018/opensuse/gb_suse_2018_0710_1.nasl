@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0710_1.nasl 9132 2018-03-19 11:22:37Z santu $
+# $Id: gb_suse_2018_0710_1.nasl 9141 2018-03-20 06:46:48Z cfischer $
 #
 # SuSE Update for ucode-intel openSUSE-SU-2018:0710-1 (ucode-intel)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851716");
-  script_version("$Revision: 9132 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:22:37 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 9141 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 07:46:48 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-17 08:44:41 +0100 (Sat, 17 Mar 2018)");
   script_cve_id("CVE-2017-5715");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ucode-intel openSUSE-SU-2018:0710-1 (ucode-intel)");
   script_tag(name: "summary", value: "Check the version of ucode-intel");

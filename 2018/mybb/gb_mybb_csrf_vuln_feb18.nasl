@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 8961 2018-02-27 07:17:58Z cfischer $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 8961 $");
+  script_version("$Revision: 9144 $");
   script_cve_id("CVE-2018-7305");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 08:17:58 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
   script_name("MyBB Cross Site Request Forgery Vulnerability");
   

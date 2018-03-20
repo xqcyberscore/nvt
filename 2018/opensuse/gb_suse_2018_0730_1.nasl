@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0730_1.nasl 9132 2018-03-19 11:22:37Z santu $
+# $Id: gb_suse_2018_0730_1.nasl 9141 2018-03-20 06:46:48Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2018:0730-1 (mariadb)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851719");
-  script_version("$Revision: 9132 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:22:37 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 9141 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 07:46:48 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-18 08:38:43 +0100 (Sun, 18 Mar 2018)");
   script_cve_id("CVE-2018-2562", "CVE-2018-2612", "CVE-2018-2622", "CVE-2018-2640", 
                 "CVE-2018-2665", "CVE-2018-2668");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2018:0730-1 (mariadb)");
   script_tag(name: "summary", value: "Check the version of mariadb");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_mult_vuln.nasl 8708 2018-02-07 16:37:35Z asteins $
+# $Id: gb_mult_ip_cameras_mult_vuln.nasl 9137 2018-03-19 13:14:57Z asteins $
 #
 # Multiple IP-Cameras (P2P) WIFICAM Cameras Multiple Vulnerabilities
 #
@@ -28,16 +28,16 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106636");
-  script_version("$Revision: 8708 $");
+  script_version("$Revision: 9137 $");
   script_cve_id("CVE-2017-8224", "CVE-2017-8222", "CVE-2017-8225", "CVE-2017-8223", "CVE-2017-8221");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:14:57 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Multiple IP-Cameras (P2P) WIFICAM Cameras Multiple Vulnerabilities");
 
@@ -75,8 +75,9 @@ the response.");
   script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code and read arbitrary
 files.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 8th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+      Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+      disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://pierrekim.github.io/blog/2017-03-08-camera-goahead-0day.html");
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3043");

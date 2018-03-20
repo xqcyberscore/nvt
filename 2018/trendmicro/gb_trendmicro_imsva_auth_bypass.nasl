@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_imsva_auth_bypass.nasl 8823 2018-02-15 09:02:17Z teissa $
+# $Id: gb_trendmicro_imsva_auth_bypass.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Trend Micro InterScan Messaging Security (Virtual Appliance) [IMSVA] Management Portal Authentication Bypass Vulnerability 
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:trendmicro:interscan_messaging_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107298");
-  script_version("$Revision: 8823 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2018-3609");
-  script_tag(name:"cvss_base", value:"5.2");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 10:02:17 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 11:00:01 +0100 (Wed, 14 Feb 2018)");
   script_name("Trend Micro InterScan Messaging Security (Virtual Appliance) [IMSVA] Management Portal Authentication Bypass Vulnerability");
 

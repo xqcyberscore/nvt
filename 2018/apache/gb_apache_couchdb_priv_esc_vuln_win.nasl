@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_priv_esc_vuln_win.nasl 8790 2018-02-13 11:36:20Z cfischer $
+# $Id: gb_apache_couchdb_priv_esc_vuln_win.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # CouchDB 2.0.0 Privilege Escalation Vulnerability (Windows)
 #
@@ -32,14 +32,14 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112221");
   script_cve_id("CVE-2016-8742");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 8790 $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 9135 $");
 
   script_name("CouchDB 2.0.0 Privilege Escalation Vulnerability (Windows)");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 12:36:20 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 09:02:26 +0100 (Tue, 13 Feb 2018)");
 
   script_category(ACT_GATHER_INFO);

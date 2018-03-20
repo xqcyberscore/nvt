@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_usrmgmt_info_disc_vuln.nasl 8940 2018-02-23 13:47:02Z santu $
+# $Id: gb_manage_engine_desktop_central_usrmgmt_info_disc_vuln.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # ManageEngine Desktop Central 'usermgmt.xml' Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812522");
-  script_version("$Revision: 8940 $");
+  script_version("$Revision: 9144 $");
   script_cve_id("CVE-2017-16924");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 16:17:29 +0530 (Fri, 23 Feb 2018)");
   script_name("ManageEngine Desktop Central 'usermgmt.xml' Information Disclosure Vulnerability");
 

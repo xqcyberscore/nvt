@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_850l_bof_vuln.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_dlink_dir_850l_bof_vuln.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # D-Link DIR-850L Stack-Based Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:d-link:dir-850l_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813008");
-  script_version("$Revision: 9117 $");
+  script_version("$Revision: 9135 $");
   script_cve_id("CVE-2017-3193");
   script_bugtraq_id(96747);
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-08 16:47:29 +0530 (Thu, 08 Mar 2018)");
   script_name("D-Link DIR-850L Stack-Based Buffer Overflow Vulnerability");
 

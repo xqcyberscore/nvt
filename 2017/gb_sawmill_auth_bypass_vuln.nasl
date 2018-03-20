@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sawmill_auth_bypass_vuln.nasl 8586 2018-01-30 14:08:56Z cfischer $
+# $Id: gb_sawmill_auth_bypass_vuln.nasl 9137 2018-03-19 13:14:57Z asteins $
 #
 # Sawmill Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:sawmill:sawmill";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106618");
-  script_version("$Revision: 8586 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9137 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:14:57 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Sawmill Authentication Bypass Vulnerability");
 
@@ -59,8 +59,9 @@ if (description)
 who gains access to the hashed user account passwords can login to the Sawmill interface using the raw MD5 hash
 values, allowing attackers to bypass the work of offline cracking account password hashes.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "http://hyp3rlinx.altervista.org/advisories/SAWMILL-PASS-THE-HASH-AUTHENTICATION-BYPASS.txt");
 

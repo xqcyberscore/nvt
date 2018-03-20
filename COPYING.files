@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 19 Mar 2018 13:21:16 +0100
+# Automatically created on:  Tue, 20 Mar 2018 14:16:49 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -8981,179 +8981,6 @@
 2009/Turnkey_eBook_store_xss_34324.nasl: GPLv2+
 2009/TurnkeyForms_classifieds_authentication_bypass.nasl: GPLv2+
 2009/TYPSoft_ftp_server_34901.nasl: GPLv2+
-2009/ubuntu_698_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_698_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_700_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_701_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_701_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_702_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_703_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_704_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_705_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_706_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_707_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_708_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_709_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_710_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_711_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_712_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_713_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_715_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_716_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_717_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_717_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_717_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_719_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_720_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_721_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_722_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_723_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_724_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_726_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_726_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_727_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_727_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_728_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_728_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_728_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_729_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_730_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_731_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_732_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_733_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_734_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_735_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_736_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_737_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_738_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_739_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_740_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_741_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_742_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_743_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_744_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_745_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_746_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_747_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_748_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_749_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_750_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_752_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_753_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_754_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_755_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_756_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_757_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_758_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_759_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_760_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_761_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_761_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_762_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_763_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_764_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_765_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_766_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_767_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_769_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_770_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_771_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_772_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_773_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_774_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_775_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_775_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_776_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_776_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_777_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_778_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_779_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_780_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_781_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_781_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_782_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_783_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_784_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_785_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_786_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_787_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_788_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_789_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_790_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_791_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_791_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_791_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_792_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_794_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_795_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_796_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_797_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_798_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_799_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_800_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_801_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_802_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_802_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_803_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_804_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_805_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_806_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_808_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_809_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_810_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_810_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_811_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_812_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_813_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_813_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_813_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_814_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_815_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_816_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_817_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_818_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_820_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_821_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_822_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_823_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_824_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_825_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_826_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_827_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_828_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_829_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_830_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_831_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_832_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_834_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_836_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_837_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_838_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_839_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_841_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_842_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_843_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_844_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_845_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_848_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_850_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_850_2.nasl: GPLv2 or GPLv3
-2009/ubuntu_850_3.nasl: GPLv2 or GPLv3
-2009/ubuntu_851_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_853_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_854_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_855_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_856_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_857_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_858_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_861_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_862_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_863_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_865_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_866_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_873_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_874_1.nasl: GPLv2 or GPLv3
-2009/ubuntu_875_1.nasl: GPLv2 or GPLv3
 2009/vBulletin_3_7_3_pl1_sql_injection.nasl: GPLv2+
 2009/vBulletin_3_7_4_multiple_sql_injection.nasl: GPLv2+
 2009/viewvc_36035.nasl: GPLv2+
@@ -26568,6 +26395,7 @@
 2014/deb_2884.nasl: GPLv2+
 2014/deb_2885.nasl: GPLv2+
 2014/deb_2886.nasl: GPLv2+
+2014/deb_2887.nasl: GPLv2+
 2014/deb_2888.nasl: GPLv2+
 2014/deb_2889.nasl: GPLv2+
 2014/deb_2890.nasl: GPLv2+
@@ -26575,6 +26403,18 @@
 2014/deb_2892.nasl: GPLv2+
 2014/deb_2893.nasl: GPLv2+
 2014/deb_2894.nasl: GPLv2+
+2014/deb_2895.nasl: GPLv2+
+2014/deb_2896.nasl: GPLv2+
+2014/deb_2897.nasl: GPLv2+
+2014/deb_2898.nasl: GPLv2+
+2014/deb_2899.nasl: GPLv2+
+2014/deb_2900.nasl: GPLv2+
+2014/deb_2901.nasl: GPLv2+
+2014/deb_2902.nasl: GPLv2+
+2014/deb_2903.nasl: GPLv2+
+2014/deb_2904.nasl: GPLv2+
+2014/deb_2905.nasl: GPLv2+
+2014/deb_2906.nasl: GPLv2+
 2014/deb_2908.nasl: GPLv2+
 2014/deb_2909.nasl: GPLv2+
 2014/deb_2910.nasl: GPLv2+
@@ -26761,6 +26601,10 @@
 2014/deb_3093.nasl: GPLv2+
 2014/deb_3094.nasl: GPLv2+
 2014/deb_3095.nasl: GPLv2+
+2014/deb_3096.nasl: GPLv2+
+2014/deb_3097.nasl: GPLv2+
+2014/deb_3098.nasl: GPLv2+
+2014/deb_3099.nasl: GPLv2+
 2014/deb_3100.nasl: GPLv2+
 2014/deb_3101.nasl: GPLv2+
 2014/deb_3102.nasl: GPLv2+
@@ -26771,11 +26615,14 @@
 2014/deb_3107.nasl: GPLv2+
 2014/deb_3108.nasl: GPLv2+
 2014/deb_3109.nasl: GPLv2+
+2014/deb_3110.nasl: GPLv2+
 2014/deb_3111.nasl: GPLv2+
 2014/deb_3112.nasl: GPLv2+
 2014/deb_3113.nasl: GPLv2+
 2014/deb_3114.nasl: GPLv2+
 2014/deb_3115.nasl: GPLv2+
+2014/deb_3116.nasl: GPLv2+
+2014/deb_3117.nasl: GPLv2+
 2014/gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl: GPLv2+
 2014/gb_activeperl_dos_vuln_feb14_win.nasl: GPLv2+
 2014/gb_actualanalyzer_lite_remote_code_exec_vuln.nasl: GPLv2+
@@ -30244,26 +30091,6 @@
 2015/alas-2015-629.nasl: GPLv2+
 2015/alas-2015-630.nasl: GPLv2+
 2015/alas-2015-631.nasl: GPLv2+
-2015/deb_2887.nasl: GPLv2+
-2015/deb_2895.nasl: GPLv2+
-2015/deb_2896.nasl: GPLv2+
-2015/deb_2897.nasl: GPLv2+
-2015/deb_2898.nasl: GPLv2+
-2015/deb_2899.nasl: GPLv2+
-2015/deb_2900.nasl: GPLv2+
-2015/deb_2901.nasl: GPLv2+
-2015/deb_2902.nasl: GPLv2+
-2015/deb_2903.nasl: GPLv2+
-2015/deb_2904.nasl: GPLv2+
-2015/deb_2905.nasl: GPLv2+
-2015/deb_2906.nasl: GPLv2+
-2015/deb_3096.nasl: GPLv2+
-2015/deb_3097.nasl: GPLv2+
-2015/deb_3098.nasl: GPLv2+
-2015/deb_3099.nasl: GPLv2+
-2015/deb_3110.nasl: GPLv2+
-2015/deb_3116.nasl: GPLv2+
-2015/deb_3117.nasl: GPLv2+
 2015/deb_3118.nasl: GPLv2+
 2015/deb_3119.nasl: GPLv2+
 2015/deb_3120.nasl: GPLv2+
@@ -30312,6 +30139,8 @@
 2015/deb_3165.nasl: GPLv2+
 2015/deb_3166.nasl: GPLv2+
 2015/deb_3167.nasl: GPLv2+
+2015/deb_3168.nasl: GPLv2+
+2015/deb_3169.nasl: GPLv2+
 2015/deb_3170.nasl: GPLv2+
 2015/deb_3171.nasl: GPLv2+
 2015/deb_3172.nasl: GPLv2+
@@ -30527,6 +30356,8 @@
 2015/deb_3384.nasl: GPLv2+
 2015/deb_3385.nasl: GPLv2+
 2015/deb_3386.nasl: GPLv2+
+2015/deb_3387.nasl: GPLv2+
+2015/deb_3388.nasl: GPLv2+
 2015/deb_3390.nasl: GPLv2+
 2015/deb_3391.nasl: GPLv2+
 2015/deb_3392.nasl: GPLv2+
@@ -37160,10 +36991,6 @@
 2016/alas-2016-757.nasl: GPLv2+
 2016/alas-2016-758.nasl: GPLv2+
 2016/apache_struts_dmi_rce.nasl: GPLv2+
-2016/deb_3168.nasl: GPLv2+
-2016/deb_3169.nasl: GPLv2+
-2016/deb_3387.nasl: GPLv2+
-2016/deb_3388.nasl: GPLv2+
 2016/deb_3426.nasl: GPLv2+
 2016/deb_3431.nasl: GPLv2+
 2016/deb_3432.nasl: GPLv2+
@@ -37482,6 +37309,7 @@
 2016/deb_3747.nasl: GPLv2+
 2016/deb_3748.nasl: GPLv2+
 2016/deb_3749.nasl: GPLv2+
+2016/deb_3750.nasl: GPLv2+
 2016/ELSA-2014-1913.nasl: GPLv2+
 2016/ELSA-2014-1972.nasl: GPLv2+
 2016/ELSA-2015-1053.nasl: GPLv2+
@@ -42986,7 +42814,6 @@
 2017/citrix/gb_xenserver_ctx229057.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx230138.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx230624.nasl: GPLv2+
-2017/deb_3750.nasl: GPLv2+
 2017/deb_3751.nasl: GPLv2+
 2017/deb_3752.nasl: GPLv2+
 2017/deb_3753.nasl: GPLv2+
@@ -43090,6 +42917,7 @@
 2017/deb_3851.nasl: GPLv2+
 2017/deb_3852.nasl: GPLv2+
 2017/deb_3853.nasl: GPLv2+
+2017/deb_3854.nasl: GPLv2+
 2017/deb_3855.nasl: GPLv2+
 2017/deb_3856.nasl: GPLv2+
 2017/deb_3857.nasl: GPLv2+
@@ -48523,6 +48351,7 @@
 2018/debian/deb_4132.nasl: GPLv2+
 2018/debian/deb_4133.nasl: GPLv2+
 2018/debian/deb_4134.nasl: GPLv2+
+2018/debian/deb_4135.nasl: GPLv2+
 2018/debian/deb_4137.nasl: GPLv2+
 2018/debian/deb_4138.nasl: GPLv2+
 2018/debian/deb_4139.nasl: GPLv2+
@@ -48531,6 +48360,7 @@
 2018/debian/deb_4142.nasl: GPLv2+
 2018/debian/deb_4143.nasl: GPLv2+
 2018/debian/deb_4144.nasl: GPLv2+
+2018/debian/deb_4145.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -49250,11 +49080,13 @@
 2018/gb_clipbucket_mult_vuln.nasl: GPLv2+
 2018/gb_cms_made_simple_mult_xss_vuln.nasl: GPLv2+
 2018/gb_coinhive_js_miner_detect.nasl: GPLv2+
+2018/gb_dlink_dir850l_revB_telnet_backdoor.nasl: GPLv2+
 2018/gb_dlink_dsl6850U_mult_vuln.nasl: GPLv2+
 2018/gb_dnsmasq_dnssec_val_vuln.nasl: GPLv2+
 2018/gb_efront_cms_mult_vuln.nasl: GPLv2+
 2018/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
 2018/gb_exponent_cms_mult_vuln.nasl: GPLv2+
+2018/gb_exponent_cms_priv_esc_vuln.nasl: GPLv2+
 2018/gb_ffmpeg_info_disc_vuln.nasl: GPLv2+
 2018/gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl: GPLv2+
 2018/gb_freetype_dos_vuln_lin.nasl: GPLv2+
@@ -49289,6 +49121,7 @@
 2018/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/gb_openemr_mult_vuln.nasl: GPLv2+
 2018/gb_otrs_rce_vuln.nasl: GPLv2+
+2018/gb_panda_global_protection_mult_vuln.nasl: GPLv2+
 2018/gb_phpipam_xss_vuln.nasl: GPLv2+
 2018/gb_phpip_mult_sqli.nasl: GPLv2+
 2018/gb_pihole_mult_vuln_feb18.nasl: GPLv2+
@@ -49309,6 +49142,7 @@
 2018/gb_tuleap_sql_injection.nasl: GPLv2+
 2018/gb_unbound_dos_vuln.nasl: GPLv2+
 2018/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
+2018/gb_wampserver_xss_vuln.nasl: GPLv2+
 2018/gb_yawcam_dir_trav_vuln.nasl: GPLv2+
 2018/gb_zimbra_persistent_xss_vuln01_feb18.nasl: GPLv2+
 2018/gb_zimbra_persistent_xss_vuln02_feb18.nasl: GPLv2+
@@ -56070,6 +55904,179 @@ gsf/2009/fedora/gb_fedora_2008_9901_thunderbird_fc10.nasl: GPLv2+
 gsf/2009/fedora/gb_fedora_2008_9903_moodle_fc10.nasl: GPLv2+
 gsf/2009/fedora/gb_fedora_2008_9944_htop_fc10.nasl: GPLv2+
 gsf/2009/fedora/gb_fedora_2008_9952_lynx_fc10.nasl: GPLv2+
+gsf/2009/ubuntu/ubuntu_698_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_698_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_700_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_701_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_701_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_702_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_703_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_704_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_705_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_706_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_707_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_708_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_709_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_710_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_711_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_712_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_713_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_715_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_716_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_717_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_717_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_717_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_719_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_720_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_721_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_722_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_723_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_724_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_726_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_726_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_727_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_727_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_728_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_728_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_728_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_729_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_730_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_731_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_732_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_733_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_734_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_735_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_736_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_737_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_738_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_739_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_740_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_741_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_742_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_743_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_744_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_745_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_746_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_747_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_748_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_749_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_750_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_752_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_753_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_754_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_755_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_756_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_757_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_758_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_759_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_760_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_761_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_761_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_762_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_763_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_764_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_765_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_766_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_767_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_769_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_770_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_771_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_772_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_773_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_774_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_775_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_775_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_776_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_776_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_777_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_778_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_779_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_780_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_781_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_781_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_782_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_783_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_784_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_785_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_786_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_787_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_788_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_789_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_790_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_791_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_791_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_791_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_792_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_794_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_795_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_796_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_797_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_798_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_799_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_800_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_801_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_802_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_802_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_803_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_804_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_805_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_806_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_808_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_809_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_810_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_810_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_811_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_812_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_813_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_813_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_813_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_814_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_815_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_816_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_817_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_818_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_820_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_821_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_822_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_823_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_824_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_825_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_826_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_827_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_828_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_829_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_830_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_831_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_832_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_834_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_836_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_837_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_838_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_839_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_841_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_842_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_843_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_844_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_845_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_848_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_850_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_850_2.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_850_3.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_851_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_853_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_854_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_855_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_856_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_857_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_858_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_861_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_862_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_863_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_865_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_866_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_873_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_874_1.nasl: GPLv2 or GPLv3
+gsf/2009/ubuntu/ubuntu_875_1.nasl: GPLv2 or GPLv3
 gsf/2017/aruba/gb_arubaos_aruba_psa_2017_007.nasl: GPLv2+
 gsf/2017/cambium_networks/gb_cambium_cnpilot_mult_vuln.nasl: GPLv2+
 gsf/2017/cambium_networks/gb_cambium_epmp1000_mult_vuln.nasl: GPLv2+
@@ -56543,6 +56550,9 @@ gsf/2018/netex/gb_hyperip_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/netex/gb_hyperip_default_http_credentials.nasl: GPLv2+
 gsf/2018/netex/gb_hyperip_default_ssh_credentials.nasl: GPLv2+
 gsf/2018/netgain/gb_netgain_em_mult_vuln.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_access_manager_mult_vuln.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_access_manager_mult_xss_vuln.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-5186.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-7425.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0517.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4138.nasl 9131 2018-03-19 08:57:13Z cfischer $
+# $Id: deb_4138.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # Auto-generated from advisory DSA 4138-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704138");
-  script_version("$Revision: 9131 $");
+  script_version("$Revision: 9144 $");
   script_cve_id("CVE-2017-18187", "CVE-2018-0487", "CVE-2018-0488");
   script_name("Debian Security Advisory DSA 4138-1 (mbedtls - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 09:57:13 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 00:00:00 +0100 (Thu, 15 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_wampserver_detect.nasl 9149 2018-03-20 12:26:00Z jschulte $
 #
 # WampServer Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800297");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 9149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 13:26:00 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("WampServer Version Detection");
@@ -59,7 +59,7 @@ if( ! can_host_php( port:wampPort ) ) exit( 0 );
 
 rcvRes = http_get_cache(item: "/index.php", port:wampPort);
 
-if("WampServer" >!< rcvRes) exit( 0 );
+if("title>WAMPSERVER" >!< rcvRes) exit( 0 );
 
 wv = 'unknown';
 cpe = 'cpe:/a:wampserver:wampserver';

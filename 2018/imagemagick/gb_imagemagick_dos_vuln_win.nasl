@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 8900 2018-02-21 10:36:29Z jschulte $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # ImageMagick 7.0.7.22 DoS Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113112");
-  script_version("$Revision: 8900 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 11:36:29 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 9144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 12:44:44 +0100 (Thu, 15 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0eed1be1c0_libXcursor_fc26.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_fedora_2018_0eed1be1c0_libXcursor_fc26.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Fedora Update for libXcursor FEDORA-2018-0eed1be1c0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874182");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:37:25 +0100 (Wed, 14 Mar 2018)");
   script_cve_id("CVE-2017-16612");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libXcursor FEDORA-2018-0eed1be1c0");
   script_tag(name: "summary", value: "Check the version of libXcursor");

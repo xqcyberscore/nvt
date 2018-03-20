@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
+# $Id: gb_ibm_websphere_portal_detect.nasl 9145 2018-03-20 09:27:46Z jschulte $
 #
 # IBM WebSphere Portal Detection 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106198");
- script_version ("$Revision: 7268 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
+ script_version ("$Revision: 9145 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-03-20 10:27:46 +0100 (Tue, 20 Mar 2018) $");
  script_tag(name: "creation_date", value: "2016-08-24 14:38:56 +0700 (Wed, 24 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -100,11 +100,11 @@ if ("IBM WebSphere Portal" >< res) {
 
       if ("<major>" >< res && "<fix-level>" >< res) {
         concl = res;
-        major = eregmatch(pattern: "<major>([0-9])</major>", string: res);
-        minor = eregmatch(pattern: "<minor>([0-9])</minor>", string: res);
-        maint = eregmatch(pattern: "<maintenance>([0-9])</maintenance>", string: res);
-        minmaint = eregmatch(pattern: "<minor-maintenance>([0-9])</minor-maintenance>", string: res);
-        fixlevel = eregmatch(pattern: "<fix-level>([0-9])</fix-level>", string: res);
+        major = eregmatch(pattern: "<major>([0-9]+)</major>", string: res);
+        minor = eregmatch(pattern: "<minor>([0-9]+)</minor>", string: res);
+        maint = eregmatch(pattern: "<maintenance>([0-9]+)</maintenance>", string: res);
+        minmaint = eregmatch(pattern: "<minor-maintenance>([0-9]+)</minor-maintenance>", string: res);
+        fixlevel = eregmatch(pattern: "<fix-level>([0-9]+)</fix-level>", string: res);
         if (!isnull(major[1]) && !isnull(minor[1]) && !isnull(maint[1]) && !isnull(minmaint[1]) &&
             !isnull(fixlevel[1]))
           version = major[1] + '.' + minor[1] + '.' + maint[1] + '.' + minmaint[1] + '.' + fixlevel[1];

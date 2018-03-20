@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_rce_vuln.nasl 6375 2017-06-20 09:29:31Z ckuersteiner $
+# $Id: gb_hpe_universal_cmdb_rce_vuln.nasl 9144 2018-03-20 09:25:46Z asteins $
 #
 # HPE Universal CMDB Remote Code Execution Vulnerability 
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:hp:universal_cmbd_foundation";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106868");
-  script_version("$Revision: 6375 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-20 11:29:31 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 9144 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-06-13 14:33:13 +0700 (Tue, 13 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-8947");
 

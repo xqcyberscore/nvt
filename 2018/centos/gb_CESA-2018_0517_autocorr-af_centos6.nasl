@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0517_autocorr-af_centos6.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_CESA-2018_0517_autocorr-af_centos6.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # CentOS Update for autocorr-af CESA-2018:0517 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882854");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 08:46:38 +0100 (Thu, 15 Mar 2018)");
   script_cve_id("CVE-2018-6871");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for autocorr-af CESA-2018:0517 centos6 ");
   script_tag(name: "summary", value: "Check the version of autocorr-af");

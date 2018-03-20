@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3558_1.nasl 8744 2018-02-09 13:42:01Z santu $
+# $Id: gb_ubuntu_USN_3558_1.nasl 9135 2018-03-19 12:37:31Z asteins $
 #
 # Ubuntu Update for systemd USN-3558-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843440");
-  script_version("$Revision: 8744 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 14:42:01 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 9135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 07:54:04 +0100 (Tue, 06 Feb 2018)");
   script_cve_id("CVE-2017-15908", "CVE-2018-1049");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for systemd USN-3558-1");
   script_tag(name: "summary", value: "Check the version of systemd");
