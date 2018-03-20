@@ -30,6 +30,8 @@
 # in the list is greater that the given one.
 #
 
+include("version_func.inc");
+
 function isosxpkgvuln(fixed, diff) {
     list=get_kb_item("ssh/login/osx_pkgs");
     if (!list) exit (0);
@@ -65,13 +67,19 @@ function osx_ver(ver) {
     return v[0];
 }
 
-# Checks if the relase is less than the ones in the list #
+# Checks if the release is less than the ones in the list #
 function rlsnotsupported(rls, list) {
-    min = eregmatch (pattern:"[0-9]+.[0-9]+", string:list[0]);
+    # find the minimum version in the list
+    min = list[0];
     foreach ver (list) {
-        r = eregmatch(pattern:"[0-9]+.[0-9]+", string:ver);
-        if (min[0] > r[0]) { r=min; display (min);}
+        if (version_is_less(ver, min)) { min=ver;}
     }
-    rls = eregmatch(pattern:"[0-9]+.[0-9]+", string:rls);
-    if (rls[0] < min[0]) return 1; else return 0;
+
+    # compare the release version against the
+    # minimum version from the version list
+    if (version_is_less_equal(rls, min, false, false)) return 1; else return 0;
+
+    # according to linked CVEs the versions commonly supplied in list
+    # INCLUDE the last vulnerable release so the above condition
+    # should be less than or equal to
 }
