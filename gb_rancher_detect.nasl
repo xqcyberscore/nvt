@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rancher_detect.nasl 7458 2017-10-17 11:24:45Z emoss $
+# $Id: gb_rancher_detect.nasl 9173 2018-03-22 11:21:03Z asteins $
 #
 # Rancher Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107247");
-  script_version("$Revision: 7458 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-17 13:24:45 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 9173 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-22 12:21:03 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-10-16 16:22:38 +0200 (Mon, 16 Oct 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,6 +56,7 @@ extract its version.");
 
   exit(0);
 }
+
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
@@ -67,7 +68,7 @@ url = "/login/";
 
 res = http_get_cache(port: port, item: url);
 
-if ( res =~ "HTTP/1.. 200 OK" && "PL=rancher" && "X-Rancher-Version" >< res )
+if (res =~ "HTTP/1.. 200 OK" && "PL=rancher" >< res && "X-Rancher-Version" >< res)
 {
 
     version = "unknown";

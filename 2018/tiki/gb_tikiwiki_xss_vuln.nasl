@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_xss_vuln.nasl 9119 2018-03-16 15:21:49Z cfischer $
+# $Id: gb_tikiwiki_xss_vuln.nasl 9171 2018-03-22 09:02:10Z jschulte $
 #
 # Tiki Wiki CMS Groupware XSS Vulnerability
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2017 Greenbone Networks GmbH
+# Copyright (c) 2018 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,8 +30,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140797");
-  script_version("$Revision: 9119 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9171 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-22 10:02:10 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-23 08:51:05 +0700 (Fri, 23 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -46,7 +46,7 @@ if (description)
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_tikiwiki_detect.nasl");
   script_mandatory_keys("TikiWiki/installed");

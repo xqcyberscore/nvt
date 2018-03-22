@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_dos_vuln_june17_win.nasl 9159 2018-03-21 13:54:45Z asteins $
+# $Id: gb_vlc_media_player_mult_dos_vuln_june17_win.nasl 9175 2018-03-22 12:57:55Z emoss $
 #
 # VLC Media Player Multiple Denial-of-Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811077");
-  script_version("$Revision: 9159 $");
+  script_version("$Revision: 9175 $");
   script_cve_id("CVE-2017-9301","CVE-2017-9300");
   script_bugtraq_id(98747, 98746);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 14:54:45 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 13:57:55 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-06-05 14:19:32 +0530 (Mon, 05 Jun 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Multiple Denial-of-Service Vulnerabilities (Windows)");
@@ -59,9 +59,9 @@ if(description)
 
   script_tag(name: "affected" , value:"VideoLAN VLC media player version 2.2.4 on Windows");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 21st
-  March, 2018. Information regarding this issue will be updated once the solution
-  details are available. For details refer to http://www.videolan.org");
+  script_tag(name: "solution" , value:"No solution or patch is available as of 21st March, 2018.
+  Information regarding this issue will be updated once the solution details are available.
+  For details refer to http://www.videolan.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_xref(name : "URL" , value : "http://code610.blogspot.in/2017/04/multiple-crashes-in-vlc-224.html");

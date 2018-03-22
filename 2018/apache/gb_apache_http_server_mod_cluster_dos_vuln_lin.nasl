@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 9176 2018-03-22 13:16:51Z emoss $
 #
 # Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812580");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9176 $");
   script_cve_id("CVE-2016-8612");
   script_bugtraq_id(94939);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 14:16:51 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 12:33:01 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)");
@@ -56,8 +56,8 @@ if(description)
 
   script_tag(name:"affected", value:"Apache HTTP Server version 2.4.23 on Linux.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of March,
-  21st. Information regarding this issue will be updated once solution details are
+  script_tag(name:"solution", value:"No solution or patch is available as of 21st March, 2018.
+  Information regarding this issue will be updated once solution details are
   available. For updates refer to https://httpd.apache.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_disable_comments_plugin_csfr_vuln.nasl 9163 2018-03-21 15:44:38Z mmartin $
+# $Id: gb_wordpress_disable_comments_plugin_csfr_vuln.nasl 9166 2018-03-21 17:21:09Z cfischer $
 #
 # WordPress Disable Comments Plugin CSRF Vulnerability
 #
@@ -27,21 +27,20 @@
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107302");
-  script_version("$Revision: 9163 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-21 16:44:38 +0100 (Wed, 21 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-20 14:15:46 +0100 (Tue, 20 Mar 2018)");
+  script_version("$Revision: 9166 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-21 18:21:09 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-20 14:15:46 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2014-2550");
-  script_bugtraq_id(75325);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value: "VendorFix");
 
   script_name("WordPress Disable Comments Plugin CSRF Vulnerability");
 
@@ -52,17 +51,19 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Cross-site request forgery (CSRF) vulnerability in the Disable Comments
-  plugin before 1.0.4 for WordPress allows remote attackers to hijack the authentication of administrators
+  script_tag(name:"summary", value:"The installed Disable Comments plugin for WordPress has a Cross-site
+  request forgery (CSRF) vulnerability.");
+
+  script_tag(name:"impact", value:"This flaw allows remote attackers to hijack the authentication of administrators
   for requests that enable comments via a request to the disable_comments_settings page to wp-admin/options-general.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Disable Comments plugin before 1.0.4.");
+  script_tag(name:"affected", value:"WordPress Disable Comments plugin before 1.0.4.");
 
-  script_tag(name: "solution", value: "Update to version 1.0.4 or later.");
+  script_tag(name:"solution", value:"Update to version 1.0.4 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/disable-comments/#developers");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/disable-comments/#developers");
 
   exit(0);
 }
@@ -72,34 +73,33 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-if ( !port = get_app_port ( cpe: CPE ) )
+if( !port = get_app_port( cpe:CPE ) )
   exit( 0 );
 
-if ( !dir = get_app_location( cpe: CPE, port: port ) )
+if( !dir = get_app_location( cpe:CPE, port:port ) )
   exit( 0 );
 
-if ( dir == "/" )
+if( dir == "/" )
   dir = "";
 
 url = dir + "/wp-content/plugins/disable-comments/readme.txt";
-conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-res = http_get_cache( port: port, item: url );
+res = http_get_cache( port:port, item:url );
 
-if ( "Disable Comments" >< res && "Changelog" >< res ) {
-  vers = egrep ( pattern: "^= ([0-9.]+) =", string:res ); #-> Hier ggf. mit oder ohne ^ probieren
-  
-  if ( !isnull ( vers ) ) {
-    vers = eregmatch ( pattern: "= ([0-9.]+) =", string:vers );
-    if( !isnull( vers[1] )) {
-      if ( version_is_less( version: vers[1], test_version: "1.8" ) ) {
-      #if ( version_is_less( version: vers[1], test_version: "1.0.4" ) ) {
-       # report = report_fixed_ver (  file_checked: conclUrl, installed_version: vers[1], fixed_version:  "1.0.4" );
-        report = report_fixed_ver (  file_checked: conclUrl, installed_version: vers[1], fixed_version:  "1.8" );
-       	security_message ( port: port, data: report );
-       	exit ( 0 );
+if( "Disable Comments" >< res && "Changelog" >< res ) {
+
+  vers = egrep( pattern:"^= ([0-9.]+) =", string:res );
+
+  if( !isnull( vers ) ) {
+    vers = eregmatch( pattern:"= ([0-9.]+) =", string:vers );
+    if( !isnull( vers[1] ) ) {
+      if( version_is_less( version:vers[1], test_version:"1.0.4" ) ) {
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+        report = report_fixed_ver( file_checked:conclUrl, installed_version:vers[1], fixed_version:"1.0.4" );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
-     }
-    }  
-   }
+    }
+  }
+}
 
-exit ( 99 );
+exit( 99 );

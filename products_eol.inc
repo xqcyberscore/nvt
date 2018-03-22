@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 9092 2018-03-13 11:58:20Z jschulte $
+# $Id: products_eol.inc 9172 2018-03-22 10:12:10Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9092 $
+# $Revision: 9172 $
 #
 ###############################################################################
 
@@ -163,7 +163,7 @@ eol_cpes[ 'cpe:/a:otrs:otrs' ] = make_array(
 
 # https://github.com/owncloud/core/wiki/Maintenance-and-Release-Schedule
 eol_cpes[ 'cpe:/a:owncloud:owncloud' ] = make_array(
-  'versions',      '9.0:2017-12-05;8.2:2017-05-31;8.1:2017-02-28;8.0:2016-10-31;7.0:2016-05-31;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
+  'versions',      '9.1:2018-03-31;9.0:2017-12-05;8.2:2017-05-31;8.1:2017-02-28;8.0:2016-10-31;7.0:2016-05-31;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
