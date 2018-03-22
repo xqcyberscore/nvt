@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_router_detect.nasl 8853 2018-02-16 15:44:13Z emoss $
+# $Id: gb_trendnet_router_detect.nasl 9153 2018-03-21 09:31:39Z asteins $
 #
 # TrendNet Router Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107300");
-  script_version("$Revision: 8853 $");
+  script_version("$Revision: 9153 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 16:44:13 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:31:39 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 14:47:17 +0100 (Thu, 15 Feb 2018)");
   script_name("TrendNet Router Detection");
 
@@ -61,12 +61,12 @@ if(!trdPort){
 
 res = http_get_cache(port:trdPort, item: "/");
 
-if("Login to the" >< res && "<title>TRENDNET | WIRELESS N ROUTER </title>" >< res)
+if("Login to the" >< res && ("<title>TRENDNET | WIRELESS N ROUTER </title>" >< res || "<title>TRENDNET | WIRELESS N GIGABIT ROUTER </title>" >< res))
 {
   model = "unknown";
   version = "unknown";
   install = trdPort + "/tcp";
-  router= eregmatch(pattern: "Server: Linux, HTTP/1.., (TEW-[0-9a-zA-Z]+) Ver ([0-9]+.[0-9]+)", string: res);
+  router= eregmatch(pattern: "Server: Linux, HTTP/1.., (TEW-[0-9a-zA-Z]+) Ver ([0-9.]+)", string: res);
   if (!isnull(router[1])) model = router[1];
   if (!isnull(router[2])) version = router[2];
 

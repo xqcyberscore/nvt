@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenpacket_router_rce_vuln.nasl 7675 2017-11-07 07:38:53Z cfischer $
+# $Id: gb_greenpacket_router_rce_vuln.nasl 9159 2018-03-21 13:54:45Z asteins $
 #
 # Green Packet Routers OS Command Injection Vulnerability
 #
@@ -29,8 +29,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106986");
-  script_version("$Revision: 7675 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 08:38:53 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 9159 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-21 14:54:45 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-07-26 17:10:09 +0700 (Wed, 26 Jul 2017)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ vulnerability.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 21st March, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://iscouncil.blogspot.com/2017/07/command-injection-in-green-packet-dx.html");

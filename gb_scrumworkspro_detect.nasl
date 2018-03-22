@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkspro_detect.nasl 7274 2017-09-26 11:24:40Z teissa $
+# $Id: gb_scrumworkspro_detect.nasl 9153 2018-03-21 09:31:39Z asteins $
 #
 # Scrumworks Pro Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107246");
-  script_version("$Revision: 7274 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 13:24:40 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 9153 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-21 10:31:39 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-09-25 16:22:38 +0700 (Mon, 25 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,8 +65,8 @@ port = get_http_port(default: 8080);
 
 res = http_get_cache(port: port, item: "/scrumworks/login");
 
-if ( '<title>Welcome to ScrumWorks' >< res && 'scrumworkspro' >< res ) {
-
+if ('<title>Welcome to ScrumWorks' >< res && 'scrumworkspro' >< res)
+{
     install = "/scrumworks/login";
 
     version = "unknown";
@@ -90,7 +90,7 @@ if ( '<title>Welcome to ScrumWorks' >< res && 'scrumworkspro' >< res ) {
 
     register_product(cpe: cpe, location: install, port: port);
 
-     log_message(data: build_detection_report(app: "ScrumworksPro", version: version, install: install,
+     log_message(data: build_detection_report(app: "ScrumWorks Pro", version: version, install: install,
                                            cpe: cpe, concluded: ver[0]),
                 port: port);
      exit(0);

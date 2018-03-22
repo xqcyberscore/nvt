@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_cms_detect.nasl 9133 2018-03-19 11:52:45Z asteins $
+# $Id: gb_zenbership_cms_detect.nasl 9161 2018-03-21 14:53:25Z asteins $
 #
 # Zenbership CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107220");
-  script_version("$Revision: 9133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:52:45 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 9161 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-21 15:53:25 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,37 +69,36 @@ foreach dir (make_list_unique("/", "/zenbership", "/membership", "/member", "/ze
 
   rcvRes = http_get_cache(item: url, port: appPort);
 
-  if (rcvRes !~ "^HTTP/1\.[01] 200" && "<title>Welcome to Zenbership" >!< rcvRes &&
-      ('content="Zenbership Membership Software"' >!< rcvRes || 'a href="http://documentation.zenbership.com/"' >!< rcvRes))
-    continue;
+  if (rcvRes =~ "^HTTP/1\.[01] 200" && "<title>Welcome to Zenbership" >< rcvRes &&
+      ('content="Zenbership Membership Software"' >< rcvRes || 'a href="http://documentation.zenbership.com/"' >< rcvRes)) {
 
-  if (dir == "" ) rootInstalled = TRUE;
-  vers = 'unknown';
+    if (dir == "" ) rootInstalled = TRUE;
+    vers = 'unknown';
 
-  tmpVer = eregmatch(pattern: ">v([0-9a-z]+)",
+    tmpVer = eregmatch(pattern: ">v([0-9a-z]+)",
                    string: rcvRes);
 
-  if (tmpVer[1]) {
-    vers = tmpVer[1];
-  }
+    if (tmpVer[1]) {
+      vers = tmpVer[1];
+    }
 
-  set_kb_item(name: "zenbership/installed", value: TRUE);
-  set_kb_item(name: "zenbership/version", value: vers);
+    set_kb_item(name: "zenbership/installed", value: TRUE);
+    set_kb_item(name: "zenbership/version", value: vers);
 
-  cpe = build_cpe(value: vers, exp: "^([0-9a-z]+)", base: "cpe:/a:castlamp:zenbership:");
+    cpe = build_cpe(value: vers, exp: "^([0-9a-z]+)", base: "cpe:/a:castlamp:zenbership:");
 
-  if (!cpe)
-    cpe = 'cpe:/a:castlamp:zenbership';
+    if (!cpe)
+      cpe = 'cpe:/a:castlamp:zenbership';
 
-  register_product(cpe: cpe, location: install, port: appPort);
+    register_product(cpe: cpe, location: install, port: appPort);
 
-  log_message(data:build_detection_report(app: "Zenbership",
+    log_message(data:build_detection_report(app: "Zenbership",
                                             version: vers,
                                             install: install,
                                             cpe: cpe,
                                             concluded: tmpVer[0]),
                                             port: appPort);
-
+  }
 }
 
 exit(0);

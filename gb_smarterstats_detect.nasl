@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smarterstats_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_smarterstats_detect.nasl 9153 2018-03-21 09:31:39Z asteins $
 #
 # SmarterStats Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108255");
-  script_version("$Revision: 8137 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9153 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:31:39 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 10:31:53 +0200 (Wed, 18 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,11 +38,11 @@ if(description)
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of SmarterStats.
 
-  The script sends a connection request to the server and attempts to detect Vacron NVR IP Surveillance Server.");
+  The script sends a connection request to the server and attempts to detect SmarterStats and its version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

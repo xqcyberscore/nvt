@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_ip_cam_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_sony_ip_cam_detect.nasl 9153 2018-03-21 09:31:39Z asteins $
 #
 # Sony IPELA Engine IP Cameras Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107105");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 9153 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:31:39 +0100 (Wed, 21 Mar 2018) $");
  script_tag(name:"creation_date", value:"2016-12-09 12:56:26 +0100 (Fri, 09 Dec 2016)");
  script_name("Sony IPELA Engine IP Cameras Detection");
 
@@ -51,35 +51,33 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 port = get_http_port( default:8080 );
 buf = http_get_cache( port:port, item:"/" );
-if( "Sony Network Camera" >!< buf && "SONY Network Camera" >!< buf) exit( 0 );
-camVer = eregmatch(pattern:"Sony Network Camera SNC-([A-Z]+[0-9]+)", string:buf);
-if (camVer[1]){
+if ( "Sony Network Camera" >!< buf && "SONY Network Camera" >!< buf ) exit( 0 );
+camVer = eregmatch( pattern:"[SONY|Sony] Network Camera SNC-([A-Z]+[0-9]+)", string:buf );
+if ( camVer[1] ) {
     Ver = "SNC-" + camVer[1];
 } else {
     Ver = "Unknown";
 }
-set_kb_item( name:"sony/ip_camera/model", value:Ver);
+set_kb_item( name:"sony/ip_camera/model", value:Ver );
 cpe = 'cpe:/h:sony:sony_network_camera_snc';
 
-firmVer = eregmatch(pattern:"Server: gen[5|6]th/([0-9.]+)", string:buf);
+firmVer = eregmatch( pattern:"Server: gen[5|6]th/([0-9.]+)", string:buf );
 
-if (firmVer[1])
-{
-    set_kb_item( name:"sony/ip_camera/firmware", value:firmVer[1]);
+if ( firmVer[1] ) {
+    set_kb_item( name:"sony/ip_camera/firmware", value:firmVer[1] );
     cpe += ':' + firmVer[1];
 } else {
-     set_kb_item( name:"sony/ip_camera/firmware", value:"Unknown");
+     set_kb_item( name:"sony/ip_camera/firmware", value:"Unknown" );
 }
 
 register_product( cpe:cpe, location:"/", port:port, service:"www" );
 set_kb_item( name:"sony/ip_camera/installed", value:TRUE );
 
-report = build_detection_report( app:'Sony Ip Camera', version:firmware[1], install:"/", cpe:cpe );
+report = build_detection_report( app:'Sony IP Camera', version:firmVer[1], install:"/", cpe:cpe, extra: "Model: " + Ver );
 log_message( port:port, data:report );
 
 exit( 0 );

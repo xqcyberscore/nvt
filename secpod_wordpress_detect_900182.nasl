@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 9146 2018-03-20 09:29:25Z cfischer $
+# $Id: secpod_wordpress_detect_900182.nasl 9162 2018-03-21 15:30:50Z cfischer $
 #
 # WordPress Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 9146 $");
+  script_version("$Revision: 9162 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:29:25 +0100 (Tue, 20 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-21 16:30:50 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,12 +57,12 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("cpe.inc");
+include("host_details.inc");
 
-flag = FALSE;
+rootInstalled  = FALSE;
 checkduplicate = "";
 
 port = get_http_port( default:80 );
@@ -70,7 +70,12 @@ if( ! can_host_php( port:port ) ) exit(0);
 
 foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_dirs( port:port ) ) ) {
 
-  install = dir;
+  if( rootInstalled ) break;
+
+  wpFound   = FALSE;
+  wpMuFound = FALSE;
+  version   = NULL;
+  install   = dir;
   if( dir == "/" ) dir = "";
 
   foreach file( make_list( "/", "/index.php" ) ) {
@@ -78,211 +83,159 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     url = dir + file;
     res = http_get_cache( item:url, port:port );
 
-    if( res && "WordPress" >< res && res =~ "^HTTP/1\.[01] 200" ) {
+    if( res && res =~ "^HTTP/1\.[01] 200" &&
+          ( '<meta name="generator" content="WordPress' >< res ||
+            res =~ "/wp-content/(plugins|themes|uploads)/" ||
+            res =~ "/wp-includes/(wlwmanifest|js/)"
+          )
+      ) {
 
+      if( dir == "" ) rootInstalled = TRUE;
+      version  = "unknown";
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      if( "WordPress Mu" >< res ) {
-
-        version  = "unknown";
-        wpmuVer = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
-        if( wpmuVer[1] ) version = wpmuVer[1];
-
-        tmp_version = version + " under " + install;
-        set_kb_item( name:"www/" + port + "/WordPress-Mu", value:tmp_version );
-        set_kb_item( name:"wordpress/installed", value:TRUE );
-
-        ## Check if version is already set
+      vers = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
+      if( vers[1] ) {
+        version = vers[1];
+        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }
         ##Assign detected version value to checkduplicate so as to check in next loop iteration
         checkduplicate += version + ", ";
+      }
 
-        register_and_report_cpe( app:"WordPress-Mu", ver:version, conclUrl:conclUrl, concluded:wpmuVer[0], base:"cpe:/a:wordpress:wordpress_mu:", expr:"^([0-9.]+)", insloc:install, regPort:port );
+      if( "WordPress Mu" >< res ) {
+        wpMuFound = TRUE;
       }
 
       if( "WordPress Mu" >!< res ) {
-
-        wpVer = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
-        if( wpVer[1] ) {
-
-          flag = TRUE;
-
-          tmp_version = wpVer[1] + " under " + install;
-          set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
-          set_kb_item( name:"wordpress/installed", value:TRUE );
-
-          ## Check if version is already set
-          if( wpVer[1] + ", " >< checkduplicate ) {
-            continue;
-          }
-          ##Assign detected version value to checkduplicate so as to check in next loop iteration
-          checkduplicate  += wpVer[1] + ", ";
-
-          register_and_report_cpe( app:"WordPress", ver:wpVer[1], conclUrl:conclUrl, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
-        }
+        wpFound = TRUE;
       }
     }
   }
-}
 
-##Try to get version from README file
-if( ! flag ) {
-
-  foreach dir( make_list_unique( "/", "/wordpress", "/blog", cgi_dirs( port:port ) ) ) {
-
-    install = dir;
-    if( dir == "/" ) dir = "";
-
-    url = dir + "/readme.html";
-    res = http_get_cache( item:url, port:port );
-
-    if( res && "WordPress" >< res && res =~ "^HTTP/1\.[01] 200" ) {
-
-      wpVer = eregmatch( pattern:"> Version ([0-9.]+)", string:res );
-      if( wpVer[1] ) {
-
-        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-        flag = TRUE;
-
-        tmp_version = wpVer[1] + " under " + install;
-        set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
-        set_kb_item( name:"wordpress/installed", value:TRUE );
-
-        ## Check if version is already set
-        if( wpVer[1] + ", " >< checkduplicate ) {
-          continue;
-        }
-        ##Assign detected version value to checkduplicate so as to check in next loop iteration
-        checkduplicate += wpVer[1] + ", ";
-
-        register_and_report_cpe( app:"WordPress", ver:wpVer[1], conclUrl:conclUrl, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
-      }
-    }
-  }
-}
-
-##Try to get version from wp-links-opml.php file
-if( ! flag ) {
-
-  rootInstalled = FALSE;
-
-  foreach dir( make_list_unique( "/", "/wordpress", "/blog", cgi_dirs( port:port ) ) ) {
-
-    if( rootInstalled ) break;
-
-    install = dir;
-    if( dir == "/" ) dir = "";
+  ##Try to get version from the /wp-links-opml.php page
+  if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/wp-links-opml.php";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( res && '<!-- generator="WordPress' >< res && res =~ "^HTTP/1\.[01] 200" ) {
+    if( res && res =~ "^HTTP/1\.[01] 200" && '<!-- generator="WordPress' >< res ) {
 
-      version = "unknown";
-      wpVer = eregmatch( pattern:'<!-- generator="WordPress/([0-9.]+)', string:res );
-      if( wpVer[1] ) version = wpVer[1];
-      tmp_version = version + " under " + install;
-
-      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-      flag = TRUE;
       if( dir == "" ) rootInstalled = TRUE;
+      wpFound  = TRUE;
+      version  = "unknown";
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
-      set_kb_item( name:"wordpress/installed", value:TRUE );
-
-      ## Check if version is already set
-      if( version + ", " >< checkduplicate ) {
-        continue;
+      vers = eregmatch( pattern:'<!-- generator="WordPress/([0-9.]+)', string:res );
+      if( vers[1] ) {
+        version = vers[1];
+        ## Check if the version is already set
+        if( version + ", " >< checkduplicate ) {
+          continue;
+        }
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate += version + ", ";
       }
-      ##Assign detected version value to checkduplicate so as to check in next loop iteration
-      checkduplicate += version + ", ";
-
-      register_and_report_cpe( app:"WordPress", ver:version, conclUrl:conclUrl, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
   }
-}
 
-##Try to get version from the /feed/ url
-if( ! flag ) {
-
-  rootInstalled = FALSE;
-
-  foreach dir( make_list_unique( "/", "/wordpress", "/blog", cgi_dirs( port:port ) ) ) {
-
-    if( rootInstalled ) break;
-
-    install = dir;
-    if( dir == "/" ) dir = "";
+  ##Try to get version from the /feed/ url
+  if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/feed/";
     res = http_get_cache( item:url, port:port );
+    if( res && res =~ "^HTTP/1\.[01] 200" && "<generator>http://wordpress.org/" >< res ) {
 
-    if( res && "<generator>http://wordpress.org/" >< res && res =~ "^HTTP/1\.[01] 200" ) {
-
-      version = "unknown";
-      wpVer = eregmatch( pattern:"v=([0-9.]+)</generator>", string:res );
-      if( wpVer[1] ) version = wpVer[1];
-      tmp_version = version + " under " + install;
-
-      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-      flag = TRUE;
       if( dir == "" ) rootInstalled = TRUE;
+      wpFound  = TRUE;
+      version  = "unknown";
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
-      set_kb_item( name:"wordpress/installed", value:TRUE );
-
-      ## Check if version is already set
-      if( version + ", " >< checkduplicate ) {
-        continue;
+      vers = eregmatch( pattern:"v=([0-9.]+)</generator>", string:res );
+      if( vers[1] ) {
+        version = vers[1];
+        ## Check if the version is already set
+        if( version + ", " >< checkduplicate ) {
+          continue;
+        }
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate += version + ", ";
       }
-      ##Assign detected version value to checkduplicate so as to check in next loop iteration
-      checkduplicate += version + ", ";
-
-      register_and_report_cpe( app:"WordPress", ver:version, conclUrl:conclUrl, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
   }
-}
 
-if( ! flag ) {
-
-  rootInstalled = FALSE;
-
-  foreach dir( make_list_unique( "/", "/wordpress", "/blog", cgi_dirs( port:port ) ) ) {
-
-    if( rootInstalled ) break;
-
-    install = dir;
-    if( dir == "/" ) dir = "";
+  ##Try to get version from the /wp-login.php page
+  if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/wp-login.php";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( res && "wp-includes" >< res && "wp-admin" >< res && res =~ "^HTTP/1\.[01] 200" ) {
-
-      version = "unknown";
-      wpVer = eregmatch( pattern:"ver=([0-9.]+)", string:res );
-      if( wpVer[1] ) version = wpVer[1];
-      tmp_version = version + " under " + install;
+    if( res && res =~ "^HTTP/1\.[01] 200" && 
+          ( "/wp-login.php?action=lostpassword" >< res ||
+            "/wp-admin/load-" >< res ||
+            res =~ "/wp-content/(plugins|themes|uploads)/"
+          )
+      ) {
 
       if( dir == "" ) rootInstalled = TRUE;
+      wpFound  = TRUE;
+      version  = "unknown";
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
-      set_kb_item( name:"wordpress/installed", value:TRUE);
-
-      ## Check if version is already set
-      if( version + ", " >< checkduplicate ) {
-        continue;
+      vers = eregmatch( pattern:"ver=([0-9.]+)", string:res );
+      if( vers[1] ) {
+        version = vers[1];
+        ## Check if the version is already set
+        if( version + ", " >< checkduplicate ) {
+          continue;
+        }
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate += version + ", ";
       }
-      ##Assign detected version value to checkduplicate so as to check in next loop iteration
-      checkduplicate += version + ", ";
-
-      register_and_report_cpe( app:"WordPress", ver:version, conclUrl:conclUrl, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
+  }
+
+  ##Finally the /readme.html file, this is down below as it might
+  ##be not always updated by the admin
+  if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
+
+    url = dir + "/readme.html";
+    res = http_get_cache( item:url, port:port );
+
+    if( res && res =~ "^HTTP/1\.[01] 200" && "WordPress" >< res ) {
+
+      if( dir == "" ) rootInstalled = TRUE;
+      wpFound  = TRUE;
+      version  = "unknown";
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+      vers = eregmatch( pattern:"> Version ([0-9.]+)", string:res );
+      if( vers[1] ) {
+        version = vers[1];
+        ## Check if the version is already set
+        if( version + ", " >< checkduplicate ) {
+          continue;
+        }
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate += version + ", ";
+      }
+    }
+  }
+
+  if( wpMuFound ) {
+    tmp_version = version + " under " + install;
+    set_kb_item( name:"www/" + port + "/WordPress-Mu", value:tmp_version );
+    set_kb_item( name:"wordpress/installed", value:TRUE );
+    register_and_report_cpe( app:"WordPress-Mu", ver:version, conclUrl:conclUrl, concluded:vers[0], base:"cpe:/a:wordpress:wordpress_mu:", expr:"^([0-9.]+)", insloc:install, regPort:port );
+  } else if( wpFound ) {
+    tmp_version = version + " under " + install;
+    set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
+    set_kb_item( name:"wordpress/installed", value:TRUE );
+    register_and_report_cpe( app:"WordPress", ver:version, conclUrl:conclUrl, concluded:vers[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
   }
 }
 

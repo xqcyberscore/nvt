@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinyproxy_dos_vuln.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_tinyproxy_dos_vuln.nasl 9159 2018-03-21 13:54:45Z asteins $
 #
 # Tinyproxy DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:banu:tinyproxy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140255");
-  script_version("$Revision: 7676 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 9159 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-21 14:54:45 +0100 (Wed, 21 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-07-31 11:31:40 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Tinyproxy DoS Vulnerability");
 
@@ -57,8 +57,7 @@ to this non-root account for tinyproxy.pid modification before a root script exe
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update Tinyproxy to the latest master build that is available via github and contains the commit '9acb0cb'.");
 
   script_xref(name: "URL", value: "https://github.com/tinyproxy/tinyproxy/issues/106");
 
