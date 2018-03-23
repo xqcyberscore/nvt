@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_log_serv_detect.nasl 4275 2016-10-14 08:06:48Z cfi $
+# $Id: gb_nagios_log_serv_detect.nasl 9186 2018-03-23 09:48:58Z asteins $
 #
 # Nagios Log Server Detection
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107058");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4275 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 10:06:48 +0200 (Fri, 14 Oct 2016) $");
+  script_version("$Revision: 9186 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value: "2016-10-12 13:26:09 +0700 (Wed, 12 Oct 2016)");
   script_name("Nagios Log Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -52,16 +52,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-port = "";
-dirs = "";
-url = "";
-req = "";
-buf = "";
-install = "";
-vers = "";
-version = "";
-cpe = "";
-
 port = get_http_port(default:80);
 
 if(!can_host_php(port:port)) exit(0);
@@ -76,37 +66,43 @@ foreach dir( make_list_unique("/nagioslogserver", "/nagios", cgi_dirs(port:port)
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
   if( buf == NULL )continue;
 
-  if ((buf =~ "HTTP/1\.. 200 OK") && (egrep(pattern: "Nagios Log Server", string: buf, icase: TRUE)) && ("Nagios Log Server is an enterprise-" >< buf))
-  {
+  if (buf =~ "HTTP/1\.. 200 OK" && "Nagios Log Server" >< buf && "Nagios Enterprises" >< buf
+      && "var LS_USER_ID" >< buf && "<form action=" >< buf && ">Login<" >< buf && "nagios_logo_white_transbg.png" >< buf
+      && ('<div class="demosplash"></div>' >< buf || '<div class="loginsplash"></div>' >< buf)) {
+
+    set_kb_item(name:"nagiosls/installed", value:TRUE);
+
+    if ('<div class="demosplash"></div>' >< buf) {
+      extra = "Demo Version";
+    }
 
     vers = "unknown";
 
     ### try to get version
-    version = eregmatch(string:buf, pattern:'var LS_VERSION = "([0-9].[0-9].[0-9])"', icase:TRUE);
+    version = eregmatch(string:buf, pattern:'var LS_VERSION = "([0-9.]+)"', icase:TRUE);
 
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-    } else {
-      version =  eregmatch(string: buf, pattern: 'ver=([0-9].[0-9].[0-9])">');
-      if (!isnull(version[1]))
-        vers = chomp(version[1]);
+    if (isnull(version[1])) {
+      version =  eregmatch(string: buf, pattern: 'ver=([0-9.]+)">');
     }
 
-    set_kb_item(name:"www/" + port + "/nagiosls", value:vers + " under " + install);
-    set_kb_item(name:"nagiosls/installed", value:TRUE);
+    if (!isnull(version[1])) {
+      vers = chomp(version[1]);
+      set_kb_item(name:"www/" + port + "/nagiosls", value:vers + " under " + install);
+    }
 
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:nagios:nagiosls:");
     if(isnull(cpe))
       cpe = 'cpe:/a:nagios:nagiosls:';
 
-    register_product( cpe:cpe, location:install, port:port, service:'www' );
+    register_product(cpe:cpe, location:install, port:port, service:'www');
 
-    log_message( data:build_detection_report( app:"Nagios Log Server",
+    log_message(data:build_detection_report( app:"Nagios Log Server",
                                               version:vers,
                                               install:install,
                                               cpe:cpe,
-                                              concluded:version[0] ),
-                                              port:port );
+                                              concluded:version[0],
+                                              extra:extra),
+                                              port:port);
   }
 }
 

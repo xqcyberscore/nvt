@@ -1,8 +1,8 @@
 ###############################################################################
 ## OpenVAS Vulnerability Test
-# $Id: gb_panda_antiv_esc_priv_cve_14_3450.nasl 8218 2017-12-21 14:14:04Z cfischer $
+# $Id: gb_panda_antiv_esc_priv_cve_14_3450.nasl 9188 2018-03-23 11:52:59Z jschulte $
 #
-# Privilege Escalation in Panda Antivirus Pro 2014 CVE-2014-3450 (Windows) 
+# Privilege Escalation in Panda Antivirus Pro 2014 CVE-2014-3450 (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -37,15 +37,15 @@ process is located, it is possible to execute malicious code as Local System.";
 
 tag_solution = "Install Panda Hotfix for this vulnerability, see the vendor advisory.";
 
-tag_summary = "This host is running panda Products and is prone to Privilege
+tag_summary = "This host is running Panda Products and is prone to a Privilege
 Escalation Vulnerability.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107089");
-  script_version("$Revision: 8218 $");
+  script_version("$Revision: 9188 $");
   script_cve_id("CVE-2014-3450");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 12:52:59 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

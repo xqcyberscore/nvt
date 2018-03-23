@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_dos_vuln.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_hp_web_jetadmin_dos_vuln.nasl 9187 2018-03-23 10:39:47Z cfischer $
 #
 # HP Web Jetadmin Unspecified Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:web_jetadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812516");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 9187 $");
   script_cve_id("CVE-2017-2742");
   script_bugtraq_id(102829);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 11:39:47 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 15:39:57 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Unspecified Denial of Service Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"HP Web Jetadmin versions before 10.4 SR2"); 
+  script_tag(name:"affected", value:"HP Web Jetadmin versions before 10.4 SR2");
 
   script_tag(name:"solution", value:"Upgrade to version 10.4 SR2 or later,
   For updates refer to http://www8.hp.com/us/en/solutions/business-solutions/printingsolutions/wja.html");
@@ -70,26 +70,26 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("gb_hp_web_jetadmin_detect.nasl");
-  script_mandatory_keys("HpWebJetadmin/installed");
   script_require_ports("Services/www", 8000);
+  script_mandatory_keys("HpWebJetadmin/installed");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(isnull(jetPort = get_app_port(cpe:CPE))) exit(0);
+if(!jetPort = get_app_port(cpe:CPE)) exit(0);
 
 if(!infos = get_app_version_and_location(cpe:CPE, port:jetPort, exit_no_version:TRUE)) exit(0);
 jetVers = infos['version'];
 path = infos['location'];
 
 # HP Web Jetadmin 10.4 SR2->10.4.101995
-if(version_is_less(version:jetVers, test_version:"10.4.101995"))
-{
+if(version_is_less(version:jetVers, test_version:"10.4.101995")){
   report = report_fixed_ver(installed_version:jetVers, fixed_version:"10.4 SR2 ", install_path:path);
   security_message(port:jetPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

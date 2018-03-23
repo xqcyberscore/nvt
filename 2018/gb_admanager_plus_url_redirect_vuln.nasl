@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9119 2018-03-16 15:21:49Z cfischer $
+# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9186 2018-03-23 09:48:58Z asteins $
 #
 # ManageEngine AD Manager Plus URL Redirection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113106");
-  script_version("$Revision: 9119 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9186 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 11:30:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if( description )
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_manageengine_admanager_plus_detection.nasl");
-  script_mandatory_keys("admanager/plus/installed");
+  script_mandatory_keys("manageengine/admanager_plus/installed");
 
   script_tag(name:"summary", value:"ManageEngine AD Manager Plus is prone to a URL redirection attack.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
@@ -62,16 +62,19 @@ if( description )
   exit( 0 );
 }
 
-CPE = "cpe:/a:admanager:plus";
+CPE = "cpe:/a:manageengine:admanager_plus";
 
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe: CPE ) ) ) exit( 0 );
+
+if( !infos = get_app_version_and_location( cpe: CPE, port: port, exit_no_version: TRUE ) ) exit( 0 );
+version = infos['version'];
+path = infos['location'];
 
 if( version_is_less_equal( version: version, test_version: "6.6.13" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl 9058 2018-03-08 16:03:22Z cfischer $
+# $Id: gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl 9191 2018-03-23 13:45:26Z santu $
 #
-# NTP 'ctl_getitem()' Buffer Read Overrun Information Disclosure Vulnerability
+# NTP 'ctl_getitem()' And 'decodearr()' Multiple Vulnerabilities
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com
@@ -29,31 +29,35 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812790");
-  script_version("$Revision: 9058 $");
-  script_cve_id("CVE-2018-7182");
-  script_bugtraq_id(103191);
+  script_version("$Revision: 9191 $");
+  script_cve_id("CVE-2018-7182", "CVE-2018-7183");
+  script_bugtraq_id(103191, 103351);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 17:03:22 +0100 (Thu, 08 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 11:25:49 +0530 (Wed, 07 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("NTP 'ctl_getitem()' Buffer Read Overrun Information Disclosure Vulnerability");
+  script_name("NTP 'ctl_getitem()' And 'decodearr()' Multiple Vulnerabilities");
 
   script_tag(name: "summary" , value:"The host is running NTP and is prone to
-  information disclosure vulnerability.");
+  multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists in 'ctl_getitem()' is
-  used by ntpd to process incoming mode 6 packets. A malicious mode 6 packet
-  can be sent to an ntpd instance, will cause 'ctl_getitem()' to read past the
-  end of its buffer.");
+  script_tag(name: "insight" , value:"Multiple flaws exists due to
+  - An error in 'ctl_getitem()' which is used by ntpd to process incoming mode
+    6 packets. A malicious mode 6 packet can be sent to an ntpd instance,
+    will cause 'ctl_getitem()' to read past the end of its buffer.
 
-  script_tag(name:"impact", value:"Successful exploitation will allow an
-  attackers to obtain sensitive information that may lead to further attacks. 
+  - An error in 'decodearr()' which is used by ntpq can write beyond its buffer
+    limit.");
 
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
+  to execute arbitrary code and obtain sensitive information that may lead to
+  further attacks. 
+
+  Impact Level: System/Application");
 
   script_tag(name:"affected", value:"NTP versions 4.2.8p6 before 4.2.8p11");
 
@@ -62,6 +66,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://support.ntp.org/bin/view/Main/NtpBug3412");
+  script_xref(name : "URL" , value : "http://support.ntp.org/bin/view/Main/NtpBug3414");
+  script_xref(name : "URL" , value : "http://support.ntp.org/bin/view/Main/SecurityNotice#February_2018_ntp_4_2_8p11_NTP_S");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -92,5 +98,4 @@ if(ntpVer =~ "^(4\.2\.8)")
     exit(0);
   }
 }
-
 exit(99);

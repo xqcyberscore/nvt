@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_header_inj_vuln.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_concrete5_header_inj_vuln.nasl 9178 2018-03-22 14:58:11Z asteins $
 #
 # Concrete5 Header Injection and CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106762");
-  script_version("$Revision: 7676 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 9178 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-22 15:58:11 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-04-19 09:03:26 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -69,11 +69,10 @@ meaning neither the admin OR any of the website users can acccess the site.");
 
   script_tag(name: "affected", value: "Concrete5 version 8.x.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 22nd March, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://hyp3rlinx.altervista.org/advisories/CONCRETE5-v8.1.0-HOST-HEADER-INJECTION.txt");
-  script_xref(name: "URL", value: "http://zeroday.insecurity.zone/exploits/concrete5_csrf_dos.txt");
 
   exit(0);
 }

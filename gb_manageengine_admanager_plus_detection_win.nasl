@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_detection_win.nasl 8147 2017-12-15 13:51:17Z cfischer $
+# $Id: gb_manageengine_admanager_plus_detection_win.nasl 9186 2018-03-23 09:48:58Z asteins $
 #
 # ManageEngine ADManager Plus Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107129");
-  script_version("$Revision: 8147 $");
+  script_version("$Revision: 9186 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-01-18 16:11:25 +0700 (Wed, 18 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ManageEngine ADManager Plus Version Detection (Windows)");
@@ -80,7 +80,7 @@ foreach key (key_list)
 
    if("ADManager Plus" >< Name)
     {
-      set_kb_item(name:"admanager/plus/installed", value:TRUE);
+      set_kb_item(name:"manageengine/admanager_plus/installed", value:TRUE);
       Ver = registry_get_sz(key:key + item, item:"DisplayVersion");
       Path = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!Path){
@@ -89,12 +89,12 @@ foreach key (key_list)
 
       if(Ver)
       {
-        set_kb_item(name:"Admanager/Plus/Win/Ver", value:Ver);
-        cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:admanager:plus:");
+        set_kb_item(name:"Manageengine/Admanager_Plus/Win/Ver", value:Ver);
+        cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:manageengine:admanager_plus:");
         if(isnull(cpe))
-          cpe = "cpe:/a:admanager:plus";
+          cpe = "cpe:/a:manageengine:admanager_plus";
 
-       register_product(cpe:cpe, location:Path);
+       register_product(cpe:cpe, location:Path, port:0);
        log_message(data: build_detection_report(app: "ManageEngine Admanager Plus",
                                                 version: Ver,
                                                 install: Path,

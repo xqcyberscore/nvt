@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_security_bypass_vuln_win.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_hp_web_jetadmin_security_bypass_vuln_win.nasl 9187 2018-03-23 10:39:47Z cfischer $
 #
 # HP Web Jetadmin Unspecified Local Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:web_jetadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812517");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 9187 $");
   script_cve_id("CVE-2011-0278");
   script_bugtraq_id(46595);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 11:39:47 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:10:32 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Unspecified Local Security Bypass Vulnerability (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"HP Web Jetadmin versions 10.2 SR3/SR4 on Windows"); 
+  script_tag(name:"affected", value:"HP Web Jetadmin versions 10.2 SR3/SR4 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to version 10.2 SR5 or later,
   For updates refer to http://www8.hp.com/us/en/solutions/business-solutions/printingsolutions/wja.html");
@@ -67,16 +67,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("gb_hp_web_jetadmin_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("HpWebJetadmin/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8000);
+  script_mandatory_keys("HpWebJetadmin/installed", "Host/runs_windows");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(isnull(jetPort = get_app_port(cpe:CPE))) exit(0);
+if(!jetPort = get_app_port(cpe:CPE)) exit(0);
 
 if(!infos = get_app_version_and_location(cpe:CPE, port:jetPort, exit_no_version:TRUE)) exit(0);
 jetVers = infos['version'];
@@ -84,10 +84,10 @@ path = infos['location'];
 
 # HP Web Jetadmin 10.2 SR3->10.2.66860
 # HP Web Jetadmin 10.2 SR4->10.2.71771
-if(jetVers == "10.2.66860" || jetVers == "10.2.71771")
-{
+if(jetVers == "10.2.66860" || jetVers == "10.2.71771"){
   report = report_fixed_ver(installed_version:jetVers, fixed_version:"10.2 SR5 ", install_path:path);
   security_message(port:jetPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

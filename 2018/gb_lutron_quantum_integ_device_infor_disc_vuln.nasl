@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lutron_quantum_integ_device_infor_disc_vuln.nasl 8975 2018-02-28 10:27:08Z santu $
+# $Id: gb_lutron_quantum_integ_device_infor_disc_vuln.nasl 9180 2018-03-22 15:38:54Z cfischer $
 #
 # Lutron Quantum BACnet Integration Devices Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:lutron:device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812953");
-  script_version("$Revision: 8975 $");
+  script_version("$Revision: 9180 $");
   script_cve_id("CVE-2018-7276");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 16:38:54 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 17:23:35 +0530 (Tue, 27 Feb 2018)");
   script_name("Lutron Quantum BACnet Integration Devices Information Disclosure Vulnerability");
 

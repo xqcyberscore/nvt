@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_loop_dos_vuln_win.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_php_fpm_loop_dos_vuln_win.nasl 9180 2018-03-22 15:38:54Z cfischer $
 #
 # PHP 'PHP-FPM' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812519");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 9180 $");
   script_cve_id("CVE-2015-9253");
   script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 16:38:54 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:49:27 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'PHP-FPM' Denial of Service Vulnerability (Windows)");
 

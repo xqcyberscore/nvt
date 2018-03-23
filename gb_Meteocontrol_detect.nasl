@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Meteocontrol_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_Meteocontrol_detect.nasl 9186 2018-03-23 09:48:58Z asteins $
 #
-# Meteocontrol WWB'log Detection
+# Meteocontrol WEB'log Detection
 #
 # Authors:
 # Tameem Eissa  <tameem.eissa@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107004");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 9186 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-05-20 10:42:39 +0100 (Fri, 20 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -58,21 +58,23 @@ url = '/html/en/index.html';
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if(buf =~ "HTTP/1\.. 200"  && ("Server: IS2 Web Server" >< buf || "Web'log" >< buf) ) 
-{
-	version = "unknown";
-	install = url;
-	set_kb_item( name:"www/" + port + "/Meteocontrol", value:version );
-	set_kb_item( name:"Meteocontrol/installed", value:TRUE );
+if( buf =~ "HTTP/1\.. 200" && "WEB'log" >< buf && "System Survey of the Plant" >< buf
+    && '<div class="cProductname">&nbsp;WEB&#180;log</div>' >< buf ) {
+
+	set_kb_item( name:"meteocontrol/weblog/installed", value:TRUE );
+
+  # no version info available right now
+  version = "unknown";
 
 	cpe = 'cpe:/a:meteocontrol:weblog';
 
-	register_product( cpe:cpe, location:install, port:port );
+	register_product( cpe:cpe, location:"/", port:port );
 	log_message( data:build_detection_report( app:"Meteocontrol WEBlog",
-                                                 version:version,
-                                                 install:install,
-                                                 cpe:cpe ),
-                                                 port:port );
+                                            version:version,
+                                            install:"/",
+                                            cpe:cpe,
+                                            concludedUrl: report_vuln_url( port:port, url:url, url_only:TRUE )),
+                                            port:port );
 
 }
 exit( 0 );

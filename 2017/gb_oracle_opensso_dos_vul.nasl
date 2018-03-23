@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_dos_vul.nasl 6943 2017-08-16 13:35:11Z asteins $
+# $Id: gb_oracle_opensso_dos_vul.nasl 9185 2018-03-23 09:42:17Z cfischer $
 #
 # Oracle OpenSSO 'Web Agents' Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811405");
-  script_version("$Revision: 6943 $");
+  script_version("$Revision: 9185 $");
   script_cve_id("CVE-2016-2834");
   script_bugtraq_id(91072);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 15:35:11 +0200 (Wed, 16 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:42:17 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 15:25:23 +0530 (Tue, 01 Aug 2017)");
   script_name("Oracle OpenSSO 'Web Agents' Denial of Service Vulnerability");
 
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (memory corruption and application
   crash) or possibly have unspecified other impact via unknown vectors.
- 
+
   Impact Level: Application");
 
   script_tag(name:"affected", value:"Oracle OpenSSO 3.0.0.8.");
@@ -74,24 +74,18 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-fix = "";
-vers = "";
-
-## Get port
-if(isnull(openssoPort = get_app_port(cpe:CPE))){
+if(! openssoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(! vers = get_app_version(cpe:CPE, port:openssoPort)){
   exit(0);
 }
 
-## Grep for vulnerable vesion
-if(version_is_equal(version:vers, test_version:"3.0.0.8"))
-{
-  report = report_fixed_ver(installed_version:vers, fixed_version:fix);
+if(version_is_equal(version:vers, test_version:"3.0.0.8")){
+  report = report_fixed_ver(installed_version:vers, fixed_version:"See references");
   security_message(port:openssoPort, data:report);
   exit(0);
 }
+
 exit(99);

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: smb_enum_services.nasl 9184 2018-03-23 08:18:41Z cfischer $
 #
 # SMB Enumerate Services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 7551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 9184 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 09:18:41 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -272,6 +272,8 @@ function smbreadx( tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high ) {
 function moredata( data ) {
 
   local_var data, len_data, start, _i;
+
+  if( ! data ) return FALSE;
 
   len_data = strlen( data );
   start = len_data - 4;

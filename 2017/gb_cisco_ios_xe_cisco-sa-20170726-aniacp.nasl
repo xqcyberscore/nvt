@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 9178 2018-03-22 14:58:11Z asteins $
 #
 # Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6665");
  script_tag(name: "cvss_base", value: "3.3");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 7676 $");
+ script_version("$Revision: 9178 $");
 
  script_name("Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect", value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
+ script_tag(name: "solution", value: "No solution or patch is available as of 22nd March, 2018. Information
 regarding this issue will be updated once the solution details are available.");
 
  script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
@@ -59,7 +59,7 @@ packets, which should have been encrypted over the ACP, in clear text.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "NoneAvailable");
 
- script_tag(name: "last_modification", value: "$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-03-22 15:58:11 +0100 (Thu, 22 Mar 2018) $");
  script_tag(name: "creation_date", value: "2017-07-28 08:48:54 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

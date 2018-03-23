@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7bac3ba7c3_qpid-cpp_fc26.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_fedora_2017_7bac3ba7c3_qpid-cpp_fc26.nasl 9180 2018-03-22 15:38:54Z cfischer $
 #
 # Fedora Update for qpid-cpp FEDORA-2017-7bac3ba7c3
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874010");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 9180 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 16:38:54 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-14 07:32:45 +0100 (Sun, 14 Jan 2018)");
   script_cve_id("CVE-2015-0203");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qpid-cpp FEDORA-2017-7bac3ba7c3");
   script_tag(name: "summary", value: "Check the version of qpid-cpp");

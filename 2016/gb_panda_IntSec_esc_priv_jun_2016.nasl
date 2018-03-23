@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 8218 2017-12-21 14:14:04Z cfischer $
+# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 9188 2018-03-23 11:52:59Z jschulte $
 #
-# Panda Internet Security - Privilege Escalation June 2016 (Windows) 
+# Panda Internet Security - Privilege Escalation June 2016 (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -39,14 +39,14 @@ process is located, it is possible to execute malicious code as Local System.";
 tag_solution = "Install Panda Hotfix for this vulnerability:
 http://www.pandasecurity.com/uk/support/card?id=100053";
 
-tag_summary = "This host is running Panda Internet Security and is prone to Privilege
+tag_summary = "This host is running Panda Internet Security and is prone to a Privilege
 Escalation Vulnerability.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107090");
-  script_version("$Revision: 8218 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 9188 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 12:52:59 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

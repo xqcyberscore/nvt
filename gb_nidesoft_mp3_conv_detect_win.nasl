@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidesoft_mp3_conv_detect_win.nasl 9173 2018-03-22 11:21:03Z asteins $
+# $Id: gb_nidesoft_mp3_conv_detect_win.nasl 9182 2018-03-22 17:53:01Z cfischer $
 #
 # Nidesoft MP3 Converter Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107107");
-  script_version("$Revision: 9173 $");
+  script_version("$Revision: 9182 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 12:21:03 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-22 18:53:01 +0100 (Thu, 22 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Nidesoft MP3 Converter Detection (Windows)");
@@ -86,7 +86,7 @@ foreach key (key_list){
       }
 
       if(cvVer){
-        set_kb_item(name:"Midesoft/Mp3converter/Win/Ver", value:cvVer);
+        set_kb_item(name:"Nidesoft/Mp3converter/Win/Ver", value:cvVer);
         cpe = build_cpe(value:cvVer, exp:"^([0-9.]+)", base:"cpe:/a:nidesoft:mp3_converter:");
         if(isnull(cpe))
           cpe = "cpe:/a:nidesoft:mp3_converter";

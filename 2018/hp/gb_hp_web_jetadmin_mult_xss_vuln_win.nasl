@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 9187 2018-03-23 10:39:47Z cfischer $
 #
 # HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:web_jetadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812518");
-  script_version("$Revision: 8941 $");
+  script_version("$Revision: 9187 $");
   script_cve_id("CVE-2012-2011");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 11:39:47 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:30:33 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"HP Web Jetadmin versions 8.x on Windows"); 
+  script_tag(name:"affected", value:"HP Web Jetadmin versions 8.x on Windows");
 
   script_tag(name:"solution", value:"Upgrade to version 10.x or later,
   For updates refer to http://www8.hp.com/us/en/solutions/business-solutions/printingsolutions/wja.html");
@@ -64,25 +64,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("gb_hp_web_jetadmin_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("HpWebJetadmin/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8000);
+  script_mandatory_keys("HpWebJetadmin/installed", "Host/runs_windows");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(isnull(jetPort = get_app_port(cpe:CPE))) exit(0);
+if(!jetPort = get_app_port(cpe:CPE)) exit(0);
 
 if(!infos = get_app_version_and_location(cpe:CPE, port:jetPort, exit_no_version:TRUE)) exit(0);
 jetVers = infos['version'];
 path = infos['location'];
 
-if(jetVers =~ "^8\.0")
-{
+if(jetVers =~ "^8\.0"){
   report = report_fixed_ver(installed_version:jetVers, fixed_version:"10.x", install_path:path);
   security_message(port:jetPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

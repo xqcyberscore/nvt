@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_detect.nasl 8895 2018-02-21 07:54:44Z santu $
+# $Id: gb_hp_web_jetadmin_detect.nasl 9187 2018-03-23 10:39:47Z cfischer $
 #
 # HP Web Jetadmin Remote Detection
 #
@@ -27,66 +27,61 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812515");
-  script_version("$Revision: 8895 $");
+  script_version("$Revision: 9187 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 08:54:44 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 11:39:47 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:56:22 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Remote Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8000);
+  script_mandatory_keys("Jetadmin/banner");
 
   script_tag(name:"summary", value:"Detection of installed version of
   HP Web Jetadmin.
-  
+
   This script sends HTTP GET request and try to get the version from the
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8000);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 
-if(!jetPort = get_http_port(default:8000)){
-  exit(0);
-}
+port = get_http_port( default:8000 );
 
-banner = get_http_banner(port: jetPort);
-if("Server: HP Web Jetadmin" >< banner) 
-{
-  vers = "Unknown";
-  set_kb_item(name:"HpWebJetadmin/installed", value:TRUE);
+banner = get_http_banner( port:port );
+if( "Server: HP Web Jetadmin" >!< banner ) exit( 0 );
 
-  # Server: HP Web Jetadmin/2.0.47
-  # Server: HP Web Jetadmin 10.4.99821 
-  version = eregmatch(string:banner, pattern: "Server: HP Web Jetadmin\/? ?([0-9.]+)",icase:TRUE);
-  if(!isnull(version[1])){
-    vers=version[1];
-  }
+vers = "unknown";
+install = port + "/tcp";
 
-  if(vers)
-  {
-    set_kb_item(name: string("www/", jetPort, "/HP_Web_Jetadmin"), value: string(vers));
-    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:hp:web_jetadmin:");
-    if(isnull(cpe))
-      cpe = 'cpe:/a:hp:web_jetadmin';
+# Server: HP Web Jetadmin/2.0.47
+# Server: HP Web Jetadmin 10.4.99821
+version = eregmatch( string:banner, pattern: "Server: HP Web Jetadmin\/? ?([0-9.]+)", icase:TRUE );
+if( ! isnull( version[1] ) ) vers = version[1];
 
-    register_product(cpe:cpe, location:jetPort + '/http', port:jetPort);
+set_kb_item( name:"HpWebJetadmin/installed", value:TRUE );
+set_kb_item( name:"www/" + port + "/HP_Web_Jetadmin", value:vers );
 
-    log_message(data: build_detection_report(app:"HP Web Jetadmin",
-                                             version:vers,
-                                             install:jetPort + '/http',
-                                             cpe:cpe,
-                                             concluded: vers),
-                                             port:jetPort);
-  }
-}
-exit(0);
+cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:hp:web_jetadmin:" );
+if( isnull( cpe ) )
+  cpe = "cpe:/a:hp:web_jetadmin";
+
+register_product( cpe:cpe, location:install, port:port );
+
+log_message( data:build_detection_report( app:"HP Web Jetadmin",
+                                          version:vers,
+                                          install:install,
+                                          cpe:cpe,
+                                          concluded:version[0] ),
+                                          port:port );
+
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 7326 2017-09-29 10:56:31Z cfischer $
+# $Id: secpod_smb_func.inc 9184 2018-03-23 08:18:41Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7326 $
+# $Revision: 9184 $
 #
 ###############################################################################
 
@@ -43,7 +43,7 @@
 function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
 
   local_var socket, uid, tid, fid, offset, verstr, debug;
-  local_var fsize, data, i, offset, tmp, version, ver, vers, len, retVal;
+  local_var fsize, data, i, offset, tmp, version, ver, vers, len, ver_len, retVal;
 
   if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#GetVersion" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#GetVersion" );
@@ -100,7 +100,8 @@ function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
             if( ( ord( version[i] ) < ord( "0" ) || ord( version[i] ) > ord( "9" ) ) &&
                 ( version[i] != "." && version[i] != "," && version[i] != " " &&
                 version[i] != "?" ) ) {
-              if( ver[strlen( ver ) - 1] == "." ) {
+              ver_len = strlen( ver );
+              if( ver_len > 0 && ver[ver_len - 1] == "." ) {
                 vers = split( ver, sep:".", keep:FALSE );
                 foreach item( vers ) {
                   retVal += string( "." + item );
@@ -129,8 +130,7 @@ function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
 ########################################################################
 # Enumerate registry values for a given key
 # param:
-#	key: REGISTRY_KEY
-#
+#       key: REGISTRY_KEY
 ########################################################################
 
 function registry_enum_values( key ) {
@@ -237,12 +237,10 @@ function registry_enum_values( key ) {
   return list;
 }
 
-
 ##############################################################################
 # Enumerate registry keys
 # param:
-#	key: REGISTRY_KEY
-#
+#       key: REGISTRY_KEY
 ###############################################################################
 
 function registry_enum_keys( key ) {
@@ -349,10 +347,10 @@ function registry_enum_keys( key ) {
 
 
 ################################################################################
-#Open the given file
-#param:
-#	share: IPC Share, ex: $C
-#	file: File path
+# Open the given file
+# param:
+#       share: IPC Share, ex: $C
+#       file: File path
 ################################################################################
 
 function open_file( share, file ) {
@@ -419,7 +417,7 @@ function open_file( share, file ) {
 
 ##########################################################################
 # Get the file size for a given file
-# Param
+# param:
 #       share: Windows IPC Share
 #       file: Path to a given file
 ##########################################################################
@@ -496,11 +494,11 @@ function get_file_size( share, file ) {
 
 ##########################################################################
 # Function that reads the content of given file
-# Param
-#	share: Windows IPC Share
-#	file: File path to read the content
-#	offset: Position from which to start the file read
-#	count: Number of bytes to readh from offset
+# param:
+#       share: Windows IPC Share
+#       file: File path to read the content
+#       offset: Position from which to start the file read
+#       count: Number of bytes to readh from offset
 ##########################################################################
 
 function read_file( share, file, offset, count ) {
@@ -510,8 +508,8 @@ function read_file( share, file, offset, count ) {
 
   if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#open_file" );
   if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#read_file" );
-  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#offset#-#read_file" );
-  if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cound#-#read_file" );
+  if( isnull( offset ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#offset#-#read_file" );
+  if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#read_file" );
 
   name    =  kb_smb_name();
   login   =  kb_smb_login();
@@ -596,7 +594,7 @@ function GetVer( file, share, prodvers ) {
 
   for( itr = 0; itr < sections_cnt; itr++ ) {
     sections_data = read_file( share:share, file:file, offset:section_offset + itr * 40, count:40 );
-    if( substr( sections_data, 0, 4 ) == ".rsrc" ) {
+    if( sections_data && substr( sections_data, 0, 4 ) == ".rsrc" ) {
       rsrc_start = bin_dword( data:substr( sections_data, 20 ) );
       rsrc_virtstart = bin_dword( data:substr( sections_data, 12 ) );
       break;
