@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1273.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: deb_dla_1273.nasl 9218 2018-03-27 11:35:33Z cfischer $
 #
 # Auto-generated from advisory DLA 1273-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891273");
-  script_version("$Revision: 8941 $");
+  script_version("$Revision: 9218 $");
   script_cve_id("CVE-2017-18121", "CVE-2017-18122", "CVE-2018-6521");
   script_name("Debian Lts Announce DLA 1273-1 ([SECURITY] [DLA 1273-1] simplesamlphp security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:35:33 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"simplesamlphp on Debian Linux");
   script_tag(name:"insight", value:"simpleSAMLphp, with its support for several authentication mechanisms
 and federation protocols, can be used for local authentication, as a
-service provider or identity provider. It currently supports the
-following protocols:");
+service provider or identity provider.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1.9.2-1+deb7u2.
 

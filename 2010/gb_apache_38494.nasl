@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_38494.nasl 8356 2018-01-10 08:00:39Z teissa $
+# $Id: gb_apache_38494.nasl 9220 2018-03-27 12:19:39Z cfischer $
 #
 # Apache Multiple Security Vulnerabilities
 #
@@ -24,60 +24,61 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Apache is prone to multiple vulnerabilities.
+CPE = "cpe:/a:apache:http_server";
 
-These issues may lead to information disclosure or other attacks.
-
-Apache versions prior to 2.2.15 are affected.";
-
-tag_solution = "Upgrade to  Apache 2.2.15 or Later.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100514");
- script_version("$Revision: 8356 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
- script_bugtraq_id(38494,38491);
- script_cve_id("CVE-2010-0425","CVE-2010-0434","CVE-2010-0408","CVE-2007-6750");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_oid("1.3.6.1.4.1.25623.1.0.100514");
+  script_version("$Revision: 9220 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 14:19:39 +0200 (Tue, 27 Mar 2018) $");
+  script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
+  script_bugtraq_id(38494,38491);
+  script_cve_id("CVE-2010-0425","CVE-2010-0434","CVE-2010-0408","CVE-2007-6750");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Apache Multiple Security Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_apache_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/installed");
 
- script_name("Apache Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38494");
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_22.html");
+  script_xref(name:"URL", value:"http://httpd.apache.org/");
+  script_xref(name:"URL", value:"https://issues.apache.org/bugzilla/show_bug.cgi?id=48359");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=917870");
 
+  tag_summary = "Apache is prone to multiple vulnerabilities.";
 
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_apache_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys('apache/installed');
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38494");
- script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_22.html");
- script_xref(name : "URL" , value : "http://httpd.apache.org/");
- script_xref(name : "URL" , value : "https://issues.apache.org/bugzilla/show_bug.cgi?id=48359");
- script_xref(name : "URL" , value : "http://svn.apache.org/viewvc?view=revision&revision=917870");
- exit(0);
-}
+  tag_impact = "These issues may lead to information disclosure or other attacks.";
 
-include("http_func.inc");
-include("version_func.inc");
+  tag_affected = "Apache versions prior to 2.2.15 are affected.";
 
-httpdPort = get_http_port(default:80);
-if(!httpdPort){
+  tag_solution = "Upgrade to  Apache 2.2.15 or Later.";
+
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   exit(0);
 }
 
-version = get_kb_item("www/" + httpdPort + "/Apache");
+include("host_details.inc");
+include("version_func.inc");
 
-if(version != NULL){
-  if(version_in_range(version:version, test_version: "2.2",test_version2:"2.2.14")){
-    security_message(port: httpdPort);
-    exit(0);
-  }
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+
+if( version_in_range( version:vers, test_version:"2.2", test_version2:"2.2.14" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.15" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

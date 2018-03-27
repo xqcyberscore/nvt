@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_dec17_lin1.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_foxit_reader_mult_vuln_dec17_lin1.nasl 9215 2018-03-27 08:54:00Z santu $
 #
-# Multiple vulnerabilities in Foxit Reader 8.3.1
+# Multiple vulnerabilities in Foxit Reader 8.3.1 (Linux)
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113074");
-  script_version("$Revision: 8291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 9215 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 10:54:00 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 11:24:25 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if( description )
                 "CVE-2017-16575", "CVE-2017-16576", "CVE-2017-16577", "CVE-2017-16588",
                 "CVE-2017-16589");
 
-  script_name("Multiple vulnerabilities in Foxit Reader 8.3.1");
+  script_name("Multiple vulnerabilities in Foxit Reader 8.3.1 (Linux)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -61,7 +61,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Foxit Reader 8.3.1 allows information disclosure through improper validation of user input. It also allows code execution via both improper object validation and improper user input validation that leads to a type confusion condition.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access sensitive information or execute code on the target host.");
-  script_tag(name:"affected", value:"Foxit Reader 8.3.1 and before");
+  script_tag(name:"affected", value:"Foxit Reader 8.3.1 and before on Linux.");
   script_tag(name:"solution", value:"Update to Foxit Reader 9.0 or above.");
 
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");

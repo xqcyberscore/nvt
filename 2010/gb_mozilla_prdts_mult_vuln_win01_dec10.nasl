@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win01_dec10.nasl 8207 2017-12-21 07:30:12Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_win01_dec10.nasl 9216 2018-03-27 09:14:44Z santu $
 #
-# Mozilla Products Multiple Vulnerabilities dec-10 (Windows)
+# Mozilla Products Multiple Vulnerabilities-02 dec-10 (Windows)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -56,14 +56,14 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey that are
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801498");
-  script_version("$Revision: 8207 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 9216 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-3766", "CVE-2010-3767", "CVE-2010-3770", "CVE-2010-3771",
                 "CVE-2010-3773", "CVE-2010-3772", "CVE-2010-3774", "CVE-2010-3775");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("Mozilla Products Multiple Vulnerabilities dec-10 (Windows)");
+  script_name("Mozilla Products Multiple Vulnerabilities-02 dec-10 (Windows)");
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-80.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-81.html");

@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_discl_vuln3.nasl 4641 2016-11-29 06:07:56Z antu123 $
+# $Id: gb_foreman_info_discl_vuln3.nasl 9216 2018-03-27 09:14:44Z santu $
 #
-# Foreman Information Disclosure Vulnerability
+# Foreman Information Disclosure Vulnerability-03
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106424");
-  script_version("$Revision: 4641 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-29 07:07:56 +0100 (Tue, 29 Nov 2016) $");
+  script_version("$Revision: 9216 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("Foreman Information Disclosure Vulnerability");
+  script_name("Foreman Information Disclosure Vulnerability-03");
 
   script_category(ACT_GATHER_INFO);
 

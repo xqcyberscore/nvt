@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 8977 2018-02-28 10:59:57Z cfischer $
+# $Id: find_service1.nasl 9208 2018-03-26 17:29:04Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 8977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:59:57 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 9208 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-26 19:29:04 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -567,6 +567,17 @@ if( r =~ "Nsure Audit .* \[.*\]" ) {
 if( r =~ '^ERROR\r\nERROR\r\nERROR\r\n$' ) {
   register_service( port:port, proto:"memcached", message:"A Memcached service seems to be running on this port." );
   log_message( port:port, data:"A Memcached service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  55 6E 6B 6E 6F 77 6E 20 6D 65 73 73 61 67 65       Unknown message
+# https://www.eyelock.com/index.php/products/myris 
+# http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-March/001372.html
+# nb: Only checking the two ports mentioned in the mailing list post above as
+# the message is quite too common to check on all ports
+if( ( port == 8083 || port == 9099 ) && rhexstr == "556e6b6e6f776e206d657373616765" ) {
+  register_service( port:port, proto:"myris", message:"A Myris service seems to be running on this port." );
+  log_message( port:port, data:"A Myris service seems to be running on this port." );
   exit( 0 );
 }
 

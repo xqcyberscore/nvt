@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 9216 2018-03-27 09:14:44Z santu $
 #
-# MySQL Server Component MyISAM Unspecified Vulnerability
+# MySQL Server Component MyISAM Unspecified Vulnerability (Linux)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812181");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 9216 $");
   script_cve_id("CVE-2012-0583");
   script_bugtraq_id(53061);
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 14:56:52 +0530 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_name("MySQL Server Component MyISAM Unspecified Vulnerability");
+  script_name("MySQL Server Component MyISAM Unspecified Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48890");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixMSQL");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +54,7 @@ if(description)
   Impact Level: Application");
 
   script_tag(name : "affected" , value : "MySQL version 5.1.x before 5.1.61 and
-  5.5.x before 5.5.20");
+  5.5.x before 5.5.20 on Linux");
 
   script_tag(name : "insight" , value : "Unspecified error in MySQL Server
   component related to MyISAM.");

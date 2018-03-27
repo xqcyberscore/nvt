@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_dos_vuln1.nasl 8965 2018-02-27 11:35:42Z cfischer $
+# $Id: gb_h2o_dos_vuln1.nasl 9216 2018-03-27 09:14:44Z santu $
 #
-# H2O HTTP Server DoS Vulnerability
+# H2O HTTP Server DoS Vulnerability-01
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:h2o_project:h2o";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140822");
-  script_version("$Revision: 8965 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:35:42 +0100 (Tue, 27 Feb 2018) $");
+  script_version("$Revision: 9216 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-27 16:25:17 +0700 (Tue, 27 Feb 2018)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("H2O HTTP Server DoS Vulnerability");
+  script_name("H2O HTTP Server DoS Vulnerability-01");
 
   script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4149.nasl 9201 2018-03-26 07:40:05Z cfischer $
+# $Id: deb_4149.nasl 9210 2018-03-27 05:15:54Z cfischer $
 #
 # Auto-generated from advisory DSA 4149-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704149");
-  script_version("$Revision: 9201 $");
+  script_version("$Revision: 9210 $");
   script_cve_id("CVE-2017-1000487");
   script_name("Debian Security Advisory DSA 4149-1 (plexus-utils2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 09:40:05 +0200 (Mon, 26 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 07:15:54 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 00:00:00 +0100 (Thu, 22 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

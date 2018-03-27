@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_optionsbleed.nasl 7402 2017-10-11 13:58:17Z cfischer $
+# $Id: gb_apache_optionsbleed.nasl 9218 2018-03-27 11:35:33Z cfischer $
 #
 # Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed)
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112048");
-  script_version("$Revision: 7402 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:58:17 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 9218 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:35:33 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-09-20 12:53:35 +0200 (Wed, 20 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2017/09/18/2");
   script_xref(name:"URL", value:"https://blog.fuzzing-project.org/60-Optionsbleed-HTTP-OPTIONS-method-can-leak-Apaches-server-memory.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/100872");
-  script_xref(name:"URL", value:"https://www.apache.org/dist/httpd/patches/apply_to_2.2.34/");
+  script_xref(name:"URL", value:"https://archive.apache.org/dist/httpd/patches/apply_to_2.2.34/");
   script_xref(name:"URL", value:"https://www.apache.org/dist/httpd/CHANGES_2.4.28");
 
   script_tag(name:"summary", value:"Apache HTTP server allows remote attackers to read secret data

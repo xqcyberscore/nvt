@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_win.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_win.nasl 9216 2018-03-27 09:14:44Z santu $
 #
-# Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Windows
+# Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities(apsb18-05)-Windows
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -28,13 +28,13 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813027");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9216 $");
   script_cve_id("CVE-2018-4920", "CVE-2018-4919");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
-  script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Windows");
+  script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities(apsb18-05)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple remote code execution vulnerabilities.");

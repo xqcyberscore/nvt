@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 4510 2016-11-15 09:09:22Z cfi $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 9219 2018-03-27 11:58:13Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 4510 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:09:22 +0100 (Tue, 15 Nov 2016) $");
+  script_version("$Revision: 9219 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:58:13 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Apache mod_negotiation MultiViews Information Disclosure");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("secpod_apache_detect.nasl", "webmirror.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/installed");
