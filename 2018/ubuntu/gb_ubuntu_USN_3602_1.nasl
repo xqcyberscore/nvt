@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3602_1.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_ubuntu_USN_3602_1.nasl 9192 2018-03-23 14:54:27Z cfischer $
 #
 # Ubuntu Update for tiff USN-3602-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812582");
-  script_version("$Revision: 9191 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9192 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 15:54:27 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 11:17:10 +0100 (Wed, 21 Mar 2018)");
   script_cve_id("CVE-2016-10266", "CVE-2016-10267", "CVE-2016-10268", "CVE-2016-10269",
                 "CVE-2016-10371", "CVE-2017-10688", "CVE-2017-11335", "CVE-2017-12944",
@@ -37,8 +37,8 @@ if(description)
                 "CVE-2017-7597", "CVE-2017-7598", "CVE-2017-7599", "CVE-2017-7600",
                 "CVE-2017-7601", "CVE-2017-7602", "CVE-2017-9403", "CVE-2017-9404",
                 "CVE-2017-9815", "CVE-2017-9936", "CVE-2018-5784");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tiff USN-3602-1");
   script_tag(name: "summary", value: "Check the version of tiff");

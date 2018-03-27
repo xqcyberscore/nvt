@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2370_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2370_1.nasl 9199 2018-03-26 05:56:21Z cfischer $
 #
 # SuSE Update for libzypp, openSUSE-SU-2017:2370-1 (libzypp,)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851608");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9199 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 07:17:54 +0200 (Wed, 06 Sep 2017)");
   script_cve_id("CVE-2017-7436");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libzypp, openSUSE-SU-2017:2370-1 (libzypp,)");
   script_tag(name: "summary", value: "Check the version of libzypp,");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_loxone_detect.nasl 9202 2018-03-26 08:18:46Z asteins $
 #
 # Loxone Miniserver Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107044");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version ("$Revision: 9202 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-03-26 10:18:46 +0200 (Mon, 26 Mar 2018) $");
  script_tag(name:"creation_date", value:"2016-09-07 13:18:59 +0200 (Wed, 07 Sep 2016)");
  script_name("Loxone Miniserver Detection");
 
@@ -53,34 +53,31 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-http_port = "";
-url = "/Login.html";
-## Get HTTP Port
 http_port = get_http_port(default:80);
-
-## Confirm the application 
 Banner = get_http_banner(port: http_port);
-if(!Banner || "Server: Loxone" >!< Banner){
-  exit(0);
+
+if( Banner && "Server: Loxone" >< Banner ) {
+
+  set_kb_item( name:"loxone/web/detected", value:TRUE );
+
+  vers = 'unknown';
+  version = eregmatch( pattern:'Server: Loxone ([0-9.]+)', string:Banner );
+
+  cpe = 'cpe:/a:loxone:loxone';
+  if( !isnull (version[1] ) )  vers = version[1];
+
+  if( vers != 'unknown')   cpe += ':' + vers;
+
+  register_product( cpe:cpe, location: '/', port:http_port, service:'www' );
+
+  report = build_detection_report( app:'Loxone Miniserver',
+                                   version:vers,
+                                   install:'/',
+                                   cpe:cpe,
+                                   concluded:version[0]);
+
+  log_message( port:http_port, data:report );
 }
-
-set_kb_item( name:"loxone/web/detected", value:TRUE );
-vers = 'unknown';
-version = eregmatch( pattern:'Server: Loxone ([0-9.]+)', string:Banner );
-cpe = 'cpe:/a:loxone:loxone';
-if( ! isnull (version[1] ) )  vers = version[1];
-
-if( vers != 'unknown')   cpe += ':' + vers;
-
-register_product( cpe:cpe, location: '/', port:http_port, service:'www' );
-
-report = build_detection_report( app:'Loxone Miniserver',
-                                 version:vers,
-                                 install:'/',
-                                 cpe:cpe,
-                                 concluded:version[0]
-                                  );
-log_message( port:http_port, data:report );
 
 exit( 0 );
 

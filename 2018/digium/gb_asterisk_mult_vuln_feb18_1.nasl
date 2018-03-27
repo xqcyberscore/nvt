@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_vuln_feb18_1.nasl 8913 2018-02-22 04:57:20Z ckuersteiner $
+# $Id: gb_asterisk_mult_vuln_feb18_1.nasl 9199 2018-03-26 05:56:21Z cfischer $
 #
 # Asterisk Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140791");
-  script_version("$Revision: 8913 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-22 05:57:20 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 9199 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-02-22 11:18:04 +0700 (Thu, 22 Feb 2018)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-7285", "CVE-2018-7287");
 

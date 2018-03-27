@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horos_detect.nasl 4872 2016-12-29 13:01:58Z cfi $
+# $Id: gb_horos_detect.nasl 9202 2018-03-26 08:18:46Z asteins $
 #
 # Horos Web Portal Detection
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107114");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4872 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 14:01:58 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 9202 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-26 10:18:46 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name:"creation_date", value: "2016-12-28 13:26:09 +0700 (Wed, 28 Dec 2016)");
   script_name("Horos Web Portal Detection");
   script_category(ACT_GATHER_INFO);
@@ -51,16 +51,6 @@ include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-port = "";
-dirs = "";
-url = "";
-req = "";
-buf = "";
-install = "";
-vers = "";
-version = "";
-cpe = "";
 
 port = get_http_port(default:3333);
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_apr10.nasl 8244 2017-12-25 07:29:28Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_win_apr10.nasl 9193 2018-03-23 15:15:44Z cfischer $
 #
-# Mozilla Products Multiple Vulnerabilitie Apr-10 (Windows)
+# Mozilla Products Multiple Vulnerabilities Apr-10 (Windows)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -35,30 +35,37 @@ tag_solution = "Upgrade to Firefox version 3.5.9, 3.6.2
 
 tag_impact = "Successful exploitation will let attackers to to cause a denial of service
   or execute arbitrary code.
+
   Impact Level: Application";
 tag_affected = "Seamonkey version prior to 2.0.4,
+
   Thunderbird version proior to 3.0.4 and
+
   Firefox version before 3.5.9 and 3.6.x before 3.6.2";
+
 tag_insight = "The flaws are due to:
+
    - A memory corruption error when user loads specially crafted HTML or specially
      crafted HTML-based e-mail, which allows to execute arbitrary code via unknown
      vectors.
+
    - An error in 'XMLDocument::load()' method. It is not checking 'nsIContentPolicy'
      during loading of content by XML documents, which allows to bypass intended
      access restrictions via crafted content.";
+
 tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
   to multiple vulnerabilities.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800753");
-  script_version("$Revision: 8244 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
+  script_version("$Revision: 9193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0173", "CVE-2010-0182");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("Mozilla Products Multiple Vulnerabilitie Apr-10 (Windows)");
+  script_name("Mozilla Products Multiple Vulnerabilities Apr-10 (Windows)");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/57388");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/57396");
@@ -66,6 +73,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-24.html");
 
   script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1023.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: deb_dla_1023.nasl 9193 2018-03-23 15:15:44Z cfischer $
 #
 # Auto-generated from advisory DLA 1023-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891023");
-  script_version("$Revision: 8699 $");
+  script_version("$Revision: 9193 $");
   script_cve_id("CVE-2017-9936");
   script_name("Debian Lts Announce DLA 1023-1 ([SECURITY] [DLA 1023-1] tiff3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 00:00:00 +0100 (Mon, 05 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if(description)
 3.9.6-11+deb7u7.
 
 We recommend that you upgrade your tiff3 packages.");
-  script_tag(name:"summary",  value:"vulnerabilitie has been discovered in the libtiff library and the
+  script_tag(name:"summary",  value:"A vulnerability has been discovered in the libtiff library and the
 included tools, which may result in denial of service or the execution
 of arbitrary code.
 

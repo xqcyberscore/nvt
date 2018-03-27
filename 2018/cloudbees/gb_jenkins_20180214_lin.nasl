@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180214_lin.nasl 8999 2018-03-01 13:19:02Z cfischer $
+# $Id: gb_jenkins_20180214_lin.nasl 9192 2018-03-23 14:54:27Z cfischer $
 #
 # Jenkins < 2.107 and < 2.89.4 LTS Multiple Vulnerabilities (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112227");
-  script_version("$Revision: 8999 $");
+  script_version("$Revision: 9192 $");
 
   script_cve_id("CVE-2018-6356", "CVE-2018-1000067", "CVE-2018-1000068");
 
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:19:02 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 15:54:27 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-19 11:00:00 +0100 (Mon, 19 Feb 2018)");
   script_name("Jenkins < 2.107 and < 2.89.4 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);

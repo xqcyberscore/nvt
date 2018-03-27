@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2896_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2896_1.nasl 9199 2018-03-26 05:56:21Z cfischer $
 #
 # SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851636");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9199 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:24:40 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2015-1863", "CVE-2015-4141", "CVE-2015-4142", "CVE-2015-4143", 
                 "CVE-2015-4144", "CVE-2015-4145", "CVE-2015-5314", "CVE-2016-4476", 
                 "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", "CVE-2017-13081", 
                 "CVE-2017-13087", "CVE-2017-13088");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)");
   script_tag(name: "summary", value: "Check the version of hostapd");

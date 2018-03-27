@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_mult_vuln.nasl 9145 2018-03-20 09:27:46Z jschulte $
+# $Id: gb_panda_global_protection_mult_vuln.nasl 9193 2018-03-23 15:15:44Z cfischer $
 #
-# Panda Global Protection 17.0.1 Multiple Vulnerabilites
+# Panda Global Protection 17.0.1 Multiple Vulnerabilities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 9145 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:27:46 +0100 (Tue, 20 Mar 2018) $");
+  script_version("$Revision: 9193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2018-6321", "CVE-2018-6322");
 
-  script_name("Panda Global Protection 17.0.1 Multiple Vulnerabilites");
+  script_name("Panda Global Protection 17.0.1 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -53,7 +53,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilties exist:
 
-  Unquoted Windows search path vulnerability in the panda_url_filtering service in Panda Global Protection allows local users to gain privileges via a malicious artefact.
+  Unquoted Windows search path vulnerability in the panda_url_filtering service in Panda Global Protection allows local users to gain privileges via a malicious artifact.
 
   Panda Global Protection allows local users to gain privileges or cause a denial of service by impersonating all the pipes through a use of
   \.\pipe\PSANMSrvcPpal -- an 'insecurely created named pipe'. Ensures full access to Everyone users group.");

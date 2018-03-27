@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4fb7cdd27f_libgit2_fc27.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_fedora_2018_4fb7cdd27f_libgit2_fc27.nasl 9192 2018-03-23 14:54:27Z cfischer $
 #
 # Fedora Update for libgit2 FEDORA-2018-4fb7cdd27f
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874250");
-  script_version("$Revision: 9191 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9192 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 15:54:27 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 15:10:34 +0100 (Wed, 21 Mar 2018)");
   script_cve_id("CVE-2016-8568", "CVE-2016-8569");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libgit2 FEDORA-2018-4fb7cdd27f");
   script_tag(name: "summary", value: "Check the version of libgit2");

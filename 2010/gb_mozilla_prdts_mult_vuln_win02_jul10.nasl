@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win02_jul10.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_win02_jul10.nasl 9193 2018-03-23 15:15:44Z cfischer $
 #
-# Mozilla Products Multiple Vulnerabilitie jul-10 (Windows)
+# Mozilla Products Multiple Vulnerabilities jul-10 (Windows)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -32,41 +32,48 @@ tag_solution = "Upgrade to Firefox version 3.5.11 or 3.6.7
 
 tag_impact = "Successful exploitation will let attackers to cause a denial of service
   or execute arbitrary code or XSS problems.
+
   Impact Level: Application";
 tag_affected = "Firefox version 3.5.x before 3.5.11 and 3.6.x before 3.6.7
   Thunderbird version 3.1.x before 3.1.1";
+
 tag_insight = "The flaws are due to:
+
   - An error in the handling of 'SJOW()' and 'fast()' native function, when
     content script which is running in a chrome context accesses a content
     object via SJOW.
+
   - An error in the handling of canvas element, can be used to read data from
     another site, violating the same-origin policy.The read restriction placed
     on a canvas element which has had cross-origin data rendered into it can be
     bypassed by retaining a reference to the canvas element's context and
     deleting the associated canvas node from the DOM.
+
   - Undefined positions within various 8 bit character encoding's are mapped to
     the sequence U+FFFD which when displayed causes the immediately following
     character to disappear from the text run.";
+
 tag_summary = "The host is installed with Mozilla Firefox/Thunderbird that are prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801387");
-  script_version("$Revision: 8457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 9193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41824);
   script_cve_id("CVE-2010-1215", "CVE-2010-1207", "CVE-2010-1210");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("Mozilla Products Multiple Vulnerabilitie jul-10 (Windows)");
+  script_name("Mozilla Products Multiple Vulnerabilities jul-10 (Windows)");
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-38.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-43.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-44.html");
 
   script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");

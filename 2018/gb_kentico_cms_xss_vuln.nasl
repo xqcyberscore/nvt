@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_xss_vuln.nasl 8890 2018-02-20 14:25:50Z jschulte $
+# $Id: gb_kentico_cms_xss_vuln.nasl 9192 2018-03-23 14:54:27Z cfischer $
 #
 # Kentico CMS 9-11 XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113118");
-  script_version("$Revision: 8890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:25:50 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 9192 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 15:54:27 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:34:43 +0100 (Tue, 20 Feb 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

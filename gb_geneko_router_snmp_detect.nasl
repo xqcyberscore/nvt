@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geneko_router_snmp_detect.nasl 7812 2017-11-17 13:46:37Z teissa $
+# $Id: gb_geneko_router_snmp_detect.nasl 9202 2018-03-26 08:18:46Z asteins $
 #
 # Geneko Router Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107261");
-  script_version("$Revision: 7812 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 14:46:37 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 9202 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-26 10:18:46 +0200 (Mon, 26 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 14:42:26 +0700 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
 
   script_name("Geneko Router Detection (SNMP)");
 
-  script_tag(name:"summary", value:"Detection of Geneko Router devices
+  script_tag(name:"summary", value:"Detection of Geneko Router devices.
 
 This script performs SNMP based detection of Geneko Router devices.");
 

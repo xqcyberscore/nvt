@@ -25,7 +25,7 @@
 ###############################################################################
 
 ##############################################################################
-# CLASS: Win32_Service Functions
+# CLASS: Win32_SystemAccount / Win32_UserAccount / Win32_Group / Win32_GroupUser Functions
 #
 # - wmi_user_sysaccount              - Queries System Account Information.
 # - wmi_user_useraccount             - Lists the information of User Account.

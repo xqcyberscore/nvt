@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 7255 2017-09-25 15:59:40Z cfischer $
+# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 9194 2018-03-24 12:54:17Z cfischer $
 #
 # AVM FRITZ!Box Default / no Password (HTTP)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:avm:fritzbox';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108042");
-  script_version("$Revision: 7255 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:59:40 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 9194 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-24 13:54:17 +0100 (Sat, 24 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 15:00:00 +0100 (Tue, 10 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,15 +63,15 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc"); # For report_vuln_url. Don't use http_keepalive_send_recv is causing issues with this boxes
+include("http_keepalive.inc"); # For report_vuln_url. Don't use http_keepalive_send_recv which is causing issues with this boxes
 include("host_details.inc");
 include("misc_func.inc");
 
 
-# Keep http_send_recv for all request as it seems http_keepalive_send_recv doesn't return all data on this boxes
+# nb: Keep http_send_recv for all request as it seems http_keepalive_send_recv doesn't return all data on this boxes
 
 
-# Creating the reponse, example from js:
+# Creating the response, example from js:
 # var challenge = "769b3d3f"; var str = challenge + "-" + makeDots(pw); var response = challenge + "-" + hex_md5(str);
 function create_response( challenge, credential ) {
 
@@ -89,9 +89,15 @@ function do_webcm_post_req( port, posturl, sid, dir ) {
   local_var port, posturl, sid, dir, time, postdata, req, res;
 
   time = unixtime();
-  postdata = "sid=" + sid[1] + "&getpage=..%2Fhtml%2Flogincheck.html&errorpage=..%2Fhtml%2Findex.html" +
-             "&var%3Alang=de&var%3Apagename=home&var%3Amenu=home&var%3Amenutitle=Home" +
-             "&time%3Asettings%2Ftime=" + time + "%2C-60";
+
+  if( sid ) {
+    postdata = "sid=" + sid + "&getpage=..%2Fhtml%2Flogincheck.html&errorpage=..%2Fhtml%2Findex.html" +
+               "&var%3Alang=de&var%3Apagename=home&var%3Amenu=home&var%3Amenutitle=Home" +
+               "&time%3Asettings%2Ftime=" + time + "%2C-60";
+  } else {
+    postdata = "getpage=..%2Fhtml%2Fde%2Fmenus%2Fmenu2.html&errorpage=..%2Fhtml%2Findex.html&var%3Alang=de" +
+               "&var%3Apagename=home&var%3Amenu=home&time%3Asettings%2Ftime=" + time + "%2C-60";
+  }
 
   req = http_post_req( port:port, url:posturl, data:postdata,
                        accept_header:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -113,12 +119,12 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-# e.g. FonWLAN 7113 with 60.04.48 or FonWLAN 7240 with 73.04.48
+# e.g. FonWLAN 7113 with 60.04.48, FonWLAN 7240 with 73.04.48, Fon with 06.04.33
 url = dir + "/cgi-bin/webcm?getpage=../html/index_inhalt.html";
 req = http_get( port:port, item:url );
 res = http_send_recv( port:port, data:req );
 
-if( res =~ "HTTP/1\.. 200" && ( '<form method="POST" action="../cgi-bin/webcm"' >< res || '<form method="GET" action="../cgi-bin/webcm"' >< res ) ) {
+if( res =~ "^HTTP/1\.[01] 200" && ( '<form method="POST" action="../cgi-bin/webcm"' >< res || '<form method="GET" action="../cgi-bin/webcm"' >< res ) ) {
 
   posturl = dir + "/cgi-bin/webcm";
 
@@ -128,7 +134,16 @@ if( res =~ "HTTP/1\.. 200" && ( '<form method="POST" action="../cgi-bin/webcm"' 
     res = do_webcm_post_req( port:port, posturl:posturl, sid:sid[1], dir:dir );
 
     # With password reminder but no password set yet
-    if( res =~ "HTTP/1\.. 200" && '<label for="uiViewUsePassword">' >< res && '<label for="uiViewPasswordConfirm">' >< res && '<label for="uiShowReminder">' >< res ) {
+    if( res =~ "^HTTP/1\.[01] 200" && '<label for="uiViewUsePassword">' >< res && '<label for="uiViewPasswordConfirm">' >< res && '<label for="uiShowReminder">' >< res ) {
+      report = "The URL " + report_vuln_url( port:port, url:"/", url_only:TRUE ) + " has no password set.";
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  # e.g. Fon with 06.04.33 doesn't have a sid
+  } else {
+    res = do_webcm_post_req( port:port, posturl:posturl, dir:dir );
+    # Without a password password set yet
+    if( res =~ "^HTTP/1\.[01] 200" && '<p class="ac">FRITZ!Box' >< res && "Firmware-Version" >< res ) {
       report = "The URL " + report_vuln_url( port:port, url:"/", url_only:TRUE ) + " has no password set.";
       security_message( port:port, data:report );
       exit( 0 );
@@ -170,9 +185,24 @@ if( res =~ "HTTP/1\.. 200" && ( '<form method="POST" action="../cgi-bin/webcm"' 
           exit( 0 );
         }
       }
+      sleepsecs *= 2;
+      sleep( sleepsecs );
+    # e.g. Fon with 06.04.33 doesn't have a sid
+    } else {
+      postdata = "getpage=..%2Fhtml%2Fde%2Fmenus%2Fmenu2.html&errorpage=..%2Fhtml%2Findex.html&var%3Alang=de&var%3Apagename=home" +
+                 "&var%3Amenu=home&login%3Acommand%2Fpassword=" + credential;
+      req = http_post_req( port:port, url:"/cgi-bin/webcm", data:postdata,
+                           accept_header:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                           add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded",
+                                                   "Upgrade-Insecure-Requests", "1",
+                                                   "Referer", report_vuln_url( port:port, url:dir + "/cgi-bin/webcm", url_only:TRUE ) ) );
+      res = http_send_recv( port:port, data:req );
+      if( res =~ "^HTTP/1\.[01] 200" && '<p class="ac">FRITZ!Box' >< res && "Firmware-Version" >< res ) {
+        report = "It was possible to login at " + report_vuln_url( port:port, url:"/", url_only:TRUE ) + " with the password '" + credential + "'.";
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
-    sleepsecs *= 2;
-    sleep( sleepsecs );
   }
 }
 
@@ -192,14 +222,14 @@ url = dir + "/login.lua";
 req = http_get( port:port, item:url );
 res = http_send_recv( port:port, data:req );
 
-if( res =~ "HTTP/1\.. 200" && ( 'method="POST" action="/login.lua"' >< res || 'method="post" action="/login.lua"' >< res ) ) {
+if( res =~ "^HTTP/1\.[01] 200" && ( 'method="POST" action="/login.lua"' >< res || 'method="post" action="/login.lua"' >< res ) ) {
 
   # First try if no password is set
   url = dir + "/logincheck.lua";
   req = http_get( port:port, item:url );
   res = http_send_recv( port:port, data:req );
 
-  if( res =~ "HTTP/1\.. 303" && "/no_password.lua?sid=" >< res ) {
+  if( res =~ "^HTTP/1\.[01] 303" && "/no_password.lua?sid=" >< res ) {
 
     sid = eregmatch( pattern:"/no_password\.lua\?sid=([a-z0-9]+)", string:res );
     if( ! isnull( sid[1] ) ) {
@@ -207,8 +237,8 @@ if( res =~ "HTTP/1\.. 200" && ( 'method="POST" action="/login.lua"' >< res || 'm
       req = http_get( port:port, item:url );
       res = http_send_recv( port:port, data:req );
 
-      if( res =~ "HTTP/1\.. 200" && ( '<img src="/css/default/images/icon_abmelden.gif">' >< res || '<li><a href="/net/network_user_devices.lua?sid=' >< res ||
-                                      '<li><a href="/system/syslog.lua?sid=' >< res ) ) {
+      if( res =~ "^HTTP/1\.[01] 200" && ( '<img src="/css/default/images/icon_abmelden.gif">' >< res || '<li><a href="/net/network_user_devices.lua?sid=' >< res ||
+                                          '<li><a href="/system/syslog.lua?sid=' >< res ) ) {
         report = "The URL " + report_vuln_url( port:port, url:url, url_only:TRUE ) + " has no password set.";
         security_message( port:port, data:report );
         exit( 0 );
@@ -253,7 +283,7 @@ if( res =~ "HTTP/1\.. 200" && ( 'method="POST" action="/login.lua"' >< res || 'm
                                                  "Referer", report_vuln_url( port:port, url:url, url_only:TRUE ) ) );
     res = http_send_recv( port:port, data:req );
 
-    if( res =~ "HTTP/1\.. 303" && "/home/home.lua?sid=" >< res ) {
+    if( res =~ "^HTTP/1\.[01] 303" && "/home/home.lua?sid=" >< res ) {
 
       sid = eregmatch( pattern:"/home/home\.lua\?sid=([a-z0-9]+)", string:res );
       if( isnull( sid[1] ) ) continue;
@@ -262,8 +292,8 @@ if( res =~ "HTTP/1\.. 200" && ( 'method="POST" action="/login.lua"' >< res || 'm
       req = http_get( port:port, item:url );
       res = http_send_recv( port:port, data:req );
 
-      if( res =~ "HTTP/1\.. 200" && ( '<img src="/css/default/images/icon_abmelden.gif">' >< res || '<li><a href="/net/network_user_devices.lua?sid=' >< res ||
-                                      '<li><a href="/system/syslog.lua?sid=' >< res ) ) {
+      if( res =~ "^HTTP/1\.[01] 200" && ( '<img src="/css/default/images/icon_abmelden.gif">' >< res || '<li><a href="/net/network_user_devices.lua?sid=' >< res ||
+                                          '<li><a href="/system/syslog.lua?sid=' >< res ) ) {
         report = "It was possible to login at " + report_vuln_url( port:port, url:url, url_only:TRUE ) + " with the password '" + credential + "'.";
         security_message( port:port, data:report );
         exit( 0 );
@@ -290,12 +320,12 @@ url = dir + "/";
 req = http_get( port:port, item:url );
 res = http_send_recv( port:port, data:req );
 
-if( res =~ "HTTP/1\.. 200" && ( '"lua": "internet\\/dsl_test.lua"' >< res || '"lua": "assis\\/assi_fax_intern.lua"' >< res ||
-                                '"lua": "dect\\/podcast.lua"' >< res || '"lua": "wlan\\/wlan_settings.lua"' >< res ) ) {
+if( res =~ "^HTTP/1\.[01] 200" && '"lua":' >< res && ( '"internet\\/dsl_test.lua"' >< res || '"assis\\/assi_fax_intern.lua"' >< res ||
+                                                       '"dect\\/podcast.lua"' >< res || '"wlan\\/wlan_settings.lua"' >< res ) ) {
   report = "The URL " + report_vuln_url( port:port, url:url, url_only:TRUE ) + " has no password set.";
   security_message( port:port, data:report );
   exit( 0 );
-} else if( res =~ "HTTP/1\.. 200" && "FRITZ!Box" >< res && "login.init(data);" >< res ) {
+} else if( res =~ "^HTTP/1\.[01] 200" && "FRITZ!Box" >< res && "login.init(data);" >< res ) {
 
   # fallback for later
   fbsleepsecs = 2;
@@ -305,7 +335,7 @@ if( res =~ "HTTP/1\.. 200" && ( '"lua": "internet\\/dsl_test.lua"' >< res || '"l
     req = http_get( port:port, item:url );
     res = http_send_recv( port:port, data:req );
 
-    challenge = eregmatch( pattern:'"challenge": "([a-z0-9]+)",', string:res );
+    challenge = eregmatch( pattern:'"challenge": ?"([a-z0-9]+)",', string:res );
     if( isnull( challenge[1] ) ) continue;
 
     response = create_response( challenge:challenge[1], credential:credential );
@@ -318,8 +348,8 @@ if( res =~ "HTTP/1\.. 200" && ( '"lua": "internet\\/dsl_test.lua"' >< res || '"l
                                                  "Referer", report_vuln_url( port:port, url:url, url_only:TRUE ) ) );
     res = http_send_recv( port:port, data:req );
 
-    if( res =~ "HTTP/1\.. 200" && ( '"lua": "internet\\/dsl_test.lua"' >< res || '"lua": "assis\\/assi_fax_intern.lua"' >< res ||
-                                '"lua": "dect\\/podcast.lua"' >< res || '"lua": "wlan\\/wlan_settings.lua"' >< res ) ) {
+    if( res =~ "^HTTP/1\.[01] 200" && '"lua":' >< res && ( '"internet\\/dsl_test.lua"' >< res || '"assis\\/assi_fax_intern.lua"' >< res ||
+                                                           '"dect\\/podcast.lua"' >< res || '"wlan\\/wlan_settings.lua"' >< res ) ) {
       report = "It was possible to login at " + report_vuln_url( port:port, url:url, url_only:TRUE ) + " with the password '" + credential + "'.";
       security_message( port:port, data:report );
       exit( 0 );
@@ -327,7 +357,7 @@ if( res =~ "HTTP/1\.. 200" && ( '"lua": "internet\\/dsl_test.lua"' >< res || '"l
       # counter for sleeps between login tries.
       # The box will lock us out with too many tries in a row.
       # Newer firmware versions are also so kind to give us the info how long we need to wait.
-      sleepsecs = eregmatch( pattern:'"blockTime": ([0-9]+),', string:res );
+      sleepsecs = eregmatch( pattern:'"blockTime": ?([0-9]+),', string:res );
       if( ! isnull( sleepsecs[1] ) ) {
         sleepsecs = sleepsecs[1];
       } else {

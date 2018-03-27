@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_dos_vuln_win.nasl 9108 2018-03-15 13:17:25Z jschulte $
+# $Id: gb_graphicsmagick_mult_dos_vuln_win.nasl 9193 2018-03-23 15:15:44Z cfischer $
 #
 # GraphicsMagick 1.3.26 Multiple DoS Vulnerabilities (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113137");
-  script_version("$Revision: 9108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 14:17:25 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 14:01:02 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,7 +46,7 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_graphicsmagick_detect_win.nasl", "os_detection.nasl");
+  script_dependencies("gb_graphicsmagick_detect_win.nasl");
   script_mandatory_keys("GraphicsMagick/Win/Installed");
 
   script_tag(name:"summary", value:"GraphicsMagick is prone to multiple Denial of Service vulnerabilities, exploitable via specially crafted files.");
