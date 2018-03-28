@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_45d8b8ae21_puppet_fc27.nasl 9214 2018-03-27 08:11:34Z santu $
+# $Id: gb_fedora_2018_45d8b8ae21_puppet_fc27.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Fedora Update for puppet FEDORA-2018-45d8b8ae21
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874274");
-  script_version("$Revision: 9214 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 10:11:34 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 9226 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-25 08:28:14 +0200 (Sun, 25 Mar 2018)");
   script_cve_id("CVE-2017-10689");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for puppet FEDORA-2018-45d8b8ae21");
   script_tag(name: "summary", value: "Check the version of puppet");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: smb_registry_access.nasl 9243 2018-03-28 12:35:07Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 8897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 9243 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 14:35:07 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -165,6 +165,7 @@ if( ! r ) {
   log_message( port:0, data:message );
 } else {
   set_kb_item( name:"SMB/registry_access", value:TRUE );
+  set_kb_item( name:"SMB_or_WMI/access_successful", value:TRUE );
 }
 
 exit( 0 );

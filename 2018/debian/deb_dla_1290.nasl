@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1290.nasl 9213 2018-03-27 07:56:24Z cfischer $
+# $Id: deb_dla_1290.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1290-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891290");
-  script_version("$Revision: 9213 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2017-13194");
   script_name("Debian Lts Announce ([SECURITY] [DLA 1290-1] libvpx security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 09:56:24 +0200 (Tue, 27 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

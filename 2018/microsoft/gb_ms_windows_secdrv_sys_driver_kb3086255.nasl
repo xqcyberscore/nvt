@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_secdrv_sys_driver_kb3086255.nasl 8986 2018-03-01 04:16:23Z santu $
+# $Id: gb_ms_windows_secdrv_sys_driver_kb3086255.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Microsoft Windows Information Disclosure and Code Execution Vulnerabilities (KB3086255)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812958");
-  script_version("$Revision: 8986 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2018-7249", "CVE-2018-7250");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 05:16:23 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 14:37:31 +0530 (Wed, 28 Feb 2018)");
   script_name("Microsoft Windows Information Disclosure and Code Execution Vulnerabilities (KB3086255)");
 

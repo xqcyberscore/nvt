@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_file_discl_vuln.nasl 9021 2018-03-05 03:16:34Z ckuersteiner $
+# $Id: gb_limesurvey_file_discl_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # LimeSurvey File Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140848");
-  script_version("$Revision: 9021 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-05 04:16:34 +0100 (Mon, 05 Mar 2018) $");
+  script_version("$Revision: 9226 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-03-05 09:07:18 +0700 (Mon, 05 Mar 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2018-7556");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evolution_script_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_evolution_script_detect.nasl 9224 2018-03-27 16:11:47Z asteins $
 #
 # Evolution Script CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107218");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-27 18:11:47 +0200 (Tue, 27 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of installed version of Evolution Script CMS.
 
-  The script detects the version of Evolution Script CMS remote host and sets the KB.");
+  The script tries to detect the version of Evolution Script CMS remote host and sets the KB entries.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,36 +61,36 @@ foreach dir( make_list_unique( "/admin", cgi_dirs( port: appPort ) ) ) {
   install = dir;
   if (dir == "/") dir = "";
 
-
   rcvRes = http_get_cache(item: dir + "/" , port: appPort);
 
-  if (rcvRes !~ "^HTTP/1\.[01] 200" || "<title>EvolutionScript - Login</title>" >!< rcvRes ) continue;
+  if (rcvRes =~ "^HTTP/1\.[01] 200" && "<title>EvolutionScript - Login</title>" >< rcvRes ) {
 
-  Ver = "unknown";
+    Ver = "unknown";
 
-  tmpVer = eregmatch(pattern: "EvolutionScript ([0-9.]+) Admin Control Panel", string: rcvRes);
+    tmpVer = eregmatch(pattern: "EvolutionScript ([0-9.]+) Admin Control Panel", string: rcvRes);
 
-  if(tmpVer[1]) {
-    Ver = tmpVer[1];
+    if(tmpVer[1]) {
+      Ver = tmpVer[1];
+    }
+
+    set_kb_item(name: "evolution_script/installed", value: TRUE);
+    set_kb_item(name: "evolution_script/version", value: Ver);
+
+
+    cpe = build_cpe(value: Ver, exp: "^([0-9.]+)", base:"cpe:/a:evolutionscript:evolutionscript:");
+
+    if(!cpe)
+      cpe = 'cpe:/a:evolutionscript:evolutionscript';
+
+    register_product(cpe: cpe, location: install, port: appPort);
+
+    log_message(data:build_detection_report(app: "Evolution Script CMS",
+                                            version: Ver,
+                                            install: install,
+                                            cpe: cpe,
+                                            concluded: tmpVer[0]),
+                                            port: appPort);
   }
-
-  set_kb_item(name: "evolution_script/installed", value: TRUE);
-  set_kb_item(name: "evolution_script/version", value: Ver);
-
-
-  cpe = build_cpe(value: Ver, exp: "^([0-9.]+)", base:"cpe:/a:evolutionscript:evolutionscript:");
-
-  if(!cpe)
-    cpe = 'cpe:/a:evolutionscript:evolutionscript';
-
-  register_product(cpe: cpe, location: install, port: appPort);
-
-  log_message(data:build_detection_report(app: "Evolution Script CMS",
-                                          version: Ver,
-                                          install: install,
-                                          cpe: cpe,
-                                          concluded: tmpVer[0]),
-                                          port: appPort);
 }
 
 exit(0);

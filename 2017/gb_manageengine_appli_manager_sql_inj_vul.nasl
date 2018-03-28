@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
 #
 # ManageEngine Applications Manager SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107251");
-  script_version("$Revision: 7968 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9239 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-11-07 15:43:15 +0700 (Tue, 07 Nov 2017)");
 
   script_tag(name:"cvss_base", value:"7.5");
@@ -63,7 +63,7 @@ crafted viewProps yCanvas field or viewid parameter.");
 
   script_tag(name: "affected", value: "ManageEngine Applications Manager 13.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th November, 2017.
+  script_tag(name: "solution", value: "No solution or patch is available as of 28th March, 2018.
   Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://code610.blogspot.de/2017/11/sql-injection-in-manageengine.html");

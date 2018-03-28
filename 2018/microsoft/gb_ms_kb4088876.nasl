@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4088876.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4088876.nasl 9230 2018-03-28 06:27:31Z santu $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4088876)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812827");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9230 $");
   script_cve_id("CVE-2018-0811", "CVE-2018-0813", "CVE-2018-0814", "CVE-2018-0886", 
                 "CVE-2018-0888", "CVE-2018-0889", "CVE-2018-0891", "CVE-2018-0894", 
                 "CVE-2018-0895", "CVE-2018-0896", "CVE-2018-0897", "CVE-2018-0898", 
@@ -41,7 +41,7 @@ if(description)
                     103230, 103256, 103259, 103261);  
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:27:31 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:46:08 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4088876)");
 
@@ -135,10 +135,10 @@ if(!fileVer){
   exit(0);
 }
 
-if(version_is_less(version:fileVer, test_version:"11.0.9600.18953"))
+if(version_is_less(version:fileVer, test_version:"11.0.9600.18939"))
 {
   report = report_fixed_ver(file_checked:sysPath + "\urlmon.dll",
-  file_version:fileVer, vulnerable_range:"Less than 11.0.9600.18953");
+  file_version:fileVer, vulnerable_range:"Less than 11.0.9600.18939");
   security_message(data:report);
   exit(0);
 }

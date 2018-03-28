@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emby_media_detect.nasl 6133 2017-05-16 10:00:54Z ckuerste $
+# $Id: gb_emby_media_detect.nasl 9234 2018-03-28 08:11:31Z asteins $
 #
 # Emby Media Server Detection
 #
@@ -8,7 +8,7 @@
 # Tameem Eissa <tameem.eissa..at..greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2016 Greenbone Networks GmbH
+# Copyright (c) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107098");
-  script_version("$Revision: 6133 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 12:00:54 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 9234 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 10:11:31 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2017-05-02 14:04:20 +0200 (Tue, 02 May 2017)");
 
@@ -40,7 +40,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 8096);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"summary", value:"Detection of Emby Media Server.
 
 The script sends a connection request to the server and attempts to detect Emby Media Server and to

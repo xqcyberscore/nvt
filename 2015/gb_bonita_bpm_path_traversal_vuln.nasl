@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 9002 2018-03-01 15:42:57Z cfischer $
+# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Bonita BPM < 6.5.3 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:bonitasoft:bonita_bpm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106010");
-  script_version("$Revision: 9002 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-01 16:42:57 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 9226 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_tag(name: "qod_type", value: "remote_active");
 

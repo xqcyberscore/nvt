@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_tls_handshake_dos_vuln.nasl 8975 2018-02-28 10:27:08Z santu $
+# $Id: gb_apache_traffic_server_tls_handshake_dos_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Apache Traffic Server (ATS) TLS Handshake DOS Vulnerability   
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812524");
-  script_version("$Revision: 8975 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2017-7671");
-  script_tag(name:"last_modification", value: "$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value: "$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value: "2018-02-28 11:37:03 +0530 (Wed, 28 Feb 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Apache Traffic Server (ATS) TLS Handshake DOS Vulnerability");
 
   script_tag(name: "summary", value: "This host is installed with Apache Traffic

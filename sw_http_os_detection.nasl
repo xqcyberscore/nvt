@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9107 2018-03-15 12:51:40Z cfischer $
+# $Id: sw_http_os_detection.nasl 9227 2018-03-28 06:08:58Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9107 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:51:40 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9227 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:08:58 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -391,6 +391,13 @@ function check_http_banner( port ) {
 
       if( "(Univention)" >< banner ) {
         register_and_report_os( os:"Univention Corporate Server", cpe:"cpe:/o:univention:univention_corporate_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return banner;
+      }
+
+      # Server: Apache-AdvancedExtranetServer/1.3.23 (Mandrake Linux/4.1mdk) mod_ssl/2.8.7 OpenSSL/0.9.6c PHP/4.1.2
+      # Server: Apache-AdvancedExtranetServer/2.0.53 (Mandrakelinux/PREFORK-9mdk) mod_ssl/2.0.53 OpenSSL/0.9.7e PHP/4.3.10 mod_perl/1.999.21 Perl/v5.8.6
+      if( banner =~ "\(Mandrake ?[Ll]inux" ) {
+        register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         return banner;
       }
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_crud_acl_vuln.nasl 8956 2018-02-26 13:17:03Z cfischer $
+# $Id: gb_apache_openmeetings_crud_acl_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Apache OpenMeetings 'CVE-2018-1286' Insufficient Access Controls Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:openmeetings";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108352");
-  script_version("$Revision: 8956 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 14:17:03 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 9226 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 14:17:13 +0100 (Mon, 26 Feb 2018)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2018-1286");
   script_name("Apache OpenMeetings 'CVE-2018-1286' Insufficient Access Controls Vulnerability");
   script_category(ACT_GATHER_INFO);

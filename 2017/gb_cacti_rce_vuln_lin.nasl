@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_rce_vuln_lin.nasl 7691 2017-11-08 07:07:41Z asteins $
+# $Id: gb_cacti_rce_vuln_lin.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
 #
 # Cacti RCE Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112111");
-  script_version("$Revision: 7691 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-08 08:07:41 +0100 (Wed, 08 Nov 2017) $");
+  script_version("$Revision: 9239 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-11-08 08:28:48 +0100 (Wed, 08 Nov 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Cacti RCE Vulnerability (Linux)");
 
@@ -58,8 +58,7 @@ if (description)
 
   script_tag(name: "affected", value: "Cacti version 1.1.27.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 8th November, 2017. Information regarding this issue
-  will be updated once the solution details are available. For possible updates or patches refer to: https://github.com/Cacti/cacti");
+  script_tag(name: "solution", value: "Update to version 1.1.28 or later.");
 
   script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/1057");
 
@@ -76,7 +75,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_equal(version: version, test_version: "1.1.27")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "NoneAvailable");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.1.28");
   security_message(port: port, data: report);
   exit(0);
 }

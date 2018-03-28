@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # Shibboleth XMLTooling-C Library Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:internet2:shibboleth-sp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813051");
-  script_version("$Revision: 9191 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2018-0489");
   script_bugtraq_id(103172);
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 14:44:12 +0530 (Thu, 22 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Shibboleth XMLTooling-C Library Security Bypass Vulnerability");

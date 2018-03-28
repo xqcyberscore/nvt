@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stack_buffer_overflow_vuln_mar18_win.nasl 9098 2018-03-14 12:15:44Z santu $
+# $Id: gb_php_stack_buffer_overflow_vuln_mar18_win.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # PHP Stack Buffer Overflow Vulnerability Mar18 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:php:php";
 if (description)
 {   
   script_oid("1.3.6.1.4.1.25623.1.0.812820");
-  script_version("$Revision: 9098 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2018-7584");
   script_bugtraq_id(103204);
-  script_tag(name:"cvss_base", value:"5.4"); 
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 13:15:44 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 15:58:06 +0530 (Fri, 09 Mar 2018)");
   script_name("PHP Stack Buffer Overflow Vulnerability Mar18 (Windows)");
   

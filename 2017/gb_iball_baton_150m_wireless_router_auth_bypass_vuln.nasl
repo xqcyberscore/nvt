@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7775 2017-11-15 14:08:06Z jschulte $
+# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
 #
 # iBall Baton 150M Wireless Router Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:iball:baton_150m_wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811313");
-  script_version("$Revision: 7775 $");
+  script_version("$Revision: 9239 $");
   script_cve_id("CVE-2017-6558", "CVE-2017-14244");
   script_bugtraq_id(96822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:08:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:06:39 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("iBall Baton 150M Wireless Router Authentication Bypass Vulnerability");
@@ -66,7 +66,7 @@ if(description)
   iBall ADSL2+ Home Router WRA150N Firmware version FW_iB-LR7011A_1.0.2");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  10th November, 2017. Information regarding this issue will be updated once solution
+  28th March, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to https://www.iball.co.in/home");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -88,23 +88,14 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-netPort = "";
-rcvRes = "";
-req = "";
-
-## get the port
-if(!netPort = get_app_port(cpe:CPE)){
+if(!netPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 url = "/password.cgi";
 
-## Send and receive response
 req = http_get(item: url, port:netPort);
 rcvRes = http_keepalive_send_recv(port:netPort, data:req);
 
-## confirm exploit
 if(rcvRes =~ "HTTP/1.. 200" && ">Access Control -- Password<" >< rcvRes && 
    "Access to your DSL router" >< rcvRes && "pwdAdmin =" >< rcvRes &&
    "pwdSupport =" >< rcvRes && "pwdUser =" >< rcvRes)
@@ -113,3 +104,5 @@ if(rcvRes =~ "HTTP/1.. 200" && ">Access Control -- Password<" >< rcvRes &&
   security_message( port:netPort, data:report);
   exit(0);
 }
+
+exit(99);

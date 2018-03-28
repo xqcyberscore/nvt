@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 7775 2017-11-15 14:08:06Z jschulte $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 7775 $");
+  script_version("$Revision: 9239 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:08:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Tiandy IP cameras version 5.56.17.120.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 15th November, 2017. Solution details will be updated once the updates are made available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 28th March, 2018. Solution details will be updated once the updates are made available.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"NoneAvailable");

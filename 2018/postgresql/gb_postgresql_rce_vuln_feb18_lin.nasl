@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_rce_vuln_feb18_lin.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_postgresql_rce_vuln_feb18_lin.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
 #
 # PostgreSQL Remote Code Execution Vulnerability-Feb18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813010");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9226 $");
   script_cve_id("CVE-2018-1058");
   script_bugtraq_id(103221);
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 13:07:37 +0530 (Fri, 09 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Remote Code Execution Vulnerability-Feb18 (Linux)");

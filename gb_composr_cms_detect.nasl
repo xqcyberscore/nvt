@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: gb_composr_cms_detect.nasl 9234 2018-03-28 08:11:31Z asteins $
 #
 # Composr CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107216");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9234 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-28 10:11:31 +0200 (Wed, 28 Mar 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,9 +40,9 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"summary", value:"Detection of installed version of Composr CMS
+  script_tag(name:"summary", value:"Detection of installed version of Composr CMS.
 
-  The script detects the version of Composr CMS remote host and sets the KB.");
+  The script tries to detect Composr CMS via HTTP request and to extract its version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,51 +54,51 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-appPort = get_http_port(default:80);
+appPort = get_http_port( default:80 );
 if( ! can_host_php( port:appPort ) ) exit( 0 );
 
-foreach dir(make_list_unique( "/", cgi_dirs( port:appPort ) ) ) {
+foreach dir( make_list_unique( "/", cgi_dirs( port:appPort ) ) ) {
 
   install = dir;
-  if (dir == "/") dir = "";
+  if ( dir == "/" ) dir = "";
 
   url = dir + "/index.php?page=start";
 
   rcvRes = http_get_cache(item: url, port:appPort);
 
-  if (rcvRes !~ "^HTTP/1\.[01] 200" || "Powered by Composr" >!< rcvRes) continue;
+  if ( rcvRes =~ "^HTTP/1\.[01] 200" && "Powered by Composr" >< rcvRes ) {
 
-  Ver = "unknown";
+    Ver = "unknown";
 
-  tmpVer = eregmatch(pattern:"Powered by Composr version ([0-9.]+),",
-                     string:rcvRes);
-  if (!tmpVer){
-    tmpVer = eregmatch(pattern:"Powered by Composr version ([0-9.]+) ([A-Z]+[0-9]+),",
+    tmpVer = eregmatch(pattern:"Powered by Composr version ([0-9.]+),",
                        string:rcvRes);
+    if ( ! tmpVer ) {
+      tmpVer = eregmatch(pattern:"Powered by Composr version ([0-9.]+) ([A-Z]+[0-9]+),",
+                         string:rcvRes);
+    }
+
+    if( tmpVer[1] ) {
+      Ver = tmpVer[1];
+      if ( tmpVer[2] ) Ver += " " + tmpVer[2];
+    }
+
+    set_kb_item( name:"composr_cms/installed", value:TRUE );
+
+    cpe = build_cpe( value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:composr:cms:" );
+    if ( cpe && tmpVer[2] ) cpe+= tmpVer[2];
+
+    if( ! cpe )
+      cpe = 'cpe:/a:composr:cms';
+
+    register_product( cpe:cpe, location:install, port: appPort );
+
+    log_message( data:build_detection_report( app:"Composr_CMS",
+                                              version:Ver,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:tmpVer[0] ),
+                                              port:appPort );
   }
-
-  if(tmpVer[1]) {
-    Ver = tmpVer[1];
-    if (tmpVer[2]) Ver += " " + tmpVer[2];
-  }
-
-  set_kb_item(name:"composr_cms/installed", value:TRUE);
-
-  cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:composr:cms:");
-  if (cpe && tmpVer[2]) cpe+= tmpVer[2];
-
-  if(!cpe)
-    cpe = 'cpe:/a:composr:cms';
-
-  register_product(cpe:cpe, location:install, port: appPort);
-
-  log_message( data:build_detection_report( app:"Composr_CMS",
-                                            version:Ver,
-                                            install:install,
-                                            cpe:cpe,
-                                            concluded:tmpVer[0]),
-                                            port:appPort);
-
 }
 
 exit(0);
