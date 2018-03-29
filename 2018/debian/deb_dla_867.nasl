@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_867.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: deb_dla_867.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 867-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890867");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-6829", "CVE-2017-6830", "CVE-2017-6831", "CVE-2017-6832", "CVE-2017-6833", "CVE-2017-6834", "CVE-2017-6835", "CVE-2017-6836", "CVE-2017-6837", "CVE-2017-6838", "CVE-2017-6839");
-  script_name("Debian Lts Announce DLA 867-1 ([SECURITY] [DLA 867-1] audiofile security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 867-1] audiofile security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 00:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

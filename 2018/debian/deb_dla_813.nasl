@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_813.nasl 8307 2018-01-07 18:51:31Z asteins $
+# $Id: deb_dla_813.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 813-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890813");
-  script_version("$Revision: 8307 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-5488", "CVE-2017-5489", "CVE-2017-5490", "CVE-2017-5491", "CVE-2017-5492", "CVE-2017-5493", "CVE-2017-5610", "CVE-2017-5611", "CVE-2017-5612");
-  script_name("Debian Lts Announce DLA 813-1 ([SECURITY] [DLA 813-1] wordpress security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-07 19:51:31 +0100 (Sun, 07 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 813-1] wordpress security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

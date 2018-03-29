@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1132.nasl 8872 2018-02-19 21:22:13Z teissa $
+# $Id: deb_dla_1132.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1132-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891132");
-  script_version("$Revision: 8872 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-10912", "CVE-2017-10913", "CVE-2017-10914", "CVE-2017-10915", "CVE-2017-10918", "CVE-2017-10920", "CVE-2017-10921", "CVE-2017-10922", "CVE-2017-12135", "CVE-2017-12137", "CVE-2017-12855", "CVE-2017-14316", "CVE-2017-14317", "CVE-2017-14318", "CVE-2017-14319");
-  script_name("Debian Lts Announce DLA 1132-1 ([SECURITY] [DLA 1132-1] xen security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 22:22:13 +0100 (Mon, 19 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1132-1] xen security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

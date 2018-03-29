@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_818.nasl 8310 2018-01-07 21:20:52Z teissa $
+# $Id: deb_dla_818.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 818-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890818");
-  script_version("$Revision: 8310 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-10158", "CVE-2016-10159", "CVE-2016-10160", "CVE-2016-10161", "CVE-2016-2554", "CVE-2016-3141", "CVE-2016-3142", "CVE-2016-4342", "CVE-2016-9934", "CVE-2016-9935");
-  script_name("Debian Lts Announce DLA 818-1 ([SECURITY] [DLA 818-1] php5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-07 22:20:52 +0100 (Sun, 07 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 818-1] php5 security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_928.nasl 8534 2018-01-25 12:04:44Z teissa $
+# $Id: deb_dla_928.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 928-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890928");
-  script_version("$Revision: 8534 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2014-9496", "CVE-2014-9756", "CVE-2015-7805", "CVE-2017-7585", "CVE-2017-7586", "CVE-2017-7741", "CVE-2017-7742");
-  script_name("Debian Lts Announce DLA 928-1 ([SECURITY] [DLA 928-1] libsndfile security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 13:04:44 +0100 (Thu, 25 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 928-1] libsndfile security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

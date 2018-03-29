@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_842.nasl 8334 2018-01-09 06:44:11Z teissa $
+# $Id: deb_dla_842.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 842-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890842");
-  script_version("$Revision: 8334 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-9921", "CVE-2017-2615", "CVE-2017-2620", "CVE-2017-5898", "CVE-2017-5973");
-  script_name("Debian Lts Announce DLA 842-1 ([SECURITY] [DLA 842-1] qemu-kvm security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 07:44:11 +0100 (Tue, 09 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 842-1] qemu-kvm security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

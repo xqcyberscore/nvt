@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1013.nasl 8670 2018-02-05 16:37:15Z teissa $
+# $Id: deb_dla_1013.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1013-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891013");
-  script_version("$Revision: 8670 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-7771", "CVE-2017-7772", "CVE-2017-7773", "CVE-2017-7774", "CVE-2017-7775", "CVE-2017-7776", "CVE-2017-7777", "CVE-2017-7778");
-  script_name("Debian Lts Announce DLA 1013-1 ([SECURITY] [DLA 1013-1] graphite2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:37:15 +0100 (Mon, 05 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1013-1] graphite2 security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 00:00:00 +0100 (Mon, 05 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

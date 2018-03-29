@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1019.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: deb_dla_1019.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1019-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891019");
-  script_version("$Revision: 8699 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-11107");
-  script_name("Debian Lts Announce DLA 1019-1 ([SECURITY] [DLA 1019-1] phpldapadmin security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1019-1] phpldapadmin security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 00:00:00 +0100 (Mon, 05 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

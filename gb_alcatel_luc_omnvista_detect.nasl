@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_luc_omnvista_detect.nasl 6936 2017-08-16 10:12:17Z ckuersteiner $
+# $Id: gb_alcatel_luc_omnvista_detect.nasl 9252 2018-03-29 06:39:56Z asteins $
 #
-# Alcatel Lucent Omnivista Version Detection
+# Alcatel-Lucent Omnivista Version Detection
 #
 # Authors:
 # Tameem Eissa <tameem.eissa..at..greenbone.net>
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107113");
-  script_version("$Revision: 6936 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 12:12:17 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 9252 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 08:39:56 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2016-12-22 06:40:16 +0200 (Thu, 22 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Alcatel Lucent Omnivista Version Detection");
+  script_name("Alcatel-Lucent Omnivista Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Alcatel Lucent Omnivista.
+  script_tag(name:"summary", value:"Detection of installed version of Alcatel-Lucent Omnivista.
 
-  The script detects the version of Alcatel Lucent Omnivista on remote host and sets the KB.");
+  The script detects the version of Alcatel Lucent Omnivista on remote host and sets the KB entries.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -58,29 +58,31 @@ appPort = get_http_port( default:80 );
 
 url = '/';
 
-rcvRes = http_get_cache(port: appPort, item: "/");
+rcvRes = http_get_cache( port:appPort, item:"/" );
 
-if ("<title>Alcatel-Lucent OmniVista" >!< rcvRes) exit( 0 );
+if ( rcvRes =~ "^HTTP/1\.[01] 200" && "<title>Alcatel-Lucent OmniVista" >< rcvRes ) {
 
-tmpVer = eregmatch( string:rcvRes, pattern:"Alcatel-Lucent OmniVista ([0-9]+)", icase:TRUE );
-if( tmpVer[1] ) {
-  alclucomnvistaVer = tmpVer[1];
-  set_kb_item( name:"www/" + appPort + "/alc", value:alclucomnvistaVer );
+  alclucomnivistaVer = "unknown";
+
+  tmpVer = eregmatch( string:rcvRes, pattern:"Alcatel-Lucent OmniVista ([0-9]+)", icase:TRUE );
+  if( tmpVer[1] ) {
+    alclucomnvistaVer = tmpVer[1];
+    set_kb_item( name:"www/" + appPort + "/alc", value:alclucomnvistaVer );
+  }
+
+  set_kb_item( name:"alc-luc-omnvista/installed", value:TRUE );
+
+  cpe = build_cpe( value:alclucomnvistaVer, exp:"^([0-9.]+)", base:"cpe:/a:alcatel-lucent:omnivista:" );
+  if( ! cpe )
+    cpe = 'cpe:/a:alcatel-lucent:omnivista';
+
+  register_product( cpe:cpe, location:appPort + '/tcp', port:appPort );
+  log_message( data:build_detection_report( app:"Alcatel-Lucent Omnivista",
+                                            version:alclucomnvistaVer,
+                                            install:appPort + '/tcp',
+                                            cpe:cpe,
+                                            concluded:tmpVer[0] ),
+                                            port:appPort );
 }
 
-set_kb_item( name:"alc-luc-omnvista/installed", value:TRUE );
-
-cpe = build_cpe( value:alclucomnvistaVer, exp:"^([0-9.]+)", base:"cpe:/a:alcatel-lucent:omnivista:" );
-if( ! cpe )
-  cpe = 'cpe:/a:alcatel-lucent:omnivista';
-
-register_product( cpe:cpe, location:appPort + '/tcp', port:appPort );
-log_message( data:build_detection_report( app:"Alcatel-Lucent Omnivista",
-                                          version:alclucomnvistaVer,
-                                          install:appPort + '/tcp',
-                                          cpe:cpe,
-                                          concluded:tmpVer[0] ),
-                                          port:appPort );
-
 exit( 0 );
-

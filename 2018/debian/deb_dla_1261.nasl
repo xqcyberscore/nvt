@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1261.nasl 8603 2018-01-31 12:28:07Z teissa $
+# $Id: deb_dla_1261.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1261-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891261");
-  script_version("$Revision: 8603 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-12374", "CVE-2017-12375", "CVE-2017-12376", "CVE-2017-12377", "CVE-2017-12378", "CVE-2017-12379", "CVE-2017-12380");
-  script_name("Debian Lts Announce DLA 1261-1 ([SECURITY] [DLA 1261-1] clamav security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:28:07 +0100 (Wed, 31 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1261-1] clamav security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 00:00:00 +0100 (Wed, 31 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

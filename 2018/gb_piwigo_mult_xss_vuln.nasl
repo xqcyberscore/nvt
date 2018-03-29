@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_xss_vuln.nasl 9069 2018-03-09 12:12:15Z jschulte $
+# $Id: gb_piwigo_mult_xss_vuln.nasl 9268 2018-03-29 14:05:16Z cfischer $
 #
 # Piwigo 2.9.3 Multiple XSS Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113128");
-  script_version("$Revision: 9069 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 13:12:15 +0100 (Fri, 09 Mar 2018) $");
+  script_version("$Revision: 9268 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-08 14:54:00 +0100 (Thu, 08 Mar 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_detect.nasl 7782 2017-11-16 07:43:02Z cfischer $
+# $Id: gb_ametys_cms_detect.nasl 9252 2018-03-29 06:39:56Z asteins $
 #
 # Ametys CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107256");
-  script_version("$Revision: 7782 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-16 08:43:02 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 9252 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-29 08:39:56 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-11-13 09:55:00 +0700 (Mon, 13 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,22 +61,19 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port: port)))
-{
+foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port: port))) {
 
   install = dir;
   if (dir == "/") dir = "";
 
   res = http_get_cache(port: port, item: dir + "/index.html");
 
-  if ("title>Ametys" >< res || "<h1>Welcome to Ametys" >< res || res =~ 'meta content="Ametys CMS Open source' )
-  {
-   
+  if (res =~ "^HTTP/1\.[01] 200" && ("title>Ametys" >< res || "<h1>Welcome to Ametys" >< res || res =~ 'meta content="Ametys CMS Open source')) {
+
     version = "unknown";
 
     vers = eregmatch(pattern: 'Ametys ([0-9.]+)', string: res);
-    if (!isnull(vers[1]))
-    {
+    if (!isnull(vers[1])) {
       version = vers[1];
       set_kb_item(name: "ametys/version", value: version);
     }
@@ -84,16 +81,18 @@ foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port: p
     set_kb_item(name: "ametys/detected", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ametys:cms:");
-    
+
     if (!cpe)
       cpe = 'cpe:/a:ametys:cms';
 
     register_product(cpe: cpe, location: install, port: port, service: "www");
 
-    log_message(data: build_detection_report(app: "Ametys CMS", version: version, install: install, cpe: cpe,
-                                           concluded: vers[0]),
-              port: port);
-    exit(0);
+    log_message(data: build_detection_report(app: "Ametys CMS",
+                                             version: version,
+                                             install: install,
+                                             cpe: cpe,
+                                             concluded: vers[0]),
+                port: port);
   }
 }
 

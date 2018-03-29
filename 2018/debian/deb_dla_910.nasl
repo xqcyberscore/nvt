@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_910.nasl 8525 2018-01-25 03:27:12Z ckuersteiner $
+# $Id: deb_dla_910.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 910-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890910");
-  script_version("$Revision: 8525 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-3157", "CVE-2017-7870");
-  script_name("Debian Lts Announce DLA 910-1 ([SECURITY] [DLA 910-1] libreoffice security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 04:27:12 +0100 (Thu, 25 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 910-1] libreoffice security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

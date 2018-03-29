@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_835.nasl 8337 2018-01-09 07:04:57Z teissa $
+# $Id: deb_dla_835.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 835-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890835");
-  script_version("$Revision: 8337 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-4793");
-  script_name("Debian Lts Announce DLA 835-1 ([SECURITY] [DLA 835-1] cakephp security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 835-1] cakephp security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");

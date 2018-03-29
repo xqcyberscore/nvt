@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_detect.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
+# $Id: gb_a2billing_detect.nasl 9252 2018-03-29 06:39:56Z asteins $
 #
-#  A2billing Detection
+# A2billing Detection
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107236");
-  script_version("$Revision: 7139 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 9252 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-29 08:39:56 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-09-08 16:22:38 +0700 (Fri, 08 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,18 +63,21 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
+rootInstalled = FALSE;
 
 foreach dir (make_list_unique("/", "/admin", "/admin/Public", "/Public", "/a2billing", "/a2billing/Public",
                               "/a2billing/admin/Public/", cgi_dirs(port: port))) {
   install = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
+  if (rootInstalled) break;
 
   url = dir + "/index.php";
 
   res = http_get_cache(port: port, item: url);
 
-  if ( '<title>..:: A2Billing Portal ::..</title>' >< res ) {
+  if (res =~ "^HTTP/1\.[01] 200" && "<title>..:: A2Billing Portal ::..</title>" >< res) {
+    if (install == "/") rootInstalled = TRUE;
+
     version = "unknown";
     ver = eregmatch( pattern: 'A2Billing v([0-9.]+) is a <a href="', string: res);
 
@@ -94,7 +97,6 @@ foreach dir (make_list_unique("/", "/admin", "/admin/Public", "/Public", "/a2bil
     log_message(data: build_detection_report(app: "A2billing", version: version, install: install,
                                            cpe: cpe, concluded: ver[0]),
                 port: port);
-    exit(0);
   }
 }
 

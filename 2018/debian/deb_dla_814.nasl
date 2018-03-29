@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_814.nasl 8298 2018-01-05 10:26:25Z teissa $
+# $Id: deb_dla_814.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 814-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890814");
-  script_version("$Revision: 8298 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-7056", "CVE-2016-8610", "CVE-2017-3731");
-  script_name("Debian Lts Announce DLA 814-1 ([SECURITY] [DLA 814-1] openssl security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 11:26:25 +0100 (Fri, 05 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 814-1] openssl security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

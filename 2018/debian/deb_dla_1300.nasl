@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1300.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: deb_dla_1300.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DSA 1300-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891300");
-  script_version("$Revision: 9226 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2018-7540", "CVE-2018-7541");
-  script_name("Debian Lts Announce ([SECURITY] [DLA 1300-1] xen security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1300-1] xen security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:C");

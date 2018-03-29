@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_xss_vuln.nasl 8588 2018-01-30 14:51:34Z asteins $
+# $Id: gb_cms_made_simple_xss_vuln.nasl 9248 2018-03-29 04:48:33Z asteins $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106697");
-  script_version("$Revision: 8588 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:51:34 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9248 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-29 06:48:33 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("CMS Made Simple Multiple XSS Vulnerabilities");
 
@@ -69,8 +69,8 @@ generation, via the description parameter in an addgroup action. (CVE-2017-9668)
 
   script_tag(name: "affected", value: "CMS Made Simple version 2.1.6.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://github.com/XiaoZhis/ProjectSend/issues/2");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1271.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: deb_dla_1271.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1271-1 using nvtgen 1.0
 # Script version:0.5
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891271");
-  script_version("$Revision: 9094 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2018-1053");
-  script_name("Debian Lts Announce DLA 1271-1 ([SECURITY] [DLA-1271-1] postgresql-9.1 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA-1271-1] postgresql-9.1 security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");

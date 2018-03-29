@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_invoiceplane_xss_vuln.nasl 9028 2018-03-06 04:48:33Z ckuersteiner $
+# $Id: gb_invoiceplane_xss_vuln.nasl 9268 2018-03-29 14:05:16Z cfischer $
 #
 # InvoicePlane < 1.5.5 XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:invoiceplane:invoiceplane";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140858");
-  script_version("$Revision: 9028 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-06 05:48:33 +0100 (Tue, 06 Mar 2018) $");
+  script_version("$Revision: 9268 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name: "creation_date", value: "2018-03-06 10:57:13 +0700 (Tue, 06 Mar 2018)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-18217");
 

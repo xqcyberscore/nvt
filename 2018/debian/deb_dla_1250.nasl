@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1250.nasl 8551 2018-01-26 14:15:40Z asteins $
+# $Id: deb_dla_1250.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1250-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891250");
-  script_version("$Revision: 8551 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2018-2562", "CVE-2018-2622", "CVE-2018-2640", "CVE-2018-2665", "CVE-2018-2668");
-  script_name("Debian Lts Announce DLA 1250-1 ([SECURITY] [DLA 1250-1] mysql-5.5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 15:15:40 +0100 (Fri, 26 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1250-1] mysql-5.5 security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 00:00:00 +0100 (Mon, 22 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");

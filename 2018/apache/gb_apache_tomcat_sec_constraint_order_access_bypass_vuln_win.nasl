@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 9039 2018-03-07 10:56:54Z santu $
+# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 9268 2018-03-29 14:05:16Z cfischer $
 #
 # Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812784");
-  script_version("$Revision: 9039 $");
+  script_version("$Revision: 9268 $");
   script_cve_id("CVE-2018-1305", "CVE-2018-1304");
   script_bugtraq_id(103144, 103170);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 18:10:55 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)");

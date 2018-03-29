@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_839.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: deb_dla_839.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 839-2 using nvtgen 1.0
 # Script version:2.3
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890839");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-6307", "CVE-2017-6308", "CVE-2017-6309", "CVE-2017-6310");
-  script_name("Debian Lts Announce DLA 839-2 ([SECURITY] [DLA 839-2] tnef regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 839-2] tnef regression update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-13 00:00:00 +0100 (Sat, 13 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

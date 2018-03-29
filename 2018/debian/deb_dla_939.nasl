@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_939.nasl 8548 2018-01-26 12:10:07Z teissa $
+# $Id: deb_dla_939.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 939-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890939");
-  script_version("$Revision: 8548 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-9603", "CVE-2017-7718", "CVE-2017-7980");
-  script_name("Debian Lts Announce DLA 939-1 ([SECURITY] [DLA 939-1] qemu-kvm security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 13:10:07 +0100 (Fri, 26 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 939-1] qemu-kvm security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

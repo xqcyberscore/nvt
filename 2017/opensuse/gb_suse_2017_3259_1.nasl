@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3259_1.nasl 8085 2017-12-12 10:25:30Z santu $
+# $Id: gb_suse_2017_3259_1.nasl 9268 2018-03-29 14:05:16Z cfischer $
 #
 # SuSE Update for OBS toolchain openSUSE-SU-2017:3259-1 (OBS toolchain)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851662");
-  script_version("$Revision: 8085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 11:25:30 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 9268 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2017-12-10 07:43:31 +0100 (Sun, 10 Dec 2017)");
   script_cve_id("CVE-2010-4226", "CVE-2017-14804", "CVE-2017-9274");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for OBS toolchain openSUSE-SU-2017:3259-1 (OBS toolchain)");
   script_tag(name: "summary", value: "Check the version of the OBS toolchain");

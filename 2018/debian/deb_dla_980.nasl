@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_980.nasl 8633 2018-02-02 03:52:21Z ckuersteiner $
+# $Id: deb_dla_980.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 980-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890980");
-  script_version("$Revision: 8633 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-8782");
-  script_name("Debian Lts Announce DLA 980-1 ([SECURITY] [DLA 980-1] ming security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 04:52:21 +0100 (Fri, 02 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 980-1] ming security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

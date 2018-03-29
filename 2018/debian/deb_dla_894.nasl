@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_894.nasl 8489 2018-01-22 12:57:37Z teissa $
+# $Id: deb_dla_894.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 894-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890894");
-  script_version("$Revision: 8489 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-2619");
-  script_name("Debian Lts Announce DLA 894-1 ([SECURITY] [DLA 894-1] samba security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 13:57:37 +0100 (Mon, 22 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 894-1] samba security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

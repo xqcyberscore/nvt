@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_974.nasl 8621 2018-02-01 11:50:08Z teissa $
+# $Id: deb_dla_974.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 974-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890974");
-  script_version("$Revision: 8621 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2015-9059");
-  script_name("Debian Lts Announce DLA 974-1 ([SECURITY] [DLA 974-1] picocom security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 12:50:08 +0100 (Thu, 01 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 974-1] picocom security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

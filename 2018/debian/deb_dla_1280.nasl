@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1280.nasl 8909 2018-02-21 15:21:22Z teissa $
+# $Id: deb_dla_1280.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1280-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891280");
-  script_version("$Revision: 8909 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2016-10711");
-  script_name("Debian Lts Announce DLA 1280-1 ([SECURITY] [DLA 1280-1] pound security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 16:21:22 +0100 (Wed, 21 Feb 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 1280-1] pound security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

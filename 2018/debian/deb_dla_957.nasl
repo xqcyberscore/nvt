@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_957.nasl 8564 2018-01-29 10:42:06Z teissa $
+# $Id: deb_dla_957.nasl 9250 2018-03-29 05:55:29Z cfischer $
 #
 # Auto-generated from advisory DLA 957-1 using nvtgen 1.0
 # Script version:1.1
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890957");
-  script_version("$Revision: 8564 $");
+  script_version("$Revision: 9250 $");
   script_cve_id("CVE-2017-3136", "CVE-2017-3137", "CVE-2017-3138");
-  script_name("Debian Lts Announce DLA 957-1 ([SECURITY] [DLA 957-1] bind9 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 11:42:06 +0100 (Mon, 29 Jan 2018) $");
+  script_name("Debian LTS Advisory ([SECURITY] [DLA 957-1] bind9 security update)");
+  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
   script_tag(name:"creation_date", value:"2018-01-26 00:00:00 +0100 (Fri, 26 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
