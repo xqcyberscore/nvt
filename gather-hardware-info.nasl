@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-hardware-info.nasl 9266 2018-03-29 13:02:26Z mmartin $
+# $Id: gather-hardware-info.nasl 9280 2018-04-03 11:06:06Z mmartin $
 #
 # Gather Linux Hardware Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103996");
-  script_version("$Revision: 9266 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:02:26 +0200 (Thu, 29 Mar 2018) $");
+  script_version("$Revision: 9280 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-03 13:06:06 +0200 (Tue, 03 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-05 14:24:03 +0200 (Tue, 05 Apr 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -125,8 +125,8 @@ if( lspci ) {
 # -- Get memory information -- #
 meminfo = ssh_cmd( socket:sock, cmd:"cat /proc/meminfo" );
 memtotal = "";
-foreach line( split( meminfo ) ) {
-  v = eregmatch( string:line, pattern:"^(MemTotal:[ ]+)([0-9]+ kB).$", icase:TRUE );
+foreach line( split( meminfo, keep:FALSE ) ) {
+  v = eregmatch( string:line, pattern:"^(MemTotal:[ ]+)([0-9]+ kB)$", icase:TRUE );
   if (!isnull(v)) {
     memtotal = v[2];
     break;
@@ -135,8 +135,7 @@ foreach line( split( meminfo ) ) {
 
 # -- Get network interfaces information -- #
 ifconfig = ssh_cmd( socket:sock, cmd:"/sbin/ifconfig" );
-
-interfaces = split( ifconfig, sep:'\n\n', keep:FALSE );
+interfaces = split( ifconfig, sep:'\r\n\r\n', keep:FALSE);
 netinfo = "";
 host_ip = get_host_ip();
 
@@ -146,7 +145,6 @@ foreach interface( interfaces ) {
   ip_str = '';
 
   if( "Loopback" >< interface ) continue;
-
   lines = split( interface );
 
   foreach line( lines ) {
