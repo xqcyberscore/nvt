@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0851_1.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_suse_2018_0851_1.nasl 9288 2018-04-04 06:15:11Z asteins $
 #
 # SuSE Update for LibVNCServer openSUSE-SU-2018:0851-1 (LibVNCServer)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851728");
-  script_version("$Revision: 9276 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 08:15:11 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-30 08:40:53 +0200 (Fri, 30 Mar 2018)");
   script_cve_id("CVE-2016-9941", "CVE-2016-9942", "CVE-2018-7225");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for LibVNCServer openSUSE-SU-2018:0851-1 (LibVNCServer)");
   script_tag(name: "summary", value: "Check the version of LibVNCServer");

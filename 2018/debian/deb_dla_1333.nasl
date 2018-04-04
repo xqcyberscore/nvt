@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1333.nasl 9274 2018-04-02 10:57:05Z cfischer $
+# $Id: deb_dla_1333.nasl 9281 2018-04-03 11:41:23Z cfischer $
 #
 # Auto-generated from advisory DSA 1333-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891333");
-  script_version("$Revision: 9274 $");
+  script_version("$Revision: 9281 $");
   script_cve_id("CVE-2017-14461", "CVE-2017-15130", "CVE-2017-15132");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1333-1] dovecot security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-02 12:57:05 +0200 (Mon, 02 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-03 13:41:23 +0200 (Tue, 03 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 00:00:00 +0200 (Mon, 02 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

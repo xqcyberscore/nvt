@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_twonky_server_detect.nasl 9282 2018-04-03 12:47:41Z jschulte $
 #
 # Twonky Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108003");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 9282 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-03 14:47:41 +0200 (Tue, 03 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:00:00 +0200 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,7 +67,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   if( "<title>Twonky Server</title>" >< buf ||
       '<div id="twFooter">' >< buf ||
       "<title>TwonkyServer Media Browser</title>" >< buf ||
-      "PacketVideo Corporation. All rights reserved." >< buf ||
+      buf =~ "PacketVideo(\s|&nbsp;)Corporation.(\s|&nbsp;)All(\s|&nbsp;)rights(\s|&nbsp;)reserved." ||
       "<title>TwonkyMedia</title>" >< buf ||
       "<title>TwonkyServer</title>" >< buf ) {
 
