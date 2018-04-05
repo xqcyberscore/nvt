@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
+# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # WordPress UpdraftPlus Plugin Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140535");
-  script_version("$Revision: 8430 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 9297 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-24 13:22:19 +0700 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("WordPress UpdraftPlus Plugin Multiple Vulnerabilities");
 
@@ -51,7 +51,9 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress UpdraftPlus plugin is prone to multiple vulnerabilities.");
+  script_tag(name: "summary", value: "These CVE's have been disputed.
+
+WordPress UpdraftPlus plugin is prone to multiple vulnerabilities.");
 
   script_tag(name: "insight", value: "WordPress UpdraftPlus plugin is prone to multiple vulnerabilities:
 
@@ -66,8 +68,7 @@ parameter. (CVE-2017-16871)");
 
   script_tag(name: "affected", value: "WordPress Loginizer plugin version 1.13.12 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 24th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "The vendor disputed the CVE's.");
 
   script_xref(name: "URL", value: "https://github.com/LoRexxar/CVE_Request/tree/master/wordpress%20plugin%20updraftplus%20vulnerablity");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171011_win.nasl 8585 2018-01-30 13:37:02Z cfischer $
+# $Id: gb_jenkins_20171011_win.nasl 9301 2018-04-04 12:02:46Z cfischer $
 #
 # Jenkins Multiple Vulnerabilities Oct 17 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112107");
-  script_version("$Revision: 8585 $");
+  script_version("$Revision: 9301 $");
 
   script_cve_id("CVE-2017-1000393", "CVE-2017-1000394", "CVE-2017-1000395", "CVE-2017-1000396",
 "CVE-2017-1000398", "CVE-2017-1000399", "CVE-2017-1000400", "CVE-2017-1000401", "CVE-2012-6153");
 
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 14:37:02 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 14:02:46 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
   script_name("Jenkins Multiple Vulnerabilities Oct 17 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -64,7 +64,7 @@ if(description)
 
   - sending form validation for passwords via GET");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive informaion,
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive information,
   and execute arbitrary code.
 
   Impact Level: Application");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms15-033.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_sharepoint_server_was_ms15-033.nasl 9317 2018-04-05 07:37:07Z cfischer $
 #
 # Microsoft SharePoint Server WAS Multiple Vulnerabilities (3048019)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805166");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 9317 $");
   script_cve_id("CVE-2015-1641", "CVE-2015-1649", "CVE-2015-1650");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 14:39:30 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Multiple Vulnerabilities (3048019)");
@@ -53,9 +53,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2010
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2010
+
   Service Pack 2 Word Automation Services and 
+
   Microsoft SharePoint Server 2013 Service Pack 1 Word Automation Services");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -76,25 +77,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -129,3 +118,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

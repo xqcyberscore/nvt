@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_37e28670f2_php-simplesamlphp-saml2_3_fc27.nasl 9214 2018-03-27 08:11:34Z santu $
+# $Id: gb_fedora_2018_37e28670f2_php-simplesamlphp-saml2_3_fc27.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Fedora Update for php-simplesamlphp-saml2_3 FEDORA-2018-37e28670f2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874282");
-  script_version("$Revision: 9214 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 10:11:34 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-26 08:34:08 +0200 (Mon, 26 Mar 2018)");
   script_cve_id("CVE-2018-7711", "CVE-2018-7644", "CVE-2018-6519");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-simplesamlphp-saml2_3 FEDORA-2018-37e28670f2");
   script_tag(name: "summary", value: "Check the version of php-simplesamlphp-saml2_3");

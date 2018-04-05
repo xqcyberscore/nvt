@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_bof_vuln_15_win.nasl 6193 2017-05-23 07:46:49Z teissa $
+# $Id: gb_live555_bof_vuln_15_win.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # LIVE555 Streaming Media Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:live5555:streaming_media";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107182");
-  script_version("$Revision: 6193 $");
+  script_version("$Revision: 9300 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 09:46:49 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -69,21 +69,20 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if ( !Port = get_app_port(cpe:CPE)) exit (0);
-if ( !Ver = get_kb_item("live555_streaming_media/ver")) exit (0);
+if(!Port = get_app_port(cpe:CPE)) exit(0);
+if(!Ver = get_kb_item("live555_streaming_media/ver")) exit(0);
 
-if (Ver =~ "2015\."){
- if(version_is_less(version:Ver, test_version:"2015.07.23", debug: TRUE))
- {
-  fix = "2015.07.23";
-  VULN = TRUE;
- }
+if(Ver =~ "^2015\."){
+  if(version_is_less(version:Ver, test_version:"2015.07.23")){
+    fix = "2015.07.23";
+    VULN = TRUE;
+  }
 }
 
-if(VULN)
-{
+if(VULN){
   report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
-  security_message(data:report);
+  security_message(port:Port, data:report);
   exit(0);
 }
 
+exit(99);

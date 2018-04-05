@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms14-061.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_sharepoint_server_was_ms14-061.nasl 9319 2018-04-05 08:03:12Z cfischer $
 #
 # Microsoft SharePoint Server WAS Memory Corruption Vulnerability (3000434)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804497");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 9319 $");
   script_cve_id("CVE-2014-4117");
   script_bugtraq_id(70360);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:03:12 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 11:51:19 +0530 (Wed, 15 Oct 2014)");
 
   script_name("Microsoft SharePoint Server WAS Memory Corruption Vulnerability (3000434)");
@@ -56,6 +56,7 @@ if(description)
   Impact Level: System");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010
+
   Word Automation Services Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -76,25 +77,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer2 = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -114,3 +103,5 @@ if(shareVer =~ "^14\..*")
     }
   }
 }
+
+exit(99);

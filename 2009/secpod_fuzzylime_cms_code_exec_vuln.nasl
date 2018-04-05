@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # Fuzyylime(cms) Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:fuzzylime:fuzzylime_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900584");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,6 +56,7 @@ if(description)
   tag_affected = "Fuzyylime(cms) version 3.03a and prior.";
 
   tag_insight = "The flaws are due to,
+
   - The data passed into 'list' parameter in code/confirm.php and to the
    'template' parameter in code/display.php is not properly verified
    before being used to include files.
@@ -87,7 +88,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

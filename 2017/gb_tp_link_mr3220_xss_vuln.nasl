@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_mr3220_xss_vuln.nasl 8980 2018-02-28 12:03:05Z jschulte $
+# $Id: gb_tp_link_mr3220_xss_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
 #
 # TP-Link TL-MR3220 Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:tp-link:wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811881");
-  script_version("$Revision: 8980 $");
+  script_version("$Revision: 9298 $");
   script_cve_id("CVE-2017-15291");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 13:03:05 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:11:30 +0530 (Wed, 25 Oct 2017)");
   script_name("TP-Link TL-MR3220 Cross-Site Scripting Vulnerability");
 
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"affected", value:"TP-LINK TL-MR3220");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  28th February, 2018. Information regarding this issue will be updated once
+  04th April, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to http://www.tp-link.com");
 
 
@@ -78,9 +78,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-tlPort = "";
-model = "";
-
 if(!tlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -89,10 +86,10 @@ if(!model = get_kb_item("TP-LINK/Wireless/Router/model")){
   exit(0);
 }
 
-if(model == "MR3220")
-{
+if(model == "MR3220"){
   report = report_fixed_ver(installed_version:"TP-LINK Wireless Router " + model, fixed_version:"NoneAvailable");
   security_message(data:report, port:tlPort);
   exit(0);
 }
-exit(0);
+
+exit(99);

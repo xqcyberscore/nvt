@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clicknet_cms_dir_trav_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_clicknet_cms_dir_trav_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # Clicknet CMS 'index.php' Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:clicknet:clicknet_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800903");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,29 +47,23 @@ if(description)
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9037");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1736");
 
-  tag_impact = "Successful attacks will allow attackers to read arbitrary files
-  via a '..' (dot dot) sequences.
+  script_tag(name:"affected", value:"Clicknet CMS version 2.1 and prior.");
 
-  Impact level: Application";
+  script_tag(name:"insight", value:"The flaw is due to error in 'side' parameter in index.php which
+  is not adequately sanitised that may lead to directory traversal attacks.");
 
-  tag_affected = "Clicknet CMS version 2.1 and prior.";
-
-  tag_insight = "The flaw is due to error in 'side' parameter in index.php which
-  is not adequately sanitised that may lead to directory traversal attacks.";
-
-  tag_solution = "No solution or patch was made available for at least one year
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
+  features, remove the product or replace the product by another one.");
 
-  tag_summary = "This host has Clicknet CMS installed and is prone to Directory
-  Traversal vulnerability.";
+  script_tag(name:"summary", value:"This host has Clicknet CMS installed and is prone to Directory
+  Traversal vulnerability.");
 
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful attacks will allow attackers to read arbitrary files
+  via a '..' (dot dot) sequences.
+
+  Impact level: Application");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -83,7 +77,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

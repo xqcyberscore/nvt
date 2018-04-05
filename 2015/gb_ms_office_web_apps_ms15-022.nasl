@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-022.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_ms_office_web_apps_ms15-022.nasl 9317 2018-04-05 07:37:07Z cfischer $
 #
 # Microsoft Office Web Apps Multiple Vulnerabilities (3038999)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805149");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 9317 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-0086");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 13:16:13 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Multiple Vulnerabilities (3038999)");
@@ -45,8 +45,10 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due,
+
   - An use-after-free error that is triggered when handling a specially crafted
   office file.
+
   - User-supplied input is not properly validated when handling a specially
   crafted rich text format file.");
 
@@ -78,25 +80,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -132,3 +122,5 @@ if(webappVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

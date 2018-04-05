@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_ce_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_vsphere_data_protection_ce_vuln.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # VMware vSphere Data Protection Command Execution and Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107217");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9327 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 13:41:13 +0200 (Tue, 13 Jun 2017)");
   script_cve_id("CVE-2017-4914", "CVE-2017-4917");
   script_bugtraq_id(98939, 98936);
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"package");
-  script_name("VMware vSphere Data Protection CVE-2017-4914 Command Execution Vulnerability");
+  script_name("VMware vSphere Data Protection Command Execution and Information Disclosure Vulnerabilities");
 
   script_tag(name: "summary", value: " VMware vSphere Data Protection is prone
   to an arbitrary command-execution and information disclosure vulnerabilities.");
@@ -109,7 +109,8 @@ else if((Ver =~ "^6\.0\.") && (version_is_less(version:Ver, test_version:"6.0.5"
 if(VULN)
 {
   report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
-  security_message(data:report);
+  security_message(port:Port, data:report);
   exit(0);
 }
 
+exit(99);

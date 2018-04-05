@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2018-3236628_03_lin.nasl 8865 2018-02-19 12:25:45Z cfischer $
+# $Id: gb_oracle_mysql_jan2018-3236628_03_lin.nasl 9299 2018-04-04 11:06:32Z cfischer $
 #
 # Oracle Mysql Security Updates (jan2018-3236628) 03 - Linux
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812649");
-  script_version("$Revision: 8865 $");
+  script_version("$Revision: 9299 $");
   script_cve_id("CVE-2018-2573", "CVE-2017-3737", "CVE-2018-2696", "CVE-2018-2590", 
                 "CVE-2018-2583", "CVE-2018-2612", "CVE-2018-2645", "CVE-2018-2703", 
                 "CVE-2018-2647");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 13:25:45 +0100 (Mon, 19 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:06:32 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:43:54 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Mysql Security Updates (jan2018-3236628) 03 - Linux");
 
@@ -91,14 +91,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-mysqlVer = "";
-sqlPort = "";
-
 if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)){
   exit(0);
 }
 
@@ -106,10 +103,10 @@ mysqlVer = infos['version'];
 path = infos['location'];
 
 if(version_in_range(version:mysqlVer, test_version:"5.6", test_version2:"5.6.38")||
-   version_in_range(version:mysqlVer, test_version:"5.7", test_version2:"5.7.20"))
-{
+   version_in_range(version:mysqlVer, test_version:"5.7", test_version2:"5.7.20")){
   report = report_fixed_ver(installed_version:mysqlVer, fixed_version: "Apply the patch", install_path:path);
-  security_message(data:report);
+  security_message(port:sqlPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: secpod_ms12-034.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -24,44 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to gain escalated privileges
-  and execute arbitrary code.
-  Impact Level: System/Application";
-tag_affected = "Microsoft .NET Framework 4
-  Microsoft Silverlight 4 and 5
-  Microsoft .NET Framework 3.5.1
-  Microsoft Office 2003 Service Pack 3
-  Microsoft Office 2007 Service Pack 2
-  Microsoft Office 2010 Service Pack 1
-  Microsoft .NET Framework 3.0 Service Pack 2
-  Microsoft Windows 7 Service Pack 1 and prior
-  Microsoft Windows XP Service Pack 3 and prior
-  Microsoft Windows 2003 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 2 and prior
-  Microsoft Windows Server 2008 Service Pack 2 and prior";
-tag_insight = "Multiple flaws are due to
-  - An error exists when parsing TrueType fonts.
-  - An error in the t2embed.dll module when parsing TrueType fonts can be
-    exploited via a specially crafted TTF file.
-  - An error in GDI+ when handling certain records can be exploited via a
-    specially crafted EMF image file.
-  - An error in win32k.sys related to certain Windows and Messages handling
-    can be exploited to execute arbitrary code in the context of another
-    process.
-  - An error in win32k.sys when handling keyboard layout files can be exploited
-    to execute arbitrary code in the context of another process.
-  - An error in win32k.sys related to scrollbar calculations can be exploited
-    to execute arbitrary code in the context of another process.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-034";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS12-034.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902832");
-  script_version("$Revision: 8649 $");
+  script_version("$Revision: 9323 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -69,7 +35,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49120");
@@ -85,6 +51,63 @@ if(description)
                       "secpod_office_products_version_900032.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
+  tag_impact = "Successful exploitation could allow an attacker to gain escalated privileges
+  and execute arbitrary code.
+
+  Impact Level: System/Application";
+
+  tag_affected = "Microsoft .NET Framework 4
+
+  Microsoft Silverlight 4 and 5
+
+  Microsoft .NET Framework 3.5.1
+
+  Microsoft Office 2003 Service Pack 3
+
+  Microsoft Office 2007 Service Pack 2
+
+  Microsoft Office 2010 Service Pack 1
+
+  Microsoft .NET Framework 3.0 Service Pack 2
+
+  Microsoft Windows 7 Service Pack 1 and prior
+
+  Microsoft Windows XP Service Pack 3 and prior
+
+  Microsoft Windows 2003 Service Pack 2 and prior
+
+  Microsoft Windows Vista Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 Service Pack 2 and prior";
+
+  tag_insight = "Multiple flaws are due to
+
+  - An error exists when parsing TrueType fonts.
+
+  - An error in the t2embed.dll module when parsing TrueType fonts can be
+    exploited via a specially crafted TTF file.
+
+  - An error in GDI+ when handling certain records can be exploited via a
+    specially crafted EMF image file.
+
+  - An error in win32k.sys related to certain Windows and Messages handling
+    can be exploited to execute arbitrary code in the context of another
+    process.
+
+  - An error in win32k.sys when handling keyboard layout files can be exploited
+    to execute arbitrary code in the context of another process.
+
+  - An error in win32k.sys related to scrollbar calculations can be exploited
+    to execute arbitrary code in the context of another process.";
+
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+
+  http://technet.microsoft.com/en-us/security/bulletin/ms12-034";
+
+  tag_summary = "This host is missing a critical security update according to
+  Microsoft Bulletin MS12-034.";
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -102,24 +125,23 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 include("host_details.inc");
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
                    win7:2, win7x64:2, win2008:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get Silverlight version from KB
-infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight" );
-mslVers = infos['version'];
-mslPath = infos['location'];
+if( infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight", exit_no_version:FALSE ) ) {
+  mslVers = infos['version'];
+  mslPath = infos['location'];
 
-if( mslVers ) {
-  ## Check for Microsoft Silverlight version prior to 4.1.10329
-  if( version_is_less( version:mslVers, test_version:"4.1.10329" ) ||
-      version_in_range( version:mslVers, test_version:"5.0", test_version2:"5.1.10410" ) ) {
-    report = report_fixed_ver( installed_version:mslVers, vulnerable_range:"< 4.1.10329 and 5.0 - 5.1.10410", install_path:mslPath );
-    security_message( port:0, data:report );
-    exit( 0 );
+  if( mslVers ) {
+    ## Check for Microsoft Silverlight version prior to 4.1.10329
+    if( version_is_less( version:mslVers, test_version:"4.1.10329" ) ||
+        version_in_range( version:mslVers, test_version:"5.0", test_version2:"5.1.10410" ) ) {
+      report = report_fixed_ver( installed_version:mslVers, vulnerable_range:"< 4.1.10329 and 5.0 - 5.1.10410", install_path:mslPath );
+      security_message( port:0, data:report );
+      exit( 0 );
+    }
   }
 }
 
@@ -319,3 +341,5 @@ if(dllVer)
      }
   }
 }
+
+exit(99);

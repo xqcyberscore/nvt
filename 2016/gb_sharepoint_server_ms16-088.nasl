@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_ms16-088.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_sharepoint_server_ms16-088.nasl 9316 2018-04-05 07:06:02Z cfischer $
 #
 # Microsoft SharePoint Server RCE Vulnerability (3170008)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807865");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 9316 $");
   script_cve_id("CVE-2016-3282");
   script_bugtraq_id(91589);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 14:52:26 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server RCE Vulnerability (3170008)");
@@ -54,9 +54,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2016
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2016
+
   Microsoft SharePoint Foundation 2010 Service Pack 1 
+
   Microsoft SharePoint Foundation 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -78,24 +79,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
 
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
@@ -152,7 +142,6 @@ if(shareVer =~ "^15\..*")
   }
 }
 
-
 ## SharePoint Server 2016
 if(shareVer =~ "^16\..*")
 {
@@ -178,5 +167,4 @@ if(shareVer =~ "^16\..*")
   }
 }
 
-
-
+exit(99);

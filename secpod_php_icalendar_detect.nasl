@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_icalendar_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_php_icalendar_detect.nasl 9329 2018-04-05 11:36:57Z cfischer $
 #
 # PHP iCalendar Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900198");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 9329 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:36:57 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-29 15:16:47 +0100 (Thu, 29 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("PHP iCalendar Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -48,14 +48,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/phpicalendar", cgi_dirs( port:port ) ) ) {
@@ -63,9 +61,9 @@ foreach dir( make_list_unique( "/phpicalendar", cgi_dirs( port:port ) ) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/print.php", port:port );
+  rcvRes = http_get_cache( item:dir + "/print.php", port:port );
 
-  if( rcvRes =~ "HTTP/1.. 200" && "PHP iCalendar" >< rcvRes ) {
+  if( rcvRes =~ "^HTTP/1\.[01] 200" && "PHP iCalendar" >< rcvRes ) {
 
     version = "unknown";
 
@@ -73,21 +71,20 @@ foreach dir( make_list_unique( "/phpicalendar", cgi_dirs( port:port ) ) ) {
     if( ver[1] != NULL ) version = ver[1];
 
     set_kb_item( name:"PHP/iCalendar/Ver", value:ver[1] );
+    set_kb_item( name:"PHP/iCalendar/detected", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:phpicalendar:phpicalendar:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpicalendar:phpicalendar';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data: build_detection_report( app:"PHP iCalendar",
-                                               version:version,
-                                               install:install,
-                                               cpe:cpe,
-                                               concluded:ver[0] ),
-                                               port:port );
+    log_message( data:build_detection_report( app:"PHP iCalendar",
+                                              version:version,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:ver[0] ),
+                                              port:port );
   }
 }
 

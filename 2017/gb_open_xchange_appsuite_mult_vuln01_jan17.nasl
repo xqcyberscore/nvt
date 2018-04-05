@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln01_jan17.nasl 4936 2017-01-04 10:59:39Z antu123 $
+# $Id: gb_open_xchange_appsuite_mult_vuln01_jan17.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -01 Jan17
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809846");
-  script_version("$Revision: 4936 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-6847", "CVE-2016-6848", "CVE-2016-6850", "CVE-2016-6852",
                 "CVE-2016-6842", "CVE-2016-6843", "CVE-2016-6844", "CVE-2016-6845");
   script_bugtraq_id(93457, 93460, 93459);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 11:59:39 +0100 (Wed, 04 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-02 13:58:15 +0530 (Mon, 02 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -01 Jan17");
@@ -47,14 +47,20 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to
+
   - An improper validation of input passed to 'contact names' parameter.
+
   - An improper validation of input passed to 'Users names' parameter.
+
   - Script code within hyperlinks at HTML E-Mails is not getting correctly
     sanitized when using base64 encoded 'data' resources.
+
   - An improper validation of XML structure.
-  - Users can provide local file paths to the RSS reader; the response and error
+
+  - Users can provide local file paths to the RSS reader. The response and error
     code give hints about whether the provided file exists or not.
-  - An improper sanitization of user-supplied imput.");
+
+  - An improper sanitization of user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary script code in the browser of an unsuspecting user in the
@@ -87,29 +93,17 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
-oxVer = get_app_version(cpe:CPE, port:oxPort);
-if(!oxVer || "unknown" >< oxVer){
+if(!oxVer = get_app_version(cpe:CPE, port:oxPort)){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev)
@@ -133,7 +127,9 @@ if(oxRev)
   if(VULN)
   {
     report = report_fixed_ver(installed_version:oxVer, fixed_version:fix);
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

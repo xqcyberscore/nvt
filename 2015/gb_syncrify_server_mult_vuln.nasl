@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_mult_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_syncrify_server_mult_vuln.nasl 9303 2018-04-04 13:18:17Z asteins $
 #
 # Syncrify Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:syncrify:server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805551");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 9303 $");
   script_cve_id("CVE-2015-3140");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 10:45:47 +0530 (Tue, 12 May 2015)");
   script_name("Syncrify Server Multiple Vulnerabilities");
 
@@ -106,7 +106,7 @@ if(version_is_equal(version:serVer, test_version:"3.6"))
 
 if(VULN)
 {
-  report = 'Installed Version: ' + serVer + '\nFixed Version: NoneAvailable\n';
+  report = 'Installed Version: ' + serVer + '\nFixed Version: 3.6 Build 834\n';
   security_message(data:report, port:serPort);
   exit(0);
 }

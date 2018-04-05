@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zeuscms_mult_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: secpod_zeuscms_mult_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # ZeusCMS Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zeuscms:zeuscms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902020");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,6 +50,7 @@ if(description)
   script_tag(name:"insight", value:"- Error in 'index.php', which allows remote attackers to include and execute
     arbitrary local files via directory traversal sequences in the page
     parameter.
+
   - Sensitive information under the web root is stored, which allows remote
     attackers to issue a direct request to 'admin/backup.sql' and fetch
     sensitive information.");
@@ -82,7 +83,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

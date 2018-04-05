@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171203_win.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_jenkins_20171203_win.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # Jenkins 2.93 XSS Vulnerability (Windows)
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113064");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 9297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 13:24:25 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_cve_id("CVE-2017-17383");
 
@@ -55,9 +55,9 @@ if( description )
   script_tag(name:"insight", value:"An authenticated attacker can use a crafted tool name in a job configuration form to conduct XSS attacks.");
   script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to expose other users malicious code.");
   script_tag(name:"affected", value:"Jenkins through version 2.93");
-  script_tag(name:"solution", value:"No solution as of 7th December 2017. This will be updated once a solution is available.");
+  script_tag(name:"solution", value:"Please refer to the vendor advisory for a workaround.");
 
-  script_xref(name:"URL", value:"https://jenkins.io/changelog/");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-12-05/");
 
   exit( 0 );
 }
@@ -71,7 +71,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "2.93" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "Workaround" );
   security_message( data: report, port: port );
   exit( 0 );
 }

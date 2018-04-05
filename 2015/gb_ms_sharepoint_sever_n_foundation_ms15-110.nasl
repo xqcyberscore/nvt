@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-110.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-110.nasl 9317 2018-04-05 07:37:07Z cfischer $
 #
 # MS SharePoint Server and Foundation Multiple Vulnerabilities (3096440)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805993");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 9317 $");
   script_cve_id("CVE-2015-2556", "CVE-2015-6039", "CVE-2015-6037");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 11:40:02 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Multiple Vulnerabilities (3096440)");
@@ -45,10 +45,13 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in the SharePoint InfoPath Forms Services improperly parses the
   Document Type Definition (DTD) of an XML file.
+
   - An error as SharePoint does not enforce the appropriate permission level
   for an application or user.
+
   - An error when an Office Web Apps Server does not properly sanitize a specially
   crafted request.");
 
@@ -58,10 +61,12 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3
+
   Microsoft SharePoint Server 2010 Service Pack 2
+
   Microsoft SharePoint Server 2013 Service Pack 1 and
+
   Microsoft SharePoint Foundation 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -85,26 +90,15 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
 if( ! infos = get_app_version_and_location( cpe:CPE ) )
-  if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_foundation' ) ) exit( 0 );
+  if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_foundation', exit_no_version:TRUE ) ) exit( 0 );
 
-## Get SharePoint Version
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -193,3 +187,5 @@ if(shareVer =~ "^12\..*")
     }
   }
 }
+
+exit(99);

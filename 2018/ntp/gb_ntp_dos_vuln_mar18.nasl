@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_dos_vuln_mar18.nasl 9052 2018-03-08 09:39:18Z santu $
+# $Id: gb_ntp_dos_vuln_mar18.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # NTP 'received' Timestamp Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812791");
-  script_version("$Revision: 9052 $");
+  script_version("$Revision: 9296 $");
   script_cve_id("CVE-2018-7184");
   script_bugtraq_id(103192);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 10:39:18 +0100 (Thu, 08 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 11:57:40 +0530 (Wed, 07 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP 'received' Timestamp Denial of Service Vulnerability");

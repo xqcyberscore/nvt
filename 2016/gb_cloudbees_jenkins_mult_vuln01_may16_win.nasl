@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01_may16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_cloudbees_jenkins_mult_vuln01_may16_win.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-01-May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807329");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-3721", "CVE-2016-3722", "CVE-2016-3723", "CVE-2016-3724",
                 "CVE-2016-3725", "CVE-2016-3726", "CVE-2016-3727");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 13:38:30 +0530 (Fri, 20 May 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-01-May16 (Windows)");
 
@@ -45,28 +45,35 @@ if(description)
   detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The XML/JSON API endpoints providing information about installed plugins
     were missing permissions checks, allowing any user with read access to
     Jenkins to determine which plugins and versions were installed.
+
   - The users with extended read access could access encrypted secrets stored
     directly in the configuration of those items.
+
   - A missing permissions check allowed any user with access to Jenkins to trigger
     an update of update site metadata. This could be combined with DNS cache
     poisoning to disrupt Jenkins service.
+
   - The Some Jenkins URLs did not properly validate the redirect URLs, which
     allowed malicious users to create URLs that redirect users to arbitrary
     scheme-relative URLs.
+
   - The API URL /computer/(master)/api/xml allowed users with the 'extended read'
     permission for the master node to see some global Jenkins configuration,
     including the configuration of the security realm.
+
   - By changing the freely editable 'full name', malicious users with multiple
     user accounts could prevent other users from logging in, as 'full name' was
     resolved before actual user name to determine which account is currently trying
     to log in.
+
   - An improper validation of build parameters in Jenkins.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain sensitive informaion, bypass the protection mechanism,
+  attackers to obtain sensitive information, bypass the protection mechanism,
   gain elevated privileges, bypass intended access restrictions and execute
   arbitrary code.
 
@@ -93,29 +100,21 @@ if(description)
   exit(0);
 }
 
-
-## Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jenkinPort = "";
-jenkinVer= "";
-
-## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
   exit(0);
 }
 
-if(version_is_less(version:jenkinVer, test_version:"1.651.2"))
-{
+if(version_is_less(version:jenkinVer, test_version:"1.651.2")){
   report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"1.651.2");
   security_message(port:jenkinPort, data:report);
   exit(0);
 }
+
+exit(99);

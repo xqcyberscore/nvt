@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 9320 2018-04-05 08:06:43Z cfischer $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 9320 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:06:43 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -58,7 +58,7 @@ if(description)
   vulnerability. The vulnerable code is located in the validateSession() function,
   which is defined in multiple SOAP services.");
   script_tag(name:"affected", value:"vTiger CRM version 5.1.0 to 5.4.0.");
-  script_tag(name:"impact", value:"A remote attacker can bypass the authentication machanism.");
+  script_tag(name:"impact", value:"A remote attacker can bypass the authentication mechanism.");
 
   script_tag(name:"solution_type", value: "VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -66,19 +66,17 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-include("global_settings.inc");
 
 ## Check for non-vulnerable version
 vtVer = "";
 
 if( ! port = get_app_port(cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vtVer = infos['version'];
 

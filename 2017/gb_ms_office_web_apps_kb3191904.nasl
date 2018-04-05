@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_kb3191904.nasl 6169 2017-05-19 08:26:16Z antu123 $
+# $Id: gb_ms_office_web_apps_kb3191904.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft Office Web Apps Multiple Remote Code Execution Vulnerabilities (KB3191904)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811025");
-  script_version("$Revision: 6169 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-0254", "CVE-2017-0281");
   script_bugtraq_id(98101, 98297);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:00:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Multiple Remote Code Execution Vulnerabilities (KB3191904)");
@@ -51,8 +51,8 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to run arbitrary code in the context of the current user. If the
   current user is logged on with administrative user rights, an attacker could
-  take control of the affected system. An attacker could then install programs;
-  view, change, or delete data; or create new accounts with full user rights.
+  take control of the affected system. An attacker could then install programs /
+  view, change, or delete data / or create new accounts with full user rights.
 
   Impact Level: System/Application");
 
@@ -75,25 +75,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -116,3 +104,5 @@ if(webappVer =~ "^14\..*")
     }
   }
 }
+
+exit(99);

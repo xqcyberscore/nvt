@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rce_vuln.nasl 9048 2018-03-07 15:17:57Z cfischer $
+# $Id: gb_otrs_rce_vuln.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # OTRS 5.0.24 and 6.0.1 RCE Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113124");
-  script_version("$Revision: 9048 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 16:17:57 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 12:23:32 +0100 (Tue, 06 Mar 2018)");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

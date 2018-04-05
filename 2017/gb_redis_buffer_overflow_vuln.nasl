@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # Redis 4.0.2 and prior Buffer Overflow vulnerability
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113011");
-  script_version("$Revision: 8596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 9297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-10 14:58:31 +0200 (Tue, 10 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,7 @@ if( description )
   # There exists a backport of the vulnerable version for Debian Stretch
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2017-15047");
 
@@ -57,10 +57,7 @@ if( description )
   script_tag(name:"insight", value:"The clusterLoadConfig function within /redis/src/cluster.c allows for a Buffer Overflow vulnerability leading from an array index being set from user-controllable input.");
   script_tag(name:"impact", value:"A successful exploitation would allow the attacker to corrupt the host's memory or even execute arbitrary commands on the host.");
   script_tag(name:"affected", value:"Redis Server version 4.0.2 and prior");
-  script_tag(name:"solution", value:"No solution or patch is available as of 22nd November, 2017.
-  Solution details will be updated once the updates are made available.
-  
-  As a workaround, make the folder containing the redis.conf not writable by unprivileged users.");
+  script_tag(name:"solution", value:"Update to version 4.0.3 or later.");
 
   script_xref(name:"URL", value:"https://github.com/antirez/redis/issues/4278");
 
@@ -81,7 +78,7 @@ if( !version = get_app_version( cpe: CPE, port: port ) ) {
 }
 
 if( version_is_less_equal( version: version, test_version: "4.0.2" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "None Available, see Workaround in the solution." );
+  report = report_fixed_ver( installed_version: version, fixed_version: "4.0.3" );
   security_message( port: port, data: report );
   exit( 0 );
 }

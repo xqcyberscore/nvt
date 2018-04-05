@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0009_lin.nasl 6336 2017-06-14 13:49:57Z teissa $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0009_lin.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # Multiple VMware Workstation Products DLL Loading Local Privilege Escalation Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107211");
-  script_version("$Revision: 6336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
+  script_version("$Revision: 9327 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-30 11:31:00 +0200 (Tue, 30 May 2017)");
   script_cve_id("CVE-2017-4915", "CVE-2017-4916");
 
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Multiple VMware Workstation Products DLL Loading Local Privilege Escalation Vulnerability (Linux)");
   script_tag(name: "summary", value: " VMware Workstation and Horizon View Client are prone to a remote code-execution vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "VMware Workstation Pro/Player contains an insecure library loading vulnerability via ALSA sound driver configuration files. Successful exploitation of this issue may allow unprivileged host users to escalate their privileges to root in a Linux host machine.");
   script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application. Failed exploits will result in denial-of-service conditions.");
   script_tag(name: "affected", value: "12.5.6");

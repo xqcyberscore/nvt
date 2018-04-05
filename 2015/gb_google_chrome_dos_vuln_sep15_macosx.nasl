@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_macosx.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_google_chrome_dos_vuln_sep15_macosx.nasl 9303 2018-04-04 13:18:17Z asteins $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Mac OS X)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806056");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 9303 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-21 16:05:54 +0530 (Mon, 21 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Mac OS X)");
 
@@ -86,7 +86,7 @@ if(!chromeVer = get_app_version(cpe:CPE)){
 if(version_is_less_equal(version:chromeVer, test_version:"45.0.2454.93"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +
-           'Fixed version:     NoneAvailable'  + '\n';
+           'Fixed version:     46.0.2490.71'  + '\n';
   security_message(data:report);
   exit(0);
 }

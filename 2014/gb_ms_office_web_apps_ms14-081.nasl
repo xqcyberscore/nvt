@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms14-081.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_ms_office_web_apps_ms14-081.nasl 9319 2018-04-05 08:03:12Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution Vulnerabilities (3017301)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805028");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 9319 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:03:12 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 12:57:43 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution Vulnerabilities (3017301)");
 
@@ -45,8 +45,10 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaws are due to,
+
   - An invalid indexing error when parsing Office files can be exploited to
     execute arbitrary code via a specially crafted Office file.
+
   - A use-after-free error when parsing Office files can be exploited to execute
     arbitrary code via a specially crafted Office file.");
 
@@ -56,8 +58,8 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Web Applications 2010 Service Pack 2 and prior,
+  script_tag(name:"affected", value:"Microsoft Web Applications 2010 Service Pack 2 and prior,
+
   Microsoft Web Applications 2013 Service Pack 1 and prior.
 
   Microsoft Office Compatibility Pack SP3 and prior.");
@@ -81,25 +83,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -135,3 +125,5 @@ if(webappVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

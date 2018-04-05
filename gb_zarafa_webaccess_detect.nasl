@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webaccess_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_zarafa_webaccess_detect.nasl 9321 2018-04-05 08:15:14Z jschulte $
 #
 # Zarafa WebAccess Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version ("$Revision: 9321 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:15:14 +0200 (Thu, 05 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-12-08 10:46:34 +0100 (Mon, 08 Dec 2014)");
  script_name("Zarafa WebAccess Detection");
 
@@ -69,6 +69,7 @@ version = eregmatch( pattern:'<span id="version">([^<]+)</span>', string:buf );
 if( ! isnull( version[1] ) ) vers = version[1];
 
 set_kb_item(name:"zarafa_webaccess/installed",value:TRUE);
+replace_kb_item(name:"zarafa/installed",value:TRUE);
 
 cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:zarafa:zarafa:" );
 if( isnull( cpe ) ) 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_win.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807331");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-0788", "CVE-2016-0789", "CVE-2016-0790", "CVE-2016-0791",
                 "CVE-2016-0792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 15:08:55 +0530 (Fri, 20 May 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)");
 
@@ -45,25 +45,30 @@ if(description)
   detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The verification of user-provided API tokens with the expected value did
     not use a constant-time comparison algorithm, potentially allowing
     attackers to use statistical methods to determine valid API tokens using
     brute-force methods.
+
   - The verification of user-provided CSRF crumbs with the expected value did
     not use a constant-time comparison algorithm, potentially allowing attackers
     to use statistical methods to determine valid CSRF crumbs using brute-force
     methods.
+
   - The Jenkins has several API endpoints that allow low-privilege users to POST
     XML files that then get deserialized by Jenkins. Maliciously crafted XML
     files sent to these API endpoints could result in arbitrary code execution.
+
   - An HTTP response splitting vulnerability in the CLI command documentation
     allowed attackers to craft Jenkins URLs that serve malicious content.
+
   - The Jenkins remoting module allowed unauthenticated remote attackers to open
     a JRMP listener on the server hosting the Jenkins master process, which
     allowed arbitrary code execution.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain sensitive informaion, bypass the protection mechanism,
+  attackers to obtain sensitive information, bypass the protection mechanism,
   gain elevated privileges, bypass intended access restrictions and execute
   arbitrary code.
 
@@ -90,29 +95,21 @@ if(description)
   exit(0);
 }
 
-
-## Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jenkinPort = "";
-jenkinVer= "";
-
-## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
   exit(0);
 }
 
-if(version_is_less(version:jenkinVer, test_version:"1.642.2"))
-{
+if(version_is_less(version:jenkinVer, test_version:"1.642.2")){
   report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"1.642.2");
   security_message(port:jenkinPort, data:report);
   exit(0);
 }
+
+exit(99);

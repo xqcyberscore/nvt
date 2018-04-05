@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tuleap_sql_injection.nasl 9105 2018-03-15 08:34:57Z cfischer $
+# $Id: gb_tuleap_sql_injection.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Tuleap 'CVE-2018-7538' SQL Injection Vulnerability
 #
@@ -32,11 +32,11 @@ CPE = "cpe:/a:enalean:tuleap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108431");
-  script_version("$Revision: 9105 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 09:34:57 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 16:00:04 +0100 (Wed, 14 Mar 2018)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2018-7738");
   script_name("Tuleap 'CVE-2018-7538' SQL Injection Vulnerability");
   script_category(ACT_GATHER_INFO);

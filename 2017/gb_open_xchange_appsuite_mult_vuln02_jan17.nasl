@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln02_jan17.nasl 4945 2017-01-05 06:51:30Z antu123 $
+# $Id: gb_open_xchange_appsuite_mult_vuln02_jan17.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Jan17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809847");
-  script_version("$Revision: 4945 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-4046", "CVE-2016-4045", "CVE-2016-4026");
   script_bugtraq_id(91359, 91356, 91357);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 07:51:30 +0100 (Thu, 05 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-02 13:59:09 +0530 (Mon, 02 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Jan17");
@@ -46,8 +46,11 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to
+
   - An improper validation of input passed to API calls.
+
   - An improper validation of input passed RSS reader of App Suite.
+
   - The content sanitizer component has an issue with filtering malicious content
     in case invalid HTML code is provided.");
 
@@ -83,29 +86,17 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
-oxVer = get_app_version(cpe:CPE, port:oxPort);
-if(!oxVer || "unknown" >< oxVer){
+if(!oxVer = get_app_version(cpe:CPE, port:oxPort)){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev)
@@ -141,7 +132,9 @@ if(oxRev)
   if(VULN)
   {
     report = report_fixed_ver(installed_version:oxVer, fixed_version:fix);
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

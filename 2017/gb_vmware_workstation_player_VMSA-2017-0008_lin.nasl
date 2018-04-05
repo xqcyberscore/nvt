@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107209");
-  script_version("$Revision: 7292 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 9327 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
   script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910", 
                 "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4925");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "summary", value: "VMware Workstation updates resolve multiple security vulnerabilities");
 
   script_tag(name: "vuldetect", value: "Get the installed version with the help 
-  of detect NVT and check if the version is vulnerable or not.");
+  of the detect NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw is due to  multiple heap 
   buffer-overflow vulnerabilities in JPEG2000 and TrueType Font (TTF) parsers in 

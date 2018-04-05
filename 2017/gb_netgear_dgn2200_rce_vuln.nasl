@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn2200_rce_vuln.nasl 6500 2017-07-03 07:48:34Z teissa $
+# $Id: gb_netgear_dgn2200_rce_vuln.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # NETGEAR DGN2200 CVE-2017-6334 Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:netgear:dgn2200";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107229");
-  script_version("$Revision: 6500 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 09:48:34 +0200 (Mon, 03 Jul 2017) $");
+  script_version("$Revision: 9300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 17:33:05 +0200 (Wed, 28 Jun 2017)");
   script_cve_id("CVE-2017-6334");
 
@@ -66,29 +66,26 @@ if(description)
   # This script was deprecated to avoid false positive, since the firmware version could not be obtained without authentication.
   script_tag(name:"deprecated", value:TRUE);
 
-
   exit(0);
 }
 
-exit( 66 );
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");
 
 if(!Port = get_app_port(cpe: CPE)){
-  exit( 0 );
+  exit(0);
 }
 
 if(!Ver = get_app_version(cpe: CPE, port: Port)){
-  exit( 0 );
+  exit(0);
 }
 
-if(version_in_range(version: Ver, test_version: "1", test_version2: "4"))
-{
-  report =  report_fixed_ver(installed_version: Ver, fixed_version: "See Vendor");
-  security_message(data:report);
-  exit( 0 );
+if(version_in_range(version: Ver, test_version: "1", test_version2: "4")){
+  report = report_fixed_ver(installed_version: Ver, fixed_version: "See Vendor");
+  security_message(port: Port, data: report);
+  exit(0);
 }
 
-exit ( 99 );
-
+exit(99);

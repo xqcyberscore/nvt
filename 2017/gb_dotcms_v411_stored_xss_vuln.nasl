@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
+# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112090");
-  script_version("$Revision: 7860 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 9297 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-10-20 11:47:18 +0200 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -63,7 +63,7 @@ if (description)
 
   script_tag(name: "affected", value: "dotCMS version 4.1.1.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 22nd November, 2017.
+  script_tag(name: "solution", value: "No solution or patch is available as of 4th April, 2018.
       Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://raw.githubusercontent.com/badbiddy/Vulnerability-Disclosure/master/dotCMS%20%3E%204.1.1%20-%20Stored%20XSS");

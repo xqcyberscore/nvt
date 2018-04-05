@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_wordpress_csrf_vuln_lin.nasl 9303 2018-04-04 13:18:17Z asteins $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Linux)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805947");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 9303 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-08-07 11:50:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Linux)");
 
@@ -94,7 +94,7 @@ if(version_is_equal(version:wpVer, test_version:"4.2.2")||
    version_is_equal(version:wpVer, test_version:"3.8.1"))
 {
   report = 'Installed Version: ' + wpVer + '\n' +
-           'Fixed Version:     ' + "NoneAvailable" + '\n';
+           'Fixed Version:      4.3.1\n';
 
   security_message(data:report, port:wpPort);
   exit(0);

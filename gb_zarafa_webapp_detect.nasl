@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webapp_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_zarafa_webapp_detect.nasl 9321 2018-04-05 08:15:14Z jschulte $
 #
 # Zarafa WebApp sDetection
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105137");
-  script_version ("$Revision: 6065 $");
+  script_version ("$Revision: 9321 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:15:14 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-12-08 10:46:34 +0100 (Mon, 08 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Zarafa WebApp Detection");
@@ -68,6 +68,7 @@ foreach url (make_list("", "/", "/webapp"))
   if( "<title>Zarafa WebApp" >< buf )
   {
     set_kb_item(name:"zarafa_webapp/installed",value:TRUE);
+    replace_kb_item(name:"zarafa/installed",value:TRUE);
 
     vers = 'unknown';
     version = eregmatch( pattern:'<span id="version">WebApp ([^ <]+)( - ZCP ([^<]+))?</span>', string:buf );
@@ -97,6 +98,7 @@ foreach url (make_list("", "/", "/webapp"))
     {
       vers_zcp = version[3];
       set_kb_item(name:"zarafa_zcp/installed",value:TRUE);
+      replace_kb_item(name:"zarafa/installed", value:TRUE);
 
       cpe = build_cpe( value:vers_zcp, exp:"^([0-9.-]+)", base:"cpe:/a:zarafa:zarafa_collaboration_platform:" );
       if( isnull( cpe ) )

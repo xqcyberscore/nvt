@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_xss_vuln_jun17.nasl 6419 2017-06-23 12:48:13Z santu $
+# $Id: gb_open_xchange_appsuite_mult_xss_vuln_jun17.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Cross Site Scripting Vulnerabilities Jun17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811134");
-  script_version("$Revision: 6419 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2015-1588");
   script_bugtraq_id(74350);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 14:48:13 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 16:24:33 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Cross Site Scripting Vulnerabilities Jun17");
@@ -81,23 +81,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-fix = "";
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
-oxVer = get_app_version(cpe:CPE, port:oxPort);
-if(!oxVer){
+if(!oxVer = get_app_version(cpe:CPE, port:oxPort)){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev)
@@ -120,7 +111,9 @@ if(oxRev)
   if(fix)
   {
     report = report_fixed_ver(installed_version:oxVer, fixed_version:fix);
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

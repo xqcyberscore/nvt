@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_file_read_line_function_macosx.nasl 8562 2018-01-29 08:13:27Z cfischer $
+# $Id: gb_wireshark_file_read_line_function_macosx.nasl 9303 2018-04-04 13:18:17Z asteins $
 #
 # Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812282");
-  script_version("$Revision: 8562 $");
+  script_version("$Revision: 9303 $");
   script_cve_id("CVE-2017-17935");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 09:13:27 +0100 (Mon, 29 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 12:52:35 +0530 (Thu, 28 Dec 2017)");
   script_name("Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)");
 
@@ -85,7 +85,7 @@ path = infos['location'];
 
 if(version_is_less_equal(version:wirversion, test_version:"2.2.11"))
 {
-  report = report_fixed_ver(installed_version:wirversion, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.2.12", install_path:path);
   security_message(data:report);
   exit(0);
 }

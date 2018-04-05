@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011180.nasl 7554 2017-10-25 05:33:21Z cfischer $
+# $Id: gb_ms_kb4011180.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4011180)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812018");
-  script_version("$Revision: 7554 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-11820");
   script_bugtraq_id(101097);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:05:07 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4011180)");
 
@@ -75,25 +75,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server') ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -122,4 +110,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
-exit(0);
+
+exit(99);

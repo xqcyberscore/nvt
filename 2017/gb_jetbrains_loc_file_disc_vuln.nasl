@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 9307 2018-04-04 18:47:24Z cfischer $
 #
 # JetBrains Remote Code Execution and Local File Disclosure Vulnerability (Active Check)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:jetbrains:jetbrains";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107231");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 9307 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 20:47:24 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-25 10:25:40 +0530 (Fri, 25 Aug 2017)");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -137,7 +137,7 @@ function leakWithPyCharmHelpers( homePath )
 
   url = "/helpers"  +  "/" + dotSegs + "etc/passwd";
 
-  if (http_vuln_check( port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE, debug: TRUE ) ) {
+  if (http_vuln_check( port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE ) ) {
     report = report_vuln_url( port:port, url:url ) + '\n\n';
 
   return report;
@@ -154,7 +154,7 @@ function leakWithProject(name)
 
     url = "/" + name +  "/" + dotSegs + "etc/passwd";
 
-    if (http_vuln_check( port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE, debug: TRUE )) {
+    if (http_vuln_check( port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE )) {
         report = report_vuln_url( port:port, url:url ) + '\n\n';
         return report;
      }
@@ -201,5 +201,4 @@ if (!isnull(Pycharm_report) || jetbrains_report) {
   exit(0);
 }
 
-exit(0);
-
+exit(99);

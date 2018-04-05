@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_2.nasl 7832 2017-11-20 13:43:31Z asteins $
+# $Id: gb_openemr_mult_vuln_0517_2.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # OpenEMR <= 5.0.0 Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108206");
-  script_version("$Revision: 7832 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 14:43:31 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 9297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 09:04:14 +0200 (Tue, 15 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_cve_id("CVE-2017-9380", "CVE-2017-12064", "CVE-2017-1000240");
 
@@ -50,22 +50,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("openemr/installed");
 
-  script_tag(name:"summary", value: "This host is installed with OpenEMR
-    and is prone to multiple vulnerabilities");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-    of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value: "This host is installed with OpenEMR and is prone to multiple
+vulnerabilities");
+
+  script_tag(name:"vuldetect", value:"Checks the version.");
+
   script_tag(name:"impact", value:"Successful exploitation allows attackers to:
 
-        - bypass intended access restrictions via a crafted name
+- bypass intended access restrictions via a crafted name
 
-        - upload files of dangerous types as a low-privilege user
-which can result in arbitrary code execution within the context of the vulnerable application.
+- upload files of dangerous types as a low-privilege user which can result in arbitrary code execution within the
+context of the vulnerable application.
 
-        - inject arbitrary web script or HTML.");
+- inject arbitrary web script or HTML.");
+
   script_tag(name:"affected", value:"OpenEMR 5.0.0 and prior");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_tag(name:"solution", value:"No solution or patch is available as of 20th November, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Apply the patch in the reverenced commit URL.");
 
   script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-002");
   script_xref(name: "URL", value: "https://github.com/openemr/openemr/commit/b8963a5ca483211ed8de71f18227a0e66a2582ad");
@@ -81,7 +84,7 @@ if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!vers = get_app_version(cpe:CPE, port:port)) exit(0);
 
 if(version_is_less_equal(version: vers, test_version: "5.0.0")) {
-   report = report_fixed_ver(installed_version: vers, fixed_version: "NoneAvailable");
+   report = report_fixed_ver(installed_version: vers, fixed_version: "Apply patch");
    security_message(data: report, port: port);
    exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203430.nasl 6406 2017-06-22 10:42:26Z teissa $
+# $Id: gb_ms_kb3203430.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server Remote Code Execution Vulnerability (KB3203430)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810945");
-  script_version("$Revision: 6406 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-15 16:33:51 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft SharePoint Enterprise Server Remote Code Execution Vulnerability (KB3203430)");
 
@@ -71,21 +71,12 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-## Get Version and install location
-if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server" ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server", exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
 if(!shareVer || !(shareVer =~ "^15\.")){
   exit(0);
@@ -112,4 +103,5 @@ if(path)
     }
   }
 }
-exit(0);
+
+exit(99);

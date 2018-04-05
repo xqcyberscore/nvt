@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_services_detect.nasl 7402 2017-10-11 13:58:17Z cfischer $
+# $Id: sw_apache_axis2_services_detect.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # Apache Axis2 Web Services Detection
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:apache:axis2';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111008");
-  script_version("$Revision: 7402 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:58:17 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 08:00:00 +0100 (Fri, 20 Mar 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,10 +57,9 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-infos = get_app_version_and_location( cpe:CPE, port:port );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 dir = infos['location'];
-if( ! dir ) exit( 0 );
 if( dir == "/" ) dir = "";
 
 vers = infos['version'];

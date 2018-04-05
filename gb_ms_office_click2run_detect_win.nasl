@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_detect_win.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_ms_office_click2run_detect_win.nasl 9304 2018-04-04 14:03:28Z cfischer $
 #
 # Microsoft Office ClicktoRun Version Detection (Windows)
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812996");
-  script_version("$Revision: 9267 $");
+  script_version("$Revision: 9304 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 16:03:28 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:52:52 +0530 (Fri, 23 Mar 2018)");
   script_name("Microsoft Office ClicktoRun Version Detection (Windows)");
 
@@ -52,7 +52,6 @@ if (description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

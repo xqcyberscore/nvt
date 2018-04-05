@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_message_add_argument_mult_vuln_win.nasl 8811 2018-02-14 12:41:44Z cfischer $
+# $Id: gb_clamav_message_add_argument_mult_vuln_win.nasl 9310 2018-04-05 05:37:57Z cfischer $
 #
 # ClamAV 'messageAddArgument' Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812509");
-  script_version("$Revision: 8811 $");
+  script_version("$Revision: 9310 $");
   script_cve_id("CVE-2017-12374", "CVE-2017-12375", "CVE-2017-12376", "CVE-2017-12377",
                 "CVE-2017-12378", "CVE-2017-12379", "CVE-2017-12380");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:37:57 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 12:57:18 +0530 (Mon, 29 Jan 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV 'messageAddArgument' Multiple Vulnerabilities (Windows)");
@@ -91,21 +91,18 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-clamPort = "";
-clamVer = "";
-
 if(!clamPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:clamPort);
+if(!infos = get_app_version_and_location(cpe:CPE, port:clamPort, exit_no_version:TRUE)) exit(0);
 clamVer = infos['version'];
 path = infos['location'];
 
-##Check for vulnerable version
-if(version_is_less(version:clamVer, test_version:"0.99.3"))
-{
+if(version_is_less(version:clamVer, test_version:"0.99.3")){
   report = report_fixed_ver(installed_version:clamVer, fixed_version:"0.99.3", install_path:path);
   security_message(data:report, port:clamPort);
   exit(0);
 }
+
+exit(99);

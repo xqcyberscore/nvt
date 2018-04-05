@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_multiple_devices_command_injection_vuln.nasl 9271 2018-03-31 07:25:25Z cfischer $
+# $Id: gb_dlink_dir_multiple_devices_command_injection_vuln.nasl 9314 2018-04-05 06:27:30Z cfischer $
 #
 # D-Link DIR Routers OS Command Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113142");
-  script_version("$Revision: 9271 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-31 09:25:25 +0200 (Sat, 31 Mar 2018) $");
+  script_version("$Revision: 9314 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:27:30 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 10:54:55 +0100 (Wed, 21 Mar 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -98,7 +98,7 @@ else if( port = get_app_port( cpe: eight_cpe ) ) {
   }
 }
 else if ( port = get_app_port( cpe: eighty_cpe ) ) {
-  if( infos = get_app_version_and_location( cpe: eighty_cpe, port: port ) ) {
+  if( infos = get_app_version_and_location( cpe: eighty_cpe, port: port, exit_no_version: TRUE ) ) {
     device = "D-Link DIR-880L";
     fixed_ver = "1.08";
   }

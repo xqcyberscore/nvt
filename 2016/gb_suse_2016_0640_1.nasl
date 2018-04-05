@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0640_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0640_1.nasl 9301 2018-04-04 12:02:46Z cfischer $
 #
 # SuSE Update for libopenssl0_9_8 openSUSE-SU-2016:0640-1 (libopenssl0_9_8)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851223");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9301 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 14:02:46 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-03-04 06:42:46 +0100 (Fri, 04 Mar 2016)");
   script_cve_id("CVE-2013-0166", "CVE-2013-0169", "CVE-2014-0076", "CVE-2014-0195", 
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-3470", "CVE-2014-3505", 
@@ -94,7 +94,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
 
   - The package was updated to 0.9.8zh:
-  * fixes many security vulnerabilities (not seperately listed):
+  * fixes many security vulnerabilities (not separately listed):
   CVE-2015-3195, CVE-2015-1788, CVE-2015-1789, CVE-2015-1790,
   CVE-2015-1792, CVE-2015-1791, CVE-2015-0286, CVE-2015-0287,
   CVE-2015-0289, CVE-2015-0293, CVE-2015-0209, CVE-2015-0288,

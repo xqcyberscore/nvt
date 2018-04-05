@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011244.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_ms_kb4011244.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server 2016 Multiple Vulnerabilities (KB4011244)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812129");
-  script_version("$Revision: 7992 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-11876");
   script_bugtraq_id(101754);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 00:51:31 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2016 Multiple Vulnerabilities (KB4011244)");
 
@@ -72,22 +72,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-shareVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server') ) exit(0);
-
+if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE ) ) exit(0);
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -112,4 +103,5 @@ if(shareVer =~ "^16\..*")
     }
   }
 }
-exit(0);
+
+exit(99);

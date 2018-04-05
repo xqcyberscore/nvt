@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stack_buffer_overflow_vuln_mar18_lin.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: gb_php_stack_buffer_overflow_vuln_mar18_lin.nasl 9299 2018-04-04 11:06:32Z cfischer $
 #
 # PHP Stack Buffer Overflow Vulnerability Mar18 (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:php:php";
 if (description)
 {   
   script_oid("1.3.6.1.4.1.25623.1.0.812821");
-  script_version("$Revision: 9226 $");
+  script_version("$Revision: 9299 $");
   script_cve_id("CVE-2018-7584");
   script_bugtraq_id(103204);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:06:32 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-12 17:24:20 +0530 (Mon, 12 Mar 2018)");
   script_name("PHP Stack Buffer Overflow Vulnerability Mar18 (Linux)");
   
@@ -55,10 +55,12 @@ if (description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  PHP versions 7.2.x prior to 7.2.3,
+  script_tag(name:"affected", value:"PHP versions 7.2.x prior to 7.2.3,
+
   PHP versions 7.0.x prior to 7.0.28,
+
   PHP versions 5.0.x prior to 5.6.34 and
+
   PHP versions 7.1.x prior to 7.1.15 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.2.3, 7.0.28,
@@ -79,14 +81,10 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-phport = 0;
-vers = "";
-path = "";
-
-if(!phport = get_app_port(cpe: CPE))
+if(isnull(phport = get_app_port(cpe: CPE)))
   exit(0);
 
-infos = get_app_version_and_location(cpe:CPE, port:phport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:phport, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
@@ -103,11 +101,10 @@ else if(version_in_range(version: vers, test_version: "5.0", test_version2: "5.6
   fix = "5.6.34";
 }
 
-if(fix)
-{
+if(fix){
   report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
   security_message(port:phport, data:report);
   exit(0);
 }
 
-exit(0);
+exit(99);

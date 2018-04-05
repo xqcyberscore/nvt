@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torrent_trader_classic_mult_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_torrent_trader_classic_mult_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # TorrentTrader Classic Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:torrenttrader:torrenttrader_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800522");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,29 +48,23 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/35456");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/504294/100/0/threaded");
 
-  tag_impact = "Successful exploitation will allow attacker to inject and execute
+  script_tag(name:"affected", value:"TorrentTrader Classic version 1.09 and prior.");
+
+  script_tag(name:"insight", value:"Multiple flaws due to,improper validation of user-supplied input data to
+  different parameters and Access to the '.php' scripts are not properly
+  restricted.");
+
+  script_tag(name:"solution", value:"Upgrade to TorrentTrader Classic version 2.0.6 or later
+  For updates refer to http://sourceforge.net/projects/torrenttrader");
+
+  script_tag(name:"summary", value:"This host is running TorrentTrader Classic and is prone to
+  multiple vulnerabilities.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject and execute
   arbitrary SQL queries via malicious SQL code, and can gain sensitive
   information about remote system user credentials and database.
 
-  Impact level: Application/System";
-
-  tag_affected = "TorrentTrader Classic version 1.09 and prior.";
-
-  tag_insight = "Multiple flaws due to,improper validation of user-supplied input data to
-  different parametes and Access to the '.php' scripts are not properly
-  restricted.";
-
-  tag_solution = "Upgrade to TorrentTrader Classic version 2.0.6 or later
-  For updates refer to http://sourceforge.net/projects/torrenttrader";
-
-  tag_summary = "This host is running TorrentTrader Classic and is prone to
-  multiple vulnerabilities.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  Impact level: Application/System");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -84,7 +78,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

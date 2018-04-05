@@ -1,6 +1,6 @@
 
 # OpenVAS Vulnerability Test
-# $Id: gb_CPyth_man_in_mid.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_CPyth_man_in_mid.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # CPython Man in Middle Attack
 #
@@ -40,10 +40,11 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107021");
-  script_version("$Revision: 5655 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2013-7440");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -66,26 +67,22 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-VUL = "";
-appPort = "";
-appVer = "";
+if(!appPort = get_app_port(cpe:CPE)) exit(0);
+if(!appVer = get_app_version(cpe:CPE, port:appPort)) exit(0);
 
-if ( !appPort = get_app_port( cpe:CPE)) exit(0);
-if ( !appVer = get_app_version( cpe:CPE, port: appPort) ) exit(0);
-
-if(appVer =~ "^(3\.)" && version_is_less(version:appVer, test_version:"3.3.3" )) {
-    VUL = TRUE;
-    Fixed_Version = "3.3.3 or higher";
+if(appVer =~ "^(3\.)" && version_is_less(version:appVer, test_version:"3.3.3")) {
+  VUL = TRUE;
+  Fixed_Version = "3.3.3 or higher";
 }
 else if(version_is_less(version:appVer, test_version:"2.7.9")){
-    VUL = TRUE; 
-    Fixed_Version = "2.7.9 or higher";
+  VUL = TRUE; 
+  Fixed_Version = "2.7.9 or higher";
 }
-if (VUL)
-{
-    report = 'Installed version: ' + appVer + '\n' +
-           'Fixed version:' +  Fixed_Version  + '\n';
-    security_message(data:report);
 
+if(VUL){
+  report = report_fixed_ver(installed_version:appVer, fixed_version:Fixed_Version);
+  security_message(port:appPort, data:report);
+  exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga2_mult_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: gb_icinga2_mult_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
 #
-# Icinga2 <= 2.8.1 Multiple Vulnerabilities
+# Icinga2 < 2.8.2 Multiple Vulnerabilities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,19 +28,19 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113121");
-  script_version("$Revision: 9226 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9298 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 11:56:30 +0100 (Fri, 02 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2018-6532", "CVE-2018-6533", "CVE-2018-6534", "CVE-2018-6535", "CVE-2018-6536", "CVE-2017-16933");
 
-  script_name("Icinga2 <= 2.8.1 Multiple Vulnerabilities");
+  script_name("Icinga2 < 2.8.2 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -54,8 +54,7 @@ if( description )
   script_tag(name:"impact", value:"Effects of successful exploitation range from password disclosure over Denial
   of Service to an attacker gaining complete control over the target system.");
   script_tag(name:"affected", value:"Icinga2 through version 2.8.1");
-  script_tag(name:"solution", value:"No solution available as of 2nd March, 2018. Information will be updated
-  once a fix becomes available.");
+  script_tag(name:"solution", value:"Update to version 2.8.2 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/5715");
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/5850");
@@ -63,7 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/6103");
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/pull/6104");
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/issues/5793");
-  script_xref(name:"URL", value:"https://www.icinga.com/category/releases/");
+  script_xref(name:"URL", value:"https://www.icinga.com/2018/03/22/icinga-2-8-2-released/");
 
   exit( 0 );
 }
@@ -77,7 +76,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( !version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "2.0.0", test_version2: "2.8.1" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "2.8.2" );
   security_message( data: report, port: port );
   exit( 0 );
 }

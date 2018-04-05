@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_devices_multiple_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
+# $Id: gb_linksys_devices_multiple_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # Linksys Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812040");
-  script_version("$Revision: 7860 $");
+  script_version("$Revision: 9297 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 11:57:11 +0530 (Thu, 19 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Linksys Devices Multiple Vulnerabilities");
@@ -84,11 +84,9 @@ if(description)
 
   This list may not be accurate and/or complete!");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 22nd
-  November, 2017. Information regarding this issue will be updated once solution
-  details are available. For details refer to http://www.linksys.com");
+  script_tag(name:"solution", value:"Update to the latest available firmware.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/43013");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/541369/30/0/threaded");
@@ -108,13 +106,6 @@ include( "host_details.inc" );
 include( "http_func.inc" );
 include( "http_keepalive.inc" );
 
-## Variable Initialization
-netPort = "";
-url = "";
-req = "";
-res = "";
-postData = "";
-
 ## get the port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -125,7 +116,8 @@ postData = "submit_type=&submit_button=UnsecuredEnable&gui_action=Apply" +
            "&wait_time=19&next_url=www.example.com&change_action=";
 
 ##Request and Response
-req = http_post_req( port: netPort, url: "/UnsecuredEnable.cgi", data: postData);
+url = '/UnsecuredEnable.cgi';
+req = http_post_req( port: netPort, url: url, data: postData);
 res = http_keepalive_send_recv( port:netPort , data: req );
 
 ##Confirm Vulnerability

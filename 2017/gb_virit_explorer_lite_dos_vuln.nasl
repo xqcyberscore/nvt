@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 8430 $");
+  script_version("$Revision: 9327 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
   script_tag(name: "summary" , value:"The host is installed with TG Soft Vir.IT eXplorer Lite and is prone to Denial Of Service vulnerability.");
 
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detect NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:" The flaw is due to a NULL value in a 0x82730008 DeviceIoControl request to \\\\.\\Viragtlt.");
 
@@ -50,8 +50,8 @@ if(description)
 
   script_tag(name: "affected" , value:"TG Soft Vir.IT eXplorer Lite 8.5.42");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 16th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution" , value:"No solution or patch is available as of 05th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms14-017.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_sharepoint_server_was_ms14-017.nasl 9319 2018-04-05 08:03:12Z cfischer $
 #
 # Microsoft SharePoint Server WAS Memory Corruption Vulnerability (2949660)
 #
@@ -24,47 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804536";
 CPE = "cpe:/a:microsoft:sharepoint_server";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804536");
+  script_version("$Revision: 9319 $");
   script_cve_id("CVE-2014-1761");
   script_bugtraq_id(66385);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:03:12 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 10:57:40 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft SharePoint Server WAS Memory Corruption Vulnerability (2949660)");
 
-  tag_summary =
-"This host is missing an critical security update according to
+  tag_summary = "This host is missing an critical security update according to
 Microsoft Bulletin MS14-017.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
+  tag_vuldetect = "Get the vulnerable file version and check appropriate patch is applied
 or not.";
 
-  tag_insight =
-"Flaw is due to the way that Microsoft Word parses specially crafted files.";
+  tag_insight = "Flaw is due to the way that Microsoft Word parses specially crafted files.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+  tag_impact = "Successful exploitation will allow remote attackers to execute the arbitrary
 code and take complete control of the affected system.
 
 Impact Level: System/Application ";
 
-  tag_affected =
-"Microsoft SharePoint Server 2010 Word Automation Services
+  tag_affected = "Microsoft SharePoint Server 2010 Word Automation Services
+
 Microsoft SharePoint Server 2013 Word Automation Services";
 
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms14-017";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -87,25 +80,13 @@ http://technet.microsoft.com/en-us/security/bulletin/ms14-017";
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -126,7 +107,6 @@ if(shareVer =~ "^14\..*")
   }
 }
 
-
 ## SharePoint Server 2013
 if(shareVer =~ "^15\..*")
 {
@@ -141,3 +121,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

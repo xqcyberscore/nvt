@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 9303 2018-04-04 13:18:17Z asteins $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806054");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 9303 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 12:19:25 +0530 (Mon, 07 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Windows)");
 
@@ -86,7 +86,7 @@ if(!chromeVer = get_app_version(cpe:CPE)){
 if(version_is_less_equal(version:chromeVer, test_version:"45.0.2454.93"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +
-           'Fixed version:     NoneAvailable'  + '\n';
+           'Fixed version:     46.0.2490.71'  + '\n';
   security_message(data:report);
   exit(0);
 }

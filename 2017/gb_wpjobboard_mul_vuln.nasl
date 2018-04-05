@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpjobboard_mul_vuln.nasl 7071 2017-09-07 07:12:05Z emoss $
+# $Id: gb_wpjobboard_mul_vuln.nasl 9295 2018-04-04 09:04:57Z asteins $
 #
 # WpJobBoard Multiple Cross Site Web Vulnerabilities
 #
@@ -29,26 +29,27 @@ CPE = "cpe:/a:wpjobboard:wpjobboard";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107235");
-  script_version("$Revision: 7071 $");
+  script_version("$Revision: 9295 $");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 09:12:05 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:04:57 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 20:31:53 +0530 (Wed, 06 Sep 2017)");
   script_name("WpJobBoard Multiple Cross Site Web Vulnerabilities");
 
-  script_tag(name:"summary", value:"The host is installed with WpJobBoard and is prone to multiple cross site web vulnerabilities.");
+  script_tag(name:"summary", value:"The host is installed with WpJobBoard and is prone to multiple cross-site web vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"The vulnerabilities are located in the query and id parameters of the wpjb-email, wpjb-job, wpjb-application and wpjb-membership modules.");
 
-  script_tag(name:"impact", value:"Remote attackers are able to inject own malicious script code to hijack admin session credentials via backend or to manipulate the backend on client-side performed requests. Attack Vector: Non-persistent.");
+  script_tag(name:"impact", value:"Remote attackers are able to inject own malicious script code to hijack admin session credentials
+via backend or to manipulate the backend on client-side performed requests. Attack Vector: Non-persistent.");
 
   script_tag(name:"affected", value:"WPJobBoard - Wordpress Plugin 4.4.4 and 4.5.1.");
 
-  script_tag(name:"solution", value:"Upgrade is available. See Vendor.");
+  script_tag(name:"solution", value:"Updates are available. Check for fixes supplied by the vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,9 +75,8 @@ if(!ver = get_app_version(cpe:CPE, port:port)){
   exit(0);
 }
 
-if (version_is_equal(version:ver, test_version:"4.4.4") || version_is_equal(version:ver, test_version:"4.5.1"))
-{
-  report = report_fixed_ver(installed_version:ver, fixed_version:"See Vendor");
+if (version_is_equal(version:ver, test_version:"4.4.4") || version_is_equal(version:ver, test_version:"4.5.1")){
+  report = report_fixed_ver(installed_version:ver, fixed_version:"Check for fixes supplied by the vendor");
   security_message(data:report, port:port);
   exit(0);
 }

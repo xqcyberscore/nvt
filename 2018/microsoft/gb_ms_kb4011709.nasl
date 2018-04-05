@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011709.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011709.nasl 9310 2018-04-05 05:37:57Z cfischer $
 #
 # Microsoft Office Web Apps 2010 Service Pack 2 Multiple Vulnerabilities (KB4011709)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812990");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9310 $");
   script_cve_id("CVE-2018-0919", "CVE-2018-0922");
   script_bugtraq_id(103311, 103314);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:37:57 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 12:06:56 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Web Apps 2010 Service Pack 2 Multiple Vulnerabilities (KB4011709)");
 
@@ -75,17 +75,12 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:office_web_apps') ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:office_web_apps', exit_no_version:TRUE) ) exit( 0 );
 
 webappVer = infos['version'];
 if(!webappVer){
@@ -112,4 +107,5 @@ if(webappVer =~ "^(14\.)")
     }
   }
 }
-exit(0);
+
+exit(99);

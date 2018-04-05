@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms15-012.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_sharepoint_server_was_ms15-012.nasl 9317 2018-04-05 07:37:07Z cfischer $
 #
 # Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805047");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 9317 $");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:05:18 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)");
 
@@ -76,25 +76,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer2 = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -114,3 +102,5 @@ if(shareVer =~ "^14\..*")
     }
   }
 }
+
+exit(99);

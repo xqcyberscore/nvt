@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms17-014.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_sharepoint_server_excel_service_ms17-014.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (4013241)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810709");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-0006", "CVE-2017-0052", "CVE-2017-0027");
   script_bugtraq_id(96740, 96741, 96043);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 13:33:17 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (4013241)");
@@ -46,8 +46,11 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - Microsoft Office improperly handles input.
+
   - Microsoft Office software reads out of bound memory.
+
   - Microsoft Office software improperly handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -56,9 +59,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Excel Services on SharePoint Server 2013
+  script_tag(name:"affected", value:"Excel Services on SharePoint Server 2013
+
   Microsoft SharePoint Server 2010 Excel Services.
+
   Microsoft SharePoint Server 2007 Service Pack 3 Excel Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -78,25 +82,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -159,3 +151,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

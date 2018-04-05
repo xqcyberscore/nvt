@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011247.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4011247.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft Office Web Apps Server 2013 Service Pack 1 Defense in Depth Vulnerability (KB4011247)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812087");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 9313 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:04:22 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Office Web Apps Server 2013 Service Pack 1 Defense in Depth Vulnerability (KB4011247)");
 
@@ -67,23 +67,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:office_web_apps') ) exit( 0 );
-
+if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:office_web_apps', exit_no_version:TRUE) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -104,4 +94,5 @@ if(webappVer =~ "^(15\.)")
     }
   }
 }
-exit(0);
+
+exit(99);

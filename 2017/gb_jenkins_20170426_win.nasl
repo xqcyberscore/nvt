@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_win.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: gb_jenkins_20170426_win.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # Jenkins Security Advisory Apr17 -26 Multiple Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107157");
-  script_version("$Revision: 8893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 9300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355", "CVE-2017-1000356");
   script_bugtraq_id(98056);
@@ -85,25 +85,24 @@ if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port: Port)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 
-if(version_is_less(version: Ver, test_version:"2.46.2"))
-{
-    vuln = TRUE;
-    fix = "2.46.2";
-}
-if (version_in_range(version: Ver, test_version: "2.47", test_version2: "2.57"))
-{
-    vuln = TRUE;
-    fix = "2.57";
-}
-if( vuln )
-{
-    report =  report_fixed_ver(installed_version:Ver, fixed_version:fix);
-    security_message(data:report);
-    exit( 0 );
+if(version_is_less(version:Ver, test_version:"2.46.2")){
+  vuln = TRUE;
+  fix = "2.46.2";
 }
 
-exit ( 99 );
+if(version_in_range(version:Ver, test_version:"2.47", test_version2:"2.57")){
+  vuln = TRUE;
+  fix = "2.57";
+}
+
+if(vuln){
+  report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
+  security_message(port:Port, data:report);
+  exit(0);
+}
+
+exit(99);

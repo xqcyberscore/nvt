@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
-# WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Linux)
+# WordPress < 4.7.5 Multiple Security Vulnerabilities (Linux)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107201");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:40:57 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-9061", "CVE-2017-9062", "CVE-2017-9063", "CVE-2017-9064", "CVE-2017-9065", "CVE-2017-9066");
 
@@ -39,7 +39,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_name("WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Linux)");
+  script_name("WordPress < 4.7.5 Multiple Security Vulnerabilities (Linux)");
   script_tag(name: "summary", value: "WordPress is prone to the following security vulnerabilities.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
   if the version is vulnerable or not.");
@@ -54,7 +54,7 @@ if(description)
 
   4. A cross-site request-forgery vulnerability");
 
-  script_tag(name: "impact" , value: " attacker may leverage these issues to execute HTML and script
+  script_tag(name: "impact" , value: "An attacker may leverage these issues to execute HTML and script
   code in  the browser of an unsuspecting user in the context of the affected  site, perform certain
   unauthorized actions actions, or bypass certain  security restrictions.");
 
@@ -87,12 +87,10 @@ if(!Ver = get_app_version(cpe:CPE, port: Port)){
   exit(0);
 }
 
-if(version_is_less(version: Ver, test_version:"4.7.5"))
-{
+if(version_is_less(version:Ver, test_version:"4.7.5")){
   report =  report_fixed_ver(installed_version:Ver, fixed_version:"4.7.5");
-  security_message(data:report);
-  exit( 0 );
+  security_message(port:Port, data:report);
+  exit(0);
 }
 
-exit ( 99 );
-
+exit(99);

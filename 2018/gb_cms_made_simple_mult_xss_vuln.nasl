@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_xss_vuln.nasl 9095 2018-03-14 10:26:45Z jschulte $
+# $Id: gb_cms_made_simple_mult_xss_vuln.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # CMS Made Simple 2.2.6 Multiple Stored XSS Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113132");
-  script_version("$Revision: 9095 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 11:26:45 +0100 (Wed, 14 Mar 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 10:38:33 +0100 (Wed, 14 Mar 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

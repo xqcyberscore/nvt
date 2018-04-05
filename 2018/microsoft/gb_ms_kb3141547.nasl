@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3141547.nasl 8624 2018-02-01 12:56:46Z cfischer $
+# $Id: gb_ms_kb3141547.nasl 9310 2018-04-05 05:37:57Z cfischer $
 #
 # Microsoft SharePoint Foundation 2010 Service Pack 2 Information Disclosure Vulnerability (KB3141547)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812726");
-  script_version("$Revision: 8624 $");
+  script_version("$Revision: 9310 $");
   script_cve_id("CVE-2018-0790");
   script_bugtraq_id(102391);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:37:57 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft SharePoint Foundation 2010 Service Pack 2 Information Disclosure Vulnerability (KB3141547)");
 
@@ -73,17 +73,12 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server') ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE) ) exit( 0 );
 
 shareVer = infos['version'];
 if(!shareVer){
@@ -109,4 +104,5 @@ if(shareVer =~ "^14\..*")
     }
   }
 }
-exit(0);
+
+exit(99);

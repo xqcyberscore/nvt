@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_dec15.nasl 6810 2017-07-28 07:41:58Z santu $
+# $Id: gb_flash_player_for_ie_edge_dec15.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB2755801)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811495");
-  script_version("$Revision: 6810 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2015-8459", "CVE-2015-8460", "CVE-2015-8634", "CVE-2015-8635",
                 "CVE-2015-8636", "CVE-2015-8638", "CVE-2015-8639", "CVE-2015-8640",
                 "CVE-2015-8641", "CVE-2015-8642", "CVE-2015-8643", "CVE-2015-8644",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-8649", "CVE-2015-8650", "CVE-2015-8651", "CVE-2016-0959");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-28 09:41:58 +0200 (Fri, 28 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 15:28:26 +0530 (Tue, 18 Jul 2017)");
   script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB2755801)");
 
@@ -48,9 +48,13 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value: "Multiple flaws exist due to,
+
   - A type confusion vulnerability.
+
   - An integer overflow vulnerability.
+
   - Multiple use-after-free vulnerabilities.
+
   - Multiple memory corruption vulnerabilities.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow attackers
@@ -62,9 +66,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"
-  Windows 10 x32t/x64 Edition,
+  script_tag(name: "affected" , value:"Windows 10 x32t/x64 Edition,
+
   Windows 8.1 for x32/x64 Edition and
+
   Windows Server 2012/2012 R2");
 
   script_tag(name:"solution", value:"Run Windows update and update the
@@ -88,27 +93,19 @@ include("host_details.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 
-## Variables Initialization
-infos = "";
-flashVer = "";
-flashPath = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1) <= 0){
   exit(0);
 }
 
-##Get Version and location
 if(!infos = get_app_version_and_location(cpe:CPE))
 {
   CPE = "cpe:/a:adobe:flash_player_edge";
-  if(!infos = get_app_version_and_location(cpe:CPE)){
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)){
     exit(0);
   }
 }
 
-## Get Version
 flashVer = infos['version'];
 if(!flashVer){
   exit(0);
@@ -130,3 +127,5 @@ if(version_is_less(version:flashVer, test_version:"20.0.0.267"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

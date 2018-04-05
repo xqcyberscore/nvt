@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0009_win.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0009_win.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # Multiple VMware Workstation Products DLL Loading Local Privilege Escalation Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107210");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9327 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-30 11:31:00 +0200 (Tue, 30 May 2017)");
   script_cve_id("CVE-2017-4915", "CVE-2017-4916");
 
@@ -41,7 +41,7 @@ if(description)
   script_name("Multiple VMware Workstation Products DLL Loading Local Privilege Escalation Vulnerability (Linux)");
   script_tag(name: "summary", value: " VMware Workstation and Horizon View Client are prone to a remote code-execution
   vulnerability (Windows).");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detect NVT and check if the version
   is vulnerable or not.");
   script_tag(name: "insight", value: "VMware Workstation Pro/Player contains an insecure library loading vulnerability
   via ALSA sound driver configuration files. Successful exploitation of this issue may allow unprivileged host users

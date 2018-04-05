@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dos_vuln_may16.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_ibm_db2_dos_vuln_may16.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # IBM DB2 LUW Multiple Denial of Service Vulnerabilities - May16
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:ibm:db2";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807815");
-  script_version("$Revision: 8473 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-0211", "CVE-2016-0215");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 14:34:01 +0530 (Mon, 02 May 2016)");
   script_name("IBM DB2 LUW Multiple Denial of Service Vulnerabilities - May16");
 
@@ -79,9 +80,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-ibmVer  = "";
-ibmPort = "";
-
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -90,29 +88,27 @@ if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
-if(ibmVer =~ "^0907\.*")
-{
+if(ibmVer =~ "^0907\.*"){
   if(version_is_less_equal(version:ibmVer, test_version:"090711")){
     VULN = TRUE;
   }
 }
-if(ibmVer =~ "^1001\.*")
-{
+if(ibmVer =~ "^1001\.*"){
   if(version_is_less_equal(version:ibmVer, test_version:"10015")){
     VULN = TRUE;
   }
 }
 
-if(ibmVer =~ "^1005\.*")
-{
+if(ibmVer =~ "^1005\.*"){
   if(version_is_less_equal(version:ibmVer, test_version:"10057")){
     VULN = TRUE;
   }
 }
 
-if(VULN)
-{
+if(VULN){
   report = report_fixed_ver(installed_version:ibmVer, fixed_version:"Apply appropriate fix");
-  security_message(data:report);
+  security_message(port:ibmPort, data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_jul17.nasl 6706 2017-07-12 14:51:44Z santu $
+# $Id: gb_flash_player_for_ie_edge_jul17.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB4025376)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811475");
-  script_version("$Revision: 6706 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-3080", "CVE-2017-3099", "CVE-2017-3100" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:51:44 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 15:28:26 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB4025376)");
 
@@ -55,12 +55,16 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"
-  Windows 10 Version 1511 for x32/x64 Edition,
-  Windows 10 Version 1607 for x32/x64 Edition, 
+  script_tag(name: "affected" , value:"Windows 10 Version 1511 for x32/x64 Edition,
+
+  Windows 10 Version 1607 for x32/x64 Edition,
+
   Windows 10 Version 1703 for x32/x64 Edition,
+
   Windows 10 x32t/x64 Edition,
+
   Windows 8.1 for x32/x64 Edition and
+
   Windows Server 2012/2012 R2/2016");
 
   script_tag(name:"solution", value:"Run Windows update and update the
@@ -84,27 +88,20 @@ include("host_details.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 
-## Variables Initialization
-infos = "";
-flashVer = "";
-flashPath = "";
-
 ## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-##Get Version and location
 if(!infos = get_app_version_and_location(cpe:CPE))
 {
   CPE = "cpe:/a:adobe:flash_player_edge";
-  if(!infos = get_app_version_and_location(cpe:CPE)){
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)){
     exit(0);
   }
 }
 
-## Get Version
 flashVer = infos['version'];
 if(!flashVer){
   exit(0);
@@ -126,3 +123,5 @@ if(version_is_less(version:flashVer, test_version:"26.0.0.137"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

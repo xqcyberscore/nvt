@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 9176 2018-03-22 13:16:51Z emoss $
+# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812580");
-  script_version("$Revision: 9176 $");
+  script_version("$Revision: 9296 $");
   script_cve_id("CVE-2016-8612");
   script_bugtraq_id(94939);
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 14:16:51 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 12:33:01 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)");

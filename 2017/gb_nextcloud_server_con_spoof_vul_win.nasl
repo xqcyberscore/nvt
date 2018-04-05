@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107146");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -102,26 +102,23 @@ if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 
-if (Ver =~"9\.0\.")
-{
-    if(version_is_less(version: Ver, test_version:"9.0.55"))
-    {
-        Vuln = TRUE;
-        fix = "9.0.55";
-    }
+if(Ver =~"9\.0\."){
+  if(version_is_less(version:Ver, test_version:"9.0.55")){
+    Vuln = TRUE;
+    fix = "9.0.55";
+  }
 }
-else if ( Ver =~ "10\.0\." )
-{
-    if(version_is_less(version: Ver, test_version:"10.0.2"))
-    {
-        Vuln = TRUE;
-        fix = "10.0.2";
-    }
+else if(Ver =~ "10\.0\."){
+  if(version_is_less(version:Ver, test_version:"10.0.2")){
+    Vuln = TRUE;
+    fix = "10.0.2";
+  }
 }
 
-if (Vuln)
-{
-    report =  report_fixed_ver(installed_version:Ver, fixed_version:fix);
-    security_message(data:report);
-    exit(0);
+if(Vuln){
+  report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
+  security_message(port:Port, data:report);
+  exit(0);
 }
+
+exit(99);

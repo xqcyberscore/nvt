@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 9317 2018-04-05 07:37:07Z cfischer $
 #
 # SysAid Unauthenticated File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106006");
-  script_version("$Revision: 6497 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_version("$Revision: 9317 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -83,8 +83,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
-
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 vers = infos['version'];
 dir = infos['location'];
 

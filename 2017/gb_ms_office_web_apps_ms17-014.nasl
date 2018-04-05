@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms17-014.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms_office_web_apps_ms17-014.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft Office Web Apps Multiple Vulnerabilities (4013241)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810712");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-0020", "CVE-2017-0030", "CVE-2017-0105");
   script_bugtraq_id(96050, 96051, 96746);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 14:24:41 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Multiple Vulnerabilities (4013241)");
@@ -46,7 +46,9 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw exists as,
+
   - Office software fails to properly handle objects in memory.
+
   - Office or Word reads out of bound memory due to an uninitialized variable.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -55,8 +57,8 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office Web Apps 2010 Service Pack 2 and prior.
+  script_tag(name:"affected", value:"Microsoft Office Web Apps 2010 Service Pack 2 and prior.
+
   Microsoft Office Web Apps Server 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -77,25 +79,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -132,3 +122,5 @@ if(webappVer =~ "^(14|15)\..*")
     }
   }
 }
+
+exit(99);

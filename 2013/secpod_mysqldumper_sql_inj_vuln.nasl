@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysqldumper_sql_inj_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: secpod_mysqldumper_sql_inj_vuln.nasl 9307 2018-04-04 18:47:24Z cfischer $
 #
 # MySQLDumper SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysqldumper:mysqldumper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903211");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 9307 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 20:47:24 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-29 12:55:13 +0530 (Wed, 29 May 2013)");
   script_name("MySQLDumper SQL Injection Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -76,14 +75,12 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack request
 url = dir + "/sql.php?db=-'%20union%20select%201,2," +
             "'OpenVAS-SQL-Injection-Test'%20from%20tblusers%20where%20'1";
 
-## Try attack and check the response to confirm vulnerability
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"openvas-sql-injection-test",
-                     extra_check: make_list( "Database", "Table View" ), debug:TRUE ) ) {
+                     extra_check: make_list( "Database", "Table View" ) ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

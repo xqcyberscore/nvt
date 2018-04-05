@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_excel_service_kb3101522.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_ms_office_web_apps_excel_service_kb3101522.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft Excel Web App Elevation of Privilege Vulnerability (KB3101522)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810867");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-0195");
   script_bugtraq_id(97417);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 11:08:13 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Excel Web App Elevation of Privilege Vulnerability (KB3101522)");
@@ -72,25 +72,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-offVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 offVer = infos['version'];
-if(!offVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -114,3 +102,5 @@ if(offVer =~ "^14\..*")
     }
   }
 }
+
+exit(99);

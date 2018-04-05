@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkpro_rce.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
+# $Id: gb_scrumworkpro_rce.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # ScrumWorks Pro Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:collabnet:scrumworkspro';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107181");
-  script_version("$Revision: 9239 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 13:57:36 +0200 (Mon, 25 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name: "affected", value: "ScrumWorks Pro version 6.7.0");
   script_tag(name: "solution", value: "No solution or patch is available as of 28th March, 2018.
-  Information regarding this issue will be updated once the solution details are available.");
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL" , value: "https://blogs.securiteam.com/index.php/archives/3387");
 
@@ -74,21 +74,18 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port: Port)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 
-if(version_is_equal(version: Ver, test_version:"6.7.0"))
-{
+if(version_is_equal(version:Ver, test_version:"6.7.0")){
   report =  report_fixed_ver(installed_version:Ver, fixed_version:"Non Available");
-  security_message(data:report);
-  exit( 0 );
+  security_message(port:Port, data:report);
+  exit(0);
 }
 
-exit ( 99 );
-
+exit(99);

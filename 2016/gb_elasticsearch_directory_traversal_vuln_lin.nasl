@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 9001 2018-03-01 15:12:32Z cfischer $
+# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Elasticsearch < 1.6.1 Multiple Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808502");
-  script_version("$Revision: 9001 $");
+  script_version("$Revision: 9296 $");
   script_cve_id("CVE-2015-5531", "CVE-2015-5377");
   script_bugtraq_id(75935);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 16:12:32 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:11:01 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch < 1.6.1 Multiple Vulnerabilities (Linux)");
 

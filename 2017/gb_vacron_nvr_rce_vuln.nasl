@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_rce_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
+# $Id: gb_vacron_nvr_rce_vuln.nasl 9327 2018-04-05 10:30:41Z asteins $
 #
 # Vacron NVR Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vacron:nvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107187");
-  script_version("$Revision: 7664 $");
+  script_version("$Revision: 9327 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_name("Vacron NVR Remote Code Execution Vulnerability");
 
@@ -49,8 +49,8 @@ if(description)
 
   script_tag(name:"affected", value:"All versions of Vacron NVR");
 
-  script_tag(name:"solution", value:"No Solution or patch is available as of 11th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No Solution or patch is available as of 05th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

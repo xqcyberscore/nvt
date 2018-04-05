@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011194.nasl 7689 2017-11-08 05:46:44Z teissa $
+# $Id: gb_ms_kb4011194.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft Office Web Apps Server 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4011194)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811858");
-  script_version("$Revision: 7689 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-11826");
   script_bugtraq_id(101219);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:45:11 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Office Web Apps Server 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4011194)");
 
@@ -72,25 +72,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -114,4 +102,5 @@ if(webappVer =~ "^14\.")
     }
   }
 }
-exit(0);
+
+exit(99);

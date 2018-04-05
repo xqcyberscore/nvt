@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42591.nasl 8916 2018-02-22 07:55:37Z cfischer $
+# $Id: gb_phpmyadmin_42591.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # phpMyAdmin 'CVE-2010-3055' Configuration File PHP Code Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100760");
-  script_version("$Revision: 8916 $");
+  script_version("$Revision: 9323 $");
   script_bugtraq_id(42591);
   script_cve_id("CVE-2010-3055");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:55:37 +0100 (Thu, 22 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -77,7 +77,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];
@@ -156,3 +156,4 @@ if(string("$cfg['Servers'][$i]['AllowDeny']['order']['a']['b'][''.",php,".''] = 
   exit(0);
 }
 
+exit(99);

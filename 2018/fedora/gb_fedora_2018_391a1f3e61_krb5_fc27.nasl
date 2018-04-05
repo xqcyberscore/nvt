@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_391a1f3e61_krb5_fc27.nasl 8939 2018-02-23 13:10:16Z santu $
+# $Id: gb_fedora_2018_391a1f3e61_krb5_fc27.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Fedora Update for krb5 FEDORA-2018-391a1f3e61
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874133");
-  script_version("$Revision: 8939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:10:16 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:52:03 +0100 (Wed, 21 Feb 2018)");
   script_cve_id("CVE-2018-5729", "CVE-2018-5730");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for krb5 FEDORA-2018-391a1f3e61");
   script_tag(name: "summary", value: "Check the version of krb5");

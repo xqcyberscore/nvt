@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_foundation_priv_esc_vuln_kb3191914.nasl 6231 2017-05-29 09:29:50Z teissa $
+# $Id: gb_sharepoint_foundation_priv_esc_vuln_kb3191914.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3191914)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811035");
-  script_version("$Revision: 6231 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-0255");
   script_bugtraq_id(98107);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 14:25:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3191914)");
@@ -77,25 +77,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -124,3 +112,5 @@ if(shareVer =~ "^15\.")
     }
   }
 }
+
+exit(99);

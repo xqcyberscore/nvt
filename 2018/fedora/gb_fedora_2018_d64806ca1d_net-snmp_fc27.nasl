@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d64806ca1d_net-snmp_fc27.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_fedora_2018_d64806ca1d_net-snmp_fc27.nasl 9296 2018-04-04 09:19:02Z cfischer $
 #
 # Fedora Update for net-snmp FEDORA-2018-d64806ca1d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874214");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:41:30 +0100 (Wed, 14 Mar 2018)");
   script_cve_id("CVE-2018-1000116");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for net-snmp FEDORA-2018-d64806ca1d");
   script_tag(name: "summary", value: "Check the version of net-snmp");

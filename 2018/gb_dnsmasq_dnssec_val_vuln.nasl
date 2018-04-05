@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 8980 2018-02-28 12:03:05Z jschulte $
+# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
 #
 # Dnsmasq DNSSEC Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112193");
-  script_version("$Revision: 8980 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 13:03:05 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 9298 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 12:15:27 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -44,6 +44,7 @@ if(description)
   script_mandatory_keys("dnsmasq/installed");
 
   script_xref(name:"URL", value:"http://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2018q1/011896.html");
+  script_xref(name:"URL", value:"http://thekelleys.org.uk/dnsmasq/CHANGELOG");
 
   script_tag(name:"summary", value:"Dnsmasq is prone to an improper DNSSEC validation vulnerability.");
 
@@ -53,11 +54,11 @@ if(description)
 
   script_tag(name:"affected", value:"Dnsmasq up to and including version 2.78");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 28th February, 2018. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"Update to version 2.79 or later. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -71,8 +72,8 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
 version = infos["version"];
 proto = infos["proto"];
 
-if( version_is_less_equal( version:version, test_version:"2.78" ) ) {
-  report = report_fixed_ver( installed_version:version, fixed_version:"NoneAvailable" );
+if( version_is_less( version:version, test_version:"2.79" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"2.79" );
   security_message( data:report, port:port, proto:proto );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 9300 2018-04-04 11:55:01Z cfischer $
 #
 # IBM DB2 Untrusted Search Path Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809431");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 9300 $");
   script_cve_id("CVE-2016-5995");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-10-04 17:08:20 +0530 (Tue, 04 Oct 2016)");
   script_name("IBM DB2 Untrusted Search Path Vulnerability");
 
@@ -77,23 +77,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-
-##Fetch ibmdb2 port
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch ibmdb2 version
 if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
 ##Check for IBM DB2 9.7 through FP11
-if(ibmVer =~ "^0907\.*")
-{
+if(ibmVer =~ "^0907\.*"){
   ## IBM DB2 9.7 through FP11
   ## IBM DB2 9.7 FP11 => 090711
   if(version_is_less_equal(version:ibmVer, test_version:"090711")){
@@ -104,8 +97,7 @@ if(ibmVer =~ "^0907\.*")
 ##Not considering that, as no way to confirm that
 
 ##Check for IBM DB2 10.1 through FP5
-if(ibmVer =~ "^1001\.*")
-{
+if(ibmVer =~ "^1001\.*"){
   ## IBM DB2 10.1 through FP5
   ## IBM DB2 10.1 FP5  => 10015
   if(version_is_less_equal(version:ibmVer, test_version:"10015")){
@@ -114,8 +106,7 @@ if(ibmVer =~ "^1001\.*")
 }
 
 ##Check for IBM DB2 10.5 through FP7
-if(ibmVer =~ "^1005\.*")
-{
+if(ibmVer =~ "^1005\.*"){
   ## IBM DB2 10.5 through FP7
   ## IBM DB2 10.5 FP7 => 10057
   if(version_is_less_equal(version:ibmVer, test_version:"10057")){
@@ -123,10 +114,10 @@ if(ibmVer =~ "^1005\.*")
   }
 }
 
-if(VULN)
-{
+if(VULN){
   report = report_fixed_ver(installed_version:ibmVer, fixed_version:"Apply appropriate fix");
-  security_message(data:report);
+  security_message(port:ibmPort, data:report);
   exit(0);
 }
 
+exit(99);

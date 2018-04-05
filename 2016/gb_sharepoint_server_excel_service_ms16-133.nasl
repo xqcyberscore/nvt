@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms16-133.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_sharepoint_server_excel_service_ms16-133.nasl 9316 2018-04-05 07:06:02Z cfischer $
 #
 # MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3199168)
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:microsoft:sharepoint_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809724");
-  script_version("$Revision: 5813 $");
+  script_version("$Revision: 9316 $");
   script_cve_id("CVE-2016-7236");
   script_bugtraq_id(94025);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 15:43:11 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3199168)");
@@ -53,8 +54,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2010 Excel Services.");
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Excel Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
@@ -73,25 +73,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -116,3 +104,5 @@ if(shareVer =~ "^14\..*")
     }
   }
 }
+
+exit(99);

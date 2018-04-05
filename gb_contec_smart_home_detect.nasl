@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contec_smart_home_detect.nasl 9278 2018-04-03 09:56:02Z ckuersteiner $
+# $Id: gb_contec_smart_home_detect.nasl 9291 2018-04-04 07:45:18Z emoss $
 #
 # Contec Smart Home Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140936");
-  script_version("$Revision: 9278 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-03 11:56:02 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9291 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-04 09:45:18 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-04-03 14:04:04 +0700 (Tue, 03 Apr 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ if ("contec.camera.js" >< res && "The room content was changed" >< res) {
 
   register_product(cpe: cpe, location: "/", port: port);
 
-  security_message(data: build_detection_report(app: "Contec Smart Home", version: version, install: "/", cpe: cpe,
+  log_message(data: build_detection_report(app: "Contec Smart Home", version: version, install: "/", cpe: cpe,
                                                 concluded: vers[0]),
                    port: port);
   exit(0);

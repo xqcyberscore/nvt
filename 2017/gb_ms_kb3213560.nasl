@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213560.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_ms_kb3213560.nasl 9313 2018-04-05 06:23:26Z cfischer $
 #
 # Microsoft SharePoint Server 2013 Service Pack 1 Remote Code Execution Vulnerability (KB3213560)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811669");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 9313 $");
   script_cve_id("CVE-2017-8742");
   script_bugtraq_id(100741);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:21:36 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft SharePoint Server 2013 Service Pack 1 Remote Code Execution Vulnerability (KB3213560)");
 
@@ -69,21 +69,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
+if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server", exit_no_version:TRUE ) ) exit( 0 );
 
-## Get Version and install location
-if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server" ) ) exit( 0 );
-
-## Get SharePoint Version
 shareVer = infos['version'];
 if(!shareVer || !(shareVer =~ "^15\.")){
   exit(0);
@@ -110,4 +102,5 @@ if(path)
     }
   }
 }
-exit(0);
+
+exit(99);

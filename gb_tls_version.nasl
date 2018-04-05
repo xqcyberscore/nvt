@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_version.nasl 4686 2016-12-06 09:38:11Z cfi $
+# $Id: gb_tls_version.nasl 9301 2018-04-04 12:02:46Z cfischer $
 #
 # SSL/TLS: Version Detection Report
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103823");
-  script_version("$Revision: 4686 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:38:11 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 9301 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 14:02:46 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 12:36:43 +0100 (Tue, 29 Oct 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -149,7 +149,7 @@ if( supported_tls ) {
 
   host = get_host_name();
   ip = get_host_ip();
-  #TBD: Report ciphers for each SSL/TLS Version seperately?
+  #TBD: Report ciphers for each SSL/TLS Version separately?
   text = 'IP,Host,Port,SSL/TLS-Version,Ciphers,Application-CPE\n';
 
   foreach p( keys( supported_tls ) ) {

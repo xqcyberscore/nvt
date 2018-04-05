@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_openfire_detect.nasl 9306 2018-04-04 16:31:21Z cfischer $
 #
 # OpenFire Version Detection
 #
@@ -27,70 +27,59 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800353");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9306 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 18:31:21 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_name("OpenFire Version Detection");
-
-  script_tag(name : "summary" , value : "This script detects the installed
-  version of OpenFire and sets the result in KB.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9090);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"This script detects the installed
+  version of OpenFire and sets the result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-firePort = "";
-fireVer = "";
+port = get_http_port( default:9090 );
+res = http_get_cache( item:"/login.jsp", port:port );
+if( isnull( res ) ) exit( 0 );
 
-# Check for default port 9090
-firePort = get_http_port(default:9090);
+if( "Openfire Admin Console" >< res ) {
 
-sndReq = http_get(item:string("/login.jsp"), port:firePort);
-rcvRes = http_keepalive_send_recv(port:firePort, data:sndReq);
-if(rcvRes == NULL){
-  exit(0);
+  version = "unknown";
+  install = "/";
+
+  ver = eregmatch( pattern:"Openfire, Version: ([0-9.]+)", string:res );
+  if( ver[1] ) version = ver[1];
+
+  set_kb_item( name:"www/" + port + "/Openfire", value:version );
+  set_kb_item( name:"OpenFire/Installed", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:igniterealtime:openfire:" );
+  if( ! cpe )
+    cpe = "cpe:/a:igniterealtime:openfire";
+
+  register_product( cpe:cpe, location:install, port:port );
+
+  log_message( data:build_detection_report( app:"OpenFire",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:ver[0] ),
+                                            port:port );
 }
 
-if("Openfire Admin Console" >< rcvRes)
-{
-  ver = eregmatch(pattern:"Openfire, Version: ([0-9.]+)", string:rcvRes);
-  if(ver[1]){
-    fireVer = ver[1];
-  } else {
-    fireVer = "Unknown";
-  }
-
-  set_kb_item(name:"www/" + firePort + "/Openfire", value:fireVer);
-  set_kb_item(name:"OpenFire/Installed", value:TRUE);
-  log_message(data:"OpenFire version " + fireVer +
-                 " was detected on the host");
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:fireVer, exp:"^([0-9.]+)", base:"cpe:/a:igniterealtime:openfire:");
-  if(!cpe)
-      cpe = "cpe:/a:igniterealtime:openfire";
-  register_product(cpe:cpe, location:"/", port:firePort);
-
-  log_message(data: build_detection_report(app: "OpenFire",
-                                           version: fireVer,
-                                           install: "/",
-                                           cpe: cpe,
-                                           concluded: fireVer),
-                                           port: firePort);
-}
+exit( 0 );

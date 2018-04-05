@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_jan17.nasl 8646 2018-02-02 16:20:32Z cfischer $
+# $Id: gb_flash_player_for_ie_edge_jan17.nasl 9314 2018-04-05 06:27:30Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Flash Player Security Update (KB4056887)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812722");
-  script_version("$Revision: 8646 $");
+  script_version("$Revision: 9314 $");
   script_cve_id("CVE-2018-4871");
   script_bugtraq_id(102465);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 17:20:32 +0100 (Fri, 02 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:27:30 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 15:35:52 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Security Update (KB4056887)");
 
@@ -52,9 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"
-
-  Windows 10 Version 1511 for x32/x64 Edition,
+  script_tag(name: "affected" , value:"Windows 10 Version 1511 for x32/x64 Edition,
 
   Windows 10 Version 1607 for x32/x64 Edition,
 
@@ -89,10 +87,6 @@ include("host_details.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 
-infos = "";
-flashVer = "";
-flashPath = "";
-
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
@@ -101,7 +95,7 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
 if(!infos = get_app_version_and_location(cpe:CPE))
 {
   CPE = "cpe:/a:adobe:flash_player_edge";
-  if(!infos = get_app_version_and_location(cpe:CPE)){
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)){
     exit(0);
   }
 }
@@ -125,4 +119,5 @@ if(version_is_less(version:flashVer, test_version:"28.0.0.137"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

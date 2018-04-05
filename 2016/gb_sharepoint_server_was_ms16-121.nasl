@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms16-121.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_sharepoint_server_was_ms16-121.nasl 9316 2018-04-05 07:06:02Z cfischer $
 #
 # Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3194063)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809705");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 9316 $");
   script_cve_id("CVE-2016-7193");
   script_bugtraq_id(93372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 11:59:58 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3194063)");
@@ -53,8 +53,8 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2010 Service Pack 2 Word Automation Services,
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 2 Word Automation Services,
+
   Microsoft SharePoint Server 2013 Service Pack 1 Word Automation Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -75,25 +75,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer2 = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -134,3 +122,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

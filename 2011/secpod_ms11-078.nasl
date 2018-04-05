@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-078.nasl 8190 2017-12-20 09:44:30Z cfischer $
+# $Id: secpod_ms11-078.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # Microsoft .NET Framework and Silverlight Remote Code Execution Vulnerability (2604930)
 #
@@ -24,28 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attacker to execute arbitrary code within
-  the context of the affected application. Failed exploit attempts will likely
-  result in a denial-of-service condition.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Silverlight 4.0
-  Microsoft .NET Framework 4.0
-  Microsoft .NET Framework 3.5.1
-  Microsoft .NET Framework 2.0 Service Pack 2
-  Microsoft .NET Framework 1.1 Service Pack 1";
-tag_insight = "The flaw due to an error when restricting inheritance within classes
-  and can be exploited via a specially crafted web page.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms11-078";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS11-078.";
-
 if(description)
 {
-  script_id(902581);
-  script_version("$Revision: 8190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902581");
+  script_version("$Revision: 9323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-1253");
   script_bugtraq_id(49999);
@@ -56,13 +39,39 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026161");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026162");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms11-078");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "gb_ms_silverlight_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
+  tag_impact = "Successful exploitation could allow attacker to execute arbitrary code within
+  the context of the affected application. Failed exploit attempts will likely
+  result in a denial-of-service condition.
+
+  Impact Level: System/Application";
+
+  tag_affected = "Microsoft Silverlight 4.0
+
+  Microsoft .NET Framework 4.0
+
+  Microsoft .NET Framework 3.5.1
+
+  Microsoft .NET Framework 2.0 Service Pack 2
+
+  Microsoft .NET Framework 1.1 Service Pack 1";
+
+  tag_insight = "The flaw due to an error when restricting inheritance within classes
+  and can be exploited via a specially crafted web page.";
+
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+
+  http://technet.microsoft.com/en-us/security/bulletin/ms11-078";
+
+  tag_summary = "This host is missing a critical security update according to
+  Microsoft Bulletin MS11-078.";
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -80,7 +89,6 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 include("host_details.inc");
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:2) <= 0){
   exit(0);
 }
@@ -94,17 +102,17 @@ if((hotfix_missing(name:"2572078") == 0) && (hotfix_missing(name:"2572077") == 0
   exit(0);
 }
 
-## Get Silverlight version from KB
-infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight" );
-mslVers = infos['version'];
-mslPath = infos['location'];
+if(infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight", exit_no_version:FALSE)) {
+  mslVers = infos['version'];
+  mslPath = infos['location'];
 
-if( mslVers ) {
-  ## Check for Microsoft Silverlight version prior to 4.0.60831
-  if( version_is_less( version:mslVers, test_version:"4.0.60831" ) ) {
-    report = report_fixed_ver( installed_version:mslVers, fixed_version:"4.0.60831", install_path:mslPath );
-    security_message( port:0, data:report );
-    exit( 0 );
+  if( mslVers ) {
+    ## Check for Microsoft Silverlight version prior to 4.0.60831
+    if( version_is_less( version:mslVers, test_version:"4.0.60831" ) ) {
+      report = report_fixed_ver( installed_version:mslVers, fixed_version:"4.0.60831", install_path:mslPath );
+      security_message( port:0, data:report );
+      exit( 0 );
+    }
   }
 }
 
@@ -194,3 +202,5 @@ foreach item (registry_enum_keys(key:key))
     }
   }
 }
+
+exit(99);

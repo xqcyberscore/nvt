@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
 #
 # ManageEngine Applications Manager Multiple SQL Injections Vulnerabilities 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812231");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 9297 $");
   script_cve_id("CVE-2017-16846", "CVE-2017-16847", "CVE-2017-16848", "CVE-2017-16849",
                 "CVE-2017-16850", "CVE-2017-16851");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 18:51:22 +0530 (Wed, 29 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Applications Manager Multiple SQL Injections Vulnerabilities");
@@ -67,11 +67,9 @@ if(description)
 
   script_tag(name: "affected" , value:"ManageEngine Applications Manager 13.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  30th Nov, 2017. Information regarding this issue will be updated once the
-  solution details are available.For updates refer to https://www.manageengine.com");
+  script_tag(name: "solution" , value:"Update to version 13530 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://code610.blogspot.in/2017/11/more-sql-injections-in-manageengine.html");
 
@@ -87,10 +85,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-manVer = "";
-manpath = "";
-report = "";
-
 if(!manport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -101,14 +95,9 @@ manpath = infos['location'];
 
 if(manVer =~ "^13")
 {
-  ## Solution is not given
-  ## 13 build 13510 is the latest release.
-  ## The issues fixed for 13500 build, which is released before 13510 does'nt include these sql injection CVE's according to vendor release note.
-  ## Taking versions less than 13510 as affected.
-  ## Not mentioned about fix details of these vulnerabilities in latest release. Clear info not available.Excluding latest version to avoid FP
-  if(version_is_less(version: manVer, test_version: "13510")) 
+  if(version_is_less(version: manVer, test_version: "13530")) 
   {
-    report = report_fixed_ver(installed_version: manVer, fixed_version: "NoneAvailable", install_path:manpath);
+    report = report_fixed_ver(installed_version: manVer, fixed_version: "13530", install_path:manpath);
     security_message(port: manport, data: report);
     exit(0);
   }

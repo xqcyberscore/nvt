@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-084.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: secpod_ms_office_services_ms13-084.nasl 9323 2018-04-05 08:44:52Z cfischer $
 #
 # Microsoft Office Services Remote Code Execution vulnerability (2885089)
 #
@@ -24,48 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903328";
 CPE = "cpe:/a:microsoft:sharepoint_server";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903328");
+  script_version("$Revision: 9323 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:36:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Services Remote Code Execution vulnerability (2885089)");
 
-  tag_summary =
-"This host is missing an important security update according to Microsoft
-Bulletin MS13-084.";
+  tag_summary = "This host is missing an important security update according to Microsoft
+  Bulletin MS13-084.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
+  tag_vuldetect = "Get the vulnerable file version and check appropriate patch is applied
+  or not.";
 
-  tag_insight =
-"Flaw is due to improper sanitation of user supplied input via a specially
-crafted Excel file.";
+  tag_insight = "Flaw is due to improper sanitation of user supplied input via a specially
+  crafted Excel file.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code,
-cause a DoS (Denial of Service), and compromise a vulnerable system.
+  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code,
+  cause a DoS (Denial of Service), and compromise a vulnerable system.
 
-Impact Level: System/Application";
+  Impact Level: System/Application";
 
-  tag_affected =
-"Excel Services on Microsoft SharePoint Server 2007/2010/2013,
-Word Automation Services on Microsoft SharePoint Server 2010/2013.";
+  tag_affected = "Excel Services on Microsoft SharePoint Server 2007/2010/2013,
 
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms13-084";
+  Word Automation Services on Microsoft SharePoint Server 2010/2013.";
 
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+
+  http://technet.microsoft.com/en-us/security/bulletin/ms13-084";
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -91,19 +85,8 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-## Get SharePoint Version
-if(!shareVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -172,3 +155,5 @@ if(shareVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

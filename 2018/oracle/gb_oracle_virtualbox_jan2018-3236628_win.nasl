@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_jan2018-3236628_win.nasl 8578 2018-01-30 09:43:28Z asteins $
+# $Id: gb_oracle_virtualbox_jan2018-3236628_win.nasl 9310 2018-04-05 05:37:57Z cfischer $
 #
 # Oracle VirtualBox Security Updates (jan2018-3236628) - Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812641");
-  script_version("$Revision: 8578 $");
+  script_version("$Revision: 9310 $");
   script_cve_id("CVE-2018-2688", "CVE-2018-2689", "CVE-2018-2676", "CVE-2018-2698",
                 "CVE-2018-2694", "CVE-2018-2693", "CVE-2018-2685", "CVE-2018-2686",
                 "CVE-2018-2687", "CVE-2018-2690", "CVE-2017-5715", "CVE-2017-3735");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 10:43:28 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:37:57 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 13:17:14 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle VirtualBox Security Updates (jan2018-3236628) - Windows");
 
@@ -74,14 +74,10 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-virtualVer = "";
-report = "";
-
-infos = get_app_version_and_location(cpe:CPE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 virtualVer = infos['version'];
 path = infos['location'];
 
@@ -93,10 +89,10 @@ else if(version_is_less(version:virtualVer, test_version:"5.1.32")){
   fix = "5.1.32";
 }
 
-if(fix)
-{
+if(fix){
   report = report_fixed_ver(installed_version:virtualVer, fixed_version: fix, install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

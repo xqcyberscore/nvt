@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms14-017.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_ms_office_web_apps_ms14-017.nasl 9319 2018-04-05 08:03:12Z cfischer $
 #
 # Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)
 #
@@ -24,47 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804426";
 CPE = "cpe:/a:microsoft:office_web_apps";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6692 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804426");
+  script_version("$Revision: 9319 $");
   script_cve_id("CVE-2014-1761");
   script_bugtraq_id(66385);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:03:12 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:19:57 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)");
 
-  tag_summary =
-"This host is missing a critical security update according to
+  tag_summary = "This host is missing a critical security update according to
 Microsoft Bulletin MS14-017.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
+  tag_vuldetect = "Get the vulnerable file version and check appropriate patch is applied
 or not.";
 
-  tag_insight =
-"Flaw is due to the way that Microsoft Word parses specially crafted files.";
+  tag_insight = "Flaw is due to the way that Microsoft Word parses specially crafted files.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+  tag_impact = "Successful exploitation will allow remote attackers to execute the arbitrary
 code and take complete control of the affected system.
 
 Impact Level: System/Application ";
 
-  tag_affected =
-"Microsoft Office Web Apps 2010 Service Pack 2 and prior
+  tag_affected = "Microsoft Office Web Apps 2010 Service Pack 2 and prior
+
 Microsoft Office Web Apps 2013 Service Pack 1 and prior";
 
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms14-017";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -87,25 +80,13 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-017";
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-webappVer = "";
-dllVer = "";
-path = "";
-
-if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
-
-## Get SharePoint Version
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 webappVer = infos['version'];
-if(!webappVer){
-  exit(0);
-}
-
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){
   exit(0);
@@ -141,3 +122,5 @@ if(webappVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);
