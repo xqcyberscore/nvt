@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_attachmate_reflection_ftp_client_bof_vuln.nasl 5367 2017-02-20 14:16:52Z cfi $
+# $Id: gb_attachmate_reflection_ftp_client_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Attachmate Reflection FTP Client LIST Command Remote Heap Buffer Overflow Vulnerability
 #
@@ -45,13 +45,13 @@ tag_summary = "This host is installed with Attachmate Reflection FTP Client and
 
 if(description)
 {
-  script_id(802371);
-  script_version("$Revision: 5367 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802371");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-5012");
   script_bugtraq_id(50691);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:16:52 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-05 16:57:58 +0530 (Wed, 05 Jan 2011)");
   script_name("Attachmate Reflection FTP Client LIST Command Remote Heap Buffer Overflow Vulnerability");
 

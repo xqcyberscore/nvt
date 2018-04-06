@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qianbo_enterprise_web_site_management_47375.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_qianbo_enterprise_web_site_management_47375.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Qianbo Enterprise Web Site Management System 'Keyword' Parameter Cross Site Scripting Vulnerability
 #
@@ -35,9 +35,9 @@ credentials and to launch other attacks.";
 
 if(description)
 {
- script_id(103150);
- script_version("$Revision: 5750 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103150");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_bugtraq_id(47375);
  script_tag(name:"cvss_base", value:"4.3");

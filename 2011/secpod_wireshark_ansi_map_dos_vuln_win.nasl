@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_ansi_map_dos_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_wireshark_ansi_map_dos_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wireshark ANSI A MAP Files Denial of Service Vulnerability (Windows)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(902721);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902721");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-2698");
   script_bugtraq_id(49071);

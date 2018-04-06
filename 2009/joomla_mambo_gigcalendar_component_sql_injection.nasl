@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Joomla! and Mambo gigCalendar Component SQL Injection Vulnerability
 #
@@ -44,9 +44,9 @@ tag_solution = "Update to newer version if available at http://joomlacode.org/gf
 
 if (description)
 {
- script_id(100004);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100004");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

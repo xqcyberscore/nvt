@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-022.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: secpod_ms11-022.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (2489283)
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902411);
-  script_version("$Revision: 6523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902411");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0655", "CVE-2011-0656", "CVE-2011-0976");
   script_tag(name:"cvss_base", value:"9.3");

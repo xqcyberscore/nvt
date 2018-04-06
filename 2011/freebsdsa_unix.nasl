@@ -46,9 +46,9 @@ as announced in the referenced advisory FreeBSD-SA-11:05.unix.asc";
 
 if(description)
 {
- script_id(70416);
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.70416");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-16 23:01:53 +0200 (Sun, 16 Oct 2011)");
  script_name("FreeBSD Security Advisory (FreeBSD-SA-11:05.unix.asc)");
  script_tag(name:"cvss_base", value:"9.3");

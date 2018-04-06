@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-058.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms12-058.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Exchange Server WebReady Document Viewing Remote Code Execution Vulnerabilities (2740358)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(903038);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903038");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1766", "CVE-2012-1767", "CVE-2012-1768", "CVE-2012-1769",
                 "CVE-2012-1770", "CVE-2012-1771", "CVE-2012-1772", "CVE-2012-1773",
                 "CVE-2012-3106", "CVE-2012-3107", "CVE-2012-3108", "CVE-2012-3109",
@@ -49,7 +49,7 @@ if(description)
                     54546, 54504, 54550, 54554, 54506);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 15:41:59 +0530 (Wed, 15 Aug 2012)");
   script_name("MS Exchange Server WebReady Document Viewing Remote Code Execution Vulnerabilities (2740358)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50019/");

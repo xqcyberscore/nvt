@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: symantec_ws_dos.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: symantec_ws_dos.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Symantec Web Security flaws
 #
 # Authors:
@@ -34,9 +34,9 @@ tag_solution = "Upgrade at least to version 3.0.1.85.";
 
 if(description)
 {
- script_id(80020);
- script_version("$Revision: 5676 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80020");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

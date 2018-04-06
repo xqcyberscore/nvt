@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0011.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_VMSA-2012-0011.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0011 VMware Workstation, Player, Fusion, ESXi and ESX patches address security issues.
 #
@@ -85,15 +85,15 @@ Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103495);
+ script_oid("1.3.6.1.4.1.25623.1.0.103495");
  script_cve_id("CVE-2012-3288", "CVE-2012-3289");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5931 $");
+ script_version("$Revision: 9352 $");
  script_name("VMSA-2012-0011 VMware Workstation, Player, Fusion, ESXi and ESX patches address security issues.");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-06-15 10:02:01 +0100 (Fri, 15 Jun 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

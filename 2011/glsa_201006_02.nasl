@@ -45,9 +45,9 @@ advisory GLSA 201006-02.";
 
 if(description)
 {
- script_id(69005);
- script_version("$Revision: 7019 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.69005");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

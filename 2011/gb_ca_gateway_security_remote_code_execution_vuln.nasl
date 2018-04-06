@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # CA Gateway Security Remote Code Execution Vulnerability
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with CA Gateway Security and is prone to
 
 if(description)
 {
-  script_id(802337);
-  script_version("$Revision: 7024 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802337");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-0419");
   script_bugtraq_id(48813);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:35:07 +0530 (Tue, 15 Nov 2011)");
   script_name("CA Gateway Security Remote Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45332");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0508_1.nasl 8253 2017-12-28 06:29:51Z teissa $
+# $Id: gb_suse_2012_0508_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2012:0508-1 (samba)
 #
@@ -44,9 +44,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850289);
-  script_version("$Revision: 8253 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850289");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:28:59 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2012-1182");
   script_tag(name:"cvss_base", value:"10.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_intel_alert_management_system_mult_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_symantec_intel_alert_management_system_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Symantec Intel Alert Management System Multiple Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Symantec AntiVirus Corporate Edition
 
 if(description)
 {
-  script_id(801835);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801835");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2010-0110", "CVE-2010-0111", "CVE-2011-0688");
   script_bugtraq_id(45935,45936);

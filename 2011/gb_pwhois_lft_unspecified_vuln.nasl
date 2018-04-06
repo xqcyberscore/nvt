@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pwhois_lft_unspecified_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_pwhois_lft_unspecified_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # pWhois Layer Four Traceroute (LFT) Unspecified Vulnerability
 #
@@ -34,9 +34,9 @@ tag_summary = "This host is installed with Whois Layer Four Traceroute (LFT) and
 
 if(description)
 {
-  script_id(801915);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801915");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-1652");
   script_tag(name:"cvss_base", value:"5.0");

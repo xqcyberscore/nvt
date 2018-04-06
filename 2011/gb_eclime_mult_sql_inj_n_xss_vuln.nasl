@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
+# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Eclime Multiple SQL Injection and Cross-site Scripting Vulnerabilities
 #
@@ -49,9 +49,9 @@ scripting and SQL injection vulnerabilities.";
 
 if(description)
 {
-  script_id(801990);
-  script_version("$Revision: 5793 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801990");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2010-4851", "CVE-2010-4852");
   script_bugtraq_id(45124);

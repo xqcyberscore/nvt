@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_user_parameter.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: ilohamail_user_parameter.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: IlohaMail User Parameter Vulnerability
 #
 # Authors:
@@ -41,9 +41,9 @@ For a discussion of this vulnerability, see :
 tag_solution = "Upgrade to IlohaMail version 0.8.11 or later.";
 
 if (description) {
-  script_id(14637);
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14637");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9131);
   script_tag(name:"cvss_base", value:"4.3");

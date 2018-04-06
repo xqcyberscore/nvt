@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_css_imp_dos_vuln_lin.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_google_chrome_css_imp_dos_vuln_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Google Chrome 'Webkit' CSS Implementation DoS Vulnerability (Linux)
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is install with Google Chrome and is prone to denial of
 
 if(description)
 {
-  script_id(801774);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801774");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-1691");
   script_tag(name:"cvss_base", value:"5.0");

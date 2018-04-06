@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_dos_vuln_jun09_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
+# $Id: secpod_mozilla_prdts_dos_vuln_jun09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mozilla Thunderbird/Seamonkey DoS Vulnerability June-09 (Linux)
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is installed with Thunderbird/Seamonkey and is prone to
 
 if(description)
 {
-  script_id(900390);
-  script_version("$Revision: 6482 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900390");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

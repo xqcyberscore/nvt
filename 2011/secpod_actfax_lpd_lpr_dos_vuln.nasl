@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_actfax_lpd_lpr_dos_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_actfax_lpd_lpr_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # ActFax LPD/LPR Server Denial of Service Vulnerability
 #
@@ -46,9 +46,9 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(900272);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900272");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");

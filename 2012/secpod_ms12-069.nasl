@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-069.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ms12-069.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(901301);
-  script_version("$Revision: 5351 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901301");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2551");
   script_bugtraq_id(55778);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 09:58:54 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50867/");

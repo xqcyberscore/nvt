@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_aug11_lin.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_adobe_flash_player_mult_vuln_aug11_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities August-2011 (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(902710);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902710");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2130", "CVE-2011-2134", "CVE-2011-2137",
                 "CVE-2011-2135", "CVE-2011-2136", "CVE-2011-2138",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wingate_http_proxy_serv_acl_bypass_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_wingate_http_proxy_serv_acl_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Qbik WinGate HTTP Proxy Server Access Controls Bypass Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running WinGate HTTP Proxy Server and is prone to
 
 if(description)
 {
-  script_id(900325);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900325");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:N");

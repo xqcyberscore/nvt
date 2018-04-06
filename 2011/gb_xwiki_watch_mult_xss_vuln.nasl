@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
+# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # XWiki Watch Multiple Cross Site Scripting Vulnerabilities
 #
@@ -51,9 +51,9 @@ site scripting vulnerabilities.";
 
 if(description)
 {
-  script_id(801564);
-  script_version("$Revision: 7276 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801564");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-4640");
   script_bugtraq_id(44606);

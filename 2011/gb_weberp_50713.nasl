@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weberp_50713.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_weberp_50713.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # webERP Information Disclosure, SQL Injection, and Cross Site Scripting Vulnerabilities
 #
@@ -47,9 +47,9 @@ information.";
 
 if(description)
 {
- script_id(103343);
+ script_oid("1.3.6.1.4.1.25623.1.0.103343");
  script_bugtraq_id(50713);
- script_version ("$Revision: 5751 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("webERP Information Disclosure, SQL Injection, and Cross Site Scripting Vulnerabilities");
@@ -59,7 +59,7 @@ if(description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520561");
  script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_weberp.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-21 08:36:41 +0100 (Mon, 21 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

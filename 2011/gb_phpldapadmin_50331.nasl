@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_50331.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_phpldapadmin_50331.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # phpLDAPadmin 'functions.php' Remote PHP Code Injection Vulnerability
 #
@@ -36,9 +36,9 @@ phpLDAPadmin versions 1.2.0 through 1.2.1.1 are vulnerable.";
 
 if (description)
 {
- script_id(103314);
- script_version("$Revision: 7015 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103314");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-25 16:57:43 +0200 (Tue, 25 Oct 2011)");
  script_bugtraq_id(50331);
  script_tag(name:"cvss_base", value:"7.5");

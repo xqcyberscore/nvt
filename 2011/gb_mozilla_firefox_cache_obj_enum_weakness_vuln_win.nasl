@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (Windows)
 #
@@ -44,12 +44,12 @@ objects history enumeration weakness vulnerability.";
 
 if(description)
 {
-  script_id(802547);
-  script_version("$Revision: 7019 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802547");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4688");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 17:47:27 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47090");

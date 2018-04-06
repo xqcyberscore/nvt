@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1753_1.nasl 8483 2018-01-22 06:58:04Z teissa $
+# $Id: gb_ubuntu_USN_1753_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for dbus-glib USN-1753-1
 #
@@ -41,9 +41,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1753-1/");
-  script_id(841345);
-  script_version("$Revision: 8483 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841345");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:08:21 +0530 (Fri, 01 Mar 2013)");
   script_cve_id("CVE-2013-0292");
   script_tag(name:"cvss_base", value:"7.2");

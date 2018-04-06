@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ghostscript_mult_bof_vuln_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_ghostscript_mult_bof_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Ghostscript Multiple Buffer Overflow Vulnerabilities (Windows).
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with Ghostscript and is prone to
 
 if(description)
 {
-  script_id(900540);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900540");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

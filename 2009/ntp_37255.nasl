@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_37255.nasl 7144 2017-09-15 12:14:43Z cfischer $
+# $Id: ntp_37255.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # NTP mode 7 MODE_PRIVATE Packet Remote Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100399);
- script_version("$Revision: 7144 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100399");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_bugtraq_id(37255);
  script_cve_id("CVE-2009-3563");

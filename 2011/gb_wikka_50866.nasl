@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikka_50866.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_wikka_50866.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # WikkaWiki Multiple Security Vulnerabilities
 #
@@ -42,17 +42,17 @@ WikkaWiki 1.3.2 and prior versions are vulnerable.";
 
 if (description)
 {
- script_id(103350);
+ script_oid("1.3.6.1.4.1.25623.1.0.103350");
  script_bugtraq_id(50866);
  script_cve_id("CVE-2011-4448","CVE-2011-4449","CVE-2011-4450","CVE-2011-4451");
- script_version ("$Revision: 5719 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("WikkaWiki Multiple Security Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50866");
  script_xref(name : "URL" , value : "http://wikkawiki.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520687");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-01 11:51:48 +0100 (Thu, 01 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

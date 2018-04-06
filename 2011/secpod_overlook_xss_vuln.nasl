@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_xss_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
+# $Id: secpod_overlook_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OPEN IT OverLook 'title.php' Cross Site Scripting Vulnerability
 #
@@ -47,9 +47,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(902514);
-  script_version("$Revision: 5668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902514");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2010-4792");
   script_bugtraq_id(43872);

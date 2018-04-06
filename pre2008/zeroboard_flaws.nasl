@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zeroboard_flaws.nasl 5783 2017-03-30 09:03:43Z cfi $
+# $Id: zeroboard_flaws.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Zeroboard flaws
 #
 # Authors:
@@ -44,9 +44,9 @@ tag_solution = "Upgrade to Zeroboard 4.1pl5 or later.";
 
 if(description)
 {
-  script_id(16059);
-  script_version("$Revision: 5783 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.16059");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1419");
   script_bugtraq_id(12103);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_teams_sql_inj_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_joomla_teams_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla 'Teams' Component SQL Injection Vulnerability
 #
@@ -44,12 +44,12 @@ SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802189);
-  script_version("$Revision: 7006 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802189");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2010-4941");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-09 13:02:45 +0530 (Wed, 09 Nov 2011)");
   script_name("Joomla 'Teams' Component SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/40933");

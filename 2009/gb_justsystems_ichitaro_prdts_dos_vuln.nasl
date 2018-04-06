@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_prdts_dos_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_justsystems_ichitaro_prdts_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # JustSystems Ichitaro Products Denial Of Service Vulnerability.
 #
@@ -44,9 +44,9 @@ tag_summary = "This host has JustSystems Ichitaro product(s) installed and
 
 if(description)
 {
-  script_id(800544);
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800544");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

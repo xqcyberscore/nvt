@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_django_algorithmic_complexity_vuln.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: secpod_django_algorithmic_complexity_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Django Forms Library Algorithmic Complexity Vulnerability
 #
@@ -40,9 +40,9 @@ CPE = "cpe:/a:django_project:django";
 
 if(description)
 {
-  script_id(900882);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900882");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

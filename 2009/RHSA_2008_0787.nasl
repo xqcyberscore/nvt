@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RHSA_2008_0787.nasl 6683 2017-07-12 09:41:57Z cfischer $
+# $Id: RHSA_2008_0787.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory RHSA-2008:0787 ()
 #
 # Authors:
@@ -46,9 +46,9 @@ http://www.redhat.com/security/updates/classification/#important";
 
 if(description)
 {
- script_id(63097);
- script_version("$Revision: 6683 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:41:57 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63097");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-01-07 23:16:01 +0100 (Wed, 07 Jan 2009)");
  script_cve_id("CVE-2007-3848", "CVE-2006-4538", "CVE-2006-4814", "CVE-2007-4308", "CVE-2007-2172", "CVE-2007-6063", "CVE-2007-6206", "CVE-2007-6151", "CVE-2008-0007", "CVE-2008-2136", "CVE-2008-3275", "CVE-2008-3525", "CVE-2008-4210");
  script_tag(name:"cvss_base", value:"7.8");

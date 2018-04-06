@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_win_02_aug11.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: secpod_realplayer_mult_vuln_win_02_aug11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Aug11
 #
@@ -47,9 +47,9 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 
 if(description)
 {
-  script_id(902624);
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902624");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2946", "CVE-2011-2948", "CVE-2011-2949", "CVE-2011-2952",
                 "CVE-2011-2953", "CVE-2011-2955", "CVE-2011-2947");

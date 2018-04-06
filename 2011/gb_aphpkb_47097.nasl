@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aphpkb_47097.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_aphpkb_47097.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Andy's PHP Knowledgebase 's' Parameter SQL Injection Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please contact the vendor for more inform
 
 if(description)
 {
- script_id(103135);
- script_version("$Revision: 5747 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103135");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-31 17:03:50 +0200 (Thu, 31 Mar 2011)");
  script_bugtraq_id(47097);
  script_tag(name:"cvss_base", value:"7.5");

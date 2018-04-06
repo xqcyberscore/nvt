@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxmail_mailto_bof_vuln.nasl 4918 2017-01-02 14:56:10Z cfi $
+# $Id: gb_foxmail_mailto_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FoxMail Client Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with FoxMail Client and is prone to Buffer
 
 if(description)
 {
-  script_id(800220);
-  script_version("$Revision: 4918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:56:10 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800220");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

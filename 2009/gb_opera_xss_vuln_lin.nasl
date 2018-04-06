@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xss_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_opera_xss_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Opera Web Browser 'Refresh' Header XSS Vulnerabilities (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to
 
 if(description)
 {
-  script_id(800652);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800652");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

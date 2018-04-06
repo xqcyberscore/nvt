@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_may13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_may13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 May13 (Windows)
 #
@@ -43,8 +43,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-  script_id(803704);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803704");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2836", "CVE-2013-2837", "CVE-2013-2838", "CVE-2013-2839",
                 "CVE-2013-2840", "CVE-2013-2841", "CVE-2013-2842", "CVE-2013-2843",
                 "CVE-2013-2844", "CVE-2013-2845", "CVE-2013-2846", "CVE-2013-2847",
@@ -53,7 +53,7 @@ if(description)
                     60076, 60070, 60071, 60073, 60063);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-24 11:34:46 +0530 (Fri, 24 May 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

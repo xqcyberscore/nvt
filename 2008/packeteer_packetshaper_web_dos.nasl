@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_packetshaper_web_dos.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: packeteer_packetshaper_web_dos.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Packeteer PacketShaper Web Denial of Service
 #
 # Authors:
@@ -38,9 +38,9 @@ even read-only access is sufficient.";
 
 if (description)
     {
-    script_id(80030);
-    script_version("$Revision: 7293 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+    script_oid("1.3.6.1.4.1.25623.1.0.80030");
+    script_version("$Revision: 9349 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

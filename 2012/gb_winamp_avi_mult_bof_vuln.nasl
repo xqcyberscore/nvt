@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_avi_mult_bof_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_winamp_avi_mult_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Winamp 'AVI' File Multiple Heap-based Buffer Overflow Vulnerabilities
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is installed with Winamp and is prone to heap-based
 
 if(description)
 {
-  script_id(802926);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802926");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4045");
   script_bugtraq_id(54131);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:57:35 +0530 (Thu, 02 Aug 2012)");
   script_name("Winamp 'AVI' File Multiple Heap-based Buffer Overflow Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46624");

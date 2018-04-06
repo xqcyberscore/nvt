@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)
 #
@@ -37,8 +37,8 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 
 if(description)
 {
-  script_id(802813);
-  script_version("$Revision: 6521 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802813");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0647", "CVE-2012-0585", "CVE-2011-3881", "CVE-2012-0586",
                 "CVE-2012-0587", "CVE-2012-0588", "CVE-2012-0589", "CVE-2011-3887",
                 "CVE-2012-0590", "CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846",
@@ -73,7 +73,7 @@ if(description)
                     52363, 52423, 52421);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5190");

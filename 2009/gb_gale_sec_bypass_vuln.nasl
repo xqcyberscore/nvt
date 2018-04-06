@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gale_sec_bypass_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: gb_gale_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Gale EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is running Gale and is prone to security bypass
 
 if(description)
 {
-  script_id(800340);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800340");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-19 13:47:40 +0100 (Mon, 19 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

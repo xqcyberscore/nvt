@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_ja_t3_framework_com_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_joomla_ja_t3_framework_com_dir_trav_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla! JA T3 Framework Component Directory Traversal Vulnerability
 #
@@ -45,12 +45,12 @@ prone to directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(902672);
-  script_version("$Revision: 7577 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902672");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(53039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:38:13 +0530 (Wed, 25 Apr 2012)");
   script_name("Joomla! JA T3 Framework Component Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18065");

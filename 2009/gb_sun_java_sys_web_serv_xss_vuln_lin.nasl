@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sun Java System Web Server XSS Vulnerability (Linux)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host has Sun Java Web Server running on Linux, which is pron
 
 if(description)
 {
-  script_id(800812);
-  script_version("$Revision: 5158 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800812");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

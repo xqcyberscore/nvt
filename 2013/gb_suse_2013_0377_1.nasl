@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0377_1.nasl 8466 2018-01-19 06:58:30Z teissa $
+# $Id: gb_suse_2013_0377_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2013:0377-1 (java-1_7_0-openjdk)
 #
@@ -100,9 +100,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00001.html");
-  script_id(850419);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850419");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:35 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0428", "CVE-2013-0429", "CVE-2013-0431", "CVE-2013-0432",

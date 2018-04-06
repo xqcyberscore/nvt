@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3775.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3775.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3775-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,8 +29,8 @@
 
 if(description)
 {
-    script_id(703775);
-    script_version("$Revision: 6607 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703775");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2016-7922", "CVE-2016-7923", "CVE-2016-7924", "CVE-2016-7925",
                   "CVE-2016-7926", "CVE-2016-7927", "CVE-2016-7928", "CVE-2016-7929",
                   "CVE-2016-7930", "CVE-2016-7931", "CVE-2016-7932", "CVE-2016-7933",
@@ -43,7 +43,7 @@ if(description)
                   "CVE-2017-5482", "CVE-2017-5483", "CVE-2017-5484", "CVE-2017-5485",
                   "CVE-2017-5486");
     script_name("Debian Security Advisory DSA 3775-1 (tcpdump - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-01-29 00:00:00 +0100 (Sun, 29 Jan 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

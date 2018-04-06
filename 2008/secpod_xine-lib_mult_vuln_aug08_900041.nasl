@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities (Aug-08)
 #
 # Authors:
@@ -44,9 +44,9 @@ vulnerabilities.";
 
 if(description)
 {
- script_id(900041);
- script_version("$Revision: 7823 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900041");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-27 11:53:45 +0200 (Wed, 27 Aug 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"5.1");

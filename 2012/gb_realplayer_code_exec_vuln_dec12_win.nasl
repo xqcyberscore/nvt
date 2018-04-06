@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 
 if(description)
 {
-  script_id(803088);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803088");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5690", "CVE-2012-5691");
   script_bugtraq_id(56956);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-25 10:46:45 +0530 (Tue, 25 Dec 2012)");
   script_name("RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51589");

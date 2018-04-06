@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_mar11_macosx.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_wireshark_dos_vuln_mar11_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability March-11 (Mac OS X)
 #
@@ -37,13 +37,13 @@ tag_summary = "The host is installed with Wireshark and is prone to multiple DoS
 
 if(description)
 {
-  script_id(802900);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802900");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-1138");
   script_bugtraq_id(46636);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:29:48 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Denial of Service Vulnerability March-11 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-04.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dorg_mult_vuln.nasl 5886 2017-04-07 07:52:03Z teissa $
+# $Id: gb_dorg_mult_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
 #
 # Disc Organization System (DORG) Multiple Vulnerabilities
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:dorg:dorg";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806697");
-  script_version("$Revision: 5886 $");
+  script_version("$Revision: 9334 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 09:52:03 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:25:02 +0530 (Wed, 06 Apr 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
   script_name("Disc Organization System (DORG) Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Disc Organization System
@@ -54,8 +55,10 @@ if(description)
 
   script_tag(name: "affected" , value:"Disc Organization System version 1.1.0");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
-");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least
+  one year since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39580");

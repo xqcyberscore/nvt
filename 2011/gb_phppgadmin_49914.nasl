@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phppgadmin_49914.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_phppgadmin_49914.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # phpPgAdmin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ information.";
 
 if (description)
 {
- script_id(103295);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103295");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-12 15:33:11 +0200 (Wed, 12 Oct 2011)");
  script_bugtraq_id(49914);
  script_cve_id("CVE-2011-3598");

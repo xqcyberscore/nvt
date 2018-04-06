@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51794.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_phpldapadmin_51794.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ vulnerable.";
 
 if (description)
 {
- script_id(103406);
+ script_oid("1.3.6.1.4.1.25623.1.0.103406");
  script_bugtraq_id(51794);
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://packages.debian.org/lenny/phpldapadmin");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521450");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

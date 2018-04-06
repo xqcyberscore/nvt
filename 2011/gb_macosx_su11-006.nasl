@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-006.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_macosx_su11-006.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mac OS X v10.6.8 Multiple Vulnerabilities (2011-006)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(802336);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802336");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-0419", "CVE-2011-3192", "CVE-2011-0185", "CVE-2011-3437",
                 "CVE-2011-0229", "CVE-2011-0230", "CVE-2011-1910", "CVE-2011-2464",

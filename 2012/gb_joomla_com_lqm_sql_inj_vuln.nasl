@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_lqm_sql_inj_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_joomla_com_lqm_sql_inj_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla lqm Component 'Itemid' Parameter SQL Injection Vulnerability
 #
@@ -45,12 +45,12 @@ injection vulnerability.";
 
 if(description)
 {
-  script_id(802743);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802743");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Joomla lqm Component 'Itemid' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 15:08:38 +0530 (Thu, 12 Apr 2012)");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/18034");
   script_xref(name : "URL" , value : "http://www.allinfosec.com/2012/04/10/webapps-0day-joomla-component-com_lqm-sql-injection-vulnerability/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: slident.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: slident.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Detect slident and or fake identd
 #
@@ -26,10 +26,10 @@
 
 if(description)
 {
-  script_id(18373);
+  script_oid("1.3.6.1.4.1.25623.1.0.18373");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detect slident and or fake identd");

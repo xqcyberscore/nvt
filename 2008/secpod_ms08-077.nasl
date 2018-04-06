@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-077.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms08-077.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Vulnerability in Microsoft Office SharePoint Server Could Cause Elevation of Privilege (957175)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900064);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900064");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

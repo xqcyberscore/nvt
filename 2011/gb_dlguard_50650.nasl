@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlguard_50650.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_dlguard_50650.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # DLGuard 'index.php' Cross Site Scripting Vulnerability
 #
@@ -34,9 +34,9 @@ credentials and launch other attacks.";
 
 if(description)
 {
- script_id(103340);
+ script_oid("1.3.6.1.4.1.25623.1.0.103340");
  script_bugtraq_id(50650);
- script_version ("$Revision: 5749 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
@@ -45,7 +45,7 @@ if(description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50650");
  script_xref(name : "URL" , value : "http://www.dlguard.com/dlginfo/index.php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-16 11:40:52 +0100 (Wed, 16 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

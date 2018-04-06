@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sourcefabric_newscoop_52941.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_sourcefabric_newscoop_52941.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -41,11 +41,11 @@ tag_solution = "Updates are available. Please see the references for more detail
 
 if (description)
 {
- script_id(103461);
+ script_oid("1.3.6.1.4.1.25623.1.0.103461");
  script_bugtraq_id(52941);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5700 $");
+ script_version("$Revision: 9352 $");
  script_cve_id("CVE-2012-1934");
  script_name("Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52941");
@@ -55,7 +55,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.sourcefabric.org/en/products/newscoop_release/570/Newscoop-352-is-out!.htm");
  script_xref(name : "URL" , value : "http://dev.sourcefabric.org/browse/CS-4181");
  script_xref(name : "URL" , value : "http://www.sourcefabric.org/en/newscoop/latestrelease/1141/Newscoop-355-and-Newscoop-4-RC4-security-releases.htm");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-10 10:02:36 +0200 (Tue, 10 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

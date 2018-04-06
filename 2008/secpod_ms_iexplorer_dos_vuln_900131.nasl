@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iexplorer_dos_vuln_900131.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms_iexplorer_dos_vuln_900131.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Microsoft Internet Explorer Denial of Service Vulnerability
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_summary = "The host has Microsoft Internet Explorer installed, which is pron
 
 if(description)
 {
- script_id(900131);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900131");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-26 07:36:49 +0200 (Fri, 26 Sep 2008)");
  script_cve_id("CVE-2008-4127");
  script_bugtraq_id(31215);

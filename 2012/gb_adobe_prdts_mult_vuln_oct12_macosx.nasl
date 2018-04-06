@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_oct12_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_adobe_prdts_mult_vuln_oct12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - October 12 (Mac OS X)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(802987);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802987");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5248", "CVE-2012-5249", "CVE-2012-5250", "CVE-2012-5251",
                 "CVE-2012-5252", "CVE-2012-5253", "CVE-2012-5254", "CVE-2012-5255",
                 "CVE-2012-5256", "CVE-2012-5257", "CVE-2012-5258", "CVE-2012-5259",
@@ -51,7 +51,7 @@ if(description)
   script_bugtraq_id(55827, 56374, 56375, 56376, 56377);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:53:03 +0530 (Mon, 15 Oct 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - October 12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50876/");

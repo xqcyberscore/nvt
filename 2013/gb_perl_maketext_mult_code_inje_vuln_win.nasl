@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_maketext_mult_code_inje_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_perl_maketext_mult_code_inje_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Strawberry Perl Locale::Maketext Module Multiple Code Injection Vulnerabilities (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to multip
 
 if(description)
 {
-  script_id(803162);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803162");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-6329");
   script_bugtraq_id(56852);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 12:42:04 +0530 (Thu, 24 Jan 2013)");
   script_name("Strawberry Perl Locale::Maketext Module Multiple Code Injection Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51498");

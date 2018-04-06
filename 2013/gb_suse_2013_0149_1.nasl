@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0149_1.nasl 8456 2018-01-18 06:58:40Z teissa $
+# $Id: gb_suse_2013_0149_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:0149-1 (Mozilla)
 #
@@ -104,9 +104,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00017.html");
-  script_id(850391);
-  script_version("$Revision: 8456 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850391");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:16 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5829", "CVE-2013-0744", "CVE-2013-0745",
                 "CVE-2013-0746", "CVE-2013-0747", "CVE-2013-0748", "CVE-2013-0749",

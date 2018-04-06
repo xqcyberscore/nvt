@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # WS_FTP Server Manager Security Bypass Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with WS_FTP Server and is prone to Securit
 
 if(description)
 {
-  script_id(900451);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900451");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

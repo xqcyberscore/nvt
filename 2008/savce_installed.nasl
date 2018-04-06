@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: savce_installed.nasl 8374 2018-01-11 10:55:51Z cfischer $
+# $Id: savce_installed.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Symantec Anti Virus Corporate Edition Check
 #
 # Authors:
@@ -37,10 +37,10 @@ VDEFS.";
 
 if(description)
 {
- script_id(80040);
- script_version("$Revision: 8374 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80040");
+ script_version("$Revision: 9349 $");
  script_tag(name:"deprecated", value:TRUE);
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

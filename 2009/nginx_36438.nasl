@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_36438.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: nginx_36438.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # nginx Proxy DNS Cache Domain Spoofing Vulnerability
 #
@@ -39,9 +39,9 @@ intended for legitimate websites, which may aid in further attacks.";
 
 if (description)
 {
- script_id(100277);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100277");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
  script_bugtraq_id(36438);
  script_tag(name:"cvss_base", value:"5.0");

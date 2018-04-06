@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-013.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_ms14-013.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft DirectShow Remote Code Execution Vulnerability (2929961)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(802068);
-  script_version("$Revision: 6715 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802068");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-0301");
   script_bugtraq_id(66045);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:12:10 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft DirectShow Remote Code Execution Vulnerability (2929961)");

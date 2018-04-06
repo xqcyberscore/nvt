@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft IIS IP Address/Internal Network Name Disclosure Vulnerability
 #
@@ -45,10 +45,10 @@ tag_summary = "The host is running Microsoft IIS Webserver and is prone to
 
 if(description)
 {
-  script_id(902796);
-  script_version("$Revision: 5698 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902796");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(3159);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-23 15:45:49 +0530 (Thu, 23 Feb 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

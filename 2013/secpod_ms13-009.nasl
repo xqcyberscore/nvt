@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-009.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: secpod_ms13-009.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2792100)
 #
@@ -53,8 +53,8 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(903300);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903300");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0015", "CVE-2013-0018", "CVE-2013-0019", "CVE-2013-0020",
                 "CVE-2013-0021", "CVE-2013-0022", "CVE-2013-0023", "CVE-2013-0024",
                 "CVE-2013-0025", "CVE-2013-0026", "CVE-2013-0027", "CVE-2013-0028",
@@ -63,7 +63,7 @@ if(description)
                     57831, 57832, 57833, 57834);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 08:14:01 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2792100)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52122/");

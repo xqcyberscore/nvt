@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_file_corruption.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: opera_file_corruption.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Opera relative path directory traversal file corruption vulnerability
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_solution = "Install Opera 7.23 or newer.";
 
 if(description)
 {
-  script_id(14246);
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14246");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9279);
   script_tag(name:"cvss_base", value:"4.3");

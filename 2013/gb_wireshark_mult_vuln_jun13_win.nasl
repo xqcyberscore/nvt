@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_jun13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_wireshark_mult_vuln_jun13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities - June 13 (Windows)
 #
@@ -47,14 +47,14 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(803654);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803654");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-4082", "CVE-2013-4080", "CVE-2013-4079", "CVE-2013-4078",
                 "CVE-2013-4077", "CVE-2013-4076", "CVE-2013-4075");
   script_bugtraq_id(60506, 60503, 60498, 60495, 60502, 60499, 60501);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:30:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple Vulnerabilities - June 13 (Windows)");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028648");

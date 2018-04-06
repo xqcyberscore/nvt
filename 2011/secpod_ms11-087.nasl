@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-087.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms11-087.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Windows Kernel-Mode Drivers Remote Code Execution Vulnerability (2639417)
 #
@@ -50,13 +50,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902767);
-  script_version("$Revision: 8724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902767");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3402");
   script_bugtraq_id(50462);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 09:28:44 +0530 (Wed, 14 Dec 2011)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2567053)");
   script_xref(name : "URL" , value : "https://secunia.com/advisories/46724/");

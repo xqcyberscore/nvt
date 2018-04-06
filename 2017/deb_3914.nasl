@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3914.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: deb_3914.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3914-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703914);
-    script_version("$Revision: 6800 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703914");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-10928", "CVE-2017-11141", "CVE-2017-11170", "CVE-2017-11188", "CVE-2017-11352", "CVE-2017-11360", "CVE-2017-11447", "CVE-2017-11448", "CVE-2017-11449", "CVE-2017-11450", "CVE-2017-9439", "CVE-2017-9440", "CVE-2017-9500", "CVE-2017-9501");
     script_name("Debian Security Advisory DSA 3914-1 (imagemagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-18 00:00:00 +0200 (Tue, 18 Jul 2017)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

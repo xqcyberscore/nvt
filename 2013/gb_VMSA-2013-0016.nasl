@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0016.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_VMSA-2013-0016.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX
 #
@@ -67,17 +67,17 @@ the privilege "Add Existing Disk".';
 
 if (description)
 {
- script_id(103863);
+ script_oid("1.3.6.1.4.1.25623.1.0.103863");
  script_cve_id("CVE-2013-5973");
  script_tag(name:"cvss_base", value:"4.4");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6086 $");
+ script_version ("$Revision: 9353 $");
  script_name("VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0016.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-12-27 10:04:01 +0100 (Fri, 27 Dec 2013)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_unspecified_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_oracle_virtualbox_unspecified_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
 
 if(description)
 {
-  script_id(902549);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902549");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-2300");
   script_bugtraq_id(48793);

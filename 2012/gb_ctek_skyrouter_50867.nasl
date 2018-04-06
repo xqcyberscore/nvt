@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ctek_skyrouter_50867.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_ctek_skyrouter_50867.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability
 #
@@ -35,11 +35,11 @@ compromise of the affected device.";
 
 if (description)
 {
- script_id(103479);
+ script_oid("1.3.6.1.4.1.25623.1.0.103479");
  script_bugtraq_id(50867);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5841 $");
+ script_version("$Revision: 9352 $");
  script_cve_id("CVE-2011-5010");
 
  script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
@@ -47,7 +47,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50867");
  script_xref(name : "URL" , value : "http://www.ctekproducts.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities - Feb11 (Windows)
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 
 if(description)
 {
-  script_id(902344);
-  script_version("$Revision: 7699 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902344");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4454", "CVE-2010-4462",
                 "CVE-2010-4465", "CVE-2010-4466", "CVE-2010-4469", "CVE-2010-4473",

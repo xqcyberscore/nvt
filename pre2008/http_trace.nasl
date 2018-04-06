@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_trace.nasl 6768 2017-07-20 08:06:19Z cfischer $
+# $Id: http_trace.nasl 9348 2018-04-06 07:01:19Z cfischer $
 #
 # HTTP TRACE
 #
@@ -30,9 +30,9 @@
 
 if(description)
 {
-  script_id(11040);
-  script_version("$Revision: 6768 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 10:06:19 +0200 (Thu, 20 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.11040");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

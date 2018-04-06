@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_xwork_info_disc_vuln.nasl 5497 2017-03-06 10:23:23Z teissa $
+# $Id: gb_apache_struts_xwork_info_disc_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apache Struts2 'XWork' Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 CPE = "cpe:/a:apache:struts";
 if(description)
 {
-  script_id(801940);
-  script_version("$Revision: 5497 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801940");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-2088");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 11:23:23 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

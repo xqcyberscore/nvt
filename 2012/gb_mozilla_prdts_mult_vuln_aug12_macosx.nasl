@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -58,8 +58,8 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 
 if(description)
 {
-  script_id(803012);
-  script_version("$Revision: 6445 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803012");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-3959", "CVE-2012-3958", "CVE-2012-3957", "CVE-2012-3972",
                 "CVE-2012-3956", "CVE-2012-3971", "CVE-2012-1976", "CVE-2012-3970",
                 "CVE-2012-1975", "CVE-2012-3969", "CVE-2012-1974", "CVE-2012-3968",
@@ -68,7 +68,7 @@ if(description)
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 12:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)");
 

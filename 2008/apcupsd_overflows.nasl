@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apcupsd_overflows.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: apcupsd_overflows.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: apcupsd overflows
 #
 # Authors:
@@ -31,9 +31,9 @@ allow an attacker to gain a root shell on this host.
 
 if(description)
 {
-  script_id(80014);
-  script_version("$Revision: 3854 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80014");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(2070, 6828, 7200);
   script_cve_id("CVE-2001-0040", "CVE-2003-0098", "CVE-2003-0099");

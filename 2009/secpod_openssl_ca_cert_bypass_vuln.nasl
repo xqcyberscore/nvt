@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # OpenSSL CA Certificate Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running OpenSSL and is prone to Security Bypass
 
 if(description)
 {
-  script_id(900464);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900464");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

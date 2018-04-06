@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_mult_vuln_nov08_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_seamonkey_mult_vuln_nov08_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities November-08 (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Mozilla Seamonkey and is prone
 
 if(description)
 {
-  script_id(800061);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800061");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: idb_34397.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: idb_34397.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # iDB 'skin' Parameter Local File Include Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "iDB (Internet Discussion Boards) is prone to a local file-include
 
 if (description)
 {
- script_id(100110);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100110");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-07 09:57:50 +0200 (Tue, 07 Apr 2009)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

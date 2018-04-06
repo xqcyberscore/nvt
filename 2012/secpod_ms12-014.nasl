@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-014.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-014.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902792);
-  script_version("$Revision: 5341 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902792");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2010-3138");
   script_bugtraq_id(42730);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:02:52 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41114/");

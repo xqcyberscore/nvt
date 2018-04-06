@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avg_antivirus_dos_vuln_900017.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_avg_antivirus_dos_vuln_900017.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: AVG Anti-Virus UPX Processing Denial of Service Vulnerability
 #
 # Authors:
@@ -42,9 +42,9 @@ tag_summary = "The remote host is installed with AVG AntiVirus, which is prone
 
 if(description)
 {
- script_id(900017);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900017");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-3373");
  script_bugtraq_id(30417);

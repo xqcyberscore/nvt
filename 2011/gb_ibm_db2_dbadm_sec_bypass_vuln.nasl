@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dbadm_sec_bypass_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_ibm_db2_dbadm_sec_bypass_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBM DB2 DBADM Privilege Revocation Security Bypass Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is running IBM DB2 and is prone to security bypass
 
 if(description)
 {
-  script_id(801588);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801588");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46064);
   script_cve_id("CVE-2011-0757");

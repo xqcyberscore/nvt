@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar13_lin.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_mar13_lin.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 March 2013 (Linux)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(803314);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803314");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0879","CVE-2013-0880","CVE-2013-0881","CVE-2013-0882",
                 "CVE-2013-0883","CVE-2013-0884","CVE-2013-0885","CVE-2013-0887",
                 "CVE-2013-0888","CVE-2013-0889","CVE-2013-0890","CVE-2013-0891",
@@ -49,7 +49,7 @@ if(description)
   script_bugtraq_id(58101);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 10:16:26 +0530 (Fri, 01 Mar 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 March 2013 (Linux)");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/438026.php");

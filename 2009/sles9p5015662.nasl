@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sles9p5015662.nasl 6666 2017-07-11 13:13:36Z cfischer $
+# $Id: sles9p5015662.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Security update for PHP4
 #
 # Authors:
@@ -92,9 +92,9 @@ tag_solution = "Please install the updates provided by SuSE.";
                                                                                 
 if(description)
 {
- script_id(65266);
- script_version("$Revision: 6666 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.65266");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-10 16:11:46 +0200 (Sat, 10 Oct 2009)");
  script_cve_id("CVE-2007-1660", "CVE-2006-7225", "CVE-2006-7224", "CVE-2006-7226", "CVE-2007-1659", "CVE-2006-7230", "CVE-2007-5898", "CVE-2007-4825", "CVE-2007-4782", "CVE-2007-4840", "CVE-2007-4784", "CVE-2007-3998", "CVE-2007-4661", "CVE-2007-2872", "CVE-2007-3996", "CVE-2007-4658");
  script_tag(name:"cvss_base", value:"7.5");

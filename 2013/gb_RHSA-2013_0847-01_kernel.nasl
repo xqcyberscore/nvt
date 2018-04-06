@@ -78,9 +78,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(870999);
-  script_version("$Revision: 6687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.870999");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 09:54:21 +0530 (Thu, 23 May 2013)");
   script_cve_id("CVE-2013-0153");
   script_tag(name:"cvss_base", value:"4.7");

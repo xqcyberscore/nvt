@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_truncation_dialog_code_exec_vuln_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_opera_truncation_dialog_code_exec_vuln_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Opera Truncated Dialogs Code Execution Vulnerability (Mac OS X)
 #
@@ -44,13 +44,13 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-  script_id(803149);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803149");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-6460");
   script_bugtraq_id(55301);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 16:34:42 +0530 (Mon, 07 Jan 2013)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3202.nasl 8646 2018-02-02 16:20:32Z cfischer $
+# $Id: deb_3202.nasl 9355 2018-04-06 07:16:07Z cfischer $
 # Auto-generated from advisory DSA 3202-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703202);
-    script_version("$Revision: 8646 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703202");
+    script_version("$Revision: 9355 $");
     script_cve_id("CVE-2015-2318", "CVE-2015-2319", "CVE-2015-2320");
     script_name("Debian Security Advisory DSA 3202-1 (mono - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-02-02 17:20:32 +0100 (Fri, 02 Feb 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2015-03-22 00:00:00 +0100 (Sun, 22 Mar 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3862.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: deb_3862.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3862-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703862);
-    script_version("$Revision: 6757 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703862");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-2295");
     script_name("Debian Security Advisory DSA 3862-1 (puppet - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-05-25 00:00:00 +0200 (Thu, 25 May 2017)");
     script_tag(name:"cvss_base", value:"6.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");

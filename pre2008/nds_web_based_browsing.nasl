@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nds_web_based_browsing.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: nds_web_based_browsing.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Novell Web Server NDS Tree Browsing
 #
 # Authors:
@@ -37,9 +37,9 @@ For More Information: http://www.securiteam.com/securitynews/5XP0L1555W.html";
 
 if(description)
 {
- script_id(10739); 
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10739"); 
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(484);
  script_cve_id("CVE-1999-1020");

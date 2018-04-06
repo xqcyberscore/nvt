@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_packagekit_format_string_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_macosx_packagekit_format_string_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apple Mac OS X PackageKit Format String Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902715);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902715");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-23 07:05:00 +0200 (Tue, 23 Aug 2011)");
   script_cve_id("CVE-2010-4013");
   script_bugtraq_id(45693);

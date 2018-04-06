@@ -45,12 +45,12 @@ advisory GLSA 201208-01.";
                                                                                 
 if(description)
 {
- script_id(71851);
+ script_oid("1.3.6.1.4.1.25623.1.0.71851");
  script_tag(name:"cvss_base", value:"6.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-0219");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:34:52 -0400 (Thu, 30 Aug 2012)");
  script_name("Gentoo Security Advisory GLSA 201208-01 (socat)");
 

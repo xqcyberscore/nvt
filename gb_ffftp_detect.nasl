@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffftp_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_ffftp_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # FFFTP Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the version of FFFTP client and saves the
 
 if(description)
 {
-  script_id(800532);
+  script_oid("1.3.6.1.4.1.25623.1.0.800532");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FFFTP Version Detection");

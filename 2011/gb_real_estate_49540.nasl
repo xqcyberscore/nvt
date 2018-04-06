@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_real_estate_49540.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_real_estate_49540.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # MYRE Real Estate Software 'findagent.php' Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -34,9 +34,9 @@ underlying database.";
 
 if(description)
 {
- script_id(103250);
- script_version("$Revision: 5751 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103250");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-12 14:00:02 +0200 (Mon, 12 Sep 2011)");
  script_bugtraq_id(49540);
  script_tag(name:"cvss_base", value:"4.3");

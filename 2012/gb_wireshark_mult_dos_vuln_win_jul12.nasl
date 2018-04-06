@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_win_jul12.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln_win_jul12.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Windows)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(802907);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802907");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2392", "CVE-2012-2393", "CVE-2012-3825", "CVE-2012-3826");
   script_bugtraq_id(53651, 53652);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-05 13:52:34 +0530 (Thu, 05 Jul 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49226/");

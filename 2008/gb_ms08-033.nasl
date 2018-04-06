@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-033.nasl 5863 2017-04-05 07:38:11Z antu123 $
+# $Id: gb_ms08-033.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Vulnerabilities in DirectX Could Allow Remote Code Execution (951698)
 #
@@ -50,9 +50,9 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
 
 if(description)
 {
-  script_id(800104);
-  script_version("$Revision: 5863 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800104");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-09-30 14:16:17 +0200 (Tue, 30 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

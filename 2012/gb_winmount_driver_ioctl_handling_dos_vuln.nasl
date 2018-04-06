@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winmount_driver_ioctl_handling_dos_vuln.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: gb_winmount_driver_ioctl_handling_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # WinMount 'WMDrive.sys' Driver IOCTL Handling Denial of Service Vulnerability
 #
@@ -45,13 +45,13 @@ service vulnerability.";
 
 if(description)
 {
-  script_id(802372);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802372");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-5032");
   script_bugtraq_id(51034);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 11:24:26 +0530 (Fri, 06 Jan 2012)");
   script_name("WinMount 'WMDrive.sys' Driver IOCTL Handling Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46872/");

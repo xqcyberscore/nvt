@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_udf_filesys_bof_vuln_lin.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_vmware_prdts_udf_filesys_bof_vuln_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # VMware Products UDF File Systems Buffer Overflow Vulnerability (Linux)
 #
@@ -41,13 +41,13 @@ tag_summary = "The host is installed with VMWare products and are prone to
 
 if(description)
 {
-  script_id(902490);
-  script_version("$Revision: 7044 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902490");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3868");
   script_bugtraq_id(49942);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-17 15:10:19 +0530 (Thu, 17 Nov 2011)");
   script_name("VMware Products UDF File Systems Buffer Overflow Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46241");

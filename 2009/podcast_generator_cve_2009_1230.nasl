@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: podcast_generator_cve_2009_1230.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: podcast_generator_cve_2009_1230.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Podcast Generator 'core/admin/delete.php' Arbitrary File Deletion
 # Vulnerability
@@ -39,9 +39,9 @@ tag_solution = "The vendor has released an update. Please see http://podcastgen.
 
 if (description)
 {
- script_id(100135);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100135");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_bugtraq_id(34317);
  script_cve_id("CVE-2009-1230");

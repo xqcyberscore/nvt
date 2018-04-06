@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-034.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms11-034.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2506223)
 #
@@ -49,9 +49,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900283);
-  script_version("$Revision: 8724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900283");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(47194, 47202, 47203, 47204, 47205, 47206, 47207, 47209, 47210, 47211, 47212,
                     47213, 47214, 47215, 47216, 47217, 47218, 47219, 47234, 47220, 47224, 47225,

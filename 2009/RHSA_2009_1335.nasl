@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RHSA_2009_1335.nasl 6683 2017-07-12 09:41:57Z cfischer $
+# $Id: RHSA_2009_1335.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory RHSA-2009:1335 ()
 #
 # Authors:
@@ -65,9 +65,9 @@ Hat Enterprise Linux calls this function, for example.";
 
 if(description)
 {
- script_id(64799);
- script_version("$Revision: 6683 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:41:57 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64799");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-09-09 02:15:49 +0200 (Wed, 09 Sep 2009)");
  script_cve_id("CVE-2009-0590", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379", "CVE-2009-1386", "CVE-2009-1387");
  script_tag(name:"cvss_base", value:"5.0");

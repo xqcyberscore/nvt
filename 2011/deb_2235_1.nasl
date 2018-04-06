@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2235_1.nasl 6613 2017-07-07 12:08:40Z cfischer $
+# $Id: deb_2235_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 # Description: Auto-generated from advisory DSA 2235-1 (icedove)
 #
 # Authors:
@@ -71,9 +71,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(69731);
- script_version("$Revision: 6613 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:40 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.69731");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-08-03 04:36:20 +0200 (Wed, 03 Aug 2011)");
  script_cve_id("CVE-2011-0065", "CVE-2011-0066", "CVE-2011-0067", "CVE-2011-0069", "CVE-2011-0070", "CVE-2011-0071", "CVE-2011-0072", "CVE-2011-0073", "CVE-2011-0074", "CVE-2011-0075", "CVE-2011-0077", "CVE-2011-0078", "CVE-2011-0080", "CVE-2011-0081");
  script_tag(name:"cvss_base", value:"10.0");

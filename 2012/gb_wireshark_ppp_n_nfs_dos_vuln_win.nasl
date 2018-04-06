@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_win.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with Wireshark and is prone to denial
 
 if(description)
 {
-  script_id(802898);
-  script_version("$Revision: 5956 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802898");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4048", "CVE-2012-4049");
   script_bugtraq_id(54649);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-27 10:00:50 +0530 (Fri, 27 Jul 2012)");
   script_name("Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Windows)");
 

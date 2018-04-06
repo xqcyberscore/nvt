@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: winmessenger_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: winmessenger_installed.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Windows Messenger is installed
 #
 # Authors:
@@ -59,13 +59,13 @@ is prone to multiple vulnerabilities.";
 
 if(description)
 {
-  script_id(11429);
-  script_version("$Revision: 6053 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.11429");
+  script_version("$Revision: 9348 $");
   script_bugtraq_id(4028, 4316, 4675, 4827, 668);
   script_cve_id("CVE-1999-1484", "CVE-2002-0228", "CVE-2002-0472");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("Windows Messenger is installed");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/8084");

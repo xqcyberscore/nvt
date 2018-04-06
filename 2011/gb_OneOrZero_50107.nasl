@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OneOrZero_50107.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_OneOrZero_50107.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OneOrZero AIMS Security Bypass and SQL Injection Vulnerabilities
 #
@@ -35,9 +35,9 @@ OneOrZero AIMS 2.7.0 is affected; other versions may also be affected.";
 
 if(description)
 {
- script_id(103304);
- script_version("$Revision: 5750 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103304");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
  script_cve_id("CVE-2011-4215");
  script_bugtraq_id(50107);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030_macosx.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: secpod_ms12-030_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)
 #
@@ -40,14 +40,14 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902913);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902913");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 14:17:49 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49112/");

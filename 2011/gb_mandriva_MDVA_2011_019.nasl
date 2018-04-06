@@ -41,12 +41,12 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-05/msg00003.php");
-  script_id(831387);
+  script_oid("1.3.6.1.4.1.25623.1.0.831387");
   script_cve_id("CVE-2011-0065","CVE-2011-0066","CVE-2011-0067","CVE-2011-0069","CVE-2011-0070","CVE-2011-0071","CVE-2011-0072","CVE-2011-0073","CVE-2011-0074","CVE-2011-0075","CVE-2011-0076","CVE-2011-0077","CVE-2011-0078","CVE-2011-0080","CVE-2011-0081","CVE-2011-1202");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6570 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:06:35 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_xref(name: "MDVA", value: "2011:019");
   script_name("Mandriva Update for tcl-sqlite3 MDVA-2011:019 (tcl-sqlite3)");

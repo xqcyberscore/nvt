@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ntalk_detect.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: ntalk_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: Detect talkd server port and protocol version
 #
 # Authors:
@@ -37,9 +37,9 @@ tag_solution = "Disable talkd access from the network by adding the approriate r
 
 if(description)
 {
- script_id(10168);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10168");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

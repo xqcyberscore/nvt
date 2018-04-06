@@ -37,9 +37,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097647.html");
-  script_id(865260);
-  script_version("$Revision: 8483 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.865260");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:24:35 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2012-2922");
   script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_51623.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_joomla_51623.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -38,20 +38,20 @@ also possible.";
 
 if (description)
 {
- script_id(103398);
+ script_oid("1.3.6.1.4.1.25623.1.0.103398");
  script_bugtraq_id(51623);
  script_cve_id("CVE-2011-4804");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
- script_version ("$Revision: 7577 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51623");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

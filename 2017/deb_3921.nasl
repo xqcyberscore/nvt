@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3921.nasl 6835 2017-08-02 12:55:28Z cfischer $
+# $Id: deb_3921.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3921-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703921);
-    script_version("$Revision: 6835 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703921");
+    script_version("$Revision: 9356 $");
     
     script_name("Debian Security Advisory DSA 3921-1 (enigmail - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-02 14:55:28 +0200 (Wed, 02 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-28 00:00:00 +0200 (Fri, 28 Jul 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

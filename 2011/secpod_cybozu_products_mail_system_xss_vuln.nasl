@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_mail_system_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_cybozu_products_mail_system_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Cybozu Products Mail System Images Cross-Site Scripting Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is running Cybozu Office, Cybozu Garoon, Cybozu Dezie o
 
 if(description)
 {
-  script_id(902537);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902537");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1334");
   script_bugtraq_id(48446);

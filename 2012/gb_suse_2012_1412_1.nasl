@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1412_1.nasl 8265 2018-01-01 06:29:23Z teissa $
+# $Id: gb_suse_2012_1412_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)
 #
@@ -45,9 +45,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850356);
-  script_version("$Revision: 8265 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850356");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:56 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_tag(name:"cvss_base", value:"5.1");

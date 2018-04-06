@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Audition '.ses' Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -46,9 +46,9 @@ buffer overflow vulnerabilities.";
 
 if(description)
 {
-  script_id(902373);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902373");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-0614", "CVE-2011-0615");
   script_bugtraq_id(47841, 47838);

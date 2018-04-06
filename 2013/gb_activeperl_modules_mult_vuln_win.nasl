@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_modules_mult_vuln_win.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_activeperl_modules_mult_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Active Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -60,12 +60,12 @@ tag_summary = "The host is installed with Active Perl and is prone to multiple
 
 if(description)
 {
-  script_id(803343);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803343");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 11:15:50 +0530 (Wed, 27 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

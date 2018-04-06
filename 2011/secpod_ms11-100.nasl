@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-100.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-100.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Vulnerabilities in .NET Framework Could Allow Elevation of Privilege (2638420)
 #
@@ -53,13 +53,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902806);
-  script_version("$Revision: 5362 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902806");
+  script_version("$Revision: 9351 $");
   script_bugtraq_id(51186);
   script_cve_id("CVE-2011-3414", "CVE-2011-3415", "CVE-2011-3416", "CVE-2011-3417");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-30 10:10:10 +0530 (Fri, 30 Dec 2011)");
   script_name("Vulnerabilities in .NET Framework Could Allow Elevation of Privilege (2638420)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47323");

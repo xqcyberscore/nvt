@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_homeseer_hs2_web_interface_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_homeseer_hs2_web_interface_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # HomeSeer HS2 Web Interface Multiple Vulnerabilities
 #
@@ -47,13 +47,13 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(902648);
-  script_version("$Revision: 7015 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902648");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4835", "CVE-2011-4836", "CVE-2011-4837");
   script_bugtraq_id(50978);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-20 15:01:39 +0530 (Tue, 20 Dec 2011)");
   script_name("HomeSeer HS2 Web Interface Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47191/");

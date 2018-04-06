@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenserver_vswitch_controller_52641.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_citrix_xenserver_vswitch_controller_52641.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Citrix XenServer vSwitch Controller Component Multiple Vulnerabilities
 #
@@ -37,16 +37,16 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103474);
+ script_oid("1.3.6.1.4.1.25623.1.0.103474");
  script_bugtraq_id(52641);
- script_version ("$Revision: 5700 $");
+ script_version ("$Revision: 9352 $");
  script_name("Citrix XenServer vSwitch Controller Component Multiple Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52641");
  script_xref(name : "URL" , value : "http://www.citrix.com/English/ps2/products/feature.asp?contentID=1686939");
  script_xref(name : "URL" , value : "http://support.citrix.com/article/CTX132476");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-23 11:36:51 +0200 (Mon, 23 Apr 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_GATHER_INFO);

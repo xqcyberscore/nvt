@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-006.nasl 8276 2018-01-03 12:29:18Z asteins $
+# $Id: secpod_ms12-006.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902900);
-  script_version("$Revision: 8276 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902900");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-3389");
   script_bugtraq_id(49778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:47:46 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2585542");

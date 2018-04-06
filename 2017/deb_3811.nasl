@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3811.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3811.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3811-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703811);
-    script_version("$Revision: 6607 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703811");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-5596", "CVE-2017-5597", "CVE-2017-6014", "CVE-2017-6467", "CVE-2017-6468", "CVE-2017-6469", "CVE-2017-6470", "CVE-2017-6471", "CVE-2017-6472", "CVE-2017-6473", "CVE-2017-6474");
     script_name("Debian Security Advisory DSA 3811-1 (wireshark - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-03-18 00:00:00 +0100 (Sat, 18 Mar 2017)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

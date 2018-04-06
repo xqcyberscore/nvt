@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rt_37162.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: rt_37162.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # RT Session Fixation Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100386);
- script_version("$Revision: 5055 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100386");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-09 13:16:50 +0100 (Wed, 09 Dec 2009)");
  script_bugtraq_id(37162);
  script_cve_id("CVE-2009-3585");

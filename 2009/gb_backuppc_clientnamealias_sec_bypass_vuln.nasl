@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_backuppc_clientnamealias_sec_bypass_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_backuppc_clientnamealias_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # BackupPC 'ClientNameAlias' Function Security Bypass Vulnerability
 #
@@ -45,9 +45,9 @@ bypass vulnerability.";
 
 if(description)
 {
-  script_id(801107);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801107");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");

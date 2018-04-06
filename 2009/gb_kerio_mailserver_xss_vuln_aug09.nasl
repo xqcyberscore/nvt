@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_xss_vuln_aug09.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_kerio_mailserver_xss_vuln_aug09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Kerio MailServer WebMail 'Integration' Page XSS Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is running Kerio MailServer and is prone to Cross-Site
 
 if(description)
 {
-  script_id(800675);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800675");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

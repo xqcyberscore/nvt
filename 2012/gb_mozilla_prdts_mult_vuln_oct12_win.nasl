@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_oct12_win.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_oct12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Oct 12 (Windows)
 #
@@ -45,13 +45,13 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to multip
 
 if(description)
 {
-  script_id(802989);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802989");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5354", "CVE-2012-3989", "CVE-2012-3985", "CVE-2012-3984");
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 16:41:45 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Oct 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");

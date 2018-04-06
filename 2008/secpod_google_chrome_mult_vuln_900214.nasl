@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_900214.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_google_chrome_mult_vuln_900214.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Google Chrome multiple vulnerabilities
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_summary = "This host has Google Chrome web browser installed, which is prone
 
 if(description)
 {
-  script_id(900214);
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900214");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

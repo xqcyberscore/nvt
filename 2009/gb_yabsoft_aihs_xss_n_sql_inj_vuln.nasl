@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yabsoft_aihs_xss_n_sql_inj_vuln.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_yabsoft_aihs_xss_n_sql_inj_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # YABSoft AIHS Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is running YABSoft AIHS and is prone to Cross-Site Scrip
 
 if(description)
 {
-  script_id(801092);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801092");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-17 08:14:37 +0100 (Thu, 17 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0004_remote.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_VMSA-2014-0004_remote.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMSA-2014-0004: VMware product updates address OpenSSL security vulnerabilities (remote check)
 #
@@ -42,17 +42,17 @@ CVE-2014-0076 and CVE-2014-0160 to these issues.';
 
 if (description)
 {
- script_id(105022);
+ script_oid("1.3.6.1.4.1.25623.1.0.105022");
  script_cve_id("CVE-2014-0076","CVE-2014-0160");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6750 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMSA-2014-0004 VMware product updates address OpenSSL security vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0004.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-05-08 13:04:01 +0100 (Thu, 08 May 2014)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_remote_code_exec_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_citrix_provisioning_services_remote_code_exec_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Citrix Provisioning Services 'streamprocess.exe'  Remote Code Execution Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Citrix Provisioning Services and is
 
 if(description)
 {
-  script_id(802221);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802221");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_bugtraq_id(45914);
   script_tag(name:"cvss_base", value:"10.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Pixie_cms_sql_injection_xss.nasl 7170 2017-09-18 10:35:33Z cfischer $
+# $Id: Pixie_cms_sql_injection_xss.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Pixie CMS SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_summary = "Pixie CMS is prone to an SQL-injection vulnerability and a cross-
 
 if (description)
 {
- script_id(100066);
- script_version("$Revision: 7170 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100066");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-20 13:11:29 +0100 (Fri, 20 Mar 2009)");
  script_cve_id("CVE-2009-1066");
  script_bugtraq_id(34189);

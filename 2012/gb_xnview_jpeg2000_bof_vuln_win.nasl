@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_xnview_jpeg2000_bof_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_xnview_jpeg2000_bof_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # XnView JPEG2000 Plugin Buffer Overflow Vulnerability (Windows)
 #
@@ -47,13 +47,13 @@ features, remove the product or replace the product by another one.";
 
 if(description)
 {
-  script_id(802816);
-  script_version("$Revision: 5977 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802816");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1051");
   script_bugtraq_id(51896);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 16:28:54 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView JPEG2000 Plugin Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47352");

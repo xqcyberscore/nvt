@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_aug12_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln_aug12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities - Mac OS X
 #
@@ -37,8 +37,8 @@ tag_summary = "This host is installed with Adobe Acrobat and is prone to
 
 if(description)
 {
-  script_id(803478);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803478");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -49,7 +49,7 @@ if(description)
                     55022, 55023);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - Mac OS X");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50281");

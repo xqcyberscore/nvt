@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OneOrZero_51549.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_OneOrZero_51549.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # OneOrZero AIMS 'index.php' Cross Site Scripting Vulnerability
 #
@@ -38,15 +38,15 @@ other versions may also be affected.";
 
 if (description)
 {
- script_id(103391);
+ script_oid("1.3.6.1.4.1.25623.1.0.103391");
  script_bugtraq_id(51549);
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("OneOrZero AIMS 'index.php' Cross Site Scripting Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51549");
  script_xref(name : "URL" , value : "http://oneorzero.com/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-19 11:24:53 +0100 (Thu, 19 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

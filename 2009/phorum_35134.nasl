@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phorum_35134.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: phorum_35134.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Phorum 'image/bmp' MIME Type HTML Injection Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "The vendor has released updates. Please see http://www.phorum.or
 
 if (description)
 {
- script_id(100214);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100214");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
  script_bugtraq_id(35134);
  script_tag(name:"cvss_base", value:"4.3");

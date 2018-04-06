@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with IBM Rational Developer for System z a
 
 if(description)
 {
-  script_id(802687);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802687");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4862");
   script_bugtraq_id(56725);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 19:17:26 +0530 (Fri, 21 Dec 2012)");
   script_name("IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51401/");

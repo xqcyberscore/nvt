@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_utf8_regex_dos_vuln_win.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_perl_utf8_regex_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Perl UTF-8 Regular Expression Processing DoS Vulnerability (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with Perl and is prone to Denial of Service
 
 if(description)
 {
-  script_id(800967);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800967");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

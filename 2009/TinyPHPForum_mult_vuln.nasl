@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinyPHPForum_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: TinyPHPForum_mult_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # TinyPHPForum Multiple Vulnerabilities
 #
@@ -36,9 +36,9 @@ tag_summary = "TinyPHPForum is prone to a directory-traversal vulnerability and 
 
 if (description)
 {
- script_id(100097);
- script_version("$Revision: 7573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100097");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-02 12:09:33 +0200 (Thu, 02 Apr 2009)");
  script_bugtraq_id(19281,34339);
  script_tag(name:"cvss_base", value:"5.0");

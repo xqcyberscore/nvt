@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)
 #
@@ -40,13 +40,13 @@ tag_summary = "The host is installed with Google Chrome and is prone to multiple
 
 if(description)
 {
-  script_id(802374);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802374");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 14:35:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47449/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-102.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: secpod_ms13-102.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Local Procedure Call Local Privilege Escalation Vulnerability (2898715)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903416);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903416");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3878");
   script_bugtraq_id(64088);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:19:14 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Local Procedure Call Local Privilege Escalation Vulnerability (2898715)");
 

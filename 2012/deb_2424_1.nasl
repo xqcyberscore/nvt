@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2424_1.nasl 8970 2018-02-27 15:16:18Z cfischer $
+# $Id: deb_2424_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2424-1 (libxml-atom-perl)
 #
 # Authors:
@@ -45,9 +45,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(71152);
- script_version("$Revision: 8970 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-27 16:16:18 +0100 (Tue, 27 Feb 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.71152");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:33:12 -0400 (Mon, 12 Mar 2012)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

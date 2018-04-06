@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_excel_readav_code_exec_vuln.nasl 6533 2017-07-05 08:41:34Z santu $
+# $Id: secpod_ms_office_excel_readav_code_exec_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Office Excel ReadAV Arbitrary Code Execution Vulnerability
 #
@@ -45,13 +45,13 @@ prone to arbitrary code execution vulnerability.";
 
 if(description)
 {
-  script_id(902692);
-  script_version("$Revision: 6533 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902692");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5672");
   script_bugtraq_id(56309);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-08 14:28:19 +0530 (Thu, 08 Nov 2012)");
   script_name("Microsoft Office Excel ReadAV Arbitrary Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Oct/63");

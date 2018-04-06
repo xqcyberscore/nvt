@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_nov12_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln_nov12_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -42,13 +42,13 @@ tag_summary = "This host is installed with Mozilla Thunderbird and is prone to m
 
 if(description)
 {
-  script_id(803632);
-  script_version("$Revision: 6125 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803632");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51144");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_local_dos_vuln_900178.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: secpod_ms_win_local_dos_vuln_900178.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Microsoft Windows 'UnhookWindowsHookEx' Local DoS Vulnerability
 #
 # Authors:
@@ -40,9 +40,9 @@ For updates refer to http://www.microsoft.com/en-in/default.aspx ";
 
 if(description)
 {
-  script_id(900178);
-  script_version("$Revision: 7293 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900178");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-5044");
  script_bugtraq_id(32206);

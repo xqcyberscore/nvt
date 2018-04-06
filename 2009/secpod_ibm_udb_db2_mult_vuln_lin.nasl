@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_udb_db2_mult_vuln_lin.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_ibm_udb_db2_mult_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # IBM DB2 UDB Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -54,9 +54,9 @@ tag_summary = "The host is installed with IBM DB2 and is prone to multiple
 
 if(description)
 {
-  script_id(901083);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901083");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

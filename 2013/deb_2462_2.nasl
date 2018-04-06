@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2462_2.nasl 6611 2017-07-07 12:07:20Z cfischer $
+# $Id: deb_2462_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
 # Auto-generated from advisory DSA 2462-2 using nvtgen 1.0
 # Script version: 2.0
 #
@@ -51,11 +51,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(892462);
-    script_version("$Revision: 6611 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.892462");
+    script_version("$Revision: 9353 $");
     script_cve_id("CVE-2012-1798", "CVE-2012-1185", "CVE-2012-1610", "CVE-2012-1186", "CVE-2012-0260", "CVE-2012-0259");
     script_name("Debian Security Advisory DSA 2462-2 (imagemagick - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
     script_tag(name: "cvss_base", value:"9.3");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

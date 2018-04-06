@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-005.nasl 6605 2017-07-07 11:22:07Z cfischer $
+# $Id: gb_ms08-005.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Internet Information Services Privilege Elevation Vulnerability (942831)
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801704);
-  script_version("$Revision: 6605 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801704");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-13 17:08:42 +0100 (Thu, 13 Jan 2011)");
   script_cve_id("CVE-2008-0074");
   script_bugtraq_id(27101);

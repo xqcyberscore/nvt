@@ -41,13 +41,13 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(71528);
+ script_oid("1.3.6.1.4.1.25623.1.0.71528");
  script_cve_id("CVE-2012-2740", "CVE-2012-2741");
  script_bugtraq_id(52657);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5940 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
  script_name("FreeBSD Ports: phplist");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_detect_lin.nasl 7822 2017-11-20 08:46:09Z cfischer $
+# $Id: gb_ibm_lotus_symphony_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # IBM Lotus Symphony Version Detection (Linux)
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed IBM Lotus Symphony version and
 
 if(description)
 {
-  script_id(802230);
+  script_oid("1.3.6.1.4.1.25623.1.0.802230");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7822 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IBM Lotus Symphony Version Detection (Linux)");

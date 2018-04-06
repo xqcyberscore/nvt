@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_apr_n_apr_util_iof_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_apache_apr_n_apr_util_iof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Apache APR and APR-util Multiple Integer Overflow Vulnerabilities
 #
@@ -50,9 +50,9 @@ tag_summary = "The host is installed with Apache APR and APR-Util and is prone t
 
 if(description)
 {
-  script_id(800679);
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800679");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-17 14:35:19 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

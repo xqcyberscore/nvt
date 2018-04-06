@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2165_1.nasl 7957 2017-12-01 06:40:08Z santu $
+# $Id: gb_ubuntu_USN_2165_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Ubuntu Update for openssl USN-2165-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841774);
-  script_version("$Revision: 7957 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841774");
+  script_version("$Revision: 9354 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 12:07:01 +0530 (Tue, 08 Apr 2014)");
   script_cve_id("CVE-2014-0160", "CVE-2014-0076");
   script_tag(name:"cvss_base", value:"5.0");

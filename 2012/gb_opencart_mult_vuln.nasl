@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_opencart_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # OpenCart Multiple Vulnerabilities
 #
@@ -48,12 +48,12 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(802751);
-  script_version("$Revision: 7577 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802751");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(52957);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-18 18:47:56 +0530 (Wed, 18 Apr 2012)");
   script_name("OpenCart Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48762");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_36035.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: viewvc_36035.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # ViewVC Cross Site Scripting and Unspecified Security Vulnerabilities
 #
@@ -41,9 +41,9 @@ tag_solution = "Vendor updates are available. Please see the references for deta
 
 if (description)
 {
- script_id(100262);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100262");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-08-26 20:38:31 +0200 (Wed, 26 Aug 2009)");
  script_bugtraq_id(36035);
  script_tag(name:"cvss_base", value:"4.3");

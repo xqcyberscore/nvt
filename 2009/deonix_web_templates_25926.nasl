@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deonix_web_templates_25926.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: deonix_web_templates_25926.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Deonix Web Templates Management Index.PHP SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ also be vulnerable.";
 
 if (description)
 {
- script_id(100247);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100247");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

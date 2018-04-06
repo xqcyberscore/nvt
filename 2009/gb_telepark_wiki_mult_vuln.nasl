@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepark_wiki_mult_vuln.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_telepark_wiki_mult_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Telepark.wiki Multiple Vulnerabilities
 #
@@ -47,9 +47,9 @@ tag_summary = "This host is running Telepark wiki and is prone to multiple
 
 if(description)
 {
-  script_id(801068);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801068");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

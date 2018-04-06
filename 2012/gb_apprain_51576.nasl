@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apprain_51576.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_apprain_51576.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # appRain CMF 'uploadify.php' Remote Arbitrary File Upload Vulnerability
 #
@@ -36,16 +36,16 @@ appRain CMF 0.1.5 and prior versions are vulnerable.";
 
 if (description)
 {
- script_id(103395);
+ script_oid("1.3.6.1.4.1.25623.1.0.103395");
  script_cve_id("CVE-2012-1153");
  script_bugtraq_id(51576);
- script_version("$Revision: 5700 $");
+ script_version("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("appRain CMF 'uploadify.php' Remote Arbitrary File Upload Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51576");
  script_xref(name : "URL" , value : "http://www.apprain.com");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-23 11:04:51 +0100 (Mon, 23 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

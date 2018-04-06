@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_dos_vuln_win_nov11.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_apple_quicktime_mult_dos_vuln_win_nov11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apple QuickTime Multiple Denial of Service Vulnerabilities - (Windows)
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is installed with Apple QuickTime and is prone to multip
 
 if(description)
 {
-  script_id(802198);
-  script_version("$Revision: 7015 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802198");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3219", "CVE-2011-3220", "CVE-2011-3221", "CVE-2011-3218",
                 "CVE-2011-3222", "CVE-2011-3223", "CVE-2011-3228", "CVE-2011-3247",
                 "CVE-2011-3248", "CVE-2011-3249", "CVE-2011-3250", "CVE-2011-3251",
@@ -54,7 +54,7 @@ if(description)
                     50404, 50401, 50403);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_name("Apple QuickTime Multiple Denial of Service Vulnerabilities - (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5016");

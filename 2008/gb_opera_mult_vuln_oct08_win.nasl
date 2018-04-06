@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct08_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_opera_mult_vuln_oct08_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Opera Web Browser Multiple XSS Vulnerability (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is installed with Opera web browser and is prone to
 
 if(description)
 {
-  script_id(800044);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800044");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-30 06:53:04 +0100 (Thu, 30 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");

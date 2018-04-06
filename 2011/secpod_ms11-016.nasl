@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-016.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms11-016.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Groove Remote Code Execution Vulnerability (2494047)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902351);
-  script_version("$Revision: 6538 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902351");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 15:35:07 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2010-3146");
   script_bugtraq_id(42695);

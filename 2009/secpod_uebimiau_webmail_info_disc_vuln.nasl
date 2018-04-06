@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_uebimiau_webmail_info_disc_vuln.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_uebimiau_webmail_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Uebimiau Webmail Information Disclosure Vulnerability
 #
@@ -44,9 +44,9 @@ Disclosure Vulnerability.";
 
 if(description)
 {
-  script_id(901024);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901024");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

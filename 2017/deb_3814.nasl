@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3814.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3814.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3814-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703814);
-    script_version("$Revision: 6607 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703814");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-6827", "CVE-2017-6828", "CVE-2017-6829", "CVE-2017-6830", "CVE-2017-6831", "CVE-2017-6832", "CVE-2017-6833", "CVE-2017-6834", "CVE-2017-6835", "CVE-2017-6836", "CVE-2017-6837", "CVE-2017-6838", "CVE-2017-6839");
     script_name("Debian Security Advisory DSA 3814-1 (audiofile - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-03-22 00:00:00 +0100 (Wed, 22 Mar 2017)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

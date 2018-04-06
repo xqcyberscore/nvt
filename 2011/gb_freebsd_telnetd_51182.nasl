@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freebsd_telnetd_51182.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_freebsd_telnetd_51182.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability
 #
@@ -36,12 +36,12 @@ for more information.";
 
 if (description)
 {
- script_id(103373);
+ script_oid("1.3.6.1.4.1.25623.1.0.103373");
  script_bugtraq_id(51182);
  script_cve_id("CVE-2011-4862");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7044 $");
+ script_version ("$Revision: 9351 $");
 
  script_name("FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.freebsd.org/");
  script_xref(name : "URL" , value : "http://security.freebsd.org/advisories/FreeBSD-SA-11:08.telnetd.asc");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-28 12:32:36 +0100 (Wed, 28 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

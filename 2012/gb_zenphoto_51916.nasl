@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenphoto_51916.nasl 5715 2017-03-24 11:34:41Z cfi $
+# $Id: gb_zenphoto_51916.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Zenphoto Multiple Security Vulnerabilities
 #
@@ -47,8 +47,8 @@ references for more information.";
 
 if (description)
 {
- script_id(103412);
- script_version("$Revision: 5715 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103412");
+ script_version("$Revision: 9352 $");
  script_bugtraq_id(51916);
  script_cve_id("CVE-2011-4448","CVE-2012-0993","CVE-2012-0995");
  script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zenphoto.org/news/zenphoto-1.4.2.1");
  script_xref(name : "URL" , value : "http://www.zenphoto.org/");
  script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/HTB23070");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-09 12:57:10 +0100 (Thu, 09 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

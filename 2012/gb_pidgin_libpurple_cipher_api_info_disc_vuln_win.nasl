@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with Pidgin and is prone to information
 
 if(description)
 {
-  script_id(802935);
-  script_version("$Revision: 5977 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802935");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-4922");
   script_bugtraq_id(46307);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-17 17:21:39 +0530 (Fri, 17 Aug 2012)");
   script_name("Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43271/");

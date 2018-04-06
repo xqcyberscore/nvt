@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability
 #
 # Authors:
@@ -48,9 +48,9 @@ tag_affected = "TrendMicro OfficeScan Corporate Edition 7.3 Build prior to 1374.
 
 if(description)
 {
-  script_id(900164);
-  script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900164");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_bugtraq_id(31859);
   script_cve_id("CVE-2008-3862");

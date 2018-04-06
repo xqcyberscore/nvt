@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_tftp_server_detect.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_solarwinds_tftp_server_detect.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # SolarWinds TFTP Server Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects installed version of SolarWinds TFTP Server
 
 if(description)
 {
-  script_id(900930);
+  script_oid("1.3.6.1.4.1.25623.1.0.900930");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SolarWinds TFTP Server Version Detection");

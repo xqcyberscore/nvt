@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: idealbb_multiple_flaws.nasl 5786 2017-03-30 10:08:58Z cfi $
+# $Id: idealbb_multiple_flaws.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: IdealBB multiple flaws
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "Upgrade to the latest version of this software.";
 
 if(description)
 {
-  script_id(15541);
-  script_version("$Revision: 5786 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.15541");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2207", "CVE-2004-2208", "CVE-2004-2209");
   script_bugtraq_id(11424);

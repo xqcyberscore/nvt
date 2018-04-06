@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2545_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2545_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2545-1 (qemu)
 #
 # Authors:
@@ -58,12 +58,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(72174);
+ script_oid("1.3.6.1.4.1.25623.1.0.72174");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-2652", "CVE-2012-3515");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-09-15 04:24:19 -0400 (Sat, 15 Sep 2012)");
  script_name("Debian Security Advisory DSA 2545-1 (qemu)");
 

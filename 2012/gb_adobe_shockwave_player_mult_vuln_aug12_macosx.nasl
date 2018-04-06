@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Mac Os X)
 #
@@ -37,14 +37,14 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 
 if(description)
 {
-  script_id(802939);
-  script_version("$Revision: 5958 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802939");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2043", "CVE-2012-2044", "CVE-2012-2045", "CVE-2012-2046",
                 "CVE-2012-2047");
   script_bugtraq_id(55025, 55028, 55029, 55030, 55031);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 12:36:45 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50283/");

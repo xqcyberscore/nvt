@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3087.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: deb_3087.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3087-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703087);
-    script_version("$Revision: 6769 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703087");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-8106");
     script_name("Debian Security Advisory DSA 3087-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2014-12-04 00:00:00 +0100 (Thu, 04 Dec 2014)");
     script_tag(name:"cvss_base", value:"4.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");

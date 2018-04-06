@@ -38,9 +38,9 @@ packages, the httpd daemon will be restarted automatically.";
 
 if(description)
 {
-  script_id(881782);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881782");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-16 09:00:54 +0530 (Fri, 16 Aug 2013)");
   script_cve_id("CVE-2013-1896");
   script_tag(name:"cvss_base", value:"4.3");

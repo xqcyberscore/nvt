@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ngIRCd_37021.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: ngIRCd_37021.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # ngIRCd SSL/TLS Support MOTD Request Multiple Denial Of Service Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100347);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100347");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-16 11:47:06 +0100 (Mon, 16 Nov 2009)");
  script_cve_id("CVE-2009-4652");
  script_bugtraq_id(37021);

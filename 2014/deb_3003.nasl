@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3003.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: deb_3003.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3003-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -41,11 +41,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(703003);
-    script_version("$Revision: 6750 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703003");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2011-3934", "CVE-2011-3935", "CVE-2011-3946", "CVE-2013-0848", "CVE-2013-0851", "CVE-2013-0852", "CVE-2013-0860", "CVE-2013-0868", "CVE-2013-3672", "CVE-2013-3674", "CVE-2014-2263");
     script_name("Debian Security Advisory DSA 3003-1 (libav - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-08-10 00:00:00 +0200 (Sun, 10 Aug 2014)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

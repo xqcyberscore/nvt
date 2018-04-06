@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sa_2009_021.nasl 6668 2017-07-11 13:34:29Z cfischer $
+# $Id: suse_sa_2009_021.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory SUSE-SA:2009:021 (kernel)
 #
 # Authors:
@@ -63,9 +63,9 @@ advisory SUSE-SA:2009:021.";
 
 if(description)
 {
- script_id(63846);
- script_version("$Revision: 6668 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63846");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-20 23:45:17 +0200 (Mon, 20 Apr 2009)");
  script_cve_id("CVE-2009-0676", "CVE-2009-0835", "CVE-2009-1072");
  script_tag(name:"cvss_base", value:"4.9");

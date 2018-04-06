@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_location_hash_dos_vuln.nasl 6468 2017-06-28 14:05:02Z cfischer $
+# $Id: secpod_firefox_location_hash_dos_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Mozilla Firefox location.hash Remote DoS Vulnerability
 #
@@ -43,9 +43,9 @@ tag_solution = "Upgrade to Mozilla Firefox version 3.6.3 or later
 
 if(description)
 {
-  script_id(900068);
-  script_version("$Revision: 6468 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:05:02 +0200 (Wed, 28 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900068");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

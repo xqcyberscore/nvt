@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-062_900052.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_ms08-062_900052.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Windows Internet Printing Service Allow Remote Code Execution Vulnerability (953155)
 #
 # Authors:
@@ -50,8 +50,8 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900052);
-  script_version("$Revision: 4522 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900052");
+  script_version("$Revision: 9349 $");
   script_bugtraq_id(31682);
   script_cve_id("CVE-2008-1446");
   script_copyright("Copyright (C) 2008 SecPod");
@@ -60,7 +60,7 @@ if(description)
   script_name("Windows Internet Printing Service Allow Remote Code Execution Vulnerability (953155)");
 
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_family("Windows : Microsoft Bulletins");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-062.mspx");

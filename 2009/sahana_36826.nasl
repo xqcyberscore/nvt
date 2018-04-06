@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sahana_36826.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: sahana_36826.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sahana 'mod' Parameter Local File Disclosure Vulnerability
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100336);
- script_version("$Revision: 5055 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100336");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-04 12:36:10 +0100 (Wed, 04 Nov 2009)");
  script_bugtraq_id(36826);
  script_cve_id("CVE-2009-3625");

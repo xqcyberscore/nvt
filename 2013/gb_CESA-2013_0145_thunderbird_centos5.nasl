@@ -70,9 +70,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-January/019201.html");
-  script_id(881577);
-  script_version("$Revision: 8672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881577");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:42:00 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2013-0744", "CVE-2013-0746", "CVE-2013-0748", "CVE-2013-0750",
                 "CVE-2013-0753", "CVE-2013-0754", "CVE-2013-0758", "CVE-2013-0759",

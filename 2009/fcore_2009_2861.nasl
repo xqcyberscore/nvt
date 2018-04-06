@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_2861.nasl 6624 2017-07-10 06:11:55Z cfischer $
+# $Id: fcore_2009_2861.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-2861 (weechat)
 #
 # Authors:
@@ -47,9 +47,9 @@ announced via advisory FEDORA-2009-2861.";
 
 if(description)
 {
- script_id(63651);
- script_version("$Revision: 6624 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63651");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-31 19:20:21 +0200 (Tue, 31 Mar 2009)");
  script_cve_id("CVE-2009-0661");
  script_tag(name:"cvss_base", value:"5.0");

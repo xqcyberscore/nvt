@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IrfanView JPEG-2000 Plugin Remote Stack Based Buffer Overflow Vulnerability
 #
@@ -37,11 +37,11 @@ tag_summary = "This host has IrfanView with JPEG-2000 plugin installed and is
 
 if(description)
 {
-  script_id(802576);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802576");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0897");
   script_bugtraq_id(51426);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:28:20 +0530 (Wed, 01 Feb 2012)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

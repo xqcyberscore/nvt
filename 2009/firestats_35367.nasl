@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: firestats_35367.nasl 4824 2016-12-21 08:49:38Z teissa $
+# $Id: firestats_35367.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FireStats 'firestats-wordpress.php' Remote File Include
 # Vulnerability
@@ -39,9 +39,9 @@ tag_solution = "The vendor has released 'FireStats 1.6.2' to address this issue.
 
 if (description)
 {
- script_id(100227);
- script_version("$Revision: 4824 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:49:38 +0100 (Wed, 21 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100227");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-21 16:51:00 +0200 (Sun, 21 Jun 2009)");
  script_cve_id("CVE-2009-2143");
  script_bugtraq_id(35367);

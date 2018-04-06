@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_lin.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Full Sandbox Escape and Code Execution Vulnerability (Linux)
 #
@@ -44,9 +44,9 @@ escape and code execution vulnerability.";
 
 if(description)
 {
-  script_id(903008);
-  script_version("$Revision: 5958 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903008");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 17:24:46 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2012-1846", "CVE-2012-1845");
   script_tag(name:"cvss_base", value:"10.0");

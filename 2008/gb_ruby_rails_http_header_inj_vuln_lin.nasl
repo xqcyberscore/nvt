@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_http_header_inj_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_ruby_rails_http_header_inj_vuln_lin.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Ruby on Rails redirect_to() HTTP Header Injection Vulnerability - Linux
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is running Ruby on Rails, which is prone to HTTP Header
 
 if(description)
 {
-  script_id(800144);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800144");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");

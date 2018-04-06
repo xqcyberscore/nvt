@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_js_impl_info_disc_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_apple_safari_js_impl_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apple Safari JavaScript Implementation Information Disclosure Vulnerability (Windows)
 #
@@ -46,12 +46,12 @@ to information disclosure vulnerability.";
 
 if(description)
 {
-  script_id(802284);
-  script_version("$Revision: 7019 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802284");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2010-5070");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 12:12:12 +0530 (Fri, 09 Dec 2011)");
   script_name("Apple Safari JavaScript Implementation Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://w2spconf.com/2010/papers/p26.pdf");

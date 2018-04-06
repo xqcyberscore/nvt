@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_interleave_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Interleave Detection
 #
@@ -29,10 +29,10 @@ Management software.";
 
 if (description)
 {
- script_id(103111);
+ script_oid("1.3.6.1.4.1.25623.1.0.103111");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5723 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Interleave Detection");

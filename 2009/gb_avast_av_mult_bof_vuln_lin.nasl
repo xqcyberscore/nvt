@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_mult_bof_vuln_lin.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_avast_av_mult_bof_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # avast! AntiVirus Multiple BOF Vulnerabilities (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with avast! AntiVirus and is prone to
 
 if(description)
 {
-  script_id(800599);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800599");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

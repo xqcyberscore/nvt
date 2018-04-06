@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0003.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_VMSA-2014-0003.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMSA-2014-0003: VMware vSphere Client updates address security vulnerabilities
 #
@@ -45,17 +45,17 @@ tricked into clicking a malicious link.';
 
 if (description)
 {
- script_id(105012);
+ script_oid("1.3.6.1.4.1.25623.1.0.105012");
  script_cve_id("CVE-2014-1209","CVE-2014-1210");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6663 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMSA-2014-0003 VMware vSphere Client updates address security vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0003.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-04-24 13:04:01 +0100 (Thu, 24 Apr 2014)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

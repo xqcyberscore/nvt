@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2014-0002.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_vcenter_VMSA-2014-0002.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0012)
 #
@@ -50,17 +50,17 @@ JRE.';
 
 if (description)
 {
- script_id(103917);
+ script_oid("1.3.6.1.4.1.25623.1.0.103917");
  script_cve_id("CVE-2013-5211","CVE-2013-4332");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6663 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMSA-2014-0002 VMware vSphere updates to third party libraries");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0002.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-03-12 14:24:01 +0100 (Wed, 12 Mar 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

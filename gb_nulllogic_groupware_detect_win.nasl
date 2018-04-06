@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nulllogic_groupware_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_nulllogic_groupware_detect_win.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # NullLogic Groupware Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of NullLogic Groupware
 
 if(description)
 {
-  script_id(800905);
+  script_oid("1.3.6.1.4.1.25623.1.0.800905");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NullLogic Groupware Version Detection");

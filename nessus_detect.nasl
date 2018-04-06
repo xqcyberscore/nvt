@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nessus_detect.nasl 8704 2018-02-07 14:32:07Z cfischer $
+# $Id: nessus_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: A Nessus Daemon is running
 #
 # Authors:
@@ -38,9 +38,9 @@ default port nessus is listening on.";
 
 if(description)
 {
- script_id(10147);
- script_version("$Revision: 8704 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10147");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

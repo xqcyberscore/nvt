@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1345_1.nasl 8273 2018-01-03 06:29:19Z teissa $
+# $Id: gb_suse_2012_1345_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:1345-1 (MozillaFirefox)
 #
@@ -73,9 +73,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850348);
-  script_version("$Revision: 8273 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850348");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:32 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-3982", "CVE-2012-3983", "CVE-2012-3984", "CVE-2012-3985",
                 "CVE-2012-3986", "CVE-2012-3988", "CVE-2012-3989", "CVE-2012-3990",

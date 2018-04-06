@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realwin_scada_on_fc_binfile_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_realwin_scada_on_fc_binfile_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # DATAC RealWin SCADA Server On_FC_CONNECT_FCS_a_FILE Buffer Overflow Vulnerability
 #
@@ -46,9 +46,9 @@ buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(902528);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902528");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_bugtraq_id(46937);
   script_cve_id("CVE-2011-1563");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_managed_printing_admin_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_hp_managed_printing_admin_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # HP Managed Printing Administration Multiple Vulnerabilities
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is installed with HP Managed Printing Administration an
 
 if(description)
 {
-  script_id(902654);
-  script_version("$Revision: 7019 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902654");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4166", "CVE-2011-4167", "CVE-2011-4168", "CVE-2011-4169");
   script_bugtraq_id(51174);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-28 14:57:58 +0530 (Wed, 28 Dec 2011)");
   script_name("HP Managed Printing Administration Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47329/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_winword_ms13-072.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: secpod_ms_winword_ms13-072.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2845537)
 #
@@ -26,8 +26,8 @@
 
 if(description)
 {
-  script_id(903402);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903402");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,7 +36,7 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 16:55:20 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2845537)");
 

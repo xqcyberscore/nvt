@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_apr_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_apache_apr_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Apache APR Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Apache APR
 
 if(description)
 {
-  script_id(800680);
+  script_oid("1.3.6.1.4.1.25623.1.0.800680");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-17 14:35:19 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache APR Version Detection");

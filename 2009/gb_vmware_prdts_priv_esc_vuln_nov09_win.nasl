@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_priv_esc_vuln_nov09_win.nasl 4906 2017-01-02 13:06:55Z teissa $
+# $Id: gb_vmware_prdts_priv_esc_vuln_nov09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # VMware Products Guest Privilege Escalation Vulnerability - Nov09 (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with VMWare product(s) and is prone to
 
 if(description)
 {
-  script_id(801142);
-  script_version("$Revision: 4906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:06:55 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801142");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

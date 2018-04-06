@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1637_1.nasl 8494 2018-01-23 06:57:55Z teissa $
+# $Id: gb_suse_2012_1637_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)
 #
@@ -75,9 +75,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00011.html");
-  script_id(850385);
-  script_version("$Revision: 8494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850385");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:42 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5130", "CVE-2012-5131", "CVE-2012-5132", "CVE-2012-5133",
                 "CVE-2012-5134", "CVE-2012-5135", "CVE-2012-5136", "CVE-2012-5137",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 7172 2017-09-18 11:07:34Z cfischer $
+# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Cisco Products ActiveX Control Multiple Vulnerabilities
 #
@@ -57,13 +57,13 @@ tag_summary = "This host is installed with Cisco ASMC/Hostscan/Secure Desktop or
 
 if(description)
 {
-  script_id(802459);
-  script_version("$Revision: 7172 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802459");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2493", "CVE-2012-2494", "CVE-2012-2495");
   script_bugtraq_id(54107, 54108);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 13:30:28 +0530 (Wed, 12 Sep 2012)");
   script_name("Cisco Products ActiveX Control Multiple Vulnerabilities");
 

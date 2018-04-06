@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_mar12_win.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: secpod_opera_mult_vuln_mar12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Multiple Vulnerabilities - March12 (Windows)
 #
@@ -46,13 +46,13 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 
 if(description)
 {
-  script_id(902666);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902666");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1924",  "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
                 "CVE-2012-1928");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
   script_name("Opera Multiple Vulnerabilities - March12 (Windows)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1010/");

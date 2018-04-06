@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_jpeg_file_remote_dos_vuln.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_clamav_jpeg_file_remote_dos_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # ClamAV Remote Denial of Service Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host has ClamAV installed, and is prone to denial of service
 
 if(description)
 {
-  script_id(800079);
-  script_version("$Revision: 5158 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800079");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

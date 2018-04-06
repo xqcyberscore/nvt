@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_10568.nasl 6624 2017-07-10 06:11:55Z cfischer $
+# $Id: fcore_2009_10568.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-10568 (ocaml-camlimages)
 #
 # Authors:
@@ -50,9 +50,9 @@ announced via advisory FEDORA-2009-10568.";
 
 if(description)
 {
- script_id(66253);
- script_version("$Revision: 6624 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66253");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-17 21:42:12 +0100 (Tue, 17 Nov 2009)");
  script_cve_id("CVE-2009-3296");
  script_tag(name:"cvss_base", value:"7.5");

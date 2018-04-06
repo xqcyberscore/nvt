@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_sandbox_profiles_sec_bypass_vuln.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gb_macosx_sandbox_profiles_sec_bypass_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability
 #
@@ -47,13 +47,13 @@ tag_summary = "The host is installed with Apple Mac OS X operating system and
 
 if(description)
 {
-  script_id(803223);
-  script_version("$Revision: 6521 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803223");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2011-1516", "CVE-2008-7303");
   script_bugtraq_id(50644, 50716);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 12:42:10 +0530 (Fri, 01 Feb 2013)");
   script_name("Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48980");

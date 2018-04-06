@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2330_1.nasl 8970 2018-02-27 15:16:18Z cfischer $
+# $Id: deb_2330_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2330-1 (simplesamlphp)
 #
 # Authors:
@@ -55,11 +55,11 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70545);
+ script_oid("1.3.6.1.4.1.25623.1.0.70545");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 8970 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-27 16:16:18 +0100 (Tue, 27 Feb 2018) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:26:59 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2330-1 (simplesamlphp)");
  script_cve_id("CVE-2011-4625");

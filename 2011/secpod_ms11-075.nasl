@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-075.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: secpod_ms11-075.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Active Accessibility Remote Code Execution Vulnerability (2623699)
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902746);
-  script_version("$Revision: 7582 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902746");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-1247");
   script_bugtraq_id(49976);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_50564.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_xampp_50564.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities
 #
@@ -37,9 +37,9 @@ These issues affect XAMPP 1.7.7 for Windows.";
 
 if (description)
 {
- script_id(103336);
+ script_oid("1.3.6.1.4.1.25623.1.0.103336");
  script_bugtraq_id(50564);
- script_version ("$Revision: 7550 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities");
@@ -48,7 +48,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.apachefriends.org/en/xampp.html");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5054.php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-08 09:38:06 +0100 (Tue, 08 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

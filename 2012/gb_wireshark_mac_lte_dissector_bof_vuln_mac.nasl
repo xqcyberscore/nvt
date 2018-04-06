@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 
 if(description)
 {
-  script_id(802664);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802664");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0444");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:17:17 +0530 (Mon, 30 Jul 2012)");
   script_name("Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64624");

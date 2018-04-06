@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: digital_scribe_login_sql_inject.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: digital_scribe_login_sql_inject.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Digital Scribe login.php SQL Injection flaw
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_solution = "Unknown at this time.";
 
 if(description)
 {
-  script_id(19770);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.19770");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2987");
   script_bugtraq_id(14843);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 7254 2017-09-25 15:54:28Z cfischer $
+# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed with Stoneware webNetwork and is prone to
 
 if(description)
 {
-  script_id(803326);
-  script_version("$Revision: 7254 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803326");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:54:28 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:46:39 +0530 (Wed, 06 Mar 2013)");
   script_name("Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://stoneware-docs.s3.amazonaws.com/Bulletins/Security%20Bulletin%206_1_0.pdf");

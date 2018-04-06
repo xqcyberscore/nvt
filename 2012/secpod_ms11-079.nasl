@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-079.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: secpod_ms11-079.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Forefront Unified Access Gateway Remote Code Execution Vulnerabilities (2544641)
 #
@@ -46,14 +46,14 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903045);
-  script_version("$Revision: 5958 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903045");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-1895", "CVE-2011-1896", "CVE-2011-1897", "CVE-2011-1969",
                 "CVE-2011-2012");
   script_bugtraq_id(49979, 49972, 49974, 49983, 49980);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 17:47:08 +0530 (Fri, 26 Oct 2012)");
   script_name("MS Forefront Unified Access Gateway Remote Code Execution Vulnerabilities (2544641)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46402/");

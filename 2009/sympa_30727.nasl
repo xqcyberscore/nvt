@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sympa_30727.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: sympa_30727.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sympa 'sympa.pl' Insecure Temporary File Creation Vulnerability
 #
@@ -40,9 +40,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100299);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100299");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-11 19:51:15 +0200 (Sun, 11 Oct 2009)");
  script_bugtraq_id(30727);
  script_cve_id("CVE-2008-4476");

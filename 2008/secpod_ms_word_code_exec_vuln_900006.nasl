@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_word_code_exec_vuln_900006.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: secpod_ms_word_code_exec_vuln_900006.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Microsoft Word Could Allow Remote Code Execution Vulnerability
 #
 # Authors:
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with Microsoft Office (with MS Word), whic
 
 if(description)
 {
- script_id(900006);
- script_version("$Revision: 6519 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900006");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30124);
  script_cve_id("CVE-2008-2244");

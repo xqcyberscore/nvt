@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xss_n_mem_crptn_vuln_win.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_mozilla_prdts_xss_n_mem_crptn_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products XSS and Memory Corruption Vulnerabilities (Windows)
 #
@@ -44,13 +44,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 
 if(description)
 {
-  script_id(802518);
-  script_version("$Revision: 7006 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802518");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3650", "CVE-2011-3648");
   script_bugtraq_id(50595, 50593);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-14 13:23:08 +0530 (Mon, 14 Nov 2011)");
   script_name("Mozilla Products XSS and Memory Corruption Vulnerabilities (Windows)");
 

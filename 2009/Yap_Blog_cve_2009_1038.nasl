@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Yap_Blog_cve_2009_1038.nasl 5776 2017-03-30 06:05:40Z cfi $
+# $Id: Yap_Blog_cve_2009_1038.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # YAP Multiple SQL Injection Vulnerabilities
 #
@@ -36,9 +36,9 @@ tag_summary = "YAP is prone to multiple SQL-injection vulnerabilities because it
 
 if(description)
 {
- script_id(100087);
- script_version("$Revision: 5776 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100087");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-29 17:14:47 +0200 (Sun, 29 Mar 2009)");
  script_bugtraq_id(34274);
  script_cve_id("CVE-2009-1038");

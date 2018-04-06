@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oraclejsp_demos_mult_xss_vuln.nasl 5796 2017-03-30 14:15:11Z cfi $
+# $Id: secpod_oraclejsp_demos_mult_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OracleJSP Demos Multiple Cross Site Scripting Vulnerabilities
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is running OracleJSP Demos and is prone to multiple
 
 if(description)
 {
-  script_id(902412);
-  script_version("$Revision: 5796 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902412");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 15:24:49 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

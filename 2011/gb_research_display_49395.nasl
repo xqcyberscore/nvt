@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_research_display_49395.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_research_display_49395.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # 'research_display.php' SQL Injection Vulnerability
 #
@@ -34,9 +34,9 @@ in the underlying database.";
 
 if (description)
 {
- script_id(103235);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103235");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-01 14:04:12 +0200 (Thu, 01 Sep 2011)");
  script_bugtraq_id(49395);
  script_tag(name:"cvss_base", value:"7.5");

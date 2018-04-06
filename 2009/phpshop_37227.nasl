@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpshop_37227.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: phpshop_37227.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # PhpShop Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -38,9 +38,9 @@ PhpShop 0.8.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100383);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100383");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-08 22:02:24 +0100 (Tue, 08 Dec 2009)");
  script_cve_id("CVE-2009-4570");
  script_bugtraq_id(37227);

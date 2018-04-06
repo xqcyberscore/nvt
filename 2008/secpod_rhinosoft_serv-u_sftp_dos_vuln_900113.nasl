@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rhinosoft_serv-u_sftp_dos_vuln_900113.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_rhinosoft_serv-u_sftp_dos_vuln_900113.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: RhinoSoft Serv-U SFTP Remote Denial of Service Vulnerability
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_summary = "The host is running RhinoSoft Serv-U SFTP, which is prone to deni
 
 if(description)
 {
- script_id(900113);
- script_version("$Revision: 5375 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900113");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-3731");
  script_bugtraq_id(30739);

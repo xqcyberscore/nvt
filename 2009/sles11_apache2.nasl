@@ -53,9 +53,9 @@ if(description)
  script_xref(name : "URL" , value : "https://bugzilla.novell.com/show_bug.cgi?id=539571");
  script_xref(name : "URL" , value : "https://bugzilla.novell.com/show_bug.cgi?id=519194");
  script_xref(name : "URL" , value : "https://bugzilla.novell.com/show_bug.cgi?id=538322");
- script_id(66081);
- script_version("$Revision: 6666 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66081");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-27 01:37:56 +0100 (Tue, 27 Oct 2009)");
  script_cve_id("CVE-2009-1195", "CVE-2009-1890", "CVE-2009-1891", "CVE-2009-3094", "CVE-2009-3095");
  script_tag(name:"cvss_base", value:"7.5");

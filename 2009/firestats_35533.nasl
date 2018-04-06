@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: firestats_35533.nasl 4824 2016-12-21 08:49:38Z teissa $
+# $Id: firestats_35533.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FireStats Unspecified SQL Injection Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "The vendor has released an update. See http://firestats.cc/
 
 if (description)
 {
- script_id(100230);
- script_version("$Revision: 4824 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:49:38 +0100 (Wed, 21 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100230");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-08 19:01:22 +0200 (Wed, 08 Jul 2009)");
  script_bugtraq_id(35533);
  script_cve_id("CVE-2009-2144");

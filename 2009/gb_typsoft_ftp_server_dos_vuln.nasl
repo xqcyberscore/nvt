@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typsoft_ftp_server_dos_vuln.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_typsoft_ftp_server_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # TYPSoft FTP Server 'APPE' and 'DELE' Commands DOS Vulnerability
 #
@@ -41,9 +41,9 @@ Service Vulnerability.";
 
 if(description)
 {
-  script_id(801058);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801058");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");

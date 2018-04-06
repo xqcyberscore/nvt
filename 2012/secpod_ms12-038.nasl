@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-038.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-038.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902841);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902841");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(53861);
   script_cve_id("CVE-2012-1855");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:09:09 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49418");

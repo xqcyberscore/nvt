@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JobHut_34300.nasl 5776 2017-03-30 06:05:40Z cfi $
+# $Id: JobHut_34300.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # JobHut 'browse.php' SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "JobHut is prone to an SQL-injection vulnerability because it fail
 
 if(description)
 {
- script_id(100102);
- script_version("$Revision: 5776 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100102");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_slysoft_prdts_code_exec_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_slysoft_prdts_code_exec_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # SlySoft Product(s) Code Execution Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed with SlySoft Product(s) and are prone
 
 if(description)
 {
-  script_id(800392);
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800392");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-16 16:39:16 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");

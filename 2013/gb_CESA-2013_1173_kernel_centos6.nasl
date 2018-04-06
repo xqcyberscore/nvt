@@ -73,9 +73,9 @@ update to take effect.";
 
 if(description)
 {
-  script_id(881786);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881786");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-02 15:41:31 +0530 (Mon, 02 Sep 2013)");
   script_cve_id("CVE-2012-6544", "CVE-2013-2146", "CVE-2013-2206", "CVE-2013-2224",
                 "CVE-2013-2232", "CVE-2013-2237", "CVE-2012-3552");

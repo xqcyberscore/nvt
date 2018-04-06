@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-068.nasl 5863 2017-04-05 07:38:11Z antu123 $
+# $Id: gb_ms07-068.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Vulnerability in Windows Media File Format Could Allow Remote Code Execution
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801708);
-  script_version("$Revision: 5863 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801708");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 07:39:17 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

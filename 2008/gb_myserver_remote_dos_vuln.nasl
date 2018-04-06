@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_myserver_remote_dos_vuln.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: gb_myserver_remote_dos_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # MyServer Remote Denial of Service Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running MyServer and is prone to denial of service
 
 if(description)
 {
-  script_id(800306);
-  script_version("$Revision: 5785 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800306");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_java_10_5_upd_10.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_macosx_java_10_5_upd_10.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Java for Mac OS X 10.5 Update 10
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902553);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902553");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-0802", "CVE-2011-0814", "CVE-2011-0862", "CVE-2011-0863",
                 "CVE-2011-0864", "CVE-2011-0865", "CVE-2011-0867", "CVE-2011-0868",

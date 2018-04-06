@@ -55,9 +55,9 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(64121);
- script_version("$Revision: 4847 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-23 10:33:16 +0100 (Fri, 23 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64121");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2009-1788", "CVE-2009-1791");
  script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AjaXplorer_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
+# $Id: gb_AjaXplorer_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # AjaXplorer Detection
 #
@@ -29,10 +29,10 @@ for remotely managing files on a web server.";
 
 if(description)
 {
- script_id(100573);
+ script_oid("1.3.6.1.4.1.25623.1.0.100573");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5721 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-04-13 13:16:59 +0200 (Tue, 13 Apr 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("AjaXplorer Detection");

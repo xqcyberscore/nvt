@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_coldfusion_multiple_path_disc_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_adobe_coldfusion_multiple_path_disc_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe ColdFusion Multiple Path Disclosure Vulnerabilities
 #
@@ -45,11 +45,11 @@ path disclosure vulnerabilities.";
 
 if(description)
 {
-  script_id(902586);
-  script_version("$Revision: 7029 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902586");
+  script_version("$Revision: 9351 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-17 10:10:10 +0530 (Thu, 17 Nov 2011)");
   script_name("Adobe ColdFusion Multiple Path Disclosure Vulnerabilities");
   script_xref(name : "URL" , value : "http://websecurity.com.ua/5377/");

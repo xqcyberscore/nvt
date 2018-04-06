@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gd_graphics_library_bof_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_gd_graphics_library_bof_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # GD Graphics Library '_gdGetColors()' Buffer Overflow Vulnerability (Linux)
 #
@@ -47,10 +47,10 @@ This NVT may create FP and LSC's are taking care of it.";
 
 if(description)
 {
-  script_id(801122);
-  script_version("$Revision: 4869 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801122");
+  script_version("$Revision: 9350 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

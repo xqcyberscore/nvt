@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1200_1.nasl 8313 2018-01-08 07:02:11Z teissa $
+# $Id: gb_suse_2012_1200_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for freeradius openSUSE-SU-2012:1200-1 (freeradius)
 #
@@ -35,9 +35,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850337);
-  script_version("$Revision: 8313 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 08:02:11 +0100 (Mon, 08 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850337");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:06 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-3547");
   script_tag(name:"cvss_base", value:"6.8");

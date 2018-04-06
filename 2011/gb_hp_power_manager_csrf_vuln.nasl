@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_power_manager_csrf_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_hp_power_manager_csrf_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # HP Power Manager Cross Site Request Forgery (CSRF) and XSS Vulnerability
 #
@@ -55,9 +55,9 @@ request forgery and cross site scripting vulnerability.";
 
 if(description)
 {
-  script_id(801591);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801591");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0277", "CVE-2011-0280");
   script_bugtraq_id(46258);

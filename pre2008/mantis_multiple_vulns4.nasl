@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mantis_multiple_vulns4.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: mantis_multiple_vulns4.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Mantis Multiple Flaws (4)
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_solution = "Upgrade to Mantis 1.0.0rc2 or newer.";
 
 if(description)
 {
- script_id(19473);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.19473");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(14604);
  script_cve_id("CVE-2005-2556","CVE-2005-2557", "CVE-2005-3090", "CVE-2005-3091"); 

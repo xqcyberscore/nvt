@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_oct11_win_01.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_oracle_java_se_mult_vuln_oct11_win_01.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows01)
 #
@@ -43,14 +43,14 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 
 if(description)
 {
-  script_id(802273);
-  script_version("$Revision: 7699 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802273");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3547", "CVE-2011-3548", "CVE-2011-3552", "CVE-2011-3556",
                 "CVE-2011-3557", "CVE-2011-3560");
   script_bugtraq_id(50211, 50234, 50236, 50243, 50231, 50248);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows01)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");

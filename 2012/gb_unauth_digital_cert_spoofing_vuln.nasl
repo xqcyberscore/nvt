@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)
 #
@@ -42,11 +42,11 @@ tag_summary = "The host is installed with Microsoft Windows operating system and
 
 if(description)
 {
-  script_id(802634);
-  script_version("$Revision: 5341 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802634");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-04 14:14:14 +0530 (Mon, 04 Jun 2012)");
   script_name("Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027114");

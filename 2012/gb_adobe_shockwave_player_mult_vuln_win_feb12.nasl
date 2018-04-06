@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 8932 2018-02-23 08:01:57Z santu $
+# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)
 #
@@ -43,15 +43,15 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 
 if(description)
 {
-  script_id(802398);
-  script_version("$Revision: 8932 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802398");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0757", "CVE-2012-0759", "CVE-2012-0760", "CVE-2012-0761",
                 "CVE-2012-0762", "CVE-2012-0763", "CVE-2012-0764", "CVE-2012-0766",
                 "CVE-2012-0758", "CVE-2012-0771");
   script_bugtraq_id(51999, 52006, 52000, 52001, 52002, 52003, 52004, 52005, 52007);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:01:57 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-17 12:55:43 +0530 (Fri, 17 Feb 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47932/");

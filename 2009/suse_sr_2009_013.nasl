@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sr_2009_013.nasl 6668 2017-07-11 13:34:29Z cfischer $
+# $Id: suse_sr_2009_013.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory SUSE-SR:2009:013
 #
 # Authors:
@@ -37,9 +37,9 @@ tag_solution = "Update all out of date packages.";
                                                                                 
 if(description)
 {
- script_id(64643);
- script_version("$Revision: 6668 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64643");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-08-17 16:54:45 +0200 (Mon, 17 Aug 2009)");
  script_cve_id("CVE-2008-5518", "CVE-2009-0023", "CVE-2009-0038", "CVE-2009-0039", "CVE-2009-0781", "CVE-2009-1255", "CVE-2009-1373", "CVE-2009-1375", "CVE-2009-1376", "CVE-2009-1494", "CVE-2009-1788", "CVE-2009-1791", "CVE-2009-1889", "CVE-2009-1955", "CVE-2009-1956", "CVE-2009-2185", "CVE-2009-2285", "CVE-2009-2288", "CVE-2009-2415", "CVE-2009-2416");
  script_tag(name:"cvss_base", value:"10.0");

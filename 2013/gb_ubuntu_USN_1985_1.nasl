@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1985_1.nasl 8509 2018-01-24 06:57:46Z teissa $
+# $Id: gb_ubuntu_USN_1985_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for python3.3 USN-1985-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841576);
-  script_version("$Revision: 8509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841576");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:20:45 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-2099", "CVE-2013-4238");
   script_tag(name:"cvss_base", value:"4.3");

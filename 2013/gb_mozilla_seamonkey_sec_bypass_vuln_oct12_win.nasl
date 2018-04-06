@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_win.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is installed with Mozilla Seamonkey and is prone to mult
 
 if(description)
 {
-  script_id(803670);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803670");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 12:48:01 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-058_900054.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms08-058_900054.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Cumulative Security Update for Internet Explorer (956390)
 #
 # Authors:
@@ -25,9 +25,9 @@
 
 if(description)
 {
-  script_id(900054);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900054");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(29960, 31615, 31616, 31617, 31618, 31654);
   script_cve_id("CVE-2008-2947", "CVE-2008-3472", "CVE-2008-3473",

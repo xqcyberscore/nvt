@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphider_query_param_xss_vuln.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_sphider_query_param_xss_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Sphider query Parameter Cross-Site Scripting Vulnerability
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(800308);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800308");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-01 15:31:19 +0100 (Mon, 01 Dec 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");

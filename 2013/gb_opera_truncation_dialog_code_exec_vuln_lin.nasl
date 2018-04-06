@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_truncation_dialog_code_exec_vuln_lin.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_opera_truncation_dialog_code_exec_vuln_lin.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Opera Truncated Dialogs Code Execution Vulnerability (Linux)
 #
@@ -39,13 +39,13 @@ tag_summary = "The host is installed with Opera and is prone to code execution
 
 if(description)
 {
-  script_id(803148);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803148");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-6460");
   script_bugtraq_id(55301);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 16:22:46 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Truncated Dialogs Code Execution Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1028/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1704_2.nasl 8494 2018-01-23 06:57:55Z teissa $
+# $Id: gb_ubuntu_USN_1704_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-1704-2
 #
@@ -72,9 +72,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1704-2/");
-  script_id(841304);
-  script_version("$Revision: 8494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841304");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:57:45 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-4461", "CVE-2012-4508", "CVE-2012-4530",
                 "CVE-2012-4565", "CVE-2012-5517", "CVE-2012-5532");

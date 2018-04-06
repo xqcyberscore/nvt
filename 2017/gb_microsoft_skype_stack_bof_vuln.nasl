@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_microsoft_skype_stack_bof_vuln.nasl 75818 2017-07-13 11:39:44Z antu123 $
+# $Id: gb_microsoft_skype_stack_bof_vuln.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # Microsoft Skype 'MSFTEDIT.DLL' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:skype:skype";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811521");
-  script_version("$Revision: 6717 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2017-9948");
   script_bugtraq_id(99281);
   script_tag(name:"cvss_base",value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 14:31:56 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 11:45:57 +0530 (Thu, 13 Jul 2017)");
   script_name("Microsoft Skype 'MSFTEDIT.DLL' Buffer Overflow Vulnerability");
 

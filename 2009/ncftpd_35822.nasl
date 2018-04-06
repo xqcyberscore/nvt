@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ncftpd_35822.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: ncftpd_35822.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # NcFTPD Symbolic Link Information Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/35822");
  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/52067");
  script_xref(name : "URL" , value : "http://www.ncftpd.com/ncftpd/");
- script_id(100250);
- script_version("$Revision: 7297 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100250");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-28 21:43:08 +0200 (Tue, 28 Jul 2009)");
  script_bugtraq_id(35822);
  script_tag(name:"cvss_base", value:"4.0");

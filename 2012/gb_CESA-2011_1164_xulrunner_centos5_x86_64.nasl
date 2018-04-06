@@ -71,9 +71,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-September/018055.html");
-  script_id(881429);
-  script_version("$Revision: 8352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881429");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:51:04 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0084", "CVE-2011-2378", "CVE-2011-2981", "CVE-2011-2982",
                 "CVE-2011-2983", "CVE-2011-2984");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Oracle HTTP Server 'Expect' Header Cross-Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running Oracle HTTP Server and is prone to cross sit
 
 if(description)
 {
-  script_id(902526);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902526");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability
 #
@@ -45,12 +45,12 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(802851);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802851");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2162");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-11 17:31:58 +0530 (Fri, 11 May 2012)");
   script_name("IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability");
 

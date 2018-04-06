@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-007.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms14-007.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903431);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903431");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-0263");
   script_bugtraq_id(65393);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 11:41:52 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)");
 

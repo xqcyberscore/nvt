@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realtek_media_player_bof_vuln.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_realtek_media_player_bof_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Realtek Media Player Playlist Buffer Overflow Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host has Realtek Media Player installed and is prone to
 
 if(description)
 {
-  script_id(900067);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900067");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Oracle GlassFish/System Application Server Web Container DOS Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is running GlassFish/System Application Server and is
 
 if(description)
 {
-  script_id(801997);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801997");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-3559");
   script_bugtraq_id(50204);

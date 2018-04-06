@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zikula_49491.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_zikula_49491.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Zikula Application Framework 'themename' Parameter Cross Site Scripting Vulnerability
 #
@@ -40,9 +40,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103251);
- script_version("$Revision: 7024 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103251");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-12 14:00:02 +0200 (Mon, 12 Sep 2011)");
  script_bugtraq_id(49491);
  script_tag(name:"cvss_base", value:"4.3");

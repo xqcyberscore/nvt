@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sigplus_pro_activex_control_mult_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_sigplus_pro_activex_control_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Topaz Systems SigPlus Pro ActiveX Control Multiple Vulnerabilities
 #
@@ -46,9 +46,9 @@ tag_summary = "The host is installed with SigPlus Pro ActiveX Control and is pro
 
 if(description)
 {
-  script_id(801753);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801753");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-0323", "CVE-2011-0324");
   script_bugtraq_id(46128);

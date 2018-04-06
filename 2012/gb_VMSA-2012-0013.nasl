@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0013.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_VMSA-2012-0013.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0013 VMware vSphere and vCOps updates to third party libraries
 #
@@ -107,7 +107,7 @@ Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103558);
+ script_oid("1.3.6.1.4.1.25623.1.0.103558");
  script_cve_id("CVE-2010-4180","CVE-2010-4252","CVE-2011-0014","CVE-2011-4108","CVE-2011-4109","CVE-2011-4576","CVE-2011-4577","CVE-2011-4619","CVE-2012-0050",
                "CVE-2012-2110","CVE-2011-1833","CVE-2011-2484","CVE-2011-2496","CVE-2011-3188","CVE-2011-3209","CVE-2011-3363","CVE-2011-4110","CVE-2011-1020",
                "CVE-2011-4132","CVE-2011-4324","CVE-2011-4325","CVE-2012-0207","CVE-2011-2699","CVE-2012-1583","CVE-2010-2761","CVE-2010-4410","CVE-2011-3597",
@@ -116,11 +116,11 @@ if (description)
 
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0013 VMware vSphere and vCOps updates to third party libraries.");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-31 11:02:01 +0100 (Fri, 31 Aug 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

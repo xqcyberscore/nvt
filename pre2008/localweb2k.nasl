@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: localweb2k.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: localweb2k.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: LocalWeb2000 remote read
 #
 # Authors:
@@ -39,9 +39,9 @@ it receives malformed directory requests.";
 if(description)
 
 {
-	script_id(11005);
-	script_version("$Revision: 6063 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+	script_oid("1.3.6.1.4.1.25623.1.0.11005");
+	script_version("$Revision: 9348 $");
+	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_bugtraq_id(2268, 4820, 7947);
  	script_cve_id("CVE-2001-0189");

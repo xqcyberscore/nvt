@@ -85,9 +85,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00014.html");
-  script_id(870905);
-  script_version("$Revision: 8448 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.870905");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 10:17:05 +0530 (Mon, 11 Feb 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0428", "CVE-2013-0429", "CVE-2013-0432", "CVE-2013-0433",

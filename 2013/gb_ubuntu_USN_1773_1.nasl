@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1773_1.nasl 8466 2018-01-19 06:58:30Z teissa $
+# $Id: gb_ubuntu_USN_1773_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for clamav USN-1773-1
 #
@@ -41,9 +41,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1773-1/");
-  script_id(841368);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841368");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-22 10:41:36 +0530 (Fri, 22 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

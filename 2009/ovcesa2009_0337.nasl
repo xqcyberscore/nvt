@@ -1,5 +1,5 @@
 #CESA-2009:0337 63827 8
-# $Id: ovcesa2009_0337.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_0337.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0337 (php)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:0337.";
 
 if(description)
 {
- script_id(63827);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63827");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-15 22:11:00 +0200 (Wed, 15 Apr 2009)");
  script_cve_id("CVE-2008-3658", "CVE-2008-3660", "CVE-2008-5498", "CVE-2008-5557", "CVE-2009-0754");
  script_tag(name:"cvss_base", value:"10.0");

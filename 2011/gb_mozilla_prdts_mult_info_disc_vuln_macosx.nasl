@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_info_disc_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_mozilla_prdts_mult_info_disc_vuln_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products Multiple Information Disclosure Vulnerabilities - MAC OS X
 #
@@ -51,12 +51,12 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey/thunderbird
 
 if(description)
 {
-  script_id(802546);
-  script_version("$Revision: 7024 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802546");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2010-5074", "CVE-2002-2437", "CVE-2002-2436");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 16:19:54 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Products Multiple Information Disclosure Vulnerabilities - MAC OS X");
 

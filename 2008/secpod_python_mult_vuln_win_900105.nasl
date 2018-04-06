@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_python_mult_vuln_win_900105.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_python_mult_vuln_win_900105.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Python Multiple Vulnerabilities (Windows)
 #
 # Authors:
@@ -48,9 +48,9 @@ tag_summary = "The host is installed with Python, which is prone to multiple
 
 if(description)
 {
- script_id(900105);
- script_version("$Revision: 7174 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900105");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30491);
  script_cve_id("CVE-2008-2315", "CVE-2008-2316", "CVE-2008-3142", 

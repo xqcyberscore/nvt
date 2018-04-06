@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_mar13_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln_mar13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Windows)
 #
@@ -38,14 +38,14 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(803330);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803330");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2478", "CVE-2013-2480", "CVE-2013-2481", "CVE-2013-2482",
                 "CVE-2013-2483", "CVE-2013-2484", "CVE-2013-2485", "CVE-2013-2488");
   script_bugtraq_id(58357, 58351, 58340, 58353, 58355, 58356, 58362, 58365);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:57:44 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Windows)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52471");

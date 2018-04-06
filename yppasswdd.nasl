@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yppasswdd.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: yppasswdd.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: yppasswdd overflow
 #
 # Authors:
@@ -31,9 +31,9 @@ it, or contact Sun for a patch";
 
 if(description)
 {
- script_id(80035);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80035");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(2763);
 script_cve_id("CVE-2001-0779");

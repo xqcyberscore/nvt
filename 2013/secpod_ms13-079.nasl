@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-079.nasl 5339 2017-02-18 16:28:22Z cfi $
+# $Id: secpod_ms13-079.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(901222);
-  script_version("$Revision: 5339 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901222");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(62184);
   script_cve_id("CVE-2013-3868");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:28:22 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 12:41:50 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)");
 

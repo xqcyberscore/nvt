@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_45005.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_phpbb_45005.nasl 9332 2018-04-05 12:51:29Z cfischer $
 #
 # phpBB 'includes/message_parser.php' HTML Injection Vulnerability
 #
@@ -24,63 +24,59 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpBB is prone to an HTML-injection vulnerability because it fails to
-properly sanitize user-supplied input.
+CPE = "cpe:/a:phpbb:phpbb";
 
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials, control how the site is rendered to the user, or launch
-other attacks.
-
-Versions prior to phpBB 3.0.8 are vulnerable.";
-
-tag_solution = "The vendor has released updates. Please contact the vendor for
-details.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100922");
- script_version("$Revision: 8510 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-11-30 12:57:59 +0100 (Tue, 30 Nov 2010)");
- script_bugtraq_id(45005);
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
- script_name("phpBB 'includes/message_parser.php' HTML Injection Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.100922");
+  script_version("$Revision: 9332 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2010-11-30 12:57:59 +0100 (Tue, 30 Nov 2010)");
+  script_bugtraq_id(45005);
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_name("phpBB 'includes/message_parser.php' HTML Injection Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("phpbb_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpBB/installed");
 
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45005");
+  script_xref(name:"URL", value:"http://www.phpbb.com/");
+  script_xref(name:"URL", value:"http://www.phpbb.com/support/documents.php?mode=changelog&version=3#v307-PL1");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("phpbb_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45005");
- script_xref(name : "URL" , value : "http://www.phpbb.com/");
- script_xref(name : "URL" , value : "http://www.phpbb.com/support/documents.php?mode=changelog&version=3#v307-PL1");
- exit(0);
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials, control how the site is rendered to the user, or launch
+  other attacks.");
+
+  script_tag(name:"affected", value:"Versions prior to phpBB 3.0.8 are vulnerable.");
+
+  script_tag(name:"solution", value:"The vendor has released updates. Please contact the vendor for
+  details.");
+
+  script_tag(name:"summary", value:"phpBB is prone to an HTML-injection vulnerability because it fails to
+  properly sanitize user-supplied input.");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if (!can_host_php(port:port)) exit(0);
+if( version_is_less( version:vers, test_version:"3.0.8" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.8" );
+  security_message( port:port, data:report );
+  exit( 0 );
+}  
 
-if(vers = get_version_from_kb(port:port,app:"phpBB")) {
-
-  if(version_is_less(version: vers, test_version: "3.0.8")) {
-      security_message(port:port);
-      exit(0);
-  }
-
-}
-
-exit(0);
+exit( 99 );

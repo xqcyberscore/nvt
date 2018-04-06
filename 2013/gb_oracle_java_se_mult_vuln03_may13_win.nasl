@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln03_may13_win.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_oracle_java_se_mult_vuln03_may13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities -03 May 13 (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 
 if(description)
 {
-  script_id(803488);
-  script_version("$Revision: 7699 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803488");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2438", "CVE-2013-2436", "CVE-2013-2431",
                 "CVE-2013-2426", "CVE-2013-2425", "CVE-2013-2423",
                 "CVE-2013-2421", "CVE-2013-2416", "CVE-2013-2415",
@@ -51,7 +51,7 @@ if(description)
                     59175, 59128, 59234, 59195, 59203);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-06 17:27:22 +0530 (Mon, 06 May 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -03 May 13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53008");

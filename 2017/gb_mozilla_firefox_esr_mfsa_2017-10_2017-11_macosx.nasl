@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_mozilla_firefox_esr_mfsa_2017-10_2017-11_macosx.nasl 32268 2016-02-24 14:01:01Z antu123 $
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-10_2017-11_macosx.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-10_2017-11)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810761");
-  script_version("$Revision: 5996 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2017-5429", "CVE-2017-5432", "CVE-2017-5433", "CVE-2017-5434",
                 "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5437", "CVE-2017-5438",
                 "CVE-2017-5439", "CVE-2017-5440", "CVE-2017-5441", "CVE-2017-5442",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2017-5469");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 08:20:55 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 13:41:00 +0530 (Thu, 20 Apr 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-10_2017-11)-MAC OS X");
 

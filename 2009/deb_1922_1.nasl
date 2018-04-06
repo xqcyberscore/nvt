@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1922_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
+# $Id: deb_1922_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory DSA 1922-1 (xulrunner)
 #
 # Authors:
@@ -102,9 +102,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(66146);
- script_version("$Revision: 6615 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66146");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-11 15:56:44 +0100 (Wed, 11 Nov 2009)");
  script_cve_id("CVE-2009-3274", "CVE-2009-3370", "CVE-2009-3372", "CVE-2009-3373", "CVE-2009-3374", "CVE-2009-3375", "CVE-2009-3376", "CVE-2009-3380", "CVE-2009-3382");
  script_tag(name:"cvss_base", value:"10.0");

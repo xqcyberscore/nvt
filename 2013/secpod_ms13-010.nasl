@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-010.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: secpod_ms13-010.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(903301);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903301");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0030");
   script_bugtraq_id(57852);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 13:16:30 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52129/");

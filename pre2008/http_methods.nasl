@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_methods.nasl 4295 2016-10-18 12:06:24Z cfi $
+# $Id: http_methods.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # Test HTTP dangerous methods
 #
@@ -41,8 +41,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10498");
-  script_version("$Revision: 4295 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-18 14:06:24 +0200 (Tue, 18 Oct 2016) $");
+  script_version("$Revision: 9335 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -158,7 +158,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     req = http_delete( item:file, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    # Recheck if file was deleted sucessfully
+    # Recheck if file was deleted successfully
     e = exists( port:port, file:file );
   } else {
     e = TRUE;

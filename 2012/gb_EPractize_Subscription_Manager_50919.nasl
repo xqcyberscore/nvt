@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EPractize_Subscription_Manager_50919.nasl 5715 2017-03-24 11:34:41Z cfi $
+# $Id: gb_EPractize_Subscription_Manager_50919.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # EPractize Labs Subscription Manager 'showImg.php' PHP Code Injection Vulnerability
 #
@@ -35,16 +35,16 @@ are also possible.";
 
 if (description)
 {
- script_id(103401);
+ script_oid("1.3.6.1.4.1.25623.1.0.103401");
  script_bugtraq_id(50919);
- script_version ("$Revision: 5715 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("EPractize Labs Subscription Manager 'showImg.php' PHP Code Injection Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50919");
  script_xref(name : "URL" , value : "http://www.epractizelabs.com/email-marketing/subscription-manager.html");
  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/current/0118.html");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-26 12:49:25 +0100 (Thu, 26 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

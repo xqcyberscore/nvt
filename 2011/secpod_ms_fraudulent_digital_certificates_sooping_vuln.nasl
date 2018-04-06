@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_fraudulent_digital_certificates_sooping_vuln.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms_fraudulent_digital_certificates_sooping_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Windows Fraudulent Digital Certificates Spoofing Vulnerability
 #
@@ -54,10 +54,10 @@ tag_solution = "Apply the patch from below link,
 
 if(description)
 {
-  script_id(902403);
-  script_version("$Revision: 8724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902403");
+  script_version("$Revision: 9351 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

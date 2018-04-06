@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-052.nasl 6526 2017-07-05 05:43:52Z cfischer $
+# $Id: secpod_ms11-052.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Internet Explorer Vector Markup Language Remote Code Execution Vulnerability (2544521)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900290);
-  script_version("$Revision: 6526 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900290");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_bugtraq_id(48173);
   script_cve_id("CVE-2011-1266");

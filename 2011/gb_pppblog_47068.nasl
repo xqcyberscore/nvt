@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pppblog_47068.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_pppblog_47068.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # pppBLOG 'search.php' Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ pppBLOG 0.3.0 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103136);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103136");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-31 17:03:50 +0200 (Thu, 31 Mar 2011)");
  script_bugtraq_id(47068);
  script_name("pppBLOG 'search.php' Cross Site Scripting Vulnerability");

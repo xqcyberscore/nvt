@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: typsoftftp_dir_traversal.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: typsoftftp_dir_traversal.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: TYPSoft directory traversal flaw
 #
 # Authors:
@@ -34,9 +34,9 @@ tag_solution = "Use a different FTP server or upgrade to the newest version";
 
 if(description)
 {
- script_id(14706);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.14706");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2489);
  script_cve_id("CVE-2002-0558");

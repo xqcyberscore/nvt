@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_prv_esc_vuln_900122.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: secpod_apple_itunes_prv_esc_vuln_900122.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Apple iTunes Local Privilege Escalation Vulnerability 
 #
 # Authors:
@@ -44,9 +44,9 @@ tag_summary = "The host is installed with Apple iTunes, which prone to privilege
 
 if(description)
 {
- script_id(900122);
- script_version("$Revision: 8169 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900122");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31089);
  script_cve_id("CVE-2008-3636");

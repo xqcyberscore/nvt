@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_baofeng_storm_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: gb_baofeng_storm_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # BaoFeng Storm Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed BaoFeng Storm
 
 if(description)
 {
-  script_id(800913);
+  script_oid("1.3.6.1.4.1.25623.1.0.800913");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7287 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BaoFeng Storm Version Detection");

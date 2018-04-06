@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uw_imapd_tmail_n_dmail_bof_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_uw_imapd_tmail_n_dmail_bof_vuln_lin.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # UW-imapd tmail and dmail BOF Vulnerabilities (Linux)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host has UW-imapd installed and is prone to Buffer Overflow
 
 if(description)
 {
-  script_id(800149);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800149");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-04 14:15:00 +0100 (Thu, 04 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

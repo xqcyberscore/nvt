@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mahara_multiple_vuln.nasl 4975 2017-01-10 16:07:01Z teissa $
+# $Id: mahara_multiple_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mahara Multiple vulnerabilities
 #
@@ -38,9 +38,9 @@ details.";
 
 if (description)
 {
- script_id(100334);
- script_version("$Revision: 4975 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-10 17:07:01 +0100 (Tue, 10 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100334");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-04 12:36:10 +0100 (Wed, 04 Nov 2009)");
  script_bugtraq_id(36893,36892);
  script_cve_id("CVE-2009-3298", "CVE-2009-3299");

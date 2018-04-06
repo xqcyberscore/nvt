@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GForge_multiple_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: GForge_multiple_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # GForge Multiple SQL Injection Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Update to newer version if available at http://gforge.org/";
 
 if (description)
 {
- script_id(100011);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100011");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(31674);
  script_cve_id("CVE-2008-6189");

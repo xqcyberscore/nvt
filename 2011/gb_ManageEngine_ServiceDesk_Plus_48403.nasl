@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # ManageEngine ServiceDesk Plus 'FILENAME' Parameter Directory Traversal Vulnerability
 #
@@ -40,9 +40,9 @@ also be affected.";
 
 if (description)
 {
- script_id(103184);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103184");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-06-29 13:12:40 +0200 (Wed, 29 Jun 2011)");
  script_cve_id("CVE-2011-2757");
  script_bugtraq_id(48403);

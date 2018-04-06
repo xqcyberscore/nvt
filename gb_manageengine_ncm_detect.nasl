@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_ncm_detect.nasl 8825 2018-02-15 10:45:17Z ckuersteiner $
+# $Id: gb_manageengine_ncm_detect.nasl 9340 2018-04-06 04:54:54Z ckuersteiner $
 #
 # ManageEngine Network Configuration Manager Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140774");
-  script_version("$Revision: 8825 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-15 11:45:17 +0100 (Thu, 15 Feb 2018) $");
+  script_version("$Revision: 9340 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-06 06:54:54 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-02-15 15:59:46 +0700 (Thu, 15 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/apiclient/ember/Login.jsp");
 
-if ("Configuration Manager" >< res && "'info'>Network Configuration & Change Management Software") {
+if ("Configuration Manager" >< res && "'info'>Network Configuration & Change Management Software" >< res) {
   version = "unknown";
 
   # Configuration Manager<span>v 12.0</span>

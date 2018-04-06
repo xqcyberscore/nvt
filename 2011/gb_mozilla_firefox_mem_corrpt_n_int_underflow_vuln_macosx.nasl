@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (MAC OS X)
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to memory
 
 if(description)
 {
-  script_id(802181);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802181");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-2996", "CVE-2011-2998");
   script_bugtraq_id(49845, 49809);

@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mime_dos_vul_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_thunderbird_mime_dos_vul_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Thunderbird DoS attacks via malformed MIME emails (Linux)
 #
@@ -41,9 +41,9 @@ tag_solution = "Upgrade to Thunderbird version 3.0.4 or later
 
 if(description)
 {
-  script_id(800502);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800502");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

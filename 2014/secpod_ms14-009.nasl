@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-009.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: secpod_ms14-009.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2916607)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903337);
-  script_version("$Revision: 7582 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903337");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-0253", "CVE-2014-0257", "CVE-2014-0295");
   script_bugtraq_id(65415, 65417, 65418);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:37:08 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2916607)");
 

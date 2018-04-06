@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_cyimage_bof_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_yahoo_msg_cyimage_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Yahoo Messenger JPG Photo Sharing Integer Overflow Vulnerability
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with Yahoo! Messenger and is prone to
 
 if(description)
 {
-  script_id(802419);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802419");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0268");
   script_bugtraq_id(51405);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:36:01 +0530 (Mon, 23 Jan 2012)");
   script_name("Yahoo Messenger JPG Photo Sharing Integer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47041");

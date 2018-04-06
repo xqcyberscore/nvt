@@ -27,9 +27,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(867035);
-  script_version("$Revision: 6628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.867035");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:31:03 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2012-4189", "CVE-2013-0785", "CVE-2013-1734", "CVE-2013-1742", "CVE-2013-1743");
   script_tag(name:"cvss_base", value:"6.8");

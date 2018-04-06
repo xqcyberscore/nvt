@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_dir_traversal_vuln_lin.nasl 5904 2017-04-10 06:18:08Z teissa $
+# $Id: gb_django_dir_traversal_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Django Directory Traversal Vulnerability (Linux)
 #
@@ -41,9 +41,9 @@ CPE = "cpe:/a:django_project:django";
 
 if(description)
 {
-  script_id(800924);
-  script_version("$Revision: 5904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800924");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

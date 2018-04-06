@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)
 #
@@ -42,13 +42,13 @@ tag_summary = "This host is installed with Adobe Photoshop and is prone to buffe
 
 if(description)
 {
-  script_id(802786);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802786");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2027", "CVE-2012-2028", "CVE-2012-2052", "CVE-2012-0275");
   script_bugtraq_id(53421, 52634, 53464, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 12:11:54 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)");
 

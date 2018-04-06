@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Extended Validation Information Disclosure Vulnerabilities (Linux)
 #
@@ -40,13 +40,13 @@ tag_summary = "The host is installed with Opera and is prone to information
 
 if(description)
 {
-  script_id(802830);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802830");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-3388","CVE-2011-3389");
   script_bugtraq_id(49388);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 12:13:30 +0530 (Fri, 06 Apr 2012)");
   script_name("Opera Extended Validation Information Disclosure Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45791");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BlindBlog_1_3_1.nasl 5767 2017-03-29 13:32:35Z cfi $
+# $Id: BlindBlog_1_3_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # BlindBlog Multiple Local File Include and SQL Injection
 # Vulnerabilities
@@ -42,9 +42,9 @@ tag_summary = "BlindBlog is prone to a local file-include vulnerability and
 
 if(description)
 {
- script_id(100031);
- script_version("$Revision: 5767 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100031");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(33980);
  script_tag(name:"cvss_base", value:"7.5");

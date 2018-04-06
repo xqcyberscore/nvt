@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_search_author_xss.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: phpbb_search_author_xss.nasl 9332 2018-04-05 12:51:29Z cfischer $
 #
 # phpBB < 2.0.10 Multiple Vulnerabilities
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:phpbb:phpbb";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13840");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9332 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2054", "CVE-2004-2055");
   script_bugtraq_id(10738, 10753, 10754, 10883);
@@ -42,6 +44,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("phpbb_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpBB/installed");
 
   script_tag(name:"solution", value:"Upgrade to 2.0.10 or later.");
 
@@ -54,23 +57,22 @@ if(description)
   This version is also vulnerable to a HTTP response splitting vulnerability
   which permits the injection of CRLF characters in the HTTP headers.");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port( default:80 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-kb = get_kb_item( "www/" + port + "/phpBB" );
-if( ! kb ) exit(0);
-matches = eregmatch( pattern:"(.*) under (.*)", string:kb );
-version = matches[1];
-if( ereg( pattern:"^([01]\.|2\.0\.[0-9]([^0-9]|$))", string:version ) ) {
-  security_message( port:port );
+if( ereg( pattern:"^([01]\.|2\.0\.[0-9]([^0-9]|$))", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.10" );
+  security_message( port:port, data:report );
   exit( 0 );
-}
+}  
 
 exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1809_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
+# $Id: deb_1809_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory DSA 1809-1 (linux-2.6)
 #
 # Authors:
@@ -67,9 +67,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(64111);
- script_version("$Revision: 6615 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64111");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2009-1630", "CVE-2009-1633", "CVE-2009-1758", "CVE-2009-1184");
  script_tag(name:"cvss_base", value:"7.1");

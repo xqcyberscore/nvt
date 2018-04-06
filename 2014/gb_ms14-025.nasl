@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-025.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_ms14-025.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(802073);
-  script_version("$Revision: 6692 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802073");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-1812");
   script_bugtraq_id(67275);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:36:12 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)");

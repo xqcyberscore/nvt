@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_aug11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: secpod_adobe_prdts_mult_vuln_aug11_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Air and Flash Player Multiple Vulnerabilities August-2011 (Windows)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is installed with Adobe Air and/or Flash Player and is
 
 if(description)
 {
-  script_id(902709);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902709");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2130", "CVE-2011-2134", "CVE-2011-2137",
                 "CVE-2011-2135", "CVE-2011-2136", "CVE-2011-2138",

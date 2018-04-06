@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-003.nasl 6520 2017-07-04 14:28:49Z cfischer $
+# $Id: secpod_ms13-003.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # MS System Center Operations Manager XSS Vulnerabilities (2748552)
 #
@@ -42,13 +42,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903100);
-  script_version("$Revision: 6520 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903100");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0009", "CVE-2013-0010");
   script_bugtraq_id(55408, 55401);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 10:25:58 +0530 (Wed, 09 Jan 2013)");
   script_name("MS System Center Operations Manager XSS Vulnerabilities (2748552)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51686/");

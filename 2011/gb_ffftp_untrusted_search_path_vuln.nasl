@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffftp_untrusted_search_path_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_ffftp_untrusted_search_path_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # FFFTP Untrusted Search Path Vulnerability (Windows)
 #
@@ -37,14 +37,14 @@ tag_summary = "The host is running FFFTP and is prone to untrusted search path
 
 if(description)
 {
-  script_id(802505);
-  script_version("$Revision: 7024 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802505");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3991");
   script_bugtraq_id(50412);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-11-08 16:10:17 +0530 (Tue, 08 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_name("FFFTP Untrusted Search Path Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46649");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71020");

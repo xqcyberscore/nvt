@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1279_1.nasl 7964 2017-12-01 07:32:11Z santu $
+# $Id: gb_ubuntu_USN_1279_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-natty USN-1279-1
 #
@@ -63,11 +63,11 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1279-1/");
-  script_id(840821);
+  script_oid("1.3.6.1.4.1.25623.1.0.840821");
   script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 7964 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-25 12:03:33 +0530 (Fri, 25 Nov 2011)");
   script_xref(name: "USN", value: "1279-1");
   script_cve_id("CVE-2011-2183", "CVE-2011-2491", "CVE-2011-2494", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2905", "CVE-2011-2909");

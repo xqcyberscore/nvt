@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Avaya WinPDM Multiple Buffer Overflow Vulnerabilities
 #
@@ -51,12 +51,12 @@ tag_summary = "The host is running Avaya WinPDM and is prone to multiple buffer 
 
 if(description)
 {
-  script_id(802469);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802469");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(47947);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 12:33:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Avaya WinPDM Multiple Buffer Overflow Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44062/");

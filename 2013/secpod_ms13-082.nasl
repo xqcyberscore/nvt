@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-082.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: secpod_ms13-082.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903412);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903412");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3860", "CVE-2013-3861");
   script_bugtraq_id(62819,  62820, 62807);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:14:29 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)");
 

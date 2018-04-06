@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sshd_challenge_resp_authentication_bof_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_sshd_challenge_resp_authentication_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OpenSSH 'sshd' Challenge Response Authentication Buffer Overflow Vulnerability
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is running OpenSSH sshd with ChallengeResponseAuthentica
 
 if(description)
 {
-  script_id(802407);
-  script_version("$Revision: 7015 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802407");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2002-0640");
   script_bugtraq_id(5093);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 18:20:44 +0530 (Wed, 07 Dec 2011)");
   script_name("OpenSSH 'sshd' Challenge Response Authentication Buffer Overflow Vulnerability");
 

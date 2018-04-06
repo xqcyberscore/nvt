@@ -44,9 +44,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:157");
-  script_id(831740);
-  script_version("$Revision: 8265 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831740");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-05 09:46:28 +0530 (Fri, 05 Oct 2012)");
   script_cve_id("CVE-2012-3535");
   script_tag(name:"cvss_base", value:"6.8");

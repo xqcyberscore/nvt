@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-015.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms12-015.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)
 #
@@ -39,14 +39,14 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902423);
-  script_version("$Revision: 6538 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902423");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0019", "CVE-2012-0020", "CVE-2012-0136", "CVE-2012-0137",
                 "CVE-2012-0138");
   script_bugtraq_id(51903, 51904, 51906, 51907, 51908);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 09:34:05 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)");
   script_xref(name : "URL" , value : "https://secunia.com/advisories/47946");

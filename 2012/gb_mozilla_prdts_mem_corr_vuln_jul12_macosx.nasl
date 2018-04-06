@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - July12 (Mac OS X)
 #
@@ -50,13 +50,13 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 
 if(description)
 {
-  script_id(802896);
-  script_version("$Revision: 6445 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802896");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1949", "CVE-2012-1960");
   script_bugtraq_id(54580, 54572);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 11:13:01 +0530 (Tue, 24 Jul 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - July12 (Mac OS X)");
 

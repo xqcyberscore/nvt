@@ -40,12 +40,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(71849);
+ script_oid("1.3.6.1.4.1.25623.1.0.71849");
  script_cve_id("CVE-2012-3446");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 5958 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:34:18 -0400 (Thu, 30 Aug 2012)");
  script_name("FreeBSD Ports: py-libcloud");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_maplocator_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_joomla_maplocator_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla Component 'com_maplocator' SQL Injection Vulnerability 
 #
@@ -45,9 +45,9 @@ prone to SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(902375);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902375");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

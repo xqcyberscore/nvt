@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1461_1.nasl 8336 2018-01-09 07:01:48Z teissa $
+# $Id: gb_suse_2012_1461_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:1461-1 (update)
 #
@@ -34,9 +34,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850363);
-  script_version("$Revision: 8336 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850363");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:23 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-4548");
   script_tag(name:"cvss_base", value:"6.0");

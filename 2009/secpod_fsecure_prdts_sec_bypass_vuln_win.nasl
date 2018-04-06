@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fsecure_prdts_sec_bypass_vuln_win.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_fsecure_prdts_sec_bypass_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # F-Secure Products Malware Detection Bypass Vulnerability (Windows)
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with F-Secure Product and is prone to
 
 if(description)
 {
-  script_id(900362);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900362");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

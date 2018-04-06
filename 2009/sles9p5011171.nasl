@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sles9p5011171.nasl 6666 2017-07-11 13:13:36Z cfischer $
+# $Id: sles9p5011171.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Security update for Linux kernel
 #
 # Authors:
@@ -51,9 +51,9 @@ tag_solution = "Please install the updates provided by SuSE.";
                                                                                 
 if(description)
 {
- script_id(65101);
- script_version("$Revision: 6666 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.65101");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-10 16:11:46 +0200 (Sat, 10 Oct 2009)");
  script_cve_id("CVE-2005-0449", "CVE-2005-0209", "CVE-2005-0529", "CVE-2005-0530", "CVE-2005-0136", "CVE-2005-0532", "CVE-2005-0135", "CVE-2005-0384", "CVE-2005-0210", "CVE-2005-0504", "CVE-2004-0814");
  script_tag(name:"cvss_base", value:"7.8");

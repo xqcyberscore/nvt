@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 
 if(description)
 {
-  script_id(802488);
-  script_version("$Revision: 8174 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802488");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5470");
   script_bugtraq_id(55850);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 14:31:32 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21889/");

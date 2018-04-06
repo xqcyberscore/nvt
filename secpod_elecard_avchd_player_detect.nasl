@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elecard_avchd_player_detect.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: secpod_elecard_avchd_player_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Elecard AVC HD Player Application Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "The script detects the Elecard AVC HD Player installed on
 
 if(description)
 {
-  script_id(900628);
+  script_oid("1.3.6.1.4.1.25623.1.0.900628");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7293 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Elecard AVC HD Player Version Detection");

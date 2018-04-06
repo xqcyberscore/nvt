@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2019_1.nasl 8650 2018-02-03 12:16:59Z teissa $
+# $Id: gb_ubuntu_USN_2019_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-2019-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841629);
-  script_version("$Revision: 8650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841629");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 16:51:24 +0530 (Mon, 18 Nov 2013)");
   script_cve_id("CVE-2013-0343", "CVE-2013-2888", "CVE-2013-2889", "CVE-2013-2892",
                 "CVE-2013-2893", "CVE-2013-2895", "CVE-2013-2896", "CVE-2013-2897",

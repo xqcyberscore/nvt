@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-002.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms11-002.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Windows Data Access Components Remote Code Execution Vulnerabilities (2451910)
 #
@@ -56,9 +56,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902281);
-  script_version("$Revision: 8724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902281");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-12 13:59:47 +0100 (Wed, 12 Jan 2011)");
   script_cve_id("CVE-2011-0026", "CVE-2011-0027");
   script_bugtraq_id(45698, 45695);

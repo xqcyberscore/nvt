@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2883.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: deb_2883.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2883-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -130,11 +130,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702883);
-    script_version("$Revision: 6995 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702883");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2013-6653", "CVE-2013-6654", "CVE-2013-6655", "CVE-2013-6656", "CVE-2013-6657", "CVE-2013-6658", "CVE-2013-6659", "CVE-2013-6660", "CVE-2013-6661", "CVE-2013-6663", "CVE-2013-6664", "CVE-2013-6665", "CVE-2013-6666", "CVE-2013-6667", "CVE-2013-6668", "CVE-2014-1700", "CVE-2014-1701", "CVE-2014-1702", "CVE-2014-1703", "CVE-2014-1704", "CVE-2014-1705", "CVE-2014-1713", "CVE-2014-1715");
     script_name("Debian Security Advisory DSA 2883-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-03-23 00:00:00 +0100 (Sun, 23 Mar 2014)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

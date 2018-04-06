@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-070.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: secpod_ms11-070.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Windows WINS Local Privilege Escalation Vulnerability (2571621)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902566);
-  script_version("$Revision: 7582 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902566");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_cve_id("CVE-2011-1984");
   script_bugtraq_id(49523);

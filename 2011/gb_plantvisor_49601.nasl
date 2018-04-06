@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plantvisor_49601.nasl 7276 2017-09-26 11:59:52Z cfischer $
+# $Id: gb_plantvisor_49601.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PlantVisor Enhanced Unspecified Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if (description)
 {
- script_id(103252);
- script_version("$Revision: 7276 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103252");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_bugtraq_id(49601);
  script_tag(name:"cvss_base", value:"5.0");

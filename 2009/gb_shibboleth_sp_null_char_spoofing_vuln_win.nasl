@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_sp_null_char_spoofing_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_shibboleth_sp_null_char_spoofing_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Shibboleth Service Provider NULL Character Spoofing Vulnerability (Windows)
 #
@@ -40,9 +40,9 @@ tag_summary = "The host has Shibboleth Service Provider installed and is prone t
 
 if(description)
 {
-  script_id(801116);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801116");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,5 +1,5 @@
 #CESA-2009:0410 63825 4
-# $Id: ovcesa2009_0410.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_0410.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0410 (krb5)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:0410.";
 
 if(description)
 {
- script_id(63825);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63825");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-15 22:11:00 +0200 (Wed, 15 Apr 2009)");
  script_cve_id("CVE-2009-0846");
  script_tag(name:"cvss_base", value:"10.0");

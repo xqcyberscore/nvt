@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_webserver_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_weborf_webserver_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Weborf Webserver Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the running Weborf Webserver version and saves
 
 if(description)
 {
-  script_id(801223);
+  script_oid("1.3.6.1.4.1.25623.1.0.801223");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7270 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Weborf Webserver Version Detection");

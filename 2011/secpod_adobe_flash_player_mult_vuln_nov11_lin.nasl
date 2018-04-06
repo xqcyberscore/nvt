@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_nov11_lin.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_adobe_flash_player_mult_vuln_nov11_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - November 11 (Linux)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(902752);
-  script_version("$Revision: 7029 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902752");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-2445", "CVE-2011-2450", "CVE-2011-2451", "CVE-2011-2452",
                 "CVE-2011-2453", "CVE-2011-2454", "CVE-2011-2455", "CVE-2011-2456",
                 "CVE-2011-2457", "CVE-2011-2458", "CVE-2011-2459", "CVE-2011-2460");
@@ -47,7 +47,7 @@ if(description)
                     50621, 50629, 50620, 50628);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-16 12:10:29 +0530 (Wed, 16 Nov 2011)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - November 11 (Linux)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products Same Origin Policy Bypass Vulnerability (MAC OS X)
 #
@@ -49,9 +49,9 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey
 
 if(description)
 {
-  script_id(802183);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802183");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-2999");
   script_bugtraq_id(49848);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 8194 2017-12-20 11:29:51Z cfischer $
+# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -53,13 +53,13 @@ to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(802600);
-  script_version("$Revision: 8194 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802600");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51448);
   script_cve_id("CVE-2012-0189");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 12:29:51 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:11:11 +0530 (Wed, 01 Feb 2012)");
   script_name("IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)");
 

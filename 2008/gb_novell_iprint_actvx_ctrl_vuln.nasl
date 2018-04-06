@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Novell iPrint ActiveX control Stack-based BOF Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with Novell iPrint, and is prone to stack
 
 if(description)
 {
-  script_id(800070);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800070");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

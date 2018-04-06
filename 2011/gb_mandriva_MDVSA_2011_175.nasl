@@ -87,9 +87,9 @@ tag_affected = "poppler on Mandriva Enterprise Server 5,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-11/msg00029.php");
-  script_id(831494);
-  script_version("$Revision: 6565 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:56:06 +0200 (Thu, 06 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831494");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 09:47:30 +0530 (Fri, 18 Nov 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

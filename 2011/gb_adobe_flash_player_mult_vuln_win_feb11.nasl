@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_win_feb11.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_win_feb11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities February-2011 (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(801847);
-  script_version("$Revision: 8178 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801847");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0558", "CVE-2011-0559", "CVE-2011-0560",
                 "CVE-2011-0561", "CVE-2011-0571", "CVE-2011-0572",

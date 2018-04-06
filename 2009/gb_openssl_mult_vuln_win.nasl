@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
+# $Id: gb_openssl_mult_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities (Windows)
 #
@@ -49,9 +49,9 @@ tag_summary = "This host is installed with OpenSSL and is prone to Multiple
 
 if(description)
 {
-  script_id(800258);
-  script_version("$Revision: 8193 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800258");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities
 #
@@ -47,13 +47,13 @@ cross site scripting vulnerabilities.";
 
 if(description)
 {
-  script_id(802373);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802373");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5105");
   script_bugtraq_id(51294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:17:25 +0530 (Fri, 06 Jan 2012)");
   script_name("SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521126");

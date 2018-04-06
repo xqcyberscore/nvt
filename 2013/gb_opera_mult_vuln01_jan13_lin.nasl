@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln01_jan13_lin.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_opera_mult_vuln01_jan13_lin.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Opera Multiple Vulnerabilities-01 Jan13 (Linux)
 #
@@ -41,13 +41,13 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 
 if(description)
 {
-  script_id(803140);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803140");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-6470", "CVE-2012-6471", "CVE-2012-6472");
   script_bugtraq_id(56788, 56984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 14:21:28 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-01 Jan13 (Linux)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1039/");

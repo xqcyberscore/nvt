@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1774_1.nasl 8526 2018-01-25 06:57:37Z teissa $
+# $Id: gb_ubuntu_USN_1774_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1774-1
 #
@@ -60,9 +60,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1774-1/");
-  script_id(841371);
-  script_version("$Revision: 8526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841371");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-22 10:41:42 +0530 (Fri, 22 Mar 2013)");
   script_cve_id("CVE-2013-0190", "CVE-2013-0216", "CVE-2013-0217", "CVE-2013-0231",
                 "CVE-2013-0290", "CVE-2013-0311");

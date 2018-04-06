@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_av_protocol_handler_code_exec_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_symantec_norton_av_protocol_handler_code_exec_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Symantec Norton AntiVirus Protocol Handler (HCP) Code Execution Vulnerability
 #
@@ -50,13 +50,13 @@ prone to remote code execution vulnerability.";
 
 if(description)
 {
-  script_id(803035);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803035");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2010-3497");
   script_bugtraq_id(44188);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:40:26 +0530 (Wed, 03 Oct 2012)");
   script_name("Symantec Norton AntiVirus Protocol Handler (HCP) Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://www.n00bz.net/antivirus-cve");

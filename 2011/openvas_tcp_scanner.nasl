@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openvas_tcp_scanner.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: openvas_tcp_scanner.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wrapper for calling built-in NVT "openvas_tcp_scanner" which was previously
 # a binary ".nes".
@@ -27,10 +27,10 @@
 
 if (description)
 {
- script_id(10335);
+ script_oid("1.3.6.1.4.1.25623.1.0.10335");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("OpenVAS TCP scanner");

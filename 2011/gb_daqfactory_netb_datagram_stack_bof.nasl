@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Azeotech DAQFactory NETB Datagram Parsing Stack Buffer Overflow Vulnerability
 #
@@ -43,9 +43,9 @@ is prone to denial of service vulnerability.";
 
 if(description)
 {
-  script_id(802037);
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802037");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-07 15:45:35 +0200 (Fri, 07 Oct 2011)");
   script_cve_id("CVE-2011-3492");
   script_tag(name:"cvss_base", value:"10.0");

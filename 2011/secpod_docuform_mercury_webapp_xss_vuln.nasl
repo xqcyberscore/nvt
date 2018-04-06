@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # docuFORM Mercury WebApp Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -46,9 +46,9 @@ to multiple cross-site scripting vulnerabilities.";
 
 if(description)
 {
-  script_id(902414);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902414");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

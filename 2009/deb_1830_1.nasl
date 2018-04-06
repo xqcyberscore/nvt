@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1830_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
+# $Id: deb_1830_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory DSA 1830-1 (icedove)
 #
 # Authors:
@@ -54,9 +54,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(64417);
- script_version("$Revision: 6615 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64417");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-29 19:28:37 +0200 (Wed, 29 Jul 2009)");
  script_cve_id("CVE-2009-0040", "CVE-2009-0352", "CVE-2009-0353", "CVE-2009-0652", "CVE-2009-0771", "CVE-2009-0772", "CVE-2009-0773", "CVE-2009-0774", "CVE-2009-0776", "CVE-2009-1302", "CVE-2009-1303", "CVE-2009-1307", "CVE-2009-1832", "CVE-2009-1392", "CVE-2009-1836", "CVE-2009-1838", "CVE-2009-1841");
  script_tag(name:"cvss_base", value:"10.0");

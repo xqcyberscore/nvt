@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1456_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1456_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Ubuntu Update for nut USN-1456-1
 #
@@ -42,11 +42,11 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1456-1/");
-  script_id(841022);
+  script_oid("1.3.6.1.4.1.25623.1.0.841022");
   script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 09:52:06 +0530 (Fri, 01 Jun 2012)");
   script_cve_id("CVE-2012-2944");
   script_xref(name: "USN", value: "1456-1");

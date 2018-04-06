@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_pdf_dos_vuln.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_acrobat_pdf_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Adobe Acrobat PDF File Denial Of Service Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host has Adobe Acrobat or Adobe Acrobat Reader installed and
 
 if(description)
 {
-  script_id(801104);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801104");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

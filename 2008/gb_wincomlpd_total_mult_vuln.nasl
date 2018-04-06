@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wincomlpd_total_mult_vuln.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: gb_wincomlpd_total_mult_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # WinComLPD Total Multiple Vulnerabilities
 #
@@ -47,9 +47,9 @@ overflow and authentication bypass vulnerabilities.";
 
 if(description)
 {
-  script_id(800063);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800063");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-26 16:25:46 +0100 (Wed, 26 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

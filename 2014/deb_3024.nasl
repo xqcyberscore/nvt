@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3024.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: deb_3024.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3024-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703024);
-    script_version("$Revision: 6769 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703024");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-5270");
     script_name("Debian Security Advisory DSA 3024-1 (gnupg - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-09-11 00:00:00 +0200 (Thu, 11 Sep 2014)");
     script_tag(name:"cvss_base", value:"2.1");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2891.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: deb_2891.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2891-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -84,11 +84,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702891);
-    script_version("$Revision: 6663 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702891");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2013-2031", "CVE-2013-4567", "CVE-2013-4568", "CVE-2013-4572", "CVE-2013-6452", "CVE-2013-6453", "CVE-2013-6454", "CVE-2013-6472", "CVE-2014-1610", "CVE-2014-2665");
     script_name("Debian Security Advisory DSA 2891-1 (mediawiki, mediawiki-extensions - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-03-30 00:00:00 +0100 (Sun, 30 Mar 2014)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-017_macosx.nasl 4569 2016-11-18 10:10:15Z antu123 $
+# $Id: gb_ms14-017_macosx.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2949660 (Mac OS X)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(804427);
-  script_version("$Revision: 4569 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804427");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-1757", "CVE-2014-1758", "CVE-2014-1761");
   script_bugtraq_id(66385, 66614, 66629);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 11:10:15 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 10:25:33 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2949660 (Mac OS X)");

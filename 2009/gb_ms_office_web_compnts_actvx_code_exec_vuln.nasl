@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_compnts_actvx_code_exec_vuln.nasl 6235 2017-05-29 13:45:48Z cfi $
+# $Id: gb_ms_office_web_compnts_actvx_code_exec_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Office Web Components ActiveX Control Code Execution Vulnerability
 #
@@ -73,9 +73,9 @@ tag_summary = "This host is installed with Microsoft Office Web Components Activ
 
 if(description)
 {
-  script_id(800845);
-  script_version("$Revision: 6235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800845");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

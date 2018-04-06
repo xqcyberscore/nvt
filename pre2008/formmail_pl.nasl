@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: formmail_pl.nasl 6703 2017-07-12 13:57:25Z cfischer $
+# $Id: formmail_pl.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: formmail.pl
 #
 # Authors:
@@ -30,9 +30,9 @@ tag_solution = "remove it from /cgi-bin.";
 
 if(description)
 {
- script_id(10076);
- script_version("$Revision: 6703 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10076");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2079);
  script_tag(name:"cvss_base", value:"7.5");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xeslidegalf_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_joomla_com_xeslidegalf_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla Xeslidegalf Component SQL Injection Vulnerability
 #
@@ -45,9 +45,9 @@ to SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802131);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802131");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

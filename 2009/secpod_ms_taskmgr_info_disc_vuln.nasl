@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_taskmgr_info_disc_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms_taskmgr_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # MS Windows taskmgr.exe Information Disclosure Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running Windows Operating System and is prone to
 
 if(description)
 {
-  script_id(900302);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900302");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-03 15:40:18 +0100 (Tue, 03 Feb 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");

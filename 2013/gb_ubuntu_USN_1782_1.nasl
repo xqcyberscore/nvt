@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1782_1.nasl 8542 2018-01-26 06:57:28Z teissa $
+# $Id: gb_ubuntu_USN_1782_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for libxml2 USN-1782-1
 #
@@ -41,9 +41,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1782-1/");
-  script_id(841380);
-  script_version("$Revision: 8542 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841380");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:27:22 +0530 (Tue, 02 Apr 2013)");
   script_cve_id("CVE-2013-0338");
   script_tag(name:"cvss_base", value:"4.3");

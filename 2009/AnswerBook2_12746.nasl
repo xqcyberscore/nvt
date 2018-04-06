@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AnswerBook2_12746.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: AnswerBook2_12746.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sun Solaris AnswerBook2 Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -54,9 +54,9 @@ Please see the referenced advisory for more information.";
 
 if (description)
 {
- script_id(100388);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100388");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-10 18:09:58 +0100 (Thu, 10 Dec 2009)");
  script_bugtraq_id(12746);
  script_cve_id("CVE-2005-0548","CVE-2005-0549");

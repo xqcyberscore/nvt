@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RHSA_2009_1550.nasl 6683 2017-07-12 09:41:57Z cfischer $
+# $Id: RHSA_2009_1550.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory RHSA-2009:1550 ()
 #
 # Authors:
@@ -44,9 +44,9 @@ Hat Update Agent with the following command: up2date";
 
 if(description)
 {
- script_id(66178);
- script_version("$Revision: 6683 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:41:57 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66178");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-11 15:56:44 +0100 (Wed, 11 Nov 2009)");
  script_cve_id("CVE-2008-5029", "CVE-2008-5300", "CVE-2009-1337", "CVE-2009-1385", "CVE-2009-1895", "CVE-2009-2848", "CVE-2009-3002", "CVE-2009-3547", "CVE-2009-3001");
  script_tag(name:"cvss_base", value:"7.8");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modperl_cve_2009_0796.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: modperl_cve_2009_0796.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Apache mod_perl 'Apache::Status' and 'Apache2::Status' Cross Site
 # Scripting Vulnerability
@@ -38,9 +38,9 @@ tag_solution = "The vendor has released a fix through the SVN repository.";
 
 if (description)
 {
- script_id(100130);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100130");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
  script_bugtraq_id(34383);
  script_cve_id("CVE-2009-0796");

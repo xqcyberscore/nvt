@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-013.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms12-013.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Windows C Run-Time Library Remote Code Execution Vulnerability (2654428)
 #
@@ -45,13 +45,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902653);
-  script_version("$Revision: 8724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902653");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0150");
   script_bugtraq_id(51913);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:27:37 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows C Run-Time Library Remote Code Execution Vulnerability (2654428)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47949/");

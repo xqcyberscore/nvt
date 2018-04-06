@@ -1,5 +1,5 @@
 #CESA-2009:0002 63184 4
-# $Id: ovcesa2009_0002.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_0002.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0002 (thunderbird)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:0002.";
 
 if(description)
 {
- script_id(63184);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63184");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-01-13 22:38:32 +0100 (Tue, 13 Jan 2009)");
  script_cve_id("CVE-2008-5500", "CVE-2008-5501", "CVE-2008-5502", "CVE-2008-5503", "CVE-2008-5506", "CVE-2008-5507", "CVE-2008-5508", "CVE-2008-5511", "CVE-2008-5512", "CVE-2008-5513");
  script_tag(name:"cvss_base", value:"10.0");

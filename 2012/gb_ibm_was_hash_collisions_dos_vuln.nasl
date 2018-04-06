@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM WebSphere Application Server Hash Collisions DOS Vulnerability
 #
@@ -41,13 +41,13 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(802418);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802418");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0193");
   script_bugtraq_id(51441);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:06:41 +0530 (Mon, 23 Jan 2012)");
   script_name("IBM WebSphere Application Server Hash Collisions DOS Vulnerability");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24031821");

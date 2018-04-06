@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 8506 2018-01-24 03:45:11Z ckuersteiner $
+# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
 #
 # WordPress Add Link to Facebook Plugin Stored XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112178");
-  script_version("$Revision: 8506 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-24 04:45:11 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 9338 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-01-05 14:16:51 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("WordPress Add Link to Facebook Plugin Stored XSS Vulnerability");
 
@@ -56,7 +56,8 @@ if (description)
 
   script_tag(name: "affected", value: "WordPress Add Link to Facebook plugin up to and including version 2.3.");
 
-  script_tag(name: "solution", value: "No solution or patch available as of January 05th, 2018. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "The plugin has been closed for security reasons and is no longer available
+for download. Please uninstall the plugin.");
 
   script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/Add-Link-to-Facebook.md");
 
@@ -84,7 +85,7 @@ if ("Add Link to Facebook" >< res && "Changelog" >< res) {
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
   if (!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "2.3")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable");
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "None");
     security_message(port: port, data: report);
     exit(0);
   }

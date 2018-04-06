@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_calibre_45532.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_calibre_45532.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Calibre Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -40,9 +40,9 @@ Calibre 0.7.34 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103011);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103011");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
  script_bugtraq_id(45532);
  script_tag(name:"cvss_base", value:"4.3");

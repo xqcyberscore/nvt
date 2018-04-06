@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0009.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_VMSA-2011-0009.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2011-0009.3 VMware hosted product updates, ESX patches and VI Client update resolve multiple security issues
 #
@@ -96,15 +96,15 @@ tag_solution = "Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103452);
+ script_oid("1.3.6.1.4.1.25623.1.0.103452");
  script_cve_id("CVE-2009-4536", "CVE-2010-1188", "CVE-2009-3080", "CVE-2010-2240", "CVE-2011-2146", "CVE-2011-1787", "CVE-2011-2145", "CVE-2011-2217");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2011-0009.3 VMware hosted product updates, ESX patches and VI Client update resolve multiple security issues");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-16 10:41:24 +0100 (Fri, 16 Mar 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

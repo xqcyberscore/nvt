@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0212_1.nasl 8044 2017-12-08 08:32:49Z santu $
+# $Id: gb_suse_2014_0212_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2014:0212-1 (Mozilla)
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(850569);
-  script_version("$Revision: 8044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850569");
+  script_version("$Revision: 9354 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:41:15 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2014-1477", "CVE-2014-1478", "CVE-2014-1479", "CVE-2014-1480",
                 "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1484", "CVE-2014-1485",

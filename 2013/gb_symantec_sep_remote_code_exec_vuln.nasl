@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_remote_code_exec_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: gb_symantec_sep_remote_code_exec_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Symantec Endpoint Protection Management Console Remote Code Execution Vulnerability
 #
@@ -39,11 +39,11 @@ tag_summary = "This host is installed with Symantec Endpoint Protection and is
 
 if(description)
 {
-  script_id(803094);
-  script_version("$Revision: 6517 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803094");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4348");
   script_bugtraq_id(56846);
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-08 10:42:29 +0530 (Tue, 08 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:M/C:C/I:C/A:C");

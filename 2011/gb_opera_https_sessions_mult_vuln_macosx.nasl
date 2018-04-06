@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_https_sessions_mult_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_opera_https_sessions_mult_vuln_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Opera 'HTTPS-Session' Multiple Vulnerabilities (Mac OS X)
 #
@@ -46,9 +46,9 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(802143);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802143");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2008-7297");
   script_bugtraq_id(49134);

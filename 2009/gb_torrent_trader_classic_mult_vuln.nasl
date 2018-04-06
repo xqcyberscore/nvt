@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torrent_trader_classic_mult_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: gb_torrent_trader_classic_mult_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
 #
 # TorrentTrader Classic Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:torrenttrader:torrenttrader_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800522");
-  script_version("$Revision: 9323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9334 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ if(description)
   Impact level: Application/System");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

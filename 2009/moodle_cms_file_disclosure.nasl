@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_cms_file_disclosure.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: moodle_cms_file_disclosure.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Moodle File Disclosure Vulnerability
 #
@@ -48,9 +48,9 @@ tag_summary = "An input filter for TeX formulas can be exploited to disclose fil
 
 if (description)
 {
- script_id(100085);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100085");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-28 19:13:00 +0100 (Sat, 28 Mar 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

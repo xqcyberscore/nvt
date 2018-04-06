@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3318.nasl 6609 2017-07-07 12:05:59Z cfischer $
+# $Id: deb_3318.nasl 9355 2018-04-06 07:16:07Z cfischer $
 # Auto-generated from advisory DSA 3318-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703318);
-    script_version("$Revision: 6609 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703318");
+    script_version("$Revision: 9355 $");
     script_cve_id("CVE-2015-1283");
     script_name("Debian Security Advisory DSA 3318-1 (expat - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2015-07-26 00:00:00 +0200 (Sun, 26 Jul 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

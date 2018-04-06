@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_info_disc_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mahara_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mahara Information Disclosure Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running Mahara and is prone to Information Disclosur
 
 if(description)
 {
-  script_id(900383);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900383");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");

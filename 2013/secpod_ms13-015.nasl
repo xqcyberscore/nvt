@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-015.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: secpod_ms13-015.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (2800277)
 #
@@ -43,13 +43,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902950);
-  script_version("$Revision: 5365 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902950");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(57847);
   script_cve_id("CVE-2013-0073");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 13:21:23 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (2800277)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52143/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websvn_51109.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_websvn_51109.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # WebSVN 'path' Parameter Multiple Cross Site Scripting Vulnerabilities
 #
@@ -37,9 +37,9 @@ credentials and launch other attacks.";
 
 if (description)
 {
- script_id(103368);
+ script_oid("1.3.6.1.4.1.25623.1.0.103368");
  script_bugtraq_id(51109);
- script_version ("$Revision: 7019 $");
+ script_version ("$Revision: 9351 $");
  script_cve_id("CVE-2011-5221");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://websvn.tigris.org/");
  script_xref(name : "URL" , value : "http://st2tea.blogspot.com/2011/12/websvn-cross-site-scripting.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-20 10:27:58 +0100 (Tue, 20 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

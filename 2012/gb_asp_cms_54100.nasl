@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_cms_54100.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_asp_cms_54100.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # ASP Content Management Database Information Disclosure Vulnerability
 #
@@ -34,14 +34,14 @@ further attacks.";
 
 if (description)
 {
- script_id(103497);
+ script_oid("1.3.6.1.4.1.25623.1.0.103497");
  script_bugtraq_id(54100);
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 9352 $");
  script_name("ASP Content Management Database Information Disclosure Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54100");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-06-21 08:49:16 +0200 (Thu, 21 Jun 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

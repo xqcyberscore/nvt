@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ts_client_mult_bof_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_ts_client_mult_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Terminal Server Client RDP File Processing BOF Vulnerabilities
 #
@@ -45,9 +45,9 @@ to multiple buffer overflow vulnerabilities.";
 
 if(description)
 {
-  script_id(902297);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902297");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-0900", "CVE-2011-0901");
   script_bugtraq_id(46099);

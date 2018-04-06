@@ -49,12 +49,12 @@ advisory GLSA 201203-13.";
                                                                                 
 if(description)
 {
- script_id(71299);
+ script_oid("1.3.6.1.4.1.25623.1.0.71299");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
  script_cve_id("CVE-2011-2147", "CVE-2011-4073");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:56 -0400 (Mon, 30 Apr 2012)");
  script_name("Gentoo Security Advisory GLSA 201203-13 (Openswan)");
 

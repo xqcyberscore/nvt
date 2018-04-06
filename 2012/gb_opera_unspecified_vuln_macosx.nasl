@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_unspecified_vuln_macosx.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_opera_unspecified_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Unspecified Vulnerability - June12 (Mac OS X)
 #
@@ -35,12 +35,12 @@ tag_summary = "The host is installed with Opera and is prone to unspecified
 
 if(description)
 {
-  script_id(802655);
-  script_version("$Revision: 5977 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802655");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-3559");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:10:10 +0530 (Fri, 22 Jun 2012)");
   script_name("Opera Unspecified Vulnerability - June12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/mac/1200/");

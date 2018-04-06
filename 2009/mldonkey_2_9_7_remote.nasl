@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 8024 2017-12-07 08:47:24Z teissa $
+# $Id: mldonkey_2_9_7_remote.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -40,9 +40,9 @@ tag_solution = "Fixes are available; please see the http://www.nongnu.org/mldonk
 
 if(description)
 {
-  script_id(100057);
-  script_version("$Revision: 8024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:47:24 +0100 (Thu, 07 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100057");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");

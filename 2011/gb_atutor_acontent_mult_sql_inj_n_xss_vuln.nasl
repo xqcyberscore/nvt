@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Atutor AContent Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -46,9 +46,9 @@ cross site scripting and SQL injection vulnerabilities.";
 
 if(description)
 {
-  script_id(801985);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801985");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49066);
   script_tag(name:"cvss_base", value:"7.5");

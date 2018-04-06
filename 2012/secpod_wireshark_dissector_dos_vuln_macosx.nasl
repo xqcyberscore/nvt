@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(903022);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903022");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-1590");
   script_bugtraq_id(47392);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 10:21:42 +0530 (Thu, 26 Apr 2012)");
   script_name("Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)");
 

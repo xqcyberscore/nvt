@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities
 #
@@ -26,48 +26,35 @@
 
 if(description)
 {
-  script_id(803477);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803477");
+  script_version("$Revision: 9335 $");
   script_bugtraq_id(58946);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 18:42:05 +0530 (Wed, 17 Apr 2013)");
   script_name("MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities");
 
-  tag_summary =
-"This host is installed with MiniWeb and is prone to file upload
-and directory traversal vulnerabilities.";
+  script_tag(name : "summary" , value : "This host is installed with MiniWeb and is prone to file upload
+  and directory traversal vulnerabilities.");
 
-  tag_vuldetect =
-"Send a crafted HTTP POST request and check wheather it is able to upload
-arbirary file or not.";
+  script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and check whether it is able to upload
+  arbirary file or not.");
 
-  tag_insight =
-"Flaw is due to improper sanitation of user supplied input via the 'filename'
-parameter and uploading a file to a non existing directory.";
+  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year since disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to overwrite legitimate
-content and upload files to arbitrary locations outside of the web path.
+  script_tag(name : "insight" , value : "Flaw is due to improper sanitation of user supplied input via the 'filename'
+  parameter and uploading a file to a non existing directory.");
 
-Impact Level: Application";
+  script_tag(name : "affected" , value : "MiniWeb (build 300, built on Feb 28 2013)");
 
-  tag_affected =
-"MiniWeb (build 300, built on Feb 28 2013)";
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to overwrite legitimate
+  content and upload files to arbitrary locations outside of the web path.
 
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
+  Impact Level: Application");
 
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52923");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121168");
@@ -138,7 +125,7 @@ req = upload_file(url:url, file:file);
 ## Upload the file
 http_keepalive_send_recv(port:port, data: req);
 
-## Check wheather the file is uploaded
+## Check whether the file is uploaded
 if(http_vuln_check(port:port, url:string("/", file), check_header:TRUE,
           pattern:"File-Upload-Vulnerability-Test"))
 {

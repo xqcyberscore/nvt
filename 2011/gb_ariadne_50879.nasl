@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ariadne_50879.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_ariadne_50879.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Ariadne Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -37,9 +37,9 @@ Ariadne 2.7.6 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103353);
+ script_oid("1.3.6.1.4.1.25623.1.0.103353");
  script_bugtraq_id(50879);
- script_version ("$Revision: 5747 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("Ariadne Multiple Cross-Site Scripting Vulnerabilities");
@@ -48,7 +48,7 @@ if(description)
  script_xref(name : "URL" , value : "http://ariadne.muze.nl/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520708");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

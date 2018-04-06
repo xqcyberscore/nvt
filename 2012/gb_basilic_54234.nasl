@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basilic_54234.nasl 7576 2017-10-26 10:01:33Z cfischer $
+# $Id: gb_basilic_54234.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Basilic 'diff.php' Remote Command Execution Vulnerability
 #
@@ -34,15 +34,15 @@ Basilic 1.5.14 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103504);
+ script_oid("1.3.6.1.4.1.25623.1.0.103504");
  script_bugtraq_id(54234);
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version("$Revision: 7576 $");
+ script_version("$Revision: 9352 $");
  script_name("Basilic 'diff.php' Remote Command Execution Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54234");
  script_xref(name : "URL" , value : "http://artis.imag.fr/Software/Basilic/");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-07-02 10:46:56 +0200 (Mon, 02 Jul 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

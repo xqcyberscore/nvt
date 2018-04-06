@@ -1,5 +1,5 @@
 #CESA-2009:1036 64016 2
-# $Id: ovcesa2009_1036.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_1036.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:1036 (ipsec-tools)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:1036.";
 
 if(description)
 {
- script_id(64016);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64016");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-05-20 00:17:15 +0200 (Wed, 20 May 2009)");
  script_cve_id("CVE-2009-1574", "CVE-2009-1632");
  script_tag(name:"cvss_base", value:"5.0");

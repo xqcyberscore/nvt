@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)
 #
@@ -29,13 +29,13 @@ tag_impact = "
 
 if(description)
 {
-  script_id(803699);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803699");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1954");
   script_bugtraq_id(57333);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 13:56:02 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)");
 

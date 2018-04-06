@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpauctions_45928.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_phpauctions_45928.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PHPAuctions 'viewfaqs.php' SQL Injection Vulnerability
 #
@@ -35,9 +35,9 @@ underlying database.";
 
 if (description)
 {
- script_id(103035);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103035");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-20 13:02:23 +0100 (Thu, 20 Jan 2011)");
  script_bugtraq_id(45928);
  script_tag(name:"cvss_base", value:"7.5");

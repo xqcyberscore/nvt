@@ -46,13 +46,13 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(70618);
+ script_oid("1.3.6.1.4.1.25623.1.0.70618");
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_cve_id("CVE-2011-4063");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version("$Revision: 5950 $");
+ script_version("$Revision: 9352 $");
  script_name("FreeBSD Ports: asterisk18");
 
 

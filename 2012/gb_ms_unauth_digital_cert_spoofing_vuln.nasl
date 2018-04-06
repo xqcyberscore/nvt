@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 8323 2018-01-08 14:50:05Z gveerendra $
+# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)
 #
@@ -46,11 +46,11 @@ tag_summary = "This host is installed with Microsoft Windows operating system an
 
 if(description)
 {
-  script_id(802912);
-  script_version("$Revision: 8323 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802912");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:50:05 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2728973");

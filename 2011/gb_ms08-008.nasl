@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-008.nasl 5548 2017-03-11 17:28:59Z cfi $
+# $Id: gb_ms08-008.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Vulnerability in OLE Automation Could Allow Remote Code Execution (947890)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801703);
-  script_version("$Revision: 5548 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-11 18:28:59 +0100 (Sat, 11 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801703");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-13 17:08:42 +0100 (Thu, 13 Jan 2011)");
   script_cve_id("CVE-2007-0065");
   script_bugtraq_id(27661);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM DB2 Administration Server Buffer Overflow Vulnerability (Linux)
 #
@@ -38,11 +38,11 @@ tag_summary = "This host is installed with IBM DB2 and is prone to buffer overfl
 
 if(description)
 {
-  script_id(802728);
-  script_version("$Revision: 5956 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802728");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0711");
   script_bugtraq_id(52326);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 18:37:15 +0530 (Mon, 02 Apr 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

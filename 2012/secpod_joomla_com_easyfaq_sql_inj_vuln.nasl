@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_easyfaq_sql_inj_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: secpod_joomla_com_easyfaq_sql_inj_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla 'com_easyfaq' Component Multiple SQL Injection Vulnerabilities
 #
@@ -46,11 +46,11 @@ multiple sql injection vulnerabilities.";
 
 if(description)
 {
-  script_id(902827);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902827");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 12:12:12 +0530 (Fri, 30 Mar 2012)");
   script_name("Joomla 'com_easyfaq' Component Multiple SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17859");

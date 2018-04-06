@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: monkey_http_37307.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: monkey_http_37307.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Monkey HTTP Daemon Invalid HTTP 'Connection' Header Denial Of Service Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if (description)
 {
- script_id(100397);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100397");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_bugtraq_id(37307);
  script_tag(name:"cvss_base", value:"7.8");

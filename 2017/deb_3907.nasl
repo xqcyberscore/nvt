@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3907.nasl 6906 2017-08-11 13:21:18Z cfischer $
+# $Id: deb_3907.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3907-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703907);
-    script_version("$Revision: 6906 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703907");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-7506");
     script_name("Debian Security Advisory DSA 3907-1 (spice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-11 00:00:00 +0200 (Tue, 11 Jul 2017)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

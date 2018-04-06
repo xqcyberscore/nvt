@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_sec_bypass_vuln_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_sec_bypass_vuln_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Adobe Flash Player Multiple Security Bypass Vulnerabilities (Windows)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to
 
 if(description)
 {
-  script_id(800027);
-  script_version("$Revision: 8178 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800027");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

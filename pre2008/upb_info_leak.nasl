@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: upb_info_leak.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: upb_info_leak.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Ultimate PHP Board Information Leak
 #
 # Authors:
@@ -31,9 +31,9 @@ tag_solution = "Upgrade to the latest version (http://www.myupb.com)";
 
 if(description)
 {
-  script_id(12198);
-  script_version("$Revision: 5780 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.12198");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

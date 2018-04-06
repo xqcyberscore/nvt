@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-082.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms12-082.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(901212);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901212");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1537");
   script_bugtraq_id(56839);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:44:20 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)");
   script_category(ACT_GATHER_INFO);

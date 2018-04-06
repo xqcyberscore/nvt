@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_fraudulent_digital_cert_spoofing_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_win_fraudulent_digital_cert_spoofing_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Fraudulent Digital Certificates Spoofing Vulnerability (2607712)
 #
@@ -46,10 +46,10 @@ tag_summary = "The host is installed with Microsoft Windows operating system and
 
 if(description)
 {
-  script_id(801975);
-  script_version("$Revision: 5362 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801975");
+  script_version("$Revision: 9351 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

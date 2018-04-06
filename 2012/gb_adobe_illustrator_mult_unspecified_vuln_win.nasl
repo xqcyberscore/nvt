@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_mult_unspecified_vuln_win.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_adobe_illustrator_mult_unspecified_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Illustrator Multiple Unspecified Vulnerabilities (Windows)
 #
@@ -41,14 +41,14 @@ tag_summary = "This host is installed with Adobe Illustrator and is prone
 
 if(description)
 {
-  script_id(802790);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802790");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2026", "CVE-2012-2025", "CVE-2012-2024", "CVE-2012-2023",
                 "CVE-2012-0780", "CVE-2012-2042");
   script_bugtraq_id(53422);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 17:55:09 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Illustrator Multiple Unspecified Vulnerabilities (Windows)");
 

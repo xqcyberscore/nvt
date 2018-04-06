@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_35780.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: joomla_35780.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Joomla! Remote File Upload Vulnerability And Information Disclosure Weakness
 #
@@ -39,9 +39,9 @@ references for more information.";
 
 if (description)
 {
- script_id(100333);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100333");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-03 12:50:27 +0100 (Tue, 03 Nov 2009)");
  script_bugtraq_id(35780);
  script_tag(name:"cvss_base", value:"7.5");

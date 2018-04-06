@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpshop_46561.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_phpshop_46561.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # phpShop 'page' Parameter Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ phpShop versions 0.8.1 and prior are vulnerable.";
 
 if (description)
 {
- script_id(103093);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103093");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-02-28 14:46:59 +0100 (Mon, 28 Feb 2011)");
  script_bugtraq_id(46561);
  script_tag(name:"cvss_base", value:"2.6");

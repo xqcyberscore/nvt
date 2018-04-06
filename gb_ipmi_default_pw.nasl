@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_default_pw.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_ipmi_default_pw.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # IPMI Default Password Vulnerability 
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105923");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9335 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:C/A:N");
-  script_tag(name : "last_modification", value : "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name : "last_modification", value : "$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name : "creation_date", value : "2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)"); 
   script_name("IPMI Default Password Vulnerability");
 
   script_tag(name : "summary", value : "It was possible to find default password/username
-combinations for the IPMI protocoll.");
+combinations for the IPMI protocol.");
 
   script_tag(name : "vuldetect", value : "Tries to get a RAKP Message 2 (IPMI v2.0) to check the password hash
 or activate a session (IPMI v1.5).");
@@ -55,7 +55,8 @@ if possible. Filter traffic to UDP port 623.");
   script_xref(name : "URL", value : "http://packetstormsecurity.com/files/105730/Supermicro-IPMI-Default-Accounts.html");
 
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Mitigation");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ipmi_detect.nasl");
@@ -260,7 +261,7 @@ else {
                                     0xc8,                       # checksum
                                     0x81,                       # Requester Address
                                     0x08,                       # reqSeq, reqLUN
-                                    0x39,                       # Get Sesssion Challenge (command)
+                                    0x39,                       # Get Session Challenge (command)
                                     authType,                   # Auth Type for Challenge
                                     paddedUsername,
                                     checksum(data:raw_string(0x81, 0x08, 0x39, authType, paddedUsername))

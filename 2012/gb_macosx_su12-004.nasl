@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su12-004.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gb_macosx_su12-004.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)
 #
@@ -53,8 +53,8 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(802968);
-  script_version("$Revision: 6521 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802968");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053", "CVE-2012-0650",
                 "CVE-2012-1173", "CVE-2012-3719", "CVE-2012-0831", "CVE-2012-1172",
                 "CVE-2012-1823", "CVE-2012-2143", "CVE-2012-2311", "CVE-2012-2386",
@@ -67,7 +67,7 @@ if(description)
                     50802, 52049, 52830, 51006, 52830);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 19:33:16 +0530 (Tue, 25 Sep 2012)");
   script_name("Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5501");

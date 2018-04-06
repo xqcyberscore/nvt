@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Mac OS X)
 #
@@ -49,13 +49,13 @@ to multiple vulnerabilities.";
 
 if(description)
 {
-  script_id(803093);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803093");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-6270", "CVE-2012-6271");
   script_bugtraq_id(56975, 56972);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-02 15:03:25 +0530 (Wed, 02 Jan 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/546769");

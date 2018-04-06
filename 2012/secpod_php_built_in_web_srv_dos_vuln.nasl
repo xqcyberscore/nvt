@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is running PHP Built-in WebServer and is prone to denia
 
 if(description)
 {
-  script_id(902822);
+  script_oid("1.3.6.1.4.1.25623.1.0.902822");
   script_bugtraq_id(52704);
-  script_version("$Revision: 5956 $");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 15:15:15 +0530 (Mon, 26 Mar 2012)");
   script_name("PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "https://bugs.php.net/bug.php?id=61461");

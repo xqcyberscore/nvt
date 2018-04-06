@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_swf_proc_vuln.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_adobe_flash_player_swf_proc_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Adobe Flash Player for Linux SWF Processing Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to
 
 if(description)
 {
-  script_id(800087);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800087");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-19 13:40:09 +0100 (Fri, 19 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

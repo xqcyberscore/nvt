@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 8615 2018-02-01 08:19:49Z cfischer $
+# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Trend Micro OfficeScan Server cgiRecvFile.exe Buffer Overflow Vulnerability
 #
 # Authors:
@@ -25,9 +25,9 @@
 
 if(description)
 {
- script_id(900220);
- script_version("$Revision: 8615 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:19:49 +0100 (Thu, 01 Feb 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900220");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31139);
  script_cve_id("CVE-2008-2437");

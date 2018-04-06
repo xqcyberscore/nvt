@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: flatpress_36543.nasl 4824 2016-12-21 08:49:38Z teissa $
+# $Id: flatpress_36543.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FlatPress 'userid' Parameter Local File Include Vulnerability
 #
@@ -41,9 +41,9 @@ for details.";
 
 if (description)
 {
- script_id(100295);
- script_version("$Revision: 4824 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:49:38 +0100 (Wed, 21 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100295");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
  script_bugtraq_id(36543);
  script_tag(name:"cvss_base", value:"5.1");

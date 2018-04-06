@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocportal_52768.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_ocportal_52768.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # ocPortal Arbitrary File Disclosure and Cross Site Scripting Vulnerabilities
 #
@@ -40,10 +40,10 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(103459);
+ script_oid("1.3.6.1.4.1.25623.1.0.103459");
  script_bugtraq_id(52768);
  script_cve_id("CVE-2012-1471","CVE-2012-1470");
- script_version ("$Revision: 5700 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("ocPortal Arbitrary File Disclosure and Cross Site Scripting Vulnerabilities");
@@ -52,7 +52,7 @@ if (description)
  script_xref(name : "URL" , value : "http://ocportal.com/start.htm");
  script_xref(name : "URL" , value : "http://ocportal.com/site/news/view/ocportal-security-update.htm");
  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23078");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-03 14:06:27 +0200 (Tue, 03 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

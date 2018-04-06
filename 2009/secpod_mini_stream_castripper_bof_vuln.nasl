@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_castripper_bof_vuln.nasl 4918 2017-01-02 14:56:10Z cfi $
+# $Id: secpod_mini_stream_castripper_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mini-stream CastRipper Stack Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ to Stack Overflow Vulnerability.";
 
 if(description)
 {
-  script_id(900651);
-  script_version("$Revision: 4918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:56:10 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900651");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-22 10:20:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

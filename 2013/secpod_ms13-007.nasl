@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-007.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: secpod_ms13-007.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft .NET Framework Open Data Protocol DOS Vulnerability (2769327)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902940);
-  script_version("$Revision: 5365 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902940");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0005");
   script_bugtraq_id(57141);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:59:12 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft .NET Framework Open Data Protocol DOS Vulnerability (2769327)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51772/");

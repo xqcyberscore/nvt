@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_groupshield_exchange_sec_bypass_vuln.nasl 8197 2017-12-20 12:50:38Z cfischer $
+# $Id: gb_mcafee_groupshield_exchange_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # McAfee GroupShield for Exchange X-Header Security Bypass Vulnerability
 #
@@ -47,9 +47,9 @@ Exchange and is prone to X-Header Security Bypass Vulnerability.";
 
 if(description)
 {
-  script_id(800619);
-  script_version("$Revision: 8197 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800619");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-22 10:20:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

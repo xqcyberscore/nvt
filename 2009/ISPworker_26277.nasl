@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ISPworker_26277.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: ISPworker_26277.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # ISPworker Download.PHP Multiple Directory Traversal Vulnerabilities
 #
@@ -35,9 +35,9 @@ be affected.";
 
 if(description)
 {
- script_id(100370);
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100370");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-02 17:30:58 +0100 (Wed, 02 Dec 2009)");
  script_bugtraq_id(26277);
  script_cve_id("CVE-2007-5813");

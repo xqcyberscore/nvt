@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_lucent_ascend_file_parser_dos_vuln_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wireshark_lucent_ascend_file_parser_dos_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark Lucent/Ascend File Parser Denial of Service Vulnerability (Mac OS X)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(802844);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802844");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-2597");
   script_bugtraq_id(48506);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-03 15:29:17 +0530 (Thu, 03 May 2012)");
   script_name("Wireshark Lucent/Ascend File Parser Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45086");

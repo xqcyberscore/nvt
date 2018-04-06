@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gupnp_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_gupnp_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # GUPnP Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "The script detects the installed version of GUPnP and sets the
 
 if(description)
 {
-  script_id(900681);
+  script_oid("1.3.6.1.4.1.25623.1.0.900681");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("GUPnP Version Detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 6601 2017-07-07 10:00:10Z cfischer $
+# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Apple Remote Desktop Information Disclosure Vulnerability
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Apple Remote Desktop and is prone to
 
 if(description)
 {
-  script_id(802964);
-  script_version("$Revision: 6601 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802964");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0681");
   script_bugtraq_id(55100);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 18:02:57 +0530 (Tue, 25 Sep 2012)");
   script_name("Apple Remote Desktop Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5462");

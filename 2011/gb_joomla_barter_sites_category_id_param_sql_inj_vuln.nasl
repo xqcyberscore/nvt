@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_barter_sites_category_id_param_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_joomla_barter_sites_category_id_param_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! Barter Sites 'com_listing' Component 'category_id' Parameter SQL Injection Vulnerability
 #
@@ -44,10 +44,10 @@ to SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802268);
-  script_version("$Revision: 7015 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802268");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4829", "CVE-2011-4830");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-04 12:12:12 +0530 (Fri, 04 Nov 2011)");
   script_bugtraq_id(50021);
   script_tag(name:"cvss_base", value:"7.5");

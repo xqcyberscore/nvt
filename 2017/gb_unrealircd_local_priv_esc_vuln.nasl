@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_unrealircd_local_priv_esc_vuln.nasl 66332 2017-02-02 14:01:01Z antu123 $
+# $Id: gb_unrealircd_local_priv_esc_vuln.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # UnrealIRCd Local Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811317");
-  script_version("$Revision: 7346 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2017-13649");
   script_bugtraq_id(100507);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 14:02:54 +0530 (Thu, 31 Aug 2017)");
   script_name("UnrealIRCd Local Privilege Escalation Vulnerability");
 

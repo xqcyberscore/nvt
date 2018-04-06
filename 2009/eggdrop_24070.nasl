@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eggdrop_24070.nasl 4655 2016-12-01 15:18:13Z teissa $
+# $Id: eggdrop_24070.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Eggdrop Server Module Message Handling Remote Buffer Overflow
 # Vulnerability
@@ -42,9 +42,9 @@ tag_solution = "The vendor has released an update. Please see
 
 if (description)
 {
- script_id(100228);
- script_version("$Revision: 4655 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 16:18:13 +0100 (Thu, 01 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100228");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-08 19:01:22 +0200 (Wed, 08 Jul 2009)");
  script_bugtraq_id(24070);
  script_cve_id("CVE-2007-2807");

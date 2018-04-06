@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_mult_vuln_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_comodo_mult_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Comodo Internet Security Multiple Vulnerabilities
 #
@@ -40,12 +40,12 @@ tag_summary = "The host is installed with Comodo Internet Security and is prone
 
 if(description)
 {
-  script_id(803693);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803693");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2011-5121","CVE-2011-5122","CVE-2011-5123");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 16:49:06 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://personalfirewall.comodo.com/release_notes.html");

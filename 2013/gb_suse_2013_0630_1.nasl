@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0630_1.nasl 8483 2018-01-22 06:58:04Z teissa $
+# $Id: gb_suse_2013_0630_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for Mozilla Firefox and others openSUSE-SU-2013:0630-1 (Mozilla Firefox and others)
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(850461);
-  script_version("$Revision: 8483 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 07:58:04 +0100 (Mon, 22 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850461");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:55 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0788", "CVE-2013-0789", "CVE-2013-0791", "CVE-2013-0792",
                 "CVE-2013-0793", "CVE-2013-0794", "CVE-2013-0795", "CVE-2013-0796",

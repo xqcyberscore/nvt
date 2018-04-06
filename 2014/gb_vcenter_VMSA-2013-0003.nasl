@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2013-0003.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_vcenter_VMSA-2013-0003.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0003)
 #
@@ -48,17 +48,17 @@ deployed on an isolated management network ";
 
 if (description)
 {
- script_id(103874);
+ script_oid("1.3.6.1.4.1.25623.1.0.103874");
  script_cve_id("CVE-2013-1659");
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6637 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMware Security Updates for vCenter Server (VMSA-2013-0003)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0003.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-01-09 13:04:01 +0100 (Thu, 09 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

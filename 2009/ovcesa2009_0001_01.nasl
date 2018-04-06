@@ -1,5 +1,5 @@
 #CESA-2009:0001-01 63344 1
-# $Id: ovcesa2009_0001_01.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_0001_01.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0001-01 (kernel)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:0001-01.";
 
 if(description)
 {
- script_id(63344);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63344");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-02-10 15:52:40 +0100 (Tue, 10 Feb 2009)");
  script_cve_id("CVE-2006-4814", "CVE-2007-2172", "CVE-2007-3848", "CVE-2007-4308", "CVE-2007-6063", "CVE-2007-6151", "CVE-2007-6206", "CVE-2008-0007", "CVE-2008-2136", "CVE-2008-3275", "CVE-2008-3525", "CVE-2008-4210");
  script_tag(name:"cvss_base", value:"7.8");

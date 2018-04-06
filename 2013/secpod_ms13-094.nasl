@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-094.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: secpod_ms13-094.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Outlook Information Disclosure Vulnerability (2894514)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903413);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903413");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3905");
   script_bugtraq_id(63603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:27:15 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Outlook Information Disclosure Vulnerability (2894514)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_web_server_format_string_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: gb_httpdx_web_server_format_string_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # httpdx 'h_readrequest()' Host Header Format String Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is running httpdx Web Server and is prone to Format Stri
 
 if(description)
 {
-  script_id(800961);
-  script_version("$Revision: 5838 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800961");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

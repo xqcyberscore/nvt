@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # QuickShare File Share FTP Server Directory Traversal Vulnerability
 #
@@ -44,9 +44,9 @@ prone to directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(800197);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800197");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");

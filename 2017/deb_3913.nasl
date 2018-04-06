@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3913.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: deb_3913.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3913-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703913);
-    script_version("$Revision: 6800 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703913");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-9788");
     script_name("Debian Security Advisory DSA 3913-1 (apache2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-18 00:00:00 +0200 (Tue, 18 Jul 2017)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");

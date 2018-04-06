@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0297_1.nasl 8285 2018-01-04 06:29:16Z teissa $
+# $Id: gb_suse_2012_0297_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for mozilla-xulrunner192 openSUSE-SU-2012:0297-1 (mozilla-xulrunner192)
 #
@@ -36,9 +36,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850229);
-  script_version("$Revision: 8285 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850229");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 21:25:46 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3026");
   script_tag(name:"cvss_base", value:"7.5");

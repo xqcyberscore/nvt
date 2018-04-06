@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0018.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_VMSA-2012-0018.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0018: VMware security updates for vCSA and ESXi
 #
@@ -62,14 +62,14 @@ The ESX glibc package is updated to version glibc-2.5-81.el5_8.1 to resolve mult
 
 if (description)
 {
- script_id(103627);
+ script_oid("1.3.6.1.4.1.25623.1.0.103627");
  script_cve_id("CVE-2012-6324","CVE-2012-6325","CVE-2009-5029","CVE-2009-5064","CVE-2010-0830","CVE-2011-1089","CVE-2011-4609","CVE-2012-0864","CVE-2012-3404","CVE-2012-3405","CVE-2012-3406","CVE-2012-3480");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5958 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0018: VMware security updates for vCSA and ESXi");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-12-27 10:42:13 +0100 (Thu, 27 Dec 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

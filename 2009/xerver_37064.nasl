@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xerver_37064.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: xerver_37064.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Xerver HTTP Response Splitting Vulnerability
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if (description)
 {
- script_id(100355);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100355");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
  script_cve_id("CVE-2009-4086");
  script_bugtraq_id(37064);

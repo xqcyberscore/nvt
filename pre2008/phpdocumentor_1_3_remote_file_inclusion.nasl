@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpdocumentor_1_3_remote_file_inclusion.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: phpdocumentor_1_3_remote_file_inclusion.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: phpDocumentor <= 1.3.0 RC4 Local And Remote File Inclusion Vulnerability
 #
 # Authors:
@@ -45,9 +45,9 @@ tag_solution = "Disable PHP's 'register_globals' setting.";
 
 if (description)
 {
- script_id(20374);
- script_version("$Revision: 5781 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.20374");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

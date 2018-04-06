@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: EZ_hotscripts_34024_sql_injection.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: EZ_hotscripts_34024_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Scripts For Sites EZ Hotscripts 'software-description.php' SQL
 # Injection Vulnerability
@@ -35,9 +35,9 @@ tag_summary = "EZ Hotscripts is prone to an SQL-injection vulnerability because 
 
 if(description)
 {
- script_id(100027);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100027");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(34024);
  script_cve_id("CVE-2008-6237");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_39259.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_joomla_39259.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! 'com_xobbix' Component 'prodid' Parameter SQL Injection Vulnerability
 #
@@ -36,17 +36,17 @@ in the underlying database.";
 
 if (description)
 {
- script_id(103355);
+ script_oid("1.3.6.1.4.1.25623.1.0.103355");
  script_bugtraq_id(39259);
  script_cve_id("CVE-2010-5053");
- script_version ("$Revision: 7052 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Joomla! 'com_xobbix' Component 'prodid' Parameter SQL Injection Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/39259");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-05 12:01:34 +0100 (Mon, 05 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

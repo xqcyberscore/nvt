@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_aug08_lin_900039.nasl 7524 2017-10-20 08:31:54Z cfischer $
+# $Id: secpod_opera_mult_vuln_aug08_lin_900039.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Opera Web Browser Multiple Security Vulnerabilities Aug-08 (Linux)
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_summary = "The remote host is running Opera Web Browser, which is prone
 
 if(description)
 {
- script_id(900039);
- script_version("$Revision: 7524 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:31:54 +0200 (Fri, 20 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900039");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-4195");
  script_bugtraq_id(30768);

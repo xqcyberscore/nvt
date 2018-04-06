@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Omni_NFS_36608.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: Omni_NFS_36608.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Omni-NFS Multiple Stack Buffer Overflow Vulnerabilities
 #
@@ -39,9 +39,9 @@ Omni-NFS 5.2 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100297);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100297");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-08 20:03:34 +0200 (Thu, 08 Oct 2009)");
  script_bugtraq_id(36608);
  script_tag(name:"cvss_base", value:"7.5");

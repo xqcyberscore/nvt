@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_modules_mult_vuln_win.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_perl_modules_mult_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Strawberry Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -59,12 +59,12 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to
 
 if(description)
 {
-  script_id(802562);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802562");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 17:28:53 +0530 (Tue, 17 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

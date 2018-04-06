@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rsync_path_sanitation_vuln.nasl 4207 2016-10-04 11:57:02Z cfi $
+# $Id: rsync_path_sanitation_vuln.nasl 9348 2018-04-06 07:01:19Z cfischer $
 #
 # rsync path sanitation vulnerability
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(14223);
-  script_version("$Revision: 4207 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 13:57:02 +0200 (Tue, 04 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14223");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10938);
   script_cve_id("CVE-2004-0792");

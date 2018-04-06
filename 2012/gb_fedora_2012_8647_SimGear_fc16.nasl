@@ -35,11 +35,11 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-June/081997.html");
-  script_id(864293);
+  script_oid("1.3.6.1.4.1.25623.1.0.864293");
   script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 8336 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:01:48 +0100 (Tue, 09 Jan 2018) $");
+ script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 09:38:51 +0530 (Mon, 11 Jun 2012)");
   script_cve_id("CVE-2012-2090", "CVE-2012-2091");
   script_xref(name: "FEDORA", value: "2012-8647");

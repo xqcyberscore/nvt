@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_cookie_sec_bypass_vuln_win.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_apple_safari_cookie_sec_bypass_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apple Safari Secure Cookie Security Bypass Vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ to security bypass vulnerability.";
 
 if(description)
 {
-  script_id(802237);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802237");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2008-7296");
   script_bugtraq_id(49136);

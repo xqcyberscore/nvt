@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tugzip_file_bof_vuln.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: gb_tugzip_file_bof_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # TUGzip zip File Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with TUGzip, which is prone to Buffer
 
 if(description)
 {
-  script_id(800122);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800122");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-31 15:07:51 +0100 (Fri, 31 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

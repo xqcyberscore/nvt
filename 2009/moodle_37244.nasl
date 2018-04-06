@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_37244.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: moodle_37244.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100384);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100384");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-09 12:14:51 +0100 (Wed, 09 Dec 2009)");
  script_cve_id("CVE-2009-4297");
  script_bugtraq_id(37244);

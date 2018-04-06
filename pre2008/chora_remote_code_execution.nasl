@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: chora_remote_code_execution.nasl 7221 2017-09-21 13:05:11Z cfischer $
+# $Id: chora_remote_code_execution.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Chora Remote Code Execution Vulnerability
 #
 # Authors:
@@ -30,14 +30,14 @@ the web user.";
 tag_solution = "Upgrade to Chora version 1.2.2 or later.";
 
 if (description) {
-  script_id(12281);
-  script_version("$Revision: 7221 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.12281");
+  script_version("$Revision: 9348 $");
   script_bugtraq_id(10531);
   script_xref(name:"GLSA", value:"GLSA 200406-09");
   script_xref(name:"OSVDB", value:"7005");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   name = "Chora Remote Code Execution Vulnerability";
   script_name(name);

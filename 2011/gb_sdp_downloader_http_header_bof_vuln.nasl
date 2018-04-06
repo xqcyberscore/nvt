@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sdp_downloader_http_header_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_sdp_downloader_http_header_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # SDP Downloader HTTP Header Handling Buffer Overflow Vulnerability
 #
@@ -46,9 +46,9 @@ buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801834);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801834");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

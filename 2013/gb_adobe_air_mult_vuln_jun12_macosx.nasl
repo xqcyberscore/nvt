@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_jun12_macosx.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_adobe_air_mult_vuln_jun12_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities June-2012 (Mac OS X)
 #
@@ -43,14 +43,14 @@ tag_summary = "This host is installed with Adobe Air and is prone to multiple
 
 if(description)
 {
-  script_id(803812);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803812");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-11 15:01:50 +0530 (Thu, 11 Jul 2013)");
   script_name("Adobe Air Multiple Vulnerabilities June-2012 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49388");

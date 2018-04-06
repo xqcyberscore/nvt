@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Strawberry Perl 'Perl_repeatcpy()' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -40,11 +40,11 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to heap
 
 if(description)
 {
-  script_id(803161);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803161");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-5195");
   script_bugtraq_id(56287);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 19:28:09 +0530 (Wed, 23 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

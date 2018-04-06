@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_amr_dos_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_amr_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VLC Media Player '.amr' File Denial of Service Vulnerability (Windows)
 #
@@ -47,13 +47,13 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(802420);
-  script_version("$Revision: 8174 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802420");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0904");
   script_bugtraq_id(51255);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:30:49 +0530 (Mon, 23 Jan 2012)");
   script_name("VLC Media Player '.amr' File Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72085");

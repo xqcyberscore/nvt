@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: trac_sql_injection.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: trac_sql_injection.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Edgewall Software Trac SQL injection flaw
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Upgrade to Trac version 0.9.1 or later.";
 
 if(description)
 {
-  script_id(20252);
-  script_version("$Revision: 5781 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.20252");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3980");
   script_bugtraq_id(15676);

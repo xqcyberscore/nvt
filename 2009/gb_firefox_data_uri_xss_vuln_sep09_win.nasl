@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_data_uri_xss_vuln_sep09_win.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: gb_firefox_data_uri_xss_vuln_sep09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mozilla Firefox 'data:' URI XSS Vulnerability - Sep09 (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Mozilla Product(s) and is prone to
 
 if(description)
 {
-  script_id(800889);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800889");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

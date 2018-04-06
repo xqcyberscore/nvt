@@ -41,9 +41,9 @@ tag_affected = "util-linux on Mandriva Linux 2010.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-01/msg00005.php");
-  script_id(831525);
-  script_version("$Revision: 8285 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 07:29:16 +0100 (Thu, 04 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831525");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-13 10:50:07 +0530 (Fri, 13 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");

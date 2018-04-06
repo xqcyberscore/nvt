@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_whatsup_auth_bypass.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: ipswitch_whatsup_auth_bypass.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Ipswitch WhatsUp Professional Authentication bypass detection
 #
 # Authors:
@@ -37,9 +37,9 @@ tag_solution = "Upgrade to WhatsUp Professional 2006.01 or later.";
 
 if(description)
 {
- script_id(80067);
- script_version("$Revision: 5838 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80067");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

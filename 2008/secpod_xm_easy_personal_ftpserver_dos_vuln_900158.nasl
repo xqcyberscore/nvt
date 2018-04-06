@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xm_easy_personal_ftpserver_dos_vuln_900158.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_xm_easy_personal_ftpserver_dos_vuln_900158.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: XM Easy Personal FTP Server 'NSLT' Command Remote DoS Vulnerability
 #
 # Authors:
@@ -38,9 +38,9 @@ features, remove the product or replace the product by another one.";
 
 if(description)
 {
-  script_id(900158);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900158");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-21 15:08:20 +0200 (Tue, 21 Oct 2008)");
   script_cve_id("CVE-2008-5626");
  script_bugtraq_id(31739);

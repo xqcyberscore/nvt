@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_46066.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_couchdb_46066.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apache CouchDB Web Administration Interface Cross Site Scripting Vulnerability
 #
@@ -39,9 +39,9 @@ details.";
 
 if (description)
 {
- script_id(103053);
- script_version("$Revision: 7029 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103053");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_bugtraq_id(46066);
  script_tag(name:"cvss_base", value:"4.3");

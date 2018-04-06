@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftgallery_36833.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: tftgallery_36833.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # TFTgallery 'album' Parameter Cross Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ vulnerable as well.";
 
 if (description)
 {
- script_id(100325);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100325");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-29 12:31:54 +0100 (Thu, 29 Oct 2009)");
  script_cve_id("CVE-2009-3833");
  script_bugtraq_id(36833);

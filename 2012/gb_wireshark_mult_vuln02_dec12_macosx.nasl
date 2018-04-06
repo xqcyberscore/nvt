@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln02_dec12_macosx.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_wireshark_mult_vuln02_dec12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities-02 Dec 2012 (Mac OS X)
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(803135);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803135");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4295", "CVE-2012-4294", "CVE-2012-4287");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-28 14:58:22 +0530 (Fri, 28 Dec 2012)");
   script_name("Wireshark Multiple Vulnerabilities-02 Dec 2012 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50276/");

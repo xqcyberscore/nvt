@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_goodtech_ssh_sftp_mul_bof_vuln_900166.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_goodtech_ssh_sftp_mul_bof_vuln_900166.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: GoodTech SSH Server SFTP Multiple BOF Vulnerabilities
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Upgrade to GoodTech SSH Server version 6.5 or later.
 
 if(description)
 {
-  script_id(900166);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900166");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-31 14:50:32 +0100 (Fri, 31 Oct 2008)");
   script_cve_id("CVE-2008-4726");
  script_bugtraq_id(31879);

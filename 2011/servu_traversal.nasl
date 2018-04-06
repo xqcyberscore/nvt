@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servu_traversal.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: servu_traversal.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Serv-U FTP Server Jail Break
 #
@@ -34,8 +34,8 @@ launch further attacks.";
 
 if (description)
 {
- script_id(103354);
- script_version ("$Revision: 7297 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103354");
+ script_version ("$Revision: 9351 $");
  script_bugtraq_id(50875);
  script_cve_id("CVE-2011-4800");
  script_tag(name:"cvss_base", value:"9.0");
@@ -44,7 +44,7 @@ if (description)
  script_name("Serv-U FTP Server Jail Break");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

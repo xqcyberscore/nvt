@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: simple_machines_forum_37182.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: simple_machines_forum_37182.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Simple Machines Forum Multiple Security Vulnerabilities
 #
@@ -49,9 +49,9 @@ tag_solution = "Reportedly, the vendor fixed some of the issues in the release 1
 
 if (description)
 {
- script_id(100371);
- script_version("$Revision: 5148 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100371");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-02 17:30:58 +0100 (Wed, 02 Dec 2009)");
  script_bugtraq_id(37182);
  script_tag(name:"cvss_base", value:"7.8");

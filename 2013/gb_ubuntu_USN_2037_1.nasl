@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2037_1.nasl 8448 2018-01-17 16:18:06Z teissa $
+# $Id: gb_ubuntu_USN_2037_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for linux-ec2 USN-2037-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841646);
-  script_version("$Revision: 8448 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841646");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 10:27:49 +0530 (Wed, 04 Dec 2013)");
   script_cve_id("CVE-2012-2121", "CVE-2013-4511");
   script_tag(name:"cvss_base", value:"6.9");

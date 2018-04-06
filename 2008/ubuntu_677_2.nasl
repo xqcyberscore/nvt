@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_677_2.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_677_2.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Auto-generated from advisory USN-677-2 (fixed)
 #
 # Authors:
@@ -45,9 +45,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=USN-67
 
 if(description)
 {
- script_id(63074);
- script_version("$Revision: 7969 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63074");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-12-29 22:42:24 +0100 (Mon, 29 Dec 2008)");
  script_cve_id("CVE-2008-2237", "CVE-2008-2238", "CVE-2008-4937");
  script_tag(name:"cvss_base", value:"9.3");

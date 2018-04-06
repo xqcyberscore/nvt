@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xvworks_debugging_service_42158.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_xvworks_debugging_service_42158.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # VxWorks Debugging Service Security-Bypass Vulnerability
 #
@@ -40,16 +40,16 @@ if (description)
  script_xref(name : "URL" , value : "http://www.windriver.com/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/512825");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/362332");
- script_id(103367);
+ script_oid("1.3.6.1.4.1.25623.1.0.103367");
  script_bugtraq_id(42158);
  script_cve_id("CVE-2010-2965");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8236 $");
+ script_version ("$Revision: 9351 $");
 
  script_name("VxWorks Debugging Service Security-Bypass Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-14 16:57:31 +0100 (Wed, 14 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_js_uri_xss_vuln_sep09_win.nasl 6468 2017-06-28 14:05:02Z cfischer $
+# $Id: gb_mozilla_prdts_js_uri_xss_vuln_sep09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mozilla Product(s) 'javascript:' URI XSS Vulnerability - Sep09 (Windows)
 #
@@ -47,9 +47,9 @@ Cross-Site Scripting vulnerability.";
 
 if(description)
 {
-  script_id(800885);
-  script_version("$Revision: 6468 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:05:02 +0200 (Wed, 28 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800885");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

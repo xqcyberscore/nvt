@@ -30,9 +30,9 @@ tag_solution = "Upgrade vulnerable web server to latest version.";
 
 if (description) {
 
-    script_id(102004);
-    script_version("$Revision: 5231 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+    script_oid("1.3.6.1.4.1.25623.1.0.102004");
+    script_version("$Revision: 9350 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2009-06-23 09:27:52 +0200 (Tue, 23 Jun 2009)");
     script_cve_id("CVE-2000-0002", "CVE-2000-0065", "CVE-2000-0571", "CVE-2001-1250", "CVE-2003-0125", "CVE-2003-0833", "CVE-2006-1652", "CVE-2004-2299", "CVE-2002-1003", "CVE-2002-1012", "CVE-2002-1011", "CVE-2001-0836", "CVE-2005-1173", "CVE-2002-1905", "CVE-2002-1212", "CVE-2002-1120", "CVE-2000-0641", "CVE-2002-1166", "CVE-2002-0123", "CVE-2001-0820", "CVE-2002-2149");
     script_name("www too long url");

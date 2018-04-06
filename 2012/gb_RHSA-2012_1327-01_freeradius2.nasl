@@ -49,9 +49,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-October/msg00004.html");
-  script_id(870841);
-  script_version("$Revision: 8352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 08:01:57 +0100 (Wed, 10 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.870841");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:21:13 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-3547");
   script_tag(name:"cvss_base", value:"6.8");

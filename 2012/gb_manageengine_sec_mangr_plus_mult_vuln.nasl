@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -54,11 +54,11 @@ and is prone to multiple vulnerabilities.";
 
 if(description)
 {
-  script_id(802483);
-  script_version("$Revision: 7577 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802483");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22092/");

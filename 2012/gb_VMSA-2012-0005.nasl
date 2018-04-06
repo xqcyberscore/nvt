@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0005.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_VMSA-2012-0005.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0005 VMware vCenter Server, Orchestrator, Update Manager, vShield, vSphere Client, ESXi and ESX address several security issues
 #
@@ -92,16 +92,16 @@ tag_solution = "Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103457);
+ script_oid("1.3.6.1.4.1.25623.1.0.103457");
  script_cve_id("CVE-2012-1508", "CVE-2012-1509", "CVE-2012-1510", "CVE-2012-1512", "CVE-2012-1513", "CVE-2012-1514", "CVE-2011-3190", "CVE-2011-3375", "CVE-2012-0022", "CVE-2010-0405");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5958 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0005 VMware vCenter Server, Orchestrator, Update Manager, vShield, vSphere Client, ESXi and ESX address several security issues");
 
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-16 16:53:01 +0100 (Fri, 16 Mar 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

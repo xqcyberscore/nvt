@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # PCMAN FTP Server STOR Command Buffer Overflow vulnerability
 #
@@ -26,11 +26,11 @@
 
 if (description)
 {
-  script_id(803875);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803875");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:49:10 +0530 (Wed, 21 Aug 2013)");
   script_name("PCMAN FTP Server STOR Command Buffer Overflow vulnerability");
 

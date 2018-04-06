@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yapig_remote_vuln.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: yapig_remote_vuln.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: YaPiG Remote Server-Side Script Execution Vulnerability
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_solution = "Upgrade to YaPiG 0.92.2 or later.";
 
 if(description)
 {
- script_id(14269);
- script_version("$Revision: 5780 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.14269");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10891);
  script_xref(name:"OSVDB", value:"8657");

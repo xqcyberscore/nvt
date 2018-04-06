@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_xnview_psd_integer_overflow_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_xnview_psd_integer_overflow_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # XnView PSD Record Type Parsing Integer Overflow Vulnerabilities (Windows)
 #
@@ -41,13 +41,13 @@ tag_solution = "Update to XnView version 1.98.5 or later,
 
 if(description)
 {
-  script_id(802443);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802443");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0684", "CVE-2012-0685");
   script_bugtraq_id(51546);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 14:02:14 +0530 (Tue, 24 Jul 2012)");
   script_name("XnView PSD Record Type Parsing Integer Overflow Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47600/");

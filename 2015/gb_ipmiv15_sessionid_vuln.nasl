@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmiv15_sessionid_vuln.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_ipmiv15_sessionid_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # Dell iDRAC Weak SessionID Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105939");
-  script_version("$Revision: 6132 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 9335 $");
+  script_tag(name : "last_modification", value : "$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name : "creation_date", value : "2015-01-21 09:55:57 +0700 (Wed, 21 Jan 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -41,6 +41,7 @@ if (description)
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
@@ -165,7 +166,7 @@ for (j=0; j<10; j++) {
                                 0xc8,                       # checksum
                                 0x81,                       # Requester Address
                                 0x08,                       # reqSeq, reqLUN
-                                0x39,                       # Get Sesssion Challenge (command)
+                                0x39,                       # Get Session Challenge (command)
                                 authType,                   # Auth Type for Challenge
                                 paddedUsername,
                                 checksum(data:raw_string(0x81, 0x08, 0x39, authType, paddedUsername))

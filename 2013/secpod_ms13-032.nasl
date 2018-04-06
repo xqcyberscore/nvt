@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-032.nasl 8276 2018-01-03 12:29:18Z asteins $
+# $Id: secpod_ms13-032.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Active Directory Denial of Service Vulnerability (2830914)
 #
@@ -50,13 +50,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902965);
-  script_version("$Revision: 8276 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902965");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1282");
   script_bugtraq_id(58848);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 12:37:03 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2830914)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52917/");

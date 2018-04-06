@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-045_900030.nasl 5863 2017-04-05 07:38:11Z antu123 $
+# $Id: secpod_ms08-045_900030.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Cumulative Security Update for Internet Explorer (953838)
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_summary = "This host is missing critical security update according to
 
 if(description)
 {
- script_id(900030);
- script_version("$Revision: 5863 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900030");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30610, 30611, 30612, 30613, 30614);
  script_cve_id("CVE-2008-2254", "CVE-2008-2255", "CVE-2008-2256",

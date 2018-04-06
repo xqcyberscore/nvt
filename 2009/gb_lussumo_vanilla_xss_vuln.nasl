@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_xss_vuln.nasl 5804 2017-03-31 06:06:40Z ckuerste $
+# $Id: gb_lussumo_vanilla_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Vanilla 'RequestName' Cross-Site Scripting Vulnerability
 #
@@ -45,9 +45,9 @@ Scripting Vulnerability.";
 
 if(description)
 {
-  script_id(800623);
-  script_version("$Revision: 5804 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 08:06:40 +0200 (Fri, 31 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800623");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

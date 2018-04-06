@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dangerous_activex_ctrl.nasl 5672 2017-03-22 08:15:28Z teissa $
+# $Id: secpod_dangerous_activex_ctrl.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Detection of Dangerous ActiveX Control
 #
@@ -28,12 +28,12 @@ tag_summary = "This script will list all the vulnerable activex controls install
 
 if(description)
 {
-  script_id(900188);
+  script_oid("1.3.6.1.4.1.25623.1.0.900188");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5672 $");
+  script_version("$Revision: 9350 $");
   script_cve_id("CVE-2008-5002", "CVE-2008-4919", "CVE-2008-4342",
                 "CVE-2008-5232", "CVE-2008-5492");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_name("Detection of Dangerous ActiveX Control");

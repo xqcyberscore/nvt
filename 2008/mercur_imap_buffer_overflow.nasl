@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mercur_imap_buffer_overflow.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: mercur_imap_buffer_overflow.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Mercur Mailserver/Messaging version <= 5.0 IMAP Overflow Vulnerability
 #
 # Authors:
@@ -42,9 +42,9 @@ by trusted sources only.";
 # http://archives.neohapsis.com/archives/fulldisclosure/2006-02/1837.html
 
 if (description) {
- script_id(200050);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.200050");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dokeos_30150.nasl 4655 2016-12-01 15:18:13Z teissa $
+# $Id: dokeos_30150.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Dokeos 'user_portal.php' Local File Include Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "Dokeos is prone to a local file-include vulnerability because it
 
 if (description)
 {
- script_id(100155);
- script_version("$Revision: 4655 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 16:18:13 +0100 (Thu, 01 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100155");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

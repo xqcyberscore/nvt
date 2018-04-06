@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phorum_admin_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_phorum_admin_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Phorum 'admin.php' Cross-Site Scripting Vulnerability
 #
@@ -45,11 +45,11 @@ vulnerability.";
 
 if(description)
 {
-  script_id(802530);
-  script_version("$Revision: 7044 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802530");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4561");
   script_bugtraq_id(49920);
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-02 17:46:36 +0530 (Fri, 02 Dec 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

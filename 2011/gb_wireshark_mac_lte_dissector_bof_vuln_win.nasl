@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 
 if(description)
 {
-  script_id(801832);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801832");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0444");

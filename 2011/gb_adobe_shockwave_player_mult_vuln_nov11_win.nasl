@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_win.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities (Windows) - Nov 2011
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 
 if(description)
 {
-  script_id(802508);
-  script_version("$Revision: 5424 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802508");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-2446", "CVE-2011-2447", "CVE-2011-2448", "CVE-2011-2449");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-10 12:17:59 +0530 (Thu, 10 Nov 2011)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities (Windows) - Nov 2011");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46667/");

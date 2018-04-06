@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_pdf_info_disc_vuln_nov09.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: secpod_ms_ie_pdf_info_disc_vuln_nov09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Internet Explorer PDF Information Disclosure Vulnerability - Nov09
 #
@@ -46,9 +46,9 @@ Information Disclosure vulnerability.";
 
 if(description)
 {
-  script_id(900897);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900897");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

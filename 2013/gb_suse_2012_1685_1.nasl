@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1685_1.nasl 8448 2018-01-17 16:18:06Z teissa $
+# $Id: gb_suse_2012_1685_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2012:1685-1 (xen)
 #
@@ -82,9 +82,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00018.html");
-  script_id(850422);
-  script_version("$Revision: 8448 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850422");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:53 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
                 "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4537",

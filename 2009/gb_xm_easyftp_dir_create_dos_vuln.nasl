@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xm_easyftp_dir_create_dos_vuln.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_xm_easyftp_dir_create_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # XM Easy Personal FTP Server File/Folder Denial of Service Vulnerability
 #
@@ -43,9 +43,9 @@ to Denial of Service Vulnerability.";
 
 if(description)
 {
-  script_id(800726);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800726");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");

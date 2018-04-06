@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0014_1.nasl 8542 2018-01-26 06:57:28Z teissa $
+# $Id: gb_suse_2013_0014_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2013:0014-1 (mariadb)
 #
@@ -45,9 +45,9 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00002.html");
-  script_id(850387);
-  script_version("$Revision: 8542 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:57:28 +0100 (Fri, 26 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850387");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:33 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-4414", "CVE-2012-5611");
   script_tag(name:"cvss_base", value:"6.5");

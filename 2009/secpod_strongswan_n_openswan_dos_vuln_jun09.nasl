@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_strongswan_n_openswan_dos_vuln_jun09.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: secpod_strongswan_n_openswan_dos_vuln_jun09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # StrongSwan/Openswan Denial Of Service Vulnerability June-09
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is installed with strongSwan/Openswan and is prone to De
 
 if(description)
 {
-  script_id(900386);
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900386");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

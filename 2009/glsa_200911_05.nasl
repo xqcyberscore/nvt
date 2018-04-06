@@ -45,9 +45,9 @@ advisory GLSA 200911-05.";
 
 if(description)
 {
- script_id(66335);
- script_version("$Revision: 6595 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:19:55 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66335");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 22:10:42 +0100 (Thu, 03 Dec 2009)");
  script_cve_id("CVE-2009-2560", "CVE-2009-3241", "CVE-2009-3242", "CVE-2009-3243", "CVE-2009-3549", "CVE-2009-3550", "CVE-2009-3551", "CVE-2009-3829");
  script_tag(name:"cvss_base", value:"9.3");

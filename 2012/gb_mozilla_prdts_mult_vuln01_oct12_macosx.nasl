@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln01_oct12_macosx.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln01_oct12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 (Mac OS X)
 #
@@ -56,8 +56,8 @@ tag_summary = "The host is installed with Mozilla firefox and is prone to multip
 
 if(description)
 {
-  script_id(802995);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802995");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
                 "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
                 "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
@@ -66,7 +66,7 @@ if(description)
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");

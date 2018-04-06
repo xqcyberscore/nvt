@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinyWebGallery_46086.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_tinyWebGallery_46086.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # TinyWebGallery Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -47,9 +47,9 @@ please mail us at: vuldb@securityfocus.com.";
 
 if (description)
 {
- script_id(103055);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103055");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_bugtraq_id(46086);
 

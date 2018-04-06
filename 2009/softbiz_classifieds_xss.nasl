@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: softbiz_classifieds_xss.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: softbiz_classifieds_xss.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Softbiz Classifieds Script Multiple Cross Site Scripting
 # Vulnerabilities
@@ -36,9 +36,9 @@ tag_summary = "Softbiz Classifieds Script is prone to multiple cross-site script
 
 if(description)
 {
- script_id(100030);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100030");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(32569);
  script_cve_id("CVE-2008-6325");

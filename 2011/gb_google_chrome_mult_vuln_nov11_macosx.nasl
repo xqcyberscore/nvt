@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov11_macosx.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_google_chrome_mult_vuln_nov11_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - November11 (Mac OS X)
 #
@@ -46,14 +46,14 @@ tag_summary = "The host is installed with Google Chrome and is prone to multiple
 
 if(description)
 {
-  script_id(802347);
-  script_version("$Revision: 7044 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802347");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3892", "CVE-2011-3893", "CVE-2011-3894", "CVE-2011-3895",
                 "CVE-2011-3896", "CVE-2011-3897", "CVE-2011-3898");
   script_bugtraq_id(50642);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 11:56:15 +0530 (Tue, 15 Nov 2011)");
   script_name("Google Chrome Multiple Vulnerabilities - November11 (Mac OS X)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026313");

@@ -1,6 +1,6 @@
 #################################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_edraw_pdf_viewer_actvx_ctrl_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_edraw_pdf_viewer_actvx_ctrl_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Edraw PDF Viewer ActiveX Control Insecure Method Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed with Edraw PDF Viewer ActiveX Control and
 
 if(description)
 {
-  script_id(900379);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900379");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

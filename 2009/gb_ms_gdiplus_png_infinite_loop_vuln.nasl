@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_gdiplus_png_infinite_loop_vuln.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: gb_ms_gdiplus_png_infinite_loop_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft GDIPlus PNG Infinite Loop Vulnerability
 #
@@ -45,9 +45,9 @@ features, remove the product or replace the product by another one.";
 
 if(description)
 {
-  script_id(800700);
-  script_version("$Revision: 7293 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800700");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-07 14:39:04 +0200 (Thu, 07 May 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

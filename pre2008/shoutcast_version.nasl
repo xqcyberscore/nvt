@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_version.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: shoutcast_version.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: SHOUTcast Server DoS detector vulnerability
 #
 # Authors:
@@ -34,9 +34,9 @@ tag_summary = "This detects SHOUTcast Server's version. If the version equals
 
 if(description)
 {
- script_id(10717); 
- script_version("$Revision: 5676 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10717"); 
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 script_cve_id("CVE-2001-1304");
  script_tag(name:"cvss_base", value:"5.0");

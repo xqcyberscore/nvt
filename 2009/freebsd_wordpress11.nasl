@@ -44,11 +44,11 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(66272);
+ script_oid("1.3.6.1.4.1.25623.1.0.66272");
  script_tag(name:"cvss_base", value:"6.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 4865 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-17 21:42:12 +0100 (Tue, 17 Nov 2009)");
  script_cve_id("CVE-2009-3890", "CVE-2009-3891");
  script_name("FreeBSD Ports: wordpress");

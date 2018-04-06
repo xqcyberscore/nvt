@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2563_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2563_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2563-1 (viewvc)
 #
 # Authors:
@@ -61,12 +61,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(72534);
+ script_oid("1.3.6.1.4.1.25623.1.0.72534");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2009-5024", "CVE-2012-3356", "CVE-2012-3357", "CVE-2012-4533");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-10-29 10:19:52 -0400 (Mon, 29 Oct 2012)");
  script_name("Debian Security Advisory DSA 2563-1 (viewvc)");
 

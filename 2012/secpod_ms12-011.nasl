@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-011.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-011.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)
 #
@@ -42,13 +42,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902919);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902919");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0017", "CVE-2012-0144", "CVE-2012-0145");
   script_bugtraq_id(51928 ,51934, 51937);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 15:51:26 +0530 (Thu, 28 Jun 2012)");
   script_name("Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48029/");

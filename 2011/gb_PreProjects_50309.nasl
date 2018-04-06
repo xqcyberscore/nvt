@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PreProjects_50309.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_PreProjects_50309.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PreProjects Pre Studio Business Cards Designer 'page.php' SQL Injection Vulnerability
 #
@@ -34,9 +34,9 @@ underlying database.";
 
 if (description)
 {
- script_id(103310);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103310");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-24 14:18:38 +0200 (Mon, 24 Oct 2011)");
  script_bugtraq_id(50309);
  script_name("PreProjects Pre Studio Business Cards Designer 'page.php' SQL Injection Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0011_remote.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_VMSA-2013-0011_remote.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # VMSA-2013-0011 VMware ESX and ESXi updates to third party libraries (remote check)
 #
@@ -53,17 +53,17 @@ be deployed on an isolated management network";
 
 if (description)
 {
- script_id(103846);
+ script_oid("1.3.6.1.4.1.25623.1.0.103846");
  script_cve_id("CVE-2013-1661");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6115 $");
+ script_version ("$Revision: 9353 $");
  script_name("VMSA-2013-0011 VMware ESX and ESXi updates to third party libraries (remote check)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0011.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-12-03 14:01:01 +0100 (Tue, 03 Dec 2013)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

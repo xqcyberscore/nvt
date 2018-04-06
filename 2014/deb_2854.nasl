@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2854.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: deb_2854.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2854-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -63,11 +63,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702854);
-    script_version("$Revision: 6692 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702854");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-0044", "CVE-2014-0045");
     script_name("Debian Security Advisory DSA 2854-1 (mumble - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-02-05 00:00:00 +0100 (Wed, 05 Feb 2014)");
     script_tag(name: "cvss_base", value:"7.5");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

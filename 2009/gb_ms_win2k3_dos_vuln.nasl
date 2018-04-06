@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win2k3_dos_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_win2k3_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Windows Server 2003 win32k.sys DoS Vulnerability
 #
@@ -45,9 +45,9 @@ is prone to Denial of Service vulnerability.";
 
 if(description)
 {
-  script_id(800577);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800577");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");

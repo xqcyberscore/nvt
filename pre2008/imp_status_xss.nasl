@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imp_status_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: imp_status_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Horde IMP status.php3 XSS
 #
 # Authors:
@@ -32,9 +32,9 @@ tag_solution = "Upgrade to IMP version 2.2.8 or later.";
 #  Ref: Nuno Loureiro <nuno@eth.pt>
 
 if (description) {
-  script_id(15616);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.15616");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

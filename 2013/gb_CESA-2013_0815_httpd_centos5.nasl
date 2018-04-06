@@ -59,9 +59,9 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
-  script_id(881733);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881733");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:40 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2012-3499", "CVE-2012-4558", "CVE-2013-1862");
   script_tag(name:"cvss_base", value:"5.1");

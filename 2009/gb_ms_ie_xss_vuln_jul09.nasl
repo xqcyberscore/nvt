@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_xss_vuln_jul09.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_xss_vuln_jul09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Internet Explorer XSS Vulnerability - July09
 #
@@ -46,9 +46,9 @@ Cross-Site Scripting vulnerability.";
 
 if(description)
 {
-  script_id(800902);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800902");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

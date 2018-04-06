@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_info_disc_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_limesurvey_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # LimeSurvey Information Disclosure Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running LimeSurvey and is prone to Information
 
 if(description)
 {
-  script_id(900353);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900353");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

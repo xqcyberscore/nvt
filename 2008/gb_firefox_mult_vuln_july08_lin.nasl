@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_vuln_july08_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_firefox_mult_vuln_july08_lin.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerability July-08 (Linux)
 #
@@ -52,9 +52,9 @@ tag_summary = "The host is installed with Mozilla Firefox browser, that is prone
 
 if(description)
 {
-  script_id(800020);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800020");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

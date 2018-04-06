@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_style_object_remote_code_exec_vuln.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_style_object_remote_code_exec_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Description: MS Internet Explorer 'Style' Object Remote Code Execution Vulnerability
 #
@@ -33,9 +33,9 @@
 
 if(description)
 {
-  script_id(800727);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800727");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-04 14:17:59 +0100 (Fri, 04 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

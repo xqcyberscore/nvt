@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_avi_bof_vuln_lin.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_vlc_media_player_avi_bof_vuln_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # VLC Media Player '.AVI' File BOF Vulnerability (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "The host is installed with VLC Media Player and is prone to buffe
 
 if(description)
 {
-  script_id(902707);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902707");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-2588");
   script_bugtraq_id(48664);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1643_1.nasl 8466 2018-01-19 06:58:30Z teissa $
+# $Id: gb_suse_2012_1643_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:1643-1 (update)
 #
@@ -40,9 +40,9 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00012.html");
-  script_id(850381);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850381");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:56 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_tag(name:"cvss_base", value:"10.0");

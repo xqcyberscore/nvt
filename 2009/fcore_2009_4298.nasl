@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_4298.nasl 6624 2017-07-10 06:11:55Z cfischer $
+# $Id: fcore_2009_4298.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-4298 (ipsec-tools)
 #
 # Authors:
@@ -48,10 +48,10 @@ announced via advisory FEDORA-2009-4298.";
 
 if(description)
 {
- script_id(63992);
+ script_oid("1.3.6.1.4.1.25623.1.0.63992");
  script_cve_id("CVE-2009-1574");
- script_version("$Revision: 6624 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-05-20 00:17:15 +0200 (Wed, 20 May 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

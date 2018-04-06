@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: NaviCOPA_33585.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: NaviCOPA_33585.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # NaviCOPA Web Server Remote Buffer Overflow and Source Code Information Disclosure Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_solution = "The vendor reports that NaviCOPA 3.01, with a release date of Fe
 
 if (description)
 {
- script_id(100257);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100257");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-08-25 21:06:41 +0200 (Tue, 25 Aug 2009)");
  script_bugtraq_id(33585);
  script_tag(name:"cvss_base", value:"6.8");

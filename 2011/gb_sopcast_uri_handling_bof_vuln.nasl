@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sopcast_uri_handling_bof_vuln.nasl 5367 2017-02-20 14:16:52Z cfi $
+# $Id: gb_sopcast_uri_handling_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # SopCast 'sop://' URI Handling Buffer Overflow Vulnerability
 #
@@ -46,12 +46,12 @@ vulnerability.";
 
 if(description)
 {
-  script_id(802281);
-  script_version("$Revision: 5367 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802281");
+  script_version("$Revision: 9351 $");
   script_bugtraq_id(50901);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:16:52 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-08 15:15:15 +0530 (Thu, 08 Dec 2011)");
   script_name("SopCast 'sop://' URI Handling Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/40940");

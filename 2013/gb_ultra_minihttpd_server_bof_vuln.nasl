@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultra_minihttpd_server_bof_vuln.nasl 5796 2017-03-30 14:15:11Z cfi $
+# $Id: gb_ultra_minihttpd_server_bof_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ultra Mini HTTPD Stack Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ tag_impact = "
 
 if(description)
 {
-  script_id(803721);
-  script_version("$Revision: 5796 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803721");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 11:19:36 +0530 (Tue, 16 Jul 2013)");
   script_name("Ultra Mini HTTPD Stack Buffer Overflow Vulnerability");
 

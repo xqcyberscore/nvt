@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_51598.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wago_51598.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # WAGO Multiple Remote Vulnerabilities
 #
@@ -43,15 +43,15 @@ if (description)
  script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=403");
  script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=404");
  script_xref(name : "URL" , value : "http://www.wago.com/");
- script_id(103396);
+ script_oid("1.3.6.1.4.1.25623.1.0.103396");
  script_bugtraq_id(51598);
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  script_name("WAGO Multiple Remote Vulnerabilities");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-23 15:14:54 +0100 (Mon, 23 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

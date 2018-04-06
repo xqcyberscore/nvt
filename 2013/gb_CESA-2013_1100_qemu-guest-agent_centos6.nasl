@@ -44,9 +44,9 @@ have shut down, start them again for this update to take effect.";
 
 if(description)
 {
-  script_id(881771);
-  script_version("$Revision: 8466 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 07:58:30 +0100 (Fri, 19 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881771");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 18:43:34 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-2231");
   script_tag(name:"cvss_base", value:"7.2");

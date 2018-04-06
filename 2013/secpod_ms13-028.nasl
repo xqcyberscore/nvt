@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-028.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: secpod_ms13-028.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2817183)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(903305);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903305");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1303", "CVE-2013-1304", "CVE-2013-1338");
   script_bugtraq_id(58850, 58851, 59633);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 08:12:20 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2817183)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52874");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-016.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_ms14-016.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(804245);
-  script_version("$Revision: 6637 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804245");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-0317");
   script_bugtraq_id(66012);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:48:40 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)");

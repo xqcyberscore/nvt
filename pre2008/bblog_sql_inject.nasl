@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bblog_sql_inject.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: bblog_sql_inject.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: bBlog SQL injection flaw
 #
 # Authors:
@@ -39,9 +39,9 @@ tag_solution = "Upgrade to version 0.7.4 or newer.";
 
 if(description)
 {
- script_id(15466);
- script_version("$Revision: 7165 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15466");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1570");
  script_bugtraq_id(11303);

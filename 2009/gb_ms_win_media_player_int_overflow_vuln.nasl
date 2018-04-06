@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_player_int_overflow_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_ms_win_media_player_int_overflow_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Integer Overflow vulnerability in Microsoft Windows Media Player
 #
@@ -38,9 +38,9 @@ tag_summary = "This host has Windows Media Player installed and is prone to
 
 if(description)
 {
-  script_id(800328);
-  script_version("$Revision: 6532 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800328");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-06 15:38:06 +0100 (Tue, 06 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

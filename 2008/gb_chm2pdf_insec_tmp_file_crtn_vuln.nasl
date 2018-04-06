@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chm2pdf_insec_tmp_file_crtn_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_chm2pdf_insec_tmp_file_crtn_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # chm2pdf Insecure Temporary File Creation or DoS Vulnerability
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with chm2pdf and is prone to Insecure
 
 if(description)
 {
-  script_id(800316);
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800316");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: serv_u_web_client_36895.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: serv_u_web_client_36895.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Serv-U Web Client HTTP Request Remote Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if (description)
 {
- script_id(100332);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100332");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-03 12:50:27 +0100 (Tue, 03 Nov 2009)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

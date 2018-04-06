@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_mar09_lin.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_thunderbird_mult_vuln_mar09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities Mar-09 (Linux)
 #
@@ -54,9 +54,9 @@ tag_summary = "The host is installed with Mozilla Thunderbird and is prone to
 
 if(description)
 {
-  script_id(800364);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800364");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 11:59:23 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

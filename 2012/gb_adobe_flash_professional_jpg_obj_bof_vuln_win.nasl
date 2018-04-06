@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)
 #
@@ -36,13 +36,13 @@ tag_summary = "This host is installed with Adobe Flash Professional and is prone
 
 if(description)
 {
-  script_id(802781);
-  script_version("$Revision: 6032 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802781");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0778");
   script_bugtraq_id(53419);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-15 13:58:42 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47116/");

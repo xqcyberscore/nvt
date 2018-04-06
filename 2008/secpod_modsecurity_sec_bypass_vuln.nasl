@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_modsecurity_sec_bypass_vuln.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_modsecurity_sec_bypass_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # ModSecurity 'SecCacheTransformations' Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running ModSecurity and is prone to Security Bypass
 
 if(description)
 {
-  script_id(900414);
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900414");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

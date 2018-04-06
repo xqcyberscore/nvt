@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-065_900224.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-065_900224.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Message Queuing Remote Code Execution Vulnerability (951071)
 #
 # Authors:
@@ -40,9 +40,9 @@ tag_summary = "This host is missing important security update according to
 
 if(description)
 {
-  script_id(900224);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900224");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31637);
   script_cve_id("CVE-2008-3479");

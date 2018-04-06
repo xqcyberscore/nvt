@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_arg_inj_vuln.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: secpod_ms_ie_arg_inj_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Microsoft Internet Explorer Argument Injection Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host has installed Internet Explorer and is prone to Argumen
 
 if(description)
 {
-  script_id(900187);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900187");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:44:52 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

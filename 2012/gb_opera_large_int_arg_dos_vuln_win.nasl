@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_large_int_arg_dos_vuln_win.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_opera_large_int_arg_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Large Integer Argument Denial of Service Vulnerability (Windows)
 #
@@ -46,12 +46,12 @@ service vulnerability.";
 
 if(description)
 {
-  script_id(802395);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802395");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 16:13:59 +0530 (Wed, 08 Feb 2012)");
   script_name("Opera Large Integer Argument Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73027");

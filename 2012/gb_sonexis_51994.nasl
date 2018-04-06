@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonexis_51994.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_sonexis_51994.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities
 #
@@ -38,16 +38,16 @@ this. Please contact the vendor for more information.";
 
 if (description)
 {
- script_id(103420);
+ script_oid("1.3.6.1.4.1.25623.1.0.103420");
  script_bugtraq_id(51994);
- script_version ("$Revision: 5700 $");
+ script_version ("$Revision: 9352 $");
  script_name("Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51994");
  script_xref(name : "URL" , value : "http://pentest.snosoft.com/2012/02/13/netragard-uncovers-0-days-in-sonexis-conferencemanager/");
  script_xref(name : "URL" , value : "http://www.sonexis.com/products/index.asp");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-15 10:59:59 +0100 (Wed, 15 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

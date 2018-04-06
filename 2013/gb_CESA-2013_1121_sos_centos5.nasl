@@ -52,9 +52,9 @@ contains a backported patch to correct this issue.";
 
 if(description)
 {
-  script_id(881767);
-  script_version("$Revision: 6655 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881767");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 18:43:21 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2012-2664");
   script_tag(name:"cvss_base", value:"4.3");

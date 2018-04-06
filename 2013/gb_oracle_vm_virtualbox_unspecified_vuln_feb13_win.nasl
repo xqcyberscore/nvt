@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)
 #
@@ -43,13 +43,13 @@ tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
 
 if(description)
 {
-  script_id(803300);
-  script_version("$Revision: 6065 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803300");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0420");
   script_bugtraq_id(57383);
   script_tag(name:"cvss_base", value:"2.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:01:15 +0530 (Fri, 01 Feb 2013)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)");
 

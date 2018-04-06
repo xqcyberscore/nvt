@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_csrf_n_auth_bypass_vuln.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_nagios_csrf_n_auth_bypass_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Nagios Cross-site Request Forgery (CSRF) and Authentication Bypass Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host has Nagios installed and is prone to CSRF (Cross Site
 
 if(description)
 {
-  script_id(800068);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800068");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

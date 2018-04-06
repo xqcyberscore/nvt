@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # ImageMagick Integer Overflow Vulnerability - 03 June (Windows)
 #
@@ -45,11 +45,11 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-  script_id(803818);
-  script_version("$Revision: 8173 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803818");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-1186");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:42:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

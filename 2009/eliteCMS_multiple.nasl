@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eliteCMS_multiple.nasl 4655 2016-12-01 15:18:13Z teissa $
+# $Id: eliteCMS_multiple.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # eliteCMS multiple Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "eliteCMS is prone to a vulnerability that lets attackers upload a
 
 if (description)
 {
- script_id(100222);
- script_version("$Revision: 4655 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 16:18:13 +0100 (Thu, 01 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100222");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-14 17:19:03 +0200 (Sun, 14 Jun 2009)");
  script_bugtraq_id(35155,30990);
  script_cve_id("CVE-2008-4046");

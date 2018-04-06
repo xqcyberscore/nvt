@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Mac OS X)
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is installed with Mozilla Seamonkey and is prone to mul
 
 if(description)
 {
-  script_id(803365);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803365");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -52,7 +52,7 @@ if(description)
                     56627, 56612, 56616, 56644);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 1:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");

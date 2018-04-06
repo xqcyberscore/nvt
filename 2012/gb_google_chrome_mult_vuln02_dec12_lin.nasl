@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec12_lin.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_google_chrome_mult_vuln02_dec12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec2012 (Linux)
 #
@@ -38,13 +38,13 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(803122);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803122");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5138", "CVE-2012-5137");
   script_bugtraq_id(56741);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 12:46:47 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec2012 (Linux)");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56741");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # NeoAxis Web Player Zip File Directory Traversal Vulnerability
 #
@@ -45,13 +45,13 @@ to directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(802601);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802601");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51666);
   script_cve_id("CVE-2012-0907");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("NeoAxis Web Player Zip File Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51666");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_may13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_may13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Mac OS X)
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Mozilla Thunderbird ESR and is prone 
 
 if(description)
 {
-  script_id(803612);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803612");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -57,7 +57,7 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 13:37:02 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028555");

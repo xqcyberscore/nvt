@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_search_dos.nasl 6522 2017-07-04 15:22:28Z cfischer $
+# $Id: mailenable_imap_search_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: MailEnable IMAP Service Search DoS Vulnerability
 #
 # Authors:
@@ -33,9 +33,9 @@ process.";
 tag_solution = "Upgrade to MailEnable Professional 1.5e or later.";
 
 if (description) {
-  script_id(15487);
-  script_version("$Revision: 6522 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.15487");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FacilCMS_multiple_vuln.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: FacilCMS_multiple_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FacilCMS Multiple SQL Injection And Information Disclosure
 # Vulnerabilities
@@ -36,9 +36,9 @@ tag_summary = "FacilCMS is prone to multiple SQL-injection and
 
 if(description)
 {
- script_id(100065);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100065");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-20 13:11:29 +0100 (Fri, 20 Mar 2009)");
  script_bugtraq_id(34177);
  script_tag(name:"cvss_base", value:"7.5");

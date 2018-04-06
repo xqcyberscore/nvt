@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hastymail2_rs_param_remote_code_inj_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: secpod_hastymail2_rs_param_remote_code_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Hastymail 'rs' and 'rsargs[]' Parameters Remote Code Injection Vulnerabilities
 #
@@ -40,13 +40,13 @@ tag_summary = "The host is running Hastymail2 and is prone to remote code
 
 if(description)
 {
-  script_id(902591);
-  script_version("$Revision: 7006 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902591");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4542");
   script_bugtraq_id(50791);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-25 12:12:12 +0530 (Fri, 25 Nov 2011)");
   script_name("Hastymail 'rs' and 'rsargs[]' Parameters Remote Code Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50791");

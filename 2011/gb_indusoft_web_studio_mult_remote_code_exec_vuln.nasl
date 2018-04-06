@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_mult_remote_code_exec_vuln.nasl 5367 2017-02-20 14:16:52Z cfi $
+# $Id: gb_indusoft_web_studio_mult_remote_code_exec_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # InduSoft Web Studio Multiple Remote Code Execution Vulnerabilitites
 #
@@ -49,13 +49,13 @@ tag_summary = "This host is installed with Indusoft Web Studio and is prone to
 
 if(description)
 {
-  script_id(802537);
-  script_version("$Revision: 5367 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802537");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4051", "CVE-2011-4052");
   script_bugtraq_id(50675, 50677);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:16:52 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 17:02:41 +0530 (Wed, 07 Dec 2011)");
   script_name("InduSoft Web Studio Multiple Remote Code Execution Vulnerabilitites");
 

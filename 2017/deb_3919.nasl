@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3919.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: deb_3919.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3919-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703919);
-    script_version("$Revision: 6981 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703919");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078", "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090", "CVE-2017-10096", "CVE-2017-10101", "CVE-2017-10102", "CVE-2017-10107", "CVE-2017-10108", "CVE-2017-10109", "CVE-2017-10110", "CVE-2017-10111", "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10118", "CVE-2017-10135", "CVE-2017-10176", "CVE-2017-10193", "CVE-2017-10198");
     script_name("Debian Security Advisory DSA 3919-1 (openjdk-8 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-25 00:00:00 +0200 (Tue, 25 Jul 2017)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

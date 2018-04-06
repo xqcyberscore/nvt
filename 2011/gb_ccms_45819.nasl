@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccms_45819.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_ccms_45819.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # CompactCMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ please mail us at: vuldb@securityfocus.com.";
 
 if (description)
 {
- script_id(103033);
- script_version("$Revision: 5747 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103033");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-19 13:37:44 +0100 (Wed, 19 Jan 2011)");
  script_bugtraq_id(45819);
  script_tag(name:"cvss_base", value:"4.3");

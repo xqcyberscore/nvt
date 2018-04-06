@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3430.nasl 6609 2017-07-07 12:05:59Z cfischer $
+# $Id: deb_3430.nasl 9355 2018-04-06 07:16:07Z cfischer $
 # Auto-generated from advisory DSA 3430-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703430);
-    script_version("$Revision: 6609 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703430");
+    script_version("$Revision: 9355 $");
     script_cve_id("CVE-2015-1819", "CVE-2015-5312", "CVE-2015-7497", "CVE-2015-7498", "CVE-2015-7499", "CVE-2015-7500", "CVE-2015-7941", "CVE-2015-7942", "CVE-2015-8035", "CVE-2015-8241", "CVE-2015-8317");
     script_name("Debian Security Advisory DSA 3430-1 (libxml2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2015-12-23 00:00:00 +0100 (Wed, 23 Dec 2015)");
     script_tag(name:"cvss_base", value:"7.1");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");

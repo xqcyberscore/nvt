@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bytes_repr_len_dos_vuln_macosx.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_wireshark_bytes_repr_len_dos_vuln_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wireshark 'bytes_repr_len' Denial of Service Vulnerability (Mac OS X)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(802877);
-  script_version("$Revision: 7019 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802877");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-1956");
   script_bugtraq_id(48389);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:43:58 +0200 (Mon, 13 Jun 2011)");
   script_name("Wireshark 'bytes_repr_len' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44449/");

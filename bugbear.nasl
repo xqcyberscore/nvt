@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: bugbear.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: Bugbear worm
 #
 # Authors:
@@ -69,9 +69,9 @@ tag_solution = "- Use an Anti-Virus package to remove it.
 
 if(description)
 {
- script_id(11135);
- script_version("$Revision: 6125 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.11135");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"IAVA", value:"2001-a-0004");
  script_bugtraq_id(2524);

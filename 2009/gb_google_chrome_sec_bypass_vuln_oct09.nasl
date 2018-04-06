@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_sec_bypass_vuln_oct09.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_google_chrome_sec_bypass_vuln_oct09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Google Chrome CA SSL Certificate Security Bypass Vulnerability - Oct09
 #
@@ -46,9 +46,9 @@ to Security Bypass vulnerability.";
 
 if(description)
 {
-  script_id(801108);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801108");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

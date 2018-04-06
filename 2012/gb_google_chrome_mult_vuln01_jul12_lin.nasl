@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(802918);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802918");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2842", "CVE-2012-2843", "CVE-2012-2844");
   script_bugtraq_id(54386);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 12:01:56 +0530 (Tue, 24 Jul 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49906");

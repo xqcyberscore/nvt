@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_dos_vuln_may09_lin.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_firefox_dos_vuln_may09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mozilla Firefox DoS Vulnerability May-09 (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 
 if(description)
 {
-  script_id(800398);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800398");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-07 14:39:04 +0200 (Thu, 07 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

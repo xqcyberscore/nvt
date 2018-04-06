@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-052.nasl 8190 2017-12-20 09:44:30Z cfischer $
+# $Id: secpod_silverlight_ms13-052.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerabilities (2861561)
 #
@@ -43,13 +43,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902986);
-  script_version("$Revision: 8190 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902986");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3129", "CVE-2013-3131", "CVE-2013-3178");
   script_bugtraq_id(60978, 60932, 60938);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-11 11:27:38 +0530 (Thu, 11 Jul 2013)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerabilities (2861561)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54025");

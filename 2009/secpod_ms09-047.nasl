@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-047.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: secpod_ms09-047.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Windows Media Format Remote Code Execution Vulnerability (973812)
 #
@@ -58,9 +58,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(901012);
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901012");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-10 15:23:12 +0200 (Thu, 10 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

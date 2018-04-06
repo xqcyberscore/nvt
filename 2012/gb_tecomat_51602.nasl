@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tecomat_51602.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_tecomat_51602.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Tecomat Foxtrot Default Password Security Bypass Vulnerability
 #
@@ -36,15 +36,15 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51602");
  script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=407");
  script_xref(name : "URL" , value : "http://www.tecomat.com/index.php?a=cat.308");
- script_id(103397);
+ script_oid("1.3.6.1.4.1.25623.1.0.103397");
  script_bugtraq_id(51602);
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Tecomat Foxtrot Default Password Security Bypass Vulnerability");
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-24 10:17:53 +0100 (Tue, 24 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

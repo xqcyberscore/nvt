@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: prtg_traffic_grapher_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: prtg_traffic_grapher_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # PRTG Traffic Grapher Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "PRTG Traffic Grapher, a Windows software for monitoring and
 
 if (description)
 {
- script_id(100215);
+ script_oid("1.3.6.1.4.1.25623.1.0.100215");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PRTG Traffic Grapher Detection");  

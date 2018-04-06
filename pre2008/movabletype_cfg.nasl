@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: movabletype_cfg.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: movabletype_cfg.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Movable Type config file
 #
 # Authors:
@@ -28,9 +28,9 @@ Platform and contains information that should not be exposed.";
 
 if(description)
 {
- script_id(16170);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.16170");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

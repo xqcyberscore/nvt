@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie9_cookie_hijacking_vuln.nasl 6526 2017-07-05 05:43:52Z cfischer $
+# $Id: gb_ms_ie9_cookie_hijacking_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Internet Explorer Cookie Hijacking Vulnerability
 #
@@ -49,10 +49,10 @@ This NVT has been replaced by NVT secpod_ms11-057.nasl
 if(description)
 {
 
-  script_id(802203);
-  script_version("$Revision: 6526 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802203");
+  script_version("$Revision: 9351 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:43:58 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");

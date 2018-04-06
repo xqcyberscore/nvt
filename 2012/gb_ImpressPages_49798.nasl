@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ImpressPages_49798.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ImpressPages_49798.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability
 #
@@ -38,10 +38,10 @@ information.";
 
 if (description)
 {
- script_id(103378);
+ script_oid("1.3.6.1.4.1.25623.1.0.103378");
  script_cve_id("CVE-2011-4932");
  script_bugtraq_id(49798);
- script_version("$Revision: 7577 $");
+ script_version("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.impresspages.org/");
  script_xref(name : "URL" , value : "http://www.impresspages.org/news/impresspages-1-0-13-security-release/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521118");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-06 10:27:46 +0100 (Fri, 06 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

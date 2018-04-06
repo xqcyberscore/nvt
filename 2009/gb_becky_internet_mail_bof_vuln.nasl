@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_becky_internet_mail_bof_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_becky_internet_mail_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Becky! Internet Mail Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is running Becky! Internet Mail client which is prone
 
 if(description)
 {
-  script_id(800519);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800519");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

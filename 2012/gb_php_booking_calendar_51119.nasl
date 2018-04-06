@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_booking_calendar_51119.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_php_booking_calendar_51119.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability
 #
@@ -39,17 +39,17 @@ be affected.";
 
 if (description)
 {
- script_id(103376);
+ script_oid("1.3.6.1.4.1.25623.1.0.103376");
  script_bugtraq_id(51119);
  script_cve_id("CVE-2011-5045");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 9352 $");
  script_name("PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51119");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/bookingcalendar/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520929");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-04 15:47:28 +0100 (Wed, 04 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

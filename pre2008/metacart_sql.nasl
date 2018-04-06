@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: metacart_sql.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: metacart_sql.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: MetaCart E-Shop ProductsByCategory.ASP SQL and XSS Injection Vulnerabilities
 #
 # Authors:
@@ -34,9 +34,9 @@ tag_solution = "None at this time";
 
 if(description)
 {
- script_id(18290);
- script_version("$Revision: 5781 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.18290");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(13385, 13384, 13383, 13382, 13639);
  script_tag(name:"cvss_base", value:"7.5");

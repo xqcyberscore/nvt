@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modperl_cve_2007_1349.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: modperl_cve_2007_1349.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mod_Perl Path_Info Remote Denial Of Service Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. See http://perl.apache.org/ for more
 
 if (description)
 {
- script_id(100162);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100162");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
  script_bugtraq_id(23192);
  script_cve_id("CVE-2007-1349");

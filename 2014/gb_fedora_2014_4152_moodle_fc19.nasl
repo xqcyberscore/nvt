@@ -27,9 +27,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(867647);
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.867647");
+  script_version("$Revision: 9354 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 09:53:35 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2014-0122", "CVE-2014-0123", "CVE-2014-0124", "CVE-2014-0125",
                 "CVE-2014-0126", "CVE-2014-0127", "CVE-2014-0129", "CVE-2014-0008",

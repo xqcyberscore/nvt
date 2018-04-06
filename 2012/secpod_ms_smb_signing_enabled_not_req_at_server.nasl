@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_signing_enabled_not_req_at_server.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: secpod_ms_smb_signing_enabled_not_req_at_server.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft SMB Signing Enabled and Not Required At Server
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the SMB Signing is enabled and not required at
 
 if(description)
 {
-  script_id(902798);
+  script_oid("1.3.6.1.4.1.25623.1.0.902798");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5940 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-28 10:56:55 +0530 (Tue, 28 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft SMB Signing Enabled and Not Required At Server");

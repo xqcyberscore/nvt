@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hotel_portal_49297.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_hotel_portal_49297.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Tourismscripts Hotel Portal 'hotel_city' Parameter HTML Injection Vulnerability
 #
@@ -34,9 +34,9 @@ to the user. Other attacks are also possible.";
 
 if (description)
 {
- script_id(103275);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103275");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-23 10:55:34 +0200 (Fri, 23 Sep 2011)");
  script_bugtraq_id(49297);
  script_tag(name:"cvss_base", value:"4.3");

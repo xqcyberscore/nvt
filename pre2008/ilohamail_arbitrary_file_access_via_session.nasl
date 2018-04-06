@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_arbitrary_file_access_via_session.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: ilohamail_arbitrary_file_access_via_session.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: IlohaMail Arbitrary File Access via Session Variable Vulnerability
 #
 # Authors:
@@ -31,9 +31,9 @@ filesystem backend is in use.";
 tag_solution = "Upgrade to IlohaMail version 0.7.12 or later.";
 
 if (description) {
-  script_id(14631);
-  script_version("$Revision: 6702 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14631");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

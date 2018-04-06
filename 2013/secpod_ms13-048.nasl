@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-048.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms13-048.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Kernel Information Disclosure Vulnerability (2839229)
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902974);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902974");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3136");
   script_bugtraq_id(60357);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 08:18:44 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Windows Kernel Information Disclosure Vulnerability (2839229)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53739/");

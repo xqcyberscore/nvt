@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: docebo_globals_overwrite.nasl 5779 2017-03-30 06:57:12Z cfi $
+# $Id: docebo_globals_overwrite.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Docebo GLOBALS Variable Overwrite Vulnerability
 #
 # Authors:
@@ -45,9 +45,9 @@ tag_solution = "Disable PHP's register_globals and/or upgrade to a newer PHP rel
 
 if(description){
 
- script_id(200011);
- script_version("$Revision: 5779 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.200011");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");

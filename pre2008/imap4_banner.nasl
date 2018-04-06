@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imap4_banner.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: imap4_banner.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: IMAP Banner
 #
 # Authors:
@@ -26,10 +26,10 @@ tag_summary = "Displays the imap4 service banner.";
 
 if(description)
 {
- script_id(11414);
+ script_oid("1.3.6.1.4.1.25623.1.0.11414");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("IMAP Banner");

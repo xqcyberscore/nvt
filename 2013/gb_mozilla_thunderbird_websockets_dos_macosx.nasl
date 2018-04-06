@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_websockets_dos_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_mozilla_thunderbird_websockets_dos_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Thunderbird 'WebSockets' Denial of Service Vulnerability (Mac OS X)
 #
@@ -44,13 +44,13 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-  script_id(803394);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803394");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

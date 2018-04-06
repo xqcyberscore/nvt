@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TurnkeyForms_classifieds_authentication_bypass.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: TurnkeyForms_classifieds_authentication_bypass.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # TurnkeyForms Local Classifieds 'Site_Admin/admin.php' Authentication
 # Bypass Vulnerability
@@ -33,9 +33,9 @@ tag_summary = "TurnkeyForms Local Classifieds is prone to an authentication-bypa
 
 if(description)
 {
- script_id(100032);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100032");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(32282);
  script_cve_id("CVE-2008-6302");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: burning_board_database_sql_injection.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: burning_board_database_sql_injection.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Woltlab Burning Board SQL injection flaw
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Unknown at this time.";
 
 if(description)
 {
-  script_id(80050);;
-  script_version("$Revision: 3854 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80050");;
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(15214, 16914);
   script_cve_id("CVE-2005-3369", "CVE-2006-1094");

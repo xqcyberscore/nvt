@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_http_server_mult_xss_vuln.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: gb_ibm_http_server_mult_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBM HTTP Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -45,12 +45,12 @@ tag_summary = "This host is running IBM HTTP Server and is prone to multiple cro
 
 if(description)
 {
-  script_id(801996);
-  script_version("$Revision: 5785 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801996");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-1360");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:48:57 +0530 (Tue, 08 Nov 2011)");
   script_name("IBM HTTP Server Multiple Cross Site Scripting Vulnerabilities");
   script_tag(name:"qod_type", value:"remote_banner");

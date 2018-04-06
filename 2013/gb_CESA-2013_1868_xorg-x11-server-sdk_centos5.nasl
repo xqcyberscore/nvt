@@ -27,9 +27,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(881854);
-  script_version("$Revision: 8456 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 07:58:40 +0100 (Thu, 18 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.881854");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:47:17 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6424");
   script_tag(name:"cvss_base", value:"5.0");

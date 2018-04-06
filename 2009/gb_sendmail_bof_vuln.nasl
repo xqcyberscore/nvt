@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_bof_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_sendmail_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sendmail Buffer Overflow Vulnerability
 #
@@ -34,9 +34,9 @@ tag_summary = "The host is running Sendmail and is prone to Buffer Overflow Vuln
 
 if(description)
 {
-  script_id(800609);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800609");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

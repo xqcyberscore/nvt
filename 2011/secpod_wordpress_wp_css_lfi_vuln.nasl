@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_wp_css_lfi_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_wordpress_wp_css_lfi_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # WordPress 'WP CSS' Plugin Local File Inclusion Vulnerability
 #
@@ -48,9 +48,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_id(902723);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902723");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

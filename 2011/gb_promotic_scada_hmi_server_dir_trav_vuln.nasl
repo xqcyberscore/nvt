@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PROMOTIC SCADA/HMI Webserver Directory Traversal Vulnerability
 #
@@ -44,9 +44,9 @@ directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(802041);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802041");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

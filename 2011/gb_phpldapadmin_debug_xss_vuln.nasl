@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_debug_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
+# $Id: gb_phpldapadmin_debug_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # phpLDAPadmin '_debug' Cross Site Scripting Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is running phpLDAPadmin and is prone to cross site
 
 if(description)
 {
-  script_id(802265);
-  script_version("$Revision: 5793 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802265");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-4074");
   script_bugtraq_id(50331);

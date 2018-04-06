@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_ws_code_exec_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_sun_java_ws_code_exec_vuln_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Sun Java Web Start Remote Command Execution Vulnerability (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is running Sun Java Web Start and is prone to Remote
 
 if(description)
 {
-  script_id(800126);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800126");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-05 13:21:04 +0100 (Wed, 05 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

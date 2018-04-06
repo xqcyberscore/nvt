@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_dec08_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_thunderbird_mult_vuln_dec08_lin.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities December-08 (Linux)
 #
@@ -40,9 +40,9 @@ tag_solution = "Upgrade to Thunderbird version 2.0.0.19
 
 if(description)
 {
-  script_id(800091);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800091");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

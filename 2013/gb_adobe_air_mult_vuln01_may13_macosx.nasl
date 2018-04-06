@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_may13_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_adobe_air_mult_vuln01_may13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities -01 May 13 (Mac OS X)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(803497);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803497");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3335", "CVE-2013-3334", "CVE-2013-3333", "CVE-2013-3332",
                 "CVE-2013-3331", "CVE-2013-3330", "CVE-2013-3329", "CVE-2013-3328",
                 "CVE-2013-3327", "CVE-2013-3326", "CVE-2013-3325", "CVE-2013-3324",
@@ -49,7 +49,7 @@ if(description)
                            59894, 59893, 59892, 59891, 59890, 59889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-21 14:48:32 +0530 (Tue, 21 May 2013)");
   script_name("Adobe Air Multiple Vulnerabilities -01 May 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53419");

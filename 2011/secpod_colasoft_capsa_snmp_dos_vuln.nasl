@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_colasoft_capsa_snmp_dos_vuln.nasl 5367 2017-02-20 14:16:52Z cfi $
+# $Id: secpod_colasoft_capsa_snmp_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Colasoft Capsa Malformed SNMP V1 Packet Remote Denial of Service Vulnerability
 #
@@ -45,9 +45,9 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(902570);
-  script_version("$Revision: 5367 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:16:52 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902570");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_bugtraq_id(49621);
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_gnutls_CB-A08-0079.nasl 8193 2017-12-20 10:46:55Z cfischer $
+# $Id: smbcl_gnutls_CB-A08-0079.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: GnuTLS < 2.2.4 vulnerability (Windows)
 #
 # Authors:
@@ -64,9 +64,9 @@ CPE = "cpe:/a:gnu:gnutls";
 
 if(description)
 {
- script_id(90027);
- script_version("$Revision: 8193 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.90027");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

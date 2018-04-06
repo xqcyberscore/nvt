@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sun Java System Web Server '.jsp' Information Disclosure Vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ Information Disclosure Vulnerability.";
 
 if(description)
 {
-  script_id(800658);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800658");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

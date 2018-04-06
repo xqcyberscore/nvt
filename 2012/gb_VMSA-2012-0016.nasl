@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0016.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_VMSA-2012-0016.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0016: VMware security updates for vSphere API and ESX Service Console 
 #
@@ -85,16 +85,16 @@ Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103609);
+ script_oid("1.3.6.1.4.1.25623.1.0.103609");
  script_cve_id("CVE-2012-5703","CVE-2012-1033","CVE-2012-1667","CVE-2012-3817","CVE-2011-4940","CVE-2011-4944","CVE-2012-1150","CVE-2012-0876","CVE-2012-1148","CVE-2012-0441");
 
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
- script_version ("$Revision: 5931 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0016: VMware security updates for vSphere API and ESX Service Console");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-11-16 11:02:01 +0100 (Fri, 16 Nov 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

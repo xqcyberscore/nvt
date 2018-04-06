@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1891_1.nasl 8650 2018-02-03 12:16:59Z teissa $
+# $Id: gb_suse_2013_1891_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for ca-certificates-mozilla openSUSE-SU-2013:1891-1 (ca-certificates-mozilla)
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(850560);
-  script_version("$Revision: 8650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:59 +0100 (Sat, 03 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850560");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:05:15 +0530 (Tue, 17 Dec 2013)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:P");

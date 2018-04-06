@@ -1,5 +1,5 @@
 #CESA-2009:0325 63516 8
-# $Id: ovcesa2009_0325.nasl 6650 2017-07-10 11:43:12Z cfischer $
+# $Id: ovcesa2009_0325.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0325 (seamonkey)
 #
 # Authors:
@@ -38,9 +38,9 @@ advisory CESA-2009:0325.";
 
 if(description)
 {
- script_id(63516);
- script_version("$Revision: 6650 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63516");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-07 21:47:03 +0100 (Sat, 07 Mar 2009)");
  script_cve_id("CVE-2009-0040", "CVE-2009-0772", "CVE-2009-0774", "CVE-2009-0775", "CVE-2009-0776");
  script_tag(name:"cvss_base", value:"10.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_mar11_lin.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_google_chrome_mult_dos_vuln_mar11_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - March 11(Linux)
 #
@@ -60,9 +60,9 @@ tag_summary = "The host is running Google Chrome and is prone to multiple
 
 if(description)
 {
-  script_id(801762);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801762");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_cve_id("CVE-2011-1185", "CVE-2011-1186", "CVE-2011-1187", "CVE-2011-1188",
                 "CVE-2011-1189", "CVE-2011-1190", "CVE-2011-1191", "CVE-2011-1192",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_feb12.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_mult_vuln_win_feb12.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows)
 #
@@ -51,13 +51,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 
 if(description)
 {
-  script_id(802580);
-  script_version("$Revision: 6444 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802580");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0442", "CVE-2012-0444", "CVE-2012-0449", "CVE-2011-3659");
   script_bugtraq_id(51756, 51753, 51754, 51755);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 19:24:43 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows)");
 

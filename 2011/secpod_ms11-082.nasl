@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-082.nasl 4920 2017-01-02 15:37:20Z cfi $
+# $Id: secpod_ms11-082.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Host Integration Server Denial of Service Vulnerabilities (2607670)
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902580);
-  script_version("$Revision: 4920 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:37:20 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902580");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-2007", "CVE-2011-2008");
   script_bugtraq_id(49997, 49998);

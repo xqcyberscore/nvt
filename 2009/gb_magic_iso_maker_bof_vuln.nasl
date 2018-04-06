@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magic_iso_maker_bof_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_magic_iso_maker_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Magic ISO Maker Buffer Overflow Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is running Magic ISO Maker and is prone to Heap-Based
 
 if(description)
 {
-  script_id(800273);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800273");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-13 15:50:35 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");

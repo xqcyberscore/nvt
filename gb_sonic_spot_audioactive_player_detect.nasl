@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonic_spot_audioactive_player_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_sonic_spot_audioactive_player_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Sonic Spot Audioactive Player Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the version of Sonic Spot Audioactive Player
 
 if(description)
 {
-  script_id(800571);
+  script_oid("1.3.6.1.4.1.25623.1.0.800571");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sonic Spot Audioactive Player Version Detection");

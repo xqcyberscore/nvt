@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3826.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3826.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3826-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703826);
-    script_version("$Revision: 6607 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703826");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2016-1242", "CVE-2017-0360");
     script_name("Debian Security Advisory DSA 3826-1 (tryton-server - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-04-04 00:00:00 +0200 (Tue, 04 Apr 2017)");
     script_tag(name:"cvss_base", value:"4.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");

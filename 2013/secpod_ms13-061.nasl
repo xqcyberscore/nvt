@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-061.nasl 5339 2017-02-18 16:28:22Z cfi $
+# $Id: secpod_ms13-061.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2876063)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(902992);
-  script_version("$Revision: 5339 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902992");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2393", "CVE-2013-3776", "CVE-2013-3781");
   script_bugtraq_id(59129, 61234, 61232);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:28:22 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 13:28:33 +0530 (Wed, 14 Aug 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2876063)");
 

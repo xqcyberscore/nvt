@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Novell eDirectory Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -48,9 +48,9 @@ tag_summary = "This host is running Novell eDirectory, which is prone to XSS,
 
 if(description)
 {
- script_id(900210);
- script_version("$Revision: 7823 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900210");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-02 16:25:07 +0200 (Tue, 02 Sep 2008)");
  script_cve_id("CVE-2008-5091","CVE-2008-5092","CVE-2008-5093","CVE-2008-5094","CVE-2008-5095");
  script_bugtraq_id(30947);

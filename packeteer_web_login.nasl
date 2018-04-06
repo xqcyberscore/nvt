@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_login.nasl 6522 2017-07-04 15:22:28Z cfischer $
+# $Id: packeteer_web_login.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: Packeteer Web Management Interface Login
 #
 # Authors:
@@ -32,10 +32,10 @@ cookie in the KB for use with other plugins.";
 
 if (description)
     {
-    script_id(80032);
+    script_oid("1.3.6.1.4.1.25623.1.0.80032");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-    script_version("$Revision: 6522 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
+    script_version("$Revision: 9347 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"0.0");
     name="Packeteer Web Management Interface Login";

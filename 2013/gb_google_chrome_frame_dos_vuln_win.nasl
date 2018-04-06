@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with google chrome frame plugin for
 
 if(description)
 {
-  script_id(803461);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803461");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2493");
   script_bugtraq_id(58562);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:21:11 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "https://chromiumcodereview.appspot.com/12395021");

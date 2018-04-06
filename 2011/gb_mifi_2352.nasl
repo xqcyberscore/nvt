@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mifi_2352.nasl 5769 2017-03-29 13:50:21Z cfi $
+# $Id: gb_mifi_2352.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Novatel Wireless MiFi 2352 Password Information Disclosure Vulnerability
 #
@@ -35,9 +35,9 @@ may also be affected.";
 
 if (description)
 {
- script_id(103115);
- script_version("$Revision: 5769 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103115");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-10 13:28:46 +0100 (Thu, 10 Mar 2011)");
  script_bugtraq_id(37962);
  script_tag(name:"cvss_base", value:"2.1");

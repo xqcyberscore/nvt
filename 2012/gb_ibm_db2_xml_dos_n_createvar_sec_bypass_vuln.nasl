@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities
 #
@@ -53,13 +53,13 @@ and security bypass vulnerabilities.";
 
 if(description)
 {
-  script_id(802730);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802730");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0712", "CVE-2012-0709");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:41:54 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48279/");

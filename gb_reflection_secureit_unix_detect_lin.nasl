@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reflection_secureit_unix_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_reflection_secureit_unix_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Reflection for Secure IT Version Detection (Linux)
 #
@@ -29,10 +29,10 @@ tag_summary = "The script detects the version of Reflections for Secure IT and
 
 if(description)
 {
-  script_id(800227);
+  script_oid("1.3.6.1.4.1.25623.1.0.800227");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Reflection for Secure IT Version Detection (Linux)");

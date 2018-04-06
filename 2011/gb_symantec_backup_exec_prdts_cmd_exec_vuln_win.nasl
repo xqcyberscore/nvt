@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
+# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Symantec Backup Exec Products Arbitrary Command Execution vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Symantec Backup Exec Products and is
 
 if(description)
 {
-  script_id(801798);
-  script_version("$Revision: 8199 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801798");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_cve_id("CVE-2011-0546");
   script_bugtraq_id(47824);

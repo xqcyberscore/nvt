@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_malformed_uri_dos.nasl 8023 2017-12-07 08:36:26Z teissa $
-# Description: CVSTrac malformed URI infinite loop DoS
+# $Id: cvstrac_malformed_uri_dos.nasl 9336 2018-04-05 14:02:17Z cfischer $
+#
+# CVSTrac malformed URI infinite loop DoS
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -21,62 +23,59 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The remote host seems to be running cvstrac, 
-a web-based bug and patch-set tracking system for CVS.
-
-This version contains a flaw related to the parameter parser 
-that may allow an attacker to create a malformed URL, 
-which causes the application to hang.  An attacker, exploiting
-this flaw, would only need network access to the cvstrac server.
-Upon sending a malformed link, the cvstrac server would go into
-an infinite loop, rendering the services as unavailable.
-
-***** OpenVAS has determined the vulnerability exists on the target
-***** simply by looking at the version number(s) of CVSTrac
-***** installed there.";
-
-tag_solution = "Update to version 1.1.4 or disable this CGI suite";
+CPE = "cpe:/a:cvstrac:cvstrac";
 
 if(description)
 {
- script_id(14289);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_xref(name:"OSVDB", value:"8646");
- name = "CVSTrac malformed URI infinite loop DoS";
+  script_oid("1.3.6.1.4.1.25623.1.0.14289");
+  script_version("$Revision: 9336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 16:02:17 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"OSVDB", value:"8646");
+  script_name("CVSTrac malformed URI infinite loop DoS");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("cvstrac_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("cvstrac/detected");
 
- script_name(name);
+  script_tag(name:"solution", value:"Update to version 1.1.4 or disable this CGI suite");
 
- 
- 
- script_category(ACT_ATTACK);
+  script_tag(name:"summary", value:"The remote host seems to be running cvstrac,
+  a web-based bug and patch-set tracking system for CVS.
+
+  This version contains a flaw related to the parameter parser
+  that may allow an attacker to create a malformed URL,
+  which causes the application to hang.  An attacker, exploiting
+  this flaw, would only need network access to the cvstrac server.
+  Upon sending a malformed link, the cvstrac server would go into
+  an infinite loop, rendering the services as unavailable.
+
+  ***** OpenVAS has determined the vulnerability exists on the target
+  ***** simply by looking at the version number(s) of CVSTrac
+  ***** installed there.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("version_func.inc");
+include("host_details.inc");
 
-include("http_func.inc");
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-port = get_http_port(default:80);
-kb = get_kb_item("www/" + port + "/cvstrac" );
-if ( ! kb ) exit(0);
-stuff = eregmatch(pattern:"(.*) under (.*)", string:kb );
-version = stuff[1]; 
-if(ereg(pattern:"^(0\.|1\.(0|1\.[0-3]([^0-9]|$)))", string:version))
-	security_message(port);
+if( ereg( pattern:"^(0\.|1\.(0|1\.[0-3]([^0-9]|$)))", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.4" );
+  security_message( port:port, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

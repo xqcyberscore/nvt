@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_message_filter_mult_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_symantec_message_filter_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Symantec Message Filter Multiple Vulnerabilities
 #
@@ -58,17 +58,17 @@ references for more information.";
 
 if (description)
 {
- script_id(103501);
+ script_oid("1.3.6.1.4.1.25623.1.0.103501");
  script_bugtraq_id(54136,54135,54134,54133);
  script_cve_id("CVE-2012-0300","CVE-2012-0301","CVE-2012-0302","CVE-2012-0303");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5977 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Symantec Message Filter Multiple Vulnerabilities");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

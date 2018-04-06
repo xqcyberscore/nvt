@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2103_1.nasl 7957 2017-12-01 06:40:08Z santu $
+# $Id: gb_ubuntu_USN_2103_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Ubuntu Update for libav USN-2103-1
 #
@@ -28,11 +28,11 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841709);
-  script_version("$Revision: 7957 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841709");
+  script_version("$Revision: 9354 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 11:42:24 +0530 (Thu, 13 Feb 2014)");
   script_name("Ubuntu Update for libav USN-2103-1");
 

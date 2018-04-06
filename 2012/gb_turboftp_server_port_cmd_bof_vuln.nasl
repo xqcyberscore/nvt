@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability
 #
@@ -42,12 +42,12 @@ overflow vulnerability.";
 
 if(description)
 {
-  script_id(803105);
-  script_version("$Revision: 6032 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803105");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(55764);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 18:55:24 +0530 (Mon, 22 Oct 2012)");
   script_name("TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50595/");

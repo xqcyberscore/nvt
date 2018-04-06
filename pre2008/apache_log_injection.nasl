@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_log_injection.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: apache_log_injection.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Apache Error Log Escape Sequence Injection
 #
 # Authors:
@@ -33,9 +33,9 @@ vulnerabilities in terminal emulators.
 tag_solution = "Upgrade to Apache version 1.3.31 or 2.0.49 or newer.";
  
 if (description) {
-  script_id(12239);
-  script_version("$Revision: 6702 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.12239");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9930);
   script_tag(name:"cvss_base", value:"5.0");

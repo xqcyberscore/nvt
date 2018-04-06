@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_manage_engine_servicedesk_plus_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # ManageEngine ServiceDesk Plus 'searchText' XSS Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running ManageEngine ServiceDesk Plus and is prone t
 
 if(description)
 {
-  script_id(801983);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801983");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-1510");
   script_tag(name:"cvss_base", value:"4.3");

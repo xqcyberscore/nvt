@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0405_1.nasl 8672 2018-02-05 16:39:18Z teissa $
+# $Id: gb_suse_2013_0405_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for pidgin openSUSE-SU-2013:0405-1 (pidgin)
 #
@@ -45,9 +45,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00006.html");
-  script_id(850416);
-  script_version("$Revision: 8672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850416");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:38 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0271", "CVE-2013-0272", "CVE-2013-0273", "CVE-2013-0274");
   script_tag(name:"cvss_base", value:"6.8");

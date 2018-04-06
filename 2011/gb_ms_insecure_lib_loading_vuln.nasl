@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_insecure_lib_loading_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_insecure_lib_loading_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Windows Insecure Library Loading Vulnerability (2269637)
 #
@@ -49,10 +49,10 @@ tag_summary = "This host is missing a critical security update according to Micr
 
 if(description)
 {
-  script_id(802136);
-  script_version("$Revision: 5362 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802136");
+  script_version("$Revision: 9351 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_cve_id("CVE-2010-3337");
   script_tag(name:"cvss_base", value:"9.3");

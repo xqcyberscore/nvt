@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_machine_sql_inj_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_joomla_com_machine_sql_inj_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla com_machine 'Itemid' Parameter SQL Injection Vulnerability
 #
@@ -45,12 +45,12 @@ SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802705);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802705");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(52095);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 19:22:38 +0530 (Mon, 12 Mar 2012)");
   script_name("Joomla com_machine 'Itemid' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://pastebin.com/eDAr20Z1");

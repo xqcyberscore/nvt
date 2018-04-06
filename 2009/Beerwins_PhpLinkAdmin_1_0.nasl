@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Beerwins_PhpLinkAdmin_1_0.nasl 5767 2017-03-29 13:32:35Z cfi $
+# $Id: Beerwins_PhpLinkAdmin_1_0.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Beerwin's PhpLinkAdmin Remote File Include and Multiple SQL
 # Injection Vulnerabilities
@@ -39,9 +39,9 @@ tag_summary = "Beerwin's PhpLinkAdmin is prone to multiple input-validation
 
 if (description)
 {
- script_id(100058);
- script_version("$Revision: 5767 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100058");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-18 10:43:43 +0100 (Wed, 18 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

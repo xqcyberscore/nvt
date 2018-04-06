@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability
 #
@@ -43,11 +43,11 @@ is prone to local file inclusion vulnerability.";
 
 if(description)
 {
-  script_id(802934);
-  script_version("$Revision: 7577 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802934");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-16 12:28:45 +0530 (Thu, 16 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20545/");

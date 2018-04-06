@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -26,11 +26,11 @@
 
 if(description)
 {
-  script_id(803733);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803733");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
 

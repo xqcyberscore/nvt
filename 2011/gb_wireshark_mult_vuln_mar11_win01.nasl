@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar11_win01.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_wireshark_mult_vuln_mar11_win01.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities March-11 (Windows)
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(801757);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801757");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1140", "CVE-2011-1141");
   script_tag(name:"cvss_base", value:"4.3");

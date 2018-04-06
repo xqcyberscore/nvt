@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sr_2009_011.nasl 6668 2017-07-11 13:34:29Z cfischer $
+# $Id: suse_sr_2009_011.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory SUSE-SR:2009:011
 #
 # Authors:
@@ -37,9 +37,9 @@ tag_solution = "Update all out of date packages.";
                                                                                 
 if(description)
 {
- script_id(64196);
- script_version("$Revision: 6668 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64196");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-06-15 19:20:43 +0200 (Mon, 15 Jun 2009)");
  script_cve_id("CVE-2007-5400", "CVE-2007-6725", "CVE-2008-6123", "CVE-2008-6679", "CVE-2009-0159", "CVE-2009-0196", "CVE-2009-0241", "CVE-2009-0688", "CVE-2009-0792", "CVE-2009-1093", "CVE-2009-1094", "CVE-2009-1095", "CVE-2009-1096", "CVE-2009-1098", "CVE-2009-1099", "CVE-2009-1100", "CVE-2009-1103", "CVE-2009-1104", "CVE-2009-1107", "CVE-2009-1210", "CVE-2009-1252", "CVE-2009-1266", "CVE-2009-1267", "CVE-2009-1268", "CVE-2009-1269", "CVE-2009-1274", "CVE-2009-1364", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379", "CVE-2009-1492", "CVE-2009-1493");
  script_tag(name:"cvss_base", value:"10.0");

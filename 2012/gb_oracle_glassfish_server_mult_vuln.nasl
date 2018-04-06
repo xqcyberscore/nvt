@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_server_mult_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_oracle_glassfish_server_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle GlassFish Server Multiple XSS and CSRF Vulnerabilities
 #
@@ -48,13 +48,13 @@ tag_summary = "This host is running Oracle GlassFish Server and is prone to
 
 if(description)
 {
-  script_id(802624);
-  script_version("$Revision: 5956 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802624");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(53118, 53136);
   script_cve_id("CVE-2012-0550", "CVE-2012-0551");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 16:16:16 +0530 (Mon, 07 May 2012)");
   script_name("Oracle GlassFish Server Multiple XSS and CSRF Vulnerabilities");
 

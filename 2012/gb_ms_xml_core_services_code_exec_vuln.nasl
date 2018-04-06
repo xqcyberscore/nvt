@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)
 #
@@ -26,12 +26,12 @@
 
 if(description)
 {
-  script_id(802864);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802864");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1889");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-14 12:09:11 +0530 (Thu, 14 Jun 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)");

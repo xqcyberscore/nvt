@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_IBSng_50468.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_IBSng_50468.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBSng 'str' Parameter Cross Site Scripting Vulnerability
 #
@@ -34,16 +34,16 @@ credentials and launch other attacks.";
 
 if (description)
 {
- script_id(103325);
+ script_oid("1.3.6.1.4.1.25623.1.0.103325");
  script_bugtraq_id(50468);
- script_version ("$Revision: 5719 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("IBSng 'str' Parameter Cross Site Scripting Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50468");
  script_xref(name : "URL" , value : "http://ibs.sourceforge.net/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520347");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-02 08:00:00 +0100 (Wed, 02 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

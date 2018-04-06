@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1946.nasl 8448 2018-01-17 16:18:06Z teissa $
+# $Id: gb_ubuntu_USN_1946.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1946
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841547);
-  script_version("$Revision: 8448 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:18:06 +0100 (Wed, 17 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841547");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:43:52 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2012-5374", "CVE-2012-5375", "CVE-2013-1060", "CVE-2013-2140",
                 "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-4162", "CVE-2013-4163");

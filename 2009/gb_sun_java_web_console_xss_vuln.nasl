@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_console_xss_vuln.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_sun_java_web_console_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Sun Java Web Console Multiple XSS Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is running Java Web Console and is prone to Multiple
 
 if(description)
 {
-  script_id(800826);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800826");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

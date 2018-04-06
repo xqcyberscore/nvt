@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_playsms_49474.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_playsms_49474.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PlaySMS 'apps_path[themes]' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -39,9 +39,9 @@ PlaySMS 0.9.5.2 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103271);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103271");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
  script_bugtraq_id(49474);
  script_name("PlaySMS 'apps_path[themes]' Parameter Multiple Remote File Include Vulnerabilities");

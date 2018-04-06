@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
 #
 # Fuzyylime(cms) Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:fuzzylime:fuzzylime_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900584");
-  script_version("$Revision: 9323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9334 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -77,7 +77,7 @@ if(description)
   script_tag(name:"impact", value:tag_impact);
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

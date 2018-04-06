@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zeroblog_xss.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: zeroblog_xss.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Zeroblog <= 1.2a Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -24,9 +24,9 @@
 
 if (description) {
 
-  script_id(200003);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.200003");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
 
   script_tag(name:"cvss_base", value:"4.3");

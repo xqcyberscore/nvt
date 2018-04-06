@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appweb_45568.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_appweb_45568.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Appweb Web Server Cross Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the reference for more details
 
 if (description)
 {
- script_id(103001);
- script_version("$Revision: 7015 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103001");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45568);
  script_tag(name:"cvss_base", value:"2.6");

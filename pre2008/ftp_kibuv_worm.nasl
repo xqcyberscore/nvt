@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftp_kibuv_worm.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: ftp_kibuv_worm.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Kibuv worm detection
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "patch your system and run an antivirus";
 
 if(description)
 {
- script_id(18367);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.18367");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

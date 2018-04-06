@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: femitter_ftp_34689.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: femitter_ftp_34689.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Acritum Femitter Server Remote File Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "Acritum Femitter FTP Server is prone to a remote file-disclosure
 
 if(description)
 {
-  script_id(100165);
-  script_version("$Revision: 7297 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100165");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-26 20:59:36 +0200 (Sun, 26 Apr 2009)");
   script_bugtraq_id(34689);
   script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gravity_board_x_34370.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gravity_board_x_34370.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Gravity Board X Multiple SQL Injection Vulnerabilities and Remote
 # Command Execution Vulnerability
@@ -39,9 +39,9 @@ tag_summary = "Gravity Board X is prone to multiple SQL-injection vulnerabilitie
 
 if (description)
 {
- script_id(100101);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100101");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

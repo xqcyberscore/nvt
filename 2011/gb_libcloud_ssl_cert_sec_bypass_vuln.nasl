@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Libcloud SSL Certificates Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Libcloud and is prone to security
 
 if(description)
 {
-  script_id(802164);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802164");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2010-4340");
   script_tag(name:"cvss_base", value:"4.3");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vqServer_admin_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: vqServer_admin_detect.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: vqServer administrative port
 #
 # Authors:
@@ -36,9 +36,9 @@ tag_solution = "close this port for outside access.";
 
 if(description)
 {
- script_id(10354);
- script_version("$Revision: 5829 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10354");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1610);
  script_cve_id("CVE-2000-0766");

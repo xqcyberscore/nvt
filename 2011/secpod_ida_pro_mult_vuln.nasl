@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ida_pro_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_ida_pro_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Hex-Rays IDA Pro Multiple Vulnerabilities
 #
@@ -57,9 +57,9 @@ tag_summary = "This host is installed with Hex-Rays IDA Pro and is prone to
 
 if(description)
 {
-  script_id(901189);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901189");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-1049", "CVE-2011-1050", "CVE-2011-1051",
                 "CVE-2011-1052", "CVE-2011-1053", "CVE-2011-1054");

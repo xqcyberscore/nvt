@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silex_48165.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_silex_48165.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Silex 'sitemap.php' Cross Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if(description)
 {
- script_id(103180);
- script_version("$Revision: 5751 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103180");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-06-09 13:50:22 +0200 (Thu, 09 Jun 2011)");
  script_bugtraq_id(48165);
  script_tag(name:"cvss_base", value:"4.3");

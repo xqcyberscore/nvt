@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_priv_escalation.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: cisco_vpn_client_priv_escalation.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Cisco VPN Client Privilege Escalation Vulnerability
 #
 # Authors:
@@ -35,9 +35,9 @@ arbitrary commands with SYSTEM privileges.";
 tag_solution = "Upgrade to version 4.8.01.0300 or a later.";
 
 if (description) {
- script_id(25550);
- script_version("$Revision: 3854 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.25550");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

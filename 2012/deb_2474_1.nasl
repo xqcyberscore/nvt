@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2474_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2474_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2474-1 (ikiwiki)
 #
 # Authors:
@@ -46,12 +46,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(71352);
+ script_oid("1.3.6.1.4.1.25623.1.0.71352");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2012-0220");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:51:21 -0400 (Thu, 31 May 2012)");
  script_name("Debian Security Advisory DSA 2474-1 (ikiwiki)");
 

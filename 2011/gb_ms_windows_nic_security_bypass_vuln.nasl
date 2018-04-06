@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_nic_security_bypass_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_windows_nic_security_bypass_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Windows IPv4 Default Configuration Security Bypass Vulnerability
 #
@@ -51,10 +51,10 @@ This NVT has been replaced by NVT secpod_ms10-015.nasl
 
 if(description)
 {
-  script_id(801914);
-  script_version("$Revision: 5362 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801914");
+  script_version("$Revision: 9351 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2010-0232");
   script_tag(name:"cvss_base", value:"7.2");

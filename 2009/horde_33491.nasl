@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: horde_33491.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: horde_33491.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Horde Products Local File Include and Cross Site Scripting
 # Vulnerabilities
@@ -47,9 +47,9 @@ tag_summary = "Horde products are prone to a local file-include vulnerability an
 
 if (description)
 {
- script_id(100118);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100118");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
  script_bugtraq_id(33491);
  script_cve_id("CVE-2009-0932");

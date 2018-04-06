@@ -7,7 +7,7 @@
 #   - By Chandan S
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: conficker.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Conficker Detection
 #
@@ -65,9 +65,9 @@ if(description)
   script_xref(name : "URL" , value : "http://www.anti-spyware-101.com/remove-conficker");
   script_xref(name : "URL" , value : "http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
-  script_id(900091);
-  script_version("$Revision: 7551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900091");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");

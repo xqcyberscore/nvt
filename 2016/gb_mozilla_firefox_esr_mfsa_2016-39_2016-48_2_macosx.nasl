@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_2_macosx.nasl 32268 2016-02-24 14:01:01Z antu123 $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_2_macosx.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 2)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807683");
-  script_version("$Revision: 5813 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2016-2808", "CVE-2016-2814", "CVE-2016-2807", "CVE-2016-2806");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 13:12:33 +0530 (Mon, 02 May 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 2)-MAC OS X");
 

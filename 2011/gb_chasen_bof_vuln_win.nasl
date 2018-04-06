@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chasen_bof_vuln_win.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_chasen_bof_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # ChaSen Buffer Overflow Vulnerability (Windows)
 #
@@ -37,12 +37,12 @@ tag_summary = "The host is running ChaSen Software and is prone to buffer
 
 if(description)
 {
-  script_id(802343);
-  script_version("$Revision: 5364 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802343");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-09 16:19:55 +0530 (Wed, 09 Nov 2011)");
   script_name("ChaSen Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN16901583/index.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_34348.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: oscommerce_34348.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # osCommerce 'oscid' Session Fixation Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "osCommerce is prone to a session-fixation vulnerability.
 
 if (description)
 {
- script_id(100099);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100099");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_bugtraq_id(34348);
  script_tag(name:"cvss_base", value:"8.3");

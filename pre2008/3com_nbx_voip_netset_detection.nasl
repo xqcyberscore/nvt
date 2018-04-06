@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: 3com_nbx_voip_netset_detection.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: 3com_nbx_voip_netset_detection.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: 3Com NBX VoIP NetSet Detection
 #
 # Authors:
@@ -43,9 +43,9 @@ See Also :  http://www.secnap.com/security/20040420.html";
 
 if(description)
 {
- script_id(12221);
- script_version("$Revision: 8144 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.12221");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1977");
  script_bugtraq_id(10240);

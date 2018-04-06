@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imp_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
+# $Id: imp_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: IMP Detection
 #
 # Authors:
@@ -31,10 +31,10 @@ http://www.horde.org/imp/ for more information.";
 
 if(description)
 {
-  script_id(12643);
+  script_oid("1.3.6.1.4.1.25623.1.0.12643");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7560 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IMP Detection");

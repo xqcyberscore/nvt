@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_72820.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_fortimail_xss_72820.nasl 9342 2018-04-06 05:32:54Z cfischer $
 #
 # Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability
 #
@@ -29,9 +29,10 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105239");
  script_bugtraq_id(72820);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6125 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+ script_version ("$Revision: 9342 $");
+ script_cve_id("CVE-2014-8617");
 
  script_name("Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability");
 
@@ -55,9 +56,9 @@ because it fails to properly sanitize user-supplied input.");
  script_tag(name: "affected" , value:"FortiMail version 5.2.1");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:32:54 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-03-18 13:18:03 +0100 (Wed, 18 Mar 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -90,4 +91,3 @@ if( http_vuln_check( port:port, url:url, pattern:"<TITLE>Fortinet FortiMail</TIT
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webatall_45976.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_webatall_45976.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # web@all 'url' Parameter Cross Site Scripting Vulnerability
 #
@@ -36,9 +36,9 @@ web@all 1.1 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103044);
- script_version("$Revision: 5751 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103044");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45976);
  script_tag(name:"cvss_base", value:"4.3");

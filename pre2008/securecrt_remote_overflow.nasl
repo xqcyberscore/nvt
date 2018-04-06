@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: securecrt_remote_overflow.nasl 7146 2017-09-15 12:38:49Z cfischer $
+# $Id: securecrt_remote_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: SecureCRT SSH1 protocol version string overflow
 #
 # Authors:
@@ -36,9 +36,9 @@ tag_solution = "Upgrade to SecureCRT 3.2.2, 3.3.4, 3.4.6, 4.1 or newer";
 
 if(description)
 {
- script_id(15822);
- script_version("$Revision: 7146 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15822");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-1059");
  script_bugtraq_id(5287);

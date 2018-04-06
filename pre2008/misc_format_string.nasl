@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: misc_format_string.nasl 4750 2016-12-12 15:39:21Z cfi $
+# $Id: misc_format_string.nasl 9348 2018-04-06 07:01:19Z cfischer $
 #
 # Generic format string
 #
@@ -38,9 +38,9 @@
 
 if(description)
 {
-  script_id(11133);
-  script_version("$Revision: 4750 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 16:39:21 +0100 (Mon, 12 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.11133");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

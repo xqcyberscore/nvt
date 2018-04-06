@@ -44,13 +44,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902983);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902983");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3129");
   script_bugtraq_id(60978);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 15:08:26 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Windows DirectWrite Remote Code Execution Vulnerabilities (2848295)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54057");

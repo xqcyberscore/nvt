@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvs_pserver_heap_overflow.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: cvs_pserver_heap_overflow.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # CVS Malformed Entry Modified and Unchanged Flag Insertion Heap Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ this issue.";
 
 if (description)
 {
- script_id(100289);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100289");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
  script_bugtraq_id(10384);
  script_cve_id("CVE-2004-0396");

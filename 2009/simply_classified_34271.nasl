@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: simply_classified_34271.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: simply_classified_34271.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Simply Classified 'adverts.php' SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "Simply Classified is prone to an SQL-injection vulnerability beca
 
 if (description)
 {
- script_id(100090);
- script_version("$Revision: 5148 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100090");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-29 17:14:47 +0200 (Sun, 29 Mar 2009)");
  script_bugtraq_id(34271);
  script_tag(name:"cvss_base", value:"7.8");

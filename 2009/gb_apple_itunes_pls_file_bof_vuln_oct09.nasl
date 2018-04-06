@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_pls_file_bof_vuln_oct09.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_pls_file_bof_vuln_oct09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Apple iTunes '.pls' Files Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host has Apple iTunes installed, which is prone to Buffer
 
 if(description)
 {
-  script_id(801105);
-  script_version("$Revision: 8169 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801105");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

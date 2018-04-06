@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openengine_49794.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_openengine_49794.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # openEngine 'id' Parameter SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ openEngine 2.0 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103278);
- script_version("$Revision: 7019 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103278");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(49794);
  script_tag(name:"cvss_base", value:"7.5");

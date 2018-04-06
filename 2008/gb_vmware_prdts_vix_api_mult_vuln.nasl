@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_vix_api_mult_vuln.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: gb_vmware_prdts_vix_api_mult_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # VMware VIX API Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -60,9 +60,9 @@ tag_insight = "VMware VIX API (Application Program Interface) fails to adequatel
 
 if(description)
 {
-  script_id(800007);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800007");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-09-29 16:48:05 +0200 (Mon, 29 Sep 2008)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

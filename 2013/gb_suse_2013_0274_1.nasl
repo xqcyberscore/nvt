@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0274_1.nasl 8494 2018-01-23 06:57:55Z teissa $
+# $Id: gb_suse_2013_0274_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # SuSE Update for libvirt openSUSE-SU-2013:0274-1 (libvirt)
 #
@@ -48,9 +48,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00001.html");
-  script_id(850395);
-  script_version("$Revision: 8494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850395");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:50 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-4423", "CVE-2013-0170");
   script_tag(name:"cvss_base", value:"9.3");

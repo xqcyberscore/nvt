@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lost_door_dos_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_lost_door_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Lost Door J-Revolution Denial of Service Vulnerability
 #
@@ -44,9 +44,9 @@ denial of service vulnerability.";
 
 if(description)
 {
-  script_id(801943);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801943");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

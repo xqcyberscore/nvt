@@ -48,11 +48,11 @@ tag_affected = "tor on Fedora 15";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-November/068757.html");
-  script_id(863607);
+  script_oid("1.3.6.1.4.1.25623.1.0.863607");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 6626 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:30:10 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:01:20 +0530 (Tue, 08 Nov 2011)");
   script_xref(name: "FEDORA", value: "2011-15117");
   script_cve_id("CVE-2011-2768", "CVE-2011-2769");

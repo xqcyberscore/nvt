@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2405_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2405_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2405-1 (apache2)
 #
 # Authors:
@@ -94,12 +94,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70724);
+ script_oid("1.3.6.1.4.1.25623.1.0.70724");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2011-3607", "CVE-2011-3368", "CVE-2011-3639", "CVE-2011-4317", "CVE-2012-0031", "CVE-2012-0053");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-13 11:19:29 -0500 (Mon, 13 Feb 2012)");
  script_name("Debian Security Advisory DSA 2405-1 (apache2)");
 

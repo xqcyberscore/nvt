@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SpecView_54243.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_SpecView_54243.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SpecView Web Server Directory Traversal Vulnerability
 #
@@ -38,18 +38,18 @@ information that could aid in further attacks.";
 
 if (description)
 {
- script_id(103506);
+ script_oid("1.3.6.1.4.1.25623.1.0.103506");
  script_bugtraq_id(54243);
  script_cve_id("CVE-2012-5972");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6697 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("SpecView Web Server Directory Traversal Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54243");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-07-02 12:15:35 +0200 (Mon, 02 Jul 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

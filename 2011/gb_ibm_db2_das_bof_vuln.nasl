@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_das_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_ibm_db2_das_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBM DB2 Administration Server (DAS) Buffer Overflow Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is running IBM DB2 and is prone to buffer overflow
 
 if(description)
 {
-  script_id(801589);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801589");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46052);
   script_cve_id("CVE-2011-0731");

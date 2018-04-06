@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is running IBM Director CIM Server and is prone to
 
 if(description)
 {
-  script_id(802684);
-  script_version("$Revision: 7552 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802684");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2009-0880");
   script_bugtraq_id(34065);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-11 20:37:46 +0530 (Tue, 11 Dec 2012)");
   script_name("IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_dos_vuln_lin.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wireshark_mult_dos_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(901033);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901033");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-24 10:05:51 +0200 (Thu, 24 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

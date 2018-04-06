@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: goollery_xss.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: goollery_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Goollery Multiple XSS
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Upgrade to Goollery 0.04b or newer.";
 
 if(description)
 {
- script_id(15717);
- script_version("$Revision: 5781 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15717");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2245");
  script_bugtraq_id(11587);

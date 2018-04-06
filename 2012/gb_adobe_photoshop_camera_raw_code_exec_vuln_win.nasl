@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_win.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Windows)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with Adobe Photoshop Camera Raw Plug-in an
 
 if(description)
 {
-  script_id(803081);
-  script_version("$Revision: 6530 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803081");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5679", "CVE-2012-5680");
   script_bugtraq_id(56922, 56924);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 13:17:09 +0530 (Fri, 21 Dec 2012)");
   script_name("Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49929");

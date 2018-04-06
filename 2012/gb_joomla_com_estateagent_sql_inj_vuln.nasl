@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_estateagent_sql_inj_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_joomla_com_estateagent_sql_inj_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla Estate Agent Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -45,14 +45,14 @@ to SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802745);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802745");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-4571");
   script_bugtraq_id(50024, 52963);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Joomla Estate Agent Component 'id' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 18:02:44 +0530 (Thu, 12 Apr 2012)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/70444");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18728/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ComicShout_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: ComicShout_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # ComicShout 'news.php' SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "ComicShout is prone to an SQL-injection vulnerability because it
 
 if (description)
 {
- script_id(100044);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100044");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
  script_bugtraq_id(29464);
  script_cve_id("CVE-2008-6425");

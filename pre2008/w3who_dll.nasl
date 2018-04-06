@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: w3who_dll.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: w3who_dll.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: w3who.dll overflow and XSS
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "Delete this file";
 
 if(description)
 {
- script_id(15910);
- script_version("$Revision: 5838 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15910");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

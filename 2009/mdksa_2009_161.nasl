@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_161.nasl 6573 2017-07-06 13:10:50Z cfischer $
+# $Id: mdksa_2009_161.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory MDVSA-2009:161 (squid)
 #
 # Authors:
@@ -50,12 +50,12 @@ announced via advisory MDVSA-2009:161.";
 
 if(description)
 {
- script_id(64463);
+ script_oid("1.3.6.1.4.1.25623.1.0.64463");
  script_cve_id("CVE-2009-2621","CVE-2009-2622");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:10:50 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-29 19:28:37 +0200 (Wed, 29 Jul 2009)");
  script_name("Mandrake Security Advisory MDVSA-2009:161 (squid)");
 

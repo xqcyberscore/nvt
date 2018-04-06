@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-095.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms13-095.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Digital Signatures Denial of Service Vulnerability (2868626)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(903227);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903227");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3869");
   script_bugtraq_id(63561);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:04:19 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Windows Digital Signatures Denial of Service Vulnerability (2868626)");
 

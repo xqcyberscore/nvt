@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-026.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_ms12-026.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903018);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903018");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0146", "CVE-2012-0147");
   script_bugtraq_id(52909, 52903);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 16:00:48 +0530 (Thu, 12 Apr 2012)");
   script_name("MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48787");

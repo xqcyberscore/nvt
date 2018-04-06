@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2289_1.nasl 8970 2018-02-27 15:16:18Z cfischer $
+# $Id: deb_2289_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 # Description: Auto-generated from advisory DSA 2289-1 (typo3-src)
 #
 # Authors:
@@ -51,9 +51,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70225);
- script_version("$Revision: 8970 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-27 16:16:18 +0100 (Tue, 27 Feb 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.70225");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-21 05:47:11 +0200 (Wed, 21 Sep 2011)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

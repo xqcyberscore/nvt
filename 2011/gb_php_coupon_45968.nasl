@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_coupon_45968.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_php_coupon_45968.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PHP Coupon Script 'page' Parameter SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ affected.";
 
 if(description)
 {
- script_id(103043);
- script_version("$Revision: 5750 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103043");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45968);
  script_tag(name:"cvss_base", value:"7.5");

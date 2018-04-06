@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_betsy_46124.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_betsy_46124.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Betsy 'page' Parameter Local File Include Vulnerability
 #
@@ -41,9 +41,9 @@ please mail us at: vuldb@securityfocus.com.";
 
 if (description)
 {
- script_id(103063);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103063");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-02-04 13:23:33 +0100 (Fri, 04 Feb 2011)");
  script_bugtraq_id(46124);
  script_tag(name:"cvss_base", value:"5.0");

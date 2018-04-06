@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_slash.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: apache_slash.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Check for Apache Multiple / vulnerability
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "Upgrade to the most recent version of Apache at www.apache.org";
 
 if(description)
 {
-  script_id(10440);
-  script_version("$Revision: 7275 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.10440");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1284);
   script_tag(name:"cvss_base", value:"5.0");

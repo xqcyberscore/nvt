@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability
 #
@@ -47,12 +47,12 @@ service vulnerability.";
 
 if(description)
 {
-  script_id(802831);
-  script_version("$Revision: 5958 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802831");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(52506);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 12:23:36 +0530 (Mon, 09 Apr 2012)");
   script_name("EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://aluigi.org/poc/nsrexecd_1.dat");

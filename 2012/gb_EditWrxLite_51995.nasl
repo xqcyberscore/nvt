@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EditWrxLite_51995.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_EditWrxLite_51995.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # EditWrxLite CMS 'wrx.cgi' Remote Command Execution Vulnerability
 #
@@ -32,15 +32,15 @@ the privileges of the affected application.";
 
 if (description)
 {
- script_id(103419);
+ script_oid("1.3.6.1.4.1.25623.1.0.103419");
  script_bugtraq_id(51995);
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("EditWrxLite CMS 'wrx.cgi' Remote Command Execution Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51995");
  script_xref(name : "URL" , value : "http://editwrx.com/index.htm");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-15 10:28:37 +0100 (Wed, 15 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

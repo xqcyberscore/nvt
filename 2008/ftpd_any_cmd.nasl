@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpd_any_cmd.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: ftpd_any_cmd.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Fake FTP server accepts any command
 #
 # Authors:
@@ -30,10 +30,10 @@ tag_summary = "The remote FTP service is not working properly";
 
 if(description)
 {
- script_id(80062);;
+ script_oid("1.3.6.1.4.1.25623.1.0.80062");;
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4218 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
 

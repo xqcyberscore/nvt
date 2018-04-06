@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_mult_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
+# $Id: gb_python_mult_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Python Multiple Vulnerabilities (Windows)
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is installed with Python and is prone to multiple
 
 if(description)
 {
-  script_id(801797);
-  script_version("$Revision: 8160 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801797");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1521");
   script_tag(name:"cvss_base", value:"6.4");

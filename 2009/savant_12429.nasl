@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savant_12429.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: savant_12429.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Savant Web Server Remote Buffer Overflow Vulnerability
 #
@@ -35,9 +35,9 @@ facilitate unauthorized access or privilege escalation.";
 
 if (description)
 {
- script_id(100394);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100394");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_bugtraq_id(12429);
  script_cve_id("CVE-2005-0338");

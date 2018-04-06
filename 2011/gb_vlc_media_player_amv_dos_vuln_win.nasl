@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_amv_dos_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_amv_dos_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # VLC Media Player 'AMV' Denial of Service Vulnerability (Windows)
 #
@@ -44,9 +44,9 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(802119);
-  script_version("$Revision: 8174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802119");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_cve_id("CVE-2011-1931");
   script_bugtraq_id(47602);

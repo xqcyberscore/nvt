@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_52336.nasl 5715 2017-03-24 11:34:41Z cfi $
+# $Id: gb_osclass_52336.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # OSClass Directory Traversal and Arbitrary File Upload Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103446);
+ script_oid("1.3.6.1.4.1.25623.1.0.103446");
  script_bugtraq_id(52336);
- script_version ("$Revision: 5715 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("OSClass Directory Traversal and Arbitrary File Upload Vulnerabilities");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://osclass.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521902");
  script_xref(name : "URL" , value : "http://www.codseq.it/advisories/osclass_directory_traversal_vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-08 11:53:08 +0100 (Thu, 08 Mar 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

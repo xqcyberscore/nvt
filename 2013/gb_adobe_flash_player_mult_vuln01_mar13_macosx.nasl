@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 March13 (Mac OS X)
 #
@@ -46,9 +46,9 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-  script_id(803325);
-  script_version("$Revision: 6079 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803325");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-04 19:11:31 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

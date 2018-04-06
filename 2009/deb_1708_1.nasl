@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1708_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
+# $Id: deb_1708_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory DSA 1708-1 (git-core)
 #
 # Authors:
@@ -53,9 +53,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(63222);
- script_version("$Revision: 6615 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63222");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-01-20 22:42:09 +0100 (Tue, 20 Jan 2009)");
  script_cve_id("CVE-2008-5516", "CVE-2008-5517");
  script_tag(name:"cvss_base", value:"7.5");

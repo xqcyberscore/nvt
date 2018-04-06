@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_uusee_uuplayer_activex_mult_code_exec_vuln.nasl 5367 2017-02-20 14:16:52Z cfi $
+# $Id: secpod_uusee_uuplayer_activex_mult_code_exec_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # UUSee UUPlayer ActiveX Control Multiple Remote Code Execution Vulnerabilities
 #
@@ -50,9 +50,9 @@ remote code execution vulnerabilities.";
 
 if(description)
 {
-  script_id(902563);
-  script_version("$Revision: 5367 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:16:52 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902563");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2589", "CVE-2011-2590");
   script_bugtraq_id(48975);

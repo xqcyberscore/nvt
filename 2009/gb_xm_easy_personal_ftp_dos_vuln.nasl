@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xm_easy_personal_ftp_dos_vuln.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_xm_easy_personal_ftp_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # XM Easy Personal FTP Server 'LIST' And 'NLST' Command DoS Vulnerability
 #
@@ -53,9 +53,9 @@ Denial of Service vulnerability.";
 
 if(description)
 {
-  script_id(801120);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801120");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_code_exec_n_dos_vuln_lin.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: secpod_adobe_flash_player_code_exec_n_dos_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (Linux)
 #
@@ -36,13 +36,13 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(903015);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903015");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48623/");

@@ -44,12 +44,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(71828);
+ script_oid("1.3.6.1.4.1.25623.1.0.71828");
  script_cve_id("CVE-2012-2186", "CVE-2012-4737");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 5977 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:34:17 -0400 (Thu, 30 Aug 2012)");
  script_name("FreeBSD Ports: asterisk");
 

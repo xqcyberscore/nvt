@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpgraphy_47634.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_phpgraphy_47634.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # phpGraphy 'theme_dir' Parameter Cross Site Scripting Vulnerability
 #
@@ -36,9 +36,9 @@ phpGraphy 0.9.13b is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103154);
- script_version("$Revision: 5750 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103154");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-05-02 15:13:22 +0200 (Mon, 02 May 2011)");
  script_bugtraq_id(47634);
  script_tag(name:"cvss_base", value:"2.6");

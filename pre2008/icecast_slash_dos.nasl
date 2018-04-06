@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: icecast_slash_dos.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: icecast_slash_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: ICECast crafted URL DoS
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_solution = "Upgrade to a newer version.";
 
 if(description)
 {
- script_id(15400);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.15400");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2933);
  script_cve_id("CVE-2001-1083");

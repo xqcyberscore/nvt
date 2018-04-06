@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2847.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: deb_2847.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2847-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -69,11 +69,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702847);
-    script_version("$Revision: 6637 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702847");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-1475", "CVE-2014-1476");
     script_name("Debian Security Advisory DSA 2847-1 (drupal7 - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-01-20 00:00:00 +0100 (Mon, 20 Jan 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

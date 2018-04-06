@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sjs_access_manager_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_sjs_access_manager_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Sun Java System Access Manager Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Access Manager and
 
 if(description)
 {
-  script_id(900194);
+  script_oid("1.3.6.1.4.1.25623.1.0.900194");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sun Java System Access Manager Version Detection");

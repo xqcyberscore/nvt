@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fork_cms_51972.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_fork_cms_51972.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Fork CMS Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -40,10 +40,10 @@ information.";
 
 if (description)
 {
- script_id(103433);
+ script_oid("1.3.6.1.4.1.25623.1.0.103433");
  script_bugtraq_id(51972);
  script_cve_id("CVE-2012-1209","CVE-2012-1208","CVE-2012-1207");
- script_version ("$Revision: 7577 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Fork CMS Cross Site Scripting and Local File Include Vulnerabilities");
@@ -52,7 +52,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.fork-cms.com/features");
  script_xref(name : "URL" , value : "https://github.com/forkcms/forkcms/commit/c8ec9c58a6b3c46cdd924532c1de99bcda6072ed");
  script_xref(name : "URL" , value : "https://github.com/forkcms/forkcms/commit/df75e0797a6540c4d656969a2e7df7689603b2cf");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-22 14:53:24 +0100 (Wed, 22 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

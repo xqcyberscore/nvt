@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: elog_logbook_global_dos.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: elog_logbook_global_dos.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: ELOG Web LogBook global Denial of Service
 #
 # Authors:
@@ -41,9 +41,9 @@ service.";
 
 
 if(description) {
-	script_id(80056);;
-	script_version("$Revision: 5390 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+	script_oid("1.3.6.1.4.1.25623.1.0.80056");;
+	script_version("$Revision: 9349 $");
+	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
 	script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

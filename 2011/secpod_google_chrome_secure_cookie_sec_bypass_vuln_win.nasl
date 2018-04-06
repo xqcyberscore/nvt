@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_secure_cookie_sec_bypass_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_google_chrome_secure_cookie_sec_bypass_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Google Chrome Secure Cookie Security Bypass Vulnerability (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is running Google Chrome and is prone to security bypass
 
 if(description)
 {
-  script_id(902614);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902614");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-19 15:17:22 +0200 (Fri, 19 Aug 2011)");
   script_cve_id("CVE-2008-7294");
   script_bugtraq_id(49133);

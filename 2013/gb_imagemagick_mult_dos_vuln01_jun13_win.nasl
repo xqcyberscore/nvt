@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 01 June13 (Windows)
 #
@@ -45,11 +45,11 @@ tag_summary = "The host is installed with ImageMagick and is prone to multiple
 
 if(description)
 {
-  script_id(803815);
-  script_version("$Revision: 8173 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803815");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-0260", "CVE-2012-0259", "CVE-2012-1798");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:32:12 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

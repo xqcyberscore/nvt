@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_aug13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln_aug13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - August 13 (Mac OS X)
 #
@@ -29,15 +29,15 @@ tag_impact = "
 
 if (description)
 {
- script_id(803857);
-  script_version("$Revision: 6093 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.803857");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1701", "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1712", "CVE-2013-1713", "CVE-2013-1714",
                 "CVE-2013-1717");
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 15:49:37 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - August 13 (Mac OS X)");
 

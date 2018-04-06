@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_race_cond_vuln_win.nasl 8196 2017-12-20 12:13:37Z cfischer $
+# $Id: gb_ruby_race_cond_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Ruby 'FileUtils.remove_entry_secure()' Method Race Condition Vulnerability
 #
@@ -49,9 +49,9 @@ tag_summary = "This host is installed with Ruby and is prone to race condition
 
 if(description)
 {
-  script_id(801759);
-  script_version("$Revision: 8196 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801759");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1004");
   script_bugtraq_id(46460);

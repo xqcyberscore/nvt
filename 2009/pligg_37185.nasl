@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pligg_37185.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: pligg_37185.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Pligg Cross Site Scripting And Request Forgery Remote Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_solution = "Vendor updates are available. Please see the references for deta
 
 if (description)
 {
- script_id(100375);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100375");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 12:57:42 +0100 (Thu, 03 Dec 2009)");
  script_cve_id("CVE-2009-4786", "CVE-2009-4787", "CVE-2009-4788");
  script_bugtraq_id(37185);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qqplayer_mov_file_bof_vuln.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: gb_qqplayer_mov_file_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # QQPlayer MOV File Processing Buffer Overflow Vulnerability
 #
@@ -45,13 +45,13 @@ overflow vulnerability.";
 
 if(description)
 {
-  script_id(802367);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802367");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-5006");
   script_bugtraq_id(50739);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 12:43:57 +0530 (Mon, 02 Jan 2012)");
   script_name("QQPlayer MOV File Processing Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/16899");

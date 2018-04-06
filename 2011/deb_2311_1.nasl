@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2311_1.nasl 6613 2017-07-07 12:08:40Z cfischer $
+# $Id: deb_2311_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 # Description: Auto-generated from advisory DSA 2311-1 (openjdk-6)
 #
 # Authors:
@@ -88,9 +88,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(70400);
- script_version("$Revision: 6613 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:40 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.70400");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-16 23:01:53 +0200 (Sun, 16 Oct 2011)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_ios_ftp_server_auth_bypass.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: cisco_ios_ftp_server_auth_bypass.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Cisco IOS FTP Server Authentication Bypass Vulnerability
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "Disable the FTP Server by using 'no ftp-server enable'
 or upgrade to a newer release (see cisco-sa-20070509-iosftp).";
 
 if (description) {
- script_id(9999996);
- script_version("$Revision: 7297 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.9999996");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

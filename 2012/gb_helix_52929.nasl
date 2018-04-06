@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helix_52929.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_helix_52929.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # RealNetworks Helix Server Multiple Remote Vulnerabilities
 #
@@ -41,12 +41,12 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103475);
+ script_oid("1.3.6.1.4.1.25623.1.0.103475");
  script_bugtraq_id(52929);
  script_cve_id("CVE-2012-0942","CVE-2012-1923","CVE-2012-1984","CVE-2012-1985","CVE-2012-2267","CVE-2012-2268");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("RealNetworks Helix Server Multiple Remote Vulnerabilities");
 
@@ -56,7 +56,7 @@ if (description)
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2012-9/");
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2012-8/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-23 14:15:20 +0200 (Mon, 23 Apr 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);

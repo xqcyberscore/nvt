@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerio_wrf_management_detection.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: kerio_wrf_management_detection.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Kerio WinRoute Firewall HTTP/HTTPS Management Detection
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "If the service is not needed, disable HTTP and/or HTTPS manageme
 or filter incoming requests to the ports from untrusted sources.";
 
 if (description) {
- script_id(20225);
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.20225");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

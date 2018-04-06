@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_bof_vuln_900016.nasl 6382 2017-06-20 15:08:09Z cfischer $
+# $Id: secpod_trendmicro_officescan_bof_vuln_900016.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Trend Micro OfficeScan ObjRemoveCtrl ActiveX Control BOF Vulnerability
 #
 # Authors:
@@ -48,9 +48,9 @@ tag_summary = "This Remote host is installed with Trend Micro OfficeScan, which
 
 if(description)
 {
- script_id(900016);
- script_version("$Revision: 6382 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 17:08:09 +0200 (Tue, 20 Jun 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900016");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-3364");
  script_bugtraq_id(30407);

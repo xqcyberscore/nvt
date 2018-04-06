@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_open_url_unspecified_vuln_win.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: secpod_gom_player_open_url_unspecified_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # GOM Media Player 'Open URL' Feature Unspecified Vulnerability (Windows)
 #
@@ -35,12 +35,12 @@ tag_summary = "This host is installed with GOM Media Player and is prone to
 
 if(description)
 {
-  script_id(903003);
-  script_version("$Revision: 5956 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903003");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1774");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 17:12:10 +0530 (Wed, 21 Mar 2012)");
   script_name("GOM Media Player 'Open URL' Feature Unspecified Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.security-database.com/cvss.php?alert=CVE-2012-1774");

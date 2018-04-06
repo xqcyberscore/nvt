@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nimda.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: nimda.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Tests for Nimda Worm infected HTML files
 #
 # Authors:
@@ -53,11 +53,11 @@ See:  http://www.cert.org/advisories/CA-2001-26.html";
 
 if(description)
 {
- script_id(10767);
- script_version("$Revision: 8023 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10767");
+ script_version("$Revision: 9348 $");
  script_cve_id("CVE-2001-0545", "CVE-2001-0508", "CVE-2001-0544", "CVE-2001-0506",
                "CVE-2001-0507");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

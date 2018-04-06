@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mssql_sp_replwritetovarbin_bof_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_mssql_sp_replwritetovarbin_bof_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Microsoft SQL Server sp_replwritetovarbin() BOF Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(800082);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800082");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");

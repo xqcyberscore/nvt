@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2011_1.nasl 8526 2018-01-25 06:57:37Z teissa $
+# $Id: gb_ubuntu_USN_2011_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for libav USN-2011-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841614);
-  script_version("$Revision: 8526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841614");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:58:22 +0530 (Fri, 08 Nov 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

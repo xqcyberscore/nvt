@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: asip-status.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: asip-status.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: AppleShare IP Server status query
 #
 # Authors:
@@ -36,10 +36,10 @@ possible to disclose information about the remote host.";
 
 if (description)
 {
-  	script_id(10666);
+  	script_oid("1.3.6.1.4.1.25623.1.0.10666");
   	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-        script_version("$Revision: 7000 $");
-  	script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+        script_version("$Revision: 9347 $");
+  	script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
         script_tag(name:"cvss_base", value:"0.0");
 	script_name( "AppleShare IP Server status query");

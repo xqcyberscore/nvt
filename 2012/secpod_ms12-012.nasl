@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-012.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms12-012.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # MS Windows Color Control Panel Remote Code Execution Vulnerability (2643719)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902791);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902791");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(44157);
   script_cve_id("CVE-2010-5082");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 11:45:39 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Color Control Panel Remote Code Execution Vulnerability (2643719)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41874/");

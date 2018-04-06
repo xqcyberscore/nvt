@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_serv_dir_trav_vuln_nov09_lin.nasl 6518 2017-07-04 13:49:06Z cfischer $
+# $Id: gb_vmware_serv_dir_trav_vuln_nov09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # VMware Server Directory Traversal Vulnerability - Nov09 (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is installed with VMWare product(s) and is prone to mult
 
 if(description)
 {
-  script_id(801144);
-  script_version("$Revision: 6518 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801144");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_cgipm_module_header_inje_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_perl_cgipm_module_header_inje_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Strawberry Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to HTTP
 
 if(description)
 {
-  script_id(803160);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803160");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-5526");
   script_bugtraq_id(56562);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 18:18:09 +0530 (Wed, 23 Jan 2013)");
   script_name("Strawberry Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80098");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_2010_dos_vuln.nasl 4918 2017-01-02 14:56:10Z cfi $
+# $Id: gb_kaspersky_av_2010_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Kaspersky Anti-Virus 2010 'kl1.sys' Driver DoS Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Kaspersky Anti-Virus 2010 and is prone
 
 if(description)
 {
-  script_id(800154);
-  script_version("$Revision: 4918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:56:10 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800154");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");

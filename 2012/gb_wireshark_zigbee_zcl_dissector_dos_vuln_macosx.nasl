@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -37,12 +37,12 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(802846);
-  script_version("$Revision: 5958 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802846");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2010-4301");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:39:35 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42290");

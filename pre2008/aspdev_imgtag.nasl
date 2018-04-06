@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: aspdev_imgtag.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: aspdev_imgtag.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: ASP-DEv XM Forum IMG Tag Script Injection Vulnerability
 #
 # Authors:
@@ -43,9 +43,9 @@ tag_solution = "Unknown at this time.";
 
 if(description)
 {
- script_id(18357);
- script_version("$Revision: 7275 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.18357");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2005-1008");
  script_bugtraq_id(12958);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibmhttpserver_mod_proxy_dos_900222.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: secpod_ibmhttpserver_mod_proxy_dos_900222.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: IBM HTTP Server mod_proxy Interim Responses DoS Vulnerability
 #
 # Authors:
@@ -46,9 +46,9 @@ tag_summary = "This host is running IBM HTTP Server, which is prone to Denial of
 
 if(description)
 {
- script_id(900222);
- script_version("$Revision: 5785 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900222");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(29653);
  script_cve_id("CVE-2008-2364");

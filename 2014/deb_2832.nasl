@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2832.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: deb_2832.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2832-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -63,11 +63,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702832);
-    script_version("$Revision: 6769 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702832");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2011-4971", "CVE-2013-0179", "CVE-2013-7239");
     script_name("Debian Security Advisory DSA 2832-1 (memcached - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-01-01 00:00:00 +0100 (Wed, 01 Jan 2014)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

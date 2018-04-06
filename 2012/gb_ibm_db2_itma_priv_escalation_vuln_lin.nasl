@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_itma_priv_escalation_vuln_lin.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_ibm_db2_itma_priv_escalation_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM DB2 Tivoli Monitoring Agent Privilege Escalation Vulnerability (Linux)
 #
@@ -36,13 +36,13 @@ tag_summary = "This host is installed with IBM DB2 and is prone to privilege
 
 if(description)
 {
-  script_id(802735);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802735");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1796");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 16:59:20 +0530 (Fri, 06 Apr 2012)");
   script_name("IBM DB2 Tivoli Monitoring Agent Privilege Escalation Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48279/");

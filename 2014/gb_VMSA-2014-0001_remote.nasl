@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0001_remote.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_VMSA-2014-0001_remote.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMSA-2014-0001 VMware ESXi address several security issues (remote check).
 #
@@ -52,17 +52,17 @@ service on the host.';
 
 if (description)
 {
- script_id(103885);
+ script_oid("1.3.6.1.4.1.25623.1.0.103885");
  script_cve_id("CVE-2014-1207","CVE-2014-1208");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6769 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMSA-2014-0001 VMware ESXi address several security issues (remote check).");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0001.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-01-20 12:04:01 +0100 (Mon, 20 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

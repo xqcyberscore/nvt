@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM DB2 'nodes.reg' Permission Weakness Vulnerability
 #
@@ -41,12 +41,12 @@ vulnerability.";
 
 if(description)
 {
-  script_id(802727);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802727");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1797");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:43:50 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 'nodes.reg' Permission Weakness Vulnerability");
 

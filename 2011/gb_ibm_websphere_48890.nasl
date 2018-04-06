@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_48890.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_ibm_websphere_48890.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OpenSAML XML Signature Wrapping Security Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103276);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103276");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(48890);
  script_cve_id("CVE-2011-1411");

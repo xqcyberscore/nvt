@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RA_www_css.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: RA_www_css.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: RemotelyAnywhere Cross Site Scripting
 #
 # Authors:
@@ -42,9 +42,9 @@ tag_solution = "Upgrade to the newest version of this software";
 
 if(description)
 {
-  script_id(11950);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.11950");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9202);
   script_tag(name:"cvss_base", value:"2.6");

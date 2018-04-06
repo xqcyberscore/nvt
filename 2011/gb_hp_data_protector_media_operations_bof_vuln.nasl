@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_media_operations_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_hp_data_protector_media_operations_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # HP Data Protector Media Operations Heap Buffer Overflow Vulnerability
 #
@@ -46,14 +46,14 @@ prone to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(802269);
-  script_version("$Revision: 7052 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802269");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4791");
   script_bugtraq_id(47004);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-11-08 11:11:11 +0530 (Tue, 08 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_name("HP Data Protector Media Operations Heap Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "https://secunia.com/advisories/46688");
   script_xref(name : "URL" , value : "http://zerodayinitiative.com/advisories/ZDI-11-112/");

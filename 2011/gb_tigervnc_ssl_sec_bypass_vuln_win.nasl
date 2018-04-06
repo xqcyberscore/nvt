@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tigervnc_ssl_sec_bypass_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
+# $Id: gb_tigervnc_ssl_sec_bypass_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # TigerVNC SSL Certificate Validation Security Bypass Vulnerability (Windows)
 #
@@ -48,9 +48,9 @@ bypass vulnerability.";
 
 if(description)
 {
-  script_id(801898);
-  script_version("$Revision: 8160 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801898");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-1775");
   script_bugtraq_id(47738);

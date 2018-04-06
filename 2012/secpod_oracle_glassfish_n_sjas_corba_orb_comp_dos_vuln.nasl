@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_glassfish_n_sjas_corba_orb_comp_dos_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: secpod_oracle_glassfish_n_sjas_corba_orb_comp_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle GlassFish/Java System Application Server CORBA ORB Subcomponent DoS Vulnerability
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is running Oracle GlassFish/Java System Application
 
 if(description)
 {
-  script_id(903044);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903044");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-3155");
   script_bugtraq_id(56073);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-25 16:57:46 +0530 (Thu, 25 Oct 2012)");
   script_name("Oracle GlassFish/Java System Application Server CORBA ORB Subcomponent DoS Vulnerability");
 

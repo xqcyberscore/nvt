@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xhp_cms_file_upload.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: xhp_cms_file_upload.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: XHP CMS Version <= 0.5 File Upload Vulnerability
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_solution = "Upgrade to version 0.51 or a newer release.";
 
 if (description)
 {
- script_id(200100);
- script_version("$Revision: 5780 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.200100");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");

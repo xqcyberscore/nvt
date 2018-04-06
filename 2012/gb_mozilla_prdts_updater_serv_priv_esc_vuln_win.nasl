@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)
 #
@@ -48,13 +48,13 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 
 if(description)
 {
-  script_id(802867);
-  script_version("$Revision: 6444 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802867");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1942", "CVE-2012-1943");
   script_bugtraq_id(53803, 53807);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 12:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)");
 

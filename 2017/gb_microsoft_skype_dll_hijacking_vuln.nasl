@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_microsoft_skype_dll_hijacking_vuln.nasl 66578 2017-30-01 14:01:01Z antu123 $
+# $Id: gb_microsoft_skype_dll_hijacking_vuln.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # Microsoft Skype DLL Hijacking Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:skype:skype";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809881");
-  script_version("$Revision: 5192 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2016-5720");
   script_bugtraq_id(95859);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 14:55:47 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:18 +0530 (Fri, 03 Feb 2017)");
   script_name("Microsoft Skype DLL Hijacking Vulnerability");
 

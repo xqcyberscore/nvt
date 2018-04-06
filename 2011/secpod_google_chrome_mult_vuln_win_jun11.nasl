@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_win_jun11.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_google_chrome_mult_vuln_win_jun11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities (Windows) - June 11
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(902392);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902392");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-2345", "CVE-2011-2346", "CVE-2011-2347", "CVE-2011-2348",
                 "CVE-2011-2349", "CVE-2011-2350", "CVE-2011-2351");

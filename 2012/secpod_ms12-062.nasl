@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-062.nasl 6520 2017-07-04 14:28:49Z cfischer $
+# $Id: secpod_ms12-062.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft System Center Configuration Manager XSS Vulnerability (2741528)
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902688);
-  script_version("$Revision: 6520 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902688");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2536");
   script_bugtraq_id(55430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:31:18 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager XSS Vulnerability (2741528)");
 

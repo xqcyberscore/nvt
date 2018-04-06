@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_base_dir_sec_bypass_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_dovecot_base_dir_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Description: Dovecot 'base_dir' Insecure Permissions Security Bypass Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host has Dovecot installed and is prone to Security Bypass
 
 if(description)
 {
-  script_id(801055);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801055");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");

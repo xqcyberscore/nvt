@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_microsoft_skype_insecure_library_loading_vuln.nasl 69584 2017-03-27 19:38:15Z antu123 $
+# $Id: gb_microsoft_skype_insecure_library_loading_vuln.nasl 9340 2018-04-06 04:54:54Z ckuersteiner $
 #
 # Microsoft Skype Insecure Library Loading Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:skype:skype";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810905");
-  script_version("$Revision: 8152 $");
+  script_version("$Revision: 9340 $");
   script_cve_id("CVE-2017-6517");
   script_bugtraq_id(96969);
   script_tag(name:"cvss_base",value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:27:14 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 06:54:54 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 16:33:26 +0530 (Wed, 05 Apr 2017)");
   script_name("Microsoft Skype Insecure Library Loading Vulnerability");
 
@@ -54,13 +54,13 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Microsoft Skype version 7.16.0.102 on
-  Windows.");
+  script_tag(name: "affected" , value:"Microsoft Skype version 7.16.0.102 on Windows.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  18th December, 2017. For updates refer to https://www.skype.com/en");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/44");
   script_category(ACT_GATHER_INFO);
@@ -71,22 +71,18 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-skypeVer = "";
-
-## Get version
 if(!skypeVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_equal(version:skypeVer, test_version:"7.16.0.102"))
 {
-  report = report_fixed_ver(installed_version:skypeVer, fixed_version:"Noneavailable");
+  report = report_fixed_ver(installed_version:skypeVer, fixed_version:"None");
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

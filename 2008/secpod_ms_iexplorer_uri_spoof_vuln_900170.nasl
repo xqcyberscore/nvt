@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 8957 2018-02-26 14:41:13Z asteins $
+# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Microsoft iExplorer '&NBSP;' Address Bar URI Spoofing Vulnerability
 #
 # Authors:
@@ -42,9 +42,9 @@ For updates refer to http://windows.microsoft.com/en-us/internet-explorer/downlo
 
 if(description)
 {
-  script_id(900170);
-  script_version("$Revision: 8957 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900170");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-05 06:52:23 +0100 (Wed, 05 Nov 2008)");
   script_bugtraq_id(31960);
   script_cve_id("CVE-2008-4787");

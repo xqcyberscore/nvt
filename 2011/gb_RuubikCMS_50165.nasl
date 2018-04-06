@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RuubikCMS_50165.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_RuubikCMS_50165.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # RuubikCMS 'f' Parameter Information Disclosure Vulnerability
 #
@@ -35,9 +35,9 @@ RuubikCMS 1.1.0 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103312);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103312");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
  script_bugtraq_id(50165);
  script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0204_1.nasl 8044 2017-12-08 08:32:49Z santu $
+# $Id: gb_suse_2014_0204_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0204-1 (kernel)
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(850566);
-  script_version("$Revision: 8044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850566");
+  script_version("$Revision: 9354 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:39:05 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2013-0343", "CVE-2013-1792", "CVE-2013-4348", "CVE-2013-4511",
                 "CVE-2013-4513", "CVE-2013-4514", "CVE-2013-4515", "CVE-2013-4587",

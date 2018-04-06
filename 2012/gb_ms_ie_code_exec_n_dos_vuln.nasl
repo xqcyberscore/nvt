@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_code_exec_n_dos_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_ms_ie_code_exec_n_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Internet Explorer Code Execution and DoS Vulnerabilities
 #
@@ -43,12 +43,12 @@ prone to arbitrary code execution and denial of service vulnerabilities.";
 
 if(description)
 {
-  script_id(802708);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802708");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1545");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 11:06:57 +0530 (Thu, 15 Mar 2012)");
   script_name("Microsoft Internet Explorer Code Execution and DoS Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.zdnet.com/blog/security/pwn2own-2012-ie-9-hacked-with-two-0day-vulnerabilities/10621");

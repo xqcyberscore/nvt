@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tine_50307.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_tine_50307.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Tine Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ information.";
 
 if (description)
 {
- script_id(103313);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103313");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
  script_bugtraq_id(50307);
  script_name("Tine Multiple Cross Site Scripting Vulnerabilities");

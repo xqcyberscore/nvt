@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_mar11.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_vuln_mar11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Mar11
 #
@@ -38,9 +38,9 @@ tag_summary = "This host has iTunes installed, which is prone to multiple
 
 if(description)
 {
-  script_id(801907);
-  script_version("$Revision: 8169 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801907");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0111", "CVE-2011-0112", "CVE-2011-0113", "CVE-2011-0114",
                 "CVE-2011-0115", "CVE-2011-0116", "CVE-2011-0117", "CVE-2011-0118",

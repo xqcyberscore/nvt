@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hummingbird_activex_bof_vuln_900159.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_hummingbird_activex_bof_vuln_900159.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Hummingbird HostExplorer ActiveX Control BOF Vulnerability
 #
 # Authors:
@@ -39,9 +39,9 @@ tag_solution = "Update to HostExplorer 2008
 
 if(description)
 {
-  script_id(900159);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900159");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-21 15:08:20 +0200 (Tue, 21 Oct 2008)");
   script_cve_id("CVE-2008-4729");
  script_bugtraq_id(31783);

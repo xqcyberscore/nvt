@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_time_returns_id_param_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_joomla_time_returns_id_param_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! Time Returns Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -46,9 +46,9 @@ SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(902584);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902584");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-28 16:17:13 +0200 (Fri, 28 Oct 2011)");
   script_bugtraq_id(50026);
   script_tag(name:"cvss_base", value:"7.5");

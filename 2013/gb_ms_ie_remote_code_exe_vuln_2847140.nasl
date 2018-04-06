@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (2847140)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(803395);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803395");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1347");
   script_bugtraq_id(59641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-06 18:35:10 +0530 (Mon, 06 May 2013)");
   script_name("MS Internet Explorer Remote Code Execution Vulnerability (2847140)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53314");

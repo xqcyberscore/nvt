@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_3280.nasl 6624 2017-07-10 06:11:55Z cfischer $
+# $Id: fcore_2009_3280.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-3280 (moodle)
 #
 # Authors:
@@ -71,9 +71,9 @@ if(description)
 script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/502231/100/0/threaded");
 script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34278");
 script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8297");
- script_id(63726);
- script_version("$Revision: 6624 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63726");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-06 20:58:11 +0200 (Mon, 06 Apr 2009)");
  script_cve_id("CVE-2009-1171", "CVE-2009-0499", "CVE-2008-5153", "CVE-2008-4796");
  script_tag(name:"cvss_base", value:"10.0");

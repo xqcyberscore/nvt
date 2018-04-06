@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_navigation_entry_mult_vuln_lin.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: secpod_google_chrome_navigation_entry_mult_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - Jan12 (Linux)
 #
@@ -42,14 +42,14 @@ tag_summary = "The host is installed with Google Chrome and is prone multiple
 
 if(description)
 {
-  script_id(902904);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902904");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51641);
   script_cve_id("CVE-2011-3924", "CVE-2011-3925", "CVE-2011-3926", "CVE-2011-3927",
                 "CVE-2011-3928");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 13:11:21 +0530 (Wed, 25 Jan 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Jan12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47694/");

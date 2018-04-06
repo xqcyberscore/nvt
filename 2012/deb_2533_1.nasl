@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2533_1.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: deb_2533_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from advisory DSA 2533-1 (pcp)
 #
 # Authors:
@@ -65,12 +65,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(71821);
+ script_oid("1.3.6.1.4.1.25623.1.0.71821");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-3418", "CVE-2012-3419", "CVE-2012-3420", "CVE-2012-3421");
- script_version("$Revision: 7585 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:32:31 -0400 (Thu, 30 Aug 2012)");
  script_name("Debian Security Advisory DSA 2533-1 (pcp)");
 

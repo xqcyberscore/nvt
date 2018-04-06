@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3029.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: deb_3029.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3029-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703029);
-    script_version("$Revision: 6735 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703029");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-3616");
     script_name("Debian Security Advisory DSA 3029-1 (nginx - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-09-20 00:00:00 +0200 (Sat, 20 Sep 2014)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

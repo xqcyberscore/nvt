@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cde_rpc_cmsd_service_detect.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_cde_rpc_cmsd_service_detect.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Calendar Manager Service rpc.cmsd Service Detection
 #
@@ -45,9 +45,9 @@ tag_summary = "This script detects the running 'rpc.cmsd' service on the host.";
 
 if(description)
 {
-  script_id(802163);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802163");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-1999-0696", "CVE-1999-0320");
   script_tag(name:"cvss_base", value:"10.0");

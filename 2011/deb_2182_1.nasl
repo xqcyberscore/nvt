@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2182_1.nasl 6613 2017-07-07 12:08:40Z cfischer $
+# $Id: deb_2182_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 # Description: Auto-generated from advisory DSA 2182-1 (logwatch)
 #
 # Authors:
@@ -51,9 +51,9 @@ announced via advisory DSA 2182-1.";
 
 if(description)
 {
- script_id(69117);
- script_version("$Revision: 6613 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:40 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.69117");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

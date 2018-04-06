@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_dos_vuln_jul09_win.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_tor_dos_vuln_jul09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Tor Denial Of Service Vulnerability - July09 (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Tor and is prone to Denial Of Service
 
 if(description)
 {
-  script_id(800839);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800839");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -47,9 +47,9 @@ tag_solution = "Please install the updates provided by SuSE.";
 
 if(description)
 {
- script_id(65907);
- script_version("$Revision: 6666 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.65907");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-13 18:25:40 +0200 (Tue, 13 Oct 2009)");
  script_cve_id("CVE-2008-5350", "CVE-2008-5346", "CVE-2008-5343", "CVE-2008-5344", "CVE-2008-5359", "CVE-2008-5341", "CVE-2008-5339", "CVE-2008-5340", "CVE-2008-5348", "CVE-2008-2086", "CVE-2008-5345", "CVE-2008-5351", "CVE-2008-5360", "CVE-2008-5353", "CVE-2008-5356", "CVE-2008-5354", "CVE-2008-5357", "CVE-2008-5352", "CVE-2008-5342");
  script_tag(name:"cvss_base", value:"10.0");

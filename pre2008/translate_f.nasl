@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: translate_f.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: translate_f.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: ASP/ASA source using Microsoft Translate f: bug
 #
 # Authors:
@@ -33,9 +33,9 @@ vulnerability is eliminated by installing Windows 2000 Service Pack 1)";
 
 if(description)
 {
- script_id(10491); 
- script_version("$Revision: 5785 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10491"); 
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1578);
  script_tag(name:"cvss_base", value:"5.0");

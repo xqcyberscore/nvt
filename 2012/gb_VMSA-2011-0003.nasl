@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0003.nasl 7583 2017-10-26 12:07:01Z cfischer $
+# $Id: gb_VMSA-2011-0003.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2011-0003.2 Third party component updates for VMware vCenter Server, vCenter Update Manager, ESXi and ESX
 #
@@ -101,14 +101,14 @@ j. ESX third party update for Service Console kernel
 
 if (description)
 {
- script_id(103454);
+ script_oid("1.3.6.1.4.1.25623.1.0.103454");
  script_cve_id("CVE-2009-2693","CVE-2009-2901","CVE-2009-2902","CVE-2009-3548","CVE-2010-2227","CVE-2010-1157","CVE-2010-2928","CVE-2010-0734","CVE-2010-1084","CVE-2010-2066","CVE-2010-2070","CVE-2010-2226","CVE-2010-2248","CVE-2010-2521","CVE-2010-2524","CVE-2010-0008","CVE-2010-0415","CVE-2010-0437","CVE-2009-4308","CVE-2010-0003","CVE-2010-0007","CVE-2010-0307","CVE-2010-1086","CVE-2010-0410","CVE-2010-0730","CVE-2010-1085","CVE-2010-0291","CVE-2010-0622","CVE-2010-1087","CVE-2010-1173","CVE-2010-1437","CVE-2010-1088","CVE-2010-1187","CVE-2010-1436","CVE-2010-1641","CVE-2010-3081","CVE-2010-2240","CVE-2008-5416","CVE-2008-0085","CVE-2008-0086","CVE-2008-0107","CVE-2008-0106","CVE-2010-0740","CVE-2010-0433","CVE-2010-3864","CVE-2010-2939","CVE-2009-3555","CVE-2010-0082","CVE-2010-0084","CVE-2010-0085","CVE-2010-0087","CVE-2010-0088","CVE-2010-0089","CVE-2010-0090","CVE-2010-0091","CVE-2010-0092","CVE-2010-0093","CVE-2010-0094","CVE-2010-0095","CVE-2010-0837","CVE-2010-0838","CVE-2010-0839","CVE-2010-0840","CVE-2010-0841","CVE-2010-0842","CVE-2010-0843","CVE-2010-0844","CVE-2010-0845","CVE-2010-0846","CVE-2010-0847","CVE-2010-0848","CVE-2010-0849","CVE-2010-0850","CVE-2010-0886","CVE-2010-3556","CVE-2010-3566","CVE-2010-3567","CVE-2010-3550","CVE-2010-3561","CVE-2010-3573","CVE-2010-3565","CVE-2010-3568","CVE-2010-3569","CVE-2010-1321","CVE-2010-3548","CVE-2010-3551","CVE-2010-3562","CVE-2010-3571","CVE-2010-3554","CVE-2010-3559","CVE-2010-3572","CVE-2010-3553","CVE-2010-3549","CVE-2010-3557","CVE-2010-3541","CVE-2010-3574","CVE-2008-3825","CVE-2009-1384");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7583 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2011-0003.2 Third party component updates for VMware vCenter Server, vCenter Update Manager, ESXi and ESX");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 14:07:01 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-16 11:19:42 +0100 (Fri, 16 Mar 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

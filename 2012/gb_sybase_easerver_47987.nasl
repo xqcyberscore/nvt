@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_47987.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_sybase_easerver_47987.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Sybase EAServer Directory Traversal Vulnerability
 #
@@ -37,12 +37,12 @@ information.";
 
 if (description)
 {
- script_id(103478);
+ script_oid("1.3.6.1.4.1.25623.1.0.103478");
  script_bugtraq_id(47987);
  script_cve_id("CVE-2011-2474");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7277 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Sybase EAServer Directory Traversal Vulnerability");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=912");
  script_xref(name : "URL" , value : "http://www.sybase.com/detail?id=1093216");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-25 14:01:37 +0200 (Wed, 25 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

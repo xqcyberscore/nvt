@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_vuln_win_oct09.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: gb_ibm_db2_mult_vuln_win_oct09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities - Oct09 (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is installed with IBM DB2 and is prone to multiple
 
 if(description)
 {
-  script_id(801009);
-  script_version("$Revision: 7113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801009");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

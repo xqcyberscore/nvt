@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_alefmentor_sql_inj_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_alefmentor_sql_inj_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # AlefMentor Multiple SQL Injection Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is running AlefMentor and is prone to SQL Injection
 
 if(description)
 {
-  script_id(901071);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901071");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

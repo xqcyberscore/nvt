@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1904_2.nasl 8672 2018-02-05 16:39:18Z teissa $
+# $Id: gb_ubuntu_USN_1904_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for libxml2 USN-1904-2
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841503);
-  script_version("$Revision: 8672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841503");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 19:08:42 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-0339", "CVE-2013-2877");
   script_tag(name:"cvss_base", value:"6.8");

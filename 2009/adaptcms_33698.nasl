@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: adaptcms_33698.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: adaptcms_33698.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # AdaptCMS Lite Cross Site Scripting and Remote File Include Vulnerabilities
 #
@@ -40,9 +40,9 @@ be affected.";
 
 if (description)
 {
- script_id(100373);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100373");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-02 19:43:26 +0100 (Wed, 02 Dec 2009)");
  script_bugtraq_id(33698);
  script_tag(name:"cvss_base", value:"4.3");

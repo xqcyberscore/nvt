@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 5792 2017-03-30 13:18:14Z cfi $
+# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -45,12 +45,12 @@ scripting vulnerability.";
 
 if(description)
 {
-  script_id(802602);
-  script_version("$Revision: 5792 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802602");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0834");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:18:14 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 16:16:16 +0530 (Thu, 02 Feb 2012)");
   script_name("phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47852/");

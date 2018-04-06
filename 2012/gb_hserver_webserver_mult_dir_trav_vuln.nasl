@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 5833 2017-04-03 08:45:01Z cfi $
+# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # HServer Multiple Webserver Directory Traversal Vulnerabilities
 #
@@ -45,12 +45,12 @@ directory traversal vulnerabilities.";
 
 if(description)
 {
-  script_id(802410);
-  script_version("$Revision: 5833 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802410");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5100");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 10:45:01 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:10:29 +0530 (Fri, 06 Jan 2012)");
   script_name("HServer Webserver Multiple Directory Traversal Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521119");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liblime_koha_51004.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_liblime_koha_51004.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Koha 'help.pl' Remote File Include Vulnerability
 #
@@ -35,9 +35,9 @@ the application and the computer; other attacks are also possible.";
 
 if(description)
 {
- script_id(103361);
+ script_oid("1.3.6.1.4.1.25623.1.0.103361");
  script_bugtraq_id(51004);
- script_version ("$Revision: 5749 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Koha 'help.pl' Remote File Include Vulnerability");
@@ -46,7 +46,7 @@ if(description)
  script_xref(name : "URL" , value : "http://koha-community.org/");
  script_xref(name : "URL" , value : "http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=6628");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-12 10:49:53 +0100 (Mon, 12 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

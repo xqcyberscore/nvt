@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinyWebGallery_34892.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: TinyWebGallery_34892.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # TinyWebGallery/QuiXplorer Local File Include Vulnerability
 #
@@ -42,9 +42,9 @@ tag_solution = "An update is available. Please see http://www.tinywebgallery.com
 
 if (description)
 {
-  script_id(100193);
-  script_version("$Revision: 5220 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100193");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
   script_cve_id("CVE-2009-1911");
   script_bugtraq_id(34892);

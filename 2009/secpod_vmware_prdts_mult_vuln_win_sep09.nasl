@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_mult_vuln_win_sep09.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_vmware_prdts_mult_vuln_win_sep09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # VMware Products Multiple Vulnerabilities (Windows) sep09
 #
@@ -43,9 +43,9 @@ tag_insight = "The multiple flaws are due to,
 
 if(description)
 {
-  script_id(901020);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901020");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

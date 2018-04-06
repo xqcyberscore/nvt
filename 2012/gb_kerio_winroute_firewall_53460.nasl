@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_winroute_firewall_53460.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_kerio_winroute_firewall_53460.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Kerio WinRoute Firewall Web Server Remote Source Code Disclosure Vulnerability
 #
@@ -39,15 +39,15 @@ tag_solution = "Updates are available. Please see the references for more detail
 
 if (description)
 {
- script_id(103487);
+ script_oid("1.3.6.1.4.1.25623.1.0.103487");
  script_bugtraq_id(53460);
- script_version ("$Revision: 6697 $");
+ script_version ("$Revision: 9352 $");
  script_name("Kerio WinRoute Firewall Web Server Remote Source Code Disclosure Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53460");
  script_xref(name : "URL" , value : "http://www.kerio.com");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-05-11 13:52:12 +0200 (Fri, 11 May 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_GATHER_INFO);

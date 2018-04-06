@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3031.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: deb_3031.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3031-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703031);
-    script_version("$Revision: 6995 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703031");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-6273");
     script_name("Debian Security Advisory DSA 3031-1 (apt - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-09-23 00:00:00 +0200 (Tue, 23 Sep 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2960358.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: gb_microsoft_security_advisory_2960358.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)
 #
@@ -26,11 +26,11 @@
 
 if(description)
 {
-  script_id(804587);
-  script_version("$Revision: 5365 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804587");
+  script_version("$Revision: 9354 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-15 15:17:33 +0530 (Thu, 15 May 2014)");
   script_name("Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)");
 

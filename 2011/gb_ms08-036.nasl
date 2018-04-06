@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-036.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: gb_ms08-036.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Pragmatic General Multicast (PGM)  Denial of Service Vulnerability (950762)
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(801485);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801485");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_cve_id("CVE-2008-1440", "CVE-2008-1441");
   script_bugtraq_id(29509, 29508);

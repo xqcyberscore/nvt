@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_mult_bof_vuln_dec09.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: secpod_winamp_mult_bof_vuln_dec09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Winamp Module Decoder Plug-in Multiple Buffer Overflow Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Winamp and is prone to multiple Buffe
 
 if(description)
 {
-  script_id(901085);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901085");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_mar13_lin.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_google_chrome_mult_vuln02_mar13_lin.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 March 2013 (Linux)
 #
@@ -45,15 +45,15 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(803433);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803433");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0902", "CVE-2013-0903", "CVE-2013-0904", "CVE-2013-0905",
                 "CVE-2013-0906", "CVE-2013-0907", "CVE-2013-0908", "CVE-2013-0909",
                 "CVE-2013-0910", "CVE-2013-0911");
   script_bugtraq_id(58291);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 13:55:17 +0530 (Mon, 11 Mar 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 March 2013 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/52454");

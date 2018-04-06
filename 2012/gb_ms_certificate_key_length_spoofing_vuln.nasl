@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)
 #
@@ -45,11 +45,11 @@ tag_summary = "The host is installed with Microsoft Windows operating system and
 
 if(description)
 {
-  script_id(803007);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803007");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 16:14:43 +0530 (Thu, 23 Aug 2012)");
   script_name("Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2661254");

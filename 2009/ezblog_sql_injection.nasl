@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ezblog_sql_injection.nasl 5776 2017-03-30 06:05:40Z cfi $
+# $Id: ezblog_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # EZ-Blog 'public/view.php' SQL Injection Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Update to newer version if available at http://sourceforge.net/p
 
 if(description)
 {
- script_id(100012);
- script_version("$Revision: 5776 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100012");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

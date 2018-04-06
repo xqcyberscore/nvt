@@ -54,12 +54,12 @@ advisory GLSA 201206-22.";
                                                                                 
 if(description)
 {
- script_id(71548);
+ script_oid("1.3.6.1.4.1.25623.1.0.71548");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2009-2906", "CVE-2009-2948", "CVE-2010-0728", "CVE-2010-1635", "CVE-2010-1642", "CVE-2010-2063", "CVE-2010-3069", "CVE-2011-0719", "CVE-2011-1678", "CVE-2011-2724", "CVE-2012-0870", "CVE-2012-1182", "CVE-2012-2111");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
  script_name("Gentoo Security Advisory GLSA 201206-22 (Samba)");
 

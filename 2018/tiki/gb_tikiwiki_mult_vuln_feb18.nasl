@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 9119 2018-03-16 15:21:49Z cfischer $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
 #
 # Tiki Wiki Multiple Vulnerabilities Feb18 
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 9119 $");
+  script_version("$Revision: 9338 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
   
@@ -61,9 +61,8 @@ if (description)
 
   script_tag(name:"affected", value:"Tiki Wiki version 17.1");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 
-  Feb 23rd 2018. Information regarding this issue will be updated once solution 
-  details are available. For updates refer to https://tiki.org");
+  script_tag(name:"solution", value:"No solution or patch is available as of 6th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
   
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -79,8 +78,6 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-vers = "";
-
 if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -95,4 +92,5 @@ if(version_is_equal(version:vers, test_version:"17.1"))
   security_message(data:report, port:port);
   exit(0);
 }
+
 exit(0);

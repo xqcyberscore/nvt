@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: comparison_engine_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: comparison_engine_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Comparison Engine Power 'product.comparision.php' SQL Injection
 # Vulnerability
@@ -37,9 +37,9 @@ tag_summary = "Comparison Engine Power is prone to an SQL-injection vulnerabilit
 
 if(description)
 {
- script_id(100079);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100079");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-26 19:23:59 +0100 (Thu, 26 Mar 2009)");
  script_bugtraq_id(34232);
  script_tag(name:"cvss_base", value:"7.5");

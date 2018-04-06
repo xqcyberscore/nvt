@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_prdts_priv_esc_vuln.nasl 8218 2017-12-21 14:14:04Z cfischer $
+# $Id: gb_panda_prdts_priv_esc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Panda Products Privilege Escalation Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running panda Products and is prone to Privilege
 
 if(description)
 {
-  script_id(801080);
-  script_version("$Revision: 8218 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801080");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

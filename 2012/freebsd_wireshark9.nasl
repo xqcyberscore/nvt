@@ -65,12 +65,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(72500);
+ script_oid("1.3.6.1.4.1.25623.1.0.72500");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2012-5237", "CVE-2012-5238", "CVE-2012-5240");
- script_version("$Revision: 5940 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-10-22 08:43:21 -0400 (Mon, 22 Oct 2012)");
  script_name("FreeBSD Ports: wireshark");
 

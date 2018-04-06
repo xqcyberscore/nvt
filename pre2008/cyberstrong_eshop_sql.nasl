@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cyberstrong_eshop_sql.nasl 5786 2017-03-30 10:08:58Z cfi $
+# $Id: cyberstrong_eshop_sql.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Cyberstrong eShop SQL Injection Vulnerabilities
 #
 # Authors:
@@ -36,9 +36,9 @@ tag_solution = "None at this time";
 
 if(description)
 {
- script_id(19391);
- script_version("$Revision: 5786 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.19391");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2003-0509");
  script_bugtraq_id(14101, 14103, 14112);

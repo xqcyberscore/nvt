@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle GlassFish Server Hash Collision Denial of Service Vulnerability
 #
@@ -44,13 +44,13 @@ service vulnerability.";
 
 if(description)
 {
-  script_id(802409);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802409");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-5035");
   script_bugtraq_id(51194);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-05 16:15:38 +0530 (Thu, 05 Jan 2012)");
   script_name("Oracle GlassFish Server Hash Collision Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/903934");

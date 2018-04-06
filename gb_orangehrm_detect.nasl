@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orangehrm_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
+# $Id: gb_orangehrm_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # OrangeHRM Detection
 #
@@ -29,10 +29,10 @@ development system.";
 
 if(description)
 {
- script_id(100850);
+ script_oid("1.3.6.1.4.1.25623.1.0.100850");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5735 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-10-12 12:50:34 +0200 (Tue, 12 Oct 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("OrangeHRM Detection");

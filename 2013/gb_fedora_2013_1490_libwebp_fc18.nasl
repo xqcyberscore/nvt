@@ -42,9 +42,9 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098230.html");
-  script_id(865296);
-  script_version("$Revision: 8526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.865296");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:52:46 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-5127");
   script_tag(name:"cvss_base", value:"7.5");

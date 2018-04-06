@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -46,13 +46,13 @@ denial of service vulnerabilities.";
 
 if(description)
 {
-  script_id(803080);
-  script_version("$Revision: 5841 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803080");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80743");

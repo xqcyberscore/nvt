@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0014_remote.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_VMSA-2013-0014_remote.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation (remote check)
 #
@@ -61,17 +61,17 @@ not be manipulated from the Guest Operating System. ";
 
 if (description)
 {
- script_id(103850);
+ script_oid("1.3.6.1.4.1.25623.1.0.103850");
  script_cve_id("CVE-2013-3519");
  script_tag(name:"cvss_base", value:"7.9");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6093 $");
+ script_version ("$Revision: 9353 $");
  script_name("VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation (remote check)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0014.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-12-04 10:04:01 +0100 (Wed, 04 Dec 2013)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

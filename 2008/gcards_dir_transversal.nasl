@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gcards_dir_transversal.nasl 5779 2017-03-30 06:57:12Z cfi $
+# $Id: gcards_dir_transversal.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: gCards Multiple Vulnerabilities
 #
 # Authors:
@@ -44,9 +44,9 @@ tag_solution = "Upgrade to gCards version 1.46 or later.";
 
 if(description)
 {
-  script_id(80065);
-  script_version("$Revision: 5779 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80065");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

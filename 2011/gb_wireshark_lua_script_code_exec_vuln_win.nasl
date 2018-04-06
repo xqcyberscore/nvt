@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Wireshark Lua Script File Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Wireshark and is prone to code
 
 if(description)
 {
-  script_id(802249);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802249");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49528);
   script_cve_id("CVE-2011-3360");

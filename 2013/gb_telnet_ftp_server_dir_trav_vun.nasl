@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Telnet-Ftp Server Directory Traversal Vulnerability
 #
@@ -26,11 +26,11 @@
 
 if(description)
 {
-  script_id(803736);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803736");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 10:32:03 +0530 (Mon, 19 Aug 2013)");
   script_name("Telnet-Ftp Server Directory Traversal Vulnerability");
 

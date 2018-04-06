@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar13_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_wireshark_mult_vuln_mar13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Mac OS X)
 #
@@ -38,14 +38,14 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(803333);
-  script_version("$Revision: 6125 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803333");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2486", "CVE-2013-2487", "CVE-2013-2479", "CVE-2013-2477",
                 "CVE-2013-2476", "CVE-2013-2475");
   script_bugtraq_id(58363,58350,58354,58358,58349,58364);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:11 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52471");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ieee_dissector_dos_vuln_win.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_wireshark_ieee_dissector_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark IEEE 802.11 Dissector Denial of Service Vulnerability (Windows)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(802760);
-  script_version("$Revision: 5958 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802760");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1594");
   script_bugtraq_id(52738);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 18:08:49 +0530 (Mon, 23 Apr 2012)");
   script_name("Wireshark IEEE 802.11 Dissector Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48548/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_polls_46770.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_quick_polls_46770.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Quick Poll Local File Include and Arbitrary File Deletion Vulnerabilities
 #
@@ -44,9 +44,9 @@ tag_solution = "Vendor patch is available. Please see the reference for details.
 
 if (description)
 {
- script_id(103110);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103110");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
  script_bugtraq_id(46770);
  script_tag(name:"cvss_base", value:"5.8");

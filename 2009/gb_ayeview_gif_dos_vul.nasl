@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ayeview_gif_dos_vul.nasl 5656 2017-03-21 11:03:12Z cfi $ 
+# $Id: gb_ayeview_gif_dos_vul.nasl 9350 2018-04-06 07:03:33Z cfischer $ 
 # 
 # AyeView GIF Image Handling Denial of Service Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "The host has AyeView Image Viewer installed and is prone to denia
 
 if(description)
 {
-  script_id(800503);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800503");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ike-scan.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: ike-scan.nasl 9347 2018-04-06 06:58:53Z cfischer $
 # Description: ike-scan (NASL wrapper)
 #
 # Authors:
@@ -48,10 +48,10 @@ bruteforce valid groupnames and fingerprint any endpoint identified.";
 
 if (description)
 {
-	script_id(80000);
+	script_oid("1.3.6.1.4.1.25623.1.0.80000");
 	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7153 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+ script_version("$Revision: 9347 $");
+	script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
 	script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
 	name = "ike-scan (NASL wrapper)";
 	script_name(name);

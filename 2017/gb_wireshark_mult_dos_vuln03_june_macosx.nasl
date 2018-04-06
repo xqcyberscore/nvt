@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 8075 2017-12-11 10:32:06Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810963");
-  script_version("$Revision: 8075 $");
+  script_version("$Revision: 9338 $");
   script_cve_id("CVE-2017-9616", "CVE-2017-9617");
   script_bugtraq_id(99087, 99085);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 16:34:23 +0530 (Tue, 27 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)");
 
@@ -58,13 +58,9 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Wireshark version 2.2.7 on Mac OS X");
+  script_tag(name: "solution" , value: "Update to version 2.4.6 or later.");
 
-  script_tag(name: "solution" , value: "No solution or patch is available as of 
-  11th December, 2017. Information regarding this issue will be updated once the 
-  solution details are available. For updates refer to https://www.wireshark.org");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
@@ -83,19 +79,13 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-report = "";
-
-## Get the version
-if(!wirversion = get_app_version(cpe:CPE)){
+if(!wirversion = get_app_version(cpe:CPE))
   exit(0);
-}
 
-## Check the vulnerable version
-if(wirversion == "2.2.7")
-{
-  report = report_fixed_ver(installed_version:wirversion, fixed_version:"NoneAvailable");
+if (version_is_less(version: wirversion, test_version: "2.4.6")) {
+  report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.4.6");
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_46641.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_cubecart_46641.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # CubeCart Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -37,9 +37,9 @@ CubeCart 2.0.6 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103102);
- script_version("$Revision: 7024 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103102");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-03 13:33:12 +0100 (Thu, 03 Mar 2011)");
  script_bugtraq_id(46641);
  script_tag(name:"cvss_base", value:"7.5");

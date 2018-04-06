@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punbb_register_lfi.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: punbb_register_lfi.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: PunBB language Paramater Local File Include Vulnerability
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Update to version 1.2.14 or later.";
 
 if(description)
 {
-  script_id(80080);
-  script_version("$Revision: 7176 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80080");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

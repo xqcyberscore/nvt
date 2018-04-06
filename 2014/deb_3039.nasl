@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3039.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: deb_3039.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3039-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703039);
-    script_version("$Revision: 6735 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703039");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-3160", "CVE-2014-3162", "CVE-2014-3165", "CVE-2014-3166", "CVE-2014-3167", "CVE-2014-3168", "CVE-2014-3169", "CVE-2014-3170", "CVE-2014-3171", "CVE-2014-3172", "CVE-2014-3173", "CVE-2014-3174", "CVE-2014-3175", "CVE-2014-3176", "CVE-2014-3177", "CVE-2014-3178", "CVE-2014-3179");
     script_name("Debian Security Advisory DSA 3039-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2014-10-01 16:58:59 +0530 (Wed, 01 Oct 2014)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

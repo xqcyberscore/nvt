@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PHPFootball_password_hash_information_disclosure.nasl 5767 2017-03-29 13:32:35Z cfi $
+# $Id: PHPFootball_password_hash_information_disclosure.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # PHPFootball 'filter.php' Password Hash Information Disclosure
 # Vulnerability
@@ -35,9 +35,9 @@ tag_summary = "PHPFootball is prone to an information-disclosure vulnerability
 
 if(description)
 {
- script_id(100016);
- script_version("$Revision: 5767 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100016");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(33087);
  script_cve_id("CVE-2009-0711");

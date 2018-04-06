@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # TRENDnet Print Server Authentication Bypass Vulnerability
 #
@@ -46,11 +46,11 @@ authentication bypass vulnerability.";
 
 if(description)
 {
-  script_id(803720);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803720");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 12:51:19 +0530 (Tue, 25 Jun 2013)");
   script_name("TRENDnet Print Server Authentication Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26401");

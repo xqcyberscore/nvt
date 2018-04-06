@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
+# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Synergy Protocol Information Disclosure Vulnerability (Windows)
 #
@@ -47,9 +47,9 @@ disclosure vulnerability.";
 
 if(description)
 {
-  script_id(801872);
-  script_version("$Revision: 8189 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801872");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

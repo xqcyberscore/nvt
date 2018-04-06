@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1903_1.nasl 8494 2018-01-23 06:57:55Z teissa $
+# $Id: gb_ubuntu_USN_1903_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for apache2 USN-1903-1
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(841507);
-  script_version("$Revision: 8494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:57:55 +0100 (Tue, 23 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841507");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 19:12:37 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-1862", "CVE-2013-1896");
   script_tag(name:"cvss_base", value:"5.1");

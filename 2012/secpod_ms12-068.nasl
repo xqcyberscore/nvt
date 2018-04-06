@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-068.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-068.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerability (2724197)
 #
@@ -45,13 +45,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903041);
-  script_version("$Revision: 5341 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903041");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-2529");
   script_bugtraq_id(55793);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 08:54:58 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerability (2724197)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50862/");

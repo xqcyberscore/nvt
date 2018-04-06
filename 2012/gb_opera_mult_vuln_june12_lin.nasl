@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_june12_lin.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_opera_mult_vuln_june12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Multiple Vulnerabilities - June12 (Linux)
 #
@@ -47,14 +47,14 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 
 if(description)
 {
-  script_id(802648);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802648");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(54011);
   script_cve_id("CVE-2012-3555", "CVE-2012-3556", "CVE-2012-3557", "CVE-2012-3558",
                 "CVE-2012-3560");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Vulnerabilities - June12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49533/");

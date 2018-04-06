@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_xml_doc_dos_vuln_aug09.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: gb_ms_ie_xml_doc_dos_vuln_aug09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Internet Explorer XML Document DoS Vulnerability - Aug09
 #
@@ -45,9 +45,9 @@ of Service vulnerability.";
 
 if(description)
 {
-  script_id(800863);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800863");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

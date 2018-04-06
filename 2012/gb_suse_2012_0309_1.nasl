@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0309_1.nasl 8295 2018-01-05 06:29:18Z teissa $
+# $Id: gb_suse_2012_0309_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0309-1 (java-1_6_0-openjdk)
 #
@@ -52,9 +52,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850255);
-  script_version("$Revision: 8295 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 07:29:18 +0100 (Fri, 05 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850255");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:00:08 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
                 "CVE-2012-0501", "CVE-2012-0502", "CVE-2012-0503", "CVE-2012-0505",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_may13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_wireshark_mult_vuln_may13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Windows)
 #
@@ -38,15 +38,15 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 
 if(description)
 {
-  script_id(803620);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803620");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3562", "CVE-2013-3561", "CVE-2013-3560", "CVE-2013-3559",
                 "CVE-2013-3558", "CVE-2013-3555");
   script_bugtraq_id(59998, 60002, 59996, 60001, 59999, 60000, 59995, 60003, 59994,
                     59992);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 15:30:37 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53425");

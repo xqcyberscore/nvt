@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snitz_forums_2000_35764.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: snitz_forums_2000_35764.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Snitz Forums 2000 'register.asp' SQL Injection Vulnerability
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if (description)
 {
- script_id(100241);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100241");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-22 19:53:45 +0200 (Wed, 22 Jul 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

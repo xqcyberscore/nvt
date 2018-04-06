@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_services_stop.nasl 7281 2017-09-26 14:10:31Z cfischer $
+# $Id: gb_windows_services_stop.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # Windows Services Stop
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804787");
-  script_version("$Revision: 7281 $");
+  script_version("$Revision: 9335 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-11-05 11:50:33 +0530 (Wed, 05 Nov 2014)");
   script_name("Windows Services Stop");
 
@@ -112,13 +112,13 @@ foreach service_kb( keys( service_kb_list ) ) {
     cmd = "cmd /c sc query " + service[0];
     serQueryStat = run_command( command:cmd, password:password, username:username );
 
-    ## Check wheather it is in running state
+    ## Check whether it is in running state
     if( "RUNNING" >< serQueryStat ) {
       ## To stop the service
       cmd = "cmd /c sc stop " + service[0];
       serQueryStat = run_command( command:cmd, password:password, username:username );
 
-      ## Confirm wheather it is stopped or not
+      ## Confirm whether it is stopped or not
       if( "STOP_PENDING" >< serQueryStat ) {
         ## To get the status of the service
         cmd = "cmd /c sc query " + service[0];

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_mar09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_mar09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Mar09 (Windows)
 #
@@ -60,9 +60,9 @@ tag_summary = "This host is installed with Adobe Products and is prone to
 
 if(description)
 {
-  script_id(800359);
-  script_version("$Revision: 8210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800359");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 11:59:23 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

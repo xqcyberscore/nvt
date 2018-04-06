@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_ivt_xss_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_ibm_was_ivt_xss_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability
 #
@@ -39,13 +39,13 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(802413);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802413");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-1362");
   script_bugtraq_id(46736);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 18:06:52 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/69731");

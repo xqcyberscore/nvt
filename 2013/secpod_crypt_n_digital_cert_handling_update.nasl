@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_crypt_n_digital_cert_handling_update.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: secpod_crypt_n_digital_cert_handling_update.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Update to Improve Cryptography and Digital Certificate Handling (2854544)
 #
@@ -45,11 +45,11 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903310);
-  script_version("$Revision: 5347 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903310");
+  script_version("$Revision: 9353 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 12:56:11 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Update to Improve Cryptography and Digital Certificate Handling (2854544)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2813430");

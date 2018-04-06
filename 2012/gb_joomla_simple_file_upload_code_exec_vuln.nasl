@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla Simple File Upload Module Remote Code Execution Vulnerability
 #
@@ -43,12 +43,12 @@ prone to remote code execution vulnerability.";
 
 if(description)
 {
-  script_id(802560);
-  script_version("$Revision: 5841 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802560");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 20:03:12 +0530 (Fri, 06 Jan 2012)");
   script_name("Joomla Simple File Upload Module Remote Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47370/");

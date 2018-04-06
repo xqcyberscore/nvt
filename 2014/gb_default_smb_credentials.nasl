@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_smb_credentials.nasl 5555 2017-03-13 08:59:20Z cfi $
+# $Id: gb_default_smb_credentials.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # SMB Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804449");
-  script_version("$Revision: 5555 $");
+  script_version("$Revision: 9335 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 09:59:20 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 17:14:10 +0530 (Fri, 04 Jul 2014)");
   script_name("SMB Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"solution", value:"Change the password as soon as possible.");
 
   script_tag(name:"solution_type", value:"Mitigation");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -108,7 +108,7 @@ if( ! smbName ) smbName = "*SMBSERVER";
 
 for( i = 1; i < 4; i++ ) {
 
-  # check for always sucessfull login (unknown users mapped to guest)
+  # check for always successful login (unknown users mapped to guest)
   u = rand_str( length:( 7 + i ), charset:'abcdefghijklmnopqrstuvwxyz' );
   p = rand_str( length:( 7 + i ), charset:'abcdefghijklmnopqrstuvwxyz0123456789' );
 

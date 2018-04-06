@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_network_monitor_46029.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_prtg_network_monitor_46029.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # PRTG Network Monitor 'errormsg' Parameter Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ be affected.";
 
 if (description)
 {
- script_id(103049);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103049");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-27 12:55:42 +0100 (Thu, 27 Jan 2011)");
  script_bugtraq_id(46029);
  script_tag(name:"cvss_base", value:"4.3");

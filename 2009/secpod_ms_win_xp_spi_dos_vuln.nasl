@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_xp_spi_dos_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms_win_xp_spi_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Windows XP 'SPI_GETDESKWALLPAPER' DoS Vulnerability
 #
@@ -47,10 +47,10 @@ tag_summary = "This host is running Windows XP operating system and is prone to
 
 if(description)
 {
-  script_id(900724);
-  script_version("$Revision: 5363 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900724");
+  script_version("$Revision: 9350 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");

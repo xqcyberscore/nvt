@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpbb_mypage_plugin_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_phpbb_mypage_plugin_sql_inj_vuln.nasl 9332 2018-04-05 12:51:29Z cfischer $
 #
 # phpBB MyPage Plugin 'id' Parameter SQL Injection Vulnerability
 #
@@ -24,83 +24,68 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to perform SQL
-Injection attack and gain sensitive information.
-
-Impact Level: Application";
-
-tag_affected = "phpBB Mypage plugin version 0.2.3 and prior";
-
-tag_insight = "The flaw is caused by improper validation of user-supplied
-input sent via the 'id' parameter to 'mypage.php', which allows attackers to
-manipulate SQL queries by injecting arbitrary SQL code.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running phpBB MyPage plugin and is prone to SQL
-injection vulnerability.";
+CPE = "cpe:/a:phpbb:phpbb";
 
 if(description)
 {
-  script_id(902641);
-  script_version("$Revision: 7029 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902641");
+  script_version("$Revision: 9332 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-13 12:30:52 +0530 (Tue, 13 Dec 2011)");
   script_name("phpBB MyPage Plugin 'id' Parameter SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://www.phpbbexploit.com/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18212/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/107586/mypage-sql.txt");
-  script_xref(name : "URL" , value : "http://www.crackhackforum.com/thread-188498-post-344690.html#pid344690");
-
-  script_tag(name:"qod_type", value:"remote_active");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("phpbb_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("phpBB/installed");
+
+  script_xref(name:"URL", value:"http://www.phpbbexploit.com/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18212/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/107586/mypage-sql.txt");
+  script_xref(name:"URL", value:"http://www.crackhackforum.com/thread-188498-post-344690.html#pid344690");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL
+  Injection attack and gain sensitive information.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"phpBB Mypage plugin version 0.2.3 and prior");
+
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied
+  input sent via the 'id' parameter to 'mypage.php', which allows attackers to
+  manipulate SQL queries by injecting arbitrary SQL code.");
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running phpBB MyPage plugin and is prone to SQL
+  injection vulnerability.");
+
+  script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get phpBB Installed Location
-if(!dir = get_dir_from_kb(port:port, app:"phpBB")){
-  exit(0);
-}
-
-## Construct the Attack Request
+if( dir == "/" ) dir = "";
 url =  dir + "/mypage.php?id=1'";
 
-## Try attack and check the response to confirm vulnerability.
-if(http_vuln_check(port:port, url:url, pattern:"You have an error" +
-                      " in your SQL syntax;", check_header: TRUE)){
-  security_message(port);
+if( http_vuln_check( port:port, url:url, pattern:"You have an error in your SQL syntax;", check_header:TRUE ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

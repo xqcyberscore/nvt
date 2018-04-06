@@ -37,9 +37,9 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
-  script_id(866023);
-  script_version("$Revision: 8509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 07:57:46 +0100 (Wed, 24 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.866023");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:50:39 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-2076", "CVE-2013-2077", "CVE-2013-2078", "CVE-2013-2072",
                 "CVE-2013-1918", "CVE-2013-1952", "CVE-2013-1919", "CVE-2013-1917",

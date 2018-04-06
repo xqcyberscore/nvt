@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helix_47110.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_helix_47110.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # RealNetworks Helix Server < 14.2 Multiple Vulnerabilities
 #
@@ -43,9 +43,9 @@ tag_solution = "Updates are available. Please see the reference for more details
 
 if (description)
 {
- script_id(103137);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103137");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-04-01 13:32:12 +0200 (Fri, 01 Apr 2011)");
  script_bugtraq_id(47109,47110);
  script_cve_id("CVE-2010-4235","CVE-2010-4596");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_dos_vuln_win_jul11.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_mozilla_prdts_mult_dos_vuln_win_jul11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products Multiple Denial of Service Vulnerabilities July-11 (Windows)
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is installed with Mozilla Firefox or Thunderbird and is 
 
 if(description)
 {
-  script_id(802214);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802214");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2364", "CVE-2011-2365");
   script_bugtraq_id(48367, 48368);

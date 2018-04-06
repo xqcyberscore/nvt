@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hanewin_dns_server_dos_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_hanewin_dns_server_dos_vuln.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # haneWIN DNS Server Denial Of Service Vulnerability
 #
@@ -26,12 +26,12 @@
 
 if(description)
 {
-  script_id(803796);
-  script_version("$Revision: 6769 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803796");
+  script_version("$Revision: 9354 $");
   script_bugtraq_id(65024);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 19:50:58 +0530 (Tue, 28 Jan 2014)");
   script_name("haneWIN DNS Server Denial Of Service Vulnerability");
 

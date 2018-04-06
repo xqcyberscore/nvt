@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-021.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: secpod_ms12-021.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)
 #
@@ -40,13 +40,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902817);
-  script_version("$Revision: 6532 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902817");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0008");
   script_bugtraq_id(52329);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:10:10 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)");
 

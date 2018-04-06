@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-028.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_ms14-028.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft iSCSI Denial of Service Vulnerabilities (2962485)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(802074);
-  script_version("$Revision: 6769 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802074");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-0255", "CVE-2014-0256");
   script_bugtraq_id(67280, 67281);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 17:09:23 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft iSCSI Denial of Service Vulnerabilities (2962485)");

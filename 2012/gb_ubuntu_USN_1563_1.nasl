@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1563_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1563_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-oneiric USN-1563-1
 #
@@ -38,9 +38,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1563-1/");
-  script_id(841140);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841140");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 09:38:34 +0530 (Tue, 11 Sep 2012)");
   script_cve_id("CVE-2012-2372");
   script_tag(name:"cvss_base", value:"4.4");

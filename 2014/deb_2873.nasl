@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2873.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: deb_2873.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2873-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -64,11 +64,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(702873);
-    script_version("$Revision: 6735 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702873");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2013-7345", "CVE-2014-2270");
     script_name("Debian Security Advisory DSA 2873-1 (file - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2014-03-11 00:00:00 +0100 (Tue, 11 Mar 2014)");
     script_tag(name: "cvss_base", value:"5.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

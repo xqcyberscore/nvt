@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln2_macosx_july11.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_opera_mult_vuln2_macosx_july11.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities-02 July-11 (Mac OS X)
 #
@@ -45,13 +45,13 @@ tag_summary = "The host is installed with Opera browser and is prone to multiple
 
 if(description)
 {
-  script_id(802756);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802756");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-2635", "CVE-2011-2634", "CVE-2011-2636", "CVE-2011-2637",
                 "CVE-2011-2638", "CVE-2011-2639", "CVE-2011-2640");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:33:54 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-02 July-11 (Mac OS X)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68452");

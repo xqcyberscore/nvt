@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_mult_code_exec_vuln_aug11.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: secpod_adobe_shockwave_player_mult_code_exec_vuln_aug11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities - Aug 2011
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 
 if(description)
 {
-  script_id(902617);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902617");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2010-4308", "CVE-2010-4309", "CVE-2011-2419", "CVE-2011-2420",
                 "CVE-2011-2421", "CVE-2011-2422", "CVE-2011-2423");

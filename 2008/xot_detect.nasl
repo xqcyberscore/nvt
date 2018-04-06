@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xot_detect.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: xot_detect.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: XOT Detection
 #
 # Authors:
@@ -30,10 +30,10 @@ http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/x25.pdf";
 
 if (description)
 {
- script_id(80095);;
+ script_oid("1.3.6.1.4.1.25623.1.0.80095");;
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7176 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name( "XOT Detection");

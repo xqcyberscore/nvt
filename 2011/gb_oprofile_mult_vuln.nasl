@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oprofile_mult_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_oprofile_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # OProfile Multiple Vulnerabilities
 #
@@ -52,9 +52,9 @@ tag_summary = "This host is installed OProfile and is prone to multiple
 
 if(description)
 {
-  script_id(802108);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802108");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1760", "CVE-2011-2471", "CVE-2011-2472", "CVE-2011-2473");
   script_bugtraq_id(47652);

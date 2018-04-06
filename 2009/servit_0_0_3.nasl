@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: servit_0_0_3.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: servit_0_0_3.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Zervit HTTP Server Malformed URI Remote Denial Of Service
 # Vulnerability
@@ -37,9 +37,9 @@ tag_summary = "According to its version number, the remote version of Zervit HTT
 
 if (description)
 {
- script_id(100167);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100167");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-26 20:59:36 +0200 (Sun, 26 Apr 2009)");
  script_bugtraq_id(34637);
  script_tag(name:"cvss_base", value:"5.0");

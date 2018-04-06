@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50891.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_joomla_50891.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! 'com_jobprofile' Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ in the underlying database.";
 
 if (description)
 {
- script_id(103357);
+ script_oid("1.3.6.1.4.1.25623.1.0.103357");
  script_bugtraq_id(50891);
- script_version ("$Revision: 7029 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Joomla! 'com_jobprofile' Component 'id' Parameter SQL Injection Vulnerability");
@@ -47,7 +47,7 @@ if (description)
  script_xref(name : "URL" , value : "http://extensions.joomla.org/extensions/ads-a-affiliates/jobs-a-recruitment/11924");
  script_xref(name : "URL" , value : "http://www.joomla.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-06 11:26:21 +0100 (Tue, 06 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

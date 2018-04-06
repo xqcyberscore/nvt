@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_dos_vuln_july13_win.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_comodo_dos_vuln_july13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Comodo Internet Security Denial of Service Vulnerability July 13
 #
@@ -38,12 +38,12 @@ tag_summary = "The host is installed with Comodo Internet Security and is prone
 
 if(description)
 {
-  script_id(803695);
-  script_version("$Revision: 6125 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803695");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-2273");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 12:47:17 +0530 (Tue, 16 Jul 2013)");
   script_name("Comodo Internet Security Denial of Service Vulnerability July 13");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Apr/13");

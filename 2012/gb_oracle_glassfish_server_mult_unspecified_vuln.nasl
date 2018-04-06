@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_server_mult_unspecified_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_oracle_glassfish_server_mult_unspecified_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle GlassFish Server Multiple Unspecified Vulnerabilities
 #
@@ -43,13 +43,13 @@ tag_summary = "The host is running GlassFish Server and is prone to multiple
 
 if(description)
 {
-  script_id(802417);
-  script_version("$Revision: 5999 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802417");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0081", "CVE-2011-3564", "CVE-2012-0104");
   script_bugtraq_id(51484, 51485, 51497);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 13:43:23 +0530 (Mon, 23 Jan 2012)");
   script_name("Oracle GlassFish Server Multiple Unspecified Vulnerabilities");
 

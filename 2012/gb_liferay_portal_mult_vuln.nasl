@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liferay_portal_mult_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_liferay_portal_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Liferay Portal Multiple Vulnerabilities
 #
@@ -59,12 +59,12 @@ vulnerabilities.";
 
 if(description)
 {
-  script_id(802630);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802630");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(53546);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 12:12:12 +0530 (Mon, 21 May 2012)");
   script_name("Liferay Portal Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49205");

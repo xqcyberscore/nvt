@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dienstplan_49412.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_dienstplan_49412.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Dienstplan Predictable Random Password Generation Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if(description)
 {
- script_id(103237);
- script_version("$Revision: 5747 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103237");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-02 13:13:57 +0200 (Fri, 02 Sep 2011)");
  script_bugtraq_id(49412);
  script_tag(name:"cvss_base", value:"6.5");

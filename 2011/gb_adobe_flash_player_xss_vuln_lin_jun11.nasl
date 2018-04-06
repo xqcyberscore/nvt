@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_xss_vuln_lin_jun11.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_flash_player_xss_vuln_lin_jun11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Adobe Flash Player Unspecified Cross-Site Scripting Vulnerability June-2011 (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(802205);
-  script_version("$Revision: 5424 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802205");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-2107");
   script_bugtraq_id(48107);

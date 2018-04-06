@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-057.nasl 5339 2017-02-18 16:28:22Z cfi $
+# $Id: secpod_ms13-057.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Windows Media Format Runtime Remote Code Execution Vulnerability (2847883)
 #
@@ -28,13 +28,13 @@
 
 if(description)
 {
-  script_id(903223);
-  script_version("$Revision: 5339 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903223");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3127");
   script_bugtraq_id(60980);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:28:22 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 12:37:46 +0530 (Wed, 10 Jul 2013)");
   script_name("Windows Media Format Runtime Remote Code Execution Vulnerability (2847883)");
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2668.nasl 6611 2017-07-07 12:07:20Z cfischer $
+# $Id: deb_2668.nasl 9353 2018-04-06 07:14:20Z cfischer $
 # Auto-generated from advisory DSA 2668-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -223,11 +223,11 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 
 if(description)
 {
-    script_id(892668);
-    script_version("$Revision: 6611 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.892668");
+    script_version("$Revision: 9353 $");
     script_cve_id("CVE-2013-1773", "CVE-2013-1929", "CVE-2013-1792", "CVE-2013-1774", "CVE-2013-3224", "CVE-2012-6548", "CVE-2012-4508", "CVE-2013-2634", "CVE-2013-1928", "CVE-2012-6540", "CVE-2012-6537", "CVE-2012-6539", "CVE-2013-1767", "CVE-2012-2121", "CVE-2013-3229", "CVE-2013-3231", "CVE-2013-1798", "CVE-2012-6545", "CVE-2013-3225", "CVE-2012-4461", "CVE-2013-0914", "CVE-2012-6544", "CVE-2013-3235", "CVE-2012-3552", "CVE-2012-6546", "CVE-2012-6549", "CVE-2012-6542", "CVE-2013-0349", "CVE-2013-3234", "CVE-2013-1826", "CVE-2013-3228", "CVE-2013-2015", "CVE-2013-3223", "CVE-2013-1796", "CVE-2013-1860", "CVE-2013-3222");
     script_name("Debian Security Advisory DSA 2668-1 (linux-2.6 - privilege escalation/denial of service/information leak)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value:"2013-05-14 00:00:00 +0200 (Tue, 14 May 2013)");
     script_tag(name: "cvss_base", value:"6.9");
     script_tag(name: "cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

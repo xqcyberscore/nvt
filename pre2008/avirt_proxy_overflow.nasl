@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: avirt_proxy_overflow.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: avirt_proxy_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Header overflow against HTTP proxy
 #
 # Authors:
@@ -45,9 +45,9 @@ tag_solution = "upgrade your software";
 
 if(description)
 {
-  script_id(11715);
-  script_version("$Revision: 6702 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.11715");
+  script_version("$Revision: 9348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3904, 3905);
   script_cve_id("CVE-2002-0133");

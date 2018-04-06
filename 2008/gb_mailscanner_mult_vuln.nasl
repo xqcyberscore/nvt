@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailscanner_mult_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_mailscanner_mult_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # MailScanner Multiple Insecure Temporary Files Vulnerabilities
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with MailScanner and is prone to multiple
 
 if(description)
 {
-  script_id(800206);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800206");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

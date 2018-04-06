@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1586_1.nasl 7960 2017-12-01 06:58:16Z santu $
+# $Id: gb_ubuntu_USN_1586_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Ubuntu Update for emacs23 USN-1586-1
 #
@@ -45,9 +45,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1586-1/");
-  script_id(841172);
-  script_version("$Revision: 7960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841172");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:24:29 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-0035", "CVE-2012-3479");
   script_tag(name:"cvss_base", value:"9.3");

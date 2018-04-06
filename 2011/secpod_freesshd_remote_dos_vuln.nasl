@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_remote_dos_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_freesshd_remote_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # FreeSSHd Remote Denial of Service Vulnerability
 #
@@ -44,11 +44,11 @@ vulnerability.";
 
 if(description)
 {
-  script_id(902803);
-  script_version("$Revision: 7044 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902803");
+  script_version("$Revision: 9351 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-26 15:15:15 +0530 (Mon, 26 Dec 2011)");
   script_name("FreeSSHd Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17299");

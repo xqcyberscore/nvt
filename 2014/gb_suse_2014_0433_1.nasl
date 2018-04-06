@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0433_1.nasl 8044 2017-12-08 08:32:49Z santu $
+# $Id: gb_suse_2014_0433_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # SuSE Update for perl-HTTP-Body openSUSE-SU-2014:0433-1 (perl-HTTP-Body)
 #
@@ -28,9 +28,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_id(850580);
-  script_version("$Revision: 8044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850580");
+  script_version("$Revision: 9354 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 12:54:40 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2013-4407");
   script_tag(name:"cvss_base", value:"6.8");

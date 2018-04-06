@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-042.nasl 6235 2017-05-29 13:45:48Z cfi $
+# $Id: gb_ms07-042.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (936227)
 #
@@ -52,9 +52,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(801715);
-  script_version("$Revision: 6235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801715");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 09:03:25 +0100 (Fri, 14 Jan 2011)");
   script_cve_id("CVE-2007-2223");
   script_bugtraq_id(25301);

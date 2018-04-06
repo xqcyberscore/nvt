@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_dos_vuln.nasl 8209 2017-12-21 08:12:18Z cfischer $
+# $Id: gb_ms_money_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Microsoft Money 'prtstb06.dll' Denial of Service Vulnerability
 #
@@ -45,9 +45,9 @@ tag_summary = "This host has Microsoft Money installed and is prone to Denial
 
 if(description)
 {
-  script_id(800218);
-  script_version("$Revision: 8209 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800218");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

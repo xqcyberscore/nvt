@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)
 #
@@ -58,11 +58,11 @@ tag_summary = "This script will list all the vulnerable activex controls install
 
 if(description)
 {
-  script_id(802426);
-  script_version("$Revision: 5988 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802426");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 13:25:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)");
 

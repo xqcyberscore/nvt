@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hummingbird_deployment_activex_cntl_mul_vuln_900161.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: secpod_hummingbird_deployment_activex_cntl_mul_vuln_900161.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Hummingbird Deployment Wizard ActiveX Control Multiple Security Vulnerabilities
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_affected = "Hummingbird Deployment Wizard version 10.0.0.44 and prior on Win
 
 if(description)
 {
-  script_id(900161);
-  script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900161");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-23 14:16:10 +0200 (Thu, 23 Oct 2008)");
   script_cve_id("CVE-2008-4728");
  script_bugtraq_id(31799);

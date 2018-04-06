@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50451.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_joomla_50451.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! Alameda Component 'storeid' Parameter SQL Injection Vulnerability
 #
@@ -35,9 +35,9 @@ in the underlying database.";
 
 if (description)
 {
- script_id(103323);
+ script_oid("1.3.6.1.4.1.25623.1.0.103323");
  script_bugtraq_id(50451);
- script_version ("$Revision: 7052 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Joomla! Alameda Component 'storeid' Parameter SQL Injection Vulnerability");
@@ -46,7 +46,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.blueflyingfish.com/alameda/");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

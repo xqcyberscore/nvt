@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-036.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms13-036.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)
 #
@@ -48,13 +48,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903202);
-  script_version("$Revision: 5346 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903202");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-1283", "CVE-2013-1291", "CVE-2013-1292", "CVE-2013-1293");
   script_bugtraq_id(58853, 58858, 58859, 58860);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 09:30:54 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2808735");

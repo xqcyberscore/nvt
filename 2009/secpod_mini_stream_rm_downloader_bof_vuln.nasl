@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_rm_downloader_bof_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mini_stream_rm_downloader_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Mini Stream RM Downloader '.smi' File Buffer Overflow Vulnerability
 #
@@ -45,9 +45,9 @@ to buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(902036);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902036");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_cve_id("CVE-2009-4761");
  script_bugtraq_id(34794);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joostina_45732.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_joostina_45732.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joostina 'index.php' Cross Site Scripting Vulnerability
 #
@@ -43,9 +43,9 @@ Joostina versions 1.3.0 and prior are vulnerable.";
 
 if(description)
 {
- script_id(103034);
- script_version("$Revision: 5749 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103034");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-01-19 13:37:44 +0100 (Wed, 19 Jan 2011)");
  script_bugtraq_id(45732);
  script_tag(name:"cvss_base", value:"2.6");

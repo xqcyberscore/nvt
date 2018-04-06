@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: secpod_ms12-030.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2663830)
 #
@@ -45,14 +45,14 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(903026);
-  script_version("$Revision: 6523 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903026");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-0185", "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:19:21 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2663830)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2597086");

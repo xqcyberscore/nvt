@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_jul11.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_win_jul11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities July-11 (Windows)
 #
@@ -48,9 +48,9 @@ tag_summary = "The host is installed with Mozilla Firefox, Seamonkey or Thunderb
 
 if(description)
 {
-  script_id(802213);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802213");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-0083", "CVE-2011-0085", "CVE-2011-2362", "CVE-2011-2363");
   script_bugtraq_id(48357, 48360, 48376, 48358);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3077.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: deb_3077.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3077-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703077);
-    script_version("$Revision: 6759 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703077");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-6457", "CVE-2014-6502", "CVE-2014-6504", "CVE-2014-6506", "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6517", "CVE-2014-6519", "CVE-2014-6531", "CVE-2014-6558");
     script_name("Debian Security Advisory DSA 3077-1 (openjdk-6 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2014-11-26 00:00:00 +0100 (Wed, 26 Nov 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

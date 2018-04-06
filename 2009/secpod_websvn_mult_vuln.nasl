@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_websvn_mult_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: secpod_websvn_mult_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # WebSVN Script Multiple Vulnerabilities
 #
@@ -45,9 +45,9 @@ tag_solution = "Upgrade to the latest version 2.1.0
 
 if(description)
 {
-  script_id(900441);
-  script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900441");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

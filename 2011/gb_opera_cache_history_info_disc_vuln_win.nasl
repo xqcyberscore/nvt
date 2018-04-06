@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_cache_history_info_disc_vuln_win.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_opera_cache_history_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Opera Cache History Information Disclosure Vulnerability (Windows)
 #
@@ -45,12 +45,12 @@ disclosure vulnerability.";
 
 if(description)
 {
-  script_id(802365);
-  script_version("$Revision: 7006 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802365");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-4690");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 16:43:28 +0530 (Fri, 09 Dec 2011)");
   script_name("Opera Cache History Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47128");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PHPRecipeBook_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: PHPRecipeBook_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # PHPRecipeBook 'base_id' Parameter SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ tag_summary = "PHPRecipeBook is prone to an SQL-injection vulnerability because 
 
 if (description)
 {
- script_id(100042);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100042");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

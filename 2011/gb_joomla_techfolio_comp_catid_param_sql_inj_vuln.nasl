@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_techfolio_comp_catid_param_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_joomla_techfolio_comp_catid_param_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Joomla! Techfolio Component 'catid' Parameter SQL Injection Vulnerability
 #
@@ -46,9 +46,9 @@ SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802267);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802267");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-04 12:12:12 +0530 (Fri, 04 Nov 2011)");
   script_bugtraq_id(50422);
   script_tag(name:"cvss_base", value:"7.5");

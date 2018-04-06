@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_feb13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_adobe_air_mult_vuln01_feb13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Adobe AIR and is prone to multiple
 
 if(description)
 {
-  script_id(803411);
-  script_version("$Revision: 6079 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803411");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-15 11:14:45 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netjukebox_47027.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_netjukebox_47027.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # netjukebox 'skin' Parameter Cross Site Scripting Vulnerability
 #
@@ -37,9 +37,9 @@ netjukebox 5.25 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103126);
- script_version("$Revision: 5750 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103126");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-03-25 13:20:06 +0100 (Fri, 25 Mar 2011)");
  script_bugtraq_id(47027);
  script_tag(name:"cvss_base", value:"2.6");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_dos_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_trendmicro_officescan_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Trend Micro OfficeScan Client Denial Of Service Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Trend Micro OfficeScan Client and is 
 
 if(description)
 {
-  script_id(900634);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900634");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-07 14:39:04 +0200 (Thu, 07 May 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");

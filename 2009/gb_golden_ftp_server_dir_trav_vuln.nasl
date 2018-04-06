@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_server_dir_trav_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_golden_ftp_server_dir_trav_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Golden FTP Server 'DELE' Command Directory Traversal Vulnerability
 #
@@ -44,9 +44,9 @@ Traversal vulnerability.";
 
 if(description)
 {
-  script_id(801073);
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801073");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");

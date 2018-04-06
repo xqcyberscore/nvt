@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3920.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: deb_3920.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3920-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703920);
-    script_version("$Revision: 6873 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703920");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-10664", "CVE-2017-10911", "CVE-2017-9310", "CVE-2017-9330", "CVE-2017-9373", "CVE-2017-9374", "CVE-2017-9375", "CVE-2017-9524");
     script_name("Debian Security Advisory DSA 3920-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-25 00:00:00 +0200 (Tue, 25 Jul 2017)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

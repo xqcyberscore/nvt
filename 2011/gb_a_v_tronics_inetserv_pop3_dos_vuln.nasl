@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # A-V Tronics InetServ POP3 Denial Of Service Vulnerability
 #
@@ -45,9 +45,9 @@ prone to denial of service vulnerability.";
 
 if(description)
 {
-  script_id(800195);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800195");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");  

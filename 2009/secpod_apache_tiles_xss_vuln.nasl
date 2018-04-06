@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tiles_xss_vuln.nasl 8695 2018-02-06 16:42:37Z cfischer $
+# $Id: secpod_apache_tiles_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Apache Tiles Multiple XSS Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host has Apache Tiles installed and is prone to Cross-Site
 
 if(description)
 {
-  script_id(900496);
-  script_version("$Revision: 8695 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 17:42:37 +0100 (Tue, 06 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900496");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

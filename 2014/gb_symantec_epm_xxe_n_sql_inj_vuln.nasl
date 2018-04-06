@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804513");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 9335 $");
   script_cve_id("CVE-2013-5014", "CVE-2013-5015");
   script_bugtraq_id(65466, 65467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:33:41 +0530 (Thu, 20 Mar 2014)");
   script_name("Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities");
 
   script_tag(name : "summary" , value : "The host is installed with Symantec Endpoint Protection Manager and is prone
   to XXE and SQL injection vulnerabilities.");
   script_tag(name : "vuldetect" , value : "Send a specially crafted XML data including external entity references to
-  TCP port 9090 and check wheather it is able to execute commands remotely or not.");
+  TCP port 9090 and check whether it is able to execute commands remotely or not.");
   script_tag(name : "insight" , value : "Flaw is due to an error when handling XML data within the servlet/ConsoleServlet.");
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to disclose potentially sensitive
   information, manipulate certain data, and cause a DoS (Denial of Service).
@@ -65,6 +65,7 @@ if(description)
   script_require_ports("Services/www", 9090);
 
   script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

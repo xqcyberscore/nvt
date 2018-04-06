@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_warftpd_cwd_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: DDI_warftpd_cwd_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: War FTP Daemon CWD/MKD Buffer Overflow
 #
 # Authors:
@@ -35,9 +35,9 @@ ftp://ftp.jgaa.com/pub/products/Windows/WarFtpDaemon/";
 
 if(description)
 {
-	script_id(11205);
-	script_version("$Revision: 6040 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+	script_oid("1.3.6.1.4.1.25623.1.0.11205");
+	script_version("$Revision: 9348 $");
+	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_bugtraq_id(966);
     script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_lin.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Flash Player Font Parsing Code Execution Vulnerability - (Linux)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(802941);
-  script_version("$Revision: 5940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802941");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1535");
   script_bugtraq_id(55009);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 13:00:42 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Flash Player Font Parsing Code Execution Vulnerability - (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50285/");

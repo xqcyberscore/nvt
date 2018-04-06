@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X)
 #
@@ -54,14 +54,14 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 
 if(description)
 {
-  script_id(802821);
-  script_version("$Revision: 6445 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802821");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0461", "CVE-2012-0463", "CVE-2012-0458", "CVE-2012-0457",
                 "CVE-2012-0455", "CVE-2012-0464", "CVE-2012-0456");
   script_bugtraq_id(52464, 52466, 52460, 52459, 52458, 52465, 52461);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 17:59:17 +0530 (Mon, 19 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # Sun Java System Web Server Multiple Vulnerabilities
 #
@@ -52,9 +52,9 @@ Multiple Vulnerabilities.";
 
 if (description)
 {
- script_id(100567);
- script_version("$Revision: 6637 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100567");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_bugtraq_id(37874,37910);
  script_cve_id("CVE-2010-0272","CVE-2010-0273", "CVE-2010-0360",

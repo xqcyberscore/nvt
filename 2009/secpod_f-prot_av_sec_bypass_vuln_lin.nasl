@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_sec_bypass_vuln_lin.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_f-prot_av_sec_bypass_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # F-PROT AntiVirus Security Bypass Vulnerability (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with F-PROT AntiVirus and is prone to
 
 if(description)
 {
-  script_id(900555);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900555");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

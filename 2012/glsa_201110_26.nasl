@@ -46,12 +46,12 @@ advisory GLSA 201110-26.";
                                                                                 
 if(description)
 {
- script_id(70789);
+ script_oid("1.3.6.1.4.1.25623.1.0.70789");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2010-4008", "CVE-2010-4494", "CVE-2011-1944", "CVE-2011-2821", "CVE-2011-2834");
- script_version("$Revision: 6593 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:14 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-12 10:04:40 -0500 (Sun, 12 Feb 2012)");
  script_name("Gentoo Security Advisory GLSA 201110-26 (libxml2)");
 

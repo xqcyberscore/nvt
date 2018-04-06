@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_enigma2_51330.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_enigma2_51330.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Enigma2 'file' Parameter Information Disclosure Vulnerability
 #
@@ -35,9 +35,9 @@ obtain sensitive information; other attacks are also possible.";
 
 if (description)
 {
- script_id(103381);
+ script_oid("1.3.6.1.4.1.25623.1.0.103381");
  script_bugtraq_id(51330);
- script_version ("$Revision: 5956 $");
+ script_version ("$Revision: 9352 $");
  script_cve_id("CVE-2012-1024", "CVE-2012-1025");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,7 +47,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51330");
  script_xref(name : "URL" , value : "http://dream.reichholf.net/wiki/Enigma2");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-10 10:48:24 +0100 (Tue, 10 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

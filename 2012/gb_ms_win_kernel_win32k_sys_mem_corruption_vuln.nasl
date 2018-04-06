@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 5342 2017-02-18 17:02:54Z cfi $
+# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Kernel 'win32k.sys' Memory Corruption Vulnerability
 #
@@ -49,10 +49,10 @@ This NVT has been replaced by NVT secpod_ms12-008.nasl
 
 if(description)
 {
-  script_id(802379);
+  script_oid("1.3.6.1.4.1.25623.1.0.802379");
   script_tag(name:"creation_date", value:"2012-01-13 16:00:36 +0100 (Fri, 13 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:02:54 +0100 (Sat, 18 Feb 2017) $");
-  script_version("$Revision: 5342 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9352 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2011-5046");
   script_bugtraq_id(51122);

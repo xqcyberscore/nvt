@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0039_1.nasl 8267 2018-01-02 06:29:17Z teissa $
+# $Id: gb_suse_2012_0039_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # SuSE Update for seamonkey openSUSE-SU-2012:0039-1 (seamonkey)
 #
@@ -44,9 +44,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(850246);
-  script_version("$Revision: 8267 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850246");
+  script_version("$Revision: 9352 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 22:40:52 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3658", "CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_tag(name:"cvss_base", value:"10.0");

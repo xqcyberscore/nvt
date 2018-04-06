@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: RevSense_sql_injection_and_xss.nasl 5776 2017-03-30 06:05:40Z cfi $
+# $Id: RevSense_sql_injection_and_xss.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # RevSense SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_summary = "RevSense is prone to an SQL-injection vulnerability and a cross-s
 
 if (description)
 {
- script_id(100038);
- script_version("$Revision: 5776 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100038");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_bugtraq_id(32624);
  script_cve_id("CVE-2008-6385");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_win_dec09.nasl 8196 2017-12-20 12:13:37Z cfischer $
+# $Id: secpod_ruby_heap_bof_vuln_win_dec09.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Ruby Interpreter Heap Overflow Vulnerability (Windows) - Dec09
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with Ruby Interpreter and is prone to Heap
 
 if(description)
 {
-  script_id(900725);
-  script_version("$Revision: 8196 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900725");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-040.nasl 5863 2017-04-05 07:38:11Z antu123 $
+# $Id: gb_ms08-040.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # MS SQL Server Elevation of Privilege Vulnerabilities (941203)
 #
@@ -47,9 +47,9 @@ tag_summary = "This host has Microsoft SQL Server, which is prone to Privilege
 
 if(description)
 {
-  script_id(800105);
-  script_version("$Revision: 5863 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800105");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:26:50 +0200 (Tue, 14 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");

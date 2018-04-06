@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_3425.nasl 6624 2017-07-10 06:11:55Z cfischer $
+# $Id: fcore_2009_3425.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-3425 (java-1.6.0-openjdk)
 #
 # Authors:
@@ -56,9 +56,9 @@ announced via advisory FEDORA-2009-3425.";
 
 if(description)
 {
- script_id(63775);
- script_version("$Revision: 6624 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63775");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-15 22:11:00 +0200 (Wed, 15 Apr 2009)");
  script_cve_id("CVE-2009-0794", "CVE-2009-0793");
  script_tag(name:"cvss_base", value:"5.0");

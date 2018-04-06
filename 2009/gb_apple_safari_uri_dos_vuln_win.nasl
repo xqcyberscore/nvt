@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_uri_dos_vuln_win.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apple_safari_uri_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Apple Safari URI NULL Pointer Dereference DoS Vulnerability (Windows)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is running Apple Safari web browser and is prone
 
 if(description)
 {
-  script_id(800524);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800524");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-05 06:25:55 +0100 (Thu, 05 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

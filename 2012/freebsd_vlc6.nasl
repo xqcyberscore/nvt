@@ -51,12 +51,12 @@ as announced in the referenced advisory.";
 
 if(description)
 {
- script_id(72196);
+ script_oid("1.3.6.1.4.1.25623.1.0.72196");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-1775", "CVE-2012-1776");
- script_version("$Revision: 5912 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-09-15 04:25:48 -0400 (Sat, 15 Sep 2012)");
  script_name("FreeBSD Ports: vlc");
 

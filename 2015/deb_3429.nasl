@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3429.nasl 6609 2017-07-07 12:05:59Z cfischer $
+# $Id: deb_3429.nasl 9355 2018-04-06 07:16:07Z cfischer $
 # Auto-generated from advisory DSA 3429-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703429);
-    script_version("$Revision: 6609 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703429");
+    script_version("$Revision: 9355 $");
     script_cve_id("CVE-2015-8327", "CVE-2015-8560");
     script_name("Debian Security Advisory DSA 3429-1 (foomatic-filters - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2015-12-21 00:00:00 +0100 (Mon, 21 Dec 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -99,9 +99,9 @@ tag_affected = "MozillaFirefox,MozillaThunderbird,seamonkey on openSUSE 11.3, op
 
 if(description)
 {
-  script_id(850171);
-  script_version("$Revision: 8041 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:28:21 +0100 (Fri, 08 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.850171");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

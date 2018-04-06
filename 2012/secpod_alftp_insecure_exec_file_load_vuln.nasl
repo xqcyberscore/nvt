@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # ALFTP Insecure Executable File Loading Vulnerability
 #
@@ -38,14 +38,14 @@ tag_summary = "This host is installed with ALFTP and is prone to insecure
 
 if(description)
 {
-  script_id(903012);
-  script_version("$Revision: 6018 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903012");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0315");
   script_bugtraq_id(51984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("ALFTP Insecure Executable File Loading Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 10:36:31 +0530 (Wed, 28 Mar 2012)");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48027/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_info_disc_n_spoof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_ms_ie_info_disc_n_spoof_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # MS IE Information Disclosure and Web Site Spoofing Vulnerabilities
 #
@@ -50,13 +50,13 @@ prone to information disclosure and web site spoofing vulnerabilities.";
 
 if(description)
 {
-  script_id(803305);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803305");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(57640, 57641);
   script_cve_id("CVE-2013-1450","CVE-2013-1451");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:45:52 +0530 (Mon, 04 Feb 2013)");
   script_name("MS IE Information Disclosure and Web Site Spoofing Vulnerabilities");
   script_xref(name : "URL" , value : "http://pastebin.com/raw.php?i=rz9BcBey");

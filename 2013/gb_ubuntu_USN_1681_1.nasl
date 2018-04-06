@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1681_1.nasl 8526 2018-01-25 06:57:37Z teissa $
+# $Id: gb_ubuntu_USN_1681_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Ubuntu Update for firefox USN-1681-1
 #
@@ -85,9 +85,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1681-1/");
-  script_id(841273);
-  script_version("$Revision: 8526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 07:57:37 +0100 (Thu, 25 Jan 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.841273");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-11 16:50:06 +0530 (Fri, 11 Jan 2013)");
   script_cve_id("CVE-2013-0769", "CVE-2013-0749", "CVE-2013-0770", "CVE-2013-0760",
                 "CVE-2013-0761", "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0766",

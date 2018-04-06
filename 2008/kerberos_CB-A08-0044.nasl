@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerberos_CB-A08-0044.nasl 7784 2017-11-16 08:42:29Z cfischer $
+# $Id: kerberos_CB-A08-0044.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Kerberos < 1.6.4 vulnerability
 #
 # Authors:
@@ -55,13 +55,13 @@ Impact
 
 tag_solution = "All Kerberos users should upgrade to the latest version:";
 
-# $Revision: 7784 $
+# $Revision: 9349 $
 
 if(description)
 {
-  script_id(90016);
-  script_version("$Revision: 7784 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.90016");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_cve_id("CVE-2008-0948", "CVE-2008-0947", "CVE-2008-0063", "CVE-2008-0062");
   script_bugtraq_id(28302, 28303);

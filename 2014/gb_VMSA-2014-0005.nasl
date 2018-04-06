@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0005.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_VMSA-2014-0005.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # VMSA-2014-0005: VMware Workstation, Player, Fusion, and ESXi patches address a guest privilege escalation
 #
@@ -49,17 +49,17 @@ not be manipulated from the Guest Operating System. ';
 
 if (description)
 {
- script_id(105037);
+ script_oid("1.3.6.1.4.1.25623.1.0.105037");
  script_cve_id("CVE-2014-3793");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6995 $");
+ script_version ("$Revision: 9354 $");
  script_name("VMSA-2014-0005: VMware Workstation, Player, Fusion, and ESXi patches address a guest privilege escalation");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0005.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-06-02 11:04:01 +0100 (Mon, 02 Jun 2014)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

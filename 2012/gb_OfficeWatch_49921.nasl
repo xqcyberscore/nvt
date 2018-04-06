@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OfficeWatch_49921.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_OfficeWatch_49921.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Metropolis Technologies OfficeWatch Directory Traversal Vulnerability
 #
@@ -35,9 +35,9 @@ information that could aid in further attacks.";
 
 if (description)
 {
- script_id(103502);
+ script_oid("1.3.6.1.4.1.25623.1.0.103502");
  script_bugtraq_id(49921);
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Metropolis Technologies OfficeWatch Directory Traversal Vulnerability");
 
@@ -47,7 +47,7 @@ if (description)
 
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-06-27 13:52:32 +0200 (Wed, 27 Jun 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

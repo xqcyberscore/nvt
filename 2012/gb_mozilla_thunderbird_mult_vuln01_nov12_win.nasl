@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is installed with Mozilla Thunderbird and is prone to m
 
 if(description)
 {
-  script_id(803351);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803351");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -54,7 +54,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");

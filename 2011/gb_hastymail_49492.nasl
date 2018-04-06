@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail_49492.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_hastymail_49492.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Hastymail2 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103244);
- script_version("$Revision: 7019 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103244");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-09-08 12:04:18 +0200 (Thu, 08 Sep 2011)");
  script_bugtraq_id(49492);
  script_tag(name:"cvss_base", value:"4.3");

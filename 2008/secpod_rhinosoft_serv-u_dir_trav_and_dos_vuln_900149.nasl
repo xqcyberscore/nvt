@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rhinosoft_serv-u_dir_trav_and_dos_vuln_900149.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: secpod_rhinosoft_serv-u_dir_trav_and_dos_vuln_900149.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Serv-U File Renaming Directory Traversal and 'STOU' DoS Vulnerabilities
 #
 # Authors:
@@ -44,9 +44,9 @@ tag_summary = "The host is running Serv-U FTP Server, which is prone to Director
 
 if(description)
 {
-  script_id(900149);
-  script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900149");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:57:31 +0200 (Tue, 14 Oct 2008)");
   script_bugtraq_id(31563);
   script_copyright("Copyright (C) 2008 SecPod");

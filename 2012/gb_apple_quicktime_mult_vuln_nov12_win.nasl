@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_nov12_win.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_apple_quicktime_mult_vuln_nov12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - Nov12 (Windows)
 #
@@ -40,15 +40,15 @@ tag_summary = "This host is installed with Apple QuickTime and is prone to
 
 if(description)
 {
-  script_id(803047);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803047");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-1374", "CVE-2012-3757", "CVE-2012-3751", "CVE-2012-3758",
                 "CVE-2012-3752", "CVE-2012-3753", "CVE-2012-3754", "CVE-2012-3755",
                 "CVE-2012-3756");
   script_bugtraq_id(56438);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 13:08:03 +0530 (Fri, 09 Nov 2012)");
   script_name("Apple QuickTime Multiple Vulnerabilities - Nov12 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5581");

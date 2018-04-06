@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Foxit Reader Plugin URL Processing Buffer Overflow Vulnerability
 #
@@ -40,12 +40,12 @@ tag_summary = "The host is installed with Foxit Reader and is prone to buffer
 
 if(description)
 {
-  script_id(803163);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803163");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(57174);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 13:51:25 +0530 (Thu, 24 Jan 2013)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51733");

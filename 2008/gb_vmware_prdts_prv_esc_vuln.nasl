@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_prv_esc_vuln.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: gb_vmware_prdts_prv_esc_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # VMware Product(s) Local Privilege Escalation Vulnerability
 #
@@ -59,9 +59,9 @@ tag_affected = "VMware Player 1.x - before 1.0.7 build 91707 on Linux
 
 if(description)
 {
-  script_id(800006);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800006");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-09-26 14:12:58 +0200 (Fri, 26 Sep 2008)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

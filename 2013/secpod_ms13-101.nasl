@@ -26,14 +26,14 @@
 
 if(description)
 {
-  script_id(903417);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903417");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3899", "CVE-2013-3902", "CVE-2013-3903", "CVE-2013-3907",
                 "CVE-2013-5058");
   script_bugtraq_id(64080, 64084, 64090, 64087, 64091);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:49:46 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Kernel Local Privilege Escalation Vulnerabilities (2880430)");
 

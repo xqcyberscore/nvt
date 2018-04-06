@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_detect.nasl 8325 2018-01-08 15:02:04Z cfischer $
+# $Id: gb_dlink_dsl_detect.nasl 9331 2018-04-05 12:19:35Z jschulte $
 #
 # Dlink DSL Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812377");
-  script_version("$Revision: 8325 $");
+  script_version("$Revision: 9331 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 16:02:04 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:19:35 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 16:00:40 +0530 (Wed, 03 Jan 2018)");
   script_name("Dlink DSL Devices Detection");
 
@@ -70,7 +70,7 @@ if(!banner){
   exit(0);
 }
 
-if("Server: micro_httpd" >< banner && 'WWW-Authenticate: Basic realm="DSL-' >< banner)
+if(("Server: micro_httpd" >< banner || "Server: Boa" >< banner) && 'WWW-Authenticate: Basic realm="DSL-' >< banner)
 {
   dlinkVer = "Unknown";
 

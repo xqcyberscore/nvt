@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln_jan12.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_ibm_was_mult_vuln_jan12.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)
 #
@@ -43,13 +43,13 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(802412);
-  script_version("$Revision: 5977 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802412");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-5066", "CVE-2011-5065", "CVE-2011-1377");
   script_bugtraq_id(51560, 51559, 50310);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 17:27:41 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46469");

@@ -74,12 +74,12 @@ advisory GLSA 201201-01.";
                                                                                 
 if(description)
 {
- script_id(70802);
+ script_oid("1.3.6.1.4.1.25623.1.0.70802");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2008-7251", "CVE-2008-7252", "CVE-2010-2958", "CVE-2010-3055", "CVE-2010-3056", "CVE-2010-3263", "CVE-2011-0986", "CVE-2011-0987", "CVE-2011-2505", "CVE-2011-2506", "CVE-2011-2507", "CVE-2011-2508", "CVE-2011-2642", "CVE-2011-2643", "CVE-2011-2718", "CVE-2011-2719", "CVE-2011-3646", "CVE-2011-4064", "CVE-2011-4107", "CVE-2011-4634", "CVE-2011-4780", "CVE-2011-4782");
- script_version("$Revision: 6593 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:14 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-12 10:04:41 -0500 (Sun, 12 Feb 2012)");
  script_name("Gentoo Security Advisory GLSA 201201-01 (phpMyAdmin)");
 

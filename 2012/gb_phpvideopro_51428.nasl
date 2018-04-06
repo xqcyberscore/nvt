@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvideopro_51428.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_phpvideopro_51428.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # phpVideoPro Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(103392);
+ script_oid("1.3.6.1.4.1.25623.1.0.103392");
  script_bugtraq_id(51428);
- script_version ("$Revision: 5700 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("phpVideoPro Multiple Cross Site Scripting Vulnerabilities");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://code.google.com/p/simplesamlphp/issues/detail?id=468");
  script_xref(name : "URL" , value : "http://simplesamlphp.org/");
  script_xref(name : "URL" , value : "http://code.google.com/p/simplesamlphp/source/detail?r=3009");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-19 12:05:58 +0100 (Thu, 19 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

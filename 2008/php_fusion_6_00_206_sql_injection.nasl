@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_fusion_6_00_206_sql_injection.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: php_fusion_6_00_206_sql_injection.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: PHP-Fusion <= 6.00.206 Forum SQL Injection Vulnerability
 #
 # Authors:
@@ -38,9 +38,9 @@ tag_solution = "Apply the patch from the php-fusion main site:
 
 if(description)
 {
-  script_id(200010);
-  script_version("$Revision: 5933 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.200010");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-007.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-007.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft AntiXSS Library Information Disclosure Vulnerability (2607664)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902785);
-  script_version("$Revision: 5366 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902785");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-0007");
   script_bugtraq_id(51291);
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"creation_date", value:"2012-01-11 13:30:24 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft AntiXSS Library Information Disclosure Vulnerability (2607664)");

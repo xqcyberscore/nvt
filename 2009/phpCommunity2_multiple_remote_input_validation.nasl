@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpCommunity2_multiple_remote_input_validation.nasl 5770 2017-03-29 14:34:03Z cfi $
+# $Id: phpCommunity2_multiple_remote_input_validation.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # phpCommunity2 Multiple Remote Input Validation Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_summary = "phpCommunity2 is prone to multiple input-validation vulnerabiliti
 
 if (description)
 {
- script_id(100041);
- script_version("$Revision: 5770 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100041");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_cve_id("CVE-2009-4884", "CVE-2009-4885", "CVE-2009-4886");
  script_bugtraq_id(34056);

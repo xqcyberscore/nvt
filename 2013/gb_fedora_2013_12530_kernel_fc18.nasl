@@ -34,9 +34,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_id(866067);
-  script_version("$Revision: 8672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:39:18 +0100 (Mon, 05 Feb 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.866067");
+  script_version("$Revision: 9353 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 10:15:15 +0530 (Tue, 16 Jul 2013)");
   script_cve_id("CVE-2013-2232", "CVE-2013-1059", "CVE-2013-2234", "CVE-2013-2164",
                 "CVE-2013-2851", "CVE-2013-2852", "CVE-2013-2148", "CVE-2013-2147",

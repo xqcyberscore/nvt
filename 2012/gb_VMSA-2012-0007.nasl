@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0007.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_VMSA-2012-0007.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0007 VMware hosted products and ESX patches address privilege escalation
 #
@@ -56,15 +56,15 @@ Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103466);
+ script_oid("1.3.6.1.4.1.25623.1.0.103466");
  script_cve_id("CVE-2012-1518");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0007 VMware hosted products and ESX patches address privilege escalation");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-13 10:53:01 +0100 (Fri, 13 Apr 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

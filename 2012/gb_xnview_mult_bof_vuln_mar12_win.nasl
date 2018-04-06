@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)
 #
@@ -45,12 +45,12 @@ tag_solution = "Update to XnView version 1.98.8 or later,
 
 if(description)
 {
-  script_id(802815);
-  script_version("$Revision: 6022 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802815");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(52405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:56:44 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47388/");

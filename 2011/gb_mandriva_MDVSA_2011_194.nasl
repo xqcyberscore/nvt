@@ -45,11 +45,11 @@ tag_affected = "icu on Mandriva Linux 2010.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-12/msg00025.php");
-  script_id(831516);
+  script_oid("1.3.6.1.4.1.25623.1.0.831516");
   script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6570 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:06:35 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-30 09:13:11 +0530 (Fri, 30 Dec 2011)");
   script_xref(name: "MDVSA", value: "2011:194");
   script_cve_id("CVE-2011-4599");

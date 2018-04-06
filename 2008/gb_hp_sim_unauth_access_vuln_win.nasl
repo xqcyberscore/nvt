@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sim_unauth_access_vuln_win.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: gb_hp_sim_unauth_access_vuln_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # HP Systems Insight Manager Unauthorized Access Vulnerability (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running HP Systems Insight Manager (SIM) and is pron
 
 if(description)
 {
-  script_id(800033);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800033");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3910.nasl 6764 2017-07-20 05:30:52Z cfischer $
+# $Id: deb_3910.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3910-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703910);
-    script_version("$Revision: 6764 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703910");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2017-11104");
     script_name("Debian Security Advisory DSA 3910-1 (knot - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-20 07:30:52 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-07-14 00:00:00 +0200 (Fri, 14 Jul 2017)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

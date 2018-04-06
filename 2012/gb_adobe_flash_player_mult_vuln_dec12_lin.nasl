@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 
 if(description)
 {
-  script_id(803076);
-  script_version("$Revision: 5963 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803076");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_bugtraq_id(56892, 56896, 56898);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 15:33:01 +0530 (Fri, 14 Dec 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51560/");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nms_dvd_burning_sdk_actvx_vuln_900132.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: secpod_nms_dvd_burning_sdk_actvx_vuln_900132.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: NuMedia Soft DVD Burning SDK Activex Control Remote Code Execution Vulnerability
 #
 # Authors:
@@ -41,9 +41,9 @@ tag_summary = "The host is installed CDBurnerXP, which is prone to ActiveX contr
 
 if(description)
 {
-  script_id(900132);
-  script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900132");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-09-26 07:36:49 +0200 (Fri, 26 Sep 2008)");
   script_cve_id("CVE-2008-4342");
   script_bugtraq_id(31374);

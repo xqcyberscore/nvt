@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftpshell_server_bof_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_ftpshell_server_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # FTPShell Server Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is running FTPshell Server and is prone to Buffer
 
 if(description)
 {
-  script_id(800226);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800226");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

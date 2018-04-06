@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-049.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ms13-049.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Driver Denial of Service Vulnerability (2845690)
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902975);
-  script_version("$Revision: 5351 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902975");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3138");
   script_bugtraq_id(60358);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 08:44:19 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Windows Kernel-Mode Driver Denial of Service Vulnerability (2845690)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53741/");

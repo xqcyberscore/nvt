@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_streamripper_mult_bof_vuln_nov08_lin.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_streamripper_mult_bof_vuln_nov08_lin.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Streamripper Multiple Buffer Overflow Vulnerabilities (Linux)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with Streamripper, which is prone to Multip
 
 if(description)
 {
-  script_id(800147);
-  script_version("$Revision: 5158 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800147");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-01 15:31:19 +0100 (Mon, 01 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

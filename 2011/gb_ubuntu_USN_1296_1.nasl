@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1296_1.nasl 7964 2017-12-01 07:32:11Z santu $
+# $Id: gb_ubuntu_USN_1296_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Ubuntu Update for acpid USN-1296-1
 #
@@ -44,11 +44,11 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1296-1/");
-  script_id(840835);
+  script_oid("1.3.6.1.4.1.25623.1.0.840835");
   script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 7964 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
+ script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 10:54:15 +0530 (Fri, 09 Dec 2011)");
   script_xref(name: "USN", value: "1296-1");
   script_cve_id("CVE-2011-2777", "CVE-2011-4578");

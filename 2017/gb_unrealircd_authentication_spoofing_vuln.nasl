@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id: gb_unrealircd_authentication_spoofing_vuln.nasl 66332 2017-02-02 14:01:01Z antu123 $
+# $Id: gb_unrealircd_authentication_spoofing_vuln.nasl 9341 2018-04-06 05:27:04Z cfischer $
 #
 # UnrealIRCd Authentication Spoofing Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809883");
-  script_version("$Revision: 5287 $");
+  script_version("$Revision: 9341 $");
   script_cve_id("CVE-2016-7144");
   script_bugtraq_id(92763);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-13 12:23:26 +0100 (Mon, 13 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 16:51:06 +0530 (Fri, 03 Feb 2017)");
   script_name("UnrealIRCd Authentication Spoofing Vulnerability");
 

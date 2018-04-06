@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_protocol_plugins_dos_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_pidgin_libpurple_protocol_plugins_dos_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Pidgin Libpurple Protocol Plugins Denial of Service Vulnerabilities (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with Pidgin and is prone to denial of
 
 if(description)
 {
-  script_id(802331);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802331");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2943", "CVE-2011-3184", "CVE-2011-3185");
   script_bugtraq_id(49268);

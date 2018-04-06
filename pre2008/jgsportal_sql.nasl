@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: jgsportal_sql.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: jgsportal_sql.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: JGS-Portal Multiple XSS and SQL injection Vulnerabilities
 #
 # Authors:
@@ -33,10 +33,10 @@ tag_solution = "Unknown at this time";
 
 if(description)
 {
- script_id(18289);
- script_version("$Revision: 5780 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.18289");
+ script_version("$Revision: 9348 $");
  script_cve_id("CVE-2005-1635", "CVE-2005-1633");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(13650);
  script_tag(name:"cvss_base", value:"7.5");

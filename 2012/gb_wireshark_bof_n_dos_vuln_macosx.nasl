@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is installed with Wireshark and is prone to heap based
 
 if(description)
 {
-  script_id(802767);
-  script_version("$Revision: 5931 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802767");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:03:46 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)");
 

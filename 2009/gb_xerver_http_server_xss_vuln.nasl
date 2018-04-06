@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_http_server_xss_vuln.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_xerver_http_server_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Xerver HTTP Server Cross Site Scripting Vulnerability
 #
@@ -45,9 +45,9 @@ Scripting vulnerability";
 
 if(description)
 {
-  script_id(801015);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801015");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-21 10:12:07 +0200 (Wed, 21 Oct 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");

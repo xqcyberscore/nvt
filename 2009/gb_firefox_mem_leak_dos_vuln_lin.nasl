@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mem_leak_dos_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_firefox_mem_leak_dos_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Firefox Browser Libxul Memory Leak Remote DoS Vulnerability - Linux
 #
@@ -36,9 +36,9 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 
 if(description)
 {
-  script_id(800402);
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800402");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

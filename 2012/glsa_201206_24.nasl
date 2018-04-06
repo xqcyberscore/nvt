@@ -60,12 +60,12 @@ advisory GLSA 201206-24.";
                                                                                 
 if(description)
 {
- script_id(71550);
+ script_oid("1.3.6.1.4.1.25623.1.0.71550");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2008-5515", "CVE-2009-0033", "CVE-2009-0580", "CVE-2009-0781", "CVE-2009-0783", "CVE-2009-2693", "CVE-2009-2901", "CVE-2009-2902", "CVE-2010-1157", "CVE-2010-2227", "CVE-2010-3718", "CVE-2010-4172", "CVE-2010-4312", "CVE-2011-0013", "CVE-2011-0534", "CVE-2011-1088", "CVE-2011-1183", "CVE-2011-1184", "CVE-2011-1419", "CVE-2011-1475", "CVE-2011-1582", "CVE-2011-2204", "CVE-2011-2481", "CVE-2011-2526", "CVE-2011-2729", "CVE-2011-3190", "CVE-2011-3375", "CVE-2011-4858", "CVE-2011-5062", "CVE-2011-5063", "CVE-2011-5064", "CVE-2012-0022");
- script_version("$Revision: 6589 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:27:50 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 9352 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
  script_name("Gentoo Security Advisory GLSA 201206-24 (apache tomcat)");
 

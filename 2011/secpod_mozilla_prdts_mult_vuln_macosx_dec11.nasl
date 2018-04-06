@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_macosx_dec11.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_mozilla_prdts_mult_vuln_macosx_dec11.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - Dec 11 (MAC OS X)
 #
@@ -52,14 +52,14 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 
 if(description)
 {
-  script_id(902778);
-  script_version("$Revision: 7044 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902778");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_bugtraq_id(51133, 51135, 51136, 51134);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-22 12:14:45 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_name("Mozilla Products Multiple Vulnerabilities - Dec 11 (MAC OS X)");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47302/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xampp_mult_csrf_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: secpod_xampp_mult_csrf_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # XAMPP Multiple Cross-Site Request Forgery Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "The host is installed with XAMPP and is prone to multiple
 
 if(description)
 {
-  script_id(900527);
-  script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900527");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

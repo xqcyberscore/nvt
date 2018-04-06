@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_may12_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: secpod_google_chrome_mult_vuln_may12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities(02) - May 12 (Mac OS X)
 #
@@ -47,15 +47,15 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 
 if(description)
 {
-  script_id(903032);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903032");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2011-3103", "CVE-2011-3104", "CVE-2011-3105", "CVE-2011-3106",
                 "CVE-2011-3107", "CVE-2011-3108", "CVE-2011-3110", "CVE-2011-3111",
                 "CVE-2011-3112", "CVE-2011-3113", "CVE-2011-3114", "CVE-2011-3115");
   script_bugtraq_id(53679);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-25 16:25:17 +0530 (Fri, 25 May 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(02) - May 12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49277/");

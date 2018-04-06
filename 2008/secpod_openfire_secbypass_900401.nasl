@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openfire_secbypass_900401.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: secpod_openfire_secbypass_900401.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Openfire 'AuthCheck' Filter Security Bypass Vulnerability
 #
 # Authors:
@@ -36,9 +36,9 @@ tag_summary = "The host is running Openfire and is prone to security bypass vuln
 
 if(description)
 {
-  script_id(900401);
-  script_version("$Revision: 5347 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900401");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-6508");
   script_bugtraq_id(32189);

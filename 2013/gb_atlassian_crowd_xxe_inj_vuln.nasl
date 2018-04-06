@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -28,13 +28,13 @@ tag_impact = "";
 
 if(description)
 {
-  script_id(803830);
-  script_version("$Revision: 5842 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803830");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
 

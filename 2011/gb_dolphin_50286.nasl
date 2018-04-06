@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_50286.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_dolphin_50286.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Boonex Dolphin 'xml/get_list.php' SQL Injection Vulnerability
 #
@@ -36,9 +36,9 @@ Boonex Dolphin 6.1 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(103306);
- script_version("$Revision: 5749 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103306");
+ script_version("$Revision: 9351 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50286);
  script_tag(name:"cvss_base", value:"7.5");

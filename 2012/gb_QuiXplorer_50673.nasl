@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_QuiXplorer_50673.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_QuiXplorer_50673.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # QuiXplorer 'index.php' Arbitrary File Upload Vulnerability
 #
@@ -36,19 +36,19 @@ QuiXplorer 2.3 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(103377);
+ script_oid("1.3.6.1.4.1.25623.1.0.103377");
  script_bugtraq_id(50673);
  script_cve_id("CVE-2011-5005");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5841 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("QuiXplorer 'index.php' Arbitrary File Upload Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50673");
  script_xref(name : "URL" , value : "http://quixplorer.sourceforge.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-05 11:51:25 +0100 (Thu, 05 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

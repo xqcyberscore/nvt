@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-067_900055.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-067_900055.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Server Service Could Allow Remote Code Execution Vulnerability (958644)
 #
 # Authors:
@@ -47,9 +47,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900055);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900055");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 09:48:39 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");

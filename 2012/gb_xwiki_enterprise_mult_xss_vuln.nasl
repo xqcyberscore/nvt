@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -52,13 +52,13 @@ scripting vulnerabilities.";
 
 if(description)
 {
-  script_id(802397);
-  script_version("$Revision: 7573 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802397");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51867);
   script_cve_id("CVE-2012-1019");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 11:12:00 +0530 (Fri, 09 Mar 2012)");
   script_name("XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47885");

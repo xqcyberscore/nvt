@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability
 #
@@ -43,12 +43,12 @@ obtaining fixes.";
 
 if (description)
 {
- script_id(103480);
+ script_oid("1.3.6.1.4.1.25623.1.0.103480");
  script_bugtraq_id(25694);
  script_cve_id("CVE-2007-3010");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8654 $");
+ script_version ("$Revision: 9352 $");
 
  script_name("Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability");
 
@@ -57,7 +57,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/479699");
  script_xref(name : "URL" , value : "http://www1.alcatel-lucent.com/psirt/statements/2007002/OXEUMT.htm");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-26 13:55:46 +0200 (Thu, 26 Apr 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

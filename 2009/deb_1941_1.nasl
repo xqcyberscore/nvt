@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1941_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
+# $Id: deb_1941_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory DSA 1941-1 (poppler)
 #
 # Authors:
@@ -48,9 +48,9 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 
 if(description)
 {
- script_id(66332);
- script_version("$Revision: 6615 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66332");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 22:10:42 +0100 (Thu, 03 Dec 2009)");
  script_cve_id("CVE-2009-3607", "CVE-2009-3606", "CVE-2009-3608", "CVE-2009-0755", "CVE-2009-3904", "CVE-2009-3905", "CVE-2009-3903", "CVE-2009-3938", "CVE-2009-3909");
  script_tag(name:"cvss_base", value:"9.3");

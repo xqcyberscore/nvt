@@ -44,9 +44,9 @@ software upgrades.";
 
 if(description)
 {
- script_id(64009);
- script_version("$Revision: 4847 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-23 10:33:16 +0100 (Fri, 23 Dec 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64009");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-05-20 00:17:15 +0200 (Wed, 20 May 2009)");
  script_cve_id("CVE-2008-6679");
  script_bugtraq_id(34340);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul13_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_jul13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 July13 (MAC OS X)
 #
@@ -29,8 +29,8 @@ tag_impact = "
 
 if(description)
 {
-  script_id(803903);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803903");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-2880", "CVE-2013-2879", "CVE-2013-2878", "CVE-2013-2877",
                 "CVE-2013-2876", "CVE-2013-2875", "CVE-2013-2873", "CVE-2013-2872",
                 "CVE-2013-2871", "CVE-2013-2870", "CVE-2013-2869", "CVE-2013-2868",
@@ -39,7 +39,7 @@ if(description)
                     61060, 61053, 61054, 61058, 61050, 61049);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 19:10:22 +0530 (Tue, 16 Jul 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July13 (MAC OS X)");
 

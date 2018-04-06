@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2906.nasl 9136 2018-03-19 13:08:02Z cfischer $
+# $Id: deb_2906.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 2906-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,8 +29,8 @@
 
 if(description)
 {
-    script_id(702906);
-    script_version("$Revision: 9136 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.702906");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2013-0343", "CVE-2013-2147", "CVE-2013-2889", "CVE-2013-2893",
                   "CVE-2013-2929", "CVE-2013-4162", "CVE-2013-4299", "CVE-2013-4345",
                   "CVE-2013-4512", "CVE-2013-4587", "CVE-2013-6367", "CVE-2013-6380",
@@ -39,7 +39,7 @@ if(description)
                   "CVE-2014-1444", "CVE-2014-1445", "CVE-2014-1446", "CVE-2014-1874",
                   "CVE-2014-2039", "CVE-2014-2523");
     script_name("Debian Security Advisory DSA 2906-1 (linux-2.6 - privilege escalation/denial of service/information leak)");
-    script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:08:02 +0100 (Mon, 19 Mar 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2014-04-24 00:00:00 +0200 (Thu, 24 Apr 2014)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

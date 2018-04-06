@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Joomla XBall Component SQL Injection Vulnerability
 #
@@ -44,11 +44,11 @@ SQL injection vulnerability.";
 
 if(description)
 {
-  script_id(802569);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802569");
+  script_version("$Revision: 9352 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:38:16 +0530 (Mon, 23 Jan 2012)");
   script_name("Joomla XBall Component SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108954/joomlaxball-sql.txt");

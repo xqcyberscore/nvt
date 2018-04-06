@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_titan_ftp_server_cmd_processing_dos_vuln_900160.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_titan_ftp_server_cmd_processing_dos_vuln_900160.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Titan FTP Server 'SITE WHO' Command Remote DoS Vulnerability
 #
 # Authors:
@@ -40,9 +40,9 @@ tag_summary = "The host is running Titan FTP Server and is prone to denial of
 
 if(description)
 {
-  script_id(900160);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900160");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-23 14:16:10 +0200 (Thu, 23 Oct 2008)");
   script_cve_id("CVE-2008-6082");
  script_bugtraq_id(31757);

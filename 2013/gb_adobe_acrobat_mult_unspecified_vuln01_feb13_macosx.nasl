@@ -43,10 +43,10 @@ multiple unspecified vulnerabilities.";
 
 if(description)
 {
-  script_id(803419);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803419");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(57931, 57947);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 19:32:21 +0530 (Tue, 19 Feb 2013)");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_tag(name:"cvss_base", value:"9.3");

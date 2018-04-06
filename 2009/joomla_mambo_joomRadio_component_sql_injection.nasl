@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_mambo_joomRadio_component_sql_injection.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: joomla_mambo_joomRadio_component_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Joomla! and Mambo JoomRadio Component 'id' Parameter SQL Injection
 # Vulnerability
@@ -35,9 +35,9 @@ tag_summary = "The JoomRadio component for Joomla! and Mambo is prone to an SQL-
 
 if(description)
 {
- script_id(100007);
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100007");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

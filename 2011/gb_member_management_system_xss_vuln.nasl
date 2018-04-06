@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_member_management_system_xss_vuln.nasl 5750 2017-03-28 14:10:17Z cfi $
+# $Id: gb_member_management_system_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Expinion.Net Member Management System 'REF_URL' Parameter Cross-Site Scripting Vulnerability
 #
@@ -47,13 +47,13 @@ cross site scripting vulnerability.";
 
 if(description)
 {
-  script_id(802352);
-  script_version("$Revision: 5750 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802352");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2010-4896");
   script_bugtraq_id(43109);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-06 11:26:13 +0530 (Tue, 06 Dec 2011)");
   script_name("Expinion.Net Member Management System 'REF_URL' Parameter Cross-Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41362");

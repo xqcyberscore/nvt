@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_smtp_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_wireshark_smtp_dos_vuln_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
 #
 # Wireshark SMTP Processing Denial of Service Vulnerability (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "The Remote host is installed with Wireshark and is prone to
 
 if(description)
 {
-  script_id(800074);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800074");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-04 14:15:00 +0100 (Thu, 04 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

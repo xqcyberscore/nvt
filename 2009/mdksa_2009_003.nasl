@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_003.nasl 6573 2017-07-06 13:10:50Z cfischer $
+# $Id: mdksa_2009_003.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory MDVSA-2009:003 (python)
 #
 # Authors:
@@ -55,9 +55,9 @@ announced via advisory MDVSA-2009:003.";
 
 if(description)
 {
- script_id(63136);
- script_version("$Revision: 6573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:10:50 +0200 (Thu, 06 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.63136");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-01-13 22:38:32 +0100 (Tue, 13 Jan 2009)");
  script_cve_id("CVE-2007-4965", "CVE-2008-1679", "CVE-2008-4864", "CVE-2008-2315", "CVE-2008-5031");
  script_tag(name:"cvss_base", value:"10.0");

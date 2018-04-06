@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_unprotected_admin.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: oscommerce_unprotected_admin.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # osCommerce unprotected admin directory
 #
@@ -36,9 +36,9 @@ tag_solution = "Limit access to the directory using .htaccess.
 
 if (description)
 {
- script_id(100003);
- script_version("$Revision: 6704 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100003");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

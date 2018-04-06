@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fcms_50897.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_fcms_50897.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Family Connections 'argv[1]' Parameter Remote Arbitrary Command Execution Vulnerability
 #
@@ -37,9 +37,9 @@ information.";
 
 if (description)
 {
- script_id(103356);
+ script_oid("1.3.6.1.4.1.25623.1.0.103356");
  script_bugtraq_id(50897);
- script_version ("$Revision: 7019 $");
+ script_version ("$Revision: 9351 $");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
  script_name("Family Connections 'argv[1]' Parameter Remote Arbitrary Command Execution Vulnerability");
@@ -48,7 +48,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.haudenschilt.com/fcms/index.html");
  script_xref(name : "URL" , value : "http://sourceforge.net/apps/trac/fam-connections/ticket/407");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-12-06 10:40:05 +0100 (Tue, 06 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

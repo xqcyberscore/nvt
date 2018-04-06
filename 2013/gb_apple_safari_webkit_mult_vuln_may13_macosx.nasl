@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_may13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_may13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May13 (Mac OS X)
 #
@@ -37,13 +37,13 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 
 if(description)
 {
-  script_id(803379);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803379");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0960","CVE-2013-0961");
   script_bugtraq_id(58496, 58495);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 15:50:15 +0530 (Thu, 02 May 2013)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52658");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: secpod_ms12-076.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2720184)
 #
@@ -50,13 +50,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902930);
-  script_version("$Revision: 6523 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902930");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:46:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2720184)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51242/");

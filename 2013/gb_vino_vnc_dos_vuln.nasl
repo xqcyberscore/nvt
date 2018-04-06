@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vino_vnc_dos_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_vino_vnc_dos_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Vino VNC Server Remote Denial Of Service Vulnerability
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(802061);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802061");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(62443);
   script_cve_id("CVE-2013-5745");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:12:45 +0530 (Fri, 27 Sep 2013)");
   script_name("Vino VNC Server Remote Denial Of Service Vulnerability");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpDatingClub_35454.nasl 5776 2017-03-30 06:05:40Z cfi $
+# $Id: phpDatingClub_35454.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # phpDatingClub 'search.php' Cross-Site Scripting and SQL Injection
 # Vulnerabilities
@@ -39,9 +39,9 @@ tag_summary = "phpDatingClub is prone to a cross-site scripting vulnerability an
 
 if(description)
 {
- script_id(100231);
- script_version("$Revision: 5776 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100231");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-08 19:01:22 +0200 (Wed, 08 Jul 2009)");
  script_bugtraq_id(35454);
  script_cve_id("CVE-2009-2179","CVE-2009-2178");

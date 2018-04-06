@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotuscms_php_code_exec_2011.nasl 5715 2017-03-24 11:34:41Z cfi $
+# $Id: gb_lotuscms_php_code_exec_2011.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # LotusCMS PHP Code Execution Vulnerabilities
 #
@@ -35,14 +35,14 @@ affected.";
 
 if (description)
 {
- script_id(103444);
- script_version ("$Revision: 5715 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103444");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("LotusCMS PHP Code Execution Vulnerabilities");
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2011-21/");
  script_xref(name : "URL" , value : "http://www.lotuscms.org/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-03-07 11:02:50 +0100 (Wed, 07 Mar 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

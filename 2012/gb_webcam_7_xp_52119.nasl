@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcam_7_xp_52119.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_webcam_7_xp_52119.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # WebcamXP and Webcam7 Directory Traversal Vulnerability
 #
@@ -37,9 +37,9 @@ may also be affected.";
 
 if (description)
 {
- script_id(103434);
+ script_oid("1.3.6.1.4.1.25623.1.0.103434");
  script_bugtraq_id(52119);
- script_version ("$Revision: 7277 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -48,7 +48,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52119");
  script_xref(name : "URL" , value : "http://www.webcamxp.com/home.aspx");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-23 11:44:32 +0100 (Thu, 23 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

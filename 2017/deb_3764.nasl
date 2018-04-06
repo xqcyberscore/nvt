@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3764.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3764.nasl 9356 2018-04-06 07:17:02Z cfischer $
 # Auto-generated from advisory DSA 3764-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703764);
-    script_version("$Revision: 6607 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703764");
+    script_version("$Revision: 9356 $");
     script_cve_id("CVE-2016-2120", "CVE-2016-7068", "CVE-2016-7072", "CVE-2016-7073",
                   "CVE-2016-7074");
     script_name("Debian Security Advisory DSA 3764-1 (pdns - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2017-01-13 00:00:00 +0100 (Fri, 13 Jan 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

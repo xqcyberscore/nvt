@@ -52,12 +52,12 @@ as announced in the referenced advisory FreeBSD-SA-11:07.chroot.asc";
 
 if(description)
 {
- script_id(70762);
- script_version("$Revision: 5977 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.70762");
+ script_version("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("FreeBSD Security Advisory (FreeBSD-SA-11:07.chroot.asc)");
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-02-12 07:37:01 -0500 (Sun, 12 Feb 2012)");
 
 

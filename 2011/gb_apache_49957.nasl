@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_49957.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_apache_49957.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability
 #
@@ -34,14 +34,14 @@ tag_solution = "The vendor released an update. Please see the references for det
 
 if (description)
 {
- script_id(103293);
+ script_oid("1.3.6.1.4.1.25623.1.0.103293");
  script_tag(name:"creation_date", value:"2011-10-11 17:46:33 +0200 (Tue, 11 Oct 2011)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_bugtraq_id(49957,50802);
  script_cve_id("CVE-2011-3368","CVE-2011-4317");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5424 $");
+ script_version ("$Revision: 9351 $");
 
  script_name("Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability");
 

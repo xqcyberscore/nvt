@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)
 #
@@ -45,13 +45,13 @@ overflow vulnerability.";
 
 if(description)
 {
-  script_id(803043);
-  script_version("$Revision: 5977 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803043");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4987");
   script_bugtraq_id(56324);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-06 12:38:20 +0530 (Tue, 06 Nov 2012)");
   script_name("RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Oct/189");

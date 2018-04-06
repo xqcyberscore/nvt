@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openjpeg_cmap_record_parsing_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: secpod_openjpeg_cmap_record_parsing_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # OpenJPEG CMAP Record Parsing Vulnerability
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with OpenJPEG and is prone to record parsi
 
 if(description)
 {
-  script_id(903019);
-  script_version("$Revision: 5912 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903019");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1499");
   script_bugtraq_id(52654);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 11:28:15 +0530 (Wed, 25 Apr 2012)");
   script_name("OpenJPEG CMAP Record Parsing Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48498/");

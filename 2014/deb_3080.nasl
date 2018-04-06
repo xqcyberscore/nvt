@@ -1,6 +1,6 @@
 ###########################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3080.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: deb_3080.nasl 9354 2018-04-06 07:15:32Z cfischer $
 # Auto-generated from advisory DSA 3080-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 
 if(description)
 {
-    script_id(703080);
-    script_version("$Revision: 6769 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703080");
+    script_version("$Revision: 9354 $");
     script_cve_id("CVE-2014-6457", "CVE-2014-6502", "CVE-2014-6504", "CVE-2014-6506",
                   "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6517", "CVE-2014-6519",
                   "CVE-2014-6531", "CVE-2014-6558");
     script_name("Debian Security Advisory DSA 3080-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2014-11-29 00:00:00 +0100 (Sat, 29 Nov 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

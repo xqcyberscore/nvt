@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln_mar11_02.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_ibm_was_mult_vuln_mar11_02.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBM WebSphere Application Server (WAS) Multiple Vulnerabilities 02 - March 2011
 #
@@ -46,9 +46,9 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(801863);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801863");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1317", "CVE-2011-1321", "CVE-2011-1322");
   script_tag(name:"cvss_base", value:"6.5");

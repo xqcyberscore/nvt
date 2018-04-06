@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ejabberd_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: ejabberd_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # ejabberd Detection
 #
@@ -28,10 +28,10 @@ tag_summary = "This host is running ejabberd, an instant messaging server.";
 
 if (description)
 {
- script_id(100486);
+ script_oid("1.3.6.1.4.1.25623.1.0.100486");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 9347 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_im_manager_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_symantec_im_manager_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Symantec IM Manager Multiple Vulnerabilities
 #
@@ -45,9 +45,9 @@ tag_summary = "This host is installed with Symantec IM Manager and is prone to
 
 if(description)
 {
-  script_id(802252);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802252");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-0552", "CVE-2011-0553", "CVE-2011-0554");
   script_bugtraq_id(49738, 49739, 49742);

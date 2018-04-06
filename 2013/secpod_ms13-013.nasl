@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-013.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: secpod_ms13-013.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902949);
-  script_version("$Revision: 6532 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902949");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217");
   script_bugtraq_id(55977, 55993);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 11:28:37 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52136/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-001.nasl 8724 2018-02-08 15:02:56Z cfischer $
+# $Id: secpod_ms12-001.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)
 #
@@ -49,14 +49,14 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902783);
-  script_version("$Revision: 8724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902783");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(51296);
   script_cve_id("CVE-2012-0001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2012-01-11 10:01:06 +0530 (Wed, 11 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 16:02:56 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47356/");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2644615");

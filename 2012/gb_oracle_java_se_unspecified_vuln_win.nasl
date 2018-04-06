@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)
 #
@@ -35,13 +35,13 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 
 if(description)
 {
-  script_id(802950);
-  script_version("$Revision: 7699 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802950");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-1726");
   script_bugtraq_id(53948);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 19:06:04 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48589");

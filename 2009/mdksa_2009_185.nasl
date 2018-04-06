@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_185.nasl 6587 2017-07-07 06:35:35Z cfischer $
+# $Id: mdksa_2009_185.nasl 9350 2018-04-06 07:03:33Z cfischer $
 # Description: Auto-generated from advisory MDVSA-2009:185 (firefox)
 #
 # Authors:
@@ -76,9 +76,9 @@ announced via advisory MDVSA-2009:185.";
 
 if(description)
 {
- script_id(64528);
- script_version("$Revision: 6587 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:35:35 +0200 (Fri, 07 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.64528");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-08-17 16:54:45 +0200 (Mon, 17 Aug 2009)");
  script_cve_id("CVE-2009-1392", "CVE-2009-1832", "CVE-2009-1833", "CVE-2009-1837", "CVE-2009-1838", "CVE-2009-1841", "CVE-2009-2043", "CVE-2009-2044", "CVE-2009-1834", "CVE-2009-1835", "CVE-2009-1836", "CVE-2009-1839", "CVE-2009-1840", "CVE-2009-2462", "CVE-2009-2463", "CVE-2009-2464", "CVE-2009-2465", "CVE-2009-2466", "CVE-2009-2468", "CVE-2009-2467", "CVE-2009-2469", "CVE-2009-2472", "CVE-2009-2061", "CVE-2009-2065");
  script_tag(name:"cvss_base", value:"10.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-039.nasl 6473 2017-06-29 06:07:30Z cfischer $
+# $Id: secpod_ms12-039.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Microsoft Lync Remote Code Execution Vulnerabilities (2707956)
 #
@@ -49,13 +49,13 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902842);
-  script_version("$Revision: 6473 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902842");
+  script_version("$Revision: 9352 $");
   script_bugtraq_id(50462, 53335, 53831, 53833);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-1849", "CVE-2012-1858");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 11:11:11 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Lync Remote Code Execution Vulnerabilities (2707956)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48429");

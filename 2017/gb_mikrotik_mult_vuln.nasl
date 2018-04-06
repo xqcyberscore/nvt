@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_mult_vuln.nasl 8134 2017-12-15 09:56:07Z jschulte $
+# $Id: gb_mikrotik_mult_vuln.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
 #
 # MikroTik Router Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113068");
-  script_version("$Revision: 8134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 10:56:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 12:11:10 +0100 (Thu, 14 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -58,7 +58,8 @@ if( description )
     - An attacker can connect to TCP-port 53 an send data starting with a lot of Null-Byte characters, probably related to DNS.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to make the device unavailable.");
   script_tag(name:"affected", value:"MikroTik Router OS v6.40.5 and before");
-  script_tag(name:"solution", value:"No solution available as of 14th December 2017. Information regarding this vulnerability will be updated once a fix is released.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 6th April 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://mikrotik.com/download/changelogs/current-release-tree");
 

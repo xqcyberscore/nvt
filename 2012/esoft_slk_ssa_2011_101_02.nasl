@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2011_101_02.nasl 6598 2017-07-07 09:36:44Z cfischer $
+# $Id: esoft_slk_ssa_2011_101_02.nasl 9352 2018-04-06 07:13:02Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -34,13 +34,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
                                                                                 
 if(description)
 {
- script_id(69581);
+ script_oid("1.3.6.1.4.1.25623.1.0.69581");
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:36:44 +0200 (Fri, 07 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_cve_id("CVE-2011-1168");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6598 $");
+ script_version("$Revision: 9352 $");
  script_name("Slackware Advisory SSA:2011-101-02 kdelibs ");
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_apr13_macosx.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_apr13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 Apr13 (Mac OS X)
 #
@@ -47,14 +47,14 @@ tag_summary = "This host is installed with Mozilla Thunderbird and is prone to m
 
 if(description)
 {
-  script_id(803468);
-  script_version("$Revision: 6065 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803468");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2013-0788", "CVE-2013-0791", "CVE-2013-0793", "CVE-2013-0795",
                                  "CVE-2013-0797", "CVE-2013-0799", "CVE-2013-0800");
   script_bugtraq_id(58818, 58819, 58826, 58837, 58836, 58827, 58824, 58825);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 15:01:22 +0530 (Mon, 08 Apr 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities -01 Apr13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52770");

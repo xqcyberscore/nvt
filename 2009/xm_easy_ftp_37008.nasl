@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xm_easy_ftp_37008.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: xm_easy_ftp_37008.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # XM Easy Personal FTP Server 'NLST' Command Remote Denial of Service Vulnerability
 #
@@ -36,9 +36,9 @@ also be affected.";
 
 if (description)
 {
- script_id(100342);
- script_version("$Revision: 7573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100342");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-11-13 12:21:24 +0100 (Fri, 13 Nov 2009)");
  script_bugtraq_id(37008,36969);
  script_tag(name:"cvss_base", value:"7.1");

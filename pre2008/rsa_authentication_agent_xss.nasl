@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: rsa_authentication_agent_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: rsa_authentication_agent_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: RSA Security RSA Authentication Agent For Web XSS
 #
 # Authors:
@@ -35,9 +35,9 @@ tag_solution = "Upgraded to version 5.3 or newer.";
 
 if(description)
 {
- script_id(18213);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.18213");
+ script_version("$Revision: 9348 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2005-1118");
  script_bugtraq_id(13168);

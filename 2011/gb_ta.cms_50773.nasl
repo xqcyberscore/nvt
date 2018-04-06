@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ta.cms_50773.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ta.cms_50773.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # TA.CMS Local File Include and SQL Injection Vulnerabilities
 #
@@ -35,13 +35,13 @@ the context of the webserver.";
 
 if(description)
 {
- script_id(103346);
+ script_oid("1.3.6.1.4.1.25623.1.0.103346");
  script_bugtraq_id(50773);
- script_version ("$Revision: 7577 $");
+ script_version ("$Revision: 9351 $");
  script_name("TA.CMS Local File Include and SQL Injection Vulnerabilities");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-24 10:43:43 +0100 (Thu, 24 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);

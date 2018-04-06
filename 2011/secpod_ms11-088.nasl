@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-088.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-088.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Office IME (Chinese) Privilege Elevation Vulnerability (2652016)
 #
@@ -41,13 +41,13 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(902496);
-  script_version("$Revision: 5362 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902496");
+  script_version("$Revision: 9351 $");
   script_cve_id("CVE-2011-2010");
   script_bugtraq_id(50950);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 15:59:45 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Office IME (Chinese) Privilege Elevation Vulnerability (2652016)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47062/");

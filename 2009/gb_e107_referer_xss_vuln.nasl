@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_referer_xss_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_e107_referer_xss_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
 #
 # e107 'Referer' Header Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800946");
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 9334 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running e107 and is prone to remote Cross-Site
   Scripting vulnerability.");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -71,7 +71,6 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
 url = dir + "/email.php?news.1";

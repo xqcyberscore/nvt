@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_prdts_detect_lin.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_fsecure_prdts_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
 #
 # F-Secure Multiple Products Version Detection (Linux)
 #
@@ -29,10 +29,10 @@ tag_summary = "The script detects the installed version of F-Seure Anti-Virus,
 
 if(description)
 {
-  script_id(800357);
+  script_oid("1.3.6.1.4.1.25623.1.0.800357");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 9347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("F-Secure Multiple Products Version Detection (Linux)");

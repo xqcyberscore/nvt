@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_genff_bof_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: secpod_winamp_genff_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Winamp gen_ff.dll Buffer Overflow Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Winamp and is prone to Buffer
 
 if(description)
 {
-  script_id(900552);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900552");
+  script_version("$Revision: 9350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

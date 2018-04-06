@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wili_cms_remote_file_include.nasl 5726 2017-03-24 16:45:01Z cfi $
+# $Id: wili_cms_remote_file_include.nasl 9350 2018-04-06 07:03:33Z cfischer $
 #
 # Wili-CMS remote and local File Inclusion and Authentication
 # Bypass
@@ -39,9 +39,9 @@ tag_solution = "Upgrade to a newer version if available at http://wili-cms.sourc
 
 if (description)
 {
- script_id(100021);
- script_version("$Revision: 5726 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 17:45:01 +0100 (Fri, 24 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100021");
+ script_version("$Revision: 9350 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_july08_win_900010.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_wireshark_mult_vuln_july08_win_900010.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - July08 (Windows)
 #
 # Authors:
@@ -25,9 +25,9 @@
 
 if(description)
 {
- script_id(900010);
- script_version("$Revision: 7174 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.900010");
+ script_version("$Revision: 9349 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(28485);
  script_cve_id("CVE-2008-1561", "CVE-2008-1562", "CVE-2008-1563");

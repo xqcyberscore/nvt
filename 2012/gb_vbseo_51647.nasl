@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbseo_51647.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_vbseo_51647.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # vBSEO 'proc_deutf()' Remote Code Execution Vulnerability
 #
@@ -37,10 +37,10 @@ tag_solution = "Updates are available. Please see the references for more detail
 
 if (description)
 {
- script_id(103405);
+ script_oid("1.3.6.1.4.1.25623.1.0.103405");
  script_cve_id("CVE-2012-5223");
  script_bugtraq_id(51647);
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 9352 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -50,7 +50,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.vbseo.com/f5/vbseo-security-bulletin-all-supported-versions-patch-release-52783/");
  script_xref(name : "URL" , value : "http://www.vbseo.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-01-31 14:44:01 +0100 (Tue, 31 Jan 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

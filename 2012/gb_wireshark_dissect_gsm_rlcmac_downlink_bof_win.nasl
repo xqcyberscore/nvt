@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -37,13 +37,13 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 
 if(description)
 {
-  script_id(802943);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802943");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-4297");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:56:24 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50276/");

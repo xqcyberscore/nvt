@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compat_pack_ms14-017.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_ms_compat_pack_ms14-017.nasl 9354 2018-04-06 07:15:32Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2949660)
 #
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_id(804425);
-  script_version("$Revision: 6735 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804425");
+  script_version("$Revision: 9354 $");
   script_cve_id("CVE-2014-1757", "CVE-2014-1758", "CVE-2014-1761");
   script_bugtraq_id(66385, 66614, 66629);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:37:29 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2949660)");
 

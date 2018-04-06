@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0006.nasl 7583 2017-10-26 12:07:01Z cfischer $
+# $Id: gb_VMSA-2012-0006.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # VMSA-2012-0006 VMware ESXi and ESX address several security issues
 #
@@ -66,16 +66,16 @@ Apply the missing patch(es).";
 
 if (description)
 {
- script_id(103458);
+ script_oid("1.3.6.1.4.1.25623.1.0.103458");
  script_cve_id("CVE-2012-1515","CVE-2011-2482","CVE-2011-3191","CVE-2011-4348","CVE-2011-4862");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7583 $");
+ script_version ("$Revision: 9352 $");
  script_name("VMSA-2012-0006 VMware ESXi and ESX address several security issues");
 
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 14:07:01 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-04-02 10:53:01 +0100 (Mon, 02 Apr 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");

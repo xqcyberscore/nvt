@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: admbook_cmd_exec.nasl 5779 2017-03-30 06:57:12Z cfi $
+# $Id: admbook_cmd_exec.nasl 9349 2018-04-06 07:02:25Z cfischer $
 # Description: Admbook PHP Code Injection Flaw
 #
 # Authors:
@@ -42,9 +42,9 @@ tag_solution = "Unknown at this time.";
 
 if(description)
 {
-  script_id(80048);
-  script_version("$Revision: 5779 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80048");
+  script_version("$Revision: 9349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_cve_id("CVE-2006-0852");
   script_bugtraq_id(16753);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-018.nasl 6526 2017-07-05 05:43:52Z cfischer $
+# $Id: secpod_ms11-018.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2497640)
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900278);
-  script_version("$Revision: 6526 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900278");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0094", "CVE-2011-0346", "CVE-2011-1244",
                 "CVE-2011-1245", "CVE-2011-1345");

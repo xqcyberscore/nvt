@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_murmurhash_dos_vuln_win.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_oracle_java_se_murmurhash_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
 #
 # Oracle Java SE 'MurmurHash' Algorithm Hash Collision DoS Vulnerability (Windows)
 #
@@ -45,13 +45,13 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(802680);
-  script_version("$Revision: 7699 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802680");
+  script_version("$Revision: 9352 $");
   script_cve_id("CVE-2012-5373");
   script_bugtraq_id(56673);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 14:40:17 +0530 (Tue, 04 Dec 2012)");
   script_name("Oracle Java SE 'MurmurHash' Algorithm Hash Collision DoS Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80299");

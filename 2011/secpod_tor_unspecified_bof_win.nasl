@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_unspecified_bof_win.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_tor_unspecified_bof_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # Tor Unspecified Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with Tor and is prone to heap based buffer
 
 if(description)
 {
-  script_id(902333);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902333");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

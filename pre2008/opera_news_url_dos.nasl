@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_news_url_dos.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: opera_news_url_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Opera web browser news url denial of service vulnerability
 #
 # Authors:
@@ -38,12 +38,12 @@ tag_summary = "The remote host is using Opera - an alternative web browser.
 
 if(description)
 {
-  script_id(14249);
-  script_version("$Revision: 6063 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.14249");
+  script_version("$Revision: 9348 $");
   script_bugtraq_id(7430);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Opera web browser news url denial of service vulnerability");
 

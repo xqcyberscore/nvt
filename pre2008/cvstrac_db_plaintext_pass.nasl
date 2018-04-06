@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_db_plaintext_pass.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: cvstrac_db_plaintext_pass.nasl 9330 2018-04-05 12:11:08Z cfischer $
 #
 # CVSTrac database plaintext password storage
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:cvstrac:cvstrac";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14285");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9330 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:11:08 +0200 (Thu, 05 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -40,13 +42,14 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("cvstrac_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("cvstrac/detected");
 
   script_tag(name:"solution", value:"Update to version 1.1.4 or disable this CGI suite.");
 
-  script_tag(name:"summary", value:"The remote host seems to be running cvstrac, 
+  script_tag(name:"summary", value:"The remote host seems to be running cvstrac,
   a web-based bug and patch-set tracking system for CVS.
 
-  This version contains a flaw related to *.db files that 
+  This version contains a flaw related to *.db files that
   may allow an attacker to gain access to plaintext passwords.
 
   ***** OpenVAS has determined the vulnerability exists on the target
@@ -59,17 +62,16 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port( default:80 );
-kb = get_kb_item( "www/" + port + "/cvstrac" );
-if( ! kb ) exit( 0 );
-stuff = eregmatch(pattern:"(.*) under (.*)", string:kb );
-version = stuff[1];
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( ereg( pattern:"^(0\..*|1\.0\.[0-5]([^0-9]|$))", string:version ) ) {
-  security_message( port:port );
+if( ereg( pattern:"^(0\..*|1\.0\.[0-5]([^0-9]|$))", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.4" );
+  security_message( port:port, data:report );
   exit( 0 );
-}
+}  
 
 exit( 99 );

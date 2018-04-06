@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # MIT Kerberos 5 kpasswd UDP Packet Denial Of Service Vulnerability
 #
@@ -39,11 +39,11 @@ tag_summary = "This host is running MIT Kerberos and is prone to denial of
 
 if(description)
 {
-  script_id(802056);
-  script_version("$Revision: 8236 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802056");
+  script_version("$Revision: 9353 $");
   script_bugtraq_id(60008);
   script_cve_id("CVE-2002-2443");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 10:48:39 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

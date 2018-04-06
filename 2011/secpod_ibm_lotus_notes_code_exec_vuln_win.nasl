@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
 #
 # IBM Lotus Notes 'cai' URI and iCal Remote Code Execution Vulnerabilities (Windows)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host has IBM Lotus Notes installed and is prone to remote co
 
 if(description)
 {
-  script_id(902298);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902298");
+  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-0912");
   script_tag(name:"cvss_base", value:"9.3");

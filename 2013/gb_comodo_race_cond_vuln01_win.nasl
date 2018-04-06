@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_race_cond_vuln01_win.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_comodo_race_cond_vuln01_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
 #
 # Comodo Internet Security Race Condition Vulnerability-01
 #
@@ -37,12 +37,12 @@ tag_summary = "The host is installed with Comodo Internet Security and is prone
 
 if(description)
 {
-  script_id(803684);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803684");
+  script_version("$Revision: 9353 $");
   script_cve_id("CVE-2011-5119");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:20:22 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Race Condition Vulnerability-01");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/429023.php");
