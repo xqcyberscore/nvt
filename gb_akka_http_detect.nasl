@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_akka_http_detect.nasl 7645 2017-11-03 09:39:46Z ckuersteiner $
+# $Id: gb_akka_http_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # akka HTTP Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140485");
-  script_version("$Revision: 7645 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 10:39:46 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-03 16:41:02 +0700 (Fri, 03 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("akka/banner");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "https://doc.akka.io/docs/akka-http/current/");
 

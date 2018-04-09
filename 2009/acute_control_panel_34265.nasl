@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: acute_control_panel_34265.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: acute_control_panel_34265.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Acute Control Panel SQL Injection Vulnerability and Remote File
 # Include Vulnerability
@@ -28,8 +28,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100089");
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 9381 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-29 17:14:47 +0200 (Sun, 29 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
  vulnerabilities, including an SQL-injection issue and and multiple
  remote file-include issues.");
  script_tag(name : "affected" , value : "Acute Control Panel 1.0.0 is vulnerable; other versions may also be affected.");
- script_tag(name : "impact" , value : " A successful exploit may allow an attacker to execute malicious code
+ script_tag(name : "impact" , value:"A successful exploit may allow an attacker to execute malicious code
  within the context of the webserver process, compromise the
  application, access or modify data, or exploit latent
  vulnerabilities in the underlying database.");

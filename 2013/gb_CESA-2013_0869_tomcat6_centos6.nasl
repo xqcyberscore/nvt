@@ -57,8 +57,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881741");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-31 09:51:29 +0530 (Fri, 31 May 2013)");
   script_cve_id("CVE-2013-1976", "CVE-2013-2051", "CVE-2012-5887");
   script_tag(name:"cvss_base", value:"6.9");
@@ -67,7 +67,7 @@ if(description)
 
   script_xref(name: "CESA", value: "2013:0869");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-May/019750.html");
-  script_summary("Check for the Version of tomcat6");
+  script_tag(name:"summary", value:"Check for the Version of tomcat6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

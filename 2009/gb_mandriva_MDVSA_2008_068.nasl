@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2008-03/msg00017.php");
   script_oid("1.3.6.1.4.1.25623.1.0.830702");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-09 14:26:37 +0200 (Thu, 09 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   script_cve_id("CVE-2008-0888");
   script_name( "Mandriva Update for unzip MDVSA-2008:068 (unzip)");
 
-  script_summary("Check for the Version of unzip");
+  script_tag(name:"summary", value:"Check for the Version of unzip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

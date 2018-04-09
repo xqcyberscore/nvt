@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 9382 2018-04-06 11:26:58Z cfischer $
 #
 # SIEMENS IP-Camera Credentials Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807879");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 9382 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:26:58 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 11:01:49 +0530 (Thu, 18 Aug 2016)");
   script_name("SIEMENS IP-Camera Credentials Disclosure Vulnerability");
 
@@ -48,22 +48,37 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"     CCMW3025:  All  versions  <  1.41_SP18_S1, 
+  script_tag(name:"affected", value:"CCMW3025:  All  versions  <  1.41_SP18_S1,
+
      CVMW3025-IR:  All  versions  <  1.41_SP18_S1,
+
      CFMW3025:  All  versions  <  1.41_SP18_S1,
+
      CCPW3025:  All  versions  <  0.1.73_S1,
-     CCPW5025:  All  versions  <  0.1.73_S1, 
+
+     CCPW5025:  All  versions  <  0.1.73_S1,
+
      CCMD3025-DN18:  All  versions  <  v1.394_S1,
-     CCID1445-DN18:  All  versions  <  v2635, 
+
+     CCID1445-DN18:  All  versions  <  v2635,
+
      CCID1445-DN28:  All  versions  <  v2635,
+
      CCID1445-DN36:  All  versions  <  v2635,
+
      CFIS1425:  All  versions  <  v2635,
+
      CCIS1425:  All  versions  <  v2635,
-     CFMS2025:  All  versions  <  v2635, 
+
+     CFMS2025:  All  versions  <  v2635,
+
      CCMS2025:  All  versions  <  v2635,
-     CVMS2025-IR:  All  versions  <  v2635, 
+
+     CVMS2025-IR:  All  versions  <  v2635,
+
      CFMW1025:  All  versions  <  v2635,
-     CCMW1025:  All  versions  <  v2635. ");
+
+     CCMW1025:  All  versions  <  v2635.");
 
   script_tag(name:"solution", value:"Updates were issued to solve this vulnerability.
   For updates refer to https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-284765.pdf");
@@ -103,7 +118,7 @@ if(!sie_port){
 
 ## Confirm Application
 ## Siemens IP Camera uses 'Boa by topco' integrated web server
-## Aplication confirmation to more specific is not possible, hence not
+## Application confirmation to more specific is not possible, hence not
 ## going for detect NVT.
 banner = get_http_banner(port:sie_port);
 if('Server: Boa by topco' >!< banner){

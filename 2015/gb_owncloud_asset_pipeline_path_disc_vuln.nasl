@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_asset_pipeline_path_disc_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_owncloud_asset_pipeline_path_disc_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # ownCloud Asset Pipeline Feature Remote Path Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805282");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-9044");
   script_bugtraq_id(71387);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 16:14:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Asset Pipeline Feature Remote Path Disclosure Vulnerability");
 
@@ -78,29 +78,24 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
 
 if(ownVer =~ "^7")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"7.0.0", test_version2:"7.0.2"))
   {
     report = 'Installed version: ' + ownVer + '\n' +
            'Fixed version:     ' + "7.0.3" + '\n';
 
-    security_message(data:report);
+    security_message(port:ownPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

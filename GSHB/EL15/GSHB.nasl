@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 9015 2018-03-02 15:20:47Z emoss $
+# $Id: GSHB.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # IT-Grundschutz, 14. Ergänzungslieferung
 #
@@ -130,9 +130,9 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 
 if(description)
 {
-  script_id(94171);
-  script_version("$Revision: 9015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.94171");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

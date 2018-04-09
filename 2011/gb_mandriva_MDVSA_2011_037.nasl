@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-02/msg00020.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831336");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 16:24:14 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -62,7 +62,7 @@ if(description)
   script_cve_id("CVE-2010-2244", "CVE-2011-1002");
   script_name("Mandriva Update for avahi MDVSA-2011:037 (avahi)");
 
-  script_summary("Check for the Version of avahi");
+  script_tag(name:"summary", value:"Check for the Version of avahi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

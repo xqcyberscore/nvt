@@ -69,8 +69,8 @@ tag_affected = "kernel on openSUSE 11.3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850155");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -78,7 +78,7 @@ if(description)
   script_cve_id("CVE-2010-2955", "CVE-2010-2959", "CVE-2010-2960", "CVE-2010-3079", "CVE-2010-3080", "CVE-2010-3081", "CVE-2010-3084", "CVE-2010-3296", "CVE-2010-3297", "CVE-2010-3298", "CVE-2010-3301");
   script_name("SuSE Update for kernel SUSE-SA:2010:047");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

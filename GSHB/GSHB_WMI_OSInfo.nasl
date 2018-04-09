@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_OSInfo.nasl 7421 2017-10-13 08:32:05Z emoss $
+# $Id: GSHB_WMI_OSInfo.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win)
 #
@@ -32,9 +32,9 @@ tag_summary = "Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win
 
 if(description)
 {
-  script_id(96999);
-  script_version("$Revision: 7421 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:32:05 +0200 (Fri, 13 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96999");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

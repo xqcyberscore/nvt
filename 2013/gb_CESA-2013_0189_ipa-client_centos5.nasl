@@ -69,8 +69,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-January/019212.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881582");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:27:54 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-5484");
   script_tag(name:"cvss_base", value:"7.9");
@@ -78,7 +78,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0189");
   script_name("CentOS Update for ipa-client CESA-2013:0189 centos5 ");
 
-  script_summary("Check for the Version of ipa-client");
+  script_tag(name:"summary", value:"Check for the Version of ipa-client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

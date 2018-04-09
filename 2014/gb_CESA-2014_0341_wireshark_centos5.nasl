@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881912");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 11:31:04 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2012-5595", "CVE-2012-5598", "CVE-2012-5599", "CVE-2012-5600",
                 "CVE-2012-6056", "CVE-2012-6060", "CVE-2012-6061", "CVE-2012-6062",
@@ -73,7 +73,7 @@ of Wireshark must be restarted for the update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:0341");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-March/020237.html");
-  script_summary("Check for the Version of wireshark");
+  script_tag(name:"summary", value:"Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -40,8 +40,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01035700-1");
   script_oid("1.3.6.1.4.1.25623.1.0.835031");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-05 12:14:23 +0200 (Tue, 05 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
   script_cve_id("CVE-2004-0942", "CVE-2004-0885");
   script_name( "HP-UX Update for HP-UX Pkg HPSBUX01123");
 
-  script_summary("Check for the Version of HP-UX Pkg");
+  script_tag(name:"summary", value:"Check for the Version of HP-UX Pkg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");

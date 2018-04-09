@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1154_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2012_1154_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2012:1154-1 (java-1_7_0-openjdk)
 #
@@ -116,8 +116,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850432");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:23 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-0547", "CVE-2012-1682", "CVE-2012-3136", "CVE-2012-4681");
   script_tag(name:"cvss_base", value:"10.0");
@@ -125,7 +125,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:1154_1");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2012:1154-1 (java-1_7_0-openjdk)");
 
-  script_summary("Check for the Version of java-1_7_0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1_7_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

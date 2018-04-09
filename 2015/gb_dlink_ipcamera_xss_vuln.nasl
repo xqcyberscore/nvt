@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcamera_xss_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: gb_dlink_ipcamera_xss_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805034");
-  script_version("$Revision: 6700 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2014-9517");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 11:21:29 +0530 (Thu, 08 Jan 2015)");
   script_name("D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
   whether it is able read the cookie");
 
-  script_tag(name: "insight" , value:" The flaw is due to an input passed via
+  script_tag(name: "insight" , value:"The flaw is due to an input passed via
   the vb.htm script to the 'QUERY_STRING ' parameter is not properly sanitized.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker to

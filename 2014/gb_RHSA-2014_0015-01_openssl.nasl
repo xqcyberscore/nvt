@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871109");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:22:31 +0530 (Tue, 21 Jan 2014)");
   script_cve_id("CVE-2013-4353", "CVE-2013-6449", "CVE-2013-6450");
   script_tag(name:"cvss_base", value:"5.8");
@@ -75,7 +75,7 @@ the system rebooted.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2014:0015-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-January/msg00004.html");
-  script_summary("Check for the Version of openssl");
+  script_tag(name:"summary", value:"Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

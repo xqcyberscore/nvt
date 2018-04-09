@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.866394");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 18:40:07 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-1888", "CVE-2013-2098", "CVE-2013-2099");
   script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +54,7 @@ easy_installable should be pip-installable as well.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-13213");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-July/112590.html");
-  script_summary("Check for the Version of python-pip");
+  script_tag(name:"summary", value:"Check for the Version of python-pip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

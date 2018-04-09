@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_dos_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_ruby_on_rails_active_support_dos_vuln_lin.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Ruby on Rails Active Support Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807384");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2015-3227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 16:29:55 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Active Support Denial of Service Vulnerability (Linux)");
@@ -53,7 +53,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:" 
+  script_tag(name:"affected", value:"
   Ruby on Rails before 4.1.11 and
   Ruby on Rails 4.2.x before 4.2.2 on Linux.");
 

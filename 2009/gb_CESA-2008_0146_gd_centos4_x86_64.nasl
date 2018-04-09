@@ -61,8 +61,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2008-February/014733.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880008");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-27 08:36:45 +0100 (Fri, 27 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ if(description)
   script_cve_id("CVE-2006-4484", "CVE-2007-0455", "CVE-2007-2756", "CVE-2007-3472", "CVE-2007-3473", "CVE-2007-3475", "CVE-2007-3476");
   script_name( "CentOS Update for gd CESA-2008:0146 centos4 x86_64");
 
-  script_summary("Check for the Version of gd");
+  script_tag(name:"summary", value:"Check for the Version of gd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

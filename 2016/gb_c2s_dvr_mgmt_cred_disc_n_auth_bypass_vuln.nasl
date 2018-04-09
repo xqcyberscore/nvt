@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 7009 2017-08-25 12:07:30Z teissa $
+# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 9382 2018-04-06 11:26:58Z cfischer $
 #
 # C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808663");
-  script_version("$Revision: 7009 $");
+  script_version("$Revision: 9382 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 14:07:30 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:26:58 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 18:12:02 +0530 (Tue, 23 Aug 2016)");
   script_name("C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities");
 
@@ -82,7 +82,7 @@ c2sPort = get_http_port(default:80);
 
 rcvRes = http_get_cache(item:"/", port:c2sPort);
 
-## Aplication confirmation for more specific is not possible,
+## Application confirmation for more specific is not possible,
 ## hence not going for detect NVT
 if(rcvRes =~ "HTTP/1.. 200 OK" &&  "cash.png" >< rcvRes && 
    "password error" >< rcvRes)

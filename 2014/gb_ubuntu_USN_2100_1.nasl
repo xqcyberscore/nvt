@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2100_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ubuntu_USN_2100_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for pidgin USN-2100-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841705");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:44:51 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2012-6152", "CVE-2013-6477", "CVE-2013-6478", "CVE-2013-6479",
                 "CVE-2013-6481", "CVE-2013-6482", "CVE-2013-6483", "CVE-2013-6484",
@@ -109,7 +109,7 @@ a denial of service, or possibly execute arbitrary code. (CVE ...
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2100-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2100-1/");
-  script_summary("Check for the Version of pidgin");
+  script_tag(name:"summary", value:"Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

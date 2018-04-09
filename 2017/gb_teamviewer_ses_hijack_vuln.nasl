@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_ses_hijack_vuln.nasl 8076 2017-12-11 12:55:06Z teissa $
+# $Id: gb_teamviewer_ses_hijack_vuln.nasl 9380 2018-04-06 11:04:51Z asteins $
 #
 # Teamviewer Session Hijacking Vulnerability
 #
@@ -29,22 +29,23 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107273");
-  script_version("$Revision: 8076 $");
+  script_version("$Revision: 9380 $");
   script_tag(name : "cvss_base", value : "6.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 13:55:06 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-12-11 09:50:38 +0700 (Mon, 11 Dec 2017)");
   script_name("Teamviewer Session Hijacking Vulnerability");
 
   script_tag(name: "summary" , value:"Teamviewer is vulnerable to session hijacking.");
 
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw is caused through an injectable C++ DLL which takes advantage of the bug to change TeamViewer permissions");
 
-  script_tag(name: "impact" , value:"Successful exploitation can give local user power over another system involved in a session and seize control of PCs through desktop sessions.
+  script_tag(name: "impact" , value:"Successful exploitation can give local users power over another system involved in a session and seize control of PCs through desktop sessions.
+
   Impact Level: Application");
 
   script_tag(name: "affected" , value:"Teamviewer before 13.0.5640.0");
@@ -62,13 +63,12 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_teamviewer_win_detect.nasl");
   script_mandatory_keys("teamviewer/Ver");
+
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
 
 if(!Ver = get_app_version(cpe:CPE)){
   exit(0);

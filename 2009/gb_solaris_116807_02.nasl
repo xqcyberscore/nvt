@@ -33,9 +33,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.855212");
-  script_version("$Revision: 9350 $");
+  script_version("$Revision: 9370 $");
   script_cve_id("CVE-2005-3398");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-03 12:28:12 +0200 (Wed, 03 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -44,7 +44,7 @@ if(description)
 
   script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-116807-02-1");
 
-  script_summary("Check for the Version of /usr/sadm/lib/smc/lib/preload/jsdk21.jar");
+  script_tag(name:"summary", value:"Check for the Version of /usr/sadm/lib/smc/lib/preload/jsdk21.jar");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Solaris Local Security Checks");

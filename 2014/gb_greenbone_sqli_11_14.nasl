@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_sqli_11_14.nasl 7888 2017-11-23 14:20:55Z asteins $
+# $Id: gb_greenbone_sqli_11_14.nasl 9369 2018-04-06 08:36:49Z cfischer $
 #
 # Greenbone OS SQL Injection Vulnerability
 #
@@ -34,11 +34,13 @@ if (description)
   script_cve_id("CVE-2014-9220");
   script_bugtraq_id(71360);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 7888 $");
+  script_version ("$Revision: 9369 $");
 
   script_name("Greenbone OS SQL Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://www.greenbone.net/technology/gbsa2014-02.html");
+
+  script_tag(name:"summary", value:"GreenboneOS is prone to a SQL injection vulnerability");
 
   script_tag(name: "impact", value: "A successful attack is possible if the attacker controls a user
 account for the web interface or for OMP. The attacker will gain read access to the database.");
@@ -54,9 +56,9 @@ Greenbone OS 3.0.1 up to 3.0.28. ");
 
   script_tag(name:"solution_type", value: "VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-11-30 14:20:39 +0200 (Sun, 30 Nov 2014)");
-  script_summary("Check for vulnerable GOS version.");
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

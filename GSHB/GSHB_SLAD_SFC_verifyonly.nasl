@@ -35,9 +35,9 @@ phrase if the SSH public key is passphrase-protected, or
 a password to log in.";
 
 if (description) {
-  script_id(96062);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96062");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-03-04 16:32:59 +0100 (Thu, 04 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");  

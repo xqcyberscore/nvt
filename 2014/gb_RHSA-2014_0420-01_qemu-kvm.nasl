@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871161");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 10:15:42 +0530 (Fri, 02 May 2014)");
   script_cve_id("CVE-2014-0142", "CVE-2014-0143", "CVE-2014-0144", "CVE-2014-0145",
                 "CVE-2014-0146", "CVE-2014-0147", "CVE-2014-0148", "CVE-2014-0150");
@@ -99,7 +99,7 @@ have shut down, start them again for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2014:0420-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-April/msg00037.html");
-  script_summary("Check for the Version of qemu-kvm");
+  script_tag(name:"summary", value:"Check for the Version of qemu-kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

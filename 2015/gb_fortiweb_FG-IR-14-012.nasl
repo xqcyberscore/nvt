@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-012.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_fortiweb_FG-IR-14-012.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # FortiOS: FortiWeb Cross-Site Scripting Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-4738");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6404 $");
+ script_version ("$Revision: 9381 $");
 
  script_name("FortiOS: FortiWeb Cross Site Scripting Vulnerabilities");
 
@@ -45,7 +45,7 @@ in the browser of an unsuspecting user in the context of the affected site. This
 steal cookie-based authentication credentials and launch other attacks.");
 
  script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:" Upgrade to FortiWeb 5.2.1 or higher.");
+ script_tag(name: "solution" , value:"Upgrade to FortiWeb 5.2.1 or higher.");
 
  script_tag(name: "summary" , value:"FortiWeb 5.0, 5.1 and 5.2.0 are vulnerable to multiple reflective cross-site scripting issues.
 Several parameters in the web management interface URLs /user/ldap_user/check_dlg and /user/radius_user/check_dlg lack sufficient
@@ -56,7 +56,7 @@ input filtering. ");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:16:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

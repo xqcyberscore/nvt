@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Apache Subversion Multiple Vulnerabilities - Aug15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805095");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2015-3184", "CVE-2015-3187");
   script_bugtraq_id(76274, 76273);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:39:48 +0530 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Subversion Multiple Vulnerabilities - Aug15");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:" Flaws are due to,
+  script_tag(name:"insight", value:"Flaws are due to,
   - The  mod_authz_svn does not properly restrict anonymous access in some
     mixed anonymous/authenticated environments when using Apache httpd 2.4.
   - The svnserve will reveal some paths  that should be hidden by path-based

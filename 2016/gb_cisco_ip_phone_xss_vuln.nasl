@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_xss_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_cisco_ip_phone_xss_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cisco IP Phone 8800 Series Cross-Site Scripting Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106176");
-  script_version("$Revision: 7573 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2016-08-11 13:36:26 +0700 (Thu, 11 Aug 2016)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -57,7 +57,7 @@ vulnerability");
 An attacker could exploit this vulnerability by storing malicious code on a device and waiting for a user
 to access a web page that triggers execution of the code.");
 
-  script_tag(name: "impact", value: " An exploit could allow the attacker to execute arbitrary script code
+  script_tag(name: "impact", value:"An exploit could allow the attacker to execute arbitrary script code
 in the context of the web interface on the affected device.");
 
   script_tag(name: "affected", value: "Cisco IP Phone 8800 Series version 11.0 is affected");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_svg_file_xss_vuln_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mediawiki_svg_file_xss_vuln_lin.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # MediaWiki 'SVG File' Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806635");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-7199");
   script_bugtraq_id(70153);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 17:50:31 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki 'SVG File' Cross Site Scripting Vulnerability (Linux)");
 
@@ -76,21 +76,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-http_ver = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!http_ver = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_less(version:http_ver, test_version:"1.19.19"))
 {
   fix = "1.19.19";
@@ -113,6 +106,8 @@ if(VULN)
 {
   report = 'Installed version: ' + http_ver + '\n' +
            'Fixed version:     ' + fix      + '\n';
-  security_message(data:report);
+  security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

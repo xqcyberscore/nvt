@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2120_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ubuntu_USN_2120_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for postgresql-9.1 USN-2120-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841727");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:53:04 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062", "CVE-2014-0063",
                 "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066");
@@ -86,7 +86,7 @@ a denial of service (CVE-2014-0066)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2120-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2120-1/");
-  script_summary("Check for the Version of postgresql-9.1");
+  script_tag(name:"summary", value:"Check for the Version of postgresql-9.1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

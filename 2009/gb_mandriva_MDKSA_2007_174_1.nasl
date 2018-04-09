@@ -55,8 +55,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2007-09/msg00007.php");
   script_oid("1.3.6.1.4.1.25623.1.0.830272");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-09 13:57:01 +0200 (Thu, 09 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ if(description)
   script_cve_id("CVE-2007-3999", "CVE-2007-4000", "CVE-2007-4743");
   script_name( "Mandriva Update for krb5 MDKSA-2007:174-1 (krb5)");
 
-  script_summary("Check for the Version of krb5");
+  script_tag(name:"summary", value:"Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # IBM DB2 Multiple Denial of Service Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805035");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2014-6209", "CVE-2014-8901");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 13:04:41 +0530 (Thu, 08 Jan 2015)");
   script_name("IBM DB2 Multiple Denial of Service Vulnerabilities");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:" The flaws are due to
+  script_tag(name: "insight" , value:"The flaws are due to
   - An error during the handling of a specially crafted ALTER TABLE statement
     on an identity column.
   - An error when handling a specially crafted XML query, which can result in

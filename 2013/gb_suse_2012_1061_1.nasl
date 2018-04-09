@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1061_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2012_1061_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # SuSE Update for calligra openSUSE-SU-2012:1061-1 (calligra)
 #
@@ -68,8 +68,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00026.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850417");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:18 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-3456");
   script_tag(name:"cvss_base", value:"7.5");
@@ -79,7 +79,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:1061_1");
   script_name("SuSE Update for calligra openSUSE-SU-2012:1061-1 (calligra)");
 
-  script_summary("Check for the Version of calligra");
+  script_tag(name:"summary", value:"Check for the Version of calligra");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

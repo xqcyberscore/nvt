@@ -29,11 +29,11 @@ CPE = "cpe:/a:trendmicro:smart_protection_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812574");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9396 $");
   script_cve_id("CVE-2018-6231");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 06:18:59 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:56:21 +0530 (Tue, 20 Mar 2018)");
   script_name("Trend Micro Smart Protection Server Multiple Vulnerabilities (1119385)");
 

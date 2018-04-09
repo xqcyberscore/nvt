@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_object_prop_xss_vuln.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_open_xchange_server_object_prop_xss_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Open-Xchange (OX) Server Object Properties Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806526");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2015-5375");
   script_bugtraq_id(76837);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 12:36:19 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) Server Object Properties Cross Site Scripting Vulnerability");
@@ -61,6 +61,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) Server version
   6.22.9-rev15m or later.
+
   For updates refer to https://www.open-xchange.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -76,30 +77,18 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxsPort = "";
-oxsVer = "";
-
-
-## Get HTTP Port
 if(!oxsPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 oxsVer = get_app_version(cpe:CPE, port:oxsPort);
 if(!oxsVer || "unknown" >< oxsVer){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_server/" + oxsPort + "/rev");
 
 if(oxRev)
@@ -118,3 +107,5 @@ if(oxRev)
     }
   }
 }
+
+exit(99);

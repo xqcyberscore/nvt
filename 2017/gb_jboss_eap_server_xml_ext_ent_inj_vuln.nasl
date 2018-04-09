@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107199");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:05:17 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-7464");
   script_bugtraq_id(98450);
@@ -40,7 +40,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability");
-  script_tag(name: "summary", value: " RedHat JBoss Enterprise Application Platform (EAP) is prone to an
+  script_tag(name: "summary", value:"RedHat JBoss Enterprise Application Platform (EAP) is prone to an
   XML External Entity injection vulnerability. ");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
   if the version is vulnerable or not.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807399");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-6014");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 14:26:53 +0530 (Tue, 21 Feb 2017)");
   script_name("Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: " The flaw is due to a crafted or
+  script_tag(name: "insight" , value:"The flaw is due to a crafted or
   malformed STANAG 4607 capture file will cause an infinite loop and memory
   exhaustion. If the packet size field in a packet header is null, the offset
   to read from will not advance, causing continuous attempts to read the same

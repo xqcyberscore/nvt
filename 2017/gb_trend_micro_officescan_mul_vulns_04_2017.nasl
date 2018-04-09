@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 9380 2018-04-06 11:04:51Z asteins $
 #
 # Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107154");
-  script_version("$Revision: 9122 $");
+  script_version("$Revision: 9380 $");
   script_cve_id("CVE-2017-5481", "CVE-2017-8801");
   script_bugtraq_id(98007);
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-26 11:00:00 +0200 (Wed, 26 Apr 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "summary", value: "Trend Micro OfficeScan is prone to a privilege escalation vulnerability
   and multiple cross-site scripting vulnerabilities");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the
   version is vulnerable or not.");
 
   script_tag(name: "impact" , value: "An attacker can exploit these issues to execute arbitrary script code in

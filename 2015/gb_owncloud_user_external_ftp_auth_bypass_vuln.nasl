@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805281");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-9045");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 16:04:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability");
 
@@ -76,23 +76,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
 
 if(ownVer =~ "^(5|6)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"5.0.0", test_version2:"5.0.17"))
   {
     fix = "5.0.18";
@@ -110,7 +103,9 @@ if(ownVer =~ "^(5|6)")
     report = 'Installed version: ' + ownVer + '\n' +
              'Fixed version:     ' + fix + '\n';
 
-    security_message(data:report);
+    security_message(port:ownPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

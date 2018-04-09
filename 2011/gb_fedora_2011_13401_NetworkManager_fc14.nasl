@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-October/067421.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863569");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-10 16:05:48 +0200 (Mon, 10 Oct 2011)");
   script_xref(name: "FEDORA", value: "2011-13401");
   script_tag(name:"cvss_base", value:"6.9");
@@ -45,7 +45,7 @@ if(description)
   script_cve_id("CVE-2011-3364");
   script_name("Fedora Update for NetworkManager FEDORA-2011-13401");
 
-  script_summary("Check for the Version of NetworkManager");
+  script_tag(name:"summary", value:"Check for the Version of NetworkManager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

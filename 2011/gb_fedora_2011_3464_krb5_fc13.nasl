@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-March/056573.html");
   script_oid("1.3.6.1.4.1.25623.1.0.862937");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:26:27 +0100 (Fri, 25 Mar 2011)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if(description)
   script_cve_id("CVE-2011-0284", "CVE-2010-4022", "CVE-2011-0281", "CVE-2011-0282", "CVE-2010-1323", "CVE-2010-1324", "CVE-2010-1321");
   script_name("Fedora Update for krb5 FEDORA-2011-3464");
 
-  script_summary("Check for the Version of krb5");
+  script_tag(name:"summary", value:"Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

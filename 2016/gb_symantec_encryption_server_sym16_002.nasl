@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_sym16_002.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_symantec_encryption_server_sym16_002.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Symantec Encryption Management Server Multiple Security Issues
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-8151","CVE-2015-8150","CVE-2015-8149","CVE-2015-8148");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
- script_version ("$Revision: 5782 $");
+ script_version ("$Revision: 9381 $");
 
  script_name("Symantec Encryption Management Server Server Multiple Security Issues");
 
@@ -42,7 +42,7 @@ if (description)
 
  script_tag(name: "vuldetect" , value:"Check the version");
 
- script_tag(name: "insight" , value:" Symantec Encryption Management Server's web administration interface was susceptible to command execution on the underlying operating system when an authorized but less-privileged administrator has console access. Input fields available through the server console did not properly filter arbitrary user input which could allow OS command execution with elevated privileges.
+ script_tag(name: "insight" , value:"Symantec Encryption Management Server's web administration interface was susceptible to command execution on the underlying operating system when an authorized but less-privileged administrator has console access. Input fields available through the server console did not properly filter arbitrary user input which could allow OS command execution with elevated privileges.
 
 By leveraging the successful exploitation above, an unauthorized user could have scheduled arbitrary commands to run through existing batch files on the underlying operating system that normally run with root privileges. This could have resulted in additional privileged access to the server.
 
@@ -58,7 +58,7 @@ By successfully manipulating an LDAP request, it was possible for a user able to
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

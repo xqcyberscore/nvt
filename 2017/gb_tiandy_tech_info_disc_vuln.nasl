@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 9380 2018-04-06 11:04:51Z asteins $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 9239 $");
+  script_version("$Revision: 9380 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");
 
-  script_tag(name:"summary", value:"This host has Tiandy IP Camera and is prone to Sensitive Information Disclosure vulnerability.");
+  script_tag(name:"summary", value:"A Tiandy IP Camera is running on this host and is prone to a sensitive information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Send a crafted packet using sockets and check the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted packet using sockets and check the response.");
 
   script_tag(name:"insight", value:"Tiandy uses a proprietary protocol, a flaw in the protocol allows an attacker to forge a request that will return configuration settings of the Tiandy IP camera.");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Tiandy IP cameras version 5.56.17.120.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 28th March, 2018. Solution details will be updated once the updates are made available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 06th April, 2018. Information regarding this issue will be updated once solution details available.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -149,7 +149,7 @@ if ("kTiandy" >< res && "config_server.ini" >< res && "extendword.txt" >< res &&
 {
     close (soc);
 
-    report = 'By seding a speical request, it was possible to disclose the content of the config_server.ini file : \n';
+    report = 'By sending a special request, it was possible to disclose the content of the config_server.ini file : \n';
 
     report+= res;
 

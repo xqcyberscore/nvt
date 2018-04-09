@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2007-12/msg00001.php");
   script_oid("1.3.6.1.4.1.25623.1.0.830279");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-09 14:00:25 +0200 (Thu, 09 Apr 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if(description)
   script_cve_id("CVE-2007-1856");
   script_name( "Mandriva Update for vixie-cron MDKSA-2007:234 (vixie-cron)");
 
-  script_summary("Check for the Version of vixie-cron");
+  script_tag(name:"summary", value:"Check for the Version of vixie-cron");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

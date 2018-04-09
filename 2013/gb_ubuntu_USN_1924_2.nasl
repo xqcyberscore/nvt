@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1924_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1924_2.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for ubufox USN-1924-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841517");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:44:26 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-1701", "CVE-2013-1702", "CVE-2013-1704", "CVE-2013-1705",
                 "CVE-2013-1708", "CVE-2013-1709", "CVE-2013-1710", "CVE-2013-1711",
@@ -110,7 +110,7 @@ potentially exploit this to steal confidential data. (CVE-2013-1717)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1924-2");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1924-2/");
-  script_summary("Check for the Version of ubufox");
+  script_tag(name:"summary", value:"Check for the Version of ubufox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

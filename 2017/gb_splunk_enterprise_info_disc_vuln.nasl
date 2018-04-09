@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_info_disc_vuln.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_splunk_enterprise_info_disc_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Splunk Enterprise Information Disclosure Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106715");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-5607");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,7 @@ JavaScript.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: " Splunk Enterprise is affected by a vulnerability that could allow a remote
+  script_tag(name: "insight", value:"Splunk Enterprise is affected by a vulnerability that could allow a remote
 attacker to obtain logged-in username and Splunk version-related information via JavaScript.");
 
   script_tag(name: "affected", value: "Splunk Enterprise 5.0.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x and 6.5.x.");

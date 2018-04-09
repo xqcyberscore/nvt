@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 8657 2018-02-05 08:52:48Z cfischer $
+# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Netscape FastTrack Server Authentication Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:netscape:fasttrack_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811546");
-  script_version("$Revision: 8657 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-1999-0853");
   script_bugtraq_id(847);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:52:48 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:05:05 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Authentication Buffer Overflow Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
 
   script_tag(name: "affected" , value:"Netscape FastTrack Server 3.01");
 
-  script_tag(name: "solution" , value:" No solution or patch was made available for at least
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least
   one year since disclosure of this vulnerability. Likely none will be provided anymore. General
   solution options are to upgrade to a newer release, disable respective features, remove the
   product or replace the product by another one.");

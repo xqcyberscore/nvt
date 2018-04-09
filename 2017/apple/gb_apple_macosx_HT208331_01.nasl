@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_01.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_apple_macosx_HT208331_01.nasl 9387 2018-04-06 12:53:16Z santu $
 #
 # Apple MacOSX Security Updates(HT208331, HT208394)-01
 #
@@ -27,12 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812400");
-  script_version("$Revision: 8378 $");
-  script_cve_id("CVE-2017-13872", "CVE-2017-5754"); 
-  script_bugtraq_id(101981, 102378);
+  script_version("$Revision: 9387 $");
+  script_cve_id("CVE-2017-13872", "CVE-2017-5754", "CVE-2017-13860", "CVE-2017-13871",
+                "CVE-2017-13865", "CVE-2017-13876", "CVE-2017-13848", "CVE-2017-13858",
+                "CVE-2017-13875", "CVE-2017-13878", "CVE-2017-13883", "CVE-2017-7163",
+                "CVE-2017-7155", "CVE-2017-7171"); 
+  script_bugtraq_id(101981, 102378, 102097, 102099, 102100);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:33 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331, HT208394)-01");
 
@@ -43,15 +46,18 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The Security update resolves, a logic error
-  existed in the validation of credentials and an error in systems with 
-  microprocessors utilizing speculative execution and indirect branch prediction.");
+  existed in the validation of credentials, an encryption issue existed with S/MIME 
+  credentials, an inconsistent user interface issue and an error in systems with 
+  microprocessors utilizing speculative execution, memory corruption issue, 
+  input validation issue existed in the kernel, an out-of-bounds read error and 
+  indirect branch prediction.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code with kernel and system privileges. Also
   attacker may be able to bypass administrator authentication without supplying
   the administrator's password and also allow unauthorized disclosure of 
   information to an attacker with local user access via a side-channel analysis 
-  of the data cache.
+  of the data cache and can cause unexpected system termination.
 
   Impact Level: System");
 

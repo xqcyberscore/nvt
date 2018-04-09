@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867543");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:29:03 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2013-7048", "CVE-2013-7130", "CVE-2013-4463", "CVE-2013-2096");
   script_tag(name:"cvss_base", value:"7.1");
@@ -58,7 +58,7 @@ standard hardware configurations and seven major hypervisors.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-2554");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-February/129083.html");
-  script_summary("Check for the Version of openstack-nova");
+  script_tag(name:"summary", value:"Check for the Version of openstack-nova");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

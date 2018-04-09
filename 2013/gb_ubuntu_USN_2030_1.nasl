@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2030_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_2030_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for nss USN-2030-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841634");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:46:04 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-1739", "CVE-2013-1741", "CVE-2013-5605", "CVE-2013-5606");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,7 @@ LTS, Ubuntu 12.10, and Ubuntu 13.04.";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2030-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2030-1/");
-  script_summary("Check for the Version of nss");
+  script_tag(name:"summary", value:"Check for the Version of nss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

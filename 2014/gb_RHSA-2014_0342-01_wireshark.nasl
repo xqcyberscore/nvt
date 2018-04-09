@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871149");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 13:06:12 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2013-6336", "CVE-2013-6337", "CVE-2013-6338", "CVE-2013-6339",
                 "CVE-2013-6340", "CVE-2013-7112", "CVE-2013-7114", "CVE-2014-2281",
@@ -70,7 +70,7 @@ of Wireshark must be restarted for the update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2014:0342-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-March/msg00039.html");
-  script_summary("Check for the Version of wireshark");
+  script_tag(name:"summary", value:"Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

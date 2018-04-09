@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_db_int_sql_inj_vul.nasl 9030 2018-03-06 07:03:50Z ckuersteiner $
+# $Id: gb_cisco_pis_db_int_sql_inj_vul.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cisco Prime Infrastructure Database Interface SQL Injection Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
  script_cve_id("CVE-2016-6443");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
  script_tag(name:"cvss_base", value:"6.5");
- script_version ("$Revision: 9030 $");
+ script_version ("$Revision: 9381 $");
 
  script_name("Cisco Prime Infrastructure Database Interface SQL Injection Vulnerability");
 
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161012-prime");
 
- script_tag(name: "impact" , value: " An attacker could exploit this vulnerability by sending crafted URLs that
+ script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by sending crafted URLs that
 contain malicious SQL statements to the affected system. An exploit could allow the attacker to determine the
 presence of certain values in the database. Repeated exploitation could result in a sustained denial of service
 (DoS) condition.");
@@ -60,7 +60,7 @@ could allow an authenticated, remote attacker to impact system confidentiality."
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-03-06 08:03:50 +0100 (Tue, 06 Mar 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-10-13 05:15:37 +0200 (Thu, 13 Oct 2016)");
 
  script_category(ACT_GATHER_INFO);

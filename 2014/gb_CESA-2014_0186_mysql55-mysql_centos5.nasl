@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881885");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-20 15:09:20 +0530 (Thu, 20 Feb 2014)");
   script_cve_id("CVE-2013-3839", "CVE-2013-5807", "CVE-2013-5891", "CVE-2013-5908",
                 "CVE-2014-0001", "CVE-2014-0386", "CVE-2014-0393", "CVE-2014-0401",
@@ -77,7 +77,7 @@ these issues. After installing this update, the MySQL server daemon
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:0186");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-February/020163.html");
-  script_summary("Check for the Version of mysql55-mysql");
+  script_tag(name:"summary", value:"Check for the Version of mysql55-mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

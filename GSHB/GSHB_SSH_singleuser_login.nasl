@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_singleuser_login.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: GSHB_SSH_singleuser_login.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Read /etc/inittab, /etc/init/rcS.conf and /etc/event.d/rcS-sulogin
 #
@@ -30,9 +30,9 @@ tag_summary = "This plugin uses ssh to Read /etc/inittab, /etc/init/rcS.conf and
 
 if(description)
 {
-  script_id(96078);
-  script_version("$Revision: 7113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96078");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-04-09 15:04:43 +0200 (Fri, 09 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

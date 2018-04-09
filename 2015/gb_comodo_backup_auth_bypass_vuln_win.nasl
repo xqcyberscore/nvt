@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # COMODO BackUp Authentication Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:comodo:backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805344");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2014-9633");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:49:43 +0530 (Fri, 06 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("COMODO BackUp Authentication Bypass Vulnerability (Windows)");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:" The flaw exists due to the
+  script_tag(name: "insight" , value:"The flaw exists due to the
   'bdisk.sys' driver allows remote attackers to gain privileges via a
   crafted device handle, which triggers a NULL pointer dereference");
 

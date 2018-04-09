@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1429_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1429_1.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2017:1429-1 (java-1_7_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851560");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-28 07:00:53 +0200 (Sun, 28 May 2017)");
   script_cve_id("CVE-2017-3289", "CVE-2017-3509", "CVE-2017-3511", "CVE-2017-3512", 
                   "CVE-2017-3514", "CVE-2017-3526", "CVE-2017-3533", "CVE-2017-3539", 
@@ -40,7 +40,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of 
   detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: " This update for java-1_7_0-openjdk fixes 
+  script_tag(name: "insight", value:"This update for java-1_7_0-openjdk fixes 
   the following issues: - Update to 2.6.10 - OpenJDK 7u141 (bsc#1034849) * 
   Security fixes - S8163520, CVE-2017-3509: Reuse cache entries - S8163528, 
   CVE-2017-3511: Better library loading - S8165626, CVE-2017-3512: Improved window 

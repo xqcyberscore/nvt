@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_p2p_conficker.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_nmap_p2p_conficker.nasl 9364 2018-04-06 07:33:03Z cfischer $
 #
 # Wrapper for Nmap P2P Conficker NSE script.
 #
@@ -34,9 +34,9 @@ tag_summary = "This script attempts to check if a host is infected with Conficke
 
 if(description)
 {
-  script_id(801816);
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801816");
+  script_version("$Revision: 9364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

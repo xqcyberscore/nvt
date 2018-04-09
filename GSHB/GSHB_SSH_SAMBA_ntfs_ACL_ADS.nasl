@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 7152 2017-09-15 14:36:54Z cfischer $
+# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Check if NTFS Access Control Lists and NTFS Alternate Data Streams supported
 #
@@ -30,9 +30,9 @@ tag_summary = "Check if NTFS Access Control Lists and NTFS Alternate Data Stream
 
 if(description)
 {
-  script_id(96090);
-  script_version("$Revision: 7152 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96090");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-05-12 13:28:00 +0200 (Wed, 12 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882037");
-  script_version("$Revision: 6656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:58:26 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-2497", "CVE-2014-3478", "CVE-2014-3538", "CVE-2014-3587",
                 "CVE-2014-3597", "CVE-2014-4670", "CVE-2014-4698", "CVE-2014-5120",
@@ -94,7 +94,7 @@ take effect.
 
   script_xref(name: "CESA", value: "2014:1327");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020604.html");
-  script_summary("Check for the Version of php");
+  script_tag(name:"summary", value:"Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

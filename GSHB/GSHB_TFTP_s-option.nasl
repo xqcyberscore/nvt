@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_TFTP_s-option.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_TFTP_s-option.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Check if an TFTP Server is running and was start with -s Option
 #
@@ -30,9 +30,9 @@ tag_summary = "Check if an TFTP Server is running and was start with -s Option";
 
 if(description)
 {
-  script_id(96101);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96101");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:06:40 +0200 (Wed, 05 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

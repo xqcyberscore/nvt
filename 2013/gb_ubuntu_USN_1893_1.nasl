@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1893_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1893_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for subversion USN-1893-1
 #
@@ -69,8 +69,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841492");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:20:46 +0530 (Tue, 02 Jul 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849",
                 "CVE-2013-1884", "CVE-2013-1968", "CVE-2013-2112");
@@ -80,7 +80,7 @@ if(description)
 
   script_xref(name: "USN", value: "1893-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1893-1/");
-  script_summary("Check for the Version of subversion");
+  script_tag(name:"summary", value:"Check for the Version of subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

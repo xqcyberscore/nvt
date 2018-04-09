@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smtp_open_relay.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_nmap_smtp_open_relay.nasl 9364 2018-04-06 07:33:03Z cfischer $
 #
 # Wrapper for Nmap SMTP Open Relay NSE script.
 #
@@ -33,9 +33,9 @@ tag_summary = "This script attempts to check if a SMTP server is vulnerable to m
 
 if(description)
 {
-  script_id(801601);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801601");
+  script_version("$Revision: 9364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-10-08 10:33:58 +0200 (Fri, 08 Oct 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

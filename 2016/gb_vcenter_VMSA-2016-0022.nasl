@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0022.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_vcenter_VMSA-2016-0022.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # VMSA-2016-0022: XML External Entity (XXE) Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-7458","CVE-2016-7459","CVE-2016-7460");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 5557 $");
+ script_version ("$Revision: 9381 $");
  script_name("VMSA-2016-0022: XML External Entity (XXE) Vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0022.html");
@@ -44,12 +44,12 @@ if (description)
 
  script_tag(name: "summary" , value:"vCenter Server contains an XML External Entity (XXE) vulnerability in the Log Browser, the Distributed Switch setup, and the Content Library.");
 
- script_tag(name: "affected" , value:" vCenter Server 6.0/5.5");
+ script_tag(name: "affected" , value:"vCenter Server 6.0/5.5");
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-11-23 10:16:32 +0100 (Wed, 23 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

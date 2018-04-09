@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881959");
-  script_version("$Revision: 6656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-15 15:39:14 +0530 (Tue, 15 Jul 2014)");
   script_cve_id("CVE-2014-0244", "CVE-2014-3493");
   script_tag(name:"cvss_base", value:"3.3");
@@ -74,7 +74,7 @@ update, the smb service will be restarted automatically.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:0866");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-July/020405.html");
-  script_summary("Check for the Version of libsmbclient");
+  script_tag(name:"summary", value:"Check for the Version of libsmbclient");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

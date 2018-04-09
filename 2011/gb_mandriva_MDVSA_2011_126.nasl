@@ -88,8 +88,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-08/msg00008.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831439");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -97,7 +97,7 @@ if(description)
   script_cve_id("CVE-2011-0865", "CVE-2011-0862", "CVE-2011-0867", "CVE-2011-0869", "CVE-2011-0868", "CVE-2011-0864", "CVE-2011-0871");
   script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2011:126 (java-1.6.0-openjdk)");
 
-  script_summary("Check for the Version of java-1.6.0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1.6.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

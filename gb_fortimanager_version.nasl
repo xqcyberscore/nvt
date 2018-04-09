@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_version.nasl 3732 2016-07-19 16:36:51Z mime $
+# $Id: gb_fortimanager_version.nasl 9369 2018-04-06 08:36:49Z cfischer $
 #
 # FortiManager Detection
 #
@@ -30,15 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105814");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3732 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-19 18:36:51 +0200 (Tue, 19 Jul 2016) $");
+ script_version ("$Revision: 9369 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-19 09:58:46 +0200 (Tue, 19 Jul 2016)");
  script_name("FortiManager Detection");
 
- script_summary("This script performs SSH based detection of FortiManager");
+ script_tag(name:"summary", value:"This script performs SSH based detection of FortiManager");
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of FortiManager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -65,8 +65,8 @@ update to take effect.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881784");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-27 09:56:56 +0530 (Tue, 27 Aug 2013)");
   script_cve_id("CVE-2013-2147", "CVE-2013-2164", "CVE-2013-2206", "CVE-2013-2224",
                 "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-2237", "CVE-2012-3552");
@@ -87,7 +87,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1166");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-August/019910.html");
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

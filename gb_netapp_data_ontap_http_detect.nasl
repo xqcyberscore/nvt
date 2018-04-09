@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_http_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_netapp_data_ontap_http_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # NetApp Data ONTAP Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140348");
-  script_version("$Revision: 8146 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-09-05 08:44:27 +0700 (Tue, 05 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,6 @@ This script performs HTTP based detection of NetApp Data ONTAP devices.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("NetApp/banner");
   script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "http://www.netapp.com/us/products/data-management-software/ontap.aspx");
 

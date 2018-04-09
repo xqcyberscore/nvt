@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098095.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865292");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:51:54 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-6075", "CVE-2012-5634", "CVE-2012-5510", "CVE-2012-5511",
                 "CVE-2012-5512", "CVE-2012-5513", "CVE-2012-5514", "CVE-2012-5515",
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-1274");
   script_name("Fedora Update for xen FEDORA-2013-1274");
 
-  script_summary("Check for the Version of xen");
+  script_tag(name:"summary", value:"Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

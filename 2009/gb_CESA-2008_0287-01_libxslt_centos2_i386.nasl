@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2008-May/014926.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880154");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-27 09:02:20 +0100 (Fri, 27 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if(description)
   script_cve_id("CVE-2008-1767");
   script_name( "CentOS Update for libxslt CESA-2008:0287-01 centos2 i386");
 
-  script_summary("Check for the Version of libxslt");
+  script_tag(name:"summary", value:"Check for the Version of libxslt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

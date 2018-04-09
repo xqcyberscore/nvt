@@ -42,15 +42,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-12/msg00021.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831512");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-23 10:36:08 +0530 (Fri, 23 Dec 2011)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2011:093-1");
   script_name("Mandriva Update for psmisc MDVA-2011:093-1 (psmisc)");
 
-  script_summary("Check for the Version of psmisc");
+  script_tag(name:"summary", value:"Check for the Version of psmisc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

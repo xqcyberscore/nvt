@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881856");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:52:47 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6424");
   script_tag(name:"cvss_base", value:"5.0");
@@ -61,7 +61,7 @@ packages, which contain a backported patch to correct this issue.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1868");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-December/020090.html");
-  script_summary("Check for the Version of xorg-x11-server-common");
+  script_tag(name:"summary", value:"Check for the Version of xorg-x11-server-common");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

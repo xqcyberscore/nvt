@@ -81,8 +81,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-February/019221.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881592");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:55:24 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2010-4008", "CVE-2010-4494", "CVE-2011-0216", "CVE-2011-1944",
                 "CVE-2011-2821", "CVE-2011-2834", "CVE-2011-3102", "CVE-2011-3905",
@@ -92,7 +92,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0217");
   script_name("CentOS Update for mingw32-libxml2 CESA-2013:0217 centos6 ");
 
-  script_summary("Check for the Version of mingw32-libxml2");
+  script_tag(name:"summary", value:"Check for the Version of mingw32-libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

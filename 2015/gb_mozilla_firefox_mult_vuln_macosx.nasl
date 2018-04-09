@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_macosx.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln_macosx.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806100");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 16:06:00 +0530 (Mon, 31 Aug 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities (Mac OS X");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:" Multiple flaws are due to:
+  script_tag(name: "insight" , value:"Multiple flaws are due to:
   - A use-after-free vulnerability with a '<canvas>' element on a page. This
   occurs when a resize event is triggered in concert with style changes but
   the canvas references have been recreated in the meantime, destroying the

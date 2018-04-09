@@ -39,8 +39,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098440.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865336");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 10:10:45 +0530 (Mon, 11 Feb 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0429", "CVE-2013-0432", "CVE-2013-0443", "CVE-2013-0440",
@@ -60,7 +60,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2188");
   script_name("Fedora Update for java-1.7.0-openjdk FEDORA-2013-2188");
 
-  script_summary("Check for the Version of java-1.7.0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

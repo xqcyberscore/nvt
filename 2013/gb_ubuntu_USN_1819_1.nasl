@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1819_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1819_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for openjdk-6 USN-1819-1
 #
@@ -58,8 +58,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841421");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-09 10:26:30 +0530 (Thu, 09 May 2013)");
   script_cve_id("CVE-2013-0401", "CVE-2013-1488", "CVE-2013-1518", "CVE-2013-1537",
                 "CVE-2013-1557", "CVE-2013-1558", "CVE-2013-1569", "CVE-2013-2383",
@@ -73,7 +73,7 @@ if(description)
 
   script_xref(name: "USN", value: "1819-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1819-1/");
-  script_summary("Check for the Version of openjdk-6");
+  script_tag(name:"summary", value:"Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

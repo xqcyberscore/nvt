@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01905287-1");
   script_oid("1.3.6.1.4.1.25623.1.0.835224");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:43:41 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if(description)
   script_cve_id("CVE-2006-3918", "CVE-2007-4465", "CVE-2007-6203", "CVE-2008-0005", "CVE-2008-0599", "CVE-2008-2168", "CVE-2008-2364", "CVE-2008-2371", "CVE-2008-2665", "CVE-2008-2666", "CVE-2008-2829", "CVE-2008-2939", "CVE-2008-3658", "CVE-2008-3659", "CVE-2008-3660", "CVE-2008-5498", "CVE-2008-5557", "CVE-2008-5624", "CVE-2008-5625", "CVE-2008-5658");
   script_name("HP-UX Update for Apache-based Web Server HPSBUX02465");
 
-  script_summary("Check for the Version of Apache-based Web Server");
+  script_tag(name:"summary", value:"Check for the Version of Apache-based Web Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");

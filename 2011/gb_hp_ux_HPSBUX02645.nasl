@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02752210");
   script_oid("1.3.6.1.4.1.25623.1.0.835253");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-05-05 07:14:22 +0200 (Thu, 05 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,7 +52,7 @@ if(description)
   script_cve_id("CVE-2009-3560", "CVE-2009-3720", "CVE-2010-1623", "CVE-2010-3718", "CVE-2010-4476", "CVE-2011-0013");
   script_name("HP-UX Update for Apache Web Server HPSBUX02645");
 
-  script_summary("Check for the Version of Apache Web Server");
+  script_tag(name:"summary", value:"Check for the Version of Apache Web Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");

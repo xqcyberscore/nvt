@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2194_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ubuntu_USN_2194_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for neutron USN-2194-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841808");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 09:13:06 +0530 (Mon, 12 May 2014)");
   script_cve_id("CVE-2014-0056");
   script_tag(name:"cvss_base", value:"2.1");
@@ -54,7 +54,7 @@ network of other tenants.";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2194-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2194-1/");
-  script_summary("Check for the Version of neutron");
+  script_tag(name:"summary", value:"Check for the Version of neutron");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

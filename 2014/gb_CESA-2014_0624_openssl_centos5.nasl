@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881943");
-  script_version("$Revision: 6656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 12:27:31 +0530 (Mon, 09 Jun 2014)");
   script_cve_id("CVE-2014-0224");
   script_tag(name:"cvss_base", value:"6.8");
@@ -120,7 +120,7 @@ openssl-debuginfo-0.9.8e-27.el5_10.3.i386.rp ...
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:0624");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-June/020347.html");
-  script_summary("Check for the Version of openssl");
+  script_tag(name:"summary", value:"Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

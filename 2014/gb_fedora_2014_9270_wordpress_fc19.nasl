@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868115");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-08-23 05:55:04 +0200 (Sat, 23 Aug 2014)");
   script_cve_id("CVE-2014-0165", "CVE-2014-0166", "CVE-2013-4338", "CVE-2013-4339",
                 "CVE-2013-4340", "CVE-2013-2173", "CVE-2013-2199", "CVE-2013-2200",
@@ -58,7 +58,7 @@ Important information in /usr/share/doc/wordpress-3.9.2/README.fedora
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-9270");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/136942.html");
-  script_summary("Check for the Version of wordpress");
+  script_tag(name:"summary", value:"Check for the Version of wordpress");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

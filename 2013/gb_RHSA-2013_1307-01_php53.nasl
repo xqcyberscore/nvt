@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871047");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:17:21 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2006-7243", "CVE-2011-1398", "CVE-2012-0831", "CVE-2012-2688",
                 "CVE-2013-1643", "CVE-2013-4248");
@@ -96,7 +96,7 @@ be restarted for the update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2013:1307-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-September/msg00050.html");
-  script_summary("Check for the Version of php53");
+  script_tag(name:"summary", value:"Check for the Version of php53");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

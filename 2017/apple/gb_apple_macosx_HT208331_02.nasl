@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_02.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_apple_macosx_HT208331_02.nasl 9387 2018-04-06 12:53:16Z santu $
 #
 # Apple MacOSX Security Updates(HT208331)-02
 #
@@ -27,14 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812401");
-  script_version("$Revision: 8291 $");
+  script_version("$Revision: 9387 $");
   script_cve_id("CVE-2017-13868", "CVE-2017-13869", "CVE-2017-3735", "CVE-2017-13855", 
 		"CVE-2017-13844", "CVE-2017-9798", "CVE-2017-13847", "CVE-2017-13833", 
-		"CVE-2017-10002", "CVE-2017-13867", "CVE-2017-13862" );
+		"CVE-2017-10002", "CVE-2017-13867", "CVE-2017-13862", "CVE-2017-7172",
+                "CVE-2017-1000254", "CVE-2017-15422", "CVE-2017-7159", "CVE-2017-7162",
+                "CVE-2017-13904", "CVE-2017-7173", "CVE-2017-7154");
   script_bugtraq_id(100515, 100872, 101946);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:36 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331)-02");
 
@@ -60,7 +62,11 @@ if(description)
 
   - An out-of-bounds read was addressed with improved bounds checking.
 
-  - An out-of-bounds read issue existed in the FTP PWD response parsing.");
+  - An out-of-bounds read issue existed in the FTP PWD response parsing.
+
+  - An integer overflow error.
+
+  - An input validation issue existed in the kernel.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to read restricted memory, execute arbitrary code with system

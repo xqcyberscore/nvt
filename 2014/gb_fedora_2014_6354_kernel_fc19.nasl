@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867820");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 10:34:03 +0530 (Mon, 26 May 2014)");
   script_cve_id("CVE-2014-3144", "CVE-2014-3145", "CVE-2014-1738", "CVE-2014-1737",
                 "CVE-2014-3122", "CVE-2014-2851", "CVE-2014-0155", "CVE-2014-2678",
@@ -68,7 +68,7 @@ input and output, etc.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-6354");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-May/133534.html");
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

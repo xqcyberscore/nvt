@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minihttpd_detect.nasl 8929 2018-02-23 05:05:21Z ckuersteiner $
+# $Id: gb_minihttpd_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # mini_httpd Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140802");
-  script_version("$Revision: 8929 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-23 06:05:21 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-02-23 11:52:05 +0700 (Fri, 23 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("mini_httpd/banner");
   script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "https://acme.com/software/mini_httpd/");
 

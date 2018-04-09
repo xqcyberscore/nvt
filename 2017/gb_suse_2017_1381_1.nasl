@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1381_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1381_1.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # SuSE Update for libtirpc openSUSE-SU-2017:1381-1 (libtirpc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851556");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-24 06:53:11 +0200 (Wed, 24 May 2017)");
   script_cve_id("CVE-2017-8779");
   script_tag(name:"cvss_base", value:"7.8");
@@ -38,7 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of libtirpc");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of 
   detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: " This update for libtirpc fixes the 
+  script_tag(name: "insight", value:"This update for libtirpc fixes the 
   following issues: - CVE-2017-8779: crafted UDP packaged could lead rpcbind to 
   denial-of-service (bsc#1037559) This update was imported from the 
   SUSE:SLE-12-SP2:Update update project."); 

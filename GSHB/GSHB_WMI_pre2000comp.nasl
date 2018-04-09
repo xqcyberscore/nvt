@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_pre2000comp.nasl 7067 2017-09-06 11:50:33Z teissa $
+# $Id: GSHB_WMI_pre2000comp.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Pre-Windows 2000 Compatible Access (win)
 #
@@ -33,9 +33,9 @@ tag_summary = "The scripte check, if
 
 if(description)
 {
-  script_id(96040);
-  script_version("$Revision: 7067 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96040");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

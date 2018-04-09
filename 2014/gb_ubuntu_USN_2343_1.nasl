@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2343_1.nasl 7957 2017-12-01 06:40:08Z santu $
+# $Id: gb_ubuntu_USN_2343_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for nss USN-2343-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841964");
-  script_version("$Revision: 7957 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:50 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-1544");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,7 @@ in a denial of service, or possibly execute arbitrary code.");
 
   script_xref(name: "USN", value: "2343-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2343-1/");
-  script_summary("Check for the Version of nss");
+  script_tag(name:"summary", value:"Check for the Version of nss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_devices_mult_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
+# $Id: gb_avtech_devices_mult_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # AVTECH Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:avtech:avtech_device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809067");
-  script_version("$Revision: 7664 $");
+  script_version("$Revision: 9381 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTECH Devices Multiple Vulnerabilities");
@@ -72,7 +72,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:" Avtech device (IP camera, NVR, DVR) with 
+  script_tag(name:"affected", value:"Avtech device (IP camera, NVR, DVR) with 
   firmware version as mentioned in the following link,
   http://www.search-lab.hu/media/vulnerability_matrix.txt.");
 

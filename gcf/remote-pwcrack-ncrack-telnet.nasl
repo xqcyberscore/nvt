@@ -28,9 +28,9 @@ tag_summary = "This plugin runs ncrack to find telnet accounts & passwords by br
 
 if(description)
 {
- script_id(80107);
- script_version("$Revision: 9334 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80107");
+ script_version("$Revision: 9367 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:37:00 +0200 (Fri, 06 Apr 2018) $");
  name = "ncrack: telnet";
  script_name(name);
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");

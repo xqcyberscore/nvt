@@ -40,8 +40,8 @@ tag_affected = "exim on openSUSE 11.1, openSUSE 11.2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850152");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
   script_cve_id("CVE-2010-4344", "CVE-2010-4345");
   script_name("SuSE Update for exim SUSE-SA:2010:059");
 
-  script_summary("Check for the Version of exim");
+  script_tag(name:"summary", value:"Check for the Version of exim");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

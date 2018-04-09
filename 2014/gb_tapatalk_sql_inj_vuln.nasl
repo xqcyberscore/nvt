@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tapatalk_sql_inj_vuln.nasl 8200 2017-12-20 13:48:45Z cfischer $
+# $Id: gb_tapatalk_sql_inj_vuln.nasl 9369 2018-04-06 08:36:49Z cfischer $
 #
 # Tapatalk Blind SQL Injection Vulnerability
 #
@@ -33,12 +33,14 @@ if (description)
   script_cve_id("CVE-2014-2023");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 8200 $");
+  script_version ("$Revision: 9369 $");
 
   script_name("Tapatalk Blind SQL Injection Vulnerability");
 
   script_xref(name:"URL", value:"https://github.com/tintinweb/pub/tree/master/pocs/cve-2014-2023");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70418/");
+
+  script_tag(name:"summary", value:"Tapatalk is prone to a SQL Injection Vulnerability");
 
   script_tag(name: "impact", value: "A successful exploit may allow an unauthenticated attacker to
   compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying
@@ -55,9 +57,9 @@ if (description)
 
   script_tag(name:"solution_type", value: "VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 14:20:39 +0700 (Thu, 27 Nov 2014)");
-  script_summary("Check for vulnerable Tapatalk plugin.");
+
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability 
 #
@@ -33,13 +33,13 @@ if (description)
  script_cve_id("CVE-2015-6427");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5745 $");
+ script_version ("$Revision: 9381 $");
 
  script_name("Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability");
 
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151217-fsm");
 
- script_tag(name: "impact" , value:" An attacker could exploit this vulnerability by embedding crafted HTTP packets in an encrypted SSL connection that could be flagged as an HTTP attack. An exploit could allow the attacker to bypass HTTP attack rules for SSL connections.");
+ script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by embedding crafted HTTP packets in an encrypted SSL connection that could be flagged as an HTTP attack. An exploit could allow the attacker to bypass HTTP attack rules for SSL connections.");
 
  script_tag(name: "vuldetect" , value:"Check the version");
 
@@ -51,7 +51,7 @@ if (description)
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-01-06 13:43:05 +0100 (Wed, 06 Jan 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

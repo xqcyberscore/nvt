@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Squid Nonce Replay Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806902");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2014-9749");
   script_bugtraq_id(77040);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-12-23 13:34:49 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Nonce Replay Security Bypass Vulnerability");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"affected", value:"
   Squid versions 3.4.4 through 3.4.11 and 3.5.0.1 through 3.5.1");
 
-  script_tag(name:"solution", value:" Upgrade to Squid 3.4.12 or 3.5.2
+  script_tag(name:"solution", value:"Upgrade to Squid 3.4.12 or 3.5.2
   or later.
   For updates refer to http://www.squid-cache.org");
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201410-01.nasl 6592 2017-07-07 09:16:27Z cfischer $
+# $Id: glsa-201410-01.nasl 9374 2018-04-06 08:58:12Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121274");
-script_version("$Revision: 6592 $");
+script_version("$Revision: 9374 $");
 script_tag(name:"creation_date", value:"2015-09-29 11:27:55 +0300 (Tue, 29 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:16:27 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:58:12 +0200 (Fri, 06 Apr 2018) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201410-01");
 script_tag(name: "insight", value: "Florian Weimer, Todd Sabin, Michal Zalewski et al. discovered further parsing flaws in Bash. The unaffected Gentoo packages listed in this GLSA contain the official patches to fix the issues tracked as CVE-2014-6277, CVE-2014-7186, and CVE-2014-7187. Furthermore, the official patch known as function prefix patch is included which prevents the exploitation of CVE-2014-6278."); 
 script_tag(name : "solution", value : "update software");
@@ -39,7 +39,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201410-01");
+script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201410-01");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

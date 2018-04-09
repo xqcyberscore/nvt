@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2049_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_2049_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for linux USN-2049-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841655");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:08:51 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-4270", "CVE-2013-4299", "CVE-2013-4343", "CVE-2013-4350",
                 "CVE-2013-4387", "CVE-2013-4470");
@@ -77,7 +77,7 @@ administrative privileges. (CVE-2013-4470)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2049-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2049-1/");
-  script_summary("Check for the Version of linux");
+  script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

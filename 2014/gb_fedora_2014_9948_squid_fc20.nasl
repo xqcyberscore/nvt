@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868166");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-06 05:51:41 +0200 (Sat, 06 Sep 2014)");
   script_cve_id("CVE-2014-3609");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,7 @@ lookup program (dnsserver), a program for retrieving FTP data
 
   script_xref(name: "FEDORA", value: "2014-9948");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-September/137253.html");
-  script_summary("Check for the Version of squid");
+  script_tag(name:"summary", value:"Check for the Version of squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

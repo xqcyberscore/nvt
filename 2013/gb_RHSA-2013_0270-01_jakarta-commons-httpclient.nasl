@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00031.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870917");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:01:34 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-5783");
   script_bugtraq_id(58073);
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0270-01");
   script_name("RedHat Update for jakarta-commons-httpclient RHSA-2013:0270-01");
 
-  script_summary("Check for the Version of jakarta-commons-httpclient");
+  script_tag(name:"summary", value:"Check for the Version of jakarta-commons-httpclient");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

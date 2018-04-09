@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_4119.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: deb_4119.nasl 9368 2018-04-06 07:58:00Z cfischer $
 # Auto-generated from advisory DSA 4119-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(704119);
-    script_version("$Revision: 8893 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.704119");
+    script_version("$Revision: 9368 $");
     script_cve_id("CVE-2017-16803");
     script_name("Debian Security Advisory DSA 4119-1 (libav - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:58:00 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name: "creation_date", value: "2018-02-19 00:00:00 +0100 (Mon, 19 Feb 2018)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,8 +41,6 @@ if(description)
     script_tag(name: "qod_type", value: "package");
 
     script_xref(name:"URL", value:"https://www.debian.org/security/2018/dsa-4119");
-
-    script_summary("Debian Security Advisory DSA 4119-1 (libav - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1497_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1497_1.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # SuSE Update for deluge openSUSE-SU-2017:1497-1 (deluge)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851563");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-07 06:48:00 +0200 (Wed, 07 Jun 2017)");
   script_cve_id("CVE-2017-7178", "CVE-2017-9031");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,7 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of deluge");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of 
   detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: " This update for deluge fixes two security 
+  script_tag(name: "insight", value:"This update for deluge fixes two security 
   issues: - CVE-2017-9031: A remote attacker may have used a directory traversal 
   vulnerability in the web interface (bsc#1039815) - CVE-2017-7178: A remote 
   attacher could have exploited a CSRF vulnerability to trick a logged-in user to 

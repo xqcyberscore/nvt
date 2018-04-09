@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_UAC_config.nasl 8017 2017-12-07 06:46:46Z emoss $
+# $Id: GSHB_WMI_UAC_config.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Read the config of the User Account Control feature over WMI (Windows)
 #
@@ -32,9 +32,9 @@ tag_summary = "Read the config of the User Account Control feature over WMI.";
 
 if(description)
 {
-  script_id(96046);
-  script_version("$Revision: 8017 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 07:46:46 +0100 (Thu, 07 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96046");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-01-15 16:20:21 +0100 (Fri, 15 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

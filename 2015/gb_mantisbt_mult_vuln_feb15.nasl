@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571", "CVE-2014-9624");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
@@ -44,12 +44,16 @@ if(description)
   the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Insufficient filtration of input data passed via the 'admin_username' and
   'admin_password' HTTP GET parameters to '/install.php' script.
+
   - Insufficient access restrictions to the installation script 'install.php'
   when HTTP GET 'install' parameter is set to '4'.
+
   - One can get an unlimited amount of 'samples' with different perturbations
     for the same challenge.
+
   - Insufficient filtration of the 'MANTIS_MANAGE_USERS_COOKIE' HTTP COOKIE in
   '/manage_user_page.php' script.");
 
@@ -92,16 +96,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-manPort = "";
-manVer = "";
-
-## get the port
 if(!manPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!manVer = get_app_version(cpe:CPE, port:manPort)){
   exit(0);
 }
@@ -124,6 +122,8 @@ if(VULN)
 {
   report = 'Installed version: ' + manVer + '\n' +
            'Fixed version:     ' + fix + '\n';
-  security_message(data:report);
+  security_message(port:manPort, data:report);
   exit(0);
 }
+
+exit(99);

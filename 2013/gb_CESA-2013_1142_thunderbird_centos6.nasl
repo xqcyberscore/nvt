@@ -72,8 +72,8 @@ take effect.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881781");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 13:13:29 +0530 (Mon, 12 Aug 2013)");
   script_cve_id("CVE-2013-1701", "CVE-2013-1709", "CVE-2013-1710", "CVE-2013-1713",
                 "CVE-2013-1714", "CVE-2013-1717");
@@ -94,7 +94,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1142");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-August/019898.html");
-  script_summary("Check for the Version of thunderbird");
+  script_tag(name:"summary", value:"Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

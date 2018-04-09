@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 6823 2017-08-01 04:55:14Z ckuersteiner $
+# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Jetty Shared Buffers Information Leakage Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805051");
   script_cve_id("CVE-2015-2080");
-  script_version("$Revision: 6823 $");
+  script_version("$Revision: 9381 $");
   script_bugtraq_id(72768);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-01 06:55:14 +0200 (Tue, 01 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 14:50:23 +0530 (Mon, 02 Mar 2015)");
 
   script_name("Jetty Shared Buffers Information Leakage Vulnerability");
@@ -52,7 +52,7 @@ information that may aid in further attacks.
 
 Impact Level: Application");
 
-  script_tag(name:"affected", value:" Jetty versions 9.2.3 to 9.2.8 and beta releases of 9.3.x");
+  script_tag(name:"affected", value:"Jetty versions 9.2.3 to 9.2.8 and beta releases of 9.3.x");
 
 
   script_tag(name:"solution", value:"Upgrade to Jetty 9.2.9.v20150224 or later.");

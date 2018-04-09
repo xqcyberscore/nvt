@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_magmi_lfi.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: sw_magento_magmi_lfi.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Magmi database client for Magento Local File Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:magmi:magmi';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111041");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 18:00:00 +0200 (Wed, 14 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name : "insight" , value : "Magmi database client for Magento does not
   sufficiently sanitize input submitted via URI parameters of potentially malicious data.
   This issue exists in the download_file.php script.");
-  script_tag(name : "impact" , value : " By submitting a malicious web request
+  script_tag(name : "impact" , value:"By submitting a malicious web request
   to this script that contains a relative path to a resource, it is possible to retrieve
   arbitrary files that are readable by the web server process.");
   script_tag(name : "affected" , value : "Magmi database client 0.7.21");

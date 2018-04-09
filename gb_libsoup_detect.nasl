@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libsoup_detect.nasl 6983 2017-08-22 08:28:33Z ckuersteiner $
+# $Id: gb_libsoup_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # libsoup HTTP Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140319");
-  script_version("$Revision: 6983 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-22 10:28:33 +0200 (Tue, 22 Aug 2017) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-08-22 10:22:50 +0700 (Tue, 22 Aug 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ its version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 8080, 443);
   script_mandatory_keys("libsoup/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "https://wiki.gnome.org/action/show/Projects/libsoup");
 

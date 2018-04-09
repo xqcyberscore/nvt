@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.866039");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:19:26 +0530 (Tue, 02 Jul 2013)");
   script_cve_id("CVE-2012-5642", "CVE-2013-2178");
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2013-10806");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/109967.html");
-  script_summary("Check for the Version of fail2ban");
+  script_tag(name:"summary", value:"Check for the Version of fail2ban");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

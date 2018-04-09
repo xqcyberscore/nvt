@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/o:huawei:vp_9660_firmware";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806637");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2015-8227");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 12:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities");
 
@@ -76,27 +77,21 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-udp_port = 0;
-huaVer = "";
-
-## Get Udp Port
 if(!udp_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!huaVer = get_app_version(cpe:CPE, port:udp_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if((huaVer == "V200R001C01")|| (huaVer == "V200R001C02")||
    (huaVer == "V200R001C30"))
 {
   report = 'Installed version: ' + huaVer + '\n' +
            'Fixed version:      V200R001C30SPC700\n';
-  security_message(data:report);
+  security_message(port:udp_port, data:report);
   exit(0);
 }
 
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_get_Shares.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_get_Shares.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Get all Windows Shares over WMI (win)
 #
@@ -34,9 +34,9 @@ tag_summary = "Get all Windows Shares over WMI.
 
 if(description)
 {
-  script_id(96026);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96026");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

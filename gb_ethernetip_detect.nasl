@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ethernetip_detect.nasl 8903 2018-02-21 12:51:37Z cfischer $
+# $Id: gb_ethernetip_detect.nasl 9378 2018-04-06 10:04:48Z ckuersteiner $
 #
 # EtherNet/IP Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106850");
- script_version ("$Revision: 8903 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-21 13:51:37 +0100 (Wed, 21 Feb 2018) $");
+ script_version ("$Revision: 9378 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-04-06 12:04:48 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name: "creation_date", value: "2017-06-09 12:24:29 +0700 (Fri, 09 Jun 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,11 +75,14 @@ function queryEthernetIP(proto, soc) {
   if (strlen(recv) < 63 || hexstr(recv[0]) != 63 || hexstr(recv[26]) != "0c")
     exit(0);
 
+  set_kb_item(name: "ethernetip/detected", value: TRUE);
+
   set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
   ip = ord(recv[36]) + '.' + ord(recv[37]) + '.' + ord(recv[38]) + '.' + ord(recv[39]);
   vendor_id = getword(blob: recv, pos: 48);
   vendor = ethip_get_vendor_name(code: vendor_id);
+  set_kb_item(name: "ethernetip/vendor", value: vendor);
   dev_type_id = getword(blob: recv, pos: 50);
   dev_type = ethip_get_device_type(code: dev_type_id);
   prod_code = getword(blob: recv, pos: 52);
@@ -87,8 +90,9 @@ function queryEthernetIP(proto, soc) {
   serialno = getdword(blob: recv, pos: 58);
   prod_len = ord(recv[62]);
   product_name = substr(recv, 63, 62 + prod_len);
+  set_kb_item(name: "ethernetip/product_name", value: product_name);
 
-  register_service(port: port, ipproto: "tcp", proto: "ethernetip");
+  register_service(port: port, ipproto: proto, proto: "ethernetip");
 
   report = 'A EtherNet/IP service is running at this port.\n\nThe following information was extracted:\n\n' +
            "Product Name:            " + product_name + '\n' +

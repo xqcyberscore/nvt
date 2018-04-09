@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenserver_dos_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_citrix_xenserver_dos_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:citrix:xenserver';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107212");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-31 19:18:23 +0200 (Wed, 31 May 2017)");
   script_cve_id("CVE-2017-5572");
 
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   
   script_name("Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability");
-  script_tag(name: "summary", value: " Citrix XenServer is prone to a denial-of-service vulnerability.");
+  script_tag(name: "summary", value:"Citrix XenServer is prone to a denial-of-service vulnerability.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
   if the version is vulnerable or not.");
   script_tag(name: "impact" , value: "Attackers can exploit this issue to cause denial-of-service condition.");

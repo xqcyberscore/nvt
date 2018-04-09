@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-009.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_fortiweb_FG-IR-14-009.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # FortiOS: FortiWeb Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-1955","CVE-2014-1956","CVE-2014-1957");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 6214 $");
+ script_version ("$Revision: 9381 $");
 
  script_name("FortiOS: FortiWeb Multiple Vulnerabilities");
 
@@ -43,17 +43,17 @@ if (description)
 session. In addition, authenticated users may be able to escalate their privileges. ");
 
  script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:" Upgrade to FortiWeb 5.0.3 or higher. ");
+ script_tag(name: "solution" , value:"Upgrade to FortiWeb 5.0.3 or higher. ");
 
  script_tag(name: "summary" , value:"FortiWeb 5.0.2 and lower are vulnerable to cross-site scripting (CVE-2014-1955), HTTP header injection (CVE-2014-1956) and privilege
 escalation (CVE-2014-1957) issues.");
 
- script_tag(name: "affected" , value:" FortiWeb 4.4.7 and lower. FortiWeb 5.0.2 and lower. ");
+ script_tag(name: "affected" , value:"FortiWeb 4.4.7 and lower. FortiWeb 5.0.2 and lower. ");
  script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

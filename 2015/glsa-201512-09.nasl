@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201512-09.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: glsa-201512-09.nasl 9374 2018-04-06 08:58:12Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121431");
-script_version("$Revision: 6981 $");
+script_version("$Revision: 9374 $");
 script_tag(name:"creation_date", value:"2015-12-31 11:46:02 +0200 (Thu, 31 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:58:12 +0200 (Fri, 06 Apr 2018) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201512-09");
 script_tag(name: "insight", value: "Multiple vulnerabilities have been discovered in encfs. Please review the CVE identifiers referenced below for details."); 
 script_tag(name : "solution", value : "update software");
@@ -39,7 +39,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201512-09");
+script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201512-09");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

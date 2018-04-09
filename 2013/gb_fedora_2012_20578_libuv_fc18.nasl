@@ -34,8 +34,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.865531");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 10:32:47 +0530 (Mon, 08 Apr 2013)");
   script_cve_id("CVE-2012-5153", "CVE-2013-0836", "CVE-2013-2632");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,7 @@ if(description)
 
   script_xref(name: "FEDORA", value: "2012-20578");
   script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-April/101469.html");
-  script_summary("Check for the Version of libuv");
+  script_tag(name:"summary", value:"Check for the Version of libuv");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

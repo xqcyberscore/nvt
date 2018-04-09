@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
+# $Id: gb_twonky_server_mult_vuln.nasl 9397 2018-04-09 06:01:56Z cfischer $
 #
-# Twonky Server 8.5 Multiple Vulnerabilities
+# Twonky Server <= 8.5 Multiple Vulnerabilities (Version Check)
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113148");
-  script_version("$Revision: 9298 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 9397 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:01:56 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:36:00 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2018-7171", "CVE-2018-7203");
 
-  script_name("Twonky Server 8.5 Multiple Vulnerabilities");
+  script_name("Twonky Server <= 8.5 Multiple Vulnerabilities (Version Check)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -58,12 +58,14 @@ if( description )
 
   Cross-site scripting (XSS) vulnerability in Twonky Server allows remote attackers to inject arbitrary web script or HTML
   via the friendlyname parameter to rpc/set_all.");
-  script_tag(name:"affected", value:"Twonky Server versions 7.0.11 through 8.5");
+  script_tag(name:"affected", value:"Twonky Server versions 7.0.11 through 8.5.");
   script_tag(name:"solution", value:"No solution or patch is available as of 03rd April, 2018. Information regarding this issue
   will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/146938/TwonkyMedia-Server-7.0.11-8.5-Directory-Traversal.html");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/146939/TwonkyMedia-Server-7.0.11-8.5-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"https://github.com/mechanico/sharingIsCaring/blob/master/twonky.py");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44350/");
 
   exit( 0 );
 }

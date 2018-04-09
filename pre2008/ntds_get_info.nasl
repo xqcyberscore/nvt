@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntds_get_info.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: ntds_get_info.nasl 9377 2018-04-06 10:03:08Z cfischer $
 #
 # Use LDAP search request to retrieve information from NT Directory Services
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12105");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 9377 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 12:03:08 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -71,6 +71,8 @@ include("ldap.inc");
 include("misc_func.inc");
 
 port = get_ldap_port( default:389 );
+
+if( is_ldapv3( port:port ) ) exit( 0 );
 
 senddata = raw_string(
 0x30, 0x25, 0x02, 0x01, 0x01, 0x63, 0x20, 0x04, 0x00, 0x0a, 

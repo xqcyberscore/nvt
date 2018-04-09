@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160727-wlc.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_cisco_wlc_cisco-sa-20160727-wlc.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cisco Wireless LAN Controller Denial of Service Vulnerability
 #
@@ -31,15 +31,15 @@ if (description)
  script_cve_id("CVE-2016-1460");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5513 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+ script_version ("$Revision: 9381 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-29 18:17:42 +0200 (Fri, 29 Jul 2016)");
  script_name("Cisco Wireless LAN Controller Denial of Service Vulnerability");
 
  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-wlc");
 
  script_tag(name: "summary" , value: "A vulnerability in wireless frame management service of the Cisco Wireless LAN Controller (WLC) could allow an unauthenticated, adjacent attacker to cause a denial of service (DoS) condition on the affected device.");
- script_tag(name: "impact" , value:" An attacker could exploit this vulnerability by sending crafted wireless management frames to the device.");
+ script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by sending crafted wireless management frames to the device.");
  script_tag(name: "vuldetect" , value:"Check the version");
  script_tag(name: "solution" , value:"Updates are available");
  script_tag(name: "affected" , value:"Cisco Wireless LAN Controller (WLC) versions 7.4(121.0) and 8.0(0.30220.385) are affected.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10133.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_mcafee_esm_SB10133.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # McAfee Enterprise Security Manager OS Command Injection Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:mcafee:enterprise_security_manager";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105478");
- script_version ("$Revision: 6243 $");
+ script_version ("$Revision: 9381 $");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
@@ -40,14 +40,14 @@ if (description)
 
  script_tag(name: "vuldetect" , value:"Check the version");
  script_tag(name: "insight" , value:"This flaw is encountered if any authenticated user downloads a file with a specially crafted filename from the ESM.");
- script_tag(name: "solution" , value:" Update to SIEM 9.3.2MR18, 9.4.2_MR8, 9.5.0MR7, or 9.5.1");
+ script_tag(name: "solution" , value:"Update to SIEM 9.3.2MR18, 9.4.2_MR8, 9.5.0MR7, or 9.5.1");
  script_tag(name: "summary" , value:"SIEM Enterprise Security Manager (ESM) includes a function to upload and download files for use within the ESM. A carefully crafted filename, when downloaded, can cause command execution in the context of the ESM web server. The attack vector requires valid authentication to the ESM to execute.");
  script_tag(name: "affected" , value:"SIEM 9.3.2MR17, 9.4.2MR7, 9.5.0MR6, and earlier");
 
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-12-04 13:38:09 +0100 (Fri, 04 Dec 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

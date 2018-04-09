@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2013_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_2013_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for maas USN-2013-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841615");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:58:22 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-1057", "CVE-2013-1058");
   script_tag(name:"cvss_base", value:"5.8");
@@ -60,7 +60,7 @@ detection. (CVE-2013-1058)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2013-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2013-1/");
-  script_summary("Check for the Version of maas");
+  script_tag(name:"summary", value:"Check for the Version of maas");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

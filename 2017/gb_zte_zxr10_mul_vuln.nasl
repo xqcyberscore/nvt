@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxr10_mul_vuln.nasl 7731 2017-11-10 10:21:18Z teissa $
+# $Id: gb_zte_zxr10_mul_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # ZTE ZXR10 Router Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107254");
-  script_version("$Revision: 7731 $");
+  script_version("$Revision: 9381 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -36,7 +36,7 @@ if(description)
 
   script_name("ZTE ZXR10 Router Multiple Vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:21:18 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 10:23:00 +0200 (Thu, 09 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -46,7 +46,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.palada.net/index.php/2017/10/23/news-3819/");
 
-  script_tag(name:"summary", value:" ZTE ZXR10 Router has a backdoor account with hard-coded credentials.");
+  script_tag(name:"summary", value:"ZTE ZXR10 Router has a backdoor account with hard-coded credentials.");
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain full
   access to sensitive information or modify system configuration.");
 

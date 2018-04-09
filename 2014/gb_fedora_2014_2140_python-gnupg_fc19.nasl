@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867533");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:12:45 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2013-7323", "CVE-2014-1927", "CVE-2014-1928", "CVE-2014-1929");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-2140");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-February/128785.html");
-  script_summary("Check for the Version of python-gnupg");
+  script_tag(name:"summary", value:"Check for the Version of python-gnupg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-August/063418.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863401");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-12 15:49:01 +0200 (Fri, 12 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if(description)
   script_cve_id("CVE-2011-2642", "CVE-2011-2643", "CVE-2011-2718", "CVE-2011-2719");
   script_name("Fedora Update for phpMyAdmin FEDORA-2011-9734");
 
-  script_summary("Check for the Version of phpMyAdmin");
+  script_tag(name:"summary", value:"Check for the Version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

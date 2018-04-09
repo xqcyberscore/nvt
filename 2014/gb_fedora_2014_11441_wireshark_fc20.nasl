@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868206");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:57:31 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-6430", "CVE-2014-6423", "CVE-2014-6424", "CVE-2014-6432",
                 "CVE-2014-6431", "CVE-2014-6427", "CVE-2014-6428", "CVE-2014-6429",
@@ -49,7 +49,7 @@ separately to GTK+ package.
 
   script_xref(name: "FEDORA", value: "2014-11441");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-September/138642.html");
-  script_summary("Check for the Version of wireshark");
+  script_tag(name:"summary", value:"Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

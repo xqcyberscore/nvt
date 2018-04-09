@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 8659 2018-02-05 09:23:05Z asteins $
+# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810940");
-  script_version("$Revision: 8659 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:27:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability");
 
@@ -58,7 +58,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:" Bitdefender Internet Security 12.0
+  script_tag(name:"affected", value:"Bitdefender Internet Security 12.0
   (and earlier).");
 
   script_tag(name:"solution", value:"Update Bitdefender to the latest version and ensure that the build version matches at least the following version: 21.0.24.62");

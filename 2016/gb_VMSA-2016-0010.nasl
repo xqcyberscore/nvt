@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0010.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2016-0010.nasl 9377 2018-04-06 10:03:08Z cfischer $
 #
 # VMSA-2016-0010 (CVE-2016-5330) ESXi: VMware product updates address multiple important security issues
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-5330");
  script_tag(name:"cvss_base", value:"4.4");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 9377 $");
  script_name("VMSA-2016-0010 (CVE-2016-5330) ESXi: VMware product updates address multiple important security issues");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0010.html");
@@ -48,11 +48,14 @@ Successfully exploiting this issue requires installation of 'Shared Folders' com
 on Windows VM running on ESXi.");
 
  script_tag(name: "affected" , value:"ESXi 6.0 without patch ESXi600-201603102-SG
+
 ESXi 5.5  without patch ESXi550-201607102-SG
+
 ESXi 5.1  without patch ESXi510-201605102-SG
+
 ESXi 5.0  without patch ESXi500-201606102-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 12:03:08 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-08-05 16:10:53 +0200 (Fri, 05 Aug 2016)");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_tag(name:"solution_type", value:"VendorFix");
@@ -75,7 +78,7 @@ if( ! esxVersion = get_kb_item( "VMware/ESX/version" ) ) exit( 0 );
 patches = make_array( "6.0.0", "VIB:tools-light:6.0.0-1.31.3568943",
                       "5.5.0", "VIB:tools-light:5.5.0-3.86.4179631",
                       "5.1.0", "VIB:tools-light:5.1.0-3.82.3872638",
-                      "5.0.0", "VUB:tools-light:5.0.0-3.87.3982819");
+                      "5.0.0", "VIB:tools-light:5.0.0-3.87.3982819");
 
 if( ! patches[esxVersion] ) exit( 0 );
 

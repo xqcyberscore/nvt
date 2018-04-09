@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_enum_shares.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_nmap_smb_enum_shares.nasl 9364 2018-04-06 07:33:03Z cfischer $
 #
 # Wrapper for Nmap SMB Enum Shares NSE script.
 #
@@ -34,9 +34,9 @@ tag_summary = "This script attempts to list the shares on a Windows system over
 
 if(description)
 {
-  script_id(801270);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801270");
+  script_version("$Revision: 9364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");

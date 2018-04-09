@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_iptables.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_SSH_iptables.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # List iptables ruleset
 #
@@ -29,9 +29,9 @@ tag_summary = "This plugin uses ssh to List List iptables ruleset.";
 
 if(description)
 {
-  script_id(96072);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96072");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-07 13:23:53 +0200 (Mon, 07 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

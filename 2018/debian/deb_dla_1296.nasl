@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1296.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_1296.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Auto-generated from advisory DSA 1296-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891296");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2018-0489");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1296-1] xmltooling security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -49,7 +49,7 @@ if(description)
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-  script_tag(name:"affected", value:" on Debian Linux");
+  script_tag(name:"affected", value:"xmltooling on Debian Linux");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1.4.2-5+deb7u3.
 

@@ -69,8 +69,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-January/msg00009.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870880");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-11 16:42:08 +0530 (Fri, 11 Jan 2013)");
   script_cve_id("CVE-2012-2124", "CVE-2010-2813");
   script_tag(name:"cvss_base", value:"5.0");
@@ -78,7 +78,7 @@ if(description)
   script_xref(name: "RHSA", value: "2013:0126-01");
   script_name("RedHat Update for squirrelmail RHSA-2013:0126-01");
 
-  script_summary("Check for the Version of squirrelmail");
+  script_tag(name:"summary", value:"Check for the Version of squirrelmail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

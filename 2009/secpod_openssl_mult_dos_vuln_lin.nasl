@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 7572 2017-10-26 08:08:35Z cfischer $
+# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 9369 2018-04-06 08:36:49Z cfischer $
 #
 # OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -35,8 +35,8 @@ tag_impact = "Successful exploitation will allow attacker to cause denial-of-ser
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900653");
-  script_version("$Revision: 7572 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 9369 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,7 @@ if(description)
   script_name("OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name: "solution_type", value: "VendorFix");
-  script_summary("Check for the version of OpenSSL");
+  script_tag(name:"summary", value:"OpenSSL is prone to multiple Denial of Service Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");

@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019647.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881686");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 09:52:13 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-0272", "CVE-2013-0273", "CVE-2013-0274");
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0646");
   script_name("CentOS Update for finch CESA-2013:0646 centos5 ");
 
-  script_summary("Check for the Version of finch");
+  script_tag(name:"summary", value:"Check for the Version of finch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

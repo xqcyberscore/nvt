@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2103_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ubuntu_USN_2103_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for libav USN-2103-1
 #
@@ -29,10 +29,10 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841709");
-  script_version("$Revision: 9354 $");
+  script_version("$Revision: 9373 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 11:42:24 +0530 (Thu, 13 Feb 2014)");
   script_name("Ubuntu Update for libav USN-2103-1");
 
@@ -56,7 +56,7 @@ program.";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2103-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2103-1/");
-  script_summary("Check for the Version of libav");
+  script_tag(name:"summary", value:"Check for the Version of libav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

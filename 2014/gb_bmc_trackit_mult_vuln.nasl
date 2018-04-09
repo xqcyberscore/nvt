@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bmc_trackit_mult_vuln.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_bmc_trackit_mult_vuln.nasl 9369 2018-04-06 08:36:49Z cfischer $
 #
 # BMC Track-It! Multiple Vulnerabilities
 #
@@ -33,13 +33,15 @@ if (description)
   script_cve_id("CVE-2014-4872", "CVE-2014-4873", "CVE-2014-4874");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 2823 $");
+  script_version ("$Revision: 9369 $");
 
   script_name("BMC Track-It! Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70264");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70268");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70265");
+
+  script_tag(name:"summary", value:"BMC Track-It! is prone to Multiple Vulnerabilities");
 
   script_tag(name: "impact", value: "Successful exploitation will allow remote attackers
 to perform SQL injections, arbitrary file upload/download and code execution.");
@@ -61,9 +63,8 @@ networks to TCP/UDP ports 9010 to 9020.");
 
   script_tag(name:"solution_type", value: "VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-11-20 11:15:27 +0700 (Thu, 20 Nov 2014)");
-  script_summary("Check for the version of BMC Track-It!");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

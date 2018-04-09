@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln04.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_open_xchange_appsuite_mult_vuln04.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -04 Nov15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806523");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2013-6009", "CVE-2013-5690");
   script_bugtraq_id(62974, 62720);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 10:34:36 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -04 Nov15");
@@ -46,7 +46,9 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to:
+
   - CRLF injection vulnerability in when using AJP in certain conditions.
+
   - Improper sanitization of user supplied input via
     (1) content with the text/xml MIME type or
     (2) the Status comment field of an appointment.");
@@ -62,6 +64,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
   version 7.0.2-rev16 or 7.2.2-rev20 or later.
+
   For updates refer to https://www.open-xchange.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,30 +80,18 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 oxVer = get_app_version(cpe:CPE, port:oxPort);
 if(!oxVer || "unknown" >< oxVer){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev)
@@ -124,7 +115,9 @@ if(oxRev)
   if(VULN)
   {
     report = 'Installed Version: ' + oxVer + '\nFixed Version:     ' + fix + '\n';
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

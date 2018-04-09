@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805283");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-5341");
   script_bugtraq_id(70039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 17:25:47 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability");
 
@@ -77,16 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
@@ -99,7 +93,9 @@ if(ownVer =~ "^6")
     report = 'Installed version: ' + ownVer + '\n' +
            'Fixed version:     ' + "6.0.5" + '\n';
 
-    security_message(data:report);
+    security_message(port:ownPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

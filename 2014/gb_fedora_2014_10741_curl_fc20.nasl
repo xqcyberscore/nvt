@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868185");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-14 05:54:31 +0200 (Sun, 14 Sep 2014)");
   script_cve_id("CVE-2014-3613", "CVE-2014-3620", "CVE-2014-0138", "CVE-2014-0015");
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,7 +46,7 @@ file transfer resume, proxy tunneling and a busload of other useful tricks.");
 
   script_xref(name: "FEDORA", value: "2014-10741");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-September/137656.html");
-  script_summary("Check for the Version of curl");
+  script_tag(name:"summary", value:"Check for the Version of curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0002.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_VMSA-2016-0002.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # VMSA-2016-0002: VMware product updates address a critical glibc security vulnerability
 #
@@ -31,14 +31,14 @@ if (description)
  script_cve_id("CVE-2015-7547");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5534 $");
+ script_version ("$Revision: 9381 $");
  script_name("VMSA-2016-0002: VMware product updates address a critical glibc security vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0002.html");
 
  script_tag(name: "vuldetect" , value:"Checks for missing patches.");
 
- script_tag(name: "insight" , value:" a. glibc update for multiple products.
+ script_tag(name: "insight" , value:"a. glibc update for multiple products.
 The glibc library has been updated in multiple products to resolve a stack buffer overflow present in the glibc getaddrinfo function.");
 
  script_tag(name: "solution" , value:"Apply the missing patch(es).");
@@ -48,7 +48,7 @@ The glibc library has been updated in multiple products to resolve a stack buffe
  script_tag(name: "affected" , value:"ESXi 6.0 without patch ESXi600-201602401-SG
 ESXi 5.5 without patch ESXi550-201602401-SG ");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-02-24 15:23:40 +0100 (Wed, 24 Feb 2016)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");

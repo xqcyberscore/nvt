@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881826");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 10:08:35 +0530 (Wed, 04 Dec 2013)");
   script_cve_id("CVE-2012-5576", "CVE-2013-1913", "CVE-2013-1978");
   script_tag(name:"cvss_base", value:"7.5");
@@ -66,7 +66,7 @@ effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1778");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-December/020034.html");
-  script_summary("Check for the Version of gimp");
+  script_tag(name:"summary", value:"Check for the Version of gimp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_HT207600.nasl 5821 2017-03-31 13:22:18Z antu123 $
+# $Id: gb_apple_safari_mult_vuln_HT207600.nasl 9387 2018-04-06 12:53:16Z santu $
 #
 # Apple Safari Multiple Vulnerabilities-HT207600  
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810727");
-  script_version("$Revision: 5821 $");
+  script_version("$Revision: 9387 $");
   script_cve_id("CVE-2016-9642", "CVE-2016-9643", "CVE-2017-2364", "CVE-2017-2367",
                 "CVE-2017-2377", "CVE-2017-2378", "CVE-2017-2385", "CVE-2017-2386",
                 "CVE-2017-2389", "CVE-2017-2394", "CVE-2017-2395", "CVE-2017-2396",
@@ -39,11 +39,12 @@ if(description)
                 "CVE-2017-2459", "CVE-2017-2460", "CVE-2017-2463", "CVE-2017-2464",
                 "CVE-2017-2465", "CVE-2017-2466", "CVE-2017-2468", "CVE-2017-2469",
                 "CVE-2017-2470", "CVE-2017-2471", "CVE-2017-2475", "CVE-2017-2476",
-                "CVE-2017-2479", "CVE-2017-2480", "CVE-2017-2481");
-  script_bugtraq_id(94554, 94559, 95725, 97130, 97129, 97136, 97143, 97176, 97133);
+                "CVE-2017-2479", "CVE-2017-2480", "CVE-2017-2481", "CVE-2017-7071");
+  script_bugtraq_id(94554, 94559, 95725, 97130, 97129, 97136, 97143, 97176, 97133,
+                    100613);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:22:18 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-31 16:41:59 +0530 (Fri, 31 Mar 2017)");
   script_name("Apple Safari Multiple Vulnerabilities-HT207600");
 
@@ -54,23 +55,40 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
-  - The multiple memory corruption issues,
+
+  - Multiple memory corruption issues,
+
   - A state management issue,
+
   - A spoofing and denial-of-service issue existed in the handling
     of HTTP authentication,
+
   - A spoofing issue existed in the handling of FaceTime prompts,
+
   - A keychain handling issue in keychain item management,
+
   - A prototype access issue in exception handling,
+
   - Multiple memory corruption issues in input validation,
+
   - Multiple memory corruption issues in memory handling,
+
   - A type confusion issue in memory handling,
+
   - An access issue existed in Content Security Policy,
+
   - An uncontrolled resource consumption issue in regex processing,
+
   - An information disclosure issue existed in the processing of OpenGL shaders, 
+
   - A memory corruption issue in input validation,
+
   - Multiple validation issues existed in the handling of page loading,
+
   - A validation issue existed in the handling of page loading,
+
   - A logic issue existed in the handling of frame objects,
+
   - A logic issue existed in the handling of strict mode functions.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
@@ -81,8 +99,7 @@ if(description)
 
   script_tag(name: "affected" , value:"Apple Safari versions before 10.1");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Safari 10.1 or later,
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name: "solution" , value:"Upgrade to Apple Safari 10.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -95,24 +112,18 @@ if(description)
   exit(0);
 }
 
-
-# Code starts from here
-
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
+infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+safVer = infos['version'];
+path = infos['location'];
 
-## Get Apple Safari version
-if(!safVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
 
-## Check for Apple Safari Versions less than 10.1
 if(version_is_less(version:safVer, test_version:"10.1"))
 {
-  report = report_fixed_ver(installed_version:safVer, fixed_version:"10.1");
+  report = report_fixed_ver(installed_version:safVer, fixed_version:"10.1", install_path:path);
   security_message(data:report);
   exit(0);
 }
+exit(0);

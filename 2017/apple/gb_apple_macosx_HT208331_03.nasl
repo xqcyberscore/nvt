@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_03.nasl 8056 2017-12-08 12:47:50Z santu $
+# $Id: gb_apple_macosx_HT208331_03.nasl 9387 2018-04-06 12:53:16Z santu $
 #
 # Apple MacOSX Security Updates(HT208331)-03
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812402");
-  script_version("$Revision: 8056 $");
-  script_cve_id("CVE-2017-13826");
+  script_version("$Revision: 9387 $");
+  script_cve_id("CVE-2017-13826", "CVE-2017-7158");
   script_bugtraq_id(101637);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 13:47:50 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:38 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331)-03");
 

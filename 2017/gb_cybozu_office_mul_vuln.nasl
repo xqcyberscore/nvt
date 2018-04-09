@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mul_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_cybozu_office_mul_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cybozu Office Multiple Security Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107149");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 14:53:28 +0200 (Wed, 19 Apr 2017)");
   script_cve_id("CVE-2017-2114", "CVE-2017-2115", "CVE-2017-2116", "CVE-2016-4449");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
   check if the version is vulnerable or not.");
 
-  script_tag(name: "impact" , value: " attacker can exploit these issues to execute arbitrary script
+  script_tag(name: "impact" , value:"attacker can exploit these issues to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site, steal cookie-based
   authentication credentials, access or modify data, bypass security restrictions and perform unauthorized
   actions in the context of the affected application.");

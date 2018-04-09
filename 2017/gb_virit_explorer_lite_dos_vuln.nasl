@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 9327 2018-04-05 10:30:41Z asteins $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 9327 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of the detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:" The flaw is due to a NULL value in a 0x82730008 DeviceIoControl request to \\\\.\\Viragtlt.");
+  script_tag(name: "insight" , value:"The flaw is due to a NULL value in a 0x82730008 DeviceIoControl request to \\\\.\\Viragtlt.");
 
   script_tag(name: "impact" , value:"Successful exploitation would allow local users to cause a denial of service (NULL pointer dereference) or possibly have unspecified other impact.
 

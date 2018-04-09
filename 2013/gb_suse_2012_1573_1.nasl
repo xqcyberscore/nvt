@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1573_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2012_1573_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # SuSE Update for XEN openSUSE-SU-2012:1573-1 (XEN)
 #
@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-11/msg00018.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850433");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:43 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2007-0998", "CVE-2012-2625", "CVE-2012-2934", "CVE-2012-3494",
                 "CVE-2012-3495", "CVE-2012-3496", "CVE-2012-3497", "CVE-2012-3498",
@@ -49,7 +49,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:1573_1");
   script_name("SuSE Update for XEN openSUSE-SU-2012:1573-1 (XEN)");
 
-  script_summary("Check for the Version of XEN");
+  script_tag(name:"summary", value:"Check for the Version of XEN");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

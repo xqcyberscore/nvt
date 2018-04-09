@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019604.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881629");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:58:41 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2011-2504");
   script_tag(name:"cvss_base", value:"6.9");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0502");
   script_name("CentOS Update for xorg-x11-server-utils CESA-2013:0502 centos6 ");
 
-  script_summary("Check for the Version of xorg-x11-server-utils");
+  script_tag(name:"summary", value:"Check for the Version of xorg-x11-server-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

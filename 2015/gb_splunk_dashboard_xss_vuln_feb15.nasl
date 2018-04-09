@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805334");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-8302");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15");
 
@@ -73,26 +73,17 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
-
 include("version_func.inc");
 include("host_details.inc");
 
-splPort = "";
-splVer = "";
-
-## Get Splunk Port
 if(!splPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-
-## Get version
 if(!splVer = get_app_version(cpe:CPE, port:splPort)){
     exit(0);
 }
 
-## Check for Splunk Version
 if(version_in_range(version: splVer, test_version: "5.0.0", test_version2:"5.0.9"))
 {
   fix = "5.0.10";
@@ -115,6 +106,8 @@ if(VULN)
 {
   report = 'Installed version: ' + splVer + '\n' +
            'Fixed version:     ' + fix + '\n';
-  security_message(data:report);
+  security_message(port:splPort, data:report);
   exit(0);
 }
+
+exit(99);

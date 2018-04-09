@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/099334.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865398");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:07:54 +0530 (Fri, 01 Mar 2013)");
   script_cve_id("CVE-2013-1591");
   script_tag(name:"cvss_base", value:"10.0");
@@ -44,7 +44,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-2414");
   script_name("Fedora Update for pixman FEDORA-2013-2414");
 
-  script_summary("Check for the Version of pixman");
+  script_tag(name:"summary", value:"Check for the Version of pixman");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

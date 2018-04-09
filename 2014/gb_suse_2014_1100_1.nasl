@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1100_1.nasl 8044 2017-12-08 08:32:49Z santu $
+# $Id: gb_suse_2014_1100_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # SuSE Update for Firefox openSUSE-SU-2014:1100-1 (Firefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850607");
-  script_version("$Revision: 8044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 05:54:29 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2007-3089", "CVE-2007-3285", "CVE-2007-3656", "CVE-2007-3670",
                 "CVE-2007-3734", "CVE-2007-3735", "CVE-2007-3736", "CVE-2007-3737",
@@ -183,7 +183,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "openSUSE-SU", value: "2014:1100_1");
-  script_summary("Check for the Version of Firefox");
+  script_tag(name:"summary", value:"Check for the Version of Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

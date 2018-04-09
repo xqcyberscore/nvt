@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_77653.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_ibm_websphere_77653.nasl 9397 2018-04-09 06:01:56Z cfischer $
 #
-# IBM WebSphere Application Server Remote Code Execution Vulnerability (Active check)
+# IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -35,9 +35,9 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_version ("$Revision: 5782 $");
+ script_version ("$Revision: 9397 $");
 
- script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active check)");
+ script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77653");
  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970575");
@@ -56,7 +56,7 @@ Version 7.0");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:01:56 +0200 (Mon, 09 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-29 15:54:10 +0200 (Fri, 29 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

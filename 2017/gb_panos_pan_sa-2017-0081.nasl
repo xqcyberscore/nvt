@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0081.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_panos_pan_sa-2017-0081.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7409 Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107161");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-02 14:04:20 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7409");
   script_bugtraq_id(97953);
@@ -41,15 +41,15 @@ if(description)
   script_tag(name:"qod_type", value:"package");
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7409 Cross Site Scripting Vulnerability");
-  script_tag(name: "summary", value: " Palo Alto Networks PAN-OS is prone to a cross-site scripting
+  script_tag(name: "summary", value:"Palo Alto Networks PAN-OS is prone to a cross-site scripting
   vulnerability because it fails to properly sanitize user-supplied input. ");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check
   if the version is vulnerable or not.");
 
   script_tag(name: "insight", value: "The bug is due to unappropiate validation of specific request
   parameters from PANS-OS.");
 
-  script_tag(name: "impact" , value: " attacker may leverage this issue to execute arbitrary script
+  script_tag(name: "impact" , value: "An attacker may leverage this issue to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site. This may let the
   attacker steal cookie-based authentication credentials and launch other attacks.");
   script_tag(name: "affected", value: "PAN-OS 7.0.14 and earlier.");

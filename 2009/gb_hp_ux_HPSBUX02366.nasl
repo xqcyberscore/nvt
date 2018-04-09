@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01539431-2");
   script_oid("1.3.6.1.4.1.25623.1.0.835198");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 16:39:46 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:N");
@@ -47,7 +47,7 @@ if(description)
   script_cve_id("CVE-2009-0719");
   script_name( "HP-UX Update for useradd(1M) HPSBUX02366");
 
-  script_summary("Check for the Version of useradd(1M)");
+  script_tag(name:"summary", value:"Check for the Version of useradd(1M)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");

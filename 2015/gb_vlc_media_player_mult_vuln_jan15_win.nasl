@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_jan15_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_mult_vuln_jan15_win.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # VLC Media Player Multiple Vulnerabilities Jan15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805425");
-  script_version("$Revision: 8174 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2014-9598", "CVE-2014-9597");
   script_bugtraq_id(72106,72105);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_name("VLC Media Player Multiple Vulnerabilities Jan15 (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:" VideoLAN VLC media player 2.1.5 on
+  script_tag(name: "affected" , value:"VideoLAN VLC media player 2.1.5 on
   Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to VideoLAN VLC media player

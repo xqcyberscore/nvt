@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_2000_web_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_dell_kace_2000_web_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # Dell KACE K2000 Detection
 #
@@ -30,8 +30,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103317");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 9398 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-11-11 10:17:05 +0100 (Fri, 11 Nov 2011)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -44,7 +44,6 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("X-KACE-Version/banner");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name: "summary", value: "Detection of Dell KACE.
 

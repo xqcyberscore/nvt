@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868192");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-20 05:59:52 +0200 (Sat, 20 Sep 2014)");
   script_cve_id("CVE-2014-4047");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,7 @@ inexpensive hardware.
 
   script_xref(name: "FEDORA", value: "2014-7570");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-September/137779.html");
-  script_summary("Check for the Version of asterisk");
+  script_tag(name:"summary", value:"Check for the Version of asterisk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

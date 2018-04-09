@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_lastlogon.nasl 7279 2017-09-26 13:40:36Z cfischer $
+# $Id: GSHB_LDAP_User_lastlogon.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Search in LDAP the lastLogonTimestamp of Users.
 #
@@ -32,9 +32,9 @@ tag_summary = "This script search in LDAP the lastLogonTimestamp of Users.";
 
 if(description)
 {
-  script_id(96170);
-  script_version("$Revision: 7279 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96170");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 09:43:28 +0200 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

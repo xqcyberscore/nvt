@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_codemeter_49437.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: sw_codemeter_49437.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Wibu-Systems CodeMeter License Server Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:wibu:codemeter_webadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111103");
-  script_version("$Revision: 5505 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 9381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:30:00 +0200 (Tue, 07 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,7 +49,7 @@ if(description)
   vulnerability because it fails to sufficiently sanitize user-supplied input.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and
   check whether it is able to get sensitive information.");
-  script_tag(name:"impact", value:" Exploiting this issue can allow an attacker to download arbitrary
+  script_tag(name:"impact", value:"Exploiting this issue can allow an attacker to download arbitrary
   files with certain extensions from outside the server root directory. This may aid in further attacks.
   The limitation of the attack is caused by a list of allowed extensions like txt, htm, html, images and so on.");
   script_tag(name:"affected", value:"Wibu-Systems CodeMeter 4.30c is affected; other versions may also be vulnerable.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_comm_inj.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_qnap_qts_comm_inj.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # QNAP QTS Command Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
     script_oid("1.3.6.1.4.1.25623.1.0.107275");
     script_tag(name:"cvss_base", value:"10.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-    script_version ("$Revision: 9121 $");
+    script_version ("$Revision: 9381 $");
 
     script_name("QNAP QTS Command Injection Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
     script_xref(name:"URL", value:"https://www.qnap.com/de-de/security-advisory/nas-201709-11");
     script_cve_id("CVE-2017-10700");
 
-    script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
     script_tag(name:"creation_date", value:"2017-12-13 13:24:30 +0100 (Wed, 13 Dec 2017)");
     script_category(ACT_GATHER_INFO);
     script_family("Web application abuses");
@@ -57,7 +57,7 @@ if (description)
 
     script_tag(name:"summary", value: "QNAP QTS is vulnerable to command injection vulnerability.");
     script_tag(name:"insight", value: "The media library service fails to sufficiently sanitise user inputs.");
-    script_tag(name:"impact", value: " A remote, un-authenticated attacker can provide inputs to this service
+    script_tag(name:"impact", value:"A remote, un-authenticated attacker can provide inputs to this service
     which executes system commands in the context of the 'admin' user of the QNAP device.");
 
     script_tag(name: "affected",value: "QNAP QTS versions 4.3.x before 4.3.3.0262 build 20170727 and

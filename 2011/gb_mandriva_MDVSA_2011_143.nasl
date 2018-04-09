@@ -50,14 +50,14 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.831463");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-10 16:05:48 +0200 (Mon, 10 Oct 2011)");
   script_xref(name: "MDVSA", value: "2011:143");
   script_cve_id("CVE-2011-3378");
   script_name("Mandriva Update for rpm MDVSA-2011:143 (rpm)");
 
-  script_summary("Check for the Version of rpm");
+  script_tag(name:"summary", value:"Check for the Version of rpm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

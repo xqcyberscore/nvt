@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0001.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_VMSA-2016-0001.nasl 9377 2018-04-06 10:03:08Z cfischer $
 #
 # VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-6933");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 5745 $");
+ script_version ("$Revision: 9377 $");
  script_name("VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
@@ -46,11 +46,14 @@ A kernel memory corruption vulnerability is present in the VMware Tools 'Shared 
  script_tag(name: "summary" , value:"VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
 
  script_tag(name: "affected" , value:"VMware ESXi 6.0 without patch ESXi600-201512102-SG
-VMware ESXi 5.5 without patch ESXi550-201512102-SG
-VMware ESXi 5.1 without patch ESXi510-201510102-SG
-VMware ESXi 5.0 without patch ESXi500-201510102-SG ");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+VMware ESXi 5.5 without patch ESXi550-201512102-SG
+
+VMware ESXi 5.1 without patch ESXi510-201510102-SG
+
+VMware ESXi 5.0 without patch ESXi500-201510102-SG");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 12:03:08 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-01-14 10:44:54 +0100 (Thu, 14 Jan 2016)");
 
  script_tag(name:"qod_type", value:"package");
@@ -72,10 +75,10 @@ include("version_func.inc");
 if( ! get_kb_item( 'VMware/ESXi/LSC' ) ) exit( 0 );
 if( ! esxVersion = get_kb_item( "VMware/ESX/version" ) ) exit( 0 );
 
-patches = make_array( "5.0.0", "VIB::tools-light:5.0.0-3.70.3088986",
-                      "5.1.0", "VIB::tools-light:5.1.0-3.57.3021178",
-                      "5.5.0", "VIB::tools-light:5.5.0-3.75.3247226",
-                      "6.0.0", "VIB::tools-light:6.0.0-1.23.3341439");
+patches = make_array( "5.0.0", "VIB:tools-light:5.0.0-3.70.3088986",
+                      "5.1.0", "VIB:tools-light:5.1.0-3.57.3021178",
+                      "5.5.0", "VIB:tools-light:5.5.0-3.75.3247226",
+                      "6.0.0", "VIB:tools-light:6.0.0-1.23.3341439");
 
 if( ! patches[esxVersion] ) exit( 0 );
 

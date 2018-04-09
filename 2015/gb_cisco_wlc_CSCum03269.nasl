@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCum03269.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_cisco_wlc_CSCum03269.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Cisco Wireless LAN Controller Wireless Web Authentication Denial of Service Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
  script_cve_id("CVE-2015-0723");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6513 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+ script_version ("$Revision: 9381 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-09-23 13:59:48 +0200 (Wed, 23 Sep 2015)");
  script_name("Cisco Wireless LAN Controller Wireless Web Authentication Denial of Service Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
  script_tag(name: "summary" , value: "Cisco Wireless LAN Controller contains a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition. Updates are available.");
  script_tag(name: "impact" , value:"An unauthenticated, adjacent attacker could exploit this vulnerability to cause a process on an affected device to crash, resulting in a DoS condition.");
  script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:" The vulnerability exists due to improper input sanitization of a certain value that is supplied by a user prior to successfully authenticating to an affected device. An attacker could exploit this
+ script_tag(name: "insight" , value:"The vulnerability exists due to improper input sanitization of a certain value that is supplied by a user prior to successfully authenticating to an affected device. An attacker could exploit this
 vulnerability by sending a request designed to trigger the vulnerability and cause a process crash that will trigger a restart of the device, resulting in a DoS condition.");
  script_tag(name: "solution" , value:"Updates are available");
  script_tag(name: "affected" , value:"Cisco WLC versions 7.5.x or versions prior to 7.6.120 are vulnerable. ");

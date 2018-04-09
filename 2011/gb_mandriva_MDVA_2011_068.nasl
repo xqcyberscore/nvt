@@ -35,15 +35,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-11/msg00006.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831486");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:05:59 +0530 (Tue, 08 Nov 2011)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
   script_xref(name: "MDVA", value: "2011:068");
   script_name("Mandriva Update for php-apc MDVA-2011:068 (php-apc)");
 
-  script_summary("Check for the Version of php-apc");
+  script_tag(name:"summary", value:"Check for the Version of php-apc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

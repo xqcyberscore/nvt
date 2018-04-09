@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_79195_3_4_6.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: gb_joomla_79195_3_4_6.nasl 9397 2018-04-09 06:01:56Z cfischer $
 #
-# Joomla! Core Remote Code Execution Vulnerability Version Check
+# Joomla! Core Remote Code Execution Vulnerability (Version Check)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -34,9 +34,9 @@ if (description)
  script_cve_id("CVE-2015-8562");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6141 $");
+ script_version ("$Revision: 9397 $");
 
- script_name("Joomla! Core Remote Code Execution Vulnerability Version Check");
+ script_name("Joomla! Core Remote Code Execution Vulnerability (Version Check)");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/79195");
  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/630-20151214-core-remote-code-execution-vulnerability.html");
@@ -52,7 +52,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:01:56 +0200 (Mon, 09 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-12-17 11:34:17 +0100 (Thu, 17 Dec 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");

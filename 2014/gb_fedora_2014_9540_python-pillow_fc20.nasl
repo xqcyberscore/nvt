@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868130");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 05:54:58 +0200 (Wed, 27 Aug 2014)");
   script_cve_id("CVE-2014-3589", "CVE-2014-1933");
   script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,7 @@ sane (scanning devices interface), devel (development) and doc (documentation).
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-9540");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/137035.html");
-  script_summary("Check for the Version of python-pillow");
+  script_tag(name:"summary", value:"Check for the Version of python-pillow");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_frontend_auth_bypass.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_typo3_frontend_auth_bypass.nasl 9380 2018-04-06 11:04:51Z asteins $
 #
 # TYPO3 Frontend Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107238");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-08 22:06:49 +0200 (Fri, 08 Sep 2017)");
   script_bugtraq_id(96501);
 
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("TYPO3 Frontend Authentication Bypass Vulnerability");
   script_tag(name: "summary", value: "TYPO3 is prone to an authentication-bypass vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
   check if the version is vulnerable or not.");
   script_tag(name: "impact" , value: "An attacker can exploit this issue to bypass the authentication
   mechanism and obtain sensitive information. This may aid in further attacks.");

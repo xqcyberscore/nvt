@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868062");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-08-08 05:59:20 +0200 (Fri, 08 Aug 2014)");
   script_cve_id("CVE-2014-3560", "CVE-2014-0244", "CVE-2014-3493", "CVE-2014-0178",
                 "CVE-2013-4496", "CVE-2013-6442", "CVE-2013-4408", "CVE-2012-6150");
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-9141");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/136280.html");
-  script_summary("Check for the Version of samba");
+  script_tag(name:"summary", value:"Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

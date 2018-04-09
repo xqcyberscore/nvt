@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2018_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_2018_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-2018-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841630");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 17:03:39 +0530 (Mon, 18 Nov 2013)");
   script_cve_id("CVE-2012-5374", "CVE-2012-5375", "CVE-2013-2147");
   script_tag(name:"cvss_base", value:"4.0");
@@ -64,7 +64,7 @@ exploit this flaw to obtain sensitive information from kernel memory.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2018-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2018-1/");
-  script_summary("Check for the Version of linux-ti-omap4");
+  script_tag(name:"summary", value:"Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

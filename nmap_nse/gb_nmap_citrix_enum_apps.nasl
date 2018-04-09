@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_citrix_enum_apps.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_nmap_citrix_enum_apps.nasl 9364 2018-04-06 07:33:03Z cfischer $
 #
 # Wrapper for Nmap Citrix Enum Apps NSE script.
 #
@@ -34,9 +34,9 @@ tag_summary = "This script attempts to extract a list of published applications
 
 if(description)
 {
-  script_id(801819);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801819");
+  script_version("$Revision: 9364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

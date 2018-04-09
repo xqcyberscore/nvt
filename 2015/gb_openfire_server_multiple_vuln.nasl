@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_openfire_server_multiple_vuln.nasl 9396 2018-04-09 04:18:59Z ckuersteiner $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 6391 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 9396 $");
+  script_cve_id("CVE-2015-6972", "CVE-2015-6973", "CVE-2015-7707");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 06:18:59 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
@@ -44,12 +45,16 @@ if(description)
   detect nvt and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to,
+
   - Insufficient validation of input passed via the 'hostname' parameter to
     server-session-details.jsp script, 'search' parameter to group-summary.jsp
     script, 'Group Chat Name' and 'URL Name' fields in create-bookmark.jsp
     script.
+
   - CSRF token does not exists when making some POST and Get requests.
+
   - plugin-admin.jsp script does not restrict plugin files upload.
+
   - Insufficient validation for plugin downloads by available-plugins.jsp
     script.");
 
@@ -84,35 +89,24 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-firePort = "";
-fireVer = "";
-
-
-## Get HTTP Port
 if(!firePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 fireVer = get_app_version(cpe:CPE, port:firePort);
-
 if(!fireVer || "Unknown" >< fireVer){
   exit(0);
 }
 
-##Check for version 3.10.2
 if (version_is_equal(version:fireVer, test_version:"3.10.2"))
 {
   report = 'Installed Version: ' +fireVer+ '\n' +
            'Fixed Version:     '+"NoneAvailable"+ '\n';
-  security_message(data:report);
+  security_message(port:firePort, data:report);
   exit(0);
 }
+
+exit(99);

@@ -46,8 +46,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2007-November/msg00002.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870181");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-06 07:30:35 +0100 (Fri, 06 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if(description)
   script_cve_id("CVE-2006-7225", "CVE-2006-7226", "CVE-2006-7228", "CVE-2006-7230");
   script_name( "RedHat Update for pcre RHSA-2007:1059-01");
 
-  script_summary("Check for the Version of pcre");
+  script_tag(name:"summary", value:"Check for the Version of pcre");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

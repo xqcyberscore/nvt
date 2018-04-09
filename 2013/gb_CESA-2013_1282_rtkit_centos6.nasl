@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881798");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:18:34 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-4326");
   script_tag(name:"cvss_base", value:"4.6");
@@ -63,7 +63,7 @@ contains a backported patch to correct this issue.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2013:1282");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-September/019955.html");
-  script_summary("Check for the Version of rtkit");
+  script_tag(name:"summary", value:"Check for the Version of rtkit");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

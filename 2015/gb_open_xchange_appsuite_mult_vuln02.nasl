@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln02.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: gb_open_xchange_appsuite_mult_vuln02.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Oct15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806070");
-  script_version("$Revision: 6141 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-5236", "CVE-2014-5237");
   script_bugtraq_id(69794, 69793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 16:02:56 +0530 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Oct15");
@@ -46,8 +46,10 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to:
+
   - Crafted OLE Objects within OpenDocument Text files can be used to reference
     objects with absolute or relative paths.
+
   - Server-side request forgery (SSRF) vulnerability in the documentconverter
     component in Open-Xchange (OX) AppSuite");
 
@@ -63,6 +65,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
   version 7.4.2-rev10 or 7.6.0-rev10 or later.
+
   For updates refer to https://www.open-xchange.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,30 +82,18 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 oxVer = get_app_version(cpe:CPE, port:oxPort);
 if(!oxVer || "unknown" >< oxVer){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev){
@@ -129,7 +120,9 @@ if(oxRev){
   if(VULN)
   {
     report = 'Installed Version: ' + oxVer + '\nFixed Version:     ' + fix + '\n';
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

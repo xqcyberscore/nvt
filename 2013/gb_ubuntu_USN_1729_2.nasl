@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1729_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1729_2.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for firefox USN-1729-2
 #
@@ -88,8 +88,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1729-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.841347");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-05 09:45:31 +0530 (Tue, 05 Mar 2013)");
   script_cve_id("CVE-2013-0783", "CVE-2013-0784", "CVE-2013-0772", "CVE-2013-0765",
                 "CVE-2013-0773", "CVE-2013-0774", "CVE-2013-0775", "CVE-2013-0776",
@@ -100,7 +100,7 @@ if(description)
   script_xref(name: "USN", value: "1729-2");
   script_name("Ubuntu Update for firefox USN-1729-2");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name:"summary", value:"Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-January/052836.html");
   script_oid("1.3.6.1.4.1.25623.1.0.862766");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,7 @@ if(description)
   script_cve_id("CVE-2006-7243", "CVE-2010-4150", "CVE-2010-3709", "CVE-2010-3436", "CVE-2010-2950", "CVE-2010-3710", "CVE-2010-3870", "CVE-2010-4156", "CVE-2009-5016", "CVE-2010-4409");
   script_name("Fedora Update for maniadrive FEDORA-2010-19011");
 
-  script_summary("Check for the Version of maniadrive");
+  script_tag(name:"summary", value:"Check for the Version of maniadrive");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

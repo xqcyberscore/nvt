@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0678_1.nasl 8044 2017-12-08 08:32:49Z santu $
+# $Id: gb_suse_2014_0678_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0678-1 (kernel)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850587");
-  script_version("$Revision: 8044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 15:13:41 +0530 (Mon, 26 May 2014)");
   script_cve_id("CVE-2013-4579", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7264",
                 "CVE-2013-7265", "CVE-2013-7281", "CVE-2014-0069", "CVE-2014-0101",
@@ -124,7 +124,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:0678_1");
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

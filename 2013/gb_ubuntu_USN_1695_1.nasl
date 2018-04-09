@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1695_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1695_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for rpm USN-1695-1
 #
@@ -45,8 +45,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1695-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841285");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:51:04 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2011-3378", "CVE-2012-0060", "CVE-2012-0061", "CVE-2012-0815");
   script_tag(name:"cvss_base", value:"9.3");
@@ -56,7 +56,7 @@ if(description)
   script_xref(name: "USN", value: "1695-1");
   script_name("Ubuntu Update for rpm USN-1695-1");
 
-  script_summary("Check for the Version of rpm");
+  script_tag(name:"summary", value:"Check for the Version of rpm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

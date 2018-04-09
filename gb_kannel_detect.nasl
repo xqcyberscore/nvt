@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kannel_detect.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
+# $Id: gb_kannel_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # Kannel WAP/SMS Gateway Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140385");
-  script_version("$Revision: 7218 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-09-21 14:31:53 +0700 (Thu, 21 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ its version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Kannel/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "http://www.kannel.org/");
 

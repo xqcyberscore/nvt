@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-058.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_ms16-058.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807323");
-  script_version("$Revision: 5782 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2016-0152");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:16 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:" A remote code execution flaw exists when
+  script_tag(name:"insight", value:"A remote code execution flaw exists when
   Microsoft Windows fails to properly validate input before loading certain
   libraries.");
 

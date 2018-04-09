@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2092_1.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ubuntu_USN_2092_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
 #
 # Ubuntu Update for qemu USN-2092-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841701");
-  script_version("$Revision: 9354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 14:10:54 +0530 (Mon, 03 Feb 2014)");
   script_cve_id("CVE-2013-4344", "CVE-2013-4375", "CVE-2013-4377");
   script_tag(name:"cvss_base", value:"6.0");
@@ -64,7 +64,7 @@ This issue only affected Ubuntu 13.10. (CVE-2013-4377)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2092-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2092-1/");
-  script_summary("Check for the Version of qemu");
+  script_tag(name:"summary", value:"Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

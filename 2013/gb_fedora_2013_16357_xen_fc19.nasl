@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.866910");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 11:41:02 +0530 (Tue, 24 Sep 2013)");
   script_cve_id("CVE-2013-4329", "CVE-2013-1918", "CVE-2013-1432", "CVE-2013-2211", "CVE-2013-2194", "CVE-2013-2195", "CVE-2013-2196");
   script_tag(name:"cvss_base", value:"7.4");
@@ -53,7 +53,7 @@ Xen hypervisor
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-16357");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-September/115874.html");
-  script_summary("Check for the Version of xen");
+  script_tag(name:"summary", value:"Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

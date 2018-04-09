@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_nov15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mediawiki_mult_vuln_nov15_lin.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities - Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806626");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2015-8005", "CVE-2015-8004", "CVE-2015-8003", "CVE-2015-8002",
                 "CVE-2015-8001");
   script_bugtraq_id(77378, 77375, 77374, 77372);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-25 16:45:17 +0530 (Wed, 25 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities - Nov15 (Linux)");
 
@@ -46,9 +46,12 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - the chunked upload API (ApiUpload) which does not restrict the uploaded
   data to the claimed file size.
+
   - an error in the application which does not throttle file uploads.
+
   - improper restrict access to revisions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -81,21 +84,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-http_ver = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!http_ver = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_less(version:http_ver, test_version:"1.23.11"))
 {
   fix = "1.23.11";
@@ -118,6 +114,8 @@ if(VULN)
 {
   report = 'Installed version: ' + http_ver + '\n' +
            'Fixed version:     ' + fix      + '\n';
-  security_message(data:report);
+  security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

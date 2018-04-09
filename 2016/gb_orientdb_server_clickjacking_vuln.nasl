@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_server_clickjacking_vuln.nasl 7411 2017-10-12 09:20:45Z asteins $
+# $Id: gb_orientdb_server_clickjacking_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # OrientDB Server Clickjacking Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808754");
-  script_version("$Revision: 7411 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2015-2918");
   script_bugtraq_id(76610);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 11:20:45 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:00:11 +0530 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OrientDB Server Clickjacking Vulnerability");
@@ -54,7 +54,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:" OrientDB Server Community Edition before
+  script_tag(name: "affected" , value:"OrientDB Server Community Edition before
   2.0.15 and 2.1.x before 2.1.1");
 
   script_tag(name: "solution" , value:"As a workaround use the command line

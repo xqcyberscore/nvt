@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1978_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1978_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # Ubuntu Update for libkdcraw USN-1978-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841572");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:20:21 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-1438", "CVE-2013-1439");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,7 +54,7 @@ resulting in a denial of service. (CVE-2013-1438, CVE-2013-1439)";
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1978-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1978-1/");
-  script_summary("Check for the Version of libkdcraw");
+  script_tag(name:"summary", value:"Check for the Version of libkdcraw");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

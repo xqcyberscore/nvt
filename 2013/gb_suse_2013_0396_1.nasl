@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0396_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0396_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0396-1 (kernel)
 #
@@ -102,8 +102,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00005.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850414");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:39 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-2745", "CVE-2012-3412", "CVE-2012-4530",
                 "CVE-2013-0160", "CVE-2013-0216", "CVE-2013-0231", "CVE-2013-0268",
@@ -114,7 +114,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2013:0396_1");
   script_name("SuSE Update for kernel openSUSE-SU-2013:0396-1 (kernel)");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

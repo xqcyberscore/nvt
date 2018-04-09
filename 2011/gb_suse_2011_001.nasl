@@ -95,8 +95,8 @@ tag_affected = "kernel on openSUSE 11.3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850157");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -104,7 +104,7 @@ if(description)
   script_cve_id("CVE-2010-0435", "CVE-2010-3067", "CVE-2010-3432", "CVE-2010-3437", "CVE-2010-3442", "CVE-2010-3861", "CVE-2010-3865", "CVE-2010-3874", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4078", "CVE-2010-4080", "CVE-2010-4081", "CVE-2010-4082", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4158", "CVE-2010-4162", "CVE-2010-4163", "CVE-2010-4164", "CVE-2010-4165", "CVE-2010-4169", "CVE-2010-4175", "CVE-2010-4258", "CVE-2010-4347");
   script_name("SuSE Update for kernel SUSE-SA:2011:001");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

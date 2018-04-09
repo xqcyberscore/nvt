@@ -83,8 +83,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019498.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881650");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:00:01 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-1182");
   script_tag(name:"cvss_base", value:"10.0");
@@ -92,7 +92,7 @@ if(description)
   script_xref(name: "CESA", value: "2013:0506");
   script_name("CentOS Update for samba4 CESA-2013:0506 centos6 ");
 
-  script_summary("Check for the Version of samba4");
+  script_tag(name:"summary", value:"Check for the Version of samba4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/096641.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864986");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 18:05:32 +0530 (Tue, 15 Jan 2013)");
   script_cve_id("CVE-2012-5655");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2013-0269");
   script_name("Fedora Update for drupal7-context FEDORA-2013-0269");
 
-  script_summary("Check for the Version of drupal7-context");
+  script_tag(name:"summary", value:"Check for the Version of drupal7-context");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

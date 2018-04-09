@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-December/070518.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863652");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-05 12:17:54 +0530 (Mon, 05 Dec 2011)");
   script_xref(name: "FEDORA", value: "2011-16451");
   script_tag(name:"cvss_base", value:"4.6");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2011-4349");
   script_name("Fedora Update for colord FEDORA-2011-16451");
 
-  script_summary("Check for the Version of colord");
+  script_tag(name:"summary", value:"Check for the Version of colord");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

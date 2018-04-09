@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_kb3178664.nasl 5945 2017-04-12 15:37:08Z antu123 $
+# $Id: gb_ms_outlook_kb3178664.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3178664)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810738");
-  script_version("$Revision: 5945 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-0106", "CVE-2017-0204");
   script_bugtraq_id(97413, 97458);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:37:08 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:08:41 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3178664)");
@@ -54,7 +54,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:" Microsoft Outlook 2016");
+  script_tag(name:"affected", value:"Microsoft Outlook 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the

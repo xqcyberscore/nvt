@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_web_detect.nasl 7016 2017-08-29 03:14:59Z ckuersteiner $
+# $Id: gb_icewarp_web_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
 #
 # IceWarp Web Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140329");
-  script_version("$Revision: 7016 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-29 05:14:59 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 9398 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-08-28 14:59:29 +0700 (Mon, 28 Aug 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,6 @@ extract its version.");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("IceWarp/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "http://www.icewarp.com/");
 

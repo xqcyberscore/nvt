@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868073");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-08-08 06:01:34 +0200 (Fri, 08 Aug 2014)");
   script_cve_id("CVE-2014-2828", "CVE-2014-3476", "CVE-2014-3520", "CVE-2014-2237",
                 "CVE-2013-6391", "CVE-2013-4477");
@@ -55,7 +55,7 @@ This package contains the Keystone daemon.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-5497");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/136283.html");
-  script_summary("Check for the Version of openstack-keystone");
+  script_tag(name:"summary", value:"Check for the Version of openstack-keystone");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

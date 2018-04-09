@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201502-01.nasl 7066 2017-09-06 10:29:37Z asteins $
+# $Id: glsa-201502-01.nasl 9374 2018-04-06 08:58:12Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121340");
-script_version("$Revision: 7066 $");
+script_version("$Revision: 9374 $");
 script_tag(name:"creation_date", value:"2015-09-29 11:28:27 +0300 (Tue, 29 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-09-06 12:29:37 +0200 (Wed, 06 Sep 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:58:12 +0200 (Fri, 06 Apr 2018) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201502-01");
 script_tag(name: "insight", value: "An issue has been found in mpg123 when decoding specifically crafted MP3 file, that causes a heap-based buffer overflow."); 
 script_tag(name : "solution", value : "update software");
@@ -39,7 +39,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201502-01");
+script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201502-01");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

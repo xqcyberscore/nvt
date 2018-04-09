@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # HP SiteScope Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805285");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-2614", "CVE-2014-7882");
   script_bugtraq_id(72459, 68361);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 11:23:51 +0530 (Mon, 23 Feb 2015)");
   script_name("HP SiteScope Multiple Unspecified Vulnerabilities");
 
@@ -55,7 +55,9 @@ if(description)
   11.2x through 11.24");
 
   script_tag(name:"solution", value:"Apply the patch from below links,
+
   http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04539443
+
   https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04355129
 
   *****
@@ -78,20 +80,13 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = "";
-hpVer= "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!hpVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -112,6 +107,8 @@ if(VULN)
 {
   report = 'Installed version: ' + hpVer + '\n' +
            'Fixed version:     ' + fix + '\n';
-  security_message(data:report);
+  security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

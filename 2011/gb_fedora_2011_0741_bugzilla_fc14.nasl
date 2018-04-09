@@ -39,13 +39,13 @@ if(description)
   script_cve_id("CVE-2010-2761","CVE-2010-4411","CVE-2010-4567","CVE-2010-4568","CVE-2010-4572","CVE-2011-0046","CVE-2011-0048");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9371 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-04 14:19:53 +0100 (Fri, 04 Feb 2011)");
   script_xref(name: "FEDORA", value: "2011-0741");
   script_name("Fedora Update for bugzilla FEDORA-2011-0741");
 
-  script_summary("Check for the Version of bugzilla");
+  script_tag(name:"summary", value:"Check for the Version of bugzilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

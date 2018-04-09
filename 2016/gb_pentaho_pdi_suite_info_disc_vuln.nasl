@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_pdi_suite_info_disc_vuln.nasl 5513 2017-03-08 10:00:24Z teissa $ 
+# $Id: gb_pentaho_pdi_suite_info_disc_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $ 
 #
 # Pentaho Data Integration (PDI) Suite Information Disclosure Vulnerability 
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:pentaho:data_integration";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808206");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2015-6940");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-24 10:37:42 +0530 (Tue, 24 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pentaho Data Integration (PDI) Suite Information Disclosure Vulnerability"); 
@@ -56,7 +56,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:" 
+  script_tag(name:"affected", value:"
   4.3.x GA PDI - Suite
   4.4.x GA PDI - Suite
   5.0.x GA PDI - Suite

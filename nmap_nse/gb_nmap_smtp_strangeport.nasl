@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smtp_strangeport.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_nmap_smtp_strangeport.nasl 9364 2018-04-06 07:33:03Z cfischer $
 #
 # Wrapper for Nmap SMTP Strange Port NSE script.
 #
@@ -33,9 +33,9 @@ tag_summary = "This script attempts to check if SMTP is running on a non-standar
 
 if(description)
 {
-  script_id(801805);
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801805");
+  script_version("$Revision: 9364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

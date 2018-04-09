@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssh_prv_esc_vul_2004.nasl 4371 2016-10-27 14:09:55Z cfi $
+# $Id: gb_openssh_prv_esc_vul_2004.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # OpenBSD OpenSSH 3.9 Port Bounce Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107069");
-  script_version("$Revision: 4371 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2004-1653");
-  script_tag(name:"cvss_base", value:" 6.4");
+  script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 16:09:55 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenBSD OpenSSH 3.9 Port Bounce Vulnerability");

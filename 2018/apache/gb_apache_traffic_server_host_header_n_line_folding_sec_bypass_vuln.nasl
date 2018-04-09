@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_host_header_n_line_folding_sec_bypass_vuln.nasl 9199 2018-03-26 05:56:21Z cfischer $
+# $Id: gb_apache_traffic_server_host_header_n_line_folding_sec_bypass_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Apache Traffic Server (ATS) Host Header and Line Folding Security Bypass Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812525");
-  script_version("$Revision: 9199 $");
+  script_version("$Revision: 9381 $");
   script_cve_id("CVE-2017-5660");
-  script_tag(name:"last_modification", value: "$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
+  script_tag(name:"last_modification", value: "$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value: "2018-02-28 12:10:48 +0530 (Wed, 28 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if (description)
 
   Apache Traffic Server 7.0.0");
 
-  script_tag(name:"solution", value:" Upgrade to 6.2.2, 7.1.2 or later. 
+  script_tag(name:"solution", value:"Upgrade to 6.2.2, 7.1.2 or later. 
   For updates refer to http://trafficserver.apache.org");
 
   script_tag(name: "qod_type", value: "remote_banner");

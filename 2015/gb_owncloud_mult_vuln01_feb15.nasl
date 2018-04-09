@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln01_feb15.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_owncloud_mult_vuln01_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities -01 Feb15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805279");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-9047", "CVE-2014-9048", "CVE-2014-9049");
   script_bugtraq_id(71388, 71370, 71378);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:04:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -01 Feb15");
 
@@ -45,8 +45,10 @@ if(description)
   help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple errors exists due to,
+
   - Multiple unspecified flaws related to the 'enable_previews' switch in the
   config.php script.
+
   - Two flaws in the Documents application that is due to the persistence of an
   unspecified legacy API method and missing access controls in the API.");
 
@@ -83,23 +85,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
 
 if(ownVer =~ "^(6|7)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"6.0.0", test_version2:"6.0.5"))
   {
     fix = "6.0.6";
@@ -117,7 +112,9 @@ if(ownVer =~ "^(6|7)")
     report = 'Installed version: ' + ownVer + '\n' +
              'Fixed version:     ' + fix + '\n';
 
-    security_message(data:report);
+    security_message(port:ownPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

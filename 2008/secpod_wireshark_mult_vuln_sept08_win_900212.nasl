@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_sept08_win_900212.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_wireshark_mult_vuln_sept08_win_900212.nasl 9369 2018-04-06 08:36:49Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - Sept-08 (Windows)
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.900212");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9369 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
  script_bugtraq_id(31009);
  script_cve_id("CVE-2008-3146", "CVE-2008-3932", "CVE-2008-3933");
@@ -36,9 +36,10 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"registry");
+ script_tag(name:"solution_type", value:"VendorFix");
  script_family("Denial of Service");
  script_name("Wireshark Multiple Vulnerabilities - Sept-08 (Windows)");
- script_summary("Check for vulnerable version of Wireshark/Ethereal");
+ script_tag(name:"summary", value:"Check for vulnerable version of Wireshark/Ethereal");
  script_dependencies("secpod_reg_enum.nasl");
  script_mandatory_keys("SMB/WindowsVersion");
  script_require_ports(139, 445);

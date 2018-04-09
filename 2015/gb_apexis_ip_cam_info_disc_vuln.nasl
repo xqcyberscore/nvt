@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
 #
 # Apexis IP CAM Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805070");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 9381 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 11:22:32 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apexis IP CAM Information Disclosure Vulnerability");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
   check whether it is able read the sensitive information");
 
-  script_tag(name: "insight" , value:" The flaw is due to the camera is not
+  script_tag(name: "insight" , value:"The flaw is due to the camera is not
   restricting some files which are containing sensitive information.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln02_feb15.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_owncloud_mult_vuln02_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities -02 Feb15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805280");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-9046", "CVE-2014-9043", "CVE-2014-9042", "CVE-2014-9041");
   script_bugtraq_id(71383, 71389, 71373, 71369);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:54:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -02 Feb15");
 
@@ -45,12 +45,16 @@ if(description)
   help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
+
   - An error in the 'OC_Util::getUrlContent' function that is due to it allows
   redirects from other protocols (such as file://)
+
   - An error in the 'ldap_bind' function in libldap that is triggered when
   handling a password that contains NULL bytes.
+
   - The bookmark application does not validate input to bookmarks before
   returning it to users.
+
   - An error in the bookmarks application as HTTP requests do not require
   multiple steps, explicit confirmation, or a unique token when performing
   certain sensitive actions.");
@@ -90,23 +94,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
 
 if(ownVer =~ "^(5|6|7)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"5.0.0", test_version2:"5.0.17"))
   {
     fix = "5.0.18";
@@ -130,7 +127,9 @@ if(ownVer =~ "^(5|6|7)")
     report = 'Installed version: ' + ownVer + '\n' +
              'Fixed version:     ' + fix + '\n';
 
-    security_message(data:report);
+    security_message(port:ownPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

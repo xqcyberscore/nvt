@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806633");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2013-6452", "CVE-2013-6453", "CVE-2013-6454", "CVE-2013-6472");
   script_bugtraq_id(65003);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 16:46:38 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)");
 
@@ -45,11 +45,15 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An error which displays some information about deleted pages in the log
   API, enhanced RecentChanges, and user watchlists.
+
   - An error in CSS whose sanitization did not filter -o-link attributes.
+
   - An error leading SVG sanitization to bypass when the XML was considered
   invalid.
+
   - An error in SVG files upload that could lead to include external stylesheets
   in upload.");
 
@@ -83,21 +87,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-http_ver = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!http_ver = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_less(version:http_ver, test_version:"1.19.10"))
 {
   fix = "1.19.10";
@@ -120,6 +117,8 @@ if(VULN)
 {
   report = 'Installed version: ' + http_ver + '\n' +
            'Fixed version:     ' + fix      + '\n';
-  security_message(data:report);
+  security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

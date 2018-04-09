@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-049.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_ms16-049.nasl 9382 2018-04-06 11:26:58Z cfischer $
 #
 # Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807314");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 9382 $");
   script_cve_id("CVE-2016-0150");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:26:58 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 09:22:17 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)");
@@ -42,17 +42,17 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:" A denial of service flaw exists in the HTTP
+  script_tag(name: "insight" , value:"A denial of service flaw exists in the HTTP
   2.0 protocol stack (HTTP.sys) when HTTP.sys improperly parses specially crafted
   HTTP 2.0 requests."); 
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to couse denial of service.
+  attacker to cause a Denial of Service.
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the

@@ -7,7 +7,7 @@
 #   - By Chandan S
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: conficker.nasl 9386 2018-04-06 12:25:50Z cfischer $
 #
 # Conficker Detection
 #
@@ -66,8 +66,8 @@ if(description)
   script_xref(name : "URL" , value : "http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
   script_oid("1.3.6.1.4.1.25623.1.0.900091");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9386 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:25:50 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -78,6 +78,7 @@ if(description)
   script_family("Malware");
   script_name("Conficker Detection");
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Mitigation");
   script_dependencies("secpod_reg_enum.nasl", "nmap_nse/gb_nmap_p2p_conficker.nasl",
                       "nmap_nse/gb_nmap_smb_check_vulns.nasl", "os_detection.nasl");
   script_require_ports(139, 445);
@@ -104,7 +105,7 @@ if (!isnull(res)) {
     foreach msg (res) {
         report += msg + '\n';
     }
-    security_message(data:report);
+    security_message(port:0, data:report);
     exit(0);
 }
 
@@ -282,7 +283,8 @@ if(strlen(resp) < 100){
 
 if(ord(resp[96]) == 87 && ord(resp[97]) == 00 && ord(resp[98]) == 00 && ord(resp[99]) == 00)
 {
-  security_message(0);
+  security_message(port:0);
   exit(0);
 }
-exit(0);
+
+exit(99);

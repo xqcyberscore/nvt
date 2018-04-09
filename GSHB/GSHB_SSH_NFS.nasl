@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_NFS.nasl 7280 2017-09-26 13:46:20Z cfischer $
+# $Id: GSHB_SSH_NFS.nasl 9365 2018-04-06 07:34:21Z cfischer $
 #
 # Check security mechanisms for NFS
 #
@@ -30,9 +30,9 @@ tag_summary = "This plugin uses ssh to Check security mechanisms for NFS.";
 
 if(description)
 {
-  script_id(96092);
-  script_version("$Revision: 7280 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:46:20 +0200 (Tue, 26 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.96092");
+  script_version("$Revision: 9365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-05-21 15:05:08 +0200 (Fri, 21 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

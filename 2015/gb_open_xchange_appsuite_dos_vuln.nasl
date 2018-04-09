@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_dos_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_open_xchange_appsuite_dos_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
 #
 # Open-Xchange (OX) AppSuite XEE Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806075");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 9384 $");
   script_cve_id("CVE-2014-5238");
   script_bugtraq_id(69816);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-06 18:57:33 +0530 (Tue, 06 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite XEE Denial of Service Vulnerability");
@@ -60,6 +60,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
   version 7.4.2-rev11 or 7.6.0-rev9 or later.
+
   For updates refer to https://www.open-xchange.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,30 +76,18 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-oxPort = "";
-oxVer = "";
-
-
-## Get HTTP Port
 if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 oxVer = get_app_version(cpe:CPE, port:oxPort);
 if(!oxVer || "unknown" >< oxVer){
   exit(0);
 }
 
-## Get the revision
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
 if(oxRev)
@@ -126,7 +115,9 @@ if(oxRev)
   if(VULN)
   {
     report = 'Installed Version: ' + oxVer + '\nFixed Version:     ' + fix + '\n';
-    security_message(data:report);
+    security_message(port:oxPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

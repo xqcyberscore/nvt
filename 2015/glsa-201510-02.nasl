@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201510-02.nasl 6592 2017-07-07 09:16:27Z cfischer $
+# $Id: glsa-201510-02.nasl 9374 2018-04-06 08:58:12Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121415");
-script_version("$Revision: 6592 $");
+script_version("$Revision: 9374 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:04:37 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:16:27 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:58:12 +0200 (Fri, 06 Apr 2018) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201510-02");
 script_tag(name: "insight", value: "Heap-based buffer overflow has been found in QEMUs PCNET controller."); 
 script_tag(name : "solution", value : "update software");
@@ -39,7 +39,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201510-02");
+script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201510-02");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);
