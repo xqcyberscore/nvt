@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882693");
-  script_version("$Revision: 8091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 9402 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:20:26 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-14 06:30:29 +0200 (Fri, 14 Apr 2017)");
   script_cve_id("CVE-2017-3157");
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,7 +60,7 @@ improved, and the described problem no longer occurs. (BZ#1425536)
 * Previously, when an incorrect password was entered for a password
 protected document, the document has been considered as valid and a
 fallback attempt to open it as plain text has been made. As a consequence,
-it could appear that the document succesfully loaded, while just the
+it could appear that the document successfully loaded, while just the
 encrypted unreadable content was shown. A fix has been made to terminate
 import attempts after entering incorrect password, and now nothing is
 loaded when a wrong password is entered. (BZ#1426348)

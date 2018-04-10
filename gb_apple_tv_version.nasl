@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_tv_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_apple_tv_version.nasl 9400 2018-04-09 07:04:37Z cfischer $
 #
 # Apple TV Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140000");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 9400 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:04:37 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:12:23 +0200 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,6 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_apple_tv_detect.nasl");
   script_require_ports("Services/www", 7000);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("apple_tv/detected");
 
   script_tag(name:"summary", value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
@@ -49,10 +48,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 port = get_http_port( default:7000 );
@@ -82,6 +79,6 @@ if( ! isnull( ma[1] ) )
 
 report = 'Model:     ' + model + '\n' + 'Build:     ' + build + '\n' + 'CPE:       cpe:/o:apple:tv\nConcluded: ' + report_vuln_url(  port:port, url:url, url_only:TRUE ) + '\n';
 
-log_message( port:port, data:'The following informations could be gathered from the remote Apple TV device:\n\n' + report );
+log_message( port:port, data:'The following information could be gathered from the remote Apple TV device:\n\n' + report );
 exit( 0 );
 

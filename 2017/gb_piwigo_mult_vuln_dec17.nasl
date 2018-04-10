@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_vuln_dec17.nasl 8562 2018-01-29 08:13:27Z cfischer $
+# $Id: gb_piwigo_mult_vuln_dec17.nasl 9410 2018-04-09 14:01:43Z asteins $
 #
 # Piwigo Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140626");
-  script_version("$Revision: 8562 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-29 09:13:27 +0100 (Mon, 29 Jan 2018) $");
+  script_version("$Revision: 9410 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-09 16:01:43 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-12-22 15:02:56 +0700 (Fri, 22 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Piwigo Multiple Vulnerabilities");
 
@@ -84,8 +84,7 @@ request. An attacker can exploit this to hijack a client's browser along with th
 
   script_tag(name: "affected", value: "Piwigo version 2.9.2 and probably prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 29th January, 2018. Solution
-details will be updated once the updates are made available.");
+  script_tag(name: "solution", value: "Update to version 2.9.3 or later.");
 
   script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/piwigo.md");
   script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/822");
@@ -107,7 +106,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "2.9.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.9.3");
   security_message(port: port, data: report);
   exit(0);
 }

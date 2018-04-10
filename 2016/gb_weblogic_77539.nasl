@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weblogic_77539.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_weblogic_77539.nasl 9402 2018-04-09 07:20:26Z cfischer $
 #
 # Oracle WebLogic Server Java Deserialization Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-4852");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5759 $");
+ script_version ("$Revision: 9402 $");
 
  script_name("Oracle WebLogic Server Java Deserialization Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/alert-cve-2015-4852-2763333.html");
 
  script_tag(name: "impact" , value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
- script_tag(name: "vuldetect" , value:"Send a serialized java object which try to open a ssh connection to a random port on the scanner and then check for the tcp-syn paket from this connection.");
+ script_tag(name: "vuldetect" , value:"Send a serialized java object which try to open a ssh connection to a random port on the scanner and then check for the tcp-syn packet from this connection.");
  script_tag(name: "insight" , value:"Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the Jboss server.");
  script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
  script_tag(name: "summary" , value:"Oracle WebLogic Server is prone to a remote code-execution vulnerability.");
@@ -50,7 +50,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:20:26 +0200 (Mon, 09 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-27 14:18:32 +0200 (Wed, 27 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("General");
@@ -276,7 +276,7 @@ if( res )
   flags = get_tcp_element( tcp: res, element: "th_flags" );
   if( ( flags & TH_SYN ) )
   {
-    report = 'It was possible to execute the command `' + cmd + '` on the remote host. The TCP-SYN request to port ' + lport + ' was then succesfully captured.';
+    report = 'It was possible to execute the command `' + cmd + '` on the remote host. The TCP-SYN request to port ' + lport + ' was then successfully captured.';
     security_message( port:port, data:report );
     exit( 0 );
   }

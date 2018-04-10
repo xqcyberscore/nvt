@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-056.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_ms12-056.nasl 9408 2018-04-09 12:03:31Z cfischer $
 #
 # Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)
 #
@@ -24,38 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the current user.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Windows 7 x64 Edition Service Pack 1 and prior
-  Microsoft Windows XP x64 Edition Service Pack 2 and prior
-  Microsoft Windows 2003 x64 Edition Service Pack 2 and prior
-  Microsoft Windows Vista x64 Edition Service Pack 2 and prior
-  Microsoft Windows Server 2008 x64 Edition Service Pack 2 and prior
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior";
-tag_insight = "The flaw is caused by an integer overflow error in the JScript and VBScript
-  scripting engines when calculating the size of an object in memory.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-056";
-tag_summary = "This host is missing an important security update according to
-  Microsoft Bulletin MS12-056.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903037");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9408 $");
   script_cve_id("CVE-2012-2523");
   script_bugtraq_id(54945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 14:03:31 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 11:13:45 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50243/");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2706045");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-056");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -63,64 +42,84 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50243/");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2706045");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-056");
+
+  script_tag(name:"impact" , value:"Successful exploitation could allow remote attackers to execute arbitrary
+  code in the context of the current user.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected" , value:"Microsoft Windows 7 x64 Edition Service Pack 1 and prior
+
+  Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows 2003 x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Vista x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
+
+  script_tag(name:"insight" , value:"The flaw is caused by an integer overflow error in the JScript and VBScript
+  scripting engines when calculating the size of an object in memory.");
+
+  script_tag(name:"solution" , value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+
+  http://technet.microsoft.com/en-us/security/bulletin/ms12-056");
+
+  script_tag(name:"summary" , value:"This host is missing an important security update according to
+  Microsoft Bulletin MS12-056.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-dllPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(xpx64:3, win2003x64:3, win7x64:2, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 dllPath = smb_get_systemroot();
-if(!dllPath ){
+if(!dllPath){
   exit(0);
 }
 
-## Get Version from Vbscript.dll file
 dllVer = fetch_file_version(sysPath:dllPath, file_name:"System32\Vbscript.dll");
 if(!dllVer){
   exit(0);
 }
 
 ## Windows XP x64 and Windows 2003 x64
-if(hotfix_check_sp(xpx64:3, win2003x64:3) > 0)
-{
-  ## Check for Vbscript.dll version
+if(hotfix_check_sp(xpx64:3, win2003x64:3) > 0){
   if(version_is_less(version:dllVer, test_version:"5.8.6001.23380")){
-    security_message(0);
+    report = report_fixed_ver(file_checked:dllPath + "System32\Vbscript.dll",
+             file_version:dllVer, vulnerable_range:"< 5.8.6001.23380");
+    security_message(port:0, data:report);
   }
   exit(0);
 }
 
-## Currently not supporting for Vista and Windows Server 2008 64 bit
+## Currently no support for Vista and Windows Server 2008 64 bit
 
 ## Windows 7
-else if(hotfix_check_sp(win7x64:2, win2008r2:2) > 0)
-{
-  ## Check for Vbscript.dll version
+else if(hotfix_check_sp(win7x64:2, win2008r2:2) > 0){
   if(version_is_less(version:dllVer, test_version:"5.8.7600.17045") ||
      version_in_range(version:dllVer, test_version:"5.8.7600.20000", test_version2:"5.8.7600.21237")||
      version_in_range(version:dllVer, test_version:"5.8.7601.17000", test_version2:"5.8.7601.17865")||
      version_in_range(version:dllVer, test_version:"5.8.7601.21000", test_version2:"5.8.7601.22023")){
-    security_message(0);
+    report = report_fixed_ver(file_checked:dllPath + "System32\Vbscript.dll",
+             file_version:dllVer, vulnerable_range:"< 5.8.7600.17045, 5.8.7600.20000 - 5.8.7600.21237, 5.8.7601.17000 - 5.8.7601.17865, 5.8.7601.21000 - 5.8.7601.22023");
+    security_message(port:0, data:report);
   }
 }
 
+exit(99);

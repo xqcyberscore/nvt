@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln_lin.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_openssl_sec_bypass_vuln_lin.nasl 9403 2018-04-09 07:48:27Z asteins $
 #
 # OpenSSL Security Bypass Vulnerability - DEC 2017 (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107260");
-  script_version("$Revision: 8291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 9403 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3737");
   script_bugtraq_id(102103);
@@ -41,23 +41,22 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Security Bypass Vulnerability - DEC 2017 (Linux)");
   script_tag(name: "summary", value: "This host is running OpenSSL and is prone
-  to Security Bypass vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect
-             NVT and check if the version is vulnerable or not.");
+  to a security bypass vulnerability.");
+  script_tag(name: "vuldetect", value: "Get the installed version and check if it is vulnerable.");
 
-  script_tag(name: "insight", value: "When SSL_read()/SSL_write() is subsequently called by the 
-application for the same SSL object then it will succeed and the data is passed without being 
+  script_tag(name: "insight", value: "When SSL_read()/SSL_write() is subsequently called by the
+application for the same SSL object then it will succeed and the data is passed without being
 decrypted/encrypted directly from the SSL/TLS record layer.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue will allow attackers 
-    to bypass security restrictions and perform unauthorized actions  this may aid in launching 
+  script_tag(name: "impact" , value: "Successfully exploiting this issue will allow attackers
+    to bypass security restrictions and perform unauthorized actions. This may aid in launching
     further attacks.");
 
   script_tag(name: "affected", value: "OpenSSL 1.0.2 (starting from version 1.0.2b) before 1.0.2n");
   script_tag(name: "solution", value: "OpenSSL 1.0.2 users should upgrade to 1.0.2n.");
 
-  script_xref(name: "URL" , value: "https://www.openssl.org/news/secadv/20171207.txt");
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/102103");
+  script_xref(name: "URL", value: "https://www.openssl.org/news/secadv/20171207.txt");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/102103");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -74,7 +73,6 @@ decrypted/encrypted directly from the SSL/TLS record layer.");
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe: CPE)){
   exit(0);
 }
@@ -82,15 +80,16 @@ if(!Port = get_app_port(cpe: CPE)){
 if(!Ver = get_app_version(cpe: CPE, port: Port)){
   exit(0);
 }
+
 if (Ver =~ "^(1\.0\.2)")
 {
   if(version_in_range(version: Ver, test_version: "1.0.2b", test_version2: "1.0.2m"))
   {
     report =  report_fixed_ver(installed_version: Ver, fixed_version: "1.0.2n");
     security_message(data: report, port: Port);
-    exit( 0 );
+    exit(0);
   }
 }
 
-exit ( 99 );
+exit (99);
 

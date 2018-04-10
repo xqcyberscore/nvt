@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: default_http_auth_credentials.nasl 9400 2018-04-09 07:04:37Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 8142 $");
+  script_version("$Revision: 9400 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:04:37 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -40,7 +40,6 @@ if(description)
                       "gb_default_credentials_options.nasl", "cgi_directories.nasl"); # cgi_directories.nasl pulls in the NVTs setting a /content/auth_required
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/content/auth_required");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_timeout(1800);
 
@@ -97,7 +96,7 @@ foreach url( urls ) {
 
   foreach credential( credentials ) {
 
-    # to many successfull logins. something is wrong...
+    # to many successful logins. something is wrong...
     if( c > 10 ) {
       set_kb_item( name:"default_http_auth_credentials/" + port + "/too_many_logins", value:c );
       set_kb_item( name:"default_http_auth_credentials/" + port + "/no_timeout", value:TRUE );

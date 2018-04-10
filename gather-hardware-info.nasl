@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-hardware-info.nasl 9280 2018-04-03 11:06:06Z mmartin $
+# $Id: gather-hardware-info.nasl 9409 2018-04-09 13:22:51Z cfischer $
 #
 # Gather Linux Hardware Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103996");
-  script_version("$Revision: 9280 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 13:06:06 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9409 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 15:22:51 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-05 14:24:03 +0200 (Tue, 05 Apr 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,7 +56,7 @@ SCRIPT_DESC = "Gather Linux Hardware Information";
 sock = ssh_login_or_reuse_connection();
 if( ! sock ) exit( 0 );
 
-# -- Get CPU information -- #
+# -- Get the CPU information -- #
 cpuinfo = ssh_cmd( socket:sock, cmd:"cat /proc/cpuinfo" );
 cpus = make_array();
 cpunumber = 0;
@@ -82,7 +82,7 @@ if( egrep( string:archinfo, pattern:"^(x86_64|i386|i486|i586|i686|sun4u|unknown|
   set_kb_item( name:"ssh/login/arch", value:arch );
 }
 
-# -- Get pci information -- #
+# -- Get the PCI information -- #
 lspci = ssh_cmd( socket:sock, cmd:"/usr/bin/lspci -vmm" );
 if( lspci ) {
 
@@ -90,6 +90,7 @@ if( lspci ) {
   max = max_index( lspci_lines );
   if( max > 2 ) { # Just a basic sanity check for the return of lspci
 
+    set_kb_item( name:"ssh_or_wmi/login/pci_devices/available", value:TRUE );
     set_kb_item( name:"ssh/login/pci_devices/available", value:TRUE );
 
     device_infos = make_array();
@@ -100,21 +101,21 @@ if( lspci ) {
 
       # man lspci:
       # Verbose format (-vmm)
-      # The  verbose output is a sequence of records separated by blank lines.  Each record describes a single device by a sequence of lines, each line containing a single `tag: value' pair. The tag and the
-      # value are separated by a single tab character.  Neither the records nor the lines within a record are in any particular order.  Tags are case-sensitive.
+      # The verbose output is a sequence of records separated by blank lines. Each record describes a single device by a sequence of lines, each line containing a single `tag: value' pair. The tag and the
+      # value are separated by a single tab character. Neither the records nor the lines within a record are in any particular order. Tags are case-sensitive.
 
       entry = split( lspci_lines[i], sep:':\t', keep:FALSE );
       device_infos[entry[0]] = entry[1];
 
       if( ( lspci_lines[ i + 1 ] == "" ) || ( i == max - 1 ) ) {
 
-        busid = device_infos['Slot'];
-        if( ! busid ) busid = "unknown";
+        deviceid = device_infos['Slot'];
+        if( ! deviceid ) deviceid = "unknown";
 
-        set_kb_item( name:"ssh/login/pci_devices/bus_ids", value:busid );
+        set_kb_item( name:"ssh/login/pci_devices/device_ids", value:deviceid );
 
         foreach device_info( keys( device_infos ) ) {
-          set_kb_item( name:"ssh/login/pci_devices/" + busid + "/" + tolower( device_info ), value:device_infos[device_info] );
+          set_kb_item( name:"ssh/login/pci_devices/" + deviceid + "/" + tolower( device_info ), value:device_infos[device_info] );
         }
         device_infos = make_array(); # Throw away the previous collected information as we already have saved it into our KB.
       }
@@ -122,7 +123,7 @@ if( lspci ) {
   }
 }
 
-# -- Get memory information -- #
+# -- Get the memory information -- #
 meminfo = ssh_cmd( socket:sock, cmd:"cat /proc/meminfo" );
 memtotal = "";
 foreach line( split( meminfo, keep:FALSE ) ) {
@@ -133,7 +134,7 @@ foreach line( split( meminfo, keep:FALSE ) ) {
   }
 }
 
-# -- Get network interfaces information -- #
+# -- Get the network interfaces information -- #
 ifconfig = ssh_cmd( socket:sock, cmd:"/sbin/ifconfig" );
 interfaces = split( ifconfig, sep:'\r\n\r\n', keep:FALSE);
 netinfo = "";
@@ -203,7 +204,7 @@ foreach interface( interfaces ) {
   }
 }
 
-# -- store results in the host details DB -- #
+# -- Store results in the host details DB -- #
 if( cpunumber ) {
   cpu_str = '';
   foreach cputype( keys( cpus ) ) {

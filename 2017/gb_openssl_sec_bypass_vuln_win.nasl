@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln_win.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_openssl_sec_bypass_vuln_win.nasl 9403 2018-04-09 07:48:27Z asteins $
 #
 # OpenSSL Security Bypass Vulnerability - DEC 2017 (Windows)
-# 
+#
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107268");
-  script_version("$Revision: 8291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 9403 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3737");
   script_bugtraq_id(102103);
@@ -42,13 +42,14 @@ if(description)
   script_name("OpenSSL Security Bypass Vulnerability - DEC 2017 (Windows)");
 
   script_tag(name: "summary", value: "This host is running OpenSSL and is prone
-  to multiple vulnerabilities.");
+  to a security bypass vulnerability.");
   script_tag(name: "vuldetect", value: "Get the installed version and check if it is vulnerable.");
 
-  script_tag(name: "insight", value: "The flaw is due to an overflow bug in the AVX2 Montgomery 
-    multiplication procedure used in exponentiation with 1024-bit moduli.");
+  script_tag(name: "insight", value: "When SSL_read()/SSL_write() is subsequently called by the
+  application for the same SSL object then it will succeed and the data is passed without being
+  decrypted/encrypted directly from the SSL/TLS record layer.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue will allow attacker cause Denial of Service.");
+  script_tag(name: "impact" , value: "Successfully exploiting this issue would allow an attacker to cause a denial of service.");
 
   script_tag(name: "affected", value: "OpenSSL 1.0.2: from 1.0.2b to 1.0.2m");
   script_tag(name: "solution", value: "OpenSSL 1.0.2 users should upgrade to 1.0.2n.");
@@ -71,7 +72,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe: CPE)){
   exit(0);
 }
@@ -79,15 +79,16 @@ if(!Port = get_app_port(cpe: CPE)){
 if(!Ver = get_app_version(cpe: CPE, port: Port)){
   exit(0);
 }
+
 if (Ver =~ "^(1\.0\.2)")
 {
   if(version_in_range(version: Ver, test_version: "1.0.2b", test_version2: "1.0.2m"))
   {
     report =  report_fixed_ver(installed_version: Ver, fixed_version: "1.0.2n");
     security_message(data: report, port: Port);
-    exit( 0 );
+    exit(0);
   }
 }
 
-exit ( 99 );
+exit (99);
 

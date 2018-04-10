@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_statistics_sql_injection_vuln.nasl 6746 2017-07-18 04:18:27Z ckuersteiner $
+# $Id: gb_wordpress_wp_statistics_sql_injection_vuln.nasl 9401 2018-04-09 07:11:51Z cfischer $
 #
 # WordPress WP Statistics Authenticated SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810967");
-  script_version("$Revision: 6746 $");
+  script_version("$Revision: 9401 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 06:18:27 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:11:51 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 12:40:08 +0530 (Mon, 03 Jul 2017)");
   script_name("WordPress WP Statistics Authenticated SQL Injection Vulnerability");
 
@@ -46,7 +46,7 @@ if(description)
   sanitization in user-provided data for some attributes of the shortcode 
   wpstatistics which are passed as parameters for important functions.");
 
-  script_tag(name:"impact", value:"Successfull exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers with at least a subscriber account could leak sensitive data and 
   under the right circumstances/configurations compromise your WordPress 
   installation.

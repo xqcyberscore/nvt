@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 9300 2018-04-04 11:55:01Z cfischer $
+# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 9403 2018-04-09 07:48:27Z asteins $
 #
-# Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Linux)
+# Nextcloud Server Multiple Vulnerabilities (Linux)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107145");
-  script_version("$Revision: 9300 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 9403 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -39,37 +39,37 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Linux)");
-  script_tag(name: "summary", value: "Nextcloud Server is prone to Multiple vulnerabilities.");
+  script_name("Nextcloud Server Multiple Vulnerabilities (Linux)");
+  script_tag(name: "summary", value: "Nextcloud Server is prone to multiple vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  detect NVT and check if the version is vulnerable or not.");
+  the detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "Multiple flaw exist due to
+  script_tag(name: "insight", value: "The following flaws exist:
 
-  - The top navigation bar displayed in the files list contained partially
+  - the top navigation bar displayed in the files list contained partially
     user-controllable input leading to a potential misrepresentation of information.
-  
-  - Due to an error in the application logic an authenticated adversary may trigger
+
+  - an error in the application logic an authenticated adversary may trigger
     an endless recursion in the application.
 
-  - Due to not properly sanitizing values provided by the `OC-Total-Length` HTTP
+  - not properly sanitizing values provided by the `OC-Total-Length` HTTP
     header an authenticated adversary may be able to exceed their configured user
     quota.
 
-  - Due to an error in the application logic an adversary with access to a
+  - an error in the application logic an adversary with access to a
     write-only share may enumerate the names of existing files and subfolders by
     comparing the exception messages.
- 
-  - A permission related issue within the OCS sharing API allowed an authenticated
+
+  - a permission related issue within the OCS sharing API allowed an authenticated
     adversary to reshare shared files with an increasing permission set.
- 
-  - Due to a logical error in the file caching layer an authenticated adversary is
+
+  - a logical error in the file caching layer an authenticated adversary is
     able to create empty folders inside a shared folder.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow an attacker
   to edit files in a share, lead to a potential misrepresentation of information,
-  and can cause denail of service condition.
+  and can cause denial of service conditions.
 
   Impact Level: Application");
 

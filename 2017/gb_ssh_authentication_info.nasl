@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 8324 2018-01-08 14:59:58Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 9401 2018-04-09 07:11:51Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 8324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:59:58 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 9401 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:11:51 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ info_array = make_array();
 # nb: key is the KB item, value the description used in the report
 # The order doesn't matter, this will be sorted later in text_format_table()
 kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
-                       "login/SSH/success", "Login successfull",
+                       "login/SSH/success", "Login successful",
                        "ssh/no_linux_shell", "Login on a system without common commands like 'cat' or 'find'",
                        "ssh/locate/available", "locate: Command available",
                        "ssh/force/clear_buffer", "Clear received buffer before sending a command",

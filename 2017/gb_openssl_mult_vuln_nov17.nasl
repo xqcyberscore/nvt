@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln_nov17.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_openssl_mult_vuln_nov17.nasl 9403 2018-04-09 07:48:27Z asteins $
 #
 # OpenSSL Multiple Vulnerabilities - Nov 2017 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107203");
-  script_version("$Revision: 7992 $");
+  script_version("$Revision: 9403 $");
   script_cve_id("CVE-2017-3735", "CVE-2017-3736");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-03 18:50:03 +0530 (Fri, 03 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities - Nov 2017 (Linux)");
@@ -42,10 +42,12 @@ if(description)
   to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to:
+
   - A carry propagating bug in the x86_64 Montgomery squaring procedure.
+
   - Malformed X.509 IPAddressFamily which could cause OOB read.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker to recover keys (private or secret keys) or to cause a buffer overread which lead to erroneous display of the certificate in text format.
@@ -73,11 +75,13 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
+if(!Port = get_app_port(cpe:CPE))
+{
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port:Port)){
+if(!Ver = get_app_version(cpe:CPE, port:Port))
+{
   exit(0);
 }
 
@@ -90,7 +94,7 @@ if(Ver =~ "^(1\.1\.0)")
   }
 }
 
-else if(Ver =~ "^(1\.0\.1)")
+else if(Ver =~ "^(1\.0\.2)")
 {
   if (version_is_less(version:Ver, test_version:'1.0.2m'))
   {
@@ -105,4 +109,5 @@ if (Vuln)
   security_message(port:Port, data:report);
   exit(0);
 }
+
 exit(99);

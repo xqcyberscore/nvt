@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_padding_oracle_vul.nasl 8741 2018-02-09 12:30:28Z cfischer $
+# $Id: gb_openssl_padding_oracle_vul.nasl 9403 2018-04-09 07:48:27Z asteins $
 #
 # SSL/TLS: OpenSSL 'CVE-2016-2107' Padding Oracle Vulnerability
 #
@@ -27,25 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107141");
-  script_version("$Revision: 8741 $");
+  script_version("$Revision: 9403 $");
   script_cve_id("CVE-2016-2107");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 13:30:28 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 12:21:46 +0100 (Thu, 30 Mar 2017)");
   script_name("SSL/TLS: OpenSSL 'CVE-2016-2107' Padding Oracle Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with OpenSSL and is prone to Padding Oracle vulnerability.");
+  script_tag(name: "summary" , value: "This host is installed with OpenSSL and is prone to padding oracle attack.");
 
   script_tag(name: "vuldetect" , value: "Send an encrypted padded message and check the returned alert (Record Overflow if vulnerable, Bad Record Mac if no vulnerable.");
 
-  script_tag(name: "insight" , value: "The Vulnerability is due not considering memory allocation during a certain padding check. ");
+  script_tag(name: "insight" , value: "The vulnerability is due to not considering memory allocation during a certain padding check.");
 
-  script_tag(name: "impact" , value: "The Vulnerability allows remote attackers to obtain sensitive cleartext information via a padding-oracle attack against an AES CBC session. ");
+  script_tag(name: "impact" , value: "Exploiting this vulnerability allows remote attackers to obtain sensitive cleartext information via a padding oracle attack against an AES CBC session.");
 
   script_tag(name: "affected" , value:"OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h.");
 
-  script_tag(name: "solution" , value:"OpenSSL 1.0.2 users should upgrade to 1.0.2h
+  script_tag(name: "solution" , value:"OpenSSL 1.0.2 users should upgrade to 1.0.2h.
+
 OpenSSL 1.0.1 users should upgrade to 1.0.1t.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -195,7 +196,7 @@ if(  defined_func( 'prf_sha256' ) &&
 
   ckedata =  data_len (data: encrypted) + encrypted;
 
-  hdlen = raw_string (0x00) + data_len (data: ckedata); 
+  hdlen = raw_string (0x00) + data_len (data: ckedata);
   data = raw_string(SSLv3_CLIENT_KEY_EXCHANGE) + hdlen + ckedata;
   cke_len =  data_len( data:data );
 
@@ -263,12 +264,12 @@ if(  defined_func( 'prf_sha256' ) &&
 
   send( socket: soc, data: datatosend );
 
-  clkechange_done = FALSE; 
+  clkechange_done = FALSE;
 
   while ( ! clkechange_done )
   {
     data = ssl_recv( socket:soc );
-    if( ! data ) 
+    if( ! data )
     {
       close( soc );
       exit( 0 );
@@ -280,7 +281,7 @@ if(  defined_func( 'prf_sha256' ) &&
       if( record['level'] == SSLv3_ALERT_FATAL && record['description'] == SSLv3_ALERT_RECORD_OVERFLOW )
       {
         close( soc );
-        report = "it was possible to send an encrypted data with malformed padding and recieve Record Overflow alert from the SSL Server";
+        report = "It was possible to send an encrypted data with malformed padding and receive Record Overflow alert from the SSL Server";
         security_message( port: port, data: report );
         exit( 0 );
       }
@@ -298,5 +299,5 @@ if(  defined_func( 'prf_sha256' ) &&
   if ( soc ) close ( soc );
 }
 
-exit(0);
+exit( 0 );
 

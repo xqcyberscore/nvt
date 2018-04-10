@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 9400 2018-04-09 07:04:37Z cfischer $
 #
 # IBM Endpoint Manager MDM Installed
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 8654 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+ script_version ("$Revision: 9400 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:04:37 +0200 (Mon, 09 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-12-03 13:24:33 +0100 (Wed, 03 Dec 2014)");
  script_name("IBM Endpoint Manager MDM Installed");
 
@@ -45,7 +45,6 @@ component is installed.");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_ibm_endpoint_manager_web_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("ibm_endpoint_manager/installed");
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_feb18_win.nasl 8988 2018-03-01 07:31:59Z santu $
+# $Id: gb_phpmyadmin_xss_vuln_feb18_win.nasl 9401 2018-04-09 07:11:51Z cfischer $
 #
 # phpMyAdmin Cross-Site Scripting Vulnerability(PMASA-2018-1)-Windows
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812812");
-  script_version("$Revision: 8988 $");
+  script_version("$Revision: 9401 $");
   script_cve_id("CVE-2018-7260");
   script_bugtraq_id(103099);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:31:59 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:11:51 +0200 (Mon, 09 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 11:56:43 +0530 (Wed, 28 Feb 2018)");
   script_name("phpMyAdmin Cross-Site Scripting Vulnerability(PMASA-2018-1)-Windows");
   
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"insight", value:"The flaw exists due to an invalidated 
   variable total_rows of db_central_columns.php page");
 
-  script_tag(name:"impact", value:"Successfull exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to inject arbitrary web script or HTML via a crafted URL.
 
   Impact Level: Application");
