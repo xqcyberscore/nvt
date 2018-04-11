@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codemeter_webadmin_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_codemeter_webadmin_detect.nasl 9434 2018-04-11 08:37:16Z cfischer $
 #
 # CodeMeter WebAdmin Version Detection
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801988");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 9434 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 10:37:16 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("CodeMeter WebAdmin Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
@@ -48,42 +48,32 @@ if(description)
   exit(0);
 }
 
-
-include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("cpe.inc");
 
-## default port
-port = get_http_port( default:80 );
-
+port = get_http_port( default:22350 );
 banner = get_http_banner( port:port );
+res = http_get_cache( item:"/home.html", port:port ) ;
 
-rcvRes = http_get_cache( item:"/home.html", port:port) ;
-
-## Confirm the application
-if( "<title>CodeMeter | WebAdmin</title>" >!< rcvRes &&
-    "WIBU-SYSTEMS HTML Served Page" >!< rcvRes &&
+if( "<title>CodeMeter | WebAdmin</title>" >!< res &&
+    "WIBU-SYSTEMS HTML Served Page" >!< res &&
     "Server: WIBU-SYSTEMS HTTP Server" >!< banner ) exit( 0 );
 
 version = "unknown";
 install = "/";
 
-## Match the version
-ver = eregmatch( pattern:"WebAdmin Version.*[^\n]Version ([0-9.]+)", string:rcvRes );
+ver = eregmatch( pattern:"WebAdmin Version.*[^\n]Version ([0-9.]+)", string:res );
+if( ! isnull( ver[1] ) ) version = ver[1];
 
-if( ver[1] != NULL ) version = ver[1];
-
-## Set the version in KB
 set_kb_item( name:"www/"+ port + "/CodeMeter_WebAdmin", value:version );
 set_kb_item( name:"CodeMeter_WebAdmin/installed", value:TRUE );
 
-## build cpe and store it as host_detail
 cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:wibu:codemeter_webadmin:" );
 if( isnull( cpe ) )
   cpe = 'cpe:/a:wibu:codemeter_webadmin';
 
-## Register Product and Build Report
 register_product( cpe:cpe, location:install, port:port );
 
 log_message( data:build_detection_report( app:"CodeMeter WebAdmin",
