@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_mybb_mult_vuln.nasl 9421 2018-04-10 10:20:06Z asteins $
 #
 # MyBB Multiple Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107255");
-  script_version("$Revision: 7968 $");
+  script_version("$Revision: 9421 $");
   script_cve_id("CVE-2017-16781");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-13 09:06:56 +0700 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -57,16 +57,21 @@ if (description)
   script_tag(name: "insight", value: "MyBB is prone to multiple vulnerabilities:
 
 
-    - Installer RCE on configuration file write.
+    - Installer RCE on configuration file write
+    
     - Language file headers RCE.
-    - Installer XSS.
-    - Mod CP Edit Profile XSS.
-    - Insufficient moderator permission check in delayed moderation tools.
-    - Announcements HTML filter bypass
-    - Language Pack Properties XSS.
-");
 
-  script_tag(name: "impact", value: "The attacker may be able to execute a remote arbitrary code, xss attacks or bypass HTML filters.");
+    - Installer XSS.
+
+    - Mod CP Edit Profile XSS.
+
+    - Insufficient moderator permission check in delayed moderation tools.
+
+    - Announcements HTML filter bypass
+
+    - Language Pack Properties XSS.");
+
+  script_tag(name: "impact", value: "The remote attacker might be able to execute arbitrary code, conduct xss attacks or bypass HTML filters.");
 
   script_tag(name: "affected", value: "myBB 1.8.12 and prior.");
 
@@ -92,4 +97,4 @@ if (version_is_less(version: version, test_version: "1.8.13")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

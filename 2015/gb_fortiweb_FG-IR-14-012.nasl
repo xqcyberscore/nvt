@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-012.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_fortiweb_FG-IR-14-012.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiOS: FortiWeb Cross-Site Scripting Vulnerabilities
 #
@@ -34,11 +34,11 @@ if (description)
  script_cve_id("CVE-2014-4738");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 9381 $");
+ script_version ("$Revision: 9415 $");
 
  script_name("FortiOS: FortiWeb Cross Site Scripting Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/FG-IR-14-012/");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-012");
 
  script_tag(name: "impact" , value:"An attacker may leverage these issues to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected site. This can allow the attacker to
@@ -56,7 +56,7 @@ input filtering. ");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:16:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-013.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_fortiweb_FG-IR-14-013.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiOS: FortiWeb Cross-Site Request Forgery Vulnerability
 #
@@ -33,11 +33,11 @@ if (description)
  script_cve_id("CVE-2014-3115");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9381 $");
+ script_version ("$Revision: 9415 $");
 
  script_name("FortiOS: FortiWeb Cross-Site Request Forgery Vulnerability");
 
- script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/FG-IR-14-013/");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-013");
 
  script_tag(name: "impact" , value:"A remote unauthenticated attacker may be able to trick a user into making an unintentional request to the web administration
 interface, via link or JavaScript hosted on a malicious web page. This forged request may be treated as authentic and result in unauthorized actions in the web
@@ -54,7 +54,7 @@ protection. This could allow remote attackers to perform administrative actions 
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

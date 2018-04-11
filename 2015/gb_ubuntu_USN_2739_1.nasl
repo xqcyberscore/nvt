@@ -26,12 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842436");
-  script_version("$Revision: 7956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-11 07:18:46 +0200 (Fri, 11 Sep 2015)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
+  script_cve_id("CVE-2014-9745");
   script_name("Ubuntu Update for freetype USN-2739-1");
   script_tag(name: "summary", value: "Check the version of freetype");
   script_tag(name: "vuldetect", value: "Get the installed version with the help

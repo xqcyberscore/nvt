@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_zebos_shell_cve_2015_7361.nasl 4946 2017-01-05 06:55:35Z antu123 $
+# $Id: gb_fortigate_zebos_shell_cve_2015_7361.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiGate: ZebOS routing remote shell service enabled
 #
@@ -28,14 +28,14 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140112");
- script_version ("$Revision: 4946 $");
+ script_version ("$Revision: 9415 $");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2015-7361");
 
  script_name("FortiGate: ZebOS routing remote shell service enabled");
 
- script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/zebos-routing-remote-shell-service-enabled");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-15-020");
 
  script_tag(name: "vuldetect" , value:"Open a connection to port 2650 and execute the `show version` command.");
  script_tag(name: "insight" , value:"A remote attacker may access the internal ZebOS shell of FortiOS 5.2.3 without authentication on the HA dedicated management interface only.
@@ -49,7 +49,7 @@ Only FortiGates configured with HA *and* with an enabled HA dedicated management
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-05 07:55:35 +0100 (Thu, 05 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-01-02 12:27:55 +0100 (Mon, 02 Jan 2017)");
  script_category(ACT_ATTACK);
  script_family("General");

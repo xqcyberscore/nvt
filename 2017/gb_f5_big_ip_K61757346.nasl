@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K61757346.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
+# $Id: gb_f5_big_ip_K61757346.nasl 9413 2018-04-10 06:19:20Z cfischer $
 #
 # F5 BIG-IP Azure cloud vulnerability CVE-2017-6131
 #
@@ -30,14 +30,13 @@ CPE = "cpe:/h:f5:big-ip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140262");
-  script_version("$Revision: 6826 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
+  script_version("$Revision: 9413 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 08:19:20 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-08-01 13:20:34 +0700 (Tue, 01 Aug 2017)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
+  script_cve_id("CVE-2017-6131");
   script_tag(name: "qod_type", value: "package");
-
   script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("F5 BIG-IP Azure cloud vulnerability CVE-2017-6131");

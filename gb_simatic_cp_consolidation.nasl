@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_consolidation.nasl 8873 2018-02-20 08:28:02Z cfischer $
+# $Id: gb_simatic_cp_consolidation.nasl 9424 2018-04-10 11:34:04Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140738");
- script_version ("$Revision: 8873 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-20 09:28:02 +0100 (Tue, 20 Feb 2018) $");
+ script_version ("$Revision: 9424 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-04-10 13:34:04 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name: "creation_date", value: "2018-02-01 16:07:00 +0700 (Thu, 01 Feb 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,6 +54,8 @@ if (description)
 
 include("cpe.inc");
 include("host_details.inc");
+
+if( ! get_kb_item( "simatic_cp/detected" ) ) exit( 0 );
 
 detected_version = "unknown";
 detected_model   = "unknown";

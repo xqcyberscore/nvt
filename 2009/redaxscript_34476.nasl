@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: redaxscript_34476.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: redaxscript_34476.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Redaxscript 'language' Parameter Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "Redaxscript is prone to a local file-include vulnerability becaus
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100122");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9425 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
  script_bugtraq_id(34476);
  script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,7 @@ if (description)
  script_name("Redaxscript 'language' Parameter Local File Include Vulnerability");
 
 
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -65,8 +65,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/redaxscript")))exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808147");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9415 $");
   script_cve_id("CVE-2015-1609");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)");
 
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name : "URL" , value : "https://www.mongodb.org/about/alerts/");
   script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-17264");
-  script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-VD-15-012");
+  script_xref(name : "URL" , value : "https://fortiguard.com/zeroday/FG-VD-15-012");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

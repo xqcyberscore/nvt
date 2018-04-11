@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_consolidation.nasl 8161 2017-12-18 16:10:24Z cfischer $
+# $Id: gb_mikrotik_router_routeros_consolidation.nasl 9424 2018-04-10 11:34:04Z cfischer $
 #
 # MikroTik RouterOS Detection Consolidation
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 8161 $");
+  script_version("$Revision: 9424 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 17:10:24 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 13:34:04 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik RouterOS Detection Consolidation");
   script_category(ACT_GATHER_INFO);
@@ -55,8 +55,9 @@ CPE = "cpe:/o:mikrotik:routeros";
 include("cpe.inc");
 include("host_details.inc");
 
-location = "/";
+if( ! get_kb_item( "mikrotik/detected" ) ) exit( 0 );
 
+location = "/";
 detected_version = "unknown";
 
 foreach source( make_list( "ftp", "telnet", "webui" ) ) {

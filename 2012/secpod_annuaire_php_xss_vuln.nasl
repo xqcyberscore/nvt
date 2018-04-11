@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_annuaire_php_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: secpod_annuaire_php_xss_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Annuaire PHP 'sites_inscription.php' Cross Site Scripting Vulnerability
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902787");
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 9425 $");
   script_cve_id("CVE-2012-0899");
   script_bugtraq_id(51434);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 18:49:12 +0530 (Tue, 24 Jan 2012)");
   script_name("Annuaire PHP 'sites_inscription.php' Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72407");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/108719/annuaire-xss.txt");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

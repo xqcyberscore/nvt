@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_file_download_vuln.nasl 9119 2018-03-16 15:21:49Z cfischer $
+# $Id: gb_dokuwiki_file_download_vuln.nasl 9433 2018-04-11 07:37:46Z ckuersteiner $
 #
 # DokuWiki Reflected File Download Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dokuwiki:dokuwiki";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140814");
-  script_version("$Revision: 9119 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-16 16:21:49 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9433 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 09:37:46 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-02-27 10:06:40 +0700 (Tue, 27 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -81,7 +81,7 @@ if (dir == "/")
 
 url = dir + '/lib/exe/ajax.php?call=%7c%7c%63%61%6c%63%7c%7c';
 
-if (http_vuln_check(port: port, url: url, pattern: "AJAX call '||calc||' unknown!", check_header: TRUE)) {
+if (http_vuln_check(port: port, url: url, pattern: "AJAX call '\|\|calc\|\|' unknown!", check_header: TRUE)) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

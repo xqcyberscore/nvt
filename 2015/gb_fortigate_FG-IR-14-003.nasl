@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-14-003.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_fortigate_FG-IR-14-003.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiOS: FortiGate Cross-Site Scripting Vulnerability
 #
@@ -33,11 +33,11 @@ if (description)
  script_cve_id("CVE-2013-7182");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6534 $");
+ script_version ("$Revision: 9415 $");
 
  script_name("FortiOS: FortiGate Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/FG-IR-14-003/");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-003");
 
  script_tag(name: "impact" , value:"A remote unauthenticated attacker may be able to execute arbitrary script in the context of the end-user's browser session.");
 
@@ -52,7 +52,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

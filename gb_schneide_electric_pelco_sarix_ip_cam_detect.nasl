@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneide_electric_pelco_sarix_ip_cam_detect.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_schneide_electric_pelco_sarix_ip_cam_detect.nasl 9418 2018-04-10 07:52:51Z cfischer $
 #
 # Schneider Electric Pelco Sarix IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813064");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 9418 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 09:52:51 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:44:14 +0530 (Tue, 03 Apr 2018)");
   script_name("Schneider Electric Pelco Sarix IP Camera Remote Detection");
 
@@ -51,7 +51,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -66,17 +65,18 @@ if("<title>Sarix&trade;</title>" >< res && "Pelco.com" >< res &&
    res =~ "Copyrigh.*PELCO" && "camera" >< res && "Login" >< res)
 {
   version = "unknown";
+  install = "/";
   set_kb_item(name:"Schneider_Electric/Pelco_Sarix/IP_Camera/installed", value:TRUE);
 
   ## Created new cpe
   ## According to information from NVD, it varies according to firmware version 
   cpe = "cpe:/a:schneider_electric:pelco_sarix_professional";
 
-  register_product(cpe:cpe, location:"/", port:ipPort);
+  register_product(cpe:cpe, location:install, port:ipPort);
 
   log_message(data:build_detection_report(app:"Schneider Electric Pelco Sarix IP Camera",
                                           version:version,
-                                          install:"/",
+                                          install:install,
                                           cpe:cpe,
                                           concluded:version),
                                           port:ipPort);

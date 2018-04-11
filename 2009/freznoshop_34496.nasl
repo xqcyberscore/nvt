@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freznoshop_34496.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: freznoshop_34496.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # FreznoShop 'product_details.php' SQL Injection Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "FreznoShop is prone to an SQL-injection vulnerability because it
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100143");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9425 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_bugtraq_id(34496);
  script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,7 @@ if (description)
  script_name("FreznoShop 'product_details.php' SQL Injection Vulnerability");
 
 
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

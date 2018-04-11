@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mul_vuln_sept17.nasl 8452 2018-01-17 19:29:04Z cfischer $
+# $Id: gb_magento_mul_vuln_sept17.nasl 9421 2018-04-10 10:20:06Z asteins $
 #
-# Magento Multiple Security Vulnerabilities
+# Magento CMS Multiple Security Vulnerabilities
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107186");
-  script_version("$Revision: 8452 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 20:29:04 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 9421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 15:28:56 +0200 (Fri, 06 Oct 2017)");
   script_bugtraq_id(100869);
 
@@ -40,25 +40,33 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Magento CMS Multiple Security Vulnerabilities");
 
-  script_tag(name: "summary", value: "Magento CMS is prone to multiple security vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Magento CMS is prone to multiple security vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection  NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight", value: "Magento E-Commerce is prone to the following security vulnerabilities:
-               Multiple HTML-injection vulnerabilities
-               Multiple remote-code execution vulnerabilities
-               A directory-traversal vulnerability
-               An arbitrary file upload vulnerability
-               Multiple cross-site request forgery vulnerabilities
-               Multiple information-disclosure vulnerabilities
-               A security-bypass vulnerability");
+  - Multiple HTML-injection vulnerabilities
 
-  script_tag(name: "impact" , value: "Attackers can exploit these issues to steal cookie-based authentication credentials, to execute arbitrary scripts in the context of the web browser, or to execute arbitrary code in the context of the affected application, disclose sensitive information, elevate privileges, upload arbitrary files and to bypass certain security restrictions and perform unauthorized actions.");
-  script_tag(name: "affected", value: "Magento Commerce prior to 1.14.3.6");
+  - Multiple remote-code execution vulnerabilities
 
-  script_tag(name: "solution", value: "Update to Magento Commerce 1.14.3.6. For details refer to : https://magento.com/security/patches/supee-10266");
+  - A directory-traversal vulnerability
 
-  script_xref(name: "URL" , value: "https://magento.com/security/patches/supee-10266");
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/100869");
+  - An arbitrary file upload vulnerability
+
+  - Multiple cross-site request forgery vulnerabilities
+
+  - Multiple information-disclosure vulnerabilities
+
+  - A security-bypass vulnerability");
+
+  script_tag(name:"impact", value:"Attackers can exploit these issues to steal cookie-based authentication credentials,
+      execute arbitrary scripts in the context of the web browser, execute arbitrary code in the context of the affected application,
+      disclose sensitive information, elevate privileges, upload arbitrary files or bypass certain security restrictions and perform unauthorized actions.");
+  script_tag(name:"affected", value:"Magento Commerce prior to 1.14.3.6");
+
+  script_tag(name:"solution", value:"Update to Magento Commerce 1.14.3.6. For details refer to : https://magento.com/security/patches/supee-10266");
+
+  script_xref(name:"URL", value:"https://magento.com/security/patches/supee-10266");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/100869");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

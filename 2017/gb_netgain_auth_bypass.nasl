@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgain_auth_bypass.nasl 8967 2018-02-27 11:59:36Z jschulte $
+# $Id: gb_netgain_auth_bypass.nasl 9421 2018-04-10 10:20:06Z asteins $
 #
 # NetGain Enterprise Manager Authentication Bypass / Local File Inclusion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:netgain:enterprise_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107225");
-  script_version("$Revision: 8967 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:59:36 +0100 (Tue, 27 Feb 2018) $");
+  script_version("$Revision: 9421 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -56,8 +56,8 @@ vulnerability.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 27th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 10th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42058/");
 
@@ -87,5 +87,5 @@ if (res =~ "root:.*:0:[01]:") {
   exit(0);
 }
 
-exit(0);
+exit(99);
 

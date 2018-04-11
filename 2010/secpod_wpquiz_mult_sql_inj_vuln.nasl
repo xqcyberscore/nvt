@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wpquiz_mult_sql_inj_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wpquiz_mult_sql_inj_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # wpQuiz Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902315");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 9425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3608");
   script_bugtraq_id(43384);
@@ -38,10 +38,10 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15075/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/1009-exploits/wpquiz27-sql.txt");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

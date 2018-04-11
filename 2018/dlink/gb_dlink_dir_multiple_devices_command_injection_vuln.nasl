@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_multiple_devices_command_injection_vuln.nasl 9314 2018-04-05 06:27:30Z cfischer $
+# $Id: gb_dlink_dir_multiple_devices_command_injection_vuln.nasl 9423 2018-04-10 10:58:06Z jschulte $
 #
 # D-Link DIR Routers OS Command Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113142");
-  script_version("$Revision: 9314 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:27:30 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9423 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:58:06 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 10:54:55 +0100 (Wed, 21 Mar 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -80,33 +80,31 @@ eight_cpe = "cpe:/o:d-link:dir-868l_firmware";
 eighty_cpe = "cpe:/o:d-link:dir-880l_firmware";
 
 if( port = get_app_port( cpe: zero_cpe ) ) {
-  if( infos = get_app_version_and_location( cpe: zero_cpe, port: port ) ) {
+  if( version = get_app_version( cpe: zero_cpe, port: port ) ) {
     device = "D-Link DIR-860L";
     fixed_ver = "1.11";
   }
 }
 else if( port = get_app_port( cpe: five_cpe ) ) {
-  if( infos = get_app_version_and_location( cpe: five_cpe, port: port ) ) {
+  if( version = get_app_version( cpe: five_cpe, port: port ) ) {
     device = "D-Link DIR-865L";
     fixed_ver = "1.10";
   }
 }
 else if( port = get_app_port( cpe: eight_cpe ) ) {
-  if( infos = get_app_version_and_location( cpe: eight_cpe, port: port ) ) {
+  if( version = get_app_version( cpe: eight_cpe, port: port ) ) {
     device = "D-Link DIR-868L";
     fixed_ver = "1.20";
   }
 }
 else if ( port = get_app_port( cpe: eighty_cpe ) ) {
-  if( infos = get_app_version_and_location( cpe: eighty_cpe, port: port, exit_no_version: TRUE ) ) {
+  if( version = get_app_version( cpe: eighty_cpe, port: port ) ) {
     device = "D-Link DIR-880L";
     fixed_ver = "1.08";
   }
 }
 
 if( device && fixed_ver ) {
-  version = infos['version'];
-  path = infos['location'];
   if( version_is_less( version: version, test_version: fixed_ver ) ) {
     report = report_fixed_ver( installed_version: version, fixed_version: fixed_ver, extra: "The target device is a " + device );
     security_message( data: report, port: port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_mult_xss_vuln.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_manage_engine_desktop_central_mult_xss_vuln.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # ZOHO ManageEngine Desktop Central Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812576");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9430 $");
   script_cve_id("CVE-2018-8722");
   script_bugtraq_id(103426);
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 10:15:02 +0530 (Wed, 21 Mar 2018)");
   script_name("ZOHO ManageEngine Desktop Central Multiple Cross Site Scripting Vulnerabilities");
 

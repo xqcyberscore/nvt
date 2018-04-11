@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FreeWebShop_34538.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: FreeWebShop_34538.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:freewebshop:freewebshop";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100236");
- script_version("$Revision: 9323 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+ script_version("$Revision: 9425 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-21 20:55:39 +0200 (Tue, 21 Jul 2009)");
  script_bugtraq_id(34538);
  script_cve_id("CVE-2009-2338");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"WillNotFix");
  script_family("Web application abuses");

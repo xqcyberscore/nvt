@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_dos_vuln_lin.nasl 9108 2018-03-15 13:17:25Z jschulte $
+# $Id: gb_graphicsmagick_mult_dos_vuln_lin.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # GraphicsMagick 1.3.26 Multiple DoS Vulnerabilities (Linux)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113136");
-  script_version("$Revision: 9108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 14:17:25 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 13:49:55 +0100 (Thu, 15 Mar 2018)");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
 

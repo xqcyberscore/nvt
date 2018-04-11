@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_undocumented_interactive_login_ulnerability_version.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_fortios_undocumented_interactive_login_ulnerability_version.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiOS: SSH Undocumented Interactive Login Vulnerability
 #
@@ -31,27 +31,28 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_cve_id("CVE-2016-1909"); 
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5745 $");
+ script_version ("$Revision: 9415 $");
 
  script_name("FortiOS: SSH Undocumented Interactive Login Vulnerability");
 
-# 2016-06-13: 404
-# script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/fortios-ssh-undocumented-interactive-login-vulnerability");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-16-001");
 
  script_tag(name: "impact" , value:"Remote console access to vulnerable devices with 'Administrative Access' enabled for SSH.");
 
  script_tag(name: "vuldetect" , value:"Check the version");
  script_tag(name: "solution" , value:"FortiOS branch 4.3: Upgrade to FortiOS 4.3.17 or later
+
 FortiOS branch 5.0: Upgrade to FortiOS 5.0.8 or later");
 
  script_tag(name: "summary" , value:"FortiOS Undocumented Interactive Login Vulnerability");
 
  script_tag(name: "affected" , value:"FortiOS 4.3.0 to 4.3.16
+
 FortiOS 5.0.0 to 5.0.7");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-01-13 11:43:18 +0100 (Wed, 13 Jan 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

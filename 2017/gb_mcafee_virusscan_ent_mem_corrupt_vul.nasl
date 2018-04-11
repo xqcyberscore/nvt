@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 9421 2018-04-10 10:20:06Z asteins $
 #
 # McAfee VirusScan Enterprise CVE-2016-8030 Memory Corruption Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_windows';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107159");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-27 13:33:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2016-8030");
 
@@ -40,17 +40,17 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_name("McAfee VirusScan Enterprise CVE-2016-8030 Memory Corruption Vulnerability (Windows)");
-  script_tag(name: "summary", value: "McAfee VirusScan Enterprise for Linux is prone to a remote
+  script_tag(name: "summary", value: "McAfee VirusScan Enterprise for Windows is prone to a remote
   memory-corruption vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
   check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "A Memory Corruption vulnerability in the Scriptscan COM Object
   in McAfee VirusScan Enterprise 8.8 Patch 8 and earlier allows a remote attacker to create a Denial
   of Service on the active Internet Explorer tab via a crafted HTML link.");
 
   script_tag(name: "impact" , value: "An attacker can exploit this issue to cause a denial-of-service
-  condition; denying service to legitimate users.");
+  condition, denying service to legitimate users.");
 
   script_tag(name: "affected", value: "VirusScan Enterprise 8.8 Patch 8 and prior are vulnerable");
 
@@ -83,3 +83,5 @@ if(version_is_less(version: Ver, test_version:"8.8.0.1804"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

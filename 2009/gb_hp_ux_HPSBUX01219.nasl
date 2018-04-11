@@ -38,14 +38,14 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01035681-1");
   script_oid("1.3.6.1.4.1.25623.1.0.835114");
-  script_version("$Revision: 9370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:53:14 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-05 12:14:23 +0200 (Tue, 05 May 2009)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name: "HPSBUX", value: "01219");
   script_name( "HP-UX Update for Ignite-UX HPSBUX01219");
-
+  script_cve_id("CVE-2004-0951", "CVE-2004-0952");
   script_tag(name:"summary", value:"Check for the Version of Ignite-UX");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-009.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_fortiweb_FG-IR-14-009.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiOS: FortiWeb Multiple Vulnerabilities
 #
@@ -33,11 +33,11 @@ if (description)
  script_cve_id("CVE-2014-1955","CVE-2014-1956","CVE-2014-1957");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 9381 $");
+ script_version ("$Revision: 9415 $");
 
  script_name("FortiOS: FortiWeb Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.fortiguard.com/advisory/FG-IR-14-009/");
+ script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-13-009");
 
  script_tag(name: "impact" , value:"A remote unauthenticated attacker may be able to execute arbitrary JavaScript in the context of the administrator's browser
 session. In addition, authenticated users may be able to escalate their privileges. ");
@@ -53,7 +53,7 @@ escalation (CVE-2014-1957) issues.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_sec_bypass_vuln_mar18.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_ms_office_click2run_sec_bypass_vuln_mar18.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Security Bypass Vulnerability - Mar18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812999");
-  script_version("$Revision: 9267 $");
+  script_version("$Revision: 9430 $");
   script_cve_id("CVE-2018-0907");
   script_bugtraq_id(103325);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 18:36:25 +0530 (Fri, 23 Mar 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Security Bypass Vulnerability - Mar18");
 

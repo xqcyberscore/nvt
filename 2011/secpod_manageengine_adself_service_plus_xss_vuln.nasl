@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_manageengine_adself_service_plus_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_manageengine_adself_service_plus_xss_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Zoho ManageEngine ADSelfService Plus Cross Site Scripting Vulnerability
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902757");
-  script_version("$Revision: 7029 $");
+  script_version("$Revision: 9425 $");
   script_cve_id("CVE-2010-3274");
   script_bugtraq_id(50717);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 11:15:15 +0530 (Fri, 18 Nov 2011)");
   script_name("Zoho ManageEngine ADSelfService Plus Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520562");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/107093/vrpth-2011-001.txt");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8888);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

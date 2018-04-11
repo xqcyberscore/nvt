@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_FG-IR-16-055.nasl 5329 2017-02-17 12:25:45Z mime $
+# $Id: gb_fortimanager_FG-IR-16-055.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiManager TLS certificate validation failure
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:fortinet:fortimanager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140165");
-  script_version("$Revision: 5329 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-17 13:25:45 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 9415 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-02-17 11:01:22 +0100 (Fri, 17 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -60,7 +60,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_xref(name: "URL", value: "http://www.fortiguard.com/advisory/FG-IR-16-055");
+  script_xref(name: "URL", value: "https://fortiguard.com/psirt/FG-IR-16-055");
 
   exit(0);
 }

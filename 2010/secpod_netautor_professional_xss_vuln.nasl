@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netautor_professional_xss_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_netautor_professional_xss_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Netautor Professional 'login2.php' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902316");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 9425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-10-05 07:29:45 +0200 (Tue, 05 Oct 2010)");
   script_cve_id("CVE-2010-3489");
   script_bugtraq_id(43290);
@@ -39,10 +39,10 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/1009-exploits/ZSL-2010-4964.txt");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2010-4964.php");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

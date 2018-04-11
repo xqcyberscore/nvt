@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lm_starmail_paidmail_sql_inj_n_rfi_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_lm_starmail_paidmail_sql_inj_n_rfi_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # LM Starmail SQL Injection and Remote File Inclusion Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902099");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 9425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:09:21 +0200 (Mon, 30 Aug 2010)");
   script_cve_id("CVE-2009-4993", "CVE-2009-4992");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,10 @@ if(description)
   script_name("LM Starmail Paidmail SQL Injection and Remote File Inclusion Vulnerabilities");
   script_xref(name : "URL" , value : "http://inj3ct0r.com/exploits/5624");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

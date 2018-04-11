@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 10 Apr 2018 08:20:58 +0200
+# Automatically created on:  Wed, 11 Apr 2018 10:00:08 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -6158,406 +6158,6 @@
 2009/simple_machines_forum_37182.nasl: GPLv2+
 2009/simply_classified_34271.nasl: GPLv2+
 2009/SkaLinks_1_5_administration_login_sql_injection.nasl: GPLv2+
-2009/sles10_openldap2.nasl: GPLv2
-2009/sles10_opensc0.nasl: GPLv2
-2009/sles10_opensc1.nasl: GPLv2
-2009/sles10_opensc.nasl: GPLv2
-2009/sles10_openslp.nasl: GPLv2
-2009/sles10_openssh0.nasl: GPLv2
-2009/sles10_openssh.nasl: GPLv2
-2009/sles10_openssl0.nasl: GPLv2
-2009/sles10_openssl1.nasl: GPLv2
-2009/sles10_openssl2.nasl: GPLv2
-2009/sles10_openssl3.nasl: GPLv2
-2009/sles10_openssl.nasl: GPLv2
-2009/sles10_openswan0.nasl: GPLv2
-2009/sles10_openswan1.nasl: GPLv2
-2009/sles10_openswan.nasl: GPLv2
-2009/sles10_pam_krb5.nasl: GPLv2
-2009/sles10_pam_mount0.nasl: GPLv2
-2009/sles10_pam_mount.nasl: GPLv2
-2009/sles10_pcre.nasl: GPLv2
-2009/sles10_perl0.nasl: GPLv2
-2009/sles10_perl.nasl: GPLv2
-2009/sles10_perl-Net-DNS.nasl: GPLv2
-2009/sles10_perl-Tk.nasl: GPLv2
-2009/sles10_poppler0.nasl: GPLv2
-2009/sles10_poppler.nasl: GPLv2
-2009/sles10_postfix0.nasl: GPLv2
-2009/sles10_postfix.nasl: GPLv2
-2009/sles10_postgresql0.nasl: GPLv2
-2009/sles10_postgresql1.nasl: GPLv2
-2009/sles10_postgresql.nasl: GPLv2
-2009/sles10_postgresql-pl.nasl: GPLv2
-2009/sles10_python0.nasl: GPLv2
-2009/sles10_python1.nasl: GPLv2
-2009/sles10_python.nasl: GPLv2
-2009/sles10_quagga.nasl: GPLv2
-2009/sles10_rsh.nasl: GPLv2
-2009/sles10_rsync.nasl: GPLv2
-2009/sles10_squid0.nasl: GPLv2
-2009/sles10_squid.nasl: GPLv2
-2009/sles10_star.nasl: GPLv2
-2009/sles10_strongswan0.nasl: GPLv2
-2009/sles10_strongswan1.nasl: GPLv2
-2009/sles10_strongswan2.nasl: GPLv2
-2009/sles10_strongswan3.nasl: GPLv2
-2009/sles10_strongswan.nasl: GPLv2
-2009/sles10_struts.nasl: GPLv2
-2009/sles10_t1lib.nasl: GPLv2
-2009/sles10_tcpdump.nasl: GPLv2
-2009/sles10_tk.nasl: GPLv2
-2009/sles10_tomcat50.nasl: GPLv2
-2009/sles10_tomcat51.nasl: GPLv2
-2009/sles10_tomcat52.nasl: GPLv2
-2009/sles10_tomcat53.nasl: GPLv2
-2009/sles10_tomcat5.nasl: GPLv2
-2009/sles10_udev0.nasl: GPLv2
-2009/sles10_udev.nasl: GPLv2
-2009/sles10_unzip.nasl: GPLv2
-2009/sles10_update-test-sec.nasl: GPLv2
-2009/sles10_vsftpd.nasl: GPLv2
-2009/sles10_websphere-as_ce0.nasl: GPLv2
-2009/sles10_websphere-as_ce.nasl: GPLv2
-2009/sles10_wget.nasl: GPLv2
-2009/sles10_xerces-j2.nasl: GPLv2
-2009/sles10_xntp0.nasl: GPLv2
-2009/sles10_xntp.nasl: GPLv2
-2009/sles10_xorg-x11-Xnest.nasl: GPLv2
-2009/sles10_xpdf0.nasl: GPLv2
-2009/sles10_xpdf1.nasl: GPLv2
-2009/sles10_xpdf2.nasl: GPLv2
-2009/sles10_xpdf.nasl: GPLv2
-2009/sles10_xscreensaver.nasl: GPLv2
-2009/sles10_xterm.nasl: GPLv2
-2009/sles10_yast2-backup.nasl: GPLv2
-2009/sles11_apache2-mod_php0.nasl: GPLv2
-2009/sles11_apache2-mod_php1.nasl: GPLv2
-2009/sles11_apache2-mod_php.nasl: GPLv2
-2009/sles11_apache2.nasl: GPLv2
-2009/sles11_bind0.nasl: GPLv2
-2009/sles11_bind.nasl: GPLv2
-2009/sles11_cdparanoia.nasl: GPLv2
-2009/sles11_cifs-mount0.nasl: GPLv2
-2009/sles11_cifs-mount.nasl: GPLv2
-2009/sles11_clamav0.nasl: GPLv2
-2009/sles11_clamav1.nasl: GPLv2
-2009/sles11_clamav.nasl: GPLv2
-2009/sles11_cups0.nasl: GPLv2
-2009/sles11_cups.nasl: GPLv2
-2009/sles11_curl0.nasl: GPLv2
-2009/sles11_curl.nasl: GPLv2
-2009/sles11_cyrus-imapd0.nasl: GPLv2
-2009/sles11_cyrus-imapd.nasl: GPLv2
-2009/sles11_cyrus-sasl.nasl: GPLv2
-2009/sles11_dbus-1.nasl: GPLv2
-2009/sles11_dhcp-client.nasl: GPLv2
-2009/sles11_dnsmasq.nasl: GPLv2
-2009/sles11_evolution-data-.nasl: GPLv2
-2009/sles11_expat0.nasl: GPLv2
-2009/sles11_expat.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def0.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def1.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def2.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def3.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def4.nasl: GPLv2
-2009/sles11_ext4dev-kmp-def.nasl: GPLv2
-2009/sles11_fetchmail.nasl: GPLv2
-2009/sles11_freetype2.nasl: GPLv2
-2009/sles11_ghostscript-fon0.nasl: GPLv2
-2009/sles11_ghostscript-fon1.nasl: GPLv2
-2009/sles11_ghostscript-fon.nasl: GPLv2
-2009/sles11_glib2.nasl: GPLv2
-2009/sles11_gnutls0.nasl: GPLv2
-2009/sles11_gnutls.nasl: GPLv2
-2009/sles11_gstreamer-0_10-0.nasl: GPLv2
-2009/sles11_gstreamer-0_10-.nasl: GPLv2
-2009/sles11_ipsec-tools.nasl: GPLv2
-2009/sles11_java-1_4_2-ibm0.nasl: GPLv2
-2009/sles11_java-1_4_2-ibm1.nasl: GPLv2
-2009/sles11_java-1_4_2-ibm.nasl: GPLv2
-2009/sles11_java-1_6_0-ibm0.nasl: GPLv2
-2009/sles11_java-1_6_0-ibm1.nasl: GPLv2
-2009/sles11_java-1_6_0-ibm.nasl: GPLv2
-2009/sles11_kde4-akonadi.nasl: GPLv2
-2009/sles11_kdelibs3.nasl: GPLv2
-2009/sles11_krb5.nasl: GPLv2
-2009/sles11_kvm0.nasl: GPLv2
-2009/sles11_kvm.nasl: GPLv2
-2009/sles11_lcms.nasl: GPLv2
-2009/sles11_libapr-util10.nasl: GPLv2
-2009/sles11_libapr-util1.nasl: GPLv2
-2009/sles11_libfreebl3.nasl: GPLv2
-2009/sles11_libicu.nasl: GPLv2
-2009/sles11_libldap-2_4-2.nasl: GPLv2
-2009/sles11_libMagickCore10.nasl: GPLv2
-2009/sles11_libMagickCore1.nasl: GPLv2
-2009/sles11_libmysqlclient1.nasl: GPLv2
-2009/sles11_libneon27.nasl: GPLv2
-2009/sles11_libopensc2.nasl: GPLv2
-2009/sles11_libopenssl0_9_80.nasl: GPLv2
-2009/sles11_libopenssl0_9_81.nasl: GPLv2
-2009/sles11_libopenssl0_9_82.nasl: GPLv2
-2009/sles11_libopenssl0_9_8.nasl: GPLv2
-2009/sles11_libpng12-00.nasl: GPLv2
-2009/sles11_libpng12-0.nasl: GPLv2
-2009/sles11_libpoppler4.nasl: GPLv2
-2009/sles11_libqt4.nasl: GPLv2
-2009/sles11_libsndfile0.nasl: GPLv2
-2009/sles11_libsndfile.nasl: GPLv2
-2009/sles11_libtiff30.nasl: GPLv2
-2009/sles11_libtiff3.nasl: GPLv2
-2009/sles11_libvolume_id1.nasl: GPLv2
-2009/sles11_libxml2.nasl: GPLv2
-2009/sles11_mono-core.nasl: GPLv2
-2009/sles11_MozillaFirefox0.nasl: GPLv2
-2009/sles11_MozillaFirefox1.nasl: GPLv2
-2009/sles11_MozillaFirefox2.nasl: GPLv2
-2009/sles11_MozillaFirefox3.nasl: GPLv2
-2009/sles11_MozillaFirefox4.nasl: GPLv2
-2009/sles11_MozillaFirefox5.nasl: GPLv2
-2009/sles11_MozillaFirefox6.nasl: GPLv2
-2009/sles11_MozillaFirefox7.nasl: GPLv2
-2009/sles11_MozillaFirefox8.nasl: GPLv2
-2009/sles11_MozillaFirefox.nasl: GPLv2
-2009/sles11_mozilla-nspr.nasl: GPLv2
-2009/sles11_mozilla-xulrunn0.nasl: GPLv2
-2009/sles11_mozilla-xulrunn1.nasl: GPLv2
-2009/sles11_mozilla-xulrunn.nasl: GPLv2
-2009/sles11_mutt0.nasl: GPLv2
-2009/sles11_mutt.nasl: GPLv2
-2009/sles11_nagios.nasl: GPLv2
-2009/sles11_NetworkManager.nasl: GPLv2
-2009/sles11_ntp.nasl: GPLv2
-2009/sles11_OpenEXR.nasl: GPLv2
-2009/sles11_open-iscsi.nasl: GPLv2
-2009/sles11_openswan0.nasl: GPLv2
-2009/sles11_openswan1.nasl: GPLv2
-2009/sles11_openswan.nasl: GPLv2
-2009/sles11_pango.nasl: GPLv2
-2009/sles11_perl-HTML-Parse.nasl: GPLv2
-2009/sles11_perl-IO-Socket-.nasl: GPLv2
-2009/sles11_perl.nasl: GPLv2
-2009/sles11_postgresql0.nasl: GPLv2
-2009/sles11_postgresql.nasl: GPLv2
-2009/sles11_quagga.nasl: GPLv2
-2009/sles11_ruby.nasl: GPLv2
-2009/sles11_strongswan0.nasl: GPLv2
-2009/sles11_strongswan1.nasl: GPLv2
-2009/sles11_strongswan2.nasl: GPLv2
-2009/sles11_strongswan.nasl: GPLv2
-2009/sles11_websphere-as_ce.nasl: GPLv2
-2009/sles11_wget.nasl: GPLv2
-2009/sles11_wireshark0.nasl: GPLv2
-2009/sles11_wireshark1.nasl: GPLv2
-2009/sles11_wireshark.nasl: GPLv2
-2009/sles11_xerces-j2.nasl: GPLv2
-2009/sles11_xpdf-tools.nasl: GPLv2
-2009/sles11_yast2-ldap-serv.nasl: GPLv2
-2009/sles9p5009131.nasl: GPLv2 or GPLv3
-2009/sles9p5009158.nasl: GPLv2 or GPLv3
-2009/sles9p5009168.nasl: GPLv2 or GPLv3
-2009/sles9p5009247.nasl: GPLv2 or GPLv3
-2009/sles9p5009300.nasl: GPLv2 or GPLv3
-2009/sles9p5009301.nasl: GPLv2 or GPLv3
-2009/sles9p5009319.nasl: GPLv2 or GPLv3
-2009/sles9p5009350.nasl: GPLv2 or GPLv3
-2009/sles9p5009362.nasl: GPLv2 or GPLv3
-2009/sles9p5009366.nasl: GPLv2 or GPLv3
-2009/sles9p5009377.nasl: GPLv2 or GPLv3
-2009/sles9p5009392.nasl: GPLv2 or GPLv3
-2009/sles9p5009393.nasl: GPLv2 or GPLv3
-2009/sles9p5009430.nasl: GPLv2 or GPLv3
-2009/sles9p5009436.nasl: GPLv2 or GPLv3
-2009/sles9p5009512.nasl: GPLv2 or GPLv3
-2009/sles9p5009547.nasl: GPLv2 or GPLv3
-2009/sles9p5009576.nasl: GPLv2 or GPLv3
-2009/sles9p5009598.nasl: GPLv2 or GPLv3
-2009/sles9p5009668.nasl: GPLv2 or GPLv3
-2009/sles9p5009699.nasl: GPLv2 or GPLv3
-2009/sles9p5009713.nasl: GPLv2 or GPLv3
-2009/sles9p5009755.nasl: GPLv2 or GPLv3
-2009/sles9p5009819.nasl: GPLv2 or GPLv3
-2009/sles9p5010007.nasl: GPLv2 or GPLv3
-2009/sles9p5010029.nasl: GPLv2 or GPLv3
-2009/sles9p5010062.nasl: GPLv2 or GPLv3
-2009/sles9p5010087.nasl: GPLv2 or GPLv3
-2009/sles9p5010157.nasl: GPLv2 or GPLv3
-2009/sles9p5010158.nasl: GPLv2 or GPLv3
-2009/sles9p5010209.nasl: GPLv2 or GPLv3
-2009/sles9p5010212.nasl: GPLv2 or GPLv3
-2009/sles9p5010225.nasl: GPLv2 or GPLv3
-2009/sles9p5010264.nasl: GPLv2 or GPLv3
-2009/sles9p5010361.nasl: GPLv2 or GPLv3
-2009/sles9p5010442.nasl: GPLv2 or GPLv3
-2009/sles9p5010460.nasl: GPLv2 or GPLv3
-2009/sles9p5010513.nasl: GPLv2 or GPLv3
-2009/sles9p5010516.nasl: GPLv2 or GPLv3
-2009/sles9p5010541.nasl: GPLv2 or GPLv3
-2009/sles9p5010621.nasl: GPLv2 or GPLv3
-2009/sles9p5010678.nasl: GPLv2 or GPLv3
-2009/sles9p5010724.nasl: GPLv2 or GPLv3
-2009/sles9p5010763.nasl: GPLv2 or GPLv3
-2009/sles9p5010771.nasl: GPLv2 or GPLv3
-2009/sles9p5010817.nasl: GPLv2 or GPLv3
-2009/sles9p5010873.nasl: GPLv2 or GPLv3
-2009/sles9p5010921.nasl: GPLv2 or GPLv3
-2009/sles9p5010938.nasl: GPLv2 or GPLv3
-2009/sles9p5010939.nasl: GPLv2 or GPLv3
-2009/sles9p5010943.nasl: GPLv2 or GPLv3
-2009/sles9p5010966.nasl: GPLv2 or GPLv3
-2009/sles9p5010972.nasl: GPLv2 or GPLv3
-2009/sles9p5010978.nasl: GPLv2 or GPLv3
-2009/sles9p5010983.nasl: GPLv2 or GPLv3
-2009/sles9p5011006.nasl: GPLv2 or GPLv3
-2009/sles9p5011013.nasl: GPLv2 or GPLv3
-2009/sles9p5011022.nasl: GPLv2 or GPLv3
-2009/sles9p5011031.nasl: GPLv2 or GPLv3
-2009/sles9p5011066.nasl: GPLv2 or GPLv3
-2009/sles9p5011136.nasl: GPLv2 or GPLv3
-2009/sles9p5011171.nasl: GPLv2 or GPLv3
-2009/sles9p5011202.nasl: GPLv2 or GPLv3
-2009/sles9p5011227.nasl: GPLv2 or GPLv3
-2009/sles9p5011293.nasl: GPLv2 or GPLv3
-2009/sles9p5011339.nasl: GPLv2 or GPLv3
-2009/sles9p5011363.nasl: GPLv2 or GPLv3
-2009/sles9p5011365.nasl: GPLv2 or GPLv3
-2009/sles9p5011388.nasl: GPLv2 or GPLv3
-2009/sles9p5011428.nasl: GPLv2 or GPLv3
-2009/sles9p5011429.nasl: GPLv2 or GPLv3
-2009/sles9p5011436.nasl: GPLv2 or GPLv3
-2009/sles9p5011441.nasl: GPLv2 or GPLv3
-2009/sles9p5011476.nasl: GPLv2 or GPLv3
-2009/sles9p5011497.nasl: GPLv2 or GPLv3
-2009/sles9p5011515.nasl: GPLv2 or GPLv3
-2009/sles9p5011524.nasl: GPLv2 or GPLv3
-2009/sles9p5011542.nasl: GPLv2 or GPLv3
-2009/sles9p5011556.nasl: GPLv2 or GPLv3
-2009/sles9p5011593.nasl: GPLv2 or GPLv3
-2009/sles9p5011625.nasl: GPLv2 or GPLv3
-2009/sles9p5011639.nasl: GPLv2 or GPLv3
-2009/sles9p5011650.nasl: GPLv2 or GPLv3
-2009/sles9p5011702.nasl: GPLv2 or GPLv3
-2009/sles9p5011902.nasl: GPLv2 or GPLv3
-2009/sles9p5011912.nasl: GPLv2 or GPLv3
-2009/sles9p5011930.nasl: GPLv2 or GPLv3
-2009/sles9p5012004.nasl: GPLv2 or GPLv3
-2009/sles9p5012017.nasl: GPLv2 or GPLv3
-2009/sles9p5012018.nasl: GPLv2 or GPLv3
-2009/sles9p5012056.nasl: GPLv2 or GPLv3
-2009/sles9p5012105.nasl: GPLv2 or GPLv3
-2009/sles9p5012110.nasl: GPLv2 or GPLv3
-2009/sles9p5012115.nasl: GPLv2 or GPLv3
-2009/sles9p5012132.nasl: GPLv2 or GPLv3
-2009/sles9p5012138.nasl: GPLv2 or GPLv3
-2009/sles9p5012225.nasl: GPLv2 or GPLv3
-2009/sles9p5012275.nasl: GPLv2 or GPLv3
-2009/sles9p5012288.nasl: GPLv2 or GPLv3
-2009/sles9p5012329.nasl: GPLv2 or GPLv3
-2009/sles9p5012415.nasl: GPLv2 or GPLv3
-2009/sles9p5012454.nasl: GPLv2 or GPLv3
-2009/sles9p5012460.nasl: GPLv2 or GPLv3
-2009/sles9p5012473.nasl: GPLv2 or GPLv3
-2009/sles9p5012483.nasl: GPLv2 or GPLv3
-2009/sles9p5012495.nasl: GPLv2 or GPLv3
-2009/sles9p5012506.nasl: GPLv2 or GPLv3
-2009/sles9p5012516.nasl: GPLv2 or GPLv3
-2009/sles9p5012519.nasl: GPLv2 or GPLv3
-2009/sles9p5012520.nasl: GPLv2 or GPLv3
-2009/sles9p5012536.nasl: GPLv2 or GPLv3
-2009/sles9p5012567.nasl: GPLv2 or GPLv3
-2009/sles9p5012618.nasl: GPLv2 or GPLv3
-2009/sles9p5012630.nasl: GPLv2 or GPLv3
-2009/sles9p5012639.nasl: GPLv2 or GPLv3
-2009/sles9p5012650.nasl: GPLv2 or GPLv3
-2009/sles9p5012664.nasl: GPLv2 or GPLv3
-2009/sles9p5012702.nasl: GPLv2 or GPLv3
-2009/sles9p5012706.nasl: GPLv2 or GPLv3
-2009/sles9p5012730.nasl: GPLv2 or GPLv3
-2009/sles9p5012763.nasl: GPLv2 or GPLv3
-2009/sles9p5012765.nasl: GPLv2 or GPLv3
-2009/sles9p5012769.nasl: GPLv2 or GPLv3
-2009/sles9p5012800.nasl: GPLv2 or GPLv3
-2009/sles9p5012859.nasl: GPLv2 or GPLv3
-2009/sles9p5012942.nasl: GPLv2 or GPLv3
-2009/sles9p5012949.nasl: GPLv2 or GPLv3
-2009/sles9p5012953.nasl: GPLv2 or GPLv3
-2009/sles9p5012976.nasl: GPLv2 or GPLv3
-2009/sles9p5012982.nasl: GPLv2 or GPLv3
-2009/sles9p5013028.nasl: GPLv2 or GPLv3
-2009/sles9p5013040.nasl: GPLv2 or GPLv3
-2009/sles9p5013049.nasl: GPLv2 or GPLv3
-2009/sles9p5013100.nasl: GPLv2 or GPLv3
-2009/sles9p5013113.nasl: GPLv2 or GPLv3
-2009/sles9p5013151.nasl: GPLv2 or GPLv3
-2009/sles9p5013169.nasl: GPLv2 or GPLv3
-2009/sles9p5013177.nasl: GPLv2 or GPLv3
-2009/sles9p5013194.nasl: GPLv2 or GPLv3
-2009/sles9p5013198.nasl: GPLv2 or GPLv3
-2009/sles9p5013213.nasl: GPLv2 or GPLv3
-2009/sles9p5013242.nasl: GPLv2 or GPLv3
-2009/sles9p5013260.nasl: GPLv2 or GPLv3
-2009/sles9p5013279.nasl: GPLv2 or GPLv3
-2009/sles9p5013299.nasl: GPLv2 or GPLv3
-2009/sles9p5013340.nasl: GPLv2 or GPLv3
-2009/sles9p5013351.nasl: GPLv2 or GPLv3
-2009/sles9p5013352.nasl: GPLv2 or GPLv3
-2009/sles9p5013408.nasl: GPLv2 or GPLv3
-2009/sles9p5013413.nasl: GPLv2 or GPLv3
-2009/sles9p5013423.nasl: GPLv2 or GPLv3
-2009/sles9p5013425.nasl: GPLv2 or GPLv3
-2009/sles9p5013426.nasl: GPLv2 or GPLv3
-2009/sles9p5013427.nasl: GPLv2 or GPLv3
-2009/sles9p5013436.nasl: GPLv2 or GPLv3
-2009/sles9p5013454.nasl: GPLv2 or GPLv3
-2009/sles9p5013481.nasl: GPLv2 or GPLv3
-2009/sles9p5013484.nasl: GPLv2 or GPLv3
-2009/sles9p5013486.nasl: GPLv2 or GPLv3
-2009/sles9p5013504.nasl: GPLv2 or GPLv3
-2009/sles9p5013510.nasl: GPLv2 or GPLv3
-2009/sles9p5013602.nasl: GPLv2 or GPLv3
-2009/sles9p5013637.nasl: GPLv2 or GPLv3
-2009/sles9p5013639.nasl: GPLv2 or GPLv3
-2009/sles9p5013641.nasl: GPLv2 or GPLv3
-2009/sles9p5013651.nasl: GPLv2 or GPLv3
-2009/sles9p5013743.nasl: GPLv2 or GPLv3
-2009/sles9p5013784.nasl: GPLv2 or GPLv3
-2009/sles9p5013842.nasl: GPLv2 or GPLv3
-2009/sles9p5013929.nasl: GPLv2 or GPLv3
-2009/sles9p5013978.nasl: GPLv2 or GPLv3
-2009/sles9p5013988.nasl: GPLv2 or GPLv3
-2009/sles9p5014017.nasl: GPLv2 or GPLv3
-2009/sles9p5014045.nasl: GPLv2 or GPLv3
-2009/sles9p5014050.nasl: GPLv2 or GPLv3
-2009/sles9p5014064.nasl: GPLv2 or GPLv3
-2009/sles9p5014067.nasl: GPLv2 or GPLv3
-2009/sles9p5014078.nasl: GPLv2 or GPLv3
-2009/sles9p5014093.nasl: GPLv2 or GPLv3
-2009/sles9p5014113.nasl: GPLv2 or GPLv3
-2009/sles9p5014116.nasl: GPLv2 or GPLv3
-2009/sles9p5014128.nasl: GPLv2 or GPLv3
-2009/sles9p5014147.nasl: GPLv2 or GPLv3
-2009/sles9p5014306.nasl: GPLv2 or GPLv3
-2009/sles9p5014323.nasl: GPLv2 or GPLv3
-2009/sles9p5014360.nasl: GPLv2 or GPLv3
-2009/sles9p5014380.nasl: GPLv2 or GPLv3
-2009/sles9p5014412.nasl: GPLv2 or GPLv3
-2009/sles9p5014447.nasl: GPLv2 or GPLv3
-2009/sles9p5014477.nasl: GPLv2 or GPLv3
-2009/sles9p5014478.nasl: GPLv2 or GPLv3
-2009/sles9p5014518.nasl: GPLv2 or GPLv3
-2009/sles9p5014522.nasl: GPLv2 or GPLv3
-2009/sles9p5014529.nasl: GPLv2 or GPLv3
-2009/sles9p5014564.nasl: GPLv2 or GPLv3
-2009/sles9p5014590.nasl: GPLv2 or GPLv3
-2009/sles9p5014621.nasl: GPLv2 or GPLv3
-2009/sles9p5014685.nasl: GPLv2 or GPLv3
-2009/sles9p5014809.nasl: GPLv2 or GPLv3
-2009/sles9p5014817.nasl: GPLv2 or GPLv3
-2009/sles9p5014827.nasl: GPLv2 or GPLv3
-2009/sles9p5014846.nasl: GPLv2 or GPLv3
-2009/sles9p5014847.nasl: GPLv2 or GPLv3
-2009/sles9p5014880.nasl: GPLv2 or GPLv3
 2009/sles9p5014905.nasl: GPLv2 or GPLv3
 2009/sles9p5014940.nasl: GPLv2 or GPLv3
 2009/sles9p5014956.nasl: GPLv2 or GPLv3
@@ -46948,6 +46548,7 @@
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_850l_bof_vuln.nasl: GPLv2+
+2018/dlink/gb_dlink_dir868l_rce_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_mult_inf_disc_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_multiple_devices_command_injection_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_shareport_auth_bypass_vuln.nasl: GPLv2+
@@ -47367,7 +46968,6 @@
 2018/gb_coinhive_js_miner_detect.nasl: GPLv2+
 2018/gb_contec_smart_home_auth_bypass_vuln.nasl: GPLv2+
 2018/gb_dlink_dir850l_revB_telnet_backdoor.nasl: GPLv2+
-2018/gb_dlink_dir868l_rce_vuln.nasl: GPLv2+
 2018/gb_dlink_dsl6850U_mult_vuln.nasl: GPLv2+
 2018/gb_dnsmasq_dnssec_val_vuln.nasl: GPLv2+
 2018/gb_efront_cms_mult_vuln.nasl: GPLv2+
@@ -47397,6 +46997,7 @@
 2018/gb_kentico_cms_access_control_bypass_vuln.nasl: GPLv2+
 2018/gb_kentico_cms_xss_vuln.nasl: GPLv2+
 2018/gb_kerberos5_mult_vuln.nasl: GPLv2+
+2018/gb_knot_dns_dos_vuln.nasl: GPLv2+
 2018/gb_livezilla_searchfor_param_xss_vuln.nasl: GPLv2+
 2018/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
 2018/gb_mailman_xss_vuln.nasl: GPLv2+
@@ -47430,6 +47031,7 @@
 2018/gb_superantispyware_mult_vuln.nasl: GPLv2+
 2018/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/gb_thttpd_buffer_overflow_vuln.nasl: GPLv2+
+2018/gb_thycotic_secret_server_credentials_disclosure_vuln.nasl: GPLv2+
 2018/gb_tuleap_sql_injection.nasl: GPLv2+
 2018/gb_twonky_server_mult_vuln_active.nasl: GPLv2+
 2018/gb_twonky_server_mult_vuln.nasl: GPLv2+
@@ -47777,6 +47379,7 @@
 2018/redhat/gb_RHSA-2018_0101-01_bind.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0102-01_bind.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0122-01_firefox.nasl: GPLv2+
+2018/roundcube/gb_roundcube_mx_inj_vuln.nasl: GPLv2+
 2018/shibboleth/gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl: GPLv2+
 2018/squid/gb_squid_2018_1_lin.nasl: GPLv2+
 2018/squid/gb_squid_2018_1_win.nasl: GPLv2+
@@ -55854,6 +55457,406 @@ gsf/2009/opensuse/sles10_OpenEXR.nasl: GPLv2
 gsf/2009/opensuse/sles10_open-iscsi.nasl: GPLv2
 gsf/2009/opensuse/sles10_openldap20.nasl: GPLv2
 gsf/2009/opensuse/sles10_openldap2-clien.nasl: GPLv2
+gsf/2009/opensuse/sles10_openldap2.nasl: GPLv2
+gsf/2009/opensuse/sles10_opensc0.nasl: GPLv2
+gsf/2009/opensuse/sles10_opensc1.nasl: GPLv2
+gsf/2009/opensuse/sles10_opensc.nasl: GPLv2
+gsf/2009/opensuse/sles10_openslp.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssh0.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssh.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssl0.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssl1.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssl2.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssl3.nasl: GPLv2
+gsf/2009/opensuse/sles10_openssl.nasl: GPLv2
+gsf/2009/opensuse/sles10_openswan0.nasl: GPLv2
+gsf/2009/opensuse/sles10_openswan1.nasl: GPLv2
+gsf/2009/opensuse/sles10_openswan.nasl: GPLv2
+gsf/2009/opensuse/sles10_pam_krb5.nasl: GPLv2
+gsf/2009/opensuse/sles10_pam_mount0.nasl: GPLv2
+gsf/2009/opensuse/sles10_pam_mount.nasl: GPLv2
+gsf/2009/opensuse/sles10_pcre.nasl: GPLv2
+gsf/2009/opensuse/sles10_perl0.nasl: GPLv2
+gsf/2009/opensuse/sles10_perl.nasl: GPLv2
+gsf/2009/opensuse/sles10_perl-Net-DNS.nasl: GPLv2
+gsf/2009/opensuse/sles10_perl-Tk.nasl: GPLv2
+gsf/2009/opensuse/sles10_poppler0.nasl: GPLv2
+gsf/2009/opensuse/sles10_poppler.nasl: GPLv2
+gsf/2009/opensuse/sles10_postfix0.nasl: GPLv2
+gsf/2009/opensuse/sles10_postfix.nasl: GPLv2
+gsf/2009/opensuse/sles10_postgresql0.nasl: GPLv2
+gsf/2009/opensuse/sles10_postgresql1.nasl: GPLv2
+gsf/2009/opensuse/sles10_postgresql.nasl: GPLv2
+gsf/2009/opensuse/sles10_postgresql-pl.nasl: GPLv2
+gsf/2009/opensuse/sles10_python0.nasl: GPLv2
+gsf/2009/opensuse/sles10_python1.nasl: GPLv2
+gsf/2009/opensuse/sles10_python.nasl: GPLv2
+gsf/2009/opensuse/sles10_quagga.nasl: GPLv2
+gsf/2009/opensuse/sles10_rsh.nasl: GPLv2
+gsf/2009/opensuse/sles10_rsync.nasl: GPLv2
+gsf/2009/opensuse/sles10_squid0.nasl: GPLv2
+gsf/2009/opensuse/sles10_squid.nasl: GPLv2
+gsf/2009/opensuse/sles10_star.nasl: GPLv2
+gsf/2009/opensuse/sles10_strongswan0.nasl: GPLv2
+gsf/2009/opensuse/sles10_strongswan1.nasl: GPLv2
+gsf/2009/opensuse/sles10_strongswan2.nasl: GPLv2
+gsf/2009/opensuse/sles10_strongswan3.nasl: GPLv2
+gsf/2009/opensuse/sles10_strongswan.nasl: GPLv2
+gsf/2009/opensuse/sles10_struts.nasl: GPLv2
+gsf/2009/opensuse/sles10_t1lib.nasl: GPLv2
+gsf/2009/opensuse/sles10_tcpdump.nasl: GPLv2
+gsf/2009/opensuse/sles10_tk.nasl: GPLv2
+gsf/2009/opensuse/sles10_tomcat50.nasl: GPLv2
+gsf/2009/opensuse/sles10_tomcat51.nasl: GPLv2
+gsf/2009/opensuse/sles10_tomcat52.nasl: GPLv2
+gsf/2009/opensuse/sles10_tomcat53.nasl: GPLv2
+gsf/2009/opensuse/sles10_tomcat5.nasl: GPLv2
+gsf/2009/opensuse/sles10_udev0.nasl: GPLv2
+gsf/2009/opensuse/sles10_udev.nasl: GPLv2
+gsf/2009/opensuse/sles10_unzip.nasl: GPLv2
+gsf/2009/opensuse/sles10_update-test-sec.nasl: GPLv2
+gsf/2009/opensuse/sles10_vsftpd.nasl: GPLv2
+gsf/2009/opensuse/sles10_websphere-as_ce0.nasl: GPLv2
+gsf/2009/opensuse/sles10_websphere-as_ce.nasl: GPLv2
+gsf/2009/opensuse/sles10_wget.nasl: GPLv2
+gsf/2009/opensuse/sles10_xerces-j2.nasl: GPLv2
+gsf/2009/opensuse/sles10_xntp0.nasl: GPLv2
+gsf/2009/opensuse/sles10_xntp.nasl: GPLv2
+gsf/2009/opensuse/sles10_xorg-x11-Xnest.nasl: GPLv2
+gsf/2009/opensuse/sles10_xpdf0.nasl: GPLv2
+gsf/2009/opensuse/sles10_xpdf1.nasl: GPLv2
+gsf/2009/opensuse/sles10_xpdf2.nasl: GPLv2
+gsf/2009/opensuse/sles10_xpdf.nasl: GPLv2
+gsf/2009/opensuse/sles10_xscreensaver.nasl: GPLv2
+gsf/2009/opensuse/sles10_xterm.nasl: GPLv2
+gsf/2009/opensuse/sles10_yast2-backup.nasl: GPLv2
+gsf/2009/opensuse/sles11_apache2-mod_php0.nasl: GPLv2
+gsf/2009/opensuse/sles11_apache2-mod_php1.nasl: GPLv2
+gsf/2009/opensuse/sles11_apache2-mod_php.nasl: GPLv2
+gsf/2009/opensuse/sles11_apache2.nasl: GPLv2
+gsf/2009/opensuse/sles11_bind0.nasl: GPLv2
+gsf/2009/opensuse/sles11_bind.nasl: GPLv2
+gsf/2009/opensuse/sles11_cdparanoia.nasl: GPLv2
+gsf/2009/opensuse/sles11_cifs-mount0.nasl: GPLv2
+gsf/2009/opensuse/sles11_cifs-mount.nasl: GPLv2
+gsf/2009/opensuse/sles11_clamav0.nasl: GPLv2
+gsf/2009/opensuse/sles11_clamav1.nasl: GPLv2
+gsf/2009/opensuse/sles11_clamav.nasl: GPLv2
+gsf/2009/opensuse/sles11_cups0.nasl: GPLv2
+gsf/2009/opensuse/sles11_cups.nasl: GPLv2
+gsf/2009/opensuse/sles11_curl0.nasl: GPLv2
+gsf/2009/opensuse/sles11_curl.nasl: GPLv2
+gsf/2009/opensuse/sles11_cyrus-imapd0.nasl: GPLv2
+gsf/2009/opensuse/sles11_cyrus-imapd.nasl: GPLv2
+gsf/2009/opensuse/sles11_cyrus-sasl.nasl: GPLv2
+gsf/2009/opensuse/sles11_dbus-1.nasl: GPLv2
+gsf/2009/opensuse/sles11_dhcp-client.nasl: GPLv2
+gsf/2009/opensuse/sles11_dnsmasq.nasl: GPLv2
+gsf/2009/opensuse/sles11_evolution-data-.nasl: GPLv2
+gsf/2009/opensuse/sles11_expat0.nasl: GPLv2
+gsf/2009/opensuse/sles11_expat.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def0.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def1.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def2.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def3.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def4.nasl: GPLv2
+gsf/2009/opensuse/sles11_ext4dev-kmp-def.nasl: GPLv2
+gsf/2009/opensuse/sles11_fetchmail.nasl: GPLv2
+gsf/2009/opensuse/sles11_freetype2.nasl: GPLv2
+gsf/2009/opensuse/sles11_ghostscript-fon0.nasl: GPLv2
+gsf/2009/opensuse/sles11_ghostscript-fon1.nasl: GPLv2
+gsf/2009/opensuse/sles11_ghostscript-fon.nasl: GPLv2
+gsf/2009/opensuse/sles11_glib2.nasl: GPLv2
+gsf/2009/opensuse/sles11_gnutls0.nasl: GPLv2
+gsf/2009/opensuse/sles11_gnutls.nasl: GPLv2
+gsf/2009/opensuse/sles11_gstreamer-0_10-0.nasl: GPLv2
+gsf/2009/opensuse/sles11_gstreamer-0_10-.nasl: GPLv2
+gsf/2009/opensuse/sles11_ipsec-tools.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_4_2-ibm0.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_4_2-ibm1.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_4_2-ibm.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_6_0-ibm0.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_6_0-ibm1.nasl: GPLv2
+gsf/2009/opensuse/sles11_java-1_6_0-ibm.nasl: GPLv2
+gsf/2009/opensuse/sles11_kde4-akonadi.nasl: GPLv2
+gsf/2009/opensuse/sles11_kdelibs3.nasl: GPLv2
+gsf/2009/opensuse/sles11_krb5.nasl: GPLv2
+gsf/2009/opensuse/sles11_kvm0.nasl: GPLv2
+gsf/2009/opensuse/sles11_kvm.nasl: GPLv2
+gsf/2009/opensuse/sles11_lcms.nasl: GPLv2
+gsf/2009/opensuse/sles11_libapr-util10.nasl: GPLv2
+gsf/2009/opensuse/sles11_libapr-util1.nasl: GPLv2
+gsf/2009/opensuse/sles11_libfreebl3.nasl: GPLv2
+gsf/2009/opensuse/sles11_libicu.nasl: GPLv2
+gsf/2009/opensuse/sles11_libldap-2_4-2.nasl: GPLv2
+gsf/2009/opensuse/sles11_libMagickCore10.nasl: GPLv2
+gsf/2009/opensuse/sles11_libMagickCore1.nasl: GPLv2
+gsf/2009/opensuse/sles11_libmysqlclient1.nasl: GPLv2
+gsf/2009/opensuse/sles11_libneon27.nasl: GPLv2
+gsf/2009/opensuse/sles11_libopensc2.nasl: GPLv2
+gsf/2009/opensuse/sles11_libopenssl0_9_80.nasl: GPLv2
+gsf/2009/opensuse/sles11_libopenssl0_9_81.nasl: GPLv2
+gsf/2009/opensuse/sles11_libopenssl0_9_82.nasl: GPLv2
+gsf/2009/opensuse/sles11_libopenssl0_9_8.nasl: GPLv2
+gsf/2009/opensuse/sles11_libpng12-00.nasl: GPLv2
+gsf/2009/opensuse/sles11_libpng12-0.nasl: GPLv2
+gsf/2009/opensuse/sles11_libpoppler4.nasl: GPLv2
+gsf/2009/opensuse/sles11_libqt4.nasl: GPLv2
+gsf/2009/opensuse/sles11_libsndfile0.nasl: GPLv2
+gsf/2009/opensuse/sles11_libsndfile.nasl: GPLv2
+gsf/2009/opensuse/sles11_libtiff30.nasl: GPLv2
+gsf/2009/opensuse/sles11_libtiff3.nasl: GPLv2
+gsf/2009/opensuse/sles11_libvolume_id1.nasl: GPLv2
+gsf/2009/opensuse/sles11_libxml2.nasl: GPLv2
+gsf/2009/opensuse/sles11_mono-core.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox0.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox1.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox2.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox3.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox4.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox5.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox6.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox7.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox8.nasl: GPLv2
+gsf/2009/opensuse/sles11_MozillaFirefox.nasl: GPLv2
+gsf/2009/opensuse/sles11_mozilla-nspr.nasl: GPLv2
+gsf/2009/opensuse/sles11_mozilla-xulrunn0.nasl: GPLv2
+gsf/2009/opensuse/sles11_mozilla-xulrunn1.nasl: GPLv2
+gsf/2009/opensuse/sles11_mozilla-xulrunn.nasl: GPLv2
+gsf/2009/opensuse/sles11_mutt0.nasl: GPLv2
+gsf/2009/opensuse/sles11_mutt.nasl: GPLv2
+gsf/2009/opensuse/sles11_nagios.nasl: GPLv2
+gsf/2009/opensuse/sles11_NetworkManager.nasl: GPLv2
+gsf/2009/opensuse/sles11_ntp.nasl: GPLv2
+gsf/2009/opensuse/sles11_OpenEXR.nasl: GPLv2
+gsf/2009/opensuse/sles11_open-iscsi.nasl: GPLv2
+gsf/2009/opensuse/sles11_openswan0.nasl: GPLv2
+gsf/2009/opensuse/sles11_openswan1.nasl: GPLv2
+gsf/2009/opensuse/sles11_openswan.nasl: GPLv2
+gsf/2009/opensuse/sles11_pango.nasl: GPLv2
+gsf/2009/opensuse/sles11_perl-HTML-Parse.nasl: GPLv2
+gsf/2009/opensuse/sles11_perl-IO-Socket-.nasl: GPLv2
+gsf/2009/opensuse/sles11_perl.nasl: GPLv2
+gsf/2009/opensuse/sles11_postgresql0.nasl: GPLv2
+gsf/2009/opensuse/sles11_postgresql.nasl: GPLv2
+gsf/2009/opensuse/sles11_quagga.nasl: GPLv2
+gsf/2009/opensuse/sles11_ruby.nasl: GPLv2
+gsf/2009/opensuse/sles11_strongswan0.nasl: GPLv2
+gsf/2009/opensuse/sles11_strongswan1.nasl: GPLv2
+gsf/2009/opensuse/sles11_strongswan2.nasl: GPLv2
+gsf/2009/opensuse/sles11_strongswan.nasl: GPLv2
+gsf/2009/opensuse/sles11_websphere-as_ce.nasl: GPLv2
+gsf/2009/opensuse/sles11_wget.nasl: GPLv2
+gsf/2009/opensuse/sles11_wireshark0.nasl: GPLv2
+gsf/2009/opensuse/sles11_wireshark1.nasl: GPLv2
+gsf/2009/opensuse/sles11_wireshark.nasl: GPLv2
+gsf/2009/opensuse/sles11_xerces-j2.nasl: GPLv2
+gsf/2009/opensuse/sles11_xpdf-tools.nasl: GPLv2
+gsf/2009/opensuse/sles11_yast2-ldap-serv.nasl: GPLv2
+gsf/2009/opensuse/sles9p5009131.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009158.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009168.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009247.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009300.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009301.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009319.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009350.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009362.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009366.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009377.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009392.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009393.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009430.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009436.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009512.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009547.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009576.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009598.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009668.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009699.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009713.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009755.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5009819.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010007.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010029.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010062.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010087.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010157.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010158.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010209.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010212.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010225.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010264.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010361.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010442.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010460.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010513.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010516.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010541.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010621.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010678.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010724.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010763.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010771.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010817.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010873.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010921.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010938.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010939.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010943.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010966.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010972.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010978.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5010983.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011006.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011013.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011022.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011031.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011066.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011136.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011171.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011202.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011227.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011293.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011339.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011363.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011365.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011388.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011428.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011429.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011436.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011441.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011476.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011497.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011515.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011524.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011542.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011556.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011593.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011625.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011639.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011650.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011702.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011902.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011912.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5011930.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012004.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012017.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012018.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012056.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012105.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012110.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012115.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012132.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012138.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012225.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012275.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012288.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012329.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012415.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012454.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012460.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012473.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012483.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012495.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012506.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012516.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012519.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012520.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012536.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012567.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012618.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012630.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012639.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012650.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012664.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012702.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012706.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012730.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012763.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012765.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012769.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012800.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012859.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012942.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012949.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012953.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012976.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5012982.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013028.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013040.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013049.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013100.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013113.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013151.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013169.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013177.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013194.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013198.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013213.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013242.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013260.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013279.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013299.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013340.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013351.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013352.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013408.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013413.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013423.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013425.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013426.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013427.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013436.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013454.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013481.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013484.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013486.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013504.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013510.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013602.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013637.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013639.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013641.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013651.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013743.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013784.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013842.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013929.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013978.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5013988.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014017.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014045.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014050.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014064.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014067.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014078.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014093.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014113.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014116.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014128.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014147.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014306.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014323.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014360.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014380.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014412.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014447.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014477.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014478.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014518.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014522.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014529.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014564.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014590.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014621.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014685.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014809.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014817.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014827.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014846.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014847.nasl: GPLv2 or GPLv3
+gsf/2009/opensuse/sles9p5014880.nasl: GPLv2 or GPLv3
 gsf/2009/ubuntu/gb_ubuntu_USN_398_1.nasl: GPLv2+
 gsf/2009/ubuntu/gb_ubuntu_USN_398_2.nasl: GPLv2+
 gsf/2009/ubuntu/gb_ubuntu_USN_398_3.nasl: GPLv2+

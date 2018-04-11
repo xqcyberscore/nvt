@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: chipmunk_forum_xss.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: chipmunk_forum_xss.nasl 9425 2018-04-10 12:38:38Z cfischer $
 # Description: Chipmunk Forum <= 1.3 Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200004");
-  script_version("$Revision: 7176 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 9425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -34,14 +34,16 @@ if (description)
   script_cve_id("CVE-2005-3514");
   script_bugtraq_id(15149);
   script_name("Chipmunk Forum <= 1.3 Cross-Site Scripting Vulnerability");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "solution" , value : "Unknown at this time.");
+  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
   script_tag(name : "impact" , value : "A vulnerability was identified in Chipmunk Forum version 1.3 and prior, which may be exploited by
   remote attackers to execute script code by the user's browser.");
   script_tag(name : "summary" , value : "The remote host appears to be running Chipmunk Forum that is vulnerable to cross-site

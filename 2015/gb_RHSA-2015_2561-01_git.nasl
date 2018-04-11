@@ -26,12 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871515");
-  script_version("$Revision: 6689 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 9430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 11:45:41 +0100 (Wed, 09 Dec 2015)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
+  script_cve_id("CVE-2015-7545");
   script_name("RedHat Update for git RHSA-2015:2561-01");
   script_tag(name: "summary", value: "Check the version of git");
   script_tag(name: "vuldetect", value: "Get the installed version with the help

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011234.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011234.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # Microsoft Access Remote Code Execution Vulnerability (KB4011234)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813032");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9430 $");
   script_cve_id("CVE-2018-0903");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:45:51 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Access Remote Code Execution Vulnerability (KB4011234)");
 

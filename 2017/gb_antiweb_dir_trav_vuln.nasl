@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_dir_trav_vuln.nasl 8586 2018-01-30 14:08:56Z cfischer $
+# $Id: gb_antiweb_dir_trav_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Anti-Web Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:anti-web:anti-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106886");
-  script_version("$Revision: 8586 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:08:56 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9425 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("Anti-Web Directory Traversal Vulnerability");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");

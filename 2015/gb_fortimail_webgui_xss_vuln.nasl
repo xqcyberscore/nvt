@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_webgui_xss_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_fortimail_webgui_xss_vuln.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # Fortinet FortiMail WebGUI Cross Site Scripting Vulnerability (FG-IR-15-005)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:fortinet:fortimail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805297");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 9415 $");
   script_cve_id("CVE-2014-8617");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-04 15:19:22 +0530 (Wed, 04 Mar 2015)");
   script_name("Fortinet FortiMail WebGUI Cross Site Scripting Vulnerability (FG-IR-15-005)");
 
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_xref(name: "URL" , value : "http://www.scip.ch/en/?vuldb.69250");
   script_xref(name: "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/5");
-  script_xref(name: "URL" , value : "http://www.fortiguard.com/advisory/FG-IR-15-005");
+  script_xref(name: "URL" , value : "https://fortiguard.com/psirt/FG-IR-15-005");
 
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011714.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011714.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # Microsoft Excel 2007 Service Pack 3 Security Feature Bypass Vulnerability (KB4011714)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812977");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9430 $");
   script_cve_id("CVE-2018-0907");
   script_bugtraq_id(103325);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:54:01 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Excel 2007 Service Pack 3 Security Feature Bypass Vulnerability (KB4011714)");
 

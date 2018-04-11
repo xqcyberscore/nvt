@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
+# $Id: gb_cacti_mult_vuln.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # Cacti Multiple Vulnerabilities-June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805664");
-  script_version("$Revision: 8674 $");
+  script_version("$Revision: 9415 $");
   script_cve_id("CVE-2015-4454", "CVE-2015-4342", "CVE-2015-2665", "CVE-2015-2967");
   script_bugtraq_id(75270, 75108, 75669);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 10:16:48 +0530 (Mon, 20 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple Vulnerabilities-June15");
@@ -67,7 +67,7 @@ http://www.cacti.net");
   script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75108");
   script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75270");
   script_xref(name: "URL", value: "http://www.securityfocus.com/bid/75669");
-  script_xref(name: "URL", value: "http://www.fortiguard.com/advisory/FG-VD-15-017/");
+  script_xref(name: "URL", value: "https://fortiguard.com/zeroday/FG-VD-15-017");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

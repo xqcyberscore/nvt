@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dokeos_30150.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: dokeos_30150.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Dokeos 'user_portal.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "Dokeos is prone to a local file-include vulnerability because it
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100155");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9425 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if (description)
  script_name("Dokeos 'user_portal.php' Local File Include Vulnerability");
 
 
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

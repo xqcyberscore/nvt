@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FormMail_34929.nasl 5864 2017-04-05 07:47:30Z cfi $
+# $Id: FormMail_34929.nasl 9425 2018-04-10 12:38:38Z cfischer $
 #
 # Matt Wright FormMail HTTP Response Splitting and Cross Site
 # Scripting Vulnerabilities
@@ -30,15 +30,15 @@ CPE = "cpe:/a:matt_wright:formmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100202");
-  script_version("$Revision: 5864 $");
+  script_version("$Revision: 9425 $");
   script_cve_id("CVE-2009-1776");
   script_bugtraq_id(34929);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Matt Wright FormMail HTTP Response Splitting and Cross Site Scripting Vulnerabilities");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("FormMail_detect.nasl");

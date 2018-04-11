@@ -46,14 +46,14 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-February/msg00038.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870564");
-  script_version("$Revision: 8649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_version("$Revision: 9416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 09:34:03 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:57:12 +0530 (Tue, 21 Feb 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name: "RHSA", value: "2012:0142-01");
   script_name("RedHat Update for firefox RHSA-2012:0142-01");
-
+  script_cve_id("CVE-2011-3026");
   script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

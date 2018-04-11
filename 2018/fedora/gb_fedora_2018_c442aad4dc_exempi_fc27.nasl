@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c442aad4dc_exempi_fc27.nasl 9390 2018-04-06 13:21:32Z santu $
+# $Id: gb_fedora_2018_c442aad4dc_exempi_fc27.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
 #
 # Fedora Update for exempi FEDORA-2018-c442aad4dc
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874330");
-  script_version("$Revision: 9390 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 15:21:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-06 10:09:12 +0200 (Fri, 06 Apr 2018)");
   script_cve_id("CVE-2018-7728", "CVE-2018-7729", "CVE-2018-7730", "CVE-2018-7731", 
                 "CVE-2017-18233", "CVE-2017-18236", "CVE-2017-18234", "CVE-2017-18235", 
                 "CVE-2017-18237");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for exempi FEDORA-2018-c442aad4dc");
   script_tag(name: "summary", value: "Check the version of exempi");

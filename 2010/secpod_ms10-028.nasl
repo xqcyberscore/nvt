@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-028.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: secpod_ms10-028.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # Microsoft Visio Remote Code Execution Vulnerabilities (980094)
 #
@@ -39,15 +39,16 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902039");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 9415 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0254", "CVE-2010-0256");
   script_bugtraq_id(39300, 39302);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_name("Microsoft Visio Remote Code Execution Vulnerabilities (980094)");
-  script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FGA-2010-17.html");
+  script_xref(name : "URL" , value : "https://fortiguard.com/zeroday/FG-VD-09-005");
+  script_xref(name : "URL" , value : "https://fortiguard.com/zeroday/FG-VD-09-006");
   script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Apr/1023856.html");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS10-028.mspx");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_communigatepro_consolidation.nasl 8423 2018-01-15 10:43:49Z ckuersteiner $
+# $Id: gb_communigatepro_consolidation.nasl 9424 2018-04-10 11:34:04Z cfischer $
 #
 # CommuniGatePro Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140688");
-  script_version("$Revision: 8423 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-15 11:43:49 +0100 (Mon, 15 Jan 2018) $");
+  script_version("$Revision: 9424 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-10 13:34:04 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,8 @@ and exposed services.");
 }
 
 include("host_details.inc");
+
+if( ! get_kb_item( "communigatepro/detected" ) ) exit( 0 );
 
 detected_version = "unknown";
 

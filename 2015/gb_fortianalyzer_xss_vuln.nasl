@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_xss_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_fortianalyzer_xss_vuln.nasl 9415 2018-04-10 06:55:50Z cfischer $
 #
 # FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805640");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 9415 $");
   script_cve_id("CVE-2015-3620");
   script_bugtraq_id(74646);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 15:56:50 +0530 (Mon, 01 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015");
@@ -63,7 +63,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-IR-15-005");
+  script_xref(name : "URL" , value : "https://fortiguard.com/psirt/FG-IR-15-005");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
