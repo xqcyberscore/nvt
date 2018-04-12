@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_vmware_vcenter_detect.nasl 9440 2018-04-11 10:37:56Z cfischer $
 #
 # VMware ESX detection (Web)
 #
@@ -30,16 +30,18 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103659");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8143 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 9440 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:37:56 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
  script_name("VMware vCenter detection (Web)");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www",443);
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 443);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : "This host is running VMware vCenter.");
  script_xref(name : "URL" , value : "http://www.vmware.com");
 
@@ -73,7 +75,7 @@ buf = recv(socket:soc, length:8192);
 
 if("VMware" >!< buf)exit(0); 
 
-close(soc); # neeeded for the strange behaviour of esx 3.x
+close(soc); # needed for the strange behaviour of esx 3.x
 soc = open_sock_tcp(port, transport: transport);
 if(!soc)exit(0);
 

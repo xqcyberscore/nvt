@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joo_smf_sh_up.nasl 6586 2017-07-07 06:23:25Z cfischer $
+# $Id: gb_joo_smf_sh_up.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Joomla SmartFormer 2.4.1 Shell Upload
 #
 # Authors:
-# Tameem Eissa <tameem.eissa..at..greenbone.net>
+# Tameem Eissa <tameem.eissa@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107023");
-  script_version("$Revision: 6586 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 9437 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-07-06 06:40:16 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
@@ -40,9 +40,9 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
-  script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_mandatory_keys("joomla/installed");
+
   script_tag(name : "insight" , value : "The vulnerability is due to Smarformer component which allow unauthorized 
 access to certain files.");
   script_tag(name : "summary" , value : "Detection of installed version of Joomla Smartformer. 
@@ -66,16 +66,10 @@ include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appPort = 0;
-dir = "";
-url = "";
-
-## Get  Port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
-## Get Joomla Location
+
 if(!dir = get_app_location(cpe:CPE, port:appPort)){
   exit(0);
 }
@@ -86,21 +80,17 @@ rcvRes = http_keepalive_send_recv( port: appPort, data:sndReq, bodyonly:FALSE );
 
 if ( rcvRes !~ "<?xml version" && "Smart Former" >!< rcvRes && "joomla" >!< rcvRes) exit ( 0 );
 
-if(ve = egrep( pattern:'<version>([0-9])+', string:rcvRes) )
-{
-tmpVer = eregmatch ( pattern:'<version>(([0-9])[.]([0-9])[.]([0-9]))', string: ve);
+if(ve = egrep( pattern:'<version>([0-9])+', string:rcvRes) ) {
+  tmpVer = eregmatch ( pattern:'<version>(([0-9])[.]([0-9])[.]([0-9]))', string: ve);
 }
 
 if(tmpVer[1] ) {
   smfVer = tmpVer[1];
 } 
 
-if (version_is_equal (version: smfVer, test_version: "2.4.1"))
-{
-      security_message(port:appPort);
-      exit(0);
+if (version_is_equal (version: smfVer, test_version: "2.4.1")) {
+  security_message(port:appPort);
+  exit(0);
 }
 
-
-
-
+exit(99);

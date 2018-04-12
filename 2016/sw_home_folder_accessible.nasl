@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_home_folder_accessible.nasl 9089 2018-03-12 19:51:54Z cfischer $
+# $Id: sw_home_folder_accessible.nasl 9451 2018-04-12 05:54:43Z cfischer $
 #
 # Linux Home Folder Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111108");
-  script_version("$Revision: 9089 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 20:51:54 +0100 (Mon, 12 Mar 2018) $");
+  script_version("$Revision: 9451 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 07:54:43 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -120,8 +120,8 @@ files = make_array( "/.ssh/authorized_keys", "^(ecdsa-sha2-nistp256|ssh-rsa|ssh-
                     "/.mysql_history", "^(INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL|GRANT ALL ON|grant all on|FLUSH PRIVILEGES|flush privileges)",
                     "/.sqlite_history", "^(\.tables|\.quit|\.databases|INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL)",
                     "/.psql_history", "^(INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL|GRANT ALL ON|grant all on)",
-                    "/.sh_history", "^(grep|chmod|chown|iptables|ifconfig|history|touch|head|tail|mkdir|sudo)",
-                    "/.bash_history", "^(grep|chmod|chown|iptables|ifconfig|history|touch|head|tail|mkdir|sudo)",
+                    "/.sh_history", "^(less|more|wget |curl |grep |chmod |chown |iptables|ifconfig|history|touch |head|tail|mkdir |sudo)",
+                    "/.bash_history", "^(less|more|wget |curl |grep |chmod |chown |iptables|ifconfig|history|touch |head|tail|mkdir |sudo)",
                     "/.profile", "^# ~/.profile:",
                     "/.bashrc", "^# ~/.bashrc:" );
 
@@ -138,13 +138,13 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     url = dir + file;
 
     if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:files[file] ) ) {
-        report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
-        found = TRUE;
+      report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+      VULN = TRUE;
     }
   }
 }
 
-if( found ) {
+if( VULN ) {
   security_message( port:port, data:report );
   exit( 0 );
 }

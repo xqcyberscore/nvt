@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mxview_2_8_private_key_disclosure.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_moxa_mxview_2_8_private_key_disclosure.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # Moxa MXview Private Key Disclosure
 #
@@ -33,8 +33,8 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2017-7455", "CVE-2017-7456");
- script_version("$Revision: 6012 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+ script_version("$Revision: 9436 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-04-11 13:15:09 +0200 (Tue, 11 Apr 2017)");
  script_name("Moxa MXview Private Key Disclosure");
 
@@ -44,13 +44,13 @@ Remote attackers can easily access/read this private key `mxview.key` file by ma
  script_tag(name: "affected" , value:"Moxa MXview V2.8");
  script_tag(name: "solution" , value:"Vendor has released a fix.");
  script_tag(name:"qod_type", value:"exploit");
+ script_tag(name:"solution_type", value:"VendorFix");
 
  script_category(ACT_ATTACK);
- script_family("General");
+ script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_moxa_mxview_web_detect.nasl");
  script_require_ports("Services/www", 80, 81 );
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("moxa/mxviev/installed");
  exit(0);
 }

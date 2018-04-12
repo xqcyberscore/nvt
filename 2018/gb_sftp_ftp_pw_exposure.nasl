@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 8942 2018-02-26 07:22:31Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 9451 2018-04-12 05:54:43Z cfischer $
 #
 # SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 8942 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 08:22:31 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 9451 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 07:54:43 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "webmirror.nasl", "DDI_Directory_Scanner.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -49,15 +49,17 @@ if(description)
 
   script_tag(name:"insight", value:"Currently the script is checking for the following files:
 
-  - /sftp-config.json (Multiple clients, e.g. Sublime SFTP)
+  - sftp-config.json (Multiple clients, e.g. Sublime SFTP)
 
-  - /recentservers.xml (FileZilla)
+  - recentservers.xml, sitemanager.xml, filezilla.xml, FileZilla.xml (FileZilla)
 
-  - /sitemanager.xml (FileZilla)
+  - WS_FTP.ini, ws_ftp.ini, WS_FTP.INI (WS_FTP)
 
-  - /.ftpconfig (Remote FTP for Atom.io)
+  - WinSCP.ini, winscp.ini (WinSCP)
 
-  - /ftpsync.settings (FTPSync for Sublime Text)");
+  - .ftpconfig (Remote FTP for Atom.io)
+
+  - ftpsync.settings (FTPSync for Sublime Text)");
 
   script_tag(name:"vuldetect", value:"Enumerate the remote web server and check if SFTP/FTP configuration
   files are accessible.");
@@ -83,6 +85,15 @@ files = make_array( "/sftp-config.json", '(tab key will cycle through the settin
                     "/ftpsync.settings", '(upload_on_save: ?(true|false),|username: ?.*,|password: ?.*,)',
                     "/recentservers.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
                     "/sitemanager.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
+                    "/filezilla.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
+                    "/FileZilla.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
+                    # http://fileformats.archiveteam.org/wiki/WS_FTP_configuration_files
+                    "/WS_FTP.ini", "^\[_config_\]",
+                    "/ws_ftp.ini", "^\[_config_\]",
+                    "/WS_FTP.INI", "^\[_config_\]",
+                    # https://github.com/OliverKohlDSc/Terminals/blob/master/DLLs/Tools/winscp553/WinSCP.ini
+                    "/WinSCP.ini", "^\[(Configuration|SshHostKeys)\]",
+                    "/winscp.ini", "^\[(Configuration|SshHostKeys)\]",
                     "/.ftpconfig", '("protocol": ?"s?ftp",|"promptForPass": ?(true|false),|"privatekey": ?".*",)' );
 
 report = 'The following files were identified:\n';

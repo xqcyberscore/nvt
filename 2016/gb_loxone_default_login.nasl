@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_default_login.nasl 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: gb_loxone_default_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Loxone Default Login Credentials Vulenrability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:loxone:loxone';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.107045");
- script_version ("$Revision: 7252 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Loxone Smart Home Default Admin HTTP Login");
@@ -43,7 +43,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-09-07 13:18:59 +0200 (Wed, 07 Sep 2016)");
  script_xref(name : "URL" , value : "https://osvdb.info/OSVDB-98155");
 
@@ -52,7 +52,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_loxone_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("loxone/web/detected");
  exit(0);
 }
@@ -72,7 +71,6 @@ http_port = "";
 username = "admin";
 password = "admin";
 
-## Get HTTP Port
 if ( !http_port = get_app_port(cpe:CPE, service:'www' )) exit (0);
 
 host = http_host_name( port:http_port );
@@ -124,6 +122,4 @@ if (res2 =~ "HTTP/1\.. 101 Web Socket Protocol Handshake" && "Sec-WebSocket-Acce
   exit(0);
 }
 
-exit( 0 );
-
-
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 8588 2018-01-30 14:51:34Z asteins $
+# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 9439 2018-04-11 10:35:37Z asteins $
 #
 # Kaseya VSA Information Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:kaseya:virtual_system_administrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106739");
-  script_version("$Revision: 8588 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 15:51:34 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9439 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 12:35:37 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name: "qod_type", value: "remote_vul");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Kaseya VSA Information Disclosure Vulnerability");
 
@@ -59,8 +59,8 @@ application and its underlying system.");
   script_tag(name: "impact", value: "An unauthenticated attacker may obtain sensitive information about the
 application and its underlying system.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://www.osisecurity.com.au/kaseya-information-disclosure-vulnerability.html");
 

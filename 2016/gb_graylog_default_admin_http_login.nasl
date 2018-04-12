@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graylog_default_admin_http_login.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_graylog_default_admin_http_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Graylog Default HTTP Login
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:torch_gmbh:graylog2';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105756");
- script_version ("$Revision: 5534 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Graylog Default Admin HTTP Login");
@@ -43,14 +43,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-06-10 13:18:59 +0200 (Fri, 10 Jun 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_graylog_web_rest_api_detect.nasl");
  script_require_ports("Services/www", 12900);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("graylog/rest/installed");
 
  exit(0);

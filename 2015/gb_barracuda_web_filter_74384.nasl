@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_web_filter_74384.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_barracuda_web_filter_74384.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities
 #
@@ -31,10 +31,10 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105287");
  script_bugtraq_id(74384);
- script_cve_id("CVE-2015-0961","CVE-2015-0962");
+ script_cve_id("CVE-2015-0961", "CVE-2015-0962");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6132 $");
+ script_version("$Revision: 9442 $");
 
  script_name("Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities");
 
@@ -56,14 +56,13 @@ by leveraging the certificate's trust relationship");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-03 16:03:11 +0200 (Wed, 03 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_barracuda_web_filter_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("barracuda_web_filter/installed");
 
  exit(0);
@@ -91,4 +90,3 @@ if( vers =~ "^7\." || vers =~ "^8\." )
 }
 
 exit( 99 );
-

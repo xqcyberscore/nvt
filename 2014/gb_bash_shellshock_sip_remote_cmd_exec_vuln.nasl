@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 4880 2016-12-29 19:37:33Z cfi $
+# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105093");
-  script_version("$Revision: 4880 $");
+  script_version("$Revision: 9438 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 20:37:33 +0100 (Thu, 29 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 11:47:16 +0530 (Mon, 29 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)");
   script_category(ACT_ATTACK);
@@ -59,10 +59,10 @@ if(description)
 
   The exec module in Kamailio, Opensips and propably every other SER fork passes the received
   SIP headers as environment variables to the invoking shell. A proxy is vulnerable using any
-  of the exec funtions and has the 'setvars' parameter set to the default value '1'.");
+  of the exec functions and has the 'setvars' parameter set to the default value '1'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  or local attackers to inject  shell commmands, allowing local privilege
+  or local attackers to inject  shell commands, allowing local privilege
   escalation or remote command execution depending on the application vector.
 
   Impact Level: Application");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geoserver_xxe_08_15.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_geoserver_xxe_08_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Geoserver XML External Entity Information Disclosure Vulnerability
 #
@@ -30,31 +30,29 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105320");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7577 $");
-
+ script_version("$Revision: 9442 $");
  script_name("Geoserver XML External Entity Information Disclosure Vulnerability");
 
  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37757/");
 
  script_tag(name: "impact" , value:"An attacker can exploit this issue to gain access to sensitive
-information; this may lead to further attacks.");
+information, this may lead to further attacks.");
  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check the response");
  script_tag(name: "insight" , value:"An XXE vulnerability in Geoserver allows to view file contents and list directories on the server.");
  script_tag(name: "solution" , value:"Update to 2.7.2 or newer.");
  script_tag(name: "summary" , value:"The remote Geoserver is vulnerable to XML External Entity attacks.");
- script_tag(name: "affected" , value:"2.7 <2.7.1.1  / 2.6 <2.6.4 / 2.5 <2.5.5.1; Other versions may be affected too. ");
+ script_tag(name: "affected" , value:"2.7 <2.7.1.1  / 2.6 <2.6.4 / 2.5 <2.5.5.1, other versions may be affected too.");
 
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-08-17 13:57:49 +0200 (Mon, 17 Aug 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("secpod_geoserver_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("GeoServer/installed");
 
  exit(0);
@@ -117,4 +115,3 @@ foreach file ( keys( files ) )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_90430.nasl 7570 2017-10-26 07:33:23Z asteins $
+# $Id: gb_jboss_on_90430.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Red Hat JBoss Operations Network Deserialization Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-3737");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 7570 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("Red Hat JBoss Operations Network  Deserialization Remote Code Execution Vulnerability");
 
@@ -52,14 +52,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-28 15:24:48 +0200 (Thu, 28 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_jboss_on_detect.nasl");
  script_require_ports("Services/www", 7080);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("jboss_on/installed");
 
  exit(0);
@@ -221,4 +220,3 @@ if( "javax.management.BadAttributeValueExpException cannot be cast to" >< buf )
 }
 
 exit( 99 );
-

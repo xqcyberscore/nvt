@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_xss_06_15.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_novell_zenworks_mobile_management_xss_06_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Novell ZENworks Mobile Management Cross Site Scripting
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105297");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6194 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Novell ZENworks Mobile Management Cross Site Scripting");
 
@@ -47,21 +47,21 @@ This can allow the attacker to steal cookie-based authentication credentials and
 cross-site scripting vulnerability. This reflected cross-site scripting vulnerability can be exploited in
 the context of an unauthenticated user by sending a specially crafted HTTP POST or HTTP GET request.");
 
- script_tag(name: "solution" , value:"Ask the vendor for an update.");
+ script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+ Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+ product or replace the product by another one.");
  script_tag(name: "summary" , value:"ZENWorks Mobile Management suffers from cross site scripting vulnerabilities.");
 
- script_tag(name:"solution_type", value: "NoneAvailable");
-
+ script_tag(name:"solution_type", value: "WillNotFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-15 13:34:59 +0200 (Mon, 15 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("zenworks_mobile_management/installed");
 
  exit(0);

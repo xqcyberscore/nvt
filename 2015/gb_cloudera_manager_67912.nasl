@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudera_manager_67912.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: gb_cloudera_manager_67912.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Cloudera Manager Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-0220");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 6170 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Cloudera Manager Information Disclosure Vulnerability");
 
@@ -51,7 +51,7 @@ via the API.");
  script_tag(name: "affected" , value:"Cloudera Manager prior to 4.8.3 and 5.0.0 are vulnerable.");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-01-20 17:01:26 +0100 (Tue, 20 Jan 2015)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -59,7 +59,6 @@ via the API.");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_cloudera_manager_detect.nasl");
  script_require_ports("Services/www", 7180);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cloudera_manager/installed");
 
  exit(0);
@@ -100,4 +99,3 @@ if( vers =  get_app_version( cpe:CPE, port:port ) )
 }
 
 exit( 0 );
-

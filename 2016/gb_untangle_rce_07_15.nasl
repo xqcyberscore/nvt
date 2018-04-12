@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untangle_rce_07_15.nasl 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: gb_untangle_rce_07_15.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Untangle NG Firewall Remote Command Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:untangle:ng-firewall";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105812");
- script_version ("$Revision: 7252 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,14 +46,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-18 15:16:18 +0200 (Mon, 18 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_untangle_web_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("untangle/installed");
 
  exit(0);
@@ -124,4 +123,3 @@ for( i = 1; i < 35; i++ )
   check( i:i, zip:zip );
 
 exit( 99 );
-

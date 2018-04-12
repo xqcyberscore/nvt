@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_75994.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_cisco_apic_75994.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Access Control Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4235");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 9381 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Cisco Application Policy Infrastructure Controller Access Control Vulnerability ");
 
@@ -50,14 +50,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-02-10 12:54:47 +0100 (Wed, 10 Feb 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_apic_web_detect.nasl");
  script_require_ports("Services/www", 80, 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
 
  exit(0);
@@ -97,5 +96,4 @@ foreach v ( vulnerable_versions )
   }
 }
 
-exit( 0 );
-
+exit( 99 );

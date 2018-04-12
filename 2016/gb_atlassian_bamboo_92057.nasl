@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-5229");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5580 $");
+ script_version ("$Revision: 9438 $");
 
  script_name("Atlassian Bamboo  Remote Code Execution Vulnerability");
 
@@ -49,21 +49,23 @@ if (description)
  script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
  script_tag(name: "summary" , value:"Atlassian Bamboo is prone to remote code-execution vulnerability.");
  script_tag(name: "affected" , value:"The following versions are affected:
+
 Bamboo 2.3.1 and later
+
 Bamboo 5.11.x versions prior to 5.11.4.1
-Bamboo 5.12.x versions prior to 5.12.3.1 ");
+
+Bamboo 5.12.x versions prior to 5.12.3.1");
  script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-07-27 17:57:26 +0200 (Wed, 27 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_atlassian_bamboo_detect.nasl");
  script_require_ports("Services/www", 80, 8085);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("AtlassianBamboo/Installed");
 
  exit(0);
@@ -121,7 +123,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf =~ "HTTP/1\.. 500" && "java.lang.Integer cannot be cast to java.util.Set" >< buf )
 {
-  report = 'It was possible to execute a comand on the remote host.\n';
+  report = 'It was possible to execute a command on the remote host.\n';
   report += report_vuln_url(  port:port, url:'/agentServer/message?fingerprint=' + fingerprint );
   security_message( port:port, data:report );
   exit( 0 );

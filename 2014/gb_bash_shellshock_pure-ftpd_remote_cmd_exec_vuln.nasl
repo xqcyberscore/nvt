@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105094");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 9438 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 11:47:16 +0530 (Tue, 30 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)");
@@ -47,7 +47,7 @@ if(description)
   bash continues to process trailing strings.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote or local attackers to
-  inject  shell commmands, allowing local privilege escalation or remote command execution depending
+  inject  shell commands, allowing local privilege escalation or remote command execution depending
   on the application vector.
 
   Impact Level: Application");

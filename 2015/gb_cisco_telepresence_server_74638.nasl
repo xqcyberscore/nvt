@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_74638.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_cisco_telepresence_server_74638.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Cisco TelePresence Server Remote Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0713");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6443 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Cisco TelePresence Server Remote Command Injection Vulnerability");
 
@@ -60,14 +60,13 @@ injection vulnerability because it fails to properly sanitize user-supplied inpu
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-03 12:10:07 +0200 (Wed, 03 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_telepresence_server_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco_telepresence_server/installed");
 
  exit(0);
@@ -109,4 +108,3 @@ if( version_is_less( version:vers, test_version: fix ) )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 7171 2017-09-18 10:53:17Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 7171 $");
+  script_version("$Revision: 9438 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:53:17 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
 
@@ -49,7 +49,7 @@ if(description)
   strings.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  or local attackers to inject  shell commmands, allowing local privilege
+  or local attackers to inject  shell commands, allowing local privilege
   escalation or remote command execution depending on the application vector.
 
   Impact Level: Application");
@@ -65,6 +65,7 @@ if(description)
   script_xref(name : "URL" , value : "https://community.qualys.com/blogs/securitylabs/2014/09/24/");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "webmirror.nasl");

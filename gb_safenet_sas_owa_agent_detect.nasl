@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_safenet_sas_owa_agent_detect.nasl 9445 2018-04-11 12:46:27Z cfischer $
 #
 # SafeNet SAS OWA Agent Detection
 #
@@ -30,10 +30,10 @@ CPE = 'cpe:/a:microsoft:outlook_web_app';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105151");
-  script_version("$Revision: 6000 $");
+  script_version("$Revision: 9445 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:46:27 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 14:36:28 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Detection");
   script_category(ACT_GATHER_INFO);
@@ -41,7 +41,6 @@ if (description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_owa_detect.nasl");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_keys("ms/owa/installed");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and
@@ -77,4 +76,3 @@ if( "title>CRYPTOCard Authentication Form - Outlook Web Access" >< buf && "CRYPT
 }
 
 exit( 0 );
-

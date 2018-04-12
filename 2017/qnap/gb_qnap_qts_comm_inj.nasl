@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_comm_inj.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_qnap_qts_comm_inj.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # QNAP QTS Command Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
     script_oid("1.3.6.1.4.1.25623.1.0.107275");
     script_tag(name:"cvss_base", value:"10.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-    script_version ("$Revision: 9381 $");
+    script_version ("$Revision: 9436 $");
 
     script_name("QNAP QTS Command Injection Vulnerability");
 
@@ -40,14 +40,13 @@ if (description)
     script_xref(name:"URL", value:"https://www.qnap.com/de-de/security-advisory/nas-201709-11");
     script_cve_id("CVE-2017-10700");
 
-    script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
     script_tag(name:"creation_date", value:"2017-12-13 13:24:30 +0100 (Wed, 13 Dec 2017)");
     script_category(ACT_GATHER_INFO);
     script_family("Web application abuses");
     script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
     script_dependencies("gb_qnap_nas_detect.nasl");
     script_require_ports("Services/www", 80, 8080);
-    script_exclude_keys("Settings/disable_cgi_scanning");
     script_mandatory_keys("qnap/qts","qnap/version","qnap/build");
 
     script_tag(name:"vuldetect", value: "Check the firmware version");

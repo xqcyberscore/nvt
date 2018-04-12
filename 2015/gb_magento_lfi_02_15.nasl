@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_02_15.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_magento_lfi_02_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Magento Server MAGMI Cross Site Scripting / Local File Inclusion
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-2067");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7577 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Magento Server MAGMI Cross Site Scripting / Local File Inclusion");
 
@@ -43,12 +43,13 @@ if (description)
 traversal sequences ('../') to read arbitrary files in the context of the application. This may aid in further attacks.");
 
  script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
+ script_tag(name: "solution" , value:"Update to MAGMI 0.7.22 or later.");
  script_tag(name: "summary" , value:"Magento Server MAGMI is prone to cross site scripting and local file inclusion vulnerabilities.");
 
  script_tag(name:"qod_type", value:"remote_active");
+ script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-06 17:04:13 +0100 (Fri, 06 Feb 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -56,7 +57,6 @@ traversal sequences ('../') to read arbitrary files in the context of the applic
  script_dependencies("sw_magento_magmi_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("magmi/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  exit(0);
 }

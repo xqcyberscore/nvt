@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_cve_2016_10223.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_bigtree_cve_2016_10223.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # Bigtree CMS Potential XSS Attack
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140164");
-  script_version("$Revision: 5655 $");
+  script_version("$Revision: 9436 $");
   script_cve_id("CVE-2016-10223");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-17 10:34:05 +0100 (Fri, 17 Feb 2017)");
   script_name("Bigtree CMS Potential XSS Attack");
 
@@ -59,8 +59,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_bigtree_detect.nasl");
   script_mandatory_keys("BigTree/Installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -71,12 +71,10 @@ if(!bigtreePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!bigtreeVer = get_app_version(port:bigtreePort, cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:bigtreeVer, test_version:"4.2.15"))
 {
   report = report_fixed_ver(installed_version:bigtreeVer, fixed_version:"4.2.15");

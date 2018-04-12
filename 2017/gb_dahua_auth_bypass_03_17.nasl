@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_auth_bypass_03_17.nasl 6990 2017-08-23 08:40:32Z asteins $
+# $Id: gb_dahua_auth_bypass_03_17.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # Dahua Devices Authentication Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:dahua:nvr';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140185");
- script_version ("$Revision: 6990 $");
+ script_version ("$Revision: 9436 $");
  script_cve_id("CVE-2017-6343", "CVE-2017-7253", "CVE-2017-7927", "CVE-2017-7925",
                "CVE-2017-6432", "CVE-2017-6341", "CVE-2017-6342");
  script_bugtraq_id(96449, 96454, 96456, 98312, 98312, 97263);
@@ -46,14 +46,15 @@ if (description)
 
  script_tag(name: "impact" , value:"An attacker can exploit this issue to bypass authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
  script_tag(name: "vuldetect" , value:"Try to login into the remote device.");
- script_tag(name: "solution" , value:"Ask the vendor for an update");
+ script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
  script_tag(name: "summary" , value:"The remote Dahua device is prone to an authentication-bypass vulnerability.");
- script_tag(name:"solution_type", value: "NoneAvailable");
+ script_tag(name:"solution_type", value: "WillNotFix");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-23 10:40:32 +0200 (Wed, 23 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -61,7 +62,6 @@ if (description)
  script_dependencies("gb_dahua_devices_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("dahua/device");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  exit(0);
 }
@@ -289,5 +289,4 @@ foreach url ( keys( urls ) )
   }
 }
 
-exit( 0 );
-
+exit( 99 );

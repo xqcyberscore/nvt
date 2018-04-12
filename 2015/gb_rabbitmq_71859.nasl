@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_71859.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_rabbitmq_71859.nasl 9443 2018-04-11 12:28:11Z cfischer $
 #
 # RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-9494");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6415 $");
+ script_version ("$Revision: 9443 $");
 
  script_name("RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability");
 
@@ -55,15 +55,14 @@ crafted X-Forwareded-For header.");
 
  script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:28:11 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-01-22 16:55:31 +0100 (Thu, 22 Jan 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_rabbitmq_web_management_detect.nasl");
  script_require_ports("Services/www", 15672);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_mandatory_keys("rabbitmq/installed");
+ script_mandatory_keys("rabbitmq/web/installed");
 
  exit(0);
 }
@@ -76,9 +75,8 @@ include("global_settings.inc");
 if( islocalhost() ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE, service: "www" ) ) exit( 0 );
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+
+host = http_host_name( port:port );
 
 req = 'GET /api/whoami HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +

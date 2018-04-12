@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_cisco-sa-20160406-cts2.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_cisco_telepresence_server_cisco-sa-20160406-cts2.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Cisco TelePresence Server Malformed STUN Packet Processing Denial of Service Vulnerability
 #
@@ -32,8 +32,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105609");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5850 $");
-
+ script_version("$Revision: 9437 $");
+ script_cve_id("CVE-2015-6312");
  script_name("Cisco TelePresence Server Malformed STUN Packet Processing Denial of Service Vulnerability");
 
  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-cts2");
@@ -59,14 +59,13 @@ Cisco TelePresence Server on Virtual Machine (VM)");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-04-18 15:50:01 +0200 (Mon, 18 Apr 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_telepresence_server_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco_telepresence_server/installed");
 
  exit(0);

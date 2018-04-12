@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_http_credentials_report.nasl 6680 2017-07-12 08:37:02Z cfischer $
+# $Id: gb_default_http_credentials_report.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103240");
-  script_version("$Revision: 6680 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 10:37:02 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 9436 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-06 13:47:00 +0100 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("default_http_auth_credentials.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("default_http_auth_credentials/started");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_add_preference(name:"Report timeout", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"It was possible to login into the remote Web Application using default credentials.

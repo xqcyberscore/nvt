@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_bigfix_web_reports_94155.nasl 5266 2017-02-10 15:10:59Z teissa $
+# $Id: gb_ibm_bigfix_web_reports_94155.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # IBM BigFix Platform  Remote Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-0396");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5266 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("IBM BigFix Platform  Remote Command Injection Vulnerability");
 
@@ -50,14 +50,13 @@ if (description)
 
  script_tag(name:"qod", value:"50"); # There are Workarounds and Mitigations. Relying on the version would result in FPs...
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:10:59 +0100 (Fri, 10 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-11-21 10:40:03 +0100 (Mon, 21 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_ibm_bigfix_web_reports_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("ibm/bigfix_web_reports/version");
 
  exit(0);
@@ -80,4 +79,3 @@ if( vers =~ "^9\." )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_83105.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_cisco_apic_em_83105.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-1318");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5675 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("Cisco Application Policy Infrastructure Controller  Cross Site Scripting Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # advisory is very vague about effected versions
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-02-11 14:46:59 +0100 (Thu, 11 Feb 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_apic_em_web_detect.nasl");
  script_require_ports("Services/www", 80, 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco/apic_em/version");
+
  exit(0);
 }
 
@@ -74,12 +74,10 @@ if( vers =  get_app_version( cpe:CPE, port:port ) )
 {
   if( vers =~ "^1\.1" ) # # advisory is very vague about effected versions
   {
-      report = report_fixed_ver(  installed_version:vers, fixed_version:'See vendor advisory' );
-      security_message( port:port, data:report );
-      exit (0 );
+    report = report_fixed_ver(  installed_version:vers, fixed_version:'See vendor advisory' );
+    security_message( port:port, data:report );
+    exit(0 );
   }
-
 }
 
-exit( 0 );
-
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Cisco APIC Enterprise Module Unauthorized Access Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:application_policy_infrastructure_controller_enterprise_modu
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807836");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 9437 $");
   script_cve_id("CVE-2016-1386");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 15:58:36 +0530 (Mon, 13 Jun 2016)");
   script_name("Cisco APIC Enterprise Module Unauthorized Access Vulnerability");
 
@@ -71,7 +71,7 @@ if (description)
   script_dependencies("gb_cisco_apic_em_web_detect.nasl");
   script_mandatory_keys("cisco/apic_em/version");
   script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -91,6 +91,5 @@ if(cisVer = get_app_version(cpe:CPE, port:cisPort))
     exit(0);
   }
 }
-exit( 0 );
 
-
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Novell ZENworks Configuration Management Arbitrary File Upload
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-0779");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6404 $");
+ script_version("$Revision: 9442 $");
 
  script_name("Novell ZENworks Configuration Management Arbitrary File Upload");
 
@@ -50,14 +50,13 @@ arbitrary file upload vulnerability");
 
  script_tag(name: "qod_type", value: "exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-04-10 20:01:11 +0200 (Fri, 10 Apr 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_novell_zenworks_configuration_management_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("novell_zenworks_configuration_management/installed");
 
  exit(0);
@@ -110,4 +109,3 @@ foreach path ( paths )
 }
 
 exit( 99 );
-

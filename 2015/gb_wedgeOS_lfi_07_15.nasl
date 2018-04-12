@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wedgeOS_lfi_07_15.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_wedgeOS_lfi_07_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # WedgeOS Multiple Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105311");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 6551 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("WedgeOS Multiple Vulnerabilities");
 
@@ -51,14 +51,13 @@ functionality.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-07-02 13:50:31 +0200 (Thu, 02 Jul 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_wedgeos_management_console_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wedgeOS/management_console/installed");
 
  exit(0);
@@ -83,4 +82,3 @@ if( shadow = http_vuln_check( port:port, url:url, pattern:"root:.*:0:" ) )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_75299.nasl 6926 2017-08-15 12:34:07Z asteins $
+# $Id: gb_openemr_75299.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # OpenEMR 'interface/globals.php' Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4453");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6926 $");
+ script_version("$Revision: 9442 $");
 
  script_name("OpenEMR 'interface/globals.php' Authentication Bypass Vulnerability");
 
@@ -56,14 +56,13 @@ POST request parameter.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-15 14:34:07 +0200 (Tue, 15 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-07-08 13:23:01 +0200 (Wed, 08 Jul 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_openemr_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("openemr/installed");
 
  exit(0);
@@ -85,5 +84,4 @@ if( http_vuln_check( port:port, url:url, pattern:"<title>EOB Posting - Search" )
     exit(0);
 }
 
-exit(0);
-
+exit(99);

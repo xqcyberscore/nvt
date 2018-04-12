@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_rce_11_16.nasl 4523 2016-11-15 15:45:12Z mime $
+# $Id: gb_dolphin_rce_11_16.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Boonex Dolphin Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:boonex:dolphin';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140061");
- script_version ("$Revision: 4523 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -46,14 +46,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 16:45:12 +0100 (Tue, 15 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-11-15 12:20:21 +0100 (Tue, 15 Nov 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_dolphin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Dolphin/Installed");
 
  exit(0);
@@ -127,4 +126,3 @@ if( buf = http_vuln_check( port:port, url: dir + '/tmp/' + file, pattern:'OpenVA
 }
 
 exit( 99 );
-

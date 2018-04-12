@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netman_204_default_web_credentials.nasl 4173 2016-09-28 15:17:05Z mime $
+# $Id: gb_netman_204_default_web_credentials.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # NetMan 204 Default Web Login
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:riello:netman_204';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140003");
- script_version ("$Revision: 4173 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("NetMan 204 Default Web Login");
@@ -43,14 +43,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-28 17:17:05 +0200 (Wed, 28 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-09-28 16:35:07 +0200 (Wed, 28 Sep 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_netman_204_web_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("netman_204/detected");
 
  exit(0);
@@ -100,4 +99,4 @@ foreach credential ( credentials )
   }
 }
 
-exit( 0 );
+exit( 99 );

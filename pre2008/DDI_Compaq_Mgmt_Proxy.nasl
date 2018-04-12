@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Compaq_Mgmt_Proxy.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: DDI_Compaq_Mgmt_Proxy.nasl 9445 2018-04-11 12:46:27Z cfischer $
 #
 # Compaq Web Based Management Agent Proxy Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10963");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 9445 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:46:27 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,6 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 2301);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_keys("www/compaq");
 
   tag_summary = "This host is running the Compaq Web Management Agent.

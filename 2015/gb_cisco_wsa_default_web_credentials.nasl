@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_default_web_credentials.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_cisco_wsa_default_web_credentials.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Cisco Web Security Appliance Web Interface Default Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105443");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 9442 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Web Security Appliance Web Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 14:41:14 +0100 (Mon, 09 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
@@ -40,7 +40,6 @@ if(description)
   script_dependencies("gb_cisco_wsa_web_detect.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("cisco_wsa/http/cookie", "cisco_wsa/http/port");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:'The remote Cisco Web Security Appliance Web Interface is prone to a default account authentication bypass vulnerability.');
 

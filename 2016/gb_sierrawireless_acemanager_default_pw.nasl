@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_default_pw.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_sierrawireless_acemanager_default_pw.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Sierra Wireless AceManager Default Password
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:sierra_wireless:acemanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106077");
-  script_version("$Revision: 5534 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_version("$Revision: 9437 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2016-05-17 11:21:09 +0700 (Tue, 17 May 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:C");
@@ -48,7 +48,6 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_sierrawireless_acemanager_detect.nasl");
   script_mandatory_keys("sierra_wireless_acemanager/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name: "summary", value: "Default password for AceManager was found.");
 
@@ -104,4 +103,4 @@ if (found_users != "") {
   exit(0);
 }
 
-exit(0);
+exit(99);

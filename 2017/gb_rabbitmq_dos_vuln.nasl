@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_dos_vuln.nasl 4961 2017-01-06 11:11:38Z ckuerste $
+# $Id: gb_rabbitmq_dos_vuln.nasl 9443 2018-04-11 12:28:11Z cfischer $
 #
 # RabbitMQ DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:pivotal_software:rabbitmq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106499");
-  script_version("$Revision: 4961 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-06 12:11:38 +0100 (Fri, 06 Jan 2017) $");
+  script_version("$Revision: 9443 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-11 14:28:11 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-01-06 12:45:06 +0700 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value: "6.8");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_rabbitmq_amqp_detect.nasl");
-  script_mandatory_keys("rabbitmq/installed");
+  script_mandatory_keys("rabbitmq/amqp/installed");
 
   script_tag(name: "summary", value: "RabbitMQ is prone to a denial of service vulnerability.");
 
@@ -82,4 +82,4 @@ if (version_is_less(version: version, test_version: "3.6.1")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

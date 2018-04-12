@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Loxone Smart Home Multiple Vulnerabilities - Mar15
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:loxone:loxone';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805298");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 9442 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-10 09:36:22 +0530 (Tue, 10 Mar 2015)");
   script_name("Loxone Smart Home Multiple Vulnerabilities - Mar15");
 
@@ -43,18 +43,26 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name: "insight" , value: "Multiple flaws are due to,
+
   - the device transmitting all data in cleartext.
+
   - HTTP requests do not require multiple steps, explicit confirmation, or a
   unique token when performing certain sensitive actions.
+
   - the '/dev/cfg/version' script does not validate input appended to the
   response header before returning it to the user.
+
   - the '/dev/sps/io/' script does not validate input passed via the URL before
   returning it to users.
+
   - the '/dev/sps/addcmd/' script does not validate input to the description field
   in a new task before returning it to users.
+
   - the program storing user credentials in an insecure manner.
+
   - improper restriction of JavaScript from one web page from accessing another
   when the pages originate from different domains.
+
   - an unspecified error related to malformed HTTP requests or using the
   synflood metasploit module.");
 
@@ -82,26 +90,16 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_loxone_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("loxone/web/detected");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-Banner = "";
-http_port = "";
-
-## Get HTTP Port
-## Get HTTP Port
 if ( !http_port = get_app_port(cpe:CPE, service:'www' )) exit (0);
 
-##Construct Attack Request
 url = "/dev/cfg/version%0D%0A%0D%0A<html><script>alert(document.cookie)" +
       "</script></html>";
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
@@ -114,4 +112,3 @@ if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
 }
 
 exit(99);
-

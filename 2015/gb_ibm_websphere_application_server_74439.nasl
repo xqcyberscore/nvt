@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_74439.nasl 8373 2018-01-11 10:29:41Z cfischer $
+# $Id: gb_ibm_websphere_application_server_74439.nasl 9444 2018-04-11 12:34:23Z cfischer $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1920");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8373 $");
+ script_version ("$Revision: 9444 $");
 
  script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability");
 
@@ -55,14 +55,13 @@ instructions in a management-port session.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:34:23 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-03 09:34:17 +0200 (Wed, 03 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_ibm_websphere_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("ibm_websphere_application_server/installed");
 
  exit(0);
@@ -71,7 +70,7 @@ instructions in a management-port session.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( vers =  get_app_version( cpe:CPE, nofork:TRUE ) )
+if( vers = get_app_version( cpe:CPE, nofork:TRUE ) )
 {
   if( version_in_range( version: vers, test_version: "8.5", test_version2: "8.5.5.5"  ) )      fix = '8.5.5.6';
   else if( version_in_range( version: vers, test_version: "8.0", test_version2: "8.0.0.10" ) ) fix = '8.0.0.11';
@@ -80,12 +79,11 @@ if( vers =  get_app_version( cpe:CPE, nofork:TRUE ) )
 
   if( fix )
   {
-      report = 'Installed version: ' + vers + '\n' +
-               'Fixed version:     ' + fix + '\n';
-
-      security_message( port:0, data:report );
-      exit( 0 );
+    report = 'Installed version: ' + vers + '\n' +
+             'Fixed version:     ' + fix + '\n';
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 
-exit( 0 );
+exit( 99 );

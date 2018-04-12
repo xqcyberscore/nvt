@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_CTX207499.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_citrix_xenmobile_CTX207499.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Persistent Cross-Site Scripting Vulnerability in Citrix XenMobile Server 10.x Web User Interface
 #
@@ -33,32 +33,34 @@ if (description)
  script_cve_id("CVE-2016-2789");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5580 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("Persistent Cross-Site Scripting Vulnerability in Citrix XenMobile Server 10.x Web User Interface");
 
  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX207499");
 
- script_tag(name: "impact" , value:"This vulnerability could potentially be used to execute malicious client-side script in the same context as legitimate content from the web server; if this vulnerability is used to execute script in the browser of an authenticated administrator then the script may be able to gain access to the administrator's session or other potentially sensitive information.");
+ script_tag(name: "impact" , value:"This vulnerability could potentially be used to execute malicious client-side script in the same context as legitimate content from the web server, if this vulnerability is used to execute script in the browser of an authenticated administrator then the script may be able to gain access to the administrator's session or other potentially sensitive information.");
  script_tag(name: "vuldetect" , value:"Check the version/patches");
  script_tag(name: "solution" , value:"Update to Citrix XenMobile 10.3 Rolling Patch 1/Citrix XenMobile 10.1 Rolling Patch 4 or newer.");
  script_tag(name: "summary" , value:"A Cross-Site Scripting (XSS) vulnerability has been identified in XenMobile Server 10.x.");
  script_tag(name: "affected" , value:"All versions of Citrix XenMobile Server 10.0
+
 Citrix XenMobile Server 10.1 earlier than Rolling Patch 4
+
 Citrix XenMobile Server 10.3 earlier than Rolling Patch 1");
  script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-03-18 11:15:00 +0100 (Fri, 18 Mar 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_citrix_xenmobile_detect.nasl");
  script_require_ports("Services/www", 80, 443, 8443 );
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("citrix_xenmobile_server/patch_release", "citrix_xenmobile_server/version");
+
  exit(0);
 }
 

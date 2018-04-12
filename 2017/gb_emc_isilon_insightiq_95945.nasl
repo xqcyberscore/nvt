@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_insightiq_95945.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_emc_isilon_insightiq_95945.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # EMC Isilon InsightIQ Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2017-2765");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5441 $");
+ script_version ("$Revision: 9436 $");
 
  script_name("EMC Isilon InsightIQ Authentication Bypass Vulnerability");
 
@@ -50,14 +50,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-02-02 11:06:53 +0100 (Thu, 02 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_emc_isilon_insightiq_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("emc/isilon_insightiq/version");
 
  exit(0);

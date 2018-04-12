@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0010_esxi6_remote_active.nasl 3992 2016-09-07 12:27:28Z cfi $
+# $Id: gb_VMSA-2016-0010_esxi6_remote_active.nasl 9440 2018-04-11 10:37:56Z cfischer $
 #
 # VMSA-2016-0010 (CVE-2016-5331) ESXi: VMware product updates address multiple important security issues (remote active check)
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-5331");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3992 $");
+ script_version ("$Revision: 9440 $");
 
  script_name("VMSA-2016-0010 (CVE-2016-5331) ESXi: VMware product updates address multiple important security issues (remote active check)");
 
@@ -44,7 +44,7 @@ this issue to set arbitrary HTTP response headers and cookies, which may allow f
 
  script_tag(name: "affected" , value:"ESXi 6.0 without patch ESXi600-201603101-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-07 14:27:28 +0200 (Wed, 07 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:37:56 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-08-08 13:06:24 +0200 (Mon, 08 Aug 2016)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_tag(name:"solution_type", value:"VendorFix");
@@ -53,7 +53,6 @@ this issue to set arbitrary HTTP response headers and cookies, which may allow f
  script_copyright("This script is Copyright (C) 2016reenbone Networks GmbH");
  script_dependencies("gb_vmware_esx_web_detect.nasl");
  script_mandatory_keys("VMware/ESX/port");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  exit(0);
 
@@ -86,5 +85,4 @@ if( buf =~ "HTTP/1\.. 303" )
   }
 }
 
-exit( 0 );
-
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Cisco Unified Computing System Manager Remote Command Execution Vulnerability
 #
@@ -33,21 +33,21 @@ if (description)
  script_cve_id("CVE-2015-6435");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5782 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("Cisco Unified Computing System Manager Remote Command Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160120-ucsm");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-01-25 15:34:07 +0100 (Mon, 25 Jan 2016)");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"solution_type", value:"VendorFix");
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_ucs_manager_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco_ucs_manager/installed");
 
  script_tag(name:"impact",    value: "An exploit could allow the attacker to execute arbitrary commands on the Cisco UCS Manager or the Cisco Firepower 9000 Series appliance.");
@@ -103,4 +103,3 @@ if( fix )
 }
 
 exit( 99 );
-

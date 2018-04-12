@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_79195.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_joomla_79195.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Joomla! Core Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-8562", "CVE-2015-8563", "CVE-2015-8564", "CVE-2015-8565");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 7277 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Joomla! Core Remote Code Execution Vulnerability");
 
@@ -52,14 +52,13 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-12-16 15:35:12 +0100 (Wed, 16 Dec 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
 
  exit(0);
@@ -119,4 +118,3 @@ foreach inj ( injection )
 }
 
 exit( 99 );
-

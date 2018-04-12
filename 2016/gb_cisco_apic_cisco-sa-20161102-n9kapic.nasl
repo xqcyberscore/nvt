@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20161102-n9kapic.nasl 4410 2016-11-03 09:23:27Z ckuerste $
+# $Id: gb_cisco_apic_cisco-sa-20161102-n9kapic.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6457");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4410 $");
+ script_version ("$Revision: 9437 $");
 
  script_name("Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability");
 
@@ -57,15 +57,15 @@ device.");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-03 10:23:27 +0100 (Thu, 03 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-11-03 13:54:56 +0700 (Thu, 03 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_apic_web_detect.nasl");
  script_require_ports("Services/www", 80, 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
+
  exit(0);
 }
 
@@ -92,4 +92,3 @@ foreach af ( affected )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_markvision_enterprise_71623.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_lexmark_markvision_enterprise_71623.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Lexmark MarkVision Enterprise Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8741");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 6214 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Lexmark MarkVision Enterprise Remote Code Execution Vulnerability");
 
@@ -55,14 +55,13 @@ vulnerability because it fails to sufficiently sanitize user-supplied input.");
 
  script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-01-16 13:54:49 +0100 (Fri, 16 Jan 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_lexmark_markvision_enterprise_detect.nasl");
  script_require_ports("Services/www", 9788);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("lexmark_markvision_enterprise/installed");
 
  exit(0);
@@ -76,9 +75,7 @@ include("global_settings.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 
 success = 'OpenVAS_' + rand();
 rand = rand() + '_' + rand();

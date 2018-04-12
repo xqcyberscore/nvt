@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_universal_management_xxe_08_16.nasl 3846 2016-08-16 16:16:41Z mime $
+# $Id: gb_sonicwall_universal_management_xxe_08_16.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # Dell SonicWALL GMS XML External Entity (XXE) Injection
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:dell:sonicwall_global_management_system";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105873");
- script_version ("$Revision: 3846 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,18 +43,17 @@ if (description)
  script_tag(name: "solution" , value:"GMS/Analyzer/UMA Hotfix 174525 is available");
 
  script_xref( name:"URL", value:"https://www.digitaldefense.com/vrt-discoveries/");
- script_xref( name:"URL", value:"https://support.software.dell.com/product-notification/207447?productName=SonicWALL%20GMS");
+ script_xref( name:"URL", value:"https://www.sonicwall.com/en-us/support/knowledge-base/170502432594958");
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-16 18:16:41 +0200 (Tue, 16 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-08-16 14:22:12 +0200 (Tue, 16 Aug 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_sonicwall_universal_management_detect.nasl");
  script_require_ports(21009);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("sonicwall/global_management_system/installed");
 
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_sec_2016_004.nasl 3851 2016-08-17 16:18:26Z mime $
+# $Id: gb_freepbx_sec_2016_004.nasl 9437 2018-04-11 10:24:03Z cfischer $
 #
 # FreePBX Remote Command Execution with Privileged Escalation
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:freepbx:freepbx";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105874");
- script_version ("$Revision: 3851 $");
+ script_version ("$Revision: 9437 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
  script_name("FreePBX Remote Command Execution with Privileged Escalation");
 
- script_xref(name:"URL", value:"http://wiki.freepbx.org/display/FOP/2016-08-09+CVE+Remote+Command+Execution+with+Privileged+Escalation");
+ script_xref(name:"URL", value:"https://wiki.freepbx.org/display/FOP/2016-08-09+CVE+Remote+Command+Execution+with+Privileged+Escalation");
 
  script_tag(name: "vuldetect" , value:"Send two special crafted HTTP POST requests and check the response");
  script_tag(name: "insight" , value:"The recordings module lets you playback recorded files. Due to a coding error, certain Ajax requests were unauthenticated when requesting files. This allowed shell execution and privileged escalation if triggered correctly.");
@@ -47,14 +47,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-17 18:18:26 +0200 (Wed, 17 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-08-17 16:55:21 +0200 (Wed, 17 Aug 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_freepbx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("freepbx/installed");
 
  exit(0);
@@ -162,4 +161,3 @@ if( buf =~ "uid=[0-9]+.*gid=[0-9]+" )
 }
 
 exit( 99 );
-

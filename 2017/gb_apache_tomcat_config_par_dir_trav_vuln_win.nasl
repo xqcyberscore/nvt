@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810735");
-  script_version("$Revision: 9178 $");
+  script_version("$Revision: 9439 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 15:58:11 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:35:37 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 14:51:52 +0530 (Mon, 10 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Config Parameter Directory Traversal Vulnerability (Windows)");
@@ -56,12 +56,10 @@ if(description)
   ## At the moment not sure about 9, 8 and 6 branches)
   script_tag(name:"affected", value:"Apache Tomcat versions 7.0.76 on Windows.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  22nd March, 2018. Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Apr/24");
   script_xref(name:"URL", value:"http://www.defensecode.com/advisories/DC-2017-03-001_DefenseCode_ThunderScan_SAST_Apache_Tomcat_Security_Advisory.pdf");
   script_category(ACT_GATHER_INFO);

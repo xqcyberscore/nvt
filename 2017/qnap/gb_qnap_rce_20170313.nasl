@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_rce_20170313.nasl 8119 2017-12-14 09:19:28Z teissa $
+# $Id: gb_qnap_rce_20170313.nasl 9436 2018-04-11 09:39:34Z cfischer $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2017-5227","CVE-2017-6361","CVE-2017-6360","CVE-2017-6359");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8119 $");
+ script_version ("$Revision: 9436 $");
 
  script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
 
@@ -63,14 +63,13 @@ arbitrary commands on the targeted device.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-14 10:19:28 +0100 (Thu, 14 Dec 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-04-07 11:52:09 +0200 (Fri, 07 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_qnap_nas_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("qnap/qts");
 
  exit(0);

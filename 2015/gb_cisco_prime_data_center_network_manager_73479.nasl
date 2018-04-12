@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Cisco Data Center Network Manager Directory Traversal Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0666");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 6345 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Cisco Data Center Network Manager Directory Traversal Vulnerability");
 
@@ -51,14 +51,13 @@ vulnerability.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-04-14 14:19:43 +0200 (Tue, 14 Apr 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_prime_data_center_network_manager_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco_prime_dcnm/version");
 
  exit(0);
@@ -83,8 +82,7 @@ if( version_in_range( version:vers, test_version:"6.3.1", test_version2:"7.1.0" 
              'Fixed Version:     7.1(1)\n';
 
     security_message( port:port, data:report );
-    exit (0 );
+    exit( 0 );
 }
 
-exit( 0 );
-
+exit( 99 );

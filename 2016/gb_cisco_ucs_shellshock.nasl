@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_shellshock.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_cisco_ucs_shellshock.nasl 9438 2018-04-11 10:28:36Z cfischer $
 #
 # Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)
 #
@@ -33,26 +33,26 @@ if (description)
  script_cve_id("CVE-2014-6278");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5612 $");
+ script_version ("$Revision: 9438 $");
 
  script_name("Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)");
 
  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCur01379");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-03-17 09:25:23 +0100 (Thu, 17 Mar 2016)");
  script_category(ACT_ATTACK);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_ucs_manager_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("cisco_ucs_manager/installed");
 
  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"impact",    value: "Successful exploitation will allow remote  or local attackers to inject  shell commmands, allowing local privilege escalation or remote command execution depending on the application vector.");
+ script_tag(name:"impact",    value: "Successful exploitation will allow remote  or local attackers to inject  shell commands, allowing local privilege escalation or remote command execution depending on the application vector.");
  script_tag(name:"vuldetect", value: "Try to execute the `id' command by sending a crafted HTTP GET request and check the response.");
  script_tag(name:"insight",   value: "GNU bash contains a flaw that is triggered when evaluating environment variables passed from another environment. After processing a function definition, bash continues to process trailing strings.");
  script_tag(name:"solution",  value: "See vendor advisory for a solution");
@@ -98,4 +98,3 @@ foreach attack ( attacks )
 }
 
 exit( 99 );
-

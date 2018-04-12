@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendio_74786.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: gb_sendio_74786.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Sendio ESP Multiple Information Disclosure Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-0999","CVE-2014-8391");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6141 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Sendio ESP Multiple Information Disclosure Vulnerabilities");
 
@@ -53,14 +53,13 @@ sessions by reading the jsessionid parameter in the Referrer HTTP header.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-10 11:20:38 +0200 (Wed, 10 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_sendio_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("sendio/installed");
 
  exit(0);
@@ -95,4 +94,3 @@ if( VULN )
 }
 
 exit( 99 );
-

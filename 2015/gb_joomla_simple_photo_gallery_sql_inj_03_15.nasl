@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105243");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6404 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability");
 
@@ -43,21 +43,22 @@ application, access or modify data, or exploit latent vulnerabilities in the und
 
  script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
  script_tag(name: "insight" , value:"Input of the 'albumid' parameter is not properly sanitized.");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
+ script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+ Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+ product or replace the product by another one.");
  script_tag(name: "summary" , value:"Joomla! Simple Photo Gallery is prone to an SQL-injection vulnerability because it fails
 to sufficiently sanitize user-supplied data before using it in an SQL query.");
- script_tag(name:"solution_type", value: "NoneAvailable");
+ script_tag(name:"solution_type", value: "WillNotFix");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-03-24 13:13:33 +0100 (Tue, 24 Mar 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
 
  exit(0);
@@ -82,5 +83,4 @@ if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) 
   exit(0);
 }
 
-exit(0);
-
+exit(99);

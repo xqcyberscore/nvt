@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_ari_auth_70188.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_freepbx_ari_auth_70188.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # FreePBX 'index.php' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-7235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6254 $");
+ script_version ("$Revision: 9442 $");
 
  script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
 
@@ -59,14 +59,13 @@ the application fails to sufficiently sanitize input data.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_freepbx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("freepbx/installed");
 
  exit(0);
@@ -94,7 +93,7 @@ cookie = 'ari_auth=a%3A2%3A%7Bi%3A0%3Bs%3A88%3A%22rT9bcNlEJv%2F1G9j9ZcqPUej1ntSH
          'z4E%2BF2Yc3In070LIWRFCh1wanriTUnYC8%2F%2Bg%3D%3D%22%3Bi%3A1%3Bs%3A32%3A%224ffe329af509978387' +
          'ac4af2fbb3a694%22%3B%7D';
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = 'GET ' + dir + '/recordings/index.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' + 
@@ -114,4 +113,3 @@ if( ">Logout<" >< result && ">Call Monitor<" >< result && ">Voicemail<" >< resul
 }
 
 exit( 99 );
-

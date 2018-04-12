@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_04.nasl 7530 2017-10-20 13:14:01Z cfischer $
+# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_04.nasl 9438 2018-04-11 10:28:36Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 04
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802086");
-  script_version("$Revision: 7530 $");
+  script_version("$Revision: 9438 $");
   script_cve_id("CVE-2014-6277");
   script_bugtraq_id(70165);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-10-08 12:11:49 +0530 (Wed, 08 Oct 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 04");
@@ -49,7 +49,7 @@ if(description)
   strings. Incomplete fix to CVE-2014-7169, CVE-2014-6271");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  or local attackers to inject  shell commmands, allowing local privilege
+  or local attackers to inject  shell commands, allowing local privilege
   escalation or remote command execution depending on the application vector.
 
   Impact Level: System/Application");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monsta_ftp_mult_vuln.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: gb_monsta_ftp_mult_vuln.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # Monsta FTP Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:monsta:ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806050");
-  script_version("$Revision: 6141 $");
+  script_version("$Revision: 9442 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 09:23:14 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Monsta FTP Multiple Vulnerabilities");
@@ -44,7 +44,9 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Insufficient sanitization of user supplied input by index.php script.
+
   - No CSRF token exists when making some POST requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -65,36 +67,26 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_monsta_ftp_detect.nasl");
-  script_mandatory_keys("Monsta-FTP-master/Installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Monsta-FTP-master/Installed");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/?openFolder="/><script>alert(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"alert\(document.cookie\)",
    extra_check:make_list("<title>Monsta FTP", 'value="Login"')))
@@ -103,3 +95,5 @@ if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

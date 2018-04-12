@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_CVE_2015_1158.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: gb_cups_CVE_2015_1158.nasl 9442 2018-04-11 12:22:50Z cfischer $
 #
 # CUPS < 2.0.3 Multiple Vulnerabilities
 #
@@ -24,6 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:apple:cups";
 
 if (description)
@@ -33,7 +34,7 @@ if (description)
  script_bugtraq_id(75098, 75106);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 7165 $");
+ script_version("$Revision: 9442 $");
 
  script_name("CUPS < 2.0.3 Multiple Vulnerabilities");
 
@@ -63,7 +64,7 @@ exploited when a user browses the web. In certain cases, the CGI template can
 echo user input to file rather than escaping the text first. This may be used
 to set up a reflected XSS attack in the QUERY parameter of the web interface
 help page. By default, many linux distributions run with the web interface
-activated; OS X has the web interface deactivated by default.");
+activated, OS X has the web interface deactivated by default.");
 
  script_tag(name: "solution" , value:"A patch addressing these issues has been
 released for all supported versions of CUPS. For the version 2.0 branch (the latest
@@ -77,14 +78,13 @@ to a privilege escalation due to a memory management error.");
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-15 15:24:12 +0200 (Mon, 15 Jun 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("secpod_cups_detect.nasl");
  script_require_ports("Services/www", 631);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("CUPS/installed");
 
  exit(0);
@@ -94,15 +94,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-## Variable Initialization
-cupsPort = "";
-
 if(!cupsPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##construct attack url
 url = "/help/?QUERY=%3Ca%20href=%22%20%3E%3Cscript%3Ealert%28document.cooki" +
       "e%29%3C/script%3E%3C!--&SEARCH=Search";
 
@@ -113,4 +108,5 @@ if(http_vuln_check(port:cupsPort, url:url, pattern:"script>alert\(document.cooki
   security_message(port:cupsPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

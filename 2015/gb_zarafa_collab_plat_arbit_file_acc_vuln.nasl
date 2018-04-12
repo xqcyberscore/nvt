@@ -30,12 +30,13 @@ CPE = "cpe:/a:zarafa:zarafa_collaboration_platform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805708");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 9442 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 15:19:25 +0530 (Fri, 03 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
+  script_cve_id("CVE-2015-3436");
   script_name("Zarafa Collaboration Platform Arbitrary File Access Vulnerability");
 
   script_tag(name: "summary" , value:"This host is installed with Zarafa
@@ -71,25 +72,18 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_zarafa_webapp_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("zarafa_zcp/installed");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-zcpVer = "";
-zcpPort = "";
-
-## get the port
 if(!zcpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!zcpVer = get_app_version(cpe:CPE, port:zcpPort)){
   exit(0);
 }
@@ -116,3 +110,5 @@ if(vuln)
   security_message(data:report, port:zcpPort);
   exit(0);
 }
+
+exit(99);
