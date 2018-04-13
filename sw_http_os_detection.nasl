@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9227 2018-03-28 06:08:58Z cfischer $
+# $Id: sw_http_os_detection.nasl 9459 2018-04-12 10:23:11Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9227 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:08:58 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 12:23:11 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -206,7 +206,7 @@ function check_http_banner( port ) {
       }
     }
 
-    if( "HPE-iLO-Server" >< banner ) {
+    if( "HPE-iLO-Server" >< banner || "HP-iLO-Server" >< banner ) {
       register_and_report_os( os:"HP iLO", cpe:"cpe:/o:hp:integrated_lights-out", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return banner;
     }

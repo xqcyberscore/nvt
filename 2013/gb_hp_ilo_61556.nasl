@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_61556.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_hp_ilo_61556.nasl 9462 2018-04-12 13:12:54Z cfischer $
 #
 # HP Integrated Lights-Out Unspecified Authentication Bypass Vulnerability
 #
@@ -25,76 +25,65 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103782";
-CPE = "cpe:/o:hp:integrated_lights-out";
-
-tag_insight = "Bypass authentication via unknown vectors.";
-
-tag_impact = "An attacker can exploit this issue to bypass the authentication
-mechanism and perform unauthorized actions on the affected computer.
-This may aid in further attacks.";
-
-tag_affected = "HP Integrated Lights-Out 3 (aka iLO3) firmware before 1.60 and 4
-(aka iLO4) firmware before 1.30";
-
-tag_summary = "HP Integrated Lights-Out is prone to an authentication-bypass
-vulnerability.";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the firmware version.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103782");
  script_bugtraq_id(61556);
  script_cve_id("CVE-2013-4805");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 6755 $");
-
+ script_version("$Revision: 9462 $");
  script_name("HP Integrated Lights-Out  Unspecified Authentication Bypass Vulnerability");
-
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61556");
- script_xref(name:"URL", value:"http://www.hp.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-09-10 14:47:03 +0200 (Tue, 10 Sep 2013)");
  script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("ilo_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("HP_ILO/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61556");
+ script_xref(name:"URL", value:"http://www.hp.com/");
+
+ script_tag(name : "impact" , value : "An attacker can exploit this issue to bypass the authentication
+mechanism and perform unauthorized actions on the affected computer.
+This may aid in further attacks.");
+ script_tag(name : "vuldetect" , value : "Check the firmware version.");
+ script_tag(name : "insight" , value : "Bypass authentication via unknown vectors.");
+ script_tag(name : "solution" , value : "Updates are available.");
+ script_tag(name : "summary" , value : "HP Integrated Lights-Out is prone to an authentication-bypass
+vulnerability.");
+ script_tag(name : "affected" , value : "HP Integrated Lights-Out 3 (aka iLO3) firmware before 1.60 and 4
+(aka iLO4) firmware before 1.30");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(fw_vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
+cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe  = infos['cpe'];
+port = infos['port'];
+if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );
 
-  if(!ilo_vers = get_kb_item('www/' + port + '/HP_ILO/ilo_version'))exit(0);
+ilo_vers = get_kb_item( "www/" + port + "/HP_ILO/ilo_version" );
+if( ilo_vers !~ "^(3|4)$" ) exit( 99 );
 
-  if(int(ilo_vers) == 3)      t_vers = '1.60';
-  else if(int(ilo_vers) == 4) t_vers = '1.30';
+if( int( ilo_vers ) == 3 )
+  fix = "1.60";
+else
+  fix = "1.30";
 
-  if(version_is_less(version:fw_vers, test_version:t_vers)) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if( version_is_less( version:fw_vers, test_version:fix ) ) {
+  report = 'ILO Generation: ' + ilo_vers + '\nInstalled Firmware Version: ' + fw_vers + '\nFixed Firmware Version:     ' + fix + '\n';
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

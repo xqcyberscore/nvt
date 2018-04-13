@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 8940 2018-02-23 13:47:02Z santu $
-# Description: HP Integrated Lights-Out Detection
+# $Id: ilo_detect.nasl 9462 2018-04-12 13:12:54Z cfischer $
+#
+# HP Integrated Lights-Out Detection
 #
 # Authors:
 # This script was written by David Maciejak <david dot maciejak at kyxar dot fr>
@@ -8,7 +10,7 @@
 # - Description
 # Modifications by Daniel Reich <me at danielreich dot com>
 # - Added detection for HP Remote Insight ILO Edition II
-# - Removed &copy; in original string, some versions flip the 
+# - Removed &copy; in original string, some versions flip the
 #   order of Copyright and &copy;
 #
 # Copyright:
@@ -26,108 +28,128 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.20285");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8940 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("HP Integrated Lights-Out Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.20285");
+  script_version("$Revision: 9462 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("HP Integrated Lights-Out Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- tag_summary =
-"The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
 
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2005 David Maciejak");
- script_family("Product detection");
- script_require_ports("Services/www", 80);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_exclude_keys("Settings/disable_cgi_scanning");
- exit(0);
-
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-port = get_http_port(default:443);
+port = get_http_port( default:443 );
+r = http_get_cache( item:"/", port:port );
+if( isnull( r ) ) exit( 0 );
 
-r = http_get_cache(item:"/", port:port);
-if( r == NULL )exit(0);
+if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett-Packard Development Company" >< r ) ||
+    ( "HP Integrated Lights-Out" >< r && egrep( pattern:"Copyright .+ Hewlett-Packard Development Company", string:r ) ) ||
+    ( "<title>HP Remote Insight<" >< r && egrep( pattern:"Hewlett-Packard Development Company", string:r ) ) ||
+    ( r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
+    "Server: HP-iLO-Server" >< r || "Server: HPE-iLO-Server" >< r ) {
 
-if((r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett-Packard Development Company" >< r) ||
-   ("HP Integrated Lights-Out" >< r && egrep(pattern:"Copyright .+ Hewlett-Packard Development Company", string:r)) ||
-   ("<title>HP Remote Insight<" >< r &&  egrep(pattern:"Hewlett-Packard Development Company", string:r) ) ||
-   (r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
-   "Server: HP-iLO-Server" >< r) {
-
-  vers = 'unknown';
-  ilo_vers = 'unknown';
-  concluded = 'Remote probe';
-  sso = 0;
+  fw_vers  = "unknown";
+  ilo_vers = "unknown";
+  sso      = 0;
+  install  = "/";
 
   url = '/xmldata?item=All';
-  req = http_get(item:url, port:port);
-  buf = http_send_recv(port:port, data:req, bodyonly:TRUE);
+  req = http_get( item:url, port:port );
+  buf = http_send_recv( port:port, data:req, bodyonly:TRUE );
 
-  if("Integrated Lights-Out" >< buf) {
-    fw_version = eregmatch(pattern:"<FWRI>([^<]+)</FWRI>", string:buf);
-    if(!isnull(fw_version[1]))vers = fw_version[1];
+  if( "Integrated Lights-Out" >< buf ) {
 
-    if("<PN>Integrated Lights-Out (iLO)</PN>" >< buf) {
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    fw_version = eregmatch( pattern:"<FWRI>([^<]+)</FWRI>", string:buf );
+    if( ! isnull( fw_version[1] ) ) fw_vers = fw_version[1];
+
+    if( "<PN>Integrated Lights-Out (iLO)</PN>" >< buf ) {
       ilo_vers = 1;
     } else {
-     ilo_version = eregmatch(pattern:"<PN>Integrated Lights-Out ([0-9]+) [^<]+</PN>", string:buf);
-     if(!isnull(ilo_version[1]))ilo_vers = int(ilo_version[1]);
+      ilo_version = eregmatch( pattern:"<PN>Integrated Lights-Out ([0-9]+) [^<]+</PN>", string:buf );
+      if( ! isnull( ilo_version[1] ) ) ilo_vers = int( ilo_version[1] );
     }
 
-    _sso = eregmatch(pattern:"<SSO>(0|1)</SSO>", string:buf);
-    if(!isnull(_sso[1]))sso = int(_sso[1]);
+    _sso = eregmatch( pattern:"<SSO>(0|1)</SSO>", string:buf );
+    if( ! isnull( _sso[1] ) ) {
+      sso = int( _sso[1] );
+      extra = "SSO Status: " + _sso[0];
+    }
+  }
 
-  }  
+  if( ( fw_vers == 'unknown' || ilo_vers == 'unknown' ) && r =~ "<title>iLO [0-9]+</title>" ) {
 
-  if((vers == 'unknown' || ilo_vers == 'unknown') && r =~ "<title>iLO [0-9]+</title>") {
     url = "/json/login_session";
-    req = http_get(item:url, port:port);
-    buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
-    if('{"secjmp' >< buf) {
-      fw_version = eregmatch(pattern:'version":"([^"]+)"', string:buf);
-      if(!isnull(fw_version[1]))vers = fw_version[1];
+    req = http_get( item:url, port:port );
+    buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
-      ilo_version = eregmatch(pattern:"<title>iLO ([0-9]+)</title>", string:r);
-      if(!isnull(ilo_version[1]))ilo_vers = int(ilo_version[1]);
-    }  
+    if( '{"secjmp' >< buf ) {
 
-  }  
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-  if(vers != 'unknown') concluded = fw_version[0];
+      fw_version = eregmatch( pattern:'version":"([^"]+)"', string:buf );
+      if( ! isnull( fw_version[1] ) ) fw_vers = fw_version[1];
 
-  set_kb_item(name: string("www/", port, "/HP_ILO"), value: TRUE);
-  set_kb_item(name: string("www/", port, "/HP_ILO/fw_version"), value: vers);
-  set_kb_item(name: string("www/", port, "/HP_ILO/ilo_version"), value: ilo_vers);
-  set_kb_item(name: string("www/", port, "/HP_ILO/sso"), value: sso);
-  set_kb_item(name:"HP_ILO/installed",value:TRUE);
+      ilo_version = eregmatch( pattern:"<title>iLO ([0-9]+)</title>", string:r );
+      if( ! isnull( ilo_version[1] ) ) ilo_vers = int( ilo_version[1] );
+    }
+  }
 
-  cpe = 'cpe:/o:hp:integrated_lights-out';
+  cpe = "cpe:/o:hp:integrated_lights-out";
 
-  if(vers != 'unknown')
-    cpe += ':' + vers;
+  if( ilo_vers != "unknown" ) {
+    app_name = "HP Integrated Lights-Out Generation " + ilo_vers + " Firmware";
+    concluded += ilo_version[0];
+    cpe += "_" + ilo_vers + "_firmware";
+  } else {
+    app_name = "HP Integrated Lights-Out Unknown Generation Firmware";
+    cpe += "_unkown_firmware";
+  }
 
-  register_product(cpe:cpe, location:'/', port:port);
-  log_message(data: build_detection_report(app:"HP Integrated Lights-Out " + ilo_vers, version:vers, install:'/', cpe:cpe, concluded:concluded),
-              port:port);
+  if( fw_vers != "unknown" ) {
+    if( concluded ) concluded += '\n';
+    concluded += fw_version[0];
+    cpe += ':' + fw_vers;
+  }
 
-  exit(0);
+  set_kb_item( name:"www/" + port + "/HP_ILO", value:TRUE );
+  set_kb_item( name:"www/" + port + "/HP_ILO/fw_version", value:fw_vers );
+  set_kb_item( name:"www/" + port + "/HP_ILO/ilo_version", value:ilo_vers );
+  set_kb_item( name:"www/" + port + "/HP_ILO/sso", value:sso );
+  set_kb_item( name:"HP_ILO/installed", value:TRUE );
 
-}  
-  
-exit(0);
+  register_and_report_os( os:app_name, cpe:cpe, desc:"HP Integrated Lights-Out Detection", runs_key:"unixoide" );
+
+  register_product( cpe:cpe, location:install, port:port );
+  log_message( data:build_detection_report( app:app_name,
+                                            version:fw_vers,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:concluded,
+                                            concludedUrl:conclUrl,
+                                            extra:extra ),
+                                            port:port );
+}
+
+exit( 0 );

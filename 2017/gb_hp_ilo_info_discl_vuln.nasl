@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_info_discl_vuln.nasl 7001 2017-08-25 02:23:41Z ckuersteiner $
+# $Id: gb_hp_ilo_info_discl_vuln.nasl 9462 2018-04-12 13:12:54Z cfischer $
 #
 # HP Integrated Lights-Out 3 Information Disclosure Vulnerability 
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:hp:integrated_lights-out";
+CPE = "cpe:/o:hp:integrated_lights-out_3_firmware";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106493");
-  script_version("$Revision: 7001 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-25 04:23:41 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 9462 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-01-05 12:42:59 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -79,15 +79,10 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (!ilo_version = get_kb_item('www/' + port + '/HP_ILO/ilo_version'))
-  exit(0);
-
-if (ilo_version == 3) {
-  if (version_is_less(version: version, test_version: "1.88")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "1.88");
-    security_message(port: port, data: report);
-  }
+if (version_is_less(version: version, test_version: "1.88")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.88");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872688");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9465 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 04:49:02 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 07:18:44 +0200 (Fri, 19 May 2017)");
   script_cve_id("CVE-2016-9387", "CVE-2016-9388", "CVE-2016-9389", "CVE-2016-9390", 
                 "CVE-2016-9391", "CVE-2016-9392", "CVE-2016-9393", "CVE-2016-9394", 
                 "CVE-2016-9560", "CVE-2016-9591", "CVE-2016-9600", "CVE-2016-10251");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for jasper FEDORA-2017-da0b00fd64");
   script_tag(name: "summary", value: "Check the version of jasper");

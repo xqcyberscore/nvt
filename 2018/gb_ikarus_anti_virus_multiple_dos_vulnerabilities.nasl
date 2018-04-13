@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl 8288 2018-01-04 08:04:03Z asteins $
+# $Id: gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl 9458 2018-04-12 09:40:09Z ckuersteiner $
 #
 # IKARUS anti.virus Multiple Denial of Service/BSOD Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112158");
-  script_version("$Revision: 8288 $");
+  script_version("$Revision: 9458 $");
   script_cve_id("CVE-2017-17804", "CVE-2017-17795", "CVE-2017-17797");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 09:04:03 +0100 (Thu, 04 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 11:40:09 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:32:01 +0100 (Thu, 04 Jan 2018)");
 
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"IKARUS anti.virus up to and including version 2.16.20.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 04th January, 2018.
-Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 12th April, 2018. Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");

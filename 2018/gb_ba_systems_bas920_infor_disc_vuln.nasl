@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 8303 2018-01-05 13:16:49Z santu $
+# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 9458 2018-04-12 09:40:09Z ckuersteiner $
 #
 # Building Automation Systems BAS920 Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:building_automation_systems:bas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812372");
-  script_version("$Revision: 8303 $");
+  script_version("$Revision: 9458 $");
   script_cve_id("CVE-2017-17974");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 14:16:49 +0100 (Fri, 05 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 11:40:09 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 11:58:58 +0530 (Wed, 03 Jan 2018)");
   script_name("Building Automation Systems BAS920 Information Disclosure Vulnerability");
 
@@ -55,10 +55,8 @@ if(description)
   Firmware 01.01.00*, HTTPserv 00002, and Script 02.*. Other models may be also
   affected.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  03rd Jan, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
-  http://www.basystems.dk");
+  script_tag(name:"solution", value:"No solution or patch is available as of 12th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

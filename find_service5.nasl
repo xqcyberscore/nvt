@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 8704 2018-02-07 14:32:07Z cfischer $
+# $Id: find_service5.nasl 9459 2018-04-12 10:23:11Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 8704 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
+  script_version("$Revision: 9459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 12:23:11 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -83,6 +83,8 @@ set_kb_item( name:k, value:r );
 if( '\0' >< r )
   set_kb_item( name:k + "Hex", value:hexstr( r ) );
 
+rhexstr = hexstr( r );
+
 if( r =~ "^SIP/2\.0" || r =~ "^Via: SIP/2\.0" ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
   log_message( port:port, data:"A service supporting the SIP protocol was idendified." );
@@ -99,8 +101,33 @@ if( "<<<check_mk>>>" >< r || "<<<uptime>>>" >< r || "<<<services>>>" >< r || "<<
   exit( 0 );
 }
 
+# 0x00:  61 63 70 70 00 03 00 01 3A 47 07 FB 00 00 00 01    acpp....:G......
+# 0x10:  00 00 00 00 31 38 30 2F 32 39 2E 32 32 35 2E 32    ....180/29.225.2
+# 0x20:  FF FF FF FA 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x30:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x40:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x50:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x60:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x70:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+#
+# or
+#
+# 0x00:  61 63 70 70 00 03 00 00 35 BC 07 F0 00 00 00 01    acpp....5.......
+# 0x10:  00 00 00 00 31 36 30 2F 33 2E 31 34 2E 31 32 33    ....160/3.14.123
+# 0x20:  FF FF FF FA 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x30:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x40:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x50:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x60:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x70:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+if( rhexstr =~ "^61637070000[0-9]000[0-9]" ) { # nb: The following parts seems to be randomly so just keep the check that short...
+  register_service( port:port, proto:"airport-admin", message:"A Apple AirPort Admin service seems to be running on this port." );
+  log_message( port:port, data:"A Apple AirPort Admin service seems to be running on this port." );
+  exit( 0 );
+}
+
 # 0x00:  70 02 77 61                                        p.wa 
-if( hexstr( r ) =~ "^70027761$" ) {
+if( rhexstr =~ "^70027761$" ) {
   register_service( port:port, proto:"activemq_mqtt", message:"A ActiveMQ MQTT service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ MQTT service seems to be running on this port." );
   exit( 0 );

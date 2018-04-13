@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 8811 2018-02-14 12:41:44Z cfischer $
+# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 9453 2018-04-12 06:30:01Z cfischer $
 #
 # vBulletin 'url' GET Parameter Open Redirect Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812677");
-  script_version("$Revision: 8811 $");
+  script_version("$Revision: 9453 $");
   script_cve_id("CVE-2018-6200");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 08:30:01 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 12:48:53 +0530 (Thu, 08 Feb 2018)");
   script_name("vBulletin 'url' GET Parameter Open Redirect Vulnerability");
 
@@ -55,8 +55,9 @@ if(description)
   4.2.5");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  08th February, 2018. Information regarding this issue will be updated once
+  12th April, 2018. Information regarding this issue will be updated once
   solution details are available.
+
   For details refer to https://www.vbulletin.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

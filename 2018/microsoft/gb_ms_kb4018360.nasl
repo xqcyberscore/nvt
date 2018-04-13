@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018360.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4018360.nasl 9452 2018-04-12 06:07:51Z santu $
 #
 # Microsoft Office Web Apps 2010 Service Pack 2 RCE Vulnerability (KB4018360)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812594");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9452 $");
   script_cve_id("CVE-2018-1028");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 08:07:51 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 10:43:18 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office Web Apps 2010 Service Pack 2 RCE Vulnerability (KB4018360)");
 
@@ -73,7 +73,7 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE );
+infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:office_web_apps', exit_no_version:TRUE );
 webappVer = infos['version'];
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){

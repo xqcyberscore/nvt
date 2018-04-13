@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_rce_vuln.nasl 9125 2018-03-17 15:45:54Z cfischer $
+# $Id: gb_squirrelmail_rce_vuln.nasl 9453 2018-04-12 06:30:01Z cfischer $
 #
 # SquirrelMail < 1.4.23 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106785");
-  script_version("$Revision: 9125 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-17 16:45:54 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9453 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-12 08:30:01 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-21 17:09:27 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -72,8 +72,8 @@ read files from the filesystem.");
   script_tag(name: "affected", value: "SquirrelMail 1.4.22 and prior as well as the trunk version
   (before r14650).");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 07th February, 2018. Information
-regarding this issue will be updated once the solution details are available.
+  script_tag(name: "solution", value: "No solution or patch is available as of 12th April, 2018. Information
+regarding this issue will be updated once solution details are available.
 
   Source-Code patches for both issues are available in the linked references.");
 

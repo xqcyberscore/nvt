@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_user_notes_list_view_sqli_vuln.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_joomla_user_notes_list_view_sqli_vuln.nasl 9465 2018-04-13 02:49:02Z ckuersteiner $
 #
 # Joomla 'User Notes list view' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812834");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9465 $");
   script_cve_id("CVE-2018-8045");
   script_bugtraq_id(103402);
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 04:49:02 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 11:51:14 +0530 (Tue, 20 Mar 2018)");
   script_name("Joomla 'User Notes list view' SQL Injection Vulnerability");
 

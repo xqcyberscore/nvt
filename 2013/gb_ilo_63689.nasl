@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilo_63689.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_ilo_63689.nasl 9462 2018-04-12 13:12:54Z cfischer $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -25,80 +25,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103859";
-CPE = "cpe:/o:hp:integrated_lights-out";
-
-tag_insight = "HP Integrated Lights-Out is prone to a Cross Site Scripting
-and an Information Disclosure Vulnerability.";
-
-tag_impact = "An attacker may leverage this issue to obtain sensitive information
-that may aid in further attacks or to execute arbitrary HTML and
-script code in an unsuspecting user's browser in the context of the
-affected site. This may allow the attacker to steal cookie-based
-authentication credentials and launch other attacks.";
-
-tag_affected = "Versions prior to HP Integrated Lights-Out 4 1.32 and HP Integrated
-Lights-Out 3 1.65 are vulnerable.";
-
-tag_summary = "HP Integrated Lights-Out is prone to multiple vulnerabilities.";
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the version of HP Integrated Lights-Out.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(63689,63691);
- script_cve_id("CVE-2013-4842","CVE-2013-4843");
- script_version ("$Revision: 6755 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103859");
+ script_bugtraq_id(63689, 63691);
+ script_cve_id("CVE-2013-4842", "CVE-2013-4843");
+ script_version("$Revision: 9462 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-
  script_name("HP Integrated Lights-Out Multiple Vulnerabilities");
- 
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63689");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63691");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-12-18 11:18:02 +0100 (Wed, 18 Dec 2013)");
  script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("ilo_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("HP_ILO/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63689");
+ script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63691");
+
+ script_tag(name : "impact" , value : "An attacker may leverage this issue to obtain sensitive information
+that may aid in further attacks or to execute arbitrary HTML and
+script code in an unsuspecting user's browser in the context of the
+affected site. This may allow the attacker to steal cookie-based
+authentication credentials and launch other attacks.");
+ script_tag(name : "vuldetect" , value : "Check the version of HP Integrated Lights-Out.");
+ script_tag(name : "insight" , value : "HP Integrated Lights-Out is prone to a Cross Site Scripting
+and an Information Disclosure Vulnerability.");
+ script_tag(name : "solution" , value : "Updates are available.");
+ script_tag(name : "summary" , value : "HP Integrated Lights-Out is prone to multiple vulnerabilities.");
+ script_tag(name : "affected" , value : "Versions prior to HP Integrated Lights-Out 4 1.32 and HP Integrated
+Lights-Out 3 1.65 are vulnerable.");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(fw_vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
+cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe  = infos['cpe'];
+port = infos['port'];
+if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );
 
-  if(!ilo_vers = get_kb_item('www/' + port + '/HP_ILO/ilo_version'))exit(0);
+ilo_vers = get_kb_item( "www/" + port + "/HP_ILO/ilo_version" );
+if( ilo_vers !~ "^(3|4)$" ) exit( 99 );
 
-  if(int(ilo_vers) == 3)      t_vers = '1.65';
-  else if(int(ilo_vers) == 4) t_vers = '1.32';
+if( int( ilo_vers ) == 3 )
+  fix = "1.65";
+else
+  fix = "1.32";
 
-  if(version_is_less(version:fw_vers, test_version:t_vers)) {
-
-      report = 'ILO Generation: ' + ilo_vers + '\nInstalled Firmware Version: ' + fw_vers + '\nFixed Firmware Version:     ' + t_vers + '\n';
-
-      security_message(port:port, data:report);
-      exit(0);
-  }
-
+if( version_is_less( version:fw_vers, test_version:fix ) ) {
+  report = 'ILO Generation: ' + ilo_vers + '\nInstalled Firmware Version: ' + fw_vers + '\nFixed Firmware Version:     ' + fix + '\n';
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

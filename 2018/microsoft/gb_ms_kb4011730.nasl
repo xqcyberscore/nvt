@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011730.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011730.nasl 9465 2018-04-13 02:49:02Z ckuersteiner $
 #
 # Microsoft Word 2016 Information Disclosure Vulnerability (KB4011730)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812980");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9465 $");
   script_cve_id("CVE-2018-0919");
   script_bugtraq_id(103311);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 04:49:02 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:11:06 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Word 2016 Information Disclosure Vulnerability (KB4011730)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln2.nasl 9159 2018-03-21 13:54:45Z asteins $
+# $Id: gb_moxa_awk_info_disc_vuln2.nasl 9453 2018-04-12 06:30:01Z cfischer $
 #
 # Moxa AWK Series serviceAgent Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:moxa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106742");
-  script_version("$Revision: 9159 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-21 14:54:45 +0100 (Wed, 21 Mar 2018) $");
+  script_version("$Revision: 9453 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-12 08:30:01 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Moxa AWK Series serviceAgent Information Disclosure Vulnerability");
 
@@ -62,8 +62,10 @@ attacker to retrieve potentially sensitive information, such as firmware version
 
   script_tag(name: "impact", value: "An unauthenticated attacker may obtain sentive information.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 21st March, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+upgrade to a newer release, disable respective features, remove the product or replace the product by
+another one.");
 
   script_xref(name: "URL", value: "http://www.talosintelligence.com/reports/TALOS-2016-0238/");
 
@@ -89,4 +91,4 @@ if (recv && "System info" >< recv) {
   exit(0);
 }
 
-exit(0);
+exit(99);

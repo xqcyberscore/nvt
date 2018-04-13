@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibar_xss_vuln1.nasl 8784 2018-02-13 10:23:33Z cfischer $
+# $Id: gb_dolibar_xss_vuln1.nasl 9458 2018-04-12 09:40:09Z ckuersteiner $
 #
-# Dolibarr <= 6.0.4 XSS Vulnerability
+# Dolibarr < 7.0.1 XSS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140652");
-  script_version("$Revision: 8784 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 11:23:33 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 9458 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-12 11:40:09 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-01-04 13:51:40 +0700 (Thu, 04 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,9 +40,9 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("Dolibarr <= 6.0.4 XSS Vulnerability");
+  script_name("Dolibarr < 7.0.1 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -60,8 +60,7 @@ ERP/CRM blocks some event attributes but neither onclick nor onscroll, which all
 
   script_tag(name: "affected", value: "Dolibarr ERP/CRM version 6.0.4 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 7.0.1 or later.");
 
   script_xref(name: "URL", value: "https://github.com/Dolibarr/dolibarr/issues/8000");
 
@@ -77,8 +76,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "6.0.4")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "7.0.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "7.0.1");
   security_message(port: port, data: report);
   exit(0);
 }

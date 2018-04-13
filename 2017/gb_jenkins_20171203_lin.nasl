@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171203_lin.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
+# $Id: gb_jenkins_20171203_lin.nasl 9461 2018-04-12 12:11:15Z jschulte $
 #
 # Jenkins 2.93 XSS Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113063");
-  script_version("$Revision: 9297 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 9461 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 14:11:15 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 12:28:29 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if( description )
   script_tag(name:"summary", value:"Jenkins through 2.93 is prone to an XSS vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if the vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An authenticated attacker can use a crafted tool name in a job configuration form to conduct XSS attacks.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to expose other users malicious code.");
+  script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to expose other users to malicious code.");
   script_tag(name:"affected", value:"Jenkins through version 2.93");
   script_tag(name:"solution", value:"Please refer to the vendor advisory for a workaround.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9208 2018-03-26 17:29:04Z cfischer $
+# $Id: find_service1.nasl 9459 2018-04-12 10:23:11Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9208 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 19:29:04 +0200 (Mon, 26 Mar 2018) $");
+  script_version("$Revision: 9459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-12 12:23:11 +0200 (Thu, 12 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -596,6 +596,15 @@ if( ereg( pattern:"^(Mon|Tue|Wed|Thu|Fri|Sat|Sun|Lun|Mar|Mer|Jeu|Ven|Sam|Dim) (J
     r =~ '^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9] +(0[1-9]|[12][0-9]|3[01])\\.(0[1-9]|1[0-2])\\.(19|20)[0-9][0-9][ \t\r\n]*$' ) {
   register_service( port:port, proto:"daytime" );
   log_message( port:port, data:"Daytime is running on this port" );
+  exit( 0 );
+}
+
+# On 623/tcp
+# 0x00:  00 00 00 02 09 00 00 00 01 00 00 00 00 00 00 00    ................
+# 0x10:  00                                                 .  
+if( rhexstr =~ "^0000000209000000010000000000000000$" ) {
+  register_service( port:port, proto:"ipmi-rmcp", message:"A IPMI RMCP service seems to be running on this port." );
+  log_message( port:port, data:"A IMPI RMCP service seems to be running on this port." );
   exit( 0 );
 }
 
