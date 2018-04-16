@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0799_1.nasl 9214 2018-03-27 08:11:34Z santu $
+# $Id: gb_suse_2018_0799_1.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # SuSE Update for python-paramiko openSUSE-SU-2018:0799-1 (python-paramiko)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851725");
-  script_version("$Revision: 9214 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 10:11:34 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 9488 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-25 08:23:06 +0200 (Sun, 25 Mar 2018)");
   script_cve_id("CVE-2018-7750");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for python-paramiko openSUSE-SU-2018:0799-1 (python-paramiko)");
   script_tag(name: "summary", value: "Check the version of python-paramiko");

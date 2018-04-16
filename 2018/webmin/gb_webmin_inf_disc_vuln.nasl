@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_inf_disc_vuln.nasl 9106 2018-03-15 12:31:45Z jschulte $
+# $Id: gb_webmin_inf_disc_vuln.nasl 9478 2018-04-13 13:28:27Z cfischer $
 #
 # Webmin 1.880 Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113135");
-  script_version("$Revision: 9106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:31:45 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9478 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 13:16:22 +0100 (Thu, 15 Mar 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

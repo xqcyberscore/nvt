@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 9307 2018-04-04 18:47:24Z cfischer $
+# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
 # JetBrains Remote Code Execution and Local File Disclosure Vulnerability (Active Check)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:jetbrains:jetbrains";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107231");
-  script_version("$Revision: 9307 $");
+  script_version("$Revision: 9475 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 20:47:24 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-25 10:25:40 +0530 (Fri, 25 Aug 2017)");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -42,7 +42,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Check the version. If the IDE is Pycharm, send a crafted request via HTTP Get and POST and check The response.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to Over-permissive CORS settings that allows attackers to use a malicious website in order to access various internal API endpoints, gain access to data saved by the IDE, and gather various meta-information like IDE version or open a project. ");
+  script_tag(name:"insight", value:"Multiple flaws are due to Over-permissive CORS settings that allows attackers
+  to use a malicious website in order to access various internal API endpoints, gain access to data saved by the IDE, and gather various meta-information like IDE version or open a project. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to read arbitrary files on the target system.
@@ -51,11 +52,11 @@ if(description)
 
   script_tag(name:"affected", value:"JetBrains releases 2016.1 and before.");
 
-  script_tag(name: "solution" , value: "Patch is available at : https://blog.jetbrains.com/blog/2016/05/11/security-update-for-intellij-based-ides-v2016-1-and-older-versions/");
+  script_tag(name:"solution", value: "Patch is available at : https://blog.jetbrains.com/blog/2016/05/11/security-update-for-intellij-based-ides-v2016-1-and-older-versions/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://blog.saynotolinux.com/blog/2016/08/15/jetbrains-ide-remote-code-execution-and-local-file-disclosure-vulnerability-analysis/");
+  script_xref(name:"URL", value:"http://blog.saynotolinux.com/blog/2016/08/15/jetbrains-ide-remote-code-execution-and-local-file-disclosure-vulnerability-analysis/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -70,7 +71,6 @@ include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 include( "host_details.inc" );
 include( "version_func.inc");
-
 
 function guessProjectName()
 {

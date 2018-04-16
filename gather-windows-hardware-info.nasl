@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-windows-hardware-info.nasl 9463 2018-04-12 13:58:22Z mmartin $
+# $Id: gather-windows-hardware-info.nasl 9467 2018-04-13 06:21:59Z cfischer $
 #
 # Gather Windows Hardware Information
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107304");
-  script_version("$Revision: 9463 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:58:22 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9467 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 16:48:58 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -71,11 +71,11 @@ if( ! handle ) exit( 0 );
 
 # -- Get the CPU information -- #
 # nb: Make sure to update the foreach loop below if adding new fields here
-# nb: Without DeviceID it is still returned in the query response so explicitely adding it here
-query1                = "SELECT DeviceID, Name, NumberOfCores FROM Win32_Processor";
+# nb: Without DeviceID it is still returned in the query response so explicitly adding it here
+query1          = "SELECT DeviceID, Name, NumberOfCores FROM Win32_Processor";
 processor_infos = wmi_query( wmi_handle:handle, query:query1 );
-cpunumber = 0;
-cpus      = make_array();
+cpunumber       = 0;
+cpus            = make_array();
 
 if( processor_infos ) {
 
@@ -103,9 +103,9 @@ if( processor_infos ) {
 
 # -- Get the systems architecture -- #
 # nb: Make sure to update the foreach loop below if adding new fields here
-query2       = "SELECT OSArchitecture FROM Win32_OperatingSystem";
+query2     = "SELECT OSArchitecture FROM Win32_OperatingSystem";
 arch_infos = wmi_query( wmi_handle:handle, query:query2 );
-arch           = "";
+arch       = "";
 
 if( arch_infos ) {
 
@@ -154,8 +154,8 @@ if( pci_devices ) {
 
 # -- Get the memory information -- #
 # nb: Make sure to update the foreach loop below if adding new fields here
-query4   = "SELECT Name, TotalPhysicalMemory FROM Win32_Computersystem";
-memory = wmi_query( wmi_handle:handle, query:query4 );
+query4  = "SELECT Name, TotalPhysicalMemory FROM Win32_Computersystem";
+memory  = wmi_query( wmi_handle:handle, query:query4 );
 meminfo = "";
 
 if( memory ) {
@@ -188,7 +188,7 @@ if( memory ) {
 query5     = "SELECT Description, Index, IPAddress, MACAddress FROM Win32_NetworkAdapterConfiguration";
 addresses  = wmi_query( wmi_handle:handle, query:query5 );
 num_ifaces = 0;
-host_ip        = get_host_ip();
+host_ip    = get_host_ip();
 
 if( addresses ) {
 
@@ -212,7 +212,7 @@ if( addresses ) {
       if( addr_split[i] != "(null)" )
         iface_ipstr += addr_split[i] + ";";
     }
-    iface_mac   = addr_split[max_index(addr_split) - 1]; # MACAddress
+    iface_mac = addr_split[max_index( addr_split ) - 1]; # MACAddress
 
     # Verification for the MAC address syntax
     iface_mac = eregmatch( pattern:"([0-9a-fA-F:]{17})", string:iface_mac );
@@ -252,7 +252,7 @@ if( addresses ) {
 
 if( num_ifaces > 0 ) {
   # -- Get the full network interfaces information -- #
-  query6 = "SELECT * FROM Win32_NetworkAdapterConfiguration WHERE";
+  query6       = "SELECT * FROM Win32_NetworkAdapterConfiguration";
   full_netinfo = wmi_query( wmi_handle:handle, query:query6 );
 }
 netinfo = "";

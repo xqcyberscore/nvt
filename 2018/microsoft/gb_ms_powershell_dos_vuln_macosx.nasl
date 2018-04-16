@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_dos_vuln_macosx.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_ms_powershell_dos_vuln_macosx.nasl 9478 2018-04-13 13:28:27Z cfischer $
 #
 # Microsoft PowerShell Core Denial of Service Vulnerability (MacOSX)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813042");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9478 $");
   script_cve_id("CVE-2018-0875");
   script_bugtraq_id(103225);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("Microsoft PowerShell Core Denial of Service Vulnerability (MacOSX)");
 

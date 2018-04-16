@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3603_1.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_ubuntu_USN_3603_1.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # Ubuntu Update for paramiko USN-3603-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843480");
-  script_version("$Revision: 9191 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9488 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 08:50:51 +0100 (Wed, 21 Mar 2018)");
   script_cve_id("CVE-2018-7750");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for paramiko USN-3603-1");
   script_tag(name: "summary", value: "Check the version of paramiko");

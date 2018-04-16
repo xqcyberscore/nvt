@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 8852 2018-02-16 15:23:12Z cfischer $
+# $Id: cgi_directories.nasl 9467 2018-04-13 06:21:59Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 8852 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 16:23:12 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 9467 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -298,7 +298,7 @@ if( ! isnull( chOptOutList ) || ! isnull( chOptInList ) ||
   }
 
   foreach chOptIn( chOptInList ) {
-    report += chOptIn + ' (Opt-In by the user explicitely required)\n';
+    report += chOptIn + ' (Opt-In by the user explicitly required)\n';
   }
 
   foreach chNoOptOut( chNoOptOutList ) {

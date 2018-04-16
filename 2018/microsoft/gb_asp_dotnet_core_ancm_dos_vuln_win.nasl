@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # ASP.NET Core ANCM Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813044");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9488 $");
   script_cve_id("CVE-2018-0808");
   script_bugtraq_id(103225);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("ASP.NET Core ANCM Denial of Service Vulnerability (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: ilo_detect.nasl 9476 2018-04-13 10:47:24Z cfischer $
 #
 # HP Integrated Lights-Out Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20285");
-  script_version("$Revision: 9462 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9476 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:47:24 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,12 @@ if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett
     }
   }
 
-  if( ( fw_vers == 'unknown' || ilo_vers == 'unknown' ) && r =~ "<title>iLO [0-9]+</title>" ) {
+  if( ilo_vers == "unknown" && r =~ "<title>iLO [0-9]+</title>" ) {
+    ilo_version = eregmatch( pattern:"<title>iLO ([0-9]+)</title>", string:r );
+    if( ! isnull( ilo_version[1] ) ) ilo_vers = int( ilo_version[1] );
+  }
+
+  if( fw_vers == "unknown" || ilo_vers == "unknown" ) {
 
     url = "/json/login_session";
     req = http_get( item:url, port:port );
@@ -108,11 +113,16 @@ if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett
 
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      fw_version = eregmatch( pattern:'version":"([^"]+)"', string:buf );
-      if( ! isnull( fw_version[1] ) ) fw_vers = fw_version[1];
+      if( fw_vers == "unknown" ) {
+        fw_version = eregmatch( pattern:'version":"([^"]+)"', string:buf );
+        if( ! isnull( fw_version[1] ) ) fw_vers = fw_version[1];
+      }
 
-      ilo_version = eregmatch( pattern:"<title>iLO ([0-9]+)</title>", string:r );
-      if( ! isnull( ilo_version[1] ) ) ilo_vers = int( ilo_version[1] );
+      if( ilo_vers == "unknown" ) {
+        # "PRODGEN":"iLO 4",
+        ilo_version = eregmatch( pattern:'"PRODGEN":"iLO ([0-9]+)",', string:buf );
+        if( ! isnull( ilo_version[1] ) ) ilo_vers = int( ilo_version[1] );
+      }
     }
   }
 
@@ -124,7 +134,7 @@ if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett
     cpe += "_" + ilo_vers + "_firmware";
   } else {
     app_name = "HP Integrated Lights-Out Unknown Generation Firmware";
-    cpe += "_unkown_firmware";
+    cpe += "_unknown_firmware";
   }
 
   if( fw_vers != "unknown" ) {

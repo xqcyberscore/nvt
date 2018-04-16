@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 8322 2018-01-08 13:17:36Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 9467 2018-04-13 06:21:59Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 8322 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 14:17:36 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 9467 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -78,7 +78,7 @@ if( "Usage: ping" >< check && "64]" >< check ) {
 }
 
 if( TARGET_IS_IPV6() ) {
-  # If the -6 parameter is available explicitely specify it for the ping command and use only "ping"
+  # If the -6 parameter is available explicitly specify it for the ping command and use only "ping"
   if( param64 ) {
     ping_cmd       = "ping";
     ping_args[i++] = "-6";
@@ -91,7 +91,7 @@ if( TARGET_IS_IPV6() ) {
   }
   pattern = ipv6pattern;
 } else {
-  # If the -4 parameter is available explicitely specify it for the ping command
+  # If the -4 parameter is available explicitly specify it for the ping command
   if( param64 ) {
     ping_cmd       = "ping";
     ping_args[i++] = "-4";

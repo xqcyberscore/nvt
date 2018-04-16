@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl 9254 2018-03-29 07:19:03Z santu $ 
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl 9479 2018-04-14 11:30:08Z cfischer $
 #
-# Drupal Core Critical Remote Code Execution Vulnerability(SA-CORE-2018-002)-Windows
+# Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Windows, Version Check)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812583");
-  script_version("$Revision: 9254 $");
+  script_version("$Revision: 9479 $");
   script_cve_id("CVE-2018-7600");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 09:19:03 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-14 13:30:08 +0200 (Sat, 14 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 09:55:26 +0530 (Thu, 29 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Drupal Core Critical Remote Code Execution Vulnerability(SA-CORE-2018-002)-Windows");
+  script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Windows, Version Check)");
 
   script_tag(name:"summary", value:"This host is running Drupal and is prone
   to critical remote code execution vulnerability.");
@@ -54,20 +54,20 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Drupal core versions 6.x and earlier,
+  script_tag(name:"affected", value:"Drupal core versions 6.x and earlier,
+
   Drupal core versions 8.2.x and earlier,
+
   Drupal core versions 8.3.x to before 8.3.9,
-  Drupal core versions 8.4.x to before 8.4.6, 
+
+  Drupal core versions 8.4.x to before 8.4.6,
+
   Drupal core versions 8.5.x to before 8.5.1 and
+
   Drupal core versions 7.x to before 7.58 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Drupal core version 8.3.9 or
-  8.4.6 or 8.5.1 or 7.58 later. For updates refer to,
-  https://www.drupal.org/project/drupal/releases/7.58
-  https://www.drupal.org/project/drupal/releases/8.3.9
-  https://www.drupal.org/project/drupal/releases/8.4.6
-  https://www.drupal.org/project/drupal/releases/8.5.1");
+  8.4.6 or 8.5.1 or 7.58 later. Please see the refereced links for available updates.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.drupal.org/psa-2018-001");
@@ -75,8 +75,8 @@ if(description)
   script_xref(name:"URL", value:"https://www.drupal.org/project/drupal/releases/7.58");
   script_xref(name:"URL", value:"https://www.drupal.org/project/drupal/releases/8.3.9");
   script_xref(name:"URL", value:"https://www.drupal.org/project/drupal/releases/8.4.6");
-  script_xref(name:"URL", value:"https://www.drupal.org/project/drupal/releases/8.5.1"); 
-  script_xref(name:"URL", value:"");
+  script_xref(name:"URL", value:"https://www.drupal.org/project/drupal/releases/8.5.1");
+  script_xref(name:"URL", value:"https://research.checkpoint.com/uncovering-drupalgeddon-2/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -86,7 +86,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -94,7 +93,7 @@ if(!drupalPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9.]+", exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9.]+", exit_no_version:TRUE)) exit(0);
 drupalVer = infos['version'];
 path = infos['location'];
 
@@ -118,10 +117,10 @@ if(drupalVer =~ "^(7\.)" && version_in_range(version:drupalVer, test_version:"7.
   fix = "7.58";
 }
 
-if(fix)
-{
+if(fix){
   report = report_fixed_ver(installed_version:drupalVer, fixed_version:fix, install_path:path);
   security_message(data:report, port:drupalPort);
   exit(0);
 }
-exit(0);
+
+exit(99);

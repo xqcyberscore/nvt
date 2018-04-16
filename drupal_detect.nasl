@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 8726 2018-02-08 18:09:08Z cfischer $
+# $Id: drupal_detect.nasl 9480 2018-04-14 13:21:57Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 8726 $");
+  script_version("$Revision: 9480 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 19:09:08 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-14 15:21:57 +0200 (Sat, 14 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,16 +61,14 @@ if( ! can_host_php( port:port ) ) exit(0);
 brokenDr = 0;
 rootInstalled = FALSE;
 
-foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/drupal", "/drupal7", "/cms", cgi_dirs( port:port ) ) ) {
 
   if( rootInstalled ) break;
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  req = http_get( item:dir + "/update.php", port:port );
-  res = http_keepalive_send_recv( port:port, data:req );
-
+  res  = http_get_cache( item:dir + "/update.php", port:port );
   res2 = http_get_cache( item:dir + "/", port:port );
 
   if( egrep( pattern:"Location: .*update\.php\?op=info", string:res, icase:TRUE ) ||
@@ -87,19 +85,22 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
     if( egrep( pattern:"Access denied for user", string:res, icase:TRUE ) ) brokenDr++;
     if( brokenDr > 1 ) break;
 
-    ### try to get version (Drupal < 8)
+    # nb: Order of the requested files matter as some provides the patch version (e.g. 8.5.1)
+    # where others just provides the minor version (8.5) or even just the major version (8).
+
+    # (Drupal < 8), this contains the patchlevel like 8.5.1 but is often blocked via .htaccess
     url = dir + "/CHANGELOG.txt";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
     ver = eregmatch( pattern:'Drupal ([0-9.]+), [0-9]{4}-[0-9]{2}-[0-9]{2}', string:res, icase:TRUE );
-
     if( ! isnull( ver[1] ) ) {
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-      version = chomp( ver[1] );
-    } else {
+      version  = chomp( ver[1] );
+    }
 
-      ### try to get version (Drupal >= 8)
+    if( version == "unknown" ) {
+      # (Drupal >= 8), this contains the patchlevel like 8.5.1 but is often blocked via .htaccess
       url = dir + "/core/CHANGELOG.txt";
       req = http_get( item:url, port:port );
       res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
@@ -107,25 +108,44 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
       ver = eregmatch( pattern:'Drupal ([0-9.]+), [0-9]{4}-[0-9]{2}-[0-9]{2}', string:res, icase:TRUE );
       if( ! isnull( ver[1] ) ) {
         conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-        version = chomp( ver[1] );
-      } else {
-        ### try to get version from second place (Drupal >= 8)
-        url = dir + "/core/modules/config/config.info.yml";
-        req = http_get( item:url, port:port );
-        res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+        version  = chomp( ver[1] );
+      }
+    }
 
-        ver = eregmatch( pattern:"version: '([0-9.]+)'", string:res, icase:TRUE );
-        if( ! isnull( ver[1] ) ) {
-          conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-          version = chomp( ver[1] );
-        } else {
-          # last try to get only the major version from the meta generator tag
-          ver = eregmatch( pattern:'<meta name="Generator" content="Drupal ([0-9.]+)', string:res2, icase:TRUE );
-          if( ! isnull( ver[1] ) ) {
-            conclUrl = report_vuln_url( port:port, url:dir + "/", url_only:TRUE );
-            version = chomp( ver[1] );
-          }
-        }
+    if( version == "unknown" ) {
+      # (Drupal >= 8), this contains the patchlevel like 8.5.1 but is often blocked via .htaccess
+      url = dir + "/core/modules/config/config.info.yml";
+      req = http_get( item:url, port:port );
+      res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+      ver = eregmatch( pattern:"version: '([0-9.]+)'", string:res, icase:TRUE );
+      if( ! isnull( ver[1] ) ) {
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+        version  = chomp( ver[1] );
+      }
+    }
+
+    if( version == "unknown" ) {
+      #nb: This contains versions like 8.3, 8.4 and so on and is shipped with version 8+
+      url = dir + "/composer.json";
+      req = http_get( item:url, port:port );
+      res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+      # "drupal/core": "~8.1"
+      # "drupal/core": "^8.5"
+      ver = eregmatch( pattern:'"drupal/core": ?"(\\~|\\^)([0-9.]+)"', string:res, icase:FALSE );
+      if( ! isnull( ver[2] ) ) {
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+        version  = chomp( ver[2] );
+      }
+    }
+
+    if( version == "unknown" ) {
+      # last try to get only the major version (8, 7) from the meta generator tag
+      ver = eregmatch( pattern:'<meta name="Generator" content="Drupal ([0-9.]+)', string:res2, icase:TRUE );
+      if( ! isnull( ver[1] ) ) {
+        conclUrl = report_vuln_url( port:port, url:dir + "/", url_only:TRUE );
+        version  = chomp( ver[1] );
       }
     }
 

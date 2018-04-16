@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1620_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1620_1.nasl 9467 2018-04-13 06:21:59Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:1620-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851568");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9467 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 07:03:19 +0200 (Tue, 20 Jun 2017)");
   script_cve_id("CVE-2017-5470", "CVE-2017-5472", "CVE-2017-7749", "CVE-2017-7750", 
                 "CVE-2017-7751", "CVE-2017-7752", "CVE-2017-7754", "CVE-2017-7755", 
@@ -86,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   Maintenance Service (Windows only)
   * CVE-2017-5470 Memory safety bugs fixed in Firefox 54 and Firefox ESR 52.2
 
-  - remove -fno-inline-small-functions and explicitely optimize with
+  - remove -fno-inline-small-functions and explicitly optimize with
   -O2 for openSUSE   13.2/Leap 42 to work with gcc7 (boo#1040105)
 
   Mozilla NSS was updated to NSS 3.28.5

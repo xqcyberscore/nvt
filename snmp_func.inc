@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: snmp_func.inc 7885 2017-11-23 13:34:17Z cfischer $
+# $Id: snmp_func.inc 9469 2018-04-13 06:26:50Z asteins $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 7885 $
+# $Revision: 9469 $
 #
 ###############################################################################
 

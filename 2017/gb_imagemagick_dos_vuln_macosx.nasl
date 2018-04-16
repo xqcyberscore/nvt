@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_macosx.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: gb_imagemagick_dos_vuln_macosx.nasl 9494 2018-04-16 09:16:25Z asteins $
 #
 # ImageMagick coders/rle.c Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107205");
-  script_version("$Revision: 6249 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
+  script_version("$Revision: 9494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 11:16:25 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 19:30:51 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-9144");
   script_bugtraq_id(98603);
@@ -42,7 +42,7 @@ if(description)
   script_name("ImageMagick coders/rle.c Denial of Service Vulnerability (Mac OS X)");
 
   script_tag(name: "summary", value: "ImageMagick is prone to a denial-of-service vulnerability");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
   
   script_tag(name: "impact" , value: "An attacker can exploit this issue to crash the affected application, resulting in denial-of-service conditions.");
 
@@ -67,9 +67,18 @@ include("version_func.inc");
 
 if( ! vers = get_app_version( cpe:CPE ) ) exit( 0 );
 
-if( version_is_less( version:vers, test_version:"6.9.8.5" ) ||
-    version_in_range( version:vers, test_version:"7.0.0", test_version2:"7.0.5.5" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"6.9.8-5/7.0.5-6" );
+if( version_is_less( version:vers, test_version:"6.9.8.5" ) ) {
+  vuln = TRUE;
+  fix = "6.9.8-5";
+}
+
+if (version_in_range( version:vers, test_version:"7.0.0", test_version2:"7.0.5.5" ) ) {
+  vuln = TRUE;
+  fix = "7.0.5-6";
+}
+
+if ( vuln ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
   security_message( port:0, data:report );
   exit( 0 );
 }

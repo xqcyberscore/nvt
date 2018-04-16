@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # Samba Server Symlink Race Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810729");
-  script_version("$Revision: 8882 $");
+  script_version("$Revision: 9488 $");
   script_cve_id("CVE-2017-2619");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-04 11:09:27 +0530 (Tue, 04 Apr 2017)");
   script_name("Samba Server Symlink Race Information Disclosure Vulnerability");
   script_category(ACT_GATHER_INFO);

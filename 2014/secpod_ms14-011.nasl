@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-011.nasl 9408 2018-04-09 12:03:31Z cfischer $
+# $Id: secpod_ms14-011.nasl 9487 2018-04-16 05:40:30Z cfischer $
 #
 # Microsoft VBScript Remote Code Execution Vulnerability (2928390)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903229");
-  script_version("$Revision: 9408 $");
+  script_version("$Revision: 9487 $");
   script_cve_id("CVE-2014-0271");
   script_bugtraq_id(65395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 14:03:31 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:40:30 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 09:18:06 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft VBScript Remote Code Execution Vulnerability (2928390)");
   script_category(ACT_GATHER_INFO);
@@ -126,8 +126,7 @@ if(!sysVer){
 if(hotfix_check_sp(xp:4) > 0){
   if(version_is_less(version:sysVer, test_version:"5.7.6002.23292") ||
     (ieVer =~ "^8" && version_in_range(version:sysVer, test_version:"5.8", test_version2:"5.8.6001.23551"))){
-    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-             file_version:sysVer, vulnerable_range:"< 5.7.6002.23292, 5.8 - 5.8.6001.23551");
+    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.7.6002.23292, 5.8 - 5.8.6001.23551");
     security_message(port:0, data:report);
   }
   exit(0);
@@ -138,8 +137,7 @@ else if(hotfix_check_sp(win2003:3, xpx64:3, win2003x64:3) > 0){
   if(version_is_less(version:sysVer, test_version:"5.6.0.8852") ||
      version_in_range(version:sysVer, test_version:"5.7", test_version2:"5.7.6002.23291") ||
      (ieVer =~ "^8" && version_in_range(version:sysVer, test_version:"5.8", test_version2:"5.8.6001.23551"))){
-    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-             file_version:sysVer, vulnerable_range:"< 5.6.0.8852, 5.7 - 5.7.6002.23291, 5.8 - 5.8.6001.23551");
+    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.6.0.8852, 5.7 - 5.7.6002.23291, 5.8 - 5.8.6001.23551");
     security_message(port:0, data:report);
   }
   exit(0);
@@ -152,8 +150,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0){
      version_in_range(version:sysVer, test_version:"5.7.6002.23000", test_version2:"5.7.6002.23291") ||
      (ieVer =~ "^8" && version_in_range(version:sysVer, test_version:"5.8.6001.19000", test_version2:"5.8.6001.19497")) ||
      (ieVer =~ "^8" && version_in_range(version:sysVer, test_version:"5.8.6001.23000", test_version2:"5.8.6001.23551"))){
-    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-             file_version:sysVer, vulnerable_range:"< 5.7.6002.19005, 5.7.6002.23000 - 5.7.6002.23291, 5.8.6001.19000 - 5.8.6001.19497, 5.8.6001.23000 - 5.8.6001.23551");
+    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.7.6002.19005, 5.7.6002.23000 - 5.7.6002.23291, 5.8.6001.19000 - 5.8.6001.19497, 5.8.6001.23000 - 5.8.6001.23551");
     security_message(port:0, data:report);
   }
   exit(0);
@@ -163,8 +160,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0){
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1, win2012:1) > 0){
   if(version_is_less(version:sysVer, test_version:"5.8.7601.18337") ||
      version_in_range(version:sysVer, test_version:"5.8.7601.22000", test_version2:"5.8.7601.22534")){
-    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-             file_version:sysVer, vulnerable_range:"< 5.8.7601.18337, 5.8.7601.22000 - 5.8.7601.22534");
+    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.8.7601.18337, 5.8.7601.22000 - 5.8.7601.22534");
     security_message(port:0, data:report);
     exit(0);
   }
@@ -172,28 +168,26 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1, win20
   if(ieVer && ieVer =~ "^10"){
     if(version_is_less(version:sysVer, test_version:"5.8.9200.16775") ||
        version_in_range(version:sysVer, test_version:"5.8.9200.20000", test_version2:"5.8.9200.20900")){
-      report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-               file_version:sysVer, vulnerable_range:"< 5.8.9200.16775, 5.8.9200.20000 - 5.8.9200.20900");
+      report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.8.9200.16775, 5.8.9200.20000 - 5.8.9200.20900");
       security_message(port:0, data:report);
     }
     exit(0);
   }
 
   if(ieVer && ieVer =~ "^11"){
-    if(version_is_less(version:sysVer, test_version:"5.8.9600.16497"))
-      report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-               file_version:sysVer, vulnerable_range:"< 5.8.9600.16497");
+    if(version_is_less(version:sysVer, test_version:"5.8.9600.16497")){
+      report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.8.9600.16497");
       security_message(port:0, data:report);
     }
     exit(0);
+  }
 }
 
 ## Win 8.1
 ## Currently no support for Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1) > 0){
   if(version_is_less(version:sysVer, test_version:"5.8.9600.16483")){
-    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll",
-             file_version:sysVer, vulnerable_range:"< 5.8.9600.16483");
+    report = report_fixed_ver(file_checked:sysPath + "system32\Vbscript.dll", file_version:sysVer, vulnerable_range:"< 5.8.9600.16483");
     security_message(port:0, data:report);
   }
   exit(0);

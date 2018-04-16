@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 8967 2018-02-27 11:59:36Z jschulte $
+# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
 # Linksys E1500/E2500 Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107202");
-  script_version("$Revision: 8967 $");
+  script_version("$Revision: 9475 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 12:59:36 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 11:57:11 +0530 (Thu, 02 Nov 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,14 +53,16 @@ parameter and can be exploited to inject and execute arbitrary shell commands.")
 compromise the device.");
 
   script_tag(name:"affected", value:"Linksys E1500 v1.0.00 build 9, v1.0.04 build 2, v1.0.05 build 1 and
-Linksys E2500 v1.0.03.");
+Linksys E2500 v1.0.03, probably all versions up to 2.0.00.");
 
-  script_tag(name:"solution", value:"Last firmware update has been in 2014. A fix seems highly unlikely.");
+  script_tag(name:"solution", value:"Update the firmware to version 1.0.06 build 1 for the E1500 model.
+  Update the firmware to version 2.0.00 build 1 for the E2500 model.");
 
-  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "URL", value: "http://www.s3cur1ty.de/m1adv2013-004");
   script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+  script_xref(name: "URL", value: "https://community.linksys.com/t5/Wireless-Routers/Re-Reaper-Botnet-Vulnerability/td-p/1224368");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -82,24 +84,26 @@ if (!firmware = get_kb_item("Linksys/firmware")) exit(0);
 
 if (model == "E1500")
 {
-    if (firmware == "1.0.00 build 4" || firmware == "1.0.04 build 2" || firmware == "1.0.05 build 1" )
+    if (version_is_less(version: firmware, test_version: "1.0.06"))
     {
-        VER = model + " firmware: " + firmware;
+        ver = model + " firmware: " + firmware;
         VULN = TRUE;
+        fix = "1.0.06 build 1";
     }
 }
 else if (model == "E2500")
 {
-    if (firmware == "1.0.03")
+    if (version_is_less(version: firmware, test_version: "2.0.00"))
     {
-        VER = model + " firmware: " + firmware;
+        ver = model + " firmware: " + firmware;
         VULN = TRUE;
+        fix = "2.0.00 build 1";
     }
 }
 
 if (VULN)
 {
-    report = report_fixed_ver(installed_version: VER, fixed_version: "WillNotFix");
+    report = report_fixed_ver(installed_version: ver, fixed_version: "fix");
     security_message(data: report, port: 0);
     exit(0);
 }

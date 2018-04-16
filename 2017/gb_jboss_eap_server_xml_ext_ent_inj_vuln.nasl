@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
 # RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107199");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9475 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:05:17 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-7464");
   script_bugtraq_id(98450);
@@ -42,7 +42,7 @@ if(description)
   script_name("RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability");
   script_tag(name: "summary", value:"RedHat JBoss Enterprise Application Platform (EAP) is prone to an
   XML External Entity injection vulnerability. ");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check
   if the version is vulnerable or not.");
   script_tag(name: "insight", value: "When parsing XML which does entity expansion the SAXParserFactory
   used in EAP expands external entities, even when XMLConstants.FEATURE_SECURE_PROCESSING is set to true.");
@@ -76,26 +76,27 @@ https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
-  exit(0);
+if( ! Port = get_app_port( cpe:CPE ) ) {
+  exit( 0 );
 }
 
-if(!Ver = get_app_version(cpe:CPE, port:Port)){
-  exit(0);
+if( ! Ver = get_app_version( cpe:CPE, port:Port ) ) {
+  exit( 0 );
 }
 
-if (Ver =~ "7\.0") {
-  if ( version_is_less(version: Ver, test_version:"7.0.5" )) {
+if ( Ver =~ "7\.0" ) {
+  if ( version_is_less( version: Ver, test_version:"7.0.5" ) ) {
     Vuln = TRUE;
   }
-} else if ( Ver =~ "7\.1" )
-  if ( version_is_less(version: Ver, test_version:"7.1.0")) {
+} else if ( Ver =~ "7\.1" ) {
+  if ( version_is_less( version: Ver, test_version:"7.1.0" ) ) {
     Vuln = TRUE;
   }
+}
 
 if( Vuln ) {
-  report = report_fixed_ver(installed_version:Ver, fixed_version:"Mitigation");
-  security_message(port:Port, data:report);
+  report = report_fixed_ver( installed_version:Ver, fixed_version:"Mitigation" );
+  security_message( port:Port, data:report );
   exit( 0 );
 }
 

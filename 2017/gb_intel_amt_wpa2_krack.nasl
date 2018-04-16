@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_wpa2_krack.nasl 7658 2017-11-06 05:53:53Z teissa $
+# $Id: gb_intel_amt_wpa2_krack.nasl 9494 2018-04-16 09:16:25Z asteins $
 #
 # Intel Active Management Technology WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107191");
-  script_version("$Revision: 7658 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 9494 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-16 11:16:25 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-10-19 13:48:56 +0700 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,14 +51,17 @@ if (description)
   script_dependencies("gb_intel_amt_webui_detect.nasl");
   script_mandatory_keys("intel_amt/installed");
 
-  script_tag(name: "summary", value: "WPA2 as used in Intel Active Management Technolog is prone to multiple security weaknesses aka Key Reinstallation Attacks (KRACK)
-");
+  script_tag(name: "summary", value: "WPA2 as used in Intel Active Management Technology is prone to multiple security weaknesses aka Key Reinstallation Attacks (KRACK)");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
   script_tag(name: "affected", value: "Intel AMT firmware versions 2.5.x, 2.6, 4.x, 6.x, 7.x, 8.x, 9.x, 10.x, and 11.0-11.8.");
 
-  script_tag(name: "solution", value: "Intel is targeting an updated firmware release to System Manufacturers in early November 2017 to address the identified WPA2 vulnerabilities.  Please contact System Manufacturers to ascertain availability of the updated firmware for their impacted systems. Until the firmware update is deployed, configuring Active Management Technology in TLS Mode to encrypt manageability network traffic is considered a reasonable mitigation for remote network man-in-the-middle or eavesdropping attacks. See https://www.intel.com/content/www/us/en/software/setup-configuration-software.html for details.");
+  script_tag(name: "solution", value: "Intel is targeting an updated firmware release to System Manufacturers in early November 2017 to address the identified WPA2 vulnerabilities.
+  Please contact System Manufacturers to ascertain availability of the updated firmware for their impacted systems.
+  Until the firmware update is deployed, configuring Active Management Technology in TLS Mode to encrypt manageability
+  network traffic is considered a reasonable mitigation for remote network man-in-the-middle or eavesdropping attacks.
+  See https://www.intel.com/content/www/us/en/software/setup-configuration-software.html for details.");
 
   script_xref(name: "URL", value: "https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00101&languageid=en-fr");
 

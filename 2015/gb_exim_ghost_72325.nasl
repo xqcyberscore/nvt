@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exim_ghost_72325.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_exim_ghost_72325.nasl 9476 2018-04-13 10:47:24Z cfischer $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Exim)
 #
@@ -33,8 +33,8 @@ if (description)
  script_bugtraq_id(72325);
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C"); 
- script_version ("$Revision: 6229 $");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 9476 $");
 
  script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Exim)");
 
@@ -49,9 +49,9 @@ context of the affected application. Failed exploit attempts may crash the appli
  script_tag(name: "solution" , value:"Update you glibc and reboot.");
  script_tag(name: "summary" , value:"The remote exim is using a version of glibc which is prone to a heap-based buffer-overflow
 vulnerability.");
- script_tag(name:"solution_type", value: "VendorFix"); # Workaround" | "Mitigation" | "VendorFix" | "NoneAvailable" | "WillNotFix
+ script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:47:24 +0200 (Fri, 13 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-01-29 15:17:02 +0100 (Thu, 29 Jan 2015)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -87,7 +87,7 @@ recv = recv( socket:soc, length:512 );
 
 req = 'HELO ' + crap( data:"0", length:1235 ) + '\r\n';
 
-for( i=1; i < 5; i++ )
+for( i = 1; i < 5; i++ )
 {
   send( socket:soc, data:req );
   recv = recv( socket:soc, length:512 );
@@ -105,5 +105,4 @@ for( i=1; i < 5; i++ )
 
 if( soc ) close( soc );
 
-exit( 0 );
-
+exit( 99 );

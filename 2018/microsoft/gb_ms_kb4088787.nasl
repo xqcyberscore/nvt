@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4088787.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4088787.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4088787)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812831");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9488 $");
   script_cve_id("CVE-2018-0811", "CVE-2018-0813", "CVE-2018-0814", "CVE-2018-0886", 
                 "CVE-2018-0888", "CVE-2018-0889", "CVE-2018-0891", "CVE-2018-0893", 
                 "CVE-2018-0894", "CVE-2018-0895", "CVE-2018-0896", "CVE-2018-0897", 
@@ -45,9 +45,9 @@ if(description)
                     103275, 103298, 103312, 103380, 103381, 103248, 103249, 103236,
                     103267, 103268, 103269, 103289, 103227, 103230, 103239, 103256,
                     103257, 103259, 103260, 103261);  
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:57:59 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4088787)");
 

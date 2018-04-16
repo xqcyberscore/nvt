@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_file_disc_vuln.nasl 8124 2017-12-14 13:18:18Z teissa $
+# $Id: gb_kodi_file_disc_vuln.nasl 9490 2018-04-16 07:16:29Z cfischer $
 #
 # Kodi Local File Inclusion Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:kodi:kodi_web_server';
+CPE = "cpe:/a:kodi:kodi";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106586");
-  script_version("$Revision: 8124 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 14:18:18 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 9490 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-16 09:16:29 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,8 +61,9 @@ in a local file inclusion vulnerability.");
 
   script_tag(name: "impact", value: "A unauthenticated attacker may read arbitrary files from the file system.");
 
-  script_tag(name: "solution", value: "Update to Kodi version 17.2. For details, refer to : https://kodi.tv/article/kodi-v172-minor-bug-fix-and-security-release.");
+  script_tag(name: "solution", value: "Update to Kodi version 17.2 or later. For details please see the references.");
 
+  script_xref(name: "URL", value: "https://kodi.tv/article/kodi-v172-minor-bug-fix-and-security-release");
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/41312/");
 
   exit(0);
@@ -94,4 +95,4 @@ foreach file (keys(files)) {
   }
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_detect_win.nasl 9304 2018-04-04 14:03:28Z cfischer $
+# $Id: gb_ms_office_click2run_detect_win.nasl 9477 2018-04-13 11:33:30Z santu $
 #
 # Microsoft Office ClicktoRun Version Detection (Windows)
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812996");
-  script_version("$Revision: 9304 $");
+  script_version("$Revision: 9477 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 16:03:28 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:52:52 +0530 (Fri, 23 Mar 2018)");
   script_name("Microsoft Office ClicktoRun Version Detection (Windows)");
 
@@ -97,6 +97,9 @@ foreach key (key_list)
     ##https://docs.microsoft.com/en-us/sccm/sum/deploy-use/manage-office-365-proplus-updates
     ##https://support.office.com/en-gb/article/version-and-build-numbers-of-update-channel-releases-ae942449-1fca-4484-898b-a933ea23def7
     UpChannel = registry_get_sz(key:key , item:"UpdateChannel");
+    if(!UpChannel){
+      UpChannel = registry_get_sz(key:key , item:"CDNBaseUrl");
+    }
     if(UpChannel)
     {
       if("492350f6-3a01-4f97-b9c0-c7c6ddf67d60" >< UpChannel) {

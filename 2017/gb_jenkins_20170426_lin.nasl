@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_lin.nasl 9300 2018-04-04 11:55:01Z cfischer $
+# $Id: gb_jenkins_20170426_lin.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
-# Jenkins Security Advisory Apr17 -26 Multiple Vulnerabilities (Linux)
+# Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Linux)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107156");
-  script_version("$Revision: 9300 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 9475 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355", "CVE-2017-1000356");
   script_bugtraq_id(98056);
@@ -40,24 +40,31 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_name("Jenkins Security Advisory Apr17 -26 Multiple Vulnerabilities (Linux)");
+  script_name("Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Linux)");
 
-  script_tag(name: "summary", value: "Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allowed malicious users to perform several administrative actions by tricking a victim into opening a web page.");
+  script_tag(name: "summary", value: "Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allow malicious users to perform several administrative actions by tricking a victim into opening a web page.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "Multiple flaws are due to, 
-    - multiple Cross-Site Request Forgery vulnerabilities 
-    - the storage of the encrypted user name in a cache file which is used to authenticate further commands.
-    - XStream library which allow anyone able to provide XML to Jenkins for processing using XStream to crash the Java process. ");
+  script_tag(name: "insight", value: "Multiple flaws are due to:
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to :
-    - perform several administrative actions by tricking a victim into opening a web page.execute arbitrary code in the context of the affected application.
-    - to transfer a serialized Java SignedObject object to the remoting-based Jenkins CLI, that would be deserialized using a new ObjectInputStream, bypassing the existing blacklist-based protection mechanism.
-    - impersonate any other Jenkins user on the same instance.
-    - crash the Java process. ");
+  - multiple Cross-Site Request Forgery vulnerabilities.
 
-  script_tag(name: "affected", value: "The following products are vulnerable: 
+  - the storage of the encrypted user name in a cache file which is used to authenticate further commands.
+
+  - XStream library which allow anyone able to provide XML to Jenkins for processing using XStream to crash the Java process. ");
+
+  script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to:
+
+  - perform several administrative actions by tricking a victim into opening a web page.execute arbitrary code in the context of the affected application.
+
+   - to transfer a serialized Java SignedObject object to the remoting-based Jenkins CLI, that would be deserialized using a new ObjectInputStream, bypassing the existing blacklist-based protection mechanism.
+
+   - impersonate any other Jenkins user on the same instance.
+
+   - crash the Java process. ");
+
+  script_tag(name: "affected", value: "The following products are vulnerable:
     Jenkins LTS 2.46.1 and prior, Jenkins 2.56 and prior.");
 
   script_tag(name: "solution", value: "Jenkins main line users should update to 2.57,

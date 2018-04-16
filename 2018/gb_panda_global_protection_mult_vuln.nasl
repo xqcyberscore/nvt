@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_mult_vuln.nasl 9193 2018-03-23 15:15:44Z cfischer $
+# $Id: gb_panda_global_protection_mult_vuln.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # Panda Global Protection 17.0.1 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 9193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9488 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

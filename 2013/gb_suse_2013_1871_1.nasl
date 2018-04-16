@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1871_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2013_1871_1.nasl 9467 2018-04-13 06:21:59Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:1871-1 (Mozilla)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850559");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9467 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:03:27 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-5609", "CVE-2013-5610", "CVE-2013-5613", "CVE-2013-5615",
                 "CVE-2013-5616", "CVE-2013-5618", "CVE-2013-6629", "CVE-2013-6630",
@@ -43,7 +43,7 @@ if(description)
   tag_insight = "
   This patch contains
   * mozilla-nss 3.15.3.1 which includes a certstore update
-  (1.95) to explicitely revoke AC DG Tresor SSL
+  (1.95) to explicitly revoke AC DG Tresor SSL
   intermediate CA which was misused.
   * Firefox 24.2esr
   * Thunderbird 24.2

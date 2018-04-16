@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
 # Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107158");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9475 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-27 14:05:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2017-8057");
 
@@ -40,7 +40,7 @@ if(description)
   script_name("Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities");
   script_tag(name: "summary", value: "Joomla is vulnerable to multiple full path information
   disclosure vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
   check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "Remote attackers can exploit these issues to obtain sensitive
   information that may lead to further attacks.");
@@ -67,7 +67,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -82,3 +81,5 @@ if(version_in_range(version: Ver, test_version:"3.4.0", test_version2: "3.6.5"))
   security_message(data:report, port: Port);
   exit(0);
 }
+
+exit(99);

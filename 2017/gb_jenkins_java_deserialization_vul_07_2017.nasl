@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 6918 2017-08-14 08:32:01Z emoss $
+# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 9475 2018-04-13 10:10:45Z asteins $
 #
-# Jenkins serialization vulnerability - CVE-2016-0792
+# Jenkins Deserialization Vulnerability - CVE-2016-0792
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,19 +29,19 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107230");
-  script_version("$Revision: 6918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-14 10:32:01 +0200 (Mon, 14 Aug 2017) $");
+  script_version("$Revision: 9475 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 12:09:09 +0200 (Thu, 10 Aug 2017)");
   script_cve_id("CVE-2016-0792");
 
-  script_name("Jenkins serialization vulnerability - CVE-2016-0792");
+  script_name("Jenkins Deserialization Vulnerability - CVE-2016-0792");
 
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "summary", value: "Jenkins is prone to Java Deserialization vulnerability.");
+  script_tag(name: "summary", value: "Jenkins is prone to a Java deserialization vulnerability.");
 
   script_tag(name: "vuldetect", value: "Send a serialized object which execute a ping against the scanner.");
 
@@ -53,8 +53,9 @@ if(description)
 
   script_tag(name: "solution", value: "Jenkins main line users should update to 1.650, Jenkins LTS users should update to 1.642.2");
 
-  script_xref(name: "URL" , value: "https://www.exploit-db.com/exploits/42394/");
-  script_xref(name: "URL" , value: "https://github.com/jpiechowka/jenkins-cve-2016-0792/");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42394/");
+  script_xref(name: "URL", value: "https://github.com/jpiechowka/jenkins-cve-2016-0792/");
+  script_xref(name: "URL", value: "https://jenkins.io/security/advisory/2016-02-24/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

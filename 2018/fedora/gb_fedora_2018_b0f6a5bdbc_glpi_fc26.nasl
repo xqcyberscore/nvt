@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b0f6a5bdbc_glpi_fc26.nasl 9269 2018-03-30 05:36:10Z santu $
+# $Id: gb_fedora_2018_b0f6a5bdbc_glpi_fc26.nasl 9488 2018-04-16 05:42:12Z cfischer $
 #
 # Fedora Update for glpi FEDORA-2018-b0f6a5bdbc
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874294");
-  script_version("$Revision: 9269 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-30 07:36:10 +0200 (Fri, 30 Mar 2018) $");
+  script_version("$Revision: 9488 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-28 08:59:59 +0200 (Wed, 28 Mar 2018)");
   script_cve_id("CVE-2018-7563");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for glpi FEDORA-2018-b0f6a5bdbc");
   script_tag(name: "summary", value: "Check the version of glpi");
