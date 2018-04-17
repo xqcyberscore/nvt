@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 8852 2018-02-16 15:23:12Z cfischer $
+# $Id: webmirror.nasl 9502 2018-04-17 07:42:19Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 8852 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 16:23:12 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 9502 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -127,11 +127,13 @@ function add_30x( url ) {
   }
 }
 
-function add_auth( url ) {
+function add_auth( url, basic, realm ) {
+
+  local_var url, basic, realm;
 
   if( isnull( URLs_auth_hash[url] ) ) {
 
-    # Skiping if the "Test for servers which return 401 for everything" was successful.
+    # Skipping if the "Test for servers which return 401 for everything" was successful.
     # But at least add the "/" root folder to it.
     if( ! Check401 && url != "/" ) return;
 
@@ -139,6 +141,14 @@ function add_auth( url ) {
     set_kb_item( name:"www/content/auth_required", value:TRUE );
     URLs_auth_hash[url] = 1;
     if( url == "/" ) RootPasswordProtected = TRUE;
+
+    # Used in 2018/gb_http_cleartext_creds_submit.nasl
+    if( basic ) {
+      set_kb_item( name:"www/basic_auth/detected", value:TRUE );
+      set_kb_item( name:"www/pw_input_field_or_basic_auth/detected", value:TRUE );
+      # Used in 2018/gb_http_cleartext_creds_submit.nasl
+      set_kb_item( name:"www/" + port + "/content/basic_auth/" + url, value:report_vuln_url( port:port, url:url, url_only:TRUE ) + ":" + realm );
+    }
   }
 }
 
@@ -350,9 +360,7 @@ function clean_url( url ) {
       url = str_replace( string:url, find:s, replace:"", keep:FALSE );
     }
   }
-
   return url;
-
 }
 
 function canonical_url( url, current ) {
@@ -484,7 +492,8 @@ function retr( port, page ) {
   if( res !~ "^HTTP/1\.[01] 200" ) {
     if( res =~ "^HTTP/1\.[01] 40[13]" ) {
       if( egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
-        add_auth( url:page );
+        basic_auth = extract_basic_auth( data:res );
+        add_auth( url:page, basic:basic_auth["basic_auth"], realm:basic_auth["realm"] );
       }
       return NULL;
     }
@@ -907,6 +916,18 @@ function parse_main( current, data ) {
         if( elements["name"] ) {
           argz += string( elements["name"], " [", elements["value"], "] " );
         }
+        if( elements["name"] && elements["type"] == "password" ) {
+          # nb: We just want to report one input field for each page
+          # There might be some pages having more then one but this is
+          # quite uncommon and the solution is to switch to HTTPs anyway...
+          if( ! PW_inputs[current] ) {
+            PW_inputs[current] = 1;
+            set_kb_item( name:"www/pw_input_field/detected", value:TRUE );
+            set_kb_item( name:"www/pw_input_field_or_basic_auth/detected", value:TRUE );
+            # Used in 2018/gb_http_cleartext_creds_submit.nasl
+            set_kb_item( name:"www/" + port + "/content/pw_input_field/" + current, value:report_vuln_url( port:port, url:current, url_only:TRUE ) + ":" + elements['name'] );
+          }
+        }
       }
     }
   }
@@ -929,7 +950,7 @@ if( max_cgi_dirs <= 0 ) max_cgi_dirs = 128;
 cgi_dirs_exclude_pattern = get_kb_item( "global_settings/cgi_dirs_exclude_pattern" );
 use_cgi_dirs_exclude_pattern = get_kb_item( "global_settings/use_cgi_dirs_exclude_pattern" );
 
-# Skip .js and .css files by default as their parameters are just cache busters           
+# Skip .js and .css files by default as their parameters are just cache busters
 cgi_scripts_exclude_pattern = script_get_preference( "Regex pattern to exclude cgi scripts : " );
 if( ! cgi_scripts_exclude_pattern ) cgi_scripts_exclude_pattern = "\.(js|css)$";
 
@@ -962,14 +983,15 @@ redirects = get_kb_list( "DDI_Directory_Scanner/" + port + "/received_redirects"
 if( redirects )
   URLs = make_list( URLs, redirects );
 
-URLs_hash = make_list();
-CGIs = make_list();
-Misc = make_list();
-Dirs = make_list();
-URLs_30x_hash = make_list();
+URLs_hash      = make_list();
+CGIs           = make_list();
+Misc           = make_list();
+Dirs           = make_list();
+PW_inputs      = make_list();
+URLs_30x_hash  = make_list();
 URLs_auth_hash = make_list();
-Code404 = make_list();
-Check401 = TRUE;
+Code404        = make_list();
+Check401       = TRUE;
 
 URLs_hash[start_page] = 0;
 cnt = 0;

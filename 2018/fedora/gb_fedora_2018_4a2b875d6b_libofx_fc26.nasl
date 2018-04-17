@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4a2b875d6b_libofx_fc26.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_fedora_2018_4a2b875d6b_libofx_fc26.nasl 9499 2018-04-17 03:38:12Z ckuersteiner $
 #
 # Fedora Update for libofx FEDORA-2018-4a2b875d6b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874359");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9499 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 05:38:12 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-13 08:06:40 +0200 (Fri, 13 Apr 2018)");
   script_cve_id("CVE-2017-14731", "CVE-2017-2816", "CVE-2017-2920");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libofx FEDORA-2018-4a2b875d6b");
   script_tag(name: "summary", value: "Check the version of libofx");

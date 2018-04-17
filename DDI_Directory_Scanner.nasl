@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 9107 2018-03-15 12:51:40Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 9501 2018-04-17 07:38:14Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 9107 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 13:51:40 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 9501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:38:14 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -102,11 +102,12 @@ function add_discovered_list( dir, port ) {
   }
 }
 
-function add_auth_dir_list( dir, port ) {
+function add_auth_dir_list( dir, port, basic, realm ) {
 
-  local_var dir, port, dir_key;
+  local_var dir, port, dir_key, basic, realm;
 
   if( ! in_array( search:dir, array:authDirList ) ) {
+
     authDirList = make_list( authDirList, dir );
 
     if( use_cgi_dirs_exclude_pattern ) {
@@ -120,6 +121,14 @@ function add_auth_dir_list( dir, port ) {
     set_kb_item( name:"www/content/auth_required", value:TRUE );
     if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
     set_kb_item( name:dir_key, value:dir );
+
+    # Used in 2018/gb_http_cleartext_creds_submit.nasl
+    if( basic ) {
+      set_kb_item( name:"www/basic_auth/detected", value:TRUE );
+      set_kb_item( name:"www/pw_input_field_or_basic_auth/detected", value:TRUE );
+      # Used in 2018/gb_http_cleartext_creds_submit.nasl
+      set_kb_item( name:"www/" + port + "/content/basic_auth/" + dir, value:report_vuln_url( port:port, url:dir, url_only:TRUE ) + ":" + realm );
+    }
   }
 }
 
@@ -1138,8 +1147,13 @@ foreach cdir( testDirList ) {
 
   if( Check401 && http_code == 401 ) {
 
-    if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, "\n" );
-    add_auth_dir_list( dir:ScanRootDir + cdir, port:port );
+    if( header = egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
+      if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " containig a WWW-Authenticate header, adding to the dirs requiring auth...\n" );
+      basic_auth = extract_basic_auth( data:res );
+      add_auth_dir_list( dir:ScanRootDir + cdir, port:port, basic:basic_auth["basic_auth"], realm:basic_auth["realm"] );
+    } else {
+      if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " WITHOUT a WWW-Authenticate header, NOT adding to the dirs requiring auth...\n" );
+    }
   }
   #TBD: Make this configurable?
   if( unixtime() - start > 80 ) exit( 0 );

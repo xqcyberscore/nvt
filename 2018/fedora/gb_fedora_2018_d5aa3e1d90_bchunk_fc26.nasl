@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d5aa3e1d90_bchunk_fc26.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_fedora_2018_d5aa3e1d90_bchunk_fc26.nasl 9499 2018-04-17 03:38:12Z ckuersteiner $
 #
 # Fedora Update for bchunk FEDORA-2018-d5aa3e1d90
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874342");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9499 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 05:38:12 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 06:24:52 +0200 (Sat, 07 Apr 2018)");
   script_cve_id("CVE-2017-15953", "CVE-2017-15954", "CVE-2017-15955");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bchunk FEDORA-2018-d5aa3e1d90");
   script_tag(name: "summary", value: "Check the version of bchunk");

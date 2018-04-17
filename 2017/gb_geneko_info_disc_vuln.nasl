@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geneko_info_disc_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
+# $Id: gb_geneko_info_disc_vuln.nasl 9505 2018-04-17 09:16:54Z asteins $
 #
 # Geneko Routers Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:geneko:geneko";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107262");
-  script_version("$Revision: 8627 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 9505 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-17 14:42:26 +0700 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,18 +49,18 @@ if (description)
   script_dependencies("gb_geneko_router_snmp_detect.nasl");
   script_mandatory_keys("geneko/detected");
 
-  script_tag(name: "summary", value: "Geneko Router version 3.18.21 is vulnerable to information disclosure vulnerability.");
+  script_tag(name: "summary", value: "Geneko Router version 3.18.21 is vulnerable to an information disclosure vulnerability.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to bug in the configuration backup process.");
+  script_tag(name: "insight", value: "The vulnerability is due to a bug in the configuration backup process.");
 
-  script_tag(name : "impact" , value :"Successful exploitation will allow remote attackers to obtain admin password. ");
+  script_tag(name : "impact" , value :"Successful exploitation will allow remote attackers to obtain the admin password. ");
 
-  script_tag(name: "affected", value: "Geneko Routers version 3.18.21");
+  script_tag(name: "affected", value: "Geneko Routers version up to and including 3.18.21");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 01th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 17th April, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3438");
 
@@ -71,12 +71,15 @@ regarding this issue will be updated once the solution details are available.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE))
+if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (version_is_equal(version: version, test_version: "3.18.21")) {
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_is_less_equal(version: version, test_version: "3.18.21")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "None Available");
-  security_message(port: 0, data: report);
+  security_message(port: port, data: report);
   exit(0);
 }
 

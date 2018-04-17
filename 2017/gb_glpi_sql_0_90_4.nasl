@@ -1,12 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_sql_0_90_4.nasl 6480 2017-06-29 08:03:25Z teissa $
+# $Id: gb_glpi_sql_0_90_4.nasl 9505 2018-04-17 09:16:54Z asteins $
 #
 # GLPI 0.90.4 SQL Injection Vulnerability
 #
 # Authors:
 # Tameem Eissa <Tameem.Eissa@greenbone.net>
-#
 #
 # Copyright:
 # Copyright (c) 2017 Greenbone Networks GmbH
@@ -26,52 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 CPE ='cpe:/a:glpi-project:glpi';
 
 if (description)
 {
+  script_oid("1.3.6.1.4.1.25623.1.0.107227");
+  script_version("$Revision: 9505 $");
+  script_tag(name: "cvss_base", value: "6.0");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
+  script_tag(name: "creation_date", value: "2017-06-28 14:43:29 +0200 (Wed, 28 Jun 2017)");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
- script_oid("1.3.6.1.4.1.25623.1.0.107227");
- script_tag(name: "cvss_base", value: "6.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 6480 $");
- script_tag(name: "last_modification", value: "$Date: 2017-06-29 10:03:25 +0200 (Thu, 29 Jun 2017) $");
- script_tag(name: "summary", value: "GLPI is prone to SQL Injection");
+  script_name("GLPI 0.90.4 SQL Injection Vulnerability");
 
- script_tag(name: "creation_date", value: "2017-06-28 14:43:29 +0200 (Wed, 28 Jun 2017)");
- script_tag(name: "qod_type", value: "remote_banner_unreliable");
- script_name("GLPI 0.90.4 SQL Injection Vulnerability");
- script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
- script_tag(name: "affected", value: "GLPI 0.90.4 ");
- script_category(ACT_GATHER_INFO);
- script_tag(name: "insight", value: "The attack is due to the variable dbenc which when configured by the admin to big5, it allows SQL injection in almost all the forms of the application. " );
- script_tag(name: "impact", value: "allow an authenticated remote attacker to execute arbitrary SQL commands by using the [ELIDED] character when the database is configured to use asian encoding (BIG 5).");
+  script_tag(name: "summary", value: "GLPI is prone to SQL Injection");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name: "affected", value: "GLPI 0.90.4 ");
+  script_tag(name: "insight", value: "The attack is due to the variable dbenc which when configured by the admin to big5, it allows SQL injection in almost all the forms of the application.");
+  script_tag(name: "impact", value: "Successful exploitation will allow an authenticated remote attacker to execute arbitrary
+  SQL commands by using the [ELIDED] character when the database is configured to use asian encoding (BIG 5).");
+  script_tag(name: "solution", value: "Update GLPI to version 9.1 or later. For updates head to: https://github.com/glpi-project/glpi/releases");
+  script_tag(name: "solution_type", value: "VendorFix");
 
- script_family("Web application abuses");
- script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42262/?rss");
- script_xref(name: "URL", value: "https://vuldb.com/de/?id.102723");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_glpi_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("glpi/installed");
- script_tag(name: "solution_type", value: "NoneAvailable");
- exit(0);
+  script_family("Web application abuses");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_glpi_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("glpi/installed");
+
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42262/?rss");
+  script_xref(name: "URL", value: "https://vuldb.com/de/?id.102723");
+
+  exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if (! port = get_app_port( cpe: CPE)) exit( 0 );
-if( vers = get_app_version( cpe: CPE, port: port ) )
-{
+if (!port = get_app_port(cpe:CPE)) exit(0);
+if (!vers = get_app_version(cpe:CPE, port:port)) exit(0);
 
- if (version_is_equal(version: vers, test_version: "0.90.4"))
-  {
-    report = report_fixed_ver(installed_version: vers, fixed_version: "None Available");
-    security_message( port: port, data: report );
-    exit( 0 );
-  }
+if (version_is_equal(version:vers, test_version:"0.90.4")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"9.1");
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit( 99 );
+exit(99);

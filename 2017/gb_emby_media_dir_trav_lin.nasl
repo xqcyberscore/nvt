@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emby_media_dir_trav_lin.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: gb_emby_media_dir_trav_lin.nasl 9505 2018-04-17 09:16:54Z asteins $
 #
 # Emby Media Server Directory Traversal Vulnerability (Linux)
 #
@@ -29,47 +29,41 @@ CPE = "cpe:/a:emby:media";
 
 if (description)
 {
- script_version ("$Revision: 7552 $");
- script_oid("1.3.6.1.4.1.25623.1.0.107099");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version ("$Revision: 9505 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.107099");
+  script_tag(name: "cvss_base", value: "7.5");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
+  script_tag(name: "creation_date", value: "2017-05-03 11:37:14 +0530 (Wed, 03 May 2017)");
 
- script_name("Emby Media Server Directory Traversal Vulnerability (Linux)");
+  script_name("Emby Media Server Directory Traversal Vulnerability (Linux)");
 
- script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/41948/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
- script_tag(name:"creation_date", value:"2017-05-03 11:37:14 +0530 (Wed, 03 May 2017)");
- 
- script_tag(name: "vuldetect", value: "Send a crafted HTTP GET request and checks the response.");
-
- script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to read arbitrary files
-on the target system.
+  script_tag(name: "summary", value: "This host is running Emby Media Server and is prone to a directory traversal vulnerability.");
+  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name: "affected", value: "Emby Media Server 3.2.5 and prior.");
+  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to read arbitrary files
+  on the target system.
 
   Impact Level: System/Application");
+  script_tag(name: "insight", value: "Input passed via the swagger-ui object in SwaggerService.cs is not properly
+  verified before being used to load resources.");
+  script_tag(name: "solution", value: "Emby has been notified in March 2017 about the vulnerability, shortly
+  after they have released a new version that addresses this vulnerabilities. They however have not provided any
+  version information or release notes that reflect this. Therefore update to the latest available version.");
 
- script_tag(name: "insight", value: "Input passed via the swagger-ui object in SwaggerService.cs is not properly
-verified before being used to load resources.");
+  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "solution", value: "Emby has been notified in March 2017 about the vulnerability, shortly
-after they have released a new version that addresses this vulnerabilities. They however have not provided any
-version information or release notes that reflect this. Therefore update to the latest available version.");
+  script_category(ACT_ATTACK);
+  script_tag(name: "qod_type", value: "remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_emby_media_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8096);
+  script_mandatory_keys("emby_media_server/installed", "Host/runs_unixoide");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/41948/");
 
- script_tag(name: "affected", value: "Emby Media Server 3.2.5 and prior.");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_emby_media_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 8096);
- script_mandatory_keys("emby_media_server/installed", "Host/runs_unixoide");
-
- script_tag(name : "summary" , value : "This host is running Emby Media Server and is prone to a directory
-traversal vulnerability.");
-
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -86,4 +80,4 @@ if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:", check_head
   exit(0);
 }
 
-exit( 99 );
+exit(99);

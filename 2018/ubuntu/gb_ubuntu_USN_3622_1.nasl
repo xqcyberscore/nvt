@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3622_1.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_ubuntu_USN_3622_1.nasl 9499 2018-04-17 03:38:12Z ckuersteiner $
 #
 # Ubuntu Update for wayland USN-3622-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843503");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9499 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 05:38:12 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-10 08:48:31 +0200 (Tue, 10 Apr 2018)");
   script_cve_id("CVE-2017-16612");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for wayland USN-3622-1");
   script_tag(name: "summary", value: "Check the version of wayland");

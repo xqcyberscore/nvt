@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_june_win.nasl 8368 2018-01-11 07:59:53Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln03_june_win.nasl 9508 2018-04-17 10:00:46Z ckuersteiner $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810962");
-  script_version("$Revision: 8368 $");
+  script_version("$Revision: 9508 $");
   script_cve_id("CVE-2017-9616", "CVE-2017-9617");
   script_bugtraq_id(99087, 99085);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:59:53 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 12:00:46 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 16:34:23 +0530 (Tue, 27 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Windows)");
 
@@ -58,13 +58,11 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Wireshark version 2.2.7 on Windows");
+  script_tag(name: "affected" , value: "Wireshark prior version 2.2.14 on Windows");
 
-  script_tag(name: "solution" , value: "No solution or patch is available as of 
-  11th January, 2018. Information regarding this issue will be updated once the 
-  solution details are available. For updates refer to https://www.wireshark.org");
+  script_tag(name: "solution" , value: "Update to version 2.2.14 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -79,23 +77,16 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-report = "";
-
-## Get the version
-if(!wirversion = get_app_version(cpe:CPE)){
+if(!wirversion = get_app_version(cpe:CPE))
   exit(0);
-}
 
-## Check the vulnerable version
-if(wirversion == "2.2.7")
-{
-  report = report_fixed_ver(installed_version:wirversion, fixed_version:"NoneAvailable");
+if(version_is_less(version: wirversion, test_version: "2.2.14")) {
+  report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.2.14");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

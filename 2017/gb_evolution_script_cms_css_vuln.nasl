@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evolution_script_cms_css_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
+# $Id: gb_evolution_script_cms_css_vuln.nasl 9505 2018-04-17 09:16:54Z asteins $
 #
 # Evolution Script CMS v5.3 - Cross Site Scripting Vulnerability
 #
@@ -29,32 +29,31 @@ CPE = 'cpe:/a:evolution:script';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107219");
-  script_version("$Revision: 8627 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 9505 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Evolution Script CMS v5.3 - Cross Site Scripting Vulnerability");
 
   script_tag(name: "summary", value: "Evolution Script CMS is vulnerable to Cross Site Scripting Vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "The cross site vulnerability is located in the `status` parameter of the `Ticket Support` module.");
+  script_tag(name: "insight", value: "The cross site vulnerability is located in the 'status' parameter of the 'Ticket Support' module.");
 
-  script_tag(name: "impact" , value: "Remote attackers are able to inject own malicious script codes via GET method request.
-");
+  script_tag(name: "impact" , value: "Remote attackers are able to inject own malicious script codes via GET method request.");
 
   script_tag(name: "affected", value: "Evolution Script CMS Version 5.3");
 
   script_tag(name: "solution", value: "No solution or patch is available as of
-  01th February, 2018. Information regarding this issue will be updated once the
+  17th April, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to https://www.evolutionscript.com/");
 
-  script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/14");
+  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Jun/14");
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -71,17 +70,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
+if(!Port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!Ver = get_app_version(cpe:CPE, port: Port))  exit(0);
+if(!Ver = get_app_version(cpe:CPE, port: Port))
+  exit(0);
 
 if(version_is_equal(version: Ver, test_version:"5.3"))
 {
   report =  report_fixed_ver(installed_version:Ver, fixed_version:"None Available");
   security_message(data:report, port: Port);
-  exit( 0 );
+  exit(0);
 }
 
-exit ( 99 );
+exit(99);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: punbb_register_lfi.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: PunBB language Paramater Local File Include Vulnerability
+# $Id: punbb_register_lfi.nasl 9502 2018-04-17 07:42:19Z cfischer $
+# Description: PunBB language Parameter Local File Include Vulnerability
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -39,15 +39,15 @@ tag_solution = "Update to version 1.2.14 or later.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80080");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9502 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2006-5735");
   script_bugtraq_id(20786);
   script_xref(name:"OSVDB", value:"30132");
-  script_name("PunBB language Paramater Local File Include Vulnerability");
+  script_name("PunBB language Parameter Local File Include Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2006 Justin Seitz");

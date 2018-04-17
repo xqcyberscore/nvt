@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 8150 2017-12-15 17:08:06Z cfischer $
+# $Id: http_func.inc 9502 2018-04-17 07:42:19Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8150 $
+# $Revision: 9502 $
 #
 ###############################################################################
 
@@ -354,7 +354,7 @@ function http_recv_body( socket, headers, length ) {
   if( l >= 0 ) min = int( l );
   if( l >= max || min >= max ) max = l;
   if( max < 0 ) {
-    #display("http_recv_body: bogus or no Content-length field, and no 'length' paramater set! Defaulting to 32 KB\n");
+    #display("http_recv_body: bogus or no Content-length field, and no 'length' parameter set! Defaulting to 32 KB\n");
     max = 32768;
   }
   #display("http_recv_body: min=", min, "; max=", max, "\n");
@@ -870,4 +870,30 @@ function create_exploit_req( cgiArray, ex ) {
     urls = make_list( urls, url + "&" );
   }
   return urls;
+}
+
+# Returns an array containing the following index:
+# basic_auth = TRUE/FALSE if Basic Auth is available/found
+# realm      = A string containing the Basic Auth realm or "Undefined/Unknown" if none found
+function extract_basic_auth( data ) {
+
+  local_var data, header, infos, realm;
+
+  infos = make_array( "basic_auth", FALSE,
+                      "realm", "Undefined/Unknown" );
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#extract_basic_auth" );
+    return infos;
+  }
+
+  if( ! header = egrep( pattern:"^WWW-Authenticate: Basic", string:data, icase:TRUE ) )
+    return infos;
+
+  infos["basic_auth"] = TRUE;
+
+  realm = eregmatch( pattern:"realm=(.*)", string:header, icase:TRUE );
+  if( realm[1] ) infos["realm"] = chomp( realm[1] );
+
+  return infos;
 }

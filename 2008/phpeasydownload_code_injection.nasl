@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: phpeasydownload_code_injection.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: PHP Easy Download admin/save.php Paramater Code Injection Vulnerability
+# $Id: phpeasydownload_code_injection.nasl 9502 2018-04-17 07:42:19Z cfischer $
+# Description: PHP Easy Download admin/save.php Parameter Code Injection Vulnerability
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -38,13 +38,13 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80076");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9502 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(21179);
-  script_name("PHP Easy Download admin/save.php Paramater Code Injection Vulnerability");
+  script_name("PHP Easy Download admin/save.php Parameter Code Injection Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2006 Justin Seitz");

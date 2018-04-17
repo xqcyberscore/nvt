@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: etomite_0612_sql_injection.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Etomite CMS id Paramater SQL Injection
+# $Id: etomite_0612_sql_injection.nasl 9502 2018-04-17 07:42:19Z cfischer $
+# Description: Etomite CMS id Parameter SQL Injection
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -43,15 +43,15 @@ tag_solution = "No patches or upgrades have been reported by the vendor at this 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80057");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9502 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2006-6048");
  script_bugtraq_id(21135);
  script_xref(name:"OSVDB", value:"30442");
- script_name("Etomite CMS id Paramater SQL Injection");
+ script_name("Etomite CMS id Parameter SQL Injection");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2006 Justin Seitz");

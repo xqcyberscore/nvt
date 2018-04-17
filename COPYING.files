@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 16 Apr 2018 14:29:49 +0200
+# Automatically created on:  Tue, 17 Apr 2018 14:39:51 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38668,6 +38668,7 @@
 2018/debian/deb_4170.nasl: GPLv2+
 2018/debian/deb_4171.nasl: GPLv2+
 2018/debian/deb_4172.nasl: GPLv2+
+2018/debian/deb_4173.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -38931,9 +38932,12 @@
 2018/debian/deb_dla_1341.nasl: GPLv2+
 2018/debian/deb_dla_1342.nasl: GPLv2+
 2018/debian/deb_dla_1343.nasl: GPLv2+
+2018/debian/deb_dla_1344.nasl: GPLv2+
 2018/debian/deb_dla_1345.nasl: GPLv2+
 2018/debian/deb_dla_1346.nasl: GPLv2+
 2018/debian/deb_dla_1347.nasl: GPLv2+
+2018/debian/deb_dla_1348.nasl: GPLv2+
+2018/debian/deb_dla_1349.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39118,6 +39122,9 @@
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
+2018/dlink/gb_dlink-dir815_com_inj_vuln.nasl: GPLv2+
+2018/dlink/gb_dlink-dir815_mult_vuln_2.nasl: GPLv2+
+2018/dlink/gb_dlink-dir815_mult_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_850l_bof_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir868l_rce_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_mult_inf_disc_vuln.nasl: GPLv2+
@@ -39590,6 +39597,7 @@
 2018/gb_graphicsmagick_mult_dos_vuln_lin.nasl: GPLv2+
 2018/gb_graphicsmagick_mult_dos_vuln_win.nasl: GPLv2+
 2018/gb_homematic_mult_vuln.nasl: GPLv2+
+2018/gb_http_cleartext_creds_submit.nasl: GPLv2+
 2018/gb_huawei_switch_inf_disclosure_vuln.nasl: GPLv2+
 2018/gb_icinga2_mult_vuln.nasl: GPLv2+
 2018/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
@@ -39695,6 +39703,7 @@
 2018/limesurvey/gb_limesurvey_csrf_vuln.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_file_discl_vuln.nasl: GPLv2+
 2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
+2018/mahara/gb_mahara_xss_vuln.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_sql_param_sql_inj_vuln_feb18_lin.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_sql_param_sql_inj_vuln_feb18_win.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_lin.nasl: GPLv2+
@@ -39834,6 +39843,7 @@
 2018/microsoft/gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl: GPLv2+
 2018/microsoft/gb_ms_windows_secdrv_sys_driver_kb3086255.nasl: GPLv2+
 2018/microsoft/gb_spectre_variant2_branch_tar_inj_update_disable.nasl: GPLv2+
+2018/mikrotik/gb_mikrotik_auth_bypass_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_rce_vuln.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_lin.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_win.nasl: GPLv2+
@@ -56866,12 +56876,15 @@ gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K21462542.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K22183127.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K23520761.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K24324390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25552364.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K30363030.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30500703.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30971148.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K31211252.nasl: GPLv2+
@@ -56887,13 +56900,16 @@ gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K43267483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52319810.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K52521791.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54562183.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54610514.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K55129614.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K55225440.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
@@ -56908,6 +56924,7 @@ gsf/2018/f5/gb_f5_big_ip_K82570157.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K83043359.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K90803619.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K94778122.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K95432245.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
@@ -56979,6 +56996,8 @@ gsf/2018/juniper/gb_junos_jsa10847.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10848.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10851.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10852.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10854.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10855.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_mult_vuln_apr18.nasl: GPLv2+
 gsf/2018/kaspersky/gb_kaspersky_smg_mult_vuln.nasl: GPLv2+

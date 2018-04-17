@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_mahara_detect.nasl 9497 2018-04-16 14:19:44Z asteins $
 #
 # Mahara Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900381");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 9497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-16 16:19:44 +0200 (Mon, 16 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mahara Version Detection");
@@ -80,10 +80,10 @@ foreach dir( make_list_unique( "/mahara" , "/", "/mahara/htdocs", "/htdocs", cgi
     foreach file( make_list( "/Changelog", "/ChangeLog", "/debian/Changelog" ) ) {
       rcvRes2 = http_get_cache( item: dir + file, port:port );
       if( "mahara" >< rcvRes2 ) {
-        # For greping the version line
-        ver = egrep( pattern:"([0-9]\.[0-9]\.[0-9]+)", string:rcvRes2 );
-        # For matching the version
-        ver = eregmatch( pattern:"^(mahara\ )?\(?(([0-9]\.[0-9]\.[0-9]+)(\~" +
+        # For greping the version lines
+        ver = egrep( pattern:"([0-9.]+[0-9.]+[0-9]+ \([0-9]{4}-[0-9]{2}-[0-9]{2}\))", string:rcvRes2 );
+        # For matching the first occurring version
+        ver = eregmatch( pattern:"^(mahara\ )?\(?(([0-9.]+[0-9.]+[0-9]+)(\~" +
                                  "(beta|alpha)([0-9]))?\-?([0-9])?)\)?([^0-9]"+
                                  "|$)", string:ver );
         # For replacing '~' or '-' with '.'

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol31510510.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol31510510.nasl 9498 2018-04-17 03:35:44Z ckuersteiner $
 #
 # F5 BIG-IP - SOL31510510 - OpenSSH vulnerability CVE-2016-6515
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6515");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 9498 $");
 
  script_name("F5 BIG-IP - SOL31510510 - OpenSSH vulnerability CVE-2016-6515");
 
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-17 05:35:44 +0200 (Tue, 17 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-10-24 15:29:10 +0200 (Mon, 24 Oct 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
@@ -66,29 +66,35 @@ include("f5.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-check_f5['LTM'] = make_array( 'affected',   '11.4.0-11.6.1;11.2.1;10.2.1-10.2.4;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['LTM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;10.2.1-10.2.4;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['AAM'] = make_array( 'affected',   '11.4.0-11.6.1;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['AAM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['AFM'] = make_array( 'affected',   '11.4.0-11.6.1;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['AFM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['AVR'] = make_array( 'affected',   '11.4.0-11.6.1;11.2.1;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['AVR'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['APM'] = make_array( 'affected',   '11.4.0-11.6.1;11.2.1;10.2.1-10.2.4;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['APM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;10.2.1-10.2.4;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['ASM'] = make_array( 'affected',   '11.4.0-11.6.1;11.2.1;10.2.1-10.2.4;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['ASM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;10.2.1-10.2.4;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
 
-check_f5['LC'] = make_array( 'affected',   '11.4.0-11.6.1;11.2.1;10.2.1-10.2.4;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['GTM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;10.2.1-10.2.4;',
+                              'unaffected', '11.6.1_HF2;11.5.6;');
 
-check_f5['PEM'] = make_array( 'affected',   '11.4.0-11.6.1;',
-                              'unaffected', '12.0.0-12.1.1;');
+check_f5['LC'] = make_array( 'affected',    '11.6.0-11.6.1;11.4.0-11.5.5;11.2.1;10.2.1-10.2.4;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
+
+check_f5['PEM'] = make_array( 'affected',   '11.6.0-11.6.1;11.4.0-11.5.5;',
+                              'unaffected', '13.0.0;12.0.0-12.1.2;11.6.1_HF2;11.5.6;');
+
+check_f5['PSM'] = make_array( 'affected',   '11.4.0-11.4.1;10.2.1-10.2.4;',
+                              'unaffected', '');
 
 if( report = is_f5_vulnerable( ca:check_f5, version:version ) )
 {
