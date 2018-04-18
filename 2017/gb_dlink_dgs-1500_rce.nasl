@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dgs-1500_rce.nasl 7801 2017-11-17 07:10:11Z asteins $
+# $Id: gb_dlink_dgs-1500_rce.nasl 9513 2018-04-17 14:26:07Z asteins $
 #
 # D-Link DGS-1500 Ax RCE Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107253");
-  script_version("$Revision: 7801 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 9513 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-17 16:26:07 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-09 14:03:54 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-15909");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name: "qod_type", value: "remote_banner");
 
   script_tag(name: "solution_type", value: "VendorFix");
 
@@ -55,18 +55,16 @@ if (description)
 
   script_tag(name: "insight", value: "The vulnerability is due to hardcoded password in D-Link DGS-1500 Ax devices before 2.51B021.");
 
-  script_tag(name : "impact" , value :"Successful exploitation will allow remote attackers to obtain shell access. ");
+  script_tag(name : "impact" , value :"Successful exploitation will allow remote attackers to obtain shell access.");
 
   script_tag(name: "affected", value: "D-Link DGS-1500 Ax devices before 2.51B021");
 
-  script_tag(name: "solution", value: "Update to 2.51B021 firmware. For details refer to :
+  script_tag(name: "solution", value: "Update the firmware to version 2.51B021 or higher.");
 
-   ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-20/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf
-   ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf
-   ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28P/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf
-   ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-52/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf.");
-
-  script_xref(name: "URL", value: "https://nvd.nist.gov/vuln/detail/CVE-2017-15909");
+  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-20/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28P/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-52/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
 
   exit(0);
 }
@@ -74,7 +72,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-cpe_list = make_list( "cpe:/a:dlink:DGS-1500-20_firmware", "cpe:/a:dlink:DGS-1500-28_firmware", "cpe:/a:dlink:DGS-1500-28p_firmware", "cpe:/a:dlink:DGS-1500-52_firmware");
+cpe_list = make_list( "cpe:/o:d-link:dgs-1500-20_firmware", "cpe:/o:d-link:dgs-1500-28_firmware", "cpe:/o:d-link:dgs-1500-28p_firmware", "cpe:/o:d-link:dgs-1500-52_firmware");
 
 if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
 

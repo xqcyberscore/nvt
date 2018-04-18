@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: compliance_tests.nasl 9516 2018-04-18 08:02:49Z emoss $
 #
 # Compliance Tests
 #
@@ -29,8 +29,8 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95888");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 9516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 10:02:49 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,6 +51,7 @@ if(description)
   script_add_preference(name:"Launch PCI-DSS (Version 2.0)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch latest PCI-DSS version", type:"checkbox", value:"no");
   script_add_preference(name:"Verbose PCI-DSS results", type:"checkbox", value:"no");
+  script_add_preference(name:"Start state controls", type:"checkbox", value:"no");
   script_add_preference(name:"PCI-DSS Berichtsprache/Report Language", type:"radio", value:"Deutsch;English");
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
@@ -90,6 +91,7 @@ launch_gshb = script_get_preference("Launch latest IT-Grundschutz version");
 if (launch_gshb == "yes") {
   set_kb_item(name: "Compliance/Launch/GSHB-ITG", value: TRUE);
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
+  set_kb_item(name: "Compliance/Launch", value: TRUE);
 }
 # Set KB item if IT-Grundschutz silence is requested
 verbose_gshb = script_get_preference("Verbose IT-Grundschutz results");
@@ -127,6 +129,13 @@ else set_kb_item(name: "PCI-DSS/lang", value: "eng");
 verbose_pci_dss = script_get_preference("Verbose PCI-DSS results");
 if (verbose_pci_dss == "no") {
   set_kb_item(name: "PCI-DSS/silence", value: "Wahr");
+}
+
+# Set kb entry to start basic policy nvts
+state_controls = script_get_preference("Start state controls");
+if (state_controls == "yes"){
+  set_kb_item(name: "Compliance/Launch", value: TRUE);
+  set_kb_item(name: "Compliance/verbose", value: TRUE);
 }
 
 CN = script_get_preference("Testuser Common Name");

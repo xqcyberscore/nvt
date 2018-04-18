@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_open_re_vul.nasl 6539 2017-07-05 12:02:14Z cfischer $
+# $Id: gb_django_open_re_vul.nasl 9513 2018-04-17 14:26:07Z asteins $
 #
-# Django django.views.static.serve Function Open Redirection Vulnerability
+# Django Open Redirection Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,27 +29,29 @@ CPE = "cpe:/a:django_project:django";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107142");
-  script_version("$Revision: 6539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 9513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:26:07 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 16:31:00 +0200 (Fri, 07 Apr 2017)");
   script_cve_id("CVE-2017-7234");
+  script_bugtraq_id(97401);
 
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Django django.views.static.serve Function Open Redirection Vulnerability");
+  script_name("Django Open Redirection Vulnerability");
   script_tag(name: "summary", value: "Django is prone to an open-redirection vulnerability because it fails to properly sanitize user-supplied input.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Django is prone to an open-redirection vulnerability because it fails to properly sanitize user-supplied input.");
 
-  script_tag(name: "impact" , value: "An attacker can leverage this issue by constructing a crafted URI and enticing a user to follow it. When an unsuspecting victim follows the link, they may be redirected to an attacker-controlled site; this may aid in phishing attacks. Other attacks are possible.");
+  script_tag(name: "impact" , value: "An attacker can leverage this issue by constructing a crafted URI and enticing a user to follow it.
+  When an unsuspecting victim follows the link, they may be redirected to an attacker-controlled site. This may aid in phishing attacks. Other attacks are also possible.");
 
   script_tag(name: "affected", value: "Versions prior to Django 1.10.7, 1.9.13, and 1.8.18 are vulnerable");
 
   script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97401");
+  script_xref(name: "URL", value: "http://www.debian.org/security/2017/dsa-3835");
+  script_xref(name: "URL", value: "https://www.djangoproject.com/weblog/2017/apr/04/security-releases/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,41 +73,40 @@ include("host_details.inc");
 
 Ver = get_app_version(cpe: CPE);
 
-if(!Ver ){
-  exit(0);
-}
+if(!Ver) exit(0);
 
 if (Ver =~ "^1\.10\.")
 {
-    if(version_is_less(version: Ver, test_version:"1.10.7"))
-    {
-        fix = "1.10.7";
-        VULN = TRUE;
-    }
+  if(version_is_less(version: Ver, test_version:"1.10.7"))
+  {
+    fix = "1.10.7";
+    VULN = TRUE;
+  }
 }
 
 if (Ver =~ "^1\.9\.")
 {
-    if(version_is_less(version: Ver, test_version:"1.9.13"))
-    {
-        fix = "1.9.13";
-        VULN = TRUE;
-    }
+  if(version_is_less(version: Ver, test_version:"1.9.13"))
+  {
+    fix = "1.9.13";
+    VULN = TRUE;
+  }
 }
 
 if (Ver =~ "1\.8\.")
 {
-     if(version_is_less(version: Ver, test_version:"1.8.18"))
-        {
-            fix = "1.8.18";
-            VULN = TRUE;
-        }
+  if(version_is_less(version: Ver, test_version:"1.8.18"))
+  {
+    fix = "1.8.18";
+    VULN = TRUE;
+  }
 }
 
 if (VULN)
 {
-    report =  report_fixed_ver(installed_version:Ver, fixed_version: fix);
-    security_message(data:report);
-    exit(0);
+  report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
+  security_message(port:0, data:report);
+  exit(0);
 }
 
+exit(99);

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872545");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9517 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 11:30:14 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-04 06:37:59 +0200 (Tue, 04 Apr 2017)");
   script_cve_id("CVE-2017-2661");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for pcs FEDORA-2017-7accc8010b");
   script_tag(name: "summary", value: "Check the version of pcs");

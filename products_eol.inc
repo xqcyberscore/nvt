@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 9393 2018-04-07 12:07:27Z cfischer $
+# $Id: products_eol.inc 9518 2018-04-18 09:33:37Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9393 $
+# $Revision: 9518 $
 #
 ###############################################################################
 
@@ -53,6 +53,8 @@ eol_cpes[ 'cpe:/a:drupal:drupal' ] = make_array(
   'version_regex', '^([0-9]+)'
 );
 
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2018-March/000216.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2016-May/000194.html
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2015-April/000181.html
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2014-August/000166.html
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2013-August/000155.html
@@ -60,12 +62,12 @@ eol_cpes[ 'cpe:/a:drupal:drupal' ] = make_array(
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2011-June/000127.html
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2009-December/000084.html
 eol_cpes[ 'cpe:/a:greenbone:greenbone_security_assistant' ] = make_array(
-  'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+  'versions',      '6.0:2018-08-27;5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 eol_cpes[ 'cpe:/a:openvas:openvas_manager' ] = make_array(
-  'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+  'versions',      '6.0:2018-08-27;5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

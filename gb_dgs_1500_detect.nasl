@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dgs_1500_detect.nasl 7705 2017-11-09 08:14:49Z teissa $
+# $Id: gb_dgs_1500_detect.nasl 9513 2018-04-17 14:26:07Z asteins $
 #
 # D-Link DGS-1500 Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107252");
-  script_version("$Revision: 7705 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 09:14:49 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 9513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:26:07 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 14:03:54 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,13 +77,13 @@ if ("DGS-1500" >< sysdesc)
   set_kb_item(name: "dgs/1500/detected", value: TRUE);
 
   cpe = build_cpe(value: firmware, exp: "^([0-9a-z.-]+)",
-                  base: "cpe:/a:dlink:" + model + "_firmware:");
+                  base: "cpe:/o:d-link:" + tolower(model) + "_firmware:");
   if (!cpe)
-    cpe = 'cpe:/a:dlink:' + model + "_firmware";
+    cpe = 'cpe:/o:d-link:' + tolower(model) + "_firmware";
 
   register_product(cpe: cpe, port: port, location: port + "/udp", service: "snmp", proto: "udp");
 
-  log_message(data: build_detection_report(app: "Dlink  " + model, version: firmware,
+  log_message(data: build_detection_report(app: "D-Link  " + model, version: firmware,
                                            install: port + "/udp", cpe: cpe, concluded: sysdesc),
               port: port, proto: 'udp');
   exit(0);

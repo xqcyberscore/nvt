@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis6_97127.nasl 9511 2018-04-17 12:13:27Z asteins $
+# $Id: gb_iis6_97127.nasl 9515 2018-04-17 14:42:05Z cfischer $
 #
 # Microsoft Internet Information Services Buffer Overflow Vulnerability
 #
@@ -32,13 +32,13 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140228");
   script_bugtraq_id(97127);
   script_cve_id("CVE-2017-7269");
-  script_version("$Revision: 9511 $");
+  script_version("$Revision: 9515 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 14:13:27 +0200 (Tue, 17 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:42:05 +0200 (Tue, 17 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 17:46:17 +0200 (Thu, 30 Mar 2017)");
   script_name("Microsoft Internet Information Services Buffer Overflow Vulnerability");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DENIAL);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("secpod_ms_iis_detect.nasl");
