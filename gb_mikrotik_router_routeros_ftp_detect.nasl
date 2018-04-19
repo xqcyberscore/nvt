@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_ftp_detect.nasl 8156 2017-12-18 11:48:16Z cfischer $
+# $Id: gb_mikrotik_router_routeros_ftp_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
 #
 # MikroTik RouterOS Detection (FTP)
 #
@@ -25,20 +25,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113069");
-  script_version("$Revision: 8156 $");
+  script_version("$Revision: 9536 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 12:48:16 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 13:04:05 +0100 (Thu, 14 Dec 2017)");
   script_name("MikroTik RouterOS Detection (FTP)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"Detection of MikroTik RouterOS via FTP.
 
@@ -50,10 +51,10 @@ if( description )
   exit( 0 );
 }
 
-include( "host_details.inc" );
-include( "ftp_func.inc" );
+include("host_details.inc");
+include("ftp_func.inc");
 
-port = get_ftp_port( default:21 );
+port = get_ftp_port( default: 21 );
 banner = get_ftp_banner( port: port );
 if( " FTP server (MikroTik " >!< banner || " ready" >!<  banner ) exit( 0 );
 
@@ -65,9 +66,8 @@ set_kb_item( name: "mikrotik/ftp/detected", value: TRUE );
 # MikroTik FTP server (MikroTik 6.30.4) ready
 # Example FTP server (MikroTik 6.30.2) ready
 vers = eregmatch( pattern: "FTP server \(MikroTik ([A-Za-z0-9.]+)", string: banner );
-if( vers[1] ) version = vers[1];
-
-if( version != "unknown" ) {
+if( vers[1] ) {
+  version = vers[1];
   set_kb_item( name: "mikrotik/ftp/" + port + "/concluded", value: vers[0] );
 }
 

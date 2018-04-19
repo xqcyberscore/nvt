@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_pure-ftpd_detect.nasl 4777 2016-12-15 14:28:45Z cfi $
+# $Id: sw_pure-ftpd_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
 #
 # Pure-FTPd FTP Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111110");
-  script_version("$Revision: 4777 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 15:28:45 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 9537 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 17:00:00 +0200 (Tue, 12 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"The script is grabbing the banner of a FTP server
   and sends a 'HELP' command to identify a Pure-FTPd FTP Server from the reply.");
@@ -47,13 +48,11 @@ if(description)
   exit(0);
 }
 
-
 include("ftp_func.inc");
 include("host_details.inc");
 include("cpe.inc");
 
 port = get_ftp_port( default:21 );
-
 banner = get_ftp_banner( port:port );
 command = get_ftp_cmd_banner( port:port, cmd:"HELP" );
 
@@ -67,15 +66,14 @@ if( "Welcome to Pure-FTPd" >< banner || "Welcome to PureFTPd" >< banner ) {
 
 if( installed ) {
 
+  install = port + '/tcp';
+  version = "unknown";
+
   ver = eregmatch( pattern:"Welcome to PureFTPd ([0-9.]+)", string:banner );
   if( ! isnull( ver[1] ) ) {
     version = ver[1];
     concluded = ver[0];
-  } else {
-    version = "unknown";
   }
-
-  install = port + '/tcp';
 
   set_kb_item( name:"ftp/" + port + "/pure-ftpd", value:version );
   set_kb_item( name:"pure-ftpd/installed", value:TRUE );

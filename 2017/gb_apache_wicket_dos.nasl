@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_dos.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: gb_apache_wicket_dos.nasl 9532 2018-04-19 09:52:06Z asteins $
 #
-# Apache Wicket Denial of Service Vulnerability
+# Apache Wicket Denial-of-Service Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,27 +29,27 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107117");
-  script_version("$Revision: 6873 $");
+  script_version("$Revision: 9532 $");
   script_cve_id("CVE-2016-6793");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
-  script_tag(name:"creation_date", value: "2017-01-02 13:26:09 +0700 (Mon, 02 Jan 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"creation_date", value: "2017-01-02 13:26:09 +0100 (Mon, 02 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Apache Wicket Denial of Service Vulnerability");
+  script_name("Apache Wicket Denial-of-Service Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Apache Wicket and is
-  prone to Denial of Service vulnerability.");
+  prone to a denial-of-service vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Depending on the ISerializer set in the
-  Wicket application, it's possible that a Wicket's object deserialized from
-  an untrusted source and utilized by the application to causes the code to
-  enter in an infinite loop. ");
+  Wicket application, it's possible that a Wicket object deserialized from
+  an untrusted source and utilized by the application causes the code to
+  enter an infinite loop.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause the application to enter an infinite loop and consume excessive CPU resources, resulting in denial-of-service conditions.
 
   Impact Level: Application");
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/95168");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/95168");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -73,23 +73,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
-if(!Port = get_app_port(cpe:CPE)){
+if(!Port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-Ver = get_app_version(cpe:CPE, port:Port);
-
-if(!Ver || Ver == "unknown"){
+if(!Ver = get_app_version(cpe:CPE, port:Port))
   exit(0);
-}
 
 if(version_in_range(version:Ver, test_version:"1.5.0", test_version2:"1.5.16"))
 {
   fix = "1.5.17";
   VULN = TRUE ;
 }
-
 else if(version_in_range(version:Ver, test_version:"6.0", test_version2:"6.24.0"))
 {
   fix = "6.25.0";
@@ -103,4 +97,5 @@ if(VULN)
   security_message(data:report, port:Port);
   exit(0);
 }
-exit(0);
+
+exit(99);

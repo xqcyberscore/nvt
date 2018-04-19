@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 8877 2018-02-20 09:05:58Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 9533 2018-04-19 10:09:02Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 8877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 10:05:58 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 9533 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 12:09:02 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"This script performs FTP banner based OS detection.");
 
@@ -53,16 +54,22 @@ include("ftp_func.inc");
 SCRIPT_DESC = "FTP OS Identification";
 BANNER_TYPE = "FTP banner";
 
-port = get_ftp_port( default:21 );
-
+port   = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
 
 if( banner =~ "CP ([0-9\-]+) (IT )?FTP-Server V([0-9.]+) ready for new user" ) exit( 0 ); # Covered by gb_simatic_cp_ftp_detect.nasl
 
 # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
-if( "VxWorks FTP server" >< banner ) {
-  version = eregmatch( pattern:"\(VxWorks ([0-9.]+)", string:banner );
+# 220 VxWorks (VxWorks5.4.2) FTP server ready
+# 220 VxWorks (5.4) FTP server ready
+# 220 VxWorks FTP server (VxWorks VxWorks5.5.1) ready.
+# 220 Tornado-vxWorks (VxWorks5.5.1) FTP server ready
+# 220 $hostname FTP server (VxWorks 6.4) ready.
+# 220 VxWorks (VxWorks 6.3) FTP server ready
+# 220 Tornado-vxWorks FTP server ready
+if( banner =~ "[vV]xWorks" && "FTP server" >< banner ) {
+  version = eregmatch( pattern:"\(?VxWorks ?\(?([0-9.]+)", string:banner );
   if( ! isnull( version[1] ) ) {
     register_and_report_os( os:"Wind River VxWorks", version:version[1], cpe:"cpe:/o:windriver:vxworks", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {

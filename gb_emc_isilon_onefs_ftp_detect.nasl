@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_ftp_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
+# $Id: gb_emc_isilon_onefs_ftp_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
 #
 # EMC Isilon OneFS Devices Detection (FTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106553");
-  script_version("$Revision: 8147 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9536 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 15:26:27 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,8 +45,9 @@ This script performs FTP based detection of EMC Isilon OneFS devices.");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   exit(0);
 }
@@ -56,7 +57,6 @@ include("ftp_func.inc");
 include("host_details.inc");
 
 port = get_ftp_port(default: 21);
-
 banner = get_ftp_banner(port: port);
 
 if ("Isilon OneFS" >!< banner)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wu-ftpd_detect.nasl 9515 2018-04-17 14:42:05Z cfischer $
+# $Id: gb_wu-ftpd_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
 #
 # WU-FTPD Detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108437");
-  script_version("$Revision: 9515 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:42:05 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9536 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 17:09:43 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +40,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/WU-FTPD");
 

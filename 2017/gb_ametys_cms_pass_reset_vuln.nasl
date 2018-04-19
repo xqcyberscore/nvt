@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_pass_reset_vuln.nasl 7745 2017-11-13 13:25:40Z teissa $
+# $Id: gb_ametys_cms_pass_reset_vuln.nasl 9532 2018-04-19 09:52:06Z asteins $
 #
 # Ametys CMS Unauthenticated Password Reset Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:ametys:cms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107257");
-  script_version("$Revision: 7745 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-13 14:25:40 +0100 (Mon, 13 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-13 13:29:03 +0700 (Mon, 13 Nov 2017)");
+  script_version("$Revision: 9532 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name: "creation_date", value: "2017-11-13 13:29:03 +0200 (Mon, 13 Nov 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -49,7 +49,7 @@ if (description)
   script_dependencies("gb_ametys_cms_detect.nasl");
   script_mandatory_keys("ametys/detected");
 
-  script_tag(name: "summary", value: "Ametys CMS is prone to unauthenticated password reset vulnerability.");
+  script_tag(name: "summary", value: "Ametys CMS is prone to an unauthenticated password reset vulnerability.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
@@ -79,4 +79,4 @@ if (version_is_less(version: version, test_version: "4.0.3")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

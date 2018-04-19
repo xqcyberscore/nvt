@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_win.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_apache_struts_dos_9_17_win.nasl 9532 2018-04-19 09:52:06Z asteins $
 #
-# Apache Struts Multiple Denial of Service Vulnerabilities (Windows)
+# Apache Struts Multiple Denial-of-Service Vulnerabilities (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107240");
-  script_version("$Revision: 7571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 9532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
@@ -39,16 +39,16 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Apache Struts Multiple Denial of Service Vulnerabilities (Windows)");
+  script_name("Apache Struts Multiple Denial-of-Service Vulnerabilities (Windows)");
   script_tag(name: "summary", value: "Apache Struts is prone to two denial-of-service vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
   script_tag(name: "impact" , value: "An attacker can exploit this issue to cause a denial-of-service condition, denying service to legitimate users.");
   script_tag(name: "affected", value: "Apache Struts 2.3.7 through 2.3.33, and 2.5 through  2.5.12 are vulnerable");
   script_tag(name: "solution", value: "Updates are available. Apache Struts 2.3.x users should update to Apache Struts 2.3.34, Apache Struts 2.5.x users should update to Apache Struts 2.5.13.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/100611");
-  script_xref(name: "URL" , value: "https://struts.apache.org/docs/s2-050.html");
-  script_xref(name: "URL" , value: "https://struts.apache.org/docs/s2-051.html");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/100611");
+  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-050.html");
+  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-051.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
@@ -65,25 +65,27 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
+if(!Port = get_app_port(cpe:CPE)) {
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port:Port)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)) {
   exit(0);
 }
 
 if (version_in_range(version: Ver, test_version: "2.3.7", test_version2: "2.3.33")) {
-  report = report_fixed_ver(installed_version: Ver, fixed_version: "2.3.34");
-  security_message(port: Port, data: report);
-  exit(0);
+  vuln = TRUE;
+  fix = "2.3.34";
+}
+else if (version_in_range(version: Ver, test_version: "2.5", test_version2: "2.5.12")) {
+  vuln = TRUE;
+  fix = "2.5.13";
 }
 
-if (version_in_range(version: Ver, test_version: "2.5", test_version2: "2.5.12")) {
-  report = report_fixed_ver(installed_version: Ver, fixed_version: "2.5.13");
+if (vuln) {
+  report = report_fixed_ver(installed_version: Ver, fixed_version: fix);
   security_message(port: Port, data: report);
   exit(0);
 }
 
 exit(99);
-

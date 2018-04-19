@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rhinosoft_serv-u_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_rhinosoft_serv-u_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
 #
 # Rhino Software Serv-U SSH and FTP Server Version Detection (Remote)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801117");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9537 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Rhino Software Serv-U SSH and FTP Server Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
+  script_family("Product detection");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
   script_require_ports("Services/ftp", 21, "Services/ssh", 22);
 
   script_tag(name:"summary", value:"This script detects the installed version of Rhino Software
@@ -82,7 +82,7 @@ foreach port( ftpPorts ) {
           set_kb_item( name:"ftp/" + port + "/Serv-U", value:vers );
         }
       }
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:rhinosoft:serv-u:" );
       if( isnull( cpe ) )
         cpe = 'cpe:/a:rhinosoft:serv-u';
@@ -93,7 +93,7 @@ foreach port( ftpPorts ) {
                                                 version:vers,
                                                 install:install,
                                                 cpe:cpe,
-                                                concluded:version[0] ),
+                                                concluded:banner ),
                                                 port:port );
     }
   }
@@ -115,7 +115,6 @@ if( banner && "serv-u" >< tolower( banner ) ) {
     set_kb_item( name:"ssh/" + sshPort + "/Serv-U", value:vers );
   }
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:rhinosoft:serv-u:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:rhinosoft:serv-u';
@@ -126,7 +125,7 @@ if( banner && "serv-u" >< tolower( banner ) ) {
                                             version:vers,
                                             install:install,
                                             cpe:cpe,
-                                            concluded:version[0] ),
+                                            concluded:banner ),
                                             port:sshPort );
 }
 

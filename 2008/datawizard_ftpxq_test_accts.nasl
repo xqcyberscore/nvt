@@ -1,6 +1,8 @@
+##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: datawizard_ftpxq_test_accts.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Tries to read a file via FTPXQ.
+# $Id: datawizard_ftpxq_test_accts.nasl 9528 2018-04-19 07:31:17Z cfischer $
+#
+# Tries to read a file via FTPXQ.
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -20,72 +22,53 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+##############################################################################
 
-tag_summary = "The remote FTP server has one or more default test accounts. 
-
-Description :
-
-The version of DataWizard FTPXQ that is installed on the remote host
-has one or more default accounts setup which can allow an attacker to
-read and/or write arbitrary files on the system.";
-
-tag_solution = "Disable or change the password for any unnecessary user accounts.";
-
-if (description)
+if(description)
 {
-	# set script identifiers
-	script_oid("1.3.6.1.4.1.25623.1.0.80053");;
-	script_version("$Revision: 9349 $");
-	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
-	script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-    script_tag(name:"cvss_base", value:"6.4");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-	
-	script_cve_id("CVE-2006-5569");
-	script_bugtraq_id(20721);
-	script_xref(name:"OSVDB", value:"30010");
+  script_oid("1.3.6.1.4.1.25623.1.0.80053");
+  script_version("$Revision: 9528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_cve_id("CVE-2006-5569");
+  script_bugtraq_id(20721);
+  script_xref(name:"OSVDB", value:"30010");
+  script_name("DataWizard FTPXQ Default Accounts");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_family("FTP");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ftpxq");
 
-	name = "DataWizard FTPXQ Default Accounts";
+  script_tag(name:"solution", value:"Disable or change the password for any unnecessary user accounts.");
 
-	script_name(name);
+  script_tag(name:"summary", value:"The remote FTP server has one or more default test accounts.
 
-	script_category(ACT_GATHER_INFO);
+  Description :
+
+  The version of DataWizard FTPXQ that is installed on the remote host
+  has one or more default accounts setup which can allow an attacker to
+  read and/or write arbitrary files on the system.");
+
+  script_xref(name:"URL", value:"http://attrition.org/pipermail/vim/2006-November/001107.html");
+
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
-	script_copyright("This script is Copyright (C) 2006 Justin Seitz");
-	
-	script_family("FTP");
 
-	script_dependencies("ftpserver_detect_type_nd_version.nasl");
-	script_exclude_keys("ftp/msftpd", "ftp/ncftpd", "ftp/fw1ftpd", "ftp/vxftpd");
-	script_require_ports("Services/ftp", 21);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://attrition.org/pipermail/vim/2006-November/001107.html");
-	exit(0);
-
+  exit(0);
 }
 
-include("global_settings.inc");
 include("ftp_func.inc");
 
-#
-#	Verify we can talk to the FTP server, if not exit
-#
-port = get_kb_item("Services/ftp");
-if(!port)port = 21;
-if (!get_port_state(port)) exit(0);
+# Verify we can talk to the FTP server, if not exit
+port   = get_ftp_port( default:21 );
+banner = get_ftp_banner( port:port );
+if( ! banner || "FtpXQ FTP" >!< banner ) exit( 0 );
 
-
-banner = get_ftp_banner(port:port);
-if (!banner || "FtpXQ FTP" >!< banner) exit(0);
-
-#
-#
-#		Now let's attempt to login with the default test account.
-#
-#
-
+# Now let's attempt to login with the default test account.
 soc = open_sock_tcp(port);
 if(!soc) exit(0);
 
@@ -111,7 +94,7 @@ for (i=0; i<max_index(acct); i++) {
       #
       #	We have identified that we have logged in with the account, let's try to read boot.ini.
       #
-      # 
+      #
       port2 = ftp_pasv(socket:soc);
       if (!port2) exit(0);
       soc2 = open_sock_tcp(port2, transport:ENCAPS_IP);

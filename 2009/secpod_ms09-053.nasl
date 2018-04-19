@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-053.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms09-053.nasl 9528 2018-04-19 07:31:17Z cfischer $
 #
 # Microsoft IIS FTP Service Remote Code Execution Vulnerabilities (975254)
 #
@@ -13,7 +13,7 @@
 # Updated Updated By: Antu Sanadi <santu@secpod.com> on 2012-06-05
 # - Updated to support GDR and LDR versions.
 # - Removed get_file_version function.
-# 
+#
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
 #
@@ -31,62 +31,58 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary code with
-  SYSTEM privileges which may result Denial of Service on the affected server.
-  Impact Level: System/Application.";
-tag_affected = "Microsoft Internet Information Server (IIS) 5.0/5/1/6.0";
-tag_insight = "- This issue is caused by an error when processing directory listing commands
-    including the '*' character and '../' sequences, which could be exploited
-    to exhaust the stack.
-  - An heap-based buffer overflow error occurs in the FTP service when processing
-    a specially crafted 'NLST' command.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://technet.microsoft.com/en-us/security/bulletin/MS09-053";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-053.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900874");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-2521", "CVE-2009-3023");
   script_bugtraq_id(36273, 36189);
   script_name("Microsoft IIS FTP Service Remote Code Execution Vulnerabilities (975254)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/975254");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2542");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2481");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS09-053");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "secpod_ms_iis_ftpd_detect.nasl");
-  script_mandatory_keys("MS/IIS-FTP/Installed", "SMB/WindowsVersion");
+  script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/975254");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2542");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2481");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS09-053");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code with
+  SYSTEM privileges which may result Denial of Service on the affected server.
+
+  Impact Level: System/Application.");
+
+  script_tag(name:"affected", value:"Microsoft Internet Information Server (IIS) 5.0/5/1/6.0.");
+
+  script_tag(name:"insight", value:"- This issue is caused by an error when processing directory listing commands
+  including the '*' character and '../' sequences, which could be exploited to exhaust the stack.
+
+  - An heap-based buffer overflow error occurs in the FTP service when processing
+  a specially crafted 'NLST' command.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory / references.");
+
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-053.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-if(!get_kb_item("MS/IIS-FTP/Installed")){
-  exit(0);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win2008:3) <= 0){
   exit(0);
@@ -109,7 +105,7 @@ if(!dllVer){
 
 # Windows 2K
 if(hotfix_check_sp(win2k:5) > 0)
-{ 
+{
   # Grep for ftpsvc2.dll version < 5.0.2195.7336
   if(version_is_less(version:dllVer, test_version:"5.0.2195.7336"))
   {

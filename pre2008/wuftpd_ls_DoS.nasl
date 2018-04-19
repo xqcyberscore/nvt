@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wuftpd_ls_DoS.nasl 9429 2018-04-10 18:04:43Z cfischer $
+# $Id: wuftpd_ls_DoS.nasl 9526 2018-04-19 06:22:02Z cfischer $
 #
 # wu-ftpd ls -W memory exhaustion
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:washington_university:wu-ftpd";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11912");
-  script_version("$Revision: 9429 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 20:04:43 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 9526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 08:22:02 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8875);
   script_cve_id("CVE-2003-0853", "CVE-2003-0854");
@@ -39,8 +41,9 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("FTP");
   script_copyright("Copyright (C) 2003 Michel Arboi");
-  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl");
+  script_dependencies("gb_wu-ftpd_detect.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("wu-ftpd/installed");
 
   script_xref(name:"URL", value:"http://www.guninski.com/binls.html");
   script_xref(name:"CONECTIVA", value:"CLA-2003:768");
@@ -62,11 +65,13 @@ if(description)
 }
 
 include("ftp_func.inc");
+include("host_details.inc");
 
-port = get_ftp_port( default:21 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! loc  = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
+user = get_kb_item( "ftp/login" );
+pass = get_kb_item( "ftp/password" );
 if( ! user ) user = "anonymous";
 if( ! pass ) pass = "openvas@example.com";
 

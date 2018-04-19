@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_server_detect_macosx.nasl 4799 2016-12-19 10:37:16Z antu123 $
+# $Id: gb_adobe_indesign_server_detect_macosx.nasl 9527 2018-04-19 07:11:09Z santu $
 #
 # Adobe InDesign Server Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810240");
-  script_version("$Revision: 4799 $");
+  script_version("$Revision: 9527 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 11:37:16 +0100 (Mon, 19 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 12:59:49 +0530 (Thu, 15 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Server Version Detection (Mac OS X)");
@@ -78,30 +78,36 @@ if(name =~ "Copyright.*Adobe Systems")
   installVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
               "install.app/Contents/Info " +
               "CFBundleVersion"));
+}
+else
+{  
+  installVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+               "Adobe\ InDesign\ CC\ 2018/Adobe\ InDesign\ CC\ 2018.app/Contents/Info " +
+               "CFBundleShortVersionString"));
+}
+## Close Socket
+close(sock);
 
-  ## Close Socket
-  close(sock);
+## Exit if version not found
+if(isnull(installVer) || "does not exist" >< installVer){
+  exit(0);
+}
 
-  ## Exit if version not found
-  if(isnull(installVer) || "does not exist" >< installVer){
-    exit(0);
-  }
+## Set the version in KB
+set_kb_item(name: "InDesign/Server/MacOSX/Version", value:installVer);
 
-  ## Set the version in KB
-  set_kb_item(name: "InDesign/Server/MacOSX/Version", value:installVer);
+## build cpe and store it as host_detail
+## created new cpe
+cpe = build_cpe(value:installVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_server:");
+if(isnull(cpe))
+  cpe='cpe:/a:adobe:indesign_server';
 
-  ## build cpe and store it as host_detail
-  ## created new cpe
-  cpe = build_cpe(value:installVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_server:");
-  if(isnull(cpe))
-    cpe='cpe:/a:adobe:indesign_server';
+register_product(cpe:cpe, location:'/Applications');
 
-  register_product(cpe:cpe, location:'/Applications');
-
-  log_message(data: build_detection_report(app: "Adobe Indesign Server",
+log_message(data: build_detection_report(app: "Adobe Indesign Server",
                                            version: installVer,
                                            install: "/Applications",
                                            cpe: cpe,
                                            concluded: installVer));
-  exit(0);
-}
+exit(0);
+

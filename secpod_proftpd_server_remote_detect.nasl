@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_remote_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: secpod_proftpd_server_remote_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
 #
 # ProFTPD Server Version Detection (Remote)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900815");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9537 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-14 14:09:35 +0200 (Fri, 14 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,8 +39,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"This script detects the installed version of ProFTP Server
   and sets the version in KB.");
@@ -55,16 +56,14 @@ include("host_details.inc");
 include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
-
-# Get the version from banner
 banner = get_ftp_banner( port:port );
 
 if( "ProFTPD" >< banner ) {
 
+  ver = "unknown";
   set_kb_item( name:"ProFTPD/Installed", value:TRUE );
 
-  ftpVer = eregmatch( pattern:"(ProFTPD|NASFTPD Turbo station) ([0-9.]+)([A-Za-z0-9]+)?( Server \(ProFTPD\))?",
-                      string:banner );
+  ftpVer = eregmatch( pattern:"(ProFTPD|NASFTPD Turbo station) ([0-9.]+)([A-Za-z0-9]+)?( Server \(ProFTPD\))?", string:banner );
 
   if( ftpVer[2] ) {
     if( ftpVer[3] ) {
@@ -73,25 +72,21 @@ if( "ProFTPD" >< banner ) {
       ver = ftpVer[2];
     }
     set_kb_item( name:"ProFTPD/" + port + "/Ver", value:ver );
-  } else {
-    ver = "unknown";
   }
-    
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe( value:ftpVer[2], exp:"^([0-9.]+)", base:"cpe:/a:proftpd:proftpd:" );
   if( ftpVer[2] && ftpVer[3] && ! isnull( cpe ) )
     cpe = cpe + ":" + ftpVer[3];
   if( ! cpe )
     cpe = 'cpe:/a:proftpd:proftpd';
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, location:port + '/tcp', port:port );
- 
+
   log_message( data:build_detection_report( app:"ProFTPD",
                                             version:ver,
                                             install:port + '/tcp',
                                             cpe:cpe,
-                                            concluded:ftpVer[0] ),
+                                            concluded:banner ),
                                             port:port );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_mult_vuln_aug16.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: gb_cybozu_garoon_mult_vuln_aug16.nasl 9523 2018-04-18 21:57:48Z asteins $
 #
 # Cybozu Garoon Multiple Vulnerabilities - Aug16
 #
@@ -28,9 +28,9 @@ CPE = "cpe:/a:cybozu:garoon";
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.1071655555");
-  script_version("$Revision: 6757 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.107165");
+  script_version("$Revision: 9523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-11 11:54:29 +0200 (Thu, 11 May 2017)");
   script_cve_id("CVE-2016-1213", "CVE-2016-1214", "CVE-2016-1215", "CVE-2016-1216", "CVE-2016-1217",
                 "CVE-2016-1218", "CVE-2016-1219", "CVE-2016-1220");
@@ -52,18 +52,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92601");
 
   script_tag(name:"summary", value:"This host is installed with Cybozu Garoon
-  and is vulnerable to multiple vulnerabilities.");
+  and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of a detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT
   and check if the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"Cybozu Garoon is prone to multiple vulnerabilities");
+  script_tag(name:"impact" , value:"Successful exploitation will allow remote attackers to do redirection, XSS, authentication bypass, SQL injection and denial-of-services attacks.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote attackers to do redirection, XSS, authentication bypass, SQL Injection and denial of services attacks.");
+  script_tag(name:"affected", value:"Cybozu Garoon before version 4.2.2.");
 
-  script_tag(name:"affected", value:"Cybozu Garoon before 4.2.2.");
-
-  script_tag(name:"solution", value:"Update to Cybozu Garoon 4.2.2.");
+  script_tag(name:"solution", value:"Update to Cybozu Garoon 4.2.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -74,7 +72,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -83,11 +80,10 @@ if(!Ver = get_app_version(cpe:CPE, port: Port)){
   exit(0);
 }
 
-if(version_is_less(version: Ver, test_version:"4.2.2"))
-{
+if(version_is_less(version: Ver, test_version:"4.2.2")){
   report =  report_fixed_ver(installed_version:Ver, fixed_version:"4.2.2");
   security_message(data:report, port: Port);
-  exit( 0 );
+  exit(0);
 }
 
 exit ( 99 );

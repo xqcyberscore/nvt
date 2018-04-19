@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_webui_detect.nasl 9520 2018-04-18 11:58:20Z jschulte $
+# $Id: gb_ikiwiki_webui_detect.nasl 9521 2018-04-18 13:58:49Z asteins $
 #
 # IkiWiki Detection (Web UI)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113157");
-  script_version("$Revision: 9520 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 13:58:20 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9521 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 15:58:49 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 14:52:55 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ foreach location ( make_list_unique( "/", cgi_dirs() ) ) {
 
   if( res =~ '<p>This wiki is powered by <a href="http://ikiwiki.info/">ikiwiki</a>\\.') {
     replace_kb_item( name: "ikiwiki/detected", value: TRUE );
-    set_kb_item( name: "ikiwiki/www/detected", value: TRUE);
+    set_kb_item( name: "ikiwiki/www/detected", value: TRUE );
 
     version = "unknown";
     vers = eregmatch( string: res, pattern: '\\(Currently running version ([0-9.]+)\\.\\)</p>' );

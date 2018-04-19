@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_gms_mul_sql_vul.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_dell_sonicwall_gms_mul_sql_vul.nasl 9522 2018-04-18 16:47:22Z asteins $
 #
 # Dell SonicWALL GMS/Analayzer - Multiple SQL Injection Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107121");
-  script_version("$Revision: 5889 $");
+  script_version("$Revision: 9522 $");
   script_bugtraq_id(95155);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 18:47:22 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 10:12:05 +0700 (Wed, 11 Jan 2017)");
   script_name("Dell SonicWALL GMS/Analayzer - Multiple SQL Injection Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -47,17 +47,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95155/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40977/");
 
-  script_tag(name:"summary", value:"This host is installed with Dell SonicWALL GMS/Analayzer and prone to multiple SQL vulnerabilities.");
+  script_tag(name:"summary", value:"This host is installed with Dell SonicWALL GMS/Analayzer and is prone to multiple SQL vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Getting the installed version using a detection nvt and check whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check whether it is vulnerable or not.");
 
   script_tag(name:"insight", value:"SonicWALL GMS/Analayzer suffers from multiple SQL vulnerabilities because it does not sufficiently sanitize user-supplied input.");
 
-  script_tag(name:"impact", value:"A successful exploit may allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database. . 
+  script_tag(name:"impact", value:"A successful exploit may allow an attacker to compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying database.
+
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"Dell Sonicwall GMS/Analayzer 8.1
-  Dell Sonicwall GMS/Analayzer 8.0");
+  script_tag(name:"affected", value:"Dell Sonicwall GMS/Analayzer 8.0 up to 8.1");
 
   script_tag(name:"solution", value:"Update to version 8.2.");
 

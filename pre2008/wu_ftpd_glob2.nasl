@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_glob2.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: FTPD glob (too many *) denial of service
+# $Id: wu_ftpd_glob2.nasl 9526 2018-04-19 06:22:02Z cfischer $
+#
+# FTPD glob (too many *) Denial of Service
 #
 # Authors:
 # Michel Arboi <mikhail@nessus.org>
@@ -20,90 +22,102 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "WU-FTPD exhausts all available resources on the server
-when it receives several times
-LIST *****[...]*.*";
-
-tag_solution = "Contact your vendor for a fix";
+CPE = "cpe:/a:washington_university:wu-ftpd";
 
 # References:
 # http://www.idefense.com/application/poi/display?id=207&type=vulnerabilities
 
 if (description)
 {
- 	script_oid("1.3.6.1.4.1.25623.1.0.17602");
- 	script_version("$Revision: 9348 $");
- 	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-	script_cve_id("CVE-2005-0256");
-    script_tag(name:"cvss_base", value:"5.0");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- 	name = "FTPD glob (too many *) denial of service";
-	script_name( name);
+  script_oid("1.3.6.1.4.1.25623.1.0.17602");
+  script_version("$Revision: 9526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 08:22:02 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2005-0256");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("FTPD glob (too many *) denial of service");
+  script_category(ACT_MIXED_ATTACK);
+  script_family("FTP");
+  script_copyright("Copyright (C) 2005 Michel Arboi");
+  script_dependencies("gb_wu-ftpd_detect.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("wu-ftpd/installed");
 
+  script_tag(name:"summary", value:"WU-FTPD is prone to a Denial of Service vulnerability.");
 
+  script_tag(name:"insight", value:"WU-FTPD exhausts all available resources on the server
+  when it receives the following request several times:
 
- 	script_category(ACT_DENIAL);
- 	script_family( "FTP");
+  LIST *****[...]*.*");
 
- 	script_copyright("Copyright (C) 2005 Michel Arboi");
- 	script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl");
- 	script_require_ports("Services/ftp", 21);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
- 	exit(0);
-}
+  script_tag(name:"solution", value:"Contact your vendor for a fix.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-include('global_settings.inc');
-include("ftp_func.inc");
-
-port = get_kb_item("Services/ftp");
-if (! port) port = 21;
-if (! get_port_state(port)) exit(0);
-
-banner = get_ftp_banner(port: port);
-
-if (safe_checks())
-{
- if (egrep(string:banner, pattern:" FTP .*Version wu-2\.6\.(1|2|2\(1\)) ")) security_message(port);
- exit(0);
-}
-
-if (!banner || ("Version wu-" >!< banner)) exit (0);
-
-login = get_kb_item("ftp/login");
-password = get_kb_item("ftp/password");
-
-if (! login) login = "anonymous";
-if (! password) password = "openvas@example.com";
-
-for (i = 0; i < 2; i ++)
-{
- soc = open_sock_tcp(port);
- if (! soc ||
-     ! ftp_authenticate(socket:soc, user:login, pass:password))
   exit(0);
- pasv = ftp_pasv(socket: soc);
- soc2 = open_sock_tcp(pasv);
- # Above 194 *, the server answers "sorry input line too long"
- if (i)
- send(socket: soc, data: 'LIST ***********************************************************************************************************************************************************************************************.*\r\n');
- else
- send(socket: soc, data: 'LIST *.*\r\n');
- t1 = unixtime();
- b = ftp_recv_line(socket:soc);
- repeat
-  data = recv(socket: soc2, length: 1024);
- until (! data);
- t[i] = unixtime() - t1;
- #b = ftp_recv_line(socket:soc);
- close(soc); soc = NULL;
- close(soc2);
 }
 
-if (t[0] == 0) t[0] = 1;
-if (t[1] > 3 * t[0]) security_message(port);
+include("ftp_func.inc");
+include("host_details.inc");
+include("version_func.inc");
+
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:FALSE ) ) exit( 0 );
+vers = infos['version'];
+path = infos['location']; # To have a reference to the Detection-NVT
+
+if( safe_checks() ) {
+  if( egrep( string:vers, pattern:"^2\.6\.(1|2|2\(1\))" ) ) {
+    report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
+  exit( 99 );
+}
+
+user = get_kb_item( "ftp/login" );
+pass = get_kb_item( "ftp/password" );
+if( ! user ) user = "anonymous";
+if( ! pass ) pass = "openvas@example.com";
+
+for( i = 0; i < 2; i ++ ) {
+
+  soc = open_sock_tcp( port );
+  if( ! soc || ! ftp_authenticate( socket:soc, user:user, pass:pass ) ) exit( 0 );
+
+  pasv = ftp_pasv( socket:soc );
+  soc2 = open_sock_tcp( pasv );
+  # Above 194 *, the server answers "sorry input line too long"
+  if( i ) {
+    send( socket:soc, data:'LIST ***********************************************************************************************************************************************************************************************.*\r\n' );
+  } else {
+    send( socket:soc, data:'LIST *.*\r\n' );
+  }
+
+  t1 = unixtime();
+  b  = ftp_recv_line( socket:soc );
+
+  repeat
+    data = recv( socket:soc2, length:1024 );
+  until( ! data );
+
+  t[i] = unixtime() - t1;
+  #b = ftp_recv_line( socket:soc );
+  close( soc );
+  soc = NULL;
+  close( soc2 );
+}
+
+if( t[0] == 0 )
+  t[0] = 1;
+
+if( t[1] > 3 * t[0] ) {
+  security_message( port:port );
+  exit( 0 );
+}
+
+exit( 99 );

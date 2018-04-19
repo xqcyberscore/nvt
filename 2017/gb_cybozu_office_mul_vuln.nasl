@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mul_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_cybozu_office_mul_vuln.nasl 9523 2018-04-18 21:57:48Z asteins $
 #
 # Cybozu Office Multiple Security Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107149");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 14:53:28 +0200 (Wed, 19 Apr 2017)");
   script_cve_id("CVE-2017-2114", "CVE-2017-2115", "CVE-2017-2116", "CVE-2016-4449");
 
@@ -41,10 +41,10 @@ if(description)
   script_name("Cybozu Office Multiple Security Vulnerabilities");
   script_tag(name: "summary", value: "Cybozu Office is prone to multiple security vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
   check if the version is vulnerable or not.");
 
-  script_tag(name: "impact" , value:"attacker can exploit these issues to execute arbitrary script
+  script_tag(name: "impact" , value:"An attacker can exploit these issues to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site, steal cookie-based
   authentication credentials, access or modify data, bypass security restrictions and perform unauthorized
   actions in the context of the affected application.");
@@ -69,7 +69,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -87,3 +86,5 @@ if (Ver =~ "10\.")
       exit(0);
     }
 }
+
+exit(99);

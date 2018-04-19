@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_savvy_bof_vul_feb17.nasl 5173 2017-02-02 15:33:23Z teissa $
+# $Id: gb_disk_savvy_bof_vul_feb17.nasl 9522 2018-04-18 16:47:22Z asteins $
 #
 # DiskSavvy Enterprise GET Buffer Overflow Vulnerability (Windows)
 #
@@ -29,31 +29,32 @@ CPE = "cpe:/a:disksavvy:disksavvy_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107130");
-  script_version("$Revision: 5173 $");
+  script_version("$Revision: 9522 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 16:33:23 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 18:47:22 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 12:21:46 +0100 (Thu, 02 Feb 2017)");
   script_name("DiskSavvy Enterprise GET Buffer Overflow (Windows)");
-  
-  script_tag(name: "summary" , value: "This host is installed with Disk Savvy Enterprise and is prone to get buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help  of detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"This host is installed with DiskSavvy Enterprise and is prone to a GET buffer overflow vulnerability.");
 
-  script_tag(name: "insight" , value: "The Vulnerability is due to an improper checking of the GET http request sent to the web server, which might be exploited to cause a buffer overflow.");
-  
-  script_tag(name: "impact" , value: "Successful exploitation may allow remote
+  script_tag(name:"vuldetect", value:"Get the installed version with the
+  help of the detection NVT and check if the version is vulnerable or not.");
+
+  script_tag(name:"insight", value: "The Vulnerability is due to an improper checking of the GET http request sent to the web server which might be exploited to cause a buffer overflow.");
+
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application. ");
 
-  script_tag(name: "affected" , value:"Disk Savvy Enterprise 9.1.14 and 9.3.14");
+  script_tag(name:"affected", value:"DiskSavvy Enterprise 9.1.14 and 9.3.14");
 
-  script_tag(name: "solution" , value:"Until the time this script was written, no solution was still available .");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,26 +68,22 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-Ver = "";
-Port = "";
-report = "";
 
 if (!Port = get_app_port(cpe:CPE)){
     exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port: Port)){
+if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 
-if (version_is_equal(version: Ver, test_version:"9.1.14") || version_is_equal(version: Ver, test_version: "9.3.14"))
+if (version_is_equal(version:Ver, test_version:"9.1.14") || version_is_equal(version:Ver, test_version:"9.3.14"))
 {
-   report = report_fixed_ver( installed_version:Ver, fixed_version:'See Vendor' );
+   report = report_fixed_ver(installed_version:Ver, fixed_version:"None Available");
    security_message(data:report, port: Port);
    exit(0);
 }
 
+exit(99);

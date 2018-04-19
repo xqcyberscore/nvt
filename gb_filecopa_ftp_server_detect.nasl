@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filecopa_ftp_server_detect.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: gb_filecopa_ftp_server_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
 #
 # FileCopa FTP Server Version Detection
 #
@@ -24,45 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of FileCopa FTP Server
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801124");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7297 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 9536 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("FileCopa FTP Server Version Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_tag(name : "summary" , value : "Detection of FileCopa FTP Server
+  script_mandatory_keys("ftp_banner/available");
 
-This script detects the installed version of FileCopa FTP Server and sets the result in KB.");
+  script_tag(name:"summary", value:"Detection of FileCopa FTP Server.
+
+  This script detects the installed version of FileCopa FTP Server and sets the result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
-
 
 include("ftp_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_ftp_port(default: 21);
-
 banner = get_ftp_banner(port: port);
-if("FileCOPA FTP Server" >< banner)
-{
+
+if("FileCOPA FTP Server" >< banner){
+
   version = "unknown";
 
-  filecopeVer = eregmatch(pattern:"FileCOPA FTP Server Version ([0-9.]+)",
-                          string:banner);
+  filecopeVer = eregmatch(pattern: "FileCOPA FTP Server Version ([0-9.]+)", string: banner);
   if(!isnull(filecopeVer[1])) {
     version = filecopeVer[1];
     set_kb_item(name: "FileCOPA-FTP-Server/Ver", value: version);
@@ -77,10 +75,8 @@ if("FileCOPA FTP Server" >< banner)
   register_product(cpe: cpe, location: port + '/tcp', port: port);
 
   log_message(data: build_detection_report(app: "FileCOPA FTP Server", version: version, install: port,
-                                           cpe: cpe, concluded: filecopeVer[0]),
+                                           cpe: cpe, concluded: banner),
               port: port);
-  
-  exit(0);
 }
 
 exit(0);

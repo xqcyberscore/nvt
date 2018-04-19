@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bftpd_detect.nasl 7837 2017-11-21 03:33:59Z ckuersteiner $
+# $Id: gb_bftpd_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
 #
 # Bftpd FTP Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140514");
-  script_version("$Revision: 7837 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-21 04:33:59 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 9537 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-11-21 10:02:35 +0700 (Tue, 21 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,15 +41,16 @@ if(description)
   script_tag(name: "summary" , value: "Detection of Bftpd FTP server.
 
 The script sends a connection request to the server and attempts to detect Bftpd and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
-  script_xref(name: "URL", value: "http://bftpd.sourceforge.net/");
+  script_xref(name:"URL", value:"http://bftpd.sourceforge.net/");
 
   exit(0);
 }
@@ -59,7 +60,6 @@ include("ftp_func.inc");
 include("host_details.inc");
 
 port = get_ftp_port(default: 21);
-
 banner = get_ftp_banner(port: port);
 
 if (banner =~ "^220 bftpd ") {
@@ -82,7 +82,6 @@ if (banner =~ "^220 bftpd ") {
   log_message(data: build_detection_report(app: "Bftpd", version: version, install: port + '/tcp', cpe: cpe,
                                            concluded: banner),
               port: port);
-  exit(0);
 }
 
 exit(0);

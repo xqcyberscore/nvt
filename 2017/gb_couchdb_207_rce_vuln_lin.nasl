@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_207_rce_vuln_lin.nasl 8778 2018-02-13 08:10:09Z asteins $
+# $Id: gb_couchdb_207_rce_vuln_lin.nasl 9523 2018-04-18 21:57:48Z asteins $
 #
 # CouchDB Multiple Vulnerabilities (Linux)
 #
@@ -31,14 +31,14 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107258");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 8778 $");
+  script_version("$Revision: 9523 $");
 
   script_name("CouchDB Multiple Vulnerabilities (Linux)");
 
   script_cve_id("CVE-2017-12635", "CVE-2017-12636");
   script_xref(name:"URL", value:"https://blog.couchdb.org/2017/11/14/apache-couchdb-cve-2017-12635-and-cve-2017-12636/");
   script_xref(name:"URL", value:"https://justi.cz/security/2017/11/14/couchdb-rce-npm.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 09:10:09 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:20:26 +0700 (Thu, 16 Nov 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -47,15 +47,13 @@ if(description)
   script_require_ports("Services/www", 5984);
   script_mandatory_keys("couchdb/installed", "Host/runs_unixoide");
 
-  script_tag(name : "summary" , value : "This host is installed with Apache CouchDB and is prone to multiple vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Check the version");
-  script_tag(name : "solution" , value : "Upgrade to version 1.7.0 or 2.1.1.");
-  script_tag(name : "insight" , value : "The vulnerabilities are due to differences in the Erlang-based JSON parser and JavaScript-based JSON parser.");
+  script_tag(name: "summary", value: "This host is installed with Apache CouchDB and is prone to multiple vulnerabilities.");
+  script_tag(name: "vuldetect", value: "Checks the version");
+  script_tag(name: "solution", value: "Upgrade to version 1.7.0 or 2.1.1 or later.");
+  script_tag(name: "insight", value: "The vulnerabilities are due to differences in the Erlang-based JSON parser and JavaScript-based JSON parser.");
+  script_tag(name: "affected", value: "CouchDB Versions before 1.7.0 and 2.1.1.");
 
-  script_tag(name : "affected" , value : "CouchDB Versions before 1.7.0 and 2.1
-1");
-
-  script_tag(name : "impact" , value : "These Vulnerabilities can be used to give non-admin users access to arbitrary shell commands on the server as the database system user.
+  script_tag(name: "impact", value: "These vulnerabilities can be used to give non-admin users access to arbitrary shell commands on the server as the database system user.
 
   Impact Level: Application");
 
@@ -64,17 +62,14 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe:CPE)) {
+if (!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
-
 
 if (version =~ "^1\.")
 {

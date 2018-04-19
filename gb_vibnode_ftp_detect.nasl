@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vibnode_ftp_detect.nasl 8847 2018-02-16 13:34:20Z cfischer $
+# $Id: gb_vibnode_ftp_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
 #
 # PRUFTECHNIK VIBNODE Detection (FTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108340");
-  script_version("$Revision: 8847 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:34:20 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 9536 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 10:43:37 +0100 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"The script sends a FTP connection request to the remote
   host and attempts to detect the presence of a PRUFTECHNIK VIBNODE device and to extract its version.");
@@ -48,10 +49,10 @@ if(description)
   exit(0);
 }
 
-include( "ftp_func.inc" );
+include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
-banner = get_ftp_banner( port: port );
+banner = get_ftp_banner( port:port );
 
 # 220 Welcome to VibNode.  (1.15  VN-070926-b02)  Ready for user login.
 # 220 Welcome to VIBNODE.  (VN-3.6.0-131108-b11 / OS_1.15)  Ready for user login.

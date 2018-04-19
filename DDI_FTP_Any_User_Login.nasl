@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_FTP_Any_User_Login.nasl 4718 2016-12-08 13:32:01Z cfi $
+# $Id: DDI_FTP_Any_User_Login.nasl 9537 2018-04-19 11:49:54Z cfischer $
 #
 # FTP Service Allows Any Username
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10990");
-  script_version("$Revision: 4718 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 14:32:01 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9537 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,20 +36,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Digital Defense Inc.");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
-  tag_summary = "The FTP service can be accessed using any username and password.
-  Many other plugins may trigger falsely because of this, so 
+  script_tag(name:"solution", value:"None");
+
+  script_tag(name:"summary", value:"The FTP service can be accessed using any username and password.
+  Many other plugins may trigger falsely because of this, so
   OpenVAS enable some countermeasures.
 
   ** If you find a useless warning on this port, please inform
-  ** the OpenVAS team so that we fix the plugins.";
-
-  tag_solution = "None";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  ** the OpenVAS team so that we fix the plugins.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -90,4 +88,4 @@ if (n_cnx > 1 && n_log >= n_cnx - 1)	# >= n_cnx ?
 {
  set_kb_item(name:"ftp/" + port + "/AnyUser", value:TRUE);
  if (report_verbosity > 1) log_message(port:port);
-} 
+}

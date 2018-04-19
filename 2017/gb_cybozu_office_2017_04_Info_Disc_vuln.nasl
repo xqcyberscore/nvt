@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_2017_04_Info_Disc_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_cybozu_office_2017_04_Info_Disc_vuln.nasl 9523 2018-04-18 21:57:48Z asteins $
 #
 # Cybozu Office CVE-2016-4871 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107151");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-24 08:56:53 +0200 (Mon, 24 Apr 2017)");
   script_cve_id("CVE-2016-4871");
 
@@ -39,7 +39,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cybozu Office CVE-2016-4871 Denial of Service Vulnerability");
-  script_tag(name: "summary", value: "Cybozu Office is prone to a denial-of-service vulnerability.");
+  script_tag(name: "summary", value: "DEPRECATED since this check is already covered in
+  'Cybozu Office CVE-2016-4871 Denial of Service Vulnerability' (OID: 1.3.6.1.4.1.25623.1.0.107150))
+
+  Cybozu Office is prone to a denial-of-service vulnerability.");
 
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and
   check if the version is vulnerable or not.");
@@ -61,8 +64,12 @@ if(description)
   script_mandatory_keys("CybozuOffice/Installed");
   script_require_ports("Services/www", 80);
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");
