@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1317.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: deb_dla_1317.nasl 9539 2018-04-19 12:19:23Z cfischer $
 #
 # Auto-generated from advisory DSA 1317-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891317");
-  script_version("$Revision: 9296 $");
+  script_version("$Revision: 9539 $");
   script_cve_id("CVE-2018-1000116");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1317-1] net-snmp security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 14:19:23 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
   script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
   script_tag(name:"affected", value:"net-snmp on Debian Linux");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this issue has been fixed in net-snmp version
-5.7.2.1+dfsg-1+deb8u1.
+5.4.3~dfsg-2.8+deb7u2.
 
 We recommend that you upgrade your net-snmp packages.");
   script_tag(name:"summary",  value:"It was discovered that there was a heap corruption vulnerability in the
@@ -67,31 +67,31 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libsnmp-base", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp-base", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsnmp-dev", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp-dev", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsnmp-perl", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp-perl", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsnmp-python", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp-python", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsnmp15", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp15", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsnmp15-dbg", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libsnmp15-dbg", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"snmp", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"snmp", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"snmpd", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"snmpd", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"tkmib", ver:"5.7.2.1+dfsg-1+deb8u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"tkmib", ver:"5.4.3~dfsg-2.8+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_ftp.nasl 4777 2016-12-15 14:28:45Z cfi $
+# $Id: gb_starttls_ftp.nasl 9541 2018-04-19 13:42:33Z cfischer $
 #
 # FTP STARTTLS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105009");
-  script_version("$Revision: 4777 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 15:28:45 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 9541 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 16:39:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
 
   script_tag(name:"summary", value:"The remote FTP Server supports the STARTTLS command.");

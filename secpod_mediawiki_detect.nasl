@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: secpod_mediawiki_detect.nasl 9540 2018-04-19 13:04:40Z jschulte $
 #
 # MediaWiki Version Detection
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900420");
-  script_version("$Revision: 8146 $");
+  script_version("$Revision: 9540 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:04:40 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_name("MediaWiki Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,7 @@ foreach dir( make_list_unique( "/wiki", "/mediawiki", cgi_dirs( port:port ) ) ) 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( ( "Powered by" >< res || "powered by" >< res ) && "MediaWiki" >< res && res =~ "^HTTP/1\.[01] 200" ) {
+  if( res =~ "[Pp]owered by" && "MediaWiki" >< res && res =~ "^HTTP/1\.[01] 200" ) {
 
     version = "unknown";
     ver = eregmatch( pattern:"MediaWiki ([0-9.]+)(.?([a-zA-Z0-9]+))?", string:res );

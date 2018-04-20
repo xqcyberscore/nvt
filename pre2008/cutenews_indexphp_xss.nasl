@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cutenews_indexphp_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: cutenews_indexphp_xss.nasl 9542 2018-04-20 01:34:17Z ckuersteiner $
 # Description: CuteNews index.php XSS
 #
 # Authors:
@@ -23,86 +23,73 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a PHP script that is prone to
-cross-site scripting attacks. 
-
-Description :
-
-The version of CuteNews installed on the remote host is vulnerable to
-a cross-site-scripting (XSS) attack.  An attacker, exploiting this
-flaw, would need to be able to coerce a user to browse to a
-purposefully malicious URI.  Upon successful exploitation, the
-attacker would be able to run code within the web-browser in the
-security context of the CuteNews server.";
-
-tag_solution = "Upgrade to the latest version.";
-
-# Ref: Exoduks <exoduks@gmail.com> 
+CPE = "cpe:/a:cutephp:cutenews";
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.14665");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9542 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:34:17 +0200 (Fri, 20 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1659");
  script_bugtraq_id(11097);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- 
- name = "CuteNews index.php XSS";
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
- script_name(name);
+ script_tag(name: "solution_type", value: "VendorFix");
  
- 
+ script_name("CuteNews index.php XSS");
  
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_analysis");
  
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- 
- family = "Web application abuses";
-  script_family(family);
+ script_family("Web application abuses");
  script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
+ script_mandatory_keys("cutenews/installed");
  script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://marc.theaimsgroup.com/?l=bugtraq&m=109415338521881&w=2");
+
+ script_tag(name: "solution", value: "Upgrade to the latest version.");
+
+ script_tag(name: "summary", value: "The remote web server contains a PHP script that is prone to cross-site
+scripting attacks. 
+
+Description :
+
+The version of CuteNews installed on the remote host is vulnerable to a cross-site-scripting (XSS) attack. An
+attacker, exploiting this flaw, would need to be able to coerce a user to browse to a purposefully malicious URI.
+Upon successful exploitation, the attacker would be able to run code within the web-browser in the security
+context of the CuteNews server.");
+
+ script_xref(name: "URL", value: "http://marc.theaimsgroup.com/?l=bugtraq&m=109415338521881&w=2");
+
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
-
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!get_port_state(port))
-	exit(0);
-if(!can_host_php(port:port)) 
-	exit(0);
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
+if (dir == "/")
+  dir = "";
 
+if (get_kb_item("www/" + port + "/generic_xss")) exit(0);
 
-# Test an install.
-install = get_kb_item(string("www/", port, "/cutenews"));
-if (isnull(install)) exit(0);
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  loc = matches[2];
+url = dir + "/index.php?mod=<script>foo</script>";
+req = http_get(item: url, port: port);			
+r = http_keepalive_send_recv(port: port, data: req);
+if (r == NULL) exit(0);
 
-  req = http_get(item:string(loc, "/index.php?mod=<script>foo</script>"),
- 		port:port);			
-  r = http_keepalive_send_recv(port:port, data:req);
-  if( r == NULL ) exit(0);
-  if(r =~ "HTTP/1\.. 200" && egrep(pattern:"<script>foo</script>", string:r))
-  {
- 	security_message(port);
-	exit(0);
-  }
+if (r =~ "HTTP/1\.. 200" && egrep(pattern:"<script>foo</script>", string:r)) {
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
+  exit(0);
 }
+
+exit(99);

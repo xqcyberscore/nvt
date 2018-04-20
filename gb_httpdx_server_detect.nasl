@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_server_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_httpdx_server_detect.nasl 9541 2018-04-19 13:42:33Z cfischer $
 #
 # httpdx Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800960");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9541 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/www", "Services/ftp", 80, 21);
 
   script_tag(name:"summary", value:"Detection of httpdx Server.

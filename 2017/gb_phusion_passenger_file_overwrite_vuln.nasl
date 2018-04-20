@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phusion_passenger_file_overwrite_vuln.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: gb_phusion_passenger_file_overwrite_vuln.nasl 9548 2018-04-20 10:56:45Z cfischer $
 #
 # Phusion Passenger File Overwrite Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:phusion:passenger';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106765");
-  script_version("$Revision: 6044 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 9548 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-20 12:56:45 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-04-19 16:11:47 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_cve_id("CVE-2016-10345");
 

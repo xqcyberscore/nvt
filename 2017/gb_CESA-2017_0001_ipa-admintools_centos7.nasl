@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882622");
-  script_version("$Revision: 6659 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9543 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-03 05:44:04 +0100 (Tue, 03 Jan 2017)");
   script_cve_id("CVE-2016-7030", "CVE-2016-9575");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for ipa-admintools CESA-2017:0001 centos7 ");
   script_tag(name: "summary", value: "Check the version of ipa-admintools");

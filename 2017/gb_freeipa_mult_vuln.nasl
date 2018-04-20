@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeipa_mult_vuln.nasl 7020 2017-08-30 05:31:10Z ckuersteiner $
+# $Id: gb_freeipa_mult_vuln.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # freeIPA Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:freeipa:freeipa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140335");
-  script_version("$Revision: 7020 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-30 07:31:10 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 9543 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-08-30 09:14:16 +0700 (Wed, 30 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-7030", "CVE-2016-9575");
 

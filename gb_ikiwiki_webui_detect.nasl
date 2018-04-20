@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_webui_detect.nasl 9521 2018-04-18 13:58:49Z asteins $
+# $Id: gb_ikiwiki_webui_detect.nasl 9553 2018-04-20 12:56:08Z cfischer $
 #
 # IkiWiki Detection (Web UI)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113157");
-  script_version("$Revision: 9521 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 15:58:49 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:56:08 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 14:52:55 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,7 @@ include( "http_keepalive.inc" );
 
 port = get_http_port( default: 80 );
 
-foreach location ( make_list_unique( "/", cgi_dirs() ) ) {
+foreach location ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
   if( location == "/" )
     dir = "";
   else

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # Intel Standard Manageability Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/h:intel:intel_standard_manageability';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811810");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 9543 $");
   script_cve_id("CVE-2017-5698");
-  script_tag(name:"cvss_base", value:"5.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:M/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 19:05:54 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Standard Manageability Privilege Escalation Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # ownCloud XSS and CSRF Protection Bypass Vulnerabilities Mar18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813053");
-  script_version("$Revision: 9191 $");
+  script_version("$Revision: 9543 $");
   script_cve_id("CVE-2014-1665");
   script_bugtraq_id(65457);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 12:50:26 +0530 (Fri, 23 Mar 2018)");
   script_name("ownCloud XSS and CSRF Protection Bypass Vulnerabilities Mar18 (Windows)");
 

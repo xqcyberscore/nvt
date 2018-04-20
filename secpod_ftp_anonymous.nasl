@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftp_anonymous.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: secpod_ftp_anonymous.nasl 9541 2018-04-19 13:42:33Z cfischer $
 #
 # Check for Anonymous FTP Login
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900600");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9541 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -42,36 +42,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("FTP");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl", "logins.nasl");
+  script_dependencies("find_service2.nasl", "find_service_3digits.nasl", "logins.nasl");
   script_require_ports("Services/ftp", 21);
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0497");
 
-  tag_summary = "This FTP Server allows anonymous logins.";
+  script_tag(name:"solution", value:"If you do not want to share files, you should disable anonymous logins.");
 
-  tag_insight = "A host that provides an FTP service may additionally provide Anonymous FTP
+  script_tag(name:"insight", value:"A host that provides an FTP service may additionally provide Anonymous FTP
   access as well. Under this arrangement, users do not strictly need an account
   on the host. Instead the user typically enters 'anonymous' or 'ftp' when
   prompted for username. Although users are commonly asked to send their email
   address as their password, little to no verification is actually performed on
-  the supplied data.";
+  the supplied data.");
 
-  tag_impact = "Based on the files accessible via this anonymous FTP login and the permissions
+  script_tag(name:"impact", value:"Based on the files accessible via this anonymous FTP login and the permissions
   of this account an attacker might be able to:
 
   - gain access to sensitive files
 
-  - upload or delete files";
+  - upload or delete files");
 
-  tag_solution = "If you do not want to share files, you should disable anonymous logins.";
+  script_tag(name:"summary", value:"This FTP Server allows anonymous logins.");
 
-  tag_vuldetect = "Try to login with an anonymous account at the remove FTP service.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"vuldetect", value:"Try to login with an anonymous account at the remove FTP service.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -135,6 +129,5 @@ if( vuln ) {
   security_message( port:ftpPort, data:report );
   exit( 0 );
 }
-
 
 exit( 99 );

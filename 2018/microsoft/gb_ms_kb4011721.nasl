@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011721.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011721.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # Microsoft Word 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011721)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812981");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 9543 $");
   script_cve_id("CVE-2018-0922");
   script_bugtraq_id(103314);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:16:43 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Word 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011721)");
 

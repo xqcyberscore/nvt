@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftp_writeable_directories.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: ftp_writeable_directories.nasl 9541 2018-04-19 13:42:33Z cfischer $
 #
 # FTP Writeable Directories
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19782");
-  script_version("$Revision: 7297 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 9541 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,24 +36,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 TNS");
   script_family("FTP");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "ftpserver_detect_type_nd_version.nasl", "secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
 
-  tag_summary = "The remote FTP server contains world-writeable files.
+  script_tag(name:"summary", value:"The remote FTP server contains world-writeable files.
 
   By crawling through the remote FTP server, several directories
-  where marked as being world writeable.";
+  where marked as being world writeable.");
 
-  tag_impact = "An attacker may use this misconfiguration problem to use the
+  script_tag(name:"impact", value:"An attacker may use this misconfiguration problem to use the
   remote FTP server to host arbitrary data, including possibly
-  illegal content (ie: Divx movies, etc...).";
+  illegal content (ie: Divx movies, etc...).");
 
-  tag_solution = "Configure the remote FTP directories so that they are not
-  world-writeable.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Configure the remote FTP directories so that they are not
+  world-writeable.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +59,6 @@ if(description)
 
 include("ftp_func.inc");
 include("misc_func.inc");
-include("global_settings.inc");
 
 global_var CheckedDir;
 global_var WriteableDirs;

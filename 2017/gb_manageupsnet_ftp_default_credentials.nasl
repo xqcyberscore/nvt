@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_ftp_default_credentials.nasl 7796 2017-11-16 14:59:08Z cfischer $
+# $Id: gb_manageupsnet_ftp_default_credentials.nasl 9552 2018-04-20 12:17:18Z cfischer $
 #
 # ManageUPSNET FTP Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113052");
-  script_version("$Revision: 7796 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 15:59:08 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 9552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:04:05 +0100 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,6 +46,7 @@ if( description )
   script_family("Default Accounts");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'");
   script_tag(name:"vuldetect", value:"The script tries to login via FTP using the username 'admin' and the password 'admin'");

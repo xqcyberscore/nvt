@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011709.nasl 9310 2018-04-05 05:37:57Z cfischer $
+# $Id: gb_ms_kb4011709.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # Microsoft Office Web Apps 2010 Service Pack 2 Multiple Vulnerabilities (KB4011709)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812990");
-  script_version("$Revision: 9310 $");
+  script_version("$Revision: 9543 $");
   script_cve_id("CVE-2018-0919", "CVE-2018-0922");
   script_bugtraq_id(103311, 103314);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:37:57 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 12:06:56 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Web Apps 2010 Service Pack 2 Multiple Vulnerabilities (KB4011709)");
 

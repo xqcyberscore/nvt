@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_central_passwordless_root_05_06.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_seagate_central_passwordless_root_05_06.nasl 9552 2018-04-20 12:17:18Z cfischer $
 #
 # Seagate Central Remote Root Security Bypass Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105288");
- script_version ("$Revision: 6229 $");
+ script_version("$Revision: 9552 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,22 +43,21 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
  script_tag(name:"creation_date", value:"2015-06-05 14:40:09 +0200 (Fri, 05 Jun 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","secpod_ftp_anonymous.nasl","ftpserver_detect_type_nd_version.nasl");
+ script_dependencies("ftpserver_detect_type_nd_version.nasl");
  script_require_ports("Services/ftp", 21);
+ script_mandatory_keys("ftp_banner/available");
 
  exit(0);
 }
 
 include("ftp_func.inc");
 
-port = get_kb_item("Services/ftp");
-if( ! port || ! get_port_state( port ) ) exit( 0 );
-
+port = get_ftp_port(default:21);
 banner = get_ftp_banner( port:port );
 if( "Welcome to Seagate Central" >!< banner ) exit( 0 );
 
@@ -101,4 +100,3 @@ if( "226 Transfer complete" >< recv1 && "sshd:" >< recv2 )
 }
 
 exit ( 99 );
-

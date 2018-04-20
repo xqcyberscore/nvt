@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c188d3f09a_unboundid-ldapsdk_fc26.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_fedora_2018_c188d3f09a_unboundid-ldapsdk_fc26.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
 #
 # Fedora Update for unboundid-ldapsdk FEDORA-2018-c188d3f09a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874306");
-  script_version("$Revision: 9276 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9543 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-30 08:46:31 +0200 (Fri, 30 Mar 2018)");
   script_cve_id("CVE-2018-1000134");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for unboundid-ldapsdk FEDORA-2018-c188d3f09a");
   script_tag(name: "summary", value: "Check the version of unboundid-ldapsdk");
