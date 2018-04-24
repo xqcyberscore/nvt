@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_smb_credentials.nasl 9335 2018-04-05 13:50:33Z cfischer $
+# $Id: gb_default_smb_credentials.nasl 9567 2018-04-23 13:22:46Z cfischer $
 #
 # SMB Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804449");
-  script_version("$Revision: 9335 $");
+  script_version("$Revision: 9567 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 17:14:10 +0530 (Fri, 04 Jul 2014)");
   script_name("SMB Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -40,7 +40,7 @@ if(description)
                       "cifs445.nasl", "find_service.nasl", "logins.nasl",
                       "gb_default_credentials_options.nasl");
   script_require_keys("SMB/name", "SMB/transport");
-  script_exclude_keys("global_settings/authenticated_scans_disabled");
+  script_exclude_keys("default_credentials/disable_brute_force_checks", "global_settings/authenticated_scans_disabled");
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"A number of known default credentials is tried for log in via SMB protocol.");
@@ -56,6 +56,9 @@ if(description)
 include("smb_nt.inc");
 include("smb_default_credentials.inc");
 include("misc_func.inc");
+
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_brute_force_checks" ) ) exit( 0 );
 
 function remote_login( smbLogin, passwd, smbDomain, smbName, smbPort ) {
 

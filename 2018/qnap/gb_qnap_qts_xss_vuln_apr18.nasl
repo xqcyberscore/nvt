@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_xss_vuln_apr18.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: gb_qnap_qts_xss_vuln_apr18.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
 #
 # QNAP QTS Cross-Site Scripting Vulnerability-Apr18
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813120");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9559 $");
   script_cve_id("CVE-2017-7632");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 10:36:37 +0530 (Fri, 20 Apr 2018)");
   script_name("QNAP QTS Cross-Site Scripting Vulnerability-Apr18");
 

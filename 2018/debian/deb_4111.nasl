@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4111.nasl 9545 2018-04-20 09:37:08Z cfischer $
+# $Id: deb_4111.nasl 9560 2018-04-23 07:12:31Z cfischer $
 #
 # Auto-generated from advisory DSA 4111-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704111");
-  script_version("$Revision: 9545 $");
+  script_version("$Revision: 9560 $");
   script_cve_id("CVE-2018-6871");
   script_name("Debian Security Advisory DSA 4111-1 (libreoffice - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 11:37:08 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 09:12:31 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-11 00:00:00 +0100 (Sun, 11 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -521,9 +521,6 @@ if ((res = isdpkgvuln(pkg:"libreoffice-librelogo", ver:"1:5.2.7-1+deb9u2", rls_r
 if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-nlpsolver", ver:"1:5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
 if ((res = isdpkgvuln(pkg:"libreoffice-officebean", ver:"1:5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
@@ -601,10 +598,13 @@ if ((res = isdpkgvuln(pkg:"ure", ver:"1:5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+"
 if ((res = isdpkgvuln(pkg:"fonts-opensymbol", ver:"2:102.7+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1.2.0+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libreoffice-mysql-connector", ver:"1.0.2+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-mysql-connector", ver:"1.0.2+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"libreoffice-nlpsolver", ver:"0.9+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
+    report += res;
+}
+if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1.2.0+LibO5.2.7-1+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 

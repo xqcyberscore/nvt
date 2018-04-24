@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ed907ef9a0_ceph_fc27.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_fedora_2018_ed907ef9a0_ceph_fc27.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
 #
 # Fedora Update for ceph FEDORA-2018-ed907ef9a0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874234");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 9559 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 08:54:02 +0100 (Thu, 15 Mar 2018)");
   script_cve_id("CVE-2018-7262");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ceph FEDORA-2018-ed907ef9a0");
   script_tag(name: "summary", value: "Check the version of ceph");

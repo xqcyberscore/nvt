@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_48d385a6fd_apache-commons-email_fc26.nasl 8848 2018-02-16 13:40:24Z santu $
+# $Id: gb_fedora_2018_48d385a6fd_apache-commons-email_fc26.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
 #
 # Fedora Update for apache-commons-email FEDORA-2018-48d385a6fd
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874122");
-  script_version("$Revision: 8848 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:40:24 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 9559 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 08:50:22 +0100 (Thu, 15 Feb 2018)");
   script_cve_id("CVE-2018-1294");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for apache-commons-email FEDORA-2018-48d385a6fd");
   script_tag(name: "summary", value: "Check the version of apache-commons-email");

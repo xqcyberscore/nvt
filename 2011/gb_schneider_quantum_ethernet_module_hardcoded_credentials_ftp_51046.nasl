@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_ftp_51046.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_ftp_51046.nasl 9568 2018-04-23 13:40:43Z cfischer $
 #
 # Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability
 #
@@ -29,11 +29,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103366");
   script_bugtraq_id(51046);
-  script_version ("$Revision: 7029 $");
+  script_cve_id("CVE-2011-4859", "CVE-2011-4860", "CVE-2011-4861");
+  script_version("$Revision: 9568 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:40:43 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -48,9 +49,11 @@ if(description)
 
   script_tag(name:"summary", value:"Schneider Electric Quantum Ethernet Module is prone to an authentication-
   bypass vulnerability.");
+
   script_tag(name:"impact", value:"Attackers can exploit this issue to gain access to the Telnet port
   service, Windriver Debug port service, and FTP service. Attackers can exploit this vulnerability to
   execute arbitrary code within the context of the vulnerable device.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +66,6 @@ include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-
 if( "220 FTP server ready" >!< banner ) exit( 0 );
 
 soc = open_sock_tcp( port );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 8368 2018-01-11 07:59:53Z asteins $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 9565 2018-04-23 10:00:20Z ckuersteiner $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 8368 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 08:59:53 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 9565 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-23 12:00:20 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,8 +59,8 @@ var:page value.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 11th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 23th April, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3472");
 

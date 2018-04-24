@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_ip_cam_backdoor_vul.nasl 4735 2016-12-09 16:48:54Z teissa $
+# $Id: gb_sony_ip_cam_backdoor_vul.nasl 9564 2018-04-23 09:32:17Z asteins $
 #
 # Sony IPELA Engine IP Cameras Backdoor Vulnerability
 #
@@ -29,46 +29,56 @@ CPE = "cpe:/h:sony:sony_network_camera_snc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107106");
-  script_version("$Revision: 4735 $");
+  script_version("$Revision: 9564 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-09 17:48:54 +0100 (Fri, 09 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 11:32:17 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 16:11:25 +0530 (Fri, 09 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sony IPELA Engine IP Cameras Backdoor Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Sony IPELA Engine IP Cameras
-  and is prone to backdoor vulnerability.");
+  script_tag(name: "summary" , value:"The host is running on a Sony IPELA Engine IP Camera
+  and is prone to a backdoor vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Get the installed version with the help of the
+  detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw is due to an improper validation of
-  web request passed via Get request.");
+  web requests passed via GET the parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allows an attacker to run arbitrary code on the affected IP cameras. .
+  script_tag(name: "impact" , value:"Successful exploitation may allows an attacker to run arbitrary code on the affected IP cameras.
 
   Impact Level: Application");
 
   script_tag(name: "affected" , value:"According to Sony, at least the following products are affected:
- 
-SNC-CH115, SNC-CH120, SNC-CH160, SNC-CH220, SNC-CH260, SNC-DH120, 
-SNC-DH120T, SNC-DH160, SNC-DH220, SNC-DH220T, SNC-DH260, SNC-EB520, 
+
+SNC-CH115, SNC-CH120, SNC-CH160, SNC-CH220, SNC-CH260, SNC-DH120,
+
+SNC-DH120T, SNC-DH160, SNC-DH220, SNC-DH220T, SNC-DH260, SNC-EB520,
+
 SNC-EM520, SNC-EM521, SNC-ZB550, SNC-ZM550, SNC-ZM551
 
-SNC-EP550, SNC-EP580, SNC-ER550, SNC-ER550C, SNC-ER580, SNC-ER585, 
+SNC-EP550, SNC-EP580, SNC-ER550, SNC-ER550C, SNC-ER580, SNC-ER585,
+
 SNC-ER585H, SNC-ZP550, SNC-ZR550
 
 SNC-EP520, SNC-EP521, SNC-ER520, SNC-ER521, SNC-ER521C
 
-SNC-CX600, SNC-CX600W, SNC-EB600, SNC-EB600B, SNC-EB602R, SNC-EB630, 
-SNC-EB630B, SNC-EB632R, SNC-EM600, SNC-EM601, SNC-EM602R, SNC-EM602RC, 
-SNC-EM630, SNC-EM631, SNC-EM632R, SNC-EM632RC, SNC-VB600, SNC-VB600B, 
-SNC-VB600B5, SNC-VB630, SNC-VB6305, SNC-VB6307, SNC-VB632D, SNC-VB635, 
-SNC-VM600, SNC-VM600B, SNC-VM600B5, SNC-VM601, SNC-VM601B, SNC-VM602R, 
-SNC-VM630, SNC-VM6305, SNC-VM6307, SNC-VM631, SNC-VM632R, SNC-WR600, 
-SNC-WR602, SNC-WR602C, SNC-WR630, SNC-WR632, SNC-WR632C, SNC-XM631, 
-SNC-XM632, SNC-XM636, SNC-XM637, SNC-VB600L, SNC-VM600L, SNC-XM631L, 
+SNC-CX600, SNC-CX600W, SNC-EB600, SNC-EB600B, SNC-EB602R, SNC-EB630,
+
+SNC-EB630B, SNC-EB632R, SNC-EM600, SNC-EM601, SNC-EM602R, SNC-EM602RC,
+
+SNC-EM630, SNC-EM631, SNC-EM632R, SNC-EM632RC, SNC-VB600, SNC-VB600B,
+
+SNC-VB600B5, SNC-VB630, SNC-VB6305, SNC-VB6307, SNC-VB632D, SNC-VB635,
+
+SNC-VM600, SNC-VM600B, SNC-VM600B5, SNC-VM601, SNC-VM601B, SNC-VM602R,
+
+SNC-VM630, SNC-VM6305, SNC-VM6307, SNC-VM631, SNC-VM632R, SNC-WR600,
+
+SNC-WR602, SNC-WR602C, SNC-WR630, SNC-WR632, SNC-WR632C, SNC-XM631,
+
+SNC-XM632, SNC-XM636, SNC-XM637, SNC-VB600L, SNC-VM600L, SNC-XM631L,
 SNC-WR602CL");
 
   script_tag(name: "solution" , value:"The vendor provided the following URL to download firmware updates for the affected devices. Updates should be installed immediately:
@@ -88,61 +98,58 @@ https://www.sony.co.uk/pro/article/sony-new-firmware-for-network-cameras");
 include("host_details.inc");
 include("version_func.inc");
 
-sonycamVer = "";
-sonycamPort = "";
-report = "";
-
 if(!sonycamPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 if(!sonycamVer = get_app_version(cpe:CPE, port:sonycamPort)){
   exit(0);
 }
-
 if(!modelVer = get_kb_item("sony/ip_camera/model")) {
     exit(0);
 }
+
 affected1 = make_list(
-        'SNC-CH115', 'SNC-CH120', 'SNC-CH160', 'SNC-CH220', 'SNC-CH260', 'SNC-DH120', 
-        'SNC-DH120T','SNC-DH160', 'SNC-DH220', 'SNC-DH220T','SNC-DH260', 'SNC-EB520', 
-        'SNC-EM520', 'SNC-EM521', 'SNC-ZB550', 'SNC-ZM550', 'SNC-ZM551', 'SNC-EP550', 
+        'SNC-CH115', 'SNC-CH120', 'SNC-CH160', 'SNC-CH220', 'SNC-CH260', 'SNC-DH120',
+        'SNC-DH120T','SNC-DH160', 'SNC-DH220', 'SNC-DH220T','SNC-DH260', 'SNC-EB520',
+        'SNC-EM520', 'SNC-EM521', 'SNC-ZB550', 'SNC-ZM550', 'SNC-ZM551', 'SNC-EP550',
         'SNC-EP580', 'SNC-ER550', 'SNC-ER550C','SNC-ER580', 'SNC-ER585', 'SNC-ER585H',
-        'SNC-ZP550', 'SNC-ZR550', 'SNC-EP520', 'SNC-EP521', 'SNC-ER520', 'SNC-ER521', 
+        'SNC-ZP550', 'SNC-ZR550', 'SNC-EP520', 'SNC-EP521', 'SNC-ER520', 'SNC-ER521',
         'SNC-ER521C');
 affected2 = make_list(
         'SNC-CX600', 'SNC-CX600W','SNC-EB600', 'SNC-EB600B','SNC-EB602R',
         'SNC-EB630', 'SNC-EB630B', 'SNC-EB632R','SNC-EM600','SNC-EM601', 'SNC-EM602R',
         'SNC-EM602RC','SNC-EM630', 'SNC-EM631', 'SNC-EM632R', 'SNC-EM632RC','SNC-VB600',
         'SNC-VB600B', 'SNC-VB600B5', 'SNC-VB630', 'SNC-VB6305', 'SNC-VB6307','SNC-VB632D',
-        'SNC-VB635', 'SNC-VM600', 'SNC-VM600B', 'SNC-VM600B5', 'SNC-VM601', 'SNC-VM601B', 
-        'SNC-VM602R','SNC-VM630', 'SNC-VM6305', 'SNC-VM6307', 'SNC-VM631', 'SNC-VM632R', 
-        'SNC-WR600', 'SNC-WR602', 'SNC-WR602C', 'SNC-WR630', 'SNC-WR632', 'SNC-WR632C', 
-        'SNC-XM631', 'SNC-XM632', 'SNC-XM636', 'SNC-XM637', 'SNC-VB600L', 'SNC-VM600L', 
+        'SNC-VB635', 'SNC-VM600', 'SNC-VM600B', 'SNC-VM600B5', 'SNC-VM601', 'SNC-VM601B',
+        'SNC-VM602R','SNC-VM630', 'SNC-VM6305', 'SNC-VM6307', 'SNC-VM631', 'SNC-VM632R',
+        'SNC-WR600', 'SNC-WR602', 'SNC-WR602C', 'SNC-WR630', 'SNC-WR632', 'SNC-WR632C',
+        'SNC-XM631', 'SNC-XM632', 'SNC-XM636', 'SNC-XM637', 'SNC-VB600L', 'SNC-VM600L',
         'SNC-XM631L', 'SNC-WR602CL');
+
 foreach v (affected1)
 {
-
- if (version_is_equal(version:modelVer, test_version: v))
- {
+  if (version_is_equal(version:modelVer, test_version: v))
+  {
     if(version_is_less(version:sonycamVer, test_version: "1.86.00"))
     {
-        report = report_fixed_ver(installed_version:modelVer + " Firmware v:"+ sonycamVer, fixed_version:modelVer + " Firmware v:1.86.00");
-        security_message(data:report, port: sonycamPort);
-        exit(0);
+      report = report_fixed_ver(installed_version:modelVer + " Firmware v:"+ sonycamVer, fixed_version:modelVer + " Firmware v:1.86.00");
+      security_message(data:report, port: sonycamPort);
+      exit(0);
     }
- }
+  }
 }
+
 foreach v (affected2)
 {
-
- if (version_is_equal(version:modelVer, test_version: v))
- {
+  if (version_is_equal(version:modelVer, test_version: v))
+  {
     if(version_is_less(version:sonycamVer, test_version: "2.7.2"))
     {
-        report = report_fixed_ver(installed_version:modelVer + " Firmware v:"+ sonycamVer, fixed_version: modelVer + " Firmware v:2.7.2");
-        security_message(data:report, port: sonycamPort);
-        exit(0);
+       report = report_fixed_ver(installed_version:modelVer + " Firmware v:"+ sonycamVer, fixed_version: modelVer + " Firmware v:2.7.2");
+       security_message(data:report, port: sonycamPort);
+       exit(0);
     }
- }
+  }
 }
 
+exit(99);

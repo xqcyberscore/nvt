@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 9400 2018-04-09 07:04:37Z cfischer $
+# $Id: default_http_auth_credentials.nasl 9567 2018-04-23 13:22:46Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 9400 $");
+  script_version("$Revision: 9567 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:04:37 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -40,6 +40,7 @@ if(description)
                       "gb_default_credentials_options.nasl", "cgi_directories.nasl"); # cgi_directories.nasl pulls in the NVTs setting a /content/auth_required
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/content/auth_required");
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_timeout(1800);
 
@@ -58,6 +59,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 include("default_credentials.inc");
+
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_brute_force_checks" ) ) exit( 0 );
 
 function _check_response( res ) {
 
@@ -103,16 +107,28 @@ foreach url( urls ) {
       exit( 0 );
     }
 
-    credential = str_replace( string:credential, find:"\;", replace:"#sem#" );
+    # Handling of user uploaded credentials which requires to escape a ';' or ':'
+    # in the user/password so it doesn't interfere with our splitting below.
+    credential = str_replace( string:credential, find:"\;", replace:"#sem_legacy#" );
+    credential = str_replace( string:credential, find:"\:", replace:"#sem_new#" );
 
-    user_pass = split( credential, sep:";", keep:FALSE );
-    if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) continue;
+    user_pass = split( credential, sep:":", keep:FALSE );
+    if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) {
+      # nb: ';' was used pre r9566 but was changed to ':' as a separator as the
+      # GSA is stripping ';' from the NVT description. Keeping both in here
+      # for backwards compatibility with older scan configs.
+      user_pass = split( credential, sep:";", keep:FALSE );
+      if( isnull( user_pass[0] ) || isnull( user_pass[1] ) )
+        continue;
+    }
 
     user = chomp( user_pass[0] );
     pass = chomp( user_pass[1] );
 
-    user = str_replace( string:user, find:"#sem#", replace:";" );
-    pass = str_replace( string:pass, find:"#sem#", replace:";" );
+    user = str_replace( string:user, find:"#sem_legacy#", replace:";" );
+    pass = str_replace( string:pass, find:"#sem_legacy#", replace:";" );
+    user = str_replace( string:user, find:"#sem_new#", replace:":" );
+    pass = str_replace( string:pass, find:"#sem_new#", replace:":" );
 
     if( tolower( pass ) == "none" ) pass = "";
     if( tolower( user ) == "none" ) user = "";

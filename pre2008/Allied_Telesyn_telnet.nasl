@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Allied_Telesyn_telnet.nasl 4902 2017-01-02 10:59:52Z cfi $
+# $Id: Allied_Telesyn_telnet.nasl 9567 2018-04-23 13:22:46Z cfischer $
 #
 # Allied Telesyn Router/Switch found with default password
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18414");
-  script_version("$Revision: 4902 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 11:59:52 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 9567 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,20 +39,17 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  script_add_preference(name:"Use complete password list (not only vendor specific passwords)", type:"checkbox", value: "no");
+  script_add_preference(name:"Use complete password list (not only vendor specific passwords)", type:"checkbox", value:"no");
 
-  tag_summary = "The Allied Telesyn Router/Switch has the default password set.";
+  script_tag(name:"solution", value:"Telnet to this Router/Switch and change the default password.");
 
-  tag_impact = "The attacker could use this default password to gain remote access
+  script_tag(name:"summary", value:"The Allied Telesyn Router/Switch has the default password set.");
+
+  script_tag(name:"impact", value:"The attacker could use this default password to gain remote access
   to your switch or router.  This password could also be potentially used to
-  gain other sensitive information about your network from the device.";
-
-  tag_solution = "Telnet to this Router/Switch and change the default password.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  gain other sensitive information about your network from the device.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,26 +60,45 @@ if(description)
 include("telnet_func.inc");
 include("default_credentials.inc");
 
-port = get_telnet_port( default:23 );
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
 
+port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
 if( ! banner || "TELNET session" >!< banner ) exit( 0 );
 
 p = script_get_preference("Use complete password list (not only vendor specific passwords)");
-
 if( "yes" >< p ) {
-  clist = try(); 
-} else {  
+  clist = try();
+} else {
   clist = try( vendor:"allied" );
 }
+if( ! clist ) exit( 0 );
 
 foreach credential( clist ) {
 
-  user_pass = split( credential, sep:";", keep:FALSE );
-  if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) continue;
+  # Handling of user uploaded credentials which requires to escape a ';' or ':'
+  # in the user/password so it doesn't interfere with our splitting below.
+  credential = str_replace( string:credential, find:"\;", replace:"#sem_legacy#" );
+  credential = str_replace( string:credential, find:"\:", replace:"#sem_new#" );
+
+  user_pass = split( credential, sep:":", keep:FALSE );
+  if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) {
+    # nb: ';' was used pre r9566 but was changed to ':' as a separator as the
+    # GSA is stripping ';' from the NVT description. Keeping both in here
+    # for backwards compatibility with older scan configs.
+    user_pass = split( credential, sep:";", keep:FALSE );
+    if( isnull( user_pass[0] ) || isnull( user_pass[1] ) )
+      continue;
+  }
 
   user = chomp( user_pass[0] );
   pass = chomp( user_pass[1] );
+
+  user = str_replace( string:user, find:"#sem_legacy#", replace:";" );
+  pass = str_replace( string:pass, find:"#sem_legacy#", replace:";" );
+  user = str_replace( string:user, find:"#sem_new#", replace:":" );
+  pass = str_replace( string:pass, find:"#sem_new#", replace:":" );
 
   if( tolower( pass ) == "none" ) pass = "";
 

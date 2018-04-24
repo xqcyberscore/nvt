@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 9451 2018-04-12 05:54:43Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 9570 2018-04-23 14:45:15Z cfischer $
 #
 # SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 9451 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 07:54:43 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9570 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 16:45:15 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,8 +44,8 @@ if(description)
   script_xref(name:"URL", value:"https://atom.io/packages/remote-ftp");
   script_xref(name:"URL", value:"https://kevo.io/security/2013/12/03/dont-commit-your-password/");
 
-  script_tag(name:"summary", value:"The script attempts to identify SFTP/FTP configuration files containing senstivie data
-  at the webserver.");
+  script_tag(name:"summary", value:"The script attempts to identify SFTP/FTP configuration files containing sensitive data
+  at the remote web server.");
 
   script_tag(name:"insight", value:"Currently the script is checking for the following files:
 
@@ -67,7 +67,7 @@ if(description)
   script_tag(name:"impact", value:"Based on the information provided in this files an attacker might
   be able to gather additional info and/or sensitive data like usernames and passwords.");
 
-  script_tag(name:"solution", value:"A SFTP/FTP configuration file shouldn't be accessible via a webserver.
+  script_tag(name:"solution", value:"A SFTP/FTP configuration file shouldn't be accessible via a web server.
   Restrict access to it or remove it completely.");
 
   script_tag(name:"solution_type", value:"Mitigation");
@@ -83,10 +83,10 @@ include("http_keepalive.inc");
 
 files = make_array( "/sftp-config.json", '(tab key will cycle through the settings|"type": ?"s?ftps?",|"username": ?".*",|"password": ?".*",)',
                     "/ftpsync.settings", '(upload_on_save: ?(true|false),|username: ?.*,|password: ?.*,)',
-                    "/recentservers.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
-                    "/sitemanager.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
-                    "/filezilla.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
-                    "/FileZilla.xml", "<Server>.*<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>.*</Server>",
+                    "/recentservers.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
+                    "/sitemanager.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
+                    "/filezilla.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
+                    "/FileZilla.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
                     # http://fileformats.archiveteam.org/wiki/WS_FTP_configuration_files
                     "/WS_FTP.ini", "^\[_config_\]",
                     "/ws_ftp.ini", "^\[_config_\]",

@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: default_account.inc 5990 2017-04-20 13:39:40Z cfi $
+# OpenVAS Include File
+# $Id: default_account.inc 9567 2018-04-23 13:22:46Z cfischer $
 #
 # Support for various ways of determining if an account is valid
 #
@@ -23,16 +23,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5990 $
+# $Revision: 9567 $
 #
 ###############################################################################
 
-include("ssh_func.inc");
-
-#
 # Private functions
-#
-
 function recv_until( socket, pattern ) {
 
   local_var r, i, buf;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: telnet_func.inc 9568 2018-04-23 13:40:43Z cfischer $
 #
 # Methods to handle telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 9568 $
 #
 ###############################################################################
 
@@ -37,7 +37,7 @@ OPT_ENDSUBOPT 	= 0xf0;
 
 function get_telnet_banner( port ) {
 
-  local_var sb, banner, soc;
+  local_var port, sb, banner, soc;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_telnet_banner" );

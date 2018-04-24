@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 20 Apr 2018 15:40:02 +0200
+# Automatically created on:  Mon, 23 Apr 2018 20:13:11 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38674,6 +38674,9 @@
 2018/debian/deb_4173.nasl: GPLv2+
 2018/debian/deb_4174.nasl: GPLv2+
 2018/debian/deb_4175.nasl: GPLv2+
+2018/debian/deb_4176.nasl: GPLv2+
+2018/debian/deb_4177.nasl: GPLv2+
+2018/debian/deb_4178.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -38950,6 +38953,7 @@
 2018/debian/deb_dla_1354.nasl: GPLv2+
 2018/debian/deb_dla_1355.nasl: GPLv2+
 2018/debian/deb_dla_1356.nasl: GPLv2+
+2018/debian/deb_dla_1357.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39664,6 +39668,7 @@
 2018/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/gb_samba_mult_vuln.nasl: GPLv2+
 2018/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
+2018/gb_sensitive_file_disclosures_http.nasl: GPLv2+
 2018/gb_sftp_ftp_pw_exposure.nasl: GPLv2+
 2018/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/gb_sitefinity_mult_vuln.nasl: GPLv2+
@@ -57001,6 +57006,7 @@ gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K51920288.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52319810.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52521791.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54562183.nasl: GPLv2+
@@ -57191,6 +57197,7 @@ gsf/2018/netiq/gb_netiq_imanager_rce_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_sentinel_info_discl_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_ebusiness_suite_redirect_param_open_redirect_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_micros_pos_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2628_active.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_01.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_02.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_03.nasl: GPLv2+

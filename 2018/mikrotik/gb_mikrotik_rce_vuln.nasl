@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_rce_vuln.nasl 9233 2018-03-28 08:07:38Z ckuersteiner $
+# $Id: gb_mikrotik_rce_vuln.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
 #
 # MikroTik RouterOS RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140895");
-  script_version("$Revision: 9233 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 10:07:38 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9559 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-03-28 12:42:03 +0700 (Wed, 28 Mar 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-7719");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: account_help.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: account_help.nasl 9567 2018-04-23 13:22:46Z cfischer $
 #
 # Unpassworded 'help' account
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-account = "help";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17575");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 9567 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,16 +39,13 @@ if(description)
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_dependencies("find_service.nasl", "ssh_detect.nasl");
   script_require_ports("Services/telnet", 23, "Services/ssh", 22);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  tag_summary = "The account 'help' has no password set.";
+  script_tag(name:"summary", value:"The account 'help' has no password set.");
 
-  tag_solution = "Set a password for this account or disable it.";
+  script_tag(name:"solution", value:"Set a password for this account or disable it.");
 
-  tag_impact = "An attacker may use it to gain further privileges on this system.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker may use it to gain further privileges on this system.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +53,13 @@ if(description)
   exit(0);
 }
 
+include("ssh_func.inc");
 include("default_account.inc");
+
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
+
+account = "help";
 
 port = check_account( login:account );
 if( port ) {

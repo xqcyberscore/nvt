@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_51046.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_51046.nasl 9568 2018-04-23 13:40:43Z cfischer $
 #
 # Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability
 #
@@ -25,50 +25,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Schneider Electric Quantum Ethernet Module is prone to an authentication-
-bypass vulnerability.
-
-Attackers can exploit this issue to gain access to the Telnet port
-service, Windriver Debug port service, and FTP service. Attackers can
-exploit this vulnerability to execute arbitrary code within the
-context of the vulnerable device.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103363");
- script_bugtraq_id(51046);
- script_version ("$Revision: 9351 $");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103363");
+  script_bugtraq_id(51046);
+  script_cve_id("CVE-2011-4859", "CVE-2011-4860", "CVE-2011-4861");
+  script_version("$Revision: 9568 $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:40:43 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports(23);
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports(23);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51046");
- script_xref(name : "URL" , value : "http://www.schneider-electric.com/site/home/index.cfm/ww/?selectCountry=true");
- script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-346-01.pdf");
- script_xref(name : "URL" , value : "http://reversemode.com/index.php?option=com_content&task=view&id=80&Itemid=1");
- exit(0);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51046");
+  script_xref(name:"URL", value:"http://www.schneider-electric.com/site/home/index.cfm/ww/?selectCountry=true");
+  script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-346-01.pdf");
+  script_xref(name:"URL", value:"http://reversemode.com/index.php?option=com_content&task=view&id=80&Itemid=1");
+
+  script_tag(name:"summary", value:"Schneider Electric Quantum Ethernet Module is prone to an authentication-
+  bypass vulnerability.");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to gain access to the Telnet port
+  service, Windriver Debug port service, and FTP service. Attackers can exploit this vulnerability
+  to execute arbitrary code within the context of the vulnerable device.");
+
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 include("telnet_func.inc");
 
 port = 23;
-
 if(!get_port_state(port))exit(0);
-
-banner = get_telnet_banner(port);
-
+banner = get_telnet_banner(port:port);
 if("VxWorks" >!< banner) exit(0);
 
 soc = open_sock_tcp(port);
@@ -76,23 +74,22 @@ if(!soc)exit(0);
 close(soc);
 
 credentials = make_array("pcfactory","pcfactory",
-			 "loader","fwdownload",
-			 "ntpupdate","ntpupdate",
-			 "sysdiag","factorycast@schneider",
-			 "test","testingpw",
-			 "USER","USER",
-			 "USER","USERUSER",
-			 "webserver","webpages",
-			 "fdrusers","sresurdf",
-			 "nic2212","poiuypoiuy",
-			 "nimrohs2212","qwertyqwerty",
-			 "nip2212","fcsdfcsd",
-			 "ftpuser","ftpuser",
-			 "noe77111_v500","RcSyyebczS",
-			 "AUTCSE","RybQRceeSd",
-			 "AUT_CSE","cQdd9debez",
-			 "target","RcQbRbzRyc"
-			 );
+                         "loader","fwdownload",
+                         "ntpupdate","ntpupdate",
+                         "sysdiag","factorycast@schneider",
+                         "test","testingpw",
+                         "USER","USER",
+                         "USER","USERUSER",
+                         "webserver","webpages",
+                         "fdrusers","sresurdf",
+                         "nic2212","poiuypoiuy",
+                         "nimrohs2212","qwertyqwerty",
+                         "nip2212","fcsdfcsd",
+                         "ftpuser","ftpuser",
+                         "noe77111_v500","RcSyyebczS",
+                         "AUTCSE","RybQRceeSd",
+                         "AUT_CSE","cQdd9debez",
+                         "target","RcQbRbzRyc");
 
 foreach credential (keys(credentials)) {
 
@@ -108,7 +105,7 @@ foreach credential (keys(credentials)) {
   if("->" >!< answer) {
     close(soc);
     continue;
-  }  
+  }
 
   send(socket:soc, data:string("version\r\n"));
   answer = recv(socket:soc, length:4096);
@@ -121,10 +118,7 @@ foreach credential (keys(credentials)) {
     close(soc);
     exit(0);
   }  
-
   close(soc);
-
 }
 
-exit(0);
-
+exit(99);

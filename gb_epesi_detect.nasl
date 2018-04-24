@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_epesi_detect.nasl 7443 2017-10-16 13:18:35Z asteins $
+# $Id: gb_epesi_detect.nasl 9565 2018-04-23 10:00:20Z ckuersteiner $
 #
 # EPESI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112082");
-  script_version("$Revision: 7443 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 15:18:35 +0200 (Mon, 16 Oct 2017) $");
+  script_version("$Revision: 9565 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 12:00:20 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 10:50:45 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,12 +92,11 @@ foreach dir(make_list_unique("/", "/epesi", cgi_dirs(port:port))) {
         concludedUrl = report_vuln_url(port:port, url:ver_url, url_only:TRUE);
         vers = chomp(version[1]);
         rev = chomp(version[2]);
+        set_kb_item(name: "epesi/revision", value: rev);
       }
     }
 
     if (found) {
-      tmp_version = vers + " under " + install;
-      set_kb_item(name:"www/" + port + "/epesi", value:tmp_version);
       set_kb_item(name:"epesi/installed", value:TRUE);
 
       cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:telaxus:epesi:");

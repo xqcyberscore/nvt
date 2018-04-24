@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_dos_vuln_apr18_win.nasl 9404 2018-04-09 08:13:26Z cfischer $
+# $Id: gb_apache_httpd_dos_vuln_apr18_win.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
 #
 # Apache HTTP Server Denial of Service Vulnerability Apr18 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812850");
-  script_version("$Revision: 9404 $");
+  script_version("$Revision: 9559 $");
   script_cve_id("CVE-2018-1302");
   script_bugtraq_id(103528);
-  script_tag(name:"cvss_base", value:"5.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 10:13:26 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 16:48:45 +0530 (Mon, 02 Apr 2018)");
   script_name("Apache HTTP Server Denial of Service Vulnerability Apr18 (Windows)");
 

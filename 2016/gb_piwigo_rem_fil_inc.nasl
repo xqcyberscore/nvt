@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_rem_fil_inc.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_piwigo_rem_fil_inc.nasl 9564 2018-04-23 09:32:17Z asteins $
 #
 # Piwigo Remote File Inclusion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107116");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value: "$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 9564 $");
+  script_tag(name:"last_modification", value: "$Date: 2018-04-23 11:32:17 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value: "2016-12-30 13:26:09 +0700 (Fri, 30 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "Remote File Inclusion Vulnerability allows remote attackers to
+  script_tag(name: "insight", value: "A remote file inclusion vulnerability allows remote attackers to
   include arbitrary remote files and execute PHP code on the affected computer in the context of the webserver process.");
 
   script_tag(name: "impact", value: "Successful exploitation may allow an attacker to obtain sensitive information,

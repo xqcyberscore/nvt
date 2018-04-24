@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_detect.nasl 9330 2018-04-05 12:11:08Z cfischer $
+# $Id: cvstrac_detect.nasl 9565 2018-04-23 10:00:20Z ckuersteiner $
 #
 # CVSTrac Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100091");
-  script_version("$Revision: 9330 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:11:08 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9565 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 12:00:20 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,11 +72,9 @@ foreach dir( make_list_unique( "/cgi-bin/run-cvstrac/", "/cvstrac", cgi_dirs( po
     version = eregmatch( string:buf, pattern:'<a href="about">CVSTrac.*version ([0-9.]+)' );
     if( ! isnull( version[1] ) ) vers = version[1];
 
-    tmp_version = vers + " under " + install;
-    set_kb_item( name:"www/" + port + "/cvstrac", value:tmp_version );
     set_kb_item( name:"cvstrac/detected", value:TRUE );
 
-    cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:cvstrac:cvstrac:" );
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:cvstrac:cvstrac:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:cvstrac:cvstrac";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pirelli_router_default_password.nasl 4830 2016-12-21 11:48:51Z cfi $
+# $Id: pirelli_router_default_password.nasl 9567 2018-04-23 13:22:46Z cfischer $
 #
 # Default password router Pirelli AGE mB
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12641");
-  script_version("$Revision: 4830 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:48:51 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 9567 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,18 +39,15 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  tag_summary = "The remote host is a Pirelli AGE mB (microBusiness) router with its 
-  default password set (admin/microbusiness).";
+  script_tag(name:"solution", value:"Telnet to this router and set a password immediately.");
 
-  tag_impact = "An attacker could telnet to it and reconfigure it to lock the owner out 
-  and to prevent him from using his Internet connection, and do bad things.";
+  script_tag(name:"summary", value:"The remote host is a Pirelli AGE mB (microBusiness) router with its
+  default password set (admin/microbusiness).");
 
-  tag_solution = "Telnet to this router and set a password immediately.";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker could telnet to it and reconfigure it to lock the owner out
+  and to prevent him from using his Internet connection, and do bad things.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,6 +57,9 @@ if(description)
 
 include("default_account.inc");
 include("telnet_func.inc");
+
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
 
 port = get_telnet_port( default:23 );
 
@@ -87,8 +87,7 @@ if( soc ) {
   }
 }
 
-#Second try as User (reopen soc beacause wrong pass disconnect)
-
+#Second try as User (reopen soc because wrong pass disconnect)
 soc = open_sock_tcp( port );
 if( soc ) {
 
