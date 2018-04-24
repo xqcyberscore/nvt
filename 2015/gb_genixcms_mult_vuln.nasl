@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_genixcms_mult_vuln.nasl 5799 2017-03-30 15:26:21Z cfi $
+# $Id: gb_genixcms_mult_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
 #
 # GeniXCMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805495");
-  script_version("$Revision: 5799 $");
+  script_version("$Revision: 9579 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:26:21 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 14:25:35 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("GeniXCMS Multiple Vulnerabilities");
@@ -51,14 +51,14 @@ if(description)
 
   script_tag(name:"affected", value:"GeniXCMS 0.0.1.");
 
-  script_tag(name: "solution" , value:"No Solution or patch is available as of
-  17th March, 2015.Information regarding this issue will updated once the
-  solution details are available.
-  For updates refer to http://www.genixcms.org");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the
+  product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36321/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130771/");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36321/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130771/");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -72,11 +72,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 if( !can_host_php( port:http_port ) ) exit( 0 );
 
@@ -87,12 +82,10 @@ foreach dir( make_list_unique( "/", "/genixcms", "/cms", cgi_dirs( port:http_por
   url = dir + "/index.php";
   rcvRes = http_get_cache( item:url, port:http_port );
 
-  ##Confirm Application
   if(rcvRes && rcvRes =~ "content.*GeniXCMS") {
 
     host = http_host_name( port:http_port );
 
-    ##Construct Attack Request
     url = dir + "/index.php/?page=1%27%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E";
     sndReq = string("GET ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
@@ -101,7 +94,6 @@ foreach dir( make_list_unique( "/", "/genixcms", "/cms", cgi_dirs( port:http_por
 
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ## Try attack and check the response to confirm vulnerability
     if(rcvRes =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script>" >< rcvRes)
     {
       report = report_vuln_url( port:http_port, url:url );

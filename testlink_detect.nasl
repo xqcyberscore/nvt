@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: testlink_detect.nasl 9051 2018-03-08 08:56:52Z jschulte $
+# $Id: testlink_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # TestLink Detection
 #
@@ -35,8 +35,8 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9051 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-08 09:56:52 +0100 (Thu, 08 Mar 2018) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-12-10 18:09:58 +0100 (Thu, 10 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("TestLink Detection");
@@ -92,7 +92,7 @@ foreach dir( make_list_unique( "/testlink", cgi_dirs( port:port ) ) ) {
       if(isnull(cpe))
          cpe= 'cpe:/a:teamst:testlink';
 
-      register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+      register_product(cpe:cpe, location:install, port:port);
 
       log_message(data: build_detection_report(app:"Testlink", version:vers, install:install, cpe:cpe, concluded: version[0]),
                   port:port);

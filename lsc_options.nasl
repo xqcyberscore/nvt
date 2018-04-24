@@ -1,5 +1,5 @@
 # OpenVAS
-# $Id: lsc_options.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: lsc_options.nasl 9580 2018-04-24 08:44:20Z jschulte $
 # Description: This script allows to set some Options for LSC.
 #
 # Authors:
@@ -22,18 +22,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-tag_summary = "This script allows users to set some Options for Local Security
-Checks.
-
-These data are stored in the knowledge base
-and used by other tests.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100509");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Options for Local Security Checks");
@@ -49,7 +43,11 @@ if(description)
  # add -xdev to find yes/no
  script_add_preference(name:"Descend directories on other filesystem (don't add -xdev to find)", type:"checkbox", value:"yes");
 
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "This script allows users to set some Options for Local Security
+Checks.
+
+These data are stored in the knowledge base
+and used by other tests.");
  exit(0);
 }
 

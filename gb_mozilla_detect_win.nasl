@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_detect_win.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_mozilla_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Mozilla Version Detection (Windows)
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8137 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
@@ -174,7 +174,7 @@ if("mozilla.org" >< mozillaName)
     if(isnull(cpe))
       cpe = "cpe:/a:mozilla:mozilla";
 
-    register_product(cpe: cpe, location: path, nvt: SCRIPT_OID);
+    register_product(cpe: cpe, location: path);
     log_message(data: build_detection_report(app: "Mozilla Browser",
                                              version: mozillaVer,
                                              install: path,

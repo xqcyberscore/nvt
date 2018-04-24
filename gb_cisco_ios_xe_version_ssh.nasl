@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version_ssh.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: gb_cisco_ios_xe_version_ssh.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Cisco IOS XE Software Version Detection (ssh)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Get Cisco IOS XE Software Version via SSH.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105658");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:41:31 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +39,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Get Cisco IOS XE Software Version via SSH.");
   script_dependencies("gb_cisco_show_version.nasl");
   script_mandatory_keys("cisco/show_version");
   exit(0);

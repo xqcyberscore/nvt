@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbit_downloader_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_orbit_downloader_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Orbit Downloader Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Orbit Downloader version and saves
-  the version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801213");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Orbit Downloader Version Detection");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed Orbit Downloader version and saves
+  the version in KB.");
   exit(0);
 }
 

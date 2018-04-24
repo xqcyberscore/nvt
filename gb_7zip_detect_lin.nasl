@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_7zip_detect_lin.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # 7zip Version Detection (Linux)
 #
@@ -27,27 +27,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of 7zip.
-
-The script logs in via ssh, searches for executable '7za' and
-queries the found executables via command line option 'invalidcmd'.
-The error message output of 7za is normal because 7za in fact
-offers no version command and thus an invalid command has to be
-passed to obtain the version number.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800255";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.800255");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("7zip Version Detection (Linux)");
-  
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -55,7 +45,13 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Detection of installed version of 7zip.
+
+  The script logs in via ssh, searches for executable '7za' and
+  queries the found executables via command line option 'invalidcmd'.
+  The error message output of 7za is normal because 7za in fact
+  offers no version command and thus an invalid command has to be
+  passed to obtain the version number.");
   exit(0);
 }
 
@@ -83,7 +79,7 @@ foreach executableFile (paths)
 
     cpe = build_cpe(value: zipVer[1], exp:"^([0-9.]+)",base:"cpe:/a:7-zip:7-zip:");
     if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:executableFile);
 
     log_message(data:'Detected 7zip version: ' + zipVer[1] +
         '\nLocation: ' + executableFile +

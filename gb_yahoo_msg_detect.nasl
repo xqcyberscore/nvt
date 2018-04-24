@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
+# $Id: gb_yahoo_msg_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Yahoo! Messenger Version Detection
 #
@@ -30,23 +30,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801149");
-  script_version("$Revision: 8159 $");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Yahoo! Messenger Version Detection");
 
-  tag_summary =
-"This script detects the installed version of Yahoo! Messenger and sets the
+
+  script_tag(name : "summary" , value : "This script detects the installed version of Yahoo! Messenger and sets the
 result in KB.
 
 The script logs in via smb, search for the product name in the registry, gets
-application Path from the registry and fetches the version from exe file.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+application Path from the registry and fetches the version from exe file.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

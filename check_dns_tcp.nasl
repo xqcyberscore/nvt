@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: check_dns_tcp.nasl 4717 2016-12-08 13:00:43Z cfi $
+# $Id: check_dns_tcp.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # DNS Server on UDP and TCP
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18356");
-  script_version("$Revision: 4717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 14:00:43 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -43,15 +43,13 @@ if(description)
   script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("DNS/identified");
 
-  tag_summary = "A DNS server is running on this port but 
+  script_tag(name:"summary", value:"A DNS server is running on this port but 
   it only answers to UDP requests.
   This means that TCP requests are blocked by a firewall.
 
   This configuration is incorrect: TCP might be used by any 
   request, it is not restricted to zone transfers.
-  Read RFC1035 or STD0013 for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
+  Read RFC1035 or STD0013 for more information.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_ms_system_center_configmgr_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -36,11 +36,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803023";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -143,7 +143,7 @@ foreach key (keylist)
             if(isnull(cpe))
               cpe = 'cpe:/a:microsoft:systems_management_server';
 
-            register_product(cpe:cpe, location:smsPath, nvt:SCRIPT_OID);
+            register_product(cpe:cpe, location:smsPath);
 
             log_message(data: build_detection_report(app:confmgrName, version: smsVer,
                                                     install: smsPath, cpe:cpe, concluded:smsVer));
@@ -182,7 +182,7 @@ foreach key (keylist)
             if(isnull(cpe))
               cpe = 'cpe:/a:microsoft:system_center_configuration_manager:2007';
 
-            register_product(cpe:cpe, location:confmgrPath, nvt:SCRIPT_OID);
+            register_product(cpe:cpe, location:confmgrPath);
 
             log_message(data: build_detection_report(app:confmgrName, version: confmgrVer,
                                                      install: confmgrPath, cpe:cpe, concluded:confmgrVer));

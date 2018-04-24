@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kde_konqueror_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_kde_konqueror_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # KDE Konqueror Version Detection
 #
@@ -37,8 +37,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-31 07:37:13 +0200 (Fri, 31 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -81,10 +81,10 @@ foreach executableFile (konqerName)
       Ver = konqerVer[1];
 
     set_kb_item(name:"KDE/Konqueror/Ver", value:Ver);
-      
+
     cpe = build_cpe(value:Ver, exp:"Konqueror: ([0-9.]+)", base:"cpe:/a:kde:konqueror:");
     if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:executableFile);
 
     log_message(data:'Detected KDE Konqueror version: ' + Ver +
         '\nLocation: ' + executableFile +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_axis_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Axis Commerce Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Axis Commerce, an open source eCommerce solution.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103223");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-08-24 15:44:33 +0200 (Wed, 24 Aug 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Axis Commerce Detection");
@@ -42,7 +40,7 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "This host is running Axis Commerce, an open source eCommerce solution.");
  script_xref(name : "URL" , value : "http://axiscommerce.com/");
  exit(0);
 }

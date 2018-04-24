@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_fast_search_server_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_ms_fast_search_server_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Microsoft FAST Search Server Detection
 #
@@ -34,8 +34,8 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802980";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 10:36:03 +0530 (Wed, 10 Oct 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -122,7 +122,7 @@ foreach item (registry_enum_keys(key:key))
         cpe = "cpe:/a:microsoft:fast_search_server_for_sharepoint";
       }
 
-      register_product(cpe:cpe, location:insPath, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:insPath);
 
       log_message(data: build_detection_report(app:"MS Fast Search Server version",
                                               version:fsVer, install:insPath, cpe:cpe,

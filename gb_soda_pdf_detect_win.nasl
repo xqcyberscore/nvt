@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soda_pdf_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_soda_pdf_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Soda PDF Detection (Windows)
 #
@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803750";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5372 $");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 10:35:37 +0530 (Tue, 03 Sep 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Soda PDF Detection (Windows)");
@@ -100,7 +100,7 @@ foreach item (registry_enum_keys(key:key))
       if(isnull(cpe))
         cpe = "cpe:/a:soda:soda_pdf";
 
-      register_product(cpe:cpe, location:insloc, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:insloc);
 
       log_message(data: build_detection_report(app: "Soda PDF",
                                                version: sodaVer,

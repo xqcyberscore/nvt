@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cgit_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_cgit_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # cgit Detection
 #
@@ -38,8 +38,8 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5723 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-05-28 12:52:27 +0200 (Tue, 28 May 2013)");
  script_name("cgit Detection");
  script_category(ACT_GATHER_INFO);
@@ -86,7 +86,7 @@ foreach dir( make_list_unique( "/cgit", "/git", cgi_dirs( port:port ) ) ) {
     if(isnull(cpe))
       cpe = 'cpe:/a:lars_hjemli:cgit';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"Cgit", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

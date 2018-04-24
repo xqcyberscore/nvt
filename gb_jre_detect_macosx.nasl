@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jre_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_jre_detect_macosx.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Java Runtime Environment (JRE) Version Detection (Mac OS X)
 #
@@ -35,10 +35,10 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6484 $");
+ script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 18:27:52 +0530 (Fri, 06 Apr 2012)");
 
   script_name("Java Runtime Environment (JRE) Version Detection (Mac OS X)");
@@ -93,7 +93,7 @@ if(javaVer[1])
   ## build cpe and store it as host_detail
   cpe = build_cpe(value:javaVer[1], exp:"^([0-9.]+_?[0-9]+)", base:"cpe:/a:oracle:jre:");
   if(!isnull(cpe))
-    register_product(cpe:cpe, location:'/System/Library/Java/JavaVirtualMachines', nvt:SCRIPT_OID);
+    register_product(cpe:cpe, location:'/System/Library/Java/JavaVirtualMachines');
   else
     cpe = "Failed";
 

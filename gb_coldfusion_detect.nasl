@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_coldfusion_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # ColdFusion Detection
 #
@@ -35,8 +35,8 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("ColdFusion Detection");
@@ -114,7 +114,7 @@ if( http_vuln_check( port:port, url:url,pattern:"<title>ColdFusion Administrator
     cpe = 'cpe:/a:adobe:coldfusion:' + cf_version;
   }
 
-  register_product( cpe:cpe, location:url, nvt:SCRIPT_OID, port:port );
+  register_product( cpe:cpe, location:url, port:port );
   set_kb_item(name: string("coldfusion/",port,"/installed"), value: TRUE);
   set_kb_item(name: string("coldfusion/installed"), value: TRUE);
 

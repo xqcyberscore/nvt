@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imp_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: imp_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 # Description: IMP Detection
 #
 # Authors:
@@ -22,19 +22,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "This script detects whether the remote host is running IMP and extracts
-version numbers and locations of any instances found. 
-
-IMP is a PHP-based webmail package from The Horde Project that provides
-access to mail accounts via POP3 or IMAP. See
-http://www.horde.org/imp/ for more information.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12643");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IMP Detection");
@@ -46,7 +39,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects whether the remote host is running IMP and extracts
+version numbers and locations of any instances found. 
+
+IMP is a PHP-based webmail package from The Horde Project that provides
+access to mail accounts via POP3 or IMAP. See
+http://www.horde.org/imp/ for more information.");
   exit(0);
 }
 

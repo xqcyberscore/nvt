@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: MercuryBoard_detect.nasl 9043 2018-03-07 12:38:58Z cfischer $
+# $Id: MercuryBoard_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # MercuryBoard Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100423");
-  script_version("$Revision: 9043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 13:38:58 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,9 +42,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.mercuryboard.com");
 
-  tag_summary = "This host is running MercuryBoard, a message board system.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running MercuryBoard, a message board system.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_snmp_agents_detect_lin.nasl 7514 2017-10-20 05:39:50Z cfischer $
+# $Id: gb_hp_snmp_agents_detect_lin.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # HP SNMP Agents Version Detection (Linux)
 #
@@ -35,8 +35,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7514 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:39:50 +0200 (Fri, 20 Oct 2017) $");
+ script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 12:53:44 +0530 (Tue, 08 May 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -82,7 +82,7 @@ if(buffer_rpm != NULL && buffer_rpm =~ "hp-snmp-agents")
     set_kb_item(name:"HP/SNMP/Agents", value:version[1]);
     cpe = build_cpe(value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:hp:snmp_agents_for_linux:");
     if(!isnull(cpe))
-      register_product(cpe:cpe, location:path, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:path);
 
     log_message(data: build_detection_report(app:"HP SNMP Agents",
                                          version:version[1],

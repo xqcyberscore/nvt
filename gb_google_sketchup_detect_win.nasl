@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_google_sketchup_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Google SketchUp Version Detection (Windows)
 #
@@ -30,22 +30,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800434");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google SketchUp Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Google SketchUp.
+
+  script_tag(name : "summary" , value : "Detection of installed version of Google SketchUp.
 
 The script logs in via smb, searches for Google SketchUp in the registry
-and gets the version from registry";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

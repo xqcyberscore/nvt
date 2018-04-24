@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_media_player_detect_900173.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: secpod_ms_win_media_player_detect_900173.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -28,22 +28,19 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900173");
-  script_version("$Revision: 7293 $");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-11-11 15:58:44 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Media Player Version Detection");
 
-  tag_summary =
-"Detection of installed version of Windows Media Player.
+
+  script_tag(name : "summary" , value : "Detection of installed version of Windows Media Player.
 
 The script logs in via smb, searches for Windows Media Player CLSID
-in the registry, gets version and set it in the KB item.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+in the registry, gets version and set it in the KB item.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");

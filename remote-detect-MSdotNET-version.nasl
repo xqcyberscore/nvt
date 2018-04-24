@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-MSdotNET-version.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: remote-detect-MSdotNET-version.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Microsoft dotNET version grabber
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101007");
-  script_version("$Revision: 7278 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-15 21:21:09 +0100 (Sun, 15 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,13 +37,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host seems to have Microsoft .NET installed.";
-
   tag_solution = "It's recommended to disable verbose error displaying to avoid version detection.
   this can be done througth the IIS management console.";
 
   script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote host seems to have Microsoft .NET installed.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

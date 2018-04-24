@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: showmount.nasl 6164 2017-05-18 12:00:33Z cfi $
+# $Id: showmount.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # NFS export
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102014");
-  script_version("$Revision: 6164 $");
+  script_version("$Revision: 9580 $");
   script_cve_id("CVE-1999-0554", "CVE-1999-0548");
   script_name("NFS export");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 14:00:33 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,12 +42,10 @@ if(description)
   script_dependencies("secpod_rpc_portmap.nasl");
   script_require_keys("rpc/portmap");
 
-  tag_summary = "This plugin lists NFS exported shares, and warns if some of
+  script_tag(name:"summary", value:"This plugin lists NFS exported shares, and warns if some of
   them are readable.
 
-  It also warns if the remote NFS server is superfluous.";
-
-  script_tag(name:"summary", value:tag_summary);
+  It also warns if the remote NFS server is superfluous.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");

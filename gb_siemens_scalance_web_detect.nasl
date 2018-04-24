@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_web_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_siemens_scalance_web_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Siemens Scalance Web Detection
 #
@@ -36,11 +36,11 @@ if (description)
 {
  
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 7076 $");
+ script_version ("$Revision: 9584 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-05-30 16:44:04 +0200 (Thu, 30 May 2013)");
  script_name("Siemens Scalance Web Detection");
  script_category(ACT_GATHER_INFO);
@@ -67,7 +67,7 @@ if("<title>Logon to SCALANCE" >< buf || 'Digest realm="SCALANCE ' >< buf) {
 
   set_kb_item(name:"siemens_scalance/installed",value:TRUE);
   cpe = 'cpe:/h:siemens:scalance';
-  register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
+  register_product(cpe:cpe, location:"/", port:port);
 
   log_message(data: 'The remote host is a Siemens Scalance Device.\nCpe: ' + cpe + '\nLocation: /\n', port:port);
   exit(0);

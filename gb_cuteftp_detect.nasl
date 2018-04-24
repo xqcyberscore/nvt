@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuteftp_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_cuteftp_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # CuteFTP Version Detection (Windows)
 #
@@ -27,27 +27,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800947";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6040 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800947");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("CuteFTP Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of CuteFTP on Windows.
+
+  script_tag(name : "summary" , value : "Detection of installed version of CuteFTP on Windows.
 
 The script logs in via smb, searches for CuteFTP in the registry
-and gets the install location and extract version from the file.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the install location and extract version from the file.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -145,7 +140,7 @@ foreach key (key_list)
         if(isnull(cpe))
           cpe = "cpe:/a:globalscape:cuteftp";
 
-        register_product(cpe:cpe, location:cPath, nvt:SCRIPT_OID);
+        register_product(cpe:cpe, location:cPath);
 
         log_message(data: build_detection_report(app: cName,
                                                  version: cftpVer,

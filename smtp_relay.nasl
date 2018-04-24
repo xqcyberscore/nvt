@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: smtp_relay.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # SMTP Open Relay Test
 #
@@ -24,33 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Improve the configuration of your SMTP server so that your SMTP server 
-  cannot be used as a relay any more.";
-tag_summary = "The remote SMTP server is insufficiently protected against relaying
-  This means that spammers might be able to use your mail server 
-  to send their mails to the world.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100073");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- name = "Mail relaying";
- script_name(name);
+ script_name("Mail relaying");
  
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- family = "SMTP problems";
- script_family(family);
+ script_family("SMTP problems");
  script_dependencies("smtpserver_detect.nasl","sendmail_expn.nasl","smtp_settings.nasl");
  script_exclude_keys("SMTP/wrapped", "SMTP/qmail");
  script_require_ports("Services/smtp", 25);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "solution" , value : "Improve the configuration of your SMTP server so that your SMTP server 
+  cannot be used as a relay any more.");
+ script_tag(name : "summary" , value : "The remote SMTP server is insufficiently protected against relaying
+  This means that spammers might be able to use your mail server 
+  to send their mails to the world.");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: www_multiple_get.nasl 4797 2016-12-17 14:04:59Z cfi $
+# $Id: www_multiple_get.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Several GET locks web server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18366");
-  script_version("$Revision: 4797 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-17 15:04:59 +0100 (Sat, 17 Dec 2016) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,14 +41,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote web server shuts down temporarily or blacklists
+  script_tag(name:"summary", value:"The remote web server shuts down temporarily or blacklists
   us when it receives several GET HTTP/1.0 requests in a row.
 
   This might trigger false positive in generic destructive or DoS plugins.
   ** OpenVAS enabled some countermeasures, however they might be
-  ** insufficient.";
-
-  script_tag(name:"summary", value:tag_summary);
+  ** insufficient.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

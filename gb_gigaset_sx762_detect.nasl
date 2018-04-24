@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gigaset_sx762_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_gigaset_sx762_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Gigaset SX762 Detection
 #
@@ -39,8 +39,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version ("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-06-05 13:20:54 +0200 (Wed, 05 Jun 2013)");
  script_name("Gigaset SX762 Detection");
  script_category(ACT_GATHER_INFO);
@@ -73,7 +73,7 @@ if("<title>Gigaset sx762" >< buf) {
   set_kb_item(name:"gigaset_sx762/installed",value:TRUE);
   cpe = 'cpe:/a:siemens:gigaset:sx762';
 
-  register_product(cpe:cpe, location:port + "/tcp", nvt:SCRIPT_OID, port:port);
+  register_product(cpe:cpe, location:port + "/tcp", port:port);
 
   log_message(data:"The remote Host is a Siemens Gigaset sx762 device.\nCPE: " + cpe + "\n", port:port);
   exit(0);

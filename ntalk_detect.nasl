@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ntalk_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: ntalk_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 # Description: Detect talkd server port and protocol version
 #
 # Authors:
@@ -31,15 +31,11 @@ tag_summary = "The remote host is running a 'talkd' daemon.
 talkd is the server that notifies a user that someone else wants to initiate 
 a conversation with him.";
 
-tag_solution = "Disable talkd access from the network by adding the approriate rule on your 
- firewall. If you do not need talkd, comment out the relevant line in 
- /etc/inetd.conf and restart the inetd process.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10168");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +52,9 @@ if(description)
  
  script_require_udp_ports(518);
 
- script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "solution" , value : "Disable talkd access from the network by adding the approriate rule on your 
+ firewall. If you do not need talkd, comment out the relevant line in 
+ /etc/inetd.conf and restart the inetd process.");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.cert.org/advisories/CA-1997-04.html");
  exit(0);

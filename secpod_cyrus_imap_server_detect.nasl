@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_imap_server_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: secpod_cyrus_imap_server_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Cyrus IMAP Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902220");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,10 +39,8 @@ if(description)
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/imap", 143, "Services/pop3", 110);
 
-  tag_summary = "This script finds the running version of Cyrus IMAP Server
-  and saves the result in KB.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This script finds the running version of Cyrus IMAP Server
+  and saves the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postgresql_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_postgresql_detect_lin.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # PostgreSQL Version Detection (Linux)
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -77,7 +77,7 @@ foreach executableFile (postgresql)
     set_kb_item(name:"PostgreSQL/Lin/Ver", value:postgresqlVer[1]);
     cpe = build_cpe(value: postgresqlVer[1], exp:"^([0-9.]+)",base:"cpe:/a:postgresql:postgresql:");
     if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:executableFile);
 
     log_message(data:'Detected PostgreSQL version: ' + postgresqlVer[1] +
         '\nLocation: ' + executableFile +

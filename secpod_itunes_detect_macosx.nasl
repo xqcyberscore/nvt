@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: secpod_itunes_detect_macosx.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Apple iTunes Version Detection (Mac OS X)
 #
@@ -24,25 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.902717";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6484 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902717");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_name("Apple iTunes Version Detection (Mac OS X)");
 
-  tag_summary =
-"This script finds the installed product version of Apple iTunes
-on Mac OS X and sets the result in KB";
 
-
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed product version of Apple iTunes
+on Mac OS X and sets the result in KB");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -94,7 +89,7 @@ if(isnull(cpe))
 
 insPath = "/Applications/iTunes.app";
 
-register_product(cpe:cpe, location:insPath, nvt:SCRIPT_OID);
+register_product(cpe:cpe, location:insPath);
 
 log_message(data: build_detection_report(app: "Apple iTunes",
                                          version: itunesVer,

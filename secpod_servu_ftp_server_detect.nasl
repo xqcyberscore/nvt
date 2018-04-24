@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_servu_ftp_server_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: secpod_servu_ftp_server_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Rhinosoft Serv-U FTP Server Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Rhinosoft Serv-U FTP Server and
-  saves the version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900482");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:23:52 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Rhinosoft Serv-U FTP Server Version Detection");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl", "find_service.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed Rhinosoft Serv-U FTP Server and
+  saves the version in KB.");
   exit(0);
 }
 

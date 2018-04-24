@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dokeos_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: dokeos_detect.nasl 9583 2018-04-24 09:48:35Z ckuersteiner $
 #
 # Dokeos Detection
 #
@@ -24,26 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Dokeos, a open source online learning suite.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100154");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9583 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:48:35 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
- script_name("Dokeos Detection");  
+
+ script_name("Dokeos Detection");
+
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
+
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.dokeos.com");
+
+ script_tag(name: "summary", value: "This host is running Dokeos, a open source online learning suite.");
+
+ script_xref(name: "URL", value: "http://www.dokeos.com");
+
  exit(0);
 }
 
@@ -51,52 +55,44 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100154";
-SCRIPT_DESC = "Dokeos Detection";
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/dokeos", cgi_dirs( port:port ) ) ) {
-
  install = dir;
  if( dir == "/" ) dir = "";
+
  url = dir + "/index.php";
  buf = http_get_cache( item:url, port:port );
  if( buf == NULL ) continue;
  
- if(
-    (egrep(pattern: 'Platform <a [^>]+>Dokeos', string: buf, icase: TRUE) ||
-     egrep(pattern: 'id="platformmanager"', string: buf, icase: TRUE)) &&
-     egrep(pattern: "Set-Cookie: dk_sid", string: buf)
-    )
- { 
-    vers = string("unknown");
+ if ((egrep(pattern: 'Platform <a [^>]+>Dokeos', string: buf, icase: TRUE) ||
+      egrep(pattern: 'id="platformmanager"', string: buf, icase: TRUE) ||
+      '<meta name="Generator" content="Dokeos">' >< buf) &&
+      egrep(pattern: "Set-Cookie: dk_sid", string: buf)) { 
+    vers = "unknown";
 
-    ### try to get version.
     version = eregmatch(string: buf, pattern: "(Platform|Portal) <a [^>]+>Dokeos ([0-9.]+)",icase:TRUE);
-    
-    if ( !isnull(version[2]) ) {
-       vers=chomp(version[2]);
-    } 
-    
-    tmp_version = string(vers," under ",install);
-    set_kb_item(name: string("www/", port, "/dokeos"), value:tmp_version);
+    if (!isnull(version[2]))
+      vers = version[2];
+    else {
+      version = eregmatch(pattern: ">Dokeos ([0-9.]+)", string: buf);
+      if (!isnull(version[1]))
+        vers = version[1];
+    }
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)",base:"cpe:/a:dokeos:dokeos:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
- 
-    info = string("\n\nDokeos Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n"); 
+    set_kb_item(name: "dokeos/installed", value: TRUE);
+    
+    cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:dokeos:dokeos:");
+    if (!cpe)
+      cpe = 'cpe:/a:dokeos:dokeos';
 
-    log_message(port:port,data:info);
+    register_product(cpe: cpe, location: install, port: port);
+
+    log_message(data: build_detection_report(app: "Dokeos", version: vers, install: install, cpe: cpe,
+                                             concluded: version[0]),
+                port: port);
     exit(0);
   }
 }

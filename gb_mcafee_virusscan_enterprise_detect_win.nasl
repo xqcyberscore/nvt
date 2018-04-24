@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_enterprise_detect_win.nasl 8158 2017-12-18 13:18:20Z cfischer $
+# $Id: gb_mcafee_virusscan_enterprise_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # McAfee VirusScan Enterprise Version Detection (Windows)
 #
@@ -30,22 +30,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803319");
-  script_version("$Revision: 8158 $");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-04 09:45:42 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("McAfee VirusScan Enterprise Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of McAfee VirusScan Enterprise.
+
+  script_tag(name : "summary" , value : "Detection of installed version of McAfee VirusScan Enterprise.
 
 The script detects the version of McAfee VirusScan Enterprise and sets the
-version in KB.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+version in KB.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

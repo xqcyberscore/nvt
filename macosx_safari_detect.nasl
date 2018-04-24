@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: macosx_safari_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: macosx_safari_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Apple Safari Detect Script (Mac OS X)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.102021";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 10:41:02 +0200 (Tue, 06 Apr 2010)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Safari Detect Script (Mac OS X)");
@@ -89,7 +89,7 @@ cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:apple:safari:");
 if(isnull(cpe))
   cpe='cpe:/a:apple:safari';
 
-register_product(cpe:cpe, location:'/Applications/Safari.app', nvt:SCRIPT_OID);
+register_product(cpe:cpe, location:'/Applications/Safari.app');
 
 log_message(data: build_detection_report(app: "Safari", version: ver,
                                          install: "/Applications/Safari.app",

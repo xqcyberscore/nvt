@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: os_fingerprint.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: os_fingerprint.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 9462 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -80,11 +80,9 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.phrack.org/issues.html?issue=57&id=7#article");
 
-  tag_summary = "This script performs ICMP based OS fingerprinting (as described by
+  script_tag(name:"summary", value:"This script performs ICMP based OS fingerprinting (as described by
   Ofir Arkin and Fyodor Yarochkin in Phrack #57). It can be used to determine
-  remote operating system version. The result is stored in the KB for later analysis only.";
-
-  script_tag(name:"summary", value:tag_summary);
+  remote operating system version. The result is stored in the KB for later analysis only.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
 

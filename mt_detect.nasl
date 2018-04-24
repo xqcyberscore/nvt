@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mt_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
+# $Id: mt_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Movable Type Detection
 #
@@ -35,8 +35,8 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5737 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-01-06 18:07:55 +0100 (Wed, 06 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Movable Type Detection");
@@ -88,7 +88,7 @@ foreach dir( make_list_unique( "/mt", "/cgi-bin/mt", cgi_dirs( port:port ) ) ) {
     if(!cpe)
       cpe = 'cpe:/a:sixapart:movable_type';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"Movable Type", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

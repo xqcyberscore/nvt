@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecms_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_ecms_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Evaria ECMS Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Evaria ECMS, a content management system.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100838");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Evaria ECMS Detection");
@@ -42,7 +40,7 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "This host is running Evaria ECMS, a content management system.");
  script_xref(name : "URL" , value : "http://www.evaria.com/en/?view=ecms");
  exit(0);
 }

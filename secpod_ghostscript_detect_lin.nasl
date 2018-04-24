@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ghostscript_detect_lin.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: secpod_ghostscript_detect_lin.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Ghostscript Version Detection (Linux)
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -84,7 +84,7 @@ foreach executableFile(gsName)
 
       cpe = build_cpe(value:gsVer[1], exp:"^([0-9.]+)", base:"cpe:/a:ghostscript:ghostscript:");
       if(!isnull(cpe))
-        register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
+        register_product(cpe:cpe, location:executableFile);
 
       log_message(data:'Detected Ghostscript version: ' + gsVer[1] +
           '\nLocation: ' + executableFile +

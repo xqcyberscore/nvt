@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_ipmi_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Detection of IPMI
 #
@@ -24,20 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "An IPMI Service is running at this host.
-
-The Intelligent Platform Management Interface (IPMI) is a standardized computer system
-interface used by system administrators for out-of-band management of computer systems
-and monitoring of their operation.";
-
-SCRIPT_OID  = '1.3.6.1.4.1.25623.1.0.103835';
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103835");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+ script_version("$Revision: 9580 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-11-26 11:39:47 +0100 (Tue, 26 Nov 2013)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -49,7 +41,11 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_require_udp_ports(623);
 
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "An IPMI Service is running at this host.
+
+The Intelligent Platform Management Interface (IPMI) is a standardized computer system
+interface used by system administrators for out-of-band management of computer systems
+and monitoring of their operation.");
 
  exit(0);
 

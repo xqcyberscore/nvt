@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpboard_mult_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_phpboard_mult_xss_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
 #
 # PHP Board Multiple XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805352");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 9579 $");
   script_cve_id("CVE-2015-2217");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-14 13:06:08 +0530 (Sat, 14 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PHP Board Multiple XSS Vulnerabilities");
@@ -53,12 +53,17 @@ if(description)
 
   script_tag(name:"affected", value:"PHP Board version 2.2.7.");
 
-  script_tag(name: "solution" , value:"No Solution or patch is available as of
-  13th March, 2015.Information regarding this issue will updated once the
-  solution details are available.For updates refer to http://www.myupb.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the
+  product by another one.
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130684/Ultimate-PHP-Board-UPB-2.2.7-Cross-Site-Scripting.html");
+  As a workaround apply the source code patch listed in the references or update to version 2.2.8
+  once this version is officially released.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130684/Ultimate-PHP-Board-UPB-2.2.7-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"https://github.com/PHP-Outburst/myUPB/pull/27");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,19 +76,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
-# Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-# Iterate over possible paths
 foreach dir (make_list_unique("/", "/upb", "/chat/upb", cgi_dirs(port:http_port)))
 {
 
@@ -91,13 +89,10 @@ foreach dir (make_list_unique("/", "/upb", "/chat/upb", cgi_dirs(port:http_port)
   url = dir + "/";
   rcvRes = http_get_cache(item:url, port:http_port);
 
-  #Confirm Application
   if(rcvRes && rcvRes =~ "Powered by.*UPB")
   {
-    #Construct Attack Request
     url1 = url + "search.php?q='><script>alert(document.cookie)</script>";
 
-    # Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url1, check_header:TRUE,
        pattern:"<script>alert\(document\.cookie\)</script>"))
      {

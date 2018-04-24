@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-025.nasl 6237 2017-05-29 13:53:57Z cfi $
+# $Id: gb_ms15-025.nasl 9576 2018-04-24 07:24:33Z cfischer $
 #
 # MS Windows Kernel Privilege Elevation Vulnerabilities (3038680)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805350");
-  script_version("$Revision: 6237 $");
-  script_cve_id("CVE-2015-0073, CVE-2015-0075");
+  script_version("$Revision: 9576 $");
+  script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 09:24:33 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 08:49:34 +0530 (Wed, 11 Mar 2015)");
   script_name("MS Windows Kernel Privilege Elevation Vulnerabilities (3038680)");
 
@@ -47,7 +47,7 @@ if(description)
     to modify the virtual store of another user.
 
   - when Windows fails to properly validate and enforce impersonation
-    levels."); 
+    levels.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow remote
   attackers to run arbitrary code and  bypass user account checks to gain
@@ -88,24 +88,17 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
                    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);

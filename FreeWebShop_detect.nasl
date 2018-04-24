@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FreeWebShop_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
+# $Id: FreeWebShop_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # FreeWebShop Detection
 #
@@ -34,8 +34,8 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100235";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5721 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-07-21 20:55:39 +0200 (Tue, 21 Jul 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,7 +94,7 @@ foreach dir( make_list_unique( "/freewebshop", "/shop", cgi_dirs( port:port ) ) 
     if(isnull(cpe))
       cpe = 'cpe:/a:freewebshop:freewebshop';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"FreeWebshop", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

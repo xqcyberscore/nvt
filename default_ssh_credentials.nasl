@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_ssh_credentials.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: default_ssh_credentials.nasl 9573 2018-04-24 06:48:30Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108013");
-  script_version("$Revision: 9567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 9573 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 08:48:30 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,18 +87,23 @@ foreach credential( credentials ) {
   credential = str_replace( string:credential, find:"\;", replace:"#sem_legacy#" );
   credential = str_replace( string:credential, find:"\:", replace:"#sem_new#" );
 
-  user_pass = split( credential, sep:":", keep:FALSE );
-  if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) {
+  user_pass_type = split( credential, sep:":", keep:FALSE );
+  if( isnull( user_pass_type[0] ) || isnull( user_pass_type[1] ) ) {
     # nb: ';' was used pre r9566 but was changed to ':' as a separator as the
     # GSA is stripping ';' from the NVT description. Keeping both in here
     # for backwards compatibility with older scan configs.
-    user_pass = split( credential, sep:";", keep:FALSE );
-    if( isnull( user_pass[0] ) || isnull( user_pass[1] ) )
+    user_pass_type = split( credential, sep:";", keep:FALSE );
+    if( isnull( user_pass_type[0] ) || isnull( user_pass_type[1] ) )
       continue;
   }
 
-  user = chomp( user_pass[0] );
-  pass = chomp( user_pass[1] );
+  # Check the type defined in default_credentials.inc if the credentials
+  # should be used by this NVT.
+  type = user_pass_type[3];
+  if( "all" >!< type && "ssh" >!< type ) continue;
+
+  user = chomp( user_pass_type[0] );
+  pass = chomp( user_pass_type[1] );
 
   user = str_replace( string:user, find:"#sem_legacy#", replace:";" );
   pass = str_replace( string:pass, find:"#sem_legacy#", replace:";" );

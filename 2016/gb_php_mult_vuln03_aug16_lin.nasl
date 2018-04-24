@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln03_aug16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_php_mult_vuln03_aug16_lin.nasl 9576 2018-04-24 07:24:33Z cfischer $
 #
 # PHP Multiple Vulnerabilities - 03 - Aug16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808792");
-  script_version("$Revision: 7545 $");
-  script_cve_id("CVE-2016-5096 ", "CVE-2016-5094", "CVE-2016-5095");
+  script_version("$Revision: 9576 $");
+  script_cve_id("CVE-2016-5096", "CVE-2016-5094", "CVE-2016-5095");
   script_bugtraq_id(90861, 90857, 92144);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 09:24:33 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 12:57:10 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Multiple Vulnerabilities - 03 - Aug16 (Linux)");
 
@@ -45,9 +45,12 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An integer overflow in the fread function in 'ext/standard/file.c' script.
+
   - An integer overflow in the php_html_entities function in
     'ext/standard/html.c' script.
+
   - An Integer overflow in the php_escape_html_entities_ex function in
     'ext/standard/html.c' script.");
 
@@ -81,21 +84,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version before 5.5.36
 if(version_is_less(version:phpVer, test_version:"5.5.36"))
 {
   fix = '5.5.36';
   VULN = TRUE;
 }
 
-## Check for version 5.6.x before 5.6.22
 else if(phpVer =~ "^(5\.6)")
 {
   if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.21"))

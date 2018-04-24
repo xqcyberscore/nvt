@@ -24,27 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804311";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6063 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804311");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 20:03:19 +0530 (Wed, 12 Feb 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Aloaha PDF Suite PDF Viewer Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Aloaha PDF Suite PDF Viewer on Windows.
+
+  script_tag(name : "summary" , value : "Detection of installed version of Aloaha PDF Suite PDF Viewer on Windows.
 
 The script logs in via smb, searches for Aloaha PDF Suite in the registry
-and gets the pdf viewer path from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the pdf viewer path from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -87,7 +82,7 @@ if(pdfPath)
   if(isnull(cpe))
     cpe = "cpe:/a:aloha:aloahapdfviewer";
 
-  register_product(cpe: cpe, location: pdfPath, nvt: SCRIPT_OID);
+  register_product(cpe: cpe, location: pdfPath);
 
   log_message(data: build_detection_report(app: "Aloaha PDF Viewer",
                                           version: pdfVer,

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ventrilo_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: ventrilo_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 # Description: Ventrilo Server Detection
 #
 # Authors:
@@ -22,34 +22,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "A VoIP service is listening on the remote host. 
-
-Description :
-
-The remote host is running Ventrilo, a voice over IP (VoIP) software
-developed by Flagship Industries.";
-
-tag_solution = "Make sure the use of this software is made in accordance to your local
-security policy since Ventrilo is often associated with multi-player
-online games.";
-
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.80092");;
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
-  name = "Ventrilo Server Detection";
-  script_name(name);
-  summary = "Detects a Ventrilo server";
+  script_name("Ventrilo Server Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2005-2008 Tenable Network Security");
   script_require_udp_ports(3784);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : "Make sure the use of this software is made in accordance to your local
+security policy since Ventrilo is often associated with multi-player
+online games.");
+  script_tag(name : "summary" , value : "A VoIP service is listening on the remote host. 
+
+Description :
+
+The remote host is running Ventrilo, a voice over IP (VoIP) software
+developed by Flagship Industries.");
   script_xref(name : "URL" , value : "http://www.ventrilo.com/");
   exit(0);
 }

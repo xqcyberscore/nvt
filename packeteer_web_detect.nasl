@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: packeteer_web_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 # Description: Packeteer/Bluecoat Web Management Interface Detection
 #
 # Authors:
@@ -33,8 +33,8 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.80031";
 if (description)
     {
     script_oid(SCRIPT_OID);
-    script_version("$Revision: 8078 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+    script_version("$Revision: 9584 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,7 +76,7 @@ set_kb_item(name:"bluecoat_packetshaper/installed", value:TRUE);
 set_kb_item(name:string("bluecoat_packetshaper/port"), value:port);
 set_kb_item(name:"www/"+port+"/packeteer", value:TRUE);
 
-register_product(cpe:cpe, location:"/login.htm", nvt:SCRIPT_OID, port:port);
+register_product(cpe:cpe, location:"/login.htm", port:port);
 
 log_message(data: build_detection_report(app:"Packeteer/Bluecoat PacketShaper " + md, version:'unknown', install:'/', cpe:cpe, concluded: 'remote probe'),
             port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xpdf_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_xpdf_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Xpdf Version Detection
 #
@@ -27,38 +27,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_vuldetect = "The script logs in via ssh, searches for executable 'xpdf' and
-  queries the found executables via command line option '-v'.";
-
-tag_summary = "The PDF viewer Xpdf is installed and its version is detected.";
-
-tag_solution = "N/A";
-
-tag_affected = "Xpdf on Linux.";
-
-tag_insight = "N/A";
-
-tag_impact = "N/A";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900466";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.900466");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Xpdf Version Detection");
 
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "vuldetect" , value : "The script logs in via ssh, searches for executable 'xpdf' and
+    queries the found executables via command line option '-v'.");
+  script_tag(name : "summary" , value : "The PDF viewer Xpdf is installed and its version is detected.");
+  script_tag(name : "solution" , value : "N/A");
+  script_tag(name : "affected" , value : "Xpdf on Linux.");
+  script_tag(name : "insight" , value : "N/A");
+  script_tag(name : "impact" , value : "N/A");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -91,10 +77,10 @@ foreach executableFile (xpdfPaths)
   if(xpdfVer[1] != NULL)
   {
     set_kb_item(name:"Xpdf/Linux/Ver", value:xpdfVer[1]);
-   
+
     cpe = build_cpe(value:xpdfVer[1], exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:foolabs:xpdf:");
     if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:executableFile);
 
     log_message(data:'Detected Xpdf version: ' + xpdfVer[1] +
         '\nLocation: ' + executableFile +

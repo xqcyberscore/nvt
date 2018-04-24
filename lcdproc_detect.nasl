@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lcdproc_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: lcdproc_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # LCDproc server detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10379");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"solution" , value: tag_solution);
   script_tag(name:"summary" , value: tag_summary);
-  script_tag(name:"impact", value: tag_summary);
+  script_tag(name:"impact", value: tag_impact);
 
   script_tag(name:"qod_type", value:"remote_banner");
 

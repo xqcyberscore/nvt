@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_xwiki_enterprise_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # XWiki Enterprise Version Detection
 #
@@ -39,8 +39,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("XWiki Enterprise Version Detection");
@@ -112,7 +112,7 @@ if(rcvRes && "XWiki Enterprise" >< rcvRes)
   if(isnull(cpe))
      cpe = 'cpe:/a:xwiki:xwiki:';
 
-  register_product(cpe:cpe, location:dir, nvt:SCRIPT_OID, port:port);
+  register_product(cpe:cpe, location:dir, port:port);
 
   log_message(data: build_detection_report(app:"XWiki",
                                          version: ver,

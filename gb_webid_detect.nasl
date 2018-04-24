@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
+# $Id: gb_webid_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # WeBID Detection
 #
@@ -24,19 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of WeBid.
-
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100902";
-
 if(description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.100902");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5736 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-11-11 13:24:47 +0100 (Thu, 11 Nov 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("WeBID Detection");
@@ -47,7 +40,10 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "Detection of WeBid.
+
+The script sends a connection request to the server and attempts to
+extract the version number from the reply.");
  exit(0);
 }
 
@@ -78,7 +74,7 @@ foreach dir( make_list_unique( "/webid", "/WeBid", "/bid", cgi_dirs( port:port )
 
     if(buf =~ "HTTP/1.. 200") {
 
-      ### try to get version 
+      ### try to get version
       version = eregmatch(string: buf, pattern: "([0-9.]+ ?[P0-9]+?)$",icase:TRUE);
 
       if ( !isnull(version[1]) ) {
@@ -87,7 +83,7 @@ foreach dir( make_list_unique( "/webid", "/WeBid", "/bid", cgi_dirs( port:port )
     } else {
          version[0] = string("unknown");
          vers = string("unknown");
-    }  
+    }
 
     set_kb_item(name: string("www/", port, "/webid"), value: string(vers," under ",install));
     set_kb_item(name:"webid/installed", value:TRUE);
@@ -96,7 +92,7 @@ foreach dir( make_list_unique( "/webid", "/WeBid", "/bid", cgi_dirs( port:port )
     if(!cpe)
       cpe = 'cpe:/a:webidsupport:webid';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
     log_message(data: build_detection_report(app:"WeBid", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);
 

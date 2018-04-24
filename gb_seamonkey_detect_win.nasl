@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_seamonkey_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Mozilla Seamonkey Version Detection (Windows)
 #
@@ -33,22 +33,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800016");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla SeaMonkey Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Mozilla SeaMonkey on Windows.
+
+  script_tag(name : "summary" , value : "Detection of installed version of Mozilla SeaMonkey on Windows.
 
 The script logs in via smb, searches for Mozilla SeaMonkey in the registry
-and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");

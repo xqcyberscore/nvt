@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: landesk_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: landesk_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Landesk Detection
 #
@@ -32,8 +32,8 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -75,10 +75,10 @@ close(soc);
  if(egrep(pattern: "LANDesk.*Management Agent", string: buf, icase: TRUE))
  {
     set_kb_item(name: string("www/", port, "/landesk"), value: TRUE);
-  
+
     cpe = 'cpe:/a:landesk:landesk_management_suite';
-    register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
-    register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port1);
+    register_product(cpe:cpe, location:"/", port:port);
+    register_product(cpe:cpe, location:"/", port:port1);
 
     register_service(port:port,  ipproto:"tcp", proto:"landesk");
     register_service(port:port1, ipproto:"tcp", proto:"landesk");

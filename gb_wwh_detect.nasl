@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wwh_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
+# $Id: gb_wwh_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Wiki Web Help Detection
 #
@@ -35,8 +35,8 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5736 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Wiki Web Help Detection");
@@ -89,7 +89,7 @@ foreach dir( make_list_unique( "/wwh", "/wikihelp", "/wiki", cgi_dirs( port:port
     if(isnull(cpe))
       cpe = 'cpe:/a:wikiwebhelp:wiki_web_help';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"Wiki Web Help", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

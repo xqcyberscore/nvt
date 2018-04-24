@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: checkpoint_secureplatform.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: checkpoint_secureplatform.nasl 9584 2018-04-24 10:34:07Z jschulte $
 # Description: Checkpoint Secure Platform detection
 #
 # Authors:
@@ -23,7 +23,7 @@
 #
 
 tag_summary = "Detection of Checkpoint Secure Platform.
-                    
+
 The script sends a connection request to the server and attempts to
 detect Checkpoint Secure Platform from the reply.";
 
@@ -33,12 +33,12 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Checkpoint Secure Platform detection");
- 
+
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");
@@ -69,7 +69,7 @@ if(get_port_state(port))
    cpe = 'cpe:/a:checkpoint:secure_platform_ng';
    set_kb_item(name:"checkpoint_secure_platform/installed",value:TRUE);
 
-   register_product(cpe:cpe, location:"/deploymentmanager/index.jsp", nvt:SCRIPT_OID, port:port);
+   register_product(cpe:cpe, location:"/deploymentmanager/index.jsp", port:port);
 
    log_message(data: build_detection_report(app:"Checkpoint Secure Platform", version:"unknown", install:"/deploymentmanager/", cpe:cpe, concluded: "<title>SecurePlatform NG with Application Intelligence"),
                port:port);

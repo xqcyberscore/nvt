@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_credentials_options.nasl 9571 2018-04-23 15:43:26Z cfischer $
+# $Id: gb_default_credentials_options.nasl 9573 2018-04-24 06:48:30Z cfischer $
 #
 # Options for Brute Force NVTs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103697");
-  script_version("$Revision: 9571 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 17:43:26 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 9573 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 08:48:30 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:23:42 +0200 (Mon, 15 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -111,7 +111,10 @@ foreach line( credentials_lines ) {
     log_message( port:0, data:"Invalid line " + line + " in uploaded credentials file. Scanner will not use this line." );
     continue;
   }
-  set_kb_item( name:"default_credentials/credentials", value:line );
+  # nb: Make sure to have the same syntax / fields like in default_credentials.inc
+  # The "all" is used in default_ssh_credentials.nasl and default_http_auth_credentials.nasl
+  # to decide if the credential should be used.
+  set_kb_item( name:"default_credentials/credentials", value:line + ":custom:all" );
 }
 
 uploaded_credentials_only = script_get_preference( "Use only credentials listed in uploaded file:" );

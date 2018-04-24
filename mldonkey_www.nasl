@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_www.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: mldonkey_www.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # MLDonkey web interface detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11125");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,17 +44,13 @@ if(description)
   script_require_ports("Services/www", 4080);
   script_mandatory_keys("MLDonkey/banner");
 
-  tag_summary = "MLDonkey web interface might be running on this port. This peer to peer
+  script_tag(name:"solution", value:"Disable it");
+  script_tag(name:"summary", value:"MLDonkey web interface might be running on this port. This peer to peer
   software is used to share files.
 
   1. This may be illegal.
   2. You may have access to confidential files
-  3. It may eat too much bandwidth";
-
-  tag_solution = "Disable it";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  3. It may eat too much bandwidth");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_vs_team_foundation_server_detect.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_ms_vs_team_foundation_server_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Microsoft Visual Studio Team Foundation Server Detection
 #
@@ -24,28 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802961";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6532 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802961");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:27:31 +0530 (Wed, 12 Sep 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Studio Team Foundation Server Detection");
 
-  tag_summary = "Detection of installed version of Microsoft Visual Studio
-Team Foundation Server.
+  script_tag(name : "summary" , value : "Detection of installed version of Microsoft Visual Studio
+  Team Foundation Server.
 
-The script logs in via smb, searches for Microsoft Visual Studio Team
-Foundation Server in the registry and gets the version from 'DisplayVersion'
-string in registry";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  The script logs in via smb, searches for Microsoft Visual Studio Team
+  Foundation Server in the registry and gets the version from 'DisplayVersion'
+  string in registry");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -130,7 +125,7 @@ foreach item (registry_enum_keys(key:key))
         cpe = "cpe:/a:microsoft:visual_studio_team_foundation_server";
       }
 
-      register_product(cpe:cpe, location:insPath, nvt:SCRIPT_OID);
+      register_product(cpe:cpe, location:insPath);
 
       log_message(data: build_detection_report(app:"MS VS Team Foundation",
                                               version:tfVer, install:insPath, cpe:cpe,

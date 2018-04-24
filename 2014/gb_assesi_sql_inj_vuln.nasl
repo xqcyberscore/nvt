@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_assesi_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_assesi_sql_inj_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
 #
 # Assesi 'bg' Parameter SQL Injection vulnerability
 #
@@ -27,34 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804700");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 9579 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-18 12:25:39 +0530 (Wed, 18 Jun 2014)");
   script_name("Assesi 'bg' Parameter SQL Injection vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with Assesi and is prone to SQL injection
+  script_tag(name:"summary", value:"This host is installed with Assesi and is prone to SQL injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it is
+
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is
   possible to execute sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the vereadores.php script not properly sanitizing user-supplied
+
+  script_tag(name:"insight", value:"Flaw is due to the vereadores.php script not properly sanitizing user-supplied
   input to the 'bg' parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to inject or manipulate SQL
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject or manipulate SQL
   queries in the back-end database, allowing for the manipulation or disclosure
   of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Assesi CMS");
-  script_tag(name : "solution" , value : "No Solution or patch is available as of 18th June, 2014. Information
-  regarding this issue will updated once the solution details are available.
-  For updates refer to http://assesi.com.br");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"affected", value:"Assesi CMS");
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the
+  product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014060003");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126877");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/assesi-sql-injection");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014060003");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126877");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/assesi-sql-injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,10 +73,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -85,10 +87,8 @@ foreach dir (make_list_unique("/", "/assesi", "/cms", cgi_dirs(port:http_port)))
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## confirm the Application
   if(">Assesi" >< rcvRes)
   {
-    ## Crafted Url
     url = dir + "/vereadores.php?bg='SQL-Injection-Test";
 
     ## Extra check is not possible

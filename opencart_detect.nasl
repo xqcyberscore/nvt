@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opencart_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: opencart_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # OpenCart Detection
 #
@@ -33,15 +33,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100178";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7166 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100178");
+  script_version("$Revision: 9580 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenCart Detection");

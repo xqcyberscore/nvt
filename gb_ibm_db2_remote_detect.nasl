@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_remote_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_ibm_db2_remote_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # IBM DB2 Remote Version Detection
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 9584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -101,7 +101,7 @@ if(soc)
       if(isnull(cpe))
         cpe = 'cpe:/a:ibm:db2';
 
-      register_product(cpe:cpe, location:udp_port + '/udp', nvt:SCRIPT_OID, port:udp_port);
+      register_product(cpe:cpe, location:udp_port + '/udp', port:udp_port);
 
       log_message(data: build_detection_report(app:"IBM DB2 Server", version:ver[1],
                   install:udp_port + '/udp', cpe:cpe, concluded: ver[1]), port:udp_port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lunascape_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_lunascape_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
 #
 # Lunascape Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of Lunascape Browser
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800893");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 9580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Lunascape Version Detection");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed version of Lunascape Browser
+  and sets the result in KB.");
   exit(0);
 }
 

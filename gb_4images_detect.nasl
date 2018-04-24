@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_4images_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
+# $Id: gb_4images_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # 4images Detection
 #
@@ -39,8 +39,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5721 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
+ script_version ("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-06-17 17:38:29 +0200 (Mon, 17 Jun 2013)");
  script_name("4images Detection");
  script_category(ACT_GATHER_INFO);
@@ -86,7 +86,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     if(isnull(cpe))
       cpe = 'cpe:/a:4homepages:4images';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"4images", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

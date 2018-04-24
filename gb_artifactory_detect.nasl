@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifactory_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
+# $Id: gb_artifactory_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Artifactory Detection
 #
@@ -33,8 +33,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5721 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
+ script_version ("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-03-13 10:13:17 +0100 (Thu, 13 Mar 2014)");
  script_name("Artifactory Detection");
 
@@ -84,7 +84,7 @@ foreach dir( make_list_unique( "/artifactory", cgi_dirs( port:port ) ) ) {
     cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:jfrog:artifactory:" );
     if( isnull( cpe ) ) cpe = "cpe:/a:jfrog:artifactory";
 
-    register_product( cpe:cpe, location:install + "/webapp/", nvt:SCRIPT_OID, port:port );
+    register_product( cpe:cpe, location:install + "/webapp/", port:port );
 
     log_message( data: build_detection_report( app:"Artifactory",
                                                version:vers,

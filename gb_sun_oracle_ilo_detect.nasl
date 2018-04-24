@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_oracle_ilo_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_sun_oracle_ilo_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Sun/Oracle Integrated Lights Out Manager Detection
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103775";   
+SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103775";
 
 if (description)
 {
@@ -33,8 +33,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-08-27 15:18:12 +0200 (Tue, 27 Aug 2013)");
  script_name("Sun/Oracle Integrated Lights Out Manager Detection");
 
@@ -69,10 +69,10 @@ host = http_host_name(port:port);
 transport = get_port_transport(port);
 
 soc = open_sock_tcp(port, transport:transport);
-if(!soc)exit(0); 
+if(!soc)exit(0);
 
-req = 'GET /home.asp HTTP/1.1\r\n' + 
-      'Host: ' + host + '\r\n' + 
+req = 'GET /home.asp HTTP/1.1\r\n' +
+      'Host: ' + host + '\r\n' +
       'Connection: close\r\n\r\n';
 
 send(socket:soc, data:req);
@@ -89,8 +89,8 @@ if("<title>Integrated Lights Out Manager" >!< res) {
 
 vers = 'unknown';
 
-req = 'GET /about/frame-content.asp HTTP/1.1\r\n' + 
-      'Host: ' + host + '\r\n' + 
+req = 'GET /about/frame-content.asp HTTP/1.1\r\n' +
+      'Host: ' + host + '\r\n' +
       'Connection: close\r\n\r\n';
 
 soc = open_sock_tcp(port, transport:transport);
@@ -116,7 +116,7 @@ if(vers == "unknown")
 else
   cpe = "cpe:/a:sun:embedded_lights_out_manager:" + vers;
 
-register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
+register_product(cpe:cpe, location:"/", port:port);
 
 log_message(data: build_detection_report(app:"Sun/Oracle Integrated Lights Out Manager",
                                          version:vers,

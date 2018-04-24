@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cobbler_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cobbler_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Cobbler Detection
 #
@@ -26,20 +26,20 @@
 ###############################################################################
 
 tag_summary = "Detection of Cobbler
-                    
+
 The script sends a connection request to the server and attempts to
 extract the version number from the reply.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103514";   
+SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103514";
 
 if (description)
 {
- 
+
  script_tag(name:"cvss_base", value:"0.0");
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 9584 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2012-07-12 16:08:56 +0200 (Thu, 12 Jul 2012)");
  script_name("Cobbler Detection");
 
@@ -89,9 +89,9 @@ lines = split(result);
 for(i=0; i < max_index( lines ); i++) {
 
   if("<name>version</name>" >< lines[i]) {
-    
+
     version = eregmatch(pattern:"<string>([^<]+)</string>", string:lines[i+1]);
-    
+
     if(isnull(version[1]))exit(0);
 
     vers = version[1];
@@ -102,7 +102,7 @@ for(i=0; i < max_index( lines ); i++) {
     if(isnull(cpe))
       cpe = 'cpe:/a:michael_dehaan:cobbler';
 
-    register_product(cpe:cpe, location:url, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:url, port:port);
 
     log_message(data: build_detection_report(app:"Cobbler", version:vers, install:url, cpe:cpe, concluded: version[0]),
                 port:port);
@@ -111,6 +111,6 @@ for(i=0; i < max_index( lines ); i++) {
 
 
   }
-}  
+}
 
 exit(0);

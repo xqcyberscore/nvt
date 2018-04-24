@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_detect_macosx.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_opera_detect_macosx.nasl 9584 2018-04-24 10:34:07Z jschulte $
 #
 # Opera Browser Version Detection (Mac OS X)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802142";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 9584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Opera Browser Version Detection (Mac OS X)");
@@ -93,7 +93,7 @@ cpe = build_cpe(value:operaVer, exp:"^([0-9.]+)", base:"cpe:/a:opera:opera_brows
 if(isnull(cpe))
   cpe='cpe:/a:opera:opera_browser';
 
-register_product(cpe:cpe, location:'/Applications/Opera.app', nvt:SCRIPT_OID);
+register_product(cpe:cpe, location:'/Applications/Opera.app');
 
 log_message(data: build_detection_report(app: "Opera", version: operaVer,
                                          install: "/Applications/Opera.app",
