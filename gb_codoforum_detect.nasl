@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_codoforum_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Codoforum Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806024");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 14:54:43 +0530 (Wed, 19 Aug 2015)");
   script_name("Codoforum Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,13 +56,10 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Get HTTP Port
 port = get_http_port( default:80 );
 
-# Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit(0);
 
-##Iterate over possible paths
 foreach dir( make_list_unique( "/", "/codoforum", "/forum", cgi_dirs( port:port ) ) ) {
 
   install = dir;
@@ -70,24 +67,20 @@ foreach dir( make_list_unique( "/", "/codoforum", "/forum", cgi_dirs( port:port 
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( ">Welcome to Codoforum<" >< rcvRes && 'content="codoforum' >< rcvRes ) {
 
     version = "unknown";
 
-    ## Grep for the version
     sndReq = http_get(item: dir + "/admin/layout/templates/dashboard.tpl", port:port);
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
     ver = eregmatch( pattern:"codoforum.com/news/([0-9.]+)", string:rcvRes );
     if( ver[1] ) version = ver[1];
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Codoforum", value:tmp_version );
     set_kb_item( name:"Codoforum/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:codoforum:codoforum:" );
     if( ! cpe )
       cpe= "cpe:/a:codoforum:codoforum:";

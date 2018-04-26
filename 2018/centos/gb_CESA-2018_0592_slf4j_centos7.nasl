@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0592_slf4j_centos7.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_CESA-2018_0592_slf4j_centos7.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # CentOS Update for slf4j CESA-2018:0592 centos7 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882865");
-  script_version("$Revision: 9276 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-28 08:51:24 +0200 (Wed, 28 Mar 2018)");
   script_cve_id("CVE-2018-8088");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for slf4j CESA-2018:0592 centos7 ");
 

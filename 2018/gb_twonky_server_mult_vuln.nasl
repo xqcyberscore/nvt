@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln.nasl 9416 2018-04-10 07:34:03Z cfischer $
+# $Id: gb_twonky_server_mult_vuln.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Version Check)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113148");
-  script_version("$Revision: 9416 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 09:34:03 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:36:00 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

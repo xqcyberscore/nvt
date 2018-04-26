@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lcdproc_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: lcdproc_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # LCDproc server detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10379");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,20 +39,14 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/unknown", 13666);
 
-  tag_summary = "LCDproc (http://lcdproc.omnipotent.net) is a 
-  system that is used to display system information and other data 
-  on an LCD display (or any supported display device, including curses 
-  or text).";
- 
-  tag_impact = "The LCDproc version 0.4 and above uses a client-server protocol, allowing 
-  anyone with access to the LCDproc server to modify the displayed content.";
-
-  tag_solution = "Disable access to this service from outside by disabling
-  access to TCP port 13666 (default port used).";
-
-  script_tag(name:"solution" , value: tag_solution);
-  script_tag(name:"summary" , value: tag_summary);
-  script_tag(name:"impact", value: tag_impact);
+  script_tag(name:"solution" , value: "Disable access to this service from outside by disabling
+  access to TCP port 13666 (default port used).");
+  script_tag(name:"summary" , value: "LCDproc (http://lcdproc.omnipotent.net) is a
+  system that is used to display system information and other data
+  on an LCD display (or any supported display device, including curses
+  or text).");
+  script_tag(name:"impact", value: "The LCDproc version 0.4 and above uses a client-server protocol, allowing
+  anyone with access to the LCDproc server to modify the displayed content.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -71,7 +65,7 @@ if( soc ) {
 
   send(socket:soc, data:req);
   result = recv(socket:soc, length:4096);
-   
+
   if( "connect LCDproc" >< result ) {
 
     resultrecv = strstr( result, "connect LCDproc " );

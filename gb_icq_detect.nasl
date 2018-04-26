@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icq_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_icq_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # ICQ Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800807");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ICQ Version Detection");
@@ -59,7 +59,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-# Check for ICQ Installed or Not
 if(!(registry_key_exists(key:"SOFTWARE\Mirabilis\ICQ") ||
      registry_key_exists(key:"SOFTWARE\ICQ"))){
   exit(0);
@@ -76,14 +75,12 @@ share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:icqPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:icqPath + "\icq.exe");
 icqVer = GetVer(share:share, file:file);
 
-# Set KB for ICQ Version
 if(icqVer != NULL)
 {
   set_kb_item(name:"ICQ/Ver", value:icqVer);
   log_message(data:"ICQ version " + icqVer + " running at location" + icqPath +
                      " was detected on the host");
-    
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe(value:icqVer, exp:"^([0-9]\.[0-9])", base:"cpe:/a:icq:icq:");
   if(!isnull(cpe))
      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);

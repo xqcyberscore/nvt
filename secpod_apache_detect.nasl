@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: secpod_apache_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Apache Web Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900498");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -142,7 +142,7 @@ if( installed ) {
 
   set_kb_item( name:"www/" + port + "/Apache", value:version );
   set_kb_item( name:"apache/installed", value:TRUE );
-   
+
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:http_server:" );
   if( isnull( cpe ) )
     cpe = "cpe:/a:apache:http_server";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1330_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2012_1330_1.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2012:1330-1 (kernel)
 #
@@ -138,23 +138,12 @@ tag_insight = "This kernel update to 3.4.11 fixes various bugs and
 tag_affected = "kernel on openSUSE 12.2";
 tag_solution = "Please Install the Updated Packages.";
 
-  desc = "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
-
-
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-10/msg00005.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850429");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:37 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-3412", "CVE-2012-3520");
   script_tag(name:"cvss_base", value:"7.8");

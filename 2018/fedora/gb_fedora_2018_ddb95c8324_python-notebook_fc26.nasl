@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ddb95c8324_python-notebook_fc26.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_fedora_2018_ddb95c8324_python-notebook_fc26.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Fedora Update for python-notebook FEDORA-2018-ddb95c8324
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874307");
-  script_version("$Revision: 9276 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-30 08:46:33 +0200 (Fri, 30 Mar 2018)");
   script_cve_id("CVE-2018-8768");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-notebook FEDORA-2018-ddb95c8324");
   script_tag(name: "summary", value: "Check the version of python-notebook");

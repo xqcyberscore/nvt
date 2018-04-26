@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_oscp_dos_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_openssl_oscp_dos_win.nasl 9585 2018-04-24 11:46:06Z asteins $
 # OpenSSL OCSP Status Request extension unbounded memory growth vulnerability (Windows)
 #
 # Authors:
@@ -23,30 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = " OPENSSL suffers from the possibility of DoS attack through sending a large OCSP Status Request extensions which lead to unbounded memory growth on the server which in turn lead to denial of service. ";
-
-tag_impact = "Successful exploitation could result in service crash.";
-
-tag_affected = "OpenSSL 1.1.0 and previous versions.";
-
-tag_summary = "This host is running OpenSSL and prone to denial of service vulnerability.";
-
-tag_solution = "OpenSSL 1.1.0 users should upgrade to 1.1.0a. OpenSSL 1.0.2 users should upgrade to 1.0.2i. OpenSSL 1.0.1 users should upgrade to 1.0.1u. ";
-
 CPE = "cpe:/a:openssl:openssl";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107051");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9585 $");
   script_cve_id("CVE-2016-6304");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_name("OpenSSL OCSP Status Request extension unbounded memory growth vulnerability (Windows)");
+
+  script_name("OpenSSL OCSP Status Request extension unbounded memory growth Vulnerability (Windows)");
+
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160922.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
@@ -54,28 +46,24 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed","Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"summary", value:"This host is running OpenSSL and prone to denial of service vulnerability.");
+  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of DoS attack through sending a large OCSP Status Request extensions which lead to unbounded memory growth on the server which in turn lead to denial of service.");
+  script_tag(name:"impact", value:"Successful exploitation could result in service crash.");
+  script_tag(name:"affected", value:"OpenSSL 1.1.0 and previous versions.");
+  script_tag(name:"solution", value:"OpenSSL 1.1.0 users should upgrade to 1.1.0a. OpenSSL 1.0.2 users should upgrade to 1.0.2i. OpenSSL 1.0.1 users should upgrade to 1.0.1u.");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
+
 include("host_details.inc");
 include("version_func.inc");
 
-
-## Variable Initialization
-sslVer = "";
-
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE))
 {
   exit(0);
 }
-
-## Checking for Vulnerable version 
 
 if(sslVer =~ "^(1\.1\.0)" && version_is_less(version:sslVer, test_version:"1.1.0a"))
 {
@@ -100,3 +88,4 @@ if (VUL)
   exit(0);
 }
 
+exit(99);

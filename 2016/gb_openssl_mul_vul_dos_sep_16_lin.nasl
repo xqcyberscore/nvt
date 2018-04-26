@@ -1,7 +1,7 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mul_vul_dos_sep_16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
-# OpenSSL 1.0.2 and 1.0.1 multiple vulnerability Sep 16 (Linux)
+# $Id: gb_openssl_mul_vul_dos_sep_16_lin.nasl 9585 2018-04-24 11:46:06Z asteins $
+# OpenSSL 1.0.2 and 1.0.1 Multiple Vulnerabilities Sep 16 (Linux)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa..at..greenbone.net>
@@ -23,46 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = " OPENSSL suffers from the possibility of multiple vulnerabilities due to :
-
-              1) Missing message length checks which results in Out of Bounds reads up to 2 bytes beyond the allocated buffer, this leads to Denial of Service. The attack works only if client authentication is enabled.
-
-              2) Calling MDC2_Update() can cause an overflow if an attacker
-is able to supply very large amounts of input data after a previous
-call to EVP_EncryptUpdate() with a partial block then a length check
-can overflow resulting in a heap corruption.
-
-              3) A malfored SHA512 TLS session ticket resulting in an Out of Bounds read which leads to service crash.
-
-              4) Unchecking the return value of BN_div_word() function causing  an Out of Bounds write if it is used with an overly large BIGNUM. TLS is not affected.
-
-              5) Misusing OBJ_obj2txt() function by the function TS_OBJ_print_bio() will results in Out of Bounds reads when large OIDs are presented.
-
-              6) DTLS out-of-order messages handling which enable an attacker to cause a DoS attack through memory exhaustion.
-
-              7) A flaw in the DTLS replay attack protection mechanism enabling the attacker to send records for next epochs with a very large sequence number, this causes in dropping all the subsequent legitimate packets and causing a denial of service for a specific DTLS connection.";
-
-tag_impact = "Successful exploitation could result in Denial of Service.";
-
-tag_affected = "OpenSSL 1.0.2 and 1.0.1 .";
-
-tag_summary = "This host is running OpenSSL and prone to multiple vulnerability.";
-
-tag_solution = "OpenSSL 1.0.2 users should upgrade to 1.0.2i, OpenSSL 1.0.1 users should upgrade to 1.0.1u";
-
 CPE = "cpe:/a:openssl:openssl";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107048");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9585 $");
   script_cve_id("CVE-2016-6306", "CVE-2016-6303", "CVE-2016-2181", "CVE-2016-6302", "CVE-2016-2182", "CVE-2016-2180", "CVE-2016-2179");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("OpenSSL 1.0.2 and 1.0.1 multiple vulnerability Sep 16 (Linux)");
+
+  script_name("OpenSSL 1.0.2 and 1.0.1 Multiple Vulnerabilities Sep 16 (Linux)");
+
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160922.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
@@ -70,28 +46,40 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed","Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone to multiple vulnerabilities.");
+  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of multiple vulnerabilities due to:
+
+              1) Missing message length checks which results in Out of Bounds reads up to 2 bytes beyond the allocated buffer, this leads to Denial of Service. The attack works only if client authentication is enabled.
+
+              2) Calling MDC2_Update() can cause an overflow if an attacker is able to supply very large amounts of input data after a previous
+              call to EVP_EncryptUpdate() with a partial block then a length check can overflow resulting in a heap corruption.
+
+              3) A malfored SHA512 TLS session ticket resulting in an Out of Bounds read which leads to service crash.
+
+              4) Unchecking the return value of BN_div_word() function causing an Out of Bounds write if it is used with an overly large BIGNUM. TLS is not affected.
+
+              5) Misusing OBJ_obj2txt() function by the function TS_OBJ_print_bio() will results in Out of Bounds reads when large OIDs are presented.
+
+              6) DTLS out-of-order messages handling which enable an attacker to cause a DoS attack through memory exhaustion.
+
+              7) A flaw in the DTLS replay attack protection mechanism enabling the attacker to send records for next epochs with a very large sequence number,
+              this causes in dropping all the subsequent legitimate packets and causing a denial of service for a specific DTLS connection.");
+  script_tag(name:"impact", value:"Successful exploitation could result in Denial of Service.");
+  script_tag(name:"affected", value:"OpenSSL 1.0.2 and 1.0.1.");
+  script_tag(name:"solution", value:"OpenSSL 1.0.2 users should upgrade to 1.0.2i, OpenSSL 1.0.1 users should upgrade to 1.0.1u");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sslVer = "";
-
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE))
 {
   exit(0);
 }
-
-## Checking for Vulnerable version 
 
 if(sslVer =~ "^(1\.0\.2)" && version_is_less(version:sslVer, test_version:"1.0.2i"))
 {
@@ -111,7 +99,4 @@ if (VUL)
   exit(0);
 }
 
-
-
-
-
+exit(99);

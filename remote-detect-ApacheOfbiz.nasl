@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-ApacheOfbiz.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: remote-detect-ApacheOfbiz.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # This script ensure that the Apache Open For Business (Apache OFBiz) is installed and running
 #
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101019");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8137 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-18 23:46:40 +0200 (Sat, 18 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Open For Business service detection");
@@ -39,9 +39,9 @@ if(description)
 
   script_tag(name:"solution", value:"It's recommended to allow connection to this host only from trusted hosts or networks,
   or disable the service if not used.");
-  script_tag(name:"summary", value:"The remote host is running the Apache OFBiz. 
-  Apache OFBiz is an Apache Top Level Project. 
-  As automation software it comprises a mature suite of enterprise applications that integrate 
+  script_tag(name:"summary", value:"The remote host is running the Apache OFBiz.
+  Apache OFBiz is an Apache Top Level Project.
+  As automation software it comprises a mature suite of enterprise applications that integrate
   and automate many of the business processes of an enterprise.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,7 +56,7 @@ include("host_details.inc");
 include("cpe.inc");
 
 port = get_http_port( default:8443 );
- 
+
 modules = make_list( 'accounting/control/main', 'partymgr/control/main', 'webtools/control/main', 'ordermgr/control/main' );
 
 foreach module( modules ) {

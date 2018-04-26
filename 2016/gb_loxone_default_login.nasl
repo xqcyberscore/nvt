@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_default_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_loxone_default_login.nasl 9600 2018-04-25 08:48:41Z asteins $
 #
 # Loxone Default Login Credentials Vulenrability
 #
@@ -30,22 +30,23 @@ CPE = 'cpe:/a:loxone:loxone';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.107045");
- script_version ("$Revision: 9437 $");
+ script_version ("$Revision: 9600 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
  script_name("Loxone Smart Home Default Admin HTTP Login");
 
- script_tag(name: "impact" , value:"Attackers can exploit this issue to obtain sensitive information that may lead to further attacks.");
- script_tag(name: "vuldetect" , value:"Try to login with default credentials admin:admin");
- script_tag(name: "solution" , value:"Change the username and password");
- script_tag(name: "summary" , value:"The remote Loxone installation has default credentials set.");
- script_tag(name:"solution_type", value: "Workaround");
+ script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that may lead to further attacks.");
+ script_tag(name:"vuldetect", value:"Try to login with default credentials admin:admin");
+ script_tag(name:"solution", value:"Change the username and password.");
+ script_tag(name:"summary", value:"The remote Loxone installation has default credentials set.");
+ script_tag(name:"solution_type", value:"Workaround");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-09-07 13:18:59 +0200 (Wed, 07 Sep 2016)");
- script_xref(name : "URL" , value : "https://osvdb.info/OSVDB-98155");
+ script_xref(name:"URL", value:"https://osvdb.info/OSVDB-98155");
 
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -53,6 +54,7 @@ if (description)
  script_dependencies("gb_loxone_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("loxone/web/detected");
+
  exit(0);
 }
 
@@ -67,28 +69,27 @@ function newHandshakekey()
  return base64( str: rand );
 }
 
-http_port = "";
 username = "admin";
 password = "admin";
 
-if ( !http_port = get_app_port(cpe:CPE, service:'www' )) exit (0);
+if (!http_port = get_app_port(cpe:CPE, service:'www')) exit (0);
 
-host = http_host_name( port:http_port );
-rand = rand_str( length:17, charset: "0123456789");
+host = http_host_name(port:http_port);
+rand = rand_str(length:17, charset: "0123456789");
 req = string("GET /jdev/sys/getkey?0.", rand, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "User-Agent: ",OPENVAS_HTTP_USER_AGENT, "\r\n",
-	     "Accept-Encoding: identity\r\n",
+	           "Accept-Encoding: identity\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "\r\n");
 
-res = http_keepalive_send_recv( port:http_port, data:req, bodyonly:FALSE );
+res = http_keepalive_send_recv(port:http_port, data:req, bodyonly:FALSE);
 
-if ( res !~ "HTTP/1\.. 200"  || '{"LL": {' >!< res ) exit( 0 );
+if (res !~ "HTTP/1\.. 200"  || '{"LL": {' >!< res) exit(0);
 
 json_key = eregmatch (pattern: '"LL": [{] "control": "dev/sys/getkey", "value": "([A-F0-9]+)", "Code": "200"}}', string: res, icase:TRUE);
 key = json_key[1];
-if ( !key ) exit(0);
+if (!key) exit(0);
 
 passphrase = username + ":" + password;
 key = hex2str(key);
@@ -98,8 +99,8 @@ websockey_key = newHandshakekey();
 
 req2 = string("GET /ws HTTP/1.1", "\r\n",
               "Host: ", host, "\r\n",
-	      "User-Agent: ",OPENVAS_HTTP_USER_AGENT, "\r\n",
-     	      "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
+	            "User-Agent: ",OPENVAS_HTTP_USER_AGENT, "\r\n",
+     	        "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
               "Accept-Language: en-US,en;q=0.5\r\n",
               "Accept-Encoding: identity\r\n",
               "Sec-WebSocket-Version: 13\r\n",
@@ -113,9 +114,9 @@ req2 = string("GET /ws HTTP/1.1", "\r\n",
               "Upgrade: websocket\r\n",
               "\r\n");
 
-res2 = http_keepalive_send_recv( port:http_port, data:req2 );
+res2 = http_keepalive_send_recv(port:http_port, data:req2);
 
-if (res2 =~ "HTTP/1\.. 101 Web Socket Protocol Handshake" && "Sec-WebSocket-Accept" >< res2 )
+if (res2 =~ "HTTP/1\.. 101 Web Socket Protocol Handshake" && "Sec-WebSocket-Accept" >< res2)
 {
   report = "It was possible to login into Loxone web interface using username `admin` and password `admin`.";
   security_message ( port: http_port, data: report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_livecycle_designer_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_adobe_livecycle_designer_detect_win.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Adobe LiveCycle Designer Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802959");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 16:00:34 +0530 (Tue, 11 Sep 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe LiveCycle Designer Version Detection (Windows)");
@@ -60,12 +60,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-cpe = "";
-designVer = "";
-designPath = "";
-
-## Confirm application installation
 if(!registry_key_exists(key:"SOFTWARE\Adobe\Designer"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Designer")){
@@ -73,19 +67,16 @@ if(!registry_key_exists(key:"SOFTWARE\Adobe\Designer"))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently Adobe LiveCycle Designer 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -111,7 +102,6 @@ foreach item (registry_enum_keys(key:key))
       {
         set_kb_item(name:"Adobe/LiveCycle/Designer", value:designVer);
 
-        ## build cpe and store it as host_detail
         if(esName[0])
         {
           esName[0] = tolower(esName[0]);

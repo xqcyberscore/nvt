@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_fortios_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # FortiOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105313");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 10:42:08 +0200 (Fri, 03 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,13 +56,13 @@ include("misc_func.inc");
 
 port = get_http_port( default:443 );
 
-hashes = '3955ddaf1229f63f94f4a20781b3ade4 
-          2719cca465341edf55be52939058893e 
-          5ed607103738fa9c2788e0f51567bdb8 
-          8f5018acd4cdeb6a6122e51006a53e86 
-          77759f22e8c2a847f655dba3d6013555 
-          29f7a3d0bc4da0e0a636e31e6a670d31 
-          7c1fd3cd595862f26d1460037cbec76a 
+hashes = '3955ddaf1229f63f94f4a20781b3ade4
+          2719cca465341edf55be52939058893e
+          5ed607103738fa9c2788e0f51567bdb8
+          8f5018acd4cdeb6a6122e51006a53e86
+          77759f22e8c2a847f655dba3d6013555
+          29f7a3d0bc4da0e0a636e31e6a670d31
+          7c1fd3cd595862f26d1460037cbec76a
           d3b30398ae57327dfdae2293d7da6f08';
 
 urls = make_list( "/images/logon_merge.gif",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_detect_macosx.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_python_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Python Version Detection (Mac OS X)
 #
@@ -27,23 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804633");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 16:03:10 +0530 (Mon, 09 Jun 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Python Version Detection (Mac OS X)");
 
-  tag_summary =
-"Detection of installed version of python on Mac OS X.
+
+  script_tag(name : "summary" , value : "Detection of installed version of python on Mac OS X.
 
 The script logs in via ssh, searches for folder 'Python' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
-via command line option 'defaults read'.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+via command line option 'defaults read'.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -58,19 +55,11 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-pythonVer = "";
-sock = "";
-cpe  = "";
-appPath = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(-1);
 }
 
-## Get the version for python
 pythonSeries = make_list("2.5", "2.6", "2.7", "3.1", "3.2", "3.3", "3.4");
 
 foreach series(pythonSeries)
@@ -82,10 +71,8 @@ foreach series(pythonSeries)
     continue;
   }
 
-  ## Set the version in KB
   set_kb_item(name: "python/MacOSX/Version", value:"pythonVer");
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:pythonVer, exp:"^([0-9.]+)", base:"cpe:/a:python:python:");
   if(isnull(cpe))
     cpe = "cpe:/a:python:python";

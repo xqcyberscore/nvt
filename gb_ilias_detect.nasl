@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 9080 2018-03-10 10:38:40Z cfischer $
+# $Id: gb_ilias_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # ILIAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 9080 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-10 11:38:40 +0100 (Sat, 10 Mar 2018) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
 The script sends a connection request to the server and attempts to detect ILIAS and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -88,7 +88,7 @@ foreach dir (make_list_unique("/", "/ilias", cgi_dirs(port: port))) {
 
   # <title>ILIAS Setup</title>
   # <title>ILIAS 3 Setup</title>
-  if (res =~ "<title>ILIAS ([0-9] )?Setup</title>" && 
+  if (res =~ "<title>ILIAS ([0-9] )?Setup</title>" &&
       ("std setup ilSetupLogin" >< res || 'class="ilSetupLogin">' >< res ||
        'class="ilLogin">' >< res || 'class="il_Header">' >< res)) {
     version = "unknown";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_google_picasa_detect_win.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Google Picasa Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801769");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Picasa Version Detection (Windows)");
@@ -45,7 +45,7 @@ if(description)
   Google Picasa on Windows.
 
   The script logs in via smb, searches for Picasa in the registry, gets the
-  Picasa installation path from registry and fetches version from 
+  Picasa installation path from registry and fetches version from
   'moviethumb.exe' file.");
 
 
@@ -64,19 +64,11 @@ include("secpod_smb_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-picName="";
-picPath="";
-picVer="";
-osArch = "";
-key_list = "";
-
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
   exit(0);
 }
 
-#Check if Adobe Application is installed
 if(!registry_key_exists(key:"SOFTWARE\Google\Picasa") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\Google\Picasa")){
   exit(0);
@@ -87,7 +79,6 @@ if("x86" >< osArch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -98,41 +89,33 @@ foreach key (key_list)
   foreach item (registry_enum_keys(key:key))
   {
     picName = registry_get_sz(key:key + item, item:"DisplayName");
-  
-    ## Check the name of the application
+
     if("Picasa" >< picName)
     {
-      ## Check for the install path
       picPath = registry_get_sz(key:key + item, item:"UninstallString");
       if(!isnull(picPath))
       {
         picPath = ereg_replace(pattern:'"', replace:"", string:picPath);
         picPath = picPath - "\Uninstall.exe";
 
-        ## Check for moviethumb (original picasa.exe) file version
         picVer = fetch_file_version(sysPath:picPath, file_name:"moviethumb.exe");
         if(picVer)
         {
-          ## Set the KB item
           set_kb_item(name:"Google/Picasa/Win/Ver", value:picVer);
 
-          ## build cpe and store it as host_detail
           cpe = build_cpe(value:picVer, exp:"^([0-9.]+)", base:"cpe:/a:google:picasa:");
           if(isnull(cpe))
             cpe = "cpe:/a:google:picasa";
 
           if("x64" >< osArch && "Wow6432Node" >!< key)
-          { 
-            ## Set the KB item
+          {
             set_kb_item(name:"Google/Picasa64/Win/Ver", value:picVer);
 
-            ## build cpe and store it as host_detail for 64 bit
             cpe = build_cpe(value:picVer, exp:"^([0-9.]+)", base:"cpe:/a:google:picasa:x64:");
             if(isnull(cpe))
               cpe = "cpe:/a:google:picasa:x64";
           }
 
-          ##register cpe
           register_product(cpe:cpe, location:picPath);
           log_message(data: build_detection_report(app: "Google Picasa",
                                                    version: picVer,

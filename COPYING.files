@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 24 Apr 2018 13:16:43 +0200
+# Automatically created on:  Thu, 26 Apr 2018 08:31:58 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38677,6 +38677,7 @@
 2018/debian/deb_4176.nasl: GPLv2+
 2018/debian/deb_4177.nasl: GPLv2+
 2018/debian/deb_4178.nasl: GPLv2+
+2018/debian/deb_4179.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -38954,6 +38955,10 @@
 2018/debian/deb_dla_1355.nasl: GPLv2+
 2018/debian/deb_dla_1356.nasl: GPLv2+
 2018/debian/deb_dla_1357.nasl: GPLv2+
+2018/debian/deb_dla_1358.nasl: GPLv2+
+2018/debian/deb_dla_1359.nasl: GPLv2+
+2018/debian/deb_dla_1360.nasl: GPLv2+
+2018/debian/deb_dla_1361.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39159,6 +39164,8 @@
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-003_lin.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-003_win.nasl: GPLv2+
+2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-004_lin.nasl: GPLv2+
+2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2015-4165.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_eol.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2016-1000218.nasl: GPLv2+
@@ -41119,6 +41126,7 @@ gb_invoiceplane_detect.nasl: GPLv2+
 gb_iojs_detect_win.nasl: GPLv2+
 gb_ipam_detect.nasl: GPLv2+
 gb_ipass_open_mobile_detect_win.nasl: GPLv2+
+gb_ipecs_nms_detect.nasl: GPLv2+
 gb_ipmi_default_pw.nasl: GPLv2+
 gb_ipmi_detect.nasl: GPLv2+
 gb_ipsec-tools_detect.nasl: GPLv2+
@@ -41390,6 +41398,7 @@ gb_op5_detect.nasl: GPLv2+
 gb_opac_kpwinsql_detect.nasl: GPLv2+
 gb_opc_ua_detect.nasl: GPLv2+
 gb_openafs_detect.nasl: GPLv2+
+gb_open_audit_detect.nasl: GPLv2+
 gb_openca_detect.nasl: GPLv2+
 gb_opencast_detect.nasl: GPLv2+
 gb_openemr_detect.nasl: GPLv2+
@@ -56839,6 +56848,7 @@ gsf/2018/atlassian/gb_atlassian_crucible_xss_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_arg_inj_vuln_win.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_mult_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_rce_vuln.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_fisheye_crucible_xss_vuln1.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_xss_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_xss_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-66495.nasl: GPLv2+
@@ -56997,6 +57007,7 @@ gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K21462542.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K22183127.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K23520761.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K23873366.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K24324390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25552364.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30363030.nasl: GPLv2+
@@ -57039,6 +57050,7 @@ gsf/2018/f5/gb_f5_big_ip_K77671456.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K78131906.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K82570157.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K83043359.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K90492697.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K90803619.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K94778122.nasl: GPLv2+
@@ -57051,10 +57063,12 @@ gsf/2018/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/gb_efront_cms_eol.nasl: GPLv2+
 gsf/2018/gb_emerson_micro_buf_overflow_vuln.nasl: GPLv2+
 gsf/2018/gb_idashboard_mult_vuln.nasl: GPLv2+
+gsf/2018/gb_ipecs_nms_mult_vuln.nasl: GPLv2+
 gsf/2018/gb_jboss_eap_dos_vuln_lin.nasl: GPLv2+
 gsf/2018/gb_jboss_eap_dos_vuln_win.nasl: GPLv2+
 gsf/2018/gb_master_ip_camera01_mult_vuln.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
+gsf/2018/gb_open_audit_mult_vuln.nasl: GPLv2+
 gsf/2018/gb_pfsense_webgui_code_exec_n_xss_vuln.nasl: GPLv2+
 gsf/2018/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
@@ -57064,6 +57078,7 @@ gsf/2018/gb_zabbix_xxe_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
+gsf/2018/hp/gb_hpe_universal_cmdb_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo2_multiple_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-12542.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-8987.nasl: GPLv2+
@@ -58781,6 +58796,15 @@ Policy/Microsoft/Office2013/office2013_suppress_external_signature_menu.nasl: GP
 Policy/Microsoft/Office2013/office2013_telemetry_data_collection.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_trust_bar_notifications.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_vml_for_browser_graphics.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_allow_cortana.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_allowtelemetry.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_configure_spynet_reporting.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_disable_location_provider.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_disable_mrt_install.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_mrt_disable_report_infection_information.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_prevent_device_metadata_retrieval_internet.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_prevent_onedrive_file_storage.nasl: GPLv2+
+Policy/Microsoft/Windows10/win10_send_file_samples_for_further_analysis.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server_path.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_statistic_server_path.nasl: GPLv2+

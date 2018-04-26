@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 8211 2017-12-21 10:38:01Z cfischer $
+# $Id: secpod_ms_office_detection_900025.nasl 9611 2018-04-25 14:25:08Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 8211 $");
+  script_version("$Revision: 9611 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:38:01 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 16:25:08 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -60,7 +60,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
 TMP_OFFICE_LIST = make_list( "^(9\..*)",  "cpe:/a:microsoft:office:2000:",
                              "^(10\..*)", "cpe:/a:microsoft:office:2002:",
                              "^(11\..*)", "cpe:/a:microsoft:office:2003:",
@@ -78,19 +77,16 @@ if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 ## Presently 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -118,7 +114,6 @@ foreach key (key_list)
 
           register_and_report_cpe( app:MSOffName, ver:MSOffVer, base:"cpe:/a:microsoft:office_word_viewer:", expr:"^([0-9.]+)", insloc:MSOffLoc );
 
-          ## Register for 64 bit app on 64 bit OS once again
           if("64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
           {
             set_kb_item(name:"MS/Office/Viewer64/Ver", value:MSOffVer);
@@ -141,7 +136,6 @@ foreach key (key_list)
 
           if(MSOffVer != NULL)
           {
-            ## Check if version is already set
             if (MSOffVer + ", " >< checkdupOffc){
               continue;
             }
@@ -152,9 +146,8 @@ foreach key (key_list)
             ##  Set the version for 32 bit App on 64 bit OS
             set_kb_item(name:"MS/Office/InstallPath", value:MSOffLoc);
             set_kb_item(name:"MS/Office/Ver", value:MSOffVer);
-            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-            ## build cpe and store it as host_detail
             for (i = 0; i < MAX-1; i = i + 2)
             {
               cpe = build_cpe(value:MSOffVer, exp:TMP_OFFICE_LIST[i], base:TMP_OFFICE_LIST[i+1]);
@@ -163,12 +156,10 @@ foreach key (key_list)
               }
             }
 
-            ## Set version for 64 bit app on 64 bit OS
             if( "x64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
             {
               set_kb_item(name:"MS/Office64/Ver", value:MSOffVer);
 
-              ## build cpe and store it as host_detail
               for (i = 0; i < MAX-1; i = i + 2)
               {
                 cpe = build_cpe(value:MSOffVer, exp:TMP_OFFICE_LIST[i], base:TMP_OFFICE_LIST[i+1] + "x64:");

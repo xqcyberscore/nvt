@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_algosec_detect.nasl 8883 2018-02-20 10:42:10Z ckuersteiner $
+# $Id: gb_algosec_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # AlgoSec Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140787");
-  script_version("$Revision: 8883 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-20 11:42:10 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-02-20 12:32:03 +0700 (Tue, 20 Feb 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name: "summary" , value: "Detection of AlgoSec Security Management Solution.
 
 The script sends a connection request to the server and attempts to detect AlgoSec and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

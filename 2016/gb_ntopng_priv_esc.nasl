@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_priv_esc.nasl 5066 2017-01-23 15:24:59Z cfi $
+# $Id: gb_ntopng_priv_esc.nasl 9600 2018-04-25 08:48:41Z asteins $
 #
-# ntopng Privilege Escalation
+# ntopng Privilege Escalation Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa..at..greenbone.net>
@@ -29,33 +29,33 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107110");
-  script_version("$Revision: 5066 $");
+  script_version("$Revision: 9600 $");
   script_cve_id("CVE-2015-8368");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 16:24:59 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
-  script_name("ntopng Privilege Escalation");
+  script_name("ntopng Privilege Escalation Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with ntopng and is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"The host is installed with ntopng and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of a detection NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help
+  of a detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   local users to gain extra privileges.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"ntopng 2.0.151021 and below");
+  script_tag(name:"affected", value:"ntopng 2.0.151021 and below");
 
-  script_tag(name: "solution" , value:"Upgrade to ntopng 2.2 or later, for updates refer to http://www.ntop.org/");
+  script_tag(name:"solution", value:"Upgrade to ntopng 2.2 or later, for updates refer to http://www.ntop.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38836/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38836/");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -80,8 +80,8 @@ if(!ntopngVer = get_app_version(cpe:CPE, port: appPort)){
 if(version_is_less(version:ntopngVer, test_version:"2.2"))
 {
     report = report_fixed_ver(installed_version:ntopngVer, fixed_version:"2.2");
-    security_message(data:report, port: appPort);
+    security_message(data:report, port:appPort);
     exit(0);
 }
 
-exit( 99 );
+exit(99);

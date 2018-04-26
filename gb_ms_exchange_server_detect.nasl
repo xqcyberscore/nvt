@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_exchange_server_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_ms_exchange_server_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Microsoft Exchange Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805114");
-  script_version("$Revision: 8143 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 14:51:17 +0530 (Wed, 10 Dec 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Detection");
@@ -56,18 +56,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appName = "";
-insloc = "";
-AllVer = "";
-
-## Confirm the Exchange Server
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Exchange") &&
    !registry_key_exists(key:"SOFTWARE\Microsoft\ExchangeServer")){
   exit(0);
 }
 
-## Check for the registry key
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -80,11 +73,9 @@ foreach item (registry_enum_keys(key:key))
   ## Microsoft Exchange Server 4.0, 5.0, 5.5, 2003, 2007, 2010, 2013, 2016
   if(appName =~ "Microsoft Exchange Server [0-9.]+" && "Language Pack" >!< appName)
   {
-    ## Get the version
     ExVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(ExVer)
     {
-      ## Get the Installed Path
       insloc = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!insloc){
         exit(0);
@@ -100,7 +91,6 @@ foreach item (registry_enum_keys(key:key))
         set_kb_item(name:"MS/Exchange/Cumulative/Update/no", value:appName);
       }
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:ExVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:exchange_server:");
       if(isnull(cpe))
         cpe = "cpe:/a:microsoft:exchange_server";

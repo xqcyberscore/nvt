@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_detect_macosx.nasl 5063 2017-01-23 09:24:50Z antu123 $
+# $Id: gb_pidgin_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Pidgin Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809872");
-  script_version("$Revision: 5063 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 10:24:50 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 15:36:08 +0530 (Fri, 20 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Pidgin Version Detection (Mac OS X)");
@@ -54,19 +54,11 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-pidgin_Ver = "";
-pidgin_file = "";
-sock = "";
-cpe  = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(-1);
 }
 
-## Get application path     
 pidgin_file = find_file(file_name:"ChangeLog",file_path: "/usr/local/Cellar/pidgin/", useregex:TRUE,
                            regexpar:"$", sock:sock);
 
@@ -79,16 +71,13 @@ foreach path (pidgin_file)
 
   if(pidgin[0] != NULL)
   {
-    ## Get the version
     pidgin_Ver = get_bin_version(full_prog_name:"cat", version_argv:path,
                                  ver_pattern:"version ([0-9.]+)", sock:sock);
 
     if(pidgin_Ver[1])
     {
-      ## Set the version in KB
       set_kb_item(name: "Pidgin/MacOSX/Version", value:pidgin_Ver[1]);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:pidgin_Ver[1], exp:"^([0-9.]+)", base:"cpe:/a:pidgin:pidgin:");
       if(isnull(cpe))
         cpe='cpe:/a:pidgin:pidgin';

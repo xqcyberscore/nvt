@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_detect.nasl 6785 2017-07-21 15:40:46Z cfischer $
+# $Id: gb_redis_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Redis Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103844");
-  script_version("$Revision: 6785 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 17:40:46 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-12-02 13:58:18 +0100 (Mon, 02 Dec 2013)");
   script_name("Redis Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +65,6 @@ recv = recv( socket:soc, length:32 );
 
 if( "-NOAUTH" >< recv )
 {
-  # try default pass
   send( socket:soc, data:'AUTH foobared\r\n' );
   recv = recv( socket:soc, length:32 );
   if( "-ERR invalid password" >< recv )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opensc_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_opensc_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # OpenSC Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800369");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-16 10:38:04 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenSC Version Detection");
@@ -61,7 +61,6 @@ if(!sock){
   exit(0);
 }
 
-# Set KB for OpenSC
 openscName = find_file(file_name:"opensc-config", file_path:"/",
                        useregex:TRUE, regexpar:"$", sock:sock);
 if(openscName != NULL)
@@ -74,11 +73,10 @@ if(openscName != NULL)
     if(openscVer[0] != NULL)
     {
       set_kb_item(name:"OpenSC/Ver", value:openscVer[0]);
-      log_message(data:"OpenSC version " + openscVer[0] + " running at location " 
+      log_message(data:"OpenSC version " + openscVer[0] + " running at location "
                           + binName + " was detected on the host");
       ssh_close_connection();
-   
-      ## build cpe and store it as host_detail
+  
       cpe = build_cpe(value:openscVer[0], exp:"^([0-9.]+)", base:"cpe:/a:opensc-project:opensc:");
       if(!isnull(cpe))
          register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);

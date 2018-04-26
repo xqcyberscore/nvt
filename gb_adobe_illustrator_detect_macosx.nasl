@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_adobe_illustrator_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Adobe Illustrator Version Detection (Mac OS X)
 #
@@ -27,23 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802787");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:13:07 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Version Detection (Mac OS X)");
 
-  tag_summary =
-"Detection of installed version of Adobe Illustrator.
+
+  script_tag(name : "summary" , value : "Detection of installed version of Adobe Illustrator.
 
 The script logs in via ssh, searches for folder 'Adobe Illustrator.app' and
 queries the related 'info.plist' file for string 'CFBundleVersion' via command
-line option 'defaults read'.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+line option 'defaults read'.");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -57,14 +54,6 @@ include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-illuVer = "";
-sock = "";
-path = "";
-ver = "";
-cpe = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock) {
   exit(-1);
@@ -72,7 +61,6 @@ if(!sock) {
 
 foreach ver (make_list("", "2", "3", "4", "5", "5.1", "5.5", "6"))
 {
-  ## Get the version of Adobe Illustrator
   illuVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
              "Adobe\ Illustrator\ CS" + ver +"/Adobe\ Illustrator.app/" +
              "Contents/Info CFBundleVersion"));
@@ -80,10 +68,8 @@ foreach ver (make_list("", "2", "3", "4", "5", "5.1", "5.5", "6"))
      continue;
   }
 
-  ## Set the version in KB
   set_kb_item(name: "Adobe/Illustrator/MacOSX/Version", value:illuVer);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:illuVer, exp:"^([0-9.]+)",
                    base:"cpe:/a:adobe:illustrator_cs" + ver + ":");
   if(isnull(cpe))

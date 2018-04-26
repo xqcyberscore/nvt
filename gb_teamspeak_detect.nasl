@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamspeak_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_teamspeak_detect.nasl 9611 2018-04-25 14:25:08Z cfischer $
 #
 # TeamSpeak 2/3 Server Detection (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100681");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9611 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 16:25:08 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-18 12:11:06 +0200 (Fri, 18 Jun 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -106,7 +106,6 @@ foreach port( make_list( sport, tport ) ) {
 
   close( soc );
 
-  ## build cpe and store it as host_detail
   cpe2 = build_cpe( value:version[1], exp:"^([0-9.]+)(-[0-9a-zA-Z]+)?", base:cpe + ":" );
   cpe2 = str_replace( string:cpe2, find:"-", replace:"" );
   if( isnull( cpe2 ) ) {
@@ -125,10 +124,10 @@ foreach port( make_list( sport, tport ) ) {
                                             port:port );
 }
 
-# Register the file transfer port of TS3.
+# This is the file transfer port of TS3.
 # There is currently no way to identify this service
 # as it won't reply even on a successful upload.
-# For now just register the default 30033 (if open).
+# For now just register the default 30033 (if open)
 if( "teamspeak3_server/installed" ) {
 
   port = 30033;

@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881910");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 11:25:22 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2013-1860", "CVE-2014-0055", "CVE-2014-0069", "CVE-2014-0101");
   script_tag(name:"cvss_base", value:"7.1");
@@ -78,17 +78,6 @@ rebooted for this update to take effect.
   tag_affected = "kernel on CentOS 6";
 
   tag_solution = "Please Install the Updated Packages.";
-
-  desc = "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
 
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

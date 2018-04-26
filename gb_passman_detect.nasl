@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_passman_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_passman_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Passman Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100827");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9608 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Passman Detection");
@@ -63,7 +63,7 @@ foreach dir( make_list_unique( "/cpassman", "/cPassMan", "/passman", cgi_dirs( p
  if("<title>Collaborative Passwords Manager" >< buf && "cPassMan" >< buf)
  {
     vers = string("unknown");
-    ### try to get version 
+    ### try to get version
     version = eregmatch(string: buf, pattern: "cPassMan(</a>)? ([0-9.]+).*copyright",icase:TRUE);
 
     if ( !isnull(version[2]) ) {

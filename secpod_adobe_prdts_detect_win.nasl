@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 8845 2018-02-16 10:57:50Z santu $
+# $Id: secpod_adobe_prdts_detect_win.nasl 9614 2018-04-25 15:18:33Z cfischer $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -38,20 +38,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900319");
-  script_version("$Revision: 8845 $");
+  script_version("$Revision: 9614 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 17:18:33 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
 
-  tag_summary = "Detection of installed version of Adobe Products.
+  script_tag(name : "summary" , value : "Detection of installed version of Adobe Products.
 
 The script logs in via smb, searches for Adobe Products in the registry
-and gets the version from 'DisplayVersion' string in registry.";
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from 'DisplayVersion' string in registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -68,29 +66,15 @@ include("host_details.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
+# Keep in here to make openvas-nasl-lint happy...
 checkdupAcrbt = "";
-checkdupRdr = "";
 checkdupAud = "";
-acrobatVer = "";
-readerVer = "";
-adkeylist = "";
-adobeName = "";
-audName = "";
-insPath = "";
-keylist = "";
-osArch = "";
-syskey = "";
-item = "";
-key =  "";
-cpe = "";
+checkdupRdr = "";
 
-## Confirm target is Windows
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-## Check Processor Architecture
 syskey = "SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
 if(!registry_key_exists(key:syskey)) {
   exit(0);
@@ -101,12 +85,10 @@ if(!osArch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< osArch){
  keylist = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("64" >< osArch)
 {
   keylist =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -117,27 +99,20 @@ if(isnull(keylist)){
   exit(0);
 }
 
-## Iterate over all registry paths
 foreach key (keylist)
 {
-  ## Check the key existence
   if(registry_key_exists(key:key))
   {
-    ## Iterate over all sub keys
     foreach item (registry_enum_keys(key:key))
     {
-      ## Get the adobe product name
       adobeName = registry_get_sz(key:key + item, item:"DisplayName");
 
-      ##  Confirm for Adobe Acrobat
       if(egrep(string:adobeName, pattern:"^(Adobe Acrobat)"))
       {
-        ## Get the version
         acrobatVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         insPath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(acrobatVer != NULL && insPath)
         {
-          ## Check if version is already set
           if (acrobatVer + ", " >< checkdupAcrbt){
             continue;
           }
@@ -149,7 +124,6 @@ foreach key (keylist)
           set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
           register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
 
-          ## Set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
             register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );
@@ -157,7 +131,6 @@ foreach key (keylist)
         }
       }
 
-      ## Confirm for Adobe Reader
       else if(egrep(string:adobeName, pattern:"^(Adobe Reader)"))
       {
         readerVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -165,7 +138,6 @@ foreach key (keylist)
         if(readerVer != NULL && insPath)
         {
 
-          ## Check if version is already set
           if (readerVer + ", " >< checkdupRdr){
             continue;
           }
@@ -188,39 +160,30 @@ foreach key (keylist)
   }
 }
 
-## Adobe Audition
-## Check for 32 bit platform
 if("x86" >< osArch){
 adkeylist = make_list("SOFTWARE\Adobe\Audition\");
 }
 
-## Check for 64 bit platform
 else if("64" >< osArch)
 {
   adkeylist =  make_list("SOFTWARE\Adobe\Audition\",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Iterate over all registry paths
 foreach key (adkeylist)
 {
-  ## Check the key existence
   if(registry_key_exists(key:key))
   {
-    ## Iterate over all sub keys
     foreach item (registry_enum_keys(key:key))
     {
       audName = registry_get_sz(key:key + item, item:"DisplayName");
 
-      ## Confirm Adobe Audition
       if(egrep(string:audName, pattern:"^(Adobe Audition)"))
       {
-        ## Check for the version
         audVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         insPath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(audVer != NULL && insPath)
         {
-          ## Check if version is already set
           if (audVer + ", " >< checkdupAud){
             continue;
           }

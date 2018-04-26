@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_access_control_bypass_vuln.nasl 9206 2018-03-26 11:27:00Z asteins $
+# $Id: gb_kentico_cms_access_control_bypass_vuln.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Kentico CMS < 9.0.51 & < 10.0.48 Access Control Bypass Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112248");
-  script_version("$Revision: 9206 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 13:27:00 +0200 (Mon, 26 Mar 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:34:43 +0100 (Tue, 20 Feb 2018)");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

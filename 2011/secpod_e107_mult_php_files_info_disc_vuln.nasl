@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_e107_mult_php_files_info_disc_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_e107_mult_php_files_info_disc_vuln.nasl 9593 2018-04-25 01:36:56Z ckuersteiner $
 #
 # e107 Multiple PHP Files Information Disclosure Vulnerability
 #
@@ -29,13 +29,15 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902575");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 9593 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 03:36:56 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3731");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+
   script_name("e107 Multiple PHP Files Information Disclosure Vulnerability");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -47,19 +49,20 @@ if(description)
   script_xref(name:"URL", value:"http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/e107_0.7.24");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
-  information that could aid in further attacks.
+  information that could aid in further attacks.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"e107 version 0.7.24");
-  script_tag(name:"insight", value:"The flaw is due to insufficient error checking, allows remote
-  attackers to obtain sensitive information via a direct request to a
-  '.php' file, which reveals the installation path in an error message.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+
+  script_tag(name:"insight", value:"The flaw is due to insufficient error checking, allows remote attackers to
+obtain sensitive information via a direct request to a '.php' file, which reveals the installation path in an
+error message.");
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running e107 and is prone to information disclosure
-  vulnerability.");
+vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -76,11 +79,10 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack request
 url = dir + "/e107_plugins/pdf/e107pdf.php";
 
-## Try Attack and check the response to confirm vulnerability
-if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"<b>Fatal error</b>:  Class 'UFPDF' not found in .*e107pdf.php" ) ) {
+if (http_vuln_check(port: port, url: url, check_header: TRUE,
+                    pattern: "<b>Fatal error</b>:  Class 'UFPDF' not found in .*e107pdf.php")) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

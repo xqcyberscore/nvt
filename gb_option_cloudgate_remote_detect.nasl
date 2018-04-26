@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_option_cloudgate_remote_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_option_cloudgate_remote_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Option CloudGate Remote Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808245");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 17:44:06 +0530 (Mon, 04 Jul 2016)");
   script_name("Option CloudGate Remote Version Detection");
   script_tag(name : "summary" , value : "Detection of installed version of
   Option CloudGate.
 
-  This script sends HTTP GET request and try to detect the presence of 
+  This script sends HTTP GET request and try to detect the presence of
   Option CloudGate from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,27 +53,18 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-cloudVer = 0;
-cloudPort = 0;
-sndReq = "";
-rcvRes = "";
-
 cloudPort = get_http_port(default:80);
 
 rcvRes = http_get_cache(item:"/", port:cloudPort);
 
-#Confirm application
 if('<title>CloudGate</title>' >< rcvRes && 'Powered by Cloudgate' >< rcvRes &&
   'username' >< rcvRes && 'password' >< rcvRes)
 {
   cloudVer = "Unknown";
 
-  ## Set kb
   set_kb_item(name:"Option/CloudGate/Installed", value:TRUE);
 
   ## created new cpe for this product
-  ## build cpe and store it as host_detail
   cpe = "cpe:/o:option:cloudgate";
 
   register_product(cpe:cpe, location:"/", port:cloudPort);

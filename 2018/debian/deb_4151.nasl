@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4151.nasl 9213 2018-03-27 07:56:24Z cfischer $
+# $Id: deb_4151.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4151-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704151");
-  script_version("$Revision: 9213 $");
+  script_version("$Revision: 9594 $");
   script_cve_id("CVE-2018-1000140");
   script_name("Debian Security Advisory DSA 4151-1 (librelp - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 09:56:24 +0200 (Tue, 27 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-26 00:00:00 +0200 (Mon, 26 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

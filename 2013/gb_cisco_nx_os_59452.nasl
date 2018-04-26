@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_59452.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_cisco_nx_os_59452.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # Multiple Cisco Products Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -55,29 +55,8 @@ if (description)
  script_cve_id("CVE-2013-1178","CVE-2013-1179","CVE-2013-1180");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6115 $");
-
+ script_version ("$Revision: 9587 $");
  script_name("Multiple Cisco Products  Multiple Remote Buffer Overflow Vulnerabilities");
-
- desc = "
-Summary:
-" + tag_summary + "
-
-Vulnerability Detection:
-" + tag_vuldetect + "
-
-Vulnerability Insight:
-" + tag_insight + "
-
-Impact:
-" + tag_impact + "
-
-Affected Software/OS:
-" + tag_affected + "
-
-Solution:
-" + tag_solution;
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59452");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59454");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59456");
@@ -86,7 +65,7 @@ Solution:
  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1180");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130424-nxosmulti");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2013-10-09 17:02:49 +0200 (Wed, 09 Oct 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_vul");

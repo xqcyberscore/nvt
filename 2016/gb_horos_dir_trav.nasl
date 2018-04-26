@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horos_dir_trav.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_horos_dir_trav.nasl 9603 2018-04-25 10:35:13Z asteins $
 #
 # Horos Web Portal Directory Traversal Vulnerability
 #
@@ -29,28 +29,30 @@ CPE = "cpe:/a:horos:horos";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107115");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 9603 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value: "2016-12-28 13:26:09 +0700 (Wed, 28 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Horos Web Portal Directory Traversal Vulnerability");
 
-  script_tag(name:"summary" , value:"This host is installed with Horos Web Portal and is prone to directory traversal vulnerability.");
+  script_tag(name:"summary", value:"This host is installed with Horos Web Portal and is prone to a directory traversal vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
-  and check whether it is able to read a specific file");
+  and check whether it is able to read a specific file or not.");
 
   script_tag(name:"insight", value:"Horos suffers from a file disclosure vulnerability when input passed through the
-URL path is not properly verified before being used to read files.");
+  URL path is not properly verified before being used to read files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
   to read arbitrary files.
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected" , value:"Horos Web Portal version 2.1.0");
+  script_tag(name:"affected", value:"Horos Web Portal version 2.1.0");
+
+  script_tag(name:"solution", value:"Apply the latest updated supplied by the vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

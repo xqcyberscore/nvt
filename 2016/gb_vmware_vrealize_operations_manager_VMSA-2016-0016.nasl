@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0016.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0016.nasl 9592 2018-04-24 15:29:35Z cfischer $
 #
 # VMSA-2016-0016: vRealize Operations (vROps) Privilege Escalation Vulnerability
 #
@@ -33,21 +33,21 @@ if (description)
  script_cve_id("CVE-2016-7457");
  script_tag(name:"cvss_base", value:"8.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version ("$Revision: 5580 $");
+ script_version ("$Revision: 9592 $");
  script_name("VMSA-2016-0016: vRealize Operations (vROps) Privilege Escalation Vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0016.html");
 
  script_tag(name: "vuldetect" , value:"Check the version");
 
- script_tag(name: "solution" , value:"Udates are available");
+ script_tag(name: "solution" , value:"Updates are available");
 
  script_tag(name: "summary" , value:"vRealize Operations (vROps) updates address privilege escalation vulnerability.");
  script_tag(name: "insight" , value:"vROps contains a privilege escalation vulnerability. Exploitation of this issue may allow a vROps user who has been assigned a low-privileged role to gain full access over the application. In addition it may be possible to stop and delete Virtual Machines managed by vCenter.");
 
  script_tag(name: "affected" , value:"vRealize Operations 6.x");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 17:29:35 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-11-16 15:54:11 +0100 (Wed, 16 Nov 2016)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");

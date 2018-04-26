@@ -1,7 +1,7 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mis_crl_chk_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
-# OpenSSL Missing CRL sanity check vulnerability (Windows)
+# $Id: gb_openssl_mis_crl_chk_win.nasl 9585 2018-04-24 11:46:06Z asteins $
+# OpenSSL Missing CRL sanity check Vulnerability (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa..at..greenbone.net>
@@ -23,30 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "OPENSSL suffers from the possibility of DoS attack after a bug fix added to OpenSSL 1.1.0 but was omitted from OpenSSL 1.0.2i causing a null pointer exception when using CRLs in OpenSSL 1.0.2i.";
-
-tag_impact = "Successful exploitation could result in service crash.";
-
-tag_affected = "OpenSSL 1.0.2i.";
-
-tag_summary = "This host is running OpenSSL and prone to denial of service vulnerability.";
-
-tag_solution = "OpenSSL 1.0.2i users should upgrade to 1.0.2j.";
-
 CPE = "cpe:/a:openssl:openssl";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107057");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9585 $");
   script_cve_id("CVE-2016-7052");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_name("OpenSSL Missing CRL sanity check vulnerability (Windows)");
+
+  script_name("OpenSSL Missing CRL sanity check Vulnerability (Windows)");
+
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160926.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
@@ -54,38 +46,30 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed","Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone to a denial of service vulnerability.");
+  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of DoS attack after a bug fix added to OpenSSL 1.1.0 but was omitted from OpenSSL 1.0.2i causing a null pointer exception when using CRLs in OpenSSL 1.0.2i.");
+  script_tag(name:"impact", value:"Successful exploitation could result in a service crash.");
+  script_tag(name:"affected", value:"OpenSSL 1.0.2i.");
+  script_tag(name:"solution", value:"OpenSSL 1.0.2i users should upgrade to 1.0.2j.");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
+
 include("host_details.inc");
 include("version_func.inc");
 
-
-## Variable Initialization
-sslVer = "";
-
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE))
 {
   exit(0);
 }
 
-## Checking for Vulnerable version 
-
 if(version_is_equal(version:sslVer, test_version:"1.0.2i"))
 {
-  fix = "1.0.2j";
-  VUL = TRUE;
-}
-
-if (VUL)
-{
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.0.2j");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

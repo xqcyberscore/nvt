@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_supermicro_bmc_06_14.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_supermicro_bmc_06_14.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # Supermicro IPMI/BMC Plaintext Password Disclosure
 #
@@ -43,32 +43,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105049");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6715 $");
+ script_version ("$Revision: 9587 $");
 
  script_name("Supermicro IPMI/BMC Plaintext Password Disclosure");
 
- desc = "
-Summary:
-" + tag_summary + "
-
-Vulnerability Detection:
-" + tag_vuldetect + "
-
-Vulnerability Insight:
-" + tag_insight + "
-
-Impact:
-" + tag_impact + "
-
-Affected Software/OS:
-" + tag_affected + "
-
-Solution:
-" + tag_solution;
-
  script_xref(name:"URL", value:"http://blog.cari.net/carisirt-yet-another-bmc-vulnerability-and-some-added-extras/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2014-06-20 18:08:51 +0200 (Fri, 20 Jun 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

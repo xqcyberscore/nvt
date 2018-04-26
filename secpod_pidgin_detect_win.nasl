@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900662");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Pidgin Version Detection (Windows)");
@@ -60,26 +60,15 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-os_arch = "";
-key_list = "";
-key="";
-pidginName="";
-pidginPath="";
-pidginVer="";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Pidgin\");
 }
 
-## Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Pidgin\");
 }
@@ -88,7 +77,6 @@ if(isnull(key_list)){
   exit(0);
 }
 
-## Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Pidgin\"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Pidgin\"))
@@ -101,10 +89,8 @@ foreach key (key_list)
 {
   pidginName = registry_get_sz(key:key, item:"DisplayName");
 
-  ## Confirm for Pidgin
   if("Pidgin" >< pidginName)
   {
-    ##Get Pidgin install Path
     pidginPath = registry_get_sz(key:key,item:"UninstallString");
     if(!pidginPath){
       pidginPath = "Could not find the install location from registry";
@@ -112,13 +98,11 @@ foreach key (key_list)
       pidginPath = pidginPath - "pidgin-uninst.exe" ;
     }
 
-    ## Get Pidgin Version
     pidginVer = registry_get_sz(key:key, item:"DisplayVersion");
     if(pidginVer)
     {
       set_kb_item(name:"Pidgin/Win/Ver", value:pidginVer);
 
-      ##build cpe and register
       cpe = build_cpe(value:pidginVer, exp:"^([0-9.]+)", base:"cpe:/a:pidgin:pidgin:");
       if(isnull(cpe))
         cpe = "cpe:/a:pidgin:pidgin";

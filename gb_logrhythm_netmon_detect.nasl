@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logrhythm_netmon_detect.nasl 6052 2017-04-28 15:01:41Z ckuerste $
+# $Id: gb_logrhythm_netmon_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Logrhythm Network Monitor Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106797");
- script_version ("$Revision: 6052 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-28 17:01:41 +0200 (Fri, 28 Apr 2017) $");
+ script_version ("$Revision: 9608 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name: "creation_date", value: "2017-04-28 11:40:45 +0200 (Fri, 28 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if (description)
 
  script_name("Logrhythm Network Monitor Detection");
 
- script_tag(name: "summary" , value: "Detection of Logrhythm Network Monitor. 
+ script_tag(name: "summary" , value: "Detection of Logrhythm Network Monitor.
 
 The script sends a connection request to the server and attempts to detect Logrhythm Network Monitor and to
 extract its version.");
@@ -68,7 +68,6 @@ res = http_get_cache(port: port, item: "/login");
 if ("<title>Logrhythm Network Monitor</title>" >< res && "analyze/dist/app.bundle.js" >< res) {
   version = "unknown";
 
-  # Get the major version from the help file.
   req = http_get(port: port, item: "/userDocs/Content/1_Introduction/1c_AboutGuide.htm");
   res = http_keepalive_send_recv(port: port, data: req);
 

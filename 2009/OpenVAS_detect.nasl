@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenVAS_detect.nasl 8704 2018-02-07 14:32:07Z cfischer $
+# $Id: OpenVAS_detect.nasl 9601 2018-04-25 09:07:58Z cfischer $
 #
 # OpenVAS Scanner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100076");
-  script_version("$Revision: 8704 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 15:32:07 +0100 (Wed, 07 Feb 2018) $");
+  script_version("$Revision: 9601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 11:07:58 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,13 +36,13 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service2.nasl");
+  script_dependencies("nessus_detect.nasl", "find_service2.nasl");
   script_require_ports("Services/unknown", 9391);
 
   script_tag(name:"summary", value:"Detection of OpenVAS Scanner.
 
   The script sends a connection request to the server and attempts to
-  extract the version number from the reply.");
+  identify an OpenVAS Scanner service from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,16 +54,23 @@ include("host_details.inc");
 
 port = get_unknown_port( default:9391 );
 
-foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
+# Set by nessus_detect.nasl if we have hit a service described in the notes below
+# No need to continue here as well...
+if( get_kb_item( "nessusd_openvas_echo_test/" + port + "/failed" ) ) exit( 0 );
 
-  # We don't want to be fooled by echo & the likes
+# Set by nessus_detect.nasl as well. We don't need to do the same test
+# twice...
+if( ! get_kb_item( "nessusd_openvas_echo_test/" + port + "/tested" ) ) {
   soc = open_sock_tcp( port );
-  if( soc ) {
-    send( socket:soc, data:string( "TestThis\r\n" ) );
-    r = recv_line( socket:soc, length:10 );
-    close( soc );
-    if( "TestThis" >< r ) exit( 0 );
-  }
+  if( ! soc ) exit( 0 );
+  send( socket:soc, data:string( "TestThis\r\n" ) );
+  r = recv_line( socket:soc, length:10 );
+  close( soc );
+  # We don't want to be fooled by echo & the likes
+  if( "TestThis" >< r ) exit( 0 );
+}
+
+foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
 
   soc = open_sock_tcp( port );
   if( ! soc ) exit( 0 );

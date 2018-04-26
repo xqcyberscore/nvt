@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_universal_management_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_sonicwall_universal_management_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Sonicwall GMS Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105871");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 9608 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-08-16 11:54:25 +0200 (Tue, 16 Aug 2016)");
  script_name("Sonicwall GMS Detection");
 
@@ -59,7 +59,7 @@ url = "/appliance/login";
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( buf !~ "<title>Dell SonicWALL Universal Management (Appliance|Host) Login</title>" || 
+if( buf !~ "<title>Dell SonicWALL Universal Management (Appliance|Host) Login</title>" ||
     "sonicwall.png" >!< buf ||
     "applianceUser" >!< buf ||
     "appliancePassword" >!< buf ) exit( 0 );

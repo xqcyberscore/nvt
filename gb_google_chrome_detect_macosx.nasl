@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_detect_macosx.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_google_chrome_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Google Chrome Version Detection (MacOSX)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802318");
-  script_version("$Revision: 9584 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Google Chrome Version Detection (MacOSX)");
@@ -61,17 +61,11 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-chromeVer="";
-sock="";
-cpe="";
-
 sock = ssh_login_or_reuse_connection();
 if(!sock) {
   exit(-1);
 }
 
-## Get the version Google Chrome
 chromeVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
              "Google\ Chrome.app/Contents/Info CFBundleShortVersionString"));
 
@@ -83,10 +77,8 @@ if(isnull(chromeVer) || "does not exist" >< chromeVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "GoogleChrome/MacOSX/Version", value:chromeVer);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value:chromeVer, exp:"^([0-9.]+)", base:"cpe:/a:google:chrome:");
 if(isnull(cpe))
   cpe='cpe:/a:google:chrome';

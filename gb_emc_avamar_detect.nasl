@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_avamar_detect.nasl 5151 2017-01-31 15:55:21Z mime $
+# $Id: gb_emc_avamar_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # EMC Avamar Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106288");
- script_version ("$Revision: 5151 $");
- script_tag(name: "last_modification", value: "$Date: 2017-01-31 16:55:21 +0100 (Tue, 31 Jan 2017) $");
+ script_version ("$Revision: 9608 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name: "creation_date", value: "2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -110,7 +110,7 @@ if ( ( "<title>EMC Avamar" >< res && "dtlt-banner-product-name-avamar" >< res ) 
     req = http_get(port: port, item: "/dtlt/wr_about.html");
     res = http_keepalive_send_recv(port: port, data: req);
 
-    # 
+    #
     vers = eregmatch(pattern: "Version ([0-9.]+)", string: res);
     if (!isnull(vers[1])) {
       version = vers[1];

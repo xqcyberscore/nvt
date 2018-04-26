@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2017-0004.nasl 5823 2017-03-31 13:57:56Z mime $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2017-0004.nasl 9592 2018-04-24 15:29:35Z cfischer $
 #
 # VMSA-201-0004: vRealize Operations (vROps) Remote Code Execution Vulnerability Via Apache Struts 2
 #
@@ -33,21 +33,21 @@ if (description)
  script_cve_id("CVE-2017-5638");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5823 $");
+ script_version ("$Revision: 9592 $");
  script_name("VMSA-201-0004: vRealize Operations (vROps) Remote Code Execution Vulnerability Via Apache Struts 2");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0004.html");
 
  script_tag(name: "vuldetect" , value:"Check the version");
 
- script_tag(name: "solution" , value:"Udates are available");
+ script_tag(name: "solution" , value:"Updates are available");
 
  script_tag(name: "summary" , value:"VMware product updates resolve remote code execution vulnerability via Apache Struts 2");
  script_tag(name: "insight" , value:"Multiple VMware products contain a remote code execution vulnerability due to the use of Apache Struts 2. Successful exploitation of this issue may result in the complete compromise of an affected product.");
 
  script_tag(name: "affected" , value:"vROps 6.2.1, 6.3, 6.4 and 6.5");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-24 17:29:35 +0200 (Tue, 24 Apr 2018) $");
  script_tag(name:"creation_date", value:"2017-03-31 10:25:48 +0200 (Fri, 31 Mar 2017)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");

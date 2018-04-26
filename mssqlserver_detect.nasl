@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssqlserver_detect.nasl 8230 2017-12-22 08:51:56Z cfischer $
+# $Id: mssqlserver_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Microsoft SQL TCP/IP listener is running
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10144");
-  script_version("$Revision: 8230 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Microsoft SQL TCP/IP listener is running");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +67,7 @@ len = strlen( payload );
 
 # TDS7 pre-login message (http://msdn.microsoft.com/en-us/library/dd357559.aspx)
 req = raw_string( 0x12, 0x01 ) +
-      mkword( len + 8 ) + 
+      mkword( len + 8 ) +
       raw_string( 0x00, 0x00, 0x00, 0x00 ) +
       payload;
 

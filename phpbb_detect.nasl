@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_detect.nasl 4588 2016-11-22 08:31:30Z cfi $
+# $Id: phpbb_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # phpBB Forum Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100033");
-  script_version("$Revision: 4588 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:31:30 +0100 (Tue, 22 Nov 2016) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -133,14 +133,12 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/phpBB", value:tmp_version );
 
-    ## Build CPE
     cpe = build_cpe( value:vers, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:phpbb:phpbb:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpbb:phpbb';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
- 
+
     log_message( data:build_detection_report( app:"phpBB",
                                               version:vers,
                                               install:install,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0502_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0502_1.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2013:0502-1 (update)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850454");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:46 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2012-5526", "CVE-2012-6329", "CVE-2013-1667");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,21 +38,19 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2013:0502_1");
   script_name("SuSE Update for update openSUSE-SU-2013:0502-1 (update)");
 
-  tag_insight = "
-  Vulnerability Insight:
-
-  Perl was updated to fix 3 security issues:
+  tag_insight = "Perl was updated to fix 3 security issues:
 
   - fix rehash denial of service (compute time) [bnc#804415]
   [CVE-2013-1667]
+
   - improve CGI crlf escaping [bnc#789994] [CVE-2012-5526]
+
   - sanitize input in Maketext.pm to avoid code injection
   [bnc#797060] [CVE-2012-6329]";
 
-  tag_affected = "update on openSUSE 11.4";
+  tag_affected = "Update on openSUSE 11.4";
 
   tag_solution = "Please Install the Updated Packages.";
-
 
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

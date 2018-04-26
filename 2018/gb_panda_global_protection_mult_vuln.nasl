@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_mult_vuln.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: gb_panda_global_protection_mult_vuln.nasl 9605 2018-04-25 11:32:44Z jschulte $
 #
 # Panda Global Protection 17.0.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 9488 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9605 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 13:32:44 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if( description )
   script_mandatory_keys("Panda/GlobalProtection/Ver");
 
   script_tag(name:"summary", value:"Panda Global Protection is prone to multiple vulnerabilties.");
-  script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilties exist:
 
   Unquoted Windows search path vulnerability in the panda_url_filtering service in Panda Global Protection allows local users to gain privileges via a malicious artifact.
@@ -59,7 +59,8 @@ if( description )
   \.\pipe\PSANMSrvcPpal -- an 'insecurely created named pipe'. Ensures full access to Everyone users group.");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to gain complete control over the target system.");
   script_tag(name:"affected", value:"Panda Global Protection through version 17.0.1 ");
-  script_tag(name:"solution", value:"No solution available as of 20th March, 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 25th April, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/25");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/26");

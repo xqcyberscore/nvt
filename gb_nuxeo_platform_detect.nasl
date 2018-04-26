@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuxeo_platform_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_nuxeo_platform_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
-# Nuxeo Platform Detection 
+# Nuxeo Platform Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106695");
-  script_version("$Revision: 8137 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-03-27 14:18:27 +0700 (Mon, 27 Mar 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");

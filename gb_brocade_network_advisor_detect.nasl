@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_network_advisor_detect.nasl 5012 2017-01-16 09:54:11Z ckuerste $
+# $Id: gb_brocade_network_advisor_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Brocade Network Advisor Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106515");
-  script_version("$Revision: 5012 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-16 10:54:11 +0100 (Mon, 16 Jan 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +72,7 @@ if ("<title>Network Advisor Login</title>" >< res && 'ui-menuitem-text">About Ne
   cookie = eregmatch(pattern: "Set-Cookie: (JSESSIONID=[^;]+)", string: res);
   if (!isnull(cookie[1]))
     cookie = cookie[1];
-  
+
 
   viewstate = eregmatch(pattern: 'javax.faces.ViewState(..)?" value="([^"]+)', string: res);
   if (!isnull(viewstate[2]))

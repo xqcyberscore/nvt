@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_www.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: mldonkey_www.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # MLDonkey web interface detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11125");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,6 @@ if( egrep( pattern:"MLDonkey", string:banner, icase:TRUE ) ) {
     tmp_version = vers + " under " + install;
     set_kb_item( name: "www/" + port + "/MLDonkey/version", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:vers, exp:"^([0-9.]+-?([a-z0-9]+)?)", base:"cpe:/a:mldonkey:mldonkey:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:mldonkey:mldonkey";

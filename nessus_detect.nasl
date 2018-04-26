@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nessus_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
-# Description: A Nessus Daemon is running
+# $Id: nessus_detect.nasl 9601 2018-04-25 09:07:58Z cfischer $
+#
+# Nessus Daemon Detection
 #
 # Authors:
 # Noam Rathaus <noamr@securiteam.com>
@@ -23,89 +25,75 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The port TCP:3001 or TCP:1241 is open, and since this is the default port
-for the Nessus daemon, this usually indicates a Nessus daemon is running,
-and open for the outside world.
-An attacker can use the Nessus Daemon to scan other site, or to further
-compromise the internal network on which nessusd is installed on.
-(Of course the attacker must obtain a valid username and password first, or
-a valid private/public key)";
-
-tag_solution = "Block those ports from outside communication, or change the
-default port nessus is listening on.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10147");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- 
- name = "A Nessus Daemon is running";
- script_name(name);
- 
- 
- 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 1999 SecuriTeam");
- script_family("Service detection");
- script_require_ports("Services/unknown", 1241);
- script_dependencies("find_service2.nasl");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.10147");
+  script_version("$Revision: 9601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 11:07:58 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Nessus Daemon Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_family("Service detection");
+  script_require_ports("Services/unknown", 1241);
+  script_dependencies("find_service2.nasl");
+
+  script_tag(name:"solution", value:"Block those ports from outside communication, or change the
+  default port nessus is listening on.");
+
+  script_tag(name:"summary", value:"The port TCP:3001 or TCP:1241 is open, and since this is the default port
+  for the Nessus daemon, this usually indicates a Nessus daemon is running,
+  and open for the outside world.
+
+  An attacker can use the Nessus Daemon to scan other site, or to further
+  compromise the internal network on which nessusd is installed on.
+  (Of course the attacker must obtain a valid username and password first, or
+  a valid private/public key)");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("misc_func.inc");
-  
-function probe(port)
-{
-  supported = "";
-  p[0] = "< NTP/1.2 >";
-  #p[1] = "< NTP/1.0 >";
-
-  # We don't want to be fooled by echo & the likes
-  soc = open_sock_tcp(port);
-  if(soc)
-  {
-    send(socket:soc, data:string("TestThis\r\n"));
-    r = recv_line(socket:soc, length:10);
-    close(soc);
-    if("TestThis" >< r)return(0);
-  }
-
-  # TODO: max below is undeclared
-  for(count=0; p[count] ; count=count+1)
-  {
-   soc = open_sock_tcp(port);
-   if (soc)
-   {
-    senddata = string(p[count],"\n");
-    send(socket:soc, data:senddata);
-    recvdata = recv_line(socket:soc, length:20);
-    if (ereg(pattern:string("^", p[count]), string:recvdata))
-		supported = string(supported,p[count]);
-    else 	
-    		count = max + 1;
-    close(soc);
-   }
-   else count = max + 1;
-  }
-  if (strlen(supported) > 0)
-  {
-    log_message(port:port, data:string("A Nessus Daemon is listening on this port."));
-    register_service(port: port, proto: "nessus");
-    set_kb_item(name:"nessus/installed", value:TRUE);
-  }
-}
 
 port = get_unknown_port( default:1241 );
-probe(port:port);
 
-exit(0);
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
+send( socket:soc, data:string( "TestThis\r\n" ) );
+r = recv_line( socket:soc, length:10 );
+close( soc );
+# We don't want to be fooled by echo & the likes
+if( "TestThis" >< r ) {
+  set_kb_item( name:"nessusd_openvas_echo_test/" + port + "/failed", value:TRUE );
+  exit( 0 );
+}
+
+# Used in 2009/OpenVAS_detect.nasl so we don't test the same port twice
+# with the request above.
+set_kb_item( name:"nessusd_openvas_echo_test/" + port + "/tested", value:TRUE );
+
+foreach protocol( make_list( "1.0", "1.2" ) ) {
+
+  soc = open_sock_tcp( port );
+  if( ! soc ) exit( 0 );
+
+  req = string( "< NTP/", protocol, " >\n" );
+  send( socket:soc, data:req );
+  res = recv_line( socket:soc, length:20 );
+  close( soc );
+
+  if( ereg( pattern:"^< NTP/" + protocol + " >$", string:res ) ) {
+    log_message( port:port, data:"A Nessus Daemon is listening on this port." );
+    register_service( port:port, proto:"nessus" );
+    set_kb_item( name:"nessus/installed", value:TRUE );
+  }
+  break;
+}
+
+exit( 0 );

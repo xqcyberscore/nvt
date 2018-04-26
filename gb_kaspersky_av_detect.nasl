@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_kaspersky_av_detect.nasl 9600 2018-04-25 08:48:41Z asteins $
 #
 # Kaspersky AntiVirus Version Detection
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800241");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 9600 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Kaspersky AntiVirus Version Detection");
@@ -91,15 +91,6 @@ TOTSEC_LIST = make_list("^(15\..*)", "cpe:/a:kaspersky:total_security_2015:",
                         "^(16\..*)", "cpe:/a:kaspersky:kaspersky_total_security:",
                         "^(17\..*)", "cpe:/a:kaspersky:kaspersky_total_security_2017:");
 TOTSEC_MAX = max_index(TOTSEC_LIST);
-
-## Variable Initialization
-os_arch = "";
-key_list = "";
-prdtName = "";
-kavwVer = "";
-kavsVer = "";
-kavVer = "";
-kisVer = "";
 
 # Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");

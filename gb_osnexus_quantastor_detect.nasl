@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osnexus_quantastor_detect.nasl 7018 2017-08-29 09:44:50Z ckuersteiner $
+# $Id: gb_osnexus_quantastor_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # OSNEXUS QuantaStor Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140332");
-  script_version("$Revision: 7018 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-29 11:44:50 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-08-29 12:17:34 +0700 (Tue, 29 Aug 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
 The script sends a connection request to the server and attempts to detect OSNEXUS QuantaStor and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

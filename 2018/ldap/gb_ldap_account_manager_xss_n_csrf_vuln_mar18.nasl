@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ldap_account_manager_xss_n_csrf_vuln_mar18.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_ldap_account_manager_xss_n_csrf_vuln_mar18.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # LDAP Account Manager XSS And CSRF Vulnerabilities Mar18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:ldap_account_manager:ldap_account_manager";
 if (description)
 {   
   script_oid("1.3.6.1.4.1.25623.1.0.812835");
-  script_version("$Revision: 9267 $");
+  script_version("$Revision: 9594 $");
   script_cve_id("CVE-2018-8763", "CVE-2018-8764");
-  script_tag(name:"cvss_base", value:"4.3"); 
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-26 15:34:35 +0530 (Mon, 26 Mar 2018)");
   script_name("LDAP Account Manager XSS And CSRF Vulnerabilities Mar18");
   

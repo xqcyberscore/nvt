@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln_active.nasl 9416 2018-04-10 07:34:03Z cfischer $
+# $Id: gb_twonky_server_mult_vuln_active.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108436");
-  script_version("$Revision: 9416 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 09:34:03 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 12:17:00 +0200 (Sat, 07 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2018-7171", "CVE-2018-7203");
   script_name("Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)");
   script_category(ACT_ATTACK);

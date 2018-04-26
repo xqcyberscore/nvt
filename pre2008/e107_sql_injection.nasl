@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: e107_sql_injection.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: e107_sql_injection.nasl 9593 2018-04-25 01:36:56Z ckuersteiner $
 #
 # e107 resetcore.php SQL Injection
 #
@@ -31,14 +31,16 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20069");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 9593 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 03:36:56 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3521");
   script_bugtraq_id(15125);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("e107 resetcore.php SQL Injection");
+
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
@@ -50,13 +52,15 @@ if(description)
   script_xref(name:"URL", value:"https://sourceforge.net/project/shownotes.php?release_id=364570");
 
   script_tag(name:"solution", value:"Upgrade to e107 version 0.6173 or later.");
-  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to a SQL
-  injection attack.");
-  script_tag(name:"insight", value:"The remote host appears to be running e107, a web content management
-  system written in PHP. 
 
-  There is a flaw in the version of e107 on the remote host such that anyone can injection SQL commands
-  through the 'resetcore.php' script which may be used to gain administrative access trivially.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to a SQL injection
+attack.");
+
+  script_tag(name:"insight", value:"The remote host appears to be running e107, a web content management system
+written in PHP. 
+
+There is a flaw in the version of e107 on the remote host such that anyone can injection SQL commands through the
+'resetcore.php' script which may be used to gain administrative access trivially.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -96,6 +100,7 @@ if( egrep( pattern:"<input [^>]*name='a_(name|password)'", string:res ) ) {
   if( "Reset core to default values" >< buf && "e107 resetcore></title>" >< buf ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
+    exit(0);
   }
 }
 

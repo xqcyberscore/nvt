@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 9603 2018-04-25 10:35:13Z asteins $
 #
-# DiskBoss Enterprise Server 'Get' Buffer Overflow Vulnerability (Windows)
+# DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,33 +29,34 @@ CPE = "cpe:/a:dboss:diskboss_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107103");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 9603 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 16:11:25 +0530 (Tue, 06 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("DiskBoss Enterprise Server 'Get' Buffer Overflow Vulnerability (Windows)");
+  script_name("DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with DiskBoss Enterprise
-  and is prone to buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"The host is installed with DiskBoss Enterprise
+  and is prone to a buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the
+  detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an improper validation of
-  web request passed via Get request.");
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of
+  web requests passed via GET parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to elevate privileges from any account type and execute code.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"DiskBoss Enterprise version 7.4.28.");
+  script_tag(name:"affected", value:"DiskBoss Enterprise version 7.4.28.");
 
-  script_tag(name: "solution" , value:"Until the time this script was written, no solution was still available. For updates refer to http://diskboss.com");
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40869/");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40869/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -67,10 +68,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-dbossVer = "";
-dbossPort = "";
-report = "";
 
 if(!dbossPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -87,3 +84,4 @@ if(version_is_equal(version:dbossVer, test_version:"7.4.28"))
   exit(0);
 }
 
+exit(99);

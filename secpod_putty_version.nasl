@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_version.nasl 5301 2017-02-15 09:16:50Z antu123 $
+# $Id: secpod_putty_version.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # PuTTY Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900618");
-  script_version("$Revision: 5301 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 10:16:50 +0100 (Wed, 15 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 12:54:52 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Version Detection");
@@ -44,7 +44,7 @@ if(description)
 
   The script logs in via smb, searches for PuTTy in the registry, gets
   version from the 'DisplayName' string and set it in the KB item.");
-  
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2009 SecPod.");
@@ -61,25 +61,17 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appName = "";
-insloc = "";
-appVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1",
                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 ## Presently 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key_list = make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -91,7 +83,6 @@ foreach key (key_list)
   {
     appName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm application
     if("PuTTY" >< appName)
     {
       insloc = registry_get_sz(key:key,item:"InstallLocation");
@@ -110,7 +101,6 @@ foreach key (key_list)
       {
         set_kb_item(name:"PuTTY/Version", value:appVer[0]);
 
-        ## build cpe and store it as host_detail
         cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:putty:putty:");
         if(isnull(cpe))
           cpe = "cpe:/a:putty:putty";

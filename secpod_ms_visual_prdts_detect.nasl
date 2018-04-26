@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_prdts_detect.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: secpod_ms_visual_prdts_detect.nasl 9614 2018-04-25 15:18:33Z cfischer $
 #
 # Microsoft Visual Product(s) Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900808");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9614 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 17:18:33 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Products Version Detection");
@@ -61,6 +61,9 @@ include("version_func.inc");
 ##  basic version installed but not latest version after we have applied Service Pack
 ##  or Update.
 
+# Keep in here to make openvas-nasl-lint happy...
+checkduplicate = "";
+
 NET_LIST = make_list("^(7\..*)", "cpe:/a:microsoft:visual_studio_.net:2003:",
                      "^(8\..*)", "cpe:/a:microsoft:visual_studio_.net:2005:",
                      "^(9\..*)", "cpe:/a:microsoft:visual_studio_.net:2008:");
@@ -76,7 +79,6 @@ STUDIO_LIST = make_list("^(7\..*)", "cpe:/a:microsoft:visual_studio:2003:", "Mic
                         "^(15\..*)", "cpe:/a:microsoft:visual_studio:2017", "Microsoft VisualStudio 2017");
 STUDIO_MAX = max_index(STUDIO_LIST);
 
-# Check for Product Existence
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\VisualStudio"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio")){
@@ -123,7 +125,6 @@ foreach key (key_list)
           set_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.NET/Installed", value:TRUE);
           set_kb_item(name:"Microsoft/VisualStudio/Ver", value:devenv);
 
-          ## build cpe and store it as host_detail
           for (i = 0; i < STUDIO_MAX-1; i = i + 3)
           {
             cpe = build_cpe(value:devenv, exp:STUDIO_LIST[i], base:STUDIO_LIST[i+1]);
@@ -144,7 +145,6 @@ foreach key (key_list)
     }
   }
 }
-
 
 foreach visual_key (visual_key_list)
 {
@@ -169,7 +169,7 @@ foreach visual_key (visual_key_list)
           if (studioVer + ", " >< checkduplicate){
             continue;
           }
-          checkduplicate  += studioVer + ", ";
+          checkduplicate += studioVer + ", ";
 
           set_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.NET/Installed", value:TRUE);
           set_kb_item(name:"Microsoft/VisualStudio/Ver", value:studioVer);
@@ -213,9 +213,9 @@ foreach visual_key (visual_key_list)
           {
             cpe_final = cpe;
             app = visualName;
-        
+
             register_and_report_cpe( app:app,
-                                     ver:netVer, 
+                                     ver:netVer,
                                      concluded: app + " version " + netVer,
                                      cpename:cpe_final,
                                      insloc:insPath);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_detect_macosx.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: secpod_itunes_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Apple iTunes Version Detection (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902717");
-  script_version("$Revision: 9584 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_name("Apple iTunes Version Detection (Mac OS X)");
 
@@ -53,20 +53,17 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Checking for Mac OS X
 if(!get_kb_item("ssh/login/osx_name"))
 {
   close(sock);
   exit(0);
 }
 
-## Get the version of Apple iTunes
 itunesVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
                   "iTunes.app/Contents/Info CFBundleShortVersionString"));
 
@@ -78,11 +75,9 @@ if(isnull(itunesVer) || "does not exist" >< itunesVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "Apple/iTunes/MacOSX/Version", value:itunesVer);
 
 
-## Build cpe
 cpe = build_cpe(value:itunesVer, exp:"^([0-9.]+)", base:"cpe:/a:apple:itunes:");
 if(isnull(cpe))
   cpe = 'cpe:/a:apple:itunes';

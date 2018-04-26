@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 7254 2017-09-25 15:54:28Z cfischer $
+# $Id: gb_arkeia_west_dig_rce.nasl 9603 2018-04-25 10:35:13Z asteins $
 #
-# Western Digital Arkeia "ARKFS_EXEC_CMD" <= v11.0.12 Remote Code Execution
+# Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,14 +29,17 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 7254 $");
+  script_version("$Revision: 9603 $");
   script_cve_id("CVE-2015-7709");
+
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:54:28 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
-  script_name("Western Digital Arkeia Remote Code Execution");
+
+  script_name("Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability");
   script_category(ACT_ATTACK);
+
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_arkeia_virtual_appliance_detect_617.nasl", "os_detection.nasl");
@@ -45,24 +48,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jul/54");
 
-  tag_summary = "This host is running Arkeia Appliance and is affected by a remote code execution vulnerablitiy.";
-
-  tag_vuldetect = "Execute a command using the ARKFS_EXEC_CMD function";
-
-  tag_insight = "The insufficient checks on the authentication of all clients in arkeiad daemon can be bypassed.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary commands with root or SYSTEM privileges.";
-
-  tag_affected = "Western Digital Arkeia 11.0.12 and below.";
-
-  tag_solution = "For updates refer to http://www.arkeia.com/ ";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"This host is running Arkeia Appliance and is affected by a remote code execution vulnerability.");
+  script_tag(name:"vuldetect", value:"Execute a command using the ARKFS_EXEC_CMD function");
+  script_tag(name:"solution", value:"For updates refer to http://www.arkeia.com/ ");
+  script_tag(name:"insight", value:"The insufficient checks on the authentication of all clients in arkeiad daemon can be bypassed.");
+  script_tag(name:"affected", value:"Western Digital Arkeia 11.0.12 and below.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary commands with root or SYSTEM privileges.");
 
   script_tag(name:"solution_type", value: "VendorFix");
   script_tag(name:"qod_type", value:"remote_active");

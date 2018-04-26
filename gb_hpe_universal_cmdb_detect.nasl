@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_detect.nasl 6320 2017-06-13 09:57:25Z ckuersteiner $
+# $Id: gb_hpe_universal_cmdb_detect.nasl 9602 2018-04-25 10:12:55Z ckuersteiner $
 #
-# HPE Universal CMDB Version Detection
+# HPE / Micro Focus Universal CMDB Version Detection
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -27,18 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808250");
-  script_version("$Revision: 6320 $");
+  script_version("$Revision: 9602 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 11:57:25 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:12:55 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
-  script_name("HPE Universal CMDB Version Detection");
+  script_name("HPE / Micro Focus Universal CMDB Version Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version
-  of HPE Universal CMDB.
+  script_tag(name:"summary", value:"Detection of installed version of HPE / Micro Focus Universal CMDB.
 
-  This script sends HTTP GET request and try to get the version from the
-  response.");
+  This script sends HTTP GET request and try to get the version from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -47,51 +45,41 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name: "URL", value: "https://software.microfocus.com/en-us/products/configuration-management-system-database/overview");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
-##Get HTTP Port
 ucmdbPort = get_http_port(default:8080);
 
-## Send and receive response
 rcvRes = http_get_cache(item:"/ucmdb-ui/login_page.jsp", port:ucmdbPort);
 
-## Confirm the application
-if(rcvRes =~ '<title>HP(E)? Universal CMDB</title>' >< rcvRes &&
+if (rcvRes =~ '<title>(HP(E)? )?Universal CMDB</title>' >< rcvRes &&
    'STATE_LOGIN_FAILS' >< rcvRes && 'User Login:' >< rcvRes) {
   version = "unknown";
 
-  ## Grep for the version
-  ver = eregmatch(pattern:'class="version">HP(E)? Universal CMDB ([0-9.]+)', string:rcvRes);
-  if(!isnull(ver[2])) {
-    version = ver[2];
-    set_kb_item(name: "HP/UCMDB/version", value: version);
-  }
+  ver = eregmatch(pattern:'class="version">(HP(E)? )?Universal CMDB ([0-9.]+)', string:rcvRes);
+  if (!isnull(ver[3]))
+    version = ver[3];
 
-  ## Set the KB value
   set_kb_item(name:"HP/UCMDB/Installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
+  ## TODO: maybe change cpe to micro focus
   cpe = build_cpe(value: version, exp:"^([0-9.]+)", base:"cpe:/a:hp:universal_cmbd_foundation:");
   if(!cpe)
     cpe = "cpe:/a:hp:universal_cmbd_foundation";
 
   register_product(cpe:cpe, location:"/", port:ucmdbPort);
 
-  log_message(data:build_detection_report(app:"HP Universal CMDB",
-                                          version:version,
-                                          install:"/",
-                                          cpe:cpe,
-                                          concluded:ver[0]),
-                                          port:ucmdbPort);
-
+  log_message(data:build_detection_report(app: "HP / Micro Focus Universal CMDB", version: version, install: "/",
+                                          cpe: cpe, concluded: ver[0]),
+              port: ucmdbPort);
   exit(0);
 }
 

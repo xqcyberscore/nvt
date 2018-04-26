@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sdp_downloader_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: secpod_sdp_downloader_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # SDP Downloader Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900641");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-20 10:26:22 +0200 (Wed, 20 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SDP Downloader Version Detection");
@@ -75,8 +75,7 @@ foreach item(registry_enum_keys(key:sdpKey))
       set_kb_item(name:"SDP/Downloader/Ver", value:sdpVer);
       log_message(data:"SDP Downloader version " + sdpVer +
                          " was detected on the host");
-   
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:sdpVer, exp:"^([0-9.]+)", base:"cpe:/a:sdp_multimedia:streaming_download_project:");
       if(!isnull(cpe))
          register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);

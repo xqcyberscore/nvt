@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fibaro_home_center_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
+# $Id: gb_fibaro_home_center_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # FIBARO Home Center Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140419");
-  script_version("$Revision: 7926 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-09-29 12:10:53 +0700 (Fri, 29 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
 The script sends a connection request to the server and attempts to detect FIBARO Home Center and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

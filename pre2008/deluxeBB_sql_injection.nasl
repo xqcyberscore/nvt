@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deluxeBB_sql_injection.nasl 9583 2018-04-24 09:48:35Z ckuersteiner $
+# $Id: deluxeBB_sql_injection.nasl 9596 2018-04-25 07:21:51Z cfischer $
 #
 # DeluxeBB Multiple SQL injection flaws
 #
@@ -24,45 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:deluxebb:deluxebb';
+CPE = "cpe:/a:deluxebb:deluxebb";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19750");
-  script_version("$Revision: 9583 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:48:35 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 09:21:51 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2989");
   script_bugtraq_id(14851);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
   script_name("DeluxeBB Multiple SQL injection flaws");
-
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("deluxeBB_detect.nasl");
   script_mandatory_keys("deluxebb/installed");
 
-  tag_summary = "The remote host is using DeluxeBB, a web application forum
-  written in PHP.
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
 
-  Multiple vulnerabilities exist in this version which may allow
-  an attacker to execute arbitrary SQL queries against the
-  database.";
+  script_tag(name:"summary", value:"The remote host is using DeluxeBB, a web application forum written in PHP.
 
-  tag_solution = "Upgrade to the latest version of this software.";
+  Multiple vulnerabilities exist in this version which may allow an attacker to execute arbitrary SQL queries
+  against the database.");
 
-  script_tag(name: "solution", value: "Upgrade to the latest version of this software.");
-
-  script_tag(name: "summary", value: "The remote host is using DeluxeBB, a web application forum written in PHP.
-
-Multiple vulnerabilities exist in this version which may allow an attacker to execute arbitrary SQL queries
-against the database.");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

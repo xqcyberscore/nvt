@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: secpod_gom_player_detect_win.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # GOM Media Player Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903001");
-  script_version("$Revision: 9584 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 15:27:17 +0530 (Wed, 21 Mar 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("GOM Media Player Version Detection (Windows)");
@@ -55,23 +55,15 @@ include("version_func.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialisation
-key = "";
-cpe = "";
-path = "";
-gomVer = "";
-
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-## Check appln is installed
 key = "SOFTWARE\GRETECH\GomPlayer";
 if(!(registry_key_exists(key:key))){
   exit(0);
 }
 
-## Get the installed Path
 path = registry_get_sz(key:key, item:"ProgramPath");
 if(!path){
   exit(0);

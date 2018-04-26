@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qmtp_relay.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_qmtp_relay.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
-# QMTP Open Relay Test 
+# QMTP Open Relay Test
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105974");
-  script_version("$Revision: 5888 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name : "last_modification", value : "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name : "creation_date", value : "2015-03-11 11:09:56 +0700 (Wed, 11 Mar 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -86,7 +86,7 @@ From: openvas@example.org
 To: postmaster@example.com
 
 OpenVAS is probing this server.
-"), 
+"),
 		   netstr(str: "openvas@example.org"),
 		   netstr(str: netstr(str: "postmaster@example.com")));
 

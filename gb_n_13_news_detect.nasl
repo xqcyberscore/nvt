@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_n_13_news_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_n_13_news_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # N-13 News Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801737");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("N-13 News Version Detection");
@@ -65,24 +65,20 @@ foreach dir( make_list_unique( "/", "/news", cgi_dirs( port:port ) ) ) {
 
   rcvRes = http_get_cache( item: dir + "/admin.php", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && "<title>N-13 News" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Grep for the version
     ver = eregmatch( pattern:">N-13 News ([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/N-13/News", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:network-13:n-13_news:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:network-13:n-13_news';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"N-13 News",

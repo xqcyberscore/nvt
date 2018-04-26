@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_detect.nasl 9116 2018-03-16 13:04:55Z cfischer $
+# $Id: gb_ipam_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # phpIPAM Web Application Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107046");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9116 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:04:55 +0100 (Fri, 16 Mar 2018) $");
+ script_version("$Revision: 9608 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-09-12 13:18:59 +0200 (Mon, 12 Sep 2016)");
  script_name("phpIPAM Web Application Detection");
 
@@ -68,7 +68,7 @@ foreach dir( make_list_unique( "/", "/phpipam", cgi_dirs( port:http_port ) ) ) {
   req = http_get( item:url, port:http_port );
   buf = http_keepalive_send_recv( port:http_port, data:req );
   if( isnull( buf ) ) continue;
- 
+
   if( buf =~ "^HTTP/1\.[01] 200" && "phpIPAM IP address management" >< buf ) {
 
     if( dir == "" ) rootInstalled = TRUE;

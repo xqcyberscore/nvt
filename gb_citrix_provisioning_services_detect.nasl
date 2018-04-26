@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_citrix_provisioning_services_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Citrix Provisioning Services Version Detection
 #
@@ -33,23 +33,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802220");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Citrix Provisioning Services Version Detection");
 
-  tag_summary =
-"Detection of installed version of Citrix Provisioning
+
+  script_tag(name : "summary" , value : "Detection of installed version of Citrix Provisioning
 Services.
 
 The script logs in via smb, searches for Citrix Provisioning Services in the
-registry and gets the version from 'DisplayVersion' string in registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+registry and gets the version from 'DisplayVersion' string in registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
@@ -91,7 +88,6 @@ if (isnull(key_list)){
 
 foreach key (key_list)
 {
-## Get Version From Registry
     foreach item (registry_enum_keys(key:key))
     {
       appName = registry_get_sz(key:key + item, item:"DisplayName");
@@ -100,25 +96,21 @@ foreach key (key_list)
         appVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         if(appVer)
         {
-      ## Get Install location
           cpsPath = registry_get_sz(key:key + item, item:"InstallLocation");
           if(!cpsPath){
             cpsPath = "Could not find the install path from registry";
           }
 
-      ## Set Citrix Provisioning Services Version in KB
           set_kb_item(name:"Citrix/Provisioning/Services/Ver", value:appVer);
           if (appName =~ "Citrix ([0-9.]+) LTSR"){
             set_kb_item(name:"Citrix/Provisioning/Services/model", value:"LTSR");
           }
-          ## Set Path in KB
           set_kb_item(name:"Citrix/Provisioning/Services/path", value:cpsPath);
 
           cpe = build_cpe(value: appVer, exp:"^([0-9.]+)", base:"cpe:/a:citrix:citrix_provisioning_server:");
           if(isnull(cpe))
              cpe = 'cpe:/a:citrix:citrix_provisioning_server';
 
-          ## Get OS Architecture
           os_arch = get_kb_item("SMB/Windows/Arch");
           if(!os_arch){
             exit(-1);
@@ -126,9 +118,7 @@ foreach key (key_list)
 
           if("x64" >< os_arch)
           {
-            ## Set Citrix Provisioning Services Version in KB
             set_kb_item(name:"Citrix/Provisioning/Services64/Ver", value:appVer);
-        ## Set Path in KB
             set_kb_item(name:"Citrix/Provisioning/Services64/path", value:cpsPath);
 
             cpe = build_cpe(value: appVer, exp:"^([0-9.]+)", base:"cpe:/a:citrix:citrix_provisioning_server:x64:");
@@ -136,7 +126,6 @@ foreach key (key_list)
                cpe = 'cpe:/a:citrix:citrix_provisioning_server:x64';
           }
 
-          ##register cpe
           register_product(cpe:cpe, location:cpsPath);
 
           log_message(data: build_detection_report(app: appName,

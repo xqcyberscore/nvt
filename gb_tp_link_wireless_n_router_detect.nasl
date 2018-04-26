@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_wireless_n_router_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_tp_link_wireless_n_router_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # TP-Link Wireless Router Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811880");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 14:30:38 +0530 (Wed, 25 Oct 2017)");
   script_name("TP-Link Wireless Router Detection");
 
@@ -68,13 +68,12 @@ if(!tlPort){
 
 banner = get_http_banner(port:tlPort);
 if(banner && banner =~ 'WWW-Authenticate: Basic realm="TP-LINK Wireless.*Router')
-{ 
+{
   location = "/";
   version = "Unknown";
 
   set_kb_item(name:"TP-LINK/Wireless/Router/detected", value: TRUE);
 
-  ##Grep for model
   model = eregmatch(pattern:'TP-LINK Wireless.*Router ([A-Z0-9-]+)', string:banner);
   if(model[1]){
     set_kb_item(name:"TP-LINK/Wireless/Router/model", value: model[1]);

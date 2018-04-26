@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blazevideo_hdtv_plf_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_blazevideo_hdtv_plf_bof_vuln.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # Blazevideo HDTV Player PLF File Buffer Overflow Vulnerability
 #
@@ -43,29 +43,15 @@ tag_summary = "This host is running Blazevideo HDTV Player and is prone to buffe
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800513");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-02-13 14:28:43 +0100 (Fri, 13 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-0450");
   script_bugtraq_id(33588);
   script_name("Blazevideo HDTV Player PLF File Buffer Overflow Vulnerability");
-  desc = "
 
-  Summary:
-  " + tag_summary + "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Impact:
-  " + tag_impact + "
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/7975");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2009-0450");
   script_xref(name : "URL" , value : "http://www.packetstormsecurity.org/filedesc/blazehdtv-hof.txt.html");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804240";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 9587 $");
   script_cve_id("CVE-2013-5400");
   script_bugtraq_id(65616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:25:08 +0530 (Wed, 19 Feb 2014)");
   script_name("IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability");
 
@@ -63,25 +63,6 @@ Impact Level: Application.";
 "Apply the workaround from below link,
 http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564";
 
-  desc = "
-  Summary:
-  " + tag_summary + "
-
-  Vulnerability Detection:
-  " + tag_vuldetect + "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Impact:
-  " + tag_impact + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
-
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
   script_tag(name : "insight" , value : tag_insight);
@@ -99,11 +80,6 @@ http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564";
   script_require_ports("Services/www", 18080);
   exit(0);
 }
-
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");

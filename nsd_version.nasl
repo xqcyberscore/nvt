@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nsd_version.nasl 4460 2016-11-09 15:19:22Z cfi $
+# $Id: nsd_version.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Name Server Daemon (NSD) Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100208");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4460 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:19:22 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 9608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-24 11:22:37 +0200 (Sun, 24 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Name Server Daemon (NSD) Detection");
@@ -41,19 +41,15 @@ if(description)
 
   script_xref(name:"URL" , value:"http://www.nlnetlabs.nl/projects/nsd/");
 
-  tag_summary = "The Name Server Daemon is running at this host.
+  script_tag(name:"solution", value:"Set 'hide-version: yes' in nsd.conf.");
+  script_tag(name:"summary", value:"The Name Server Daemon is running at this host.
   NSD is an authoritative only, high performance, simple and open source name
   server.
 
   The NSD allow remote users to query for version and type
   information. The query of the CHAOS TXT record 'version.bind', will
   typically prompt the server to send the information back to the
-  querying source.";
-
-  tag_solution = "Set 'hide-version: yes' in nsd.conf.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  querying source.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

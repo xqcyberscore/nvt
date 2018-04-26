@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_122ea355a7_memcached_fc26.nasl 9581 2018-04-24 09:03:17Z santu $
+# $Id: gb_fedora_2018_122ea355a7_memcached_fc26.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # Fedora Update for memcached FEDORA-2018-122ea355a7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874380");
-  script_version("$Revision: 9581 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:03:17 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-22 08:39:21 +0200 (Sun, 22 Apr 2018)");
   script_cve_id("CVE-2018-1000115", "CVE-2017-9951");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for memcached FEDORA-2018-122ea355a7");
   script_tag(name: "summary", value: "Check the version of memcached");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_algos.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_ssh_algos.nasl 9609 2018-04-25 14:08:10Z cfischer $
 #
 # SSH Protocol Algorithms Supported
 #
@@ -24,30 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105565");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
- script_tag(name:"creation_date", value:"2016-03-09 08:39:30 +0100 (Wed, 09 Mar 2016)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.105565");
+  script_version("$Revision: 9609 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 16:08:10 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2016-03-09 08:39:30 +0100 (Wed, 09 Mar 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("SSH Protocol Algorithms Supported");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("ssh_detect.nasl");
+  script_require_ports("Services/ssh", 22);
 
- script_name("SSH Protocol Algorithms Supported");
- script_tag(name:"qod_type", value:"remote_active");
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("ssh_detect.nasl");
- script_require_ports("Services/ssh", 22);
- script_tag(name:"summary", value:"This script detects which algorithms and languages are supported by the remote SSH Service");
- exit(0);
+  script_tag(name:"summary", value:"This script detects which algorithms and languages are supported by the remote SSH Service");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("ssh_func.inc");
 include("byte_func.inc");
 
-port = get_kb_item("Services/ssh");
+port = get_kb_item( "Services/ssh" );
 if( ! port ) port = 22;
 
 if( ! get_port_state( port ) ) exit( 0 );
@@ -67,8 +69,7 @@ if( ! sock ) exit( 0 );
 
 server_version = ssh_exchange_identification( socket:sock );
 
-if( ! server_version )
-{
+if( ! server_version ) {
   close( sock );
   exit( 0 );
 }
@@ -85,9 +86,9 @@ if( ord( buf[5] ) != 20 ) exit( 0 );
 
 pos = 22;
 
-foreach typ ( types )
-{
-  if ( pos + 4 > blen ) break;
+foreach typ( types ) {
+
+  if( pos + 4 > blen ) break;
 
   len = getdword( blob:buf, pos:pos );
   pos += 4;
@@ -101,17 +102,16 @@ foreach typ ( types )
 
   str = split( options, sep:",", keep:FALSE );
 
-  foreach algo ( str )
-    set_kb_item(name:"ssh/" + port + "/" + typ, value:algo );
+  foreach algo( str )
+    set_kb_item( name:"ssh/" + port + "/" + typ, value:algo );
 
   report += typ + ':\n' + options + '\n\n';
-
 }
+
+# Used in ssh_login_failed to evaluate if the SSH server is using unsupported algorithms
+set_kb_item( name:"ssh/" + port + "/algos_available", value:TRUE );
 
 report = 'The following options are supported by the remote ssh service:\n\n' + report;
 
 log_message( port:port, data:report );
 exit( 0 );
-
-
-

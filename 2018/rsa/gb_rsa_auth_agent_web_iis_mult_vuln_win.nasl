@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # RSA Authentication Agent(IIS) Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:emc:rsa_authentication_agent_iis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813118");
-  script_version("$Revision: 9527 $");
+  script_version("$Revision: 9594 $");
   script_cve_id("CVE-2018-1232", "CVE-2018-1233", "CVE-2018-1234");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 15:34:46 +0530 (Mon, 09 Apr 2018)");
   script_name("RSA Authentication Agent(IIS) Multiple Vulnerabilities");
 

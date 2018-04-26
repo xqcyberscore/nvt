@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phplist_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_phplist_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # phpList Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103230");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9608 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
  script_tag(name:"creation_date", value:"2011-08-29 15:19:27 +0200 (Mon, 29 Aug 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpList Detection");
@@ -68,7 +68,7 @@ foreach dir( make_list_unique( "/mail", "/list", cgi_dirs( port:port ) ) ) {
     egrep(pattern: 'phplist - about phplist', string: buf, icase: TRUE)) {
 
     vers = string("unknown");
-    ### try to get version 
+    ### try to get version
     version = eregmatch(string: buf, pattern: "version ([0-9.]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {
@@ -79,7 +79,7 @@ foreach dir( make_list_unique( "/mail", "/list", cgi_dirs( port:port ) ) ) {
 
     if(vers == "unknown")
       register_host_detail(name:"App", value:string("cpe:/a:tincan:phplist"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-    else   
+    else  
       register_host_detail(name:"App", value:string("cpe:/a:tincan:phplist:",vers), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
 
     info = string("phpList Version '");

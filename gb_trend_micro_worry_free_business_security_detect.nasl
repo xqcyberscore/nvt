@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_worry_free_business_security_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_trend_micro_worry_free_business_security_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # Trend Micro Worry-Free Business Security Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809142");
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 9608 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 11:41:39 +0530 (Tue, 23 Aug 2016)");
   script_name("Trend Micro Worry-Free Business Security Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of Trend
@@ -57,31 +57,20 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-trendPath = "";
-trendName = "";
-trendVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Confirm Trend Micro Worry-Free Business Security
 if(!registry_key_exists(key:"SOFTWARE\TrendMicro\WFBS") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\TrendMicro\WFBS")){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -108,13 +97,11 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Trend/Micro/Worry-Free/Business/Security/Ver", value:trendVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:trendVer, exp:"^([0-9.]+)", base:"cpe:/a:trend_micro:business_security:");
       if(isnull(cpe))
         cpe = "cpe:/a:trend_micro:business_security";
     }
 
-    ## Register Product and Build Report
     register_product(cpe:cpe, location:trendPath);
 
     log_message(data: build_detection_report(app: "Trend Micro Worry-Free Business Security",

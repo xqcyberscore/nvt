@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidersoft_mp3_conv_seh.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_nidersoft_mp3_conv_seh.nasl 9600 2018-04-25 08:48:41Z asteins $
 #
 # Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)
 #
@@ -29,29 +29,28 @@ CPE = "cpe:/a:Nidesoft:mp3_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107108");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 9600 $");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
+
   script_name("Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)");
-  script_tag(name: "summary" , value: "This host is installed with Nidesoft MP3 Converter and is prone to SEH Local Buffer Overflow.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
+  script_tag(name:"summary", value:"This host is installed with Nidesoft MP3 Converter and is prone to SEH Local Buffer Overflow.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the
   help  of detection NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "impact" , value: "A successful exploit could allow the attacker to execute arbitrary 
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary
   code on the system .");
+  script_tag(name:"affected", value:"Nidesoft MP3 Converter 2.6.18 on Windows.");
+  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name: "affected" , value:"Nidesoft MP3 Converter 2.6.18  Windows.");
-
-  script_tag(name: "solution" , value:"Until the time this script was written, no solution was available, for more information, refer to http://www.nidesoft.com/mp3-converter.html .");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://www.exploit-db.com/exploits/40917/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40917/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -61,22 +60,16 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cvVer = "";
-
-## Get version
 if(!cvVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if (version_is_equal(version: cvVer, test_version:"2.6.18"))
 {
-   report = 'Installed version: ' + cvVer + '\n' +
-           'Fixed versions:  Not Available \n';
+   report = report_fixed_ver(installed_version:cvVer, fixed_version:"None Available");
    security_message(data:report);
    exit(0);
 }

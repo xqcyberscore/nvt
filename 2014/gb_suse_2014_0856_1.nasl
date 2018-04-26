@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0856_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0856_1.nasl 9587 2018-04-24 12:50:26Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0856-1 (kernel)
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850593");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 20:48:43 +0530 (Tue, 01 Jul 2014)");
   script_cve_id("CVE-2013-7339", "CVE-2014-0055", "CVE-2014-0077", "CVE-2014-2678",
                 "CVE-2014-2851", "CVE-2014-3122", "CVE-2014-3153");
@@ -87,17 +87,6 @@ if(description)
   tag_affected = "kernel on openSUSE 12.3";
 
   tag_solution = "Please Install the Updated Packages.";
-
-  desc = "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
 
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

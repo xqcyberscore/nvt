@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 9516 2018-04-18 08:02:49Z emoss $
+# $Id: compliance_tests.nasl 9613 2018-04-25 15:09:56Z emoss $
 #
 # Compliance Tests
 #
@@ -29,8 +29,8 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95888");
-  script_version("$Revision: 9516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 10:02:49 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9613 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 17:09:56 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ if(description)
   script_add_preference(name:"Launch PCI-DSS (Version 2.0)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch latest PCI-DSS version", type:"checkbox", value:"no");
   script_add_preference(name:"Verbose PCI-DSS results", type:"checkbox", value:"no");
-  script_add_preference(name:"Start state controls", type:"checkbox", value:"no");
+  script_add_preference(name:"Verbose Policy Controls", type:"checkbox", value:"no");
   script_add_preference(name:"PCI-DSS Berichtsprache/Report Language", type:"radio", value:"Deutsch;English");
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
@@ -131,9 +131,9 @@ if (verbose_pci_dss == "no") {
   set_kb_item(name: "PCI-DSS/silence", value: "Wahr");
 }
 
-# Set kb entry to start basic policy nvts
-state_controls = script_get_preference("Start state controls");
-if (state_controls == "yes"){
+# Set kb entry to start and verbose policy control nvts
+verbose_policy_controls = script_get_preference("Verbose Policy Controls");
+if (verbose_policy_controls == "yes"){
   set_kb_item(name: "Compliance/Launch", value: TRUE);
   set_kb_item(name: "Compliance/verbose", value: TRUE);
 }

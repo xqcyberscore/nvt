@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0939_1.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_suse_2018_0939_1.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
 #
 # SuSE Update for libvirt openSUSE-SU-2018:0939-1 (libvirt)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851730");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-13 07:59:09 +0200 (Fri, 13 Apr 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2018-1064", "CVE-2018-6764");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libvirt openSUSE-SU-2018:0939-1 (libvirt)");
   script_tag(name: "summary", value: "Check the version of libvirt");
