@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pecio_cms_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_pecio_cms_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Pecio CMS Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801443");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5815 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pecio CMS Version Detection");
@@ -62,21 +62,17 @@ foreach dir (make_list_unique("/pecio", "/pecio_cms", cgi_dirs(port:cmsPort))) {
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:cmsPort);
 
-  ## Check application is Pecio CMS
   if('content="pecio cms'>< rcvRes)
   {
-    ## Grep the version
     cmsVer = eregmatch(pattern:"pecio cms ([0-9.]+)", string:rcvRes);
     if(cmsVer[1] != NULL)
     {
-      ## Set the KB item
       tmp_version = cmsVer[1] + " under " + install;
       set_kb_item(name:"www/" + cmsPort + "/Pecio_CMS",
                   value:tmp_version);
       log_message(data:"Pecio CMS version " + cmsVer[1] +
        " running at location " + install + " was detected on the host");
-      
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:pecio-cms:pecio_cms:");
       if(!isnull(cpe))
          register_host_detail(name:"App", value:cpe);

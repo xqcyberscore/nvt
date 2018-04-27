@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_openid_access_control_bypass_vuln_win.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_owncloud_openid_access_control_bypass_vuln_win.nasl 9638 2018-04-27 02:43:52Z ckuersteiner $
 #
 # ownCloud 'OpenID' Access Control Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813059");
-  script_version("$Revision: 9276 $");
+  script_version("$Revision: 9638 $");
   script_cve_id("CVE-2014-2048");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 04:43:52 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 17:26:31 +0530 (Mon, 02 Apr 2018)");
   script_name("ownCloud 'OpenID' Access Control Bypass Vulnerability (Windows)");
 

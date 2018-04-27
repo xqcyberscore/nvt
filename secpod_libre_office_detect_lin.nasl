@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_libre_office_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # LibreOffice Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902701");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("LibreOffice Version Detection (Linux)");
@@ -60,7 +60,6 @@ if(!sock){
 officeName = find_bin(prog_name:"libreoffice", sock:sock);
 foreach binary_officeName (officeName)
 {
-  ## Get the version
   officeVer = get_bin_version(full_prog_name:chomp(binary_officeName),
                             version_argv:"-help",
                             ver_pattern:"LibreOffice ([0-9.]+)", sock:sock);
@@ -73,7 +72,6 @@ foreach binary_officeName (officeName)
       {
         tmp_version = officeVer[1] + "." + buildVer[1];
         set_kb_item(name:"LibreOffice/Linux/Ver", value:tmp_version);
-         ## build cpe and store it as host_detail
         register_and_report_cpe(app:"LibreOffice", ver:tmp_version, base:"cpe:/a:libreoffice:libreoffice:",
                                 expr:"^([0-9.]+)", insloc:binary_officeName);
       }
@@ -81,7 +79,6 @@ foreach binary_officeName (officeName)
     else
     {
       set_kb_item(name:"LibreOffice/Linux/Ver", value:officeVer[1]);
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"LibreOffice", ver:officeVer[1], base:"cpe:/a:libreoffice:libreoffice:",
                               expr:"^([0-9.]+)", insloc:binary_officeName);
     }

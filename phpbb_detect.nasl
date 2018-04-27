@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: phpbb_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # phpBB Forum Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100033");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,6 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
     if( dir == "" ) rootInstalled = 1;
     vers = "unknown";
 
-    ### try to get version
     url = dir + "/docs/INSTALL.html";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );

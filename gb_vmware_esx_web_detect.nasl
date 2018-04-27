@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_web_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_vmware_esx_web_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # VMware ESX detection (Web)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103418");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 11:30:38 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,12 +62,12 @@ transport = get_port_transport(port);
 
 if(!get_port_state(port)) {
   exit(0);
-}  
+}
 
 soc = open_sock_tcp(port, transport: transport);
 if(!soc) {
   exit(0);
-}  
+}
 
 host = get_host_name();
 if( port != 80 && port != 443 )
@@ -132,7 +132,7 @@ if("RetrieveServiceContentResponse" >< buf) {
   if("<build>" >< buf) {
     build = eregmatch(pattern:"<build>([0-9]+)</build>", string:buf);
     if(!isnull(build[1])) {
-     replace_kb_item(name:"VMware/ESX/build", value:build[1]); 
+     replace_kb_item(name:"VMware/ESX/build", value:build[1]);
      build =  build[1];
     }
   }
@@ -142,7 +142,7 @@ if("RetrieveServiceContentResponse" >< buf) {
     rs = r[1];
   }
 
-} 
+}
 
 close(soc);
 
@@ -157,7 +157,7 @@ if("ESXi" >< typ) {
 if(vers != "unknown") {
  cpe = build_cpe(value:vers, exp:"^([0-9.a-z]+)", base:cpe_string + ":");
 } else {
- cpe = cpe_string; 
+ cpe = cpe_string;
 }
 
 register_and_report_os( os:"VMware ESX(i)", cpe:cpe, banner_type:"HTTP banner", port:port, desc:SCRIPT_DESC, runs_key:"unixoide" );

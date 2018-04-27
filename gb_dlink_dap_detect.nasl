@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dap_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_dlink_dap_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Dlink DAP Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810234");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 15:22:03 +0530 (Fri, 09 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dlink DAP Devices Detection");
@@ -58,7 +58,6 @@ dlPort = get_http_port(default:80);
 
 buf = http_get_cache( item:"/", port:dlPort );
 
-## Confirmation of application
 if((buf =~ 'Product Page:.*>DAP' || 'Product Page :.*>DAP') &&
    (buf =~ ">Copyright.*D-Link Systems, Inc" || ("<title>D-LINK SYSTEMS, INC. | WIRELESS AP : LOGIN</title>" >< buf)))
 {
@@ -66,7 +65,7 @@ if((buf =~ 'Product Page:.*>DAP' || 'Product Page :.*>DAP') &&
   model = "unknown";
 
   model = eregmatch( pattern:'>DAP-([0-9.]+)', string:buf );
-  if(model[1]){ 
+  if(model[1]){
     set_kb_item( name:"dlink/dap/model", value:model[1] );
   }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_adobe_robohelp_detect_win.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Adobe RoboHelp Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803770");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-17 15:40:00 +0530 (Thu, 17 Oct 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe RoboHelp Version Detection (Windows)");
@@ -56,12 +56,6 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-arhName = "";
-arhInsPath = "";
-arhVer = "";
-
-## Confirm the Adobe RoboHelp installation
 if(!registry_key_exists(key:"SOFTWARE\Adobe\RoboHelp"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\RoboHelp")){
@@ -69,19 +63,16 @@ if(!registry_key_exists(key:"SOFTWARE\Adobe\RoboHelp"))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently Adobe RoboHelp 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -94,10 +85,8 @@ foreach item (registry_enum_keys(key:key))
 {
   arhName = registry_get_sz(key:key + item, item:"DisplayName");
 
-  ## Confirm for Adobe RoboHelp
   if("Adobe RoboHelp" >< arhName)
   {
-    ## Get the install location
     arhInsPath = registry_get_sz(key:key + item, item:"DisplayIcon");
     if(arhInsPath){
       arhInsPath = arhInsPath - "\ARPRobohelp.ico";
@@ -105,7 +94,6 @@ foreach item (registry_enum_keys(key:key))
       arhInsPath = "Could not find the install location from registry";
     }
 
-    ## Get the Adobe RoboHelp version
     arhVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(arhVer) {
       if("Server" >< arhName) {

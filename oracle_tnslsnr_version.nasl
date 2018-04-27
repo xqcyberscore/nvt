@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_version.nasl 8230 2017-12-22 08:51:56Z cfischer $
+# $Id: oracle_tnslsnr_version.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Oracle Version Detection
 #
@@ -34,20 +34,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10658");
-  script_version("$Revision: 8230 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name( "Oracle Version Detection");
 
-  tag_summary = "Detection of installed version of Oracle.
+  script_tag(name : "summary" , value : "Detection of installed version of Oracle.
 
   This script sends  'CONNECT_DATA=(COMMAND=VERSION)' command via Oracle
   tnslsnr, a network interface to the remote Oracle database and try to get
-  the version from the response, and sets the result in KB.";
-
-  script_tag(name : "summary" , value : tag_summary);
+  the version from the response, and sets the result in KB.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2001 James W. Abendschan <jwa@jammed.com>");
@@ -68,7 +66,6 @@ include("global_settings.inc");
 
 function tnscmd(sock, command)
 {
-    # construct packet
 
     command_length = strlen(command);
     packet_length = command_length + 58;
@@ -152,7 +149,6 @@ function extract_version(socket)
   if ( strlen(header) < 5 )
     return 0;
 
-  # check the packet type code, type Data is 6
   if (ord(header[4]) != 6)
   {
       return 0;
@@ -191,7 +187,6 @@ function oracle_version(port)
     set_kb_item(name:"oracle_tnslsnr/" + port + "/version", value:version);
     set_kb_item(name:"OpenDatabase/found", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: ver[1], exp:"^([0-9.]+)",base:"cpe:/a:oracle:database_server:");
     if(isnull(cpe))
       cpe = 'cpe:/a:oracle:database_server';

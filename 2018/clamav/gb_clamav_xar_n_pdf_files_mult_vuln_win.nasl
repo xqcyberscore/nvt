@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_xar_n_pdf_files_mult_vuln_win.nasl 9152 2018-03-21 09:29:49Z santu $
+# $Id: gb_clamav_xar_n_pdf_files_mult_vuln_win.nasl 9638 2018-04-27 02:43:52Z ckuersteiner $
 #
 # ClamAV 'PDF' and 'XAR Files Parsing Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812577");
-  script_version("$Revision: 9152 $");
+  script_version("$Revision: 9638 $");
   script_cve_id("CVE-2018-0202", "CVE-2018-1000085");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 10:29:49 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 04:43:52 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 11:04:51 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV 'PDF' and 'XAR Files Parsing Multiple Vulnerabilities (Windows)");

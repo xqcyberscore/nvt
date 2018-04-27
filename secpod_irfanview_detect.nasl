@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_irfanview_detect.nasl 8036 2017-12-08 05:55:03Z cfischer $
+# $Id: secpod_irfanview_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # IrfanView Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900376");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8036 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:55:03 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IrfanView Version Detection");
@@ -50,25 +50,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-os_arch = "";
-key = "";
-irfName= "";
-irfVer= "";
-irfPath= "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IrfanView");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IrfanView",
                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IrfanView64",
@@ -95,12 +85,11 @@ foreach key (key_list)
     path = registry_get_sz(key:key, item:"UninstallString");
     irViewPath = path - "\iv_uninstall.exe" + "\i_view32.exe";
     irfVer = GetVersionFromFile(file:irViewPath, verstr:"prod");
-  } 
-  
+  }
+
   if(irfVer)
   {
     set_kb_item(name:"IrfanView/Ver", value:irfVer);
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:irfVer, exp:"^([0-9.]+)", base:"cpe:/a:irfanview:irfanview:");
     if(isnull(cpe)){
       cpe = "cpe:/a:irfanview:irfanview";
@@ -108,15 +97,13 @@ foreach key (key_list)
 
     if("x64" >< os_arch && "64-bit" >< irfName)
     {
-      ## Set KB
       set_kb_item(name:"IrfanView/Ver/x64", value:irfVer);
-      ## Build CPE
       cpe = build_cpe(value:irfVer, exp:"^([0-9.]+)", base:"cpe:/a:irfanview:irfanview:x64:");
       if(isnull(cpe)){
         cpe = "cpe:/a:irfanview:irfanview:x64";
       }
     }
- 
+
     register_product(cpe:cpe, location:irfPath);
     log_message(data: build_detection_report(app: irfName,
                                              version: irfVer,

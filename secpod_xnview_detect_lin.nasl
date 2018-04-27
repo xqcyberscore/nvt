@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xnview_detect_lin.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: secpod_xnview_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # XnView Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900753");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_name("XnView Version Detection (Linux)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900753";
 SCRIPT_DESC = "XnView Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -61,7 +59,6 @@ if(!sock){
   exit(0);
 }
 
-## Get Bin Path
 paths = find_bin(prog_name:"xnview", sock:sock);
 foreach xnviewbin (paths)
 {
@@ -72,11 +69,10 @@ foreach xnviewbin (paths)
     set_kb_item(name:"XnView/Linux/Ver", value:xnviewVer[1]);
     log_message(data:"XnView version " + xnviewVer[1] + " running at " +
                        "location " + xnviewbin + " was detected on the host");
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:xnviewVer[1], exp:"^([0-9.]+)", base:"cpe:/a:xnview:xnview:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

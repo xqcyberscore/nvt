@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GlassFish_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: GlassFish_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # GlassFish Server Detection
 #
@@ -35,8 +35,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100190");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("GlassFish Server Detection");
@@ -94,7 +94,7 @@ if( ( "<title>GlassFish Server" ><buf && "Server Running</title>" >< buf ) ||
     } else {
       version = eregmatch( string: buf2, pattern: "GlassFish Server( Open Source Edition)?( )? ([0-9.]+)", icase:TRUE );
       if( ! isnull( version[3] ) ) vers = version[3];
-    } 
+    }
   } else {
     vers = version[1];
   }

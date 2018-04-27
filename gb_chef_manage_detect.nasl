@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chef_manage_detect.nasl 5649 2017-03-21 09:54:52Z ckuerste $
+# $Id: gb_chef_manage_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
-# Chef Manage Detection 
+# Chef Manage Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106677");
-  script_version("$Revision: 5649 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:54:52 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-03-21 12:20:58 +0700 (Tue, 21 Mar 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yppasswdd.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: yppasswdd.nasl 9633 2018-04-26 14:07:08Z jschulte $
 # Description: yppasswdd overflow
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80035");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9633 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(2763);
 script_cve_id("CVE-2001-0779");
@@ -70,8 +70,8 @@ if(port)
     # and hopefully painlessly.
     #
     crp = crap(796);
-    
-    req = raw_string(0x56, 0x6C, 0x9F, 0x6B, 
+
+    req = raw_string(0x56, 0x6C, 0x9F, 0x6B,
     		     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
 		     0x00, 0x01, 0x86, 0xA9, 0x00, 0x00, 0x00, 0x01,
 		     0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_ibm_soliddb_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # SolidDB Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100721");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-07-21 19:56:46 +0200 (Wed, 21 Jul 2010)");
   script_name("SolidDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -87,7 +87,6 @@ if( ( len == 35 || len >= 27 ) &&
 
   install = port + "/tcp";
   register_service( port:port, proto:"soliddb" );
-  # try to get version. Only possible if default credentials not changed
 
   version_cmd = "version";
   vers = "unknown";

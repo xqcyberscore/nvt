@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sdp_downloader_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: secpod_sdp_downloader_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # SDP Downloader Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900641");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+ script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-05-20 10:26:22 +0200 (Wed, 20 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SDP Downloader Version Detection");
@@ -50,8 +50,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900641";
 SCRIPT_DESC = "SDP Downloader Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -78,7 +76,7 @@ foreach item(registry_enum_keys(key:sdpKey))
 
       cpe = build_cpe(value:sdpVer, exp:"^([0-9.]+)", base:"cpe:/a:sdp_multimedia:streaming_download_project:");
       if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     }
     exit(0);

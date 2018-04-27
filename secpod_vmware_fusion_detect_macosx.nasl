@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_fusion_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: secpod_vmware_fusion_detect_macosx.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # VMware Fusion Version Detection (Mac OS X)
 #
@@ -27,23 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902633");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-11-17 17:38:48 +0530 (Thu, 17 Nov 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Fusion Version Detection (Mac OS X)");
 
-  tag_summary =
-"Detection of installed version of VMware Fusion.
+
+  script_tag(name : "summary" , value : "Detection of installed version of VMware Fusion.
 
 The script logs in via ssh, searches for folder 'VMware Fusion.app' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
-via command line option 'defaults read'.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+via command line option 'defaults read'.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
@@ -59,13 +56,11 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock) {
   exit(-1);
 }
 
-## Get the version of VMware Fusion Version
 vmfusionVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
                 "VMware\ Fusion.app/Contents/Info CFBundleShortVersionString"));
 ## Close Socket
@@ -76,10 +71,8 @@ if(isnull(vmfusionVer) || "does not exist" >< vmfusionVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "VMware/Fusion/MacOSX/Version", value:vmfusionVer);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value:vmfusionVer, exp:"^([0-9.]+)", base:"cpe:/a:vmware:fusion:");
 if(isnull(cpe))
   cpe='cpe:/a:vmware:fusion';

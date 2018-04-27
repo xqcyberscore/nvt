@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_freepbx_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # FreePBX Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100889");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9584 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9633 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
  script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
@@ -69,7 +69,6 @@ foreach dir( make_list_unique( "/freepbx", cgi_dirs( port:port ) ) ) {
  if( "<title>FreePBX" >< buf && '<div id="version"><a href="http://www.freepbx.org" target="_blank">FreePBX' )
  {
     vers = string("unknown");
-    ### try to get version
     version = eregmatch( string: buf, pattern: "FreePBX</a> ([0-9.]+) on <a",icase:TRUE );
 
     if ( ! isnull( version[1] ) )

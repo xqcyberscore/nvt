@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_citrix_xenmobile_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Citrix XenMobile Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105569");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8141 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+ script_version ("$Revision: 9633 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
  script_tag(name:"creation_date", value:"2016-03-15 18:31:10 +0100 (Tue, 15 Mar 2016)");
  script_name("Citrix XenMobile Server Detection");
 
@@ -150,7 +150,7 @@ if( user && pass )
 
 report = 'Detected Citrix XenMobile Server\n' +
          'Version:  ' + vers + '\n' +
-         'CPE:      ' + cpe + '\n' + 
+         'CPE:      ' + cpe + '\n' +
          'Location: /';
 
 if( login_credentials )

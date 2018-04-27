@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_is_detect.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: gb_quick_heal_is_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Quick Heal Internet Security Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811550");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-03 15:26:47 +0530 (Thu, 03 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Quick Heal Internet Security Version Detection");
@@ -38,7 +38,7 @@ if(description)
   script_tag(name : "summary" , value : "Detection of installed version of
   Quick Heal Internet Security.
 
-  The script logs in via smb, searches for Quick Heal Internet Security in the 
+  The script logs in via smb, searches for Quick Heal Internet Security in the
   registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
@@ -56,21 +56,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-qhName="";
-qhPath="";
-qhVer="";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-##Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Quick Heal Internet Security")){
     exit(0);
 }

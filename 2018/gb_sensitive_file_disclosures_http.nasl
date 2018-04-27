@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 9562 2018-04-23 08:47:27Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 9639 2018-04-27 05:54:49Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 9562 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 10:47:27 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 9639 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 07:54:49 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -69,7 +69,7 @@ include("host_details.inc");
 # array value = the description and the regex of the checked file separated with #-#. Optional a third entry separated by #-# containing an "extra_check" for http_vuln_check()
 genericfiles = make_array(
 "/.idea/WebServers.xml", 'IntelliJ Platform Configuration File containing a username and/or password.#-#<component name="WebServers">#-#(password|username)=',
-"/config/databases.yml", 'Symphony CMS Database Configuration File containing a username and/or password.#-#(param|class) ?:#-#(username|password) ?:',
+"/config/databases.yml", 'Symfony Framework Database Configuration File containing a username and/or password.#-#(param|class) ?:#-#(username|password) ?:',
 "/config/database.yml", 'Rails Database Configuration File containing a username and/or password.#-#(adapter|database) ?:#-#(username|password) ?:',
 "/DEADJOE", 'Editor JOE created the file DEADJOE on crash, which contains content of the currently edited files.#-#JOE (when it|was) aborted',
 "/server.key", 'SSL/TLS Private-Key is publicly accessible.#-#BEGIN (RSA|DSA|DSS|EC)? ?PRIVATE KEY',
@@ -88,10 +88,6 @@ genericfiles = make_array(
 # https://docs.djangoproject.com/en/2.0/ref/settings/
 "/settings.py", "Django Configuration File containing a SECRET_KEY or a username and/or password.#-#(SECRET_KEY ?=|'USER' ?:|'PASSWORD' ?:)"
 );
-
-# TBD: Really sensitive data in here?
-# https://jekyllrb.com/docs/configuration/
-# "/_config.yml", 'Jekyll Configuration File containing a username and/or password.#-#author:#-#author_email:',
 
 magentofiles = make_array(
 "/app/etc/local.xml",'Magento 1 Database Configuration File containing a username and/or password.#-#(<config|Mage)#-#<(username|password)>' );

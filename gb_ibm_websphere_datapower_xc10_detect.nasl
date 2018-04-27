@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_datapower_xc10_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_ibm_websphere_datapower_xc10_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # IBM WebSphere DataPower XC10 Appliance Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808183");
-  script_version("$Revision: 6701 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 13:49:16 +0530 (Tue, 05 Jul 2016)");
   script_name("IBM WebSphere DataPower XC10 Appliance Version Detection");
 
@@ -57,21 +57,12 @@ include("cpe.inc");
 include("host_details.inc");
 include("smtp_func.inc");
 
-##Variable Initialisation
-url = "";
-sndReq = "";
-rcvRes = "";
-xc_port = 0;
-
-##Get HTTP Port
 xc_port = get_http_port(default:80);
 
-## Get host name or IP
 host = http_host_name(port:xc_port);
 
 banner = get_http_banner(port:xc_port);
 
-##Confirm IBM server
 if('Server: IBM WebSphere' >!< banner){
  exit(0);
 }
@@ -87,12 +78,10 @@ req = 'POST /login HTTP/1.1\r\n' +
       post_data;
 res = http_keepalive_send_recv(port:xc_port, data:req);
 
-##Confirm IBM server
 if('Server: IBM WebSphere' >!< res && res =~ "HTTP/1.. 302"){
  exit(0);
 }
 
-##Get Cookie values from the response
 if(!url[0]  = eregmatch(pattern:"Pzcsrf=([0-9a-zA-Z]+)", string:res)){
   exit(0);
 }
@@ -103,7 +92,6 @@ if(!cookie1[1] = eregmatch(pattern:"pzerocsrfprotectsec=(.*)==;", string:res)){
   exit(0);
 }
 
-##Construct the request
 url = '/dashboard/welcome/?'+url[0];
 
 ##SEnd request and receive response
@@ -113,8 +101,7 @@ req2 = 'GET ' + url +' HTTP/1.1\r\n' +
        '\r\n';
 res2 = http_keepalive_send_recv(port:xc_port, data:req2);
 
-## Confirm the application
-if(">IBM WebSphere DataPower XC10 Appliance<" >< res2 && res2 =~ "HTTP/1.. 200 OK" && 
+if(">IBM WebSphere DataPower XC10 Appliance<" >< res2 && res2 =~ "HTTP/1.. 200 OK" &&
    ">Dynamic Cache<" >< res2 && ">Simple Data Grid<" >< res2 && ">Log Out" >< res2)
 {
   version = eregmatch(pattern:"> ([0-9.]+).*VMware Virtual Platform <", string:res2);
@@ -124,12 +111,10 @@ if(">IBM WebSphere DataPower XC10 Appliance<" >< res2 && res2 =~ "HTTP/1.. 200 O
   else{
     version = "Unknown";
   }
-  
-  ##Set KB
+ 
   set_kb_item(name:"IBM/Websphere/Datapower/XC10/Version", value:version);
   set_kb_item( name:"IBM/Websphere/Datapower/XC10/installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/h:ibm:websphere_datapower_xc10_appliance:");
   if(isnull(cpe))
     cpe = "cpe:/h:ibm:websphere_datapower_xc10_appliance";

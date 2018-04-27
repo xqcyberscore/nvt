@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_adobe_illustrator_detect_win.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Adobe Illustrator Detection (Windows)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802789");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:02:06 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Illustrator Detection (Windows)");
@@ -60,12 +60,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ilsName = "";
-ilsPath = "";
-ilsVer = "";
-
-## Confirm app is installed
 appkey = "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Illustrator.exe";
 if(!registry_key_exists(key:appkey))
 {
@@ -75,18 +69,15 @@ if(!registry_key_exists(key:appkey))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 ## 64bit and 32bit applications both installs in Wow6432Node
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
@@ -109,20 +100,16 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Adobe/Illustrator/Win/Ver", value:ilsVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:ilsVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:illustrator:");
       if(isnull(cpe))
         cpe = "cpe:/a:adobe:illustrator";
 
-      ## Get the installed path to check app is 64bit or 32bit
       appPath = registry_get_sz(key:appkey, item:"Path");
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("x64" >< os_arch && "64 Bit" >< appPath)
       {
         set_kb_item(name:"Adobe/Illustrator64/Win/Ver", value:ilsVer);
 
-        ## Build CPE
         cpe = build_cpe(value:ilsVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:illustrator:x64:");
         if(isnull(cpe))
           cpe = "cpe:/a:adobe:illustrator:x64";

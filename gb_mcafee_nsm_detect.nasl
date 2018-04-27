@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_nsm_detect.nasl 9309 2018-04-05 05:26:15Z ckuersteiner $
+# $Id: gb_mcafee_nsm_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # McAfee Network Security Manager (NSM) Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140948");
-  script_version("$Revision: 9309 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-05 07:26:15 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-04-05 10:54:07 +0700 (Thu, 05 Apr 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
 The script sends a connection request to the server and attempts to detect McAfee Network Security Manager and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

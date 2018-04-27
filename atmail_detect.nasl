@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_detect.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
+# $Id: atmail_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Atmail Detection
 #
@@ -28,11 +28,11 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100148");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7928 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
+ script_version("$Revision: 9633 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
- script_name("Atmail Detection");  
+ script_name("Atmail Detection");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");
@@ -64,14 +64,13 @@ foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:po
   foreach file ( files ) {
     url = dir + file;
     buf = http_get_cache( item:url, port:port );
- 
+
     if (egrep(pattern: "Powered by Atmail", string: buf, icase: TRUE) ||
         egrep(pattern: "<title>Login to Atmail</title>", string: buf) ||
         egrep(pattern: "For more information on the WebMail service.*Atmail PHP [0-9.]+", string: buf) ||
-        "Use an enhanced accessible version of Atmail" >< buf) { 
+        "Use an enhanced accessible version of Atmail" >< buf) {
       vers = "unknown";
 
-      ### try to get version.
       version = eregmatch(string: buf, pattern: "Powered by Atmail ([0-9.]+)",icase:TRUE);
       if (!isnull(version[1])) {
         vers = version[1];
@@ -100,11 +99,10 @@ foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:po
             }
           }
         }
-      }  
-    
+      }
+
       set_kb_item(name:"Atmail/installed",value:TRUE);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:vers, exp:"^([0-9.]+)",base:"cpe:/a:atmail:atmail:");
       if(isnull(cpe))
         cpe = 'cpe:/a:atmail:atmail';

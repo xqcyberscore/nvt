@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_binutils_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_gnu_binutils_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # GNU Binutils Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806085");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:03:47 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("GNU Binutils Version Detection (Linux)");
@@ -62,14 +62,12 @@ if(!sock){
 
 res = ssh_cmd(socket:sock, cmd:'dpkg -l | grep "binutil"');
 
-##Confirming Application
 if('binutils' >!< res)
 {
   ssh_close_connection();
   exit(0);
 }
 
-## Grep for the version
 binVer = eregmatch(pattern:'([0-9.]+)', string:res);
 
 if(binVer[0] != NULL)

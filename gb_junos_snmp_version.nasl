@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_snmp_version.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_junos_snmp_version.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # JunOS SNMP Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103809");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-10-14 14:24:09 +0200 (Mon, 14 Oct 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -108,7 +108,7 @@ build = eregmatch(pattern:"Build date: ([^ ]+)", string:sysdesc);
 if(!isnull(build[1]))
   set_kb_item(name:"Junos/Build", value:build[1]);
 
-report_ver = junos_ver;  
+report_ver = junos_ver;
 
 if(!isnull(build[1])) report_ver += ', Build: ' + build[1];
 
@@ -129,8 +129,8 @@ for (i=0; i<3; i++) {
   if(!soc)exit(0);
 
   # snmpget -v<version> -c <community> <host> 1.3.6.1.4.1.2636.3.1.2.0
-  sendata = raw_string(0x30,len,0x02,0x01,i,0x04,sz) + 
-            community + 
+  sendata = raw_string(0x30,len,0x02,0x01,i,0x04,sz) +
+            community +
             raw_string(0xa0,0x1f,0x02,0x04,0x1c,0xba,0x54,0x29,
                        0x02,0x01,0x00,0x02,0x01,0x00,0x30,0x11,
                        0x30,0x0f,0x06,0x0b,0x2b,0x06,0x01,0x04,

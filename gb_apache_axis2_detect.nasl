@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_axis2_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_apache_axis2_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Apache Axis2 Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100813");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Axis2 Detection");
@@ -94,14 +94,13 @@ foreach dir( dirs ) {
 
   if( egrep( pattern: "Hello I am Axis2", string:buf, icase:TRUE )
       || ( "getVersionResponse" >< buf && "the Axis2 version is" >< buf )
-      || "The system is attempting to access an inactive service: Version" >< buf 
+      || "The system is attempting to access an inactive service: Version" >< buf
       || "The service cannot be found for the endpoint reference (EPR)" >< buf
       || "Service Not found EPR is" >< buf
       || "<title>Login to Axis2 :: Administration page</title>" >< buf2
       || "<title>Axis 2 - Home</title>" >< buf3 ) {
 
     version = "unknown";
-    ### try to get version 
     ver = eregmatch( string:buf, pattern:"version is ([0-9.]+)", icase:TRUE );
 
     if( ! isnull( ver[1] ) ) {

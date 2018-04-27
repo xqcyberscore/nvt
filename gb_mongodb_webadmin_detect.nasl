@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_webadmin_detect.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_mongodb_webadmin_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # MongoDB Web Admin Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100748");
-  script_version("$Revision: 8654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-08-06 15:09:20 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ if( ! banner || "Server:" >< banner ) exit( 0 );
 
 buf = http_get_cache( item:"/", port:port );
 
-if( ( buf =~ '<title>[^<]*mongod[^<]*</title>' && 'buildInfo' >< buf ) || ( "unauthorized db:admin lock type" >< buf ) ) { 
+if( ( buf =~ '<title>[^<]*mongod[^<]*</title>' && 'buildInfo' >< buf ) || ( "unauthorized db:admin lock type" >< buf ) ) {
 
   set_kb_item( name:"mongodb/webadmin/port", value:port );
   vers    = "unknown";

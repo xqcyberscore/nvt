@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_oncommand_unified_manager_detect.nasl 7059 2017-09-05 09:59:32Z ckuersteiner $
+# $Id: gb_netapp_oncommand_unified_manager_detect.nasl 9627 2018-04-26 11:54:12Z jschulte $
 #
 # NetApp OnCommand Unified Manager Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140357");
-  script_version("$Revision: 7059 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-05 11:59:32 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 9627 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-26 13:54:12 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name: "creation_date", value: "2017-09-05 13:25:35 +0700 (Tue, 05 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name: "summary" , value: "Detection of NetApp OnCommand Unified Manager.
 
-The script sends a connection request to the server and attempts to detect NetApp OnCommand Unified Manager.");
-  
+  The script sends a connection request to the server and attempts to detect NetApp OnCommand Unified Manager.");
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -58,6 +58,7 @@ The script sends a connection request to the server and attempts to detect NetAp
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("cpe.inc");
 
 port = get_http_port(default: 443);
 
@@ -71,16 +72,28 @@ foreach dir (make_list("/", "/um")) {
 
   if ("<title>OnCommand Unified Manager</title>" >< res && "OnCommand/OnCommand.nocache.js" >< res) {
     version = "unknown";
+    conlUrl = dir;
 
     set_kb_item(name: "netapp_oncommand_unified_manager/installed", value: TRUE);
 
-    cpe = "cpe:/a:netapp:oncommand_unified_manager";
+    req = http_get_req(port: port, url: dir + '/OnCommand/WW_Help_5.0/GUID-F6B0CAA6-72F1-4846-BE45-EA66AD3DF39A/wwhdata/common/files.js');
+    res = http_keepalive_send_recv(port: port, data: req);
 
-    register_product(cpe: cpe, location: install, port: port);
+    vers = eregmatch(string: res, pattern: 'OnCommand Unified Manager ([0-9.]+) Online Help', icase: TRUE);
+    if(!isnull(vers[1])) {
+      version = vers[1];
+      conclUrl = dir + '/OnCommand/WW_Help_5.0/GUID-F6B0CAA6-72F1-4846-BE45-EA66AD3DF39A/wwhdata/common/files.js';
+    }
 
-    log_message(data: build_detection_report(app: "NetApp OnCommand Unified Manager", version: version,
-                                             install: install, cpe: cpe),
-                port: port);
+    register_and_report_cpe( app: "NetApp Oncommand Unified Manager",
+                             ver: version,
+                             concluded: vers[0],
+                             base: "cpe:/a:netapp:oncommand_unified_manager:",
+                             expr: '([0-9.]+)',
+                             insloc: dir,
+                             regPort: port,
+                             conlUrl: conclUrl );
+
     exit(0);
   }
 }

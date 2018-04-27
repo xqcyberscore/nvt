@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_vtiger_crm_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # vtiger CRM Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100909");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-11-18 13:10:44 +0100 (Thu, 18 Nov 2010)");
   script_name("vtiger CRM Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,10 +57,8 @@ include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get Port
 port = get_http_port( default:80 );
 
-## Check Port Support PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/vtigercrm", "/crm", "/", cgi_dirs( port:port ) ) ) {
@@ -75,7 +73,6 @@ foreach dir( make_list_unique( "/vtigercrm", "/crm", "/", cgi_dirs( port:port ) 
 
     version = "unknown";
 
-    ## try to get version
     ver = eregmatch( string:buf, pattern:"vtiger CRM[\ ]?+[-]?[\ ]?+([0-9.]+)([^ ]| RC)", icase:TRUE );
 
     if( ! isnull( ver[1] ) ) {

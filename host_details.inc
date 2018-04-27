@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: host_details.inc 9628 2018-04-26 12:03:30Z santu $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9462 $
+# $Revision: 9628 $
 #
 ###############################################################################
 
@@ -785,12 +785,12 @@ function get_app_port( cpe, service, all ) {
   return;
 }
 
-function get_app_version_and_location( cpe, port, exit_no_version ) {
+function get_app_version_and_location( cpe, port, exit_no_version, version_regex) {
 
-  local_var cpe, port, exit_no_version;
+  local_var cpe, port, exit_no_version, version_regex;
 
   if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
-  return get_app_details( cpe:cpe, typ:"version_location", port:port, exit_no_version:exit_no_version );
+  return get_app_details( cpe:cpe, typ:"version_location", port:port, exit_no_version:exit_no_version , version_regex:version_regex);
 }
 
 function get_app_location_and_proto( cpe, port ) {
@@ -989,7 +989,12 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
     if( ! app_versions && ! x_loc ) return;
 
     if( app_versions )
+    {
+      if( version_regex )
+        if( ! ereg( pattern:version_regex, string:app_versions ) ) return;
+
       ret_arr['version'] = app_versions;
+    }  
     else
       ret_arr['version'] = '';
 

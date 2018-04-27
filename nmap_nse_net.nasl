@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_nse_net.nasl 5350 2017-02-19 17:34:04Z cfi $
+# $Id: nmap_nse_net.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Launch Nmap NSE net Tests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108083");
-  script_version("$Revision: 5350 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 18:34:04 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-02-19 16:08:05 +0100 (Sun, 19 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ if(description)
   exit(0);
 }
 
-# Set KB item if NSE net scan is enabled
 launch_nmap_nse_net = script_get_preference( "Launch Nmap NSE net Tests" );
 if( launch_nmap_nse_net == "yes" ) {
   set_kb_item( name:"Tools/Launch/nmap_nse_net", value:TRUE );

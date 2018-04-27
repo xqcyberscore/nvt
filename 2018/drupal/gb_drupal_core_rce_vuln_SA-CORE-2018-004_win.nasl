@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl 9615 2018-04-26 01:50:36Z ckuersteiner $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl 9622 2018-04-26 09:01:06Z ckuersteiner $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-004) - (Windows, Version Check)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141029");
-  script_version("$Revision: 9615 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 03:50:36 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9622 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-04-26 11:01:06 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name: "creation_date", value: "2018-04-26 09:02:14 +0700 (Thu, 26 Apr 2018)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -82,19 +82,19 @@ version = infos['version'];
 path = infos['location'];
 
 if (version_in_range(version: version, test_version: "7.0", test_version2: "7.58")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "7.59");
+  report = report_fixed_ver(installed_version: version, fixed_version: "7.59", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
 if (version_in_range(version: version, test_version: "8.0", test_version2: "8.4.7")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "8.4.8");
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.4.8", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
 if (version_in_range(version: version, test_version: "8.5", test_version2: "8.5.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "8.5.3");
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.5.3", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

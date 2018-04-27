@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_inode_mgmt_center_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_hp_inode_mgmt_center_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # HP iNode Management Center Version Detection
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802672");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 9633 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-20 13:36:31 +0530 (Thu, 20 Sep 2012)");
   script_name("HP iNode Management Center Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -81,7 +81,6 @@ foreach key (keylist)
   {
     foreach item (registry_enum_keys(key:key))
     {
-      ## Set KB item for HP iNode Management Center
       if(eregmatch(pattern:'^([0-9.]+)$', string:item))
       {
           imcVer = item;

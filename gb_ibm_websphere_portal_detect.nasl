@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_detect.nasl 9145 2018-03-20 09:27:46Z jschulte $
+# $Id: gb_ibm_websphere_portal_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
-# IBM WebSphere Portal Detection 
+# IBM WebSphere Portal Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106198");
- script_version ("$Revision: 9145 $");
- script_tag(name: "last_modification", value: "$Date: 2018-03-20 10:27:46 +0100 (Tue, 20 Mar 2018) $");
+ script_version ("$Revision: 9633 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
  script_tag(name: "creation_date", value: "2016-08-24 14:38:56 +0700 (Wed, 24 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ port = get_http_port(default: 443);
 url = "/wps/portal/Home/Welcome/";
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req);
-  
+ 
 # Handle 30x returns: we want to follow them
 if (res =~ "^HTTP/1.. 30.") {
   loc = eregmatch(pattern: "Location: http(s)?:\/\/([a-zA-Z0-9.]+)([a-zA-Z0-9_!-/]+)", string: res);
@@ -79,7 +79,6 @@ if (res =~ "^HTTP/1.. 30.") {
                          add_headers: make_array("Cookie", cookie[1]));
     else
       req = http_get(port: port, item: url);
-    # Get the welcome page on the given location
     res = http_keepalive_send_recv(port: port, data: req);
   }
 }

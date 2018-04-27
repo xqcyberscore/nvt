@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbit_downloader_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_orbit_downloader_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Orbit Downloader Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801213");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Orbit Downloader Version Detection");
@@ -51,28 +51,22 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801213";
 SCRIPT_DESC = "Orbit Downloader Version Detection";
 
-## Confirm Windows OS
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-## Get version from Registry
 ver = registry_get_sz(key:"SOFTWARE\Orbit", item:"ver");
 
 if(ver)
 {
-  ## Set Orbit Downloader Version in KB
   set_kb_item(name:"OrbitDownloader/Ver", value:ver);
   log_message(data:"Orbit Downloader version " + ver +
                      " was detected on the host");
-      
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:orbitdownloader:orbit_downloader:");
   if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+     register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
 }

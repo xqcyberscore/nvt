@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208692_01.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_apple_macosx_HT208692_01.nasl 9628 2018-04-26 12:03:30Z santu $
 #
 # Apple MacOSX Security Updates(HT208692)-01
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813112");
-  script_version("$Revision: 9276 $");
+  script_version("$Revision: 9628 $");
   script_cve_id("CVE-2018-4108", "CVE-2018-4143", "CVE-2018-4105", "CVE-2018-4107",
                 "CVE-2018-4160", "CVE-2018-4167", "CVE-2018-4142", "CVE-2018-4174",
                 "CVE-2018-4131", "CVE-2018-4132", "CVE-2018-4135", "CVE-2018-4111",
                 "CVE-2018-4170", "CVE-2018-4115", "CVE-2018-4157", "CVE-2018-4152",
-                "CVE-2018-4150", "CVE-2018-4138" );
+                "CVE-2018-4150", "CVE-2018-4138", "CVE-2018-4173");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:46:18 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208692)-01");
 
@@ -68,7 +68,10 @@ if(description)
 
   - Multiple memory corruption issues.
 
-  - A validation issue.");
+  - A validation issue.
+
+  - A consistency issue existed in deciding when to show the microphone use
+    indicator.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute arbitrary code with kernel privileges,
@@ -76,18 +79,20 @@ if(description)
   password, gain access to potentially sensitive data, gain elevated privileges,
   conduct a denial-of-service attack, log keystrokes entered into applications,
   intercept and exfiltrate the contents of S/MIME-encrypted e-mail and use a
-  removed configuration profile .
+  removed configuration profile and access the microphone without indication to
+  the user .
 
   Impact Level: System");
 
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.13.x through 10.13.3");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.13.4 or later.
-  For updates refer to https://www.apple.com.");
+  For updates refer to Reference links");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208692");
+  script_xref(name : "URL" , value : "https://www.apple.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_go_ssh_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: sw_go_ssh_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
 #
 # Go Programming Language SSH Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.111089");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version ("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version ("$Revision: 9633 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-03-17 07:42:39 +0100 (Thu, 17 Mar 2016)");
   script_name("Go Programming Language SSH Detection");
   script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ cpe = 'cpe:/a:golang:go';
 
 set_kb_item( name:'go_ssh/installed', value:TRUE );
 
-register_product( cpe:cpe, location:port + '/tcp', port:port );  
+register_product( cpe:cpe, location:port + '/tcp', port:port );
 
 log_message( data:build_detection_report( app:"Go Programming Language SSH",
                                           version:version,
