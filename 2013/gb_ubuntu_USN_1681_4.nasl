@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1681_4.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_ubuntu_USN_1681_4.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for firefox USN-1681-4
 #
@@ -25,63 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN-1681-1 fixed vulnerabilities in Firefox. Due to an upstream regression,
-  Firefox suffered from instabilities when accessing some websites. This
-  update fixes the problem.
-
-  We apologize for the inconvenience.
-  
-  Original advisory details:
-  
-  Christoph Diehl, Christian Holler, Mats Palmgren, Chiaki Ishikawa, Bill
-  Gianopoulos, Benoit Jacob, Gary Kwong, Robert O'Callahan, Jesse Ruderman,
-  and Julian Seward discovered multiple memory safety issues affecting
-  Firefox. If the user were tricked into opening a specially crafted page, an
-  attacker could possibly exploit these to cause a denial of service via
-  application crash, or potentially execute code with the privileges of the
-  user invoking Firefox. (CVE-2013-0769, CVE-2013-0749, CVE-2013-0770)
-  
-  Abhishek Arya discovered several user-after-free and buffer overflows in
-  Firefox. An attacker could exploit these to cause a denial of service via
-  application crash, or potentially execute code with the privileges of the
-  user invoking Firefox. (CVE-2013-0760, CVE-2013-0761, CVE-2013-0762,
-  CVE-2013-0763, CVE-2013-0766, CVE-2013-0767, CVE-2013-0771, CVE-2012-5829)
-  
-  A stack buffer was discovered in Firefox. If the user were tricked into
-  opening a specially crafted page, an attacker could possibly exploit this
-  to cause a denial of service via application crash, or potentially execute
-  code with the privileges of the user invoking Firefox. (CVE-2013-0768)
-  
-  Masato Kinugawa discovered that Firefox did not always properly display URL
-  values in the address bar. A remote attacker could exploit this to conduct
-  URL spoofing and phishing attacks. (CVE-2013-0759)
-  
-  Atte Kettunen discovered that Firefox did not properly handle HTML tables
-  with a large number of columns and column groups. If the user were tricked
-  into opening a specially crafted page, an attacker could exploit this to
-  cause a denial of service via application crash, or potentially execute
-  code with the privileges of the user invoking Firefox. (CVE-2013-0744)
-  
-  Jerry Baker discovered that Firefox did not always properly handle
-  threading when performing downloads over SSL connections. An attacker could
-  exploit this to cause a denial of service via application crash.
-  (CVE-2013-0764)
-  
-  Olli Pettay and Boris Zbarsky discovered flaws in the Javacript engine of
-  Firefox. An attacker could cause a denial of service via application crash,
-  or potentially execute code with the privileges of the user invoking
-  Firefox. (CVE-2013-0745, CVE-2013-0746)
-  
-  Jesse Ruderman discovered a  ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "firefox on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -89,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1681-4/");
   script_oid("1.3.6.1.4.1.25623.1.0.841307");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-08 10:16:31 +0530 (Fri, 08 Feb 2013)");
   script_cve_id("CVE-2013-0769", "CVE-2013-0749", "CVE-2013-0770", "CVE-2013-0760",
                 "CVE-2013-0761", "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0766",
@@ -109,10 +52,62 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|12\.10)");
+  script_tag(name : "affected" , value : "firefox on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN-1681-1 fixed vulnerabilities in Firefox. Due to an upstream regression,
+  Firefox suffered from instabilities when accessing some websites. This
+  update fixes the problem.
+
+  We apologize for the inconvenience.
+
+  Original advisory details:
+
+  Christoph Diehl, Christian Holler, Mats Palmgren, Chiaki Ishikawa, Bill
+  Gianopoulos, Benoit Jacob, Gary Kwong, Robert O'Callahan, Jesse Ruderman,
+  and Julian Seward discovered multiple memory safety issues affecting
+  Firefox. If the user were tricked into opening a specially crafted page, an
+  attacker could possibly exploit these to cause a denial of service via
+  application crash, or potentially execute code with the privileges of the
+  user invoking Firefox. (CVE-2013-0769, CVE-2013-0749, CVE-2013-0770)
+
+  Abhishek Arya discovered several user-after-free and buffer overflows in
+  Firefox. An attacker could exploit these to cause a denial of service via
+  application crash, or potentially execute code with the privileges of the
+  user invoking Firefox. (CVE-2013-0760, CVE-2013-0761, CVE-2013-0762,
+  CVE-2013-0763, CVE-2013-0766, CVE-2013-0767, CVE-2013-0771, CVE-2012-5829)
+
+  A stack buffer was discovered in Firefox. If the user were tricked into
+  opening a specially crafted page, an attacker could possibly exploit this
+  to cause a denial of service via application crash, or potentially execute
+  code with the privileges of the user invoking Firefox. (CVE-2013-0768)
+
+  Masato Kinugawa discovered that Firefox did not always properly display URL
+  values in the address bar. A remote attacker could exploit this to conduct
+  URL spoofing and phishing attacks. (CVE-2013-0759)
+
+  Atte Kettunen discovered that Firefox did not properly handle HTML tables
+  with a large number of columns and column groups. If the user were tricked
+  into opening a specially crafted page, an attacker could exploit this to
+  cause a denial of service via application crash, or potentially execute
+  code with the privileges of the user invoking Firefox. (CVE-2013-0744)
+
+  Jerry Baker discovered that Firefox did not always properly handle
+  threading when performing downloads over SSL connections. An attacker could
+  exploit this to cause a denial of service via application crash.
+  (CVE-2013-0764)
+
+  Olli Pettay and Boris Zbarsky discovered flaws in the Javacript engine of
+  Firefox. An attacker could cause a denial of service via application crash,
+  or potentially execute code with the privileges of the user invoking
+  Firefox. (CVE-2013-0745, CVE-2013-0746)
+
+  Jesse Ruderman discovered a  ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -137,7 +132,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -151,7 +146,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -165,7 +160,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -179,6 +174,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

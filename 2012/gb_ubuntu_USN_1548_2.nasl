@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1548_2.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1548_2.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for firefox USN-1548-2
 #
@@ -25,60 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN-1548-1 fixed vulnerabilities in Firefox. The new package caused a
-  regression in Private Browsing which could leak sites visited to the
-  browser cache. This update fixes the problem.
-
-  Original advisory details:
-  
-  Gary Kwong, Christian Holler, Jesse Ruderman, Steve Fink, Bob Clary, Andrew
-  Sutherland, Jason Smith, John Schoenick, Vladimir Vukicevic and Daniel
-  Holbert discovered memory safety issues affecting Firefox. If the user were
-  tricked into opening a specially crafted page, an attacker could exploit
-  these to cause a denial of service via application crash, or potentially
-  execute code with the privileges of the user invoking Firefox.
-  (CVE-2012-1970, CVE-2012-1971)
-  
-  Abhishek Arya discovered multiple use-after-free vulnerabilities. If the
-  user were tricked into opening a specially crafted page, an attacker could
-  exploit these to cause a denial of service via application crash, or
-  potentially execute code with the privileges of the user invoking Firefox.
-  (CVE-2012-1972, CVE-2012-1973, CVE-2012-1974, CVE-2012-1975, CVE-2012-1976,
-  CVE-2012-3956, CVE-2012-3957, CVE-2012-3958, CVE-2012-3959, CVE-2012-3960,
-  CVE-2012-3961, CVE-2012-3962, CVE-2012-3963, CVE-2012-3964)
-  
-  Mariusz Mlynsk discovered that it is possible to shadow the location object
-  using Object.defineProperty. This could potentially result in a cross-site
-  scripting (XSS) attack against plugins. With cross-site scripting
-  vulnerabilities, if a user were tricked into viewing a specially crafted
-  page, a remote attacker could exploit this to modify the contents or steal
-  confidential data within the same domain. (CVE-2012-1956)
-  
-  Mariusz Mlynski discovered an escalation of privilege vulnerability through
-  about:newtab. This could possibly lead to potentially code execution with
-  the privileges of the user invoking Firefox. (CVE-2012-3965)
-  
-  Fr&#233;d&#233;ric Hoguin discovered that bitmap format images with a negative height
-  could potentially result in memory corruption. If the user were tricked
-  into opening a specially crafted image, an attacker could exploit
-  this to cause a denial of service via application crash, or potentially
-  execute code with the privileges of the user invoking Firefox.
-  (CVE-2012-3966)
-  
-  It was discovered that Firefox's WebGL implementation was vulnerable to
-  multiple memory safety issues. If the user were tricked into opening a
-  specially crafted page, an attacker could exploit these to cause a denial
-  of service via application crash, or potentially execute code with the
-  privileges ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1548-2";
-tag_affected = "firefox on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -86,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1548-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.841143");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:51:14 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-1970", "CVE-2012-1971", "CVE-2012-1972", "CVE-2012-1973",
                 "CVE-2012-1974", "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956",
@@ -106,11 +52,60 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|12\.04 LTS|11\.10|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1548-2");
+  script_tag(name : "affected" , value : "firefox on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN-1548-1 fixed vulnerabilities in Firefox. The new package caused a
+  regression in Private Browsing which could leak sites visited to the
+  browser cache. This update fixes the problem.
+
+  Original advisory details:
+
+  Gary Kwong, Christian Holler, Jesse Ruderman, Steve Fink, Bob Clary, Andrew
+  Sutherland, Jason Smith, John Schoenick, Vladimir Vukicevic and Daniel
+  Holbert discovered memory safety issues affecting Firefox. If the user were
+  tricked into opening a specially crafted page, an attacker could exploit
+  these to cause a denial of service via application crash, or potentially
+  execute code with the privileges of the user invoking Firefox.
+  (CVE-2012-1970, CVE-2012-1971)
+
+  Abhishek Arya discovered multiple use-after-free vulnerabilities. If the
+  user were tricked into opening a specially crafted page, an attacker could
+  exploit these to cause a denial of service via application crash, or
+  potentially execute code with the privileges of the user invoking Firefox.
+  (CVE-2012-1972, CVE-2012-1973, CVE-2012-1974, CVE-2012-1975, CVE-2012-1976,
+  CVE-2012-3956, CVE-2012-3957, CVE-2012-3958, CVE-2012-3959, CVE-2012-3960,
+  CVE-2012-3961, CVE-2012-3962, CVE-2012-3963, CVE-2012-3964)
+
+  Mariusz Mlynsk discovered that it is possible to shadow the location object
+  using Object.defineProperty. This could potentially result in a cross-site
+  scripting (XSS) attack against plugins. With cross-site scripting
+  vulnerabilities, if a user were tricked into viewing a specially crafted
+  page, a remote attacker could exploit this to modify the contents or steal
+  confidential data within the same domain. (CVE-2012-1956)
+
+  Mariusz Mlynski discovered an escalation of privilege vulnerability through
+  about:newtab. This could possibly lead to potentially code execution with
+  the privileges of the user invoking Firefox. (CVE-2012-3965)
+
+  Fr&#233;d&#233;ric Hoguin discovered that bitmap format images with a negative height
+  could potentially result in memory corruption. If the user were tricked
+  into opening a specially crafted image, an attacker could exploit
+  this to cause a denial of service via application crash, or potentially
+  execute code with the privileges of the user invoking Firefox.
+  (CVE-2012-3966)
+
+  It was discovered that Firefox's WebGL implementation was vulnerable to
+  multiple memory safety issues. If the user were tricked into opening a
+  specially crafted page, an attacker could exploit these to cause a denial
+  of service via application crash, or potentially execute code with the
+  privileges ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -135,7 +130,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -149,7 +144,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -163,7 +158,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -177,6 +172,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

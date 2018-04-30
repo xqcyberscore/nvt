@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2342_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2342_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for qemu USN-2342-1
 #
@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841962");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:17 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4149", "CVE-2013-4150", "CVE-2013-4151",
                 "CVE-2013-4526", "CVE-2013-4527", "CVE-2013-4529", "CVE-2013-4530",
@@ -76,7 +76,7 @@ resulting in a denial of service. (CVE-2014-3471)");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|10\.04 LTS)");
 exit(0);
 }
 
@@ -141,7 +141,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -155,7 +155,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -169,6 +169,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

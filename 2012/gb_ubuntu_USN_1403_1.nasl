@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1403_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1403_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for freetype USN-1403-1
 #
@@ -25,64 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed BDF font files. If a user were tricked into using a specially crafted
-  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1126)
-
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed BDF font files. If a user were tricked into using a specially crafted
-  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1127)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed TrueType font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash.
-  (CVE-2012-1128)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed Type42 font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash.
-  (CVE-2012-1129)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed PCF font files. If a user were tricked into using a specially crafted
-  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1130)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed TrueType font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash.
-  (CVE-2012-1131)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed Type1 font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash.
-  (CVE-2012-1132)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed BDF font files. If a user were tricked into using a specially crafted
-  font file, a remote attacker could cause FreeType to crash or possibly execute
-  arbitrary code with user privileges. (CVE-2012-1133)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed Type1 font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash or possibly
-  execute arbitrary code with user privileges. (CVE-2012-1134)
-  
-  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
-  malformed TrueType font files. If a user were tricked into using a specially
-  crafted font file, a remote attacker could cause FreeType to crash.
-  (CVE-2012-1135)
-  
-  Mateusz Jurczyk discovere ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1403-1";
-tag_affected = "freetype on Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -92,8 +34,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.840959");
   script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 14:17:20 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129", "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133", "CVE-2012-1134", "CVE-2012-1135", "CVE-2012-1136", "CVE-2012-1137", "CVE-2012-1138", "CVE-2012-1139", "CVE-2012-1140", "CVE-2012-1141", "CVE-2012-1142", "CVE-2012-1143", "CVE-2012-1144");
   script_xref(name: "USN", value: "1403-1");
@@ -103,11 +45,64 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.10|11\.04|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1403-1");
+  script_tag(name : "affected" , value : "freetype on Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed BDF font files. If a user were tricked into using a specially crafted
+  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1126)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed BDF font files. If a user were tricked into using a specially crafted
+  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1127)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed TrueType font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash.
+  (CVE-2012-1128)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed Type42 font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash.
+  (CVE-2012-1129)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed PCF font files. If a user were tricked into using a specially crafted
+  font file, a remote attacker could cause FreeType to crash. (CVE-2012-1130)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed TrueType font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash.
+  (CVE-2012-1131)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed Type1 font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash.
+  (CVE-2012-1132)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed BDF font files. If a user were tricked into using a specially crafted
+  font file, a remote attacker could cause FreeType to crash or possibly execute
+  arbitrary code with user privileges. (CVE-2012-1133)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed Type1 font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash or possibly
+  execute arbitrary code with user privileges. (CVE-2012-1134)
+
+  Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  malformed TrueType font files. If a user were tricked into using a specially
+  crafted font file, a remote attacker could cause FreeType to crash.
+  (CVE-2012-1135)
+
+  Mateusz Jurczyk discovere ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -132,7 +127,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -146,7 +141,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -160,7 +155,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -174,7 +169,7 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -188,6 +183,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

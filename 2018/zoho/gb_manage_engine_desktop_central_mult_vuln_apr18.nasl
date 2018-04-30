@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_mult_vuln_apr18.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: gb_manage_engine_desktop_central_mult_vuln_apr18.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # ZOHO ManageEngine Desktop Central Multiple Vulnerabilities-Apr18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813213");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9643 $");
   script_cve_id("CVE-2018-5337", "CVE-2018-5338", "CVE-2018-5339", "CVE-2018-5341");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 15:26:06 +0530 (Thu, 19 Apr 2018)");
   script_name("ZOHO ManageEngine Desktop Central Multiple Vulnerabilities-Apr18");
 

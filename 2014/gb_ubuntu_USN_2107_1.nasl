@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2107_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2107_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for linux USN-2107-1
 #
@@ -29,15 +29,17 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841723");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-02-20 15:20:32 +0530 (Thu, 20 Feb 2014)");
   script_cve_id("CVE-2013-6383", "CVE-2013-7263", "CVE-2013-7264", "CVE-2013-7265", "CVE-2013-7281");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for linux USN-2107-1");
 
-  tag_insight = "A flaw was discovered in the Linux kernel's compat ioctls for Adaptec
+
+  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
+  script_tag(name : "insight" , value : "A flaw was discovered in the Linux kernel's compat ioctls for Adaptec
 AACRAID scsi raid devices. An unprivileged local user could send
 administrative commands to these devices potentially compromising the data
 stored on the device. (CVE-2013-6383)
@@ -58,16 +60,8 @@ information from kernel stack memory. (CVE-2013-7265)
 mpb reported an information leak in the Low-Rate Wireless Personal Area
 Networks support (IEEE 802.15.4) in the Linux kernel. A local user could
 exploit this flaw to obtain sensitive information from kernel stack memory.
-(CVE-2013-7281)";
-
-  tag_affected = "linux on Ubuntu 10.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+(CVE-2013-7281)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2107-1");
@@ -77,7 +71,7 @@ exploit this flaw to obtain sensitive information from kernel stack memory.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
   exit(0);
 }
 
@@ -178,6 +172,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

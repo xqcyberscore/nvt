@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1042_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1042_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for php5 vulnerabilities USN-1042-1
 #
@@ -25,62 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that an integer overflow in the XML UTF-8 decoding
-  code could allow an attacker to bypass cross-site scripting (XSS)
-  protections. This issue only affected Ubuntu 6.06 LTS, Ubuntu 8.04 LTS,
-  and Ubuntu 9.10. (CVE-2009-5016)
-
-  It was discovered that the XML UTF-8 decoding code did not properly
-  handle non-shortest form UTF-8 encoding and ill-formed subsequences
-  in UTF-8 data, which could allow an attacker to bypass cross-site
-  scripting (XSS) protections. (CVE-2010-3870)
-  
-  It was discovered that attackers might be able to bypass open_basedir()
-  restrictions by passing a specially crafted filename. (CVE-2010-3436)
-  
-  Maksymilian Arciemowicz discovered that a NULL pointer derefence in the
-  ZIP archive handling code could allow an attacker to cause a denial
-  of service through a specially crafted ZIP archive.  This issue only
-  affected Ubuntu 8.04 LTS, Ubuntu 9.10, Ubuntu 10.04 LTS, and Ubuntu
-  10.10. (CVE-2010-3709)
-  
-  It was discovered that a stack consumption vulnerability in the
-  filter_var() PHP function when in FILTER_VALIDATE_EMAIL mode, could
-  allow a remote attacker to cause a denial of service.  This issue
-  only affected Ubuntu 8.04 LTS, Ubuntu 9.10, Ubuntu 10.04 LTS, and
-  Ubuntu 10.10. (CVE-2010-3710)
-  
-  It was discovered that the mb_strcut function in the Libmbfl
-  library within PHP could allow an attacker to read arbitrary memory
-  within the application process. This issue only affected Ubuntu
-  10.10. (CVE-2010-4156)
-  
-  Maksymilian Arciemowicz discovered that an integer overflow in the
-  NumberFormatter::getSymbol function could allow an attacker to cause
-  a denial of service. This issue only affected Ubuntu 10.04 LTS and
-  Ubuntu 10.10. (CVE-2010-4409)
-  
-  Rick Regan discovered that when handing PHP textual representations
-  of the largest subnormal double-precision floating-point number,
-  the zend_strtod function could go into an infinite loop on 32bit
-  x86 processors, allowing an attacker to cause a denial of service.
-  (CVE-2010-4645)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1042-1";
-tag_affected = "php5 vulnerabilities on Ubuntu 6.06 LTS ,
-  Ubuntu 8.04 LTS ,
-  Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1042-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840564");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -92,11 +44,54 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|6\.06 LTS|10\.04 LTS|8\.04 LTS|10\.10)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1042-1");
+  script_tag(name : "affected" , value : "php5 vulnerabilities on Ubuntu 6.06 LTS ,
+  Ubuntu 8.04 LTS ,
+  Ubuntu 9.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that an integer overflow in the XML UTF-8 decoding
+  code could allow an attacker to bypass cross-site scripting (XSS)
+  protections. This issue only affected Ubuntu 6.06 LTS, Ubuntu 8.04 LTS,
+  and Ubuntu 9.10. (CVE-2009-5016)
+
+  It was discovered that the XML UTF-8 decoding code did not properly
+  handle non-shortest form UTF-8 encoding and ill-formed subsequences
+  in UTF-8 data, which could allow an attacker to bypass cross-site
+  scripting (XSS) protections. (CVE-2010-3870)
+
+  It was discovered that attackers might be able to bypass open_basedir()
+  restrictions by passing a specially crafted filename. (CVE-2010-3436)
+
+  Maksymilian Arciemowicz discovered that a NULL pointer derefence in the
+  ZIP archive handling code could allow an attacker to cause a denial
+  of service through a specially crafted ZIP archive.  This issue only
+  affected Ubuntu 8.04 LTS, Ubuntu 9.10, Ubuntu 10.04 LTS, and Ubuntu
+  10.10. (CVE-2010-3709)
+
+  It was discovered that a stack consumption vulnerability in the
+  filter_var() PHP function when in FILTER_VALIDATE_EMAIL mode, could
+  allow a remote attacker to cause a denial of service.  This issue
+  only affected Ubuntu 8.04 LTS, Ubuntu 9.10, Ubuntu 10.04 LTS, and
+  Ubuntu 10.10. (CVE-2010-3710)
+
+  It was discovered that the mb_strcut function in the Libmbfl
+  library within PHP could allow an attacker to read arbitrary memory
+  within the application process. This issue only affected Ubuntu
+  10.10. (CVE-2010-4156)
+
+  Maksymilian Arciemowicz discovered that an integer overflow in the
+  NumberFormatter::getSymbol function could allow an attacker to cause
+  a denial of service. This issue only affected Ubuntu 10.04 LTS and
+  Ubuntu 10.10. (CVE-2010-4409)
+
+  Rick Regan discovered that when handing PHP textual representations
+  of the largest subnormal double-precision floating-point number,
+  the zend_strtod function could go into an infinite loop on 32bit
+  x86 processors, allowing an attacker to cause a denial of service.
+  (CVE-2010-4645)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -266,7 +261,7 @@ if(release == "UBUNTU9.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -400,7 +395,7 @@ if(release == "UBUNTU6.06 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -564,7 +559,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -710,7 +705,7 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -880,6 +875,6 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

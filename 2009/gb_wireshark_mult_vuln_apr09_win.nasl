@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_apr09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_wireshark_mult_vuln_apr09_win.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark Multiple Unspecified Vulnerability - Apr09 (Windows)
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could result in denial of serivce condition.
-  Impact Level: Application";
-tag_affected = "Wireshark version 0.9.6 to 1.0.6 on Windows";
-tag_insight = "- Error exists while processing PN-DCP packet with format string specifiers
-    in PROFINET/DCP (PN-DCP) dissector.
-  - Error in unknown impact and attack vectors.
-  - Error in Lightweight Directory Access Protocol (LDAP) dissector when
-    processing unknown attack vectors.
-  - Error in Check Point High-Availability Protocol (CPHAP) when processing
-    crafted FWHA_MY_STATE packet.
-  - An error exists while processing malformed Tektronix .rf5 file.";
-tag_solution = "Upgrade to Wireshark 1.0.7
-  http://www.wireshark.org/download.html";
-tag_summary = "This host is installed with Wireshark and is prone to multiple
-  unspecified vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800396");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-20 14:33:23 +0200 (Mon, 20 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,11 +46,21 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_require_keys("Wireshark/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in denial of service condition.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Wireshark version 0.9.6 to 1.0.6 on Windows");
+  script_tag(name : "insight" , value : "- Error exists while processing PN-DCP packet with format string specifiers
+    in PROFINET/DCP (PN-DCP) dissector.
+  - Error in unknown impact and attack vectors.
+  - Error in Lightweight Directory Access Protocol (LDAP) dissector when
+    processing unknown attack vectors.
+  - Error in Check Point High-Availability Protocol (CPHAP) when processing
+    crafted FWHA_MY_STATE packet.
+  - An error exists while processing malformed Tektronix .rf5 file.");
+  script_tag(name : "solution" , value : "Upgrade to Wireshark 1.0.7
+  http://www.wireshark.org/download.html");
+  script_tag(name : "summary" , value : "This host is installed with Wireshark and is prone to multiple
+  unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,7 +74,6 @@ if(!sharkVer){
   exit(0);
 }
 
-# Grep for Wireshark version prior to 1.0.7
 if(version_is_less(version:sharkVer, test_version:"1.0.7")){
   security_message(0);
 }

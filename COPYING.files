@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 27 Apr 2018 08:33:48 +0200
+# Automatically created on:  Mon, 30 Apr 2018 08:45:48 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38563,6 +38563,9 @@
 2018/centos/gb_CESA-2018_0549_firefox_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0549_firefox_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0592_slf4j_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_0647_thunderbird_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_0648_thunderbird_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_0649_libvorbis_centos6.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_lin.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_win.nasl: GPLv2+
 2018/clamav/gb_clamav_xar_n_pdf_files_mult_vuln_lin.nasl: GPLv2+
@@ -38679,6 +38682,10 @@
 2018/debian/deb_4177.nasl: GPLv2+
 2018/debian/deb_4178.nasl: GPLv2+
 2018/debian/deb_4179.nasl: GPLv2+
+2018/debian/deb_4180.nasl: GPLv2+
+2018/debian/deb_4181.nasl: GPLv2+
+2018/debian/deb_4182.nasl: GPLv2+
+2018/debian/deb_4183.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -38960,6 +38967,11 @@
 2018/debian/deb_dla_1359.nasl: GPLv2+
 2018/debian/deb_dla_1360.nasl: GPLv2+
 2018/debian/deb_dla_1361.nasl: GPLv2+
+2018/debian/deb_dla_1363.nasl: GPLv2+
+2018/debian/deb_dla_1364.nasl: GPLv2+
+2018/debian/deb_dla_1365.nasl: GPLv2+
+2018/debian/deb_dla_1366.nasl: GPLv2+
+2018/debian/deb_dla_1367.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39457,6 +39469,7 @@
 2018/fedora/gb_fedora_2018_97bdb9ba32_bind-dyndb-ldap_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_97bdb9ba32_bind_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_97bdb9ba32_dnsperf_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_97c275d576_boost_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_9817f1dafa_mbedtls_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_99f551e4ff_cups_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_9aa8064e12_java-1.8.0-openjdk_fc26.nasl: GPLv2+
@@ -39785,6 +39798,8 @@
 2018/mantisbt/gb_mantisbt_sql_param_sql_inj_vuln_feb18_win.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_lin.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_eol_lin.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_eol_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_ancm_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_multiple_vuln.nasl: GPLv2+
@@ -39960,6 +39975,7 @@
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_win.nasl: GPLv2+
 2018/mybb/gb_mybb_csrf_vuln_feb18.nasl: GPLv2+
+2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
 2018/nghttp2/gb_nghttp2_dos_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_auth_symmetric_passv_peering_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
@@ -40033,6 +40049,7 @@
 2018/opensuse/gb_suse_2018_1049_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_1056_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_1057_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_1093_1.nasl: GPLv2+
 2018/oracle/gb_oracle_db_application_express_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_content_mgmt_component_unspecified_vuln01.nasl: GPLv2+
 2018/oracle/gb_oracle_db_core_rdbms_com_mult_unspecified_vuln.nasl: GPLv2+
@@ -40266,6 +40283,14 @@
 2018/ubuntu/gb_ubuntu_USN_3623_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3625_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3627_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3629_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3630_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3630_2.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3631_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3631_2.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3632_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3633_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3634_1.nasl: GPLv2+
 2018/wampserver/gb_wampserver_csrf_vuln.nasl: GPLv2+
 2018/webmin/gb_usermin_xss_vuln_mar18_lin.nasl: GPLv2+
 2018/webmin/gb_usermin_xss_vuln_mar18_win.nasl: GPLv2+
@@ -57321,6 +57346,11 @@ gsf/2018/rhel/gb_RHSA-2018_1099-01_firefox.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1124-01_python-paramiko.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1188-01_java-1.8.0-openjdk.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1191-01_java-1.8.0-openjdk.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1199-01_patch.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1200-01_patch.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1223-01_librelp.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1224-01_PackageKit.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1225-01_librelp.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+

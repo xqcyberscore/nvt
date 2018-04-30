@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842741");
-  script_version("$Revision: 7955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 05:21:24 +0200 (Tue, 10 May 2016)");
   script_cve_id("CVE-2013-4312", "CVE-2015-7515", "CVE-2015-7566", "CVE-2015-7833",
  		"CVE-2015-8767", "CVE-2015-8812", "CVE-2016-0723", "CVE-2015-1805",
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2967-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "It was discovered that the Linux kernel did
   not properly enforce rlimits for file descriptors sent over UNIX domain sockets.
   A local attacker could use this to cause a denial of service. (CVE-2013-4312)
@@ -90,7 +89,7 @@ if(description)
   sensitive information. (CVE-2016-2069)
 
   Dmitry Vyukov discovered that the Advanced Linux Sound Architecture (ALSA)
-  framework did not verify that a FIFO was attached to a client bef ... 
+  framework did not verify that a FIFO was attached to a client bef ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "linux on Ubuntu 12.04 LTS");
@@ -103,7 +102,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -162,6 +161,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1934_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1934_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1934-1
 #
@@ -29,15 +29,17 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841537");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-08-27 10:02:04 +0530 (Tue, 27 Aug 2013)");
   script_cve_id("CVE-2013-1059", "CVE-2013-2148", "CVE-2013-2851");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1934-1");
 
-  tag_insight = "Chanam Park reported a Null pointer flaw in the Linux kernel's Ceph client.
+
+  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 13.04");
+  script_tag(name : "insight" , value : "Chanam Park reported a Null pointer flaw in the Linux kernel's Ceph client.
 A remote attacker could exploit this flaw to cause a denial of service
 (system crash). (CVE-2013-1059)
 
@@ -47,16 +49,8 @@ information from kernel memory. (CVE-2013-2148)
 
 Kees Cook discovered a format string vulnerability in the Linux kernel's
 disk block layer. A local user with administrator privileges could exploit
-this flaw to gain kernel privileges. (CVE-2013-2851)";
-
-  tag_affected = "linux-ti-omap4 on Ubuntu 13.04";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+this flaw to gain kernel privileges. (CVE-2013-2851)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1934-1");
@@ -66,7 +60,7 @@ this flaw to gain kernel privileges. (CVE-2013-2851)";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU13\.04");
   exit(0);
 }
 
@@ -89,6 +83,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

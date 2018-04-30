@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842990");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-12-10 06:13:45 +0100 (Sat, 10 Dec 2016)");
   script_cve_id("CVE-2016-5204", "CVE-2016-5205", "CVE-2016-5207", "CVE-2016-5208",
  		"CVE-2016-5209", "CVE-2016-5212", "CVE-2016-5215", "CVE-2016-5222",
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-3153-1");
   script_tag(name: "summary", value: "Check the version of oxide-qt");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Multiple vulnerabilities were discovered
   in Chromium. If a user were tricked in to opening a specially crafted website,
   an attacker could potentially exploit these to conduct cross-site scripting
@@ -73,7 +72,7 @@ arbitrary code. (CVE-2016-5221)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|16\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -102,7 +101,7 @@ if(release == "UBUNTU14.04 LTS")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -122,7 +121,7 @@ if(release == "UBUNTU16.10")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -142,6 +141,6 @@ if(release == "UBUNTU16.04 LTS")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842953");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-11-19 05:36:56 +0100 (Sat, 19 Nov 2016)");
   script_cve_id("CVE-2016-5289", "CVE-2016-5290", "CVE-2016-5291", "CVE-2016-5292",
 		"CVE-2016-5296", "CVE-2016-5297", "CVE-2016-9063", "CVE-2016-9064",
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3124-1");
   script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Christian Holler, Andrew McCreight, Dan
   Minor, Tyson Smith, Jon Coppeard, Jan-Ivar Bruaroey, Jesse Ruderman, Markus
   Stange, Olli Pettay, Ehsan Akhgari, Gary Kwong, Tooru Fujisawa, and Randell
@@ -90,7 +89,7 @@ service via application crash, or execute arbitrary code. (CVE-2016-9067,
 CVE-2016-9069)
 
 A heap use-after-free was discovered during web animations in some
-circumstance ... 
+circumstance ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "firefox on Ubuntu 16.04 LTS ,
@@ -106,7 +105,7 @@ circumstance ...
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|16\.04 LTS|16\.10)");
   exit(0);
 }
 
@@ -129,7 +128,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -143,7 +142,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -157,7 +156,7 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -171,6 +170,6 @@ if(release == "UBUNTU16.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

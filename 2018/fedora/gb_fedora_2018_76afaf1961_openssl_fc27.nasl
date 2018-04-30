@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_76afaf1961_openssl_fc27.nasl 9390 2018-04-06 13:21:32Z santu $
+# $Id: gb_fedora_2018_76afaf1961_openssl_fc27.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Fedora Update for openssl FEDORA-2018-76afaf1961
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874318");
-  script_version("$Revision: 9390 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 15:21:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 09:00:33 +0200 (Tue, 03 Apr 2018)");
   script_cve_id("CVE-2018-0733", "CVE-2018-0739");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for openssl FEDORA-2018-76afaf1961");
   script_tag(name: "summary", value: "Check the version of openssl");

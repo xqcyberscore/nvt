@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_protocol_engine_dos_vuln.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: gb_ntp_protocol_engine_dos_vuln.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # NTP 'protocol engine' Denial of Service Vulnerability
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812792");
-  script_version("$Revision: 9296 $");
+  script_version("$Revision: 9657 $");
   script_cve_id("CVE-2018-7185");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 12:09:28 +0530 (Wed, 07 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP 'protocol engine' Denial of Service Vulnerability");
 
   script_tag(name: "summary" , value:"The host is running NTP and is prone to
-  a denial of serivce vulnerability.");
+  a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to a bug that was 
-  inadvertently introduced into the 'protocol engine' that allows a non-authenticated 
+  script_tag(name: "insight" , value:"The flaw exist due to a bug that was
+  inadvertently introduced into the 'protocol engine' that allows a non-authenticated
   zero-origin (reset) packet to reset an authenticated interleaved peer association.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
-  attackers to cause a denial-of-service condition, denying service to legitimate 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause a denial-of-service condition, denying service to legitimate
   users.
 
   Impact Level: Application");

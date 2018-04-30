@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1952_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1952_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1952-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841555");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 11:48:10 +0530 (Tue, 24 Sep 2013)");
   script_cve_id("CVE-2013-1718", "CVE-2013-1720", "CVE-2013-1721", "CVE-2013-1722",
                 "CVE-2013-1724", "CVE-2013-1725", "CVE-2013-1728", "CVE-2013-1730",
@@ -40,7 +40,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for thunderbird USN-1952-1");
 
-  tag_insight = "Multiple memory safety issues were discovered in Thunderbird. If a user
+
+  script_tag(name : "affected" , value : "thunderbird on Ubuntu 13.04 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "Multiple memory safety issues were discovered in Thunderbird. If a user
 were tricked in to opening a specially crafted message with scripting
 enabled, an attacker could possibly exploit these to cause a denial of
 service via application crash, or potentially execute arbitrary code with
@@ -89,20 +93,10 @@ of the user invoking Thunderbird. (CVE-2013-1732)
 Two memory corruption bugs when scrolling were discovered. If a user had
 scripting enabled, an attacker could potentially exploit these to cause a
 denial of service via application crash, or execute arbitrary code with
-the privileges of the user invoking Thunderbird. (CVE-201 ... 
+the privileges of the user invoking Thunderbird. (CVE-201 ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "thunderbird on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1952-1");
@@ -112,7 +106,7 @@ the privileges of the user invoking Thunderbird. (CVE-201 ...
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|12\.10|13\.04)");
   exit(0);
 }
 
@@ -135,7 +129,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -149,7 +143,7 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -163,6 +157,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

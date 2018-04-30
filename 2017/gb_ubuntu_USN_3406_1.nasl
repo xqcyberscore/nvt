@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3406_1.nasl 7026 2017-08-31 06:13:04Z asteins $
+# $Id: gb_ubuntu_USN_3406_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for linux USN-3406-1
 #
@@ -27,37 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843297");
-  script_version("$Revision: 7026 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 08:05:48 +0200 (Tue, 29 Aug 2017)");
-  script_cve_id("CVE-2016-7914", "CVE-2017-7261", "CVE-2017-7273", "CVE-2017-7487", 
-                "CVE-2017-7495", "CVE-2017-7616"); 
+  script_cve_id("CVE-2016-7914", "CVE-2017-7261", "CVE-2017-7273", "CVE-2017-7487",
+                "CVE-2017-7495", "CVE-2017-7616");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3406-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that an out of bounds read 
-  vulnerability existed in the associative array implementation in the Linux 
-  kernel. A local attacker could use this to cause a denial of service (system 
-  crash) or expose sensitive information. (CVE-2016-7914) It was discovered that a 
-  NULL pointer dereference existed in the Direct Rendering Manager (DRM) driver 
-  for VMWare devices in the Linux kernel. A local attacker could use this to cause 
-  a denial of service (system crash). (CVE-2017-7261) It was discovered that the 
-  USB Cypress HID drivers for the Linux kernel did not properly validate reported 
-  information from the device. An attacker with physical access could use this to 
-  expose sensitive information (kernel memory). (CVE-2017-7273) A reference count 
-  bug was discovered in the Linux kernel ipx protocol stack. A local attacker 
-  could exploit this flaw to cause a denial of service or possibly other 
-  unspecified problems. (CVE-2017-7487) Huang Weller discovered that the ext4 
-  filesystem implementation in the Linux kernel mishandled a 
-  needs-flushing-before-commit list. A local attacker could use this to expose 
-  sensitive information. (CVE-2017-7495) It was discovered that an information 
-  leak existed in the set_mempolicy and mbind compat syscalls in the Linux kernel. 
-  A local attacker could use this to expose sensitive information (kernel memory). 
-  (CVE-2017-7616)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that an out of bounds read
+  vulnerability existed in the associative array implementation in the Linux
+  kernel. A local attacker could use this to cause a denial of service (system
+  crash) or expose sensitive information. (CVE-2016-7914) It was discovered that a
+  NULL pointer dereference existed in the Direct Rendering Manager (DRM) driver
+  for VMWare devices in the Linux kernel. A local attacker could use this to cause
+  a denial of service (system crash). (CVE-2017-7261) It was discovered that the
+  USB Cypress HID drivers for the Linux kernel did not properly validate reported
+  information from the device. An attacker with physical access could use this to
+  expose sensitive information (kernel memory). (CVE-2017-7273) A reference count
+  bug was discovered in the Linux kernel ipx protocol stack. A local attacker
+  could exploit this flaw to cause a denial of service or possibly other
+  unspecified problems. (CVE-2017-7487) Huang Weller discovered that the ext4
+  filesystem implementation in the Linux kernel mishandled a
+  needs-flushing-before-commit list. A local attacker could use this to expose
+  sensitive information. (CVE-2017-7495) It was discovered that an information
+  leak existed in the set_mempolicy and mbind compat syscalls in the Linux kernel.
+  A local attacker could use this to expose sensitive information (kernel memory).
+  (CVE-2017-7616)");
   script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -68,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -181,6 +180,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

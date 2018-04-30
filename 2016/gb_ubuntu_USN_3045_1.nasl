@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842844");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:52 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2015-4116", "CVE-2015-8873", "CVE-2015-8876", "CVE-2015-8935",
 		"CVE-2016-5093", "CVE-2016-5094", "CVE-2016-5095", "CVE-2016-5096",
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.0 USN-3045-1");
   script_tag(name: "summary", value: "Check the version of php7.0");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "It was discovered that PHP incorrectly
   handled certain SplMinHeap::compare operations. A remote attacker could use
   this issue to cause PHP to crash, resulting in a denial of service, or possibly
@@ -90,7 +89,7 @@ possibly expose sensitive information. This issue only affected Ubuntu
 It was discovered that PHP would not protect applications from contents of
 the HTTP_PROXY environment variable when based on the contents of the Proxy
 header from HTTP requests. A remote attacker could possibly use this issue
-in combination with scripts that honour the HT ... 
+in combination with scripts that honour the HT ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "php7.0 on Ubuntu 16.04 LTS ,
@@ -105,7 +104,7 @@ in combination with scripts that honour the HT ...
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
@@ -146,7 +145,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -178,7 +177,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -210,6 +209,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

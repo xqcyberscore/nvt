@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1836_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_ubuntu_USN_1836_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1836-1
 #
@@ -25,28 +25,12 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "An flaw was discovered in the Linux kernel's perf_events interface. A local
-  user could exploit this flaw to escalate privileges on the system.
-  (CVE-2013-2094)
-
-  A buffer overflow vulnerability was discovered in the Broadcom tg3 ethernet
-  driver for the Linux kernel. A local user could exploit this flaw to cause
-  a denial of service (crash the system) or potentially escalate privileges
-  on the system. (CVE-2013-1929)
-
-  A flaw was discovered in the Linux kernel's ftrace subsystem interface. A
-  local user could exploit this flaw to cause a denial of service (system
-  crash). (CVE-2013-3301)";
-
-
-tag_affected = "linux-ti-omap4 on Ubuntu 12.10";
-tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841437");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 11:55:32 +0530 (Mon, 27 May 2013)");
   script_cve_id("CVE-2013-2094", "CVE-2013-1929", "CVE-2013-3301");
   script_tag(name:"cvss_base", value:"7.2");
@@ -60,10 +44,21 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.10");
+  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 12.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "An flaw was discovered in the Linux kernel's perf_events interface. A local
+  user could exploit this flaw to escalate privileges on the system.
+  (CVE-2013-2094)
+
+  A buffer overflow vulnerability was discovered in the Broadcom tg3 ethernet
+  driver for the Linux kernel. A local user could exploit this flaw to cause
+  a denial of service (crash the system) or potentially escalate privileges
+  on the system. (CVE-2013-1929)
+
+  A flaw was discovered in the Linux kernel's ftrace subsystem interface. A
+  local user could exploit this flaw to cause a denial of service (system
+  crash). (CVE-2013-3301)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -88,6 +83,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

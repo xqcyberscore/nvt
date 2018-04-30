@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1256_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1256_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-natty USN-1256-1
 #
@@ -25,7 +25,41 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that the /proc filesystem did not correctly handle
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1256-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840802");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-11 09:55:49 +0530 (Fri, 11 Nov 2011)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1256-1");
+  script_cve_id("CVE-2011-1020", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080",
+                "CVE-2011-1093", "CVE-2011-1160", "CVE-2011-1180", "CVE-2011-1478",
+                "CVE-2010-4250", "CVE-2011-1479", "CVE-2011-1493", "CVE-2011-1573",
+                "CVE-2011-1576", "CVE-2011-1577", "CVE-2011-1581", "CVE-2011-1585",
+                "CVE-2011-1767", "CVE-2011-1768", "CVE-2011-1771", "CVE-2011-1776",
+                "CVE-2011-1833", "CVE-2011-2183", "CVE-2011-2213", "CVE-2011-2479",
+                "CVE-2011-2484", "CVE-2011-2491", "CVE-2011-2492", "CVE-2011-2493",
+                "CVE-2011-2494", "CVE-2011-2495", "CVE-2011-2496", "CVE-2011-2497",
+                "CVE-2011-2517", "CVE-2011-2525", "CVE-2011-2689", "CVE-2011-2695",
+                "CVE-2011-2699", "CVE-2011-2700", "CVE-2011-2723", "CVE-2011-2905",
+                "CVE-2011-2909", "CVE-2011-2918", "CVE-2011-2928", "CVE-2011-2942",
+                "CVE-2011-3188", "CVE-2011-3191", "CVE-2011-3209", "CVE-2011-3363");
+  script_name("Ubuntu Update for linux-lts-backport-natty USN-1256-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1256-1");
+  script_tag(name : "affected" , value : "linux-lts-backport-natty on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that the /proc filesystem did not correctly handle
   permission changes when programs executed. A local attacker could hold open
   files to examine details about programs running with higher privileges,
   potentially increasing the chances of exploiting additional
@@ -77,46 +111,7 @@ tag_insight = "It was discovered that the /proc filesystem did not correctly han
   It was discovered that the Stream Control Transmission Protocol (SCTP)
   implementation incorrectly calculated length ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1256-1";
-tag_affected = "linux-lts-backport-natty on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1256-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840802");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-11 09:55:49 +0530 (Fri, 11 Nov 2011)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1256-1");
-  script_cve_id("CVE-2011-1020", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080",
-                "CVE-2011-1093", "CVE-2011-1160", "CVE-2011-1180", "CVE-2011-1478",
-                "CVE-2010-4250", "CVE-2011-1479", "CVE-2011-1493", "CVE-2011-1573",
-                "CVE-2011-1576", "CVE-2011-1577", "CVE-2011-1581", "CVE-2011-1585",
-                "CVE-2011-1767", "CVE-2011-1768", "CVE-2011-1771", "CVE-2011-1776",
-                "CVE-2011-1833", "CVE-2011-2183", "CVE-2011-2213", "CVE-2011-2479",
-                "CVE-2011-2484", "CVE-2011-2491", "CVE-2011-2492", "CVE-2011-2493",
-                "CVE-2011-2494", "CVE-2011-2495", "CVE-2011-2496", "CVE-2011-2497",
-                "CVE-2011-2517", "CVE-2011-2525", "CVE-2011-2689", "CVE-2011-2695",
-                "CVE-2011-2699", "CVE-2011-2700", "CVE-2011-2723", "CVE-2011-2905",
-                "CVE-2011-2909", "CVE-2011-2918", "CVE-2011-2928", "CVE-2011-2942",
-                "CVE-2011-3188", "CVE-2011-3191", "CVE-2011-3209", "CVE-2011-3363");
-  script_name("Ubuntu Update for linux-lts-backport-natty USN-1256-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -160,6 +155,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

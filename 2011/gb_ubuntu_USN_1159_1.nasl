@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1159_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1159_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux-mvl-dove USN-1159-1
 #
@@ -25,71 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Brad Spengler discovered that the kernel did not correctly account for
-  userspace memory allocations during exec() calls. A local attacker could
-  exploit this to consume all system memory, leading to a denial of service.
-  (CVE-2010-4243)
-
-  Alexander Duyck discovered that the Intel Gigabit Ethernet driver did not
-  correctly handle certain configurations. If such a device was configured
-  without VLANs, a remote attacker could crash the system, leading to a
-  denial of service. (CVE-2010-4263)
-  
-  Nelson Elhage discovered that Econet did not correctly handle AUN packets
-  over UDP. A local attacker could send specially crafted traffic to crash
-  the system, leading to a denial of service. (CVE-2010-4342)
-  
-  Dan Rosenberg discovered that IRDA did not correctly check the size of
-  buffers. On non-x86 systems, a local attacker could exploit this to read
-  kernel heap memory, leading to a loss of privacy. (CVE-2010-4529)
-  
-  Dan Rosenburg discovered that the CAN subsystem leaked kernel addresses
-  into the /proc filesystem. A local attacker could use this to increase the
-  chances of a successful memory corruption exploit. (CVE-2010-4565)
-  
-  Goldwyn Rodrigues discovered that the OCFS2 filesystem did not correctly
-  clear memory when writing certain file holes. A local attacker could
-  exploit this to read uninitialized data from the disk, leading to a loss of
-  privacy. (CVE-2011-0463)
-  
-  Jens Kuehnel discovered that the InfiniBand driver contained a race
-  condition. On systems using InfiniBand, a local attacker could send
-  specially crafted requests to crash the system, leading to a denial of
-  service. (CVE-2011-0695)
-  
-  Dan Rosenberg discovered that XFS did not correctly initialize memory. A
-  local attacker could make crafted ioctl calls to leak portions of kernel
-  stack memory, leading to a loss of privacy. (CVE-2011-0711)
-  
-  Kees Cook reported that /proc/pid/stat did not correctly filter certain
-  memory locations. A local attacker could determine the memory layout of
-  processes in an attempt to increase the chances of a successful memory
-  corruption exploit. (CVE-2011-0726)
-  
-  Matthiew Herrb discovered that the drm modeset interface did not correctly
-  handle a signed comparison. A local attacker could exploit this to crash
-  the system or possibly gain root privileges. (CVE-2011-1013)
-  
-  Marek Ol&#353;&#225;k discovered that the Radeon GPU drivers did not correctly
-  validate certain registers. On systems with specific hardware, a local
-  attacker could exploit this to write to arbitrary video memory.
-  (CVE-2011-1016)
-  
-  Timo Warns discovered that the L ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1159-1";
-tag_affected = "linux-mvl-dove on Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1159-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840700");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-18 15:23:56 +0200 (Mon, 18 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -101,11 +44,63 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.10");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1159-1");
+  script_tag(name : "affected" , value : "linux-mvl-dove on Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Brad Spengler discovered that the kernel did not correctly account for
+  userspace memory allocations during exec() calls. A local attacker could
+  exploit this to consume all system memory, leading to a denial of service.
+  (CVE-2010-4243)
+
+  Alexander Duyck discovered that the Intel Gigabit Ethernet driver did not
+  correctly handle certain configurations. If such a device was configured
+  without VLANs, a remote attacker could crash the system, leading to a
+  denial of service. (CVE-2010-4263)
+
+  Nelson Elhage discovered that Econet did not correctly handle AUN packets
+  over UDP. A local attacker could send specially crafted traffic to crash
+  the system, leading to a denial of service. (CVE-2010-4342)
+
+  Dan Rosenberg discovered that IRDA did not correctly check the size of
+  buffers. On non-x86 systems, a local attacker could exploit this to read
+  kernel heap memory, leading to a loss of privacy. (CVE-2010-4529)
+
+  Dan Rosenburg discovered that the CAN subsystem leaked kernel addresses
+  into the /proc filesystem. A local attacker could use this to increase the
+  chances of a successful memory corruption exploit. (CVE-2010-4565)
+
+  Goldwyn Rodrigues discovered that the OCFS2 filesystem did not correctly
+  clear memory when writing certain file holes. A local attacker could
+  exploit this to read uninitialized data from the disk, leading to a loss of
+  privacy. (CVE-2011-0463)
+
+  Jens Kuehnel discovered that the InfiniBand driver contained a race
+  condition. On systems using InfiniBand, a local attacker could send
+  specially crafted requests to crash the system, leading to a denial of
+  service. (CVE-2011-0695)
+
+  Dan Rosenberg discovered that XFS did not correctly initialize memory. A
+  local attacker could make crafted ioctl calls to leak portions of kernel
+  stack memory, leading to a loss of privacy. (CVE-2011-0711)
+
+  Kees Cook reported that /proc/pid/stat did not correctly filter certain
+  memory locations. A local attacker could determine the memory layout of
+  processes in an attempt to increase the chances of a successful memory
+  corruption exploit. (CVE-2011-0726)
+
+  Matthiew Herrb discovered that the drm modeset interface did not correctly
+  handle a signed comparison. A local attacker could exploit this to crash
+  the system or possibly gain root privileges. (CVE-2011-1013)
+
+  Marek Ol&#353;&#225;k discovered that the Radeon GPU drivers did not correctly
+  validate certain registers. On systems with specific hardware, a local
+  attacker could exploit this to write to arbitrary video memory.
+  (CVE-2011-1016)
+
+  Timo Warns discovered that the L ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -131,6 +126,6 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

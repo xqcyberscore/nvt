@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2330_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2330_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-2330-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841966");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-12 05:57:44 +0200 (Fri, 12 Sep 2014)");
   script_cve_id("CVE-2014-1553", "CVE-2014-1562", "CVE-2014-1563", "CVE-2014-1564",
                 "CVE-2014-1565", "CVE-2014-1567");
@@ -78,7 +78,7 @@ the privileges of the user invoking Thunderbird. (CVE-2014-1567)");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS)");
   exit(0);
 }
 
@@ -101,7 +101,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -115,6 +115,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

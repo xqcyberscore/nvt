@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3486_1.nasl 8247 2017-12-26 13:32:16Z cfischer $
+# $Id: gb_ubuntu_USN_3486_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for samba USN-3486-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843372");
-  script_version("$Revision: 8247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 07:31:49 +0100 (Wed, 22 Nov 2017)");
   script_cve_id("CVE-2017-14746", "CVE-2017-15275");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,14 +36,13 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for samba USN-3486-1");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Yihan Lian and Zhibin Hu discovered that 
-  Samba incorrectly handled memory when processing certain SMB1 requests. A remote 
-  attacker could possibly use this issue to execute arbitrary code. 
-  (CVE-2017-14746) Volker Lendecke discovered that Samba incorrectly cleared 
-  memory when returning data to a client. A remote attacker could possibly use 
-  this issue to obtain sensitive information. (CVE-2017-15275)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Yihan Lian and Zhibin Hu discovered that
+  Samba incorrectly handled memory when processing certain SMB1 requests. A remote
+  attacker could possibly use this issue to execute arbitrary code.
+  (CVE-2017-14746) Volker Lendecke discovered that Samba incorrectly cleared
+  memory when returning data to a client. A remote attacker could possibly use
+  this issue to obtain sensitive information. (CVE-2017-15275)");
   script_tag(name: "affected", value: "samba on Ubuntu 17.10 ,
   Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
@@ -57,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -80,7 +79,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -94,7 +93,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -108,7 +107,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -122,6 +121,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

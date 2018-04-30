@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1704_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1704_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-1704-1
 #
@@ -25,39 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Brad Spengler discovered a flaw in the Linux kernel's uname system call. An
-  unprivileged user could exploit this flaw to read kernel stack memory.
-  (CVE-2012-0957)
-
-  Jon Howell reported a flaw in the Linux kernel's KVM (Kernel-based virtual
-  machine) subsystem's handling of the XSAVE feature. On hosts, using qemu
-  userspace, without the XSAVE feature an unprivileged local attacker could
-  exploit this flaw to crash the system. (CVE-2012-4461)
-  
-  Dmitry Monakhov reported a race condition flaw the Linux ext4 filesystem
-  that can expose stale data. An unprivileged user could exploit this flaw to
-  cause an information leak. (CVE-2012-4508)
-  
-  A flaw was discovered in the Linux kernel's handling of script execution
-  when module loading is enabled. A local attacker could exploit this flaw to
-  cause a leak of kernel stack contents. (CVE-2012-4530)
-  
-  Rodrigo Freire discovered a flaw in the Linux kernel's TCP illinois
-  congestion control algorithm. A local attacker could use this to cause a
-  denial of service. (CVE-2012-4565)
-  
-  A flaw was discovered in the Linux kernel's handling of new hot-plugged
-  memory. An unprivileged local user could exploit this flaw to cause a
-  denial of service by crashing the system. (CVE-2012-5517)
-  
-  Florian Weimer discovered that hypervkvpd, which is distributed in the
-  Linux kernel, was not correctly validating source addresses of netlink
-  packets. An untrusted local user can cause a denial of service by causing
-  hypervkvpd to exit. (CVE-2012-5532)";
-
-
-tag_affected = "linux-lts-quantal on Ubuntu 12.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -65,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1704-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841292");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:37:29 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-4461", "CVE-2012-4508", "CVE-2012-4530",
                 "CVE-2012-4565", "CVE-2012-5517", "CVE-2012-5532");
@@ -80,10 +47,38 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
+  script_tag(name : "affected" , value : "linux-lts-quantal on Ubuntu 12.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Brad Spengler discovered a flaw in the Linux kernel's uname system call. An
+  unprivileged user could exploit this flaw to read kernel stack memory.
+  (CVE-2012-0957)
+
+  Jon Howell reported a flaw in the Linux kernel's KVM (Kernel-based virtual
+  machine) subsystem's handling of the XSAVE feature. On hosts, using qemu
+  userspace, without the XSAVE feature an unprivileged local attacker could
+  exploit this flaw to crash the system. (CVE-2012-4461)
+
+  Dmitry Monakhov reported a race condition flaw the Linux ext4 filesystem
+  that can expose stale data. An unprivileged user could exploit this flaw to
+  cause an information leak. (CVE-2012-4508)
+
+  A flaw was discovered in the Linux kernel's handling of script execution
+  when module loading is enabled. A local attacker could exploit this flaw to
+  cause a leak of kernel stack contents. (CVE-2012-4530)
+
+  Rodrigo Freire discovered a flaw in the Linux kernel's TCP illinois
+  congestion control algorithm. A local attacker could use this to cause a
+  denial of service. (CVE-2012-4565)
+
+  A flaw was discovered in the Linux kernel's handling of new hot-plugged
+  memory. An unprivileged local user could exploit this flaw to cause a
+  denial of service by crashing the system. (CVE-2012-5517)
+
+  Florian Weimer discovered that hypervkvpd, which is distributed in the
+  Linux kernel, was not correctly validating source addresses of netlink
+  packets. An untrusted local user can cause a denial of service by causing
+  hypervkvpd to exit. (CVE-2012-5532)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -108,6 +103,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

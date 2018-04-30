@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 9485 2018-04-15 09:09:06Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 9672 2018-04-29 08:24:10Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 9485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-15 11:09:06 +0200 (Sun, 15 Apr 2018) $");
+  script_version("$Revision: 9672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-29 10:24:10 +0200 (Sun, 29 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -233,6 +233,12 @@ if( "ubuntu" >< tolower( banner ) )
   if( "SSH-2.0-OpenSSH_7.5p1 Ubuntu-10" >< banner )
   {
     register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

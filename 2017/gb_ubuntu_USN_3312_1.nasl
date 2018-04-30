@@ -26,56 +26,55 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843200");
-  script_version("$Revision: 6648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-06-08 06:04:01 +0200 (Thu, 08 Jun 2017)");
-  script_cve_id("CVE-2016-7917", "CVE-2016-8632", "CVE-2016-9604", "CVE-2017-0605", 
+  script_cve_id("CVE-2016-7917", "CVE-2016-8632", "CVE-2016-9604", "CVE-2017-0605",
                 "CVE-2017-2596", "CVE-2017-2671", "CVE-2017-6001", "CVE-2017-7472",
                 "CVE-2017-7618", "CVE-2016-9083", "CVE-2016-9084", "CVE-2016-7913",
-                "CVE-2017-7645", "CVE-2017-7889", "CVE-2017-7895"); 
+                "CVE-2017-7645", "CVE-2017-7889", "CVE-2017-7895");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3312-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that the netfilter netlink 
-  implementation in the Linux kernel did not properly validate batch messages. A 
-  local attacker with the CAP_NET_ADMIN capability could use this to expose 
-  sensitive information or cause a denial of service. (CVE-2016-7917) Qian Zhang 
-  discovered a heap-based buffer overflow in the tipc_msg_build() function in the 
-  Linux kernel. A local attacker could use to cause a denial of service (system 
-  crash) or possibly execute arbitrary code with administrative privileges. 
-  (CVE-2016-8632) It was discovered that the keyring implementation in the Linux 
-  kernel in some situations did not prevent special internal keyrings from being 
-  joined by userspace keyrings. A privileged local attacker could use this to 
-  bypass module verification. (CVE-2016-9604) It was discovered that a buffer 
-  overflow existed in the trace subsystem in the Linux kernel. A privileged local 
-  attacker could use this to execute arbitrary code. (CVE-2017-0605) Dmitry Vyukov 
-  discovered that KVM implementation in the Linux kernel improperly emulated the 
-  VMXON instruction. A local attacker in a guest OS could use this to cause a 
-  denial of service (memory consumption) in the host OS. (CVE-2017-2596) Daniel 
-  Jiang discovered that a race condition existed in the ipv4 ping socket 
-  implementation in the Linux kernel. A local privileged attacker could use this 
-  to cause a denial of service (system crash). (CVE-2017-2671) Di Shen discovered 
-  that a race condition existed in the perf subsystem of the Linux kernel. A local 
-  attacker could use this to cause a denial of service or possibly gain 
-  administrative privileges. (CVE-2017-6001) Eric Biggers discovered a memory leak 
-  in the keyring implementation in the Linux kernel. A local attacker could use 
-  this to cause a denial of service (memory consumption). (CVE-2017-7472) Sabrina 
-  Dubroca discovered that the asynchronous cryptographic hash (ahash) 
-  implementation in the Linux kernel did not properly handle a full request queue. 
-  A local attacker could use this to cause a denial of service (infinite 
-  recursion). (CVE-2017-7618) Tuomas Haanp&#228 &#228 and Ari Kauppi discovered 
-  that the NFSv2 and NFSv3 server implementations in the Linux kernel did not 
-  properly handle certain long RPC replies. A remote attacker could use this to 
-  cause a denial of service (system crash). (CVE-2017-7645) Tommi Rantala and Brad 
-  Spengler discovered that the memory manager in the Linux kernel did not properly 
-  enforce the CONFIG_STRICT_DEVMEM protection mechanism. A local attacker with 
-  access to /dev/mem could use this to expose sensitive information or possibly 
-  execute arbitrary code. ... Description truncated, for more information please 
-  check the Reference URL"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that the netfilter netlink
+  implementation in the Linux kernel did not properly validate batch messages. A
+  local attacker with the CAP_NET_ADMIN capability could use this to expose
+  sensitive information or cause a denial of service. (CVE-2016-7917) Qian Zhang
+  discovered a heap-based buffer overflow in the tipc_msg_build() function in the
+  Linux kernel. A local attacker could use to cause a denial of service (system
+  crash) or possibly execute arbitrary code with administrative privileges.
+  (CVE-2016-8632) It was discovered that the keyring implementation in the Linux
+  kernel in some situations did not prevent special internal keyrings from being
+  joined by userspace keyrings. A privileged local attacker could use this to
+  bypass module verification. (CVE-2016-9604) It was discovered that a buffer
+  overflow existed in the trace subsystem in the Linux kernel. A privileged local
+  attacker could use this to execute arbitrary code. (CVE-2017-0605) Dmitry Vyukov
+  discovered that KVM implementation in the Linux kernel improperly emulated the
+  VMXON instruction. A local attacker in a guest OS could use this to cause a
+  denial of service (memory consumption) in the host OS. (CVE-2017-2596) Daniel
+  Jiang discovered that a race condition existed in the ipv4 ping socket
+  implementation in the Linux kernel. A local privileged attacker could use this
+  to cause a denial of service (system crash). (CVE-2017-2671) Di Shen discovered
+  that a race condition existed in the perf subsystem of the Linux kernel. A local
+  attacker could use this to cause a denial of service or possibly gain
+  administrative privileges. (CVE-2017-6001) Eric Biggers discovered a memory leak
+  in the keyring implementation in the Linux kernel. A local attacker could use
+  this to cause a denial of service (memory consumption). (CVE-2017-7472) Sabrina
+  Dubroca discovered that the asynchronous cryptographic hash (ahash)
+  implementation in the Linux kernel did not properly handle a full request queue.
+  A local attacker could use this to cause a denial of service (infinite
+  recursion). (CVE-2017-7618) Tuomas Haanp&#228 &#228 and Ari Kauppi discovered
+  that the NFSv2 and NFSv3 server implementations in the Linux kernel did not
+  properly handle certain long RPC replies. A remote attacker could use this to
+  cause a denial of service (system crash). (CVE-2017-7645) Tommi Rantala and Brad
+  Spengler discovered that the memory manager in the Linux kernel did not properly
+  enforce the CONFIG_STRICT_DEVMEM protection mechanism. A local attacker with
+  access to /dev/mem could use this to expose sensitive information or possibly
+  execute arbitrary code. ... Description truncated, for more information please
+  check the Reference URL");
   script_tag(name: "affected", value: "linux on Ubuntu 16.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -86,7 +85,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
@@ -235,6 +234,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

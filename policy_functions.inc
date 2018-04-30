@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 9613 2018-04-25 15:09:56Z emoss $
+# $Id: policy_functions.inc 9659 2018-04-27 11:55:11Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -37,15 +37,25 @@ function policy_logging(text)
   }
 }
 
-function policy_set_kb(oid,val){
-  local_var oid,val;
-  oid = '1.3.6.1.4.1.25623.1.0.' + oid;
+function policy_set_kb(val){
+  local_var val;
+  oid = get_script_oid();
   # save as string, because value can be "0", which would lead to not set the kb_entry
   set_kb_item(name:oid, value:string(val));
 }
 
-function rsop_securitysettingsboolean(select,keyname,oid){
-  local_var select,keyname,oid;
+function policy_logging_registry(type,key,item,value){
+	local_var type,key,item,value;
+	if(value == 'none'){
+			policy_logging(text:'Unable to detect registry value ' + type + '\\' + key + '!' + item + '.');
+		}else{
+			policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
+		}
+}
+
+function rsop_securitysettingsboolean(select,keyname){
+	# rsop only delivers results for domain admins
+  local_var select,keyname;
 
   host = get_host_ip();
   usrname = kb_smb_login();
@@ -56,7 +66,7 @@ function rsop_securitysettingsboolean(select,keyname,oid){
   handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
     if(!handle){
     policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(oid:oid,val:'error');
+    policy_set_kb(val:'error');
     wmi_close(wmi_handle:handle);
     exit(0);
   }
@@ -73,8 +83,9 @@ function rsop_securitysettingsboolean(select,keyname,oid){
   return(string(returnValue));
 }
 
-function rsop_securitysettingsnumeric(select,keyname,oid){
-  local_var select,keyname,oid;
+function rsop_securitysettingsnumeric(select,keyname){
+	# rsop only delivers results for domain admins
+  local_var select,keyname;
 
   host = get_host_ip();
   usrname = kb_smb_login();
@@ -85,7 +96,7 @@ function rsop_securitysettingsnumeric(select,keyname,oid){
   handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
     if(!handle){
     policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(oid:oid,val:'error');
+    policy_set_kb(val:'error');
     wmi_close(wmi_handle:handle);
     exit(0);
   }

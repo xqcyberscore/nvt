@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2226_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2226_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for linux USN-2226-1
 #
@@ -29,15 +29,17 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841835");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 15:35:18 +0530 (Mon, 02 Jun 2014)");
   script_cve_id("CVE-2014-1738", "CVE-2014-1737", "CVE-2014-0077", "CVE-2014-2851");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for linux USN-2226-1");
 
-  tag_insight = "Matthew Daley reported an information leak in the floppy disk
+
+  script_tag(name : "affected" , value : "linux on Ubuntu 14.04 LTS");
+  script_tag(name : "insight" , value : "Matthew Daley reported an information leak in the floppy disk
 driver of the Linux kernel. An unprivileged local user could exploit this flaw
 to obtain potentially sensitive information from kernel memory. (CVE-2014-1738)
 
@@ -54,16 +56,8 @@ possibly gain privilege on the host OS. (CVE-2014-0077)
 A flaw was discovered in the Linux kernel's ping sockets. An unprivileged
 local user could exploit this flaw to cause a denial of service (system
 crash) or possibly gain privileges via a crafted application.
-(CVE-2014-2851)";
-
-  tag_affected = "linux on Ubuntu 14.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+(CVE-2014-2851)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2226-1");
@@ -73,7 +67,7 @@ crash) or possibly gain privileges via a crafted application.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -138,6 +132,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

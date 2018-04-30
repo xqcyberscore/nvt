@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843132");
-  script_version("$Revision: 6648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 06:43:11 +0200 (Fri, 21 Apr 2017)");
   script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-10155", "CVE-2016-7907",
                 "CVE-2016-8667", "CVE-2016-8669", "CVE-2016-9381", "CVE-2016-9602",
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3261-1");
   script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Zhenhao Hong discovered that QEMU
 incorrectly handled the Virtio GPU device. An attacker inside the guest could use
 this issue to cause QEMU to crash, resulting in a denial of service. This issue only
@@ -92,7 +91,7 @@ Controller. A privileged attacker inside the guest could use this issue to
 cause QEMU to crash, resulting in a denial of service. (CVE-2016-9776)
 
 Li Qiang discovered that QEMU incorrectly handled the Virtio GPU device. An
-attacker inside the guest could use this iss ... 
+attacker inside the guest could use this iss ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "qemu on Ubuntu 16.10 ,
@@ -107,7 +106,7 @@ attacker inside the guest could use this iss ...
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|16\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -172,7 +171,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -234,7 +233,7 @@ if(release == "UBUNTU16.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -296,6 +295,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

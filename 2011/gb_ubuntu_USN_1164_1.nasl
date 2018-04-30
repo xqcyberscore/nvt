@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1164_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1164_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux-fsl-imx51 USN-1164-1
 #
@@ -25,71 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Thomas Pollet discovered that the RDS network protocol did not check
-  certain iovec buffers. A local attacker could exploit this to crash the
-  system or possibly execute arbitrary code as the root user. (CVE-2010-3865)
-
-  Dan Rosenberg discovered that the CAN protocol on 64bit systems did not
-  correctly calculate the size of certain buffers. A local attacker could
-  exploit this to crash the system or possibly execute arbitrary code as the
-  root user. (CVE-2010-3874)
-  
-  Vasiliy Kulikov discovered that the Linux kernel X.25 implementation did
-  not correctly clear kernel memory. A local attacker could exploit this to
-  read kernel stack memory, leading to a loss of privacy. (CVE-2010-3875)
-  
-  Vasiliy Kulikov discovered that the Linux kernel sockets implementation did
-  not properly initialize certain structures. A local attacker could exploit
-  this to read kernel stack memory, leading to a loss of privacy.
-  (CVE-2010-3876)
-  
-  Vasiliy Kulikov discovered that the TIPC interface did not correctly
-  initialize certain structures. A local attacker could exploit this to read
-  kernel stack memory, leading to a loss of privacy. (CVE-2010-3877)
-  
-  Nelson Elhage discovered that the Linux kernel IPv4 implementation did not
-  properly audit certain bytecodes in netlink messages. A local attacker
-  could exploit this to cause the kernel to hang, leading to a denial of
-  service. (CVE-2010-3880)
-  
-  Dan Rosenberg discovered that the RME Hammerfall DSP audio interface driver
-  did not correctly clear kernel memory. A local attacker could exploit this
-  to read kernel stack memory, leading to a loss of privacy. (CVE-2010-4080,
-  CVE-2010-4081)
-  
-  Dan Rosenberg discovered that the VIA video driver did not correctly clear
-  kernel memory. A local attacker could exploit this to read kernel stack
-  memory, leading to a loss of privacy. (CVE-2010-4082)
-  
-  Dan Rosenberg discovered that the semctl syscall did not correctly clear
-  kernel memory. A local attacker could exploit this to read kernel stack
-  memory, leading to a loss of privacy. (CVE-2010-4083)
-  
-  James Bottomley discovered that the ICP vortex storage array controller
-  driver did not validate certain sizes. A local attacker on a 64bit system
-  could exploit this to crash the kernel, leading to a denial of service.
-  (CVE-2010-4157)
-  
-  Dan Rosenberg discovered multiple flaws in the X.25 facilities parsing. If
-  a system was using X.25, a remote attacker could exploit this to crash the
-  system, leading to a denial of service. (CVE-2010-4164)
-  
-  It was discovered that multithreaded exec did not handle CPU timers
-  c ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1164-1";
-tag_affected = "linux-fsl-imx51 on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1164-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840693");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-07-08 16:31:28 +0200 (Fri, 08 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -101,11 +44,63 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1164-1");
+  script_tag(name : "affected" , value : "linux-fsl-imx51 on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Thomas Pollet discovered that the RDS network protocol did not check
+  certain iovec buffers. A local attacker could exploit this to crash the
+  system or possibly execute arbitrary code as the root user. (CVE-2010-3865)
+
+  Dan Rosenberg discovered that the CAN protocol on 64bit systems did not
+  correctly calculate the size of certain buffers. A local attacker could
+  exploit this to crash the system or possibly execute arbitrary code as the
+  root user. (CVE-2010-3874)
+
+  Vasiliy Kulikov discovered that the Linux kernel X.25 implementation did
+  not correctly clear kernel memory. A local attacker could exploit this to
+  read kernel stack memory, leading to a loss of privacy. (CVE-2010-3875)
+
+  Vasiliy Kulikov discovered that the Linux kernel sockets implementation did
+  not properly initialize certain structures. A local attacker could exploit
+  this to read kernel stack memory, leading to a loss of privacy.
+  (CVE-2010-3876)
+
+  Vasiliy Kulikov discovered that the TIPC interface did not correctly
+  initialize certain structures. A local attacker could exploit this to read
+  kernel stack memory, leading to a loss of privacy. (CVE-2010-3877)
+
+  Nelson Elhage discovered that the Linux kernel IPv4 implementation did not
+  properly audit certain bytecodes in netlink messages. A local attacker
+  could exploit this to cause the kernel to hang, leading to a denial of
+  service. (CVE-2010-3880)
+
+  Dan Rosenberg discovered that the RME Hammerfall DSP audio interface driver
+  did not correctly clear kernel memory. A local attacker could exploit this
+  to read kernel stack memory, leading to a loss of privacy. (CVE-2010-4080,
+  CVE-2010-4081)
+
+  Dan Rosenberg discovered that the VIA video driver did not correctly clear
+  kernel memory. A local attacker could exploit this to read kernel stack
+  memory, leading to a loss of privacy. (CVE-2010-4082)
+
+  Dan Rosenberg discovered that the semctl syscall did not correctly clear
+  kernel memory. A local attacker could exploit this to read kernel stack
+  memory, leading to a loss of privacy. (CVE-2010-4083)
+
+  James Bottomley discovered that the ICP vortex storage array controller
+  driver did not validate certain sizes. A local attacker on a 64bit system
+  could exploit this to crash the kernel, leading to a denial of service.
+  (CVE-2010-4157)
+
+  Dan Rosenberg discovered multiple flaws in the X.25 facilities parsing. If
+  a system was using X.25, a remote attacker could exploit this to crash the
+  system, leading to a denial of service. (CVE-2010-4164)
+
+  It was discovered that multithreaded exec did not handle CPU timers
+  c ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -131,6 +126,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

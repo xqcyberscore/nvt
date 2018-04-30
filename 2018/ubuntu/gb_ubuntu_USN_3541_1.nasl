@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3541_1.nasl 8541 2018-01-26 06:55:20Z emoss $
+# $Id: gb_ubuntu_USN_3541_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for linux USN-3541-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843424");
-  script_version("$Revision: 8541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 07:55:20 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-23 07:37:53 +0100 (Tue, 23 Jan 2018)");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715", "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"4.7");
@@ -36,21 +36,20 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3541-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Jann Horn discovered that microprocessors 
-  utilizing speculative execution and branch prediction may allow unauthorized 
-  memory reads via sidechannel attacks. This flaw is known as Spectre. A local 
-  attacker could use this to expose sensitive information, including kernel 
-  memory. This update provides mitigations for the i386 (CVE-2017-5753 only), 
-  amd64, ppc64el, and s390x architectures. (CVE-2017-5715, CVE-2017-5753) 
-  USN-3523-1 mitigated CVE-2017-5754 (Meltdown) for the amd64 architecture in 
-  Ubuntu 17.10. This update provides the corresponding mitigations for the ppc64el 
-  architecture. Original advisory details: Jann Horn discovered that 
-  microprocessors utilizing speculative execution and indirect branch prediction 
-  may allow unauthorized memory reads via sidechannel attacks. This flaw is known 
-  as Meltdown. A local attacker could use this to expose sensitive information, 
-  including kernel memory. (CVE-2017-5754)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Jann Horn discovered that microprocessors
+  utilizing speculative execution and branch prediction may allow unauthorized
+  memory reads via sidechannel attacks. This flaw is known as Spectre. A local
+  attacker could use this to expose sensitive information, including kernel
+  memory. This update provides mitigations for the i386 (CVE-2017-5753 only),
+  amd64, ppc64el, and s390x architectures. (CVE-2017-5715, CVE-2017-5753)
+  USN-3523-1 mitigated CVE-2017-5754 (Meltdown) for the amd64 architecture in
+  Ubuntu 17.10. This update provides the corresponding mitigations for the ppc64el
+  architecture. Original advisory details: Jann Horn discovered that
+  microprocessors utilizing speculative execution and indirect branch prediction
+  may allow unauthorized memory reads via sidechannel attacks. This flaw is known
+  as Meltdown. A local attacker could use this to expose sensitive information,
+  including kernel memory. (CVE-2017-5754)");
   script_tag(name: "affected", value: "linux on Ubuntu 17.10");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -61,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU17\.10");
   exit(0);
 }
 
@@ -138,6 +137,6 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

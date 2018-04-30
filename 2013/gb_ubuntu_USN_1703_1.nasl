@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1703_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_ubuntu_USN_1703_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-1703-1
 #
@@ -25,24 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple security issues were discovered in MySQL and this update includes
-  new upstream MySQL versions to fix these issues.
-
-  MySQL has been updated to 5.1.67 in Ubuntu 10.04 LTS and Ubuntu 11.10.
-  Ubuntu 12.04 LTS and Ubuntu 12.10 have been updated to MySQL 5.5.29.
-  
-  In addition to security fixes, the updated packages contain bug fixes, new
-  features, and possibly incompatible changes.
-  
-  Please see the following for more information:
-  http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-67.html";
-
-
-tag_affected = "mysql-5.5 on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -50,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1703-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841291");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:36:50 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-0572", "CVE-2012-0574", "CVE-2012-0578", "CVE-2012-1702",
                 "CVE-2012-1705", "CVE-2012-5060", "CVE-2012-5096", "CVE-2012-5611",
@@ -68,10 +50,23 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|12\.10)");
+  script_tag(name : "affected" , value : "mysql-5.5 on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Multiple security issues were discovered in MySQL and this update includes
+  new upstream MySQL versions to fix these issues.
+
+  MySQL has been updated to 5.1.67 in Ubuntu 10.04 LTS and Ubuntu 11.10.
+  Ubuntu 12.04 LTS and Ubuntu 12.10 have been updated to MySQL 5.5.29.
+
+  In addition to security fixes, the updated packages contain bug fixes, new
+  features, and possibly incompatible changes.
+
+  Please see the following for more information:
+  http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-67.html");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -96,7 +91,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -110,7 +105,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -124,7 +119,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -138,6 +133,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

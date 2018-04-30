@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3627_1.nasl 9547 2018-04-20 10:53:23Z santu $
+# $Id: gb_ubuntu_USN_3627_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for apache2 USN-3627-1
 #
@@ -27,37 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843505");
-  script_version("$Revision: 9547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:53:23 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 09:13:25 +0200 (Fri, 20 Apr 2018)");
-  script_cve_id("CVE-2017-15710", "CVE-2017-15715", "CVE-2018-1283", "CVE-2018-1301", 
-                "CVE-2018-1303", "CVE-2018-1312"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2017-15710", "CVE-2017-15715", "CVE-2018-1283", "CVE-2018-1301",
+                "CVE-2018-1303", "CVE-2018-1312");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for apache2 USN-3627-1");
   script_tag(name: "summary", value: "Check the version of apache2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Alex Nichols and Jakob Hirsch discovered 
-  that the Apache HTTP Server mod_authnz_ldap module incorrectly handled missing 
-  charset encoding headers. A remote attacker could possibly use this issue to 
-  cause the server to crash, resulting in a denial of service. (CVE-2017-15710) 
-  Elar Lang discovered that the Apache HTTP Server incorrectly handled certain 
-  characters specified in FilesMatch . A remote attacker could possibly use this 
-  issue to upload certain files, contrary to expectations. (CVE-2017-15715) It was 
-  discovered that the Apache HTTP Server mod_session module incorrectly handled 
-  certain headers. A remote attacker could possibly use this issue to influence 
-  session data. (CVE-2018-1283) Robert Swiecki discovered that the Apache HTTP 
-  Server incorrectly handled certain requests. A remote attacker could possibly 
-  use this issue to cause the server to crash, leading to a denial of service. 
-  (CVE-2018-1301) Robert Swiecki discovered that the Apache HTTP Server 
-  mod_cache_socache module incorrectly handled certain headers. A remote attacker 
-  could possibly use this issue to cause the server to crash, leading to a denial 
-  of service. (CVE-2018-1303) Nicolas Daniels discovered that the Apache HTTP 
-  Server incorrectly generated the nonce when creating HTTP Digest authentication 
-  challenges. A remote attacker could possibly use this issue to replay HTTP 
-  requests across a cluster of servers. (CVE-2018-1312)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Alex Nichols and Jakob Hirsch discovered
+  that the Apache HTTP Server mod_authnz_ldap module incorrectly handled missing
+  charset encoding headers. A remote attacker could possibly use this issue to
+  cause the server to crash, resulting in a denial of service. (CVE-2017-15710)
+  Elar Lang discovered that the Apache HTTP Server incorrectly handled certain
+  characters specified in FilesMatch . A remote attacker could possibly use this
+  issue to upload certain files, contrary to expectations. (CVE-2017-15715) It was
+  discovered that the Apache HTTP Server mod_session module incorrectly handled
+  certain headers. A remote attacker could possibly use this issue to influence
+  session data. (CVE-2018-1283) Robert Swiecki discovered that the Apache HTTP
+  Server incorrectly handled certain requests. A remote attacker could possibly
+  use this issue to cause the server to crash, leading to a denial of service.
+  (CVE-2018-1301) Robert Swiecki discovered that the Apache HTTP Server
+  mod_cache_socache module incorrectly handled certain headers. A remote attacker
+  could possibly use this issue to cause the server to crash, leading to a denial
+  of service. (CVE-2018-1303) Nicolas Daniels discovered that the Apache HTTP
+  Server incorrectly generated the nonce when creating HTTP Digest authentication
+  challenges. A remote attacker could possibly use this issue to replay HTTP
+  requests across a cluster of servers. (CVE-2018-1312)");
   script_tag(name: "affected", value: "apache2 on Ubuntu 17.10 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -70,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -93,7 +92,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -107,7 +106,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -121,6 +120,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

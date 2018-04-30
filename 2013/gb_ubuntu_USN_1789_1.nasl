@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1789_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1789_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for postgresql-9.1 USN-1789-1
 #
@@ -25,7 +25,17 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Mitsumasa Kondo and Kyotaro Horiguchi discovered that PostgreSQL
+
+
+if(description)
+{
+  script_tag(name : "affected" , value : "postgresql-9.1 on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Mitsumasa Kondo and Kyotaro Horiguchi discovered that PostgreSQL
   incorrectly handled certain connection requests containing database names
   starting with a dash. A remote attacker could use this flaw to damage or
   destroy files within a server's data directory. This issue only applied to
@@ -38,25 +48,10 @@ tag_insight = "Mitsumasa Kondo and Kyotaro Horiguchi discovered that PostgreSQL
   Noah Misch discovered that PostgreSQL incorrectly handled certain privilege
   checks. An unprivileged attacker could use this flaw to possibly interfere
   with in-progress backups. This issue only applied to Ubuntu 11.10,
-  Ubuntu 12.04 LTS, and Ubuntu 12.10. (CVE-2013-1901)";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "postgresql-9.1 on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Ubuntu 12.04 LTS, and Ubuntu 12.10. (CVE-2013-1901)");
   script_oid("1.3.6.1.4.1.25623.1.0.841385");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-05 13:51:38 +0530 (Fri, 05 Apr 2013)");
   script_cve_id("CVE-2013-1899", "CVE-2013-1900", "CVE-2013-1901");
   script_tag(name:"cvss_base", value:"8.5");
@@ -72,7 +67,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|8\.04 LTS|12\.10)");
   exit(0);
 }
 
@@ -95,7 +90,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -109,7 +104,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -123,7 +118,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -137,7 +132,7 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -151,6 +146,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

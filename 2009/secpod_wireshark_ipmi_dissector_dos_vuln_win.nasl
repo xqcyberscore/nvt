@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_ipmi_dissector_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_wireshark_ipmi_dissector_dos_vuln_win.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark IPMI Dissector Denial of Service Vulnerability (Windows)
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to cause Denial of Serivce
-  condition by tricking the user into reading a malformed packet trace file.
-  Impact Level: System/Application";
-tag_affected = "Wireshark version 1.2.0 to 1.2.4 on Windows.";
-tag_insight = "This flaw is due to an error in the IPMI dissector while formatting
-  date/time using strftime.";
-tag_solution = "Upgrade to Wireshark version 1.2.5,
-  http://www.wireshark.org/download.html";
-tag_summary = "This host is installed with Wireshark and is prone to IPMI Dissector
-  Denial of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900988");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-24 14:01:59 +0100 (Thu, 24 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,11 +45,16 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_require_keys("Wireshark/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause Denial of service
+  condition by tricking the user into reading a malformed packet trace file.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Wireshark version 1.2.0 to 1.2.4 on Windows.");
+  script_tag(name : "insight" , value : "This flaw is due to an error in the IPMI dissector while formatting
+  date/time using strftime.");
+  script_tag(name : "solution" , value : "Upgrade to Wireshark version 1.2.5,
+  http://www.wireshark.org/download.html");
+  script_tag(name : "summary" , value : "This host is installed with Wireshark and is prone to IPMI Dissector
+  Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -74,7 +68,6 @@ if(!sharkVer){
   exit(0);
 }
 
-# Grep for Wireshark version 1.2.0 to 1.2.4
 if(version_in_range(version:sharkVer, test_version:"1.2.0",
                                      test_version2:"1.2.4")){
   security_message(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1430_3.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: gb_ubuntu_USN_1430_3.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1430-3
 #
@@ -25,7 +25,37 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN-1430-1 fixed vulnerabilities in Firefox. This update provides the
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1430-3/");
+  script_oid("1.3.6.1.4.1.25623.1.0.841000");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-05-08 12:36:18 +0530 (Tue, 08 May 2012)");
+  script_cve_id("CVE-2012-0467", "CVE-2012-0468", "CVE-2012-0469", "CVE-2012-0470",
+                "CVE-2012-0471", "CVE-2012-0473", "CVE-2012-0474", "CVE-2012-0475",
+                "CVE-2012-0477", "CVE-2012-0478", "CVE-2011-3062", "CVE-2011-1187",
+                "CVE-2012-0479");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1430-3");
+  script_name("Ubuntu Update for thunderbird USN-1430-3");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|12\.04 LTS|11\.10|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1430-3");
+  script_tag(name : "affected" , value : "thunderbird on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN-1430-1 fixed vulnerabilities in Firefox. This update provides the
   corresponding fixes for Thunderbird.
 
   Original advisory details:
@@ -73,42 +103,7 @@ tag_insight = "USN-1430-1 fixed vulnerabilities in Firefox. This update provides
 
   Masato Kinugawa discovered that cross- ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1430-3";
-tag_affected = "thunderbird on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1430-3/");
-  script_oid("1.3.6.1.4.1.25623.1.0.841000");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2012-05-08 12:36:18 +0530 (Tue, 08 May 2012)");
-  script_cve_id("CVE-2012-0467", "CVE-2012-0468", "CVE-2012-0469", "CVE-2012-0470",
-                "CVE-2012-0471", "CVE-2012-0473", "CVE-2012-0474", "CVE-2012-0475",
-                "CVE-2012-0477", "CVE-2012-0478", "CVE-2011-3062", "CVE-2011-1187",
-                "CVE-2012-0479");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1430-3");
-  script_name("Ubuntu Update for thunderbird USN-1430-3");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -133,7 +128,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -147,7 +142,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -161,7 +156,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -175,6 +170,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

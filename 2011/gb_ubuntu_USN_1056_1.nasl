@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1056_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1056_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for openoffice.org vulnerabilities USN-1056-1
 #
@@ -25,53 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Charlie Miller discovered several heap overflows in PPT processing. If
-  a user or automated system were tricked into opening a specially crafted
-  PPT document, a remote attacker could execute arbitrary code with user
-  privileges. Ubuntu 10.10 was not affected. (CVE-2010-2935, CVE-2010-2936)
-
-  Marc Schoenefeld discovered that directory traversal was not correctly
-  handled in XSLT, OXT, JAR, or ZIP files. If a user or automated system
-  were tricked into opening a specially crafted document, a remote attacker
-  overwrite arbitrary files, possibly leading to arbitrary code execution
-  with user privileges. (CVE-2010-3450)
-  
-  Dan Rosenberg discovered multiple heap overflows in RTF and DOC
-  processing. If a user or automated system were tricked into opening a
-  specially crafted RTF or DOC document, a remote attacker could execute
-  arbitrary code with user privileges. (CVE-2010-3451, CVE-2010-3452,
-  CVE-2010-3453, CVE-2010-3454)
-  
-  Dmitri Gribenko discovered that OpenOffice.org did not correctly
-  handle LD_LIBRARY_PATH in various tools. If a local attacker
-  tricked a user or automated system into using OpenOffice.org from an
-  attacker-controlled directory, they could execute arbitrary code with
-  user privileges. (CVE-2010-3689)
-  
-  Marc Schoenefeld discovered that OpenOffice.org did not correctly process
-  PNG images. If a user or automated system were tricked into opening a
-  specially crafted document, a remote attacker could execute arbitrary
-  code with user privileges. (CVE-2010-4253)
-  
-  It was discovered that OpenOffice.org did not correctly process TGA
-  images. If a user or automated system were tricked into opening a
-  specially crafted document, a remote attacker could execute arbitrary
-  code with user privileges. (CVE-2010-4643)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1056-1";
-tag_affected = "openoffice.org vulnerabilities on Ubuntu 8.04 LTS ,
-  Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1056-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840576");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-02-04 14:19:53 +0100 (Fri, 04 Feb 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -83,11 +44,45 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1056-1");
+  script_tag(name : "affected" , value : "openoffice.org vulnerabilities on Ubuntu 8.04 LTS ,
+  Ubuntu 9.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Charlie Miller discovered several heap overflows in PPT processing. If
+  a user or automated system were tricked into opening a specially crafted
+  PPT document, a remote attacker could execute arbitrary code with user
+  privileges. Ubuntu 10.10 was not affected. (CVE-2010-2935, CVE-2010-2936)
+
+  Marc Schoenefeld discovered that directory traversal was not correctly
+  handled in XSLT, OXT, JAR, or ZIP files. If a user or automated system
+  were tricked into opening a specially crafted document, a remote attacker
+  overwrite arbitrary files, possibly leading to arbitrary code execution
+  with user privileges. (CVE-2010-3450)
+
+  Dan Rosenberg discovered multiple heap overflows in RTF and DOC
+  processing. If a user or automated system were tricked into opening a
+  specially crafted RTF or DOC document, a remote attacker could execute
+  arbitrary code with user privileges. (CVE-2010-3451, CVE-2010-3452,
+  CVE-2010-3453, CVE-2010-3454)
+
+  Dmitri Gribenko discovered that OpenOffice.org did not correctly
+  handle LD_LIBRARY_PATH in various tools. If a local attacker
+  tricked a user or automated system into using OpenOffice.org from an
+  attacker-controlled directory, they could execute arbitrary code with
+  user privileges. (CVE-2010-3689)
+
+  Marc Schoenefeld discovered that OpenOffice.org did not correctly process
+  PNG images. If a user or automated system were tricked into opening a
+  specially crafted document, a remote attacker could execute arbitrary
+  code with user privileges. (CVE-2010-4253)
+
+  It was discovered that OpenOffice.org did not correctly process TGA
+  images. If a user or automated system were tricked into opening a
+  specially crafted document, a remote attacker could execute arbitrary
+  code with user privileges. (CVE-2010-4643)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -443,7 +438,7 @@ if(release == "UBUNTU9.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -787,7 +782,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1137,7 +1132,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1415,6 +1410,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

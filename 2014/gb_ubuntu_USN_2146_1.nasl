@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2146_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2146_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for sudo USN-2146-1
 #
@@ -29,15 +29,20 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841754");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:46:26 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2014-0106");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
   script_name("Ubuntu Update for sudo USN-2146-1");
 
-  tag_insight = "Sebastien Macke discovered that Sudo incorrectly handled
+
+  script_tag(name : "affected" , value : "sudo on Ubuntu 13.10 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "insight" , value : "Sebastien Macke discovered that Sudo incorrectly handled
 blacklisted environment variables when the env_reset option was disabled.
 A local attacker could use this issue to possibly run unintended commands by
 using blacklisted environment variables. In a default Ubuntu installation, the
@@ -48,19 +53,8 @@ It was discovered that the Sudo init script set a date in the past on
 existing timestamp files instead of using epoch to invalidate them
 completely. A local attacker could possibly modify the system time to
 attempt to reuse timestamp files. This issue only applied to Ubuntu
-12.04 LTS, Ubuntu 12.10 and Ubuntu 13.10. (LP: #1223297)";
-
-  tag_affected = "sudo on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 10.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+12.04 LTS, Ubuntu 12.10 and Ubuntu 13.10. (LP: #1223297)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2146-1");
@@ -70,7 +64,7 @@ attempt to reuse timestamp files. This issue only applied to Ubuntu
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|10\.04 LTS|13\.10|12\.10)");
   exit(0);
 }
 
@@ -99,7 +93,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -119,7 +113,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -139,7 +133,7 @@ if(release == "UBUNTU13.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -159,6 +153,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

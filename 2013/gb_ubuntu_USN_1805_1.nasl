@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1805_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1805_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux USN-1805-1
 #
@@ -25,7 +25,13 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Mathias Krause discovered an information leak in the Linux kernel's
+
+
+if(description)
+{
+  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Mathias Krause discovered an information leak in the Linux kernel's
   getsockname implementation for Logical Link Layer (llc) sockets. A local
   user could exploit this flaw to examine some of the kernel's stack memory.
   (CVE-2012-6542)
@@ -64,21 +70,10 @@ tag_insight = "Mathias Krause discovered an information leak in the Linux kernel
   Andrew Honig discovered a flaw in guest OS time updates in the Linux
   kernel's KVM (Kernel-based Virtual Machine). A privileged guest user could
   exploit this flaw to cause a denial of service (crash host system) or
-  potential escalate privilege to the host kernel level. (CVE-2013-1796)";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "linux on Ubuntu 10.04 LTS";
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  potential escalate privilege to the host kernel level. (CVE-2013-1796)");
   script_oid("1.3.6.1.4.1.25623.1.0.841404");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 10:33:11 +0530 (Mon, 22 Apr 2013)");
   script_cve_id("CVE-2012-6542", "CVE-2012-6544", "CVE-2012-6545", "CVE-2012-6546",
                 "CVE-2012-6548", "CVE-2013-0228", "CVE-2013-0349", "CVE-2013-1774",
@@ -96,7 +91,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
   exit(0);
 }
 
@@ -197,6 +192,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

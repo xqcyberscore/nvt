@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_afs_dos_vuln_lin.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wireshark_afs_dos_vuln_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark AFS Dissector Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900595");
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1970");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2009-04.html");
 
-  script_tag(name:"impact", value:"Successful exploitation could result in denial of serivce condition.
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.
 
   Impact Level: Application");
   script_tag(name:"affected", value:"Wireshark version 0.9.2 through 1.2.0 on Linux.");
@@ -69,7 +69,6 @@ include("host_details.inc");
 
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
-# Grep for Wireshark version 0.9.2 through 1.2.0
 if(version_in_range(version:ver, test_version:"0.9.2",
                                  test_version2:"1.2.0")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"1.2.1");

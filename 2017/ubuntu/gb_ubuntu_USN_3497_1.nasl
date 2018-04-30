@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3497_1.nasl 8039 2017-12-08 07:14:34Z teissa $
+# $Id: gb_ubuntu_USN_3497_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3497-1
 #
@@ -27,56 +27,55 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843387");
-  script_version("$Revision: 8039 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:14:34 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 07:34:52 +0100 (Thu, 30 Nov 2017)");
   script_cve_id("CVE-2017-10274", "CVE-2017-10281", "CVE-2017-10285", "CVE-2017-10295",
                 "CVE-2017-10345", "CVE-2017-10346", "CVE-2017-10347", "CVE-2017-10348",
                 "CVE-2017-10357", "CVE-2017-10349", "CVE-2017-10350", "CVE-2017-10355",
-                "CVE-2017-10356", "CVE-2017-10388"); 
+                "CVE-2017-10356", "CVE-2017-10388");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-7 USN-3497-1");
   script_tag(name: "summary", value: "Check the version of openjdk-7");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that the Smart Card IO 
-  subsystem in OpenJDK did not properly maintain state. An attacker could use this 
-  to specially construct an untrusted Java application or applet to gain access to 
-  a smart card, bypassing sandbox restrictions. (CVE-2017-10274) Gaston Traberg 
-  discovered that the Serialization component of OpenJDK did not properly limit 
-  the amount of memory allocated when performing deserializations. An attacker 
-  could use this to cause a denial of service (memory exhaustion). 
-  (CVE-2017-10281) It was discovered that the Remote Method Invocation (RMI) 
-  component in OpenJDK did not properly handle unreferenced objects. An attacker 
-  could use this to specially construct an untrusted Java application or applet 
-  that could escape sandbox restrictions. (CVE-2017-10285) It was discovered that 
-  the HTTPUrlConnection classes in OpenJDK did not properly handle newlines. An 
-  attacker could use this to convince a Java application or applet to inject 
-  headers into http requests. (CVE-2017-10295) Francesco Palmarini, Marco 
-  Squarcina, Mauro Tempesta, and Riccardo Focardi discovered that the 
-  Serialization component of OpenJDK did not properly restrict the amount of 
-  memory allocated when deserializing objects from Java Cryptography Extension 
-  KeyStore (JCEKS). An attacker could use this to cause a denial of service 
-  (memory exhaustion). (CVE-2017-10345) It was discovered that the Hotspot 
-  component of OpenJDK did not properly perform loader checks when handling the 
-  invokespecial JVM instruction. An attacker could use this to specially construct 
-  an untrusted Java application or applet that could escape sandbox restrictions. 
-  (CVE-2017-10346) Gaston Traberg discovered that the Serialization component of 
-  OpenJDK did not properly limit the amount of memory allocated when performing 
-  deserializations in the SimpleTimeZone class. An attacker could use this to 
-  cause a denial of service (memory exhaustion). (CVE-2017-10347) It was 
-  discovered that the Serialization component of OpenJDK did not properly limit 
-  the amount of memory allocated when performing deserializations. An attacker 
-  could use this to cause a denial of service (memory exhaustion). 
-  (CVE-2017-10348, CVE-2017-10357) It was discovered that the JAXP component in 
-  OpenJDK did not properly limit the amount of memory allocated when performing 
-  deserializations. An attacker could use this to cause a denial of service 
-  (memory exhaustion). (CVE-2017-10349) It was discovered that the JAX-WS 
-  component in OpenJDK did not properly limit the amount of memory allocated when 
-  performing deserializations. An attacker could use this to cause a denial ... 
-  Description truncated, for more information please check the Reference URL"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that the Smart Card IO
+  subsystem in OpenJDK did not properly maintain state. An attacker could use this
+  to specially construct an untrusted Java application or applet to gain access to
+  a smart card, bypassing sandbox restrictions. (CVE-2017-10274) Gaston Traberg
+  discovered that the Serialization component of OpenJDK did not properly limit
+  the amount of memory allocated when performing deserializations. An attacker
+  could use this to cause a denial of service (memory exhaustion).
+  (CVE-2017-10281) It was discovered that the Remote Method Invocation (RMI)
+  component in OpenJDK did not properly handle unreferenced objects. An attacker
+  could use this to specially construct an untrusted Java application or applet
+  that could escape sandbox restrictions. (CVE-2017-10285) It was discovered that
+  the HTTPUrlConnection classes in OpenJDK did not properly handle newlines. An
+  attacker could use this to convince a Java application or applet to inject
+  headers into http requests. (CVE-2017-10295) Francesco Palmarini, Marco
+  Squarcina, Mauro Tempesta, and Riccardo Focardi discovered that the
+  Serialization component of OpenJDK did not properly restrict the amount of
+  memory allocated when deserializing objects from Java Cryptography Extension
+  KeyStore (JCEKS). An attacker could use this to cause a denial of service
+  (memory exhaustion). (CVE-2017-10345) It was discovered that the Hotspot
+  component of OpenJDK did not properly perform loader checks when handling the
+  invokespecial JVM instruction. An attacker could use this to specially construct
+  an untrusted Java application or applet that could escape sandbox restrictions.
+  (CVE-2017-10346) Gaston Traberg discovered that the Serialization component of
+  OpenJDK did not properly limit the amount of memory allocated when performing
+  deserializations in the SimpleTimeZone class. An attacker could use this to
+  cause a denial of service (memory exhaustion). (CVE-2017-10347) It was
+  discovered that the Serialization component of OpenJDK did not properly limit
+  the amount of memory allocated when performing deserializations. An attacker
+  could use this to cause a denial of service (memory exhaustion).
+  (CVE-2017-10348, CVE-2017-10357) It was discovered that the JAXP component in
+  OpenJDK did not properly limit the amount of memory allocated when performing
+  deserializations. An attacker could use this to cause a denial of service
+  (memory exhaustion). (CVE-2017-10349) It was discovered that the JAX-WS
+  component in OpenJDK did not properly limit the amount of memory allocated when
+  performing deserializations. An attacker could use this to cause a denial ...
+  Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "openjdk-7 on Ubuntu 14.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -87,7 +86,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -158,6 +157,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

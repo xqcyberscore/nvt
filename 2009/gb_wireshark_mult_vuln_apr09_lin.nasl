@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_apr09_lin.nasl 4906 2017-01-02 13:06:55Z teissa $
+# $Id: gb_wireshark_mult_vuln_apr09_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark Multiple Unspecified Vulnerability - Apr09 (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800397");
-  script_version("$Revision: 4906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:06:55 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-04-20 14:33:23 +0200 (Mon, 20 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/34542");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/Apr/1022027.html");
 
-  script_tag(name:"impact", value:"Successful exploitation could result in denial of serivce condition.
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.
 
   Impact Level: Application");
   script_tag(name:"affected", value:"Wireshark version 0.9.6 to 1.0.6 on Linux");

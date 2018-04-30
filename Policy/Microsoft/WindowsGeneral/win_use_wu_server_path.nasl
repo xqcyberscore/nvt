@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_use_wu_server_path.nasl 9516 2018-04-18 08:02:49Z emoss $
+# $Id: win_use_wu_server_path.nasl 9659 2018-04-27 11:55:11Z emoss $
 #
 # Check value for Set the intranet update service for detecting updates
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109076");
-  script_version("$Revision: 9516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 10:02:49 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:42:28 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -47,14 +47,14 @@ if(description)
 include("smb_nt.inc"); 
 include("policy_functions.inc");
 
+type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\Windows\\WindowsUpdate';
-value = registry_get_sz(key:key, item:'WUServer', type:'HKLM');
-if( value == '0'){
-  policy_logging(text:'Unable to detect registry value "HKLM\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate!WUServer".');
-  set_kb_item(name:'Policy/MS/Windows/AU/WUServer', value:'none');
-}else{
-  policy_logging(text:'Registry value "HKLM\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate!WUServer" is set to: ' + value);
-  set_kb_item(name:'Policy/MS/Windows/AU/WUServer', value:value);
+item = 'WUServer';
+value = registry_get_dword(key:key, item:item, type:type);
+if( value == ''){
+  value = 'none';
 }
+policy_logging_registry(type:type,key:key,item:item,value:value);
+policy_set_kb(val:value);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1195_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1195_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for webkit USN-1195-1
 #
@@ -25,24 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A large number of security issues were discovered in the WebKit browser and
-  JavaScript engines. If a user were tricked into viewing a malicious
-  website, a remote attacker could exploit a variety of issues related to web
-  browser security, including cross-site scripting attacks, denial of
-  service attacks, and arbitrary code execution.";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1195-1";
-tag_affected = "webkit on Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1195-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840730");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-08-27 16:37:49 +0200 (Sat, 27 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,11 +44,16 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|10\.10)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1195-1");
+  script_tag(name : "affected" , value : "webkit on Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "A large number of security issues were discovered in the WebKit browser and
+  JavaScript engines. If a user were tricked into viewing a malicious
+  website, a remote attacker could exploit a variety of issues related to web
+  browser security, including cross-site scripting attacks, denial of
+  service attacks, and arbitrary code execution.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -84,7 +79,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -98,6 +93,6 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

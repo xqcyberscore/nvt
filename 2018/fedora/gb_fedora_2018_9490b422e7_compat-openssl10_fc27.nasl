@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9490b422e7_compat-openssl10_fc27.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_fedora_2018_9490b422e7_compat-openssl10_fc27.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Fedora Update for compat-openssl10 FEDORA-2018-9490b422e7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874356");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-10 08:56:32 +0200 (Tue, 10 Apr 2018)");
   script_cve_id("CVE-2018-0739");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for compat-openssl10 FEDORA-2018-9490b422e7");
   script_tag(name: "summary", value: "Check the version of compat-openssl10");

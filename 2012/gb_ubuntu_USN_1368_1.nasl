@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1368_1.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: gb_ubuntu_USN_1368_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for apache2 USN-1368-1
 #
@@ -25,7 +25,34 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that the Apache HTTP Server incorrectly handled the
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1368-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840900");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-21 19:00:08 +0530 (Tue, 21 Feb 2012)");
+  script_cve_id("CVE-2011-3607", "CVE-2011-4317", "CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name: "USN", value: "1368-1");
+  script_name("Ubuntu Update for apache2 USN-1368-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1368-1");
+  script_tag(name : "affected" , value : "apache2 on Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that the Apache HTTP Server incorrectly handled the
   SetEnvIf .htaccess file directive. An attacker having write access to a
   .htaccess file may exploit this to possibly execute arbitrary code.
   (CVE-2011-3607)
@@ -49,39 +76,7 @@ tag_insight = "It was discovered that the Apache HTTP Server incorrectly handled
   Norman Hippert discovered that the Apache HTTP Server incorrecly handled
   header information when returning a Bad Request (400) error page. A remote
   attacker could exploit this to obtain the values of certain HTTPOnly
-  cookies. (CVE-2012-0053)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1368-1";
-tag_affected = "apache2 on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1368-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840900");
-  script_version("$Revision: 8649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-21 19:00:08 +0530 (Tue, 21 Feb 2012)");
-  script_cve_id("CVE-2011-3607", "CVE-2011-4317", "CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1368-1");
-  script_name("Ubuntu Update for apache2 USN-1368-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  cookies. (CVE-2012-0053)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -106,7 +101,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -120,7 +115,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -134,7 +129,7 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -148,6 +143,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

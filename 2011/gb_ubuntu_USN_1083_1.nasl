@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1083_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1083_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-maverick vulnerabilities USN-1083-1
 #
@@ -25,71 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Al Viro discovered a race condition in the TTY driver. A local attacker
-  could exploit this to crash the system, leading to a denial of service.
-  (CVE-2009-4895)
-
-  Gleb Napatov discovered that KVM did not correctly check certain privileged
-  operations. A local attacker with access to a guest kernel could exploit
-  this to crash the host system, leading to a denial of service.
-  (CVE-2010-0435)
-  
-  Dan Rosenberg discovered that the MOVE_EXT ext4 ioctl did not correctly
-  check file permissions. A local attacker could overwrite append-only files,
-  leading to potential data loss. (CVE-2010-2066)
-  
-  Dan Rosenberg discovered that the swapexit xfs ioctl did not correctly
-  check file permissions. A local attacker could exploit this to read from
-  write-only files, leading to a loss of privacy. (CVE-2010-2226)
-  
-  Suresh Jayaraman discovered that CIFS did not correctly validate certain
-  response packats. A remote attacker could send specially crafted traffic
-  that would crash the system, leading to a denial of service.
-  (CVE-2010-2248)
-  
-  Ben Hutchings discovered that the ethtool interface did not correctly check
-  certain sizes. A local attacker could perform malicious ioctl calls that
-  could crash the system, leading to a denial of service. (CVE-2010-2478,
-  CVE-2010-3084)
-  
-  James Chapman discovered that L2TP did not correctly evaluate checksum
-  capabilities. If an attacker could make malicious routing changes, they
-  could crash the system, leading to a denial of service. (CVE-2010-2495)
-  
-  Neil Brown discovered that NFSv4 did not correctly check certain write
-  requests. A remote attacker could send specially crafted traffic that could
-  crash the system or possibly gain root privileges. (CVE-2010-2521)
-  
-  David Howells discovered that DNS resolution in CIFS could be spoofed. A
-  local attacker could exploit this to control DNS replies, leading to a loss
-  of privacy and possible privilege escalation. (CVE-2010-2524)
-  
-  Dan Rosenberg discovered that the btrfs filesystem did not correctly
-  validate permissions when using the clone function. A local attacker could
-  overwrite the contents of file handles that were opened for append-only, or
-  potentially read arbitrary contents, leading to a loss of privacy.
-  (CVE-2010-2537, CVE-2010-2538)
-  
-  Bob Peterson discovered that GFS2 rename operations did not correctly
-  validate certain sizes. A local attacker could exploit this to crash the
-  system, leading to a denial of service. (CVE-2010-2798)
-  
-  Eric Dumazet discovered that many network functions could leak kernel stack
-  cont ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1083-1";
-tag_affected = "linux-lts-backport-maverick vulnerabilities on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1083-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840605");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-03-07 06:45:55 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -101,11 +44,63 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1083-1");
+  script_tag(name : "affected" , value : "linux-lts-backport-maverick vulnerabilities on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Al Viro discovered a race condition in the TTY driver. A local attacker
+  could exploit this to crash the system, leading to a denial of service.
+  (CVE-2009-4895)
+
+  Gleb Napatov discovered that KVM did not correctly check certain privileged
+  operations. A local attacker with access to a guest kernel could exploit
+  this to crash the host system, leading to a denial of service.
+  (CVE-2010-0435)
+
+  Dan Rosenberg discovered that the MOVE_EXT ext4 ioctl did not correctly
+  check file permissions. A local attacker could overwrite append-only files,
+  leading to potential data loss. (CVE-2010-2066)
+
+  Dan Rosenberg discovered that the swapexit xfs ioctl did not correctly
+  check file permissions. A local attacker could exploit this to read from
+  write-only files, leading to a loss of privacy. (CVE-2010-2226)
+
+  Suresh Jayaraman discovered that CIFS did not correctly validate certain
+  response packats. A remote attacker could send specially crafted traffic
+  that would crash the system, leading to a denial of service.
+  (CVE-2010-2248)
+
+  Ben Hutchings discovered that the ethtool interface did not correctly check
+  certain sizes. A local attacker could perform malicious ioctl calls that
+  could crash the system, leading to a denial of service. (CVE-2010-2478,
+  CVE-2010-3084)
+
+  James Chapman discovered that L2TP did not correctly evaluate checksum
+  capabilities. If an attacker could make malicious routing changes, they
+  could crash the system, leading to a denial of service. (CVE-2010-2495)
+
+  Neil Brown discovered that NFSv4 did not correctly check certain write
+  requests. A remote attacker could send specially crafted traffic that could
+  crash the system or possibly gain root privileges. (CVE-2010-2521)
+
+  David Howells discovered that DNS resolution in CIFS could be spoofed. A
+  local attacker could exploit this to control DNS replies, leading to a loss
+  of privacy and possible privilege escalation. (CVE-2010-2524)
+
+  Dan Rosenberg discovered that the btrfs filesystem did not correctly
+  validate permissions when using the clone function. A local attacker could
+  overwrite the contents of file handles that were opened for append-only, or
+  potentially read arbitrary contents, leading to a loss of privacy.
+  (CVE-2010-2537, CVE-2010-2538)
+
+  Bob Peterson discovered that GFS2 rename operations did not correctly
+  validate certain sizes. A local attacker could exploit this to crash the
+  system, leading to a denial of service. (CVE-2010-2798)
+
+  Eric Dumazet discovered that many network functions could leak kernel stack
+  cont ...
+
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -779,6 +774,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

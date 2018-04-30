@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3420_1.nasl 7227 2017-09-22 06:36:11Z santu $
+# $Id: gb_ubuntu_USN_3420_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for linux USN-3420-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843306");
-  script_version("$Revision: 7227 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:36:11 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 07:41:52 +0200 (Tue, 19 Sep 2017)");
   script_cve_id("CVE-2017-1000251", "CVE-2017-10663", "CVE-2017-12762", "CVE-2017-8831");
   script_tag(name:"cvss_base", value:"10.0");
@@ -36,22 +36,21 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3420-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that a buffer overflow 
-  existed in the Bluetooth stack of the Linux kernel when handling L2CAP 
-  configuration responses. A physically proximate attacker could use this to cause 
-  a denial of service (system crash). (CVE-2017-1000251) It was discovered that 
-  the Flash-Friendly File System (f2fs) implementation in the Linux kernel did not 
-  properly validate superblock metadata. A local attacker could use this to cause 
-  a denial of service (system crash) or possibly execute arbitrary code. 
-  (CVE-2017-10663) It was discovered that a buffer overflow existed in the ioctl 
-  handling code in the ISDN subsystem of the Linux kernel. A local attacker could 
-  use this to cause a denial of service (system crash) or possibly execute 
-  arbitrary code. (CVE-2017-12762) Pengfei Wang discovered that a race condition 
-  existed in the NXP SAA7164 TV Decoder driver for the Linux kernel. A local 
-  attacker could use this to cause a denial of service (system crash) or possibly 
-  execute arbitrary code. (CVE-2017-8831)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that a buffer overflow
+  existed in the Bluetooth stack of the Linux kernel when handling L2CAP
+  configuration responses. A physically proximate attacker could use this to cause
+  a denial of service (system crash). (CVE-2017-1000251) It was discovered that
+  the Flash-Friendly File System (f2fs) implementation in the Linux kernel did not
+  properly validate superblock metadata. A local attacker could use this to cause
+  a denial of service (system crash) or possibly execute arbitrary code.
+  (CVE-2017-10663) It was discovered that a buffer overflow existed in the ioctl
+  handling code in the ISDN subsystem of the Linux kernel. A local attacker could
+  use this to cause a denial of service (system crash) or possibly execute
+  arbitrary code. (CVE-2017-12762) Pengfei Wang discovered that a race condition
+  existed in the NXP SAA7164 TV Decoder driver for the Linux kernel. A local
+  attacker could use this to cause a denial of service (system crash) or possibly
+  execute arbitrary code. (CVE-2017-8831)");
   script_tag(name: "affected", value: "linux on Ubuntu 16.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -62,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
@@ -223,6 +222,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

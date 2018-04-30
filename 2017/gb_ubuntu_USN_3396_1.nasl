@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3396_1.nasl 7037 2017-09-01 05:22:05Z asteins $
+# $Id: gb_ubuntu_USN_3396_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3396-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843292");
-  script_version("$Revision: 7037 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 07:22:05 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-19 07:35:30 +0200 (Sat, 19 Aug 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10081",
                 "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090", "CVE-2017-10096",
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-7 USN-3396-1");
   script_tag(name: "summary", value: "Check the version of openjdk-7");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "It was discovered that the JPEGImageReader
 class in OpenJDK would incorrectly read unused image data. An attacker could use
 this to specially construct a jpeg image file that when opened by a Java
@@ -91,7 +90,7 @@ restrictions. (CVE-2017-10101)
 
 It was discovered that the Distributed Garbage Collector (DGC) in OpenJDK
 did not properly track references in some situations. A remote attacker
-could possibly use t ... 
+could possibly use t ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "openjdk-7 on Ubuntu 14.04 LTS");
@@ -104,7 +103,7 @@ could possibly use t ...
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -172,6 +171,6 @@ if(release == "UBUNTU14.04 LTS")
   }
 
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

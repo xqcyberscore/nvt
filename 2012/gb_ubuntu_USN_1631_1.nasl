@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1631_1.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: gb_ubuntu_USN_1631_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for tiff USN-1631-1
 #
@@ -25,25 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that LibTIFF incorrectly handled certain malformed images
-  using the PixarLog compression format. If a user or automated system were
-  tricked into opening a specially crafted TIFF image, a remote attacker
-  could crash the application, leading to a denial of service, or possibly
-  execute arbitrary code with user privileges. (CVE-2012-4447)
-
-  Huzaifa S. Sidhpurwala discovered that the ppm2tiff tool incorrectly
-  handled certain malformed PPM images. If a user or automated system were
-  tricked into opening a specially crafted PPM image, a remote attacker could
-  crash the application, leading to a denial of service, or possibly execute
-  arbitrary code with user privileges. (CVE-2012-4564)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1631-1";
-tag_affected = "tiff on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -51,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1631-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841216");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-19 09:30:05 +0530 (Mon, 19 Nov 2012)");
   script_cve_id("CVE-2012-4447", "CVE-2012-4564");
   script_tag(name:"cvss_base", value:"6.8");
@@ -64,11 +45,25 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|8\.04 LTS|12\.10)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1631-1");
+  script_tag(name : "affected" , value : "tiff on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that LibTIFF incorrectly handled certain malformed images
+  using the PixarLog compression format. If a user or automated system were
+  tricked into opening a specially crafted TIFF image, a remote attacker
+  could crash the application, leading to a denial of service, or possibly
+  execute arbitrary code with user privileges. (CVE-2012-4447)
+
+  Huzaifa S. Sidhpurwala discovered that the ppm2tiff tool incorrectly
+  handled certain malformed PPM images. If a user or automated system were
+  tricked into opening a specially crafted PPM image, a remote attacker could
+  crash the application, leading to a denial of service, or possibly execute
+  arbitrary code with user privileges. (CVE-2012-4564)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -93,7 +88,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -107,7 +102,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -121,7 +116,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -135,7 +130,7 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -149,6 +144,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1041_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1041_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux, linux-ec2 vulnerabilities USN-1041-1
 #
@@ -25,62 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Dan Rosenberg discovered that the btrfs filesystem did not correctly
-  validate permissions when using the clone function. A local attacker could
-  overwrite the contents of file handles that were opened for append-only,
-  or potentially read arbitrary contents, leading to a loss of privacy. Only
-  Ubuntu 9.10 was affected. (CVE-2010-2537, CVE-2010-2538)
-
-  Dave Chinner discovered that the XFS filesystem did not correctly order
-  inode lookups when exported by NFS. A remote attacker could exploit this
-  to read or write disk blocks that had changed file assignement or had
-  become unlinked, leading to a loss of privacy. (CVE-2010-2943)
-  
-  Kees Cook discovered that the Intel i915 graphics driver did not
-  correctly validate memory regions. A local attacker with access to the
-  video card could read and write arbitrary kernel memory to gain root
-  privileges. Ubuntu 10.10 was not affected. (CVE-2010-2962)
-  
-  Robert Swiecki discovered that ftrace did not correctly handle mutexes. A
-  local attacker could exploit this to crash the kernel, leading to a
-  denial of service. (CVE-2010-3079)
-  
-  Dan Rosenberg discovered that several network ioctls did not clear kernel
-  memory correctly. A local user could exploit this to read kernel stack
-  memory, leading to a loss of privacy. (CVE-2010-3296, CVE-2010-3297,
-  CVE-2010-3298)
-  
-  Ben Hawkes discovered that the Linux kernel did not correctly filter
-  registers on 64bit kernels when performing 32bit system calls. On a
-  64bit system, a local attacker could manipulate 32bit system calls
-  to gain root privileges. The Ubuntu EC2 kernels needed additional
-  fixing. (CVE-2010-3301)
-  
-  Brad Spengler discovered that stack memory for new a process was not
-  correctly calculated. A local attacker could exploit this to crash the
-  system, leading to a denial of service. (CVE-2010-3858)
-  
-  Kees Cook discovered that the ethtool interface did not correctly clear
-  kernel memory. A local attacker could read kernel heap memory, leading
-  to a loss of privacy. (CVE-2010-3861)
-  
-  Kees Cook and Vasiliy Kulikov discovered that the shm interface did not
-  clear kernel memory correctly. A local attacker could exploit this to
-  read kernel stack memory, leading to a loss of privacy. (CVE-2010-4072)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1041-1";
-tag_affected = "linux, linux-ec2 vulnerabilities on Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1041-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840565");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
@@ -92,11 +44,54 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1041-1");
+  script_tag(name : "affected" , value : "linux, linux-ec2 vulnerabilities on Ubuntu 9.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Dan Rosenberg discovered that the btrfs filesystem did not correctly
+  validate permissions when using the clone function. A local attacker could
+  overwrite the contents of file handles that were opened for append-only,
+  or potentially read arbitrary contents, leading to a loss of privacy. Only
+  Ubuntu 9.10 was affected. (CVE-2010-2537, CVE-2010-2538)
+
+  Dave Chinner discovered that the XFS filesystem did not correctly order
+  inode lookups when exported by NFS. A remote attacker could exploit this
+  to read or write disk blocks that had changed file assignment or had
+  become unlinked, leading to a loss of privacy. (CVE-2010-2943)
+
+  Kees Cook discovered that the Intel i915 graphics driver did not
+  correctly validate memory regions. A local attacker with access to the
+  video card could read and write arbitrary kernel memory to gain root
+  privileges. Ubuntu 10.10 was not affected. (CVE-2010-2962)
+
+  Robert Swiecki discovered that ftrace did not correctly handle mutexes. A
+  local attacker could exploit this to crash the kernel, leading to a
+  denial of service. (CVE-2010-3079)
+
+  Dan Rosenberg discovered that several network ioctls did not clear kernel
+  memory correctly. A local user could exploit this to read kernel stack
+  memory, leading to a loss of privacy. (CVE-2010-3296, CVE-2010-3297,
+  CVE-2010-3298)
+
+  Ben Hawkes discovered that the Linux kernel did not correctly filter
+  registers on 64bit kernels when performing 32bit system calls. On a
+  64bit system, a local attacker could manipulate 32bit system calls
+  to gain root privileges. The Ubuntu EC2 kernels needed additional
+  fixing. (CVE-2010-3301)
+
+  Brad Spengler discovered that stack memory for new a process was not
+  correctly calculated. A local attacker could exploit this to crash the
+  system, leading to a denial of service. (CVE-2010-3858)
+
+  Kees Cook discovered that the ethtool interface did not correctly clear
+  kernel memory. A local attacker could read kernel heap memory, leading
+  to a loss of privacy. (CVE-2010-3861)
+
+  Kees Cook and Vasiliy Kulikov discovered that the shm interface did not
+  clear kernel memory correctly. A local attacker could exploit this to
+  read kernel stack memory, leading to a loss of privacy. (CVE-2010-4072)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -404,7 +399,7 @@ if(release == "UBUNTU9.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1024,7 +1019,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1548,6 +1543,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

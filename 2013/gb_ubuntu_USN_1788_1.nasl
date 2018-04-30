@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1788_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1788_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-oneiric USN-1788-1
 #
@@ -25,29 +25,12 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Emese Revfy discovered that in the Linux kernel signal handlers could leak
-  address information across an exec, making it possible to bypass ASLR
-  (Address Space Layout Randomization). A local user could use this flaw to
-  bypass ASLR to reliably deliver an exploit payload that would otherwise be
-  stopped (by ASLR). (CVE-2013-0914)
-
-  A memory use after free error was discovered in the Linux kernel's tmpfs
-  filesystem. A local user could exploit this flaw to gain privileges or
-  cause a denial of service (system crash). (CVE-2013-1767)
-
-  Mateusz Guzik discovered a race in the Linux kernel's keyring. A local user
-  could exploit this flaw to cause a denial of service (system crash).
-  (CVE-2013-1792)";
-
-
-tag_affected = "linux-lts-backport-oneiric on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841384");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-04-05 13:51:27 +0530 (Fri, 05 Apr 2013)");
   script_cve_id("CVE-2013-0914", "CVE-2013-1767", "CVE-2013-1792");
   script_tag(name:"cvss_base", value:"6.2");
@@ -61,10 +44,22 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "affected" , value : "linux-lts-backport-oneiric on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Emese Revfy discovered that in the Linux kernel signal handlers could leak
+  address information across an exec, making it possible to bypass ASLR
+  (Address Space Layout Randomization). A local user could use this flaw to
+  bypass ASLR to reliably deliver an exploit payload that would otherwise be
+  stopped (by ASLR). (CVE-2013-0914)
+
+  A memory use after free error was discovered in the Linux kernel's tmpfs
+  filesystem. A local user could exploit this flaw to gain privileges or
+  cause a denial of service (system crash). (CVE-2013-1767)
+
+  Mateusz Guzik discovered a race in the Linux kernel's keyring. A local user
+  could exploit this flaw to cause a denial of service (system crash).
+  (CVE-2013-1792)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -107,6 +102,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1947_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1947_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-1947-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841552");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:49:08 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2012-5374", "CVE-2012-5375", "CVE-2013-1060", "CVE-2013-2140",
                 "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-4162", "CVE-2013-4163");
@@ -38,7 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for linux-lts-quantal USN-1947-1");
 
-  tag_insight = "A denial of service flaw was discovered in the Btrfs file system in the
+
+  script_tag(name : "affected" , value : "linux-lts-quantal on Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "A denial of service flaw was discovered in the Btrfs file system in the
 Linux kernel. A local user could cause a denial of service by creating a
 large number of files with names that have the same CRC32 hash value.
 (CVE-2012-5374)
@@ -74,16 +76,8 @@ denial of service (system crash). (CVE-2013-4162)
 Hannes Frederic Sowa discovered a flaw in the IPv6 subsystem of the Linux
 kernel when the IPV6_MTU setsockopt option has been specified in
 combination with the UDP_CORK option. A local user could exploit this flaw
-to cause a denial of service (system crash). (CVE-2013-4163)";
-
-  tag_affected = "linux-lts-quantal on Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+to cause a denial of service (system crash). (CVE-2013-4163)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1947-1");
@@ -93,7 +87,7 @@ to cause a denial of service (system crash). (CVE-2013-4163)";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -116,6 +110,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

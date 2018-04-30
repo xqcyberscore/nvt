@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1033_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1033_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for eucalyptus vulnerability USN-1033-1
 #
@@ -25,22 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that Eucalyptus did not verify password resets from
-  the Admin UI correctly. An unauthenticated remote attacker could issue
-  password reset requests to gain admin privileges in the Eucalyptus
-  environment.";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1033-1";
-tag_affected = "eucalyptus vulnerability on Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1033-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840556");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_xref(name: "USN", value: "1033-1");
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,11 +44,14 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.10");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1033-1");
+  script_tag(name : "affected" , value : "eucalyptus vulnerability on Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that Eucalyptus did not verify password resets from
+  the Admin UI correctly. An unauthenticated remote attacker could issue
+  password reset requests to gain admin privileges in the Eucalyptus
+  environment.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -136,6 +131,6 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

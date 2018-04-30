@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3382_1.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_ubuntu_USN_3382_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for php7.0 USN-3382-1
 #
@@ -27,48 +27,47 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843281");
-  script_version("$Revision: 6959 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-11 07:22:54 +0200 (Fri, 11 Aug 2017)");
-  script_cve_id("CVE-2015-8994", "CVE-2016-10397", "CVE-2017-11143", "CVE-2017-11144", 
-                "CVE-2017-11145", "CVE-2017-11147", "CVE-2017-11362", "CVE-2017-11628", 
-                "CVE-2017-9224", "CVE-2017-9226", "CVE-2017-9227", "CVE-2017-9228", 
-                "CVE-2017-9229"); 
+  script_cve_id("CVE-2015-8994", "CVE-2016-10397", "CVE-2017-11143", "CVE-2017-11144",
+                "CVE-2017-11145", "CVE-2017-11147", "CVE-2017-11362", "CVE-2017-11628",
+                "CVE-2017-9224", "CVE-2017-9226", "CVE-2017-9227", "CVE-2017-9228",
+                "CVE-2017-9229");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.0 USN-3382-1");
   script_tag(name: "summary", value: "Check the version of php7.0");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that the PHP opcache 
-  created keys for files it cached based on their filepath. A local attacker could 
-  possibly use this issue in a shared hosting environment to obtain sensitive 
-  information. This issue only affected Ubuntu 14.04 LTS. (CVE-2015-8994) It was 
-  discovered that the PHP URL parser incorrectly handled certain URI components. A 
-  remote attacker could possibly use this issue to bypass hostname-specific URL 
-  checks. This issue only affected Ubuntu 14.04 LTS. (CVE-2016-10397) It was 
-  discovered that PHP incorrectly handled certain boolean parameters when 
-  unserializing data. A remote attacker could possibly use this issue to cause PHP 
-  to crash, resulting in a denial of service. This issue only affected Ubuntu 
-  14.04 LTS. (CVE-2017-11143) Sebastian Li, Wei Lei, Xie Xiaofei, and Liu Yang 
-  discovered that PHP incorrectly handled the OpenSSL sealing function. A remote 
-  attacker could possibly use this issue to cause PHP to crash, resulting in a 
-  denial of service. (CVE-2017-11144) Wei Lei and Liu Yang discovered that the PHP 
-  date extension incorrectly handled memory. A remote attacker could possibly use 
-  this issue to disclose sensitive information from the server. (CVE-2017-11145) 
-  It was discovered that PHP incorrectly handled certain PHAR archives. A remote 
-  attacker could use this issue to cause PHP to crash or disclose sensitive 
-  information. This issue only affected Ubuntu 14.04 LTS. (CVE-2017-11147) It was 
-  discovered that PHP incorrectly handled locale length. A remote attacker could 
-  possibly use this issue to cause PHP to crash, resulting in a denial of service. 
-  (CVE-2017-11362) Wei Lei and Liu Yang discovered that PHP incorrectly handled 
-  parsing ini files. An attacker could possibly use this issue to cause PHP to 
-  crash, resulting in a denial of service. (CVE-2017-11628) It was discovered that 
-  PHP mbstring incorrectly handled certain regular expressions. A remote attacker 
-  could use this issue to cause PHP to crash, resulting in a denial of service, or 
-  possibly execute arbitrary code. (CVE-2017-9224, CVE-2017-9226, CVE-2017-9227, 
-  CVE-2017-9228, CVE-2017-9229)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that the PHP opcache
+  created keys for files it cached based on their filepath. A local attacker could
+  possibly use this issue in a shared hosting environment to obtain sensitive
+  information. This issue only affected Ubuntu 14.04 LTS. (CVE-2015-8994) It was
+  discovered that the PHP URL parser incorrectly handled certain URI components. A
+  remote attacker could possibly use this issue to bypass hostname-specific URL
+  checks. This issue only affected Ubuntu 14.04 LTS. (CVE-2016-10397) It was
+  discovered that PHP incorrectly handled certain boolean parameters when
+  unserializing data. A remote attacker could possibly use this issue to cause PHP
+  to crash, resulting in a denial of service. This issue only affected Ubuntu
+  14.04 LTS. (CVE-2017-11143) Sebastian Li, Wei Lei, Xie Xiaofei, and Liu Yang
+  discovered that PHP incorrectly handled the OpenSSL sealing function. A remote
+  attacker could possibly use this issue to cause PHP to crash, resulting in a
+  denial of service. (CVE-2017-11144) Wei Lei and Liu Yang discovered that the PHP
+  date extension incorrectly handled memory. A remote attacker could possibly use
+  this issue to disclose sensitive information from the server. (CVE-2017-11145)
+  It was discovered that PHP incorrectly handled certain PHAR archives. A remote
+  attacker could use this issue to cause PHP to crash or disclose sensitive
+  information. This issue only affected Ubuntu 14.04 LTS. (CVE-2017-11147) It was
+  discovered that PHP incorrectly handled locale length. A remote attacker could
+  possibly use this issue to cause PHP to crash, resulting in a denial of service.
+  (CVE-2017-11362) Wei Lei and Liu Yang discovered that PHP incorrectly handled
+  parsing ini files. An attacker could possibly use this issue to cause PHP to
+  crash, resulting in a denial of service. (CVE-2017-11628) It was discovered that
+  PHP mbstring incorrectly handled certain regular expressions. A remote attacker
+  could use this issue to cause PHP to crash, resulting in a denial of service, or
+  possibly execute arbitrary code. (CVE-2017-9224, CVE-2017-9226, CVE-2017-9227,
+  CVE-2017-9228, CVE-2017-9229)");
   script_tag(name: "affected", value: "php7.0 on Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -81,7 +80,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -122,7 +121,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -154,7 +153,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -186,6 +185,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

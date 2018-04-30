@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_mem_corrup_vuln_apsb17-38_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
+# $Id: gb_adobe_indesign_mem_corrup_vuln_apsb17-38_win.nasl 9644 2018-04-27 07:49:53Z santu $
 #
 # Adobe InDesign Memory Corruption Vulnerability - APSB17-38 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:indesign_cs3";
+CPE = "cpe:/a:adobe:indesign_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812093");
-  script_version("$Revision: 8200 $");
+  script_version("$Revision: 9644 $");
   script_cve_id("CVE-2017-11302");
   script_bugtraq_id(101840);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:49:53 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 15:13:46 +0530 (Thu, 16 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe InDesign Memory Corruption Vulnerability - APSB17-38 (Windows)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3519_1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3519_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for tomcat8 USN-3519-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843407");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-09 10:10:39 +0100 (Tue, 09 Jan 2018)");
   script_cve_id("CVE-2017-5647", "CVE-2017-5648", "CVE-2017-5664", "CVE-2017-7674");
   script_tag(name:"cvss_base", value:"6.4");
@@ -36,18 +36,17 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tomcat8 USN-3519-1");
   script_tag(name: "summary", value: "Check the version of tomcat8");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that Tomcat incorrectly 
-  handled certain pipelined requests when sendfile was used. A remote attacker 
-  could use this issue to obtain wrong responses possibly containing sensitive 
-  information. (CVE-2017-5647) It was discovered that Tomcat incorrectly used the 
-  appropriate facade object. A malicious application could possibly use this to 
-  bypass Security Manager restrictions. (CVE-2017-5648) It was discovered that 
-  Tomcat incorrectly handled error pages. A remote attacker could possibly use 
-  this issue to replace or remove the custom error page. (CVE-2017-5664) It was 
-  discovered that Tomcat incorrectly handled the CORS filter. A remote attacker 
-  could possibly use this issue to perform cache poisoning. (CVE-2017-7674)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that Tomcat incorrectly
+  handled certain pipelined requests when sendfile was used. A remote attacker
+  could use this issue to obtain wrong responses possibly containing sensitive
+  information. (CVE-2017-5647) It was discovered that Tomcat incorrectly used the
+  appropriate facade object. A malicious application could possibly use this to
+  bypass Security Manager restrictions. (CVE-2017-5648) It was discovered that
+  Tomcat incorrectly handled error pages. A remote attacker could possibly use
+  this issue to replace or remove the custom error page. (CVE-2017-5664) It was
+  discovered that Tomcat incorrectly handled the CORS filter. A remote attacker
+  could possibly use this issue to perform cache poisoning. (CVE-2017-7674)");
   script_tag(name: "affected", value: "tomcat8 on Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -60,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -89,7 +88,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -109,7 +108,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,6 +128,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_indesign_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_adobe_indesign_detect.nasl 9644 2018-04-27 07:49:53Z santu $
 #
 # Adobe InDesign Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902084");
-  script_version("$Revision: 5372 $");
+  script_version("$Revision: 9644 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:49:53 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_name("Adobe InDesign Version Detection");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -108,18 +108,18 @@ foreach key (key_list)
                        adPath + " was detected on the host");
       
         ## build cpe and store it as host_detail
-        cpe = build_cpe(value:adVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_cs3:");
+        cpe = build_cpe(value:adVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_server:");
         if(!cpe)
-          cpe = "cpe:/a:adobe:indesign_cs3"; 
+          cpe = "cpe:/a:adobe:indesign_server"; 
         if("x64" >< osArch && "Wow6432Node" >!< key)
         {
           
           set_kb_item(name:"Adobe/InDesign/Ver64/Win/Ver", value:adVer);
 
           ## build cpe
-          cpe = build_cpe(value:adVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_cs3:x64:");
+          cpe = build_cpe(value:adVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_server:x64:");
           if(!cpe)
-            cpe = "cpe:/a:adobe:indesign_cs3:x64";
+            cpe = "cpe:/a:adobe:indesign_server:x64";
         }
       
         register_product(cpe:cpe, location:adPath);

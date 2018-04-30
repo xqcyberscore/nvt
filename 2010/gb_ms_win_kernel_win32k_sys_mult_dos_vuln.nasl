@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_kernel_win32k_sys_mult_dos_vuln.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_ms_win_kernel_win32k_sys_mult_dos_vuln.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Microsoft Windows Kernel 'win32k.sys' Multiple DOS Vulnerabilities
 #
@@ -24,36 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to cause Denial of
-Serivce.
-
-Impact Level: System";
-
-tag_affected = "Microsoft Windows XP SP3 and prior.
-Microsoft Windows 2000 SP4 and prior.
-Microsoft Windows Server 2003 SP2 and prior.";
-
-tag_insight = "The flaws are due to:
- - error in the 'SfnLOGONNOTIFY()' function in 'win32k.sys' when handling
-   window messages. This can be exploited to cause a kernel crash by sending
-   a specially crafted '4Ch' message to the 'DDEMLEvent' window.
- - error in the 'SfnINSTRING()' function in 'win32k.sys' when handling
-   window messages. This can be exploited to cause a kernel crash by
-   sending a specially crafted '18Dh' message to the 'DDEMLEvent' window.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "Windows XP/2000/2003 is prone to multiple Denial Of Service
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801333");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1734", "CVE-2010-1735");
   script_bugtraq_id(39630, 39631);
@@ -73,11 +48,26 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause Denial of
+service.
+
+Impact Level: System");
+  script_tag(name : "affected" , value : "Microsoft Windows XP SP3 and prior.
+Microsoft Windows 2000 SP4 and prior.
+Microsoft Windows Server 2003 SP2 and prior.");
+  script_tag(name : "insight" , value : "The flaws are due to:
+ - error in the 'SfnLOGONNOTIFY()' function in 'win32k.sys' when handling
+   window messages. This can be exploited to cause a kernel crash by sending
+   a specially crafted '4Ch' message to the 'DDEMLEvent' window.
+ - error in the 'SfnINSTRING()' function in 'win32k.sys' when handling
+   window messages. This can be exploited to cause a kernel crash by
+   sending a specially crafted '18Dh' message to the 'DDEMLEvent' window.");
+  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+since disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "Windows XP/2000/2003 is prone to multiple Denial Of Service
+  vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

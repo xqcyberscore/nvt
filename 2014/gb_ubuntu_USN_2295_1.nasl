@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2295_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2295_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for firefox USN-2295-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841914");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:40:56 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-1547", "CVE-2014-1548", "CVE-2014-1549", "CVE-2014-1550",
                 "CVE-2014-1561", "CVE-2014-1555", "CVE-2014-1556", "CVE-2014-1544",
@@ -40,7 +40,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for firefox USN-2295-1");
 
-  tag_insight = "Christian Holler, David Keeler, Byron Campen, Gary Kwong,
+
+  script_tag(name : "affected" , value : "firefox on Ubuntu 14.04 LTS ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "Christian Holler, David Keeler, Byron Campen, Gary Kwong,
 Jesse Ruderman, Andrew McCreight, Alon Zakai, Bobby Holley, Jonathan Watt,
 Shu-yu Guo, Steve Fink, Terrence Cole, Gijs Kruitbosch and C&#259 t&#259 lin
 Badea discovered multiple memory safety issues in Firefox. If a user were
@@ -66,7 +69,7 @@ ability to move UI icons. (CVE-2014-1561)
 Jethro Beekman discovered a use-after-free when the FireOnStateChange
 event is triggered in some circumstances. An attacker could potentially
 exploit this to cause a denial of service via application crash or
-execute arbitrary code with the priviliges of the user invoking Firefox.
+execute arbitrary code with the privileges of the user invoking Firefox.
 (CVE-2014-1555)
 
 Patrick Cozzi discovered a crash when using the Cesium JS library to
@@ -92,17 +95,8 @@ CVE-2014-1559, CVE-2014-1560)
 Boris Zbarsky discovered that network redirects could cause an iframe
 to escape the confinements defined by its sandbox attribute in
 some circumstances. An attacker could potentially exploit this to
-conduct cross-site scripting attacks. (CVE-2014-1552)";
-
-  tag_affected = "firefox on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+conduct cross-site scripting attacks. (CVE-2014-1552)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2295-1");
@@ -112,7 +106,7 @@ conduct cross-site scripting attacks. (CVE-2014-1552)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS)");
   exit(0);
 }
 
@@ -135,7 +129,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -149,6 +143,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

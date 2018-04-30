@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842560");
-  script_version("$Revision: 7956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9652 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 05:50:34 +0100 (Wed, 16 Dec 2015)");
   script_cve_id("CVE-2015-7201", "CVE-2015-7202", "CVE-2015-7203", "CVE-2015-7220",
                 "CVE-2015-7221", "CVE-2015-7204", "CVE-2015-7205", "CVE-2015-7207",
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2833-1");
   script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Andrei Vaida, Jesse Ruderman, Bob Clary,
 Christian Holler, Jesse Ruderman, Eric Rahm, Robert Kaiser, Harald Kirschner, and
 Michael Henretty discovered multiple memory safety issues in Firefox. If a user
@@ -89,7 +88,7 @@ when parsing data: URLs. An attacker could potentially exploit this to
 conduct URL spoofing attacks. (CVE-2015-7211)
 
 Abhishek Arya discovered an integer overflow when allocating large
-textures. If a user ... 
+textures. If a user ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "firefox on Ubuntu 15.10 ,
@@ -104,7 +103,7 @@ textures. If a user ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(15\.04|14\.04 LTS|12\.04 LTS|15\.10)");
   exit(0);
 }
 
@@ -127,7 +126,7 @@ if(release == "UBUNTU15.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -141,7 +140,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -155,7 +154,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -169,6 +168,6 @@ if(release == "UBUNTU15.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

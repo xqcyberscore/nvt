@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 9518 2018-04-18 09:33:37Z cfischer $
+# $Id: products_eol.inc 9663 2018-04-27 13:54:50Z tpassfeld $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,11 +22,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9518 $
+# $Revision: 9663 $
 #
 ###############################################################################
 
 eol_cpes = make_array();
+
+# https://www.mediawiki.org/wiki/Version_lifecycle
+eol_cpes[ 'cpe:/a:mediawiki:mediawiki' ] = make_array(
+  'versions',      '1.32:2019-12-31;1.31:2021-06-30;1.30:2018-12-31;1.29:2018-07-31;1.28:2017-11-30;1.27:2019-06-30;1.26:2016-11-30;1.25:2016-06-01;1.24:2015-10-01;1.23:2017-04-01;1.22:2014-11-01;1.21:2014-05-01;1.20:2013-10-01;1.19:2015-03-01;1.18:2012-11-01;1.17:2012-03-01;1.16:2011-03-01;1.15:2010-06-01;1.14:2009-05-01;1.13:2009-02-01;1.12:2009-01-15;1.11:2008-02-01;1.10:2008-02-01;1.9:2008-02-01;1.8:2007-08-01;1.7:2007-02-01;1.6:2009-02-01;1.5:2006-03-01;1.4:2006-03-01;1.3:2005-10-01;1.2:2004-02-01;1.1:2004-01-01',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
 
 # https://en.wikipedia.org/wiki/Apache_HTTP_Server#Development
 eol_cpes[ 'cpe:/a:apache:http_server' ] = make_array(

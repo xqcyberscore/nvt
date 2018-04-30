@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1046_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1046_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for sudo vulnerability USN-1046-1
 #
@@ -25,25 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Alexander Kurtz discovered that sudo would not prompt for a password when
-  a group was specified in the Runas_Spec. A local attacker could exploit
-  this to execute arbitrary code as the specified group if sudo was
-  configured to allow the attacker to use a program as this group. The group
-  Runas_Spec is not used in the default installation of Ubuntu.";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1046-1";
-tag_affected = "sudo vulnerability on Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1046-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840571");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:59:01 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,11 +44,17 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1046-1");
+  script_tag(name : "affected" , value : "sudo vulnerability on Ubuntu 9.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Alexander Kurtz discovered that sudo would not prompt for a password when
+  a group was specified in the Runas_Spec. A local attacker could exploit
+  this to execute arbitrary code as the specified group if sudo was
+  configured to allow the attacker to use a program as this group. The group
+  Runas_Spec is not used in the default installation of Ubuntu.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -91,7 +86,7 @@ if(release == "UBUNTU9.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -111,7 +106,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -131,6 +126,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

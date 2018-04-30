@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1593_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1593_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for devscripts USN-1593-1
 #
@@ -25,39 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Raphael Geissert discovered that the debdiff.pl tool incorrectly handled
-  shell metacharacters. If a user or automated system were tricked into
-  processing a specially crafted filename, a remote attacher could possibly
-  execute arbitrary code. (CVE-2012-0212)
-
-  Raphael Geissert discovered that the dscverify tool incorrectly escaped
-  arguments to external commands. If a user or automated system were tricked
-  into processing specially crafted files, a remote attacher could possibly
-  execute arbitrary code. (CVE-2012-2240)
-  
-  Raphael Geissert discovered that the dget tool incorrectly performed input
-  validation. If a user or automated system were tricked into processing
-  specially crafted files, a remote attacher could delete arbitrary files.
-  (CVE-2012-2241)
-  
-  Raphael Geissert discovered that the dget tool incorrectly escaped
-  arguments to external commands. If a user or automated system were tricked
-  into processing specially crafted files, a remote attacher could possibly
-  execute arbitrary code. This issue only affected Ubuntu 10.04 LTS and
-  Ubuntu 11.04. (CVE-2012-2242)
-  
-  Jim Meyering discovered that the annotate-output tool incorrectly handled
-  temporary files. A local attacker could use this flaw to alter files being
-  processed by the annotate-output tool. On Ubuntu 11.04 and later, this
-  issue was mitigated by the Yama kernel symlink restrictions.
-  (CVE-2012-3500)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1593-1";
-tag_affected = "devscripts on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -65,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1593-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841169");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:24:12 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-0212", "CVE-2012-2240", "CVE-2012-2241", "CVE-2012-2242", "CVE-2012-3500");
   script_tag(name:"cvss_base", value:"9.3");
@@ -78,11 +45,39 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|12\.04 LTS|11\.10|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1593-1");
+  script_tag(name : "affected" , value : "devscripts on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Raphael Geissert discovered that the debdiff.pl tool incorrectly handled
+  shell metacharacters. If a user or automated system were tricked into
+  processing a specially crafted filename, a remote attacher could possibly
+  execute arbitrary code. (CVE-2012-0212)
+
+  Raphael Geissert discovered that the dscverify tool incorrectly escaped
+  arguments to external commands. If a user or automated system were tricked
+  into processing specially crafted files, a remote attacher could possibly
+  execute arbitrary code. (CVE-2012-2240)
+
+  Raphael Geissert discovered that the dget tool incorrectly performed input
+  validation. If a user or automated system were tricked into processing
+  specially crafted files, a remote attacher could delete arbitrary files.
+  (CVE-2012-2241)
+
+  Raphael Geissert discovered that the dget tool incorrectly escaped
+  arguments to external commands. If a user or automated system were tricked
+  into processing specially crafted files, a remote attacher could possibly
+  execute arbitrary code. This issue only affected Ubuntu 10.04 LTS and
+  Ubuntu 11.04. (CVE-2012-2242)
+
+  Jim Meyering discovered that the annotate-output tool incorrectly handled
+  temporary files. A local attacker could use this flaw to alter files being
+  processed by the annotate-output tool. On Ubuntu 11.04 and later, this
+  issue was mitigated by the Yama kernel symlink restrictions.
+  (CVE-2012-3500)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -107,7 +102,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -121,7 +116,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -135,7 +130,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -149,6 +144,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

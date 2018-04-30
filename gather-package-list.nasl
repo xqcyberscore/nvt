@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gather-package-list.nasl 9672 2018-04-29 08:24:10Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-29 10:24:10 +0200 (Sun, 29 Apr 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -137,6 +137,7 @@ OS_CPE = make_array(
     "SLED10.0SP0", "cpe:/o:suse:linux_enterprise_desktop:10:SP0",
 
     # Ubuntu
+    "UBUNTU18.04 LTS","cpe:/o:canonical:ubuntu_linux:18.04:-:lts",
     "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
     "UBUNTU16.10",    "cpe:/o:canonical:ubuntu_linux:16.10",
@@ -463,7 +464,7 @@ if( "Welcome to pfSense" >< uname ) {
   set_kb_item( name:"pfsense/ssh/port", value:port);
   set_kb_item( name:"ssh/force/pty", value:TRUE );
   set_kb_item( name:"ssh/force/nosh", value:TRUE );
-  # clear the buffer to avoid that we're saving the whole pfSense menue in the uname
+  # clear the buffer to avoid that we're saving the whole pfSense menu in the uname
   set_kb_item( name:"ssh/force/clear_buffer", value:TRUE );
   replace_kb_item( name:"ssh/send_extra_cmd", value:'8\n' );
   uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
@@ -2159,6 +2160,14 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.10" >< rls ) {
   if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.10" );
   register_detected_os( os:"Ubuntu 17.10", oskey:"UBUNTU17.10" );
+  exit( 0 );
+}
+if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.04" >< rls ) {
+  set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.10" );
+  register_detected_os( os:"Ubuntu 18.04 LTS", oskey:"UBUNTU18.04 LTS" );
   exit( 0 );
 }
 

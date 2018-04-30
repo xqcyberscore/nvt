@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842644");
-  script_version("$Revision: 7955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-02-17 06:27:45 +0100 (Wed, 17 Feb 2016)");
   script_cve_id("CVE-2015-5252", "CVE-2015-3223", "CVE-2015-5296", "CVE-2015-5299",
                 "CVE-2015-5330", "CVE-2015-7540", "CVE-2015-8467");
@@ -36,8 +36,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for samba USN-2855-2");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "USN-2855-1 fixed vulnerabilities in Samba.
   The upstream fix for CVE-2015-5252 introduced a regression in certain specific
   environments.This update fixes the problem.
@@ -70,8 +69,8 @@ if(description)
   possibly use this issue to bypass intended access restrictions in certain
   environments. This issue only affected Ubuntu 14.04 LTS, Ubuntu 15.04 and
   Ubuntu 15.10. (CVE-2015-8467)");
-  script_tag(name: "affected", value: "samba on Ubuntu 15.10 , 
- 
+  script_tag(name: "affected", value: "samba on Ubuntu 15.10 ,
+
   Ubuntu 14.04 LTS ,
   Ubuntu 12.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
@@ -83,7 +82,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|15\.10)");
   exit(0);
 }
 
@@ -106,7 +105,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -120,7 +119,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -134,6 +133,6 @@ if(release == "UBUNTU15.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_smb_dos_vuln_lin.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wireshark_smb_dos_vuln_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark SMB Dissectors Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900991");
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-12-24 14:01:59 +0100 (Thu, 24 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -50,7 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.wireshark.org/download/automated/captures/fuzz-2009-12-07-11141.pcap");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to trick the user to render the
-  crafted malicious capture packet thus causing Denial of Serivce attack.
+  crafted malicious capture packet thus causing Denial of service attack.
 
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Wireshark version 0.9.0 to 1.2.4 on Linux.");
@@ -72,7 +72,6 @@ include("host_details.inc");
 
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
-# Grep for Wireshark version 0.9.0 to 1.2.4
 if(version_in_range(version:ver, test_version:"0.9.0",
                                  test_version2:"1.2.4")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"1.2.5");

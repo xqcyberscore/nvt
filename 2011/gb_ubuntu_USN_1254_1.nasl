@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1254_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1254_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1254-1
 #
@@ -25,7 +25,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that CVE-2011-3004, which addressed possible privilege
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1254-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840849");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-23 10:35:12 +0530 (Fri, 23 Dec 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1254-1");
+  script_cve_id("CVE-2011-3004", "CVE-2011-3647", "CVE-2011-3648", "CVE-2011-3650");
+  script_name("Ubuntu Update for thunderbird USN-1254-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1254-1");
+  script_tag(name : "affected" , value : "thunderbird on Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that CVE-2011-3004, which addressed possible privilege
   escalation in addons, also affected Thunderbird 3.1. An attacker could
   potentially exploit a user who had installed an add-on that used
   loadSubscript in vulnerable ways. (CVE-2011-3647)
@@ -40,37 +65,7 @@ tag_insight = "It was discovered that CVE-2011-3004, which addressed possible pr
   Marc Schoenefeld discovered that using Firebug to profile a JavaScript file
   with many functions would cause Firefox to crash. An attacker might be able
   to exploit this without using the debugging APIs which would potentially
-  allow an attacker to remotely crash Thunderbird. (CVE-2011-3650)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1254-1";
-tag_affected = "thunderbird on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1254-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840849");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-12-23 10:35:12 +0530 (Fri, 23 Dec 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1254-1");
-  script_cve_id("CVE-2011-3004", "CVE-2011-3647", "CVE-2011-3648", "CVE-2011-3650");
-  script_name("Ubuntu Update for thunderbird USN-1254-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  allow an attacker to remotely crash Thunderbird. (CVE-2011-3650)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -96,7 +91,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -110,7 +105,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -124,6 +119,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

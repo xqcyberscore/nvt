@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1253_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1253_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux USN-1253-1
 #
@@ -25,7 +25,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Ryan Sweat discovered that the kernel incorrectly handled certain VLAN
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1253-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840804");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-11 09:59:23 +0530 (Fri, 11 Nov 2011)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1253-1");
+  script_cve_id("CVE-2011-1576", "CVE-2011-1833", "CVE-2011-2494", "CVE-2011-2495",
+                "CVE-2011-2497", "CVE-2011-2695", "CVE-2011-2699", "CVE-2011-2905",
+                "CVE-2011-2928", "CVE-2011-3188", "CVE-2011-3191");
+  script_name("Ubuntu Update for linux USN-1253-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1253-1");
+  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Ryan Sweat discovered that the kernel incorrectly handled certain VLAN
   packets. On some systems, a remote attacker could send specially crafted
   traffic to crash the system, leading to a denial of service.
   (CVE-2011-1576)
@@ -74,37 +99,7 @@ tag_insight = "Ryan Sweat discovered that the kernel incorrectly handled certain
   Darren Lavender discovered that the CIFS client incorrectly handled certain
   large values. A remote attacker with a malicious server could exploit this
   to crash the system or possibly execute arbitrary code as the root user.
-  (CVE-2011-3191)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1253-1";
-tag_affected = "linux on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1253-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840804");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-11 09:59:23 +0530 (Fri, 11 Nov 2011)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1253-1");
-  script_cve_id("CVE-2011-1576", "CVE-2011-1833", "CVE-2011-2494", "CVE-2011-2495",
-                "CVE-2011-2497", "CVE-2011-2695", "CVE-2011-2699", "CVE-2011-2905",
-                "CVE-2011-2928", "CVE-2011-3188", "CVE-2011-3191");
-  script_name("Ubuntu Update for linux USN-1253-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  (CVE-2011-3191)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -208,6 +203,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

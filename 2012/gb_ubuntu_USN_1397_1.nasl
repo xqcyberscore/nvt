@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1397_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1397_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for mysql-5.1 USN-1397-1
 #
@@ -25,28 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple security issues were discovered in MySQL and this update includes
-  new upstream MySQL versions to fix these issues.
-
-  MySQL has been updated to 5.1.61 in Ubuntu 10.04 LTS, Ubuntu 10.10,
-  Ubuntu 11.04 and Ubuntu 11.10. Ubuntu 8.04 LTS has been updated to
-  MySQL 5.0.95.
-
-  In addition to security fixes, the updated packages contain bug fixes, new
-  features, and possibly incompatible changes.
-
-  Please see the following for more information:
-  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html
-  http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html
-  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1397-1";
-tag_affected = "mysql-5.1 on Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -54,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1397-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840944");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 10:51:25 +0530 (Fri, 16 Mar 2012)");
   script_cve_id("CVE-2007-5925", "CVE-2008-3963", "CVE-2008-4098", "CVE-2008-4456",
                 "CVE-2008-7247", "CVE-2009-2446", "CVE-2009-4019", "CVE-2009-4030",
@@ -76,11 +54,28 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.10|11\.04|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1397-1");
+  script_tag(name : "affected" , value : "mysql-5.1 on Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Multiple security issues were discovered in MySQL and this update includes
+  new upstream MySQL versions to fix these issues.
+
+  MySQL has been updated to 5.1.61 in Ubuntu 10.04 LTS, Ubuntu 10.10,
+  Ubuntu 11.04 and Ubuntu 11.10. Ubuntu 8.04 LTS has been updated to
+  MySQL 5.0.95.
+
+  In addition to security fixes, the updated packages contain bug fixes, new
+  features, and possibly incompatible changes.
+
+  Please see the following for more information:
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html
+  http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html
+  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -105,7 +100,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -119,7 +114,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -133,7 +128,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -147,7 +142,7 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -161,6 +156,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

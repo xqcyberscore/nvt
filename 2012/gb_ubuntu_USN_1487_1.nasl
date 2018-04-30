@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1487_1.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_ubuntu_USN_1487_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for linux USN-1487-1
 #
@@ -25,13 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A flaw was discovered in the Linux kernel's NFSv4 (Network file system)
-  handling of ACLs (access control lists). A remote NFS server (attacker)
-  could cause a denial of service (OOPS).";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1487-1";
-tag_affected = "linux on Ubuntu 11.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -39,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1487-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841069");
-  script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-07-03 10:26:11 +0530 (Tue, 03 Jul 2012)");
   script_cve_id("CVE-2012-2375");
   script_tag(name:"cvss_base", value:"4.6");
@@ -52,11 +45,13 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU11\.10");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1487-1");
+  script_tag(name : "affected" , value : "linux on Ubuntu 11.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "A flaw was discovered in the Linux kernel's NFSv4 (Network file system)
+  handling of ACLs (access control lists). A remote NFS server (attacker)
+  could cause a denial of service (OOPS).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -123,6 +118,6 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

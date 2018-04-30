@@ -26,35 +26,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843098");
-  script_version("$Revision: 7992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-21 05:50:50 +0100 (Tue, 21 Mar 2017)");
-  script_cve_id("CVE-2016-8610", "CVE-2016-7444", "CVE-2017-5334", "CVE-2017-5335", 
+  script_cve_id("CVE-2016-8610", "CVE-2016-7444", "CVE-2017-5334", "CVE-2017-5335",
                 "CVE-2017-5336", "CVE-2017-5337");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for gnutls26 USN-3183-2");
   script_tag(name: "summary", value: "Check the version of gnutls26");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "USN-3183-1 fixed CVE-2016-8610 in GnuTLS in 
-  Ubuntu 16.04 LTS and Ubuntu 16.10. This update provides the corresponding update 
-  for Ubuntu 12.04 LTS and Ubuntu 14.04 LTS. Original advisory details: Stefan 
-  Buehler discovered that GnuTLS incorrectly verified the serial length of OCSP 
-  responses. A remote attacker could possibly use this issue to bypass certain 
-  certificate validation measures. This issue only applied to Ubuntu 16.04 LTS. 
-  (CVE-2016-7444) Shi Lei discovered that GnuTLS incorrectly handled certain 
-  warning alerts. A remote attacker could possibly use this issue to cause GnuTLS 
-  to hang, resulting in a denial of service. This issue has only been addressed in 
-  Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2016-8610) It was discovered that GnuTLS 
-  incorrectly decoded X.509 certificates with a Proxy Certificate Information 
-  extension. A remote attacker could use this issue to cause GnuTLS to crash, 
-  resulting in a denial of service, or possibly execute arbitrary code. This issue 
-  only affected Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2017-5334) It was 
-  discovered that GnuTLS incorrectly handled certain OpenPGP certificates. A 
-  remote attacker could possibly use this issue to cause GnuTLS to crash, 
-  resulting in a denial of service, or possibly execute arbitrary code. 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "USN-3183-1 fixed CVE-2016-8610 in GnuTLS in
+  Ubuntu 16.04 LTS and Ubuntu 16.10. This update provides the corresponding update
+  for Ubuntu 12.04 LTS and Ubuntu 14.04 LTS. Original advisory details: Stefan
+  Buehler discovered that GnuTLS incorrectly verified the serial length of OCSP
+  responses. A remote attacker could possibly use this issue to bypass certain
+  certificate validation measures. This issue only applied to Ubuntu 16.04 LTS.
+  (CVE-2016-7444) Shi Lei discovered that GnuTLS incorrectly handled certain
+  warning alerts. A remote attacker could possibly use this issue to cause GnuTLS
+  to hang, resulting in a denial of service. This issue has only been addressed in
+  Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2016-8610) It was discovered that GnuTLS
+  incorrectly decoded X.509 certificates with a Proxy Certificate Information
+  extension. A remote attacker could use this issue to cause GnuTLS to crash,
+  resulting in a denial of service, or possibly execute arbitrary code. This issue
+  only affected Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2017-5334) It was
+  discovered that GnuTLS incorrectly handled certain OpenPGP certificates. A
+  remote attacker could possibly use this issue to cause GnuTLS to crash,
+  resulting in a denial of service, or possibly execute arbitrary code.
   (CVE-2017-5335, CVE-2017-5336, CVE-2017-5337)");
   script_tag(name: "affected", value: "gnutls26 on Ubuntu 14.04 LTS ,
   Ubuntu 12.04 LTS");
@@ -67,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS)");
   exit(0);
 }
 
@@ -96,7 +95,7 @@ if(release == "UBUNTU14.04 LTS")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -116,6 +115,6 @@ if(release == "UBUNTU12.04 LTS")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2400_1.nasl 7957 2017-12-01 06:40:08Z santu $
+# $Id: gb_ubuntu_USN_2400_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for libreoffice USN-2400-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842028");
-  script_version("$Revision: 7957 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-11-11 06:23:14 +0100 (Tue, 11 Nov 2014)");
   script_cve_id("CVE-2014-3575");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,8 +37,7 @@ if(description)
 
   script_tag(name: "summary", value: "Check the version of libreoffice");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight", value: "It was discovered that LibreOffice incorrectly
 handled OLE preview generation. If a user were tricked into opening a crafted
@@ -55,7 +54,7 @@ documents.");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -78,6 +77,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

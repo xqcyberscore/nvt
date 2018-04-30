@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842798");
-  script_version("$Revision: 7955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-06-11 05:28:15 +0200 (Sat, 11 Jun 2016)");
   script_cve_id("CVE-2016-1583");
   script_tag(name:"cvss_base", value:"7.2");
@@ -35,7 +35,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-snapdragon USN-3008-1");
   script_tag(name: "summary", value: "Check the version of linux-snapdragon");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Jann Horn discovered that eCryptfs improperly attempted to use the mmap()
 handler of a lower filesystem that did not implement one, causing a
 recursive page fault to occur. A local unprivileged attacker could use to
@@ -51,7 +51,7 @@ with administrative privileges.");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
@@ -74,6 +74,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

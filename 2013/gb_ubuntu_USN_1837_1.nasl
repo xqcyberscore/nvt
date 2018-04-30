@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1837_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1837_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux USN-1837-1
 #
@@ -25,7 +25,13 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "An information leak was discovered in the Linux kernel's crypto API. A
+
+
+if(description)
+{
+  script_tag(name : "affected" , value : "linux on Ubuntu 13.04");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "An information leak was discovered in the Linux kernel's crypto API. A
   local user could exploit this flaw to examine potentially sensitive
   information from the kernel's stack memory. (CVE-2013-3076)
 
@@ -80,21 +86,10 @@ tag_insight = "An information leak was discovered in the Linux kernel's crypto A
   An information leak was discovered in the Linux kernel's nfc (near field
    ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "linux on Ubuntu 13.04";
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_oid("1.3.6.1.4.1.25623.1.0.841436");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 11:54:59 +0530 (Mon, 27 May 2013)");
   script_cve_id("CVE-2013-3076", "CVE-2013-3222", "CVE-2013-3223", "CVE-2013-3224",
                 "CVE-2013-3225", "CVE-2013-3226", "CVE-2013-3227", "CVE-2013-3228",
@@ -113,7 +108,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU13\.04");
   exit(0);
 }
 
@@ -136,6 +131,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

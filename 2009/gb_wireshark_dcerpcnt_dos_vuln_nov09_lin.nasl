@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dcerpcnt_dos_vuln_nov09_lin.nasl 4906 2017-01-02 13:06:55Z teissa $
+# $Id: gb_wireshark_dcerpcnt_dos_vuln_nov09_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark 'DCERPC/NT' Dissector DOS Vulnerability - Nov09 (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801035");
-  script_version("$Revision: 4906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:06:55 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -49,7 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.wireshark.org/docs/relnotes/wireshark-1.2.3.html");
   script_xref(name:"URL", value:"http://www.wireshark.org/docs/relnotes/wireshark-1.0.10.html");
 
-  script_tag(name:"impact", value:"Successful exploitation could result in Denial of Serivce condition.
+  script_tag(name:"impact", value:"Successful exploitation could result in Denial of service condition.
 
   Impact Level: Application.");
   script_tag(name:"affected", value:"Wireshark version 0.10.13 to 1.0.9 and 1.2.0 to 1.2.2 on Linux.");
@@ -75,7 +75,6 @@ include("host_details.inc");
 
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
-# Grep for Wireshark version 0.10.13 to 1.0.9 and 1.2.0 to 1.2.2
 if(version_in_range(version:ver, test_version:"1.2.0", test_version2:"1.2.2") ||
    version_in_range(version:ver, test_version:"0.10.13", test_version2:"1.0.9")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"1.0.10/1.2.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1641_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1641_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for keystone USN-1641-1
 #
@@ -25,21 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Vijaya Erukala discovered that Keystone did not properly invalidate
-  EC2-style credentials such that if credentials were removed from a tenant,
-  an authenticated and authorized user using those credentials may still be
-  allowed access beyond the account owner's expectations. (CVE-2012-5571)
-
-  It was discovered that Keystone did not properly implement token
-  expiration. A remote attacker could use this to continue to access an
-  account that is disabled or has a changed password. This issue was
-  previously fixed as CVE-2012-3426 but was reintroduced in Ubuntu 12.10.
-  (CVE-2012-5563)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1641-1";
-tag_affected = "keystone on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -47,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1641-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841227");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-11-29 09:40:15 +0530 (Thu, 29 Nov 2012)");
   script_cve_id("CVE-2012-5571", "CVE-2012-3426", "CVE-2012-5563");
   script_tag(name:"cvss_base", value:"4.9");
@@ -60,11 +45,21 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|12\.10)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1641-1");
+  script_tag(name : "affected" , value : "keystone on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Vijaya Erukala discovered that Keystone did not properly invalidate
+  EC2-style credentials such that if credentials were removed from a tenant,
+  an authenticated and authorized user using those credentials may still be
+  allowed access beyond the account owner's expectations. (CVE-2012-5571)
+
+  It was discovered that Keystone did not properly implement token
+  expiration. A remote attacker could use this to continue to access an
+  account that is disabled or has a changed password. This issue was
+  previously fixed as CVE-2012-3426 but was reintroduced in Ubuntu 12.10.
+  (CVE-2012-5563)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -89,7 +84,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -103,6 +98,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

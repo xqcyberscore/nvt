@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3445_1.nasl 7455 2017-10-17 09:40:59Z asteins $
+# $Id: gb_ubuntu_USN_3445_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for linux USN-3445-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843326");
-  script_version("$Revision: 7455 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 11:40:59 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:56:50 +0200 (Wed, 11 Oct 2017)");
   script_cve_id("CVE-2016-8633", "CVE-2017-14106");
   script_tag(name:"cvss_base", value:"6.2");
@@ -36,15 +36,14 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3445-1");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Eyal Itkin discovered that the IP over IEEE 
-  1394 (FireWire) implementation in the Linux kernel contained a buffer overflow 
-  when handling fragmented packets. A remote attacker could use this to possibly 
-  execute arbitrary code with administrative privileges. (CVE-2016-8633) Andrey 
-  Konovalov discovered that a divide-by-zero error existed in the TCP stack 
-  implementation in the Linux kernel. A local attacker could use this to cause a 
-  denial of service (system crash). (CVE-2017-14106)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Eyal Itkin discovered that the IP over IEEE
+  1394 (FireWire) implementation in the Linux kernel contained a buffer overflow
+  when handling fragmented packets. A remote attacker could use this to possibly
+  execute arbitrary code with administrative privileges. (CVE-2016-8633) Andrey
+  Konovalov discovered that a divide-by-zero error existed in the TCP stack
+  implementation in the Linux kernel. A local attacker could use this to cause a
+  denial of service (system crash). (CVE-2017-14106)");
   script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -55,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -168,6 +167,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

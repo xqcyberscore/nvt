@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: dont_print_on_printers.nasl 9669 2018-04-28 09:30:41Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9669 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-28 11:30:41 +0200 (Sat, 28 Apr 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
   script_category(ACT_SETTINGS);
@@ -82,7 +82,10 @@ function check_pjl_port_list( list ) {
   return TRUE;
 }
 
-function report() {
+function report( data ) {
+
+  local_var data, port;
+
   register_all_pjl_ports( ports:pjl_ports_list );
   if( ! invalid_list ) {
     foreach port( pjl_ports_list ) {
@@ -92,6 +95,8 @@ function report() {
     }
   }
 
+  log_message( port:0, data:'Exclusion reason:\n\n' + data );
+  set_kb_item( name:"Host/is_printer/reason", value:data );
   set_kb_item( name:"Host/is_printer", value:TRUE );
   exit( 0 );
 }
@@ -157,7 +162,7 @@ if( sysdesc = get_snmp_sysdesc( port:port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected SNMP SysDesc on port " + port + '/udp:\n\n' + sysdesc );
 
 # UDP AppSocket
 port = 9101;
@@ -173,7 +178,7 @@ if( get_udp_port_state( port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected UDP AppSocket on port " + port + '/udp' );
 
 #TBD: Also test 9101-9103 & 9112-9116?
 #The ( ! r && se == ETIMEDOUT ) might cause false positives here
@@ -193,7 +198,7 @@ if( get_port_state( port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected PJL service on port " + port + '/tcp' );
 
 port = 21;
 if( get_port_state( port ) ) {
@@ -217,7 +222,7 @@ if( get_port_state( port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected FTP banner on port " + port + '/tcp:\n\n' + banner );
 
 port = 23;
 if( get_port_state( port ) ) {
@@ -233,7 +238,7 @@ if( get_port_state( port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected Telnet banner on port " + port + '/tcp:\n\n' + banner );
 
 # Xerox DocuPrint
 port = 2002;
@@ -249,14 +254,14 @@ if( get_port_state( port ) ) {
   }
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected Xerox DocuPrint banner on port " + port + '/tcp:\n\n' + banner );
 
 if( mac = get_kb_item( "Host/mac_address" ) ) {
   if( is_printer_mac( mac:mac ) )
     is_printer = TRUE;
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:"Detected MAC-Address of a Printer-Vendor: " + mac );
 
 # Keep the HTTP check at the bottom as this can take quite some time
 konica_detect_urls = make_array();
@@ -265,117 +270,138 @@ konica_detect_urls['/wcd/system_device.xml'] = '301 Movprm';
 konica_detect_urls['/wcd/system.xml'] = '301 Movprm';
 
 # Patch by Laurent Facq
-ports = make_list( 80, 8000, 280, 631 ); # TODO: Readd 443 once a solution was found to detect SSL without a dependency to find_service.nasl
+ports = make_list( 80, 8000, 280, 631 ); # TODO: Re-add 443 once a solution was found to detect SSL/TLS without a dependency to find_service.nasl
 
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  if( ! get_port_state( port ) ) continue;
 
-    # Sharp can be detected from the banner, see also gb_sharp_printer_detect.nasl
-    # If updating here please also update check gb_sharp_printer_detect.nasl
-    banner = get_http_banner( port:port );
-    if( "Extend-sharp-setting-status" >< banner && "Server: Rapid Logic" >< banner ) {
+  # Sharp can be detected from the banner, see also gb_sharp_printer_detect.nasl
+  # If updating here please also update check gb_sharp_printer_detect.nasl
+  banner = get_http_banner( port:port );
+  if( "Extend-sharp-setting-status" >< banner && "Server: Rapid Logic" >< banner ) {
+    is_printer = TRUE;
+    reason     = "Sharp Banner/Text on port " + port + "/tcp: " + banner;
+    break;
+  }
+
+  # Canon, see also gb_canon_printers_detect.nasl
+  # If updating here please also update check gb_canon_printers_detect.nasl
+  buf = http_get_cache( item:"/index.html", port:port );
+  if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) || "CANON HTTP Server" >< buf ) {
+    is_printer = TRUE;
+    reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+    break;
+  }
+
+  # Konica Minolta TODO: Move to own printer detect NVT
+  foreach url( keys( konica_detect_urls ) ) {
+
+    buf = http_get_cache( item:url, port:port );
+
+    if( eregmatch( pattern:konica_detect_urls[url], string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
+      reason     = "Found pattern: " + konica_detect_urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
-    }
-
-    # Canon, see also gb_canon_printers_detect.nasl
-    # If updating here please also update check gb_canon_printers_detect.nasl
-    buf = http_get_cache( item:"/index.html", port:port );
-    if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) || "CANON HTTP Server" >< buf ) {
-      is_printer = TRUE;
-      break;
-    }
-
-    # Konica Minolta TODO: Move to own printer detect NVT
-    foreach url( keys( konica_detect_urls ) ) {
-
-      buf = http_get_cache( item:url, port:port );
-
-      if( eregmatch( pattern:konica_detect_urls[url], string:buf, icase:TRUE ) ) {
-        is_printer = TRUE;
-        break;
-      }
-    }
-
-    # HP, see also gb_hp_printer_detect.nasl
-    urls = get_hp_detect_urls();
-    foreach url( keys( urls ) ) {
-
-      buf = http_get_cache( item:url, port:port );
-
-      if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
-        is_printer = TRUE;
-        break;
-      }
-    }
-
-    # Kyocera, see also gb_kyocera_printers_detect.nasl
-    urls = get_ky_detect_urls();
-    foreach url( keys( urls ) ) {
-
-      buf = http_get_cache( item:urls[url], port:port );
-
-      if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
-        is_printer = TRUE;
-        break;
-      }
-    }
-
-    # Lexmark, see also gb_lexmark_printers_detect.nasl
-    urls = get_lexmark_detect_urls();
-    foreach url( keys( urls ) ) {
-
-      buf = http_get_cache( item:urls[url], port:port );
-
-      if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
-        is_printer = TRUE;
-        break;
-      }
-    }
-
-    # Xerox, see also gb_xerox_printer_detect.nasl
-    urls = get_xerox_detect_urls();
-    foreach url( keys( urls ) ) {
-
-      buf = http_get_cache( item:url, port:port );
-
-      if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
-        is_printer = TRUE;
-        break;
-      }
-    }
-
-    # TODO: Re-verify these URLs and the banners below
-    foreach url( make_list( "/", "/main.asp", "/index.asp", "/index.html",
-                            "/index.htm" ) ) {
-
-      buf = http_get_cache( item:url, port:port );
-
-      # Dell
-      if( "Dell Laser Printer " >< banner || "Server: EWS-NIC5/" >< banner ) {
-        is_printer = TRUE;
-        break;
-      # unknown printers. Ricoh?
-      } else if( banner && "Server: GoAhead-Webs" >< banner && "Aficio SP" >< banner || "<title>Web Image Monitor</title>" >< banner ) {
-        is_printer = TRUE;
-        break;
-      # Old HP banner check
-      } else if( "<title>Hewlett Packard</title>" >< buf || egrep( pattern:"<title>.*LaserJet.*</title>", string:buf, icase:TRUE ) ||
-                 "HP Officejet" >< buf || "server: hp-chai" >< tolower( buf ) || ( "Server: Virata-EmWeb/" >< buf && ( "HP" >< banner || "printer" >< buf ) ) ) {
-        is_printer = TRUE;
-        break;
-      # Old Xerox banner check
-      } else if( "Server: Xerox_MicroServer/Xerox" >< buf || "Server: EWS-NIC" >< buf || "<title>DocuPrint" >< buf || "<title>Phaser" >< buf ||
-                 ( "XEROX WORKCENTRE" >< buf && "Xerox Corporation. All Rights Reserved." >< buf ) || ( "DocuCentre" >< buf && "Fuji Xerox Co., Ltd." >< buf ) ) {
-        is_printer = TRUE;
-        break;
-      }
     }
   }
+
+  if( is_printer ) break;
+
+  # HP, see also gb_hp_printer_detect.nasl
+  urls = get_hp_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    buf = http_get_cache( item:url, port:port );
+
+    if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # Kyocera, see also gb_kyocera_printers_detect.nasl
+  urls = get_ky_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    buf = http_get_cache( item:urls[url], port:port );
+
+    if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # Lexmark, see also gb_lexmark_printers_detect.nasl
+  urls = get_lexmark_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    buf = http_get_cache( item:urls[url], port:port );
+
+    if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # Xerox, see also gb_xerox_printer_detect.nasl
+  urls = get_xerox_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    buf = http_get_cache( item:url, port:port );
+
+    if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # TODO: Re-verify these URLs and the banners below
+  foreach url( make_list( "/", "/main.asp", "/index.asp",
+                          "/index.html", "/index.htm" ) ) {
+
+    buf = http_get_cache( item:url, port:port );
+
+    # Dell
+    if( "Dell Laser Printer " >< banner || "Server: EWS-NIC5/" >< banner ) {
+      is_printer = TRUE;
+      reason     = "Dell Banner on port " + port + "/tcp: " + banner;
+      break;
+    # TBD: unknown printers. Ricoh?
+    } else if( banner && "Server: GoAhead-Webs" >< banner && "Aficio SP" >< banner || "<title>Web Image Monitor</title>" >< banner ) {
+      is_printer = TRUE;
+      reason     = "Printer Banner on port " + port + "/tcp: " + banner;
+      break;
+    # Old HP banner check
+    } else if( "<title>Hewlett Packard</title>" >< buf || egrep( pattern:"<title>.*LaserJet.*</title>", string:buf, icase:TRUE ) ||
+               "HP Officejet" >< buf || "server: hp-chai" >< tolower( buf ) || ( "Server: Virata-EmWeb/" >< buf && ( "HP" >< banner || "printer" >< buf ) ) ) {
+      is_printer = TRUE;
+      reason     = "HP Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    # Old Xerox banner check
+    } else if( "Server: Xerox_MicroServer/Xerox" >< buf || "Server: EWS-NIC" >< buf || "<title>DocuPrint" >< buf || "<title>Phaser" >< buf ||
+               ( "XEROX WORKCENTRE" >< buf && "Xerox Corporation. All Rights Reserved." >< buf ) || ( "DocuCentre" >< buf && "Fuji Xerox Co., Ltd." >< buf ) ) {
+      is_printer = TRUE;
+      reason     = "Xerox Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+  if( is_printer ) break;
 }
 
-if( is_printer ) report();
+if( is_printer ) report( data:reason );
 
 exit( 0 );
 

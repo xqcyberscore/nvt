@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mult_vuln_apr18_win.nasl 9404 2018-04-09 08:13:26Z cfischer $
+# $Id: gb_apache_httpd_mult_vuln_apr18_win.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Apache HTTP Server Multiple Vulnerabilities Apr18 (Windows)
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812846");
-  script_version("$Revision: 9404 $");
+  script_version("$Revision: 9643 $");
   script_cve_id("CVE-2018-1312", "CVE-2018-1283", "CVE-2017-15715", "CVE-2017-15710",
                 "CVE-2018-1301");
   script_bugtraq_id(103524, 103520, 103525, 103512, 103515);
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 10:13:26 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-04 15:09:39 +0530 (Wed, 04 Apr 2018)");
   script_name("Apache HTTP Server Multiple Vulnerabilities Apr18 (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_code_exec_n_priv_esc_vuln_apsb18-11_win.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_adobe_indesign_code_exec_n_priv_esc_vuln_apsb18-11_win.nasl 9644 2018-04-27 07:49:53Z santu $
 #
 # Adobe InDesign Code Execution And Privilege Escalation Vulnerabilities-APSB18-11 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:indesign_cs3";
+CPE = "cpe:/a:adobe:indesign_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813084");
-  script_version("$Revision: 9527 $");
+  script_version("$Revision: 9644 $");
   script_cve_id("CVE-2018-4927", "CVE-2018-4928");
   script_bugtraq_id(103716, 103714);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:49:53 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 15:20:31 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe InDesign Code Execution And Privilege Escalation Vulnerabilities-APSB18-11 (Windows)");

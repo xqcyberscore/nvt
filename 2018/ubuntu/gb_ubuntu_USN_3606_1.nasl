@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3606_1.nasl 9271 2018-03-31 07:25:25Z cfischer $
+# $Id: gb_ubuntu_USN_3606_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for tiff USN-3606-1
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843483");
-  script_version("$Revision: 9271 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-31 09:25:25 +0200 (Sat, 31 Mar 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 08:50:15 +0200 (Tue, 27 Mar 2018)");
-  script_cve_id("CVE-2016-3186", "CVE-2016-5102", "CVE-2016-5318", "CVE-2017-11613", 
-                "CVE-2017-12944", "CVE-2017-17095", "CVE-2017-18013", "CVE-2017-5563", 
-                "CVE-2017-9117", "CVE-2017-9147", "CVE-2017-9935", "CVE-2018-5784"); 
+  script_cve_id("CVE-2016-3186", "CVE-2016-5102", "CVE-2016-5318", "CVE-2017-11613",
+                "CVE-2017-12944", "CVE-2017-17095", "CVE-2017-18013", "CVE-2017-5563",
+                "CVE-2017-9117", "CVE-2017-9147", "CVE-2017-9935", "CVE-2018-5784");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tiff USN-3606-1");
   script_tag(name: "summary", value: "Check the version of tiff");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that LibTIFF incorrectly 
-  handled certain malformed images. If a user or automated system were tricked 
-  into opening a specially crafted image, a remote attacker could crash the 
-  application, leading to a denial of service, or possibly execute arbitrary code 
-  with user privileges."); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that LibTIFF incorrectly
+  handled certain malformed images. If a user or automated system were tricked
+  into opening a specially crafted image, a remote attacker could crash the
+  application, leading to a denial of service, or possibly execute arbitrary code
+  with user privileges.");
   script_tag(name: "affected", value: "tiff on Ubuntu 17.10 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -57,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -86,7 +85,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -112,7 +111,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -138,6 +137,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

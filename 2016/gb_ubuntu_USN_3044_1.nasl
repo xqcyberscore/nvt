@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842847");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-08-06 05:36:37 +0200 (Sat, 06 Aug 2016)");
   script_cve_id("CVE-2016-0718", "CVE-2016-2830", "CVE-2016-2835", "CVE-2016-2836",
 		"CVE-2016-2837", "CVE-2016-2838", "CVE-2016-2839", "CVE-2016-5250",
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3044-1");
   script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Gustavo Grieco discovered an out-of-bounds
   read during XML parsing in some circumstances. If a user were tricked in to
   opening a specially crafted website, an attacker could potentially exploit this
@@ -89,7 +88,7 @@ addressbar contents. (CVE-2016-5251)
 Georg Koppen discovered a stack buffer underflow during 2D graphics
 rendering in some circumstances. If a user were tricked in to opening a
 specially crafted website, an attacker could potentially exploit this to
-cause a denial of service via application crash, or ex ... 
+cause a denial of service via application crash, or ex ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "firefox on Ubuntu 16.04 LTS ,
@@ -104,7 +103,7 @@ cause a denial of service via application crash, or ex ...
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
@@ -127,7 +126,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -141,7 +140,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -155,6 +154,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

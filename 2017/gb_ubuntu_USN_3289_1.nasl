@@ -26,36 +26,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843172");
-  script_version("$Revision: 6851 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 06:54:41 +0200 (Wed, 17 May 2017)");
-  script_cve_id("CVE-2017-7377", "CVE-2017-8086", "CVE-2017-7718", "CVE-2017-7980", 
-                "CVE-2017-8309", "CVE-2017-8379"); 
+  script_cve_id("CVE-2017-7377", "CVE-2017-8086", "CVE-2017-7718", "CVE-2017-7980",
+                "CVE-2017-8309", "CVE-2017-8379");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3289-1");
   script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Li Qiang discovered that QEMU incorrectly 
-  handled VirtFS directory sharing. A privileged attacker inside the guest could 
-  use this issue to cause QEMU to crash, resulting in a denial of service. 
-  (CVE-2017-7377, CVE-2017-8086) Jiangxin discovered that QEMU incorrectly handled 
-  the Cirrus VGA device. A privileged attacker inside the guest could use this 
-  issue to cause QEMU to crash, resulting in a denial of service. (CVE-2017-7718) 
-  Li Qiang and Jiangxin discovered that QEMU incorrectly handled the Cirrus VGA 
-  device when being used with a VNC connection. A privileged attacker inside the 
-  guest could use this issue to cause QEMU to crash, resulting in a denial of 
-  service, or possibly execute arbitrary code on the host. In the default 
-  installation, when QEMU is used with libvirt, attackers would be isolated by the 
-  libvirt AppArmor profile. (CVE-2017-7980) Jiang Xin discovered that QEMU 
-  incorrectly handled the audio subsystem. A privileged attacker inside the guest 
-  could use this issue to cause QEMU to crash, resulting in a denial of service. 
-  (CVE-2017-8309) Jiang Xin discovered that QEMU incorrectly handled the input 
-  subsystem. A privileged attacker inside the guest could use this issue to cause 
-  QEMU to crash, resulting in a denial of service. This issue only affected Ubuntu 
-  16.04 LTS, Ubuntu 16.10 and Ubuntu 17.04. (CVE-2017-8379)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Li Qiang discovered that QEMU incorrectly
+  handled VirtFS directory sharing. A privileged attacker inside the guest could
+  use this issue to cause QEMU to crash, resulting in a denial of service.
+  (CVE-2017-7377, CVE-2017-8086) Jiangxin discovered that QEMU incorrectly handled
+  the Cirrus VGA device. A privileged attacker inside the guest could use this
+  issue to cause QEMU to crash, resulting in a denial of service. (CVE-2017-7718)
+  Li Qiang and Jiangxin discovered that QEMU incorrectly handled the Cirrus VGA
+  device when being used with a VNC connection. A privileged attacker inside the
+  guest could use this issue to cause QEMU to crash, resulting in a denial of
+  service, or possibly execute arbitrary code on the host. In the default
+  installation, when QEMU is used with libvirt, attackers would be isolated by the
+  libvirt AppArmor profile. (CVE-2017-7980) Jiang Xin discovered that QEMU
+  incorrectly handled the audio subsystem. A privileged attacker inside the guest
+  could use this issue to cause QEMU to crash, resulting in a denial of service.
+  (CVE-2017-8309) Jiang Xin discovered that QEMU incorrectly handled the input
+  subsystem. A privileged attacker inside the guest could use this issue to cause
+  QEMU to crash, resulting in a denial of service. This issue only affected Ubuntu
+  16.04 LTS, Ubuntu 16.10 and Ubuntu 17.04. (CVE-2017-8379)");
   script_tag(name: "affected", value: "qemu on Ubuntu 17.04 ,
   Ubuntu 16.10 ,
   Ubuntu 16.04 LTS ,
@@ -69,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -134,7 +133,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -196,7 +195,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -258,7 +257,7 @@ if(release == "UBUNTU16.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -320,6 +319,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

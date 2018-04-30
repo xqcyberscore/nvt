@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plugin_dos_vuln.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_apache_struts_rest_plugin_dos_vuln.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Apache Struts 'REST' Plugin DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813062");
-  script_version("$Revision: 9276 $");
+  script_version("$Revision: 9643 $");
   script_cve_id("CVE-2018-1327");
   script_bugtraq_id(103516);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 16:08:37 +0530 (Mon, 02 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## It may lead to FP because older versions can implement custom XML handler based 

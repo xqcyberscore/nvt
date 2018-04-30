@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1619_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1619_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-1619-1
 #
@@ -25,45 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Several information disclosure vulnerabilities were discovered in the
-  OpenJDK JRE. (CVE-2012-3216, CVE-2012-5069, CVE-2012-5072, CVE-2012-5075,
-  CVE-2012-5077, CVE-2012-5085)
-
-  Vulnerabilities were discovered in the OpenJDK JRE related to information
-  disclosure and data integrity. (CVE-2012-4416, CVE-2012-5071)
-  
-  Several vulnerabilities were discovered in the OpenJDK JRE related to
-  information disclosure and data integrity. An attacker could exploit these
-  to cause a denial of service. (CVE-2012-1531, CVE-2012-1532, CVE-2012-1533,
-  CVE-2012-3143, CVE-2012-3159, CVE-2012-5068, CVE-2012-5083, CVE-2012-5084,
-  CVE-2012-5086, CVE-2012-5089)
-  
-  Information disclosure vulnerabilities were discovered in the OpenJDK JRE.
-  These issues only affected Ubuntu 12.10. (CVE-2012-5067, CVE-2012-5070)
-  
-  Vulnerabilities were discovered in the OpenJDK JRE related to data
-  integrity. (CVE-2012-5073, CVE-2012-5079)
-  
-  A vulnerability was discovered in the OpenJDK JRE related to information
-  disclosure and data integrity. This issue only affected Ubuntu 12.10.
-  (CVE-2012-5074)
-  
-  Several vulnerabilities were discovered in the OpenJDK JRE related to
-  information disclosure and data integrity. An attacker could exploit these
-  to cause a denial of service. These issues only affected Ubuntu 12.10.
-  (CVE-2012-5076, CVE-2012-5087, CVE-2012-5088)
-  
-  A denial of service vulnerability was found in OpenJDK. (CVE-2012-5081)
-  
-  Please see the following for more information:
-  http://www.oracle.com/technetwork/topics/security/javacpuoct2012-1515924.html";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1619-1";
-tag_affected = "openjdk-7 on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -71,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1619-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841202");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-29 11:03:54 +0530 (Mon, 29 Oct 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-5069", "CVE-2012-5072", "CVE-2012-5075",
                 "CVE-2012-5077", "CVE-2012-5085", "CVE-2012-4416", "CVE-2012-5071",
@@ -90,11 +51,45 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|12\.04 LTS|11\.10|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1619-1");
+  script_tag(name : "affected" , value : "openjdk-7 on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 11.04 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Several information disclosure vulnerabilities were discovered in the
+  OpenJDK JRE. (CVE-2012-3216, CVE-2012-5069, CVE-2012-5072, CVE-2012-5075,
+  CVE-2012-5077, CVE-2012-5085)
+
+  Vulnerabilities were discovered in the OpenJDK JRE related to information
+  disclosure and data integrity. (CVE-2012-4416, CVE-2012-5071)
+
+  Several vulnerabilities were discovered in the OpenJDK JRE related to
+  information disclosure and data integrity. An attacker could exploit these
+  to cause a denial of service. (CVE-2012-1531, CVE-2012-1532, CVE-2012-1533,
+  CVE-2012-3143, CVE-2012-3159, CVE-2012-5068, CVE-2012-5083, CVE-2012-5084,
+  CVE-2012-5086, CVE-2012-5089)
+
+  Information disclosure vulnerabilities were discovered in the OpenJDK JRE.
+  These issues only affected Ubuntu 12.10. (CVE-2012-5067, CVE-2012-5070)
+
+  Vulnerabilities were discovered in the OpenJDK JRE related to data
+  integrity. (CVE-2012-5073, CVE-2012-5079)
+
+  A vulnerability was discovered in the OpenJDK JRE related to information
+  disclosure and data integrity. This issue only affected Ubuntu 12.10.
+  (CVE-2012-5074)
+
+  Several vulnerabilities were discovered in the OpenJDK JRE related to
+  information disclosure and data integrity. An attacker could exploit these
+  to cause a denial of service. These issues only affected Ubuntu 12.10.
+  (CVE-2012-5076, CVE-2012-5087, CVE-2012-5088)
+
+  A denial of service vulnerability was found in OpenJDK. (CVE-2012-5081)
+
+  Please see the following for more information:
+  http://www.oracle.com/technetwork/topics/security/javacpuoct2012-1515924.html");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -143,7 +138,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -187,7 +182,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -231,7 +226,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -275,6 +270,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

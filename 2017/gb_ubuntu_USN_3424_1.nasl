@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3424_1.nasl 7227 2017-09-22 06:36:11Z santu $
+# $Id: gb_ubuntu_USN_3424_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for libxml2 USN-3424-1
 #
@@ -27,36 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843311");
-  script_version("$Revision: 7227 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:36:11 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 07:42:23 +0200 (Tue, 19 Sep 2017)");
-  script_cve_id("CVE-2017-0663", "CVE-2017-7375", "CVE-2017-7376", "CVE-2017-9047", 
-                "CVE-2017-9048", "CVE-2017-9049", "CVE-2017-9050"); 
+  script_cve_id("CVE-2017-0663", "CVE-2017-7375", "CVE-2017-7376", "CVE-2017-9047",
+                "CVE-2017-9048", "CVE-2017-9049", "CVE-2017-9050");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libxml2 USN-3424-1");
   script_tag(name: "summary", value: "Check the version of libxml2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that a type confusion 
-  error existed in libxml2. An attacker could use this to specially construct XML 
-  data that could cause a denial of service or possibly execute arbitrary code. 
-  (CVE-2017-0663) It was discovered that libxml2 did not properly validate parsed 
-  entity references. An attacker could use this to specially construct XML data 
-  that could expose sensitive information. (CVE-2017-7375) It was discovered that 
-  a buffer overflow existed in libxml2 when handling HTTP redirects. An attacker 
-  could use this to specially construct XML data that could cause a denial of 
-  service or possibly execute arbitrary code. (CVE-2017-7376) Marcel Bhme and 
-  Van-Thuan Pham discovered a buffer overflow in libxml2 when handling elements. 
-  An attacker could use this to specially construct XML data that could cause a 
-  denial of service or possibly execute arbitrary code. (CVE-2017-9047) Marcel 
-  Bhme and Van-Thuan Pham discovered a buffer overread in libxml2 when handling 
-  elements. An attacker could use this to specially construct XML data that could 
-  cause a denial of service. (CVE-2017-9048) Marcel Bhme and Van-Thuan Pham 
-  discovered multiple buffer overreads in libxml2 when handling parameter-entity 
-  references. An attacker could use these to specially construct XML data that 
-  could cause a denial of service. (CVE-2017-9049, CVE-2017-9050)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that a type confusion
+  error existed in libxml2. An attacker could use this to specially construct XML
+  data that could cause a denial of service or possibly execute arbitrary code.
+  (CVE-2017-0663) It was discovered that libxml2 did not properly validate parsed
+  entity references. An attacker could use this to specially construct XML data
+  that could expose sensitive information. (CVE-2017-7375) It was discovered that
+  a buffer overflow existed in libxml2 when handling HTTP redirects. An attacker
+  could use this to specially construct XML data that could cause a denial of
+  service or possibly execute arbitrary code. (CVE-2017-7376) Marcel Bhme and
+  Van-Thuan Pham discovered a buffer overflow in libxml2 when handling elements.
+  An attacker could use this to specially construct XML data that could cause a
+  denial of service or possibly execute arbitrary code. (CVE-2017-9047) Marcel
+  Bhme and Van-Thuan Pham discovered a buffer overread in libxml2 when handling
+  elements. An attacker could use this to specially construct XML data that could
+  cause a denial of service. (CVE-2017-9048) Marcel Bhme and Van-Thuan Pham
+  discovered multiple buffer overreads in libxml2 when handling parameter-entity
+  references. An attacker could use these to specially construct XML data that
+  could cause a denial of service. (CVE-2017-9049, CVE-2017-9050)");
   script_tag(name: "affected", value: "libxml2 on Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -69,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -99,7 +98,7 @@ if(release == "UBUNTU14.04 LTS")
   }
 
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -119,7 +118,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -139,6 +138,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1104_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1104_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for ffmpeg vulnerabilities USN-1104-1
 #
@@ -25,7 +25,33 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Cesar Bernardini and Felipe Andres Manzano discovered that FFmpeg
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1104-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840629");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2011-04-06 16:20:31 +0200 (Wed, 06 Apr 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1104-1");
+  script_cve_id("CVE-2010-3429", "CVE-2010-3908", "CVE-2010-4704", "CVE-2011-0480", "CVE-2011-0722", "CVE-2011-0723");
+  script_name("Ubuntu Update for ffmpeg vulnerabilities USN-1104-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1104-1");
+  script_tag(name : "affected" , value : "ffmpeg vulnerabilities on Ubuntu 8.04 LTS ,
+  Ubuntu 9.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 10.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Cesar Bernardini and Felipe Andres Manzano discovered that FFmpeg
   incorrectly handled certain malformed flic files. If a user were tricked
   into opening a crafted flic file, an attacker could cause a denial of
   service via application crash, or possibly execute arbitrary code with the
@@ -38,62 +64,31 @@ tag_insight = "Cesar Bernardini and Felipe Andres Manzano discovered that FFmpeg
   execute arbitrary code with the privileges of the user invoking the
   program. This issue only affected Ubuntu 8.04 LTS, 9.10 and 10.04 LTS.
   (CVE-2010-3908)
-  
+
   It was discovered that FFmpeg incorrectly handled certain malformed ogg
   files. If a user were tricked into opening a crafted ogg file, an attacker
   could cause a denial of service via application crash, or possibly execute
   arbitrary code with the privileges of the user invoking the program.
   (CVE-2010-4704)
-  
+
   It was discovered that FFmpeg incorrectly handled certain malformed WebM
   files. If a user were tricked into opening a crafted WebM file, an attacker
   could cause a denial of service via application crash, or possibly execute
   arbitrary code with the privileges of the user invoking the program.
   (CVE-2011-0480)
-  
+
   Dan Rosenberg discovered that FFmpeg incorrectly handled certain malformed
   RealMedia files. If a user were tricked into opening a crafted RealMedia
   file, an attacker could cause a denial of service via application crash, or
   possibly execute arbitrary code with the privileges of the user invoking
   the program. This issue only affected Ubuntu 8.04 LTS, 9.10 and 10.04 LTS.
   (CVE-2011-0722)
-  
+
   Dan Rosenberg discovered that FFmpeg incorrectly handled certain malformed
   VC1 files. If a user were tricked into opening a crafted VC1 file, an
   attacker could cause a denial of service via application crash, or possibly
   execute arbitrary code with the privileges of the user invoking the
-  program. (CVE-2011-0723)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1104-1";
-tag_affected = "ffmpeg vulnerabilities on Ubuntu 8.04 LTS ,
-  Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 10.10";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1104-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840629");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-04-06 16:20:31 +0200 (Wed, 06 Apr 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1104-1");
-  script_cve_id("CVE-2010-3429", "CVE-2010-3908", "CVE-2010-4704", "CVE-2011-0480", "CVE-2011-0722", "CVE-2011-0723");
-  script_name("Ubuntu Update for ffmpeg vulnerabilities USN-1104-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  program. (CVE-2011-0723)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -215,7 +210,7 @@ if(release == "UBUNTU9.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -325,7 +320,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -435,7 +430,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -509,6 +504,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

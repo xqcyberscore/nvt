@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3537_1.nasl 8551 2018-01-26 14:15:40Z asteins $
+# $Id: gb_ubuntu_USN_3537_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for mysql-5.7 USN-3537-1
 #
@@ -27,30 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843430");
-  script_version("$Revision: 8551 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 15:15:40 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-23 07:38:42 +0100 (Tue, 23 Jan 2018)");
-  script_cve_id("CVE-2018-2562", "CVE-2018-2565", "CVE-2018-2573", "CVE-2018-2576", 
+  script_cve_id("CVE-2018-2562", "CVE-2018-2565", "CVE-2018-2573", "CVE-2018-2576",
                 "CVE-2018-2583", "CVE-2018-2586", "CVE-2018-2590", "CVE-2018-2600",
                 "CVE-2018-2612", "CVE-2018-2622", "CVE-2018-2640", "CVE-2018-2645",
                 "CVE-2018-2646", "CVE-2018-2647", "CVE-2018-2665", "CVE-2018-2667",
-                "CVE-2018-2668", "CVE-2018-2696", "CVE-2018-2703"); 
+                "CVE-2018-2668", "CVE-2018-2696", "CVE-2018-2703");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mysql-5.7 USN-3537-1");
   script_tag(name: "summary", value: "Check the version of mysql-5.7");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Multiple security issues were discovered in 
-  MySQL and this update includes new upstream MySQL versions to fix these issues. 
-  MySQL has been updated to 5.5.59 in Ubuntu 14.04 LTS. Ubuntu 16.04 LTS, and 
-  Ubuntu 17.10 have been updated to MySQL 5.7.21. In addition to security fixes, 
-  the updated packages contain bug fixes, new features, and possibly incompatible 
-  changes. Please see the following for more information: 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Multiple security issues were discovered in
+  MySQL and this update includes new upstream MySQL versions to fix these issues.
+  MySQL has been updated to 5.5.59 in Ubuntu 14.04 LTS. Ubuntu 16.04 LTS, and
+  Ubuntu 17.10 have been updated to MySQL 5.7.21. In addition to security fixes,
+  the updated packages contain bug fixes, new features, and possibly incompatible
+  changes. Please see the following for more information:
   http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-59.html
-  http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html 
-  http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html"); 
+  http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html
+  http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html");
   script_tag(name: "affected", value: "mysql-5.7 on Ubuntu 17.10 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -63,7 +62,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -86,7 +85,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -100,7 +99,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -114,6 +113,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

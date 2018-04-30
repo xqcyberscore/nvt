@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 9259 2018-03-29 09:20:26Z jschulte $
+# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # D-Link DIR Routers SharePort Authentication Bypass Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113146");
-  script_version("$Revision: 9259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 11:20:26 +0200 (Thu, 29 Mar 2018) $");
+  script_version("$Revision: 9643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 09:53:55 +0200 (Thu, 29 Mar 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_app");
 

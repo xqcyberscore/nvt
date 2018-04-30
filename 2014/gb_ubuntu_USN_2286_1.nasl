@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2286_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2286_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for linux-lts-raring USN-2286-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841907");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 18:34:16 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-4943", "CVE-2014-0131", "CVE-2014-1739", "CVE-2014-3144",
                 "CVE-2014-3145", "CVE-2014-3917", "CVE-2014-4014", "CVE-2014-4608");
@@ -38,7 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for linux-lts-raring USN-2286-1");
 
-  tag_insight = "Sasha Levin reported a flaw in the Linux kernel's
+
+  script_tag(name : "affected" , value : "linux-lts-raring on Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "Sasha Levin reported a flaw in the Linux kernel's
 point-to-point protocol (PPP) when used with the Layer Two Tunneling Protocol
 (L2TP). A local user could exploit this flaw to gain administrative privileges.
 (CVE-2014-4943)
@@ -72,16 +74,8 @@ this flaw by creating a user namespace to gain administrative privileges.
 
 Don Bailey discovered a flaw in the LZO decompress algorithm used by the
 Linux kernel. An attacker could exploit this flaw to cause a denial of
-service (memory corruption or OOPS). (CVE-2014-4608)";
-
-  tag_affected = "linux-lts-raring on Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+service (memory corruption or OOPS). (CVE-2014-4608)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2286-1");
@@ -91,7 +85,7 @@ service (memory corruption or OOPS). (CVE-2014-4608)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -114,6 +108,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

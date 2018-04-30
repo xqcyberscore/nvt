@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1694_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1694_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for rpm USN-1694-1
 #
@@ -26,20 +26,14 @@
 
 include("revisions-lib.inc");
 
-tag_affected = "rpm on Ubuntu 12.10";
-tag_insight = "It was discovered that RPM incorrectly handled signature checking. An
-  attacker could create a specially-crafted rpm with an invalid signature
-  which could pass the signature validation check.";
-tag_solution = "Please Install the Updated Packages.";
-
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1694-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841284");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:51:02 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-6088");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,10 +46,12 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.10");
+  script_tag(name : "affected" , value : "rpm on Ubuntu 12.10");
+  script_tag(name : "insight" , value : "It was discovered that RPM incorrectly handled signature checking. An
+  attacker could create a specially-crafted rpm with an invalid signature
+  which could pass the signature validation check.");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,6 +76,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

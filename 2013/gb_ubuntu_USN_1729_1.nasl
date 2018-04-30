@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1729_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1729_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for firefox USN-1729-1
 #
@@ -25,55 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Olli Pettay, Christoph Diehl, Gary Kwong, Jesse Ruderman, Andrew McCreight,
-  Joe Drew, Wayne Mery, Alon Zakai, Christian Holler, Gary Kwong, Luke
-  Wagner, Terrence Cole, Timothy Nikkel, Bill McCloskey, and Nicolas Pierron
-  discovered multiple memory safety issues affecting Firefox. If the user
-  were tricked into opening a specially crafted page, an attacker could
-  possibly exploit these to cause a denial of service via application crash.
-  (CVE-2013-0783, CVE-2013-0784)
-
-  Atte Kettunen discovered that Firefox could perform an out-of-bounds read
-  while rendering GIF format images. An attacker could exploit this to crash
-  Firefox. (CVE-2013-0772)
-  
-  Boris Zbarsky discovered that Firefox did not properly handle some wrapped
-  WebIDL objects. If the user were tricked into opening a specially crafted
-  page, an attacker could possibly exploit this to cause a denial of service
-  via application crash, or potentially execute code with the privileges of
-  the user invoking Firefox. (CVE-2013-0765)
-  
-  Bobby Holley discovered vulnerabilities in Chrome Object Wrappers (COW) and
-  System Only Wrappers (SOW). If a user were tricked into opening a specially
-  crafted page, a remote attacker could exploit this to bypass security
-  protections to obtain sensitive information or potentially execute code
-  with the privileges of the user invoking Firefox. (CVE-2013-0773)
-  
-  Frederik Braun that Firefox made the location of the active browser profile
-  available to JavaScript workers. (CVE-2013-0774)
-  
-  A use-after-free vulnerability was discovered in Firefox. An attacker could
-  potentially exploit this to execute code with the privileges of the user
-  invoking Firefox. (CVE-2013-0775)
-  
-  Michal Zalewski discovered that Firefox would not always show the correct
-  address when cancelling a proxy authentication prompt. A remote attacker
-  could exploit this to conduct URL spoofing and phishing attacks.
-  (CVE-2013-0776)
-  
-  Abhishek Arya discovered several problems related to memory handling. If
-  the user were tricked into opening a specially crafted page, an attacker
-  could possibly exploit these to cause a denial of service via application
-  crash, or potentially execute code with the privileges of the user invoking
-  Firefox. (CVE-2013-0777, CVE-2013-0778, CVE-2013-0779, CVE-2013-0780,
-  CVE-2013-0781, CVE-2013-0782)";
-
-
-tag_affected = "firefox on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -81,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1729-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841329");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:12:50 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2013-0783", "CVE-2013-0784", "CVE-2013-0772", "CVE-2013-0765",
                 "CVE-2013-0773", "CVE-2013-0774", "CVE-2013-0775", "CVE-2013-0776",
@@ -98,10 +49,54 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|12\.10)");
+  script_tag(name : "affected" , value : "firefox on Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Olli Pettay, Christoph Diehl, Gary Kwong, Jesse Ruderman, Andrew McCreight,
+  Joe Drew, Wayne Mery, Alon Zakai, Christian Holler, Gary Kwong, Luke
+  Wagner, Terrence Cole, Timothy Nikkel, Bill McCloskey, and Nicolas Pierron
+  discovered multiple memory safety issues affecting Firefox. If the user
+  were tricked into opening a specially crafted page, an attacker could
+  possibly exploit these to cause a denial of service via application crash.
+  (CVE-2013-0783, CVE-2013-0784)
+
+  Atte Kettunen discovered that Firefox could perform an out-of-bounds read
+  while rendering GIF format images. An attacker could exploit this to crash
+  Firefox. (CVE-2013-0772)
+
+  Boris Zbarsky discovered that Firefox did not properly handle some wrapped
+  WebIDL objects. If the user were tricked into opening a specially crafted
+  page, an attacker could possibly exploit this to cause a denial of service
+  via application crash, or potentially execute code with the privileges of
+  the user invoking Firefox. (CVE-2013-0765)
+
+  Bobby Holley discovered vulnerabilities in Chrome Object Wrappers (COW) and
+  System Only Wrappers (SOW). If a user were tricked into opening a specially
+  crafted page, a remote attacker could exploit this to bypass security
+  protections to obtain sensitive information or potentially execute code
+  with the privileges of the user invoking Firefox. (CVE-2013-0773)
+
+  Frederik Braun that Firefox made the location of the active browser profile
+  available to JavaScript workers. (CVE-2013-0774)
+
+  A use-after-free vulnerability was discovered in Firefox. An attacker could
+  potentially exploit this to execute code with the privileges of the user
+  invoking Firefox. (CVE-2013-0775)
+
+  Michal Zalewski discovered that Firefox would not always show the correct
+  address when cancelling a proxy authentication prompt. A remote attacker
+  could exploit this to conduct URL spoofing and phishing attacks.
+  (CVE-2013-0776)
+
+  Abhishek Arya discovered several problems related to memory handling. If
+  the user were tricked into opening a specially crafted page, an attacker
+  could possibly exploit these to cause a denial of service via application
+  crash, or potentially execute code with the privileges of the user invoking
+  Firefox. (CVE-2013-0777, CVE-2013-0778, CVE-2013-0779, CVE-2013-0780,
+  CVE-2013-0781, CVE-2013-0782)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -126,7 +121,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -140,7 +135,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -154,7 +149,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -168,6 +163,6 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl 9479 2018-04-14 11:30:08Z cfischer $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Windows, Version Check)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812583");
-  script_version("$Revision: 9479 $");
+  script_version("$Revision: 9643 $");
   script_cve_id("CVE-2018-7600");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-14 13:30:08 +0200 (Sat, 14 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 09:55:26 +0530 (Thu, 29 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Windows, Version Check)");

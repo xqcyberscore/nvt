@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3523_3.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3523_3.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for linux-raspi2 USN-3523-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843416");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 07:38:41 +0100 (Thu, 11 Jan 2018)");
   script_cve_id("CVE-2017-17863", "CVE-2017-16995", "CVE-2017-17862", "CVE-2017-17864");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,23 +36,22 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-raspi2 USN-3523-3");
   script_tag(name: "summary", value: "Check the version of linux-raspi2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Jann Horn discovered that the Berkeley 
-  Packet Filter (BPF) implementation in the Linux kernel did not properly check 
-  the relationship between pointer values and the BPF stack. A local attacker 
-  could use this to cause a denial of service (system crash) or possibly execute 
-  arbitrary code. (CVE-2017-17863) Jann Horn discovered that the Berkeley Packet 
-  Filter (BPF) implementation in the Linux kernel improperly performed sign 
-  extension in some situations. A local attacker could use this to cause a denial 
-  of service (system crash) or possibly execute arbitrary code. (CVE-2017-16995) 
-  Alexei Starovoitov discovered that the Berkeley Packet Filter (BPF) 
-  implementation in the Linux kernel contained a branch-pruning logic issue around 
-  unreachable code. A local attacker could use this to cause a denial of service. 
-  (CVE-2017-17862) Jann Horn discovered that the Berkeley Packet Filter (BPF) 
-  implementation in the Linux kernel mishandled pointer data values in some 
-  situations. A local attacker could use this to to expose sensitive information 
-  (kernel memory). (CVE-2017-17864)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Jann Horn discovered that the Berkeley
+  Packet Filter (BPF) implementation in the Linux kernel did not properly check
+  the relationship between pointer values and the BPF stack. A local attacker
+  could use this to cause a denial of service (system crash) or possibly execute
+  arbitrary code. (CVE-2017-17863) Jann Horn discovered that the Berkeley Packet
+  Filter (BPF) implementation in the Linux kernel improperly performed sign
+  extension in some situations. A local attacker could use this to cause a denial
+  of service (system crash) or possibly execute arbitrary code. (CVE-2017-16995)
+  Alexei Starovoitov discovered that the Berkeley Packet Filter (BPF)
+  implementation in the Linux kernel contained a branch-pruning logic issue around
+  unreachable code. A local attacker could use this to cause a denial of service.
+  (CVE-2017-17862) Jann Horn discovered that the Berkeley Packet Filter (BPF)
+  implementation in the Linux kernel mishandled pointer data values in some
+  situations. A local attacker could use this to to expose sensitive information
+  (kernel memory). (CVE-2017-17864)");
   script_tag(name: "affected", value: "linux-raspi2 on Ubuntu 17.10");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -63,7 +62,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU17\.10");
   exit(0);
 }
 
@@ -92,6 +91,6 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

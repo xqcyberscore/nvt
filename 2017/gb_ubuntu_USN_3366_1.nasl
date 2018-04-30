@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3366_1.nasl 7013 2017-08-25 13:17:51Z asteins $
+# $Id: gb_ubuntu_USN_3366_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for openjdk-8 USN-3366-1
 #
@@ -27,57 +27,56 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843258");
-  script_version("$Revision: 7013 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-07-27 07:16:15 +0200 (Thu, 27 Jul 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078",
                 "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090",
                 "CVE-2017-10096", "CVE-2017-10101", "CVE-2017-10102", "CVE-2017-10107",
                 "CVE-2017-10108", "CVE-2017-10109", "CVE-2017-10110", "CVE-2017-10111",
                 "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10118", "CVE-2017-10135",
-                "CVE-2017-10176", "CVE-2017-10193", "CVE-2017-10198", "CVE-2017-10243"); 
+                "CVE-2017-10176", "CVE-2017-10193", "CVE-2017-10198", "CVE-2017-10243");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-8 USN-3366-1");
   script_tag(name: "summary", value: "Check the version of openjdk-8");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that the JPEGImageReader 
-  class in OpenJDK would incorrectly read unused image data. An attacker could use 
-  this to specially construct a jpeg image file that when opened by a Java 
-  application would cause a denial of service. (CVE-2017-10053) It was discovered 
-  that the JAR verifier in OpenJDK did not properly handle archives containing 
-  files missing digests. An attacker could use this to modify the signed contents 
-  of a JAR file. (CVE-2017-10067) It was discovered that integer overflows existed 
-  in the Hotspot component of OpenJDK when generating range check loop predicates. 
-  An attacker could use this to specially construct an untrusted Java application 
-  or applet that could escape sandbox restrictions and cause a denial of service 
-  or possibly execute arbitrary code. (CVE-2017-10074) It was discovered that the 
-  JavaScript Scripting component of OpenJDK incorrectly allowed access to Java 
-  APIs. An attacker could use this to specially craft JavaScript code to bypass 
-  access restrictions. (CVE-2017-10078) It was discovered that OpenJDK did not 
-  properly process parentheses in function signatures. An attacker could use this 
-  to specially construct an untrusted Java application or applet that could escape 
-  sandbox restrictions. (CVE-2017-10081) It was discovered that the 
-  ThreadPoolExecutor class in OpenJDK did not properly perform access control 
-  checks when cleaning up threads. An attacker could use this to specially 
-  construct an untrusted Java application or applet that could escape sandbox 
-  restrictions and possibly execute arbitrary code. (CVE-2017-10087) It was 
-  discovered that the ServiceRegistry implementation in OpenJDK did not perform 
-  access control checks in certain situations. An attacker could use this to 
-  specially construct an untrusted Java application or applet that escaped sandbox 
-  restrictions. (CVE-2017-10089) It was discovered that the channel groups 
-  implementation in OpenJDK did not properly perform access control checks in some 
-  situations. An attacker could use this to specially construct an untrusted Java 
-  application or applet that could escape sandbox restrictions. (CVE-2017-10090) 
-  It was discovered that the DTM exception handling code in the JAXP component of 
-  OpenJDK did not properly perform access control checks. An attacker could use 
-  this to specially construct an untrusted Java application or applet that could 
-  escape sandbox restrictions. (CVE-2017-10096) It was discovered that the JAXP 
-  component of OpenJDK incorrectly granted access to some internal resolvers. An 
-  attacker could use this to specially construct an untrusted Java applicat ... 
-  Description truncated, for more information please check the Reference URL"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that the JPEGImageReader
+  class in OpenJDK would incorrectly read unused image data. An attacker could use
+  this to specially construct a jpeg image file that when opened by a Java
+  application would cause a denial of service. (CVE-2017-10053) It was discovered
+  that the JAR verifier in OpenJDK did not properly handle archives containing
+  files missing digests. An attacker could use this to modify the signed contents
+  of a JAR file. (CVE-2017-10067) It was discovered that integer overflows existed
+  in the Hotspot component of OpenJDK when generating range check loop predicates.
+  An attacker could use this to specially construct an untrusted Java application
+  or applet that could escape sandbox restrictions and cause a denial of service
+  or possibly execute arbitrary code. (CVE-2017-10074) It was discovered that the
+  JavaScript Scripting component of OpenJDK incorrectly allowed access to Java
+  APIs. An attacker could use this to specially craft JavaScript code to bypass
+  access restrictions. (CVE-2017-10078) It was discovered that OpenJDK did not
+  properly process parentheses in function signatures. An attacker could use this
+  to specially construct an untrusted Java application or applet that could escape
+  sandbox restrictions. (CVE-2017-10081) It was discovered that the
+  ThreadPoolExecutor class in OpenJDK did not properly perform access control
+  checks when cleaning up threads. An attacker could use this to specially
+  construct an untrusted Java application or applet that could escape sandbox
+  restrictions and possibly execute arbitrary code. (CVE-2017-10087) It was
+  discovered that the ServiceRegistry implementation in OpenJDK did not perform
+  access control checks in certain situations. An attacker could use this to
+  specially construct an untrusted Java application or applet that escaped sandbox
+  restrictions. (CVE-2017-10089) It was discovered that the channel groups
+  implementation in OpenJDK did not properly perform access control checks in some
+  situations. An attacker could use this to specially construct an untrusted Java
+  application or applet that could escape sandbox restrictions. (CVE-2017-10090)
+  It was discovered that the DTM exception handling code in the JAXP component of
+  OpenJDK did not properly perform access control checks. An attacker could use
+  this to specially construct an untrusted Java application or applet that could
+  escape sandbox restrictions. (CVE-2017-10096) It was discovered that the JAXP
+  component of OpenJDK incorrectly granted access to some internal resolvers. An
+  attacker could use this to specially construct an untrusted Java applicat ...
+  Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "openjdk-8 on Ubuntu 17.04 ,
   Ubuntu 16.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
@@ -89,7 +88,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -167,7 +166,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -247,6 +246,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1948_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1948_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for python-httplib2 USN-1948-1
 #
@@ -29,32 +29,26 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841551");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:49:03 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2013-2037");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_name("Ubuntu Update for python-httplib2 USN-1948-1");
 
-  tag_insight = "It was discovered that httplib2 only validated SSL certificates on the
+
+  script_tag(name : "affected" , value : "python-httplib2 on Ubuntu 13.04 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS ,
+  Ubuntu 10.04 LTS");
+  script_tag(name : "insight" , value : "It was discovered that httplib2 only validated SSL certificates on the
 first request to a connection, and didn't report validation failures on
 subsequent requests. If a remote attacker were able to perform a
 man-in-the-middle attack, this flaw could possibly be exploited in certain
 scenarios to alter or compromise confidential information in applications
-that used the httplib2 library.";
-
-  tag_affected = "python-httplib2 on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 10.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+that used the httplib2 library.");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1948-1");
@@ -64,7 +58,7 @@ that used the httplib2 library.";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|10\.04 LTS|12\.10|13\.04)");
   exit(0);
 }
 
@@ -87,7 +81,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -101,7 +95,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -115,7 +109,7 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,6 +123,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

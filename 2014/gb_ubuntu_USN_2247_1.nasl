@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2247_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2247_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for nova USN-2247-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841862");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 16:37:31 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2013-1068", "CVE-2013-4463", "CVE-2013-4469", "CVE-2013-6491",
                 "CVE-2013-7130", "CVE-2014-0134", "CVE-2014-0167");
@@ -38,7 +38,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
   script_name("Ubuntu Update for nova USN-2247-1");
 
-  tag_insight = "Darragh O'Reilly discovered that OpenStack Nova did not
+
+  script_tag(name : "affected" , value : "nova on Ubuntu 14.04 LTS ,
+  Ubuntu 13.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "Darragh O'Reilly discovered that OpenStack Nova did not
 properly set up its sudo configuration. If a different flaw was found in
 OpenStack Nova, this vulnerability could be used to escalate privileges. This
 issue only affected Ubuntu 13.10 and Ubuntu 14.04 LTS. (CVE-2013-1068)
@@ -71,18 +75,8 @@ affected Ubuntu 13.10. (CVE-2014-0134)
 Mark Heckmann discovered that OpenStack Nova did not enforce RBAC policy
 when adding security group rules via the EC2 API. A remote authenticated
 user could exploit this to gain unintended access to this API. This issue
-only affected Ubuntu 13.10. (CVE-2014-0167)";
-
-  tag_affected = "nova on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
-  Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+only affected Ubuntu 13.10. (CVE-2014-0167)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2247-1");
@@ -92,7 +86,7 @@ only affected Ubuntu 13.10. (CVE-2014-0167)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|13\.10)");
   exit(0);
 }
 
@@ -115,7 +109,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,7 +123,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -143,6 +137,6 @@ if(release == "UBUNTU13.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

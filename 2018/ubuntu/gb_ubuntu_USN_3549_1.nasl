@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3549_1.nasl 8624 2018-02-01 12:56:46Z cfischer $
+# $Id: gb_ubuntu_USN_3549_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for linux-kvm USN-3549-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843436");
-  script_version("$Revision: 8624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 07:53:35 +0100 (Tue, 30 Jan 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2017-5753");
   script_tag(name:"cvss_base", value:"4.7");
@@ -36,13 +36,12 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-kvm USN-3549-1");
   script_tag(name: "summary", value: "Check the version of linux-kvm");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Jann Horn discovered that microprocessors 
-  utilizing speculative execution and branch prediction may allow unauthorized 
-  memory reads via sidechannel attacks. This flaw is known as Spectre. A local 
-  attacker could use this to expose sensitive information, including kernel 
-  memory. (CVE-2017-5715, CVE-2017-5753)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Jann Horn discovered that microprocessors
+  utilizing speculative execution and branch prediction may allow unauthorized
+  memory reads via sidechannel attacks. This flaw is known as Spectre. A local
+  attacker could use this to expose sensitive information, including kernel
+  memory. (CVE-2017-5715, CVE-2017-5753)");
   script_tag(name: "affected", value: "linux-kvm on Ubuntu 16.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -53,7 +52,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
@@ -82,6 +81,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

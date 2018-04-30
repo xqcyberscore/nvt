@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_priv_esc_vuln.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_tenable_nessus_priv_esc_vuln.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Tenable Nessus Non-Default Directory Installation Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813061");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 9643 $");
   script_cve_id("CVE-2018-1141");
-  script_tag(name:"cvss_base", value:"3.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 12:17:22 +0530 (Tue, 03 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Tenable Nessus Non-Default Directory Installation Privilege Escalation Vulnerability");

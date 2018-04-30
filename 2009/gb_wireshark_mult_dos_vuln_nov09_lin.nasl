@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_nov09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_nov09_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Wireshark Multiple Denial Of Service Vulnerabilities - Nov09 (Linux)
 #
@@ -24,29 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Wireshark 1.2.3
-  http://www.wireshark.org/download.html
-
-  Workaround: Disable the affected dissectors,
-  http://www.wireshark.org/security/wnpa-sec-2009-07.html";
-
-tag_impact = "Successful exploitation could result in Denial of Serivce condition.
-  Impact Level: Application.";
-tag_affected = "Wireshark version 1.2.0 to 1.2.2 on Linux.";
-tag_insight = "- An alignment error within the 'dissect_paltalk()' function in
-    epan/dissectors/packet-paltalk.c of the Paltalk dissector can be
-    exploited to cause a crash.
-  - An off-by-one error within the 'dissect_negprot_response()' function in
-    epan/dissectors/packet-smb.c of the SMB dissector can be exploited to
-    cause a crash.";
-tag_summary = "This host is installed with Wireshark and is prone to multiple
-  Denial of Service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801033");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -64,11 +46,22 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_lin.nasl");
   script_require_keys("Wireshark/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could result in Denial of service condition.
+  Impact Level: Application.");
+  script_tag(name : "affected" , value : "Wireshark version 1.2.0 to 1.2.2 on Linux.");
+  script_tag(name : "insight" , value : "- An alignment error within the 'dissect_paltalk()' function in
+    epan/dissectors/packet-paltalk.c of the Paltalk dissector can be
+    exploited to cause a crash.
+  - An off-by-one error within the 'dissect_negprot_response()' function in
+    epan/dissectors/packet-smb.c of the SMB dissector can be exploited to
+    cause a crash.");
+  script_tag(name : "summary" , value : "This host is installed with Wireshark and is prone to multiple
+  Denial of Service vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Wireshark 1.2.3
+  http://www.wireshark.org/download.html
+
+  Workaround: Disable the affected dissectors,
+  http://www.wireshark.org/security/wnpa-sec-2009-07.html");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -82,7 +75,6 @@ if(!sharkVer){
   exit(0);
 }
 
-# Grep for Wireshark version 1.2.0 to 1.2.2
 if(version_in_range(version:sharkVer, test_version:"1.2.0", test_version2:"1.2.2")){
   security_message(0);
 }

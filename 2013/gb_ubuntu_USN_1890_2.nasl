@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1890_2.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1890_2.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for firefox USN-1890-2
 #
@@ -25,7 +25,34 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN-1890-1 fixed vulnerabilities in Firefox. This update introduced a
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.841496");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2013-07-05 13:17:09 +0530 (Fri, 05 Jul 2013)");
+  script_cve_id("CVE-2013-1682", "CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685",
+                "CVE-2013-1686", "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690",
+                "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694", "CVE-2013-1695",
+                "CVE-2013-1696", "CVE-2013-1697", "CVE-2013-1698", "CVE-2013-1699");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Ubuntu Update for firefox USN-1890-2");
+
+  script_xref(name: "USN", value: "1890-2");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1890-2/");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|12\.10|13\.04)");
+  script_tag(name : "affected" , value : "firefox on Ubuntu 13.04 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN-1890-1 fixed vulnerabilities in Firefox. This update introduced a
   regression which sometimes resulted in Firefox using the wrong network
   proxy settings. This update fixes the problem.
 
@@ -79,39 +106,7 @@ tag_insight = "USN-1890-1 fixed vulnerabilities in Firefox. This update introduc
   Buclin discovered that the X-Frame-Options header is ignored in
   multi-part respo ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "firefox on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.841496");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2013-07-05 13:17:09 +0530 (Fri, 05 Jul 2013)");
-  script_cve_id("CVE-2013-1682", "CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685",
-                "CVE-2013-1686", "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690",
-                "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694", "CVE-2013-1695",
-                "CVE-2013-1696", "CVE-2013-1697", "CVE-2013-1698", "CVE-2013-1699");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("Ubuntu Update for firefox USN-1890-2");
-
-  script_xref(name: "USN", value: "1890-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1890-2/");
-  script_tag(name: "summary" , value: "Check for the Version of firefox");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -136,7 +131,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -150,7 +145,7 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -164,6 +159,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

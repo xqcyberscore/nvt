@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842512");
-  script_version("$Revision: 7956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9652 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:17:24 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-4514", "CVE-2015-4515", "CVE-2015-4518",
                 "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7187",
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2785-1");
   script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Christian Holler, David Major, Jesse Ruderman,
 Tyson Smith, Boris Zbarsky, Randell Jesup, Olli Pettay, Karl Tomlinson, Jeff Walden,
 Gary Kwong, Andrew McCreight, Georg Fritzsche, and Carsten Book discovered multiple
@@ -87,7 +86,7 @@ exploit this to conduct cross-site scripting (XSS) attacks.
 
 Looben Yang discovered a buffer overflow during script interactions with
 the canvas element in some circumstances. If a user were tricked in to
-opening a s ... 
+opening a s ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "firefox on Ubuntu 15.10 ,
@@ -102,7 +101,7 @@ opening a s ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(15\.04|14\.04 LTS|12\.04 LTS|15\.10)");
   exit(0);
 }
 
@@ -125,7 +124,7 @@ if(release == "UBUNTU15.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -139,7 +138,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -153,7 +152,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -167,6 +166,6 @@ if(release == "UBUNTU15.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

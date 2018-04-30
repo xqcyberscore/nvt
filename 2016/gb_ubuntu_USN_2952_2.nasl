@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842722");
-  script_version("$Revision: 7955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:38 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2014-9767", "CVE-2015-8835", "CVE-2016-3185", "CVE-2015-8838",
 		"CVE-2016-1903", "CVE-2016-2554", "CVE-2016-3141", "CVE-2016-3142");
@@ -36,8 +36,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-2952-2");
   script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "USN-2952-1 fixed vulnerabilities in PHP.
   One of the backported patches caused a regression in the PHP Soap client.
   This update fixes the problem.
@@ -83,7 +82,7 @@ if(description)
   certain magic files. An attacker could use this issue to cause PHP to
   crash, resulting in a denial of service, or possibly execute arbitrary
   code. (CVE number pending)
-  It was disc ... 
+  It was disc ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "php5 on Ubuntu 15.10");
@@ -96,7 +95,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU15\.10");
   exit(0);
 }
 
@@ -155,6 +154,6 @@ if(release == "UBUNTU15.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

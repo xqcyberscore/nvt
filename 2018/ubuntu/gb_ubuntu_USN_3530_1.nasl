@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3530_1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3530_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3530-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843419");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 07:44:21 +0100 (Fri, 12 Jan 2018)");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
@@ -36,14 +36,13 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for webkit2gtk USN-3530-1");
   script_tag(name: "summary", value: "Check the version of webkit2gtk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "It was discovered that speculative execution 
-  performed by modern CPUs could leak information through a timing side-channel 
-  attack, and that this could be exploited in web browser JavaScript engines. If a 
-  user were tricked in to opening a specially crafted website, an attacker could 
-  potentially exploit this to obtain sensitive information from other domains, 
-  bypassing same-origin restrictions. (CVE-2017-5753, CVE-2017-5715)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "It was discovered that speculative execution
+  performed by modern CPUs could leak information through a timing side-channel
+  attack, and that this could be exploited in web browser JavaScript engines. If a
+  user were tricked in to opening a specially crafted website, an attacker could
+  potentially exploit this to obtain sensitive information from other domains,
+  bypassing same-origin restrictions. (CVE-2017-5753, CVE-2017-5715)");
   script_tag(name: "affected", value: "webkit2gtk on Ubuntu 17.10 ,
   Ubuntu 17.04 ,
   Ubuntu 16.04 LTS");
@@ -56,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.10|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -97,7 +96,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,7 +128,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -161,6 +160,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

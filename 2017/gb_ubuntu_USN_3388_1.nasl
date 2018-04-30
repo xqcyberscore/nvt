@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3388_1.nasl 7739 2017-11-13 05:04:18Z teissa $
+# $Id: gb_ubuntu_USN_3388_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for subversion USN-3388-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843282");
-  script_version("$Revision: 7739 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-08-12 07:29:58 +0200 (Sat, 12 Aug 2017)");
   script_cve_id("CVE-2017-9800", "CVE-2016-2167", "CVE-2016-8734");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,20 +36,19 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for subversion USN-3388-1");
   script_tag(name: "summary", value: "Check the version of subversion");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Joern Schneeweisz discovered that Subversion 
-  did not properly handle host names in 'svn+<A HREF='ssh://'>ssh://</A>' URLs. A 
-  remote attacker could use this to construct a subversion repository that when 
-  accessed could run arbitrary code with the privileges of the user. 
-  (CVE-2017-9800) Daniel Shahaf and James McCoy discovered that Subversion did not 
-  properly verify realms when using Cyrus SASL authentication. A remote attacker 
-  could use this to possibly bypass intended access restrictions. This issue only 
-  affected Ubuntu 14.04 LTS and Ubuntu 16.04 LTS. (CVE-2016-2167) Florian Weimer 
-  discovered that Subversion clients did not properly restrict XML entity 
-  expansion when accessing http(s):// URLs. A remote attacker could use this to 
-  cause a denial of service. This issue only affected Ubuntu 14.04 LTS and Ubuntu 
-  16.04 LTS. (CVE-2016-8734)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Joern Schneeweisz discovered that Subversion
+  did not properly handle host names in 'svn+<A HREF='ssh://'>ssh://</A>' URLs. A
+  remote attacker could use this to construct a subversion repository that when
+  accessed could run arbitrary code with the privileges of the user.
+  (CVE-2017-9800) Daniel Shahaf and James McCoy discovered that Subversion did not
+  properly verify realms when using Cyrus SASL authentication. A remote attacker
+  could use this to possibly bypass intended access restrictions. This issue only
+  affected Ubuntu 14.04 LTS and Ubuntu 16.04 LTS. (CVE-2016-2167) Florian Weimer
+  discovered that Subversion clients did not properly restrict XML entity
+  expansion when accessing http(s):// URLs. A remote attacker could use this to
+  cause a denial of service. This issue only affected Ubuntu 14.04 LTS and Ubuntu
+  16.04 LTS. (CVE-2016-8734)");
   script_tag(name: "affected", value: "subversion on Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -62,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -109,7 +108,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -135,7 +134,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -173,6 +172,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

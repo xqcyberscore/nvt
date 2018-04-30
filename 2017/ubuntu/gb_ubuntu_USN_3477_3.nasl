@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3477_3.nasl 8019 2017-12-07 07:42:09Z santu $
+# $Id: gb_ubuntu_USN_3477_3.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for firefox USN-3477-3
 #
@@ -27,39 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843390");
-  script_version("$Revision: 8019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:42:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-02 07:28:34 +0100 (Sat, 02 Dec 2017)");
   script_cve_id("CVE-2017-7826", "CVE-2017-7827", "CVE-2017-7828", "CVE-2017-7830",
                 "CVE-2017-7831", "CVE-2017-7832", "CVE-2017-7833", "CVE-2017-7834",
-                "CVE-2017-7835", "CVE-2017-7837", "CVE-2017-7838", "CVE-2017-7842", "CVE-2017-7839", 
-                "CVE-2017-7840"); 
+                "CVE-2017-7835", "CVE-2017-7837", "CVE-2017-7838", "CVE-2017-7842", "CVE-2017-7839",
+                "CVE-2017-7840");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3477-3");
   script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "USN-3477-1 fixed vulnerabilities in Firefox. 
-  The update introduced various minor regressions. This update fixes the problems. 
-  We apologize for the inconvenience. Original advisory details: Multiple security 
-  issues were discovered in Firefox. If a user were tricked in to opening a 
-  specially crafted website, an attacker could potentially exploit these to cause 
-  a denial of service, read uninitialized memory, obtain sensitive information, 
-  bypass same-origin restrictions, bypass CSP protections, bypass mixed content 
-  blocking, spoof the addressbar, or execute arbitrary code. (CVE-2017-7826, 
-  CVE-2017-7827, CVE-2017-7828, CVE-2017-7830, CVE-2017-7831, CVE-2017-7832, 
-  CVE-2017-7833, CVE-2017-7834, CVE-2017-7835, CVE-2017-7837, CVE-2017-7838, 
-  CVE-2017-7842) It was discovered that javascript: URLs pasted in to the 
-  addressbar would be executed instead of being blocked in some circumstances. If 
-  a user were tricked in to copying a specially crafted URL in to the addressbar, 
-  an attacker could potentially exploit this to conduct cross-site scripting (XSS) 
-  attacks. (CVE-2017-7839) It was discovered that exported bookmarks do not strip 
-  script elements from user-supplied tags. If a user were tricked in to adding 
-  specially crafted tags to bookmarks, exporting them and then opening the 
-  resulting HTML file, an attacker could potentially exploit this to conduct 
-  cross-site scripting (XSS) attacks. (CVE-2017-7840)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "USN-3477-1 fixed vulnerabilities in Firefox.
+  The update introduced various minor regressions. This update fixes the problems.
+  We apologize for the inconvenience. Original advisory details: Multiple security
+  issues were discovered in Firefox. If a user were tricked in to opening a
+  specially crafted website, an attacker could potentially exploit these to cause
+  a denial of service, read uninitialized memory, obtain sensitive information,
+  bypass same-origin restrictions, bypass CSP protections, bypass mixed content
+  blocking, spoof the addressbar, or execute arbitrary code. (CVE-2017-7826,
+  CVE-2017-7827, CVE-2017-7828, CVE-2017-7830, CVE-2017-7831, CVE-2017-7832,
+  CVE-2017-7833, CVE-2017-7834, CVE-2017-7835, CVE-2017-7837, CVE-2017-7838,
+  CVE-2017-7842) It was discovered that javascript: URLs pasted in to the
+  addressbar would be executed instead of being blocked in some circumstances. If
+  a user were tricked in to copying a specially crafted URL in to the addressbar,
+  an attacker could potentially exploit this to conduct cross-site scripting (XSS)
+  attacks. (CVE-2017-7839) It was discovered that exported bookmarks do not strip
+  script elements from user-supplied tags. If a user were tricked in to adding
+  specially crafted tags to bookmarks, exporting them and then opening the
+  resulting HTML file, an attacker could potentially exploit this to conduct
+  cross-site scripting (XSS) attacks. (CVE-2017-7840)");
   script_tag(name: "affected", value: "firefox on Ubuntu 17.10 ,
   Ubuntu 17.04 ,
   Ubuntu 16.04 LTS ,
@@ -73,7 +72,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|17\.04|16\.04 LTS)");
   exit(0);
 }
 
@@ -96,7 +95,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -110,7 +109,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -124,7 +123,7 @@ if(release == "UBUNTU17.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -138,6 +137,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

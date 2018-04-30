@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1284_2.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1284_2.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for update-manager USN-1284-2
 #
@@ -25,7 +25,34 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN-1284-1 fixed vulnerabilities in Update Manager. One of the fixes
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1284-2/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840901");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-21 19:00:18 +0530 (Tue, 21 Feb 2012)");
+  script_cve_id("CVE-2011-3152", "CVE-2011-3154");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_xref(name: "USN", value: "1284-2");
+  script_name("Ubuntu Update for update-manager USN-1284-2");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1284-2");
+  script_tag(name : "affected" , value : "update-manager on Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN-1284-1 fixed vulnerabilities in Update Manager. One of the fixes
   introduced a regression for Kubuntu users attempting to upgrade to a newer
   Ubuntu release. This update fixes the problem.
 
@@ -44,39 +71,7 @@ tag_insight = "USN-1284-1 fixed vulnerabilities in Update Manager. One of the fi
   (CVE-2011-3154)
 
   This update also adds a hotfix to Update Notifier to handle cases where the
-  upgrade is being performed from CD media.";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1284-2";
-tag_affected = "update-manager on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1284-2/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840901");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-21 19:00:18 +0530 (Tue, 21 Feb 2012)");
-  script_cve_id("CVE-2011-3152", "CVE-2011-3154");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_xref(name: "USN", value: "1284-2");
-  script_name("Ubuntu Update for update-manager USN-1284-2");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  upgrade is being performed from CD media.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -101,7 +96,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -115,7 +110,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,7 +124,7 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -143,6 +138,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

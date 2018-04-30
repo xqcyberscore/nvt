@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1615_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1615_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for python3.2 USN-1615-1
 #
@@ -25,32 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that Python distutils contained a race condition when
-  creating the ~/.pypirc file. A local attacker could exploit this to obtain
-  sensitive information. (CVE-2011-4944)
-
-  It was discovered that SimpleXMLRPCServer did not properly validate its
-  input when handling HTTP POST requests. A remote attacker could exploit
-  this to cause a denial of service via excessive CPU utilization. This issue
-  only affected Ubuntu 11.04 and 11.10. (CVE-2012-0845)
-  
-  It was discovered that Python was susceptible to hash algorithm attacks.
-  An attacker could cause a denial of service under certain circumstances.
-  This updates adds the '-R' command line option and honors setting the
-  PYTHONHASHSEED environment variable to 'random' to salt str and datetime
-  objects with an unpredictable value. This issue only affected Ubuntu 11.04
-  and 11.10. (CVE-2012-1150)
-  
-  Serhiy Storchaka discovered that the UTF16 decoder in Python did not
-  properly reset internal variables after error handling. An attacker could
-  exploit this to cause a denial of service via memory corruption. This issue
-  did not affect Ubuntu 12.10. (CVE-2012-2135)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1615-1";
-tag_affected = "python3.2 on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -58,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1615-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841197");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 09:44:22 +0530 (Fri, 26 Oct 2012)");
   script_cve_id("CVE-2011-4944", "CVE-2012-0845", "CVE-2012-1150", "CVE-2012-2135");
   script_tag(name:"cvss_base", value:"6.4");
@@ -71,11 +45,32 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|11\.04)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1615-1");
+  script_tag(name : "affected" , value : "python3.2 on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10 ,
+  Ubuntu 11.04");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that Python distutils contained a race condition when
+  creating the ~/.pypirc file. A local attacker could exploit this to obtain
+  sensitive information. (CVE-2011-4944)
+
+  It was discovered that SimpleXMLRPCServer did not properly validate its
+  input when handling HTTP POST requests. A remote attacker could exploit
+  this to cause a denial of service via excessive CPU utilization. This issue
+  only affected Ubuntu 11.04 and 11.10. (CVE-2012-0845)
+
+  It was discovered that Python was susceptible to hash algorithm attacks.
+  An attacker could cause a denial of service under certain circumstances.
+  This updates adds the '-R' command line option and honors setting the
+  PYTHONHASHSEED environment variable to 'random' to salt str and datetime
+  objects with an unpredictable value. This issue only affected Ubuntu 11.04
+  and 11.10. (CVE-2012-1150)
+
+  Serhiy Storchaka discovered that the UTF16 decoder in Python did not
+  properly reset internal variables after error handling. An attacker could
+  exploit this to cause a denial of service via memory corruption. This issue
+  did not affect Ubuntu 12.10. (CVE-2012-2135)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -106,7 +101,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -126,7 +121,7 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -146,6 +141,6 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

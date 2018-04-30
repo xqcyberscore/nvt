@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2078_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2078_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for libxfont USN-2078-1
 #
@@ -29,32 +29,26 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841682");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-01-10 11:59:25 +0530 (Fri, 10 Jan 2014)");
   script_cve_id("CVE-2013-6462");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for libxfont USN-2078-1");
 
-  tag_insight = "It was discovered that libXfont incorrectly handled certain malformed BDF
-fonts. An attacker could use a specially crafted font file to cause
-libXfont to crash, or possibly execute arbitrary code in order to gain
-privileges. The default compiler options for affected releases should
-reduce the vulnerability to a denial of service.";
 
-  tag_affected = "libxfont on Ubuntu 13.10 ,
+  script_tag(name : "affected" , value : "libxfont on Ubuntu 13.10 ,
   Ubuntu 13.04 ,
   Ubuntu 12.10 ,
   Ubuntu 12.04 LTS ,
-  Ubuntu 10.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Ubuntu 10.04 LTS");
+  script_tag(name : "insight" , value : "It was discovered that libXfont incorrectly handled certain malformed BDF
+fonts. An attacker could use a specially crafted font file to cause
+libXfont to crash, or possibly execute arbitrary code in order to gain
+privileges. The default compiler options for affected releases should
+reduce the vulnerability to a denial of service.");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2078-1");
@@ -64,7 +58,7 @@ reduce the vulnerability to a denial of service.";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.10|12\.04 LTS|10\.04 LTS|13\.10|13\.04)");
   exit(0);
 }
 
@@ -87,7 +81,7 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -101,7 +95,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -115,7 +109,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -129,7 +123,7 @@ if(release == "UBUNTU13.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -143,6 +137,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

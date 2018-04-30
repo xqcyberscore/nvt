@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office2013_option_to_enable_disable_updates.nasl 9512 2018-04-17 14:08:25Z emoss $
+# $Id: office2013_option_to_enable_disable_updates.nasl 9659 2018-04-27 11:55:11Z emoss $
 #
 # Check value for Hide option to enable or disable updates
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109078");
-  script_version("$Revision: 9512 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:08:25 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:42:28 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -59,14 +59,14 @@ if(ereg(string:Office_Ver, pattern:"^15.0") != 1){
   exit(0);
 }
 
+type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\Office\\15.0\\common\\officeupdate';
-value = registry_get_dword(key:key, item:'HideEnableDisableUpdates', type:'HKLM');
+item = 'HideEnableDisableUpdates';
+value = registry_get_dword(key:key, item:item, type:type);
 if( value == ''){
-  policy_logging(text:'Unable to detect registry value "HKLM\\Software\\Policies\\Microsoft\\Office\\15.0\\common\\officeupdate!HideEnableDisableUpdates".');
-  set_kb_item(name:'Policy/MS/Office2013/HideEnableDisableUpdates', value:'none');
-}else{
-  policy_logging(text:'Registry value "HKLM\\Software\\Policies\\Microsoft\\Office\\15.0\\common\\officeupdate!HideEnableDisableUpdates" is set to: ' + value);
-  set_kb_item(name:'Policy/MS/Office2013/HideEnableDisableUpdates', value:value);
+  value = 'none';
 }
+policy_logging_registry(type:type,key:key,item:item,value:value);
+policy_set_kb(val:value);
 
 exit(0);

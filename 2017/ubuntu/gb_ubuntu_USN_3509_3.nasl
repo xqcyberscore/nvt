@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3509_3.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_ubuntu_USN_3509_3.nasl 9654 2018-04-27 09:20:40Z cfischer $
 #
 # Ubuntu Update for linux USN-3509-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843402");
-  script_version("$Revision: 8291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-15 12:41:32 +0100 (Fri, 15 Dec 2017)");
   script_cve_id("CVE-2017-16939", "CVE-2017-1000405", "CVE-2017-12193", "CVE-2017-16643");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,26 +36,25 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3509-3");
   script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "USN-3509-1 fixed vulnerabilities in the 
-  Linux kernel for Ubuntu 16.04 LTS. Unfortunately, it also introduced a 
-  regression that prevented the Ceph network filesystem from being used. This 
-  update fixes the problem. We apologize for the inconvenience. Original advisory 
-  details: Mohamed Ghannam discovered that a use-after-free vulnerability existed 
-  in the Netlink subsystem (XFRM) in the Linux kernel. A local attacker could use 
-  this to cause a denial of service (system crash) or possibly execute arbitrary 
-  code. (CVE-2017-16939) It was discovered that the Linux kernel did not properly 
-  handle copy-on- write of transparent huge pages. A local attacker could use this 
-  to cause a denial of service (application crashes) or possibly gain 
-  administrative privileges. (CVE-2017-1000405) Fan Wu, Haoran Qiu, and Shixiong 
-  Zhao discovered that the associative array implementation in the Linux kernel 
-  sometimes did not properly handle adding a new entry. A local attacker could use 
-  this to cause a denial of service (system crash). (CVE-2017-12193) Andrey 
-  Konovalov discovered an out-of-bounds read in the GTCO digitizer USB driver for 
-  the Linux kernel. A physically proximate attacker could use this to cause a 
-  denial of service (system crash) or possibly execute arbitrary code. 
-  (CVE-2017-16643)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "USN-3509-1 fixed vulnerabilities in the
+  Linux kernel for Ubuntu 16.04 LTS. Unfortunately, it also introduced a
+  regression that prevented the Ceph network filesystem from being used. This
+  update fixes the problem. We apologize for the inconvenience. Original advisory
+  details: Mohamed Ghannam discovered that a use-after-free vulnerability existed
+  in the Netlink subsystem (XFRM) in the Linux kernel. A local attacker could use
+  this to cause a denial of service (system crash) or possibly execute arbitrary
+  code. (CVE-2017-16939) It was discovered that the Linux kernel did not properly
+  handle copy-on- write of transparent huge pages. A local attacker could use this
+  to cause a denial of service (application crashes) or possibly gain
+  administrative privileges. (CVE-2017-1000405) Fan Wu, Haoran Qiu, and Shixiong
+  Zhao discovered that the associative array implementation in the Linux kernel
+  sometimes did not properly handle adding a new entry. A local attacker could use
+  this to cause a denial of service (system crash). (CVE-2017-12193) Andrey
+  Konovalov discovered an out-of-bounds read in the GTCO digitizer USB driver for
+  the Linux kernel. A physically proximate attacker could use this to cause a
+  denial of service (system crash) or possibly execute arbitrary code.
+  (CVE-2017-16643)");
   script_tag(name: "affected", value: "linux on Ubuntu 16.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -66,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
@@ -203,6 +202,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

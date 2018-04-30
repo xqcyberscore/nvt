@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842480");
-  script_version("$Revision: 7956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9652 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:43:26 +0200 (Tue, 06 Oct 2015)");
   script_cve_id("CVE-2015-7613");
   script_tag(name:"cvss_base", value:"6.9");
@@ -35,8 +35,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-utopic USN-2764-1");
   script_tag(name: "summary", value: "Check the version of linux-lts-utopic");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Dmitry Vyukov discovered that the Linux
 kernel did not properly initialize IPC object state in certain situations. A
 local attacker could use this to escalate their privileges, expose confidential
@@ -50,7 +49,7 @@ information, or cause a denial of service (system crash).");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -109,6 +108,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

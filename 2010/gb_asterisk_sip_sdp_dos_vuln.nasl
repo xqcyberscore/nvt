@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_sip_sdp_dos_vuln.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: gb_asterisk_sip_sdp_dos_vuln.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # Asterisk T.38 Negotiation Remote Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800463");
-  script_version("$Revision: 4887 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Feb/1023532.html");
   script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2010-001.html");
 
-  script_tag(name:"impact", value:"Successful exploitation could result in denial of serivce condition.
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.
 
   Impact Level: Application");
 

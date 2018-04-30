@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1532_1.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: gb_ubuntu_USN_1532_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1532-1
 #
@@ -25,28 +25,6 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "An error was discovered in the Linux kernel's network TUN/TAP device
-  implementation. A local user with access to the TUN/TAP interface (which is
-  not available to unprivileged users until granted by a root user) could
-  exploit this flaw to crash the system or potential gain administrative
-  privileges. (CVE-2012-2136)
-
-  Ulrich Obergfell discovered an error in the Linux kernel's memory
-  management subsystem on 32 bit PAE systems with more than 4GB of memory
-  installed. A local unprivileged user could exploit this flaw to crash the
-  system. (CVE-2012-2373)
-  
-  A flaw was discovered in the Linux kernel's epoll system call. An
-  unprivileged local user could use this flaw to crash the system.
-  (CVE-2012-3375)
-  
-  Some errors where discovered in the Linux kernel's UDF file system, which
-  is used to mount some CD-ROMs and DVDs. An unprivileged local user could
-  use these flaws to crash the system. (CVE-2012-3400)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1532-1";
-tag_affected = "linux-ti-omap4 on Ubuntu 11.10";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
@@ -54,8 +32,8 @@ if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1532-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841102");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:40:05 +0530 (Tue, 14 Aug 2012)");
   script_cve_id("CVE-2012-2136", "CVE-2012-2373", "CVE-2012-3375", "CVE-2012-3400");
   script_tag(name:"cvss_base", value:"7.6");
@@ -67,11 +45,28 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU11\.10");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1532-1");
+  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 11.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "An error was discovered in the Linux kernel's network TUN/TAP device
+  implementation. A local user with access to the TUN/TAP interface (which is
+  not available to unprivileged users until granted by a root user) could
+  exploit this flaw to crash the system or potential gain administrative
+  privileges. (CVE-2012-2136)
+
+  Ulrich Obergfell discovered an error in the Linux kernel's memory
+  management subsystem on 32 bit PAE systems with more than 4GB of memory
+  installed. A local unprivileged user could exploit this flaw to crash the
+  system. (CVE-2012-2373)
+
+  A flaw was discovered in the Linux kernel's epoll system call. An
+  unprivileged local user could use this flaw to crash the system.
+  (CVE-2012-3375)
+
+  Some errors where discovered in the Linux kernel's UDF file system, which
+  is used to mount some CD-ROMs and DVDs. An unprivileged local user could
+  use these flaws to crash the system. (CVE-2012-3400)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -96,6 +91,6 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

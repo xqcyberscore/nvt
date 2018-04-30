@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1887_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_1887_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for swift USN-1887-1
 #
@@ -25,7 +25,15 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Sebastian Krahmer discovered that Swift used the loads function in the
+
+
+if(description)
+{
+  script_tag(name : "affected" , value : "swift on Ubuntu 13.04 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Sebastian Krahmer discovered that Swift used the loads function in the
   pickle Python module when it was configured to use memcached. A remote
   attacker on the same network as memcached could exploit this to execute
   arbitrary code. This update adds a new memcache_serialization_support
@@ -36,23 +44,10 @@ tag_insight = "Sebastian Krahmer discovered that Swift used the loads function i
   Alex Gaynor discovered that Swift did not safely generate XML. An
   attacker could potentially craft an account name to generate arbitrary XML
   responses to trigger vulnerabilties in software parsing Swift's XML.
-  (CVE-2013-2161)";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "swift on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS";
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  (CVE-2013-2161)");
   script_oid("1.3.6.1.4.1.25623.1.0.841485");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 15:06:42 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2012-4406", "CVE-2013-2161");
   script_tag(name:"cvss_base", value:"7.5");
@@ -68,7 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|12\.10|13\.04)");
   exit(0);
 }
 
@@ -91,7 +86,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -105,7 +100,7 @@ if(release == "UBUNTU12.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -119,6 +114,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

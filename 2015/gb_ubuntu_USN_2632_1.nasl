@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842241");
-  script_version("$Revision: 7956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9652 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 06:31:20 +0200 (Thu, 11 Jun 2015)");
   script_cve_id("CVE-2015-2150", "CVE-2015-2830", "CVE-2015-3331", "CVE-2015-3636", "CVE-2015-4167");
   script_tag(name:"cvss_base", value:"9.3");
@@ -35,8 +35,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-ti-omap4 USN-2632-1");
   script_tag(name: "summary", value: "Check the version of linux-ti-omap4");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "Jan Beulich discovered the Xen virtual
 machine subsystem of the Linux kernel did not properly restrict access to PCI
 command registers. A local guest user could exploit this flaw to cause a denial
@@ -71,7 +70,7 @@ a denial of service (system crash) by using a corrupted filesystem image.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -94,6 +93,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_passwd_min_length.nasl 9631 2018-04-26 13:41:53Z emoss $
+# $Id: win10_passwd_min_length.nasl 9659 2018-04-27 11:55:11Z emoss $
 #
 # Check value for Minimum password length (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109106");
-  script_version("$Revision: 9631 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 15:41:53 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -61,17 +61,16 @@ if('windows 10' >!< tolower(WindowsName)){
 }
 
 type = 'Minimum password length';
-oid = '109106';
 select = 'Setting';
 keyname = 'MinimumPasswordLength';
 
-value = rsop_securitysettingsnumeric(select:select,keyname:keyname,oid:oid);
+value = rsop_securitysettingsnumeric(select:select,keyname:keyname);
 if( value == ''){
   policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(oid:oid,val:'error');
+  policy_set_kb(val:'error');
 }else{
   policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(oid:oid,val:value);
+  policy_set_kb(val:value);
 }
 
 wmi_close(wmi_handle:handle);

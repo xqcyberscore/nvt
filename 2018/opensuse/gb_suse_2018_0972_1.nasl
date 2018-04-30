@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0972_1.nasl 9547 2018-04-20 10:53:23Z santu $
+# $Id: gb_suse_2018_0972_1.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851731");
-  script_version("$Revision: 9547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:53:23 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 08:43:06 +0200 (Wed, 18 Apr 2018)");
   script_cve_id("CVE-2018-1091", "CVE-2018-7740", "CVE-2018-8043");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of the Linux Kernel");

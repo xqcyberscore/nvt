@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2243_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2243_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for firefox USN-2243-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841855");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:05:45 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2014-1533", "CVE-2014-1534", "CVE-2014-1536", "CVE-2014-1537",
                 "CVE-2014-1538", "CVE-2014-1540", "CVE-2014-1541", "CVE-2014-1542");
@@ -38,7 +38,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for firefox USN-2243-1");
 
-  tag_insight = "Gary Kwong, Christoph Diehl, Christian Holler, Hannes Verschore,
+
+  script_tag(name : "affected" , value : "firefox on Ubuntu 14.04 LTS ,
+  Ubuntu 13.10 ,
+  Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "Gary Kwong, Christoph Diehl, Christian Holler, Hannes Verschore,
 Jan de Mooij, Ryan VanderMeulen, Jeff Walden, Kyle Huey, Jesse Ruderman, Gregor
 Wagner, Benoit Jacob and Karl Tomlinson discovered multiple memory safety
 issues in Firefox. If a user were tricked in to opening a specially
@@ -50,34 +54,24 @@ CVE-2014-1534)
 Abhishek Arya discovered multiple use-after-free and out-of-bounds read
 issues in Firefox. An attacker could potentially exploit these to cause
 a denial of service via application crash or execute arbitrary code with
-the priviliges of the user invoking Firefox. (CVE-2014-1536,
+the privileges of the user invoking Firefox. (CVE-2014-1536,
 CVE-2014-1537, CVE-2014-1538)
 
 Tyson Smith and Jesse Schwartzentruber discovered a use-after-free in the
 event listener manager. An attacker could potentially exploit this to
 cause a denial of service via application crash or execute arbitrary code
-with the priviliges of the user invoking Firefox. (CVE-2014-1540)
+with the privileges of the user invoking Firefox. (CVE-2014-1540)
 
 A use-after-free was discovered in the SMIL animation controller. An
 attacker could potentially exploit this to cause a denial of service via
-application crash or execute arbitrary code with the priviliges of the
+application crash or execute arbitrary code with the privileges of the
 user invoking Firefox. (CVE-2014-1541)
 
 Holger Fuhrmannek discovered a buffer overflow in Web Audio. An attacker
 could potentially exploit this to cause a denial of service via
-application crash or execute arbitrary code with the priviliges of the
-user invoking Firefox. (CVE-2014-1542)";
-
-  tag_affected = "firefox on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
-  Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+application crash or execute arbitrary code with the privileges of the
+user invoking Firefox. (CVE-2014-1542)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2243-1");
@@ -87,7 +81,7 @@ user invoking Firefox. (CVE-2014-1542)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|13\.10)");
   exit(0);
 }
 
@@ -110,7 +104,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -124,7 +118,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -138,6 +132,6 @@ if(release == "UBUNTU13.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

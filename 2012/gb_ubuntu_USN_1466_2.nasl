@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1466_2.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1466_2.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for nova USN-1466-2
 #
@@ -25,7 +25,31 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "USN 1466-1 fixed a vulnerability in Nova. The upstream patch introduced
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1466-2/");
+  script_oid("1.3.6.1.4.1.25623.1.0.841035");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-15 09:46:35 +0530 (Fri, 15 Jun 2012)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name: "USN", value: "1466-2");
+  script_name("Ubuntu Update for nova USN-1466-2");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1466-2");
+  script_tag(name : "affected" , value : "nova on Ubuntu 12.04 LTS ,
+  Ubuntu 11.10");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "USN 1466-1 fixed a vulnerability in Nova. The upstream patch introduced
   a regression when a security group granted full access and therefore the
   network protocol was left unset, causing an error in processing. This
   update fixes the issue.
@@ -38,36 +62,7 @@ tag_insight = "USN 1466-1 fixed a vulnerability in Nova. The upstream patch intr
   the EC2 or OS APIs, specifying the network protocol (e.g. 'TCP') in
   the incorrect case would cause the security group to not be applied
   correctly. An attacker could use this to bypass Nova security group
-  restrictions.";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1466-2";
-tag_affected = "nova on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1466-2/");
-  script_oid("1.3.6.1.4.1.25623.1.0.841035");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-15 09:46:35 +0530 (Fri, 15 Jun 2012)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1466-2");
-  script_name("Ubuntu Update for nova USN-1466-2");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  restrictions.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -92,7 +87,7 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -106,6 +101,6 @@ if(release == "UBUNTU11.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

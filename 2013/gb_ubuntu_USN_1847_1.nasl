@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1847_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_ubuntu_USN_1847_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for linux USN-1847-1
 #
@@ -26,17 +26,11 @@
 
 include("revisions-lib.inc");
 
-tag_affected = "linux on Ubuntu 13.04";
-tag_insight = "Kees Cook discovered a flaw in the Linux kernel's iSCSI subsystem. A remote
-  unauthenticated attacker could exploit this flaw to cause a denial of
-  service (system crash) or potentially gain administrative privileges.";
-tag_solution = "Please Install the Updated Packages.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841441");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-05-31 09:57:46 +0530 (Fri, 31 May 2013)");
   script_cve_id("CVE-2013-2850");
   script_tag(name:"cvss_base", value:"7.9");
@@ -50,10 +44,12 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU13\.04");
+  script_tag(name : "affected" , value : "linux on Ubuntu 13.04");
+  script_tag(name : "insight" , value : "Kees Cook discovered a flaw in the Linux kernel's iSCSI subsystem. A remote
+  unauthenticated attacker could exploit this flaw to cause a denial of
+  service (system crash) or potentially gain administrative privileges.");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -78,6 +74,6 @@ if(release == "UBUNTU13.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office2013_programmatic_creation_online_presentation.nasl 9512 2018-04-17 14:08:25Z emoss $
+# $Id: office2013_programmatic_creation_online_presentation.nasl 9659 2018-04-27 11:55:11Z emoss $
 #
 # Check value for Restrict programmatic access for creating online presentations in PowerPoint and Word
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109085");
-  script_version("$Revision: 9512 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:08:25 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:42:28 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -60,14 +60,14 @@ if(ereg(string:Office_Ver, pattern:"^15.0") != 1){
   exit(0);
 }
 
+type = 'HKCU';
 key = 'Software\\Policies\\Microsoft\\Office\\15.0\\common\\broadcast';
-value = registry_get_dword(key:key, item:'disableprogrammaticaccess', type:'HKCU');
+item = 'disableprogrammaticaccess';
+value = registry_get_dword(key:key, item:item, type:type);
 if( value == ''){
-  policy_logging(text:'Unable to detect registry value "HKCU\\Software\\Policies\\Microsoft\\Office\\15.0\\common\\broadcast!disableprogrammaticaccess".');
-  set_kb_item(name:'Policy/MS/Office2013/disableprogrammaticaccess', value:'none');
-}else{
-  policy_logging(text:'Registry value "HKCU\\Software\\Policies\\Microsoft\\Office\\15.0\\common\\broadcast!disableprogrammaticaccess" is set to: ' + value);
-  set_kb_item(name:'Policy/MS/Office2013/disableprogrammaticaccess', value:value);
+  value = 'none';
 }
+policy_logging_registry(type:type,key:key,item:item,value:value);
+policy_set_kb(val:value);
 
 exit(0);

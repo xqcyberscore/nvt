@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842728");
-  script_version("$Revision: 7955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:29 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-2804", "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2808",
 		"CVE-2016-2811", "CVE-2016-2812", "CVE-2016-2814", "CVE-2016-2816",
@@ -37,8 +37,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxygen-gtk3 USN-2936-2");
   script_tag(name: "summary", value: "Check the version of oxygen-gtk3");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "USN-2936-1 fixed vulnerabilities in Firefox.
   The update caused Firefox to crash on startup with the Oxygen GTK theme due to
   a pre-existing bug in the Oxygen-GTK3 theme engine. This update fixes the problem.
@@ -67,7 +66,7 @@ if(description)
   an attacker could potentially exploit these to cause a denial of service
   via application crash, or execute arbitrary code with the privileges of
   the user invoking Firefox. (CVE-2016-2811, CVE-2016-2812)
- 
+
   Sascha Just discovered a buffer overflow in libstagefright in some
   circumstances. If a user were tricked in to opening a specially crafted
   website, an attacker could potentially exploit this to cause a denial of
@@ -99,7 +98,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -128,6 +127,6 @@ if(release == "UBUNTU12.04 LTS")
      exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

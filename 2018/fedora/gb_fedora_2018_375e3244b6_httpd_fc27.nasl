@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_375e3244b6_httpd_fc27.nasl 9390 2018-04-06 13:21:32Z santu $
+# $Id: gb_fedora_2018_375e3244b6_httpd_fc27.nasl 9643 2018-04-27 07:20:03Z cfischer $
 #
 # Fedora Update for httpd FEDORA-2018-375e3244b6
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874332");
-  script_version("$Revision: 9390 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 15:21:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-06 10:09:42 +0200 (Fri, 06 Apr 2018)");
   script_cve_id("CVE-2018-1303", "CVE-2018-1301", "CVE-2018-1312", "CVE-2017-15715", 
                 "CVE-2017-15710", "CVE-2018-1283");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for httpd FEDORA-2018-375e3244b6");
   script_tag(name: "summary", value: "Check the version of httpd");

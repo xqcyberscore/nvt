@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2368_1.nasl 7957 2017-12-01 06:40:08Z santu $
+# $Id: gb_ubuntu_USN_2368_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for openvpn USN-2368-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841992");
-  script_version("$Revision: 7957 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-10-03 05:57:58 +0200 (Fri, 03 Oct 2014)");
   script_cve_id("CVE-2013-2061");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
   script_name("Ubuntu Update for openvpn USN-2368-1");
   script_tag(name: "summary", value: "Check the version of openvpn");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "It was discovered that OpenVPN incorrectly handled HMAC comparisons when
 running in UDP mode. If a remote attacker were able to perform a
 man-in-the-middle attack, this flaw could possibly be used to perform a
@@ -50,7 +50,7 @@ plaintext recovery attack.");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -73,6 +73,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

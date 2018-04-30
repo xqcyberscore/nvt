@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 9640 2018-04-27 05:56:31Z emoss $
+# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 9661 2018-04-27 12:56:59Z cfischer $
 #
 # Orangeworm Kwampirs Trojan Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107306");
-  script_version("$Revision: 9640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 07:56:31 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 14:56:59 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 15:23:05 +0100 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_wmi_access.nasl");
-  script_require_ports(135, 445);
+  script_require_ports(139, 445);
   script_mandatory_keys("WMI/access_successful");
 
   script_xref(name:"URL", value:"https://www.symantec.com/blogs/threat-intelligence/orangeworm-targets-healthcare-us-europe-asia");
@@ -64,7 +64,6 @@ if(description)
 
 include("host_details.inc");
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 
 host    = get_host_ip();
 usrname = kb_smb_login();

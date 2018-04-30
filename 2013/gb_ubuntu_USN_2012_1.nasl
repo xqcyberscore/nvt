@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2012_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_ubuntu_USN_2012_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
 #
 # Ubuntu Update for lightdm USN-2012-1
 #
@@ -29,27 +29,21 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841616");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:58:25 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-4459");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
   script_name("Ubuntu Update for lightdm USN-2012-1");
 
-  tag_insight = "Christian Prim discovered that Light Display Manager
+
+  script_tag(name : "affected" , value : "lightdm on Ubuntu 13.10");
+  script_tag(name : "insight" , value : "Christian Prim discovered that Light Display Manager
 incorrectly applied the AppArmor security profile when the Guest account
 is used. A local attacker could use this issue to possibly gain access to
-sensitive information.";
-
-  tag_affected = "lightdm on Ubuntu 13.10";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+sensitive information.");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2012-1");
@@ -59,7 +53,7 @@ sensitive information.";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU13\.10");
   exit(0);
 }
 
@@ -82,6 +76,6 @@ if(release == "UBUNTU13.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

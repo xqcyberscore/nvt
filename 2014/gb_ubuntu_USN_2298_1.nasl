@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2298_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2298_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for oxide-qt USN-2298-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841913");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:39:33 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-1730", "CVE-2014-1731", "CVE-2014-1735", "CVE-2014-3162",
                 "CVE-2014-1740", "CVE-2014-1741", "CVE-2014-1742", "CVE-2014-1743",
@@ -41,7 +41,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
   script_name("Ubuntu Update for oxide-qt USN-2298-1");
 
-  tag_insight = "A type confusion bug was discovered in V8. If a user were
+
+  script_tag(name : "affected" , value : "oxide-qt on Ubuntu 14.04 LTS");
+  script_tag(name : "insight" , value : "A type confusion bug was discovered in V8. If a user were
 tricked in to opening a specially crafted website, an attacker could potentially
 exploit this to cause a denial of service via renderer crash, or execute
 arbitrary code with the privileges of the sandboxed render process.
@@ -91,16 +93,8 @@ It was discovered that Blink allowed scrollbar painting to extend in to
 the parent frame in some circumstances. An attacker could potentially
 exploit ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "oxide-qt on Ubuntu 14.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2298-1");
@@ -110,7 +104,7 @@ exploit ...
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -145,6 +139,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

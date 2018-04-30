@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1425_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1425_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for linux USN-1425-1
 #
@@ -25,7 +25,31 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Sasha Levin discovered a flaw in the permission checking for device
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1425-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840988");
+  script_tag(name:"cvss_base", value:"7.2");
+ script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-26 10:36:22 +0530 (Thu, 26 Apr 2012)");
+  script_cve_id("CVE-2011-4347", "CVE-2012-0045", "CVE-2012-1090", "CVE-2012-1097");
+  script_xref(name: "USN", value: "1425-1");
+  script_name("Ubuntu Update for linux USN-1425-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1425-1");
+  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Sasha Levin discovered a flaw in the permission checking for device
   assignments requested via the kvm ioctl in the Linux kernel. A local user
   could use this flaw to crash the system causing a denial of service.
   (CVE-2011-4347)
@@ -40,36 +64,7 @@ tag_insight = "Sasha Levin discovered a flaw in the permission checking for devi
 
   H. Peter Anvin reported a flaw in the Linux kernel that could crash the
   system. A local user could exploit this flaw to crash the system.
-  (CVE-2012-1097)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1425-1";
-tag_affected = "linux on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1425-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840988");
-  script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-04-26 10:36:22 +0530 (Thu, 26 Apr 2012)");
-  script_cve_id("CVE-2011-4347", "CVE-2012-0045", "CVE-2012-1090", "CVE-2012-1097");
-  script_xref(name: "USN", value: "1425-1");
-  script_name("Ubuntu Update for linux USN-1425-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  (CVE-2012-1097)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -172,6 +167,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

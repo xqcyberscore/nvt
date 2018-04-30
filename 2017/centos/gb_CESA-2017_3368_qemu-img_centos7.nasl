@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_3368_qemu-img_centos7.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_CESA-2017_3368_qemu-img_centos7.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
-# CentOS Update for qemu-img CESA-2017:3368 centos7 
+# CentOS Update for qemu-img CESA-2017:3368 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882812");
-  script_version("$Revision: 8091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 07:39:28 +0100 (Thu, 07 Dec 2017)");
   script_cve_id("CVE-2017-14167", "CVE-2017-15289");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,11 +36,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for qemu-img CESA-2017:3368 centos7 ");
   script_tag(name: "summary", value: "Check the version of qemu-img");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Kernel-based Virtual Machine (KVM) is a 
-full virtualization solution for Linux on a variety of architectures. 
-The qemu-kvm package provides the user-space component for running virtual 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Kernel-based Virtual Machine (KVM) is a
+full virtualization solution for Linux on a variety of architectures.
+The qemu-kvm package provides the user-space component for running virtual
 machines that use KVM.
 
 Security Fix(es):
@@ -55,7 +54,7 @@ potentially achieve arbitrary code execution on a host. (CVE-2017-14167)
 support, is vulnerable to an OOB write access issue. The issue could occur
 while writing to VGA memory via mode4and5 write functions. A privileged
 user inside guest could use this flaw to crash the QEMU process resulting
-in Denial of Serivce (DoS). (CVE-2017-15289)
+in Denial of service (DoS). (CVE-2017-15289)
 
 Red Hat would like to thank Thomas Garnier (Google.com) for reporting
 CVE-2017-14167 and Guoxiang Niu (Huawei.com) for reporting CVE-2017-15289.
@@ -111,6 +110,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

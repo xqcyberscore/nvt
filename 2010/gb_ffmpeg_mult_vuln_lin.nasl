@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffmpeg_mult_vuln_lin.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: gb_ffmpeg_mult_vuln_lin.nasl 9657 2018-04-27 10:38:29Z cfischer $
 #
 # FFmpeg Multiple Vulnerabilities (Linux)
 #
@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrad to FFmpeg version 0.5.2 or later,
-  For updates refer to http://www.ffmpeg.org/download.html
-
-  Workaround:
-  Apply workaround from below link,
-  http://scarybeastsecurity.blogspot.com/2009/09/patching-ffmpeg-into-shape.html";
-
-tag_impact = "Successful exploitation could result in Denial of Serivce condition(application
-  crash or infinite loop) or possibly allow execution of arbitrary code.
-  Impact Level: Application";
-tag_affected = "FFmpeg version 0.5 on Linux.";
-tag_insight = "The multiple flaws are due to:
-  - An out-of-bounds array index error in 'vorbis_dec.c'
-  - An off-by-one indexing error in 'vp3.c'
-  - Pointer arithmetic error in 'oggparsevorbis.c'
-  - Assignment vs comparison operator mix-up error in 'vorbis_dec.c'
-  - Integer underflow error leading to stack pointer wrap-around in 'vorbis_dec.c'
-  - Integer underflow error in 'mov.c'
-  - Type confusion error in 'mov.c'/'utils.c'";
-tag_summary = "This host is installed with FFmpeg and is prone to multiple
-  vulnerabilities";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800468");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 9657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,11 +45,26 @@ if(description)
   script_family("General");
   script_dependencies("gb_ffmpeg_detect_lin.nasl");
   script_require_keys("FFmpeg/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could result in Denial of service condition(application
+  crash or infinite loop) or possibly allow execution of arbitrary code.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "FFmpeg version 0.5 on Linux.");
+  script_tag(name : "insight" , value : "The multiple flaws are due to:
+  - An out-of-bounds array index error in 'vorbis_dec.c'
+  - An off-by-one indexing error in 'vp3.c'
+  - Pointer arithmetic error in 'oggparsevorbis.c'
+  - Assignment vs comparison operator mix-up error in 'vorbis_dec.c'
+  - Integer underflow error leading to stack pointer wrap-around in 'vorbis_dec.c'
+  - Integer underflow error in 'mov.c'
+  - Type confusion error in 'mov.c'/'utils.c'");
+  script_tag(name : "summary" , value : "This host is installed with FFmpeg and is prone to multiple
+  vulnerabilities");
+  script_tag(name : "solution" , value : "Upgrad to FFmpeg version 0.5.2 or later,
+  For updates refer to http://www.ffmpeg.org/download.html
+
+  Workaround:
+  Apply workaround from below link,
+  http://scarybeastsecurity.blogspot.com/2009/09/patching-ffmpeg-into-shape.html");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -85,7 +78,6 @@ if(!ffmpegVer){
   exit(0);
 }
 
-# Grep for ffmpeg version 0.5
 if(version_is_equal(version:ffmpegVer, test_version:"0.5")){
   security_message(0);
 }

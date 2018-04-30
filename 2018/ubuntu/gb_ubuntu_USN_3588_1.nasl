@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3588_1.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: gb_ubuntu_USN_3588_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
 #
 # Ubuntu Update for memcached USN-3588-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843467");
-  script_version("$Revision: 9296 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 9655 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 08:40:38 +0100 (Tue, 06 Mar 2018)");
   script_cve_id("CVE-2017-9951", "CVE-2018-1000115");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,13 +36,12 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for memcached USN-3588-1");
   script_tag(name: "summary", value: "Check the version of memcached");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Daniel Shapira discovered an integer 
-  overflow issue in Memcached. A remote attacker could use this to cause a denial 
-  of service (daemon crash). (CVE-2017-9951) It was discovered that Memcached 
-  listened to UDP by default. A remote attacker could use this as part of a 
-  distributed denial of service attack. (CVE-2018-1000115)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "Daniel Shapira discovered an integer
+  overflow issue in Memcached. A remote attacker could use this to cause a denial
+  of service (daemon crash). (CVE-2017-9951) It was discovered that Memcached
+  listened to UDP by default. A remote attacker could use this as part of a
+  distributed denial of service attack. (CVE-2018-1000115)");
   script_tag(name: "affected", value: "memcached on Ubuntu 17.10 ,
   Ubuntu 16.04 LTS ,
   Ubuntu 14.04 LTS");
@@ -55,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|16\.04 LTS)");
   exit(0);
 }
 
@@ -78,7 +77,7 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -92,7 +91,7 @@ if(release == "UBUNTU17.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -106,6 +105,6 @@ if(release == "UBUNTU16.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

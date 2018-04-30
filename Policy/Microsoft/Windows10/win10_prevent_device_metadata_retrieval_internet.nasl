@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_prevent_device_metadata_retrieval_internet.nasl 9595 2018-04-25 06:09:28Z emoss $
+# $Id: win10_prevent_device_metadata_retrieval_internet.nasl 9659 2018-04-27 11:55:11Z emoss $
 #
 # Check value for Prevent device metadata retrieval from the Internet
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109098");
-  script_version("$Revision: 9595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 08:09:28 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 9659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 14:52:04 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -62,17 +62,14 @@ if('windows 10' >!< tolower(WindowsName)){
   exit(0); 
 }
 
-oid = '109098';
 type = 'HKLM';
 key = 'SOFTWARE\\Policies\\Microsoft\\Windows\\Device Metadata';
 item = 'PreventDeviceMetadataFromNetwork';
 value = registry_get_dword(key:key, item:item, type:type);
 if( value == ''){
-  policy_logging(text:'Unable to detect registry value ' + type + '\\' + key + '!' + item + '.');
-  policy_set_kb(oid:oid,val:'none');
-}else{
-  policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
-  policy_set_kb(oid:oid,val:value);
+  value = 'none';
 }
+policy_logging_registry(type:type,key:key,item:item,value:value);
+policy_set_kb(val:value);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2335_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_ubuntu_USN_2335_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-2335-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841954");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2014-09-03 05:56:24 +0200 (Wed, 03 Sep 2014)");
   script_cve_id("CVE-2014-3917", "CVE-2014-4027", "CVE-2014-4171", "CVE-2014-4652",
                 "CVE-2014-4653", "CVE-2014-4654", "CVE-2014-4655", "CVE-2014-4656",
@@ -39,7 +39,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:C");
   script_name("Ubuntu Update for linux-ti-omap4 USN-2335-1");
 
-  tag_insight = "An flaw was discovered in the Linux kernel's audit subsystem
+
+  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 12.04 LTS");
+  script_tag(name : "insight" , value : "An flaw was discovered in the Linux kernel's audit subsystem
 when auditing certain syscalls. A local attacker could exploit this flaw to
 obtain potentially sensitive single-bit values from kernel memory or cause a
 denial of service (OOPS). (CVE-2014-3917)
@@ -53,7 +55,7 @@ Sasha Levin reported an issue with the Linux kernel's shared memory
 subsystem when used with range notifications and hole punching. A local
 user could exploit this flaw to cause a denial of service. (CVE-2014-4171)
 
-An information leak was discovered in the control implemenation of the
+An information leak was discovered in the control implementation of the
 Advanced Linux Sound Architecture (ALSA) subsystem in the Linux kernel. A
 local user could exploit this flaw to obtain sensitive information from
 kernel memory. (CVE-2014-4652)
@@ -84,16 +86,8 @@ packet. (CVE-2014-4667)
 
 Jason Gunthorpe reported a flaw with SCTP authentication in the Linux
 kernel. A remote attacker could exploit this flaw to cause a denial of
-service (NULL pointer dereference and OOPS). (CVE-2014-5077)";
-
-  tag_affected = "linux-ti-omap4 on Ubuntu 12.04 LTS";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+service (NULL pointer dereference and OOPS). (CVE-2014-5077)");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2335-1");
@@ -103,7 +97,7 @@ service (NULL pointer dereference and OOPS). (CVE-2014-5077)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
   exit(0);
 }
 
@@ -126,6 +120,6 @@ if(release == "UBUNTU12.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

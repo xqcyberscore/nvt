@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843095");
-  script_version("$Revision: 6648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 9654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2017-03-16 09:11:31 +0100 (Thu, 16 Mar 2017)");
   script_cve_id("CVE-2016-10208", "CVE-2017-5551");
   script_tag(name:"cvss_base", value:"4.9");
@@ -35,18 +35,17 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-xenial USN-3234-2");
   script_tag(name: "summary", value: "Check the version of linux-lts-xenial");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "USN-3234-1 fixed vulnerabilities in the 
-  Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding 
-  updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for 
-  Ubuntu 14.04 LTS. Ralf Spenneberg discovered that the ext4 implementation in the 
-  Linux kernel did not properly validate meta block groups. An attacker with 
-  physical access could use this to specially craft an ext4 image that causes a 
-  denial of service (system crash). (CVE-2016-10208) It was discovered that the 
-  Linux kernel did not clear the setgid bit during a setxattr call on a tmpfs 
-  filesystem. A local attacker could use this to gain elevated group privileges. 
-  (CVE-2017-5551)"); 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "USN-3234-1 fixed vulnerabilities in the
+  Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding
+  updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for
+  Ubuntu 14.04 LTS. Ralf Spenneberg discovered that the ext4 implementation in the
+  Linux kernel did not properly validate meta block groups. An attacker with
+  physical access could use this to specially craft an ext4 image that causes a
+  denial of service (system crash). (CVE-2016-10208) It was discovered that the
+  Linux kernel did not clear the setgid bit during a setxattr call on a tmpfs
+  filesystem. A local attacker could use this to gain elevated group privileges.
+  (CVE-2017-5551)");
   script_tag(name: "affected", value: "linux-lts-xenial on Ubuntu 14.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
@@ -57,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
@@ -158,6 +157,6 @@ if(release == "UBUNTU14.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

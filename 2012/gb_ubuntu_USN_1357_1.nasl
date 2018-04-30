@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1357_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ubuntu_USN_1357_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
 #
 # Ubuntu Update for openssl USN-1357-1
 #
@@ -25,7 +25,36 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "It was discovered that the elliptic curve cryptography (ECC) subsystem
+
+
+
+if(description)
+{
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1357-1/");
+  script_oid("1.3.6.1.4.1.25623.1.0.840887");
+  script_version("$Revision: 9649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-13 16:29:45 +0530 (Mon, 13 Feb 2012)");
+  script_cve_id("CVE-2011-1945", "CVE-2011-3210", "CVE-2011-4108", "CVE-2012-0050",
+                "CVE-2011-4109", "CVE-2011-4354", "CVE-2011-4576", "CVE-2011-4577",
+                "CVE-2011-4619", "CVE-2012-0027");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name: "USN", value: "1357-1");
+  script_name("Ubuntu Update for openssl USN-1357-1");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04|8\.04 LTS)");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1357-1");
+  script_tag(name : "affected" , value : "openssl on Ubuntu 11.04 ,
+  Ubuntu 10.10 ,
+  Ubuntu 10.04 LTS ,
+  Ubuntu 8.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "It was discovered that the elliptic curve cryptography (ECC) subsystem
   in OpenSSL, when using the Elliptic Curve Digital Signature Algorithm
   (ECDSA) for the ECDHE_ECDSA cipher suite, did not properly implement
   curves over binary fields. This could allow an attacker to determine
@@ -73,41 +102,7 @@ tag_insight = "It was discovered that the elliptic curve cryptography (ECC) subs
   Autonomous System (AS) identifiers. This could allow a remote attacker
   to cause a denial of servi ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1357-1";
-tag_affected = "openssl on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
-  Ubuntu 8.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1357-1/");
-  script_oid("1.3.6.1.4.1.25623.1.0.840887");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-13 16:29:45 +0530 (Mon, 13 Feb 2012)");
-  script_cve_id("CVE-2011-1945", "CVE-2011-3210", "CVE-2011-4108", "CVE-2012-0050",
-                "CVE-2011-4109", "CVE-2011-4354", "CVE-2011-4576", "CVE-2011-4577",
-                "CVE-2011-4619", "CVE-2012-0027");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1357-1");
-  script_name("Ubuntu Update for openssl USN-1357-1");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Ubuntu Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -138,7 +133,7 @@ if(release == "UBUNTU10.10")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -158,7 +153,7 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -178,7 +173,7 @@ if(release == "UBUNTU11.04")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -198,6 +193,6 @@ if(release == "UBUNTU8.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

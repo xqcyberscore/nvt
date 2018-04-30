@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1218_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ubuntu_USN_1218_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
 #
 # Ubuntu Update for linux USN-1218-1
 #
@@ -25,67 +25,14 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Dan Rosenberg discovered that multiple terminal ioctls did not correctly
-  initialize structure memory. A local attacker could exploit this to read
-  portions of kernel stack memory, leading to a loss of privacy.
-  (CVE-2010-4076, CVE-2010-4077)
-
-  Alex Shi and Eric Dumazet discovered that the network stack did not
-  correctly handle packet backlogs. A remote attacker could exploit this by
-  sending a large amount of network traffic to cause the system to run out of
-  memory, leading to a denial of service. (CVE-2010-4251, CVE-2010-4805)
-  
-  It was discovered that the /proc filesystem did not correctly handle
-  permission changes when programs executed. A local attacker could hold open
-  files to examine details about programs running with higher privileges,
-  potentially increasing the chances of exploiting additional
-  vulnerabilities. (CVE-2011-1020)
-  
-  Dan Rosenberg discovered that the X.25 Rose network stack did not correctly
-  handle certain fields. If a system was running with Rose enabled, a remote
-  attacker could send specially crafted traffic to gain root privileges.
-  (CVE-2011-1493)
-  
-  Timo Warns discovered that the GUID partition parsing routines did not
-  correctly validate certain structures. A local attacker with physical
-  access could plug in a specially crafted block device to crash the system,
-  leading to a denial of service. (CVE-2011-1577)
-  
-  Dan Rosenberg discovered that the IPv4 diagnostic routines did not
-  correctly validate certain requests. A local attacker could exploit this to
-  consume CPU resources, leading to a denial of service. (CVE-2011-2213)
-  
-  Vasiliy Kulikov discovered that taskstats listeners were not correctly
-  handled. A local attacker could expoit this to exhaust memory and CPU
-  resources, leading to a denial of service. (CVE-2011-2484)
-  
-  It was discovered that Bluetooth l2cap and rfcomm did not correctly
-  initialize structures. A local attacker could exploit this to read portions
-  of the kernel stack, leading to a loss of privacy. (CVE-2011-2492)
-  
-  Mauro Carvalho Chehab discovered that the si4713 radio driver did not
-  correctly check the length of memory copies. If this hardware was
-  available, a local attacker could exploit this to crash the system or gain
-  root privileges. (CVE-2011-2700)
-  
-  Herbert Xu discovered that certain fields were incorrectly handled when
-  Generic Receive Offload (CVE-2011-2723)
-  
-  The performance counter subsystem did not correctly handle certain
-  counters. A local attacker could exploit this to crash the system, leading
-  to a denial of service. (CVE-2011-2918)";
-
-tag_summary = "Ubuntu Update for Linux kernel vulnerabilities USN-1218-1";
-tag_affected = "linux on Ubuntu 10.04 LTS";
-tag_solution = "Please Install the Updated Packages.";
 
 
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1218-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840760");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9648 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 16:02:57 +0200 (Fri, 30 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -97,11 +44,59 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
+  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1218-1");
+  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name : "insight" , value : "Dan Rosenberg discovered that multiple terminal ioctls did not correctly
+  initialize structure memory. A local attacker could exploit this to read
+  portions of kernel stack memory, leading to a loss of privacy.
+  (CVE-2010-4076, CVE-2010-4077)
+
+  Alex Shi and Eric Dumazet discovered that the network stack did not
+  correctly handle packet backlogs. A remote attacker could exploit this by
+  sending a large amount of network traffic to cause the system to run out of
+  memory, leading to a denial of service. (CVE-2010-4251, CVE-2010-4805)
+
+  It was discovered that the /proc filesystem did not correctly handle
+  permission changes when programs executed. A local attacker could hold open
+  files to examine details about programs running with higher privileges,
+  potentially increasing the chances of exploiting additional
+  vulnerabilities. (CVE-2011-1020)
+
+  Dan Rosenberg discovered that the X.25 Rose network stack did not correctly
+  handle certain fields. If a system was running with Rose enabled, a remote
+  attacker could send specially crafted traffic to gain root privileges.
+  (CVE-2011-1493)
+
+  Timo Warns discovered that the GUID partition parsing routines did not
+  correctly validate certain structures. A local attacker with physical
+  access could plug in a specially crafted block device to crash the system,
+  leading to a denial of service. (CVE-2011-1577)
+
+  Dan Rosenberg discovered that the IPv4 diagnostic routines did not
+  correctly validate certain requests. A local attacker could exploit this to
+  consume CPU resources, leading to a denial of service. (CVE-2011-2213)
+
+  Vasiliy Kulikov discovered that taskstats listeners were not correctly
+  handled. A local attacker could expoit this to exhaust memory and CPU
+  resources, leading to a denial of service. (CVE-2011-2484)
+
+  It was discovered that Bluetooth l2cap and rfcomm did not correctly
+  initialize structures. A local attacker could exploit this to read portions
+  of the kernel stack, leading to a loss of privacy. (CVE-2011-2492)
+
+  Mauro Carvalho Chehab discovered that the si4713 radio driver did not
+  correctly check the length of memory copies. If this hardware was
+  available, a local attacker could exploit this to crash the system or gain
+  root privileges. (CVE-2011-2700)
+
+  Herbert Xu discovered that certain fields were incorrectly handled when
+  Generic Receive Offload (CVE-2011-2723)
+
+  The performance counter subsystem did not correctly handle certain
+  counters. A local attacker could exploit this to crash the system, leading
+  to a denial of service. (CVE-2011-2918)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -205,6 +200,6 @@ if(release == "UBUNTU10.04 LTS")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
