@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 30 Apr 2018 08:45:48 +0200
+# Automatically created on:  Wed, 02 May 2018 08:57:10 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -57042,7 +57042,9 @@ gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_mult_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_cookie_info_discl_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00373024.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K02043709.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02652550.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K03165684.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K04912972.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05263202.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05513373.nasl: GPLv2+
@@ -57069,6 +57071,7 @@ gsf/2018/f5/gb_f5_big_ip_K23520761.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K23873366.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K24324390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25552364.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K25573437.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30363030.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30500703.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30971148.nasl: GPLv2+
@@ -57081,12 +57084,14 @@ gsf/2018/f5/gb_f5_big_ip_K33211839.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34035645.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34341852.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35453761.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K37442533.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43267483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K45320419.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
@@ -57285,6 +57290,9 @@ gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0318.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0517.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_rce_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_sentinel_info_discl_vuln.nasl: GPLv2+
+gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln.nasl: GPLv2+
+gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
+gsf/2018/octopus/gb_octopus_deploy_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_ebusiness_suite_redirect_param_open_redirect_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_micros_pos_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2628_active.nasl: GPLv2+
@@ -57392,6 +57400,7 @@ gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_lin.nasl: GPLv
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0001.nasl: GPLv2+
 gsf/2018/wowza/gb_wowza_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/zend/gb_zendserver_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln.nasl: GPLv2+
@@ -58869,6 +58878,45 @@ Policy/Microsoft/Windows10/Account/win10_passwd_min_age.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_min_length.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_reset_account_lockout_counter.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_store_passwd_reversible_encryption.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_computer_from_network.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_credential_manager_trusted_caller.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_act_as_part_of_os.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_adjust_memory_quotas_process.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_allow_logon_locally.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_allow_logon_remote_desktop_services.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_backup_files_directories.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_change_system_time.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_change_timezone.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_create_global_objects.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_create_pagefile.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_create_permanent_shared_objects.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_create_symbolic_links.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_create_token_object.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_debug_programs.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_deny_access_from_network.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_deny_log_on_as_batch_job.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_deny_logon_as_service.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_deny_logon_locally.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_deny_logon_remote_desktop_service.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_enable_computer_user_accounts_trusted_for_delegation.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_force_shutdown_remote_system.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_generate_security_audits.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_impersonate_client_after_authorization.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_increase_scheduling_priority.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_load_unload_device_drivers.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_lock_pages_memory.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_logon_as_batch_job.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_logon_as_service.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_manage_auditing_security_log.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_modify_firmware_environment_values.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_modify_object_label.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_perform_volume_maintenance_tasks.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_profile_single_process.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_profile_system_performance.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_replace_process_level_token.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_restore_files_directories.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_shutdown_system.nasl: GPLv2+
+Policy/Microsoft/Windows10/UserRightsAssignment/win10_take_ownership_files_other_objects.nasl: GPLv2+
 Policy/Microsoft/Windows10/win10_allow_cortana.nasl: GPLv2+
 Policy/Microsoft/Windows10/win10_allowtelemetry.nasl: GPLv2+
 Policy/Microsoft/Windows10/win10_configure_spynet_reporting.nasl: GPLv2+

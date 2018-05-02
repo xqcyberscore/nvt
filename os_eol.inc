@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 9078 2018-03-09 17:47:09Z cfischer $
+# $Id: os_eol.inc 9683 2018-05-02 06:13:56Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9078 $
+# $Revision: 9683 $
 #
 ###############################################################################
 
@@ -291,7 +291,8 @@ eol_cpes['cpe:/a:connectiva:linux:9.0'] = 'unknown';
 # Univention Corporate Server (http://wiki.univention.de/index.php?title=Maintenance_Cycle_for_UCS)
 eol_urls['cpe:/o:univention:univention_corporate_server'] = 'http://wiki.univention.de/index.php?title=Maintenance_Cycle_for_UCS';
 eol_names['cpe:/o:univention:univention_corporate_server'] = 'Univention Corporate Server (UCS)';
-eol_cpes['cpe:/o:univention:univention_corporate_server:4.1'] = '2018-04-30';
+eol_cpes['cpe:/o:univention:univention_corporate_server:4.2'] = '2019-03-15';
+eol_cpes['cpe:/o:univention:univention_corporate_server:4.1'] = '2018-04-05';
 eol_cpes['cpe:/o:univention:univention_corporate_server:4.0'] = '2016-05-31';
 eol_cpes['cpe:/o:univention:univention_corporate_server:3.3'] = '2016-12-31';
 eol_cpes['cpe:/o:univention:univention_corporate_server:3.2'] = '2016-11-30';
@@ -361,6 +362,7 @@ eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '2013-09-15';
 eol_urls['cpe:/o:paloaltonetworks:pan-os'] = 'https://www.paloaltonetworks.com/services/support/end-of-life-announcements/end-of-life-summary';
 eol_names['cpe:/o:paloaltonetworks:pan-os'] = 'Palo Alto PAN-OS';
 eol_regex['cpe:/o:paloaltonetworks:pan-os'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:paloaltonetworks:pan-os:8.1'] = '2022-03-01';
 eol_cpes['cpe:/o:paloaltonetworks:pan-os:8.0'] = '2019-01-29';
 eol_cpes['cpe:/o:paloaltonetworks:pan-os:7.1'] = '2020-03-29';
 eol_cpes['cpe:/o:paloaltonetworks:pan-os:7.0'] = '2017-12-04';
@@ -546,6 +548,7 @@ eol_cpes['cpe:/o:openbsd:openbsd:5.7'] = '2016-03-29';
 eol_cpes['cpe:/o:openbsd:openbsd:5.8'] = '2016-09-01';
 eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '2017-04-11';
 eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
+eol_cpes['cpe:/o:openbsd:openbsd:6.1'] = '2018-04-15';
 
 # https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history
 eol_urls['cpe:/o:sun:sunos'] = 'https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history';
@@ -870,13 +873,15 @@ eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x86'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '2017-04-11';
 
 #Windows 10 (https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet)
+#nb: Enterprise and Education editions for versions 1511, 1607, 1703 and 1709 will receive an additional 6 months of servicing after the end of service date.
 eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';
 eol_names['cpe:/o:microsoft:windows_10'] = 'Windows 10';
 eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '2017-05-09';
-eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2017-10-10';
-#eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-03-01'; # Tentatively March 2018
-#eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2018-09-01'; # Tentatively September 2018
-#eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-03-01'; # Tentatively March 2019
+eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2018-04-10'; # October 10, 2017 + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-10-10'; # April 10, 2018 + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2019-04-09'; # October 9, 2018 + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-10-09'; # April 9, 2019 + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1803'] = '2019-11-12';
 
 function os_reached_eol( cpe, debug ) {
 

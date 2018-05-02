@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9459 2018-04-12 10:23:11Z cfischer $
+# $Id: find_service1.nasl 9683 2018-05-02 06:13:56Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 12:23:11 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9683 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:13:56 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -572,7 +572,7 @@ if( r =~ '^ERROR\r\nERROR\r\nERROR\r\n$' ) {
 
 # 0x00:  55 6E 6B 6E 6F 77 6E 20 6D 65 73 73 61 67 65       Unknown message
 # https://www.eyelock.com/index.php/products/myris 
-# http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-March/001372.html
+# Reported via http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-March/001372.html
 # nb: Only checking the two ports mentioned in the mailing list post above as
 # the message is quite too common to check on all ports
 if( ( port == 8083 || port == 9099 ) && rhexstr == "556e6b6e6f776e206d657373616765" ) {
@@ -605,6 +605,18 @@ if( ereg( pattern:"^(Mon|Tue|Wed|Thu|Fri|Sat|Sun|Lun|Mar|Mer|Jeu|Ven|Sam|Dim) (J
 if( rhexstr =~ "^0000000209000000010000000000000000$" ) {
   register_service( port:port, proto:"ipmi-rmcp", message:"A IPMI RMCP service seems to be running on this port." );
   log_message( port:port, data:"A IMPI RMCP service seems to be running on this port." );
+  exit( 0 );
+}
+
+# On 2701/tcp
+# SCCM Remote Control (control), https://docs.microsoft.com/en-us/sccm/core/plan-design/hierarchy/ports
+# Reported via http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-April/001378.html
+# 0x00:  22 00 00 80 20 00 53 00 54 00 41 00 52 00 54 00    "... .S.T.A.R.T.
+# 0x10:  5F 00 48 00 41 00 4E 00 44 00 53 00 48 00 41 00    _.H.A.N.D.S.H.A.
+# 0x20:  4B 00 45 00 00 00                                  K.E...
+if( rhexstr =~ "^220000802000530054004100520054005F00480041004E0044005300480041004B0045000000" ) {
+  register_service( port:port, proto:"sccm-control", message:"A SCCM Remote Control (control) service seems to be running on this port." );
+  log_message( port:port, data:"A SCCM Remote Control (control) service seems to be running on this port." );
   exit( 0 );
 }
 

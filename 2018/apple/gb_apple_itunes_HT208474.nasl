@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208474.nasl 8519 2018-01-24 14:13:44Z gveerendra $
+# $Id: gb_apple_itunes_HT208474.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
 #
 # Apple iTunes Security Updates( HT208474 )
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812666");
-  script_version("$Revision: 8519 $");
+  script_version("$Revision: 9681 $");
   script_cve_id("CVE-2018-4088", "CVE-2018-4096" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 15:13:44 +0100 (Wed, 24 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:06:17 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple iTunes Security Updates( HT208474 )");
 

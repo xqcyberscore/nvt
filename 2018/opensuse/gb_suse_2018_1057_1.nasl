@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1057_1.nasl 9630 2018-04-26 12:38:23Z santu $
+# $Id: gb_suse_2018_1057_1.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
 #
 # SuSE Update for virtualbox openSUSE-SU-2018:1057-1 (virtualbox)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851734");
-  script_version("$Revision: 9630 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:38:23 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9681 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:40:14 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2017-3737", "CVE-2017-9798", "CVE-2018-0739", "CVE-2018-2830", 
                 "CVE-2018-2831", "CVE-2018-2835", "CVE-2018-2836", "CVE-2018-2837", 
                 "CVE-2018-2842", "CVE-2018-2843", "CVE-2018-2844", "CVE-2018-2845", 
                 "CVE-2018-2860");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for virtualbox openSUSE-SU-2018:1057-1 (virtualbox)");
   script_tag(name: "summary", value: "Check the version of virtualbox");

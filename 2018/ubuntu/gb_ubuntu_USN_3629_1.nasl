@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3629_1.nasl 9668 2018-04-28 08:25:13Z cfischer $
+# $Id: gb_ubuntu_USN_3629_1.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
 #
 # Ubuntu Update for mysql-5.7 USN-3629-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843513");
-  script_version("$Revision: 9668 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-28 10:25:13 +0200 (Sat, 28 Apr 2018) $");
+  script_version("$Revision: 9681 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:38:24 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2018-2755", "CVE-2018-2758", "CVE-2018-2759", "CVE-2018-2761",
                 "CVE-2018-2762", "CVE-2018-2766", "CVE-2018-2769", "CVE-2018-2771",
@@ -38,8 +38,8 @@ if(description)
                 "CVE-2018-2787", "CVE-2018-2810", "CVE-2018-2812", "CVE-2018-2813",
                 "CVE-2018-2817", "CVE-2018-2818", "CVE-2018-2819", "CVE-2018-2839",
                 "CVE-2018-2846");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mysql-5.7 USN-3629-1");
   script_tag(name: "summary", value: "Check the version of mysql-5.7");

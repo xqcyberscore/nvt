@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_apr2018-3678067_02_lin.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: gb_oracle_virtualbox_apr2018-3678067_02_lin.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
 #
 # Oracle VirtualBox Security Updates (apr2018-3678067) 02 - Linux
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813303");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9681 $");
   script_cve_id("CVE-2018-2860", "CVE-2018-0739", "CVE-2018-2842", "CVE-2018-2843", 
                 "CVE-2018-2844", "CVE-2018-2845", "CVE-2018-2831", "CVE-2018-2830", 
                 "CVE-2018-2837", "CVE-2018-2836", "CVE-2018-2835");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 19:09:08 +0530 (Wed, 18 Apr 2018)");
   script_name("Oracle VirtualBox Security Updates (apr2018-3678067) 02 - Linux");
 

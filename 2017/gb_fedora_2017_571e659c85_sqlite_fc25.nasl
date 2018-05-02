@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_571e659c85_sqlite_fc25.nasl 6956 2017-08-18 06:02:43Z santu $
+# $Id: gb_fedora_2017_571e659c85_sqlite_fc25.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
 #
 # Fedora Update for sqlite FEDORA-2017-571e659c85
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873270");
-  script_version("$Revision: 6956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 08:02:43 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 9681 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-14 07:45:05 +0200 (Mon, 14 Aug 2017)");
   script_cve_id("CVE-2017-7000");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sqlite FEDORA-2017-571e659c85");
   script_tag(name: "summary", value: "Check the version of sqlite");

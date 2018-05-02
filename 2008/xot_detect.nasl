@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xot_detect.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: XOT Detection
+# $Id: xot_detect.nasl 9683 2018-05-02 06:13:56Z cfischer $
+#
+# XOT Detection
 #
 # Authors:
 # Michel Arboi
@@ -20,38 +22,38 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "This plugin detects XOT (X.25 over TCP).
-
-The remote target is an XOT router.
-For more information, read RFC 1613 or
-http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/x25.pdf";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80095");;
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name( "XOT Detection");
- script_copyright( 'This script is Copyright (C) 2008 Michel Arboi');
- script_dependencies('find_service1.nasl', 'find_service2.nasl');
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.80095");;
+  script_version("$Revision: 9683 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:13:56 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("XOT Detection");
+  script_copyright("This script is Copyright (C) 2008 Michel Arboi");
+  script_dependencies("find_service1.nasl", "find_service2.nasl");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_require_ports(1998);
+
+  script_tag(name:"summary", value:"This plugin detects XOT (X.25 over TCP).
+
+  The remote target is an XOT router.
+  For more information, read RFC 1613 or
+  http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/x25.pdf");
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_family( "Service detection");
- script_require_ports(1998, "Services/unknown");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 # include('dump.inc');
 include('misc_func.inc');
 
 port = 1998;
-
 if (! get_port_state(port)) exit(0);
 
 # XOT is not silent: it abruptly closes the connection when it receives
@@ -70,7 +72,7 @@ x25 = '\x20'		# Data for user, local ack, mod-128 seq
     + '\0'		# Data packet
     + '\0\0\0\0';	# Data
 
-# XOT encapsulation (RFC 1613): 
+# XOT encapsulation (RFC 1613):
 # 2 bytes for version (must be 0) + 2 bytes for length of X25 packet
 len = strlen(x25);
 xot = raw_string(0, 0, (len >> 8), (len & 0xFF));

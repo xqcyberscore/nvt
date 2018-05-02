@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 9659 2018-04-27 11:55:11Z emoss $
+# $Id: policy_functions.inc 9679 2018-04-30 14:05:59Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -109,6 +109,44 @@ function rsop_securitysettingsnumeric(select,keyname){
   }
   returnValue = splitRes[4];
 
+  wmi_close(wmi_handle:handle);
+  return(string(returnValue));
+}
+
+function rsop_userprivilegeright(select,keyname){
+  # rsop only delivers results for domain admins
+  local_var select,keyname;
+
+  host = get_host_ip();
+  usrname = kb_smb_login();
+  passwd  = kb_smb_password();
+  domain  = kb_smb_domain();
+  if( domain ) usrname = domain + "\" + usrname;
+
+  handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
+    if(!handle){
+    policy_logging(text:'WMI Connect to host failed.');
+    policy_set_kb(val:'error');
+    wmi_close(wmi_handle:handle);
+    exit(0);
+  }
+  
+  query = "SELECT " + select + " FROM RSOP_UserPrivilegeRight WHERE UserRight = '" + keyname + "'";
+  res = wmi_query_rsop(wmi_handle:handle, query:query);
+  if(res == ''){
+    return "None";
+  }
+  
+  splitRes = split(res, keep:FALSE);
+  accountList = split(splitRes[1], sep:"|", keep:FALSE);
+  MaxIndexAccountList = max_index(accountList);
+  for(i=0;i<MaxIndexAccountList-2;i++){
+    returnValue += accountList[i];
+    if(i<MaxIndexAccountList-3){
+      returnValue += ', ';
+    }
+  }
+  
   wmi_close(wmi_handle:handle);
   return(string(returnValue));
 }

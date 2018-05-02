@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_detect.nasl 7841 2017-11-21 08:13:45Z ckuersteiner $
+# $Id: gb_octopus_deploy_detect.nasl 9682 2018-05-02 04:57:17Z ckuersteiner $
 #
 # Octopus Deploy Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140517");
-  script_version("$Revision: 7841 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-21 09:13:45 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 9682 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-02 06:57:17 +0200 (Wed, 02 May 2018) $");
   script_tag(name: "creation_date", value: "2017-11-21 13:06:44 +0700 (Tue, 21 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +66,8 @@ port = get_http_port(default: 80);
 install = "/app";
 res = http_get_cache(port: port, item: install);
 
-if (">Octopus Deploy</title>" >< res && "Sorry, could not connect to the Octopus Deploy server" >< res) {
+if (">Octopus Deploy</title>" >< res && ("Sorry, could not connect to the Octopus Deploy server" >< res ||
+    'src="waiting-for-octopus' >< res)) {
   version = "unknown";
 
   vers = eregmatch(pattern: 'ETag: "([0-9.]+)"', string: res);
