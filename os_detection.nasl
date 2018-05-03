@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: os_detection.nasl 9701 2018-05-03 06:24:12Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 9462 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9701 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -171,7 +171,8 @@ foreach oid( OS_CPE_SRC ) {
 }
 
 if( ! found_best ) {
-  report += "No Best matching OS identified.";
+  report += "No Best matching OS identified. Please see the NVT 'Unknown OS and Service Banner Reporting' (OID: 1.3.6.1.4.1.25623.1.0.108441) ";
+  report += "for possible ways to identify this OS.";
   # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
   set_kb_item( name:"Host/runs_unixoide", value:TRUE );
 } else {
@@ -188,36 +189,6 @@ if( ! found_best ) {
 
 if( found_os )
   report += '\n\nOther OS detections (in order of reliability):\n\n' + found_os;
-
-unknown_banners = get_kb_list( "os_detection_report/unknown_os_banner/*/banner" );
-if( unknown_banners ) {
-
-  if( ! found_best ) report += " Please see below for possible ways to identify this OS.";
-
-  report += '\n\nUnknown banners have been collected which might help to identify the OS running on this host. ';
-  report += 'If these banners containing information about the host OS please report the following information ';
-  report += 'to openvas-plugins@wald.intevation.org:';
-
-  # Sort to not report changes on delta reports if just the order is different
-  keys = sort( keys( unknown_banners ) );
-
-  foreach key( keys ) {
-    tmp = split( key, sep:"/", keep:FALSE );
-    oid = tmp[2];
-    port = tmp[3];
-    proto = tmp[4];
-    banner_type_short = tmp[5];
-
-    banner = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner" );
-    type = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full" );
-
-    report += '\n\nBanner: ' + banner + '\n';
-    report += "Identified from: " + type;
-
-    if( port && port != "0" )
-      report += " on port " + port + "/" + proto;
-  }
-}
 
 log_message( port:0, data:report );
 

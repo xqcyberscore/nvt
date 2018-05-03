@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 8574 2018-01-30 07:08:18Z cfischer $
+# $Id: gb_nmap_os_detection.nasl 9702 2018-05-03 06:35:02Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 8574 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 08:08:18 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -138,7 +138,7 @@ if( TARGET_IS_IPV6() ) {
   argv[i++] = "-6";
 }
 
-# Apply the choosen nmap timing policy from nmap.nasl here as well
+# Apply the chosen nmap timing policy from nmap.nasl here as well
 timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
 if( timing_policy ) {
   argv[i++] = timing_policy;
@@ -174,8 +174,8 @@ portList = NULL;
 
 foreach port( openPorts ) {
 
-  # non_simult_ports so ignoring these here. Also removing 27960 which is known to crash (see find_service.nasl)
-  if( port == "139" || port == "445" || port == "27960" ) continue;
+  # Removing 27960 which is known to crash (see find_service.nasl)
+  if( port == "27960" ) continue;
 
   if( is_fragile_port( port:port ) ) continue;
 
@@ -187,7 +187,7 @@ foreach port( openPorts ) {
 }
 
 # Also add a few low-ports as nmap OS detection behaves strange with only closed/filtered high ports
-foreach port( make_list( "21", "22", "25", "80", "135", "443" ) ) {
+foreach port( make_list( "21", "22", "25", "80", "135", "139", "443", "445" ) ) {
 
   if( is_fragile_port( port:port ) ) continue;
 
@@ -204,7 +204,7 @@ foreach port( make_list( "21", "22", "25", "80", "135", "443" ) ) {
 
 # -O needs at least one open and one closed TCP port so adding five potentially closed ports here
 
-# Amout of closed ports to add. Don't add more then 5 as random ports between 1xxxx and 5xxxx are chosen down below based on this
+# Amount of closed ports to add. Don't add more then 5 as random ports between 1xxxx and 5xxxx are chosen down below based on this
 numClosedPorts = 3;
 
 # Choose a high port for the needed closed port
@@ -260,14 +260,14 @@ osTxt = eregmatch( string:res, pattern:"OS details: ([ -~]+)" );
 # OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
 # OS CPE: cpe:/o:microsoft:windows_server_2008::sp2 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8
 osCpe = eregmatch( string:res, pattern:"OS CPE: ([ -~]+)" );
-sep = " "; # Seperator to split multiple CVEs
+sep = " "; # Separator to split multiple CVEs
 
 if( isnull( osTxt ) || isnull( osCpe ) ) {
 
   # Example from -sV: "Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel:2, cpe:/o:linux:linux_kernel:3.2.40"
   osTxt = eregmatch( string:res, pattern:"OS: ([ -~]+);");
   osCpe = eregmatch( string:res, pattern:"CPE: ([ -~]+)" );
-  sep = ", "; # Seperator to split multiple CVEs
+  sep = ", "; # Separator to split multiple CVEs
 }
 
 if( ! isnull( osTxt ) && ! isnull( osCpe ) ) {
@@ -285,7 +285,7 @@ if( ! isnull( osTxt ) && ! isnull( osCpe ) ) {
     # nb: Sometimes nmap is reporting e.g. the following:
     # OS details: Microsoft Windows Server 2008 SP2 or Windows 10 Tech Preview, Microsoft Windows 7 SP0 - SP1, Windows Server 2008 SP1, Windows 8, or Windows 8.1 Update 1
     # OS CPE: cpe:/o:microsoft:windows_server_2008::sp2 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8
-    # In this case we don't want to report a specific CPE as we would e.g. mark Windows 8 as EOL (if choosen) where the system is actually running Windows 7 with SP1
+    # In this case we don't want to report a specific CPE as we would e.g. mark Windows 8 as EOL (if chosen) where the system is actually running Windows 7 with SP1
     if( max_index( cpes ) > 3 ) {
       osname = "Microsoft Windows";
       oscpe  = "cpe:/o:microsoft:windows";

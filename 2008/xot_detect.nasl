@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xot_detect.nasl 9683 2018-05-02 06:13:56Z cfischer $
+# $Id: xot_detect.nasl 9684 2018-05-02 06:38:56Z cfischer $
 #
 # XOT Detection
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.80095");;
-  script_version("$Revision: 9683 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:13:56 +0200 (Wed, 02 May 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80095");
+  script_version("$Revision: 9684 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:38:56 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

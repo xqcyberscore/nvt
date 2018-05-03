@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 6846 2017-08-03 15:23:06Z cfischer $
+# $Id: find_service_nmap.nasl 9702 2018-05-03 06:35:02Z cfischer $
 #
 # Service Detection with nmap
 #
@@ -33,34 +33,34 @@
 #       along with a whole host of other specialty service identification
 #       scripts. Our objective is to minimize nmap service identification
 #       execution time, and only run it on services that remain unidentified
-#
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 6846 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 17:23:06 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 9702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Service Detection with nmap");
-  # nb: This category is intended. It allows us to have this NVT scheduled after every Detection-NVT
-  # from ACT_GATHER_INFO has finished its job.
-  script_category(ACT_MIXED_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
   script_family("Service detection");
   script_require_ports("Services/unknown");
+  # nb: Keep unknown_services.nasl in here so the nmap detection and service registration
+  # doesn't interfere with a previous reporting.
   script_dependencies("toolcheck.nasl", "unknown_services.nasl");
   script_mandatory_keys("Tools/Present/nmap");
 
   script_tag(name:"summary", value:"This plugin performs service detection by launching nmap's
   service probe (nmap -sV) against ports that are running unidentified services.
 
-  Note: This plugin is started at the end of a scan to register all remaining unknown services.");
+  The actual reporting takes place in the separate NVT 'Unknown OS and Service Banner Reporting'
+  OID: 1.3.6.1.4.1.25623.1.0.108441.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_timeout(900); #TBD: timeout of 0 means currently the default of 320. Assuming 900 for now
+  script_timeout(900); #TBD: This NVT had a timeout of 0 which means currently the default of 320. Assuming 900 for now
 
   exit(0);
 }
@@ -95,7 +95,7 @@ i = 0;
 ip = get_host_ip();
 argv[i++] = "nmap";
 
-# Apply the choosen nmap timing policy from nmap.nasl here as well
+# Apply the chosen nmap timing policy from nmap.nasl here as well
 timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
 if( timing_policy ) {
   argv[i++] = timing_policy;
@@ -128,7 +128,14 @@ if( len > 0 ) {
 
 if( strlen( servicesig ) > 0 ) {
 
-  register_service( port:port, proto:servicesig );
+  set_kb_item( name:"unknown_os_or_service/available", value:TRUE ); # Used in gb_unknown_os_service_reporting.nasl
+
+  # telnet.nasl will do this job later for the remaining Telnet services.
+  if( servicesig != "telnet" ) {
+    # Also don't register a guessed service for now.
+    if( ! guess )
+      register_service( port:port, proto:servicesig );
+  }
 
   report = 'Nmap service detection result for this port: ' + servicesig;
 
@@ -139,7 +146,7 @@ if( strlen( servicesig ) > 0 ) {
     report += "' and submit a possible collected fingerprint to the nmap database.";
   }
 
-  log_message( port:port, data:report );
+  set_kb_item( name:"unknown_service_report/nmap/" + port + "/report", value:report );
 }
 
 exit( 0 );

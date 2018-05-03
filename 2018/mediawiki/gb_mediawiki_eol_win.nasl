@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_eol_win.nasl 9665 2018-04-27 14:41:36Z tpassfeld $
+# $Id: gb_mediawiki_eol_win.nasl 9695 2018-05-02 12:02:17Z jschulte $
 #
-# Mediawiki End of Life Detection (Linux)
+# Mediawiki End of Life Detection (Windows)
 #
 # Authors:
 # Thorsten Passfeld <thorsten.passfeld@greenbone.net>
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114002");
-  script_version("$Revision: 9665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 16:41:36 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9695 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-02 14:02:17 +0200 (Wed, 02 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 15:13:48 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

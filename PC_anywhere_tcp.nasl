@@ -1,5 +1,7 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PC_anywhere_tcp.nasl 8086 2017-12-12 13:08:13Z teissa $
+# $Id: PC_anywhere_tcp.nasl 9701 2018-05-03 06:24:12Z cfischer $
+#
 # Description: pcAnywhere TCP
 #
 # Authors:
@@ -21,56 +23,49 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "pcAnywhere is running on this port";
-
-tag_solution = "Disable this service if you do not use it.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10794");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8086 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:08:13 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 9701 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  name = "pcAnywhere TCP";
-  script_name(name);
-  summary = "Checks for the presence pcAnywhere";
+  script_name("pcAnywhere TCP");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
-  family = "Windows";
-  script_family(family);
-  script_dependencies("os_detection.nasl", "find_service.nasl");
-  script_require_ports("Services/unknown", 5631);
-  script_mandatory_keys("Host/runs_windows");
+  script_family("Windows");
+  script_dependencies("find_service.nasl");
+  # Only two ports used and not configurable: https://support.symantec.com/en_US/article.TECH106675.html
+  script_require_ports(65301, 5631);
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"pcAnywhere is running on this port.");
+
+  script_tag(name:"solution", value:"Disable this service if you do not use it.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
 include("misc_func.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
-port = get_unknown_port( default:5631 );
+foreach port( make_list( 65301, 5631 ) ) {
 
-soc = open_sock_tcp(port);
-if(soc)
-{
-  send(socket:soc, data:raw_string(0,0,0,0));
-  r = recv(socket:soc, length:36);
-  if (r && ("Please press <" >< r))
-  {
-     register_service(port:port, proto:"pcanywheredata");
-     log_message(port);
-     exit(0);
+  if( ! service_is_unknown( port:port ) ) continue;
+  if( ! get_port_state( port ) ) continue;
+  if( ! soc = open_sock_tcp( port ) ) continue;
+
+  send( socket:soc, data:raw_string(0,0,0,0) );
+  r = recv( socket:soc, length:36 );
+  close( soc );
+  if( r && "Please press <" >< r ) {
+    register_service( port:port, proto:"pcanywheredata" );
+    log_message( port:port );
   }
-  close(soc);
 }
 
-exit(0);
+exit( 0 );

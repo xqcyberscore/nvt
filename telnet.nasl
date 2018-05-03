@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 9434 2018-04-11 08:37:16Z cfischer $
+# $Id: telnet.nasl 9701 2018-05-03 06:24:12Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 9434 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 10:37:16 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 9701 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,10 +36,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("find_service6.nasl", "mysql_version.nasl", "secpod_open_tcp_ports.nasl");
+  # nb: Makes sure that this NVT is running late as it is often mis-identifying services as Telnet (see no_telnet below)
+  script_dependencies("unknown_services.nasl", "find_service_nmap.nasl");
+  script_require_ports("Services/unknown", "Services/telnet");
   script_mandatory_keys("TCP/PORTS");
 
-  tag_summary = "A telnet Server is running at this host.
+  script_tag(name:"summary", value:"A telnet Server is running at this host.
 
    Experts in computer security, such as SANS Institute, and the members of the
    comp.os.linux.security newsgroup recommend that the use of Telnet for remote
@@ -59,9 +61,7 @@ if(description)
      in the middle.
 
    * Commonly used Telnet daemons have several vulnerabilities discovered over
-     the years.";
-
-  script_tag(name:"summary", value:tag_summary);
+     the years.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -115,7 +115,13 @@ function no_telnet_banner( banner ) {
 }
 
 port = get_all_tcp_ports();
-if( ! service_is_unknown( port:port ) ) exit( 0 );
+
+# nb: We still want to collect / report the data below for
+# services detected as telnet by find_service.nasl...
+if( ! verify_service( port:port, proto:"telnet" ) &&
+    ! service_is_unknown( port:port ) ) {
+  exit( 0 );
+}
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

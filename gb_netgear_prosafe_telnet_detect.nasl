@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_telnet_detect.nasl 8020 2017-12-07 08:09:44Z cfischer $
+# $Id: gb_netgear_prosafe_telnet_detect.nasl 9702 2018-05-03 06:35:02Z cfischer $
 #
 # NETGEAR ProSAFE Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108310");
-  script_version("$Revision: 8020 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:09:44 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 9702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 08:03:31 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ banner = get_telnet_banner( port:port );
 
 # nb: It seems to be possible to change the banner.
 # The banner also contains only the model name by default so each model needs to be added here.
-# Some of the devices are also restricting the amout of connections with a message
+# Some of the devices are also restricting the amount of connections with a message
 # like "Sorry, maximum number of connections reached!"
 if( "User:" >< banner && ( "(GSM7224V2)" >< banner || "(GSM7224)" >< banner ) ) {
 

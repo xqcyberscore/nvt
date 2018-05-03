@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_niagara_fox_detect.nasl 6860 2017-08-07 10:04:33Z ckuersteiner $
+# $Id: gb_niagara_fox_detect.nasl 9702 2018-05-03 06:35:02Z cfischer $
 #
 # Niagara Fox Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140278");
- script_version ("$Revision: 6860 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-07 12:04:33 +0200 (Mon, 07 Aug 2017) $");
+ script_version ("$Revision: 9702 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
  script_tag(name: "creation_date", value: "2017-08-07 10:20:07 +0700 (Mon, 07 Aug 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ if (res !~ "^fox a 0")
 
 set_kb_item(name: "niagara_fox/detected", value: TRUE);
 
-# split the response into lines (seperator is 0x0a)
+# split the response into lines (separator is 0x0a)
 pos = 0;
 j = 0;
 for (i=0; i<strlen(res); i++) {

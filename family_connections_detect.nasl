@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: family_connections_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: family_connections_detect.nasl 9689 2018-05-02 09:58:46Z ckuersteiner $
 #
 # Family Connections Detection
 #
@@ -24,80 +24,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Family Connections, an easy-to-use website where
-you can connect with your friends and family. Share photos, messages,
-documents and more.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100407");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9689 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-02 11:58:46 +0200 (Wed, 02 May 2018) $");
  script_tag(name:"creation_date", value:"2009-12-17 19:46:08 +0100 (Thu, 17 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
+
  script_name("Family Connections Detection");
+
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name: "summary", value: "This host is running Family Connections, an easy-to-use website where you can
+connect with your friends and family. Share photos, messages, documents and more.");
+
  script_xref(name : "URL" , value : "http://www.familycms.com/");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100407";
-SCRIPT_DESC = "Family Connections Detection";
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-foreach dir( make_list_unique( "/fcms", cgi_dirs( port:port ) ) ) {
-
+foreach dir (make_list_unique("/fcms", cgi_dirs(port: port))) {
  install = dir;
  if( dir == "/" ) dir = "";
+
  url = dir + "/index.php";
  buf = http_get_cache( item:url, port:port );
  if( buf == NULL ) continue;
 
- if(egrep(pattern: "<title>.* - powered by Family Connections", string: buf, icase: TRUE) &&
-    egrep(pattern: "Login to", string: buf) &&
-    egrep(pattern: "login_box", string: buf))  {
+ if (egrep(pattern: "<title>.* - powered by Family Connections", string: buf, icase: TRUE) &&
+     egrep(pattern: "Login to", string: buf) &&
+     egrep(pattern: "login_box", string: buf)) {
+   vers = "unknown";
 
-    vers = string("unknown");
-    ### try to get version 
-    version = eregmatch(string: buf, pattern: "powered by Family Connections ([0-9.]+)",icase:TRUE);
+   version = eregmatch(string: buf, pattern: "powered by Family Connections ([0-9.]+)",icase:TRUE);
+   if (!isnull(version[1]))
+     vers = version[1];
 
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-    }
+   set_kb_item(name: "family_connections/installed", value: TRUE);
 
-    tmp_version = string(vers," under ",install);
-    set_kb_item(name: string("www/", port, "/FamilyConnections"), value: tmp_version);
+   cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:haudenschilt:family_connections_cms:");
+   if (!cpe)
+     cpe = 'cpe:/a:haudenschilt:family_connections_cms';
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:haudenschilt:family_connections_cms:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+   register_product(cpe: cpe, location: install, port: port);
 
-    info = string("\n\nFamily Connections Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
-    log_message(port:port,data:info);
-    exit(0);
-  }
+   log_message(data: build_detection_report(app: "Family Connections", version: vers, install: install, cpe: cpe,
+                                            concluded: version[0]),
+               port: port);
+   exit(0);
+ }
 }
 
 exit(0);

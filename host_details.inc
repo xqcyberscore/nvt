@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 9628 2018-04-26 12:03:30Z santu $
+# $Id: host_details.inc 9701 2018-05-03 06:24:12Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9628 $
+# $Revision: 9701 $
 #
 ###############################################################################
 
@@ -1364,4 +1364,5 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
 
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner", value:banner );
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full", value:banner_type_name );
+  set_kb_item( name:"unknown_os_or_service/available", value:TRUE ); # Used in gb_unknown_os_service_reporting.nasl
 }
