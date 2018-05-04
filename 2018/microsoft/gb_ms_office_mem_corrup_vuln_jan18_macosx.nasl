@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mem_corrup_vuln_jan18_macosx.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_ms_office_mem_corrup_vuln_jan18_macosx.nasl 9708 2018-05-03 10:01:19Z ckuersteiner $
 #
 # Microsoft Office Memory Corruption Vulnerability - Jan18 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812659");
-  script_version("$Revision: 8539 $");
+  script_version("$Revision: 9708 $");
   script_cve_id("CVE-2018-0797");
   script_bugtraq_id(102406);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 12:01:19 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 15:11:47 +0530 (Mon, 22 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Memory Corruption Vulnerability - Jan18 (Mac OS X)");
@@ -56,12 +56,10 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  22nd January, 2018. Information regarding this issue will be updated once
-  the solution details are available.");
+  script_tag(name:"solution", value:"Update to version 16.9.18011602 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "https://support.office.com/en-us/article/Release-notes-for-Office-2016-for-Mac-ed2da564-6d53-4542-9954-7e3209681a41");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name: "URL", value: "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0797");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -81,7 +79,7 @@ if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
 
 if(offVer =~ "^(15\.)" && version_is_less_equal(version:offVer, test_version:"15.41"))
 {
-  report = report_fixed_ver(installed_version:offVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:offVer, fixed_version:"16.9.18011602");
   security_message(data:report);
   exit(0);
 }

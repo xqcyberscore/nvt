@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_mult_vuln.nasl 8709 2018-02-08 06:30:35Z cfischer $
+# $Id: gb_kerberos5_mult_vuln.nasl 9708 2018-05-03 10:01:19Z ckuersteiner $
 #
 # Kerberos5 through 1.16 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113084");
-  script_version("$Revision: 8709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 07:30:35 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 9708 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 12:01:19 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:14:14 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -52,12 +52,13 @@ if( description )
 
   script_tag(name:"summary", value:"MIT Kerberos5 through 1.16 is prone to a DoS and an information disclosure vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The DoS vulnerability exists due to the possiblity of causing a NULL pointer dereference.
+  script_tag(name:"insight", value:"The DoS vulnerability exists due to the possibility of causing a NULL pointer dereference.
 
   The information disclosure vulnerability exists because 32 bits are allocated to a 16-bit variable.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access sensitive information cause a Denial of Service.");
   script_tag(name:"affected", value:"MIT Kerberos5 through version 1.16");
-  script_tag(name:"solution", value:"No solution available as of 17th January 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 03rd May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Integer%20Overflow");
   script_xref(name:"URL", value:"https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Denial%20Of%20Service%28DoS%29");
@@ -73,7 +74,7 @@ include( "version_func.inc" );
 if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "1.16" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( port: 0, data: report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9672 2018-04-29 08:24:10Z cfischer $
+# $Id: gather-package-list.nasl 9703 2018-05-03 07:44:28Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-29 10:24:10 +0200 (Sun, 29 Apr 2018) $");
+  script_version("$Revision: 9703 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 09:44:28 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3283,6 +3283,24 @@ if( "SunOS " >< uname ) {
   exit( 0 );
 }
 
+# This is just doing a basic detection, we don't have any LSCs for OpenBSD...
+# OpenBSD $hostname 5.5 GENERIC#271 amd64
+# OpenBSD $hostname 6.3 GENERIC#100 amd64
+if( "OpenBSD " >< uname ) {
+
+  osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
+  set_kb_item( name:"ssh/login/openbsdversion", value:osversion );
+
+  if( match = eregmatch( pattern:"^([0-9.]+)", string:osversion ) ) {
+    register_and_report_os( os:"OpenBSD", version:match[1], cpe:"cpe:/o:openbsd:openbsd", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: We want to report the unknown / not detected version
+    register_unknown_os_banner( banner:'Unknown OpenBSD release.\n\nuname: ' + uname + '\nuname -r: ' + osversion, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+  }
+  exit( 0 );
+}
+
 #maybe it's a real OS... like Mac OS X :)
 if( "Darwin" >< uname ) {
 
@@ -3311,8 +3329,8 @@ if( "Darwin" >< uname ) {
   exit( 0 );
 }
 
+# TODO:
 #{ "NetBSD",     "????????????????",         },
-#{ "OpenBSD",    "????????????????",         },
 #{ "WhiteBox",   "????????????????",         },
 #{ "Linspire",   "????????????????",         },
 #{ "Desktop BSD","????????????????",         },

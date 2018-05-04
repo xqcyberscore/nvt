@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_mult_vuln.nasl 8497 2018-01-23 10:17:39Z ckuersteiner $
+# $Id: gb_prestashop_mult_vuln.nasl 9708 2018-05-03 10:01:19Z ckuersteiner $
 #
 # PrestaShop Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:prestashop:prestashop';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140722");
-  script_version("$Revision: 8497 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-23 11:17:39 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9708 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-03 12:01:19 +0200 (Thu, 03 May 2018) $");
   script_tag(name: "creation_date", value: "2018-01-23 17:03:37 +0700 (Tue, 23 Jan 2018)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -63,8 +63,8 @@ if (description)
 
   script_tag(name: "affected", value: "PrestaShop version 1.7.2.4 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 23th January, 2018.
-Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 03rd May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "http://forge.prestashop.com/browse/BOOM-4612");
   script_xref(name: "URL", value: "http://forge.prestashop.com/browse/BOOM-4613");

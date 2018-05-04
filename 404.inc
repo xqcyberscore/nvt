@@ -1,6 +1,6 @@
 ###############################################################################
 # Include to provide common error messages interpreted as a 404 
-# $Id: 404.inc 5889 2017-04-07 09:14:58Z cfi $
+# $Id: 404.inc 9709 2018-05-03 10:47:07Z cfischer $
 #
 # Authors:
 # Extracted from no404.nasl and DDI_Directory_Scanner.nasl
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5889 $
+# $Revision: 9709 $
 #
 ###############################################################################
 
@@ -64,7 +64,9 @@ errmessages_404 = make_list(
 "Insufficient Access",
 "The userid or password that was specified is not valid",
 "The requested page could not be found.", # drupal
-"Content-Length: 0" );
+"Content-Length: 0",
+"submitLogin()",
+">Login<" );
 
 global_var errmessges_404;
 

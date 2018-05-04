@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_mult_dos_vuln.nasl 8568 2018-01-29 15:17:18Z cfischer $
+# $Id: gb_irfanview_mult_dos_vuln.nasl 9710 2018-05-03 11:12:48Z asteins $
 #
 # IrfanView Multiple DoS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:irfanview:irfanview:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811953");
-  script_version("$Revision: 8568 $");
+  script_version("$Revision: 9710 $");
   script_cve_id("CVE-2017-15769", "CVE-2017-15768", "CVE-2017-15766", "CVE-2017-15767",
                 "CVE-2017-15765", "CVE-2017-15764", "CVE-2017-15763", "CVE-2017-15762",
                 "CVE-2017-15761", "CVE-2017-15759", "CVE-2017-15760", "CVE-2017-15758",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2017-15737");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 16:17:18 +0100 (Mon, 29 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 13:12:48 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:40:33 +0530 (Thu, 26 Oct 2017)");
   script_name("IrfanView Multiple DoS Vulnerabilities");
 
@@ -69,7 +69,7 @@ if(description)
   script_tag(name: "affected" , value:"IrfanView Version 4.50 64-bit");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  29th January, 2018. Information regarding this issue will be updated once the
+  03rd May, 2018. Information regarding this issue will be updated once
   solution details are available.
   For updates refer to http://www.irfanview.com/");
 
@@ -84,13 +84,9 @@ if(description)
   exit(0);
 }
 
-
-# Code starts from here
-
 include("version_func.inc");
 include("host_details.inc");
 
-irfVer = "";
 if(!irfVer = get_app_version(cpe:CPE)){
   exit(0);
 }

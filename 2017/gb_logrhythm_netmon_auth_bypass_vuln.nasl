@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logrhythm_netmon_auth_bypass_vuln.nasl 8659 2018-02-05 09:23:05Z asteins $
+# $Id: gb_logrhythm_netmon_auth_bypass_vuln.nasl 9710 2018-05-03 11:12:48Z asteins $
 #
 # Logrhythm Network Monitor Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:logrhythm:network_monitor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106798");
-  script_version("$Revision: 8659 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 9710 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-03 13:12:48 +0200 (Thu, 03 May 2018) $");
   script_tag(name: "creation_date", value: "2017-04-28 15:23:53 +0200 (Fri, 28 Apr 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name: "qod_type", value: "remote_vul");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Logrhythm Network Monitor Multiple Vulnerabilities");
 
@@ -61,11 +61,11 @@ vulnerability can be exploited to forge arbitrary JWT tokens and bypass authenti
 Monitor web management interface.
 
 - Multiple command injection vulnerabilities exist in the application web management interface due to unescaped
-user-input used to dynamically construct system shell commands. These vulnerabilities can be exploited to run 
+user-input used to dynamically construct system shell commands. These vulnerabilities can be exploited to run
 arbitrary commands in the context of the root user and fully compromise the LogRhythm Network Monitor host.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 05th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "http://www.security-assessment.com/files/documents/advisory/Logrhythm-NetMonitor-Advisory.pdf");
 

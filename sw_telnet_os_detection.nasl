@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 8777 2018-02-13 07:55:44Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 9703 2018-05-03 07:44:28Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 8777 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 08:55:44 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 9703 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 09:44:28 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -58,6 +58,11 @@ port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
 
 if( ! banner || banner == "" || isnull( banner ) ) exit( 0 );
+
+if( "metasploitable login:" >< banner && "Warning: Never expose this VM to an untrusted network!" >< banner ) {
+  register_and_report_os( os:"Ubuntu", version:"8.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
 
 if( "Welcome to Microsoft Telnet Service" >< banner || 
     "Georgia SoftWorks Telnet Server for Windows" >< banner ) {

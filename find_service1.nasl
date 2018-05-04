@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9683 2018-05-02 06:13:56Z cfischer $
+# $Id: find_service1.nasl 9703 2018-05-03 07:44:28Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9683 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:13:56 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 9703 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 09:44:28 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -617,6 +617,32 @@ if( rhexstr =~ "^0000000209000000010000000000000000$" ) {
 if( rhexstr =~ "^220000802000530054004100520054005F00480041004E0044005300480041004B0045000000" ) {
   register_service( port:port, proto:"sccm-control", message:"A SCCM Remote Control (control) service seems to be running on this port." );
   log_message( port:port, data:"A SCCM Remote Control (control) service seems to be running on this port." );
+  exit( 0 );
+}
+
+if( r =~ "^root@metasploitable:/# " ) {
+  register_service( port:port, proto:"rootshell", message:"A root shell of Metasploitable seems to be running on this port." );
+  log_message( port:port, data:"A root shell of Metasploitable seems to be running on this port." );
+  exit( 0 );
+}
+
+# pfstatd on 9999/tcp
+# 0x0000:  2D 31 20 2D 20 30 20 30 0A 30 20 2D 20 30 20 30    -1 - 0 0.0 - 0 0
+# 0x0010:  0A 30 20 2D 20 31 20 30 0A 30 20 2D 20 32 20 30    .0 - 1 0.0 - 2 0
+# 0x0020:  0A 30 20 2D 20 33 20 30 0A 30 20 2D 20 34 20 30    .0 - 3 0.0 - 4 0
+# 0x0030:  0A 30 20 2D 20 35 20 30 0A 30 20 2D 20 36 20 30    .0 - 5 0.0 - 6 0
+# 0x0040:  0A 30 20 2D 20 37 20 30 0A 30 20 2D 20 38 20 30    .0 - 7 0.0 - 8 0
+# 0x0050:  0A 30 20 2D 20 39 20 30 0A 30 20 2D 20 31 30 20    .0 - 9 0.0 - 10 
+# 0x0060:  30 0A 30 20 2D 20 31 31 20 30 0A 30 20 2D 20 31    0.0 - 11 0.0 - 1
+# 0x0070:  32 20 30 0A 30 20 2D 20 31 33 20 30 0A 30 20 2D    2 0.0 - 13 0.0 -
+# 0x0080:  20 31 34 20 30 0A 30 20 2D 20 31 35 20 30 0A 30     14 0.0 - 15 0.0
+# 0x0090:  20 2D 20 31 36 20 30 0A 30 20 2D 20 31 37 20 30     - 16 0.0 - 17 0
+# 0x00A0:  0A 30 20 2D 20 31 38 20 30 0A 30 20 2D 20 31 39    .0 - 18 0.0 - 19
+# 0x00B0:  20 30 0A 30 20 2D 20 32 30 20 30 0A 31 20 61 6C     0.0 - 20 0.1 al
+# 0x00C0:  6C 20 30 20 30 0A 31 20 61 6C 6C 20 31 20 30 0A    l 0 0.1 all 1 0.
+if( egrep( string:r, pattern:"^[0-9]+ (all|carp|em0|enc|enc0|lo|lo0|pflog0|pflog|\-) [0-9]+ [0-9]+$" ) ) {
+  register_service( port:port, proto:"pfstatd", message:"A pfstatd service seems to be running on this port." );
+  log_message( port:port, data:"A pfstatd service seems to be running on this port." );
   exit( 0 );
 }
 

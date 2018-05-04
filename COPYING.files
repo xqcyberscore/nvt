@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 03 May 2018 09:13:05 +0200
+# Automatically created on:  Fri, 04 May 2018 08:05:01 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39685,6 +39685,7 @@
 2018/gb_freetype_dos_vuln_lin.nasl: GPLv2+
 2018/gb_freetype_dos_vuln_win.nasl: GPLv2+
 2018/gb_geovision_ip_camera_mult_vuln.nasl: GPLv2+
+2018/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/gb_grammarly_ext_google_chrome_info_disc_vuln_lin.nasl: GPLv2+
 2018/gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl: GPLv2+
 2018/gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl: GPLv2+
@@ -39720,6 +39721,8 @@
 2018/gb_memcached_amplification_attack.nasl: GPLv2+
 2018/gb_minihttpd_buffer_overflow_vuln.nasl: GPLv2+
 2018/gb_miniupnp_dos_vuln.nasl: GPLv2+
+2018/gb_mult_dvr_auth_bypass.nasl: GPLv2+
+2018/gb_mult_dvr_info_discl_vuln.nasl: GPLv2+
 2018/gb_mybb_xss_vuln.nasl: GPLv2+
 2018/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/gb_openemr_mult_vuln_0318.nasl: GPLv2+
@@ -41057,6 +41060,7 @@ gb_google_picasa_detect_macosx.nasl: GPLv2+
 gb_google_picasa_detect_win.nasl: GPLv2+
 gb_google_sketchup_detect_win.nasl: GPLv2+
 gb_gpg4win_detect.nasl: GPLv2+
+gb_gpon_home_router_detect.nasl: GPLv2+
 gb_grabit_detect.nasl: GPLv2+
 gb_grandstream_gxp_detect.nasl: GPLv2+
 gb_grandstream_ucm_detect.nasl: GPLv2+
@@ -57141,6 +57145,7 @@ gsf/2018/f5/gb_f5_big_ip_K46121888.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K51754851.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51920288.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52319810.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52521791.nasl: GPLv2+
@@ -57150,6 +57155,7 @@ gsf/2018/f5/gb_f5_big_ip_K55129614.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K55225440.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K62750376.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K72403108.nasl: GPLv2+

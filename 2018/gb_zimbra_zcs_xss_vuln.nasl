@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_zcs_xss_vuln.nasl 8709 2018-02-08 06:30:35Z cfischer $
+# $Id: gb_zimbra_zcs_xss_vuln.nasl 9705 2018-05-03 08:55:17Z asteins $
 #
 # Zimbra ZCS XSS Vulnerability
 #
@@ -28,13 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113085");
-  script_version("$Revision: 8709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 07:30:35 +0100 (Thu, 08 Feb 2018) $");
+  script_version("$Revision: 9705 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-03 10:55:17 +0200 (Thu, 03 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 15:45:55 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

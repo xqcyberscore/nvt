@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 9675 2018-04-30 03:15:06Z ckuersteiner $
+# $Id: telnet_func.inc 9704 2018-05-03 08:05:02Z cfischer $
 #
 # Methods to handle telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9675 $
+# $Revision: 9704 $
 #
 ###############################################################################
 
@@ -52,7 +52,7 @@ function get_telnet_banner( port, timeout ) {
 
   soc = open_sock_tcp( port );
   if( ! soc ) return( 0 );
-  banner = telnet_negotiate( socket:soc, timeout: timeout );
+  banner = telnet_negotiate( socket:soc, timeout:timeout );
   close( soc );
   if( strlen( banner ) )
     replace_kb_item( name:sb, value:str_replace( find:raw_string(0), replace:'', string:banner ) );
@@ -62,6 +62,7 @@ function get_telnet_banner( port, timeout ) {
 
 function telnet_negotiate( socket, timeout ) {
 
+  local_var socket, timeout;
   local_var opt, code, s, counter, counter2, buf, prev;
 
   if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#telnet_negotiate" );
@@ -72,7 +73,7 @@ function telnet_negotiate( socket, timeout ) {
     timeout = 3;
 
   while( TRUE ) {
-    s = recv( socket:socket, length:1, timeout: timeout );
+    s = recv( socket:socket, length:1, timeout:timeout );
     if( ! strlen( s ) ) break;
     if( ord( s[0] ) != 0xff ) buf += s;
     else {

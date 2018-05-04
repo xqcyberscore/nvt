@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_xss_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_horde_xss_vuln.nasl 9708 2018-05-03 10:01:19Z ckuersteiner $
 #
 # Horde Groupware Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:horde:horde_groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140527");
-  script_version("$Revision: 8493 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9708 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-03 12:01:19 +0200 (Thu, 03 May 2018) $");
   script_tag(name: "creation_date", value: "2017-11-22 17:09:33 +0700 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -64,8 +64,8 @@ CVE-2017-16907, CVE-2017-16906)
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 16th January, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 03rd May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://code610.blogspot.com/2017/11/rce-via-xss-horde-5219.html");
   script_xref(name: "URL", value: "https://code610.blogspot.com/2017/12/modus-operandi-horde-52x.html");
