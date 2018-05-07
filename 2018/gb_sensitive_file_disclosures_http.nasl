@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 9639 2018-04-27 05:54:49Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 9639 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 07:54:49 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -118,7 +118,7 @@ function check_files( filesarray, dirlist, port ) {
 
       url = dir + file;
 
-      if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:infos[1], extra_check:extra ) ) {
+      if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:infos[1], extra_check:extra, usecache:TRUE ) ) {
         report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + ":" + infos[0];
         VULN = TRUE;
       }

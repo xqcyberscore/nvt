@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 8659 2018-02-05 09:23:05Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6663");
  script_tag(name: "cvss_base", value: "6.1");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 8659 $");
+ script_version("$Revision: 9738 $");
 
  script_name("Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
@@ -41,8 +41,8 @@ if (description)
 
  script_tag(name: "vuldetect" , value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 05th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
  script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS Software
 could allow an unauthenticated, adjacent attacker to cause autonomic nodes of an affected system to reload,
@@ -58,7 +58,7 @@ affected system and consequently cause the affected device to reload, resulting 
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "NoneAvailable");
 
- script_tag(name: "last_modification", value: "$Date: 2018-02-05 10:23:05 +0100 (Mon, 05 Feb 2018) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
  script_tag(name: "creation_date", value: "2017-07-28 09:13:57 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

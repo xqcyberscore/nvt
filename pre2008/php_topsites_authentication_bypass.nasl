@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_topsites_authentication_bypass.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: php_topsites_authentication_bypass.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # Multiple vulnerabilities in PHP TopSites
 #
@@ -11,7 +11,7 @@
 #   - Removed unnecessary include of url_func.inc.
 #
 # Copyright:
-# Copyright (C) 2005 Josh Zlatin-Amishav
+# Copyright (C) 2006 Josh Zlatin-Amishav
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19495");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14353);
   script_xref(name:"OSVDB", value:"18171");
@@ -40,22 +40,20 @@ if(description)
   script_name("Multiple vulnerabilities in PHP TopSites");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
-  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
+  script_copyright("Copyright (C) 2006 Josh Zlatin-Amishav");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host is running PHP TopSites, a PHP/MySQL-based
+  script_tag(name:"solution", value:"Limit access to admin directory using, eg, .htaccess.");
+
+  script_tag(name:"summary", value:"The remote host is running PHP TopSites, a PHP/MySQL-based
   customizable TopList script.
 
   There is a vulnerability in this software which allows an attacker to
-  access the admin/setup interface without authentication.";
+  access the admin/setup interface without authentication.");
 
-  tag_solution = "Limit access to admin directory using, eg, .htaccess.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -72,7 +70,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   if( dir == "/" ) dir = "";
   url = dir + "/admin/setup.php";
 
-  if( http_vuln_check( port:port, url:url, pattern:"<title>PHP TopSites", extra_check:"function mMOver\(ob\)" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<title>PHP TopSites", extra_check:"function mMOver\(ob\)", usecache:TRUE ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

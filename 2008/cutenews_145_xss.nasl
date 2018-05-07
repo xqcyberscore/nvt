@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cutenews_145_xss.nasl 9542 2018-04-20 01:34:17Z ckuersteiner $
+# $Id: cutenews_145_xss.nasl 9732 2018-05-04 14:04:40Z cfischer $
 # Description: Web application abuses
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:cutephp:cutenews";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80052");;
- script_version("$Revision: 9542 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:34:17 +0200 (Fri, 20 Apr 2018) $");
+ script_version("$Revision: 9732 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:04:40 +0200 (Fri, 04 May 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,7 +48,6 @@ if(description)
  script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("cutenews/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name: "solution", value: "Update to the latest version.");
 

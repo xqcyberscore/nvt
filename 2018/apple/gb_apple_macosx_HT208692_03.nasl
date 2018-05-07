@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208692_03.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_apple_macosx_HT208692_03.nasl 9719 2018-05-04 05:56:03Z cfischer $
 #
 # Apple MacOSX Security Updates(HT208692)-03
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813114");
-  script_version("$Revision: 9276 $");
+  script_version("$Revision: 9719 $");
   script_cve_id("CVE-2017-8816", "CVE-2017-13890" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:46:36 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208692)-03");
 
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208692");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");

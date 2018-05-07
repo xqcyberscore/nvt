@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_apsb17-24_win.nasl 9071 2018-03-09 13:04:07Z santu $
+# $Id: gb_adobe_acrobat_dc_cont_apsb17-24_win.nasl 9719 2018-05-04 05:56:03Z cfischer $
 #
 # Adobe Acrobat DC (Continuous Track) Security Updates(apsb17-24)-Windows
 #
@@ -8,7 +8,7 @@
 # Antu Sanadi <santu@secpod.com>
 #
 # Copyright:
-# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812550");
-  script_version("$Revision: 9071 $");
+  script_version("$Revision: 9719 $");
   script_cve_id("CVE-2017-3016", "CVE-2017-3038", "CVE-2017-3113", "CVE-2017-3115", 
                 "CVE-2017-3116", "CVE-2017-3117", "CVE-2017-3118", "CVE-2017-3119", 
                 "CVE-2017-3120", "CVE-2017-3121", "CVE-2017-3122", "CVE-2017-3123", 
@@ -49,7 +49,7 @@ if(description)
                 "CVE-2017-11269", "CVE-2017-11270", "CVE-2017-11271" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 14:04:07 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 13:25:31 +0530 (Fri, 09 Mar 2018)");
   script_name("Adobe Acrobat DC (Continuous Track) Security Updates(apsb17-24)-Windows");
 

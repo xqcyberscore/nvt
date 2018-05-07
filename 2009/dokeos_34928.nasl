@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dokeos_34928.nasl 9583 2018-04-24 09:48:35Z ckuersteiner $
+# $Id: dokeos_34928.nasl 9732 2018-05-04 14:04:40Z cfischer $
 #
 # Dokeos Multiple Remote Input Validation Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:dokeos:dokeos';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100200");
- script_version("$Revision: 9583 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:48:35 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 9732 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:04:40 +0200 (Fri, 04 May 2018) $");
  script_tag(name:"creation_date", value:"2009-05-14 12:53:07 +0200 (Thu, 14 May 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "1.8.5")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4100480.nasl 9270 2018-03-30 12:47:11Z santu $
+# $Id: gb_ms_kb4100480.nasl 9737 2018-05-07 02:30:24Z ckuersteiner $
 #
 # Microsoft Windows Kernel Elevation of Privilege Vulnerability (KB4100480)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812848");
-  script_version("$Revision: 9270 $");
+  script_version("$Revision: 9737 $");
   script_cve_id("CVE-2018-1038");
   script_bugtraq_id(103549);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-30 14:47:11 +0200 (Fri, 30 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 04:30:24 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-30 13:47:55 +0530 (Fri, 30 Mar 2018)");
   script_name("Microsoft Windows Kernel Elevation of Privilege Vulnerability (KB4100480)");
   

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_access_bypass_vuln_lin.nasl 8849 2018-02-16 14:02:28Z asteins $
+# $Id: gb_mariadb_access_bypass_vuln_lin.nasl 9719 2018-05-04 05:56:03Z cfischer $
 #
 # MariaDB Access Bypass Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112198");
-  script_version("$Revision: 8849 $");
+  script_version("$Revision: 9719 $");
   script_cve_id("CVE-2017-15365");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 09:22:39 +0100 (Tue, 30 Jan 2018)");
   script_name("MariaDB Access Bypass Vulnerability (Linux)");
 
@@ -62,7 +62,7 @@ to perform database modification on certain cluster nodes without having privile
   script_xref(name:"URL", value:"https://mariadb.com/kb/en/library/mariadb-10210-release-notes/");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_mandatory_keys("MariaDB/installed", "Host/runs_unixoide");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 8708 2018-02-07 16:37:35Z asteins $
+# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
-# VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)
+# VLC Media Player < 2.2.5 Multiple Denial-of-Service Vulnerabilities (Mac OS X)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,42 +29,40 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811078");
-  script_version("$Revision: 8708 $");
+  script_version("$Revision: 9738 $");
   script_cve_id("CVE-2017-9301","CVE-2017-9300");
   script_bugtraq_id(98747, 98746);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-06-05 14:29:56 +0530 (Mon, 05 Jun 2017)");
+
   script_tag(name:"qod_type", value:"executable_version");
-  script_name("VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with VLC media player
-  and is prone to multiple denial-of-service vulnerabilities.");
+  script_name("VLC Media Player < 2.2.5 Multiple Denial-of-Service Vulnerabilities (Mac OS X)");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "summary", value:"The host is installed with VLC media player and is prone to multiple
+denial-of-service vulnerabilities.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to an error in
-  the 'plugins\codec\libflac_plugin.dll' and
-  'plugins\audio_filter\libmpgatofixed32_plugin.dll' scripts while reading a
-  crafted file.");
+  script_tag(name: "vuldetect", value:"Get the installed version with the help of detect NVT and check the version
+is vulnerable or not.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to remote attackers to cause a denial of service (heap corruption and
-  application crash or invalid read and application crash) or possibly have
-  unspecified other impact.
+  script_tag(name: "insight", value:"Multiple flaws exist due to an error in the 'plugins\codec\libflac_plugin.dll
+and 'plugins\audio_filter\libmpgatofixed32_plugin.dll' scripts while reading a crafted file.");
 
-  Impact Level: Application");
+  script_tag(name: "impact", value:"Successful exploitation will allow remote attackers to remote attackers to
+cause a denial of service (heap corruption and application crash or invalid read and application crash) or
+possibly have unspecified other impact.");
 
-  script_tag(name: "affected" , value:"VideoLAN VLC media player 2.2.4 on Mac OS X");
+  script_tag(name: "affected", value:"VideoLAN VLC media player 2.2.4 on Mac OS X");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 8th
-  February, 2018. Information regarding this issue will be updated once the solution
-  details are available. For details refer to http://www.videolan.org");
+  script_tag(name: "solution", value:"Update to version 2.2.5 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "http://code610.blogspot.in/2017/04/multiple-crashes-in-vlc-224.html");
+  script_tag(name: "solution_type", value: "VendorFix");
+
+  script_xref(name: "URL", value: "http://code610.blogspot.in/2017/04/multiple-crashes-in-vlc-224.html");
+  script_xref(name: "URL", value: "https://www.videolan.org/vlc/releases/2.2.5.html");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -73,23 +71,16 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vlcVer = "";
-report = "";
-
-## Get version
-if(!vlcVer = get_app_version(cpe:CPE)){
+if (!vlcVer = get_app_version(cpe:CPE))
   exit(0);
-}
 
-## Check VLC media player vulnerable version
-if(vlcVer == "2.2.4")
-{
-  report = report_fixed_ver(installed_version:vlcVer, fixed_version:"NoneAvailable");
+if (version_is_less(version: vlcVer, test_version: "2.2.5")) {
+  report = report_fixed_ver(installed_version: vlcVer, fixed_version: "2.2.5");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

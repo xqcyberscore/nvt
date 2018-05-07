@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_load_parameter_dos_vuln_win.nasl 8689 2018-02-06 13:58:15Z santu $
+# $Id: gb_wordpress_load_parameter_dos_vuln_win.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812692");
-  script_version("$Revision: 8689 $");
+  script_version("$Revision: 9738 $");
   script_cve_id("CVE-2018-6389");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 14:58:15 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 20:13:56 +0530 (Mon, 05 Feb 2018)");
   script_name("WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)");
 
@@ -54,9 +54,8 @@ if(description)
 
   script_tag(name: "affected" , value:"WordPress versions 4.9.2 and prior on Windows");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  5th Feb, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to https://wordpress.org");
+  script_tag(name: "solution" , value:"No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -73,22 +72,20 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-if(!wordPort = get_app_port(cpe:CPE)){
+if (!wordPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 infos = get_app_version_and_location(cpe:CPE, port:wordPort, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_less_equal(version:vers, test_version:"4.9.2"))
-{
+if (version_is_less_equal(version:vers, test_version:"4.9.2")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"NoneAvailable", install_path:path);
   security_message(data:report, port:path);
   exit(0);
 }
+
 exit(0);

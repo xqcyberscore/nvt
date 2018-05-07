@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_home_folder_accessible.nasl 9451 2018-04-12 05:54:43Z cfischer $
+# $Id: sw_home_folder_accessible.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # Linux Home Folder Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111108");
-  script_version("$Revision: 9451 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 07:54:43 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -137,7 +137,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     url = dir + file;
 
-    if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:files[file] ) ) {
+    if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:files[file], usecache:TRUE ) ) {
       report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
       VULN = TRUE;
     }

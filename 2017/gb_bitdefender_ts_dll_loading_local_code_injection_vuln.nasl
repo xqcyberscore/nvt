@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # Bitdefender Total Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810939");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 9738 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:17:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Total Security DLL Loading Local Code Injection Vulnerability");
 
@@ -47,9 +47,9 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to the product do not
   use the Protected Processes feature, and therefore an attacker can enter an
   arbitrary Application Verifier Provider DLL under Image File Execution Options
-  in the registry; the self-protection mechanism is intended to block all local
+  in the registry, the self-protection mechanism is intended to block all local
   processes (regardless of privileges) from modifying Image File Execution Options
-  for this product; and this mechanism can be bypassed by an attacker who
+  for this product and this mechanism can be bypassed by an attacker who
   temporarily renames Image File Execution Options during the attack.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
@@ -61,17 +61,16 @@ if(description)
   script_tag(name:"affected", value:"Bitdefender Total Security 12.0
   (and earlier).");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 07th February, 2018.
-  Information regarding tis issue will be updated once the solution
-  details are available. For updates refer to
-  https://www.bitdefender.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://cybellum.com/doubleagent-taking-full-control-antivirus");
-  script_xref(name : "URL" , value : "http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
+  script_xref(name: "URL", value: "https://cybellum.com/doubleagent-taking-full-control-antivirus");
+  script_xref(name: "URL", value: "http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -83,18 +82,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-bitVer = "";
-
-## Get version
-if(!bitVer = get_app_version(cpe:CPE)){
+if (!bitVer = get_app_version(cpe:CPE))
   exit(0);
-}
 
-## Grep for vulnerable version
 if(version_is_less_equal(version:bitVer, test_version:"12.0"))
 {
   report = report_fixed_ver(installed_version:bitVer, fixed_version:"NoneAvailable");
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

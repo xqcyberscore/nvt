@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_router_mult_vuln.nasl 9716 2018-05-03 15:53:49Z jschulte $
+# $Id: gb_gpon_router_mult_vuln.nasl 9733 2018-05-04 14:11:22Z cfischer $
 #
 # GPON Home Routers Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113170");
-  script_version("$Revision: 9716 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 17:53:49 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 9733 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:11:22 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:26:55 +0200 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if( description )
   script_require_ports("Services/www", 81);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"GPON Home Routers are prone to mutiple vulnerabilities.");
+  script_tag(name:"summary", value:"GPON Home Routers are prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"The script tries to exploit both vulnerabilities and execute and 'id' command
   on the target and checks if it was successful.");
   script_tag(name:"insight", value:"There exist two vulnerabilities:
@@ -74,12 +74,14 @@ CPE = "cpe:/o:gpon:home_router";
 include( "host_details.inc" );
 include( "http_func.inc" );
 include( "http_keepalive.inc" );
+include( "misc_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! get_app_location( cpe: CPE, port: port, nofork: TRUE ) ) exit(0);
 
 # Just execute a command that certainly doesn't exist
 # This allows for a safe check of command execution
-non_command = 'oh_jeez_rick';
+non_command = rand_str( length: 12, charset: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" );
 
 # Older versions of GPON Home Routers use a direct html page link
 exploit_urls = make_list( '/GponForm/diag_Form?images/', '/menu.html?images/' );
@@ -95,9 +97,10 @@ foreach url ( exploit_urls ) {
 # Exploit needs a few seconds to take form
 sleep( 5 );
 req = http_get( port: port, item: result_url );
-res = http_keepalive_send_recv( port: port, data: req, bodyonly: TRUE );
+res = http_keepalive_send_recv( port: port, data: req );
 
-if( string('sh: ', non_command, ': not found' ) >< res ) {
+# diag_result = "BusyBox... means ping command could be overwritten, but shell output could not be retrieved
+if( string('sh: ', non_command, ': not found' ) >< res || 'diag_result = "BusyBox v' >< res ) {
   report = report_vuln_url(  port: port, url: result_url  );
   security_message( data: report, port: port );
   exit( 0 );

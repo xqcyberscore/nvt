@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_coldfusion_detect.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # ColdFusion Detection
 #
@@ -24,48 +24,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of ColdFusion.
-
-The script sends a connection request to the server and attempts to
-check the presence of ColdFusion from the reply.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100773";
-
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9584 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("ColdFusion Detection");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_oid("1.3.6.1.4.1.25623.1.0.100773");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("ColdFusion Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"summary", value:"Detection of ColdFusion.
+
+  The script sends a connection request to the server and attempts to
+  check the presence of ColdFusion from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
 
 base = '/CFIDE';
 file = "/administrator/index.cfm";
 
 url = base + file;
 
-if( http_vuln_check( port:port, url:url,pattern:"<title>ColdFusion Administrator Login</title>" ) )
+if( http_vuln_check( port:port, url:url, pattern:"<title>ColdFusion Administrator Login</title>", usecache:TRUE ) )
 {
   url = base + '/services/pdf.cfc?wsdl';
   req = http_get( item:url, port:port );
@@ -89,7 +85,7 @@ if( http_vuln_check( port:port, url:url,pattern:"<title>ColdFusion Administrator
       if( ! isnull ( version[1] )) cf_version = str_replace( string:version[1], find:",", replace:"." );
     }
 
-  }  
+  }
 
   if( ! cf_version )
   {
@@ -104,11 +100,11 @@ if( http_vuln_check( port:port, url:url,pattern:"<title>ColdFusion Administrator
     }
   }
 
-  if( ! cf_version ) 
+  if( ! cf_version )
   {
     cf_version = 'unknown';
     cpe = 'cpe:/a:adobe:coldfusion';
-  } 
+  }
   else
   {
     cpe = 'cpe:/a:adobe:coldfusion:' + cf_version;
@@ -123,7 +119,6 @@ if( http_vuln_check( port:port, url:url,pattern:"<title>ColdFusion Administrator
                     concluded: version[0]), port: port);
 
   exit( 0 );
-}  
+}
 
 exit( 0 );
-

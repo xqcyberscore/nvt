@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 8627 2018-02-01 15:16:06Z cfischer $
+# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812354");
-  script_version("$Revision: 8627 $");
+  script_version("$Revision: 9738 $");
   script_cve_id("CVE-2017-17672");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:16:06 +0100 (Thu, 01 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-18 18:33:37 +0530 (Mon, 18 Dec 2017)");
   script_name("vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities");
 
@@ -45,9 +45,11 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
-  - Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates
-    function, which is a publicly exposed API.
-  - A deserialization vulnerability.");
+
+- Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates function, which is a publicly
+exposed API.
+
+- A deserialization vulnerability.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to execute arbitrary code execution and arbitrary file
@@ -57,9 +59,8 @@ if(description)
 
   script_tag(name:"affected", value:"VBulletin versions through 5.3.4");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  01th February, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to http://www.vbulletin.com");
+  script_tag(name:"solution", value:"No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -78,12 +79,8 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-vPort = "";
-vVer = "";
-
-if(!vPort = get_app_port(cpe:CPE)){
+if(!vPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 if(!infos = get_app_version_and_location( cpe:CPE, port:vPort, exit_no_version:TRUE)) exit(0);
 vVer = infos['version'];

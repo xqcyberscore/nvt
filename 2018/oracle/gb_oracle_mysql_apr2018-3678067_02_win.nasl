@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_apr2018-3678067_02_win.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: gb_oracle_mysql_apr2018-3678067_02_win.nasl 9733 2018-05-04 14:11:22Z cfischer $
 #
 # Oracle Mysql Security Updates (apr2018-3678067) 02 - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813144");
-  script_version("$Revision: 9681 $");
-  script_cve_id("CVE-2018-2766", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2787", 
+  script_version("$Revision: 9733 $");
+  script_cve_id("CVE-2018-2766", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2787",
                 "CVE-2018-2758");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:11:22 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 10:32:41 +0530 (Thu, 19 Apr 2018)");
   script_name("Oracle Mysql Security Updates (apr2018-3678067) 02 - Windows");
 
@@ -89,10 +89,10 @@ mysqlVer = infos['version'];
 path = infos['location'];
 
 if(version_in_range(version:mysqlVer, test_version:"5.6", test_version2:"5.6.39") ||
-   version_in_range(version:mysqlVer, test_version:"5.7", test_version2:"5.7.21"))
-{
+   version_in_range(version:mysqlVer, test_version:"5.7", test_version2:"5.7.21")){
   report = report_fixed_ver(installed_version:mysqlVer, fixed_version: "Apply the patch", install_path:path);
-  security_message(data:report);
+  security_message(port:sqlPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

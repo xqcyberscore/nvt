@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 7805 2017-11-17 08:42:10Z cfischer $
+# $Id: http_keepalive.inc 9725 2018-05-04 08:40:45Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7805 $
+# $Revision: 9725 $
 #
 ###############################################################################
 
@@ -445,6 +445,7 @@ function get_http_page( port, url, redirect ) {
   return NULL;
 }
 
+# nb: The global_var __ka_last_request can be used to access the "req" crafted by this NVT
 function http_get_cache( port, item ) {
 
   local_var port, item, req, res;
@@ -457,7 +458,9 @@ function http_get_cache( port, item ) {
 
   req = http_get( port:port, item:item );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-  if( ! res ) return NULL;
+  if( isnull( res  ) || res == "" || ! res ) return NULL;
+
+  __ka_last_request = req;
 
   # Only save a valid HTTP response into the KB. We also
   # don't want so save the following HTTP status codes
@@ -531,10 +534,11 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
   }
 }
 
-function http_vuln_check( port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch, icase ) {
+# nb: The global_var __ka_last_request can be used to access the "req" crafted by this NVT
+function http_vuln_check( port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch, icase, usecache ) {
 
   local_var port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch;
-  local_var req, buf, ec, nm, icase;
+  local_var icase, usecache, req, buf, ec, nm;
 
   if( ! url ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_vuln_check" );
@@ -553,21 +557,30 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
 
   if( isnull( icase ) ) icase = TRUE;
 
-  req = http_get( item:url, port:port );
+  if( usecache ) {
+    buf = http_get_cache( item:url, port:port );
+    if( COMMAND_LINE && hostname )
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_vuln_check: Setting nocache to TRUE and passing hostname on command line isn't supported." );
+    if( cookie && ! isnull( cookie ) )
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_vuln_check: Setting nocache to TRUE and passing a cookie isn't supported." );
+  } else {
 
-  if( COMMAND_LINE ) { # set hostname for vhosts on command line if hostname parameter was given.
-    if( hostname ) {
-      req = ereg_replace( string:req, pattern:"Host:.*" + get_host_ip(), replace: "Host: " + hostname );
+    req = http_get( item:url, port:port );
+
+    if( COMMAND_LINE ) { # set hostname for vhosts on command line if hostname parameter was given.
+      if( hostname ) {
+        req = ereg_replace( string:req, pattern:"Host:.*" + get_host_ip(), replace: "Host: " + hostname );
+      }
     }
+
+    if( cookie && ! isnull( cookie ) )
+      req = ereg_replace( string:req, pattern:'\r\n\r\n', replace: '\r\nCookie: ' + cookie + '\r\n\r\n' );
+
+    buf = http_keepalive_send_recv( port:port, data:req );
+    __ka_last_request = req;
   }
 
-  if( cookie && ! isnull( cookie ) )
-    req = ereg_replace( string:req, pattern:'\r\n\r\n', replace: '\r\nCookie: ' + cookie + '\r\n\r\n' );
-
-  buf = http_keepalive_send_recv( port:port, data:req );
-  if( buf == NULL ) return FALSE;
-
-  __ka_last_request = req;
+  if( isnull( buf  ) || buf == "" || ! buf ) return FALSE;
 
   if( debug ) {
     display( "\nContent:\n", buf, "\n" );

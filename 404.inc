@@ -1,6 +1,8 @@
 ###############################################################################
-# Include to provide common error messages interpreted as a 404 
-# $Id: 404.inc 9709 2018-05-03 10:47:07Z cfischer $
+# OpenVAS Include File
+# $Id: 404.inc 9735 2018-05-05 11:42:04Z cfischer $
+#
+# Include to provide common error messages interpreted as a 404
 #
 # Authors:
 # Extracted from no404.nasl and DDI_Directory_Scanner.nasl
@@ -22,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9709 $
+# $Revision: 9735 $
 #
 ###############################################################################
 
@@ -39,10 +41,10 @@ errmessages_404 = make_list(
 "Unable to complete your request due to added security features",
 "Client Authentication Remote Service</font>",
 "Bad Request",
-"<form action=/session_login.cgi",	# webmin
+"<form action=/session_login.cgi", # webmin
 "Webmin server",
 "Management Console",
-"TYPE=password",	# As in "<input type=password>"
+"TYPE=password", # As in "<input type=password>"
 "The userid or password that was specified is not valid.",  # Tivoli server administrator
 "Access Failed",
 "Please identify yourself:",
@@ -66,7 +68,10 @@ errmessages_404 = make_list(
 "The requested page could not be found.", # drupal
 "Content-Length: 0",
 "submitLogin()",
-">Login<" );
+">Login<",
+"<br/>Pi-<b>hole</b>: Your black hole for Internet advertisements", # Pi-hole catchall page
+"cannot be found", # IIS and probably more
+"Requested resource does not exist" ); # SAP NetWeaver
 
 global_var errmessges_404;
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0318.nasl 9693 2018-05-02 11:41:55Z jschulte $
+# $Id: gb_openemr_mult_vuln_0318.nasl 9719 2018-05-04 05:56:03Z cfischer $
 #
 # OpenEMR < 5.0.1 Multiple Vulnerabilities - March 2018
 #
@@ -8,7 +8,7 @@
 # Adrian Steins <adrian.steins@greenbone.net>
 #
 # Copyright:
-# Copyright (C) 2017 Greenbone Networks GmbH, https://www.greenbone.net
+# Copyright (C) 2018 Greenbone Networks GmbH, https://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112262");
-  script_version("$Revision: 9693 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 13:41:55 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 9719 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 09:38:12 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_openemr_detect.nasl");
   script_require_ports("Services/www", 80);

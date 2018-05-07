@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vimbadmin_mult_vuln.nasl 8707 2018-02-07 16:00:48Z cfischer $
+# $Id: gb_vimbadmin_mult_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # ViMbAdmin Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:vimbadmin:vimbadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106872");
-  script_version("$Revision: 8707 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-07 17:00:48 +0100 (Wed, 07 Feb 2018) $");
+  script_version("$Revision: 9738 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name: "creation_date", value: "2017-06-14 11:20:52 +0700 (Wed, 14 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -63,8 +63,8 @@ if (description)
 
   script_tag(name: "affected", value: "ViMbAdmin version 3.0.15 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 07th February, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://sysdream.com/news/lab/2017-05-03-cve-2017-5870-multiple-xss-vulnerabilities-in-vimbadmin/");
   script_xref(name: "URL", value: "https://sysdream.com/news/lab/2017-05-03-cve-2017-6086-multiple-csrf-vulnerabilities-in-vimbadmin-version-3-0-15/");

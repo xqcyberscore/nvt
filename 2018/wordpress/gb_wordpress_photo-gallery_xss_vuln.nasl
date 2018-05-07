@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 9067 2018-03-09 10:13:17Z cfischer $
+# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 9719 2018-05-04 05:56:03Z cfischer $
 #
 # WordPress Photo Gallery Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112236");
-  script_version("$Revision: 9067 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-09 11:13:17 +0100 (Fri, 09 Mar 2018) $");
+  script_version("$Revision: 9719 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
   script_tag(name: "creation_date", value: "2018-02-20 11:30:00 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -46,7 +46,7 @@ if (description)
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");

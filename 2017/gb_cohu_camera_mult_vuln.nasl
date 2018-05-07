@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cohu_camera_mult_vuln.nasl 8149 2017-12-15 14:58:09Z cfischer $
+# $Id: gb_cohu_camera_mult_vuln.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # Cohu 3960HD Multiple Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140533");
-  script_version("$Revision: 8149 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name: "creation_date", value: "2017-11-24 10:59:47 +0700 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,8 +67,11 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "Cohu 3960HD Series IP cameras have reached end-of-life. Therefore no
-fix will be provided by the vendor.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of
+  this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.
+
+  Note: Cohu 3960HD Series IP cameras have reached end-of-life.");
 
   script_xref(name: "URL", value: "https://bneg.io/2017/05/12/vulnerabilities-in-cohu-3960hd/");
 
@@ -82,7 +85,7 @@ port = get_http_port(default: 80);
 
 url = "//";
 
-if (http_vuln_check(port: port, url: url, pattern: "Directory listing of", check_header: TRUE)) {
+if (http_vuln_check(port: port, url: url, pattern: "Directory listing of", check_header: TRUE, usecache: TRUE)) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

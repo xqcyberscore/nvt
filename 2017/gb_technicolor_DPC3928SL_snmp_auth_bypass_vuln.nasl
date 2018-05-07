@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 8588 2018-01-30 14:51:34Z asteins $
+# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
 #
 # Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810980");
-  script_version("$Revision: 8588 $");
+  script_version("$Revision: 9738 $");
   script_cve_id("CVE-2017-5135");
   script_bugtraq_id(98092);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 15:51:34 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 17:59:31 +0530 (Fri, 19 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability");
@@ -54,16 +54,14 @@ if(description)
   Impact Level: Application");
 
   script_tag(name: "affected" , value:"Technicolor DPC3928SL firmware version
-  D3928SL-P15-13-A386-c3420r55105-160127a is vulnerable; other devices are also
+  D3928SL-P15-13-A386-c3420r55105-160127a is vulnerable, other devices are also
   affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  30th January, 2018. information regarding this issue will be updated once the
-  soultion details are available.
-  For updates refer to http://partnerhub.technicolor.com");
+  script_tag(name: "solution" , value:"No solution or patch is available as of 07th May, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
-  script_xref(name : "URL" , value : "https://stringbleed.github.io");
-  script_xref(name : "URL" , value : "https://www.reddit.com/r/netsec/comments/67qt6u/cve_20175135_snmp_authentication_bypass");
+  script_xref(name: "URL", value: "https://stringbleed.github.io");
+  script_xref(name: "URL", value: "https://www.reddit.com/r/netsec/comments/67qt6u/cve_20175135_snmp_authentication_bypass");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_category(ACT_ATTACK);

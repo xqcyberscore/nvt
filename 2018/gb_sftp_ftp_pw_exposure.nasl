@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 9570 2018-04-23 14:45:15Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 9570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 16:45:15 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 9727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -108,7 +108,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     url = dir + file;
 
-    if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:files[file] ) ) {
+    if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:files[file], usecache:TRUE ) ) {
       report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
       VULN = TRUE;
     }

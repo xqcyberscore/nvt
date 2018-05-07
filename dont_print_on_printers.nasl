@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 9669 2018-04-28 09:30:41Z cfischer $
+# $Id: dont_print_on_printers.nasl 9725 2018-05-04 08:40:45Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 9669 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-28 11:30:41 +0200 (Sat, 28 Apr 2018) $");
+  script_version("$Revision: 9725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-04 10:40:45 +0200 (Fri, 04 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -287,7 +287,8 @@ foreach port( ports ) {
 
   # Canon, see also gb_canon_printers_detect.nasl
   # If updating here please also update check gb_canon_printers_detect.nasl
-  buf = http_get_cache( item:"/index.html", port:port );
+  url = "/index.html";
+  buf = http_get_cache( item:url, port:port );
   if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) || "CANON HTTP Server" >< buf ) {
     is_printer = TRUE;
     reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
