@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_smart_protection_server_detect.nasl 7586 2017-10-26 15:47:05Z cfischer $
+# $Id: gb_trendmicro_smart_protection_server_detect.nasl 9740 2018-05-07 08:32:23Z ckuersteiner $
 #
 # Trend Micro Smart Protection Server Remote Version Detection
 #
@@ -27,26 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811915");
-  script_version("$Revision: 7586 $");
+  script_version("$Revision: 9740 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:47:05 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 10:32:23 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 17:44:54 +0530 (Thu, 05 Oct 2017)");
   script_name("Trend Micro Smart Protection Server Remote Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version
-  of Trend Micro Smart Protection Server.
+  script_tag(name: "summary", value: "Detection of Trend Micro Smart Protection Server.
 
-  This script sends HTTP GET request and try to get the version from the
-  response.");
+This script sends HTTP GET request and try to get the version from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 4343);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,46 +55,39 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-tspsPort = 0;
-pfsVer = "";
+port = get_http_port(default:4343);
 
-tspsPort = get_http_port(default:4343);
-if(!can_host_php(port:tspsPort)) exit(0);
+if (!can_host_php(port:port))
+  exit(0);
 
-rcvRes = http_get_cache(item:"/index.php", port:tspsPort);
+res = http_get_cache(item: "/index.php", port: port);
 
-## Confirm application
-if('Trend Micro Smart Protection Server' >< rcvRes &&
-   'Please type your user name and password to access the product console.' >< rcvRes)
-{
-  vers = "Unknown";
+if('Trend Micro Smart Protection Server' >< res &&
+   'Please type your user name and password to access the product console.' >< res) {
+  vers = "unknown";
 
-  ## Set the KB value
-  set_kb_item(name:"trendmicro/SPS/Installed", value:TRUE);
+  set_kb_item(name: "trendmicro/SPS/Installed", value: TRUE);
 
-  ## Send request and receive response
-  sndReq = http_get( item:"/help/en_US.UTF-8/Introduction.html", port:tspsPort );
-  rcvRes = http_keepalive_send_recv( port:tspsPort, data:sndReq );
+  url = "/help/en_US.UTF-8/Introduction.html";
+  req = http_get(item: url, port: port);
+  res = http_keepalive_send_recv(port: port, data: req );
 
-  ## Grep version
-  vers = eregmatch( pattern:'<title>Trend Micro.* Smart Protection Server.* ([0-9.]+) Online Help<', string:rcvRes);
-  if(vers[1]){
-    vers = vers[1];
+  vers = eregmatch(pattern: '<title>Trend Micro.* Smart Protection Server.* ([0-9.]+) Online Help<',
+                   string: res);
+  if(!isnull(vers[1])) {
+    version = vers[1];
+    concUrl = url;
   }
 
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:trendmicro:smart_protection_server:");
-  if(!cpe)
-     cpe = 'cpe:/a:trendmicro:smart_protection_server';
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:trendmicro:smart_protection_server:");
+  if (!cpe)
+    cpe = 'cpe:/a:trendmicro:smart_protection_server';
 
-  register_product(cpe:cpe, location:"/", port:tspsPort);
-  log_message(data: build_detection_report(app: "Trend Micro Smart Protection Server",
-                                           version: vers,
-                                           install: "/",
-                                           cpe: cpe,
-                                           concluded: vers),
-                                           port: tspsPort);
+  register_product(cpe: cpe, location: "/", port: port);
+  log_message(data: build_detection_report(app: "Trend Micro Smart Protection Server", version: version,
+                                           install: "/", cpe: cpe, concluded: vers[0], concludedUrl: concUrl),
+              port: port);
+  exit(0);
 }
+
+exit(0);

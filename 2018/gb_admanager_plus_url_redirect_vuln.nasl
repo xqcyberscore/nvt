@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9186 2018-03-23 09:48:58Z asteins $
+# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9747 2018-05-07 12:56:58Z asteins $
 #
 # ManageEngine AD Manager Plus URL Redirection Vulnerability
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113106");
-  script_version("$Revision: 9186 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9747 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 14:56:58 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 11:30:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2017-17552");
 
@@ -54,7 +54,7 @@ if( description )
   script_tag(name:"insight", value:"An attacker can perform a URL redirection attack via a specially crafted URL, specifically via the src parameter.");
   script_tag(name:"impact", value:"Successful exploitation may result in a bypass of CSRF protection or potentially masquerading a malicious URL as trusted.");
   script_tag(name:"affected", value:"ManageEngine AD Manager Plus through build 6613");
-  script_tag(name:"solution", value:"No solution as of 08th February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"Update to version 6.6.20 or later.");
 
   script_xref(name:"URL", value:"https://umbrielsecurity.wordpress.com/2018/01/31/dangerous-url-redirection-and-csrf-in-zoho-manageengine-ad-manager-plus-cve-2017-17552/");
   script_xref(name:"URL", value:"https://www.manageengine.com/products/ad-manager/release-notes.html");
@@ -74,7 +74,7 @@ version = infos['version'];
 path = infos['location'];
 
 if( version_is_less_equal( version: version, test_version: "6.6.13" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable", install_path: path );
+  report = report_fixed_ver( installed_version: version, fixed_version: "6.6.20", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

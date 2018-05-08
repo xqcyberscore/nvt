@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 07 May 2018 09:01:20 +0200
+# Automatically created on:  Tue, 08 May 2018 08:12:18 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38694,6 +38694,9 @@
 2018/debian/deb_4189.nasl: GPLv2+
 2018/debian/deb_4190.nasl: GPLv2+
 2018/debian/deb_4191.nasl: GPLv2+
+2018/debian/deb_4192.nasl: GPLv2+
+2018/debian/deb_4193.nasl: GPLv2+
+2018/debian/deb_4194.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -38982,6 +38985,7 @@
 2018/debian/deb_dla_1367.nasl: GPLv2+
 2018/debian/deb_dla_1368.nasl: GPLv2+
 2018/debian/deb_dla_1369.nasl: GPLv2+
+2018/debian/deb_dla_1370.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39764,6 +39768,7 @@
 2018/gb_twonky_server_mult_vuln_active.nasl: GPLv2+
 2018/gb_twonky_server_mult_vuln.nasl: GPLv2+
 2018/gb_unbound_dos_vuln.nasl: GPLv2+
+2018/gb_unprotected_web_app_installers.nasl: GPLv2+
 2018/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/gb_wampserver_xss_vuln.nasl: GPLv2+
 2018/gb_wordpress_disable_comments_plugin_csfr_vuln.nasl: GPLv2+
@@ -57461,6 +57466,7 @@ gsf/2018/siemens/gb_simatic_cp_mult_vuln.nasl: GPLv2+
 gsf/2018/sonatype/gb_sonatype_nexus_xss_vuln.nasl: GPLv2+
 gsf/2018/sophos/gb_sophos_xg_xss_vuln.nasl: GPLv2+
 gsf/2018/splunk/gb_splunk_enterprise_mult_saml_vuln.nasl: GPLv2+
+gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
 gsf/2018/unitrends/gb_unitrends_mult_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_info_disc_VMSA-2018-0002.nasl: GPLv2+
@@ -58957,6 +58963,12 @@ Policy/Microsoft/Windows10/Account/win10_passwd_min_age.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_min_length.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_reset_account_lockout_counter.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_store_passwd_reversible_encryption.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_administrator_account_status.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_guest_account_status.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_limit_local_account_blank_password_console.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_rename_admin_account.nasl: GPLv2+
+Policy/Microsoft/Windows10/SecurityOptions/win10_rename_guest_account.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_computer_from_network.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_credential_manager_trusted_caller.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_act_as_part_of_os.nasl: GPLv2+

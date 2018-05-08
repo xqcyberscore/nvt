@@ -1,5 +1,5 @@
 ###################################################################
-# OpenVAS Network Vulnerability Test
+# OpenVAS Vulnerability Test
 #
 # Microsoft Windows GDI Multiple Vulnerabilities (925902)
 #
@@ -37,8 +37,8 @@ tag_summary = "Stack-based buffer overflow in the animated cursor code in Micros
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102055");
-  script_version("$Revision: 8356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 9745 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(23273, 23276, 23278, 23275, 20940, 23277);
   script_cve_id("CVE-2006-5586", "CVE-2006-5758", "CVE-2007-1211", 

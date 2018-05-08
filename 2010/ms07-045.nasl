@@ -1,5 +1,5 @@
 ###################################################################
-# OpenVAS Network Vulnerability Test
+# OpenVAS Vulnerability Test
 #
 # Cumulative Security Update for Internet Explorer (937143)
 #
@@ -35,8 +35,8 @@ tag_summary = "Unspecified vulnerability in the pdwizard.ocx ActiveX object for
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102058");
-  script_version("$Revision: 8254 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
+  script_version("$Revision: 9745 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(25288, 25289, 25295);
   script_cve_id("CVE-2007-0943", "CVE-2007-2216", "CVE-2007-3041");

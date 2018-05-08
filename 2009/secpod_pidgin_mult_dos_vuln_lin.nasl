@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerabilities Test
-# $Id: secpod_pidgin_mult_dos_vuln_lin.nasl 5122 2017-01-27 12:16:00Z teissa $
+# OpenVAS Vulnerability Test
+# $Id: secpod_pidgin_mult_dos_vuln_lin.nasl 9744 2018-05-07 11:41:23Z cfischer $
 #
 # Pidgin Multiple Denial Of Service Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pidgin:pidgin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900941");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 9744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:41:23 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

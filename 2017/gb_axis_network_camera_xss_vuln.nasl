@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_xss_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_axis_network_camera_xss_vuln.nasl 9749 2018-05-08 03:50:15Z ckuersteiner $
 #
 # Axis Network Camera Cross-Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811276");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 9749 $");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 05:50:15 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 18:10:07 +0530 (Mon, 07 Aug 2017)");
 
   script_cve_id("CVE-2017-12413");

@@ -1,5 +1,5 @@
 ###################################################################
-# OpenVAS Network Vulnerability Test
+# OpenVAS Vulnerability Test
 #
 # Cisco IDS Manager Detection
 #
@@ -27,8 +27,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102006");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version("$Revision: 9745 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
  script_tag(name:"creation_date", value:"2009-06-23 09:27:52 +0200 (Tue, 23 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 

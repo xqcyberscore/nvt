@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerabilities Test
-# $Id: gb_libesmtp_mult_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
+# OpenVAS Vulnerability Test
+# $Id: gb_libesmtp_mult_vuln.nasl 9744 2018-05-07 11:41:23Z cfischer $
 #
 # libESMTP multiple vulnerabilities
 #
@@ -54,8 +54,8 @@ tag_affected = "libESMTP version 1.0.4 and prior.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800497");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 9744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:41:23 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1194", "CVE-2010-1192");
   script_tag(name:"cvss_base", value:"6.8");

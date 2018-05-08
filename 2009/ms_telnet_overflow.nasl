@@ -1,6 +1,6 @@
 ###################################################################
-# OpenVAS Network Vulnerability Test
-# $Id: ms_telnet_overflow.nasl 5427 2017-02-26 20:21:22Z cfi $
+# OpenVAS Vulnerability Test
+# $Id: ms_telnet_overflow.nasl 9745 2018-05-07 11:45:41Z cfischer $
 #
 # MS Telnet Overflow
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102008");
-  script_version("$Revision: 5427 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-26 21:21:22 +0100 (Sun, 26 Feb 2017) $");
+  script_version("$Revision: 9745 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

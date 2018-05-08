@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerabilities Test
-# $Id: secpod_systemtap_mult_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# OpenVAS Vulnerability Test
+# $Id: secpod_systemtap_mult_dos_vuln.nasl 9744 2018-05-07 11:41:23Z cfischer $
 #
 # SystemTap Unprivileged Mode Multiple Denial Of Service Vulnerabilities
 #
@@ -50,8 +50,8 @@ tag_affected = "SystemTap version 1.0 and prior.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901043");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:41:23 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###################################################################
-# OpenVAS Network Vulnerability Test
-# $Id: openca_html_injection.nasl 5002 2017-01-13 10:17:13Z teissa $
+# OpenVAS Vulnerability Test
+# $Id: openca_html_injection.nasl 9745 2018-05-07 11:45:41Z cfischer $
 #
 # OpenCA HTML injection
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openca:openca";
 if(description) {
 
   script_oid("1.3.6.1.4.1.25623.1.0.102007");
-  script_version("$Revision: 5002 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 9745 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2009-07-28 17:03:43 +0200 (Tue, 28 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

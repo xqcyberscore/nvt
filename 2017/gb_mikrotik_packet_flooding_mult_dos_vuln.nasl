@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_packet_flooding_mult_dos_vuln.nasl 8708 2018-02-07 16:37:35Z asteins $
+# $Id: gb_mikrotik_packet_flooding_mult_dos_vuln.nasl 9747 2018-05-07 12:56:58Z asteins $
 #
 # MikroTik RouterOS Packet Flooding Multiple Denial-of-Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811066");
-  script_version("$Revision: 8708 $");
+  script_version("$Revision: 9747 $");
   script_cve_id("CVE-2017-7285", "CVE-2017-8338");
   script_bugtraq_id(97266);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 17:37:35 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 14:56:58 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:27 +0530 (Fri, 02 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MikroTik RouterOS Packet Flooding Multiple Denial-of-Service Vulnerabilities");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name: "affected" , value:"MikroTik RouterOS versions 6.38.5");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  08th February, 2018. Information regarding this issue will be updated once the
-  solution details are made available.
+  07th May, 2018. Information regarding this issue will be updated once solution details are available.
   For updates refer to https://mikrotik.com.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

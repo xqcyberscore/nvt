@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerabilities Test
-# $Id: secpod_xnview_bof_vuln_win.nasl 8187 2017-12-20 07:30:09Z teissa $
+# OpenVAS Vulnerability Test
+# $Id: secpod_xnview_bof_vuln_win.nasl 9744 2018-05-07 11:41:23Z cfischer $
 #
 # XnView DICOM Parsing Integer Overflow Vulnerability (Windows)
 #
@@ -44,8 +44,8 @@ tag_solution = "Update to XnView version 1.97.2
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900752");
-  script_version("$Revision: 8187 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 9744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:41:23 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_bugtraq_id(38629);
   script_cve_id("CVE-2009-4001");

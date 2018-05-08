@@ -1,6 +1,6 @@
 #######################################################################
-# OpenVAS Network Vulnerability Test
-# $Id: rsync_modules.nasl 4207 2016-10-04 11:57:02Z cfi $
+# OpenVAS Vulnerability Test
+# $Id: rsync_modules.nasl 9745 2018-05-07 11:45:41Z cfischer $
 #
 # rsync modules list
 #
@@ -26,8 +26,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102003");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4207 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 13:57:02 +0200 (Tue, 04 Oct 2016) $");
+  script_version("$Revision: 9745 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2009-06-23 09:27:52 +0200 (Tue, 23 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("rsync modules list");

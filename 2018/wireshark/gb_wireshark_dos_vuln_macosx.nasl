@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_macosx.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_wireshark_dos_vuln_macosx.nasl 9747 2018-05-07 12:56:58Z asteins $
 #
 # Wireshark Denial of Service Vulnerability (MacOSX)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112214");
-  script_version("$Revision: 9094 $");
+  script_version("$Revision: 9747 $");
   script_cve_id("CVE-2018-6836");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-07 14:56:58 +0200 (Mon, 07 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 15:34:57 +0100 (Fri, 09 Feb 2018)");
 
   script_name("Wireshark Denial of Service Vulnerability (MacOSX)");
@@ -54,12 +54,14 @@ if(description)
 
   script_tag(name:"affected", value: "Wireshark up to and including version 2.4.4 on MacOSX.");
 
-  script_tag(name:"solution", value: "No solution available as of 9th February, 2018. Information regarding this issue will be updated once the solution details are available.
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value: "Update to version 2.6.0 or later.");
 
+  script_xref(name:"URL", value:"https://code.wireshark.org/review/#/c/25660/");
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14397");
+  script_xref(name:"URL", value:"https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=28960d79cca262ac6b974f339697b299a1e28fef");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,7 +82,7 @@ vers = infos['version'];
 path = infos['location'];
 
 if(version_is_less_equal(version:vers, test_version:"2.4.4")) {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"2.6.0", install_path:path);
   security_message(port:0, data:report);
   exit(0);
 }

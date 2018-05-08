@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 9679 2018-04-30 14:05:59Z emoss $
+# $Id: policy_functions.inc 9746 2018-05-07 12:15:27Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -149,4 +149,28 @@ function rsop_userprivilegeright(select,keyname){
   
   wmi_close(wmi_handle:handle);
   return(string(returnValue));
+}
+
+function win32_useraccount(select,name){
+	local_var select,name;
+
+	host = get_host_ip();
+  usrname = kb_smb_login();
+  passwd  = kb_smb_password();
+  domain  = kb_smb_domain();
+  if( domain ) usrname = domain + "\" + usrname;
+
+  handle = wmi_connect(host:host, username:usrname, password:passwd);
+    if(!handle){
+    policy_logging(text:'WMI Connect to host failed.');
+    policy_set_kb(val:'error');
+    wmi_close(wmi_handle:handle);
+    exit(0);
+  }
+
+  query = "SELECT " + select + " FROM Win32_UserAccount WHERE Name = '" + name + "'";
+  res = wmi_query(wmi_handle:handle, query:query);
+  wmi_close(wmi_handle:handle);
+  
+	return(res);
 }
