@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT208465.nasl 8519 2018-01-24 14:13:44Z gveerendra $
+# $Id: gb_apple_macosx_mult_vuln01_HT208465.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812661");
-  script_version("$Revision: 8519 $");
+  script_version("$Revision: 9762 $");
   script_cve_id("CVE-2018-4096", "CVE-2018-4088", "CVE-2018-4089", "CVE-2018-4091",
                 "CVE-2018-4093", "CVE-2018-4092", "CVE-2018-4090", "CVE-2017-8817");
   script_bugtraq_id(102057);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 15:13:44 +0100 (Wed, 24 Jan 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 10:37:13 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)");
 

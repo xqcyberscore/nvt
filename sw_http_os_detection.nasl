@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9674 2018-04-29 09:59:32Z cfischer $
+# $Id: sw_http_os_detection.nasl 9760 2018-05-08 14:13:21Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-29 11:59:32 +0200 (Sun, 29 Apr 2018) $");
+  script_version("$Revision: 9760 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 16:13:21 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,6 +61,21 @@ function check_http_banner( port ) {
   banner = get_http_banner( port:port );
 
   if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) ) {
+
+    # API TCP listener is cross-platform
+    if( "Server: Icinga" >< banner ) return;
+
+    # e.g. Server: SimpleHTTP/0.6 Python/2.7.5 -> Python is cross-platform
+    # nb: Keep in single quotes
+    if( egrep( pattern:'^Server: SimpleHTTP/([0-9.]+) Python/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+
+    # e.g. Server: MX4J-HTTPD/1.0 -> Java implementation, cross-patform
+    # nb: Keep in single quotes
+    if( egrep( pattern:'^Server: MX4J-HTTPD/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+
+    # e.g. Server: libwebsockets or server: libwebsockets
+    if( egrep( pattern:'^Server: libwebsockets[\r\n]*$', string:banner, icase:TRUE ) ) return;
+
 
     banner_type = "HTTP Server banner";
 
@@ -204,9 +219,6 @@ function check_http_banner( port ) {
     # Server: SUSE LINUX/11.3 UPnP/1.0 miniupnpd/1.0
     # Server: Fedora/8 UPnP/1.0 miniupnpd/1.0
     # SERVER: Fedora/10 UPnP/1.0 MiniUPnPd/1.4
-
-    # API TCP listener is cross-platform
-    if( "Server: Icinga" >< banner ) return;
 
     # Runs only on Unix/Linux/BSD
     # e.g. Server: GoTTY/0.0.12
@@ -599,6 +611,15 @@ function check_http_banner( port ) {
       } else {
         register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
+      return banner;
+    }
+
+    # Runs only on Unix-like OS. Keep down below to catch more detailed OS infos above first.
+    # e.g. Server: nginx + Phusion Passenger 5.1.12
+    # Server: nginx/1.8.1 + Phusion Passenger 5.0.27
+    # Server: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g SVN/1.9.3 Phusion_Passenger/5.0.27 mod_perl/2.0.9 Perl/v5.22.1
+    if( banner =~ "^Server: .* Phusion[ _]Passenger" ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return banner;
     }
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
@@ -1007,6 +1028,15 @@ function check_x_powered_by_banner( port ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
+
+    # Runs only on Unix-like OS.
+    # e.g. X-Powered-By: Phusion Passenger Enterprise 5.1.12
+    # X-Powered-By: Phusion Passenger 5.0.27
+    if( "Phusion Passenger" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_x_powered_by_banner", port:port );
   }
   return;

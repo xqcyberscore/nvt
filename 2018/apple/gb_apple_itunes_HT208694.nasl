@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208694.nasl 9276 2018-04-03 07:04:47Z santu $
+# $Id: gb_apple_itunes_HT208694.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
 #
 # Apple iTunes Security Updates(HT208694)-Windows
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813110");
-  script_version("$Revision: 9276 $");
+  script_version("$Revision: 9762 $");
   script_cve_id("CVE-2018-4144", "CVE-2018-4101", "CVE-2018-4114", "CVE-2018-4118", 
                 "CVE-2018-4119", "CVE-2018-4120", "CVE-2018-4121", "CVE-2018-4122", 
                 "CVE-2018-4125", "CVE-2018-4127", "CVE-2018-4128", "CVE-2018-4129", 
                 "CVE-2018-4130", "CVE-2018-4161", "CVE-2018-4162", "CVE-2018-4163", 
                 "CVE-2018-4165", "CVE-2018-4113", "CVE-2018-4146", "CVE-2018-4117");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 09:04:47 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:32:52 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple iTunes Security Updates(HT208694)-Windows");
 

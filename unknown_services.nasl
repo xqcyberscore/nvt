@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 9701 2018-05-03 06:24:12Z cfischer $
+# $Id: unknown_services.nasl 9761 2018-05-09 01:59:13Z ckuersteiner $
 #
 # Collect banner of unknown services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 9701 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 9761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 03:59:13 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,6 +49,7 @@ if(description)
                       "famd_detect.nasl", "find_service6.nasl",
                       "gb_ab_ethernet_detect.nasl", "gb_aerospike_telnet_detect.nasl",
                       "gb_aerospike_xdr_detect.nasl", "gb_amqp_detect.nasl",
+                      "gb_apache_cassandra_detect.nasl",
                       "gb_apache_derby_detect.nasl", "gb_apache_jserv_detect.nasl",
                       "gb_arkeia_virtual_appliance_detect_617.nasl", "gb_backupexec_detect.nasl",
                       "gb_check_mk_agent_detect.nasl", "gb_codesys_detect.nasl",
@@ -65,7 +66,8 @@ if(description)
                       "gb_pcworx_detect.nasl", "gb_proconos_detect.nasl",
                       "gb_redis_detect.nasl", "gb_riak_detect.nasl",
                       "gb_rmi_registry_detect.nasl", "gb_sap_maxdb_detect.nasl",
-                      "gb_sap_router_detect.nasl", "gb_simatic_s7_cotp_detect.nasl",
+                      "gb_sap_router_detect.nasl", "gb_sap_msg_service_detect.nasl",
+                      "gb_simatic_s7_cotp_detect.nasl",
                       "gb_sybase_tcp_listen_detect.nasl", "gb_symantec_pcanywhere_access_server_detect.nasl",
                       "gb_teamspeak_detect.nasl", "gb_teamspeak_udp_detect.nasl",
                       "gb_winrm_detect.nasl", "gnutella_detect.nasl",

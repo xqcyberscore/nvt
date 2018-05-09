@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_cms_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_moodle_cms_detect.nasl 9752 2018-05-08 09:42:26Z jschulte $
 #
 # Moodle CMS Version Detection
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 9752 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 11:42:26 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Moodle CMS Version Detection");
@@ -75,6 +75,8 @@ foreach dir( make_list_unique( "/moodle", cgi_dirs( port:port ) ) ) {
   if( egrep(pattern: "^Set-Cookie: MoodleSession", string:rcvRes ) ||
       egrep(pattern: '<a [^>]*href="http://moodle\\.org/"[^>]*><img [^>]*src="pix/moodlelogo.gif"', string:rcvRes) ) {
 
+    set_kb_item( name: "moodle/detected", value: TRUE );
+
     version = "unknown";
 
     ver = eregmatch( string: rcvRes, pattern: "title=.Moodle ([0-9.]+)\+*.*[(Build: 0-9)]*" );
@@ -82,19 +84,21 @@ foreach dir( make_list_unique( "/moodle", cgi_dirs( port:port ) ) ) {
     if( ! isnull( ver[1] ) ) {
       version = ver[1];
     } else {
-      # not really accurate, but better then nothing
-      sndReq = http_get( item: dir + "/mod/hotpot/README.TXT", port:port );
-      rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:TRUE );
- 
-      ver = eregmatch( string: rcvRes, pattern: "HotPot module for Moodle ([0-9.]+)" );
+      # Last version listed in /admin/environment.xml is the current version
+      req = http_get( port: port, item: dir + "/admin/environment.xml" );
+      resp = http_keepalive_send_recv( port: port, data: req );
+      while(TRUE){
+        ver = eregmatch( string: resp, pattern: '<MOODLE version="([0-9.]+)"' );
+        if( isnull( ver[1] ) ) {
+          break;
+        }
+        final_ver = ver;
+        resp = ereg_replace( pattern: '<MOODLE version="' + ver[1] + '"', string: resp, replace: "None" );
+      }
+      ver = final_ver;
       if( ! isnull( ver[1] ) ) {
         version = ver[1];
-        not_accurate = TRUE;
       }
-    }
-
-    if( not_accurate ) {
-      extra = 'OpenVAS was not able to extract the exact version number. Further tests on moodle\ncould lead to false positives.';
     }
 
     tmp_version = version + " under " + install;
@@ -113,7 +117,6 @@ foreach dir( make_list_unique( "/moodle", cgi_dirs( port:port ) ) ) {
                                               version:version,
                                               install:install,
                                               cpe:cpe,
-                                              extra:extra,
                                               concluded:ver[0] ),
                                               port:port );
     exit( 0 );

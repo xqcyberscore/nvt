@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nessus_detect.nasl 9601 2018-04-25 09:07:58Z cfischer $
+# $Id: nessus_detect.nasl 9754 2018-05-08 11:00:12Z cfischer $
 #
 # Nessus Daemon Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10147");
-  script_version("$Revision: 9601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 11:07:58 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 9754 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,13 +70,13 @@ r = recv_line( socket:soc, length:10 );
 close( soc );
 # We don't want to be fooled by echo & the likes
 if( "TestThis" >< r ) {
-  set_kb_item( name:"nessusd_openvas_echo_test/" + port + "/failed", value:TRUE );
+  set_kb_item( name:"generic_echo_test/" + port + "/failed", value:TRUE );
   exit( 0 );
 }
 
 # Used in 2009/OpenVAS_detect.nasl so we don't test the same port twice
 # with the request above.
-set_kb_item( name:"nessusd_openvas_echo_test/" + port + "/tested", value:TRUE );
+set_kb_item( name:"generic_echo_test/" + port + "/tested", value:TRUE );
 
 foreach protocol( make_list( "1.0", "1.2" ) ) {
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_web_app_installers.nasl 9743 2018-05-07 11:15:13Z cfischer $
+# $Id: gb_unprotected_web_app_installers.nasl 9754 2018-05-08 11:00:12Z cfischer $
 #
 # Unprotected Web App Installers (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107307");
-  script_version("$Revision: 9743 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:15:13 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 9754 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 12:00:20 +0200 (Mon, 07 May 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -73,7 +73,6 @@ genericfiles = make_array(
 "/index.php", 'Installer /Setup-Tool of multiple vendors.#-#<title>((Microweber|phpipam) installation|Installation|WackoWiki Installation|(Piwik|Matomo) .* &rsaquo; Installation|LimeSurvey installer)</title>#-#',
 "/index.php?module=Users&parent=Settings&view=SystemSetup", 'VTiger CMS Installation tool.#-#<title>Install</title> #-#',
 "/index.php/index/install", 'Open Journal Systems Installer.#-#<title>O(JS|MP) Installation</title>#-#',
-"/index.php/install/", 'Magento and other Installers.#-#<title>(Magento|XLRstats) Installation</title>#-#',
 "/install.php", 'Installer / Setup-Tool of multiple vendors.#-#<title>((Moodle|PHP-Fusion) Install|Piwigo * - Installation|Monstra :: Install|Kohana Installation|SMF Installer|vtiger CRM .* - Configuration Wizard - Welcome)</title>#-#',
 "/setup.php", 'Installer / Setup-Tool of multiple versions of Zabbix.#-#<title>Installation</title>|class="setup_wizard setup_wizard_welcome"|Check of pre-requisites#-#',
 "/tiki-install.php", 'Tiki wiki cms groupware installer.#-#<title>Tiki Installer</title>#-#',
@@ -102,7 +101,8 @@ genericfiles = make_array(
 );
 
 magentofiles = make_array(
-"/downloader/", 'Magento Installer.#-#<title>Magento Installation Wizard</title>#-#'
+"/downloader/", 'Magento Installer.#-#<title>Magento Installation Wizard</title>#-#',
+"/index.php/install/", 'Magento and other Installers.#-#<title>(Magento|XLRstats) Installation</title>#-#'
 );
 
 wordpressfiles = make_array(

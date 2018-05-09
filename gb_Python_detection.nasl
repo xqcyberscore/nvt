@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Python_detection.nasl 9173 2018-03-22 11:21:03Z asteins $
+# $Id: gb_Python_detection.nasl 9754 2018-05-08 11:00:12Z cfischer $
 #
-# Python Detection
+# Python Version Detection (Remote)
 #
 # Authors:
-# Tameem Eissa <tameem.eissa..at..greenbone.net>
+# Tameem Eissa <tameem.eissa@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107020");
-  script_version("$Revision: 9173 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 12:21:03 +0100 (Thu, 22 Mar 2018) $");
+  script_version("$Revision: 9754 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Python Version Detection");
+  script_name("Python Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -56,18 +56,12 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 
-# Check for Python Version 
 if( ve = egrep( pattern:'Server[^\r\n]+(C)?Python/[0-9]+', string:banner ) ) {
 
+  install = port + "/tcp";
   vers = "unknown";
-
-  ### try to get version
   version = eregmatch( string:ve, pattern:"C?Python/([0-9.]+)", icase:TRUE );
-
-  if( ! isnull( version[0] ) ) {
-    concluded = chomp( version[0] );
-    vers = version[1];
-  }
+  if( ! isnull( version[1] ) ) vers = version[1];
 
   set_kb_item( name:"www/" + port + "/Python", value:vers );
   set_kb_item( name:"pyVer/installed", value:TRUE );
@@ -77,13 +71,12 @@ if( ve = egrep( pattern:'Server[^\r\n]+(C)?Python/[0-9]+', string:banner ) ) {
   if( ! cpe )
     cpe = "cpe:/a:python:python";
 
-  ## Register Product and Build Report
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  register_product( cpe:cpe, location:install, port:port );
   log_message( data:build_detection_report( app:"Python",
                                             version:vers,
-                                            install:port + '/tcp',
+                                            install:install,
                                             cpe:cpe,
-                                            concluded:concluded ),
+                                            concluded:ve ),
                                             port:port );
 }
 

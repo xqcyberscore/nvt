@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 9683 2018-05-02 06:13:56Z cfischer $
+# $Id: os_eol.inc 9763 2018-05-09 03:04:15Z ckuersteiner $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9683 $
+# $Revision: 9763 $
 #
 ###############################################################################
 
@@ -346,8 +346,10 @@ eol_cpes['cpe:/o:fortinet:fortios:3.3'] = '2009-10-02';
 # Xenserver (https://www.citrix.de/support/product-lifecycle/product-matrix.html)
 eol_urls['cpe:/a:citrix:xenserver'] = 'https://www.citrix.de/support/product-lifecycle/product-matrix.html';
 eol_names['cpe:/a:citrix:xenserver'] = 'Xenserver';
+eol_cpes['cpe:/a:citrix:xenserver:7.4'] = '2018-08-27';
 eol_cpes['cpe:/a:citrix:xenserver:7.3'] = '2018-06-12';
 eol_cpes['cpe:/a:citrix:xenserver:7.2'] = '2018-03-16';
+eol_cpes['cpe:/a:citrix:xenserver:7.1'] = '2022-08-22';
 eol_cpes['cpe:/a:citrix:xenserver:7.0'] = '2021-05-19';
 eol_cpes['cpe:/a:citrix:xenserver:6.5'] = '2018-06-26';
 eol_cpes['cpe:/a:citrix:xenserver:6.2'] = '2018-06-26';
