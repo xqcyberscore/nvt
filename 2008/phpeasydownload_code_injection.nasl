@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpeasydownload_code_injection.nasl 9502 2018-04-17 07:42:19Z cfischer $
-# Description: PHP Easy Download admin/save.php Parameter Code Injection Vulnerability
+# $Id: phpeasydownload_code_injection.nasl 9781 2018-05-09 13:39:09Z cfischer $
+#
+# PHP Easy Download admin/save.php Parameter Code Injection Vulnerability
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -20,41 +22,45 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server contains a PHP script that is affected by a
-remote code execution issue. 
-
-Description:
-
-The version of PHP Easy Download installed on the remote host fails to
-sanitize input to the 'moreinfo' parameter before using it in the
-'save.php' script.  By sending a specially-crafted value, an attacker
-can store and execute code at the privilege level of the remote web
-server.";
-
-tag_solution = "Unknown at this time.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80076");
-  script_version("$Revision: 9502 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9781 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 15:39:09 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(21179);
   script_name("PHP Easy Download admin/save.php Parameter Code Injection Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2006 Justin Seitz");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/2812");
+
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/2812");
+
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is affected by a
+  remote code execution issue. 
+
+  Description:
+
+  The version of PHP Easy Download installed on the remote host fails to
+  sanitize input to the 'moreinfo' parameter before using it in the
+  'save.php' script.");
+
+  script_tag(name:"impact", value:"By sending a specially-crafted value, an attacker can store and execute code at the privilege level
+  of the remote web server.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }

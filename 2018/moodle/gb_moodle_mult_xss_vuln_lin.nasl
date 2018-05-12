@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_xss_vuln_lin.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
+# $Id: gb_moodle_mult_xss_vuln_lin.nasl 9780 2018-05-09 12:51:34Z cfischer $
 #
 # Moodle 3.2.1 Multiple XSS Vulnerabilities (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113179");
-  script_version("$Revision: 9762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9780 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 14:51:34 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 14:24:34 +0200 (Tue, 08 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,7 +50,7 @@ if( description )
   script_dependencies("gb_moodle_cms_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("moodle/detected", "Host/runs_unixoide");
 
-  script_tag(name:"summary", value:"Moodle is prone to multple XSS vulnerabilities.");
+  script_tag(name:"summary", value:"Moodle is prone to multiple XSS vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on a target host.");
   script_tag(name:"insight", value:"Users have the ability to upload evidence of prior learning.
   In this, both in the text and in the attachment, an XSS script could be embedded.");

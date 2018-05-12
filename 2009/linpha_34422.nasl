@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: linpha_34422.nasl 6704 2017-07-12 14:13:36Z cfischer $
+# $Id: linpha_34422.nasl 9782 2018-05-09 13:46:05Z cfischer $
 #
 # LinPHA 1.3.4 Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:linpha:linpha";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100120");
- script_version("$Revision: 6704 $");
+ script_version("$Revision: 9782 $");
  script_cve_id("CVE-2014-7265");
  script_bugtraq_id(34422);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-09 15:46:05 +0200 (Wed, 09 May 2018) $");
  script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
  script_name("LinPHA 1.3.4 Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -63,6 +63,7 @@ if (description)
  newer release, disable respective features, remove the product or replace
  the product by another one.");
 
+ script_tag(name:"solution_type", value:"WillNotFix");
  script_tag(name:"qod_type", value:"remote_banner");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34422");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

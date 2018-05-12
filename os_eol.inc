@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 9763 2018-05-09 03:04:15Z ckuersteiner $
+# $Id: os_eol.inc 9778 2018-05-09 11:59:13Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9763 $
+# $Revision: 9778 $
 #
 ###############################################################################
 
@@ -878,11 +878,31 @@ eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '2017-04-11';
 #nb: Enterprise and Education editions for versions 1511, 1607, 1703 and 1709 will receive an additional 6 months of servicing after the end of service date.
 eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';
 eol_names['cpe:/o:microsoft:windows_10'] = 'Windows 10';
-eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '2017-05-09';
-eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2018-04-10'; # October 10, 2017 + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-10-10'; # April 10, 2018 + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2019-04-09'; # October 9, 2018 + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-10-09'; # April 9, 2019 + 6 month
+
+# nb: This is the Windows 10 Enterprise 2015 LTSB branch which
+# has support until October 13, 2025. As we currently can't differ
+# between CB and LTS in the CPE the following is commented out:
+# eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '2017-05-09';
+
+# CB Home: October 10, 2017
+# CB Enterprise/Eductaion: + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2018-04-10';
+
+# CB Home: April 10, 2018
+# CB Enterprise/Eductaion: + 6 month
+# nb: This is the Windows 10 Enterprise 2016 LTSB branch which
+# has support until October 13, 2026. As we currently can't differ
+# between CB and LTS in the CPE the following is commented out:
+# eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-10-10';
+
+# CB Home: October 9, 2018
+# CB Enterprise/Eductaion: + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2019-04-09'; 
+
+# CB Home: April 9, 2019
+# CB Enterprise/Eductaion: + 6 month
+eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-10-09';
+
 eol_cpes['cpe:/o:microsoft:windows_10:1803'] = '2019-11-12';
 
 function os_reached_eol( cpe, debug ) {

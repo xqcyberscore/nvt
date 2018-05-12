@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_true_key_detect_win.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_mcafee_true_key_detect_win.nasl 9772 2018-05-09 09:19:56Z cfischer $
 #
 # McAfee True Key Version Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813322");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 9772 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 11:19:56 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 15:50:09 +0530 (Wed, 02 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("McAfee True Key Version Detection (Windows)");
   script_tag(name : "summary" , value : "Detection of installed version
-  of McAfee True Key on Windows. 
+  of McAfee True Key on Windows.
 
   The script logs in via smb, searches for McAfee True Key in the registry
   and gets the version from registry.");
@@ -49,9 +49,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

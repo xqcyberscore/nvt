@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 8742 2018-02-09 12:38:22Z cfischer $
+# $Id: gb_php_detect.nasl 9792 2018-05-10 12:04:16Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 8742 $");
+  script_version("$Revision: 9792 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 13:38:22 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-10 14:04:16 +0200 (Thu, 10 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -64,8 +64,7 @@ phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  checkFiles = make_list( checkFiles, dir + "/" );
-  checkFiles = make_list( checkFiles, dir + "/index.php" );
+  checkFiles = make_list( checkFiles, dir + "/", dir + "/index.php" );
 }
 
 phpFilesList = get_kb_list( "www/" + port + "/content/extensions/php" );
@@ -83,7 +82,7 @@ foreach checkFile( checkFiles ) {
 
     if( "PHPSESSID" >< banner ) phpSessId = TRUE;
 
-    ##e.g PHP/5.6.0alpha1 or PHP/5.6.0
+    # e.g PHP/5.6.0alpha1 or PHP/5.6.0
     phpVer = ereg_replace( pattern:".*PHP/([.0-9A-Za-z]*).*", string:phpInfo, replace:"\1" );
     if( ! isnull( phpVer ) && phpVer != "" ) break;
   }
@@ -106,8 +105,8 @@ if( phpVer || phpSessId ) {
   set_kb_item( name:"php/installed", value:TRUE );
 
   cpe = build_cpe( value:phpVer, exp:"^([0-9.A-Za-z]+)", base:"cpe:/a:php:php:" );
-  if( isnull( cpe ) )
-    cpe = 'cpe:/a:php:php';
+  if( isnull( cpe ) || phpVer == "unknown" )
+    cpe = "cpe:/a:php:php";
 
   register_product( cpe:cpe, location:location, port:port );
 

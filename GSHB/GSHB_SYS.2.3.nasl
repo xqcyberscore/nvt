@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.3.nasl 8925 2018-02-22 13:39:46Z emoss $
+# $Id: GSHB_SYS.2.3.nasl 9774 2018-05-09 10:20:10Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.2.3 Clients unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109038");
-  script_version("$Revision: 8925 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 9774 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 12:20:10 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 15:30:28 +0100 (Tue, 19 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -98,6 +98,7 @@ max_auth = split(max_auth, keep:FALSE);
 }else{
   desc += 'In der Datei "/etc/security/limits.conf" konnte kein Eintrag zur Verhinderung
 von gleichzeitigem Login gefunden werden.\n';
+  res = 'nicht erfüllt';
 }
 
 sudo = ssh_cmd( socket:sock, cmd:"dpkg -s sudo");

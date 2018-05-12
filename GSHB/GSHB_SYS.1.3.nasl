@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.3.nasl 8925 2018-02-22 13:39:46Z emoss $
+# $Id: GSHB_SYS.1.3.nasl 9774 2018-05-09 10:20:10Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.1.3 Server unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109036");
-  script_version("$Revision: 8925 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 9774 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 12:20:10 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -481,7 +481,7 @@ gesetzt sein, um eine Anmeldung von root über SSH am System zu verhindern.\n';
   MaxAuthTries=eregmatch(string:AdminLock, pattern:pattern, multiline:TRUE);
   if( ! MaxAuthTries ){
     desc += 'Der Eintrag "MaxAuthTries" in "/etc/ssh/sshd_config" sollte auf einen 
-angemessenen Wert gesetzt sein, um Brute-Force-Angrille über SSH am System zu verhindern.\n';
+angemessenen Wert gesetzt sein, um Brute-Force-Angriffe über SSH am System zu verhindern.\n';
     res = 'nicht erfüllt';
   }else{
     MaxAuthTries=split(MaxAuthTries[0], sep:' ',keep:FALSE);

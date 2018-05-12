@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anidos.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anidos.nasl 9782 2018-05-09 13:46:05Z cfischer $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6663");
  script_tag(name: "cvss_base", value: "6.1");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 9738 $");
+ script_version("$Revision: 9782 $");
 
  script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
@@ -56,9 +56,9 @@ the Autonomic Control Plane (ACP) channel of an affected system.");
 affected system and consequently cause the affected device to reload, resulting in a DoS condition.");
 
  script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+ script_tag(name: "solution_type", value: "NoneAvailable");
 
- script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-09 15:46:05 +0200 (Wed, 09 May 2018) $");
  script_tag(name: "creation_date", value: "2017-07-28 09:17:33 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

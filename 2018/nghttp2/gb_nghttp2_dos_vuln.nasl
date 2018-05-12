@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nghttp2_dos_vuln.nasl 9495 2018-04-16 10:17:50Z ckuersteiner $
+# $Id: gb_nghttp2_dos_vuln.nasl 9800 2018-05-11 09:27:46Z ckuersteiner $
 #
 # nghttp2 < 1.31.1 DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nghttp2:nghttp2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140984");
-  script_version("$Revision: 9495 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-16 12:17:50 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9800 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-11 11:27:46 +0200 (Fri, 11 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-16 15:11:28 +0700 (Mon, 16 Apr 2018)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -60,7 +60,7 @@ another field through the pointer, and gets segmentation fault.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "affected", value: "nghttpd2 version 1.10.0 and below and version 1.31.0.");
+  script_tag(name: "affected", value: "nghttpd2 version 1.10.0 until 1.31.0.");
 
   script_tag(name: "solution", value: "Update to version 1.31.1 or later.");
 
@@ -78,7 +78,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less(version: version, test_version: "1.31.1")) {
+if (version_in_range(version: version, test_version: "1.10.0", test_version2: "1.31.0")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "1.31.1");
   security_message(port: port, data: report);
   exit(0);

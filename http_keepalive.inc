@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 9725 2018-05-04 08:40:45Z cfischer $
+# $Id: http_keepalive.inc 9784 2018-05-09 14:17:05Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9725 $
+# $Revision: 9784 $
 #
 ###############################################################################
 
@@ -310,7 +310,7 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   # Old behavior: data = str_replace( string:data, find:"Connection: Close", replace:"Connection: Keep-Alive", count:1 );
   # https://tools.ietf.org/html/rfc7230#section-6.1 -> Connection options are case-insensitive.
   # Some NVTs devs might add a "Connection: close" to the header data passed to this function so doing an ereg_replace instead
-  # nb: Be aware that this ereg_replace is also replacing any occurance of "Connection: Close" somewhere in the body of the request data.
+  # nb: Be aware that this ereg_replace is also replacing any occurrence of "Connection: Close" somewhere in the body of the request data.
   data = ereg_replace( string:data, pattern:"Connection: Close", replace:"Connection: Keep-Alive", icase:TRUE );
   __ka_last_request = data;
   n = send( socket:__ka_socket, data:data );
@@ -494,22 +494,24 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
       port = get_http_port( default:default_port );
     } else {
       port = get_http_port( default:80 );
-   }
+    }
+  } else {
+    if( ! get_port_state( port ) ) exit( 0 );
   }
-
-  if( ! get_port_state( port ) ) exit( 0 );
 
   if( unique_dir ) {
     list = make_list( unique_dir );
   } else {
     if( ! isnull( extra_dirs ) ) {
-      list = make_list( cgi_dirs( port:port ), extra_dirs );
+      list = make_list_unique( cgi_dirs( port:port ), extra_dirs );
     } else {
       list = make_list( cgi_dirs( port:port ) );
     }
   }
 
   foreach dir( list ) {
+
+    if( dir == "/" ) dir = "";
 
     req = string( dir, check_request );
     req = http_get( item:req, port:port );
@@ -518,12 +520,12 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
 
     txt_result = egrep( pattern:check_result, string:buf );
     if( extra_check ) {
-      extra = 0;
+      extra = FALSE;
       if( egrep( pattern:extra_check, string:buf ) ) {
-        extra = 1;
+        extra = TRUE;
       }
     } else {
-      extra = 1;
+      extra = TRUE;
     }
 
     if( txt_result && extra ) {

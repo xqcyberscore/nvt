@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 9467 2018-04-13 06:21:59Z cfischer $
+# $Id: misc_func.inc 9793 2018-05-10 12:39:04Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9467 $
+# $Revision: 9793 $
 #
 ###############################################################################
 
@@ -1273,9 +1273,9 @@ function eol_date_reached( eol_date ) {
   return;
 }
 
-function build_eol_message( eol_type, name, cpe, version, skip_version, eol_version, eol_date, eol_url ) {
+function build_eol_message( eol_type, name, cpe, version, location, skip_version, eol_version, eol_date, eol_url ) {
 
-  local_var eol_type, name, cpe, version, skip_version, eol_version, eol_date, report;
+  local_var eol_type, name, cpe, version, location, skip_version, eol_version, eol_date, report;
 
   if( eol_type != "prod" && eol_type != "os" ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#build_prod_eol_message: Wrong value passed to eol_type. Valid values are: prod, os" );
@@ -1298,6 +1298,9 @@ function build_eol_message( eol_type, name, cpe, version, skip_version, eol_vers
       report = 'The "' + name + '" product on the remote host has reached the end of life.\n\n' +
                'CPE:               ' + cpe + '\n';
     }
+
+    if( location )
+      report += 'Location/URL:      ' + location + '\n';
 
     report +=   'EOL version:       ' + eol_version + '\n' +
                 'EOL date:          ' + eol_date;

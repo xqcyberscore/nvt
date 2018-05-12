@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: formmail_pl.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: formmail_pl.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
 # Description: formmail.pl
 #
 # Authors:
@@ -22,17 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The 'formmail.pl' is installed. This CGI has
- a well known security flaw that lets anyone execute arbitrary
- commands with the privileges of the http daemon (root or nobody).";
-
-tag_solution = "remove it from /cgi-bin.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10076");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9791 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2079);
  script_tag(name:"cvss_base", value:"7.5");
@@ -47,8 +41,10 @@ if(description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("FormMail/installed");
  
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name: "solution", value: "remove it from /cgi-bin.");
+
+ script_tag(name: "summary", value: "The 'formmail.pl' is installed. This CGI has a well known security flaw
+that lets anyone execute arbitrary commands with the privileges of the http daemon (root or nobody).");
 
  script_tag(name:"deprecated", value:TRUE); 
 

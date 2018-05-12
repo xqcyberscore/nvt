@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 8183 2017-12-19 16:49:26Z cfischer $#
+# $Id: secpod_office_products_version_900032.nasl 9785 2018-05-09 14:27:34Z santu $#
 #
 # MS Office Products Version Detection
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8183 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 17:49:26 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 9785 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -527,13 +527,18 @@ if(wordcnvFile)
 }
 
 # Office Excel Converter
-xlcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
-if(xlcnvFile)
+xlcnvFile1 = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+xlcnvFile2 = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+
+if(xlcnvFile1 || xlcnvFile2)
 {
   xlcnvFile += "\Microsoft Office\Office12\excelcnv.exe";
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:xlcnvFile);
-  xlfile = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:xlcnvFile);
-  xlcnvVer = GetVer(file:xlfile, share:share);
+  xlcnvPath = xlcnvFile1 + "\Microsoft Office\Office12\";
+  xlcnvVer = fetch_file_version(sysPath:xlcnvPath, file_name:"excelcnv.exe");
+  if(!xlcnvVer) {
+    xlcnvPath = xlcnvFile2 + "\Microsoft Office\Office12\";
+    xlcnvVer = fetch_file_version(sysPath:xlcnvPath, file_name:"excelcnv.exe");
+  }
   if(xlcnvVer){
     set_kb_item(name:"SMB/Office/XLCnv/Version", value:xlcnvVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );

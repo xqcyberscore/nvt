@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: winmessenger_installed.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: winmessenger_installed.nasl 9782 2018-05-09 13:46:05Z cfischer $
 # Description: Windows Messenger is installed
 #
 # Authors:
@@ -60,12 +60,12 @@ is prone to multiple vulnerabilities.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11429");
-  script_version("$Revision: 9348 $");
+  script_version("$Revision: 9782 $");
   script_bugtraq_id(4028, 4316, 4675, 4827, 668);
   script_cve_id("CVE-1999-1484", "CVE-2002-0228", "CVE-2002-0472");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 15:46:05 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("Windows Messenger is installed");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/8084");
@@ -75,6 +75,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
   script_family("Windows");
   script_dependencies("secpod_windows_messenger_detect.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_info_disc_vuln_apr18.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
+# $Id: gb_qnap_qts_info_disc_vuln_apr18.nasl 9780 2018-05-09 12:51:34Z cfischer $
 #
 # QNAP QTS 'sysinfoReq.cgi' Information Disclosure Vulnerability-Apr18
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813119");
-  script_version("$Revision: 9559 $");
+  script_version("$Revision: 9780 $");
   script_cve_id("CVE-2017-7630");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-09 14:51:34 +0200 (Wed, 09 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 10:36:37 +0530 (Fri, 20 Apr 2018)");
   script_name("QNAP QTS 'sysinfoReq.cgi' Information Disclosure Vulnerability-Apr18");
 
@@ -70,7 +70,7 @@ if (description)
   script_dependencies("gb_qnap_nas_detect.nasl");
   script_mandatory_keys("qnap/qts","qnap/version","qnap/build");
   script_require_ports("Services/www", 80, 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
