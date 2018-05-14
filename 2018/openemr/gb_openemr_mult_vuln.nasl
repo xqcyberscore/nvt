@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_openemr_mult_vuln.nasl 9813 2018-05-14 05:19:41Z ckuersteiner $
 #
 # OpenEMR 5.0.0 Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113110");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9813 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:19:41 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 13:30:33 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2018-1000019", "CVE-2018-1000020");
 
@@ -55,7 +55,7 @@ if( description )
   script_tag(name:"insight", value:"OpenEMR is prone to an authenticated OS Command Injection vulnerability and an unauthenticated XSS vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to fully compromise the target system.");
   script_tag(name:"affected", value:"OpenEMR 5.0.0 and prior.");
-  script_tag(name:"solution", value:"No solution available as of 13th February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"Update to version 5.0.0 Patch 7 or later.");
 
   script_xref(name:"URL", value:"https://www.sec-consult.com/en/blog/advisories/os-command-injection-reflected-cross-site-scripting-in-openemr/index.html");
   script_xref(name:"URL", value:"http://www.open-emr.org/wiki/index.php/OpenEMR_Patches");

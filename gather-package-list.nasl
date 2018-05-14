@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9703 2018-05-03 07:44:28Z cfischer $
+# $Id: gather-package-list.nasl 9815 2018-05-14 06:45:28Z santu $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9703 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 09:44:28 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 9815 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 08:45:28 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2166,7 +2166,7 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
   if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.10" );
+  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 18.04 LTS" );
   register_detected_os( os:"Ubuntu 18.04 LTS", oskey:"UBUNTU18.04 LTS" );
   exit( 0 );
 }

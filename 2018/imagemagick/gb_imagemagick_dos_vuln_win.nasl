@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 9144 2018-03-20 09:25:46Z asteins $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 9813 2018-05-14 05:19:41Z ckuersteiner $
 #
 # ImageMagick 7.0.7.22 DoS Vulnerability (Windows)
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113112");
-  script_version("$Revision: 9144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
+  script_version("$Revision: 9813 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:19:41 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 12:44:44 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2018-6930");
 
@@ -53,7 +53,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"A stack-based buffer over-read in the ComputeResizeImage function in the MagickCore/accelerate.c file of ImageMagick 7.0.7-22 allows a remote attacker to cause a denial of service (application crash) via a maliciously crafted pict file.");
   script_tag(name:"affected", value:"ImageMagick through version 7.0.7.22.");
-  script_tag(name:"solution", value:"No solution available as of 15th February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"Update to version 7.0.7.23 or later.");
 
   script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/issues/967");
 
@@ -68,7 +68,7 @@ include( "version_func.inc" );
 if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "7.0.7.22" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "7.0.7.23" );
   security_message( data: report, port: 0 );
   exit( 0 );
 }

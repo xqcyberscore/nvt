@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_pers_xss_vuln_apr18_win.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_typo3_pers_xss_vuln_apr18_win.nasl 9809 2018-05-14 02:46:53Z ckuersteiner $
 #
 # Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:typo3:typo3';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813314");
-  script_version("$Revision: 9628 $");
+  script_version("$Revision: 9809 $");
   script_cve_id("CVE-2018-6905");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 04:46:53 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 15:18:11 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Windows)");

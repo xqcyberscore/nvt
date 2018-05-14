@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_superantispyware_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_superantispyware_mult_vuln.nasl 9813 2018-05-14 05:19:41Z ckuersteiner $
 #
 # SuperAntiSpyware 6.0.1254 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113099");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9813 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:19:41 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 13:06:12 +0100 (Thu, 01 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,8 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An attacker can write to the driver file. The input is not validated, leading to possible BSOD or Privilege Escalation.");
   script_tag(name:"affected", value:"SuperAntiSpyware 6.0.1254");
-  script_tag(name:"solution", value:"No solution available as of 1st February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"No known solution is available as of 14th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/ZhiyuanWang-Chengdu-Qihoo360/SUPERAntiSpyware_POC");
 
