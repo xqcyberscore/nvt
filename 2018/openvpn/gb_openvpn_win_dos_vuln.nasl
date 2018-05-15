@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_win_dos_vuln.nasl 9812 2018-05-14 05:00:55Z cfischer $
+# $Id: gb_openvpn_win_dos_vuln.nasl 9827 2018-05-15 06:11:22Z emoss $
 #
-# OpenVPN DoS Vulnerability (Windows)
+# OpenVPN 2.4.x < 2.4.6 DoS Vulnerability (Windows)
 #
 # Authors:
 # Michael Martin <michael.martin@greenbone.net>
@@ -25,30 +25,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107310");
-  script_version("$Revision: 9812 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:00:55 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9827 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:11:22 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 09:50:01 +0200 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-
   script_tag(name:"qod_type", value:"executable_version_unreliable");
-
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_cve_id("CVE-2018-9336");
-
-  script_name("OpenVPN DoS Vulnerability (Windows)");
-
+  script_name("OpenVPN 2.4.x < 2.4.6 DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
-
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_openvpn_win_detect.nasl");
   script_mandatory_keys("OpenVPN/Win/Ver");
-
   script_tag(name:"summary", value:"OpenVPN is prone to a Denial of Service vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"openvpnserv.exe (aka the interactive service helper) in OpenVPN 2.4.x before
@@ -57,24 +50,26 @@ if( description )
   including privilege escalation.");
   script_tag(name:"affected", value:"OpenVPN version 2.4.x before 2.4.6.");
   script_tag(name:"solution", value:"Upgrade to OpenVPN version 2.4.6 or later.");
-
   script_xref(name:"URL", value:"https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24");
 
-  exit( 0 );
+  exit (0);
 }
 
-CPE = "cpe:/a:OpenVPN:OpenVPN";
+CPE = "cpe:/a:openvpn:openvpn";
 
-include( "host_details.inc" );
-include( "version_func.inc" );
+include ("host_details.inc");
+include ("version_func.inc");
 
-if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
-
-if (version =~ "^2\.4\."){
-if( version_is_less( version: version, test_version: "2.4.6" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "2.4.6" );
-  security_message( data: report, port: 0 );
-  exit( 0 );
- } 
+if (!infos = get_app_version_and_location (cpe:CPE, exit_no_version:TRUE)) {
+  exit (0);
 }
-exit( 99 );
+vers = infos ['version'];
+path = infos ['location'];
+  
+if (vers =~ "^2\.4\." && version_is_less (version:vers, test_version:"2.4.6")){
+  report = report_fixed_ver (installed_version:vers, fixed_version:"2.4.6", install_path:path);
+  security_message (port:0, data:report);
+  exit (0);
+}
+
+exit (99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 9772 2018-05-09 09:19:56Z cfischer $
+# $Id: cgi_directories.nasl 9819 2018-05-14 11:54:00Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 9772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 11:19:56 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9819 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 13:54:00 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -110,6 +110,7 @@ chObfuscatedList = get_kb_list( "www/" + port + "/content/coinhive_obfuscated" )
 frontpageList    = get_kb_list( "www/" + port + "/content/frontpage_results" );
 skippedDirList   = get_kb_list( "www/" + port + "/content/skipped_directories" );
 excludedDirList  = get_kb_list( "www/" + port + "/content/excluded_directories" );
+recursionUrlList = get_kb_list( "www/" + port + "/content/recursion_urls" );
 maxPagesReached  = get_kb_item( "www/" + port + "/content/max_pages_reached" );
 
 #report = 'The hostname "' + http_host_name( port:port ) + '" is used.\n\n'; #TODO is this forking?
@@ -146,6 +147,29 @@ if( get_kb_item( "global_settings/exclude_historic_cgi_dirs" ) ) {
   report += 'Historic /scripts and /cgi-bin are not added to the directories used for CGI scanning. ';
   report += 'You can enable this again with the "Add historic /scripts and /cgi-bin to directories for CGI scanning" ';
   report += 'option within the "Global variable settings" of the scan config in use.\n\n';
+}
+
+if( ! isnull( recursionUrlList ) ) {
+
+  currentItems = 0;
+
+  tmpreport  = 'A possible recursion was detected during CGI scanning:\n\n';
+  tmpreport += 'The service is using a relative URL in one or more HTML references where e.g. /file1.html contains <a href="subdir/file2.html"> ';
+  tmpreport += 'and a subsequent request for subdir/file2.html is linking to subdir/file2.html. This would resolves to subdir/subdir/file2.html ';
+  tmpreport += 'causing a recursion. To work around this counter-measures have been enabled but the service should be fixed as well to not ';
+  tmpreport += 'use such problematic links. Below an excerpt of URLs is shown to help identify those issues.\n\n';
+  tmpreport += 'Syntax : URL (HTML link)\n\n';
+
+  # Sort to not report changes on delta reports if just the order is different
+  recursionUrlList = sort( recursionUrlList );
+
+  foreach url( recursionUrlList ) {
+    currentItems++;
+    # Using a fixed list of five items and not the maxItems from the others is expected.
+    if( currentItems >= 6 ) continue;
+    tmpreport += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
+  }
+  report += tmpreport + '\n';
 }
 
 if( ! isnull( authRequireDirs ) ) {

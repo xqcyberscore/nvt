@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 9828 2018-05-15 06:32:40Z cfischer $
 #
 # Building Automation Systems BAS920 Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:building_automation_systems:bas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812372");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 9828 $");
   script_cve_id("CVE-2017-17974");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:32:40 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 11:58:58 +0530 (Wed, 03 Jan 2018)");
   script_name("Building Automation Systems BAS920 Information Disclosure Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
   Firmware 01.01.00*, HTTPserv 00002, and Script 02.*. Other models may be also
   affected.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 12th April, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 15th May, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -77,12 +77,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-basPort = "";
-dir = "";
-
 if(!basPort = get_app_port(cpe:CPE)){
   exit(0);
 }
+
+get_app_location(cpe:CPE, port:basPort, nofork:TRUE); # To have a reference to the Detection-NVT
 
 url = "/isc/get_sid_js.aspx";
 
@@ -93,4 +92,5 @@ if(http_vuln_check(port:basPort, url:url , pattern: '"name":"', extra_check:make
   security_message(port:basPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

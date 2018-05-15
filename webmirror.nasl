@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 9545 2018-04-20 09:37:08Z cfischer $
+# $Id: webmirror.nasl 9819 2018-05-14 11:54:00Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 9545 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 11:37:08 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9819 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 13:54:00 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -114,6 +114,7 @@ URLs_auth_hash   = make_list();
 Code404          = make_list();
 URLs_discovered  = make_list();
 Check401         = TRUE;
+recur_candidates = make_array();
 
 URLs_hash[start_page] = 0;
 cnt = 0;
@@ -416,6 +417,54 @@ function clean_url( url ) {
   return url;
 }
 
+# This function checks if the passed URL is a recursion candidate
+# and returns TRUE if the same URL was previously collected two times
+# and FALSE otherwise.
+function check_recursion_candidates( url, current, port ) {
+
+  local_var url, current, port, num;
+
+  if( ! url ) return FALSE;
+
+  # A few of those are already checked in canonical_url
+  # but just checking again to be sure...
+  # Examples without recursions:
+  # <a href="#">example1</a>
+  # <a href="./example2">example2</a>
+  # <a href="/example3">example3</a>
+  # <a href="../example4">example4</a>
+  # <a href="./../example5">example5</a>
+  # <a href="https://example6">example6</a>
+  # <a href="//example7">example7</a>
+  if( url =~ "^(https?|\.|/|#)" ) {
+    if( debug > 3 ) display( "***** Not a recursion candidate: '", url, "'\n" );
+    return FALSE;
+  }
+
+  # Recursion candidates are only links to subdirs
+  if( "/" >!< url ) return FALSE;
+
+  # e.g. if a 404 page contains a link like:
+  # <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  # which would be a relative URL to a subfolder of the current path
+  # throwing the same 404 page causing a recursion later...
+  num = recur_candidates[url];
+  if( num ) {
+    num++;
+    if( debug > 3 ) display( "***** Adding possible recursion candidate: '", url, "' (Count: ", num, ")\n" );
+    recur_candidates[url] = num;
+    if( num > 2 ) {
+      if( debug > 3 ) display( "***** Max count ", num, " of recursion for: '", url, "' reached, skipping this URL.\n" );
+      set_kb_item( name:"www/" + port + "/content/recursion_urls", value:current + " (" + url + ")" );
+      return TRUE;
+    }
+  } else {
+    if( debug > 3 ) display( "***** Adding possible recursion candidate: '", url, "' (Count: 1)\n" );
+    recur_candidates[url] = 1;
+  }
+  return FALSE;
+}
+
 function canonical_url( url, current, port ) {
 
   local_var url, current, port;
@@ -429,6 +478,9 @@ function canonical_url( url, current, port ) {
   if( url[0] == "#" ) return NULL;
 
   if( url == "./" || url == "." || url =~ "^\./\?" ) return current;
+
+  # We need to check for a possible recursion, see the function for some background notes.
+  if( check_recursion_candidates( url:url, current:current, port:port ) ) return NULL;
 
   if( debug > 2 ) display( "**** canonical(again) ", url, "\n" );
 

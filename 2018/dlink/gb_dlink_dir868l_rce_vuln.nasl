@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir868l_rce_vuln.nasl 9422 2018-04-10 10:47:08Z asteins $
+# $Id: gb_dlink_dir868l_rce_vuln.nasl 9818 2018-05-14 10:33:24Z asteins $
 #
 # D-Link DIR-868L StarHub Firmware Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112252");
-  script_version("$Revision: 9422 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 12:47:08 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 9818 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-14 12:33:24 +0200 (Mon, 14 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-09 12:25:00 +0200 (Mon, 09 Apr 2018)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ if (description)
 
   script_tag(name: "affected", value: "D-Link DIR-868L with customized Singapore StarHub firmware.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.21SHCb03or later..");
+  script_tag(name: "solution", value: "Upgrade to version 1.21SHCb03 or later.");
 
   script_xref(name: "URL", value: "http://www.dlink.com.sg/dir-868l/#firmware");
   script_xref(name: "URL", value: "https://www.fortinet.com/blog/threat-research/fortiguard-labs-discovers-vulnerability-in--d-link-router-dir868.html");

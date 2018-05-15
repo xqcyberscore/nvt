@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_win_detect.nasl 9786 2018-05-09 14:39:27Z mmartin $
+# $Id: gb_openvpn_win_detect.nasl 9827 2018-05-15 06:11:22Z emoss $
 #
 # OpenVPN Version Detection (Windows)
 #
@@ -24,22 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if(description)
+if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107309");
-  script_version("$Revision: 9786 $");
+  script_version("$Revision: 9827 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:39:27 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:11:22 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:19:44 +0200 (Wed, 09 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("OpenVPN Version Detection (Windows)");
-
-  script_tag(name : "summary" , value : "Detection of installed version of OpenVPN on Windows.
-
+  script_tag(name:"summary" , value:"Detection of installed version of OpenVPN on Windows.
   The script logs in via smb, searches for OpenVPN in the registry
   and gets the version from 'DisplayName' string in registry.");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -50,31 +47,22 @@ if(description)
 }
 
 
-include("cpe.inc");
-include("host_details.inc");
-include("smb_nt.inc");
-include("secpod_smb_func.inc");
+include ("cpe.inc");
+include ("host_details.inc");
+include ("smb_nt.inc");
+include ("secpod_smb_func.inc");
 
-## Variable Initialization
-appExists = FALSE;
-os_arch = "";
-appName = "";
-insloc = "";
-appVer = "";
-
-## Get OS Architecture
-os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch){
- exit(0);
+os_arch = get_kb_item ("SMB/Windows/Arch");
+if (!os_arch){
+ exit (0);
 }
 
-## Check for OpenVPN
-appKey_list = make_list("SOFTWARE\OpenVPN", "SOFTWARE\Wow6432Node\OpenVPN",
+appKey_list = make_list ("SOFTWARE\OpenVPN", "SOFTWARE\Wow6432Node\OpenVPN",
                         "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenVPN");
 foreach appKey (appKey_list)
 {
 
- if(registry_key_exists(key:appKey))
+ if (registry_key_exists(key:appKey))
   {
     appExists = TRUE;
     break;
@@ -83,15 +71,13 @@ foreach appKey (appKey_list)
 
 if (!appExists) exit(0);
 
-## Check for 32 bit platform
-if("x86" >< os_arch){
-  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+if ("x86" >< os_arch){
+  key_list = make_list ("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
-if("x64" >< os_arch)
+if ("x64" >< os_arch)
 {
-  key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+  key_list =  make_list ("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                         "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
  }
 
@@ -99,42 +85,36 @@ foreach key (key_list)
 {
   foreach item (registry_enum_keys(key:key))
   {
-    ## Get the Application name
-    appName = registry_get_sz(key:key + item, item:"DisplayName");
+    appName = registry_get_sz (key:key + item, item:"DisplayName");
     ## Confirm the Application
-    if("OpenVPN" >< appName)
+    if ("OpenVPN" >< appName)
     {
-      ## Extract the version
-      appVer = eregmatch(pattern:"OpenVPN (([0-9.]+)(-I60[12])?)", string:appName);
-      appVer = ereg_replace( pattern:" ", replace:":", string:appVer[1] );
-      if(appVer != NULL)
+      appVer = eregmatch (pattern:"OpenVPN (([0-9.]+)(-I60[12])?)", string:appName);
+      appVer = ereg_replace (pattern:" ", replace:":", string:appVer[1]);
+      if (appVer != NULL)
       {
-        insloc = registry_get_sz(key:key + item, item:"InstallLocation");
-        if(!insloc)
+        insloc = registry_get_sz (key:key + item, item:"InstallLocation");
+        if (!insloc)
             insloc = "Unable to find the install location";
 
-        set_kb_item(name:"OpenVPN/Win/Ver", value:appVer);
+        set_kb_item (name:"OpenVPN/Win/Ver", value:appVer);
 
-        ## Build CPE
-        cpe = build_cpe(value:appVer, exp:"^([0-9.]+):?([a-z]+)?", base:"cpe:/a:OpenVPN:OpenVPN:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:OpenVPN:OpenVPN";
+        cpe = build_cpe (value:appVer, exp:"^([0-9.]+):?([a-z]+)?", base:"cpe:/a:openvpn:openvpn:");
+        if (isnull(cpe))
+          cpe = "cpe:/a:openvpn:openvpn";
 
-        ## Register for 64 bit app on 64 bit OS once again
-        if("64" >< os_arch && "Wow6432Node" >!< key)
+        if ("64" >< os_arch && "Wow6432Node" >!< key)
         {
-          set_kb_item(name:"OpenVPN64/Win/Ver", value:appVer);
+          set_kb_item (name:"OpenVPN64/Win/Ver", value:appVer);
 
-          ## Build CPE
-          cpe = build_cpe(value:appVer, exp:"^([0-9.]+):?([a-z]+)?", base:"cpe:/a:OpenVPN:OpenVPN:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:OpenVPN:OpenVPN:x64";
+          cpe = build_cpe (value:appVer, exp:"^([0-9.]+):?([a-z]+)?", base:"cpe:/a:openvpn:openvpn:x64:");
+          if (isnull(cpe))
+            cpe = "cpe:/a:openvpn:openvpn:x64";
         }
 
-        register_product(cpe:cpe, location:insloc);
+        register_product (cpe:cpe, location:insloc);
         
-        ## Building report
-        log_message(data: build_detection_report(app: appName,
+        log_message (data: build_detection_report (app: appName,
                                            version: appVer,
                                            install: insloc,
                                            cpe: cpe,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3627_2.nasl 9815 2018-05-14 06:45:28Z santu $
+# $Id: gb_ubuntu_USN_3627_2.nasl 9826 2018-05-15 05:08:42Z cfischer $
 #
 # Ubuntu Update for apache2 USN-3627-2
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843516");
-  script_version("$Revision: 9815 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 08:45:28 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9826 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 07:08:42 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 09:25:09 +0200 (Tue, 08 May 2018)");
   script_cve_id("CVE-2017-15710", "CVE-2017-15715", "CVE-2018-1283", "CVE-2018-1301", 
                 "CVE-2018-1303", "CVE-2018-1312"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for apache2 USN-3627-2");
   script_tag(name:"summary", value:"Check the version of apache2");

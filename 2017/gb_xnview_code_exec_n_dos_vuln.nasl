@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 9453 2018-04-12 06:30:01Z cfischer $
+# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 9828 2018-05-15 06:32:40Z cfischer $
 #
 # XnView Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("$Revision: 9453 $");
+  script_version("$Revision: 9828 $");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
                 "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907",
                 "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901",
@@ -55,7 +55,7 @@ if(description)
                 "CVE-2017-14270", "CVE-2017-14541", "CVE-2017-14538", "CVE-2017-9913");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 08:30:01 +0200 (Thu, 12 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:32:40 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
   script_name("XnView Multiple Vulnerabilities");
 
@@ -87,8 +87,8 @@ if(description)
 
   script_tag(name: "affected" , value:"XnView Version 2.44 and earlier");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  12th April, 2018. Information regarding this issue will be updated once
+  script_tag(name: "solution" , value:"No known solution is available as of
+  15th May, 2018. Information regarding this issue will be updated once
   solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -109,8 +109,7 @@ if(!xnVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-if(version_is_less_equal(version:xnVer, test_version:"2.44"))
-{
+if(version_is_less_equal(version:xnVer, test_version:"2.44")){
   report = report_fixed_ver(installed_version:xnVer, fixed_version:"NoneAvailable");
   security_message(data:report);
   exit(0);

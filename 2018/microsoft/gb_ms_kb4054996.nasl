@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4054996.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: gb_ms_kb4054996.nasl 9816 2018-05-14 07:56:52Z santu $
 #
 # Microsoft .NET Framework 3.0 And 2.0 SP2 Multiple Vulnerabilities (KB4054996)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812628");
-  script_version("$Revision: 8699 $");
+  script_version("$Revision: 9816 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_bugtraq_id(102387, 102380);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 09:56:52 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 14:43:54 +0530 (Wed, 10 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework 3.0 And 2.0 SP2 Multiple Vulnerabilities (KB4054996)");
@@ -83,12 +83,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-key = "";
-item = "";
-dotPath = "";
-sysdllVer = "";
-
-if(hotfix_check_sp(win2012:1) <= 0){
+if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
@@ -115,4 +110,4 @@ foreach item (registry_enum_keys(key:key))
     }
   }
 }
-exit(0);
+exit(99);

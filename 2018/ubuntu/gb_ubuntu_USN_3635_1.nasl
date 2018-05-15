@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3635_1.nasl 9815 2018-05-14 06:45:28Z santu $
+# $Id: gb_ubuntu_USN_3635_1.nasl 9826 2018-05-15 05:08:42Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3635-1
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843514");
-  script_version("$Revision: 9815 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 08:45:28 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9826 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 07:08:42 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-01 05:30:51 +0200 (Tue, 01 May 2018)");
   script_cve_id("CVE-2018-4101", "CVE-2018-4113", "CVE-2018-4114", "CVE-2018-4117", 
                 "CVE-2018-4118", "CVE-2018-4119", "CVE-2018-4120", "CVE-2018-4122",
                 "CVE-2018-4125", "CVE-2018-4127", "CVE-2018-4128", "CVE-2018-4129",
                 "CVE-2018-4133", "CVE-2018-4146", "CVE-2018-4161", "CVE-2018-4162",
                 "CVE-2018-4163", "CVE-2018-4165"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for webkit2gtk USN-3635-1");
   script_tag(name: "summary", value: "Check the version of webkit2gtk");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_eol_win.nasl 9695 2018-05-02 12:02:17Z jschulte $
+# $Id: gb_mediawiki_eol_win.nasl 9825 2018-05-14 14:05:11Z cfischer $
 #
 # Mediawiki End of Life Detection (Windows)
 #
@@ -25,12 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114002");
-  script_version("$Revision: 9695 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 14:02:17 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 9825 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-14 16:05:11 +0200 (Mon, 14 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 15:13:48 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,9 +49,12 @@ if( description )
   script_mandatory_keys("mediawiki/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"The Mediawiki version on the remote host has reached the end of life and should not be used anymore.");
-  script_tag(name:"impact", value:"An end of life version of Mediawiki is not receiving any security updates from the vendor.
-		  Unfixed security vulnerabilities might be leveraged by an attacker to compromise the security of this host.");
+
+  script_tag(name:"impact", value:"An end of life version of Mediawiki is not receiving any security updates from the vendor. Unfixed security
+  vulnerabilities might be leveraged by an attacker to compromise the security of this host.");
+
   script_tag(name:"solution", value:"Update the Mediawiki version on the remote host to a still supported version.");
+
   script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is unsupported.");
 
   script_xref(name:"URL", value:"https://www.mediawiki.org/wiki/Version_lifecycle");
@@ -66,17 +68,22 @@ include( "misc_func.inc" );
 include( "products_eol.inc" );
 include( "version_func.inc" );
 include( "host_details.inc" );
+include( "http_func.inc" ); # Both http_ for report_vuln_url()
+include( "http_keepalive.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port, exit_no_version: TRUE ) ) exit( 0 );
+version  = infos['version'];
+location = infos['location'];
+
 if( ret = product_reached_eol( cpe: CPE, version: version ) ) {
-  report = build_eol_message( name: "mediawiki",
+  report = build_eol_message( name: "Mediawiki",
                               cpe: CPE,
                               version: version,
+                              location: report_vuln_url( port: port, url: location, url_only: TRUE ),
                               eol_version: ret["eol_version"],
                               eol_date: ret["eol_date"],
                               eol_type: "prod" );
-
   security_message( port: port, data: report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_98295_win.nasl 9710 2018-05-03 11:12:48Z asteins $
+# $Id: gb_wordpress_98295_win.nasl 9828 2018-05-15 06:32:40Z cfischer $
 #
 # WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Windows)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108156");
-  script_version("$Revision: 9710 $");
+  script_version("$Revision: 9828 $");
   script_cve_id("CVE-2017-8295");
   script_bugtraq_id(98295);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 13:12:48 +0200 (Thu, 03 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:32:40 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-08 11:00:15 +0200 (Mon, 08 May 2017)");
   script_name("WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -66,10 +66,11 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress versions 4.7.4 and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 03rd May, 2018. Information
-  regarding this issue will be updated once solution details are available.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.
 
-  As a temporary solution users can enable UseCanonicalName to enforce static SERVER_NAME value
+  A workaround is to enable UseCanonicalName to enforce static SERVER_NAME value
 
   https://httpd.apache.org/docs/2.4/mod/core.html#usecanonicalname");
 

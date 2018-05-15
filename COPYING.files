@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 14 May 2018 09:10:10 +0200
+# Automatically created on:  Tue, 15 May 2018 08:37:56 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38443,7 +38443,10 @@
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-02_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-02_win.nasl: GPLv2+
 2018/adobe/gb_adobe_coldfusion_mult_vuln_apsb18-14.nasl: GPLv2+
+2018/adobe/gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl: GPLv2+
 2018/adobe/gb_adobe_connect_cmd_inj_n_file_upload_vuln.nasl: GPLv2+
+2018/adobe/gb_adobe_creative_cloud_apsb18-12_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_creative_cloud_apsb18-12_win.nasl: GPLv2+
 2018/adobe/gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_win.nasl: GPLv2+
 2018/adobe/gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl: GPLv2+
@@ -39216,6 +39219,7 @@
 2018/dlink/gb_dlink-dir815_mult_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_850l_bof_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir850l_revB_telnet_backdoor.nasl: GPLv2+
+2018/dlink/gb_dlink_dir868l_csrf_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir868l_rce_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_mult_inf_disc_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_multiple_devices_command_injection_vuln.nasl: GPLv2+
@@ -39978,6 +39982,7 @@
 2018/microsoft/gb_ms_kb4095874.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4095875.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4095876.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4096418.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4096494.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4096495.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4100480.nasl: GPLv2+
@@ -57444,6 +57449,7 @@ gsf/2018/microsoft/gb_ms_kb4018393.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022130.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022135.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022142.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022145.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4034044.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056564.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056613.nasl: GPLv2+
