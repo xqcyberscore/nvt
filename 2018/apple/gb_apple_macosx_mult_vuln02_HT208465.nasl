@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_HT208465.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: gb_apple_macosx_mult_vuln02_HT208465.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-02 (HT208465)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812663");
-  script_version("$Revision: 9681 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2018-4098", "CVE-2018-4082", "CVE-2018-4085", "CVE-2018-4084");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 11:37:13 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-02 (HT208465)");
 
@@ -56,9 +56,8 @@ if(description)
   10.13.3, 10.12.x through 10.12.6 before build 16G1212 and 10.11.x through 10.11.6
   before build 15G19009.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.13.3 or apply the appropriate patch. For updates refer to,
-  https://www.apple.com");
+  script_tag(name: "solution" , value:"Apply the appropriate security patch from
+  the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

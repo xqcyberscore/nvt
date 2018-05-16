@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3640_1.nasl 9815 2018-05-14 06:45:28Z santu $
+# $Id: gb_ubuntu_USN_3640_1.nasl 9830 2018-05-15 07:16:12Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3640-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843519");
-  script_version("$Revision: 9815 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 08:45:28 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9830 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:16:12 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 05:33:51 +0200 (Wed, 09 May 2018)");
   script_cve_id("CVE-2018-4200");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,7 @@ arbitrary code.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
@@ -114,7 +114,7 @@ if(release == "UBUNTU18.04 LTS")
   {
     security_message(data:res);
     exit(0);
-  } 
+  }
 
   if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37:amd64", ver:"2.20.2-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {

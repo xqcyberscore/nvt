@@ -24,61 +24,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804062";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6735 $");
-  script_cve_id("CVE-2013-0984");
+  script_oid("1.3.6.1.4.1.25623.1.0.804062");
+  script_version("$Revision: 9860 $");
+  script_cve_id("CVE-2013-0984", "CVE-2013-0155", "CVE-2013-0276", "CVE-2013-0277",
+                "CVE-2013-0333", "CVE-2013-1854", "CVE-2013-1855", "CVE-2013-1856",
+                "CVE-2013-1857");
   script_bugtraq_id(60328);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 20:19:58 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Directory Service Remote Buffer Overflow Vulnerability");
 
-  tag_summary =
-"This host is running Apple Mac OS X and is prone to buffer overflow
-vulnerability.";
+  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and 
+  is prone to buffer overflow vulnerability.");
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
+  script_tag(name: "vuldetect" , value:"Get the installed version with the help
+  of detect NVT and check the version is vulnerable or not.");
 
-  tag_insight =
-"Flaw is due to improper handling of network messages.";
+  script_tag(name: "insight" , value:"Multiple flaws are due to improper 
+  handling of network messages and multiple errors in ruby on rails.");
 
-  tag_impact =
-"Successful exploitation will allow attackers to, execute arbitrary code or
-cause a denial of service.
+  script_tag(name: "impact" , value:"Successful exploitation will allow 
+  attackers to, execute arbitrary code or cause a denial of service.
 
-Impact Level: System/Application";
+  Impact Level: System/Application");
 
-  tag_affected =
-"Apple Mac OS X version 10.6.8 and prior.";
+  script_tag(name: "affected" , value:"Apple Mac OS X version 10.6.8");
 
-  tag_solution =
-"Run Mac Updates and install OS X v10.8.4 Supplemental Update,
-For updates refer to http://support.apple.com/kb/HT5784";
+  script_tag(name: "solution" , value:"Apply the Mac Security Update 2013-002.
+  For updates refer to Reference links.");
 
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5784");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6001");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53684");
-  script_xref(name : "URL" , value : "http://prod.lists.apple.com/archives/security-announce/2013/Jun/msg00000.html");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
@@ -86,30 +72,31 @@ For updates refer to http://support.apple.com/kb/HT5784";
 
 
 include("version_func.inc");
+include("ssh_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
+if(!osName || "Mac OS X" >!< osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
  exit(0);
 }
 
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if(osVer == "10.6.8")
 {
-  ## Check the affected OS versions
-  if(version_is_less_equal(version:osVer, test_version:"10.6.8"))
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
+    exit(0);
+  }
+
+  if(version_is_less(version:buildVer, test_version:"10K1115"))
   {
-    security_message(0);
+    osVer = osVer + " Build " + buildVer;
+    report = report_fixed_ver(installed_version:osVer, fixed_version:"Apply security update 2013-002 from vendor");
+    security_message(data:report);
     exit(0);
   }
 }
+exit(0);

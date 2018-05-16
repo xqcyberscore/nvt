@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT208221.nasl 7734 2017-11-10 11:35:05Z santu $
+# $Id: gb_apple_macosx_mult_vuln01_HT208221.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple MacOSX Multiple Vulnerabilities - 01 HT208221
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811961");
-  script_version("$Revision: 7734 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-13799", "CVE-2017-11108", "CVE-2017-11541", "CVE-2017-11542",
  		"CVE-2017-11543", "CVE-2017-12893", "CVE-2017-12894", "CVE-2017-12895", 
 		"CVE-2017-12896", "CVE-2017-12897", "CVE-2017-12898", "CVE-2017-12899", 
@@ -54,7 +54,7 @@ if(description)
   script_bugtraq_id(99938, 99941, 99940, 99939, 100913, 100914);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 12:35:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 12:40:42 +0530 (Thu, 02 Nov 2017)");
   script_name("Apple MacOSX Multiple Vulnerabilities - 01 HT208221");
 
@@ -78,9 +78,9 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.13, 10.12.x
   through 10.12.6");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.13.1 or apply the appropriate patch. 
-  For updates refer to, https://www.apple.com");
+  script_tag(name: "solution" , value:"For Apple Mac OS X version 10.13 update to
+  version 10.13.1 and for versions 10.12.x through 10.12.6 apply the appropriate
+  security patch from the reference links."); 
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

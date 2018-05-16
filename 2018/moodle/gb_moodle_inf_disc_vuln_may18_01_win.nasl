@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_inf_disc_vuln_may18_01_win.nasl 9775 2018-05-09 10:41:43Z jschulte $
+# $Id: gb_moodle_inf_disc_vuln_may18_01_win.nasl 9835 2018-05-15 08:55:01Z cfischer $
 #
 # Moodle 3.3.0 Information Disclosure Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113182");
-  script_version("$Revision: 9775 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 12:41:43 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:55:01 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 12:40:45 +0200 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -66,10 +66,12 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( port: port, cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+version = infos['version'];
+path = infos['location'];
 
 if( version_is_equal( version: version, test_version: "3.3.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.1" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.1", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

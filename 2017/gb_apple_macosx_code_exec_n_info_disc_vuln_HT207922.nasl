@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_code_exec_n_info_disc_vuln_HT207922.nasl 6780 2017-07-21 06:15:32Z santu $
+# $Id: gb_apple_macosx_code_exec_n_info_disc_vuln_HT207922.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Code Execution And Information Disclosure Vulnerabilities HT207922
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811538");
-  script_version("$Revision: 6780 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-7021", "CVE-2017-7031", "CVE-2017-7009", "CVE-2017-7022",
                 "CVE-2017-7024", "CVE-2017-7023", "CVE-2017-7028", "CVE-2017-7029",
                 "CVE-2017-7067", "CVE-2017-7032", "CVE-2017-7010", "CVE-2017-7013");
   script_bugtraq_id(99882, 99883, 99889, 99879);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 08:15:32 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-07-20 12:23:38 +0530 (Thu, 20 Jul 2017)");
   script_name("Apple Mac OS X Code Execution And Information Disclosure Vulnerabilities HT207922");
 
@@ -58,9 +58,9 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.12.x before 
   10.12.6, 10.11.x through 10.11.6 and 10.10.x through 10.10.5.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.12.6 or apply the appropriate patch. 
-  For more updates refer to https://www.apple.com");
+  script_tag(name: "solution" , value:"Upgrade Apple Mac OS X to version 10.12.6
+  or later or apply the appropriate security patch for Apple Mac OS X 10.10.x and
+  from 10.11.x. For updates refer to Reference links");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -119,7 +119,7 @@ if(osVer =~ "^(10\.(11|10))")
     buildVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /System/" +
                                               "/Library/CoreServices/SystemVersion " +
                                               "ProductBuildVersion"));
-    ## applying patch on 10.11.6 wil upgrade build version to 15G1611
+    ## applying patch on 10.11.6 will upgrade build version to 15G1611
     ## https://en.wikipedia.org/wiki/OS_X_El_Capitan
     ## The build version before applying patch on 10.10.5 is 14F2411
     ## http://www.insanelymac.com/forum/topic/301416-nvidia-web-driver-updates-for-yosemite-update-05162017/

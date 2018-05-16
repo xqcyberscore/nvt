@@ -1,11 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 9860 2018-05-16 09:27:39Z asteins $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 October-15
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
+#
+# Updated By: Shakeel <bshakeel@secpod.com> on 2018-05-15
+# For proper Version Check
 #
 # Copyright:
 # Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,15 +30,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806148");
-  script_version("$Revision: 6534 $");
-  script_cve_id("CVE-2015-7035", "CVE-2015-7021", "CVE-2015-7020", "CVE-2015-7019",
-                "CVE-2015-7016", "CVE-2015-7007", "CVE-2015-7003", "CVE-2015-6987",
-                "CVE-2015-6985", "CVE-2015-6984", "CVE-2015-5945", "CVE-2015-5944",
-                "CVE-2015-5943", "CVE-2015-5938", "CVE-2015-5934", "CVE-2015-5933",
-                "CVE-2015-5932", "CVE-2015-7024", "CVE-2015-6980");
-  script_tag(name:"cvss_base", value:"8.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 9860 $");
+  script_cve_id("CVE-2015-5943", "CVE-2015-6983", "CVE-2015-7061", "CVE-2015-7060",
+                "CVE-2015-7059", "CVE-2015-7007", "CVE-2015-5945", "CVE-2015-6563",
+                "CVE-2014-3565", "CVE-2012-6151", "CVE-2015-7988", "CVE-2015-6994",
+                "CVE-2015-6988", "CVE-2015-6974", "CVE-2015-7021", "CVE-2015-7020",
+                "CVE-2015-7019", "CVE-2015-7008", "CVE-2015-6990", "CVE-2015-6987",
+                "CVE-2015-6995", "CVE-2015-7017", "CVE-2015-7015", "CVE-2015-7023",
+                "CVE-2015-7006", "CVE-2015-7003");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:54:16 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 October-15");
 
@@ -49,24 +54,24 @@ if(description)
   reference section.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to obtain sensitive information, execute arbitrary code, bypass intended launch
-  restrictions and access restrictions, cause a denial of service, write to
-  arbitrary files,  execute arbitrary code with system privilege.
+  to execute arbitrary code, overwrite cookies, elevate privileges, execute
+  arbitrary code with system privileges, cause unexpected application termination,
+  read kernel memory, conduct impersonation attacks, run arbitrary AppleScript,
+  overwrite arbitrary files and control keychain access prompts.
 
-  Impact Level: System/Application");
+  Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions before 10.11.1");
+  script_tag(name: "affected" , value:"Apple OS X El Capitan versions before
+  10.11.1");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.11.1 or later. For more updates refer to https://www.apple.com");
+  script_tag(name: "solution" , value:"Upgrade Apple OS X El Capitan to version
+  10.11.1 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205317");
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205375");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Oct/msg00007.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -75,33 +80,22 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
+if(!osName || "Mac OS X" >!< osName){
+  exit(0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
+if(!osVer || !(osVer =~ "10.11")){
+  exit(0);
 }
 
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if(version_is_less(version:osVer, test_version:"10.11.1"))
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.11.1"))
-  {
-    report = 'Installed Version: ' + osVer + '\nFixed Version: 10.11.1\n';
-    security_message(data:report);
-    exit(0);
-  }
+  report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11.1");
+  security_message(data:report);
+  exit(0);
 }
+exit(0);

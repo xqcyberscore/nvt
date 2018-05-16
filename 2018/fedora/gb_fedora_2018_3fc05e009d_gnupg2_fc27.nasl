@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3fc05e009d_gnupg2_fc27.nasl 9547 2018-04-20 10:53:23Z santu $
+# $Id: gb_fedora_2018_3fc05e009d_gnupg2_fc27.nasl 9860 2018-05-16 09:27:39Z asteins $
 #
 # Fedora Update for gnupg2 FEDORA-2018-3fc05e009d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874364");
-  script_version("$Revision: 9547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:53:23 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9860 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 09:33:48 +0200 (Mon, 16 Apr 2018)");
   script_cve_id("CVE-2018-9234");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gnupg2 FEDORA-2018-3fc05e009d");
   script_tag(name: "summary", value: "Check the version of gnupg2");

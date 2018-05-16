@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_03.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_apple_macosx_HT208331_03.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple MacOSX Security Updates(HT208331)-03
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812402");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-13826", "CVE-2017-7158");
   script_bugtraq_id(101637);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:38 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331)-03");
 
@@ -53,8 +53,9 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.13.x through 10.13.1 and
   10.12.x through 10.12.6");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.13.2 or later,
-  For updates refer to https://www.apple.com.");
+  script_tag(name: "solution" , value:"For Apple Mac OS X version 10.13.x before
+  10.13.2 update to 10.13.2 and for versions 10.12.x through 10.11.6 apply the
+  appropriate security patch from the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

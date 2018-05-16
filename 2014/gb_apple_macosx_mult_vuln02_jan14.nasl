@@ -24,70 +24,82 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804061";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
-  script_cve_id("CVE-2013-0975", "CVE-2013-0982", "CVE-2013-0983",
-                "CVE-2013-0985", "CVE-2013-0990", "CVE-2013-1024");
-  script_bugtraq_id(60365, 60366, 60367, 60331, 60369, 60368);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804061");
+  script_version("$Revision: 9860 $");
+  script_cve_id("CVE-2013-0982", "CVE-2013-0983", "CVE-2012-5519", "CVE-2013-0985", 
+                "CVE-2013-0989", "CVE-2012-4929", "CVE-2011-1945", "CVE-2011-3207",
+                "CVE-2011-3210", "CVE-2011-4108", "CVE-2011-4109", "CVE-2011-4576",
+                "CVE-2011-4577", "CVE-2011-4619", "CVE-2012-0050", "CVE-2012-2110",
+                "CVE-2012-2131", "CVE-2012-2333", "CVE-2013-0986", "CVE-2013-0987",
+                "CVE-2013-0988", "CVE-2013-0990", "CVE-2013-0975", "CVE-2013-1024");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 19:13:47 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Multiple Vulnerabilities - 02 Jan14");
+ 
+  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  is prone to multiple vulnerabilities.");
 
-  tag_summary =
-"This host is running Apple Mac OS X and is prone to multiple vulnerabilities.";
+  script_tag(name: "vuldetect" , value:"Get the installed version with the help
+  of detect NVT and check the version is vulnerable or not.");
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
+  script_tag(name: "insight" , value:"Multiple flaws are due to,
 
-  tag_insight =
-"Multiple flaws are due to,
-- File sharing allows remote authenticated users to modify files outside the
-  shared directory
-- CoreMedia Playback is not properly initialize memory during the process of
-  text tracks.
-- Private Browsing feature in CFNetwork is not preventing storage of permanent
-  cookies.
-- Disk management is not properly authenticate attempts to disable Filevault.
-- Stack consumption vulnerability in CoreAnimation.
-- Buffer overflow in QuickDraw Manager.";
+  - Permanent cookies were saved after quitting Safari, even when Private 
+    Browsing was enabled.
 
-  tag_impact =
-"Successful exploitation will allow attackers to, execute arbitrary code or
-cause a denial of service.
+  - An unbounded stack allocation issue existed in the handling of text glyphs.
 
-Impact Level: System/Application";
+  - A privilege escalation issue existed in the handling of CUPS configuration 
+    via the CUPS web interface.
 
-  tag_affected =
-"Apple Mac OS X version before 10.8.4";
+  - A local user who is not an administrator may disable FileVault using the 
+    command-line.
 
-  tag_solution =
-"Run Mac Updates and install OS X v10.8.4 Supplemental Update,
-For updates refer to http://support.apple.com/kb/HT5784";
+  - A buffer overflow existed in the handling of MP3 files.
 
+  - A buffer overflow existed in the handling of FPX files.
 
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name:"qod_type", value:"package");
+  - A memory corruption issue existed in the handling of QTIF files.
+
+  -  A buffer overflow existed in the handling of 'enof' atoms.
+
+  -  Multiple errors in OpenSSL.
+
+  - There were known attacks on the confidentiality of TLS 1.0 when compression
+    was enabled.
+
+  - An uninitialized memory access issue existed in the handling of text tracks.
+
+  - A buffer overflow existed in the handling of PICT images.
+
+  - If SMB file sharing is enabled, an authenticated user may be able to write 
+    files outside the shared directory.");
+
+  script_tag(name: "impact" , value:"Successful exploitation will allow
+  attackers to, execute arbitrary code or cause a denial of service or 
+  lead to an unexpected application termination.
+
+  Impact Level: System/Application");
+
+  script_tag(name: "affected" , value:"Apple Mac OS X version 10.8 to 10.8.3,
+  10.7 to 10.7.5 and 10.6.8");
+
+  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version 10.8.4
+  or later or apply appropriate security update for 10.7 and 10.6 versions. 
+  For updates refer to Reference links.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5784");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6001");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53684");
-  script_xref(name : "URL" , value : "http://prod.lists.apple.com/archives/security-announce/2013/Jun/msg00000.html");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
@@ -95,30 +107,56 @@ For updates refer to http://support.apple.com/kb/HT5784";
 
 
 include("version_func.inc");
+include("ssh_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
+if(!osName || "Mac OS X" >!< osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
+if(!osVer || osVer !~ "^(10\.(6|7|8))"){
+  exit(0);
 }
 
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if(osVer == "10.7.5")
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.8.4"))
-  {
-    security_message(0);
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
     exit(0);
   }
+  if(version_is_less(version:buildVer, test_version:"11G1032"))
+  {
+    fix = "Apply patch from vendor";
+    osVer = osVer + " Build " + buildVer;
+  }
 }
+
+if(osVer =~ "^(10\.8)")
+{
+  if(version_is_less(version:osVer, test_version:"10.8.4")){
+    fix = "Upgrade to 10.8.4 or later";
+  }
+}
+
+else if(osVer == "10.6.8")
+{
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
+    exit(0);
+  }
+
+  if(version_is_less(version:buildVer, test_version:"10K1115"))
+  {
+    fix = "Apply patch from vendor";
+    osVer = osVer + " Build " + buildVer;
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:osVer, fixed_version:fix);
+  security_message(data:report);
+  exit(0);
+}
+exit(0);

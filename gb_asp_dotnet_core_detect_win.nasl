@@ -1,8 +1,8 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_detect_win.nasl 8975 2018-02-28 10:27:08Z santu $
+# $Id: gb_asp_dotnet_core_detect_win.nasl 9834 2018-05-15 08:51:49Z santu $
 #
-# ASP.NET Core Detection (Windows)
+# ASP.NET Core/.NET Core SDK Detection (Windows)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812949");
-  script_version("$Revision: 8975 $");
+  script_version("$Revision: 9834 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 11:27:08 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 16:34:26 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
-  script_name("ASP.NET Core Detection (Windows)");
+  script_name("ASP.NET Core/.NET Core SDK Detection (Windows)");
 
   script_tag(name: "summary" , value: "Detection of installed version of
   ASP.NET Core.
@@ -98,6 +98,25 @@ foreach key (key_list1)
     version = eregmatch(pattern:"v([0-9.]+)", string:item);
     coreVer = version[1];
 
+    if(coreVer && !(coreVer =~ "[0-9]+\.[0-9]+\.[0-9]+"))
+    {
+      foreach key (key_list)
+      {
+        foreach item (registry_enum_keys(key:key))
+        {
+          psName = registry_get_sz(key:key + item, item:"DisplayName");
+          if("Microsoft ASP .NET Core" >< psName || "Microsoft ASP.NET Core" >< psName)
+          {
+            version = eregmatch(pattern:"Microsoft ASP( )?.NET Core ([0-9.]+) ", string:psName);
+            if(version[2]){
+              coreVer = version[2];
+              break;
+            }
+          }
+        }
+      }
+    }
+
     if(coreVer)
     {
       set_kb_item(name:"ASP.NET/Core/Ver", value:coreVer);
@@ -120,7 +139,7 @@ foreach key (key_list1)
   }
 }
 
-##ASP.NET Core SDK
+##.NET Core SDK
 foreach key (key_list)
 {
   foreach item (registry_enum_keys(key:key))
@@ -129,17 +148,24 @@ foreach key (key_list)
     if("Microsoft .NET Core SDK" >< psName)
     {
       sdkVer = eregmatch(pattern:"Microsoft .NET Core SDK - ([0-9.]+)", string:psName);
-      sdkPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!sdkPath){
-        sdkPath = "Couldn find the install location from registry";
-      }
 
       if(sdkVer)
       {
-        set_kb_item(name:"ASP.NET/Core/SDK/Ver", value:sdkVer[1]);
-        if("64" >< os_arch && "Wow6432Node" >!< key){
-          set_kb_item(name:"ASP.NET64/Core/SDK/Ver", value:sdkVer[1]);
+        set_kb_item(name:".NET/Core/SDK/Ver", value:sdkVer[1]);
+
+        cpe = build_cpe(value:sdkVer[1], exp:"^([0-9.]+)", base:"cpe:/a:microsoft:.netcore_sdk:");
+        if(!cpe)
+          cpe = "cpe:/a:microsoft:.netcore_sdk:";
+
+        if("64" >< os_arch && "Wow6432Node" >!< key)
+        {
+          set_kb_item(name:".NET64/Core/SDK/Ver", value:sdkVer[1]);
+          cpe = build_cpe(value:sdkVer[1], exp:"^([0-9.]+)", base:"cpe:/a:microsoft:.netcore_sdk:x64:");
+          if(!cpe)
+            cpe = "cpe:/a:microsoft:.netcore_sdk:x64";
         }
+        register_and_report_cpe(app:".NET Core SDK", ver:sdkVer[1], concluded: ".NET Core SDK " + sdkVer[1],
+                              cpename:cpe, insloc:"Couldn find the install location from registry");
         continue;
       }
     }
@@ -147,16 +173,11 @@ foreach key (key_list)
     if("Microsoft .NET Core Runtime" >< psName)
     {
       runVer = eregmatch(pattern:"Microsoft .NET Core Runtime - ([0-9.]+)", string:psName);
-      runPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!runPath){
-        runPath = "Couldn find the install location from registry";
-      }
-
       if(runVer)
       {
-        set_kb_item(name:"ASP.NET/Core/Runtime/Ver", value:runVer[1]);
+        set_kb_item(name:".NET/Core/Runtime/Ver", value:runVer[1]);
         if("64" >< os_arch && "Wow6432Node" >!< key){
-          set_kb_item(name:"ASP.NET64/Core/Runtime/Ver", value:runVer[1]);
+          set_kb_item(name:".NET64/Core/Runtime/Ver", value:runVer[1]);
         }
       }
     }

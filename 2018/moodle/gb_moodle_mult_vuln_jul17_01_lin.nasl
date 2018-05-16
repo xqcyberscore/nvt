@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_jul17_01_lin.nasl 9777 2018-05-09 11:30:52Z asteins $
+# $Id: gb_moodle_mult_vuln_jul17_01_lin.nasl 9835 2018-05-15 08:55:01Z cfischer $
 #
-# Moodle 3.x Multiple Vulnerabilities (Linux)
+# Moodle 3.x Multiple Vulnerabilities - Jul'17 (Linux)
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112267");
-  script_version("$Revision: 9777 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 13:30:52 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:55:01 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 12:36:11 +0200 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -41,7 +41,7 @@ if( description )
   script_cve_id("CVE-2017-7532", "CVE-2017-2642");
   script_bugtraq_id(99617, 99606);
 
-  script_name("Moodle 3.x Multiple Vulnerabilities (Linux)");
+  script_name("Moodle 3.x Multiple Vulnerabilities - Jul'17 (Linux)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -72,22 +72,24 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( port: port, cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+version = infos['version'];
+path = infos['location'];
 
 if( version_is_less( version: version, test_version: "3.1.7" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.1.7" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.1.7", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "3.2.0", test_version2: "3.2.3" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.2.4" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.2.4", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_is_equal( version: version, test_version: "3.3.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.1" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.1", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

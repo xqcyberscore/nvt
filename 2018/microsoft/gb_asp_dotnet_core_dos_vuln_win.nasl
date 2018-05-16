@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_dos_vuln_win.nasl 9478 2018-04-13 13:28:27Z cfischer $
+# $Id: gb_asp_dotnet_core_dos_vuln_win.nasl 9834 2018-05-15 08:51:49Z santu $
 #
 # ASP.NET Core Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813043");
-  script_version("$Revision: 9478 $");
+  script_version("$Revision: 9834 $");
   script_cve_id("CVE-2018-0875");
   script_bugtraq_id(103225);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("ASP.NET Core Denial of Service Vulnerability (Windows)");
 
@@ -82,13 +82,13 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 coreVers = infos['version'];
 path = infos['location'];
 
-if(coreVers != "1.0" && coreVers != "1.1" && coreVers != "2.0"){
+if(!(coreVers =~ "1.0" || coreVers =~ "1.1" || coreVers =~ "2.0")){
   exit(0);
 }
 
-if(!corerunVer = get_kb_item("ASP.NET/Core/Runtime/Ver"))
+if(!corerunVer = get_kb_item(".NET/Core/Runtime/Ver"))
 {
-  if(!codesdkVer = get_kb_item("ASP.NET/Core/SDK/Ver")){
+  if(!codesdkVer = get_kb_item(".NET/Core/SDK/Ver")){
     exit(0);
   }
 }

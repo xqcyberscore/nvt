@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln04_feb17.nasl 5448 2017-03-01 06:27:33Z cfi $
+# $Id: gb_apple_macosx_mult_vuln04_feb17.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-04 February-2017
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810570");
-  script_version("$Revision: 5448 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2016-4662", "CVE-2016-4682", "CVE-2016-4669", "CVE-2016-4675",
                 "CVE-2016-4663");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 07:27:33 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-28 09:04:00 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-04 February-2017");
 
@@ -58,8 +58,8 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.11.x through 
   10.11.6 and 10.10.x through 10.10.5");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.12.1 or later. For more updates refer to https://www.apple.com");
+  script_tag(name: "solution" , value:"Apply the appropriate security patch from
+  the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

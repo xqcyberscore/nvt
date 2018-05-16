@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability
 #
@@ -24,14 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/o:apple:os_x_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806127");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2015-7031");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:05:48 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability");
 
@@ -49,9 +51,9 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions before 5.0.15");
+  script_tag(name: "affected" , value:"Apple Mac OS X Server versions before 5.0.15");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
+  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X Server version
   5.0.15 or later. For more updates refer to https://www.apple.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,38 +65,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_dependencies("gb_apple_macosx_server_detect.nasl");
+  script_mandatory_keys("Apple/OSX/Server/Version");
   exit(0);
 }
 
 
 include("version_func.inc");
+include("host_details.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
-osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
+if(!serVer = get_app_version(cpe:CPE)){
+  exit(0);
 }
 
-## Get the OS Version
-osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
-}
-
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if(version_is_less(version:serVer, test_version:"5.0.15"))
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"5.0.15"))
-  {
-    report = 'Installed Version: ' + osVer + '\nFixed Version: 5.0.15\n';
-    security_message(data:report);
-    exit(0);
-  }
+  report = report_fixed_ver(installed_version:serVer, fixed_version:"5.0.15");
+  security_message(data:report);
+  exit(0);
 }
+exit(0);

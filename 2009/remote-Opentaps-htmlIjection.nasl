@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-Opentaps-htmlIjection.nasl 4455 2016-11-09 11:42:46Z cfi $
+# $Id: remote-Opentaps-htmlIjection.nasl 9837 2018-05-15 09:54:15Z cfischer $
 #
 # Opentaps Search_String Parameter HTML Injection Vulnerability (BID 21702)
 #
@@ -21,11 +21,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apache:opentaps";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101022");
-  script_version("$Revision: 4455 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 12:42:46 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 9837 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 11:54:15 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-24 21:45:26 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -35,33 +37,29 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "remote-detect-Opentaps_ERP_CRM.nasl");
+  script_dependencies("remote-detect-Opentaps_ERP_CRM.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("OpentapsERP/installed");
 
-  tag_summary = "The running Opentaps ERP + CRM is prone to the HTML Injection Vulnerability";
+  script_tag(name:"solution", value:"Download the latest release form opentaps website (http://www.opentaps.org)");
 
-  tag_solution = "Download the latest release form opentaps website (http://www.opentaps.org)";
+  script_tag(name:"summary", value:"The running Opentaps ERP + CRM is prone to the HTML Injection Vulnerability.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
-  script_tag(name:"solution_type", value:"VendorFix"); 
-  script_tag(name:"qod_type", value:"remote_banner"); 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
-
 }
 
 include("revisions-lib.inc");
 include("misc_func.inc");
+include("host_details.inc");
 
-if( ! port = get_kb_item( "OpentapsERP/port" ) ) exit( 0 );
-if( ! version = get_kb_item( "OpentapsERP/version" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( port:port, cpe:CPE ) ) exit( 0 );
 
-if( revcomp( a:version, b:"0.9.3" ) <= 0 ) {
-  # report Opentaps ERP + CRM Search_String Parameter HTML Injection Vulnerability
-  report = "The current Opentaps version " + version + " is affected by a Search_String Parameter HTML injection vulnerability";
+if( revcomp( a:vers, b:"0.9.3" ) <= 0 ) {
+  report = "The current Opentaps version " + vers + " is affected by a Search_String Parameter HTML injection vulnerability.";
   security_message( port:port, data:report );
   exit( 0 );
 }

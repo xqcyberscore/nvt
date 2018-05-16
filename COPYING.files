@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 15 May 2018 08:37:56 +0200
+# Automatically created on:  Wed, 16 May 2018 13:42:13 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38516,6 +38516,8 @@
 2018/apple/gb_apple_icloud_HT208697.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208474.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208694.nasl: GPLv2+
+2018/apple/gb_apple_macosx_code_exec_vuln_may_18.nasl: GPLv2+
+2018/apple/gb_apple_macosx_dos_vuln_may_18.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT208397.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT208692_01.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT208692_02.nasl: GPLv2+
@@ -38523,8 +38525,11 @@
 2018/apple/gb_apple_macosx_HT208742.nasl: GPLv2+
 2018/apple/gb_apple_macosx_info_disc_vuln_HT208465.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mem_corruption_vuln_HT208535.nasl: GPLv2+
+2018/apple/gb_apple_macosx_mult_vuln01_HT205375.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mult_vuln01_HT208465.nasl: GPLv2+
+2018/apple/gb_apple_macosx_mult_vuln02_HT205375.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mult_vuln02_HT208465.nasl: GPLv2+
+2018/apple/gb_apple_macosx_mult_vuln03_HT205375.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mult_vuln03_HT208465.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT208475.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT208695.nasl: GPLv2+
@@ -38735,6 +38740,7 @@
 2018/debian/deb_4197.nasl: GPLv2+
 2018/debian/deb_4198.nasl: GPLv2+
 2018/debian/deb_4199.nasl: GPLv2+
+2018/debian/deb_4200.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39742,6 +39748,7 @@
 2018/gb_sensitive_file_disclosures_http.nasl: GPLv2+
 2018/gb_sftp_ftp_pw_exposure.nasl: GPLv2+
 2018/gb_unprotected_web_app_installers.nasl: GPLv2+
+2018/gb_win_lsc_authentication_info.nasl: GPLv2+
 2018/geovision/gb_geovision_ip_camera_mult_vuln.nasl: GPLv2+
 2018/gnu/gb_mailman_xss_vuln.nasl: GPLv2+
 2018/google/gb_adobe_flash_player_within_chrome_apsb18-05_lin.nasl: GPLv2+
@@ -39845,8 +39852,10 @@
 2018/mediawiki/gb_mediawiki_install_path_disc_vuln_win.nasl: GPLv2+
 2018/memcached/gb_memcached_amplification_attack.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_ancm_dos_vuln_win.nasl: GPLv2+
+2018/microsoft/gb_asp_dotnet_core_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_multiple_vuln.nasl: GPLv2+
+2018/microsoft/gb_dotnet_core_sdk_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_flash_player_for_ie_edge_apsb18-05.nasl: GPLv2+
 2018/microsoft/gb_microsoft_windows_unquoted_path_vulnerabilities.nasl: GPLv2+
 2018/microsoft/gb_ms_defender_malware_prot_eng_rce_vuln_apr18.nasl: GPLv2+
@@ -40045,6 +40054,8 @@
 2018/moodle/gb_moodle_mult_vuln_may18_01_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_may18_02_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_may18_02_win.nasl: GPLv2+
+2018/moodle/gb_moodle_mult_vuln_may18_03_lin.nasl: GPLv2+
+2018/moodle/gb_moodle_mult_vuln_may18_03_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_xss_vuln_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_xss_vuln_win.nasl: GPLv2+
 2018/moodle/gb_moodle_priv_esc_vuln_jan18_01_lin.nasl: GPLv2+
@@ -40502,6 +40513,7 @@
 2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_tabs-responsive_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_uk-cookie-consent_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_ultimate-member_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_ultimate-member_mult_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl: GPLv2+
@@ -41302,6 +41314,7 @@ gb_ibm_doors_web_access_detect.nasl: GPLv2+
 gb_ibm_endpoint_manager_for_remote_control_detect.nasl: GPLv2+
 gb_ibm_endpoint_manager_mdm_installed.nasl: GPLv2+
 gb_ibm_endpoint_manager_web_detect.nasl: GPLv2+
+gb_ibm_flashsystem_detect.nasl: GPLv2+
 gb_ibm_gcm_kvm_webinterface_detect.nasl: GPLv2+
 gb_ibm_guardium_detect.nasl: GPLv2+
 gb_ibm_install_manager_detect_win.nasl: GPLv2+
@@ -41315,6 +41328,7 @@ gb_ibm_security_network_protection_version.nasl: GPLv2+
 gb_ibm_security_network_protection_web_interface_detection.nasl: GPLv2+
 gb_ibm_soliddb_detect.nasl: GPLv2+
 gb_ibm_spss_sample_power_detect_win.nasl: GPLv2+
+gb_ibm_storwize_detect.nasl: GPLv2+
 gb_ibm_tivoli_dir_server_detect.nasl: GPLv2+
 gb_ibm_tiv_tsm_detect_lin.nasl: GPLv2+
 gb_ibm_tsm_client_detect_macosx.nasl: GPLv2+
@@ -57067,6 +57081,7 @@ gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: 
 gsf/2018/abb/gb_microscada_privilege_escalation_vuln.nasl: GPLv2+
 gsf/2018/acrolinx/gb_acrolinx_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
+gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0029.nasl: GPLv2+
@@ -57107,6 +57122,7 @@ gsf/2018/atlassian/gb_atlassian_jira_jraserver-66642.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67076.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67106.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67107.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_jira_jraserver-67289.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_oauth_ssrf_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_xss_vuln.nasl: GPLv2+
 gsf/2018/barni/gb_master_ip_camera01_mult_vuln.nasl: GPLv2+
@@ -57275,6 +57291,7 @@ gsf/2018/f5/gb_f5_big_ip_K13540723.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15217245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K17403481.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
@@ -57297,6 +57314,7 @@ gsf/2018/f5/gb_f5_big_ip_K32262483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K32485746.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K32743437.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K33211839.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K33924005.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34035645.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34341852.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35135935.nasl: GPLv2+
@@ -57361,10 +57379,12 @@ gsf/2018/ibm/gb_ibm_db2_mult_vuln_mar18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_doors_web_access_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_endpoint_manager_for_remote_control_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_endpoint_manager_for_remote_control_rce_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_flashsystem_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_guardium_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_notes_privilege_escalation_apr18_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_storwize_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_tivoli_remote_control_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_privilege_escal_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_was_virtual_member_manager_sec_bypass_vuln.nasl: GPLv2+
@@ -59132,6 +59152,7 @@ Policy/Microsoft/Windows10/Audit/win10_force_audit_subcategory_override.nasl: GP
 Policy/Microsoft/Windows10/Audit/win10_shutdown_if_unable_log_sec_audits.nasl: GPLv2+
 Policy/Microsoft/Windows10/Devices/win10_allowed_format_eject_removable_media.nasl: GPLv2+
 Policy/Microsoft/Windows10/Devices/win10_prevent_users_installing_printer_drivers.nasl: GPLv2+
+Policy/Microsoft/Windows10/DomainMember/win10_encrypt_sign_secure_channel_data.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_administrator_account_status.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_guest_account_status.nasl: GPLv2+

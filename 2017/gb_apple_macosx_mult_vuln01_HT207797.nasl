@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT207797.nasl 6168 2017-05-19 07:06:42Z antu123 $
+# $Id: gb_apple_macosx_mult_vuln01_HT207797.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01-HT207797
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810984");
-  script_version("$Revision: 6168 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-2527", "CVE-2017-6990", "CVE-2017-6979", "CVE-2017-2516",
                 "CVE-2017-2546", "CVE-2017-2512", "CVE-2017-2535", "CVE-2017-2524",
                 "CVE-2017-2537", "CVE-2017-2541", "CVE-2017-2548", "CVE-2017-2540");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 09:06:42 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 15:41:39 +0530 (Tue, 16 May 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01-HT207797");
 
@@ -60,9 +60,8 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.11.x through 
   10.11.6, 10.10.x through 10.10.5 and 10.12.x through 10.12.4");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.12.5 or later, or apply patch from the vendor. For more updates refer to
-  https://www.apple.com");
+  script_tag(name: "solution" , value:"Apply the appropriate security patch from
+  the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -121,7 +120,7 @@ if(osVer =~ "^(10\.(11|10))")
     buildVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /System/" +
                                               "/Library/CoreServices/SystemVersion " +
                                               "ProductBuildVersion"));
-    ## applying patch on 10.11.6 wil upgrade build version to 15G1510
+    ## applying patch on 10.11.6 will upgrade build version to 15G1510
     ## The build version before applying patch on 10.10.5 is 14F2315
     if(buildVer)
     {

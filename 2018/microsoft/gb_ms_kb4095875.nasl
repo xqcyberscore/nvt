@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4095875.nasl 9785 2018-05-09 14:27:34Z santu $
+# $Id: gb_ms_kb4095875.nasl 9834 2018-05-15 08:51:49Z santu $
 #
 # Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4095875)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812881");
-  script_version("$Revision: 9785 $");
+  script_version("$Revision: 9834 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-1039");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:53:54 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4095875)");
 
@@ -92,7 +92,7 @@ foreach item (registry_enum_keys(key:key))
   {
     sysdllVer = fetch_file_version(sysPath:dotPath, file_name:"mscorlib.dll");
     if(!sysdllVer){
-      exit(0);
+      continue;
     }
 
     if(version_in_range(version:sysdllVer, test_version:"2.0.50727.5700", test_version2:"2.0.50727.8783"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 6178 2017-05-19 13:20:53Z antu123 $
+# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Information Disclosure Vulnerability-HT207615
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810982");
-  script_version("$Revision: 6178 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2016-7056");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 15:20:53 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:01:54 +0530 (Fri, 19 May 2017)");
   script_name("Apple Mac OS X Information Disclosure Vulnerability-HT207615");
 
@@ -52,9 +52,9 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.11.x through 
   10.11.6 and 10.12.x through 10.12.3");
 
-  script_tag(name: "solution" , value:"Upgrade to 10.12.4 or apply the appropriate
-  patch from the vendor. For more updates refer to
-  https://www.apple.com");
+  script_tag(name: "solution" , value:"For Apple Mac OS X version 10.12.x through
+  10.12.3 upgrade to 10.12.4 and for versions 10.11.x through 10.11.6 apply the
+  appropriate security patch. For more updates refer to Reference links");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -94,7 +94,7 @@ if(osVer =~ "^(10\.11)")
     fix = "Upgrade to latest OS release and apply patch from vendor";
   }
 
-  ## applying patch on 10.11.6 wil upgrade build version to 15G1421
+  ## applying patch on 10.11.6 will upgrade build version to 15G1421
   else if(version_is_equal(version:osVer, test_version:"10.11.6"))
   {
     ## SSH login and Checking for patch, build version

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_priv_escalation_vuln_HT207797.nasl 6268 2017-06-01 14:48:58Z teissa $
+# $Id: gb_apple_macosx_priv_escalation_vuln_HT207797.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Privilege Escalation Vulnerability-HT207797
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810985");
-  script_version("$Revision: 6268 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-2533");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 15:41:39 +0530 (Tue, 16 May 2017)");
   script_name("Apple Mac OS X Privilege Escalation Vulnerability-HT207797");
 
@@ -52,9 +52,10 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.11.x through 
   10.11.6 and 10.12.x through 10.12.4");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version 10.12.5
-  or later, or apply patch from the vendor. For more updates refer to
-  https://www.apple.com");
+  script_tag(name: "solution" , value:"For Apple Mac OS X version 10.12.x before
+  10.12.4 update to 10.12.5 and for versions 10.11.x through 10.11.6 apply the
+  appropriate security patch from the reference links. 
+  For more updates refer to https://www.apple.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -98,7 +99,7 @@ if(osVer =~ "^(10\.11)")
     fix = "Upgrade to latest OS release and apply patch from vendor";
   }  
   
-  ## applying patch on 10.11.6 wil upgrade build version to 15G1510
+  ## applying patch on 10.11.6 will upgrade build version to 15G1510
   else if(version_is_equal(version:osVer, test_version:"10.11.6"))
   {
     ## SSH login and Checking for patch, build version

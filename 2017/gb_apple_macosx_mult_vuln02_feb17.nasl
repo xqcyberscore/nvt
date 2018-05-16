@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_feb17.nasl 5448 2017-03-01 06:27:33Z cfi $
+# $Id: gb_apple_macosx_mult_vuln02_feb17.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-02 February-2017
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810568");
-  script_version("$Revision: 5448 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2016-8670", "CVE-2016-9933", "CVE-2016-9934", "CVE-2017-2353",
                 "CVE-2017-2358", "CVE-2017-2361", "CVE-2017-2357", "CVE-2017-2370",
                 "CVE-2017-2360", "CVE-2016-8687", "CVE-2016-1248");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 07:27:33 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-28 09:04:00 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-02 February-2017");
 
@@ -59,10 +59,11 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X version before 10.12.3");
+  script_tag(name: "affected" , value:"Apple Mac OS X version 10.12.x before
+  10.12.3");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.12.3 or later. For more updates refer to https://www.apple.com");
+  10.12.3 or later. For updates refer to Reference links");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,27 +82,19 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.12.3"))
+  if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.12.2"))
   {
     report = report_fixed_ver(installed_version:osVer, fixed_version:"10.12.3");
     security_message(data:report);

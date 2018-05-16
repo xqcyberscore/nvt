@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_mar15.nasl 6601 2017-07-07 10:00:10Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_mar15.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities -01 Mar15
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805483");
-  script_version("$Revision: 6601 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2014-8838", "CVE-2014-8837", "CVE-2014-8835", "CVE-2014-8834",
                 "CVE-2014-8833", "CVE-2014-8832", "CVE-2014-8831", "CVE-2014-8830",
                 "CVE-2014-8829", "CVE-2014-8828", "CVE-2014-8827", "CVE-2014-8826",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(72328);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2015-03-05 17:54:00 +0530 (Thu, 05 Mar 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities -01 Mar15");
 
@@ -57,10 +57,11 @@ if(description)
   Impact Level: System/Application");
 
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.10.x through
-  10.10.1, 10.8.5 and 10.9.5");
+  10.10.1, 10.8.x through 10.8.5 and 10.9.x through 10.9.5");
 
   script_tag(name: "solution", value:"Upgrade to Apple Mac OS X version 10.10.2
-  For more updates refer to https://www.apple.com/");
+  or later or apply security update 2015-001 for 10.8.x and 10.9.x versions.
+  For updates refer to Reference links.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT204244");
@@ -76,48 +77,60 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
+if(!osVer || osVer !~ "^(10\.(8|9|10))" || "Mac OS X" >!< osName){
+  exit(0);
 }
 
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if((osVer == "10.9.5") || (osVer == "10.8.5"))
 {
-  ## Check the affected OS versions
-  if(version_in_range(version:osVer, test_version:"10.10", test_version2:"10.10.1"))
-  {
-    fix = "10.10.2";
-    VULN = TRUE ;
-  }
-
-  if(version_is_equal(version:osVer, test_version:"10.9.5"))
-  {
-    fix = "10.10.2";
-    VULN = TRUE ;
-  }
-
-  if(version_is_equal(version:osVer, test_version:"10.8.5"))
-  {
-    fix = "10.10.2";
-    VULN = TRUE ;
-  }
-
-  if(VULN)
-  {
-    report = 'Installed Version: ' + osVer + '\nFixed Version:     ' + fix + '\n';
-    security_message(data:report);
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
     exit(0);
   }
+
+  if(osVer == "10.9.5" && version_is_less(version:buildVer, test_version:"13F34"))
+  {
+    fix = "Apply Security Update 2015-001";
+    osVer = osVer + " Build " + buildVer;
+  }
+
+  else if(osVer == "10.8.5" && version_is_less(version:buildVer, test_version:"12F1107"))
+  {
+    fix = "Apply Security Update 2015-001";
+    osVer = osVer + " Build " + buildVer;
+  }
 }
+
+if(osVer =~ "^(10\.9)")
+{
+  if(version_is_less(version:osVer, test_version:"10.9.5")){
+    fix = "Upgrade to latest OS release 10.9.5 and apply patch from vendor";
+  }
+}
+else if(osVer =~ "^(10\.8)")
+{
+  if(version_is_less(version:osVer, test_version:"10.8.5")){
+    fix = "Upgrade to latest OS release 10.8.5 and apply patch from vendor";
+  }
+}
+
+else if(osVer =~ "^(10\.10)")
+{
+  if(version_is_less(version:osVer, test_version:"10.10.2")){
+    fix = "10.10.2";
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:osVer, fixed_version:fix);
+  security_message(data:report);
+  exit(0);
+}
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-ApacheOfbiz.nasl 9822 2018-05-14 13:18:48Z cfischer $
+# $Id: remote-detect-ApacheOfbiz.nasl 9856 2018-05-16 08:21:44Z cfischer $
 #
 # Apache Open For Business (OFBiz) Detection
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101019");
-  script_version("$Revision: 9822 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 15:18:48 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9856 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 10:21:44 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-18 23:46:40 +0200 (Sat, 18 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,9 +54,15 @@ include("cpe.inc");
 
 port = get_http_port( default:8443 );
 
-foreach module( make_list( '/accounting/control/main', '/partymgr/control/main', '/webtools/control/main', '/ordermgr/control/main' ) ) {
+foreach module( make_list( '/accounting', '/ap', '/ar', '/assetmaint',
+                           '/catalog', '/content', '/facility', '/humanres',
+                           '/manufacturing', '/marketing', '/myportal', '/ordermgr',
+                           '/partymgr', '/projectmgr', '/sfa', '/scrum', '/workeffort',
+                           '/solr', '/birt', '/bi', '/ebay', '/example', '/exampleext',
+                           '/hhfacility', '/webpos', '/webtools', '/ofbizsetup' ) ) {
 
-  req = http_get( item:module, port:port );
+  url = module + "/control/main";
+  req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
   if( ! res || res !~ "^HTTP/1\.[01] 200" ) continue;
@@ -66,14 +72,13 @@ foreach module( make_list( '/accounting/control/main', '/partymgr/control/main',
   # <title>OFBiz: Accounting Manager: Login</title>
   ofbizTitle = eregmatch( pattern:"<title>([a-zA-Z: &#3;]+)</title>", string:res, icase:TRUE );
   if( ( ofbizTitle && 'ofbiz' >< tolower( ofbizTitle[1] ) ) || "neogia_logo.png" >< res ) {
-    report += '\nDetected Apache Open For Business Module[' + ofbizTitle[1] +']';
-    set_kb_item( name:"ApacheOFBiz/installed", value:TRUE );
+    extra += '\n[' + ofbizTitle[1] +']:' + report_vuln_url( port:port, url:url, url_only:TRUE );
     installed = TRUE;
+    set_kb_item( name:"ApacheOFBiz/" + port + "/modules", value:module );
 
     vendor = eregmatch( pattern:'powered by <a href="http://ofbiz.apache.org" target="_blank">([a-zA-Z ]+) ([0-9.]+)', string:res, icase:TRUE );
     if( vendor ) {
       version = vendor[2];
-      report += "\nDetected " + vendor[1] + " " + version;
       replace_kb_item( name:"ApacheOFBiz/" + port + "/version", value:version );
     }
   }
@@ -81,6 +86,8 @@ foreach module( make_list( '/accounting/control/main', '/partymgr/control/main',
 
 if( installed ) {
 
+  extra = '\n\nDetected Modules:\n' + extra;
+  set_kb_item( name:"ApacheOFBiz/installed", value:TRUE );
   if( ! version ) version = "unknown";
   install = "/";
 
@@ -94,8 +101,7 @@ if( installed ) {
                                             version:version,
                                             install:install,
                                             cpe:cpe,
-                                            concluded:vendor[0],
-                                            extra:report ),
+                                            concluded:vendor[0] ) + extra, # We don't want to add the "Extra information:" text...
                                             port:port );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_oct15.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_apple_macosx_mult_vuln02_oct15.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-02 October-15
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806154");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2015-7761", "CVE-2015-7760", "CVE-2015-5922", "CVE-2015-5917",
                 "CVE-2015-5915", "CVE-2015-5914", "CVE-2015-5913", "CVE-2015-5902",
                 "CVE-2015-5901", "CVE-2015-5900", "CVE-2015-5897", "CVE-2015-5894",
@@ -40,7 +40,7 @@ if(description)
                 "CVE-2015-3785");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:24:34 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-02 October-15");
 
@@ -82,30 +82,23 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.11"))
+  if(version_in_range(version:osVer, test_version:"10.6.8", test_version2:"10.11"))
   {
-    report = 'Installed Version: ' + osVer + '\nFixed Version: 10.11\n';
+    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11");
     security_message(data:report);
     exit(0);
   }
 }
+exit(0);

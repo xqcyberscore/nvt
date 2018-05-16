@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_xss_vuln_jan18_01_lin.nasl 9777 2018-05-09 11:30:52Z asteins $
+# $Id: gb_moodle_xss_vuln_jan18_01_lin.nasl 9835 2018-05-15 08:55:01Z cfischer $
 #
 # Moodle 3.x XSS Vulnerability - Jan'18 (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112271");
-  script_version("$Revision: 9777 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 13:30:52 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:55:01 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 13:39:41 +0200 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -68,22 +68,24 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( port: port, cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+version = infos['version'];
+path = infos['location'];
 
 if( version_is_less( version: version, test_version: "3.1.10" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.1.10" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.1.10", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "3.2.0", test_version2: "3.2.6" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.2.7" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.2.7", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "3.3.0", test_version2: "3.3.3" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.4" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.3.4", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

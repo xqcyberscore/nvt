@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 9243 2018-03-28 12:35:07Z cfischer $
+# $Id: smb_registry_access.nasl 9851 2018-05-16 05:52:56Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 9243 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 14:35:07 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9851 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 07:52:56 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -118,7 +118,7 @@ if( ! tid ) {
   exit( 0 );
 }
 
-message = 'It was not possible to connect to the PIPE\\winreg on the remote host. If you intend to use OpenVAS to ' +
+message = 'It was not possible to connect to the PIPE\\winreg on the remote host. If you intend to use the Scanner to ' +
           'perform registry-based checks, the registry checks will not work because the \'Remote ' +
           'Registry\' service is not running or has been disabled on the remote host.' +
           '\n\nPlease either:\n' +
@@ -132,7 +132,7 @@ startErrors = get_kb_list( "RemoteRegistry/Win/Service/Manual/Failed" );
 if( startErrors ) {
   message += '\n- check the below error which might provide additional info.';
   message += '\n\nThe scanner tried to start the \'Remote Registry\' service but received the following errors:\n';
-  foreach startError ( startErrors ) {
+  foreach startError( startErrors ) {
     # Clean-up the logs from the wmiexec.py before reporting it to the end user
     startError = ereg_replace( string:startError, pattern:".*Impacket.*Core Security Technologies", replace:"" );
     message += startError + '\n';
@@ -146,6 +146,8 @@ if( ! r ) {
   # has the "Automatic (Trigger Start)" Startup Type set and the service wasn't running yet.
   r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
   if( ! r ) {
+    # Saved for later use in gb_win_lsc_authentication_info.nasl
+    set_kb_item( name:"SMB/registry_access/error", value:message );
     log_message( port:0, data:message );
     close( soc );
     exit( 0 );
@@ -162,6 +164,8 @@ r = pipe_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
 close( soc );
 
 if( ! r ) {
+  # Saved for later use in gb_win_lsc_authentication_info.nasl
+  set_kb_item( name:"SMB/registry_access/error", value:message );
   log_message( port:0, data:message );
 } else {
   set_kb_item( name:"SMB/registry_access", value:TRUE );

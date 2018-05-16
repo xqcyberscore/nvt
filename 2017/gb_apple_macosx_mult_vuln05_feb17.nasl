@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln05_feb17.nasl 5448 2017-03-01 06:27:33Z cfi $
+# $Id: gb_apple_macosx_mult_vuln05_feb17.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-05 February-2017
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810571");
-  script_version("$Revision: 5448 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2016-4683", "CVE-2016-4671", "CVE-2016-4681");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 07:27:33 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-28 09:04:00 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-05 February-2017");
 

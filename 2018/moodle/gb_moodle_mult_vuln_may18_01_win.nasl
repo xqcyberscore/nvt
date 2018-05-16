@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_may18_01_win.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
+# $Id: gb_moodle_mult_vuln_may18_01_win.nasl 9835 2018-05-15 08:55:01Z cfischer $
 #
-# Moodle 3.0.3 Multiple Vulnerabilities (Windows)
+# Moodle 2.x / 3.x Multiple Vulnerabilities - May'16 (Windows)
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113176");
-  script_version("$Revision: 9762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 9835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:55:01 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 13:00:00 +0200 (Tue, 08 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if( description )
   script_cve_id("CVE-2016-3729", "CVE-2016-3731", "CVE-2016-3732", "CVE-2016-3733", "CVE-2016-3734");
   script_bugtraq_id(91281);
 
-  script_name("Moodle 3.0.3 Multiple Vulnerabilities (Windows)");
+  script_name("Moodle 2.x / 3.x Multiple Vulnerabilities - May'16 (Windows)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -81,28 +81,30 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( port: port, cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+version = infos['version'];
+path = infos['location'];
 
 if( version_is_less( version: version, test_version: "2.7.14" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "2.7.14" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "2.7.14", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "2.8.0", test_version2: "2.8.11" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "2.8.12" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "2.8.12", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "2.9.0", test_version2: "2.9.5" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "2.9.6" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "2.9.6", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "3.0.0", test_version2: "3.0.3" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "3.0.4" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "3.0.4", install_path: path );
   security_message( data: report, port: port );
   exit( 0 );
 }

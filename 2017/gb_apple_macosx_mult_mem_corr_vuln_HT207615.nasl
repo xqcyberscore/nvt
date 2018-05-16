@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_mem_corr_vuln_HT207615.nasl 6181 2017-05-19 14:58:21Z teissa $
+# $Id: gb_apple_macosx_mult_mem_corr_vuln_HT207615.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Memory Corruption Vulnerabilities-HT207615
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810994");
-  script_version("$Revision: 6181 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2017-2432", "CVE-2017-5029");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 16:58:21 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 11:40:15 +0530 (Fri, 19 May 2017)");
   script_name("Apple Mac OS X Multiple Memory Corruption Vulnerabilities-HT207615");
 
@@ -53,9 +53,9 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X version 10.12.x through
   10.12.3, 10.11.x through 10.11.6 and 10.10.x through 10.10.5");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version 10.12.4
-  or apply the appropriate patch from the vendor. For updates refer to
-  https://www.apple.com");
+  script_tag(name: "solution" , value:"Upgrade Apple Mac OS X 10.12.x to 10.12.4
+  or apply the appropriate security patch for Apple Mac OS X 10.11.x and 10.10.x.
+  For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -111,8 +111,8 @@ if(osVer =~ "^(10\.(11|10))")
     buildVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /System/" +
                                               "/Library/CoreServices/SystemVersion " +
                                               "ProductBuildVersion"));
-    ## applying patch on 10.11.6 wil upgrade build version to 15G1421
-    ## applying patch on 10.10.5 wil upgrade build version to 14F2315
+    ## applying patch on 10.11.6 will upgrade build version to 15G1421
+    ## applying patch on 10.10.5 will upgrade build version to 14F2315
     if(buildVer)
     {
       if((osVer == "10.11.6" && version_is_less(version:buildVer, test_version:"15G1421")) ||

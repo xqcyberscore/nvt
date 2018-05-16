@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_mail_detect.nasl 7014 2017-08-28 10:15:39Z ckuersteiner $
+# $Id: gb_icewarp_mail_detect.nasl 9845 2018-05-15 13:33:19Z cfischer $
 #
 # IceWarp Mail Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140330");
-  script_version("$Revision: 7014 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-28 12:15:39 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 9845 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-15 15:33:19 +0200 (Tue, 15 May 2018) $");
   script_tag(name: "creation_date", value: "2017-08-28 15:51:57 +0700 (Mon, 28 Aug 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,6 +67,7 @@ function _report(port, version, concluded, service)
     return;
 
   set_kb_item(name: "icewarp/installed", value: TRUE);
+  set_kb_item(name: "icewarp/mail/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:icewarp:mail_server:");
   if (!cpe)
@@ -82,6 +83,7 @@ function _report(port, version, concluded, service)
 
 # SMTP
 ports = get_kb_list("Services/smtp");
+if (!ports) ports = make_list(25, 465, 587);
 
 foreach port (ports) {
   if (get_port_state(port)) {
@@ -97,6 +99,7 @@ foreach port (ports) {
 
 # IMAP
 ports = get_kb_list("Services/imap");
+if (!ports) ports = make_list(143);
 
 foreach port (ports) {
   if (get_port_state(port)) {
@@ -112,6 +115,7 @@ foreach port (ports) {
 
 # POP3
 ports = get_kb_list("Services/pop3");
+if (!ports) ports = make_list(110);
 
 foreach port (ports) {
   if (get_port_state(port)) {

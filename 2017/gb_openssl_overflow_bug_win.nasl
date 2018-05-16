@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_overflow_bug_win.nasl 9403 2018-04-09 07:48:27Z asteins $
+# $Id: gb_openssl_overflow_bug_win.nasl 9829 2018-05-15 07:08:59Z cfischer $
 #
 # OpenSSL Overflow Vulnerability - DEC 2017 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107270");
-  script_version("$Revision: 9403 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 9829 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:08:59 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3738");
   script_bugtraq_id(102118);
@@ -38,7 +38,7 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Overflow Vulnerability - DEC 2017 (Windows)");
 
   script_tag(name: "summary", value: "This host is running OpenSSL and is prone

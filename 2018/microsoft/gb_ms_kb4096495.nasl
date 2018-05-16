@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4096495.nasl 9785 2018-05-09 14:27:34Z santu $
+# $Id: gb_ms_kb4096495.nasl 9834 2018-05-15 08:51:49Z santu $
 #
 # Microsoft .NET Framework 4.5.2 Security Feature Bypass And DoS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813184");
-  script_version("$Revision: 9785 $");
+  script_version("$Revision: 9834 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-1039");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:50:29 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft .NET Framework 4.5.2 Security Feature Bypass And DoS Vulnerabilities");
 
@@ -97,12 +97,12 @@ foreach item (registry_enum_keys(key:key))
   {
     sysdllVer = fetch_file_version(sysPath:dotPath, file_name:"mscorlib.dll");
     if(!sysdllVer){
-      exit(0);
+      continue;
     }
 
     if(version_in_range(version:sysdllVer, test_version:"4.0.30319.30000", test_version2:"4.0.30319.36439"))
     {
-      report = report_fixed_ver(file_checked:dotPath + "\mscorlib.dll",
+      report = report_fixed_ver(file_checked:dotPath + "mscorlib.dll",
                                 file_version:sysdllVer, vulnerable_range:"4.0.30319.30000 - 4.0.30319.36439");
       security_message(data:report);
       exit(0);

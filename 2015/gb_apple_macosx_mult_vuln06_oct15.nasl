@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln06_oct15.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_apple_macosx_mult_vuln06_oct15.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-06 October-15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806151");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2014-4459", "CVE-2014-4458");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 14:23:09 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-06 October-15");
 
@@ -49,10 +49,11 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions before 10.10.1");
+  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.x before
+  10.10.1");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.10.1 or later. For more updates refer to https://www.apple.com");
+  10.10.1 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,29 +71,21 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
  exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.10.1"))
+  if(osVer =~ "^(10\.)" && version_is_less(version:osVer, test_version:"10.10.1"))
   {
-    report = 'Installed Version: ' + osVer + '\nFixed Version: 10.10.1\n';
+    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.10.1");
     security_message(data:report);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_apr17.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_apple_macosx_mult_vuln01_apr17.nasl 9846 2018-05-15 14:10:09Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 April-2017
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810929");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 9846 $");
   script_cve_id("CVE-2010-0540", "CVE-2010-0302", "CVE-2010-1748", "CVE-2010-0545",
                 "CVE-2010-0186", "CVE-2010-0187", "CVE-2010-0546", "CVE-2010-1374", 
                 "CVE-2010-1411", "CVE-2009-4212", "CVE-2010-0734", "CVE-2010-0541",
@@ -37,7 +37,7 @@ if(description)
                     37749, 38162, 40895, 40893, 34916, 36196, 40892);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 11:40:44 +0530 (Tue, 18 Apr 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 April-2017");
 
@@ -80,8 +80,8 @@ if(description)
   script_tag(name: "affected" , value:"Apple Mac OS X and Mac OS X Server
   version 10.5.8, 10.6 through 10.6.3");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.6.4 or later. For more updates refer to https://www.apple.com");
+  script_tag(name: "solution" , value:"Apply the appropriate security patch from
+  the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

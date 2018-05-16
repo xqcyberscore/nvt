@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 9401 2018-04-09 07:11:51Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 9845 2018-05-15 13:33:19Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 9401 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:11:51 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 9845 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-15 15:33:19 +0200 (Tue, 15 May 2018) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -105,7 +105,7 @@ foreach kb_item( keys( kb_array ) ) {
 info_array["Port used for authenciated scans (kb_ssh_transport())"] = kb_ssh_transport() + "/tcp";
 info_array["User used for authenciated scans (kb_ssh_login())"] = kb_ssh_login();
 
-report += text_format_table( array:info_array, columnheader:make_list( "Description (Knowledge base entry)", "Value/Content" ) );
+report = text_format_table( array:info_array, columnheader:make_list( "Description (Knowledge base entry)", "Value/Content" ) );
 if( locate_broken ) {
   report += '\n\nNOTE: The locate command seems to be unavailable for this user/account/system. ';
   report += "This command is highly recommended for authenticated scans. ";
