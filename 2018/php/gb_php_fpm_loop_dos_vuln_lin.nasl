@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_loop_dos_vuln_lin.nasl 9180 2018-03-22 15:38:54Z cfischer $
+# $Id: gb_php_fpm_loop_dos_vuln_lin.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # PHP 'PHP-FPM' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812520");
-  script_version("$Revision: 9180 $");
+  script_version("$Revision: 9877 $");
   script_cve_id("CVE-2015-9253");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 16:38:54 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 18:02:59 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'PHP-FPM' Denial of Service Vulnerability (Linux)");
 
@@ -57,9 +57,8 @@ if(description)
 
   script_tag(name:"affected", value:"PHP versions 5.x to 5.4.43 and 7.x to 7.2.2 on Linux.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of                                                                  
-  20th Feb, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=70185");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=75968");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1289.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_1289.nasl 9879 2018-05-17 06:01:01Z cfischer $
 #
 # Auto-generated from advisory DSA 1289-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891289");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 9879 $");
   script_cve_id("CVE-2018-7050", "CVE-2018-7051", "CVE-2018-7052");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1289-1] irssi security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 08:01:01 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -56,7 +56,16 @@ SILC and ICB protocols via plugins.");
 0.8.15-5+deb7u5.
 
 We recommend that you upgrade your irssi packages.");
-  script_tag(name:"summary",  value:"<summary>");
+  script_tag(name:"summary",  value:"It was discovered that there where a number of vulnerabilities in irssi,
+the terminal based IRC client:
+
+  - CVE-2018-7050: Null pointer dereference for an 'empty' nick.
+
+  - CVE-2018-7051: Certain nick names could result in out-of-bounds
+    access when printing theme strings.
+
+  - CVE-2018-7052: When the number of windows exceeds the available space, a
+    crash could occur due to another NULL pointer dereference.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -77,5 +86,5 @@ if ((res = isdpkgvuln(pkg:"irssi-dev", ver:"0.8.15-5+deb7u5", rls_regex:"DEB7\.[
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_homematic_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_homematic_mult_vuln.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # HomeMatic CCU2 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eq-3:homematic_ccu2";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140807");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9877 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name: "creation_date", value: "2018-02-23 16:19:23 +0700 (Fri, 23 Feb 2018)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -76,8 +76,8 @@ attackers to write arbitrary files to the device's filesystem. (CVE-2018-7300)
 - Open XML-RPC port without authentication. This can be exploited by sending arbitrary XML-RPC requests to control
 the attached BidCos devices. (CVE-2018-7301)");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 23nd February, 2018.
-Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-fileread");
   script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-remote-code-execution");

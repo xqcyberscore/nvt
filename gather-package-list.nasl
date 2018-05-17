@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9815 2018-05-14 06:45:28Z santu $
+# $Id: gather-package-list.nasl 9864 2018-05-16 12:37:02Z santu $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9815 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 08:45:28 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 9864 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:37:02 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -188,6 +188,7 @@ OS_CPE = make_array(
     "CentOS2", "cpe:/o:centos:centos:2",
 
     # Fedora / Fedora Core
+    "FC28", "cpe:/o:fedoraproject:fedora:28",
     "FC27", "cpe:/o:fedoraproject:fedora:27",
     "FC26", "cpe:/o:fedoraproject:fedora:26",
     "FC25", "cpe:/o:fedoraproject:fedora:25",
@@ -1586,7 +1587,14 @@ if( "Fedora release 27" >< rls && "(Twenty Seven)" >< rls ) {
   register_detected_os( os:rls, oskey:"FC27" );
   exit( 0 );
 }
-
+if( "Fedora release 28" >< rls && "(Twenty Eight)" >< rls ) {
+  set_kb_item( name:"ssh/login/fedora", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running " + rls );
+  register_detected_os( os:rls, oskey:"FC28" );
+  exit( 0 );
+}
 # Red Hat Enterprise Linux ES release 2.1 (Panama)
 # Red Hat Enterprise Linux AS release 3 (Taroon Update 1)
 # Red Hat Enterprise Linux AS release 3 (Taroon Update 2)

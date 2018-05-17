@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_kentico_cms_xss_vuln.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # Kentico CMS 9-11 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113118");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9877 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:34:43 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -51,28 +51,9 @@ if( description )
 
   script_tag(name:"summary", value:"Kentico CMS is prone to an XSS Vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:'1 Log in as administrator.
-
-  2 Go to "Pages".
-
-  3 At "Edit" on left panel, select any page under site.
-
-  4 Click "Template" tab locate on top right panel.
-
-  5 Under "Template" tab, select "Edit template properties".
-
-  6 Select "Device layout".
-
-  7 Select "Create device layout".
-
-  8 At popped "New device layout" select device on drop-down list and save.
-
-  9 Edit created device layout, select "Design".
-
-  10 Inject \')};alert(\'xss\');// into \"devicename\" parameter.
-  ');
   script_tag(name:"affected", value:"Kentico CMS versions 9 through 11.");
-  script_tag(name:"solution", value:"No solution available as of 20th February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/archive/1/541792");
   script_xref(name:"URL", value:"https://devnet.kentico.com/download/hotfixes");
@@ -88,8 +69,8 @@ include( "version_func.inc" );
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
-if( version_in_range( version: version, test_version: "9.0.0", test_version2:"11.0.8" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+if( version_in_range( version: version, test_version: "9.0.0", test_version2:"11.0.20" ) ) {
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( data: report, port: port );
   exit( 0 );
 }

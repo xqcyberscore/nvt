@@ -1,12 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # SugarCRM Multiple SQL Injection Vulnerabilities
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
-#                                                                                                                                             
 # 
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -30,11 +29,11 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812802");
-  script_version("$Revision: 8941 $");
+  script_version("$Revision: 9877 $");
   script_cve_id("CVE-2018-6308");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 15:40:09 +0530 (Thu, 08 Feb 2018)");
   script_name("SugarCRM Multiple SQL Injection Vulnerabilities");
  
@@ -56,8 +55,8 @@ if(description)
 
   script_tag(name: "affected" , value:"SugarCRM Community Edition 6.5.26 and prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of                                                                   16th Feb, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to https://www.sugarcrm.com/");
+  script_tag(name: "solution" , value: "No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -93,7 +92,7 @@ path = infos['location'];
 
 if(version_is_less_equal(version:vers, test_version:"6.5.26"))
 {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"None", install_path:path);
   security_message(data:report, port:path);
   exit(0);
 }

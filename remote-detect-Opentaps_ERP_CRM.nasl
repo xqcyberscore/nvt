@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-Opentaps_ERP_CRM.nasl 9837 2018-05-15 09:54:15Z cfischer $
+# $Id: remote-detect-Opentaps_ERP_CRM.nasl 9880 2018-05-17 07:12:24Z cfischer $
 #
 # Opentaps ERP + CRM Detection
 #
@@ -24,11 +24,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101021");
-  script_version("$Revision: 9837 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 11:54:15 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 9880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 09:12:24 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 00:18:39 +0200 (Thu, 23 Apr 2009)");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Opentaps ERP + CRM Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
@@ -39,10 +39,15 @@ if(description)
 
   script_tag(name:"summary", value:"The remote host is running Opentaps ERP + CRM.
 
-  Opentaps is a full-featured ERP + CRM suite which incorporates several open source projects,
-  including Apache Geronimo, Tomcat, and OFBiz for the data model and transaction framework;
-  Pentaho and JasperReports for business intelligence; Funambol for mobile device and Outlook integration;
-  and the opentaps applications which provide user-driven applications for CRM, accounting and finance,
+  Opentaps is a full-featured ERP + CRM suite which incorporates several open source projects, including:
+
+  - Apache Geronimo, Tomcat, and OFBiz for the data model and transaction framework
+
+  - Pentaho and JasperReports for business intelligence
+
+  - Funambol for mobile device and Outlook integration
+
+  - The Opentaps applications which provide user-driven applications for CRM, accounting and finance,
   warehouse and manufacturing, and purchasing and supply chain management.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -58,41 +63,53 @@ include("host_details.inc");
 port = get_http_port( default:8080 );
 
 # Nb: This seems to often redirect to a different port on the same system
-verUrl = "/webtools/control/main";
-verReq = http_get( item:verUrl, port:port );
-verRes = http_keepalive_send_recv( port:port, data:verReq );
-if( verRes =~ "^HTTP/1\.[01] 404" ) exit( 0 );
 
-swRes = http_get_cache( item:"/", port:port );
-if( ! swRes ) exit( 0 );
+foreach module( make_list( '/crmsfa', '/ecommerce', '/ebay', '/financials',
+                           '/catalog', '/googlebase', '/partymgr',
+                           '/purchasing', '/warehouse', '/webtools') ) {
 
-titlePattern = eregmatch( pattern:"<title>([a-zA-Z +]+)</title>", string:swRes, icase:TRUE );
-if( ! titlePattern || 'opentaps' >!< titlePattern[0] ) exit( 0 );
+  url = module + "/control/main";
+  res = http_get_cache( item:url, port:port );
+  if( ! res || res !~ "^HTTP/1\.[01] 200" ) continue;
 
-set_kb_item( name:"OpentapsERP/installed", value:TRUE );
-version = "unknown";
-install = "/";
+  opentapsTitle = eregmatch( pattern:"<title>([a-zA-Z: &#0-9;]+)</title>", string:res, icase:TRUE );
+  if( ( opentapsTitle && 'opentaps' >< tolower( opentapsTitle[1] ) ) || "opentaps_logo.png" >< res ) {
 
-if( verRes ) {
-  vers = eregmatch( pattern:'<p><a href="http://www.opentaps.org" class="tabletext">([a-zA-Z +]+)</a> ([0-9.]+).<br/>', string:verRes, icase:TRUE );
-  if( vers[2] ) {
-    version  = vers[2];
-    conclUrl = report_vuln_url( port:port, url:verUrl, url_only:TRUE );
+    if( opentapsTitle && 'opentaps' >< tolower( opentapsTitle[1] ) )
+      extra += '\n[' + opentapsTitle[1] +']:' + report_vuln_url( port:port, url:url, url_only:TRUE );
+    else
+      extra += '\n[Unknown module]:' + report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    installed = TRUE;
+    set_kb_item( name:"OpentapsERP/" + port + "/modules", value:module );
+    if( ! version ) version = "unknown";
+
+    # <p><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
+    # <div class="tabletext"><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
+    vers = eregmatch( pattern:'<a href="http://www.opentaps.org" class="tabletext">[a-zA-Z +]+</a> ([0-9.]+).<br/>', string:res, icase:TRUE );
+    if( vers[1] && version == "unknown" ) version = vers[1];
   }
 }
 
-cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:opentaps:" );
-if( isnull( cpe ) )
-  cpe = 'cpe:/a:apache:opentaps';
+if( installed ) {
 
-register_product( cpe:cpe, location:install, port:port );
+  set_kb_item( name:"OpentapsERP/installed", value:TRUE );
+  set_kb_item( name:"OpentapsERP/" + port + "/version", value:version );
+  install = "/";
+  extra = '\n\nDetected Modules:\n' + extra;
 
-log_message( data:build_detection_report( app:"Opentaps ERP + CRM",
-                                          version:version,
-                                          install:install,
-                                          cpe:cpe,
-                                          concluded:vers[0],
-                                          concludedUrl:conclUrl ),
-                                          port:port );
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:opentaps:" );
+  if( isnull( cpe ) )
+    cpe = 'cpe:/a:apache:opentaps';
+
+  register_product( cpe:cpe, location:install, port:port );
+
+  log_message( data:build_detection_report( app:"Opentaps ERP + CRM",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ) + extra, # We don't want to add the "Extra information:" text...
+                                            port:port );
+}
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freetype_dos_vuln_win.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_freetype_dos_vuln_win.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # FreeType 2 DoS Vulnerability (Windows)
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113115");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9877 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 12:00:00 +0100 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2018-6942");
 
@@ -53,7 +53,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target system.");
   script_tag(name:"insight", value:"An issue was discovered in FreeType 2. A NULL pointer dereference in the Ins_GETVARIATION() function within ttinterp.c could lead to DoS via a crafted font file.");
   script_tag(name:"affected", value:"FreeType 2 through version 2.9.");
-  script_tag(name:"solution", value:"No solution available as of 16th February 2018. Information will be updated once a fix becomes available.");
+  script_tag(name:"solution", value:"Update to version 2.9.1 or later.");
 
   script_xref(name:"URL", value:"https://git.savannah.gnu.org/cgit/freetype/freetype2.git/commit/?id=29c759284e305ec428703c9a5831d0b1fc3497ef");
   script_xref(name:"URL", value:"https://download.savannah.gnu.org/releases/freetype/");
@@ -69,7 +69,7 @@ include( "version_func.inc" );
 if( ! version = get_app_version( cpe: CPE ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "2.0.0.0", test_version2: "2.9.0.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "2.9.1" );
   security_message( data: report, port: 0 );
   exit( 0 );
 }

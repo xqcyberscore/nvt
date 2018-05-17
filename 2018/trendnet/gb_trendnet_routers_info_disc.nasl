@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_routers_info_disc.nasl 9144 2018-03-20 09:25:46Z asteins $
+# $Id: gb_trendnet_routers_info_disc.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # TrendNet Routers AUTHORIZED_GROUP Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107299");
-  script_version("$Revision: 9144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
+  script_version("$Revision: 9877 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 19:23:07 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,8 +59,8 @@ if (description)
   script_tag(name: "insight", value: "The vulnerability is due to the global variable AUTHORIZED_GROUP
   which can be triggered when the admin login");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th February, 2018.
-  Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_tag(name: "vuldetect", value: "Send a crafted request to the router and check the response.");
 

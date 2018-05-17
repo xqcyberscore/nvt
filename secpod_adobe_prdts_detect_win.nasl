@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 9614 2018-04-25 15:18:33Z cfischer $
+# $Id: secpod_adobe_prdts_detect_win.nasl 9878 2018-05-17 05:17:32Z santu $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900319");
-  script_version("$Revision: 9614 $");
+  script_version("$Revision: 9878 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 17:18:33 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:17:32 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -107,37 +107,15 @@ foreach key (keylist)
     {
       adobeName = registry_get_sz(key:key + item, item:"DisplayName");
 
-      if(egrep(string:adobeName, pattern:"^(Adobe Acrobat)"))
-      {
-        acrobatVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-        insPath = registry_get_sz(key:key + item, item:"InstallLocation");
-        if(acrobatVer != NULL && insPath)
-        {
-          if (acrobatVer + ", " >< checkdupAcrbt){
-            continue;
-          }
-
-          checkdupAcrbt += acrobatVer + ", ";
-
-          set_kb_item(name:"Adobe/Acrobat/Win/Installed", value:TRUE);
-          set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
-          set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
-          register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
-
-          if( "x64" >< osArch && "Wow6432Node" >!< key){
-            set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
-            register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );
-          }
-        }
-      }
-
-      else if(egrep(string:adobeName, pattern:"^(Adobe Reader)"))
+      if((egrep(string:adobeName, pattern:"^(Adobe Reader)")) ||
+         (egrep(string:adobeName, pattern:"^(Adobe Acrobat Reader)")))
       {
         readerVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         insPath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(readerVer != NULL && insPath)
         {
 
+          ## Check if version is already set
           if (readerVer + ", " >< checkdupRdr){
             continue;
           }
@@ -149,10 +127,36 @@ foreach key (keylist)
           set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
           register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:insPath );
 
-          # set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Reader64/Win/Ver", value:readerVer);
             register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:x64:", expr:"^([0-9.]+)", insloc:insPath );
+          }
+        }
+      }
+
+      else if(egrep(string:adobeName, pattern:"^(Adobe Acrobat)"))
+      {
+        ## Get the version
+        acrobatVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+        insPath = registry_get_sz(key:key + item, item:"InstallLocation");
+        if(acrobatVer != NULL && insPath)
+        {
+          ## Check if version is already set
+          if (acrobatVer + ", " >< checkdupAcrbt){
+            continue;
+          }
+
+          checkdupAcrbt += acrobatVer + ", ";
+
+          set_kb_item(name:"Adobe/Acrobat/Win/Installed", value:TRUE);
+          set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+          set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
+          register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
+
+          ## Set version for 64 bit Adobe Acrobat on 64 bit OS
+          if( "x64" >< osArch && "Wow6432Node" >!< key){
+            set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
+            register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );
           }
         }
       }

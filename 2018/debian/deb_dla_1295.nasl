@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1295.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_1295.nasl 9879 2018-05-17 06:01:01Z cfischer $
 #
 # Auto-generated from advisory DSA 1295-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891295");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 9879 $");
   script_cve_id("CVE-2017-6927", "CVE-2017-6928", "CVE-2017-6929", "CVE-2017-6932");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1295-1] drupal7 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 08:01:01 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -59,7 +59,9 @@ community software into one easy-to-use package.");
 7.14-2+deb7u17.
 
 We recommend that you upgrade your drupal7 packages.");
-  script_tag(name:"summary",  value:"<summary>");
+  script_tag(name:"summary",  value:"Multiple vulnerabilities have been found in the Drupal content
+management framework. For additional information, please refer to the
+upstream advisory at https://www.drupal.org/sa-core-2018-001.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -77,5 +79,5 @@ if ((res = isdpkgvuln(pkg:"drupal7", ver:"7.14-2+deb7u17", rls_regex:"DEB7\.[0-9
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

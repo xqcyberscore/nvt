@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 9144 2018-03-20 09:25:46Z asteins $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 9144 $");
+  script_version("$Revision: 9877 $");
   script_cve_id("CVE-2018-7305");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
   script_name("MyBB Cross Site Request Forgery Vulnerability");
   
@@ -54,9 +54,8 @@ if (description)
 
   script_tag(name:"affected", value:"MyBB version 1.8.14");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  22nd February, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to https://mybb.com");
+  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
   
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");

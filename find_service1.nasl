@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9703 2018-05-03 07:44:28Z cfischer $
+# $Id: find_service1.nasl 9871 2018-05-16 14:02:13Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9703 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 09:44:28 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 9871 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-16 16:02:13 +0200 (Wed, 16 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -643,6 +643,52 @@ if( r =~ "^root@metasploitable:/# " ) {
 if( egrep( string:r, pattern:"^[0-9]+ (all|carp|em0|enc|enc0|lo|lo0|pflog0|pflog|\-) [0-9]+ [0-9]+$" ) ) {
   register_service( port:port, proto:"pfstatd", message:"A pfstatd service seems to be running on this port." );
   log_message( port:port, data:"A pfstatd service seems to be running on this port." );
+  exit( 0 );
+}
+
+# R1Soft backup system on, http://wiki.r1soft.com/display/ServerBackup/Configure+network+ports
+#
+# Reported via http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-May/001393.html
+# 1167/tcp:
+# 0x0000:  00 00 01 2E 52 AB 02 0A 14 08 A3 80 04 10 01 18    ....R...........
+# 0x0010:  00 20 00 2A 08 4E 4F 54 46 4F 55 4E 44 10 00 1A    . .*.NOTFOUND...
+# 0x0020:  90 02 2D 2D 2D 2D 2D 42 45 47 49 4E 20 50 55 42    ..-----BEGIN PUB
+# 0x0030:  4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D 0A 4D 49 47    LIC KEY-----.MIG
+# 0x0040:  66 4D 41 30 47 43 53 71 47 53 49 62 33 44 51 45    fMA0GCSqGSIb3DQE
+# 0x0050:  42 41 51 55 41 41 34 47 4E 41 44 43 42 69 51 4B    BAQUAA4GNADCBiQK
+# 0x0060:  42 67 51 44 32 78 57 72 31 58 64 5A 36 45 69 76    BgQD2xWr1XdZ6Eiv
+#
+# Alternatives found on the net on port 8000/tcp:
+#
+# 0x0000:  00 00 01 2E 52 AB 02 0A 14 08 A3 80 04 10 02 18    ....R...........
+# 0x0010:  00 20 00 2A 08 4E 4F 54 46 4F 55 4E 44 10 00 1A    . .*.NOTFOUND...
+# 0x0020:  90 02 2D 2D 2D 2D 2D 42 45 47 49 4E 20 50 55 42    ..-----BEGIN PUB
+# 0x0030:  4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D 0A 4D 49 47    LIC KEY-----.MIG
+# 0x0040:  66 4D 41 30 47 43 53 71 47 53 49 62 33 44 51 45    fMA0GCSqGSIb3DQE
+# 0x0050:  42 41 51 55 41 41 34 47 4E 41 44 43 42 69 51 4B    BAQUAA4GNADCBiQK
+# 0x0060:  42 67 51 44 48 4D 54 4E 6E 51 31 44 2F 78 74 79    BgQDHMTNnQ1D/xty
+#
+# or 8001/tcp:
+# 0x0000:  00 00 01 32 52 AF 02 0A 18 08 A3 80 04 10 02 18    ...2R...........
+# 0x0010:  00 20 01 2A 0C 56 4D 77 61 72 65 56 4D 77 61 72    . .*.VMwareVMwar
+# 0x0020:  65 10 00 1A 90 02 2D 2D 2D 2D 2D 42 45 47 49 4E    e.....-----BEGIN
+# 0x0030:  20 50 55 42 4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D     PUBLIC KEY-----
+# 0x0040:  0A 4D 49 47 66 4D 41 30 47 43 53 71 47 53 49 62    .MIGfMA0GCSqGSIb
+# 0x0050:  33 44 51 45 42 41 51 55 41 41 34 47 4E 41 44 43    3DQEBAQUAA4GNADC
+# 0x0060:  42 69 51 4B 42 67 51 43 70 7A 73 39 54 47 6A 66    BiQKBgQCpzs9TGjf
+#
+# or 88/tcp which are sharing parts with the original reported service.
+#
+# 0x0000:  00 00 01 32 52 AF 02 0A 18 08 A3 80 04 10 01 18    ...2R...........
+# 0x0010:  00 20 01 2A 0C 56 4D 77 61 72 65 56 4D 77 61 72    . .*.VMwareVMwar
+# 0x0020:  65 10 00 1A 90 02 2D 2D 2D 2D 2D 42 45 47 49 4E    e.....-----BEGIN
+# 0x0030:  20 50 55 42 4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D     PUBLIC KEY-----
+# 0x0040:  0A 4D 49 47 66 4D 41 30 47 43 53 71 47 53 49 62    .MIGfMA0GCSqGSIb
+# 0x0050:  33 44 51 45 42 41 51 55 41 41 34 47 4E 41 44 43    3DQEBAQUAA4GNADC
+# 0x0060:  42 69 51 4B 42 67 51 44 66 4D 68 41 36 75 50 63    BiQKBgQDfMhA6uPc
+if( rhexstr =~ "^000001..52..020A..08A3800410..180020..2A.*10001A9002" && "-----BEGIN PUBLIC KEY-----" >< r && "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ" >< r ) {
+  register_service( port:port, proto:"r1soft_backupagent", message:"A R1Soft Backup Agent seems to be running on this port." );
+  log_message( port:port, data:"A R1Soft Backup Agent seems to be running on this port." );
   exit( 0 );
 }
 

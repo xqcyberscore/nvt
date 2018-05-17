@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 9501 2018-04-17 07:38:14Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 9880 2018-05-17 07:12:24Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 9501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:38:14 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 09:12:24 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -926,11 +926,45 @@ testDirList = make_list(
 "intl",
 # Sympa
 "wws",
+# Opentaps and Apache OFBiz
+"accounting/control/main",
+"ap/control/main",
+"ar/control/main",
+"assetmaint/control/main",
+"bi/control/main",
+"birt/control/main",
+"catalog/control/main",
+"content/control/main",
+"crmsfa/control/main",
+"ebay/control/main",
+"ecommerce/control/main",
+"ecomseo", # nb: special case
+"example/control/main",
+"exampleext/control/main",
+"facility/control/main",
+"financials/control/main",
+"googlebase/control/main",
+"hhfacility/control/main",
+"humanres/control/main",
+"manufacturing/control/main",
+"marketing/control/main",
+"myportal/control/main",
+"ofbizsetup/control/main",
+"ordermgr/control/main",
+"partymgr/control/main",
+"projectmgr/control/main",
+"purchasing/control/main",
+"scrum/control/main",
+"sfa/control/main",
+"solr/control/main",
+"warehouse/control/main",
+"webpos/control/main",
+"webtools/control/main",
+"workeffort/control/main",
 # Tomcat
 "manager/html",
 "host-manager/html",
 "manager/status" );
-
 #TODO: Fill the list with the directories used in the foreach( cgi_dirs ) loop of the Detection-NVTs
 
 # Add domain name parts
@@ -938,7 +972,7 @@ hn = get_host_name();
 if( ! ereg( string:hn, pattern:"^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" ) ) {
   hnp = split( hn, sep:".", keep:FALSE );
   foreach p( hnp ) {
-    if( ! in_array( search:p, array:testDirList ) ) testDirList = make_list( testDirList, p );
+    testDirList = make_list( testDirList, p );
   }
 }
 
@@ -961,12 +995,8 @@ failedReqs = 0;
 #TBD: Make this configurable?
 maxFailedReqs = 3;
 
-##
 # pull the robots.txt file
-##
-
 if( debug ) display( ":: Checking for robots.txt...\n" );
-
 req = http_get( item:"/robots.txt", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
@@ -986,23 +1016,16 @@ if( res =~ "^HTTP/1\.[01] 200" ) {
       robot_dir = ereg_replace( pattern:"\W*$", string:robot_dir, replace:"", icase:TRUE );
       robot_dir = ereg_replace( pattern:"/$|\?$", string:robot_dir, replace:"", icase:TRUE );
 
-      if( robot_dir != '' && ! in_array( search:robot_dir, array:testDirList ) ) {
-        # add directory to the list
+      if( robot_dir != '' ) {
         testDirList = make_list( testDirList, robot_dir );
         if( debug ) display(":: Directory '", robot_dir, "' added to test list\n");
-      } else {
-        if( debug ) display( ":: Directory '", robot_dir, "' already exists in test list\n" );
       }
     }
   }
 }
 
-##
 # pull the CVS/Entries file
-##
-
 if( debug ) display( ":: Checking for /CVS/Entries...\n" );
-
 req = http_get( item:"/CVS/Entries", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
@@ -1018,21 +1041,15 @@ if( res =~ "^HTTP/1\.[01] 200" ) {
 
       cvs_dir = ereg_replace( pattern:"D/(.*)////.*", string:string, replace:"\1", icase:TRUE );
 
-      if( ! in_array( search:cvs_dir, array:testDirList ) ) {
-        # add directory to the list
+      if( cvs_dir != '' ) {
         testDirList = make_list( testDirList, cvs_dir );
         if( debug ) display( ":: Directory '", cvs_dir, "' added to test list\n" );
-      } else {
-        if( debug ) display( ":: Directory '", cvs_dir, "' already exists in test list\n" );
       }
     }
   }
 }
 
-##
 # test for servers which return 200/403/401 for everything
-##
-
 req = http_get( item:"/NonExistant" + rand() + "/", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
@@ -1053,10 +1070,8 @@ if( res =~ "^HTTP/1\.[01] 200" ) {
   }
 
   if( ! fake404 ) {
-
     if( debug ) display( ":: Could not find an error string to match against for the fake 404 response.\n" );
     if( debug ) display( ":: Checks which rely on 200 responses are being disabled\n" );
-
     Check200 = FALSE;
   }
 } else {
@@ -1078,14 +1093,16 @@ if( res =~ "^HTTP/1\.[01] 30[0-8]" ) {
   CheckRedirect = FALSE;
 }
 
-##
 # start the actual directory scan
-##
-
 ScanRootDir = "/";
 
 start = unixtime();
 if( debug ) display( ":: Starting the directory scan...\n" );
+
+# We make the list unique at the end to avoid having doubled
+# entries from e.g. the robots.txt and for easier maintenance
+# of the initial list which could contain multiple entries.
+testDirList = make_list_unique( testDirList );
 
 foreach cdir( testDirList ) {
 
