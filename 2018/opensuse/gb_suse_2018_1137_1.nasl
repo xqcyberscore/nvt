@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1137_1.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_suse_2018_1137_1.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # SuSE Update for patch openSUSE-SU-2018:1137-1 (patch)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851739");
-  script_version("$Revision: 9730 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 9903 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 05:36:45 +0200 (Fri, 04 May 2018)");
   script_cve_id("CVE-2016-10713", "CVE-2018-1000156", "CVE-2018-6951");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for patch openSUSE-SU-2018:1137-1 (patch)");
   script_tag(name:"summary", value:"Check the version of patch");

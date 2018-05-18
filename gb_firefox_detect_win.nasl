@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 9760 2018-05-08 14:13:21Z cfischer $
+# $Id: gb_firefox_detect_win.nasl 9887 2018-05-17 13:35:46Z cfischer $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -42,10 +42,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 9760 $");
+  script_version("$Revision: 9887 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 16:13:21 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_name("Mozilla Firefox Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -126,16 +126,16 @@ foreach key(key_list){
     }
   }
 
+  # TODO: Fix the detection instead of ignoring e.g. the same
+  # version of 32bit and 64bit apps are installed...
   ##If same firefox version has been detected already continue
   if(foxVer + ", " >< checkduplicate){
     continue;
   }
-  ##Assign detected version value to checkduplicate so as to check in next loop iteration
-  checkduplicate += foxVer + ", ";
 
   if(foxVer) {
     # Special case for Firefox 1.5 (Get the version from file)
-    if(foxVer =~ "^(1.5)") {
+    if(foxVer =~ "^1\.5") {
       foreach key(key_list2) {
         exeFile  = registry_get_sz(key:key + "\Uninstall\Mozilla Firefox (1.5)", item:"InstallLocation");
         location = exeFile;
@@ -159,59 +159,62 @@ foreach key(key_list){
       ## foxVer_check =50.1.0.6186, foxVer=50.1.0
       if(foxVer >< foxVer_check){
         location = appPath;
+        break;
       } else {
         location = NULL; # nb: This makes sure we're not registering a non-existent version below
         continue;
       }
+    }
 
-      # Check for ESR installation
-      if(!ESR){
-        ##Check contents of platform.ini
-        exePath = appPath + "\application.ini";
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-        ## Read the content of .txt file
-        readmeText = read_file(share:share, file:file, offset:0, count:3000);
-        if(readmeText =~ "mozilla-esr"){
-          foxVer_check = eregmatch(pattern:"version=([0-9.]+)", string:readmeText);
-          if(foxVer_check[1] == foxVer){
-            ESR = TRUE;
-          }
-        }
-      }
+    if(!location) continue;
 
-      if(!ESR){
-        ##Check contents of platform.ini
-        exePath = appPath + "\platform.ini";
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-
-        ## Read the content of .txt file
-        readmeText = read_file(share:share, file:file, offset:0, count:3000);
-        if(readmeText =~ "mozilla-esr"){
-          foxVer_check = eregmatch(pattern:"Milestone=([0-9.]+)", string:readmeText);
-          if(foxVer_check[1] == foxVer){
-            ESR = TRUE;
-          }
-        }
-      }
-
-      if(!ESR){
-        ##Check for ESR in update-settings.ini
-        exePath = appPath + "\update-settings.ini";
-
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-        ## Read the content of .ini file
-        readmeText = read_file(share:share, file:file, offset:0, count:3000);
-        if(readmeText =~ "mozilla-esr"){
-          ##Not Reliable option, If two Firefox versions are there (one ESR and One Main) and main
-          ## firefox is detected, and update-settings.ini of another installed ESR firefox has mozilla-esr
-          ## Main Firefox is detected as ESR. Putting it as last option, some old setups might
-          ## have this only as indication of esr-version. Latest firefox versions working fine as
-          ## control never falls to this block. Tested on various installations
+    # Check for ESR installation
+    if(!ESR){
+      ##Check contents of application.ini
+      exePath = appPath + "\application.ini";
+      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
+      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
+      ## Read the content of .txt file
+      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      if(readmeText =~ "mozilla-esr"){
+        foxVer_check = eregmatch(pattern:"version=([0-9.]+)", string:readmeText);
+        if(foxVer_check[1] == foxVer){
           ESR = TRUE;
         }
+      }
+    }
+
+    if(!ESR){
+      ##Check contents of platform.ini
+      exePath = appPath + "\platform.ini";
+      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
+      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
+
+      ## Read the content of .txt file
+      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      if(readmeText =~ "mozilla-esr"){
+        foxVer_check = eregmatch(pattern:"Milestone=([0-9.]+)", string:readmeText);
+        if(foxVer_check[1] == foxVer){
+          ESR = TRUE;
+        }
+      }
+    }
+
+    if(!ESR){
+      ##Check for ESR in update-settings.ini
+      exePath = appPath + "\update-settings.ini";
+
+      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
+      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
+      ## Read the content of .ini file
+      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      if(readmeText =~ "mozilla-esr"){
+        ##Not Reliable option, If two Firefox versions are there (one ESR and One Main) and main
+        ## firefox is detected, and update-settings.ini of another installed ESR firefox has mozilla-esr
+        ## Main Firefox is detected as ESR. Putting it as last option, some old setups might
+        ## have this only as indication of esr-version. Latest firefox versions working fine as
+        ## control never falls to this block. Tested on various installations
+        ESR = TRUE;
       }
     }
 
@@ -255,7 +258,11 @@ foreach key(key_list){
     ##To detect only Firefox versions for which location is available
     ##Old versions removed still keep registry entries but location is not available for them
     if(location){
-      register_product(cpe:cpe, location:appPath);
+      ##Assign detected version value to checkduplicate so as to check in next loop iteration
+      checkduplicate += foxVer + ", ";
+      # Used in gb_firefox_detect_portable_win.nasl to detect doubled detections
+      set_kb_item(name:"Firefox/Win/InstallLocations", value:tolower(location));
+      register_product(cpe:cpe, location:location);
       log_message(port:0, data:build_detection_report(app:appName, version:foxVer, install:location, cpe:cpe, concluded:foxVer));
     }
   }

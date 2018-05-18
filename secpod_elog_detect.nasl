@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elog_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: secpod_elog_detect.nasl 9889 2018-05-17 14:03:49Z cfischer $
 #
 # ELOG Version Detection
 #
@@ -24,63 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the running ELOG Version and saves the
-  result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901008");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 9889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:03:49 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("ELOG Version Detection");
-  script_family("Service detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 SecPod");
+  script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("ELOG_HTTP/banner");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"This script finds the running ELOG Version and saves the
+  result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.901008";
-SCRIPT_DESC = "ELOG Version Detection";
+port = get_http_port( default:8080 );
+banner = get_http_banner( port:port );
+if( "erver: ELOG" >!< banner ) exit( 0 );
 
-elogPort = get_http_port(default:8080);
-if(!elogPort){
-  elogPort = 8080;
-}
+install = port + "/tcp";
+version = "unknown";
 
-if(!get_port_state(elogPort)){
-  exit(0);
-}
+vers = eregmatch( pattern:"Server: ELOG HTTP (([0-9.]+)-?([0-9]+)?)", string:banner, icase:TRUE );
+if( ! isnull( vers[1] ) ) version = ereg_replace( pattern:"-", string:vers[1], replace:"." );
 
-banner = get_http_banner(port:elogPort);
-if("ELOG" >!< banner){
-  exit(0);
-}
+set_kb_item( name:"www/" + port + "/ELOG", value:version );
+set_kb_item( name:"ELOG/detected", value:TRUE );
+register_and_report_cpe( app:"ELOG", ver:version, concluded:vers[0], base:"cpe:/a:stefan_ritt:elog_web_logbook:", expr:"^([0-9]+\.[0-9]+\.[0-9]+)", insloc:install, regPort:port );
 
-elogVer = eregmatch(pattern:"Server: ELOG HTTP (([0-9.]+)-?([0-9]+)?)",
-                     string:banner);
-if(elogVer[1] != NULL)
-{
-  elogVer = ereg_replace(pattern:"-", string:elogVer[1], replace: ".");
-  set_kb_item(name:"www/" + elogPort + "/ELOG", value:elogVer);
-  log_message(data:"ELOG version " + elogVer + " was detected on the host");
-   
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:elogVer, exp:"^([0-9]+\.[0-9]+\.[0-9]+)", base:"cpe:/a:stefan_ritt:elog_web_logbook:");
-  if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-
-}
+exit( 0 );

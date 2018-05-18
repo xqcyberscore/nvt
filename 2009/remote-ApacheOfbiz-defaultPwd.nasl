@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-ApacheOfbiz-defaultPwd.nasl 9862 2018-05-16 12:11:20Z cfischer $
+# $Id: remote-ApacheOfbiz-defaultPwd.nasl 9893 2018-05-17 15:57:09Z cfischer $
 #
 # Apache Open For Business (OFBiz) Default Admin Credentials
 #
@@ -26,8 +26,8 @@ CPE = "cpe:/a:apache:open_for_business_project";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101023");
-  script_version("$Revision: 9862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:11:20 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 9893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 17:57:09 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-25 21:03:34 +0200 (Sat, 25 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_location( port:port, cpe:CPE ) ) exit( 0 ); # To have a reference to the Detection-NVT
+if( ! get_app_location( port:port, cpe:CPE, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
 modules = get_kb_list( "ApacheOFBiz/" + port + "/modules" );
 if( modules ) {
@@ -81,7 +81,7 @@ if( modules ) {
                   postdata );
     res = http_keepalive_send_recv( port:port, data:req );
     if( ! res ) continue;
-    welcomeMsg = egrep( pattern:'Welcome THE ADMIN|THE PRIVILEGED ADMINISTRATOR|/control/logout">Logout</a></li>)', string:res );
+    welcomeMsg = egrep( pattern:'(Welcome THE ADMIN|THE PRIVILEGED ADMINISTRATOR|/control/logout">Logout</a></li>)', string:res );
     if( ! welcomeMsg ) continue;
     VULN = TRUE;
     report += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';

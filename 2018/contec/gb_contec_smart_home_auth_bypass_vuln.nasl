@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Contec Smart Home Authentication Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:contec:smart_home";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140937");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9903 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-03 14:47:22 +0700 (Tue, 03 Apr 2018)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-9162");
 

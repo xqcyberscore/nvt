@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_mult_vuln.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
+# $Id: gb_manageengine_servicedesk_mult_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140496");
-  script_version("$Revision: 9239 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 9895 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
   script_tag(name: "creation_date", value: "2017-11-09 15:13:18 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,8 +60,8 @@ download arbitrary files.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 28th March, 2018. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://www.tenable.com/security/research/tra-2017-31");
 

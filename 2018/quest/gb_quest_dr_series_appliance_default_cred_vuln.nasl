@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_dr_series_appliance_default_cred_vuln.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_quest_dr_series_appliance_default_cred_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
 #
 # Quest DR Series Appliance Default Login Credentials Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:quest:dr_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813012");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 9895 $");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 13:07:37 +0530 (Fri, 09 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Quest DR Series Appliance Default Login Credentials Vulnerability");
@@ -53,14 +53,12 @@ if(description)
 
   script_tag(name:"affected", value:"Quest DR Series Appliance.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 12th March, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to reference links."); 
+  script_tag(name:"solution", value:"Change the default credentials."); 
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"Mitigation");
 
-  script_xref(name : "URL" , value : "https://www.quest.com");
-  script_xref(name : "URL" , value : "https://support.quest.com/dr-series/kb/220574/what-are-the-default-login-credentials-for-the-dr-");
+  script_xref(name: "URL", value: "https://www.quest.com");
+  script_xref(name: "URL", value: "https://support.quest.com/dr-series/kb/220574/what-are-the-default-login-credentials-for-the-dr-");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
@@ -75,10 +73,8 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-drPort = get_app_port(cpe:CPE);
-if(!drPort){
+if (!drPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 if(!dir = get_app_location(cpe: CPE, port: drPort)) exit(0);
 
@@ -98,4 +94,4 @@ if(buf =~ "HTTP/1.. 200 OK" && '"Error: Login username or password incorrect' >!
   exit(0);
 }
 
-exit(0);
+exit(99);

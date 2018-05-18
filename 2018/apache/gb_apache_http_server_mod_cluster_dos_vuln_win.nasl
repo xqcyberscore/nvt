@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_cluster_dos_vuln_win.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: gb_apache_http_server_mod_cluster_dos_vuln_win.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
 #
 # Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812579");
-  script_version("$Revision: 9296 $");
+  script_version("$Revision: 9895 $");
   script_cve_id("CVE-2016-8612");
   script_bugtraq_id(94939);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 11:34:53 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Windows)");
@@ -56,11 +56,9 @@ if(description)
 
   script_tag(name:"affected", value:"Apache HTTP Server version 2.4.23 on Windows.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 21st March, 2018.
-  Information regarding this issue will be updated once solution details are
-  available. For updates refer to https://httpd.apache.org");
+  script_tag(name:"solution", value:"See the vendor advisory for a solution.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1387605");
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/viewAlert.x?alertId=57169");
   script_category(ACT_GATHER_INFO);
@@ -69,9 +67,15 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+
+  # This is a Redhat vulnerability (mod_cluster) an not in Apache itself
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

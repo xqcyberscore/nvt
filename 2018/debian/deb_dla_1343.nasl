@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1343.nasl 9411 2018-04-09 14:19:03Z cfischer $
+# $Id: deb_dla_1343.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Auto-generated from advisory DSA 1343-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891343");
-  script_version("$Revision: 9411 $");
+  script_version("$Revision: 9903 $");
   script_cve_id("CVE-2018-6358", "CVE-2018-7867", "CVE-2018-7868", "CVE-2018-7870",
                 "CVE-2018-7871", "CVE-2018-7872", "CVE-2018-7875", "CVE-2018-9165");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1343-1] ming security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 16:19:03 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 00:00:00 +0200 (Mon, 09 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

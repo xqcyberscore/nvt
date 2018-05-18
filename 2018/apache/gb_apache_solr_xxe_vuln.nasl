@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln.nasl 9405 2018-04-09 09:35:47Z ckuersteiner $
+# $Id: gb_apache_solr_xxe_vuln.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Apache Solr XXE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140954");
-  script_version("$Revision: 9405 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-09 11:35:47 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 9903 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-09 13:39:11 +0700 (Mon, 09 Apr 2018)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-1308"); 
 

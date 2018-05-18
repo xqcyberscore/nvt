@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011719.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4011719.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011719)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812866");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9903 $");
   script_cve_id("CVE-2018-1029");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 11:50:30 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011719)");
 

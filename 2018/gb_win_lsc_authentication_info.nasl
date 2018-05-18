@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 9854 2018-05-16 07:24:52Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 9887 2018-05-17 13:35:46Z cfischer $
 #
 # Windows LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 9854 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 09:24:52 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 9887 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,6 +64,7 @@ info_array = make_array();
 kb_array = make_array( "WMI/access_successful", "Access via WMI possible",
                        "Tools/Present/wmi", "Extended WMI support available via openvas-smb module",
                        "Tools/Present/smb", "Extended SMB support available via openvas-smb module",
+                       "win/lsc/search_portable_apps", "Enable Detection of Portable Apps on Windows",
                        "SMB/registry_access", "Access to the registry possible",
                        "SMB/WindowsVersion", "Version number of the OS",
                        "SMB/WindowsBuild", "Build number of the OS",

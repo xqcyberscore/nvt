@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1360.nasl 9597 2018-04-25 07:49:49Z cfischer $
+# $Id: deb_dla_1360.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Auto-generated from advisory DSA 1360-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891360");
-  script_version("$Revision: 9597 $");
+  script_version("$Revision: 9903 $");
   script_cve_id("CVE-2018-1308");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1360-1] lucene-solr security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 09:49:49 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 00:00:00 +0200 (Wed, 25 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

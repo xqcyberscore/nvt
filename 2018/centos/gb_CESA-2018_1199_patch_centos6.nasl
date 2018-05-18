@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1199_patch_centos6.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_CESA-2018_1199_patch_centos6.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # CentOS Update for patch CESA-2018:1199 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882870");
-  script_version("$Revision: 9802 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_version("$Revision: 9903 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 05:29:33 +0200 (Thu, 03 May 2018)");
   script_cve_id("CVE-2018-1000156");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for patch CESA-2018:1199 centos6 ");
   script_tag(name:"summary", value:"Check the version of patch");

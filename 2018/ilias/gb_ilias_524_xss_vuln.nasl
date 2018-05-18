@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_524_xss_vuln.nasl 8434 2018-01-16 09:25:38Z asteins $
+# $Id: gb_ilias_524_xss_vuln.nasl 9900 2018-05-18 07:57:02Z asteins $
 #
 # ILIAS < 5.2.4 XSS Vulnerability
 #
@@ -25,16 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:ilias:ilias";
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112192");
-  script_version("$Revision: 8434 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-16 10:25:38 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 9900 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-18 09:57:02 +0200 (Fri, 18 May 2018) $");
   script_tag(name: "creation_date", value: "2018-01-16 10:21:08 +0100 (Tue, 16 Jan 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name: "cvss_base", value: "4.3");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5688");
 
@@ -68,6 +66,8 @@ if (description)
 
 include("host_details.inc");
 include("version_func.inc");
+
+CPE = "cpe:/a:ilias:ilias";
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

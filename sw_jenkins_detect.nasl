@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_jenkins_detect.nasl 8590 2018-01-30 15:35:48Z asteins $
+# $Id: sw_jenkins_detect.nasl 9884 2018-05-17 11:09:20Z jschulte $
 #
 # Jenkins CI Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111001");
-  script_version("$Revision: 8590 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:35:48 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 9884 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 13:09:20 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,8 +62,9 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
   if( dir == "/" ) dir = "";
 
   buf = http_get_cache( item:dir + "/", port:port );
-
-  if( "Welcome to Jenkins!" >< buf || "X-Jenkins:" >< buf || "<title>Dashboard [Jenkins]</title>" >< buf ) {
+  req = http_get( item:dir + "/login", port:port );
+  buf2 = http_keepalive_send_recv( data:req, port:port );
+  if( "Welcome to Jenkins!" >< buf || "X-Jenkins:" >< buf || egrep( pattern:'<title>(Dashboard|Jenkins)( \\[Jenkins\\])?</title>', string: buf2 ) ) {
 
     version = 'unknown';
     ver = eregmatch( pattern:'Jenkins ver. ([0-9\\.]+)', string:buf );
@@ -73,6 +74,10 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
     } else {
       ver = eregmatch( pattern:'X-Jenkins: ([0-9\\.]+)', string:buf );
       if( ! isnull( ver[1] ) ) version = ver[1];
+      else {
+        ver = eregmatch( pattern:'Jenkins ver. ([0-9\\.]+)', string:buf2 );
+        if( ! isnull( ver[1] ) ) version = ver[1];
+      }
     }
 
     # set kb-item for LTS version of Jenkins to differentiate it from weekly version in the NVTs

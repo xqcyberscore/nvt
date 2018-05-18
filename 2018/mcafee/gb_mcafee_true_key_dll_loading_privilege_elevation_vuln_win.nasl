@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_true_key_dll_loading_privilege_elevation_vuln_win.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_mcafee_true_key_dll_loading_privilege_elevation_vuln_win.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # McAfee True Key DLL Side Loading Privilege Elevation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:true_key";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813323");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 9903 $");
   script_cve_id("CVE-2018-6661");
-  script_tag(name:"cvss_base", value:"4.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:31:27 +0530 (Wed, 02 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("McAfee True Key DLL Side Loading Privilege Elevation Vulnerability (Windows)");

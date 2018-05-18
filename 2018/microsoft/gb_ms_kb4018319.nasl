@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018319.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4018319.nasl 9903 2018-05-18 09:08:09Z asteins $
 #
 # Microsoft Office 2016 Multiple Remote Code Execution Vulnerabilities (KB4018319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813122");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9903 $");
   script_cve_id("CVE-2018-1026", "CVE-2018-1030");
   script_bugtraq_id(103613, 103620);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:50:32 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office 2016 Multiple Remote Code Execution Vulnerabilities (KB4018319)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 9672 2018-04-29 08:24:10Z cfischer $
+# $Id: gather-package-list-docker-container.inc 9887 2018-05-17 13:35:46Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9672 $
+# $Revision: 9887 $
 #
 ###############################################################################
 
@@ -117,6 +117,7 @@ OS_CPE = make_array(
     "CentOS2", "cpe:/o:centos:centos:2",
 
     # Fedora / Fedora Core
+    "FC28", "cpe:/o:fedoraproject:fedora:28",
     "FC27", "cpe:/o:fedoraproject:fedora:27",
     "FC26", "cpe:/o:fedoraproject:fedora:26",
     "FC25", "cpe:/o:fedoraproject:fedora:25",
@@ -565,6 +566,12 @@ function get_container_os( container_id, soc ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC27");
+    return ret;
+  }
+  if("Fedora release 28" >< rls && "(Twenty Eight)" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC28");
     return ret;
   }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elog_mult_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_elog_mult_vuln.nasl 9889 2018-05-17 14:03:49Z cfischer $
 #
 # ELOG Remote Buffer Overflow and Cross Site Scripting Vulnerabilities
 #
@@ -24,61 +24,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary scripting
-  code, cause a denial of service or compromise a vulnerable system.
-  Impact Level: System/Application";
-tag_affected = "ELOG versions prior to 2.7.1";
-tag_insight = "The flaws are due to:
-  - A buffer overflow error in 'elog.c' when processing malformed data.
-  - An infinite loop in the 'replace_inline_img()' [elogd.c] function.
-  - An input validation error when handling the 'subtext' parameter.";
-tag_solution = "Upgrade ELOG Version to 2.7.1
-  For updates refer to https://midas.psi.ch/elog/download/";
-tag_summary = "This host has ELOG installed and is prone multiple vulnerabilities.";
+CPE = "cpe:/a:stefan_ritt:elog_web_logbook";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901009");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:03:49 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-7004", "CVE-2008-0444", "CVE-2008-0445");
   script_bugtraq_id(27399);
   script_name("ELOG Remote Buffer Overflow and Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/39903");
-  script_xref(name : "URL" , value : "https://midas.psi.ch/elog/download/ChangeLog");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2008/0265");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_elog_detect.nasl");
-  script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("ELOG/detected");
+
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/39903");
+  script_xref(name:"URL", value:"https://midas.psi.ch/elog/download/ChangeLog");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2008/0265");
+  script_xref(name:"URL", value:"https://midas.psi.ch/elog/download/");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary scripting
+  code, cause a denial of service or compromise a vulnerable system.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected", value:"ELOG versions prior to 2.7.1.");
+
+  script_tag(name:"insight", value:"The flaws are due to:
+
+  - A buffer overflow error in 'elog.c' when processing malformed data.
+
+  - An infinite loop in the 'replace_inline_img()' [elogd.c] function.
+
+  - An input validation error when handling the 'subtext' parameter.");
+
+  script_tag(name:"solution", value:"Upgrade ELOG Version to 2.7.1. Please see the
+  references for more info.");
+
+  script_tag(name:"summary", value:"This host has ELOG installed and is prone multiple vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-elogPort = get_http_port(default:8080);
-if(!elogPort){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+
+# 2.7.1 => 2.7.1.2002
+if( version_is_less( version:vers, test_version:"2.7.1.2002" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.7.1" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-elogVer = get_kb_item("www/" + elogPort + "/ELOG");
-if(elogVer != NULL)
-{
-  # Check for ELOG versions prior to 2.7.1 => 2.7.1.2002
-  if(version_is_less(version:elogVer, test_version:"2.7.1.2002")){
-   security_message(elogPort);
-  }
-}
+exit( 99 );

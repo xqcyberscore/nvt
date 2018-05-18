@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenoss_serv_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_zenoss_serv_detect.nasl 9889 2018-05-17 14:03:49Z cfischer $
 #
 # Zenoss Server Version Detection
 #
@@ -24,67 +24,49 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of Zenoss Server
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800988");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:03:49 +0200 (Thu, 17 May 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Zenoss Server Version Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 8080);
-  script_tag(name : "summary" , value : tag_summary);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"This script detects the installed version of Zenoss Server
+  and sets the result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800988";
-SCRIPT_DESC = "Zenoss Server Version Detection";
+port = get_http_port( default:8080 );
 
-## Get Http Ports
-httpPort = get_http_port(default:8080);
-if(!httpPort){
-  httpPort = 8080;
-}
+req = http_get( item:"/zport/acl_users/cookieAuthHelper/login_form", port:port );
+res = http_keepalive_send_recv( port:port, data:req );
+if( "Zenoss Login" >!< res ) exit( 0 );
 
-## Check Port status
-if(!get_port_state(httpPort)){
-  exit(0);
-}
+install = "/";
+version = "unknown";
 
-## Send Request and Receive Response
-sndReq = http_get(item:"/zport/acl_users/cookieAuthHelper/login_form",
-                  port:httpPort);
-rcvRes = http_keepalive_send_recv(port:httpPort, data:sndReq);
+vers = eregmatch( pattern:"<span>([0-9.]+)" ,string:res );
+if( ! isnull( vers[1] ) ) version = vers[1];
 
-if(("Zenoss Login" >< rcvRes))
-{
-  zenVer = eregmatch(pattern:"<span>([0-9.]+)" ,string:rcvRes);
-  if(zenVer[1] != NULL)
-  {
-    set_kb_item(name:"www/" + httpPort + "/Zenoss", value:zenVer[1]);
-    log_message(data:"Zenoss Server version " + zenVer[1] + " was detected on the host");
-      
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:zenVer[1], exp:"^([0-9.]+)", base:"cpe:/a:zenoss:zenoss:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+set_kb_item( name:"www/" + port + "/Zenoss", value:version );
+set_kb_item( name:"ZenossServer/detected", value:TRUE );
+register_and_report_cpe( app:"Zenoss Server", ver:version, concluded:vers[0], base:"cpe:/a:zenoss:zenoss:", expr:"^([0-9.]+)", insloc:install, regPort:port );
 
-    exit(0);
-  }
-}
+exit( 0 );
