@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_js_info_disc_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_firefox_js_info_disc_vuln_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Firefox Information Disclosure Vulnerability Jan09 (Windows)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary
-  codes in the context of the web browser and can obtain sensitive information
-  of the remote user through the web browser.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox version from 2.0 to 3.0.5 on Windows.";
-tag_insight = "The Web Browser fails to properly enforce the same-origin policy, which leads
-  to cross-domain information disclosure.";
-tag_solution = "Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.getfirefox.com";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to information disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900448");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2009-01-28 13:27:12 +0100 (Wed, 28 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
@@ -48,17 +36,23 @@ if(description)
   script_bugtraq_id(33276);
   script_name("Firefox Information Disclosure Vulnerability Jan09 (Windows)");
   script_xref(name : "URL" , value : "http://www.trusteer.com/files/In-session-phishing-advisory-2.pdf");
- 
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary
+  codes in the context of the web browser and can obtain sensitive information
+  of the remote user through the web browser.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version from 2.0 to 3.0.5 on Windows.");
+  script_tag(name : "insight" , value : "The Web Browser fails to properly enforce the same-origin policy, which leads
+  to cross-domain information disclosure.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.3 or later
+  For updates refer to http://www.getfirefox.com");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,7 +66,6 @@ if(!firefoxVer){
   exit(0);
 }
 
-# Grep for firefox version from 2.0 to 3.0.5.
 if(version_in_range(version:firefoxVer, test_version:"2.0",
                                         test_version2:"3.0.5")){
   security_message(0);

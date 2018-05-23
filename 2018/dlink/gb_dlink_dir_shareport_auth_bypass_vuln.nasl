@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
 #
 # D-Link DIR Routers SharePort Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113146");
-  script_version("$Revision: 9643 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9917 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 09:53:55 +0200 (Thu, 29 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,8 @@ if( description )
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access information about the target system
   that would normally require authentication.");
   script_tag(name:"affected", value:"D-Link DIR Routers with SharePort functionality. Firmware versions through 2.06.");
-  script_tag(name:"solution", value:"No solution or patch is available as of 29th March, 2018. Solution details will be updated once the updates are made available.");
+  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.youtube.com/watch?v=Wmm4p8znS3s");
 

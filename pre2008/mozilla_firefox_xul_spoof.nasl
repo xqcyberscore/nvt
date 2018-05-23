@@ -1,11 +1,11 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_firefox_xul_spoof.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mozilla_firefox_xul_spoof.nasl 9910 2018-05-18 13:37:53Z cfischer $
 # Description: Mozilla/Firefox user interface spoofing
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
 # based on work from (C) Tenable Network Security
-# Updated: 03/12/2009 Antu Sanadi <santu@secpod.com> 
+# Updated: 03/12/2009 Antu Sanadi <santu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2004 David Maciejak
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Mozilla and/or Firefox, an alternative web browser.
-  This web browser supports the XUL (XML User Interface Language), a language
-  designed to manipulate the user interface of the browser itself.
-
-  Since XUL gives the full control of the browser GUI to the visited websites,
-  an attacker may use it to spoof a third party website and therefore pretend
-  that the URL and Certificates of the website are legitimate.
-
-  In addition to this, the remote version of this browser is vulnerable to a
-  flaw which may allow a malicious web site to spoof security properties
-  such as SSL certificates and URIs.";
-
-tag_solution = "None at this time";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14181");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10796, 10832);
   script_cve_id("CVE-2004-0763", "CVE-2004-0764");
@@ -54,13 +40,25 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.nd.edu/~jsmith30/xul/test/spoof.html");
-  exit(0);
+  script_tag(name : "solution" , value : "None at this time");
+  script_tag(name : "summary" , value : "The remote host is using Mozilla and/or Firefox, an alternative web browser.
+  This web browser supports the XUL (XML User Interface Language), a language
+  designed to manipulate the user interface of the browser itself.
 
+  Since XUL gives the full control of the browser GUI to the visited websites,
+  an attacker may use it to spoof a third party website and therefore pretend
+  that the URL and Certificates of the website are legitimate.
+
+  In addition to this, the remote version of this browser is vulnerable to a
+  flaw which may allow a malicious web site to spoof security properties
+  such as SSL certificates and URIs.");
+  script_xref(name : "URL" , value : "http://www.nd.edu/~jsmith30/xul/test/spoof.html");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("version_func.inc");
@@ -68,7 +66,6 @@ include("version_func.inc");
 mozVer = get_kb_item("Firefox/Win/Ver");
 if(mozVer)
 {
-  # check firefox version < 1.7
   if(version_is_less(version:mozVer ,test_version:"1.7"))
   {
     security_message(0);
@@ -81,7 +78,6 @@ if(!tunBirdVer){
   exit(0);
 }
 
-# check for thunderbird version < 0.7
 if(version_is_less(version:tunBirdVer ,test_version:"0.7")){
   security_message(0);
 }

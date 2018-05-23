@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-10_2017-12_win.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-10_2017-12_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-10_2017-12)-Windows
 #
@@ -29,29 +29,28 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810751");
-  script_version("$Revision: 9341 $");
-  script_cve_id("CVE-2017-5433", "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5461", 
-                "CVE-2017-5459", "CVE-2017-5466", "CVE-2017-5434", "CVE-2017-5432", 
-                "CVE-2017-5460", "CVE-2017-5438", "CVE-2017-5439", "CVE-2017-5440", 
-                "CVE-2017-5441", "CVE-2017-5442", "CVE-2017-5464", "CVE-2017-5443", 
-                "CVE-2017-5444", "CVE-2017-5446", "CVE-2017-5447", "CVE-2017-5465", 
-                "CVE-2017-5448", "CVE-2017-5437", "CVE-2016-1019", "CVE-2017-5454", 
-                "CVE-2017-5455", "CVE-2017-5456", "CVE-2017-5469", "CVE-2016-6354", 
-                "CVE-2017-5445", "CVE-2017-5449", "CVE-2017-5450", "CVE-2017-5451", 
-                "CVE-2017-5462", "CVE-2017-5463", "CVE-2017-5467", "CVE-2017-5452", 
-                "CVE-2017-5453", "CVE-2017-5458", "CVE-2017-5468", "CVE-2017-5430", 
+  script_version("$Revision: 9910 $");
+  script_cve_id("CVE-2017-5433", "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5461",
+                "CVE-2017-5459", "CVE-2017-5466", "CVE-2017-5434", "CVE-2017-5432",
+                "CVE-2017-5460", "CVE-2017-5438", "CVE-2017-5439", "CVE-2017-5440",
+                "CVE-2017-5441", "CVE-2017-5442", "CVE-2017-5464", "CVE-2017-5443",
+                "CVE-2017-5444", "CVE-2017-5446", "CVE-2017-5447", "CVE-2017-5465",
+                "CVE-2017-5448", "CVE-2017-5437", "CVE-2016-1019", "CVE-2017-5454",
+                "CVE-2017-5455", "CVE-2017-5456", "CVE-2017-5469", "CVE-2016-6354",
+                "CVE-2017-5445", "CVE-2017-5449", "CVE-2017-5450", "CVE-2017-5451",
+                "CVE-2017-5462", "CVE-2017-5463", "CVE-2017-5467", "CVE-2017-5452",
+                "CVE-2017-5453", "CVE-2017-5458", "CVE-2017-5468", "CVE-2017-5430",
                 "CVE-2017-5429");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 10:53:01 +0530 (Thu, 20 Apr 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-10_2017-12)-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
   - An use-after-free in SMIL animation functions,
@@ -110,7 +109,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -118,15 +117,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"53.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"53.0");

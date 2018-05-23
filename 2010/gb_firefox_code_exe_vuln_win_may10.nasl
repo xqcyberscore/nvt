@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_code_exe_vuln_win_may10.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_firefox_code_exe_vuln_win_may10.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Code Execution Vulnerability (Windows) - May10
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary JavaScript
-  with chrome privileges via a javascript: URI in input to an extension.
-  Impact Level: Application";
-tag_affected = "Firefox version prior to 3.6 on Windows";
-tag_insight = "The flaw is due to error in 'nsIScriptableUnescapeHTML.parseFragment'
-  method which does not properly sanitize 'HREF' attribute of an 'A' element
-  or the 'ACTION' attribute of a 'FORM' element.";
-tag_solution = "Upgrade to  Firefox version prior to 3.6.3 or later,
-  For updates refer tohttp://www.mozilla.com/en-US/";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to code execution vulnerability";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801326");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-05-04 09:40:09 +0200 (Tue, 04 May 2010)");
   script_cve_id("CVE-2010-1585");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,13 +42,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary JavaScript
+  with chrome privileges via a javascript: URI in input to an extension.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Firefox version prior to 3.6 on Windows");
+  script_tag(name : "insight" , value : "The flaw is due to error in 'nsIScriptableUnescapeHTML.parseFragment'
+  method which does not properly sanitize 'HREF' attribute of an 'A' element
+  or the 'ACTION' attribute of a 'FORM' element.");
+  script_tag(name : "solution" , value : "Upgrade to  Firefox version prior to 3.6.3 or later,
+  For updates refer tohttp://www.mozilla.com/en-US/");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to code execution vulnerability");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

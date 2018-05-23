@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_ssl_cert_spoofing_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_mozilla_firefox_ssl_cert_spoofing_vuln_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox SSL Certificate Spoofing Vulnerability (Windows)
 #
@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to perform
-phishing-style attacks by bypassing security warnings when invalid certificates
-are used in SSL HTTP connections.
-
-Impact Level: Application";
-
-tag_affected = "Mozilla Firefox versions 4.0.x through 4.0.1";
-
-tag_insight = "The flaw is due to improper handling of validation/revalidation of
-'SSL' certificates. When re-loading the browser and visiting the page, the
-untrusted connection warning would appear, but incorrectly indicates that the
-site provides a valid, verified certificate and there is no way to confirm the
-exception.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is installed with Mozilla Firefox and is prone to SSL
-certificate spoofing vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802100");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-0082");
   script_bugtraq_id(48064);
@@ -63,13 +41,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to perform
+phishing-style attacks by bypassing security warnings when invalid certificates
+are used in SSL HTTP connections.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox versions 4.0.x through 4.0.1");
+  script_tag(name : "insight" , value : "The flaw is due to improper handling of validation/revalidation of
+'SSL' certificates. When re-loading the browser and visiting the page, the
+untrusted connection warning would appear, but incorrectly indicates that the
+site provides a valid, verified certificate and there is no way to confirm the
+exception.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox and is prone to SSL
+certificate spoofing vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
@@ -78,11 +68,10 @@ if(description)
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox versions 4.x through 4.0.1
   if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"4.0.1")){
     security_message(0);
   }

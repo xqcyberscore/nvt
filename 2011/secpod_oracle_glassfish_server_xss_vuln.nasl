@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_glassfish_server_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_glassfish_server_xss_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # Oracle GlassFish Server Cross-Site Scripting Vulnerability
 #
@@ -24,68 +24,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary HTML and
-  script code in a user's browser session in context of an affected site.
-  Impact Level: Application";
-tag_affected = "Oracle GlassFish Server version 2.1.1";
-tag_insight = "The flaw is due to error in the handling of log viewer, which fails
-  to securely output encode logged values. An unauthenticated attacker can
-  trigger the application to log a malicious string by entering the values
-  into the username field.";
-tag_solution = "Apply the security updates.
-  http://www.oracle.com/technetwork/topics/security/whatsnew/index.html";
-tag_summary = "The host is running GlassFish Server and is prone to cross-site
-  scripting vulnerability.";
+CPE = 'cpe:/a:oracle:glassfish_server';
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902456");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9927 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2260");
   script_bugtraq_id(48797);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+
+  script_tag(name: "solution_type", value: "VendorFix");
+
   script_name("Oracle GlassFish Server Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17551/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/518923");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103167/SOS-11-009.txt");
+
+  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/17551/");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/518923");
+  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/view/103167/SOS-11-009.txt");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
   script_dependencies("GlassFish_detect.nasl");
+  script_dependencies("GlassFish/installed");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name: "impact", value: "Successful exploitation will allow attackers to execute arbitrary HTML and
+script code in a user's browser session in context of an affected site.");
+
+  script_tag(name: "affected", value: "Oracle GlassFish Server version 2.1.1");
+
+  script_tag(name: "insight", value: "The flaw is due to error in the handling of log viewer, which fails to
+securely output encode logged values. An unauthenticated attacker can trigger the application to log a malicious
+string by entering the values into the username field.");
+
+  script_tag(name: "solution", value: "Apply the security updates.");
+
+  script_tag(name: "summary", value: "The host is running GlassFish Server and is prone to cross-site scripting
+vulnerability.");
+
   exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Check for the default port
-if(!port = get_http_port(default:8080)){
-  port = 8080;
-}
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-## Check port status
-if(!get_port_state(port)){
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_is_equal(version: version, test_version:"2.1.1")) {
+  security_message(port:port);
   exit(0);
 }
 
-## Get the version form KB
-vers = get_kb_item(string("www/", port, "/GlassFish"));
-if(!isnull(vers))
-{
-  if(version_is_equal(version: vers, test_version:"2.1.1"))
-  {
-    security_message(port:port);
-    exit(0);
-  }
-}
+exit(99);

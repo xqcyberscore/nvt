@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_esr_mfsa_2018-06_2018-07_macosx.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2018-06_2018-07)-MAC OS X
 #
@@ -29,28 +29,27 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813035");
-  script_version("$Revision: 9117 $");
-  script_cve_id("CVE-2018-5127", "CVE-2018-5129", "CVE-2018-5130", "CVE-2018-5131", 
+  script_version("$Revision: 9923 $");
+  script_cve_id("CVE-2018-5127", "CVE-2018-5129", "CVE-2018-5130", "CVE-2018-5131",
                 "CVE-2018-5144", "CVE-2018-5125", "CVE-2018-5145");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:21:49 +0530 (Thu, 15 Mar 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-06_2018-07)-MAC OS X");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox ESR
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
   - A buffer overflow error when manipulating SVG animatedPathSegList through script.
 
   - A lack of parameter validation on IPC messages.
-  
-  - A memory corruption error when packets with a mismatched RTP payload type are 
+
+  - A memory corruption error when packets with a mismatched RTP payload type are
     sent in WebRTC connections.
 
   - Fetch API improperly returns cached copies of no-store/no-cache resources.
@@ -59,8 +58,8 @@ if(description)
 
   - Memory safety bugs fixed.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to crash the affected system, conduct sandbox escape, access sensitive data 
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  attackers to crash the affected system, conduct sandbox escape, access sensitive data
   and bypass security restrictions.
 
   Impact Level: Application.");
@@ -81,13 +80,10 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 
@@ -97,4 +93,5 @@ if(version_is_less(version:ffVer, test_version:"52.7"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

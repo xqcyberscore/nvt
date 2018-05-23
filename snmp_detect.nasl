@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: snmp_detect.nasl 9930 2018-05-23 06:43:36Z cfischer $
 #
 # A SNMP Agent is running
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 8142 $");
+  script_version("$Revision: 9930 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 08:43:36 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
@@ -104,15 +104,15 @@ if( defined_func( "snmpv3_get" ) ) {
     if( check_snmpv1( port:port, community:community ) ) {
 
       # worked with provided community string
-      if( communities[community] == "v12c_provided_creds" ) 
+      if( communities[community] == "v12c_provided_creds" )
         report += "SNMPv1: " + provided_comm_report;
 
       # worked with default community string 'public'
-      if( communities[community] == "v12c_pub_comm" ) 
+      if( communities[community] == "v12c_pub_comm" )
         report += "SNMPv1: " + default_comm_report;
 
       # worked with detected community string
-      if( communities[community] == "v12c_detected_creds" ) 
+      if( communities[community] == "v12c_detected_creds" )
         report += "SNMPv1: " + detected_comm_report_pre + "'" + community + "'" + detected_comm_report;
 
       # TBD: Set only one community?
@@ -130,15 +130,15 @@ if( defined_func( "snmpv3_get" ) ) {
     if( check_snmpv2( port:port, community:community ) ) {
 
       # worked with provided community string
-      if( communities[community] == "v12c_provided_creds" ) 
+      if( communities[community] == "v12c_provided_creds" )
         report += "SNMPv2c: " + provided_comm_report;
 
       # worked with default community string 'public'
-      if( communities[community] == "v12c_pub_comm" ) 
+      if( communities[community] == "v12c_pub_comm" )
         report += "SNMPv2c: " + default_comm_report;
 
       # worked with detected community string
-      if( communities[community] == "v12c_detected_creds" ) 
+      if( communities[community] == "v12c_detected_creds" )
         report += "SNMPv2c: " + detected_comm_report_pre + "'" + community + "'" + detected_comm_report;
 
       # TBD: Set only one community?
@@ -181,6 +181,10 @@ if( defined_func( "snmpv3_get" ) ) {
       }
     }
 
+    if( v3_creds && in_array( array:invalid_snmpv3_creds_errors, search:snmp_error ) ) {
+      report += 'SNMPv3: Wrong set of credentials provided in "SNMP Authorization (OID: 1.3.6.1.4.1.25623.1.0.105076)". Error: ' + snmp_error + '\n';
+    }
+
     report += '\nThe following SNMP versions are supported:\n';
     if( SNMP_v1 )  report += 'SNMPv1\n';
     if( SNMP_v2c ) report += 'SNMPv2c\n';
@@ -199,7 +203,7 @@ if( defined_func( "snmpv3_get" ) ) {
   port = 161;
   if( ! get_udp_port_state( port ) ) exit( 0 );
   socudp161 = open_sock_udp( port );
- 
+
   data = report + '\nThe following SNMP versions are supported:\n';
   flag = 0;
 
@@ -222,18 +226,18 @@ if( defined_func( "snmpv3_get" ) ) {
       len_hi = len / 256;
       len_lo = len % 256;
 
-      for( i = 0; i < 3; i++ ) { 
+      for( i = 0; i < 3; i++ ) {
 
-        req = raw_string( 0x30, 0x82, len_hi, len_lo, 
+        req = raw_string( 0x30, 0x82, len_hi, len_lo,
                           0x02, 0x01, i, 0x04,
                           sz );
 
-        req = req + community + 
-              raw_string( 0xA1,0x18, 0x02, 
-                   0x01, 0x01, 0x02, 0x01, 
-                   0x00, 0x02, 0x01, 0x00, 
-                   0x30, 0x0D, 0x30, 0x82, 
-                   0x00, 0x09, 0x06, 0x05, 
+        req = req + community +
+              raw_string( 0xA1,0x18, 0x02,
+                   0x01, 0x01, 0x02, 0x01,
+                   0x00, 0x02, 0x01, 0x00,
+                   0x30, 0x0D, 0x30, 0x82,
+                   0x00, 0x09, 0x06, 0x05,
                    0x2B, 0x06, 0x01, 0x02,
                    0x01, 0x05, 0x00 );
         send( socket:socudp161, data:req );

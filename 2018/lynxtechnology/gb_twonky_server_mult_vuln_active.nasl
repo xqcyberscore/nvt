@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln_active.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_twonky_server_mult_vuln_active.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108436");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9917 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 12:17:00 +0200 (Sat, 07 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,8 +64,8 @@ if(description)
   
   script_tag(name:"affected", value:"Twonky Server versions 7.0.11 through 8.5.");
   
-  script_tag(name:"solution", value:"No solution or patch is available as of 03rd April, 2018. Information regarding this issue
-  will be updated once solution details are available.
+  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
+this issue will be updated once solution details are available.
 
   As a workaround set a strong password for the WebGUI which blocks access to the affected RCP calls.");
 

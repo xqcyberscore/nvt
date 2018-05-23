@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: fsp_detection.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: fsp_detection.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # Detect FSP Compatible Hosts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11987");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 9927 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,26 +36,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Service detection");
+  script_dependencies("find_service.nasl");
   script_require_udp_ports(21, 2000, 2221);
 
   script_xref(name:"URL", value:"http://fsp.sourceforge.net/");
 
-  tag_summary = "A file transfer program is listening on the remote port.
+  script_tag(name:"solution", value: "If this service is not needed, disable it or filter incoming traffic to this
+port.");
 
-  Description :
+  script_tag(name:"summary", value: "A file transfer program is listening on the remote port.
 
-  The remote host is running a FSP (File Service Protocol)
-  compatible product. FSP is a protocol designed to serve file on top 
-  of the UDP protocol.
+Description :
 
-  Make sure that the use of this program is done in accordance with your
-  corporate security policy.";
+The remote host is running a FSP (File Service Protocol) compatible product. FSP is a protocol designed to serve
+file on top of the UDP protocol.
 
-  tag_solution = "If this service is not needed, disable it or filter incoming traffic
-  to this port.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+Make sure that the use of this program is done in accordance with your corporate security policy.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

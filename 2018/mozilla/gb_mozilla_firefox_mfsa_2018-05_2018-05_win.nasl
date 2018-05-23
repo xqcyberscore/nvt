@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_mfsa_2018-05_2018-05_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-Windows
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812750");
-  script_version("$Revision: 8642 $");
+  script_version("$Revision: 9923 $");
   script_cve_id("CVE-2018-5124");
   script_bugtraq_id(102843);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 14:14:25 +0100 (Fri, 02 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 11:31:34 +0530 (Wed, 31 Jan 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox 
+  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   and is prone to an arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The Flaw exists due to an unsanitized
   browser UI.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers to execute arbitrary code in the 
-  context of the user running the affected application. Failed exploit attempts 
+  vulnerability will allow remote attackers to execute arbitrary code in the
+  context of the user running the affected application. Failed exploit attempts
   will likely cause a denial-of-service condition.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox version before
   58.0.1 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 58.0.1
@@ -66,23 +65,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
-if(!ffVer){
-  exit(0);
-}
-
 ffPath = infos['location'];
 
 if(version_in_range(version:ffVer, test_version:"56", test_version2:"58.0"))
@@ -91,4 +83,5 @@ if(version_in_range(version:ffVer, test_version:"56", test_version2:"58.0"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

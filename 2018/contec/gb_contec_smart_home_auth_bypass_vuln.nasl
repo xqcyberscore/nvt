@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
 #
 # Contec Smart Home Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:contec:smart_home";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140937");
-  script_version("$Revision: 9903 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 9917 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-03 14:47:22 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,8 +57,8 @@ then obtaining control over doors.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 3rd April, 2018. Solution details
-will be updated once the updates are made available.");
+  script_tag(name: "solution", value: "No known solution is available as of 22nd May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/44295/");
 

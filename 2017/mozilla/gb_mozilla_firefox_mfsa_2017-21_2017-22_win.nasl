@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_mfsa_2017-21_2017-22_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2017-21_2017-22 )-Windows
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811848");
-  script_version("$Revision: 7338 $");
-  script_cve_id("CVE-2017-7793", "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7824", 
-                "CVE-2017-7805", "CVE-2017-7812", "CVE-2017-7814", "CVE-2017-7813", 
-                "CVE-2017-7815", "CVE-2017-7816", "CVE-2017-7821", "CVE-2017-7823", 
+  script_version("$Revision: 9923 $");
+  script_cve_id("CVE-2017-7793", "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7824",
+                "CVE-2017-7805", "CVE-2017-7812", "CVE-2017-7814", "CVE-2017-7813",
+                "CVE-2017-7815", "CVE-2017-7816", "CVE-2017-7821", "CVE-2017-7823",
                 "CVE-2017-7822", "CVE-2017-7820", "CVE-2017-7811", "CVE-2017-7810");
   script_bugtraq_id(101055, 101053, 101059, 101057, 101054);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2017-10-03 15:33:22 +0530 (Tue, 03 Oct 2017)");
   script_name("Mozilla Firefox Security Updates( mfsa_2017-21_2017-22 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name: "summary" , value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
+
   - Use-after-free error with Fetch API.
 
   - Firefox for Android address bar spoofing through full screen mode.
@@ -88,7 +88,7 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox version before
   56.0 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 56.0
@@ -103,27 +103,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+ffVer = infos['version'];
+ffPath = infos['location'];
 
-## Get version
-if(!ffVer = get_app_version(cpe:CPE)){
-   exit(0);
-}
-
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"56.0"))
 {
-  report = report_fixed_ver(installed_version:ffVer, fixed_version:"56.0");
+  report = report_fixed_ver(installed_version:ffVer, fixed_version:"56.0", install_path:ffPath);
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

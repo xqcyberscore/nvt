@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sjow_mult_vuln_win.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_mozilla_prdts_sjow_mult_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products 'SJOW' Multiple Vulnerabilities (Windows)
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.5.12 or later
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Seamonkey version 2.0.7 or later
-  http://www.seamonkey-project.org/releases/
-
-  Upgrade to Thunderbird version 3.0.7
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to bypass the same origin policy
-  and conduct cross-site scripting attacks via a crafted function.
-  Impact Level: Application";
-tag_affected = "Firefox before 3.5.12
-  SeaMonkey before 2.0.7
-  Thunderbird before 3.0.7";
-tag_insight = "The flaw is due to error in 'XPCSafeJSObjectWrapper' class in the
-  'SafeJSObjectWrapper', which does not properly restrict scripted functions.";
-tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird that are
-  prone to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801451");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-2763");
   script_tag(name:"cvss_base", value:"4.3");
@@ -61,14 +41,27 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to bypass the same origin policy
+  and conduct cross-site scripting attacks via a crafted function.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Firefox before 3.5.12
+  SeaMonkey before 2.0.7
+  Thunderbird before 3.0.7");
+  script_tag(name : "insight" , value : "The flaw is due to error in 'XPCSafeJSObjectWrapper' class in the
+  'SafeJSObjectWrapper', which does not properly restrict scripted functions.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird that are
+  prone to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.12 or later
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Seamonkey version 2.0.7 or later
+  http://www.seamonkey-project.org/releases/
+
+  Upgrade to Thunderbird version 3.0.7
+  http://www.mozillamessaging.com/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,11 +70,10 @@ if(description)
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox version < 3.5.12
   if(version_is_less(version:ffVer, test_version:"3.5.12"))
   {
     security_message(0);
@@ -93,7 +85,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
-  ## Grep for Seamonkey version < 2.0.7
   if(version_is_less(version:smVer, test_version:"2.0.7"))
   {
     security_message(0);
@@ -105,7 +96,6 @@ if(smVer != NULL)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  ## Grep for Thunderbird version < 3.0.7
   if(version_is_less(version:tbVer, test_version:"3.0.7")){
     security_message(0);
   }

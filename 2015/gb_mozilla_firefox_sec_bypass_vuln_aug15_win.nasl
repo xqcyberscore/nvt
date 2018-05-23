@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_sec_bypass_vuln_aug15_win.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_mozilla_firefox_sec_bypass_vuln_aug15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Aug15 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806005");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2015-4495");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2015-08-10 15:41:41 +0530 (Mon, 10 Aug 2015)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Aug15 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an error in the
   interaction of the mechanism that enforces JavaScript context separation
@@ -68,7 +67,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"39.0.3"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

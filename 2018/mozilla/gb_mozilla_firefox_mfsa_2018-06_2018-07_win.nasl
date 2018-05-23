@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_mfsa_2018-06_2018-07_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-06_2018-07)-Windows
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813034");
-  script_version("$Revision: 9117 $");
-  script_cve_id("CVE-2018-5127", "CVE-2018-5128", "CVE-2018-5129", "CVE-2018-5130", 
-                "CVE-2018-5131", "CVE-2018-5132", "CVE-2018-5133", "CVE-2018-5134", 
-                "CVE-2018-5135", "CVE-2018-5136", "CVE-2018-5137", "CVE-2018-5140", 
-                "CVE-2018-5141", "CVE-2018-5142", "CVE-2018-5143", "CVE-2018-5126", 
+  script_version("$Revision: 9923 $");
+  script_cve_id("CVE-2018-5127", "CVE-2018-5128", "CVE-2018-5129", "CVE-2018-5130",
+                "CVE-2018-5131", "CVE-2018-5132", "CVE-2018-5133", "CVE-2018-5134",
+                "CVE-2018-5135", "CVE-2018-5136", "CVE-2018-5137", "CVE-2018-5140",
+                "CVE-2018-5141", "CVE-2018-5142", "CVE-2018-5143", "CVE-2018-5126",
                 "CVE-2018-5125");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-06_2018-07)-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -55,7 +54,7 @@ if(description)
 
   - A lack of parameter validation on IPC messages.
 
-  - A memory corruption error when packets with a mismatched RTP payload type are 
+  - A memory corruption error when packets with a mismatched RTP payload type are
     sent in WebRTC connections.
 
   - Fetch API improperly returns cached copies of no-store/no-cache resources.
@@ -71,7 +70,7 @@ if(description)
   - Same-origin policy violation with data: URL shared workers.
 
   - Script content can access legacy extension non-contentaccessible resources.
-  
+
   - Moz-icon images accessible to web content through moz-icon: protocol.
 
   - A vulnerability in the notifications Push API.
@@ -82,8 +81,8 @@ if(description)
 
   - Memory safety bugs fixed in Firefox 59.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to conduct cross-site scripting (XSS) attacks, crash the affected 
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  attackers to conduct cross-site scripting (XSS) attacks, crash the affected
   system, conduct sandbox escape, access sensitive data and bypass security
   restrictions.
 
@@ -100,18 +99,15 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 
@@ -121,4 +117,5 @@ if(version_is_less(version:ffVer, test_version:"59"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

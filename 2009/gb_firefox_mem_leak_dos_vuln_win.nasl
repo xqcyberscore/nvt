@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mem_leak_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_firefox_mem_leak_dos_vuln_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Firefox Browser Libxul Memory Leak Remote DoS Vulnerability - Win
 #
@@ -24,21 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful remote exploitation could result in denying the service.
-  Impact Level: Application";
-tag_affected = "Firefox version 3.0.2 to 3.0.5 on Windows.";
-tag_insight = "The Browser fails to validate the user input data in Libxul, which leads
-  to memory consumption or crash.";
-tag_solution = "Upgrade to Firefox version 3.6.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to denial of service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800401");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,13 +41,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful remote exploitation could result in denying the service.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Firefox version 3.0.2 to 3.0.5 on Windows.");
+  script_tag(name : "insight" , value : "The Browser fails to validate the user input data in Libxul, which leads
+  to memory consumption or crash.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.6.3 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to denial of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -71,7 +65,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for firefox version 3.0.2 to 3.0.5
 if(version_in_range(version:ffVer, test_version:"3.0.2", test_version2:"3.0.5")){
   security_message(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_vuln_dec08_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_firefox_mult_vuln_dec08_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities December-08 (Windows)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to multiple vulnerabilities.
-
-  Vulnerability:
-  Refer to the reference links for more information on the vulnerabilities.";
-
-tag_impact = "Successful exploitation could result in remote arbitrary code execution,
-  bypass security restrictions, sensitive information disclosure, cross
-  site scripting attacks and execute JavaScript code with chrome privileges.
-  Impact Level: System";
-tag_affected = "Firefox version prior to 2.0.0.19 and 3.x to 3.0.4 on Windows.";
-tag_solution = "Upgrade to Firefox version 2.0.0.19 or 3.0.5
-  http://www.mozilla.com/en-US/firefox/all.html";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800088");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,12 +52,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in remote arbitrary code execution,
+  bypass security restrictions, sensitive information disclosure, cross
+  site scripting attacks and execute JavaScript code with chrome privileges.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Firefox version prior to 2.0.0.19 and 3.x to 3.0.4 on Windows.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 2.0.0.19 or 3.0.5
+  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to multiple vulnerabilities.
+
+  Vulnerability:
+  Refer to the reference links for more information on the vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -85,13 +79,11 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for firefox version < 2.0.0.19
 if(version_is_less(version:ffVer, test_version:"2.0.0.19")){
   security_message(0);
   exit(0);
 }
 
-# Grep for firefox version 3.x to 3.0.4
 if(version_in_range(version:ffVer, test_version:"3.0", test_version2:"3.0.4")){
   security_message(0);
 }

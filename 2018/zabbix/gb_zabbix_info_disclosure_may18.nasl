@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_info_disclosure_may18.nasl 9691 2018-05-02 11:26:19Z santu $
+# $Id: gb_zabbix_info_disclosure_may18.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
 #
 # Zabbix Server Information Disclosure Vulnerability May18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812869");
-  script_version("$Revision: 9691 $");
+  script_version("$Revision: 9913 $");
   script_cve_id("CVE-2017-2826");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 13:26:19 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:57 +0530 (Wed, 02 May 2018)");
   script_name("Zabbix Server Information Disclosure Vulnerability May18");
 
@@ -55,9 +55,8 @@ if (description)
 
   script_tag(name:"affected", value:"Zabbix server version 2.4.X");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 
-  01st May, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 01st May, 2018. Information regarding
+this issue will be updated once solution details are available.");
   
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -25,31 +25,25 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:firefox_esr";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804564";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6735 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804564");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2014-1518", "CVE-2014-1520", "CVE-2014-1523", "CVE-2014-1524",
                 "CVE-2014-1529", "CVE-2014-1530", "CVE-2014-1531", "CVE-2014-1532");
   script_bugtraq_id(67123, 67126, 67129, 67131, 67135, 67137, 67134, 67130);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:47:12 +0530 (Tue, 06 May 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 May14 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Firefox ESR and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox ESR and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
 - Using certain temp directory within maintenservice_installer.exe in an
   insecure way.
 - An error exists when validating the XBL status of an object.
@@ -62,29 +56,15 @@ is vulnerable or not.";
 - An error exists in NSS.
 - A use-after-free error exists when handling host resolution within the
   'libxul.so!nsHostResolver::ConditionallyRefreshRecord()' function.
-- And some unspecified errors exist.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to conduct spoofing attacks,
+- And some unspecified errors exist.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct spoofing attacks,
 disclose potentially sensitive information, bypass certain security
 restrictions, and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Firefox ESR version 24.x before 24.5 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Firefox ESR version 24.5 or later,
-For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox ESR version 24.x before 24.5 on Windows");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox ESR version 24.5 or later,
+For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -93,7 +73,7 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
@@ -102,15 +82,10 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
-if(!ffVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(ffVer =~ "^24\." && version_in_range(version:ffVer,
                        test_version:"24.0", test_version2:"24.4"))
 {

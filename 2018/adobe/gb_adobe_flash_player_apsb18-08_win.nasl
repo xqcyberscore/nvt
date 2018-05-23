@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb18-08_win.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_adobe_flash_player_apsb18-08_win.nasl 9919 2018-05-22 12:05:34Z jschulte $
 #
 # Adobe Flash Player Security Updates(apsb18-08)-Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813204");
-  script_version("$Revision: 9447 $");
-  script_cve_id("CVE-2018-4932", "CVE-2018-4933", "CVE-2018-4934", "CVE-2018-4935", 
+  script_version("$Revision: 9919 $");
+  script_cve_id("CVE-2018-4932", "CVE-2018-4933", "CVE-2018-4934", "CVE-2018-4935",
                 "CVE-2018-4936", "CVE-2018-4937" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 14:05:34 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 10:51:14 +0530 (Wed, 11 Apr 2018)");
   script_name("Adobe Flash Player Security Updates(apsb18-08)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"
   - A remote code-execution vulnerability that occurs due to a use-after-free
@@ -95,4 +94,5 @@ if(version_is_less(version:vers, test_version:"29.0.0.140"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

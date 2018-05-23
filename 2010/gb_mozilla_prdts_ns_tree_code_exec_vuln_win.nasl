@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ns_tree_code_exec_vuln_win.nasl 8314 2018-01-08 08:01:01Z teissa $
+# $Id: gb_mozilla_prdts_ns_tree_code_exec_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products 'nsTreeSelection' Denial of Service vulnerability (Windows)
 #
@@ -24,32 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.0.19 or 3.5.9
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Seamonkey version 2.0.4
-  http://www.seamonkey-project.org/releases/
-
-  Upgrade to Thunderbird version 3.0.4
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to execute arbitrary code on the
-  system or cause the browser to crash.
-  Impact Level: Application";
-tag_affected = "Seamonkey version prior to 2.0.4
-  Thunderbird version proior to 3.0.4
-  Firefox version before 3.0.19 and 3.5.x before 3.5.9";
-tag_insight = "The flaw is due to an error in the 'nsTreeSelection' implementation, that
-  allows to execute arbitrary code or application crash via unspecified vectors
-  that trigger a call to a certain event handler.";
-tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
-  to Denial of Servcie vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800751");
-  script_version("$Revision: 8314 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0175");
   script_tag(name:"cvss_base", value:"9.3");
@@ -63,14 +42,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code on the
+  system or cause the browser to crash.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Seamonkey version prior to 2.0.4
+  Thunderbird version proior to 3.0.4
+  Firefox version before 3.0.19 and 3.5.x before 3.5.9");
+  script_tag(name : "insight" , value : "The flaw is due to an error in the 'nsTreeSelection' implementation, that
+  allows to execute arbitrary code or application crash via unspecified vectors
+  that trigger a call to a certain event handler.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
+  to Denial of Servcie vulnerability.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.0.19 or 3.5.9
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Seamonkey version 2.0.4
+  http://www.seamonkey-project.org/releases/
+
+  Upgrade to Thunderbird version 3.0.4
+  http://www.mozillamessaging.com/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -79,11 +72,10 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version < 3.0.19 and 3.5 < 3.5.9
   if(version_is_less(version:ffVer, test_version:"3.0.19") ||
      version_in_range(version:ffVer, test_version:"3.5", test_version2:"3.5.8"))
      {
@@ -96,7 +88,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
-  # Grep for Seamonkey version < 2.0.4
   if(version_is_less(version:smVer, test_version:"2.0.4"))
   {
     security_message(0);
@@ -108,7 +99,6 @@ if(smVer != NULL)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  # Grep for Thunderbird version < 3.0.4
   if(version_is_less(version:tbVer, test_version:"3.0.4")){
     security_message(0);
   }

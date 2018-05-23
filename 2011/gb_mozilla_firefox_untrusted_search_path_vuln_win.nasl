@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_untrusted_search_path_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_mozilla_firefox_untrusted_search_path_vuln_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Untrusted Search Path Vulnerability (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary code in the
-  context of the affected application.
-  Impact Level: System/Application";
-tag_affected = "Mozilla Firefox version before 3.6.20";
-tag_insight = "The flaw is due to error in 'ThinkPadSensor::Startup' allows local
-  users to gain privileges by leveraging write access in an unspecified
-  directory to place a Trojan horse DLL that is loaded into the running
-  Firefox process.";
-tag_solution = "Upgrade to Mozilla Firefox version 3.6.20 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla firefox and is prone to
-  untrusted search path vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802149");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2980");
   script_bugtraq_id(49217);
@@ -53,13 +40,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code in the
+  context of the affected application.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version before 3.6.20");
+  script_tag(name : "insight" , value : "The flaw is due to error in 'ThinkPadSensor::Startup' allows local
+  users to gain privileges by leveraging write access in an unspecified
+  directory to place a Trojan horse DLL that is loaded into the running
+  Firefox process.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.20 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox and is prone to
+  untrusted search path vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -68,11 +62,10 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version
   if(version_is_less(version:ffVer, test_version:"3.6.20")){
      security_message(0);
      exit(0);

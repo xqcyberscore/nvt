@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_websockets_dos_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_prdts_websockets_dos_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Firefox 'WebSockets' Denial of Service Vulnerability (Windows)
 #
@@ -24,27 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to cause a denial of service
-  (memory corruption and application crash) or possibly execute arbitrary
-  code via unspecified vectors.
-  Impact Level: System/Application";
-tag_affected = "Mozilla Firefox versions before 16.0.1 on Windows";
-tag_insight = "Error in the WebSockets implementation, allows remote attackers to cause a
-  denial of service.";
-tag_solution = "Upgrade to Mozilla Firefox version 16.0.1 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla firefox and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802996");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9911 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox 'WebSockets' Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
@@ -53,13 +41,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service
+  (memory corruption and application crash) or possibly execute arbitrary
+  code via unspecified vectors.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox versions before 16.0.1 on Windows");
+  script_tag(name : "insight" , value : "Error in the WebSockets implementation, allows remote attackers to cause a
+  denial of service.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 16.0.1 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -68,14 +62,10 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-ffVer = "";
 
-# Firefox Check
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version
   if(version_is_less(version:ffVer, test_version:"16.0.1"))
   {
     security_message(0);

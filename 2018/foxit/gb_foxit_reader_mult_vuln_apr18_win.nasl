@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 9907 2018-05-18 12:01:35Z santu $
 #
 # Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,12 +29,35 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813156");
-  script_version("$Revision: 9628 $");
-  script_cve_id("CVE-2018-3842", "CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3853",
-                "CVE-2018-3850", "CVE-2018-3843", "CVE-2018-10302");
+  script_version("$Revision: 9907 $");
+  script_cve_id("CVE-2017-14458", "CVE-2017-17557", "CVE-2018-10302", "CVE-2018-10303",
+                "CVE-2018-10473", "CVE-2018-10474", "CVE-2018-10475", "CVE-2018-10476",
+                "CVE-2018-10477", "CVE-2018-10478", "CVE-2018-10479", "CVE-2018-10480",
+                "CVE-2018-10481", "CVE-2018-10482", "CVE-2018-10483", "CVE-2018-10484",
+                "CVE-2018-10485", "CVE-2018-10486", "CVE-2018-10487", "CVE-2018-10488",
+                "CVE-2018-10489", "CVE-2018-10490", "CVE-2018-10491", "CVE-2018-10492",
+                "CVE-2018-10493", "CVE-2018-10494", "CVE-2018-10495", "CVE-2018-1173",
+                "CVE-2018-1174", "CVE-2018-1175", "CVE-2018-1176", "CVE-2018-1177",
+                "CVE-2018-1178", "CVE-2018-1179", "CVE-2018-1180", "CVE-2018-3842",
+                "CVE-2018-3843", "CVE-2018-3850", "CVE-2018-3853", "CVE-2018-5674",
+                "CVE-2018-5675", "CVE-2018-5676", "CVE-2018-5677", "CVE-2018-5678",
+                "CVE-2018-5679", "CVE-2018-5680", "CVE-2018-7407", "CVE-2018-9935",
+                "CVE-2018-9936", "CVE-2018-9937", "CVE-2018-9938", "CVE-2018-9939",
+                "CVE-2018-9940", "CVE-2018-9941", "CVE-2018-9942", "CVE-2018-9943",
+                "CVE-2018-9944", "CVE-2018-9945", "CVE-2018-9946", "CVE-2018-9947",
+                "CVE-2018-9948", "CVE-2018-9949", "CVE-2018-9950", "CVE-2018-9951",
+                "CVE-2018-9952", "CVE-2018-9953", "CVE-2018-9954", "CVE-2018-9955",
+                "CVE-2018-9956", "CVE-2018-9957", "CVE-2018-9958", "CVE-2018-9959",
+                "CVE-2018-9960", "CVE-2018-9961", "CVE-2018-9962", "CVE-2018-9963",
+                "CVE-2018-9964", "CVE-2018-9965", "CVE-2018-9966", "CVE-2018-9967",
+                "CVE-2018-9968", "CVE-2018-9969", "CVE-2018-9970", "CVE-2018-9971",
+                "CVE-2018-9972", "CVE-2018-9973", "CVE-2018-9974", "CVE-2018-9975",
+                "CVE-2018-9976", "CVE-2018-9977", "CVE-2018-9978", "CVE-2018-9979",
+                "CVE-2018-9980", "CVE-2018-9981", "CVE-2018-9982", "CVE-2018-9983",
+                "CVE-2018-9984");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 14:01:35 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 14:35:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)");
 
@@ -66,7 +89,18 @@ if(description)
 
   - An error since the application did not handle a COM object properly.
 
-  - An error allowing users to embed executable files.");
+  - An error allowing users to embed executable files.
+
+  - U3D out-of-bounds read, write and access errors.
+
+  - U3D uninitialized pointer error.
+
+  - U3D heap buffer overflow or stack-based buffer overflow error.
+
+  - An error when the application is not running in safe-reading-mode and can
+    be abused via '_JP2_Codestream_Read_SOT' function.
+
+  - U3D Type Confusion errors.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to cause a denial of service condition, execute arbitrary code and

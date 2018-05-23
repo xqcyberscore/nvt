@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808231");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 9927 $");
   script_cve_id("CVE-2017-1000030", "CVE-2017-1000029");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 11:16:21 +0530 (Tue, 21 Jun 2016)");
   script_name("Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities");
 
@@ -61,13 +61,16 @@ if(description)
   script_tag(name:"affected", value:"GlassFish Server Open Source Edition 
   version 3.0.1 (build 22)");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.trustwave.com/Resources/Security-Advisories/Advisories/TWSL2016-011/?fid=8037");
+  script_xref(name: "URL", value: "https://www.trustwave.com/Resources/Security-Advisories/Advisories/TWSL2016-011/?fid=8037");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -82,31 +85,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-sndReq = "";
-rcvRes = "";
-http_port = 0;
-
-# Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if (!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## iterate over list
 files = traversal_files();
 
-foreach file (keys(files))
-{
-  ## Construct Vulnerable URL
+foreach file (keys(files)) {
   url = '/resource/file%3a///' + files[file];
 
-  ## Confirm exploit worked properly or not
-  if(http_vuln_check(port:http_port, url:url, pattern:file, check_header:TRUE))
-  {
+  if(http_vuln_check(port:http_port, url:url, pattern:file, check_header:TRUE)) {
     report = report_vuln_url(port:http_port, url:url );
     security_message(port:http_port, data:report);
     exit(0);
   }
 }
 
+exit(99);

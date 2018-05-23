@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4103729.nasl 9785 2018-05-09 14:27:34Z santu $
+# $Id: gb_ms_kb4103729.nasl 9919 2018-05-22 12:05:34Z jschulte $
 #
 # Adobe Flash Security Update May18 (KB4103729)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813353");
-  script_version("$Revision: 9785 $");
+  script_version("$Revision: 9919 $");
   script_cve_id("CVE-2018-4944");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 14:05:34 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 12:25:07 +0530 (Wed, 09 May 2018)");
   script_name("Adobe Flash Security Update May18 (KB4103729)");
 
@@ -41,10 +41,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a type confusion 
+  script_tag(name: "insight" , value:"The flaw exists due to a type confusion
   error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow 
+  script_tag(name: "impact" , value:"Successful exploitation will allow
   attackers to conduct arbitrary code execution.
 
   Impact Level: System");
@@ -90,7 +90,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -117,4 +116,5 @@ if(version_is_less(version:fileVer, test_version:"29.0.0.171"))
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

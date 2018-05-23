@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_unspecified_vuln_mar10_win.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: secpod_firefox_unspecified_vuln_mar10_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Unspecified Vulnerability Mar-10 (Windows)
 #
@@ -24,20 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Impact is currently unknown.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox version 3.5.x through 3.5.8.";
-tag_insight = "Vulnerability details are not available.";
-tag_solution = "Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html";
-tag_summary = "The host is installed with mozilla firefox and is prone to
-  unspecified vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902147");
-  script_version("$Revision: 8187 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-1122");
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,13 +39,16 @@ if(description)
   script_copyright("Copyright (c) 2010 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Impact is currently unknown.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version 3.5.x through 3.5.8.");
+  script_tag(name : "insight" , value : "Vulnerability details are not available.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.3 or later
+  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html");
+  script_tag(name : "summary" , value : "The host is installed with mozilla firefox and is prone to
+  unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/392231.php");
@@ -65,13 +59,11 @@ if(description)
 
 include("version_func.inc");
 
-## Get Firefox version from KB
 fpVer = get_kb_item("Firefox/Win/Ver");
 if(!fpVer){
   exit(0);
 }
 
-## Check for Mozilla Firefox Version  3.5 to 3.5.8
 if(version_in_range(version:fpVer, test_version:"3.5.0", test_version2:"3.5.8")){
   security_message(0);
 }

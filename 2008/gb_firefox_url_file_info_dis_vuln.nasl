@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_url_file_info_dis_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_firefox_url_file_info_dis_vuln.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Firefox .url Shortcut File Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800031");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-17 14:35:03 +0200 (Fri, 17 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
 
   script_xref(name:"URL", value:"http://liudieyu0.blog124.fc2.com/blog-entry-6.html");
@@ -71,7 +71,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for firefox version 3.0.1 to 3.0.3
 if(version_in_range(version:ffVer, test_version:"3.0.1", test_version2:"3.0.3")){
   security_message(0);
 }

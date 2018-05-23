@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_mozilla.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: smbcl_mozilla.nasl 9911 2018-05-18 13:49:23Z cfischer $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Windows)
 #
 # Authors:
@@ -24,33 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_impact = "Mozilla contributors moz_bug_r_a4, Boris Zbarsky, and Johnny Stenback reported
-  a series of vulnerabilities which allow scripts from page content to run with
-  elevated privileges. moz_bug_r_a4 demonstrated additional variants of MFSA
-  2007-25 and MFSA2007-35 (arbitrary code execution through XPCNativeWrapper
-  pollution). Additional vulnerabilities reported separately by Boris Zbarsky,
-  Johnny Stenback, and moz_bug_r_a4 showed that the browser could be forced to
-  run JavaScript code using the wrong principal leading to universal XSS
-  and arbitrary code execution.";
-
-tag_summary = "The remote host is probable affected by the vulnerabilities described in
-  CVE-2008-0416, CVE-2007-4879, CVE-2008-1195, CVE-2008-1233,
-  CVE-2008-1234, CVE-2008-1235, CVE-2008-1236, CVE-2008-1237,
-  CVE-2008-1238, CVE-2008-1240, CVE-2008-1241 and more.";
-
-tag_solution = "All Users should upgrade to the latest versions of Firefox, Thunderbird or
-  Seamonkey.
-  http://www.mozilla.com/en-US/firefox/all.html
-  http://www.seamonkey-project.org/releases/
-  http://www.mozillamessaging.com/en-US/thunderbird/all.html";
-
-# $Revision: 9349 $
+# $Revision: 9911 $
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90013");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,11 +43,28 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "solution" , value : "All Users should upgrade to the latest versions of Firefox, Thunderbird or
+  Seamonkey.
+  http://www.mozilla.com/en-US/firefox/all.html
+  http://www.seamonkey-project.org/releases/
+  http://www.mozillamessaging.com/en-US/thunderbird/all.html");
+  script_tag(name : "summary" , value : "The remote host is probable affected by the vulnerabilities described in
+  CVE-2008-0416, CVE-2007-4879, CVE-2008-1195, CVE-2008-1233,
+  CVE-2008-1234, CVE-2008-1235, CVE-2008-1236, CVE-2008-1237,
+  CVE-2008-1238, CVE-2008-1240, CVE-2008-1241 and more.");
+  script_tag(name : "impact" , value : "Mozilla contributors moz_bug_r_a4, Boris Zbarsky, and Johnny Stenback reported
+  a series of vulnerabilities which allow scripts from page content to run with
+  elevated privileges. moz_bug_r_a4 demonstrated additional variants of MFSA
+  2007-25 and MFSA2007-35 (arbitrary code execution through XPCNativeWrapper
+  pollution). Additional vulnerabilities reported separately by Boris Zbarsky,
+  Johnny Stenback, and moz_bug_r_a4 showed that the browser could be forced to
+  run JavaScript code using the wrong principal leading to universal XSS
+  and arbitrary code execution.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -75,11 +72,10 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version < 2.0.0.14
   if(version_is_less(version:ffVer, test_version:"2.0.0.14"))
   {
     security_message(0);
@@ -91,7 +87,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer)
 {
-  # Grep for Seamonkey version < 1.1.9
   if(version_is_less(version:smVer, test_version:"1.1.9"))
   {
     security_message(0);
@@ -103,7 +98,6 @@ if(smVer)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer)
 {
-  # Grep for Thunderbird version < 2.0.0.14
   if(version_is_less(version:tbVer, test_version:"2.0.0.14")){
     security_message(0);
   }

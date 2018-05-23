@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809390");
-  script_version("$Revision: 9341 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_bugtraq_id(93810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:08:42 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name: "summary" , value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
   - Crash in nsTArray_base&lt;T&gt;::SwapArrayElements.
@@ -55,7 +54,7 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox version before
   49.0.2 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 49.0.2
@@ -70,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -78,15 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"49.0.2"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"49.0.2");

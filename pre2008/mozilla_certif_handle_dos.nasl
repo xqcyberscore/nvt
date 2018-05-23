@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_certif_handle_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mozilla_certif_handle_dos.nasl 9912 2018-05-18 13:54:07Z cfischer $
 # Description: Mozilla/Firefox security manager certificate handling DoS
 #
 # Authors:
@@ -24,22 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Mozilla, an alternative web browser.
-
-  The Mozilla Personal Security Manager (PSM) contains  a flaw
-  that may permit a attacker to import silently a certificate into
-  the PSM certificate store.
-  This corruption may result in a deny of SSL connections.";
-
-tag_solution = "Upgrade to the latest version of this software";
-
 #  Ref: Marcel Boesch <marboesc@student.ethz.ch>.
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14668");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10703);
   script_cve_id("CVE-2004-0758");
@@ -51,10 +42,18 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "solution" , value : "Upgrade to the latest version of this software");
+  script_tag(name : "summary" , value : "The remote host is using Mozilla, an alternative web browser.
+
+  The Mozilla Personal Security Manager (PSM) contains  a flaw
+  that may permit a attacker to import silently a certificate into
+  the PSM certificate store.
+  This corruption may result in a deny of SSL connections.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

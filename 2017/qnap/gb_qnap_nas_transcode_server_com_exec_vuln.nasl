@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
+# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
 #
 # QNAP NAS 'Transcode Server' Command Execution Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811727");
-  script_version("$Revision: 9297 $");
+  script_version("$Revision: 9917 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-01 10:43:16 +0530 (Fri, 01 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP NAS 'Transcode Server' Command Execution Vulnerability");
@@ -56,15 +56,13 @@ if (description)
   script_tag(name:"affected", value:"QNAP TS-431 with firmware version 4.3.3.0262
   (20170727) and QNAP_TS-131. Many other QNAP models may also be affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch exists as of
-  4th April, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
-  https://www.qnap.com");
+  script_tag(name: "solution" , value: "No known solution is available as of 22nd May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "http://www.exploitee.rs/index.php/QNAP_TS-131");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42587");
+  script_xref(name: "URL", value: "http://www.exploitee.rs/index.php/QNAP_TS-131");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42587");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -79,36 +77,21 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-# Variable Initialization
-version = 0;
-qtsPort = 0;
-
-##Get Port
-if(!qtsPort = get_app_port_from_cpe_prefix(cpe:CPE)){
+if(!qtsPort = get_app_port_from_cpe_prefix(cpe:CPE))
   exit(0);
-}
 
-##Get model
-if (!model = get_kb_item("qnap/dismodel")){
+if (!model = get_kb_item("qnap/dismodel"))
   exit(0);
-}
 
-##Check for model affected
-if(model != "((TS-131)|(TS-431))"){
+if(model != "((TS-131)|(TS-431))")
   exit(0);
-}
 
-##Get version
-if (!version = get_kb_item("qnap/version")){
+if (!version = get_kb_item("qnap/version"))
   exit(0);
-}
 
-##Get Build
-if (!build = get_kb_item("qnap/build")){
+if (!build = get_kb_item("qnap/build"))
   exit(0);
-}
 
-##Combine build and version
 checkvers = version + '.' + build;
 
 if((model == "TS-431" && checkvers == "4.3.3.0262.20170727") ||
@@ -118,4 +101,5 @@ if((model == "TS-431" && checkvers == "4.3.3.0262.20170727") ||
   security_message(port:qtsPort, data: report);
   exit(0);
 }
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_xss_vuln.nasl 9497 2018-04-16 14:19:44Z asteins $
+# $Id: gb_mahara_xss_vuln.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
 #
 # Mahara <16.10.9, <17.04.7, <17.10.4 XSS Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112255");
-  script_version("$Revision: 9497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 16:19:44 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 9913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 15:29:52 +0200 (Mon, 16 Apr 2018)");
 
   script_cve_id("CVE-2018-6182");
 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Mahara <16.10.9, <17.04.7, <17.10.4 XSS Vulnerability");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);

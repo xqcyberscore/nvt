@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_mfsa_2017-27_info_disc_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox Information Disclosure Vulnerability-Windows(mfsa_2017-27)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812323");
-  script_version("$Revision: 8027 $");
+  script_version("$Revision: 9923 $");
   script_cve_id("CVE-2017-7844" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 12:43:31 +0530 (Tue, 05 Dec 2017)");
   script_name("Mozilla Firefox Information Disclosure Vulnerability-Windows(mfsa_2017-27)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists as visited history
   information leak through SVG image.");
@@ -62,19 +61,15 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
-
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 
@@ -84,4 +79,5 @@ if(ffVer == "57.0")
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

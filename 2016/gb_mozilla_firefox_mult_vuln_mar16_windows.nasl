@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)
 #
@@ -29,36 +29,35 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807520");
-  script_version("$Revision: 5650 $");
-  script_cve_id("CVE-2016-1954", "CVE-2016-1955", "CVE-2016-1957", "CVE-2016-1958", 
-                "CVE-2016-1959", "CVE-2016-1960", "CVE-2016-1950", "CVE-2016-1952", 
-                "CVE-2016-1953", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1963", 
-                "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1967", 
-                "CVE-2016-1968", "CVE-2016-1969", "CVE-2016-1970", "CVE-2016-1971", 
-                "CVE-2016-1972", "CVE-2016-1973", "CVE-2016-1974", "CVE-2016-1975", 
-                "CVE-2016-1976", "CVE-2016-1977", "CVE-2016-1979", "CVE-2016-2790", 
-                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", 
-                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", 
+  script_version("$Revision: 9910 $");
+  script_cve_id("CVE-2016-1954", "CVE-2016-1955", "CVE-2016-1957", "CVE-2016-1958",
+                "CVE-2016-1959", "CVE-2016-1960", "CVE-2016-1950", "CVE-2016-1952",
+                "CVE-2016-1953", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1963",
+                "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1967",
+                "CVE-2016-1968", "CVE-2016-1969", "CVE-2016-1970", "CVE-2016-1971",
+                "CVE-2016-1972", "CVE-2016-1973", "CVE-2016-1974", "CVE-2016-1975",
+                "CVE-2016-1976", "CVE-2016-1977", "CVE-2016-1979", "CVE-2016-2790",
+                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794",
+                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798",
                 "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-03-14 16:41:40 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
   - The 'nsCSPContext::SendReports' function in 'dom/security/nsCSPContext.cpp'
-    script does not prevent use of a non-HTTP report-uri for a CSP violation 
+    script does not prevent use of a non-HTTP report-uri for a CSP violation
     report.
-  - The CSP violation reports contained full path information for cross-origin 
+  - The CSP violation reports contained full path information for cross-origin
     iframe navigations in violation of the CSP specification.
-  - A memory leak in the libstagefright library when array destruction occurs 
+  - A memory leak in the libstagefright library when array destruction occurs
     during MPEG4 video file processing.
   - An error in 'browser/base/content/browser.js' script.
   - Multiple use-after-free issues.
@@ -67,16 +66,16 @@ if(description)
   - The mishandling of a navigation sequence that returns to the original page.
   - Improper restriction of the availability of IFRAME Resource Timing API times.
   - Integer underflow in Brotli library's decompression.
-  - A memory corruption issue in NPAPI plugin in 'nsNPObjWrapper::GetNewOrUsed' 
+  - A memory corruption issue in NPAPI plugin in 'nsNPObjWrapper::GetNewOrUsed'
     function in 'dom/plugins/base/nsJSNPRuntime.cpp' script.
-  - A race condition in the 'GetStaticInstance' function in the WebRTC 
+  - A race condition in the 'GetStaticInstance' function in the WebRTC
     implementation.
   - Multiple Heap-based buffer overflow vulnerabilities.
   - The multiple unspecified vulnerabilities in the browser engine.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code or to cause a denial of service,
-  possibly gain privileges, to bypass the Same Origin Policy, to obtain 
+  possibly gain privileges, to bypass the Same Origin Policy, to obtain
   sensitive information and to do spoofing attacks.
 
   Impact Level: System/Application");
@@ -98,7 +97,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -106,15 +105,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"45.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"45.0");

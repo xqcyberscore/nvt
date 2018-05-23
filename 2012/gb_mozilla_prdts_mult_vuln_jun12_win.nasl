@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - June12 (Windows)
 #
@@ -24,47 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Mozilla Firefox version 13.0 or ESR version 10.0.5 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.10 or later,
-  http://www.mozilla.org/projects/seamonkey/
-
-  Upgrade to Thunderbird version to 13.0 or ESR 10.0.5 or later,
-  http://www.mozilla.org/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation could allow attackers to inject scripts, bypass
-  certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "SeaMonkey version before 2.10,
-  Thunderbird version 5.0 through 12.0,
-  Mozilla Firefox version 4.x through 12.0,
-  Thunderbird ESR version 10.x before 10.0.5 and
-  Mozilla Firefox ESR version 10.x before 10.0.5 on Windows";
-tag_insight = "- Multiple unspecified errors in browser engine can be exploited to corrupt
-    memory.
-  - Multiple use-after-free errors exists in 'nsFrameList::FirstChild' when
-    handling column layouts with absolute positioning within a container that
-    changes the size.
-  - The improper implementation of Content Security Policy inline-script
-    blocking feature, fails to block inline event handlers such as onclick.
-  - An error when loading HTML pages from Windows shares, which can be
-    exploited to disclose files from local resources via an iframe tag.
-  - An error exists within 'utf16_to_isolatin1' function when converting
-    from unicode to native character sets.
-  - An error in 'nsHTMLReflowState::CalculateHypotheticalBox' when a window is
-    resized on a page with nested columns using absolute and relative
-    positioning.
-  - The glBufferData function in the WebGL implementation, fails to mitigate
-    an unspecified flaw in an NVIDIA driver.";
-tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802865");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9911 $");
   script_cve_id("CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1944", "CVE-2012-1945",
                 "CVE-2012-1946", "CVE-2012-1947", "CVE-2012-3105", "CVE-2012-1941",
                 "CVE-2012-0441", "CVE-2012-1938");
@@ -72,7 +35,7 @@ if(description)
                     53229, 53227, 53224, 53798, 53796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 11:00:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - June12 (Windows)");
 
@@ -88,14 +51,44 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  certain security restrictions, execute arbitrary code in the context of the
+  browser or cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "SeaMonkey version before 2.10,
+  Thunderbird version 5.0 through 12.0,
+  Mozilla Firefox version 4.x through 12.0,
+  Thunderbird ESR version 10.x before 10.0.5 and
+  Mozilla Firefox ESR version 10.x before 10.0.5 on Windows");
+  script_tag(name : "insight" , value : "- Multiple unspecified errors in browser engine can be exploited to corrupt
+    memory.
+  - Multiple use-after-free errors exists in 'nsFrameList::FirstChild' when
+    handling column layouts with absolute positioning within a container that
+    changes the size.
+  - The improper implementation of Content Security Policy inline-script
+    blocking feature, fails to block inline event handlers such as onclick.
+  - An error when loading HTML pages from Windows shares, which can be
+    exploited to disclose files from local resources via an iframe tag.
+  - An error exists within 'utf16_to_isolatin1' function when converting
+    from unicode to native character sets.
+  - An error in 'nsHTMLReflowState::CalculateHypotheticalBox' when a window is
+    resized on a page with nested columns using absolute and relative
+    positioning.
+  - The glBufferData function in the WebGL implementation, fails to mitigate
+    an unspecified flaw in an NVIDIA driver.");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 13.0 or ESR version 10.0.5 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to SeaMonkey version to 2.10 or later,
+  http://www.mozilla.org/projects/seamonkey/
+
+  Upgrade to Thunderbird version to 13.0 or ESR 10.0.5 or later,
+  http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -104,13 +97,12 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
 
 if(ffVer)
 {
-  # Grep for Firefox version
   if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"10.0.4")||
      version_in_range(version:ffVer, test_version:"11.0", test_version2:"12.0"))
   {
@@ -125,7 +117,6 @@ seaVer = get_kb_item("Seamonkey/Win/Ver");
 
 if(seaVer)
 {
-  # Grep for SeaMonkey version
   if(version_is_less(version:seaVer, test_version:"2.10"))
   {
     security_message(0);
@@ -139,7 +130,6 @@ tbVer = get_kb_item("Thunderbird/Win/Ver");
 
 if(tbVer)
 {
-  # Grep for Thunderbird version
   if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"10.0.4")||
      version_in_range(version:tbVer, test_version:"11.0", test_version2:"12.0"))
   {

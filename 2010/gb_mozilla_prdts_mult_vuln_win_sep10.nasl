@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_sep10.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_win_sep10.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities sep-10 (Windows)
 #
@@ -24,43 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.5.12 or 3.6.9 or later
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Seamonkey version 2.0.7 or later
-  http://www.seamonkey-project.org/releases/
-
-  Upgrade to Thunderbird version 3.0.7 or 3.1.3 or later
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to cause a denial of service,
-  execute arbitrary code, or cause buffer overflow.
-  Impact Level: Application";
-tag_affected = "Seamonkey version before 2.0.7
-  Firefox version 3.5.x before 3.5.12 and 3.6.x before 3.6.9
-  Thunderbird version 3.0.x before 3.0.7 and 3.1.x before 3.1.3";
-tag_insight = "The flaws are due to:
-  - Some pointer held by a 'XUL' tree selection could be freed and then later
-    reused, potentially resulting in the execution of attacker-controlled memory.
-  - Information leak via 'XMLHttpRequest' statusText.
-  - Dangling pointer vulnerability using 'DOM' plugin array.
-  - 'Frameset' integer overflow vulnerability.
-  - type attribute of an '<object>' tag, which override the charset of a framed
-    HTML document.
-  - Dangling pointer vulnerability in the implementation of 'navigator.plugins'
-    in which the navigator object could retain a pointer to the plugins array
-    even after it had been destroyed.
-  - Copy-and-paste or drag-and-drop into 'designMode' document allows XSS.
-  - Heap buffer overflow in 'nsTextFrameUtils::TransformText'
-  - Dangling pointer vulnerability in 'XUL <tree>'s content view.";
-tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird that are
-  prone to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801450");
-  script_version("$Revision: 8457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-2760", "CVE-2010-2764", "CVE-2010-2766", "CVE-2010-2765",
                 "CVE-2010-2768", "CVE-2010-2767", "CVE-2010-2769", "CVE-2010-3166",
@@ -81,25 +49,52 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service,
+  execute arbitrary code, or cause buffer overflow.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Seamonkey version before 2.0.7
+  Firefox version 3.5.x before 3.5.12 and 3.6.x before 3.6.9
+  Thunderbird version 3.0.x before 3.0.7 and 3.1.x before 3.1.3");
+  script_tag(name : "insight" , value : "The flaws are due to:
+  - Some pointer held by a 'XUL' tree selection could be freed and then later
+    reused, potentially resulting in the execution of attacker-controlled memory.
+  - Information leak via 'XMLHttpRequest' statusText.
+  - Dangling pointer vulnerability using 'DOM' plugin array.
+  - 'Frameset' integer overflow vulnerability.
+  - type attribute of an '<object>' tag, which override the charset of a framed
+    HTML document.
+  - Dangling pointer vulnerability in the implementation of 'navigator.plugins'
+    in which the navigator object could retain a pointer to the plugins array
+    even after it had been destroyed.
+  - Copy-and-paste or drag-and-drop into 'designMode' document allows XSS.
+  - Heap buffer overflow in 'nsTextFrameUtils::TransformText'
+  - Dangling pointer vulnerability in 'XUL <tree>'s content view.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird that are
+  prone to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.12 or 3.6.9 or later
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Seamonkey version 2.0.7 or later
+  http://www.seamonkey-project.org/releases/
+
+  Upgrade to Thunderbird version 3.0.7 or 3.1.3 or later
+  http://www.mozillamessaging.com/en-US/thunderbird/");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox version 3.5 < 3.5.12, 3.6 < 3.6.9
   if(version_in_range(version:ffVer, test_version:"3.6", test_version2:"3.6.8") ||
      version_in_range(version:ffVer, test_version:"3.5", test_version2:"3.5.11"))
      {
@@ -112,7 +107,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
-  ## Grep for Seamonkey version 2.0.7
   if(version_is_less(version:smVer, test_version:"2.0.7"))
   {
     security_message(0);
@@ -124,7 +118,6 @@ if(smVer != NULL)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  ## Grep for Thunderbird version 3.1 < 3.1.3, 3.0 < 3.0.7
   if(version_in_range(version:tbVer, test_version:"3.1", test_version2:"3.1.2") ||
      version_in_range(version:tbVer, test_version:"3.0", test_version2:"3.0.6")){
     security_message(0);

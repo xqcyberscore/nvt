@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_dos_vuln_win_jan10.nasl 8254 2017-12-28 07:29:05Z teissa $
+# $Id: gb_firefox_dos_vuln_win_jan10.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Firefox 'nsObserverList::FillObserverArray' DOS Vulnerability (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful remote exploitation will allow attackers to  crash application
-  via a crafted web site that triggers memory consumption and an accompanying
-  Low Memory alert dialog, and also triggers attempted removal of an observer
-  from an empty observers array.
-  Impact Level: Application.";
-tag_affected = "Mozilla Firefox version prior to 3.5.7 on Windows.";
-tag_insight = "The flaw is due to error in 'nsObserverList::FillObserverArray()' function
-  in 'xpcom/ds/nsObserverList.cpp'";
-tag_solution = "Upgrade to Firefox version 3.5.7
-  http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone to
-  Denial of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800416");
-  script_version("$Revision: 8254 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,13 +42,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful remote exploitation will allow attackers to  crash application
+  via a crafted web site that triggers memory consumption and an accompanying
+  Low Memory alert dialog, and also triggers attempted removal of an observer
+  from an empty observers array.
+  Impact Level: Application.");
+  script_tag(name : "affected" , value : "Mozilla Firefox version prior to 3.5.7 on Windows.");
+  script_tag(name : "insight" , value : "The flaw is due to error in 'nsObserverList::FillObserverArray()' function
+  in 'xpcom/ds/nsObserverList.cpp'");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.7
+  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone to
+  Denial of Service vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

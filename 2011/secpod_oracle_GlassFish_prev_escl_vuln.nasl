@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # Oracle Java GlassFish Server Privilege Escalation Vulnerability
 #
@@ -24,73 +24,66 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the security updates.
-  http://www.oracle.com/technetwork/topics/security/cpujan2011-194091.html
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation could allow local attackers to affect confidentiality
-  and integrity via unknown vectors.
-  Impact Level: System/Application";
-tag_affected = "Oracle GlassFish version 2.1, 2.1.1 and 3.0.1";
-tag_insight = "The issue is caused by an unspecified error related to the Java Message
-  Service, which could allow local attackers to disclose or manipulate certain
-  information, or create a denial of service condition.";
-tag_summary = "The host is running GlassFish Server and is prone to privilege
-  escalation vulnerability.";
+CPE = 'cpe:/a:oracle:glassfish_server';
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902286");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9927 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2010-4438");
   script_bugtraq_id(45890);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:C");
+
+  script_tag(name: "solution_type", value: "VendorFix");
+
   script_name("Oracle Java GlassFish Server Privilege Escalation Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42988");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64813");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0155");
+  script_xref(name: "URL", value: "http://secunia.com/advisories/42988");
+  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/64813");
+  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2011/0155");
+  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/topics/security/cpujan2011-194091.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
+  script_dependencies("GlassFish/installed");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name: "impact", value: "Successful exploitation could allow local attackers to affect confidentiality
+and integrity via unknown vectors.");
+
+  script_tag(name: "affected", value: "Oracle GlassFish version 2.1, 2.1.1 and 3.0.1");
+
+  script_tag(name: "insight", value: "The issue is caused by an unspecified error related to the Java Message
+Service, which could allow local attackers to disclose or manipulate certain information, or create a denial of
+service condition.");
+
+  script_tag(name: "summary", value: "The host is running GlassFish Server and is prone to privilege escalation
+vulnerability.");
+
+  script_tag(name: "solution", value: "Apply the security updates.");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Check for the default port
-if(!port = get_http_port(default:8080)){
-  port = 8080;
-}
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-## Check port status
-if(!get_port_state(port)){
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_is_equal(version: version, test_version:"3.0.1") ||
+    version_in_range(version: version, test_version:"2.1", test_version2:"2.1.1")) {
+  security_message(port: port);
   exit(0);
 }
 
-## Get the version form KB
-vers = get_kb_item(string("www/", port, "/GlassFish"));
-if(!isnull(vers))
-{
-  if(version_is_equal(version: vers, test_version:"3.0.1") ||
-     version_in_range(version: vers, test_version:"2.1", test_version2:"2.1.1")){
-    security_message(port:port);
-  }
-}
+exit(99);

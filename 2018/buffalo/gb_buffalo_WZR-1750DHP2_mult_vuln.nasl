@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_WZR-1750DHP2_mult_vuln.nasl 9519 2018-04-18 09:39:41Z ckuersteiner $
+# $Id: gb_buffalo_WZR-1750DHP2_mult_vuln.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
 #
 # Buffalo WZR-1750DHP2 < 2.31 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/o:buffalo:wzr-1750dhp2_firmware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140996");
-  script_version("$Revision: 9519 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-18 11:39:41 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9913 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-18 14:09:34 +0700 (Wed, 18 Apr 2018)");
-  script_tag(name: "cvss_base", value: "8.3");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-0554", "CVE-2018-0555", "CVE-2018-0556"); 
 

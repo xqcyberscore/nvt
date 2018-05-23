@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011628.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4011628.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
 #
 # Microsoft Office 2016 Information Disclosure Vulnerability (KB4011628)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813123");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9913 $");
   script_cve_id("CVE-2018-1007");
   script_bugtraq_id(103640);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:07:39 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office 2016 Information Disclosure Vulnerability (KB4011628)");
 

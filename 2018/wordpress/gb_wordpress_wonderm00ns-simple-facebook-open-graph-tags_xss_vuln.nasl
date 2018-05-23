@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wonderm00ns-simple-facebook-open-graph-tags_xss_vuln.nasl 9866 2018-05-16 13:26:29Z asteins $
+# $Id: gb_wordpress_wonderm00ns-simple-facebook-open-graph-tags_xss_vuln.nasl 9924 2018-05-22 13:26:22Z asteins $
 #
 # WordPress Open Graph for Facebook, Google+ and Twitter Card Tags Plugin < 2.2.4.1 XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112287");
-  script_version("$Revision: 9866 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-16 15:26:29 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 9924 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-22 15:26:22 +0200 (Tue, 22 May 2018) $");
   script_tag(name: "creation_date", value: "2018-05-16 15:20:00 +0200 (Wed, 16 May 2018)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -75,7 +75,7 @@ if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
 
 if (dir == "/") dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/pixelyoursite/readme.txt");
+res = http_get_cache(port: port, item: dir + "/wp-content/plugins/wonderm00ns-simple-facebook-open-graph/readme.txt");
 
 if ("=== Open Graph for Facebook, Google+ and Twitter Card Tags" >< res && "Changelog" >< res) {
 

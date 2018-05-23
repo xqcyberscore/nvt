@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_win_aug11.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_win_aug11.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities August-11 (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to overwrite or delete
-  arbitrary cookies via a Set-Cookie header in an HTTP response, which results
-  into cross site scripting, cross site request forgery and denial of service
-  attacks.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox versions before 4.0";
-tag_insight = "Multiple flaws are due to not properly restricting modifications to
-  cookies established in HTTPS sessions.";
-tag_solution = "Upgrade to Firefox version 4.0 or later
-  http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla Firefox and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802138");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_cve_id("CVE-2008-7293");
   script_tag(name:"cvss_base", value:"5.8");
@@ -54,24 +41,33 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to overwrite or delete
+  arbitrary cookies via a Set-Cookie header in an HTTP response, which results
+  into cross site scripting, cross site request forgery and denial of service
+  attacks.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox versions before 4.0");
+  script_tag(name : "insight" , value : "Multiple flaws are due to not properly restricting modifications to
+  cookies established in HTTPS sessions.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 4.0 or later
+  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox and is prone to multiple
+  vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox versions before 4.0
   if(version_is_less(version:ffVer, test_version:"4.0")){
     security_message(0);
   }

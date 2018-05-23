@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_dns_info_disc_vuln_win.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_mozilla_prdts_dns_info_disc_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Information Disclosure Vulnerability (Windows)
 #
@@ -24,29 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the patch or Upgrade to  Mozilla Necko version 1.9.1,
-  https://bug453403.bugzilla.mozilla.org/attachment.cgi?id=346274
-  http://www.mozilla.com/en-US/products/
-
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation will let the attackers obtain the network location of
-  the applications user by logging DNS requests.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox and Seamonkey with Mozilla Necko version 1.9.0 and prior
-  on Windows.";
-tag_insight = "The flaw exists when DNS prefetching of domain names contained in links within
-  local HTML documents.";
-tag_summary = "The host is installed with Firefox/Seamonkey and is prone to
-  Information Disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800454");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,13 +41,24 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_seamonkey_detect_win.nasl", "gb_firefox_detect_win.nasl");
+  script_dependencies("gb_seamonkey_detect_win.nasl", "gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attackers obtain the network location of
+  the applications user by logging DNS requests.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox and Seamonkey with Mozilla Necko version 1.9.0 and prior
+  on Windows.");
+  script_tag(name : "insight" , value : "The flaw exists when DNS prefetching of domain names contained in links within
+  local HTML documents.");
+  script_tag(name : "summary" , value : "The host is installed with Firefox/Seamonkey and is prone to
+  Information Disclosure vulnerability.");
+  script_tag(name : "solution" , value : "Apply the patch or Upgrade to  Mozilla Necko version 1.9.1,
+  https://bug453403.bugzilla.mozilla.org/attachment.cgi?id=346274
+  http://www.mozilla.com/en-US/products/
+
+  *****
+  NOTE: Ignore this warning, if above mentioned patch is already applied.
+  *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -101,7 +94,7 @@ if(!isnull(smVer))
   }
 }
 
-# Firefox Check
+
 fpVer = get_kb_item("Firefox/Win/Ver");
 if(!isnull(fpVer))
 {

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_default_perms.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mozilla_default_perms.nasl 9910 2018-05-18 13:37:53Z cfischer $
 # Description: Mozilla/Firefox default installation file permission flaw
 #
 # Authors:
@@ -24,25 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Mozilla and/or Firefox, an alternative web browser.
-  The remote version of this software is prone to an improper file permission
-  setting.
-
-  This flaw only exists if the browser is installed by the Mozilla Foundation
-  package management, thus this alert might be a false positive.
-
-  A local attacker could overwrite arbitrary files or execute arbitrary code in
-  the context of the user running the browser.";
-
-tag_solution = "Update to the latest version of the software";
-
 #  Ref: Max <spamhole@gmx.at>
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15432");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11166);
   script_cve_id("CVE-2004-0906");
@@ -54,10 +42,21 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : "Update to the latest version of the software");
+  script_tag(name : "summary" , value : "The remote host is using Mozilla and/or Firefox, an alternative web browser.
+  The remote version of this software is prone to an improper file permission
+  setting.
+
+  This flaw only exists if the browser is installed by the Mozilla Foundation
+  package management, thus this alert might be a false positive.
+
+  A local attacker could overwrite arbitrary files or execute arbitrary code in
+  the context of the user running the browser.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -67,7 +66,6 @@ include("version_func.inc");
 mozVer = get_kb_item("Firefox/Win/Ver");
 if(mozVer)
 {
-  # check firefox version < 1.7.3
   if(version_is_less(version:mozVer ,test_version:"1.7.3"))
   {
     security_message(0);
@@ -80,7 +78,6 @@ if(!tunBirdVer){
   exit(0);
 }
 
-# check thunderbird version < 0.8
 if(version_is_less(version:tunBirdVer,test_version:"0.8")){
   security_message(0);
 }

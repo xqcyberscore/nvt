@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-62_2016-84_win.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-62_2016-84_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-62_2016-84 )-Windows
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808642");
-  script_version("$Revision: 9341 $");
-  script_cve_id("CVE-2016-5265", "CVE-2016-5264", "CVE-2016-5263", "CVE-2016-2837", 
+  script_version("$Revision: 9910 $");
+  script_cve_id("CVE-2016-5265", "CVE-2016-5264", "CVE-2016-5263", "CVE-2016-2837",
 		"CVE-2016-5262", "CVE-2016-5259", "CVE-2016-5258", "CVE-2016-5254",
 		"CVE-2016-5252", "CVE-2016-2836", "CVE-2016-2838", "CVE-2016-2830");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 14:54:21 +0530 (Mon, 08 Aug 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-62_2016-84 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name: "summary" , value:"This host is installed with
   Mozilla Firefox Esr and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
   - The nsDisplayList::HitTest function mishandles rendering display transformation.
@@ -58,12 +57,12 @@ if(description)
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   to bypass the same origin policy, to conduct Universal XSS (UXSS) attacks, to
-  execute arbitrary code or cause a denial of service and to obtain sensitive 
-  information. 
+  execute arbitrary code or cause a denial of service and to obtain sensitive
+  information.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version 45.x before 
+  script_tag(name: "affected" , value:"Mozilla Firefox Esr version 45.x before
   45.3 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 45.3
@@ -83,7 +82,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
@@ -91,15 +90,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_in_range(version:ffVer, test_version:"45.0", test_version2:"45.2"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"45.3");

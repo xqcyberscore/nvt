@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_spoof_vuln_win_dec09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_firefox_mult_spoof_vuln_win_dec09.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Multiple Spoofing Vulnerabilies - dec09 (Windows)
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to conduct spoofing attacks and
-  possibly launch further attacks on the system.
-  Impact Level: System/Application.";
-tag_affected = "Mozilla Firefox version 3.0 to 3.5.5 on Windows.";
-tag_insight = "- A race condition error allows attackers to produce a JavaScript message with
-    a spoofed domain association by writing the message in between the document
-    request and document load for a web page in a different domain.
-  - Visual truncation vulnerability in the MakeScriptDialogTitle function in
-    nsGlobalWindow.cpp in Mozilla Firefox allows remote attackers to spoof the
-    origin domain name of a script via a long name.";
-tag_solution = "Upgrade to Firefox version 3.6.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/firefox.html";
-tag_summary = "The host is installed with Firefox browser and is prone to multiple
-  spoofing vulnerabilies.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801093");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2009-12-17 08:14:37 +0100 (Thu, 17 Dec 2009)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -58,13 +43,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct spoofing attacks and
+  possibly launch further attacks on the system.
+  Impact Level: System/Application.");
+  script_tag(name : "affected" , value : "Mozilla Firefox version 3.0 to 3.5.5 on Windows.");
+  script_tag(name : "insight" , value : "- A race condition error allows attackers to produce a JavaScript message with
+    a spoofed domain association by writing the message in between the document
+    request and document load for a web page in a different domain.
+  - Visual truncation vulnerability in the MakeScriptDialogTitle function in
+    nsGlobalWindow.cpp in Mozilla Firefox allows remote attackers to spoof the
+    origin domain name of a script via a long name.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.6.3 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/firefox.html");
+  script_tag(name : "summary" , value : "The host is installed with Firefox browser and is prone to multiple
+  spoofing vulnerabilies.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -76,7 +73,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for Firefox version 3.0 to 3.5.5
 if(version_in_range(version:ffVer, test_version:"3.0", test_version2:"3.5.5")){
   security_message(0);
 }

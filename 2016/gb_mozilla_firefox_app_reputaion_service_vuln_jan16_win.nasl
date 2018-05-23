@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_win.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807051");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2016-1947");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-01-29 09:21:18 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Windows");
 
@@ -41,8 +41,7 @@ if(description)
   Firefox and is prone to application reputation service disabling
   vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to disabling of
   Application Reputation service that leads to removal of the ability of Safe
@@ -69,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(ffVer =~ "^(43)")
 {
   if(version_is_less(version:ffVer, test_version:"44.0"))

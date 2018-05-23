@@ -1,11 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_adobe_photoshop_detect_macosx.nasl 9906 2018-05-18 10:34:56Z santu $
 #
 # Adobe Photoshop Version Detection (Mac OS X)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
+#
+# Updated By: Rajat Mishra <rajatm@secpod.com> on 2018-05-16
+#  - To detect recent CC versions of Adobe Photoshop
 #
 # Copyright:
 # Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802783");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 9906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 10:35:58 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Photoshop Version Detection (Mac OS X)");
@@ -57,13 +60,6 @@ include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-photoVer = "";
-sock = "";
-ver = "";
-cpe = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock) {
   exit(-1);
@@ -71,7 +67,6 @@ if(!sock) {
 
 foreach ver (make_list("1", "2", "3", "4", "5", "6"))
 {
-  ## Get the version Adobe Photoshop
   photoVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
              "Adobe\ Photoshop\ CS" + ver + "/Adobe\ Photoshop\ CS" +
              ver + ".app/Contents/Info CFBundleShortVersionString"));
@@ -80,10 +75,8 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
     continue;
   }
 
-  ## Set the version in KB
   set_kb_item(name: "Adobe/Photoshop/MacOSX/Version", value:photoVer);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:photoVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:photoshop_cs" +
                     ver + ":");
   if(isnull(cpe))
@@ -91,7 +84,6 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
 
   path = '/Applications/Adobe Photoshop CS' + ver;
 
-  ## Set the Path in KB
   set_kb_item(name: "Adobe/Photoshop/MacOSX/Path", value:path);
 
   register_product(cpe:cpe, location:path);
@@ -101,6 +93,40 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
                                            install:path,
                                            cpe:cpe,
                                            concluded: photoVer));
-}
+  }
+  
+if(isnull(photoVer) || "does not exist" >< photoVer)
+{
+  foreach ver (make_list("2014", "2014.2.2", "2015", "2015.1", "2015.5", "2015.5.1", "2017", "2017.0.1", "2017.1.0", "2017.1.1", "2018"))
+  {
+      
+    photoVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+                    "Adobe\ Photoshop\ CC\ " + ver + "/Adobe\ Photoshop\ CC\ " +
+                    ver + ".app/Contents/Info CFBundleShortVersionString"));
 
+    if(isnull(photoVer) || "does not exist" >< photoVer){
+      continue;
+    }
+      
+    set_kb_item(name: "Adobe/Photoshop/MacOSX/Version", value:photoVer);
+ 
+    cpe = build_cpe(value:photoVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:photoshop_cc" +
+                        ver + ":");
+    if(isnull(cpe))
+      cpe='cpe:/a:adobe:photoshop_cc' + ver;
+
+    path = '/Applications/Adobe Photoshop CC' + ver;
+
+    set_kb_item(name: "Adobe/Photoshop/MacOSX/Path", value:path);
+
+    register_product(cpe:cpe, location:path);
+
+    log_message(data: build_detection_report(app:"Adobe Photoshop CC",
+                                               version:ver + " " + photoVer,
+                                               install:path,
+                                               cpe:cpe,
+                                               concluded: ver + " " + photoVer));
+   }
+}
 close(sock);
+exit(99);

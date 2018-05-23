@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln01_nov12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln01_nov12_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -24,28 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to inject scripts, bypass
-  certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application";
-tag_affected = "Mozilla Firefox version before 17.0 on Windows";
-tag_insight = "- The 'location' property can be accessed through 'top.location' with a
-    frame whose name attributes value is set to 'top'.
-  - Use-after-free error exists within the functions
-    'nsTextEditorState::PrepareEditor', 'gfxFont::GetFontEntry',
-    'nsWindow::OnExposeEvent' and 'nsPlaintextEditor::FireClipboardEvent'.
-  - An error within the 'evalInSandbox()' when handling the 'location.href'
-    property.
-  - Error when rendering GIF images.";
-tag_solution = "Upgrade to Mozilla Firefox version 17.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "This host is installed with Mozilla Firefox and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803055");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -54,7 +36,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
@@ -71,13 +53,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  certain security restrictions, execute arbitrary code in the context of the
+  browser.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version before 17.0 on Windows");
+  script_tag(name : "insight" , value : "- The 'location' property can be accessed through 'top.location' with a
+    frame whose name attributes value is set to 'top'.
+  - Use-after-free error exists within the functions
+    'nsTextEditorState::PrepareEditor', 'gfxFont::GetFontEntry',
+    'nsWindow::OnExposeEvent' and 'nsPlaintextEditor::FireClipboardEvent'.
+  - An error within the 'evalInSandbox()' when handling the 'location.href'
+    property.
+  - Error when rendering GIF images.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 17.0 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -86,15 +80,10 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-ffVer = "";
-
-# Get version from KB
 ffVer = get_kb_item("Firefox/Win/Ver");
 
 if(ffVer)
 {
-  # Grep for Firefox version
   if(version_is_less(version:ffVer, test_version:"17.0"))
   {
     security_message(0);

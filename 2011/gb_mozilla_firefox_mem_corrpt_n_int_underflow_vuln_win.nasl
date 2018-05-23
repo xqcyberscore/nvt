@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (Windows)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code
-  with the privileges of the user running the affected application. Failed
-  attempts may trigger a denial-of-service condition.
-  Impact Level: System/Application";
-tag_affected = "Mozilla Firefox 3.6.x before 3.6.23";
-tag_insight = "The flaws are due to
-  - An integer underflow error exists within the Regular Expression engine
-    when evaluating certain regular expressions.
-  - An unspecified error can be exploited to corrupt memory.";
-tag_solution = "Upgrade to Firefox version 3.6.23 or later
-  http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Mozilla Firefox and is prone to memory
-  corruption and integer underflow vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802170");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_cve_id("CVE-2011-2996", "CVE-2011-2998");
   script_bugtraq_id(49845, 49809);
@@ -54,13 +40,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary code
+  with the privileges of the user running the affected application. Failed
+  attempts may trigger a denial-of-service condition.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox 3.6.x before 3.6.23");
+  script_tag(name : "insight" , value : "The flaws are due to
+  - An integer underflow error exists within the Regular Expression engine
+    when evaluating certain regular expressions.
+  - An unspecified error can be exploited to corrupt memory.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.6.23 or later
+  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox and is prone to memory
+  corruption and integer underflow vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,11 +63,10 @@ if(description)
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox versions before 3.6.23
   if(version_in_range(version:ffVer, test_version:"3.6.0", test_version2:"3.6.22")){
     security_message(0);
   }

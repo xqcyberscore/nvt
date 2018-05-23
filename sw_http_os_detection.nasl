@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9760 2018-05-08 14:13:21Z cfischer $
+# $Id: sw_http_os_detection.nasl 9931 2018-05-23 08:44:55Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9760 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 16:13:21 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 9931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:44:55 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -75,7 +75,6 @@ function check_http_banner( port ) {
 
     # e.g. Server: libwebsockets or server: libwebsockets
     if( egrep( pattern:'^Server: libwebsockets[\r\n]*$', string:banner, icase:TRUE ) ) return;
-
 
     banner_type = "HTTP Server banner";
 
@@ -621,6 +620,44 @@ function check_http_banner( port ) {
     if( banner =~ "^Server: .* Phusion[ _]Passenger" ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return banner;
+    }
+
+    # Server: IceWarp WebSrv/3.1
+    # Server: IceWarp/11.4.6.0 RHEL7 x64
+    # Server: IceWarp/11.4.6.0 UBUNTU1404 x64
+    # Server: IceWarp/11.4.5.0 x64
+    if( "Server: IceWarp" >< banner ) {
+      if( os_info = eregmatch( pattern:"Server: IceWarp( WebSrv)?/([0-9.]+) ([^ ]+) ([^ ]+)", string:banner, icase:FALSE ) ) {
+        if( "RHEL" >< os_info[3] ) {
+          version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[3] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          return;
+        } else if( "DEB" >< os_info[3] ) {
+          version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[3] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          exit( 0 );
+        } else if( "UBUNTU" >< os_info[3] ) {
+          version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[3] );
+          if( ! isnull( version[1] ) ) {
+            version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
+            register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          exit( 0 );
+        }
+        # nb: No return here as we want to report an unknown OS later...
+      } else {
+        return; # No OS info so just skip this IceWarp banner...
+      }
     }
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
   }

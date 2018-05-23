@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_apr10.nasl 9193 2018-03-23 15:15:44Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_win_apr10.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities Apr-10 (Windows)
 #
@@ -24,43 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.5.9, 3.6.2
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Seamonkey version 2.0.4
-  http://www.seamonkey-project.org/releases/
-
-  Upgrade to Thunderbird version 3.0.4
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to to cause a denial of service
-  or execute arbitrary code.
-
-  Impact Level: Application";
-tag_affected = "Seamonkey version prior to 2.0.4,
-
-  Thunderbird version proior to 3.0.4 and
-
-  Firefox version before 3.5.9 and 3.6.x before 3.6.2";
-
-tag_insight = "The flaws are due to:
-
-   - A memory corruption error when user loads specially crafted HTML or specially
-     crafted HTML-based e-mail, which allows to execute arbitrary code via unknown
-     vectors.
-
-   - An error in 'XMLDocument::load()' method. It is not checking 'nsIContentPolicy'
-     during loading of content by XML documents, which allows to bypass intended
-     access restrictions via crafted content.";
-
-tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800753");
-  script_version("$Revision: 9193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 16:15:44 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0173", "CVE-2010-0182");
   script_tag(name:"cvss_base", value:"9.3");
@@ -77,25 +45,47 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to to cause a denial of service
+  or execute arbitrary code.
+
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Seamonkey version prior to 2.0.4,
+
+  Thunderbird version proior to 3.0.4 and
+
+  Firefox version before 3.5.9 and 3.6.x before 3.6.2");
+  script_tag(name : "insight" , value : "The flaws are due to:
+
+   - A memory corruption error when user loads specially crafted HTML or specially
+     crafted HTML-based e-mail, which allows to execute arbitrary code via unknown
+     vectors.
+
+   - An error in 'XMLDocument::load()' method. It is not checking 'nsIContentPolicy'
+     during loading of content by XML documents, which allows to bypass intended
+     access restrictions via crafted content.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
+  to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.9, 3.6.2
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Seamonkey version 2.0.4
+  http://www.seamonkey-project.org/releases/
+
+  Upgrade to Thunderbird version 3.0.4
+  http://www.mozillamessaging.com/en-US/thunderbird/");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version  3.5.9, 3.6 < 3.6.2
   if(version_is_less(version:ffVer, test_version:"3.5.9") ||
      version_in_range(version:ffVer, test_version:"3.6", test_version2:"3.6.1"))
      {
@@ -108,7 +98,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
-  # Grep for Seamonkey version < 2.0.4
   if(version_is_less(version:smVer, test_version:"2.0.4"))
   {
     security_message(0);
@@ -120,7 +109,6 @@ if(smVer != NULL)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  # Grep for Thunderbird version < 3.0.4
   if(version_is_less(version:tbVer, test_version:"3.0.4")){
     security_message(0);
   }

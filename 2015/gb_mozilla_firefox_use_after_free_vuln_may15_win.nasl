@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_win.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Plugin Initialization Use-after-free Vulnerability- Apr15 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805544");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2015-2706");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 14:11:27 +0530 (Mon, 04 May 2015)");
   script_name("Mozilla Firefox Plugin Initialization Use-after-free Vulnerability- Apr15 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to use-after-free vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The error exists due to a use-after-free
   error related to the 'AsyncPaintWaitEvent::AsyncPaintWaitEvent' function that
@@ -68,7 +67,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -76,15 +75,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"37.0.2"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805248");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2014-8643", "CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640",
                 "CVE-2014-8639", "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636",
                 "CVE-2014-8635", "CVE-2014-8634");
@@ -37,15 +37,14 @@ if(description)
                     72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 12:51:45 +0530 (Tue, 20 Jan 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to,
   - Some unspecified errors.
@@ -93,7 +92,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -101,15 +100,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"35.0"))
 {
   fix = "35.0";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_sep15_win.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln_sep15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805754");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2015-7327", "CVE-2015-7180", "CVE-2015-7179", "CVE-2015-7178",
                 "CVE-2015-7177", "CVE-2015-7176", "CVE-2015-7175", "CVE-2015-7174",
                 "CVE-2015-4522", "CVE-2015-4521", "CVE-2015-4520", "CVE-2015-4519",
@@ -39,15 +39,14 @@ if(description)
                 "CVE-2015-4501", "CVE-2015-4500");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2015-09-29 18:11:28 +0530 (Tue, 29 Sep 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Sep15 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are exists due to,
   - Failed to  restrict the availability of High Resolution Time API times,
@@ -76,7 +75,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -85,14 +84,9 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"41.0"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

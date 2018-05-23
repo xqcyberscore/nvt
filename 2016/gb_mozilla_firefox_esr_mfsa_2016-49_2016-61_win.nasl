@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-49_2016-61_win.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-49_2016-61_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-49_2016-61 )-Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808157");
-  script_version("$Revision: 9341 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2016-2831", "CVE-2016-2828", "CVE-2016-2826", "CVE-2016-2824",
                 "CVE-2016-2822", "CVE-2016-2821", "CVE-2016-2819", "CVE-2016-2818");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 11:15:18 +0530 (Wed, 08 Jun 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-49_2016-61 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name: "summary" , value:"This host is installed with
   Mozilla Firefox Esr and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
   - An improper handling of paired fullscreen and pointerlock requests in
@@ -65,7 +64,7 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox Esr version before
   45.2 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 45.2
@@ -87,7 +86,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
@@ -95,15 +94,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"45.2"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"45.2");

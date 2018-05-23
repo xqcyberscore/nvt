@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_bof_vuln_jul09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_firefox_bof_vuln_jul09_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Buffer Overflow Vulnerability - July09 (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attacks will let attackers to can cause Denial of Service to the
-  legitimate user.
-  Impact Level: Application";
-tag_affected = "Firefox version 3.5.1 and prior on Windows";
-tag_insight = "- A NULL pointer dereference error exists due an unspecified vectors, related
-    to a 'flash bug.' which can cause application crash.
-  - Stack-based buffer overflow error is caused by sending an overly long string
-    argument to the 'document.write' method.";
-tag_solution = "Upgrade to  Firefox version 3.6.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to Buffer Overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800846");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,13 +42,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful attacks will let attackers to can cause Denial of Service to the
+  legitimate user.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Firefox version 3.5.1 and prior on Windows");
+  script_tag(name : "insight" , value : "- A NULL pointer dereference error exists due an unspecified vectors, related
+    to a 'flash bug.' which can cause application crash.
+  - Stack-based buffer overflow error is caused by sending an overly long string
+    argument to the 'document.write' method.");
+  script_tag(name : "solution" , value : "Upgrade to  Firefox version 3.6.3 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to Buffer Overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,7 +69,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for Firefox version <= 3.5.1
 if(version_is_less_equal(version:ffVer, test_version:"3.5.1")){
   security_message(0);
 }

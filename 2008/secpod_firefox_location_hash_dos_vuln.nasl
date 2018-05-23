@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_location_hash_dos_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_firefox_location_hash_dos_vuln.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox location.hash Remote DoS Vulnerability
 #
@@ -27,25 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to denial of service vulnerability.
-
-  Vulnerability:
-  The flaw is due to improper way of handling input passed to
-  location.hash.";
-
-tag_impact = "Successful exploitation could result in remote arbitrary code execution,
-  and can crash the affected browser.
-  Impact Level: Application";
-tag_affected = "Mozilla, Firefox version 3.0 through 3.0.13 and 3.5.x";
-tag_solution = "Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.org/";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900068");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -61,12 +47,23 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Denial of Service");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_firefox_detect_lin.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_firefox_detect_lin.nasl");
   script_mandatory_keys("Firefox/Linux_or_Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in remote arbitrary code execution,
+  and can crash the affected browser.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla, Firefox version 3.0 through 3.0.13 and 3.5.x");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.3 or later
+  For updates refer to http://www.mozilla.org/");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to denial of service vulnerability.
+
+  Vulnerability:
+  The flaw is due to improper way of handling input passed to
+  location.hash.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -82,7 +79,6 @@ if(!ffVer){
     exit(0);
 }
 
-# Grep for firefox version 3.x to 3.0.13 and 3.5.x
 if(version_in_range(version:ffVer, test_version:"3.0", test_version2:"3.0.13")||
    version_in_range(version:ffVer, test_version:"3.5", test_version2:"3.5.2")){
   security_message(0);

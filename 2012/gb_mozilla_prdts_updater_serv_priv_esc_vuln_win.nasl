@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)
 #
@@ -24,37 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Mozilla Firefox version 13.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.10 or later,
-  http://www.mozilla.org/projects/seamonkey/
-
-  Upgrade to Thunderbird version to 13.0 or later,
-  http://www.mozilla.org/en-US/thunderbird/";
-
-tag_impact = "Successful attempt could allow local attackers to bypass security restrictions
-  and gain the privileges.
-  Impact Level: System/Application";
-tag_affected = "SeaMonkey version 2.9,
-  Thunderbird version 12.0 and
-  Mozilla Firefox version 12.0 on Windows";
-tag_insight = "- Mozilla updater allows to load a local DLL file in a privileged context.
-  - The 'Updater.exe' in the Windows Updater Service allows to load an
-    arbitrary local wsock32.dll file, which can then be run with the same
-    system privileges used by the service.";
-tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802867");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9911 $");
   script_cve_id("CVE-2012-1942", "CVE-2012-1943");
   script_bugtraq_id(53803, 53807);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 12:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)");
 
@@ -65,14 +43,29 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful attempt could allow local attackers to bypass security restrictions
+  and gain the privileges.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "SeaMonkey version 2.9,
+  Thunderbird version 12.0 and
+  Mozilla Firefox version 12.0 on Windows");
+  script_tag(name : "insight" , value : "- Mozilla updater allows to load a local DLL file in a privileged context.
+  - The 'Updater.exe' in the Windows Updater Service allows to load an
+    arbitrary local wsock32.dll file, which can then be run with the same
+    system privileges used by the service.");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 13.0 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to SeaMonkey version to 2.10 or later,
+  http://www.mozilla.org/projects/seamonkey/
+
+  Upgrade to Thunderbird version to 13.0 or later,
+  http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -81,13 +74,12 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
 
 if(ffVer)
 {
-  # Grep for Firefox version equal to 12.0
   if(version_is_equal(version:ffVer, test_version:"12.0"))
   {
     security_message(0);
@@ -101,7 +93,6 @@ seaVer = get_kb_item("Seamonkey/Win/Ver");
 
 if(seaVer)
 {
-  # Grep for SeaMonkey version equal to 2.9
   if(version_is_equal(version:seaVer, test_version:"2.9"))
   {
     security_message(0);
@@ -115,7 +106,6 @@ tbVer = get_kb_item("Thunderbird/Win/Ver");
 
 if(tbVer)
 {
-  # Grep for Thunderbird version equal to 12.0
   if(version_is_equal(version:tbVer, test_version:"12.0"))
   {
     security_message(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sjow_arbitrary_code_exec_vuln_win.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: gb_mozilla_prdts_sjow_arbitrary_code_exec_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products 'SJOW' Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -24,28 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.6.9 or later
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Thunderbird version 3.1.3
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to execute arbitrary Java script
-  code with privileges.
-  Impact Level: Application";
-tag_affected = "Firefox version 3.6.x before 3.6.9
-  Thunderbird version 3.1.x before 3.1.3";
-tag_insight = "The flaw is due to error in 'XPCSafeJSObjectWrapper' class in the
-  'SafeJSObjectWrapper', which does not properly restrict objects at the
-  end of scope chains.";
-tag_summary = "The host is installed with Mozilla Firefox/Thunderbird that are prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801452");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-2762");
   script_tag(name:"cvss_base", value:"6.8");
@@ -58,13 +41,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary Java script
+  code with privileges.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Firefox version 3.6.x before 3.6.9
+  Thunderbird version 3.1.x before 3.1.3");
+  script_tag(name : "insight" , value : "The flaw is due to error in 'XPCSafeJSObjectWrapper' class in the
+  'SafeJSObjectWrapper', which does not properly restrict objects at the
+  end of scope chains.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Thunderbird that are prone to
+  multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.6.9 or later
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Thunderbird version 3.1.3
+  http://www.mozillamessaging.com/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -73,11 +66,10 @@ if(description)
 
 include("version_func.inc");
 
-## Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  ## Grep for Firefox version 3.6 < 3.6.9
   if(version_in_range(version:ffVer, test_version:"3.6", test_version2:"3.6.8"))
   {
     security_message(0);
@@ -89,7 +81,6 @@ if(ffVer)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  ## Grep for Thunderbird version 3.1 < 3.1.3
   if(version_in_range(version:tbVer, test_version:"3.1", test_version2:"3.1.2")){
     security_message(0);
   }

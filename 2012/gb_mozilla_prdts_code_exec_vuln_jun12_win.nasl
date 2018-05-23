@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)
 #
@@ -24,35 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Mozilla Firefox version 9.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.6 or later,
-  http://www.mozilla.org/projects/seamonkey/
-
-  Upgrade to Thunderbird version to 9.0 or later,
-  http://www.mozilla.org/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the browser.
-  Impact Level: System/Application";
-tag_affected = "SeaMonkey version before 2.6,
-  Thunderbird version 5.0 through 8.0,
-  Mozilla Firefox version 4.x through 8.0 on Windows.";
-tag_insight = "A use-after-free error exists in 'nsHTMLSelectElement' when the parent node
-  of the element is no longer active.";
-tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
-  to remote code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802874");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9911 $");
   script_cve_id("CVE-2011-3671");
   script_bugtraq_id(54080);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 13:13:30 +0530 (Wed, 20 Jun 2012)");
   script_name("Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)");
 
@@ -63,14 +43,27 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute arbitrary
+  code in the context of the browser.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "SeaMonkey version before 2.6,
+  Thunderbird version 5.0 through 8.0,
+  Mozilla Firefox version 4.x through 8.0 on Windows.");
+  script_tag(name : "insight" , value : "A use-after-free error exists in 'nsHTMLSelectElement' when the parent node
+  of the element is no longer active.");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  to remote code execution vulnerability.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 9.0 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to SeaMonkey version to 2.6 or later,
+  http://www.mozilla.org/projects/seamonkey/
+
+  Upgrade to Thunderbird version to 9.0 or later,
+  http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -79,13 +72,12 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
 
 if(ffVer)
 {
-  # Grep for Firefox version 4.x through 8.0
   if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"8.0"))
   {
     security_message(0);
@@ -99,7 +91,6 @@ seaVer = get_kb_item("Seamonkey/Win/Ver");
 
 if(seaVer)
 {
-  # Grep for SeaMonkey version < 2.6
   if(version_is_less(version:seaVer, test_version:"2.6"))
   {
     security_message(0);
@@ -113,7 +104,6 @@ tbVer = get_kb_item("Thunderbird/Win/Ver");
 
 if(tbVer)
 {
-  # Grep for Thunderbird version 5.0 through 8.0
   if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"8.0"))
   {
     security_message(0);

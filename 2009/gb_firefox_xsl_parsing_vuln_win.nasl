@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_xsl_parsing_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_firefox_xsl_parsing_vuln_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Firefox XSL Parsing Vulnerability (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker cause remote code execution
-  through a specially crafted malicious XSL file or can cause application
-  termination at runtime.
-  Impact Level: System/Application";
-tag_affected = "Firefox version 3.0 to 3.0.7 on Windows.";
-tag_insight = "This flaw is due to improper handling of errors encountered when transforming
-  an XML document which can be exploited to cause memory corrpution through a
-  specially crafted XSLT code.";
-tag_solution = "Upgrade to Firefox version 3.0.8
-  http://www.mozilla.com/en-US/firefox/firefox.html";
-tag_summary = "The host is installed with Mozilla Firefox browser and is prone
-  to XSL File Parsing Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800379");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,13 +43,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker cause remote code execution
+  through a specially crafted malicious XSL file or can cause application
+  termination at runtime.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Firefox version 3.0 to 3.0.7 on Windows.");
+  script_tag(name : "insight" , value : "This flaw is due to improper handling of errors encountered when transforming
+  an XML document which can be exploited to cause memory corrpution through a
+  specially crafted XSLT code.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.0.8
+  http://www.mozilla.com/en-US/firefox/firefox.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser and is prone
+  to XSL File Parsing Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -76,7 +70,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for firefox version 3.0 to 3.0.7
 if(version_in_range(version:ffVer, test_version:"3.0", test_version2:"3.0.7")){
   security_message(0);
 }

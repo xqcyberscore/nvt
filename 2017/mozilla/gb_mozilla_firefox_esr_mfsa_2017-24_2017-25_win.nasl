@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-24_2017-25_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-24_2017-25)-Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811351");
-  script_version("$Revision: 7790 $");
+  script_version("$Revision: 9923 $");
   script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826" );
   script_bugtraq_id(101832);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 14:11:14 +0100 (Thu, 16 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 12:45:11 +0530 (Thu, 16 Nov 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-24_2017-25)-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
 
@@ -55,7 +54,7 @@ if(description)
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, bypass security restrictions, perform
   unauthorized actions, and obtain sensitive information. Failed exploit
-  attempts will likely result in denial-of-service conditions. 
+  attempts will likely result in denial-of-service conditions.
 
   Impact Level: Application.");
 
@@ -70,18 +69,15 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 
@@ -91,3 +87,5 @@ if(version_is_less(version:ffVer, test_version:"52.5"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

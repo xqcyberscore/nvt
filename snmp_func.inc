@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: snmp_func.inc 9469 2018-04-13 06:26:50Z asteins $
+# $Id: snmp_func.inc 9909 2018-05-18 12:29:04Z cfischer $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9469 $
+# $Revision: 9909 $
 #
 ###############################################################################
 
@@ -37,7 +37,15 @@ valid_snmpv3_errors = make_list( "Unknown user name",
                                  "MIB not initialized",
                                  "Authentication failure (incorrect password, community or key)" );
 
-global_var snmp_error, v3_creds, valid_snmpv3_errors, last_snmp_error, _snmp_func_debug;
+# From nasl_snmpv3_get of openvas-scanner/nasl/nasl_snmp.c
+invalid_snmpv3_creds_errors = make_list( "Missing function argument",
+                                         "Invalid port value",
+                                         "Invalid protocol value",
+                                         "Missing privproto or privpass",
+                                         "authproto should be md5 or sha1",
+                                         "privproto should be des or aes" );
+
+global_var snmp_error, v3_creds, valid_snmpv3_errors, invalid_snmpv3_creds_errors, last_snmp_error, _snmp_func_debug;
 _snmp_func_debug = FALSE;
 
 function check_snmpv1( port, community ) {
@@ -136,6 +144,9 @@ function check_snmpv3( port ) {
   }
 
   if( ret[0] == 0 && ! isnull( ret[1] ) ) return 1;
+
+  if( ret[0] == -2 )
+    snmp_error = ret[1];
 
   return;
 }

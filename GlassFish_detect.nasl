@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GlassFish_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: GlassFish_detect.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
 #
 # GlassFish Server Detection
 #
@@ -35,10 +35,11 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100190");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9927 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("GlassFish Server Detection");
 
   script_category(ACT_GATHER_INFO);
@@ -48,23 +49,19 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "Detection of Oracle GlassFish Server.
+  script_tag(name: "summary", value: "Detection of Oracle GlassFish Server.
 
-  The script sends a connection request to the server and attempts to extract the
-  version number from the reply.");
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port( default:8080 );
 
@@ -114,11 +111,11 @@ if( ( "<title>GlassFish Server" ><buf && "Server Running</title>" >< buf ) ||
   register_product( cpe:cpe, location:'/', port:port );
 
   set_kb_item( name: "GlassFish/installed", value:TRUE );
-  set_kb_item( name: "www/" + port + "/GlassFish", value: vers );
 
   log_message( data: build_detection_report(app:"GlassFish Server",
               version:vers, install:'/', cpe:cpe, concluded:version[0], extra:report),
               port:port );
+  exit(0);
 }
 
 exit( 0 );

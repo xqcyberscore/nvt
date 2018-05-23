@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_feb10_win.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: secpod_mozilla_prdts_mult_vuln_feb10_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities feb-10 (Windows)
 #
@@ -24,35 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Firefox version 3.0.18 or 3.5.8 or later
-  http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to Seamonkey version 2.0.3 or later
-  http://www.seamonkey-project.org/releases/
-
-  Upgrade to Thunderbird version 3.0.2 or later
-  http://www.mozillamessaging.com/en-US/thunderbird/";
-
-tag_impact = "Successful exploitation will let attackers to potentially execute arbitrary
-  code or compromise a user's system.
-  Impact Level: Application";
-tag_affected = "Seamonkey version prior to 2.0.3
-  Thunderbird version prior to 3.0.2
-  Firefox version 3.0.x before 3.0.18 and 3.5.x before 3.5.8 on Windows.";
-tag_insight = "- An error exists when handling 'out-of-memory conditions', can be exploited
-    to trigger a memory corruption and execute arbitrary code via a specially
-    crafted web page.
-  - An errors in 'nsBlockFrame::StealFrame()' function in
-    'layout/generic/nsBlockFrame.cpp', can be exploited to corrupt memory and
-     potentially execute arbitrary code.";
-tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902130");
-  script_version("$Revision: 8457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 9911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,14 +44,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to potentially execute arbitrary
+  code or compromise a user's system.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Seamonkey version prior to 2.0.3
+  Thunderbird version prior to 3.0.2
+  Firefox version 3.0.x before 3.0.18 and 3.5.x before 3.5.8 on Windows.");
+  script_tag(name : "insight" , value : "- An error exists when handling 'out-of-memory conditions', can be exploited
+    to trigger a memory corruption and execute arbitrary code via a specially
+    crafted web page.
+  - An errors in 'nsBlockFrame::StealFrame()' function in
+    'layout/generic/nsBlockFrame.cpp', can be exploited to corrupt memory and
+     potentially execute arbitrary code.");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
+  to multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.0.18 or 3.5.8 or later
+  http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to Seamonkey version 2.0.3 or later
+  http://www.seamonkey-project.org/releases/
+
+  Upgrade to Thunderbird version 3.0.2 or later
+  http://www.mozillamessaging.com/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -84,11 +77,10 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version 3.0 < 3.0.17 and 3.5 < 3.5.7
   if(version_in_range(version:ffVer, test_version:"3.5", test_version2:"3.5.7") ||
      version_in_range(version:ffVer, test_version:"3.0", test_version2:"3.0.17"))
      {
@@ -101,7 +93,6 @@ if(ffVer)
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
-  # Grep for Seamonkey version < 2.0.3
   if(version_is_less(version:smVer, test_version:"2.0.3"))
   {
     security_message(0);
@@ -113,7 +104,6 @@ if(smVer != NULL)
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
-  # Grep for Thunderbird version <= 3.0.2
   if(version_is_less_equal(version:tbVer, test_version:"3.0.2")){
     security_message(0);
   }

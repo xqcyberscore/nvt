@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
+# $Id: gb_sip_os_detection.nasl 9931 2018-05-23 08:44:55Z cfischer $
 #
 # SIP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108201");
-  script_version("$Revision: 7718 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 9931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:44:55 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -151,6 +151,52 @@ if( uabanner = egrep( pattern:"^User-Agent:(.*)$", string:banner, icase:TRUE ) )
       register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     }
     exit( 0 );
+  }
+
+  # User-Agent: IceWarp SIP 12.0.3.1 RHEL6 x64
+  # User-Agent: IceWarp SIP 12.0.4.0 DEB8 x64
+  # User-Agent: IceWarp SIP 12.0.2.1 x64
+  # User-Agent: IceWarp SIP 12.0.3.1
+  # User-Agent: IceWarp SIP 12.1.1.0 RC24 RHEL7 x64
+  # User-Agent: IceWarp SIP 12.0.4.0 UBUNTU1404 x64
+  # User-Agent: IceWarp SIP 12.1.2.0 (2018-05-03) RHEL6 x64
+  if( "IceWarp SIP" >< uabanner ) {
+    if( os_info = eregmatch( pattern:"User-Agent: IceWarp SIP ([0-9.]+) ([^ ]+) ([^ ]+)( [^ ]+)?", string:uabanner, icase:FALSE ) ) {
+      if( max_index( os_info ) == 5 ) {
+        offset = 1;
+      } else {
+        offset = 0;
+      }
+      if( "RHEL" >< os_info[2+offset] ) {
+        version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[2+offset] );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+        exit( 0 );
+      } else if( "DEB" >< os_info[2+offset] ) {
+        version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[2+offset] );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+        exit( 0 );
+      } else if( "UBUNTU" >< os_info[2+offset] ) {
+        version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[2+offset] );
+        if( ! isnull( version[1] ) ) {
+          version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
+          register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+        exit( 0 );
+      }
+      # nb: No exit here as we want to report an unknown OS later...
+    } else {
+      exit( 0 ); # No OS info so just skip this IceWarp banner...
+    }
   }
 }
 

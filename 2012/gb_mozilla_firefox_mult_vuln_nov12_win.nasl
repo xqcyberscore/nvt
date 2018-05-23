@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)
 #
@@ -24,28 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to inject script or execute
-  arbitrary programs in the context of the browser.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox version before 17.0 on Windows";
-tag_insight = "- An error within the 'Web Developer Toolbar' allows script to be executed
-    in chrome privileged context.
-  - The 'Javascript:' URLs when opened in a New Tab page inherits the
-    privileges of the privileged 'new tab' page.";
-tag_solution = "Upgrade to Mozilla Firefox version 17.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "This host is installed with Mozilla Firefox and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803059");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 9912 $");
   script_cve_id("CVE-2012-4203", "CVE-2012-5837");
   script_bugtraq_id(56623, 56645);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:47:00 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358/");
@@ -57,13 +44,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject script or execute
+  arbitrary programs in the context of the browser.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version before 17.0 on Windows");
+  script_tag(name : "insight" , value : "- An error within the 'Web Developer Toolbar' allows script to be executed
+    in chrome privileged context.
+  - The 'Javascript:' URLs when opened in a New Tab page inherits the
+    privileges of the privileged 'new tab' page.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 17.0 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,12 +66,11 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
+
 ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
-  # Grep for Firefox version
   if(version_is_less(version:ffVer, test_version:"17.0"))
   {
     security_message(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_dos_vuln_feb14_win.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_mozilla_firefox_dos_vuln_feb14_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Cookie Verification Denial of Service Vulnerability (Windows)
 #
@@ -25,54 +25,34 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:firefox";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804501";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6735 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804501");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2013-6167");
   script_bugtraq_id(62969);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:18:41 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Firefox Cookie Verification Denial of Service Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Firefox and is prone to denial of service
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to improper handling of the browser.cookie cookie header.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to terminate a user's session on
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to denial of service
+vulnerability.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Flaw is due to improper handling of the browser.cookie cookie header.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to terminate a user's session on
 a website, which will not allow the attacker to log back in to the website
 until after the browser has been restarted.
 
-Impact Level: Application";
-
-  tag_affected =
-"Mozilla Firefox version 19.0 on Windows";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox version 19.0 on Windows");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -82,7 +62,7 @@ features, remove the product or replace the product by another one.";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -91,15 +71,10 @@ features, remove the product or replace the product by another one.";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
-if(!ffVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_equal(version:ffVer, test_version:"19.0"))
 {
   security_message(0);

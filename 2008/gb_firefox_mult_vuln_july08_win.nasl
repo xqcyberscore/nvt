@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_vuln_july08_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_firefox_mult_vuln_july08_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerability July-08 (Windows)
 #
@@ -24,38 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could result in remote arbitrary code execution,
-  spoofing attacks, sensitive information disclosure, and JavaScript code can
-  be executed with the privileges of JAR's signer.
-  Impact Level: System";
-tag_summary = "The host is installed with Mozilla Firefox browser, that is prone
-  to multiple vulnerabilities.";
-
-tag_affected = "Firefox version prior to 2.0.0.15 on Windows.";
-tag_insight = "Issues in browser are due to,
-  - multiple errors in the layout and JavaScript engines that can corrupt
-    memory.
-  - error while handling unprivileged XUL documents that can be exploited to
-    load chrome scripts from a fastload file via <script> elements.
-  - error in mozIJSSubScriptLoader.LoadScript function can bypass
-    XPCNativeWrappers.
-  - error in block re-flow process, which can potentially lead to crash.
-  - error in processing file URLs contained within local directory listings.
-  - errors in the implementation of the Javascript same origin policy
-  - errors in the verification of signed JAR files.
-  - improper implementation of file upload forms result in uploading specially
-    crafted DOM Range and originalTarget elements.
-  - error in Java LiveConnect implementation.
-  - error in processing of Alt Names provided by peer.
-  - error in processing of windows URL shortcuts.";
-tag_solution = "Upgrade to Firefox version 2.0.0.15
-  http://www.mozilla.com/en-US/firefox/all-older.html";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800011");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -71,13 +44,33 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in remote arbitrary code execution,
+  spoofing attacks, sensitive information disclosure, and JavaScript code can
+  be executed with the privileges of JAR's signer.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Firefox version prior to 2.0.0.15 on Windows.");
+  script_tag(name : "insight" , value : "Issues in browser are due to,
+  - multiple errors in the layout and JavaScript engines that can corrupt
+    memory.
+  - error while handling unprivileged XUL documents that can be exploited to
+    load chrome scripts from a fastload file via <script> elements.
+  - error in mozIJSSubScriptLoader.LoadScript function can bypass
+    XPCNativeWrappers.
+  - error in block re-flow process, which can potentially lead to crash.
+  - error in processing file URLs contained within local directory listings.
+  - errors in the implementation of the Javascript same origin policy
+  - errors in the verification of signed JAR files.
+  - improper implementation of file upload forms result in uploading specially
+    crafted DOM Range and originalTarget elements.
+  - error in Java LiveConnect implementation.
+  - error in processing of Alt Names provided by peer.
+  - error in processing of windows URL shortcuts.");
+  script_tag(name : "solution" , value : "Upgrade to Firefox version 2.0.0.15
+  http://www.mozilla.com/en-US/firefox/all-older.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox browser, that is prone
+  to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-21.html");
@@ -100,7 +93,6 @@ if(!ffVer){
   exit(0);
 }
 
-# Grep for firefox version < 2.0.0.15
 if(egrep(pattern:"^([01]\..*|2\.0(\.0\.(0?[0-9]|1[0-4]))?)$", string:ffVer)){
   security_message(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-28_2017-29_macosx.nasl 9923 2018-05-22 13:23:32Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-28_2017-29)-Mac OS X
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812327");
-  script_version("$Revision: 8056 $");
+  script_version("$Revision: 9923 $");
   script_cve_id("CVE-2017-7843");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 13:47:50 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 10:46:15 +0530 (Fri, 08 Dec 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-28_2017-29)-Mac OS X");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
   ESR and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an error in web
   worker which in Private Browsing mode can write IndexedDB data.");
@@ -52,7 +51,7 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before
   52.5.2 on Mac OS X.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 52.5.2
@@ -69,13 +68,10 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-ffVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 
@@ -85,3 +81,5 @@ if(version_is_less(version:ffVer, test_version:"52.5.2"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

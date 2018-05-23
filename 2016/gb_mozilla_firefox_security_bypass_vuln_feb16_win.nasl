@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_win.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807068");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2016-1949");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:34:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to same-origin policy bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to improper restriction of 
+  script_tag(name: "insight" , value:"The flaw is due to improper restriction of
   the interaction between Service Workers and plugins.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to bypass the Same Origin Policy via a crafted web site that 
+  remote attackers to bypass the Same Origin Policy via a crafted web site that
   triggers spoofed responses to requests that use NPAPI.
 
   Impact Level: Application");
@@ -67,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"44.0.2"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"44.0.2");

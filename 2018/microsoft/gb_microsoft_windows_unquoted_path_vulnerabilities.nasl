@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 9626 2018-04-26 11:47:40Z cfischer $
+# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 9932 2018-05-23 08:50:07Z cfischer $
 #
 # Microsoft Windows Unquoted Path Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107303");
-  script_version("$Revision: 9626 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 13:47:40 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9932 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:50:07 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:14:54 +0100 (Fri, 23 Mar 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"9.3");
@@ -192,7 +192,7 @@ if( SERVICES_VULN || UNINSTALL_VULN ) {
     report  = "The following 'Uninstall' registry entries are using an 'unquoted' path:";
     report += '\n\nKey|Value\n';
     report += uninstall_report;
-    security_message( port:0, data:report ); # nb: We don't want to report a vulnerability for now as a admin would need to actively uninstall a software to trigger this vulnerabilty.
+    log_message( port:0, data:report ); # nb: We don't want to report a vulnerability for now as a admin would need to actively uninstall a software to trigger this vulnerabilty.
   }
 
   if( SERVICES_VULN ) {

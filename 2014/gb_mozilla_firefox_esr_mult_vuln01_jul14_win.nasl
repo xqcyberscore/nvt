@@ -29,49 +29,30 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804704");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 15:24:18 +0530 (Tue, 01 Jul 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July14 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Firefox ESR and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox ESR and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
 - A use-after-free error in the 'nsTextEditRules::CreateMozBR()' function.
 - A use-after-free error in the 'RefreshDriverTimer::TickDriver()' function
   within the MIL Animation Controller.
-- And some unspecified errors exist.";
+- And some unspecified errors exist.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to compromise a user's system.
 
-  tag_impact =
-"Successful exploitation will allow attackers to compromise a user's system.
-
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Firefox ESR version 24.x before 24.6 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Firefox ESR version 24.6 or later,
-For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox ESR version 24.x before 24.6 on Windows");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox ESR version 24.6 or later,
+For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,7 +61,7 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
@@ -89,15 +70,10 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(ffVer =~ "^24\." && version_in_range(version:ffVer,
                        test_version:"24.0", test_version2:"24.5"))
 {

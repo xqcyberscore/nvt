@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_security_bypass_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: gb_firefox_security_bypass_vuln.nasl 9912 2018-05-18 13:54:07Z cfischer $
 #
 # Mozilla Firefox Security Bypass Vulnerability (Windows)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to bypass cross-site scripting
-  protection mechanisms via a crafted string.
-  Impact Level: Application";
-tag_affected = "Mozilla Firefox versions prior to 3.6 Beta 3.";
-tag_insight = "The flaw is due to improper validation of overlong UTF-8 encoding,
-  which makes it easier for remote attackers to bypass cross-site scripting
-  protection mechanisms via a crafted string.";
-tag_solution = "Upgrade to Mozilla Firefox version 3.6 Beta 3 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html";
-tag_summary = "The host is installed with Mozilla Firefox and is prone to security
-  bypass vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801637");
-  script_version("$Revision: 8447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 9912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2009-5017");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,26 +42,33 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
+  script_mandatory_keys("Firefox/Win/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to bypass cross-site scripting
+  protection mechanisms via a crafted string.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Firefox versions prior to 3.6 Beta 3.");
+  script_tag(name : "insight" , value : "The flaw is due to improper validation of overlong UTF-8 encoding,
+  which makes it easier for remote attackers to bypass cross-site scripting
+  protection mechanisms via a crafted string.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6 Beta 3 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox and is prone to security
+  bypass vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Firefox version from KB
 fpVer = get_kb_item("Firefox/Win/Ver");
 if(!fpVer){
   exit(0);
 }
 
-## Check for Mozilla Firefox Versions
 if(version_in_range(version:fpVer, test_version:"3.6.b1", test_version2:"3.6.b2")){
   security_message(0);
 }

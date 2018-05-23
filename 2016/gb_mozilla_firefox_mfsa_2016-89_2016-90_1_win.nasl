@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_1_win.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_1_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-89_2016-90 )-Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mozilla:firefox:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809809");
-  script_version("$Revision: 9341 $");
+  script_version("$Revision: 9910 $");
   script_cve_id("CVE-2016-9072");
   script_bugtraq_id(94336);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 12:21:41 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-Windowsx64");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Firefox and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to,
   64-bit NPAPI sandbox is not enabled on fresh profile.");
@@ -52,7 +51,7 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 
+  script_tag(name: "affected" , value:"Mozilla Firefox version before
   50 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 50
@@ -67,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver", "SMB/Windows/Arch");
   exit(0);
 }
@@ -75,10 +74,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get OS Arch
 if(!osArch = get_kb_item("SMB/Windows/Arch")){
   exit(0);
 }
@@ -88,12 +83,10 @@ if("x64" >!< osArch){
   exit(0);
 }
 
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"50.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"50.0");
