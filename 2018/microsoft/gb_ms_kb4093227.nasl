@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093227.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4093227.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Windows Remote Desktop Protocol (RDP) Denial of Service Vulnerability (KB4093227)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812586");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2018-0976");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 10:10:51 +0530 (Wed, 11 Apr 2018)");
   script_name("Windows Remote Desktop Protocol (RDP) Denial of Service Vulnerability (KB4093227)");
 

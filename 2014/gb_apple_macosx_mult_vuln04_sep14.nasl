@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln04_sep14.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_apple_macosx_mult_vuln04_sep14.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities -04 Sep14
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804850");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2013-1862", "CVE-2013-1896", "CVE-2014-1256", "CVE-2014-1265",
                 "CVE-2014-1259", "CVE-2013-6629", "CVE-2013-5986", "CVE-2013-5987",
                 "CVE-2013-4073", "CVE-2013-4113", "CVE-2013-4248", "CVE-2013-6420",
@@ -37,7 +37,7 @@ if(description)
                     64225);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2014-09-22 15:50:08 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -04 Sep14");
@@ -65,7 +65,7 @@ if(description)
   refer link, http://support.apple.com/kb/HT6150
 
   NOTE: Please ignore the warning if the update is already applied.");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6150");
@@ -80,26 +80,18 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
  exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
   if(version_in_range(version:osVer, test_version:"10.9.0", test_version2:"10.9.1")||
      version_in_range(version:osVer, test_version:"10.8.0", test_version2:"10.8.5")||
      version_in_range(version:osVer, test_version:"10.7.0", test_version2:"10.7.5"))

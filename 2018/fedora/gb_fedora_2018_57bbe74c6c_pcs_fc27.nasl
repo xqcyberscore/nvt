@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_57bbe74c6c_pcs_fc27.nasl 9547 2018-04-20 10:53:23Z santu $
+# $Id: gb_fedora_2018_57bbe74c6c_pcs_fc27.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Fedora Update for pcs FEDORA-2018-57bbe74c6c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874369");
-  script_version("$Revision: 9547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:53:23 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 08:55:01 +0200 (Thu, 19 Apr 2018)");
   script_cve_id("CVE-2018-1086", "CVE-2018-1079");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for pcs FEDORA-2018-57bbe74c6c");
   script_tag(name: "summary", value: "Check the version of pcs");

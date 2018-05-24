@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867239");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 09:47:58 +0530 (Mon, 20 Jan 2014)");
   script_cve_id("CVE-2014-1398", "CVE-2014-1399", "CVE-2014-1400");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
   script_name("Fedora Update for drupal7-entity FEDORA-2014-0508");
 
   tag_insight = "This module extends the entity API of Drupal core in order to provide a unified

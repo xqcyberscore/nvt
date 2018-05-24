@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 February-2016
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806677");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-1716", "CVE-2016-1717", "CVE-2016-1718", "CVE-2016-1719",
                 "CVE-2016-1720", "CVE-2016-1721", "CVE-2016-1722", "CVE-2016-1729",
                 "CVE-2015-7995");
   script_bugtraq_id(81274, 81277, 77325);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-02-03 18:07:12 +0530 (Wed, 03 Feb 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 February-2016");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
   - Multiple memory corruption errors in the parsing of disk images and IOHIDFamily
@@ -68,7 +67,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205731");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205731");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2016/Jan/msg00003.html");
 
   script_category(ACT_GATHER_INFO);

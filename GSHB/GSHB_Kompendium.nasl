@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Kompendium.nasl 9015 2018-03-02 15:20:47Z emoss $
+# $Id: GSHB_Kompendium.nasl 9933 2018-05-23 11:13:32Z emoss $
 #
 # IT-Grundschutz Kompendium
 #
@@ -8,7 +8,7 @@
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2018 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109040");
-  script_version("$Revision: 9015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 9933 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 10:14:11 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -102,9 +102,11 @@ foreach m (mtitle) {
 
   if (result >< 'error') result = 'ERR';
   else if (result >< 'Fehler') result = 'ERR';
+  else if (result >< 'erfüllt') result = 'OK';
   else if (result >< 'erfuellt') result = 'OK';
   else if (result >< 'nicht zutreffend') result = 'NS';
   else if (result >< 'nicht erfuellt') result = 'FAIL';
+  else if (result >< 'nicht erfüllt') result = 'FAIL';
   else if (result >< 'unvollstaendig') result = 'NC';
   else if (result >< 'Diese Vorgabe muss manuell überprüft werden.') result = 'NA';
   else if (result >< 'Prüfroutine für diese Maßnahme ist nicht verfügbar.') result = 'NI';

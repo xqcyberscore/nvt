@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 9941 2018-05-23 15:47:50Z emoss $
 #
 # Oracle Java GlassFish Server Privilege Escalation Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902286");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9941 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:47:50 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2010-4438");
   script_bugtraq_id(45890);
@@ -51,7 +51,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
-  script_dependencies("GlassFish/installed");
+  script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 8080);
 
   script_tag(name: "impact", value: "Successful exploitation could allow local attackers to affect confidentiality

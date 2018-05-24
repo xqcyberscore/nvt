@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_feb17.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln02_feb17.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-02 February-2017
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810568");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-8670", "CVE-2016-9933", "CVE-2016-9934", "CVE-2017-2353",
                 "CVE-2017-2358", "CVE-2017-2361", "CVE-2017-2357", "CVE-2017-2370",
                 "CVE-2017-2360", "CVE-2016-8687", "CVE-2016-1248");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-28 09:04:00 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-02 February-2017");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
   - An input validation issue existed in modelines.
@@ -54,7 +53,7 @@ if(description)
   - Some unspecified issues in apache_mod_php module.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to execute arbitrary code or cause a denial of service, gain access to 
+  to execute arbitrary code or cause a denial of service, gain access to
   potentially sensitive information.
 
   Impact Level: System");
@@ -69,7 +68,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT207483");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207483");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

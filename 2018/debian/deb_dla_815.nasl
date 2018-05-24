@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_815.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_815.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Auto-generated from advisory DLA 815-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890815");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2017-0358");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 815-1] ntfs-3g security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 00:00:00 +0100 (Fri, 05 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

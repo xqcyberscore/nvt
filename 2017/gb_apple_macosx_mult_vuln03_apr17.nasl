@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_apr17.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_apple_macosx_mult_vuln03_apr17.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-03 April-2017
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810931");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2010-0543", "CVE-2010-1375");
   script_bugtraq_id(40894, 40901);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 11:40:44 +0530 (Tue, 18 Apr 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-03 April-2017");
 
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT4188");
 
@@ -75,30 +75,25 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
-  if(version_is_equal(version:osVer, test_version:"10.5.8"))
+  ## Build number for update not available so reducing qod;
+  ## 10.5.8 prior to build X is also vulnerable.
+  if(version_in_range(version:osVer, test_version:"10.5", test_version2:"10.5.8"))
   {
     report = report_fixed_ver(installed_version:osVer, fixed_version:"Apply the appropriate patch");
     security_message(data:report);
     exit(0);
   }
 }
+exit(0);

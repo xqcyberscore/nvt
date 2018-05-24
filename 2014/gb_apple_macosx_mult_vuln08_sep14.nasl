@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln08_sep14.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_apple_macosx_mult_vuln08_sep14.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities -08 Sep14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804854");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2013-5139", "CVE-2013-5178");
   script_bugtraq_id(62536, 63343);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2014-09-22 18:58:08 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -08 Sep14");
@@ -60,7 +60,7 @@ if(description)
   refer link, http://support.apple.com/kb/HT6150
 
   NOTE: Please ignore the warning if the update is already applied.");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6150");
@@ -75,26 +75,18 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
  exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
   if(version_in_range(version:osVer, test_version:"10.8.0", test_version2:"10.8.5")||
      version_in_range(version:osVer, test_version:"10.7.0", test_version2:"10.7.5"))
   {

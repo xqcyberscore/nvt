@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_sep14.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_apple_macosx_mult_vuln02_sep14.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities -02 Sep14
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804847");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2014-1372", "CVE-2014-1373", "CVE-2014-1376", "CVE-2014-1377",
                 "CVE-2014-1379", "CVE-2014-1361");
   script_bugtraq_id(68272, 68272, 68272, 68272, 68272, 68274);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2014-09-19 11:51:15 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -02 Sep14");
@@ -66,7 +66,7 @@ if(description)
   refer link, http://support.apple.com/kb/HT1338
 
   NOTE: Please ignore the warning if the update is already applied.");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6296");

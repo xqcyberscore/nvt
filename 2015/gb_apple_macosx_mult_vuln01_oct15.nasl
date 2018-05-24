@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 9860 2018-05-16 09:27:39Z asteins $
+# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 October-15
 #
@@ -30,7 +30,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806148");
-  script_version("$Revision: 9860 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2015-5943", "CVE-2015-6983", "CVE-2015-7061", "CVE-2015-7060",
                 "CVE-2015-7059", "CVE-2015-7007", "CVE-2015-5945", "CVE-2015-6563",
                 "CVE-2014-3565", "CVE-2012-6151", "CVE-2015-7988", "CVE-2015-6994",
@@ -40,15 +40,14 @@ if(description)
                 "CVE-2015-7006", "CVE-2015-7003");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:54:16 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 October-15");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
   reference section.");
@@ -71,7 +70,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205375");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205375");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

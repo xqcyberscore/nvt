@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln_HT207615.nasl 6178 2017-05-19 13:20:53Z antu123 $
+# $Id: gb_apple_macosx_mult_vuln_HT207615.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-HT207615
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810728");
-  script_version("$Revision: 6178 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-0736", "CVE-2016-2161", "CVE-2016-5387", "CVE-2016-8740",
                 "CVE-2016-8743", "CVE-2016-10158", "CVE-2016-10159", "CVE-2016-10160",
                 "CVE-2016-10161", "CVE-2016-9935", "CVE-2017-2421", "CVE-2017-2438",
@@ -66,15 +66,14 @@ if(description)
                     94744, 94745, 94746, 94753, 94754, 94747, 97300, 97303);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 15:20:53 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-03-31 17:37:14 +0530 (Fri, 31 Mar 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-HT207615");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists. For details
   refer the reference links.");
@@ -94,7 +93,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT207615");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207615");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -106,26 +105,18 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
   if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.12.3"))
   {
     report = report_fixed_ver(installed_version:osVer, fixed_version:"10.12.4");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_HT207599.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_vuln_HT207599.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities-HT207599 (Windows)
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810724");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2009-3270", "CVE-2009-3560", "CVE-2009-3720", "CVE-2012-1147",
                 "CVE-2012-1148", "CVE-2012-6702", "CVE-2013-7443", "CVE-2015-1283",
                 "CVE-2015-3414", "CVE-2015-3415", "CVE-2015-3416", "CVE-2015-3717",
                 "CVE-2015-6607", "CVE-2016-0718", "CVE-2016-4472", "CVE-2016-5300",
-                "CVE-2016-6153", "CVE-2017-2383", "CVE-2017-2463", "CVE-2017-2479", 
-                "CVE-2017-2480", "CVE-2017-5029"); 
+                "CVE-2016-6153", "CVE-2017-2383", "CVE-2017-2463", "CVE-2017-2479",
+                "CVE-2017-2480", "CVE-2017-5029");
   script_bugtraq_id(74228);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 17:37:29 +0530 (Thu, 30 Mar 2017)");
   script_name("Apple iTunes Multiple Vulnerabilities-HT207599 (Windows)");
 
   script_tag(name: "summary" , value: "This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value: "Multiple flaws are due to,
   - A client certificate was sent in plaintext. This issue was addressed
@@ -62,7 +61,7 @@ if(description)
     cross-origin.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code, cause unexpected application termination 
+  attackers to execute arbitrary code, cause unexpected application termination
   and disclose sensitive information.
 
   Impact Level: System/Application");
@@ -74,7 +73,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value : "https://support.apple.com/en-in/HT207599");
+  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT207599");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
@@ -87,10 +86,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

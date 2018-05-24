@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_apr17.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln01_apr17.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 April-2017
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810929");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2010-0540", "CVE-2010-0302", "CVE-2010-1748", "CVE-2010-0545",
                 "CVE-2010-0186", "CVE-2010-0187", "CVE-2010-0546", "CVE-2010-1374", 
                 "CVE-2010-1411", "CVE-2009-4212", "CVE-2010-0734", "CVE-2010-0541",
@@ -37,7 +37,7 @@ if(description)
                     37749, 38162, 40895, 40893, 34916, 36196, 40892);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 11:40:44 +0530 (Tue, 18 Apr 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 April-2017");
 
@@ -85,7 +85,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT4188");
 
@@ -100,31 +100,26 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
+  ## Build number for update not available so reducing qod 
+  ## 10.5.8 prior to build X is also vulnerable.
   if(version_in_range(version:osVer, test_version:"10.6", test_version2:"10.6.3") ||
-     version_is_equal(version:osVer, test_version:"10.5.8"))
+     version_in_range(version:osVer, test_version:"10.5", test_version2:"10.5.8"))
   {
-    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.6.4");
+    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.6.4 or apply patch");
     security_message(data:report);
     exit(0);
   }
 }
+exit(0);

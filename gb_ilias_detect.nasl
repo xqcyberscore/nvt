@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_ilias_detect.nasl 9934 2018-05-23 11:48:03Z santu $
 #
 # ILIAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 9608 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 9934 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
   script_tag(name: "creation_date", value: "2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +66,7 @@ port = get_http_port(default: 443);
 if (!can_host_php(port: port))
   exit(0);
 
-foreach dir (make_list_unique("/", "/ilias", cgi_dirs(port: port))) {
+foreach dir (make_list_unique("/", "/ilias", "/ILIAS", cgi_dirs(port: port))) {
 
   install = dir;
   if (dir == "/")
@@ -83,12 +83,13 @@ foreach dir (make_list_unique("/", "/ilias", cgi_dirs(port: port))) {
   if (isnull(loc))
     continue;
 
-  req = http_get(port: port, item: loc);
+  cookie = get_cookie_from_header( buf: res, pattern: "Set-Cookie: (SESSID=[0-9A-Za-z]+);");
+  req = http_get_req( port:port, url:loc, add_headers:make_array( "Cookie", cookie));
   res = http_keepalive_send_recv(port: port, data: req);
 
   # <title>ILIAS Setup</title>
   # <title>ILIAS 3 Setup</title>
-  if (res =~ "<title>ILIAS ([0-9] )?Setup</title>" &&
+  if ((res =~ "<title>ILIAS ([0-9] )?Setup</title>" || "<title>ILIAS Setup</title>" >< res)&& 
       ("std setup ilSetupLogin" >< res || 'class="ilSetupLogin">' >< res ||
        'class="ilLogin">' >< res || 'class="il_Header">' >< res)) {
     version = "unknown";

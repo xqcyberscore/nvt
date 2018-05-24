@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_glassfish_server_xss_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: secpod_oracle_glassfish_server_xss_vuln.nasl 9941 2018-05-23 15:47:50Z emoss $
 #
 # Oracle GlassFish Server Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902456");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9941 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:47:50 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2260");
   script_bugtraq_id(48797);
@@ -50,7 +50,7 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
   script_dependencies("GlassFish_detect.nasl");
-  script_dependencies("GlassFish/installed");
+  script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 8080);
 
   script_tag(name: "impact", value: "Successful exploitation will allow attackers to execute arbitrary HTML and

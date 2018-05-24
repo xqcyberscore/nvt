@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208331_03.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_HT208331_03.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple MacOSX Security Updates(HT208331)-03
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812402");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2017-13826", "CVE-2017-7158");
   script_bugtraq_id(101637);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:51:38 +0530 (Thu, 07 Dec 2017)");
   script_name("Apple MacOSX Security Updates(HT208331)-03");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to a permissions
   issue in the handling of screen sharing sessions.");
@@ -59,7 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208331");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208331");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

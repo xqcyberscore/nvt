@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843034");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:11:23 +0530 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2017-0358");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ntfs-3g USN-3182-1");
   script_tag(name: "summary", value: "Check the version of ntfs-3g");

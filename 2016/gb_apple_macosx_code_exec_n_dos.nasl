@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_code_exec_n_dos.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_apple_macosx_code_exec_n_dos.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Code Execution And Denial of Service Vulnerabilities
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810210");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-5093", "CVE-2016-5094", "CVE-2016-5096", "CVE-2013-7456",
                 "CVE-2016-4637", "CVE-2016-4629", "CVE-2016-4630", "CVE-2016-1836",
                 "CVE-2016-4447", "CVE-2016-4448", "CVE-2016-4483", "CVE-2016-4614",
@@ -37,15 +37,14 @@ if(description)
   script_bugtraq_id(90696, 77568);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:05:47 +0530 (Tue, 22 Nov 2016)");
   script_name("Apple Mac OS X Code Execution And Denial of Service Vulnerabilities");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to code execution and denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
   - A null pointer dereference error.
@@ -55,20 +54,20 @@ if(description)
   - The multiple errors in php.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to execute arbitrary code or cause a denial of service and to obtain sensitive 
+  to execute arbitrary code or cause a denial of service and to obtain sensitive
   information.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.10.x before 
-  10.10.5");
+  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.10.x through
+  10.10.5 prior to build 14F1808");
 
-  script_tag(name: "solution" , value:"Apply the appropriate patch. 
+  script_tag(name: "solution" , value:"Apply the appropriate patch.
   For more updates refer to https://www.apple.com");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version_unreliable");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT206567");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT206903");
+  script_tag(name:"qod_type", value:"package");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT206567");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT206903");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -80,30 +79,37 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit(0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName && osVer =~ "^(10\.10)")
 {
-  ## Check the affected OS versions
-  if(version_in_range(version:osVer, test_version:"10.10", test_version2:"10.10.5"))
-  {
-    report = report_fixed_ver(installed_version:osVer, fixed_version:"Apply the patch");
-    security_message(data:report);
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
     exit(0);
   }
+
+  if(osVer == "10.10.5" && version_is_less(version:buildVer, test_version:"14F1808"))
+  {
+    fix = "Apply patch from vendor";
+    osVer = osVer + " Build " + buildVer;
+  }
+
+  else if(version_in_range(version:osVer, test_version:"10.10", test_version2:"10.10.4")){
+    fix = "10.10.5 build 14F1808";
+  }
 }
+if(fix)
+{
+  report = report_fixed_ver(installed_version:osVer, fixed_version:fix);
+  security_message(data:report);
+  exit(0);
+}
+exit(0);

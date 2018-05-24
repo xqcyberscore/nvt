@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_sep16.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_apple_safari_mult_vuln_sep16.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities September16 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807889");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-4618", "CVE-2016-4751", "CVE-2016-4728", "CVE-2016-4758",
                 "CVE-2016-4611", "CVE-2016-4729", "CVE-2016-4730", "CVE-2016-4731",
                 "CVE-2016-4734", "CVE-2016-4735", "CVE-2016-4737", "CVE-2016-4759",
@@ -39,15 +39,14 @@ if(description)
   script_bugtraq_id(93053, 93057, 93067, 93066, 93065, 93064, 93062, 93058);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:58:27 +0530 (Wed, 28 Sep 2016)");
   script_name("Apple Safari Multiple Vulnerabilities September16 (Mac OS X)");
 
   script_tag(name: "summary" , value:"This host is installed with Apple Safari
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
   - A state management issue in the handling of tab sessions.
@@ -74,7 +73,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT207157");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207157");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -90,15 +89,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
-
-## Get Apple Safari version
 if(!safVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for Apple Safari Versions less than 10
 if(version_is_less(version:safVer, test_version:"10"))
 {
   report = report_fixed_ver(installed_version:safVer, fixed_version:"10");

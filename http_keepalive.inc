@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 9784 2018-05-09 14:17:05Z cfischer $
+# $Id: http_keepalive.inc 9943 2018-05-24 08:08:15Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9784 $
+# $Revision: 9943 $
 #
 ###############################################################################
 
@@ -159,7 +159,7 @@ function http_keepalive_recv_body( headers, bodyonly ) {
         length = 1048576;
         killme = 1;
       }
-      body  = strcat( body, recv( socket:__ka_socket, length:length, min:length ) );
+      body = strcat( body, recv( socket:__ka_socket, length:length, min:length ) );
       # "\r\n"
       recv( socket:__ka_socket, length:2, min:2 );
       if( strlen( body ) > 1048576 ) killme = 1;
@@ -188,7 +188,7 @@ function http_keepalive_recv_body( headers, bodyonly ) {
     # If we don't have the length, we close the connection to make sure
     # the next request won't mix up the replies.
 
-    if( _http_ka_debug ) display("ERROR - Keep Alive, but no length!!!\n", __ka_last_request);
+    if( _http_ka_debug ) display( "DEBUG: ERROR - Keep Alive, but no length!!!\n", __ka_last_request );
     body = recv( socket:__ka_socket, length:16384, min:0 );
     if( body =~ '<html[^>]*>' && body !~ '</html>' ) { # case insensitive
       repeat {
@@ -196,7 +196,7 @@ function http_keepalive_recv_body( headers, bodyonly ) {
         body += tmp;
       }
       until( ! tmp || body =~ "</html>" );
-      if( _http_ka_debug && body !~ "</html>" ) display( "http_keepalive_recv_body: incomplete body?\n------------\n", body, "\n------------\n" );
+      if( _http_ka_debug && body !~ "</html>" ) display( "DEBUG: http_keepalive_recv_body: incomplete body?\n------------\n", body, "\n------------\n" );
     }
     http_close_socket( __ka_socket );
     __ka_socket = http_open_socket( __ka_port );
@@ -250,7 +250,7 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#No 'Host:' header passed in data variable of http_keepalive_send_recv(). This might lead to issues if SNI is enabled on the remote host." );
   }
 
-  if( _http_ka_debug ) display( "http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );
+  if( _http_ka_debug ) display( "DEBUG: http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );
 
   if( __ka_enabled == -1 ) __ka_enabled = http_keepalive_enabled( port:port );
   if( __ka_enabled == -2 ) return NULL;

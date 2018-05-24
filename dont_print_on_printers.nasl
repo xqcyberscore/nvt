@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 9725 2018-05-04 08:40:45Z cfischer $
+# $Id: dont_print_on_printers.nasl 9937 2018-05-23 14:17:21Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 9725 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 10:40:45 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 9937 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:17:21 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -270,7 +270,7 @@ konica_detect_urls['/wcd/system_device.xml'] = '301 Movprm';
 konica_detect_urls['/wcd/system.xml'] = '301 Movprm';
 
 # Patch by Laurent Facq
-ports = make_list( 80, 8000, 280, 631 ); # TODO: Re-add 443 once a solution was found to detect SSL/TLS without a dependency to find_service.nasl
+ports = make_list( 80, 8000, 280, 631 ); # TODO: Re-add 443 and add 8443 once a solution was found to detect SSL/TLS without a dependency to find_service.nasl
 
 foreach port( ports ) {
 
@@ -286,10 +286,18 @@ foreach port( ports ) {
   }
 
   # Canon, see also gb_canon_printers_detect.nasl
-  # If updating here please also update check gb_canon_printers_detect.nasl
+  # If updating here please also update the check in gb_canon_printers_detect.nasl
   url = "/index.html";
   buf = http_get_cache( item:url, port:port );
-  if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) || "CANON HTTP Server" >< buf ) {
+  if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) || "CANON HTTP Server" >< banner ) {
+    is_printer = TRUE;
+    reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+    break;
+  }
+  url = "/";
+  buf = http_get_cache( item:url, port:port );
+  if( ( "erver: Catwalk" >< buf && "com.canon.meap.service" >< buf ) ||
+      ( 'canonlogo.gif" alt="CANON"' >< buf && ">Copyright CANON INC" >< buf ) ) {
     is_printer = TRUE;
     reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
     break;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806063");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2015-1157", "CVE-2015-3686", "CVE-2015-3687", "CVE-2015-3688",
                 "CVE-2015-5755", "CVE-2015-5761", "CVE-2015-5874", "CVE-2014-8146",
                 "CVE-2015-1205", "CVE-2010-3190", "CVE-2015-1152", "CVE-2015-1153",
@@ -49,15 +49,14 @@ if(description)
                 "CVE-2015-5821", "CVE-2015-5822");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 10:34:38 +0530 (Thu, 01 Oct 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Sep15 (Windows)");
 
   script_tag(name: "summary" , value: "This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value: "Multiple flaws are due to,
   - Multiple memory corruption issues in the processing of unicode strings.
@@ -81,7 +80,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://support.apple.com/en-in/HT201222");
+  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT201222");
   script_xref(name: "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Sep/msg00003.html");
 
   script_category(ACT_GATHER_INFO);
@@ -96,10 +95,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

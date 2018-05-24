@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 9502 2018-04-17 07:42:19Z cfischer $
+# $Id: http_func.inc 9943 2018-05-24 08:08:15Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9502 $
+# $Revision: 9943 $
 #
 ###############################################################################
 
@@ -32,6 +32,10 @@ global_var OPENVAS_HTTP_USER_AGENT;
 
 if ( ! OPENVAS_HTTP_USER_AGENT = get_kb_item( "http/user-agent" ) )
   OPENVAS_HTTP_USER_AGENT = 'Mozilla/5.0 [en] (X11, U; OpenVAS ' + OPENVAS_VERSION + ')';
+
+# Enables debugging output for a few functions below
+global_var _http_debug;
+_http_debug = 0;
 
 function headers_split( h ) {
 
@@ -209,7 +213,7 @@ function http_is_dead( port, retry ) {
   while( ! soc && i++ < retry ) {
     sleep( 1 ); # Should we use sleep(i) ?
     soc = http_open_socket( port );
-    #display("i = ", i, "\n");
+    if( _http_debug ) display( "DEBUG: i = ", i, "\n" );
   }
   if( ! soc ) return( 1 );
   # NB: http_head does not work against SWAT & VNC (& probably others...)
@@ -248,10 +252,10 @@ function do_check_win_dir_trav( port, url, quickcheck ) {
   if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#do_check_win_dir_trav" );
   if( ! url ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#do_check_win_dir_trav" );
 
-  #display("check_win_dir_trav(port=", port, ", url=", url, ", quickcheck=", quickcheck, ")\n");
+  if( _http_debug ) display( "DEBUG: check_win_dir_trav(port=", port, ", url=", url, ", quickcheck=", quickcheck, ")\n" );
   soc = http_open_socket( port );
   if( ! soc ) {
-    # display("check_win_dir_trav: cannot open socket to ", port, "\n");
+    if( _http_debug ) display( "DEBUG: check_win_dir_trav: cannot open socket to ", port, "\n" );
     return( 0 );
   }
 
@@ -354,10 +358,10 @@ function http_recv_body( socket, headers, length ) {
   if( l >= 0 ) min = int( l );
   if( l >= max || min >= max ) max = l;
   if( max < 0 ) {
-    #display("http_recv_body: bogus or no Content-length field, and no 'length' parameter set! Defaulting to 32 KB\n");
+    if( _http_debug ) display( "DEBUG: http_recv_body: bogus or no Content-length field, and no 'length' parameter set! Defaulting to 32 KB\n" );
     max = 32768;
   }
-  #display("http_recv_body: min=", min, "; max=", max, "\n");
+  if( _http_debug ) display( "DEBUG: http_recv_body: min=", min, "; max=", max, "\n" );
   if( min > 0 ) {
     x = recv( socket:socket, length:max, min:min );
   } else {
@@ -367,7 +371,7 @@ function http_recv_body( socket, headers, length ) {
       n = recv( socket:socket, length:max );
       x += n;
       if( strlen( x ) > 1048576 ) {
-        #display( "http_recv_body: read stopped after 1 MB!\n" );
+        if( _http_debug ) display( "DEBUG: http_recv_body: read stopped after 1 MB!\n" );
         break;
       }
     }
@@ -781,34 +785,34 @@ function extract_location_from_redirect( port, data, debug ) {
   location = egrep( string:data, pattern:"^Location: ", icase:TRUE );
   if( ! location ) return;
 
-  if( debug ) display( 'DEBUG: Location header is: "' + location + '"\n' );
+  if( debug || _http_debug ) display( 'DEBUG: Location header is: "' + location + '"\n' );
 
   # Grab everything after Location:
   location -= string( "\r\n" );
   location = ereg_replace( string:location, pattern:"Location: (.*)$", replace:"\1", icase:TRUE );
 
-  if( debug ) display( 'DEBUG: Location header after cleanup is: "' + location + '"\n' );
+  if( debug || _http_debug ) display( 'DEBUG: Location header after cleanup is: "' + location + '"\n' );
 
   # Handle "https://", "http://" and "//" links in the location header
   if( location =~ "^(https:|http:)?//" ) {
 
     location_host = ereg_replace( string:location, pattern:"(https:|http:)?//([^/]*)/.*", replace:"\2", icase:TRUE );
 
-    if( debug ) display( 'DEBUG: Location header is pointing to host/ip: "' + location_host + '"\n' );
+    if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to host/ip: "' + location_host + '"\n' );
 
     # The location header is pointing to the same hostname / ip
     if( host >< location_host || ip >< location_host ) {
       loc = ereg_replace( string:location, pattern:"(https:|http:)?//[^/]*/([^?]*)", replace:"/\2", icase:TRUE );
-      if( debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
+      if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
       return loc;
     # If its not pointing to the same hostname / ip we can't follow it
     } else {
-      if( debug ) display( 'DEBUG: Location header is pointing to "' + location + '" NOT on the same host/ip. NOT returning this location.\n' );
+      if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to "' + location + '" NOT on the same host/ip. NOT returning this location.\n' );
       return;
     }
   # Handle redirects like "Location: /foo"
   } else {
-    if( debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
+    if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
     return location;
   }
 }

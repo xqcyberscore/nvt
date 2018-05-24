@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_feb17.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_vuln_feb17.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities Feb17 (Windows)
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810572");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-4692", "CVE-2016-7635", "CVE-2016-7652", "CVE-2016-7656",
                 "CVE-2016-4743", "CVE-2016-7586", "CVE-2016-7587", "CVE-2016-7610",
                 "CVE-2016-7611", "CVE-2016-7639", "CVE-2016-7640", "CVE-2016-7641",
@@ -38,15 +38,14 @@ if(description)
   script_bugtraq_id(95736, 95733);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-02-28 10:49:30 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple iTunes Multiple Vulnerabilities Feb17 (Windows)");
 
   script_tag(name: "summary" , value: "This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value: "Multiple flaws are due to,
   - Multiple memory corruption errors in WebKit.
@@ -55,7 +54,7 @@ if(description)
   - An error in the handling of HTTP redirects.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code, cause unexpected application termination 
+  attackers to execute arbitrary code, cause unexpected application termination
   and disclose sensitive information.
 
   Impact Level: System/Application");
@@ -70,7 +69,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://support.apple.com/en-in/HT207427");
+  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT207427");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -84,10 +83,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

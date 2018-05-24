@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GlassFish_34824.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: GlassFish_34824.nasl 9941 2018-05-23 15:47:50Z emoss $
 #
 # GlassFish Enterprise Server Multiple Cross Site Scripting
 # Vulnerabilities
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100191");
- script_version("$Revision: 9927 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+ script_version("$Revision: 9941 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:47:50 +0200 (Wed, 23 May 2018) $");
  script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,7 +47,7 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("GlassFish_detect.nasl");
- script_dependencies("GlassFish/installed");
+ script_mandatory_keys("GlassFish/installed");
  script_require_ports("Services/www", 8080);
 
  script_tag(name: "solution", value: "Updates are available. Please see https://glassfish.dev.java.net/ and/or

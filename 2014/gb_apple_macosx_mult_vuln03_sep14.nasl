@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_sep14.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_apple_macosx_mult_vuln03_sep14.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities -03 Sep14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804848");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2014-1370", "CVE-2014-1371");
   script_bugtraq_id(68272);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2014-09-19 12:51:15 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -03 Sep14");
@@ -62,7 +62,7 @@ if(description)
   refer link, http://support.apple.com/kb/HT1338
 
   NOTE: Please ignore the warning if the update is already applied.");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6296");
@@ -78,26 +78,18 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
  exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName)
 {
-  ## Check the affected OS versions
   if(version_in_range(version:osVer, test_version:"10.9.0", test_version2:"10.9.3")||
      version_in_range(version:osVer, test_version:"10.8.0", test_version2:"10.8.5")||
      version_in_range(version:osVer, test_version:"10.7.0", test_version2:"10.7.5"))

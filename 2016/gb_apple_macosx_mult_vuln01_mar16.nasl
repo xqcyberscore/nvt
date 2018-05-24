@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_mar16.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_apple_macosx_mult_vuln01_mar16.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 March-2016
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806693");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2015-7551", "CVE-2016-1733", "CVE-2016-1732", "CVE-2016-1734",
                 "CVE-2016-1735", "CVE-2016-1736", "CVE-2016-1737", "CVE-2016-1740",
                 "CVE-2016-1738", "CVE-2016-1741", "CVE-2016-1743", "CVE-2016-1744",
@@ -44,7 +44,7 @@ if(description)
                 "CVE-2016-1950", "CVE-2016-0801", "CVE-2016-0802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:28 +0530 (Fri, 01 Apr 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 March-2016");
 
@@ -65,17 +65,17 @@ if(description)
   Impact Level: System");
 
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.11.x before
-  10.11.4");
+  10.11.4, 10.9.x through 10.9.5, 10.10.x through 10.10.5");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.11.4 or later. For more updates refer to https://www.apple.com");
+  10.11.4 or later, or apply aptch from vendor. For more updates refer
+  to https://www.apple.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT206167");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-vn/HT206172");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -88,30 +88,50 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
-
-## Get the OS Version
-osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
+if(!osName || "Mac OS X" >!< osName){
   exit(0);
 }
 
-## Check for the Mac OS X
-if("Mac OS X" >< osName && osVer =~ "^(10\.11)")
+osVer = get_kb_item("ssh/login/osx_version");
+if(!osVer || osVer !~ "^(10\.(9|10|11))"){
+  exit(0);
+}
+
+if(version_in_range(version:osVer, test_version:"10.9", test_version2:"10.9.4")||
+   version_in_range(version:osVer, test_version:"10.10", test_version2:"10.10.4")){
+  fix = "Upgrade to latest OS release and apply patch from vendor";
+}
+
+else if((osVer == "10.10.5") || (osVer == "10.9.5"))
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.11.4"))
-  {
-    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11.4");
-    security_message(data:report);
+  buildVer = get_kb_item("ssh/login/osx_build");
+  if(!buildVer){
     exit(0);
   }
+  if(osVer == "10.10.5" && version_is_less(version:buildVer, test_version:"14F1713"))
+  {
+    fix = "Apply patch from vendor";
+    osVer = osVer + " Build " + buildVer;
+  }
+  else if(osVer == "10.9.5" && version_is_less(version:buildVer, test_version:"13F1712"))
+  {
+    fix = "Apply patch from vendor";
+    osVer = osVer + " Build " + buildVer;
+  }
 }
+
+else if(osVer =~ "^(10\.11)")
+{
+  if(version_is_less(version:osVer, test_version:"10.11.4")){
+    fix = "10.11.4";
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:osVer, fixed_version:fix);
+  security_message(data:report);
+  exit(0);
+}
+exit(0);

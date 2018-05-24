@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1136_1.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_suse_2018_1136_1.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # SuSE Update for corosync openSUSE-SU-2018:1136-1 (corosync)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851738");
-  script_version("$Revision: 9730 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 05:36:42 +0200 (Fri, 04 May 2018)");
   script_cve_id("CVE-2018-1084");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for corosync openSUSE-SU-2018:1136-1 (corosync)");
   script_tag(name:"summary", value:"Check the version of corosync");

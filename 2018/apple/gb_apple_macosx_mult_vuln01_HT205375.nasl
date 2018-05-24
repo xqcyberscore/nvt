@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT205375.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln01_HT205375.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 (HT205375)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813191");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2014-4860", "CVE-2015-0235", "CVE-2015-0273", "CVE-2015-5924",
                 "CVE-2015-5925", "CVE-2015-5926", "CVE-2015-5927", "CVE-2015-5933",
                 "CVE-2015-5934", "CVE-2015-5936", "CVE-2015-5937", "CVE-2015-5939",
@@ -39,15 +39,14 @@ if(description)
                 "CVE-2015-7018", "CVE-2015-7024");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 15:17:32 +0530 (Tue, 15 May 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 (HT205375)");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
   reference section.");
@@ -69,7 +68,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205375");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205375");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

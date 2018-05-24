@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Information Disclosure Vulnerability-HT207615
 #
@@ -27,29 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810982");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-7056");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:01:54 +0530 (Fri, 19 May 2017)");
   script_name("Apple Mac OS X Information Disclosure Vulnerability-HT207615");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to an error in time
   computation.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local 
+  script_tag(name: "impact" , value:"Successful exploitation will allow local
   attacker to leak sensitive user information.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X version 10.11.x through 
+  script_tag(name: "affected" , value:"Apple Mac OS X version 10.11.x through
   10.11.6 and 10.12.x through 10.12.3");
 
   script_tag(name: "solution" , value:"For Apple Mac OS X version 10.12.x through
@@ -58,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT207615");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207615");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -71,17 +70,11 @@ if(description)
 include("version_func.inc");
 include("ssh_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer || osVer !~ "^(10\.(11|12))" || "Mac OS X" >!< osName){
   exit(0);
@@ -103,7 +96,6 @@ if(osVer =~ "^(10\.11)")
       exit(0);
     }
 
-    ## Get the build version of macosx
     buildVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /System/" +
                                               "/Library/CoreServices/SystemVersion " +
                                               "ProductBuildVersion"));

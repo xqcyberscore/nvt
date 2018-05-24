@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804184";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6601 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2013-5163");
   script_bugtraq_id(62812);
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2013-12-31 20:51:30 +0530 (Tue, 31 Dec 2013)");
   script_name("Apple Mac OS X Authentication Bypass Vulnerability");
 
@@ -75,7 +75,7 @@ Impact Level: System";
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "impact" , value : tag_impact);
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## Build information is not available
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5964");

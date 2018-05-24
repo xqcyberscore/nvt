@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_dos_nd_access_bypass_vuln.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: gb_apple_macosx_dos_nd_access_bypass_vuln.nasl 9935 2018-05-23 13:15:24Z santu $
 #
 # Apple Mac OS X Denial of Service And Access Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810223");
-  script_version("$Revision: 5231 $");
+  script_version("$Revision: 9935 $");
   script_cve_id("CVE-2014-1296", "CVE-2013-4164");
   script_bugtraq_id(67024, 63873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 15:15:24 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-17 22:43:28 -0800 (Thu, 17 Nov 2016)");
   script_name("Apple Mac OS X Denial of Service And Access Bypass Vulnerability");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30"); ## build information not available
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT202966");
 
@@ -74,26 +74,18 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-## Check for the Mac OS X
 if("Mac OS X" >< osName && osVer =~ "^(10\.7)")
 {
-  ## Check the affected OS versions
   if(version_in_range(version:osVer, test_version:"10.7.0", test_version2:"10.7.5"))
   {
     report = report_fixed_ver(installed_version:osVer, fixed_version:"See Vendor");
@@ -101,3 +93,4 @@ if("Mac OS X" >< osName && osVer =~ "^(10\.7)")
     exit(0);
   }
 }
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_dos_vuln_may_18.nasl 9860 2018-05-16 09:27:39Z asteins $
+# $Id: gb_apple_macosx_dos_vuln_may_18.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Denial of Service Vulnerability May-2018
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813365");
-  script_version("$Revision: 9860 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-7604");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 15:20:12 +0530 (Mon, 14 May 2018)");
   script_name("Apple Mac OS X Denial of Service Vulnerability May-2018");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to a null pointer dereference
   error in state management.");
@@ -49,18 +48,18 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X version 10.12.1, 10.11.x through 
+  script_tag(name: "affected" , value:"Apple Mac OS X version 10.12.1, 10.11.x through
   10.11.6.");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.12.2 or later or apply appropriate security update for 10.11.x versions. 
+  10.12.2 or later or apply appropriate security update for 10.11.x versions.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT207423");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207423");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

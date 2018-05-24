@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink-dir815_com_inj_vuln.nasl 9509 2018-04-17 10:59:32Z asteins $
+# $Id: gb_dlink-dir815_com_inj_vuln.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # D-Link DIR-815 Rev.B <2.03 HTTP Command Injection Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112257");
-  script_version("$Revision: 9509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 12:59:32 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:55:34 +0200 (Tue, 17 Apr 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

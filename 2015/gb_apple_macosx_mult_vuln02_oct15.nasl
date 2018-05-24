@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_oct15.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln02_oct15.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-02 October-15
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806154");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2015-7761", "CVE-2015-7760", "CVE-2015-5922", "CVE-2015-5917",
                 "CVE-2015-5915", "CVE-2015-5914", "CVE-2015-5913", "CVE-2015-5902",
                 "CVE-2015-5901", "CVE-2015-5900", "CVE-2015-5897", "CVE-2015-5894",
@@ -40,15 +40,14 @@ if(description)
                 "CVE-2015-3785");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:24:34 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-02 October-15");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
   reference section.");
@@ -60,16 +59,17 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions before 10.11");
+  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.6.8 through
+  10.11");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
   10.11 or later. For more updates refer to https://www.apple.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205267");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205267");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Sep/msg00008.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -94,7 +94,7 @@ if(!osVer){
 
 if("Mac OS X" >< osName)
 {
-  if(version_in_range(version:osVer, test_version:"10.6.8", test_version2:"10.11"))
+  if(version_in_range(version:osVer, test_version:"10.6.8", test_version2:"10.10.5"))
   {
     report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11");
     security_message(data:report);

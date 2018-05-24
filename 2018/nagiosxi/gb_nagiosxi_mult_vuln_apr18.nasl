@@ -1,11 +1,13 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 9666 2018-04-27 16:52:59Z emoss $
+# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 9934 2018-05-23 11:48:03Z santu $
 #
 # Nagios XI Multiple Vulnerabilities-April18
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
+#
+# Updated By: Rajat Mishra <rajatm@secpod.com> on 2018-05-21
 #
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,11 +31,13 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813215");
-  script_version("$Revision: 9666 $");
-  script_cve_id("CVE-2018-8733", "CVE-2018-8734", "CVE-2018-8735", "CVE-2018-8736");
+  script_version("$Revision: 9934 $");
+  script_cve_id("CVE-2018-8733", "CVE-2018-8734", "CVE-2018-8735", "CVE-2018-8736",
+                "CVE-2018-10736", "CVE-2018-10735", "CVE-2018-10738", "CVE-2018-10737",
+                "CVE-2018-10810");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 18:52:59 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 10:44:16 +0530 (Fri, 27 Apr 2018)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Nagios XI Multiple Vulnerabilities-April18");
@@ -57,7 +61,15 @@ if(description)
     arbitrary commands on the target system, aka OS command injection.
 
   - A privilege escalation vulnerability, allows an attacker to leverage an
-    RCE vulnerability escalating to root.");
+    RCE vulnerability escalating to root.
+
+  - SQL injection vulnerability in the txtSearch parameter of admin/logbook.php.
+
+  - SQL injection vulnerability in the chbKey1 parameter of admin/menuaccess.php.
+
+  - SQL injection vulnerability in the cname parameter of admin/commandline.php.
+
+  - SQL injection vulnerability in the key1 parameter of admin/info.php.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary SQL commands, execute arbitrary commands and

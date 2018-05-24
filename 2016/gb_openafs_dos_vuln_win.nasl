@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_dos_vuln_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
+# $Id: gb_openafs_dos_vuln_win.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # OpenAFS Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808075");
-  script_version("$Revision: 8209 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2015-8312");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 17:54:13 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Denial of Service Vulnerability (Windows)");
 

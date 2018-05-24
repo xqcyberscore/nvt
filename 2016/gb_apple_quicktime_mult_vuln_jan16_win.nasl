@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_jan16_win.nasl 6717 2017-07-13 12:31:56Z santu $
+# $Id: gb_apple_quicktime_mult_vuln_jan16_win.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,29 +29,28 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806963");
-  script_version("$Revision: 6717 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2015-7117", "CVE-2015-7092", "CVE-2015-7091", "CVE-2015-7090",
                 "CVE-2015-7089", "CVE-2015-7088", "CVE-2015-7087", "CVE-2015-7086",
                 "CVE-2015-7085", "CVE-2017-2218");
   script_bugtraq_id(80020, 80170);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 14:31:56 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-01-18 10:15:22 +0530 (Mon, 18 Jan 2016)");
   script_name("Apple QuickTime Multiple Vulnerabilities Jan16 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Apple QuickTime
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to multiple memory
-  corruption issues and an issue in the installer of QuickTime with the 
+  corruption issues and an issue in the installer of QuickTime with the
   DLL search path.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to have unexpected application termination or arbitrary code 
+  attackers to have unexpected application termination or arbitrary code
   execution with the privilege of the user invoking the installer.
 
   Impact Level: System/Application");
@@ -66,7 +65,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205638");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205638");
   script_xref(name : "URL" , value : "https://jvn.jp/en/jp/JVN94771799/index.html");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2016/Jan/msg00000.html");
 
@@ -82,15 +81,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-quickVer = "";
-
-## Get version
 if(!quickVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for QuickTime Player Version less than 7.7.9(7.79.80.95)
 if(version_is_less(version:quickVer, test_version:"7.79.80.95"))
 {
   report = 'Installed version: ' + quickVer + '\n' +

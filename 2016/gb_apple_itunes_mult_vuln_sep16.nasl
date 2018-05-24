@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep16.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_vuln_sep16.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities Sep16 (Windows)
 #
@@ -28,25 +28,24 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807890");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2016-4728", "CVE-2016-4758", "CVE-2016-4759", "CVE-2016-4762",
                 "CVE-2016-4766", "CVE-2016-4767", "CVE-2016-4768", "CVE-2016-4760",
                 "CVE-2016-4765", "CVE-2016-4763", "CVE-2016-4769");
   script_bugtraq_id(93064, 93066, 93067, 93062);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 15:03:42 +0530 (Wed, 28 Sep 2016)");
   script_name("Apple iTunes Multiple Vulnerabilities Sep16 (Windows)");
 
   script_tag(name: "summary" , value: "This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value: "Multiple flaws are due to,
-  - A parsing issue in the handling of error prototypes. 
+  - A parsing issue in the handling of error prototypes.
   - A permissions issue in the handling of the location variable.
   - Multiple memory corruption issues.
   - Cross-protocol exploitation of non-HTTP services using DNS rebinding.
@@ -68,7 +67,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://support.apple.com/en-in/HT207158");
+  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT207158");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -82,10 +81,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

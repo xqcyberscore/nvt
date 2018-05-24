@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806081");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2014-2078");
   script_bugtraq_id(71888);
-  script_tag(name:"cvss_base", value:"3.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-09 15:08:44 +0530 (Fri, 09 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability");

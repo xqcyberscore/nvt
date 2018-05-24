@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_apr18_win.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_wordpress_mult_vuln_apr18_win.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # WordPress Multiple Vulnerabilities-April 2018 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813087");
-  script_version("$Revision: 9527 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2018-10100", "CVE-2018-10101", "CVE-2018-10102");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("WordPress Multiple Vulnerabilities-April 2018 (Windows)");
 

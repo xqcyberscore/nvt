@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208326.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_apple_itunes_HT208326.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple iTunes Security Updates( HT208326 )
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812285");
-  script_version("$Revision: 8263 $");
-  script_cve_id("CVE-2017-13864", "CVE-2017-13866", "CVE-2017-13856", "CVE-2017-13870", 
+  script_version("$Revision: 9940 $");
+  script_cve_id("CVE-2017-13864", "CVE-2017-13866", "CVE-2017-13856", "CVE-2017-13870",
                 "CVE-2017-7156", "CVE-2017-7157", "CVE-2017-7160");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 14:47:56 +0530 (Thu, 28 Dec 2017)");
   script_name("Apple iTunes Security Updates( HT208326 )");
 
   script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -51,8 +50,8 @@ if(description)
   - A privacy issue existed in the use of client certificates.");
 
   script_tag(name: "impact" , value:"Successful exploitation of these
-  vulnerabilities will allow remote attackers to track users by 
-  leveraging mishandling of client certificates and also execute arbitrary code 
+  vulnerabilities will allow remote attackers to track users by
+  leveraging mishandling of client certificates and also execute arbitrary code
   or cause a denial of service.
 
   Impact Level: System/Application");
@@ -64,7 +63,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208326");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208326");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208742.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_apple_macosx_HT208742.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple MacOSX Security Updates(HT208742)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813318");
-  script_version("$Revision: 9628 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2018-4206", "CVE-2018-4187");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 11:47:33 +0530 (Wed, 25 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208742)");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -47,20 +46,20 @@ if(description)
 
   - A spoofing issue existed in the handling of URLs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to gain elevated privileges and conduct UI spoofing.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.13.x through 
+  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.13.x through
   10.13.4");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.13.4 and 
+  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.13.4 and
   apply the appropriate security update. For updates refer the reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208742");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208742");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

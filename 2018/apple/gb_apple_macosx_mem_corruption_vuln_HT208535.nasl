@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mem_corruption_vuln_HT208535.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_apple_macosx_mem_corruption_vuln_HT208535.nasl 9940 2018-05-23 15:46:09Z cfischer $
 #
 # Apple MacOSX Memory Corruption Vulnerability (HT208535)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812939");
-  script_version("$Revision: 9903 $");
+  script_version("$Revision: 9940 $");
   script_cve_id("CVE-2018-4124");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 18:05:29 +0530 (Wed, 21 Feb 2018)");
   script_name("Apple MacOSX Memory Corruption Vulnerability (HT208535)");
 
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
   is prone to a memory corruption vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to a memory corruption
   issue.");
@@ -53,12 +52,12 @@ if(description)
   10.13.3 build 17D102 or build 17D2102");
 
   script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.13.3 build 17D102 or build 17D2102 or later. 
+  10.13.3 build 17D102 or build 17D2102 or later.
   For updates refer to https://www.apple.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT208535");
+  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208535");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

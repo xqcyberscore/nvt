@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_kb4089283.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: gb_ms_visual_studio_kb4089283.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Microsoft Visual Studio 2013 Update 5 Information Disclosure Vulnerability (KB4089283)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813141");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9939 $");
   script_cve_id("CVE-2018-1037");
   script_bugtraq_id(103715);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:21:17 +0530 (Wed, 18 Apr 2018)");
   script_name("Microsoft Visual Studio 2013 Update 5 Information Disclosure Vulnerability (KB4089283)");
 

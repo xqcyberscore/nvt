@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 23 May 2018 11:46:24 +0200
+# Automatically created on:  Thu, 24 May 2018 10:44:47 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38772,6 +38772,7 @@
 2018/debian/deb_4204.nasl: GPLv2+
 2018/debian/deb_4206.nasl: GPLv2+
 2018/debian/deb_4207.nasl: GPLv2+
+2018/debian/deb_4208.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39069,6 +39070,7 @@
 2018/debian/deb_dla_1378.nasl: GPLv2+
 2018/debian/deb_dla_1379.nasl: GPLv2+
 2018/debian/deb_dla_1380.nasl: GPLv2+
+2018/debian/deb_dla_1381.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39835,6 +39837,7 @@
 2018/ffmpeg/gb_ffmpeg_info_disc_vuln.nasl: GPLv2+
 2018/flir/gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl: GPLv2+
 2018/foxit/gb_foxit_phantompdf_mult_vuln_apr18_win.nasl: GPLv2+
+2018/foxit/gb_foxit_phantompdf_mult_vuln_may18_win.nasl: GPLv2+
 2018/foxit/gb_foxit_phantompdf_mult_vuln.nasl: GPLv2+
 2018/foxit/gb_foxit_reader_mult_vuln_apr18_win.nasl: GPLv2+
 2018/foxit/gb_foxit_reader_mult_vuln_win.nasl: GPLv2+
@@ -39862,6 +39865,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-04_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-04_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-04_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05-01_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05-01_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05-01_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-05_win.nasl: GPLv2+
@@ -39907,6 +39913,8 @@
 2018/ilias/gb_ilias_524_xss_vuln.nasl: GPLv2+
 2018/ilias/gb_ilias_534_xss_vuln.nasl: GPLv2+
 2018/ilias/gb_ilias_eol.nasl: GPLv2+
+2018/ilias/gb_ilias_mult_vuln02_may18.nasl: GPLv2+
+2018/ilias/gb_ilias_mult_vuln03_may18.nasl: GPLv2+
 2018/ilias/gb_ilias_mult_vuln_may18.nasl: GPLv2+
 2018/imagemagick/gb_imagemagick_dos_vuln_lin.nasl: GPLv2+
 2018/imagemagick/gb_imagemagick_dos_vuln_macosx.nasl: GPLv2+
@@ -39917,6 +39925,7 @@
 2018/invoiceplane/gb_invoiceplane_xss_vuln.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_lin.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_win.nasl: GPLv2+
+2018/isc/gb_isc_bind_mult_dos_vuln_may18.nasl: GPLv2+
 2018/joomla/gb_joomla_chromes_module_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_sql_inj_n_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_uri_class_xss_vuln.nasl: GPLv2+
@@ -40201,6 +40210,8 @@
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-11_2018-12_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-05_2018-13_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl: GPLv2+
 2018/mybb/gb_mybb_csrf_vuln_feb18.nasl: GPLv2+
 2018/mybb/gb_mybb_xss_vuln.nasl: GPLv2+
 2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
@@ -40219,6 +40230,7 @@
 2018/oicgroup/gb_exponent_cms_priv_esc_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln_0318.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln.nasl: GPLv2+
+2018/openemr/gb_openemr_newlistname_sql_injec_vuln.nasl: GPLv2+
 2018/openoffice/gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl: GPLv2+
 2018/openssl/gb_openssl_cache_timing_info_disc_vuln_lin.nasl: GPLv2+
 2018/openssl/gb_openssl_cache_timing_info_disc_vuln_win.nasl: GPLv2+
@@ -40449,12 +40461,14 @@
 2018/squid/gb_squid_2018_1_win.nasl: GPLv2+
 2018/squid/gb_squid_2018_2_lin.nasl: GPLv2+
 2018/squid/gb_squid_2018_2_win.nasl: GPLv2+
+2018/squid/gb_squid_dos_vuln_squid_2018_3.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_multiple_sql_inj_vuln.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_xxe_vuln.nasl: GPLv2+
 2018/support/gb_superantispyware_mult_vuln.nasl: GPLv2+
 2018/teamtest/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/telerik/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/telerik/gb_sitefinity_mult_vuln.nasl: GPLv2+
+2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-05.nasl: GPLv2+
 2018/tenable/gb_tenable_nessus_priv_esc_vuln.nasl: GPLv2+
 2018/theforeman/gb_foreman_sql_inj_vuln.nasl: GPLv2+
 2018/thekelleys/gb_dnsmasq_dnssec_val_vuln.nasl: GPLv2+
@@ -40462,10 +40476,14 @@
 2018/tiki/gb_tikiwiki_mult_vuln_feb18.nasl: GPLv2+
 2018/tiki/gb_tikiwiki_xss_vuln_cve-2018-7290.nasl: GPLv2+
 2018/tiki/gb_tikiwiki_xss_vuln.nasl: GPLv2+
+2018/tomcat/gb_apache_tomcat_cors_filter_sec_bypass_vuln.nasl: GPLv2+
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_lin.nasl: GPLv2+
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_3_2_mult_vuln.nasl: GPLv2+
+2018/trendmicro/gb_trendmicro_antivirus_plus_mult_vuln_may18_win.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_imsva_auth_bypass.nasl: GPLv2+
+2018/trendmicro/gb_trendmicro_internet_security_mult_vuln_may18_win.nasl: GPLv2+
+2018/trendmicro/gb_trendmicro_maximum_security_mult_vuln_may18_win.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln_1119385.nasl: GPLv2+
 2018/trendnet/gb_trendnet_routers_info_disc.nasl: GPLv2+
 2018/typo3/gb_typo3_pers_xss_vuln_apr18_lin.nasl: GPLv2+
@@ -40626,6 +40644,10 @@
 2018/wireshark/gb_wireshark_wnpa-sec-2018-02_win.nasl: GPLv2+
 2018/wireshark/gb_wireshark_wnpa-sec-2018-05-14_macosx.nasl: GPLv2+
 2018/wireshark/gb_wireshark_wnpa-sec-2018-05-14_win.nasl: GPLv2+
+2018/wireshark/gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_01_macosx.nasl: GPLv2+
+2018/wireshark/gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_01_win.nasl: GPLv2+
+2018/wireshark/gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_02_macosx.nasl: GPLv2+
+2018/wireshark/gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_02_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_add-link-to-facebook_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_bookly_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_disable_comments_plugin_csfr_vuln.nasl: GPLv2+
@@ -42180,12 +42202,14 @@ gb_tp_link_wireless_n_router_detect.nasl: GPLv2+
 gb_trane_tracer_sc_detect.nasl: GPLv2+
 gb_trane_tracer_sc_web_detect.nasl: GPLv2+
 gb_trango_devices_detect.nasl: GPLv2+
+gb_trendmicro_antivirus_plus_detect_win.nasl: GPLv2+
 gb_trend_micro_data_loss_prevention_detect.nasl: GPLv2+
 gb_trendmicro_deep_discovery_inspector_detect.nasl: GPLv2+
 gb_trendmicro_internet_security_detect.nasl: GPLv2+
 gb_trend_micro_interscan_messaging_security_virtual_appliance_version.nasl: GPLv2+
 gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl: GPLv2+
 gb_trend_micro_interscan_web_security_virtual_appliance_www_detect.nasl: GPLv2+
+gb_trendmicro_maximum_security_detect_win.nasl: GPLv2+
 gb_trend_micro_office_scan_detect.nasl: GPLv2+
 gb_trend_micro_office_scan_detect_remote.nasl: GPLv2+
 gb_trendmicro_smart_protection_server_detect.nasl: GPLv2+
@@ -57529,6 +57553,7 @@ gsf/2018/hp/gb_hp_network_automation_mult_vuln_hpesbgn03740.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_info_disc_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_micro_focus_operations_orchestration_KM03103896.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_bigfix_encryption_prot_security_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_os_command_injection_vuln_apr18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_db2_mult_vuln_mar18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_doors_web_access_mult_vuln.nasl: GPLv2+
@@ -58171,6 +58196,10 @@ gsf/PCIDSS/v2.0/PCIDSS_M8.5.13.a.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.14.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.5.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.9.a.nasl: GPLv2+
+gsf/Policy/policy_cyber_essentials_err.nasl: GPLv2+
+gsf/Policy/policy_cyber_essentials_fail.nasl: GPLv2+
+gsf/Policy/policy_cyber_essentials.nasl: GPLv2+
+gsf/Policy/policy_cyber_essentials_ok.nasl: GPLv2+
 gsf/Policy/policy_file_content_error.nasl: GPLv2+
 gsf/Policy/policy_file_content.nasl: GPLv2+
 gsf/Policy/policy_file_content_ok.nasl: GPLv2+
@@ -59310,13 +59339,10 @@ Policy/Microsoft/Office2013/office2013_suppress_external_signature_menu.nasl: GP
 Policy/Microsoft/Office2013/office2013_telemetry_data_collection.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_trust_bar_notifications.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_vml_for_browser_graphics.nasl: GPLv2+
-Policy/Microsoft/Windows10/Account/win10_account_lockout_duration.nasl: GPLv2+
-Policy/Microsoft/Windows10/Account/win10_account_lockout_threshold.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_complexity_requirements.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_history.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_max_age.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_passwd_min_age.nasl: GPLv2+
-Policy/Microsoft/Windows10/Account/win10_passwd_min_length.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_reset_account_lockout_counter.nasl: GPLv2+
 Policy/Microsoft/Windows10/Account/win10_store_passwd_reversible_encryption.nasl: GPLv2+
 Policy/Microsoft/Windows10/Audit/win10_force_audit_subcategory_override.nasl: GPLv2+
@@ -59325,9 +59351,7 @@ Policy/Microsoft/Windows10/Devices/win10_allowed_format_eject_removable_media.na
 Policy/Microsoft/Windows10/Devices/win10_prevent_users_installing_printer_drivers.nasl: GPLv2+
 Policy/Microsoft/Windows10/DomainMember/win10_encrypt_secure_channel_data_possible.nasl: GPLv2+
 Policy/Microsoft/Windows10/DomainMember/win10_encrypt_sign_secure_channel_data_always.nasl: GPLv2+
-Policy/Microsoft/Windows10/SecurityOptions/win10_administrator_account_status.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+
-Policy/Microsoft/Windows10/SecurityOptions/win10_guest_account_status.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_limit_local_account_blank_password_console.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_rename_admin_account.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_rename_guest_account.nasl: GPLv2+
@@ -59379,6 +59403,14 @@ Policy/Microsoft/Windows10/win10_mrt_disable_report_infection_information.nasl: 
 Policy/Microsoft/Windows10/win10_prevent_device_metadata_retrieval_internet.nasl: GPLv2+
 Policy/Microsoft/Windows10/win10_prevent_onedrive_file_storage.nasl: GPLv2+
 Policy/Microsoft/Windows10/win10_send_file_samples_for_further_analysis.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Account/win_account_lockout_duration.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Account/win_account_lockout_threshold.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Account/win_passwd_min_length.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AutoPlay/win_default_behaviour_autorun.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AutoPlay/win_disallow_autoplay_nonvolume_devices.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AutoPlay/win_turn_off_autoplay.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SecurityOptions/win_administrator_account_status.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SecurityOptions/win_guest_account_status.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server_path.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_statistic_server_path.nasl: GPLv2+

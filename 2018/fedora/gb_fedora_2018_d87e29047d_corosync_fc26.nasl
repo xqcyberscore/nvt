@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d87e29047d_corosync_fc26.nasl 9547 2018-04-20 10:53:23Z santu $
+# $Id: gb_fedora_2018_d87e29047d_corosync_fc26.nasl 9939 2018-05-23 14:50:30Z cfischer $
 #
 # Fedora Update for corosync FEDORA-2018-d87e29047d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874372");
-  script_version("$Revision: 9547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:53:23 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 9939 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 09:29:01 +0200 (Fri, 20 Apr 2018)");
   script_cve_id("CVE-2018-1084");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for corosync FEDORA-2018-d87e29047d");
   script_tag(name: "summary", value: "Check the version of corosync");
