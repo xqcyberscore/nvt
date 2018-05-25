@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 9951 2018-05-24 13:51:37Z cfischer $
 #
 # Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810980");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 9951 $");
   script_cve_id("CVE-2017-5135");
   script_bugtraq_id(98092);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 17:59:31 +0530 (Fri, 19 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability");
@@ -57,13 +57,14 @@ if(description)
   D3928SL-P15-13-A386-c3420r55105-160127a is vulnerable, other devices are also
   affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name: "solution", value: "No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://stringbleed.github.io");
   script_xref(name: "URL", value: "https://www.reddit.com/r/netsec/comments/67qt6u/cve_20175135_snmp_authentication_bypass");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
@@ -86,7 +87,7 @@ community = "testOpenVAS";
 ## Checking for the vulnerability
 if(ret = snmp_get( port:snmp_port, oid:'1.3.6.1.2.1.1.1.0', version:2, community:community ))
 {
-  report = "Result of the system description query with the community '" +community + "':\n\n" + ret + "\n";
+  report = "Result of the system description query with the community '" + community + "':\n\n" + ret + "\n";
   security_message(port: snmp_port, data: report, proto: "udp");
   exit(0);
 }

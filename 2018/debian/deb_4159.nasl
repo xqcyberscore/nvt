@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4159.nasl 9273 2018-04-02 09:57:44Z cfischer $
+# $Id: deb_4159.nasl 9953 2018-05-25 04:01:23Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4159-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704159");
-  script_version("$Revision: 9273 $");
+  script_version("$Revision: 9953 $");
   script_cve_id("CVE-2018-0493");
   script_name("Debian Security Advisory DSA 4159-1 (remctl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-02 11:57:44 +0200 (Mon, 02 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 06:01:23 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-01 00:00:00 +0200 (Sun, 01 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

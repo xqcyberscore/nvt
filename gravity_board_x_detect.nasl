@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gravity_board_x_detect.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: gravity_board_x_detect.nasl 9947 2018-05-24 10:31:47Z ckuersteiner $
 #
 # Gravity Board X Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100100");
-  script_version("$Revision: 5255 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 9947 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 12:31:47 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -73,12 +73,11 @@ foreach dir( make_list_unique( "/gravity", "/forum", "/board", cgi_dirs( port:po
     version = eregmatch( string:buf, pattern:"<a href=[^>]+>Gravity Board X</a>.*v([0-9.]+ *[BETA]*)", icase:TRUE );
     if( ! isnull( version[1] ) ) vers = chomp( version[1] );
 
-    tmp_version = vers + " under " + install;
-    set_kb_item( name:"www/" + port + "/GravityX", value:tmp_version );
+    set_kb_item(name: "gravity_board_x/installed", value: TRUE);
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:gravityboardx:gravity_board_x:" );
-    if( isnull( cpe ) )
+    cpe = build_cpe(value: vers, exp: "^([0-9.]+\.[0-9])\.?([a-z0-9]+)?",
+                    base:"cpe:/a:gravityboardx:gravity_board_x:");
+    if (!cpe)
       cpe = "cpe:/a:gravityboardx:gravity_board_x";
 
     register_product( cpe:cpe, location:install, port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_rce.nasl 9532 2018-04-19 09:52:06Z asteins $
+# $Id: gb_a2billing_rce.nasl 9951 2018-05-24 13:51:37Z cfischer $
 #
 # A2billing Backup File Download / Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:a2billing:a2billing";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107237");
-  script_version("$Revision: 9532 $");
+  script_version("$Revision: 9951 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-08 20:31:53 +0200 (Fri, 08 Sep 2017)");
   script_name("A2billing Backup File Download / Remote Code Execution Vulnerabilities");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"affected", value:"All versions of A2Billing");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 19th April, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 24th May, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

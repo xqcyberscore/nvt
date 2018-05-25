@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_detect.nasl 7245 2017-09-25 07:09:12Z jschulte $
+# $Id: gb_dolibarr_detect.nasl 9949 2018-05-24 12:33:20Z jschulte $
 #
 # Dolibarr Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103143");
-  script_version("$Revision: 7245 $");
+  script_version("$Revision: 9949 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 09:09:12 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 14:33:20 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dolibarr Detection");
@@ -56,14 +56,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Variable initialization
-dolport = "";
-dirs = "";
-url = "";
-req = "";
-buf = "";
-version = "";
-
 dolport = get_http_port(default:80);
 if(!can_host_php(port:dolport)) exit(0);
 foreach dir( make_list_unique("/", "/dolibarr","/dolibarr/htdocs","/htdocs",cgi_dirs(port:dolport)) ) {
@@ -75,12 +67,10 @@ foreach dir( make_list_unique("/", "/dolibarr","/dolibarr/htdocs","/htdocs",cgi_
   buf = http_get_cache(item:url, port:dolport);
   if( buf == NULL )continue;
 
-  ##Confirm Application
   if("Set-Cookie: DOLSESSID" >< buf && ("<title>Login" || "<title>Dolibarr") >< buf
       && ("dolibarr_logo.png" || "dolibarr.org") >< buf)
   {
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: ">Dolibarr.{0,5} ([0-9.]+)<",icase:TRUE);
     if (!isnull(version[1])){
        vers=chomp(version[1]);
@@ -89,7 +79,6 @@ foreach dir( make_list_unique("/", "/dolibarr","/dolibarr/htdocs","/htdocs",cgi_
     set_kb_item(name: string("www/", dolport, "/dolibarr"), value: string(vers," under ",install));
     set_kb_item(name: "Dolibarr/installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:dolibarr:dolibarr:");
     if(!cpe)
       cpe = "cpe:/a:dolibarr:dolibarr";

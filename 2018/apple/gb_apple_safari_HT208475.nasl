@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208475.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: gb_apple_safari_HT208475.nasl 9950 2018-05-24 12:44:21Z santu $
 #
 # Apple Safari Security Updates( HT208475 )
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812665");
-  script_version("$Revision: 9681 $");
+  script_version("$Revision: 9950 $");
   script_cve_id("CVE-2018-4088", "CVE-2018-4089", "CVE-2018-4096" );
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 14:44:21 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 11:54:25 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Safari Security Updates( HT208475 )");
 
@@ -64,23 +64,51 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-safVer = "";
-safPath = "";
+osName = get_kb_item("ssh/login/osx_name");
+osVer = get_kb_item("ssh/login/osx_version");
+if((!osName && "Mac OS X" >!< osName) || !osVer){
+  exit (0);
+}
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
-safVer = infos['version'];
-safPath = infos['location'];
-
-if(version_is_less(version:safVer, test_version:"11.0.3"))
+if(version_is_less(version:osVer, test_version:"10.11.6"))
 {
-  report = report_fixed_ver(installed_version:safVer, fixed_version:"11.0.3", install_path:safPath);
+  fix = "Upgrade Apple Mac OS X to version 10.11.6 and Update Apple Safari to version 11.0.3" ;
+  installedVer = "Apple Mac OS X " + osVer ;
+}
+else if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.12.5"))
+{
+  fix = "Upgrade Apple Mac OS X to version 10.12.6 and Update Apple Safari to version 11.0.3";
+  installedVer = "Apple Mac OS X " + osVer ;
+}
+else if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.2"))
+{
+  fix = "Upgrade Apple Mac OS X to version 10.13.3 and Update Apple Safari to version 11.0.3";
+  installedVer = "Apple Mac OS X " + osVer ;
+}
+
+else
+{
+  infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
+  safVer = infos['version'];
+  safPath = infos['location'];
+
+  if(version_is_less(version:safVer, test_version:"11.0.3"))
+  {
+    fix = "11.0.3";
+    installedVer = "Apple Safari " + safVer ;
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:installedVer, fixed_version:fix, install_path:safPath);
   security_message(data:report);
   exit(0);
 }

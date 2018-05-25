@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018330.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4018330.nasl 9953 2018-05-25 04:01:23Z ckuersteiner $
 #
 # Microsoft Office 2013 Service Pack 1 Remote Code Execution Vulnerability (KB4018330)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813121");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9953 $");
   script_cve_id("CVE-2018-1028");
   script_bugtraq_id(103641);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 06:01:23 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:38:16 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office 2013 Service Pack 1 Remote Code Execution Vulnerability (KB4018330)");
 

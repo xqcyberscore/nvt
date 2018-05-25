@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208692_01.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_HT208692_01.nasl 9953 2018-05-25 04:01:23Z ckuersteiner $
 #
 # Apple MacOSX Security Updates(HT208692)-01
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813112");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 9953 $");
   script_cve_id("CVE-2018-4108", "CVE-2018-4143", "CVE-2018-4105", "CVE-2018-4107",
                 "CVE-2018-4160", "CVE-2018-4167", "CVE-2018-4142", "CVE-2018-4174",
                 "CVE-2018-4131", "CVE-2018-4132", "CVE-2018-4135", "CVE-2018-4111",
                 "CVE-2018-4170", "CVE-2018-4115", "CVE-2018-4157", "CVE-2018-4152",
                 "CVE-2018-4150", "CVE-2018-4138", "CVE-2018-4173");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 06:01:23 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:46:18 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208692)-01");
 

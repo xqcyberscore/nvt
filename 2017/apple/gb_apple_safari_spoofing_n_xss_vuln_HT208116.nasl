@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl 9950 2018-05-24 12:44:21Z santu $
 #
 # Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116 
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811782");
-  script_version("$Revision: 7604 $");
+  script_version("$Revision: 9950 $");
   script_cve_id("CVE-2017-7085", "CVE-2017-7089", "CVE-2017-7106", "CVE-2017-7081",
                 "CVE-2017-7087", "CVE-2017-7090", "CVE-2017-7091", "CVE-2017-7092",
                 "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096",
@@ -40,7 +40,7 @@ if(description)
                     100996, 100991);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 14:44:21 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 11:33:23 +0530 (Thu, 21 Sep 2017)");
   script_name("Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116");
 
@@ -84,29 +84,49 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 
-
-# Code starts from here
 
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
-
-## Get Apple Safari version
-if(!safVer = get_app_version(cpe:CPE)){
-  exit(0);
+osName = get_kb_item("ssh/login/osx_name");
+osVer = get_kb_item("ssh/login/osx_version");
+if((!osName && "Mac OS X" >!< osName) || !osVer){
+  exit (0);
 }
 
-## Check for Apple Safari Versions less than 11
-if(version_is_less(version:safVer, test_version:"11.0"))
+if(version_is_less(version:osVer, test_version:"10.11.6"))
 {
-  report = report_fixed_ver(installed_version:safVer, fixed_version:"11.0");
+  fix = "Upgrade Apple Mac OS X to version 10.11.6 and Update Apple Safari to version 11" ;
+  installedVer = "Apple Mac OS X " + osVer ;
+}
+else if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.12.5"))
+{
+  fix = "Upgrade Apple Mac OS X to version 10.12.6 and Update Apple Safari to version 11";
+  installedVer = "Apple Mac OS X " + osVer ;
+}
+
+else
+{
+  infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE);
+  safVer = infos['version'];
+  path = infos['location'];
+
+  if(version_is_less(version:safVer, test_version:"11"))
+  {
+    fix = "11";
+    installedVer = "Apple Safari " + safVer ;
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:installedVer, fixed_version:fix, install_path:path);
   security_message(data:report);
   exit(0);
 }
 exit(0);
+

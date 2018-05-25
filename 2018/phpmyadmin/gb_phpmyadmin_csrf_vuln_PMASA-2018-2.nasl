@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2018-2.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2018-2.nasl 9953 2018-05-25 04:01:23Z ckuersteiner $
 #
 # phpMyAdmin Cross-Site Request Forgery Vulnerability-PMASA-2018-2
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813158");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 9953 $");
   script_cve_id("CVE-2018-10188");
   script_bugtraq_id(103936);
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 06:01:23 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 17:13:20 +0530 (Wed, 02 May 2018)");
   script_name("phpMyAdmin Cross-Site Request Forgery Vulnerability-PMASA-2018-2");
 

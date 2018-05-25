@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 24 May 2018 10:44:47 +0200
+# Automatically created on:  Fri, 25 May 2018 11:19:08 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39270,6 +39270,7 @@
 2018/dolibarr/gb_dolibarr_5_0_3_mult_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_7_0_0_mult_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_mult_vuln.nasl: GPLv2+
+2018/dolibarr/gb_dolibarr_sql_inj_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_xss_vuln2.nasl: GPLv2+
 2018/dolibarr/gb_dolibar_xss_vuln1.nasl: GPLv2+
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-001_lin.nasl: GPLv2+
@@ -39902,7 +39903,9 @@
 2018/hp/gb_hp_web_jetadmin_dos_vuln.nasl: GPLv2+
 2018/hp/gb_hp_web_jetadmin_mult_xss_vuln_win.nasl: GPLv2+
 2018/hp/gb_hp_web_jetadmin_security_bypass_vuln_win.nasl: GPLv2+
+2018/huawei/gb_huawei_products_invalid_mem_access_vuln.nasl: GPLv2+
 2018/huawei/gb_huawei-sa-20180328-01-authentication.nasl: GPLv2+
+2018/huawei/gb_huawei_switches_multiple_vulnerabilities.nasl: GPLv2+
 2018/huawei/gb_huawei_switch_inf_disclosure_vuln.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
@@ -40658,6 +40661,7 @@
 2018/wordpress/gb_wordpress_gd-rating-system_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_load_parameter_dos_vuln_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_load_parameter_dos_vuln_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_loginizer_stored_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_media-from-ftp_dir_trav_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_apr18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_apr18_win.nasl: GPLv2+
@@ -57425,6 +57429,7 @@ gsf/2018/citrix/gb_citrix_netscaler_CTX232161.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX232199.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX234869.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/citrix/gb_citrix_xenmobile_CTX234879.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx232096.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx232655.nasl: GPLv2+
@@ -57708,6 +57713,8 @@ gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
 gsf/2018/moxa/gb_moxa_edr810_info_discl_vuln.nasl: GPLv2+
 gsf/2018/netapp/gb_netapp_oncommand_um_code_exec_vuln.nasl: GPLv2+
+gsf/2018/netapp/gb_netapp_oncommand_um_priv_es_vuln_win.nasl: GPLv2+
+gsf/2018/netapp/gb_netapp_oncommand_um_rce_vuln_lin.nasl: GPLv2+
 gsf/2018/netex/gb_hyperip_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/netex/gb_hyperip_default_http_credentials.nasl: GPLv2+
 gsf/2018/netex/gb_hyperip_default_ssh_credentials.nasl: GPLv2+

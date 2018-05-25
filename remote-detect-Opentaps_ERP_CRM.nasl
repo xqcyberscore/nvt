@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-Opentaps_ERP_CRM.nasl 9880 2018-05-17 07:12:24Z cfischer $
+# $Id: remote-detect-Opentaps_ERP_CRM.nasl 9944 2018-05-24 09:51:11Z cfischer $
 #
 # Opentaps ERP + CRM Detection
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101021");
-  script_version("$Revision: 9880 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 09:12:24 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 9944 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 11:51:11 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 00:18:39 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,32 +62,42 @@ include("host_details.inc");
 
 port = get_http_port( default:8080 );
 
-# Nb: This seems to often redirect to a different port on the same system
-
-foreach module( make_list( '/crmsfa', '/ecommerce', '/ebay', '/financials',
-                           '/catalog', '/googlebase', '/partymgr',
-                           '/purchasing', '/warehouse', '/webtools') ) {
+foreach module( make_list( '/activities', '/amazon', '/asterisk', '/catalog', '/crmsfa',
+                           '/controllerinjectex', '/dataimport', '/ebay', '/ecommerce', '/financials',
+                           '/googlebase', '/opentaps', '/partymgr', '/purchasing', '/search',
+                           '/warehouse', '/webstore', '/webtools') ) {
 
   url = module + "/control/main";
   res = http_get_cache( item:url, port:port );
   if( ! res || res !~ "^HTTP/1\.[01] 200" ) continue;
 
-  opentapsTitle = eregmatch( pattern:"<title>([a-zA-Z: &#0-9;]+)</title>", string:res, icase:TRUE );
+  # <title> Opentaps Amazon.com Integration Application</title>
+  # <title> opentaps DataImport</title>
+  # <title>Opentaps Open Source ERP &#43; CRM</title>
+  opentapsTitle = eregmatch( pattern:"<title>([a-zA-Z: &#0-9;\.\-]+)</title>", string:res, icase:TRUE );
   if( ( opentapsTitle && 'opentaps' >< tolower( opentapsTitle[1] ) ) || "opentaps_logo.png" >< res ) {
 
     if( opentapsTitle && 'opentaps' >< tolower( opentapsTitle[1] ) )
-      extra += '\n[' + opentapsTitle[1] +']:' + report_vuln_url( port:port, url:url, url_only:TRUE );
+      extra_otaps += '\n[' + opentapsTitle[1] + ']:' + report_vuln_url( port:port, url:url, url_only:TRUE );
+    else if ( opentapsTitle && 'ofbiz' >< tolower( opentapsTitle[1] ) )
+      extra_ofbiz += '\n[' + opentapsTitle[1] + ']:' + report_vuln_url( port:port, url:url, url_only:TRUE );
     else
-      extra += '\n[Unknown module]:' + report_vuln_url( port:port, url:url, url_only:TRUE );
+      extra_otaps += '\n[Unknown module]:' + report_vuln_url( port:port, url:url, url_only:TRUE );
 
     installed = TRUE;
     set_kb_item( name:"OpentapsERP/" + port + "/modules", value:module );
     if( ! version ) version = "unknown";
 
-    # <p><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
-    # <div class="tabletext"><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
-    vers = eregmatch( pattern:'<a href="http://www.opentaps.org" class="tabletext">[a-zA-Z +]+</a> ([0-9.]+).<br/>', string:res, icase:TRUE );
-    if( vers[1] && version == "unknown" ) version = vers[1];
+    if( version == "unknown" ) {
+      # <p><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
+      # <div class="tabletext"><a href="http://www.opentaps.org" class="tabletext">opentaps Open Source ERP + CRM</a> 1.0.0.<br/>
+      #         <a href="http://www.opentaps.org">Opentaps Open Source ERP &#43; CRM</a> 1.5.0.<br />
+      vers = eregmatch( pattern:'<a href="http://www.opentaps.org"( class="tabletext")?>opentaps[^<]+</a> ([0-9.]+).<br ?/>', string:res, icase:TRUE );
+      if( vers[2] ) {
+        version = vers[2];
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+      }
+    }
   }
 }
 
@@ -96,7 +106,12 @@ if( installed ) {
   set_kb_item( name:"OpentapsERP/installed", value:TRUE );
   set_kb_item( name:"OpentapsERP/" + port + "/version", value:version );
   install = "/";
-  extra = '\n\nDetected Modules:\n' + extra;
+
+  if( extra_otaps )
+    extra += '\n\nDetected Opentaps Modules:\n' + extra_otaps;
+
+  if( extra_ofbiz )
+    extra += '\n\nDetected OFBiz Modules on Opentaps:\n' + extra_ofbiz;
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:opentaps:" );
   if( isnull( cpe ) )
@@ -108,6 +123,7 @@ if( installed ) {
                                             version:version,
                                             install:install,
                                             cpe:cpe,
+                                            concludedUrl:conclUrl,
                                             concluded:vers[0] ) + extra, # We don't want to add the "Extra information:" text...
                                             port:port );
 }

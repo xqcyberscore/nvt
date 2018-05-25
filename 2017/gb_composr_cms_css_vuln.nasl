@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_css_vuln.nasl 9523 2018-04-18 21:57:48Z asteins $
+# $Id: gb_composr_cms_css_vuln.nasl 9951 2018-05-24 13:51:37Z cfischer $
 #
 # Composr CMS v10.0.0 - Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:composr:cms';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107215");
-  script_version("$Revision: 9523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 9951 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name: "affected", value: "Composr CMS version 10.0.0.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 18th April, 2018. Information regarding this issue will be updated once
+  script_tag(name: "solution", value: "No known solution is available as of 24th May, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to https://compo.sr/start.htm");
 
   script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/15");

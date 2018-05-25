@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_xss_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_kodak_insite_xss_vuln.nasl 9951 2018-05-24 13:51:37Z cfischer $
 #
 # Kodak InSite XSS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:kodak:insite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106821");
-  script_version("$Revision: 9738 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 9951 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
   script_tag(name: "creation_date", value: "2017-05-23 09:17:36 +0700 (Tue, 23 May 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Kodak InSite XSS Vulnerability");
 
@@ -61,8 +61,9 @@ code in the context of the interface or allow the attacker to access sensitive b
 
   script_tag(name: "affected", value: "Kodak InSite version 6.5 until 8.0.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name: "solution", value: "No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://packetstormsecurity.com/files/142587/Kodak-InSite-8.0-Cross-Site-Scripting.html");
 
