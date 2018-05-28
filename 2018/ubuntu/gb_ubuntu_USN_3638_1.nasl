@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3638_1.nasl 9830 2018-05-15 07:16:12Z cfischer $
+# $Id: gb_ubuntu_USN_3638_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Ubuntu Update for qpdf USN-3638-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843515");
-  script_version("$Revision: 9830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:16:12 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 9974 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 05:35:23 +0200 (Tue, 08 May 2018)");
   script_cve_id("CVE-2015-9252", "CVE-2017-11624", "CVE-2017-11625", "CVE-2017-11626",
                 "CVE-2017-11627", "CVE-2017-12595", "CVE-2017-18183", "CVE-2017-18184",
                 "CVE-2017-18185", "CVE-2017-18186", "CVE-2017-9208", "CVE-2017-9209",
                 "CVE-2017-9210", "CVE-2018-9918");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qpdf USN-3638-1");
   script_tag(name:"summary", value:"Check the version of qpdf");

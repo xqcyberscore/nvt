@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_glassfish_admin_default_credentials.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: sw_glassfish_admin_default_credentials.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Oracle GlassFish Admin Default Credentials
 #
@@ -30,31 +30,31 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111073");
- script_version ("$Revision: 6211 $");
+ script_version("$Revision: 9978 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Oracle GlassFish Admin Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2015-12-17 15:00:00 +0100 (Thu, 17 Dec 2015)");
+ script_name("Oracle GlassFish Admin Default Credentials");
 
- script_tag(name: "summary" , value: 'The remote Oracle GlassFish is prone to a default
+ script_tag(name:"summary", value:'The remote Oracle GlassFish is prone to a default
  account authentication bypass vulnerability.');
- script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+ script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name : "insight" , value : 'It was possible to login with default credentials "admin:admin"
+ script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+ script_tag(name:"insight", value:'It was possible to login with default credentials "admin:admin"
  or "admin:"');
- script_tag(name: "solution" , value: 'Change the password.');
+ script_tag(name:"solution", value:'Change the password.');
 
  script_category(ACT_ATTACK);
- script_family("Web application abuses");
+ script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
  script_dependencies("GlassFish_detect.nasl");
  script_require_ports("Services/www", 4848);
- script_require_keys("GlassFish/installed");
+ script_mandatory_keys("GlassFish/installed");
 
- script_tag(name : "solution_type", value : "Workaround");
- script_tag(name: "qod_type", value: "remote_app");
+ script_tag(name:"solution_type", value:"Workaround");
+ script_tag(name:"qod_type", value:"remote_app");
  exit(0);
 }
 
@@ -64,8 +64,6 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-
 if( ! get_kb_item( "www/" + port + "/GlassFishAdminConsole" ) ) exit( 0 );
 
 res = http_get_cache( item:"/", port:port );
@@ -138,7 +136,7 @@ foreach credential( credentials ) {
        security_message( port:port, data:report );
        exit( 0 );
     }
-  } 
+  }
 }
 
 exit( 99 );

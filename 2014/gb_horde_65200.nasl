@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_65200.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_horde_65200.nasl 9981 2018-05-28 11:16:52Z ckuersteiner $
 #
 # Horde '_formvars' Form Input Remote Code Execution Vulnerability
 #
@@ -25,40 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103926";
 CPE = "cpe:/a:horde:horde_groupware";
-
-tag_insight = "Horde could allow a remote attacker to execute arbitrary code on the
-system, caused by the improper validation of _formvars form input.";
-
-tag_impact = "Attackers can exploit this issue to execute arbitrary code within the
-context of the affected application. Failed exploit attempts may
-result in denial-of-service conditions.";
-
-tag_affected = "Horde 3.1.x through versions 5.1.1 are vulnerable; other versions may
-also be affected.";
-
-tag_summary = "Horde is prone to a remote code-execution vulnerability.";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Try to execute the phpinfo() command by sending a special crafted HTTP POST request.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103926");
  script_bugtraq_id(65200);
  script_cve_id("CVE-2014-1691");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 9981 $");
+
+ script_tag(name: "solution_type", value: "VendorFix");
 
  script_name("Horde '_formvars' Form Input Remote Code Execution Vulnerability");
-
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65200");
  script_xref(name:"URL", value:"http://www.horde.org");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 13:16:52 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2014-03-21 11:45:12 +0100 (Fri, 21 Mar 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -68,12 +53,21 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("horde/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name: "impact", value: "Attackers can exploit this issue to execute arbitrary code within the context
+of the affected application. Failed exploit attempts may result in denial-of-service conditions.");
+
+ script_tag(name: "vuldetect", value: "Try to execute the phpinfo() command by sending a special crafted HTTP POST
+request.");
+
+ script_tag(name: "insight", value: "Horde could allow a remote attacker to execute arbitrary code on the system,
+caused by the improper validation of _formvars form input.");
+
+ script_tag(name: "solution", value: "Updates are available.");
+
+ script_tag(name: "summary", value: "Horde is prone to a remote code-execution vulnerability.");
+
+ script_tag(name: "affected", value: "Horde 3.1.x through versions 5.1.1 are vulnerable, other versions may
+also be affected.");
 
  exit(0);
 }
@@ -81,10 +75,12 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-if( ! port = get_app_port( cpe:CPE, nvt:SCRIPT_OID ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, nvt:SCRIPT_OID, port:port ) ) exit( 0 );
+if (!port = get_app_port(cpe: CPE))
+  exit( 0 );
+
+if (!dir = get_app_location( cpe:CPE, port:port))
+  exit( 0 );
 
 host = http_host_name(port:port);
 

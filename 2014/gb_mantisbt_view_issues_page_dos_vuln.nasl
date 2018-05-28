@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # MantisBT 'View Issues' Page Denial of Service Vulnerability
 #
@@ -29,46 +29,26 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804650");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2013-1883");
   script_bugtraq_id(58626);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 15:25:38 +0530 (Mon, 23 Jun 2014)");
   script_name("MantisBT 'View Issues' Page Denial of Service Vulnerability");
 
-  tag_summary =
-"This host is installed with MantisBT and is prone to Denial of Service
-vulnerability.";
-
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to an error in the filter_api.php script.";
-
-  tag_impact =
-"Successful exploitation will allow remote attacker to consume all available
+  script_tag(name : "summary" , value : "This host is installed with MantisBT and is prone to Denial of Service
+vulnerability.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "The flaw is due to an error in the filter_api.php script.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to consume all available
 memory resources and cause a denial of service condition.
 
-Impact Level: Application";
-
-  tag_affected =
-"MantisBT version 1.2.12 through 1.2.14";
-
-  tag_solution =
-"Upgrade to MantisBT version 1.2.15 or later.
-For updates refer to http://www.mantisbt.org/download.php";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name : "affected" , value : "MantisBT version 1.2.12 through 1.2.14");
+  script_tag(name : "solution" , value : "Upgrade to MantisBT version 1.2.15 or later.
+For updates refer to http://www.mantisbt.org/download.php");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/83347");
   script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=15573");
@@ -79,28 +59,19 @@ For updates refer to http://www.mantisbt.org/download.php";
   script_dependencies("mantis_detect.nasl");
   script_mandatory_keys("mantisbt/installed");
   script_require_ports("Services/www", 80);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-manPort = "";
-manVer = "";
-
-## get the port
 if(!manPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check the port status
-if(!get_port_state(manPort)){
-  exit(0);
-}
-
-## Get the version
 if(!manVer = get_app_version(cpe:CPE, port:manPort)){
   exit(0);
 }

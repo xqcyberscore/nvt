@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_n_excel_click2run_mult_vuln_apr18.nasl 9477 2018-04-13 11:33:30Z santu $
+# $Id: gb_ms_office_n_excel_click2run_mult_vuln_apr18.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Microsoft Office 2016 And Excel 2016 Click-to-Run (C2R) Multiple Vulnerabilities-Apr18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813135");
-  script_version("$Revision: 9477 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-0950", "CVE-2018-1026", "CVE-2018-1030", "CVE-2018-1029");
   script_bugtraq_id(103620, 103613, 103620, 103617);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 11:54:08 +0530 (Thu, 12 Apr 2018)");
   script_name("Microsoft Office 2016 And Excel 2016 Click-to-Run (C2R) Multiple Vulnerabilities - Apr18");
 

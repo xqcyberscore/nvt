@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4178.nasl 9560 2018-04-23 07:12:31Z cfischer $
+# $Id: deb_4178.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4178-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704178");
-  script_version("$Revision: 9560 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-10119", "CVE-2018-10120");
   script_name("Debian Security Advisory DSA 4178-1 (libreoffice - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 09:12:31 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 00:00:00 +0200 (Fri, 20 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

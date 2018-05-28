@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3625_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3625_1.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Ubuntu Update for perl USN-3625-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843504");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 08:32:55 +0200 (Tue, 17 Apr 2018)");
   script_cve_id("CVE-2015-8853", "CVE-2016-6185", "CVE-2017-6512", "CVE-2018-6797",
                 "CVE-2018-6798", "CVE-2018-6913");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for perl USN-3625-1");
   script_tag(name: "summary", value: "Check the version of perl");

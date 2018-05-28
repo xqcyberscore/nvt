@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 9727 2018-05-04 09:12:47Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 9956 2018-05-25 09:21:51Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 9727 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 9956 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:21:51 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -63,6 +63,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 # nb: We can't save an array within an array so we're using:
 # array index = the file to check
@@ -88,6 +89,13 @@ genericfiles = make_array(
 # https://docs.djangoproject.com/en/2.0/ref/settings/
 "/settings.py", "Django Configuration File containing a SECRET_KEY or a username and/or password.#-#(SECRET_KEY ?=|'USER' ?:|'PASSWORD' ?:)"
 );
+
+# Add domain specific key names from above
+hnlist = create_hostname_parts_list();
+foreach hn( hnlist ) {
+  genericfiles["/" + hn + ".key"] = 'SSL/TLS Private-Key is publicly accessible.#-#BEGIN (RSA|DSA|DSS|EC)? ?PRIVATE KEY';
+  genericfiles["/" + hn + ".pem"] = 'SSL/TLS Private-Key is publicly accessible.#-#BEGIN (RSA|DSA|DSS|EC)? ?PRIVATE KEY';
+}
 
 magentofiles = make_array(
 "/app/etc/local.xml",'Magento 1 Database Configuration File containing a username and/or password.#-#(<config|Mage)#-#<(username|password)>' );

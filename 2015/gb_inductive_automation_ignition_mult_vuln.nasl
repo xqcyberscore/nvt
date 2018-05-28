@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Inductive Automation Ignition Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805472");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2015-0995", "CVE-2015-0994", "CVE-2015-0993", "CVE-2015-0992",
                 "CVE-2015-0991", "CVE-2015-0976");
   script_bugtraq_id(73475, 73474, 73473, 73471, 73469, 73468);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-04-11 14:20:21 +0530 (Sat, 11 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Inductive Automation Ignition Multiple Vulnerabilities");
@@ -46,16 +46,22 @@ if(description)
   installed or not.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
+
   - The MD5 Message-Digest Algorithm does not provide enough collision resistance
     when hashing keys.
+
   - A flaw in Inductive Automation Ignition that is triggered when resetting the
     session ID parameter via a HTTP request.
+
   - A flaw in the web interface that is due to a missing session termination once
     a user logs out.
+
   - A flaw in application that is due to the program storing OPC server credentials
     in plaintext.
+
   - A flaw in application that is triggered when an unhandled exception occurs,
     which can cause an error or warning message.
+
   - The application does not validate input before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -69,7 +75,7 @@ if(description)
   script_tag(name:"affected", value:"Inductive Automation Ignition version 7.7.2");
 
   script_tag(name: "solution" , value:"Upgrade to Inductive Automation Ignition
-  version 7.7.4 or later. 
+  version 7.7.4 or later.
   For updates refer to https://www.inductiveautomation.com/downloads/ignition");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -78,39 +84,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8088);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-# Variable Initialization
-http_port = "";
-ignitionVer = "";
-version = "";
-req = "";
-buf = "";
-url = "";
-
-# Get HTTP Port
 http_port = get_http_port(default:8088);
-if (!http_port) {
-  http_port = 8088;
-}
-
-# Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
 
 req = http_get(item:"/main/web/status/", port:http_port);
 buf = http_keepalive_send_recv(port:http_port, data:req, bodyonly:FALSE);
 
-## confirm the application
 if("Server: Jetty" &&  buf =~ "HTTP/1.. 302 Found")
 {
   cookie = eregmatch( pattern:"JSESSIONID=([0-9a-zA-Z]+);", string:buf );
@@ -129,11 +118,10 @@ if("Server: Jetty" &&  buf =~ "HTTP/1.. 302 Found")
 
     if (ignitionVer[1])
     {
-      ### checking for vulnerable version
       if(version_is_equal(version:ignitionVer[1], test_version:"7.7.2"))
       {
         report = 'Installed version: ' + ignitionVer[1] + '\n' +
-               'Fixed version:     ' + "7.7.4" + '\n';
+                 'Fixed version:     ' + "7.7.4" + '\n';
         security_message(data:report, port:http_port);
         exit(0);
       }

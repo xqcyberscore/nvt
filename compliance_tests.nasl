@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: compliance_tests.nasl 9961 2018-05-25 13:02:30Z emoss $
 #
 # Compliance Tests
 #
@@ -29,15 +29,15 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95888");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Compliance Tests");
   script_category(ACT_SETTINGS);
   script_tag(name:"qod_type", value:"general_note");
-  script_copyright("Copyright (c) 2009-2018 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2009-2015 Greenbone Networks GmbH");
   script_family("Compliance");
 
   script_add_preference(name:"Launch IT-Grundschutz (10. EL)", type:"checkbox", value:"no");
@@ -52,6 +52,7 @@ if(description)
   script_add_preference(name:"Launch latest PCI-DSS version", type:"checkbox", value:"no");
   script_add_preference(name:"Verbose PCI-DSS results", type:"checkbox", value:"no");
   script_add_preference(name:"Launch Cyber Essentials", type:"checkbox", value:"no");
+  script_add_preference(name:"Launch EU GDPR", type:"checkbox", value:"no");
   script_add_preference(name:"Verbose Policy Controls", type:"checkbox", value:"no");
   script_add_preference(name:"PCI-DSS Berichtsprache/Report Language", type:"radio", value:"Deutsch;English");
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
@@ -136,6 +137,13 @@ if (verbose_pci_dss == "no") {
 launch_ce = script_get_preference("Launch Cyber Essentials");
 if(launch_ce == "yes"){
   set_kb_item(name: "Compliance/Launch/CE", value:TRUE);
+  set_kb_item(name: "Compliance/Launch", value:TRUE);
+}
+
+# Set KB item if EU GDPR is enabled
+launch_gdpr = script_get_preference("Launch EU GDPR");
+if(launch_gdpr == "yes"){
+  set_kb_item(name: "Compliance/Launch/GDPR", value:TRUE);
   set_kb_item(name: "Compliance/Launch", value:TRUE);
 }
 

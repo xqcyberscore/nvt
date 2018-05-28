@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_cache_timing_info_disc_vuln_win.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_openssl_cache_timing_info_disc_vuln_win.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # OpenSSL Cache Timing Side Channel Attack Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813153");
-  script_version("$Revision: 9628 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-0737");
   script_bugtraq_id(103766);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 18:19:03 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Cache Timing Side Channel Attack Information Disclosure Vulnerability (Windows)");

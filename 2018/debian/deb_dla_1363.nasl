@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1363.nasl 9642 2018-04-27 07:17:02Z cfischer $
+# $Id: deb_dla_1363.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1363-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891363");
-  script_version("$Revision: 9642 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-10194");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1363-1] ghostscript security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:17:02 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 00:00:00 +0200 (Fri, 27 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

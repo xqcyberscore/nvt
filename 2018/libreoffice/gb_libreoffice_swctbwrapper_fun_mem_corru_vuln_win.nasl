@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 9546 2018-04-20 10:31:06Z santu $
+# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813090");
-  script_version("$Revision: 9546 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-10120");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 12:31:06 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)");
 

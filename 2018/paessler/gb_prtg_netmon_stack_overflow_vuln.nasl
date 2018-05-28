@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_stack_overflow_vuln.nasl 9574 2018-04-24 06:57:13Z ckuersteiner $
+# $Id: gb_prtg_netmon_stack_overflow_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # PRTG Network Monitor < 18.1.39.1648 Stack Overflow Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141021");
-  script_version("$Revision: 9574 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-24 08:57:13 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-24 13:23:58 +0700 (Tue, 24 Apr 2018)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-10253");
 

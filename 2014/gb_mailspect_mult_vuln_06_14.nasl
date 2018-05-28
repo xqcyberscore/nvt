@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailspect_mult_vuln_06_14.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_mailspect_mult_vuln_06_14.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # Mailspect Control Panel Multiple Vulnerabilities
 #
@@ -25,33 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Mailspect Control Panel is prone to
-1. a remote code execution (Authenticated)
-2. two arbitrary file read (Authenticated)
-3. a cross site scripting vulnerability (Unauthenticated)";
-
-tag_impact = "An attacker can exploit these issues to obtain sensitive information
-or to execute arbitrary script code or to execute arbitrary code in the context of
-the application.";
-
-tag_affected = "Mailspect Control Panel version 4.0.5";
-tag_summary = "Mailspect Control Panel is prone to multiple vulnerabilities.";
-tag_solution = "Ask the vendor for an update";
-tag_vuldetect = "Send a crafted HTTP GET request and check the response";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105050");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6663 $");
-
+ script_version ("$Revision: 9982 $");
  script_name("Mailspect Control Panel Multiple Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/137");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2014-06-26 11:36:16 +0200 (Thu, 26 Jun 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -61,31 +44,37 @@ if (description)
  script_require_ports("Services/www", 20001);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name : "impact" , value : "An attacker can exploit these issues to obtain sensitive information
+or to execute arbitrary script code or to execute arbitrary code in the context of
+the application.");
+ script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check the response");
+ script_tag(name : "insight" , value : "Mailspect Control Panel is prone to
+
+1. a remote code execution (Authenticated)
+
+2. two arbitrary file read (Authenticated)
+
+3. a cross site scripting vulnerability (Unauthenticated)");
+ script_tag(name : "solution" , value : "Ask the vendor for an update");
+ script_tag(name : "summary" , value : "Mailspect Control Panel is prone to multiple vulnerabilities.");
+ script_tag(name : "affected" , value : "Mailspect Control Panel version 4.0.5");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+ 
 port = get_http_port( default:20001 );
-if( ! get_port_state( port ) ) exit( 0 );
 
 url = '/login.cgi?login=OpenVAS"><script>alert(/openvas-xss-test/)</script>';
 
-if( http_vuln_check( port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"<title>Login to Mailspect Control Panel" ) ) 
+if( http_vuln_check( port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"<title>Login to Mailspect Control Panel" ) )
 {
   security_message(port:port);
   exit(0);
-
 }
 
-
 exit(0);
-

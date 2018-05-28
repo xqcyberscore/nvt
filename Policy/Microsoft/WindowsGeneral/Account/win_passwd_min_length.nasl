@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_passwd_min_length.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: win_passwd_min_length.nasl 9961 2018-05-25 13:02:30Z emoss $
 #
 # Check value for Minimum password length (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109106");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,8 +40,11 @@ if(description)
   script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This policy setting determines the least
-number of characters that can make up a password for a user account.");
+  script_tag(name: "summary", value: "This test checks the setting for policy 
+'Minimum password length' on Windows hosts (at least Windows 7).
+
+The policy setting determines the least number of characters that can make up a 
+password for a user account.");
   exit(0);
 }
 

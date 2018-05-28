@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9864 2018-05-16 12:37:02Z santu $
+# $Id: gather-package-list.nasl 9973 2018-05-27 10:58:30Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9864 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:37:02 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 9973 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-27 12:58:30 +0200 (Sun, 27 May 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3321,11 +3321,11 @@ if( "Darwin" >< uname ) {
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -productVersion" ) );
   set_kb_item( name:"ssh/login/osx_version", value:buf );
   if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) ) {
-    register_and_report_os( os:"Mac OS X", version:match[1], cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Mac OS X / macOS", version:match[1], cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:"Mac OS X", cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Mac OS X / macOS", cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
     # nb: We want to report the unknown / not detected version
-    register_unknown_os_banner( banner:'Unknown Mac OS X release.\n\nsw_vers output:\n' + sw_vers_buf, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+    register_unknown_os_banner( banner:'Unknown Mac OS X  / macOS release.\n\nsw_vers output:\n' + sw_vers_buf, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
   }
 
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -buildVersion" ) );

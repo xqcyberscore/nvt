@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_router_multiple_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_asus_router_multiple_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # ASUS Router Multiple Vulnerabilities Aug-2015
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805945");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 9978 $");
   script_bugtraq_id(73294);
   script_cve_id("CVE-2015-2676");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-08-05 13:27:24 +0530 (Wed, 05 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS Router Multiple Vulnerabilities Aug-2015");
@@ -58,8 +58,8 @@ if(description)
   script_tag(name:"affected", value:"ASUS RT-G32 with firmware 2.0.2.6 and
   2.0.3.2, other firmware may also be affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name: "solution" , value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -77,35 +77,17 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-asport = "";
-banner = "";
-
-## Get HTTP Port
 asport = get_http_port(default:80);
-if(!asport){
-  asport = 80;
-}
-
-## Check Port State
-if(!get_port_state(asport)){
-  exit(0);
-}
-
-##Get banner
 banner = get_http_banner(port: asport);
 
-## Confirm the device from banner
 if(banner =~ 'WWW-Authenticate: Basic realm="RT-G32"')
 {
   ## Exploit URL
   url = "/start_apply.htm?next_page=%27%2balert(document.cookie)%2b%27";
 
-  ## Confirm the exploit
   if(http_vuln_check(port:asport, url:url, pattern:"alert\(document.cookie\)",
      extra_check:make_list("restart_time")))
   {

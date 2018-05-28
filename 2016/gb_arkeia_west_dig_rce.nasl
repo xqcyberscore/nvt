@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_arkeia_west_dig_rce.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2015-7709");
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
 
   script_name("Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running Arkeia Appliance and is affected by a remote code execution vulnerability.");
   script_tag(name:"vuldetect", value:"Execute a command using the ARKFS_EXEC_CMD function");
-  script_tag(name:"solution", value:"For updates refer to http://www.arkeia.com/ ");
+  script_tag(name:"solution", value:"For updates refer to http://www.arkeia.com/");
   script_tag(name:"insight", value:"The insufficient checks on the authentication of all clients in arkeiad daemon can be bypassed.");
   script_tag(name:"affected", value:"Western Digital Arkeia 11.0.12 and below.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary commands with root or SYSTEM privileges.");
@@ -79,7 +79,6 @@ function arkeiad_recv( soc )
 }
 
 if( ! port = get_app_port( cpe:CPE, service: 'arkeiad' ) ) exit( 0 );
-if( ! get_port_state ( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if ( ! soc ) exit ( 0 );

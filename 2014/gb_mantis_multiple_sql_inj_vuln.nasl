@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # MantisBT Multiple SQL Injection Vulnerabilities
 #
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105902");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 9982 $");
 
   script_name("MantisBT Multiple SQL Injection Vulnerabilities");
 
@@ -42,13 +42,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16879");
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16880");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 11:38:14 +0700 (Tue, 25 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("mantisbt/installed");
 
   script_tag(name : "summary" , value : "There are multiple SQL Injection vulnerabilities in MantisBT which allow
   a remote attacker to access or modify data.");
@@ -73,10 +74,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if (!port = get_app_port(cpe:CPE)) {
-  exit(0);
-}
-
-if (!get_port_state(port)) {
   exit(0);
 }
 

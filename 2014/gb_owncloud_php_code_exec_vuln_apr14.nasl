@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # ownCloud PHP Remote Code Execution Vulnerabilities Apr14
 #
@@ -25,55 +25,36 @@
 ###############################################################################
 
 CPE = "cpe:/a:owncloud:owncloud";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804364";
 
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6735 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804364");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2013-7344", "CVE-2013-0303");
   script_bugtraq_id(58109);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 10:17:33 +0530 (Mon, 07 Apr 2014)");
   script_name("ownCloud PHP Remote Code Execution Vulnerabilities Apr14");
 
-  tag_summary =
-"This host is installed with ownCloud and is prone to remote code execution
-vulnerabilities.";
+  script_tag(name : "summary" , value : "This host is installed with ownCloud and is prone to remote code execution
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Multiple flaws exist due to,
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws exist due to,
 - Unspecified input passed to core/ajax/translations.php is not properly
   sanitized before being used.
-- Unspecified input passed to core/settings.php is not properly sanitized
-  before being used.";
 
-  tag_impact =
-"Successful exploitation will allow remote attacker to mount the local
+- Unspecified input passed to core/settings.php is not properly sanitized
+  before being used.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to mount the local
 filesystem and gain access to the information contained within it.
 
-Impact Level: Application";
-
- tag_affected =
-"ownCloud Server version 4.5.x before 4.5.6 and 4.0.x before 4.0.12";
-
-  tag_solution =
-"Upgrade to ownCloud version 4.5.6 or 4.0.12 or later,
-For updates refer to http://owncloud.org";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name : "affected" , value : "ownCloud Server version 4.5.x before 4.5.6 and 4.0.x before 4.0.12");
+  script_tag(name : "solution" , value : "Upgrade to ownCloud version 4.5.6 or 4.0.12 or later,
+For updates refer to http://owncloud.org");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52303");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q1/378");
@@ -85,29 +66,20 @@ For updates refer to http://owncloud.org";
   script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
   script_require_ports("Services/www", 80);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
-if(!ownPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check the port status
-if(!get_port_state(ownPort)){
-  exit(0);
-}
-
-## Get the location
-if(!ownVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:ownPort)){
+if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
   exit(0);
 }
 

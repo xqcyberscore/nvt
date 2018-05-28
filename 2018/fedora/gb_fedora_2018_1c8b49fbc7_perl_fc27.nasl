@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1c8b49fbc7_perl_fc27.nasl 9581 2018-04-24 09:03:17Z santu $
+# $Id: gb_fedora_2018_1c8b49fbc7_perl_fc27.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Fedora Update for perl FEDORA-2018-1c8b49fbc7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874379");
-  script_version("$Revision: 9581 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:03:17 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-21 09:10:45 +0200 (Sat, 21 Apr 2018)");
   script_cve_id("CVE-2018-6913", "CVE-2018-6798", "CVE-2018-6797");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for perl FEDORA-2018-1c8b49fbc7");
   script_tag(name: "summary", value: "Check the version of perl");

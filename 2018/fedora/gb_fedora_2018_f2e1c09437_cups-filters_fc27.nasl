@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f2e1c09437_cups-filters_fc27.nasl 9691 2018-05-02 11:26:19Z santu $
+# $Id: gb_fedora_2018_f2e1c09437_cups-filters_fc27.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Fedora Update for cups-filters FEDORA-2018-f2e1c09437
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874406");
-  script_version("$Revision: 9691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 13:26:19 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 9974 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:53 +0530 (Wed, 02 May 2018)");
   script_cve_id("CVE-2018-9918", "CVE-2017-11627", "CVE-2017-12595");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cups-filters FEDORA-2018-f2e1c09437");
   script_tag(name: "summary", value: "Check the version of cups-filters");

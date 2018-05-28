@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 9587 2018-04-24 12:50:26Z cfischer $
+# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability
 #
@@ -24,51 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804240";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 9587 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804240");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2013-5400");
   script_bugtraq_id(65616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:25:08 +0530 (Wed, 19 Feb 2014)");
   script_name("IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability");
 
-  tag_summary =
-"This host is running IBM Platform Symphony Developer Edition and is prone to
-authentication bypass vulnerability.";
-
-  tag_vuldetect =
-"Send a crafted exploit string via HTTP GET request and check whether it is
-able to read the string or not.";
-
-  tag_insight =
-"The flaw is in a servlet in the application, which authenticates a user with
-built-in credentials.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to gain access to the
+  script_tag(name : "summary" , value : "This host is running IBM Platform Symphony Developer Edition and is prone to
+authentication bypass vulnerability.");
+  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it is
+able to read the string or not.");
+  script_tag(name : "insight" , value : "The flaw is in a servlet in the application, which authenticates a user with
+built-in credentials.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain access to the
 local environment.
 
-Impact Level: Application.";
-
-  tag_affected =
-"IBM Platform Symphony Developer Edition 5.2 and 6.1.x through 6.1.1";
-
-  tag_solution =
-"Apply the workaround from below link,
-http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application.");
+  script_tag(name : "affected" , value : "IBM Platform Symphony Developer Edition 5.2 and 6.1.x through 6.1.1");
+  script_tag(name : "solution" , value : "Apply the workaround from below link,
+http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/87296");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
@@ -78,6 +58,10 @@ http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564";
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 18080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -85,28 +69,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-ibmPort = "";
-ibmReq = "";
-ibmRes = "";
-
-## Get HTTP Port
 ibmPort = get_http_port(default:18080);
-if(!ibmPort){
-  ibmPort = 18080;
-}
 
-## Check Port State
-if(!get_port_state(ibmPort)){
-  exit(0);
-}
-
-## Send and Receive the response
 ibmReq = http_get(item:"/platform/index_de.jsp", port:ibmPort);
 ibmRes = http_keepalive_send_recv(port:ibmPort, data:ibmReq, bodyonly:TRUE);
 
-## Confirm the application before trying exploit
 if(">Welcome to IBM Platform Management Console<" >< ibmRes &&
    "Symphony Developer Edition" >< ibmRes)
 {
@@ -119,10 +86,10 @@ if(">Welcome to IBM Platform Management Console<" >< ibmRes &&
            'DE_GUIplatform.logindate=1392792773887;\r\n' +
            'DE_GUIplatform.renewtoken=1392794573887';
 
-  host = get_host_name();
+  host = http_host_name(port:ibmPort);
 
   ibmReq = string("GET ",url," HTTP/1.0\r\n",
-               "Host: " + host + ":18080\r\n",
+               "Host: ",host, "\r\n",
                "Cookie: ",cookie,"\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n\r\n");
   ibmRes = http_send_recv(port:ibmPort, data:ibmReq,bodyonly:TRUE);

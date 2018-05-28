@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TLD_wildcard.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Exclude toplevel domain wildcard host
+# $Id: TLD_wildcard.nasl 9971 2018-05-26 12:04:55Z cfischer $
+#
+# Exclude toplevel domain wildcard host
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,18 +22,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The host you were trying to scan is blacklisted: its address is known to
-be returned by a wildcard on some top level domains, or it's the openvas.org
-web server.
-
-You probably mistyped its name.";
-
-# Known top level domain wildcards, from 
+# Known top level domain wildcards, from
 # http://www.imperialviolet.org/dnsfix.html
 #
-# .COM and .NET	64.94.110.11 (and possibly others in AS30060)	
+# .COM and .NET	64.94.110.11 (and possibly others in AS30060)
 # .NU	64.55.105.9 212.181.91.6
 # .TK	195.20.32.83 195.20.32.86
 # .CC	206.253.214.102
@@ -44,13 +40,13 @@ You probably mistyped its name.";
 # .SH	194.205.62.62
 # .TM	194.205.62.42 (194.205.62.62 also reported, but cannot confirm)
 # .WS	216.35.187.246
-# 
+#
 ####
 #
 # I also found that:
 # .PW redirects to wfb.dnsvr.com = 216.98.141.250 or 65.125.231.178
 # .TD   146.101.245.154
-# 
+#
 # .IO	194.205.62.102
 # .TK	217.115.203.20	62.129.131.34
 # .TD	www.nic.td.	62.23.61.4
@@ -60,30 +56,27 @@ You probably mistyped its name.";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11840");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "Exclude toplevel domain wildcard host";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.11840");
+  script_version("$Revision: 9971 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:04:55 +0200 (Sat, 26 May 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Exclude toplevel domain wildcard host");
+  script_category(ACT_SCANNER);
+  script_copyright("This script is Copyright (C) 2003 by Michel Arboi");
+  script_family("Port scanners");
 
+  script_tag(name:"summary", value:"The host you were trying to scan is blacklisted: its address is known to
+  be returned by a wildcard on some top level domains, or it's the openvas.org web server.
 
+  You probably mistyped its name.");
 
-
- script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_vul");
 
-
- script_copyright("This script is Copyright (C) 2003 by Michel Arboi");
- family = "Port scanners";
- script_family(family);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-#
 excluded["64.94.110.11"] = 1;
 excluded["64.55.105.9"] = 1;
 excluded["212.181.91.6"] = 1;
@@ -142,16 +135,14 @@ excluded["63.105.37.108"] = 1;
 excluded["63.105.37.109"] = 1;
 excluded["63.105.37.110"] = 1;
 
-
-
 target = get_host_ip();
 
 if (excluded[target])
 {
- ##display(target, " is in IP blacklist\n");
- set_kb_item( name:"Host/dead", value:TRUE );
- log_message(port: 0);
- exit(0);
+  ##display(target, " is in IP blacklist\n");
+  log_message(port:0);
+  set_kb_item(name:"Host/dead", value:TRUE);
+  exit(0);
 }
 
 exit(0);
@@ -164,8 +155,8 @@ r = recv(socket: soc, length: 256);
 if (r =~ '^220 +.*Snubby Mail Rejector')
 {
   ##display(target, " looks like Verisign snubby mail server\n");
-  set_kb_item( name:"Host/dead", value:TRUE );
-  log_message(port: 0);
+  log_message(port:0);
+  set_kb_item(name:"Host/dead", value:TRUE);
 }
 
 close(soc);

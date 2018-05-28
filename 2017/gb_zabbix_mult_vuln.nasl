@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mult_vuln.nasl 6718 2017-07-13 13:31:39Z cfischer $
+# $Id: gb_zabbix_mult_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Zabbix Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106796");
-  script_version("$Revision: 6718 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-13 15:31:39 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name: "creation_date", value: "2017-04-28 08:43:22 +0200 (Fri, 28 Apr 2017)");
-  script_tag(name: "cvss_base", value: "7.6");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2824", "CVE-2017-2825");
 

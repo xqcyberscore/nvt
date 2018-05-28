@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 9931 2018-05-23 08:44:55Z cfischer $
+# $Id: sw_http_os_detection.nasl 9977 2018-05-28 08:02:51Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 9931 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:44:55 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:02:51 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,6 +64,11 @@ function check_http_banner( port ) {
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;
+
+    # Server: CTCFC/1.0
+    # Commtouch Anti-Spam Daemon (ctasd.bin) running on Windows and Linux (e.g. IceWarp Suite)
+    # nb: Keep in single quotes
+    if( egrep( pattern:'^Server: CTCFC/([0-9.]+)[\r\n]*$', string:banner ) ) return;
 
     # e.g. Server: SimpleHTTP/0.6 Python/2.7.5 -> Python is cross-platform
     # nb: Keep in single quotes

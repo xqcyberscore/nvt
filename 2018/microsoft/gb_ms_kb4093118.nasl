@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093118.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4093118.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4093118)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812863");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0960", 
   		"CVE-2018-0967", "CVE-2018-0969", "CVE-2018-0970", "CVE-2018-0971", 
 		"CVE-2018-0972", "CVE-2018-0973", "CVE-2018-0974", "CVE-2018-0975", 
@@ -36,9 +36,9 @@ if(description)
 		"CVE-2018-1008", "CVE-2018-1010", "CVE-2018-1012", "CVE-2018-1013", 
 		"CVE-2018-1015", "CVE-2018-1016", "CVE-2018-1018", "CVE-2018-1020", 
 		"CVE-2018-0996", "CVE-2018-0997", "CVE-2018-1000", "CVE-2018-1001");  
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:19:32 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4093118)");
 

@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_directory_traversal_vuln_may18.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_apache_ambari_directory_traversal_vuln_may18.nasl 9970 2018-05-26 11:40:06Z cfischer $
 #
 # Apache Ambari Directory Traversal Vulnerability May18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812875");
-  script_version("$Revision: 9802 $");
+  script_version("$Revision: 9970 $");
   script_cve_id("CVE-2018-8003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-26 13:40:06 +0200 (Sat, 26 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 12:47:50 +0530 (Tue, 08 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Ambari Directory Traversal Vulnerability May18");
@@ -55,7 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Ambari versions from 1.4.0 through 2.6.1.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Ambari version 2.6.2 or 
+  script_tag(name:"solution", value:"Upgrade to Apache Ambari version 2.6.2 or
   later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,7 +64,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_apache_ambari_detect.nasl");
   script_mandatory_keys("Apache/Ambari/Installed");
   exit(0);
@@ -73,10 +73,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!aport = get_app_port(cpe: CPE)){                                                                                                             exit(0);
+if(!aport = get_app_port(cpe: CPE)){
+  exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:aport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:aport, exit_no_version:TRUE)) exit(0);
 aver = infos['version'];
 apath = infos['location'];
 

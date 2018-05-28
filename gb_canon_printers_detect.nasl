@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 9937 2018-05-23 14:17:21Z cfischer $
+# $Id: gb_canon_printers_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
 #
 # Canon Printer Detection
 #
@@ -28,23 +28,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 9937 $");
+  script_version("$Revision: 9972 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:17:21 +0200 (Wed, 23 May 2018) $");
-  script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_name("Canon Printer Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  # nb: Don't use http_version.nasl as the Detection should run as early
+  # as possible if the printer should be marked dead as requested.
+  script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value :"Detection of Canon Printers.
+  script_tag(name:"summary", value:"Detection of Canon Printers.
 
-  The script sends a connection request to the remote host and attempts
-  to detect if the remote host is a Canon printer.");
+  The script sends a connection request to the remote host and
+  attempts to detect if the remote host is a Canon printer.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -73,7 +75,7 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     model = printer_model[1];
     set_kb_item( name:"canon_printer_model", value:model );
     cpe_printer_model = tolower( model );
-    cpe = 'cpe:/h:canon:' + cpe_printer_model;
+    cpe = "cpe:/h:canon:" + cpe_printer_model;
     cpe = str_replace( string:cpe, find:" ", replace:"_" );
   }
 
@@ -87,14 +89,14 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
       model = chomp( printer_model[1] );
       set_kb_item( name:"canon_printer_model", value:model );
       cpe_printer_model = tolower( model );
-      cpe = 'cpe:/h:canon:' + cpe_printer_model;
+      cpe = "cpe:/h:canon:" + cpe_printer_model;
       cpe = str_replace( string:cpe, find:" ", replace:"_" );
     }
   }
 
   if( ! model ) {
     model = "Unknown Canon model";
-    cpe = 'cpe:/h:canon:unknown_model';
+    cpe = "cpe:/h:canon:unknown_model";
   }
 
   firm_ver = eregmatch( pattern:"nowrap>([0-9.]+)</td>", string:buf );
@@ -103,7 +105,7 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     cpe = cpe + ":" + firm_ver[1];
   }
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  register_product( cpe:cpe, location:port + "/tcp", port:port );
   report = 'The remote Host is a ' + model + ' printer device.\nCPE: ' + cpe;
   if( printer_model[1] )
     report += '\nConcluded: ' + printer_model[0];

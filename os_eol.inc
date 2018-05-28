@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 9778 2018-05-09 11:59:13Z cfischer $
+# $Id: os_eol.inc 9973 2018-05-27 10:58:30Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9778 $
+# $Revision: 9973 $
 #
 ###############################################################################
 
@@ -60,6 +60,118 @@ eol_cpes['cpe:/o:novell:opensuse:11.1'] = '2010-12-31';
 eol_cpes['cpe:/o:novell:opensuse:11.0'] = '2010-06-30';
 eol_cpes['cpe:/o:novell:opensuse:10.3'] = '2009-10-31';
 eol_cpes['cpe:/o:novell:opensuse:10.2'] = '2008-11-30';
+
+# Mac OS X
+os_x_note  = "Apple doesn't provide any official EOL announcement. However it is known that Apple is only supporting the most recent Mac OS X / macOS ";
+os_x_note += "release (currently 10.13) and the two previous ones (currently 10.12 and 10.11) with security updates. Based on this information the ";
+os_x_note += "date of the last update for a release (e.g. July 19, 2017 for 10.10.5) + one day is assumed as the EOL date.";
+eol_urls['cpe:/o:apple:mac_os_x'] = os_x_note;
+eol_names['cpe:/o:apple:mac_os_x'] = 'Mac OS X / macOS';
+# https://en.wikipedia.org/wiki/Mac_OS_X_10.0
+eol_cpes['cpe:/o:apple:mac_os_x:10.0'] = '2001-03-25';
+eol_cpes['cpe:/o:apple:mac_os_x:10.0.1'] = '2001-04-15';
+eol_cpes['cpe:/o:apple:mac_os_x:10.0.2'] = '2001-05-02';
+eol_cpes['cpe:/o:apple:mac_os_x:10.0.3'] = '2001-05-10';
+eol_cpes['cpe:/o:apple:mac_os_x:10.0.4'] = '2001-06-22';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_10.1
+eol_cpes['cpe:/o:apple:mac_os_x:10.1'] = '2001-09-26';
+eol_cpes['cpe:/o:apple:mac_os_x:10.1.1'] = '2001-11-13';
+eol_cpes['cpe:/o:apple:mac_os_x:10.1.2'] = '2001-12-22';
+eol_cpes['cpe:/o:apple:mac_os_x:10.1.3'] = '2002-02-20';
+eol_cpes['cpe:/o:apple:mac_os_x:10.1.4'] = '2002-04-18';
+eol_cpes['cpe:/o:apple:mac_os_x:10.1.5'] = '2002-06-06';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_10.2
+eol_cpes['cpe:/o:apple:mac_os_x:10.2'] = '2002-08-25';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.1'] = '2002-09-19';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.2'] = '2002-11-12';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.3'] = '2002-12-20';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.4'] = '2003-02-14';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.5'] = '2003-04-11';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.6'] = '2003-05-07';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.7'] = '2003-09-23';
+eol_cpes['cpe:/o:apple:mac_os_x:10.2.8'] = '2003-10-04';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_Panther
+eol_cpes['cpe:/o:apple:mac_os_x:10.3'] = '2003-10-25';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.1'] = '2003-11-11';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.2'] = '2003-12-18';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.3'] = '2004-03-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.4'] = '2004-05-27';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.5'] = '2004-08-10';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.6'] = '2004-11-06';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.7'] = '2004-12-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.8'] = '2005-02-10';
+eol_cpes['cpe:/o:apple:mac_os_x:10.3.9'] = '2005-04-16';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_Tiger
+eol_cpes['cpe:/o:apple:mac_os_x:10.4'] = '2005-04-30';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.1'] = '2005-05-20';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.2'] = '2005-10-20';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.3'] = '2005-11-01';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.4'] = '2006-01-11';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.5'] = '2006-02-15';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.6'] = '2006-04-04';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.7'] = '2006-08-08';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.8'] = '2006-09-30';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.9'] = '2007-03-14';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.10'] = '2007-06-21';
+eol_cpes['cpe:/o:apple:mac_os_x:10.4.11'] = '2007-11-15';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_Leopard
+eol_cpes['cpe:/o:apple:mac_os_x:10.5'] = '2007-10-27';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.1'] = '2007-11-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.2'] = '2008-02-12';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.3'] = '2008-05-29';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.4'] = '2008-07-01';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.5'] = '2008-09-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.6'] = '2009-01-07';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.7'] = '2009-05-13';
+eol_cpes['cpe:/o:apple:mac_os_x:10.5.8'] = '2009-08-06';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_Snow_Leopard
+eol_cpes['cpe:/o:apple:mac_os_x:10.6'] = '2009-08-29';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.1'] = '2009-09-11';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.2'] = '2009-11-10';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.3'] = '2010-04-14';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.4'] = '2010-06-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.5'] = '2010-11-11';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.6'] = '2011-01-07';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.7'] = '2011-05-05';
+eol_cpes['cpe:/o:apple:mac_os_x:10.6.8'] = '2011-07-26';
+
+# https://en.wikipedia.org/wiki/Mac_OS_X_Lion
+eol_cpes['cpe:/o:apple:mac_os_x:10.7'] = '2011-07-21';
+eol_cpes['cpe:/o:apple:mac_os_x:10.7.1'] = '2011-08-17';
+eol_cpes['cpe:/o:apple:mac_os_x:10.7.2'] = '2011-10-13';
+eol_cpes['cpe:/o:apple:mac_os_x:10.7.3'] = '2012-02-02';
+eol_cpes['cpe:/o:apple:mac_os_x:10.7.4'] = '2012-05-10';
+eol_cpes['cpe:/o:apple:mac_os_x:10.7.5'] = '2012-10-05';
+
+# https://en.wikipedia.org/wiki/OS_X_Mountain_Lion
+eol_cpes['cpe:/o:apple:mac_os_x:10.8'] = '2012-07-26';
+eol_cpes['cpe:/o:apple:mac_os_x:10.8.1'] = '2012-08-24';
+eol_cpes['cpe:/o:apple:mac_os_x:10.8.2'] = '2012-11-30';
+eol_cpes['cpe:/o:apple:mac_os_x:10.8.3'] = '2013-03-15';
+eol_cpes['cpe:/o:apple:mac_os_x:10.8.4'] = '2013-09-26';
+eol_cpes['cpe:/o:apple:mac_os_x:10.8.5'] = '2015-08-14';
+
+# https://en.wikipedia.org/wiki/OS_X_Mavericks
+eol_cpes['cpe:/o:apple:mac_os_x:10.9'] = '2013-10-23';
+eol_cpes['cpe:/o:apple:mac_os_x:10.9.1'] = '2013-12-17';
+eol_cpes['cpe:/o:apple:mac_os_x:10.9.2'] = '2014-04-23';
+eol_cpes['cpe:/o:apple:mac_os_x:10.9.3'] = '2014-05-16';
+eol_cpes['cpe:/o:apple:mac_os_x:10.9.4'] = '2014-07-01';
+eol_cpes['cpe:/o:apple:mac_os_x:10.9.5'] = '2016-07-19';
+
+# https://en.wikipedia.org/wiki/OS_X_Yosemite
+eol_cpes['cpe:/o:apple:mac_os_x:10.10'] = '2014-10-17';
+eol_cpes['cpe:/o:apple:mac_os_x:10.10.1'] = '2014-11-18';
+eol_cpes['cpe:/o:apple:mac_os_x:10.10.2'] = '2015-03-21';
+eol_cpes['cpe:/o:apple:mac_os_x:10.10.3'] = '2015-04-17';
+eol_cpes['cpe:/o:apple:mac_os_x:10.10.4'] = '2016-03-22';
+eol_cpes['cpe:/o:apple:mac_os_x:10.10.5'] = '2017-07-20';
 
 # SUSE Linux (http://en.opensuse.org/Lifetime)
 eol_urls['cpe:/o:novell:suse_linux'] = 'http://en.opensuse.org/Lifetime';

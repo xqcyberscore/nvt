@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: socks.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: socks.nasl 9958 2018-05-25 09:48:33Z cfischer $
 #
 # SOCKS server detection
 #
@@ -24,9 +24,9 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Socks4 protocol is described on 
+# Socks4 protocol is described on
 # http://www.socks.nec.com/protocol/socks4.protocol
-# Socks4a extension is described on 
+# Socks4a extension is described on
 # http://www.socks.nec.com/protocol/socks4a.protocol
 # Socks5 is defined by those RFC:
 # RFC1928 SOCKS Protocol Version 5
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11865");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 9958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:48:33 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -95,7 +95,7 @@ function test_socks( port ) {
   soc = open_sock_tcp( port );
   if( ! soc ) return;
 
-  # SOCKS4 request: 
+  # SOCKS4 request:
   # 1	Version number (4)
   # 1	Command (1: connect / 2: bind)
   # 2	Port
@@ -160,10 +160,10 @@ function test_socks( port ) {
       req5 = raw_string( 5, 2, 0, 1, 10, 10, 10, 10, 255, 255 ); # BIND
       send( socket:soc, data:req5 );
       data = recv( socket:soc, length:10 );
-      if( ord( data[1] ) != 0 || ord( data[3] ) != 1 ) {
+      if( strlen( data ) < 4 || ord( data[1] ) != 0 || ord( data[3] ) != 1 ) {
         ext = NULL;
       } else {
-        ext = strcat(ord(data[4]), '.', ord(data[5]), '.', ord(data[6]), '.', ord(data[7]));
+        ext = strcat( ord( data[4]), '.', ord( data[5] ), '.', ord( data[6] ), '.', ord( data[7] ) );
       }
       set_kb_item( name:"socks5/detected", value:TRUE );
       mark_socks_proxy( port:port, ver:5, ext_ip:ext, authm:authm );
@@ -173,16 +173,22 @@ function test_socks( port ) {
 }
 
 s = get_kb_list( "Services/socks4" );
-if( ! isnull( s ) ) s = make_list( s );
-else s = make_list();
+if( ! isnull( s ) )
+  s = make_list( s );
+else
+  s = make_list();
 
 s2 = get_kb_list( "Services/socks5" );
-if( ! isnull( s2 ) ) s2 = make_list( s2 );
-else s2 = make_list();
+if( ! isnull( s2 ) )
+  s2 = make_list( s2 );
+else
+  s2 = make_list();
 
 s3 = get_unknown_port_list( default:1080 );
-if( ! isnull( s3 ) ) s3 = make_list( s3 );
-else s3 = make_list();
+if( ! isnull( s3 ) )
+  s3 = make_list( s3 );
+else
+  s3 = make_list();
 
 ports = make_list_unique( 1080, s, s2,  s3 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_cve_2015_3337.nasl 8613 2018-02-01 07:35:27Z cfischer $
+# $Id: gb_elastisearch_cve_2015_3337.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Elasticsearch Directory Traversal Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-3337");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 8613 $");
+ script_version ("$Revision: 9978 $");
 
  script_name("Elasticsearch Directory Traversal Vulnerability");
 
@@ -49,7 +49,7 @@ when a site plugin is enabled, allows remote attackers to read arbitrary files."
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-01 08:35:27 +0100 (Thu, 01 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -66,10 +66,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-port = get_app_port( cpe:CPE );
-if( ! port ) port = 9200;
-
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
 files = traversal_files();
 plugins = make_list('test','kopf', 'HQ', 'marvel', 'bigdesk', 'head', 'paramedic', 'elasticsearch', 'git', 'jboss', 'log', 'tomcat', 'wiki');
@@ -85,7 +82,6 @@ foreach plugin ( plugins )
     check_plugin = plugin;
     break;
   }
-
 }
 
 if( check_plugin )
@@ -103,4 +99,3 @@ if( check_plugin )
 }
 
 exit( 99 );
-

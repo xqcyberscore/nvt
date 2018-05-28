@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9871 2018-05-16 14:02:13Z cfischer $
+# $Id: find_service1.nasl 9968 2018-05-25 15:53:27Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9871 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 16:02:13 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 9968 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 17:53:27 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -495,8 +495,8 @@ if( ( r =~ "^-ERR wrong number of arguments for 'get' command" && "-ERR unknown 
 # 0x40:  6D 71 70 3A 64 65 63 6F 64 65 2D 65 72 72 6F 72    mqp:decode-error
 # 0x50:  A1 37 43 6F 6E 6E 65 63 74 69 6F 6E 20 66 72 6F    .7Connection fro
 # 0x60:  6D 20 63 6C 69 65 6E 74 20 75 73 69 6E 67 20 75    m client using u
-# 0x70:  6E 73 75 70 70 6F 72 74 65 64 20 41 4D 51 50 20    nsupported AMQP 
-# 0x80:  61 74 74 65 6D 70 74 65 64                         attempted   
+# 0x70:  6E 73 75 70 70 6F 72 74 65 64 20 41 4D 51 50 20    nsupported AMQP
+# 0x80:  61 74 74 65 6D 70 74 65 64                         attempted
 
 if( "Connection from client using unsupported AMQP attempted" >< r || "amqp:decode-error" >< r ) {
   register_service( port:port, proto:"amqp", message:"A AMQP service seems to be running on this port." );
@@ -554,7 +554,7 @@ if( port == 5556 && ":-ERR Error reading from socket: Unknown protocol exception
 
 # 0x00:  04 20 4E 73 75 72 65 20 41 75 64 69 74 20 4C 69    . Nsure Audit Li
 # 0x10:  6E 75 78 20 5B 37 66 35 31 32 32 30 32 3A 31 5D    nux [7f512202:1]
-# 0x20:  0D 0A                                           ..  
+# 0x20:  0D 0A                                           ..
 # Running on 1289/tcp
 if( r =~ "Nsure Audit .* \[.*\]" ) {
   register_service( port:port, proto:"naudit", message:"A Novell Audit Secure Logging Server service seems to be running on this port." );
@@ -563,7 +563,7 @@ if( r =~ "Nsure Audit .* \[.*\]" ) {
 }
 
 # 0x00:  45 52 52 4F 52 0D 0A 45 52 52 4F 52 0D 0A 45 52    ERROR..ERROR..ER
-# 0x10:  52 4F 52 0D 0A                                     ROR.. 
+# 0x10:  52 4F 52 0D 0A                                     ROR..
 if( r =~ '^ERROR\r\nERROR\r\nERROR\r\n$' ) {
   register_service( port:port, proto:"memcached", message:"A Memcached service seems to be running on this port." );
   log_message( port:port, data:"A Memcached service seems to be running on this port." );
@@ -571,7 +571,7 @@ if( r =~ '^ERROR\r\nERROR\r\nERROR\r\n$' ) {
 }
 
 # 0x00:  55 6E 6B 6E 6F 77 6E 20 6D 65 73 73 61 67 65       Unknown message
-# https://www.eyelock.com/index.php/products/myris 
+# https://www.eyelock.com/index.php/products/myris
 # Reported via http://lists.wald.intevation.org/pipermail/openvas-plugins/2018-March/001372.html
 # nb: Only checking the two ports mentioned in the mailing list post above as
 # the message is quite too common to check on all ports
@@ -601,7 +601,7 @@ if( ereg( pattern:"^(Mon|Tue|Wed|Thu|Fri|Sat|Sun|Lun|Mar|Mer|Jeu|Ven|Sam|Dim) (J
 
 # On 623/tcp
 # 0x00:  00 00 00 02 09 00 00 00 01 00 00 00 00 00 00 00    ................
-# 0x10:  00                                                 .  
+# 0x10:  00                                                 .
 if( rhexstr =~ "^0000000209000000010000000000000000$" ) {
   register_service( port:port, proto:"ipmi-rmcp", message:"A IPMI RMCP service seems to be running on this port." );
   log_message( port:port, data:"A IMPI RMCP service seems to be running on this port." );
@@ -632,7 +632,7 @@ if( r =~ "^root@metasploitable:/# " ) {
 # 0x0020:  0A 30 20 2D 20 33 20 30 0A 30 20 2D 20 34 20 30    .0 - 3 0.0 - 4 0
 # 0x0030:  0A 30 20 2D 20 35 20 30 0A 30 20 2D 20 36 20 30    .0 - 5 0.0 - 6 0
 # 0x0040:  0A 30 20 2D 20 37 20 30 0A 30 20 2D 20 38 20 30    .0 - 7 0.0 - 8 0
-# 0x0050:  0A 30 20 2D 20 39 20 30 0A 30 20 2D 20 31 30 20    .0 - 9 0.0 - 10 
+# 0x0050:  0A 30 20 2D 20 39 20 30 0A 30 20 2D 20 31 30 20    .0 - 9 0.0 - 10
 # 0x0060:  30 0A 30 20 2D 20 31 31 20 30 0A 30 20 2D 20 31    0.0 - 11 0.0 - 1
 # 0x0070:  32 20 30 0A 30 20 2D 20 31 33 20 30 0A 30 20 2D    2 0.0 - 13 0.0 -
 # 0x0080:  20 31 34 20 30 0A 30 20 2D 20 31 35 20 30 0A 30     14 0.0 - 15 0.0
@@ -689,6 +689,49 @@ if( egrep( string:r, pattern:"^[0-9]+ (all|carp|em0|enc|enc0|lo|lo0|pflog0|pflog
 if( rhexstr =~ "^000001..52..020A..08A3800410..180020..2A.*10001A9002" && "-----BEGIN PUBLIC KEY-----" >< r && "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ" >< r ) {
   register_service( port:port, proto:"r1soft_backupagent", message:"A R1Soft Backup Agent seems to be running on this port." );
   log_message( port:port, data:"A R1Soft Backup Agent seems to be running on this port." );
+  exit( 0 );
+}
+
+# https://www.iana.org/assignments/beep-parameters/beep-parameters.xhtml
+# 0x00:  52 50 59 20 30 20 30 20 2E 20 30 20 31 30 32 0D    RPY 0 0 . 0 102.
+# 0x10:  0A 43 6F 6E 74 65 6E 74 2D 54 79 70 65 3A 20 61    .Content-Type: a
+# 0x20:  70 70 6C 69 63 61 74 69 6F 6E 2F 62 65 65 70 2B    pplication/beep+
+# 0x30:  78 6D 6C 0D 0A 0D 0A 3C 67 72 65 65 74 69 6E 67    xml....<greeting
+# 0x40:  3E 3C 70 72 6F 66 69 6C 65 20 75 72 69 3D 22 68    ><profile uri="h
+# 0x50:  74 74 70 3A 2F 2F 69 61 6E 61 2E 6F 72 67 2F 62    ttp://iana.org/b
+# 0x60:  65 65 70 2F 54 4C 53 22 2F 3E 3C 2F 67 72 65 65    eep/TLS"/></gree
+# 0x70:  74 69 6E 67 3E 0D 0A 45 4E 44 0D 0A                ting>..END..
+#
+# nb: beep/xmlrpc has application/xml as the Content-Type so using some
+# different patterns here.
+# nb: Have seen a response to http_get and spontaneuos for this so checking both...
+if( ( ( r0 =~ "^RPY [0-9] [0-9]" && "Content-Type: application/" >< r0 ) ||
+      ( "<profile uri=" >< r0 && "http://iana.org/beep/" >< r0 ) ||
+      "Content-Type: application/beep" >< r0 ) ||
+    ( ( r =~ "^RPY [0-9] [0-9]" && "Content-Type: application/" >< r ) ||
+      ( "<profile uri=" >< r && "http://iana.org/beep/" >< r ) ||
+      "Content-Type: application/beep" >< r )
+  ) {
+  register_service( port:port, proto:"beep", message:"A service supporting the Blocks Extensible Exchange Protocol (BEEP) seems to be running on this port." );
+  log_message( port:port, data:"A service supporting the Blocks Extensible Exchange Protocol (BEEP) seems to be running on this port." );
+  exit( 0 );
+}
+
+# https://github.com/beanshell/beanshell/blob/master/src/main/resources/bsh/commands/server.bsh
+# 0x00:  42 65 61 6E 53 68 65 6C 6C 20 32 2E 30 62 34 20    BeanShell 2.0b4 
+# 0x10:  2D 20 62 79 20 50 61 74 20 4E 69 65 6D 65 79 65    - by Pat Niemeye
+# 0x20:  72 20 28 70 61 74 40 70 61 74 2E 6E 65 74 29 0A    r (pat@pat.net).
+# 0x30:  62 73 68 20 25 20 2F 2F 20 45 72 72 6F 72 3A 20    bsh % // Error: 
+# 0x40:  50 61 72 73 65 72 20 45 72 72 6F 72 3A 20 49 6E    Parser Error: In
+# 0x50:  20 66 69 6C 65 3A 20 3C 75 6E 6B 6E 6F 77 6E 3E     file: <unknown>
+# 0x60:  20 45 6E 63 6F 75 6E 74 65 72 65 64 20 22 48 6F     Encountered "Ho
+# 0x70:  73 74 22 20 61 74 20 6C 69 6E 65 20 32 2C 20 63    st" at line 2, c
+# 0x80:  6F 6C 75 6D 6E 20 31 2E 0A 0A 62 73 68 20 25 20    olumn 1...bsh % 
+#
+# nb: With and without the banner. Just to be sure...
+if( r =~ "^bsh % " || r =~ "^BeanShell " || "- by Pat Niemeyer (pat@pat.net)" >< r ) {
+  register_service( port:port, proto:"beanshell", message:"A BeanShell listener service seems to be running on this port." );
+  log_message( port:port, data:"A BeanShell listener service seems to be running on this port." );
   exit( 0 );
 }
 

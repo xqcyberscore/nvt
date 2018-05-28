@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # Multiple IP Video/Camera Server Web Interface Default Admin Credentials
 #
@@ -25,31 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103887";
-
-tag_summary = 'The remote IP Video/Camera server web interface is prone to a default
-account authentication bypass vulnerability.';
-
-tag_impact = 'This issue may be exploited by a remote attacker to gain
-access to sensitive information or modify system configuration.';
-
-tag_insight = 'It was possible to login with default credentials.';
-tag_vuldetect = 'Try to login with default credentials.';
-tag_solution = 'Change the password.';
-
 if (description)
 {
- script_oid(SCRIPT_OID); 
- script_version("$Revision: 6735 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103887");
+ script_version("$Revision: 9982 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Multiple IP Video/Camera Server Web Interface Default Admin Credentials");
-
-
-
  script_xref(name : "URL" , value : "http://dariusfreamon.wordpress.com/2014/01/18/s3-s2071-s4071-ip-video-server-web-interface-default-admin-credentials/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2014-01-21 15:02:06 +0200 (Tue, 21 Jan 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,13 +43,15 @@ if (description)
  script_mandatory_keys("httpd/banner");
  script_require_ports("Services/www", 80);
 
- 
+ script_tag(name : "summary" , value : "The remote IP Video/Camera server web interface is prone to a default
+account authentication bypass vulnerability.");
+ script_tag(name : "impact" , value : "This issue may be exploited by a remote attacker to gain
+access to sensitive information or modify system configuration.");
+ script_tag(name : "vuldetect" , value : "Try to login with default credentials.");
+ script_tag(name : "insight" , value : "It was possible to login with default credentials.");
+ script_tag(name : "solution" , value : "Change the password.");
 
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
+ script_tag(name:"solution_type", value:"Workaround");
 
  exit(0);
 }
@@ -74,8 +60,6 @@ include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit (0);
-
 banner = get_http_banner( port:port );
 
 if( "Server: httpd" >!< banner || banner !~ "HTTP/1\.. 401" ) exit (0);
@@ -87,22 +71,24 @@ if ( "ip camera" >!< tolower ( banner ) &&
 
 credentials = make_list("3sadmin:27988303","root:root");
 
+host = http_host_name( port:port );
+
 foreach credential ( credentials )
-{  
+{
   userpass = base64( str:credential );
-  req = 'GET / HTTP/1.1\r\n' + 
-        'Host: ' +  get_host_name() + '\r\n' +
+  req = 'GET / HTTP/1.1\r\n' +
+        'Host: ' +  host + '\r\n' +
         'Authorization: Basic ' + userpass + '\r\n' +
         '\r\n';
 
   buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
-  if( buf =~ "HTTP/1\.. 200" ) 
+  if( buf =~ "HTTP/1\.. 200" )
     defaults = defaults + credential + '\n';
 
 }
 
-if( defaults )  
-{ 
+if( defaults )
+{
   defaults = str_replace( string:defaults, find:":", replace:"/" );
   report = 'It was possible to login using the following credentials:\n\n' + defaults;
   security_message( port:port, data:report );
@@ -110,4 +96,3 @@ if( defaults )
 }
 
 exit (99);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Blackstratus LOGStorm default MySQL password for user `htr`
 #
@@ -26,17 +26,17 @@
 
 if (description)
 {
+ script_oid("1.3.6.1.4.1.25623.1.0.140093");
+ script_version("$Revision: 9978 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+ script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_oid("1.3.6.1.4.1.25623.1.0.140093");
- script_version("$Revision: 6788 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
- script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
  script_name("Blackstratus LOGStorm default MySQL password for user `htr`");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_tag(name:"qod_type", value:"remote_active");
- script_tag(name: "solution_type", value: "Workaround");
+ script_tag(name:"solution_type", value:"Workaround");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("mysql_version.nasl");
  script_require_ports("Services/mysql", 3306);
@@ -54,10 +54,7 @@ cpe_list = make_list( "cpe:/a:mysql:mysql", "cpe:/a:oracle:mysql", "cpe:/a:maria
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
-port = get_app_port( cpe:cpe_list );
-if( ! port ) port = 3306;
-
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:cpe_list ) ) exit( 0 );
 if( get_kb_item( "MySQL/" + port + "/blocked" ) ) exit( 0 );
 
 username = "htr";
@@ -199,4 +196,3 @@ while( 1 )
 
 if( sock ) close(sock);
 exit( 0 );
-

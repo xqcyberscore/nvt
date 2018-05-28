@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_win_authentication_bypass_vuln.nasl 9827 2018-05-15 06:11:22Z emoss $
+# $Id: gb_7zip_win_authentication_bypass_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # 7zip Authentication Bypass Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107311");
-  script_version("$Revision: 9827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:11:22 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 16:01:22 +0200 (Fri, 11 May 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_cve_id("CVE-2018-10172");

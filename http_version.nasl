@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: http_version.nasl 9977 2018-05-28 08:02:51Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 9977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:02:51 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,7 +61,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 # TODO: Move to secpod_apache_detect.nasl
-function get_apache_version(port) {
+function get_apache_version( port ) {
 
   local_var port,req, soc, r, v;
 
@@ -80,7 +80,7 @@ function get_apache_version(port) {
 }
 
 # TODO: Move to gb_lotus_domino_detect.nasl
-function get_domino_version(port) {
+function get_domino_version( port ) {
 
   local_var port, req, soc, r, v;
 
@@ -115,7 +115,6 @@ function get_domino_version(port) {
 show_headers = script_get_preference("Show full HTTP headers in output");
 
 port = get_http_port( default:80 );
-
 soc = http_open_socket( port );
 
 if( soc ) {
@@ -174,9 +173,7 @@ if( soc ) {
       }
     }
 
-    #
     # put the name of the web server in the KB
-    #
     if( egrep( pattern:"^Server:.*Domino.*", string:svrline ) )
       set_kb_item( name:"www/domino", value:TRUE );
 
@@ -248,12 +245,9 @@ if( soc ) {
       set_kb_item( name:"www/apache", value:TRUE );
 
     if( egrep( pattern:"^Server:.*Oracle HTTP Server.*", string:svrline ) ) {
-
       set_kb_item( name:"www/OracleApache", value:TRUE );
-      ## build cpe and store it as host_detail
-      ## Cross Check Version
-      register_and_report_cpe(app:"Oracle Http Server", ver:TRUE, base:"cpe:/a:oracle:http_server:",
-                              expr:"^([0-9.]+([a-z0-9]+)?)");
+      # TODO: Move into own Detection-NVT and catch the version
+      register_and_report_cpe( app:"Oracle Http Server", insloc:port + "/tcp", regPort:port, concluded:svrline, base:"cpe:/a:oracle:http_server:", expr:"^([0-9.]+([a-z0-9]+)?)" );
     }
 
     if( egrep( pattern:"^Server:.*Oracle HTTP Server.*", string:svrline ) )
@@ -290,13 +284,13 @@ if( soc ) {
        set_kb_item( name:"www/webstar", value:TRUE );
 
     if( egrep( pattern:"^Server:.*AppleShareIP.*", string:svrline ) )
-       set_kb_item( name:"www/appleshareip", value:TRUE );
+      set_kb_item( name:"www/appleshareip", value:TRUE );
 
     if( egrep( pattern:"^Server:.*Jigsaw.*", string:svrline ) )
-       set_kb_item( name:"www/jigsaw", value:TRUE );
+      set_kb_item( name:"www/jigsaw", value:TRUE );
 
     if( egrep( pattern:"^Server:.*Resin.*", string:svrline ) )
-       set_kb_item( name:"www/resin", value:TRUE );
+      set_kb_item( name:"www/resin", value:TRUE );
 
     if( egrep( pattern:"^Server:.*AOLserver.*", string:svrline ) )
       set_kb_item( name:"www/aolserver", value:TRUE );
@@ -388,11 +382,8 @@ if( soc ) {
 
     if( egrep( pattern:"^Server:.*KeyFocus Web Server.*", string:svrline ) ) {
       set_kb_item( name:"www/KFWebServer", value:TRUE );
-
-      ## build cpe and store it as host_detail
-      ##Cross Check version
-      register_and_report_cpe(app:"kf web server", ver:TRUE, base:"cpe:/a:key_focus:kf_web_server:",
-                              expr:"^([0-9.]+)");
+      # TODO: Move into own Detection-NVT and catch the version
+      register_and_report_cpe( app:"KeyFocus Web Server", insloc:port + "/tcp", regPort:port, concluded:svrline, base:"cpe:/a:key_focus:kf_web_server:", expr:"^([0-9.]+)" );
     }
 
     if( egrep( pattern:"^Server:.*Jetty.*", string:svrline ) )

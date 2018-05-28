@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018355.nasl 9447 2018-04-11 14:37:45Z santu $
+# $Id: gb_ms_kb4018355.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Microsoft Word 2007 Service Pack 3 Information Disclosure Vulnerability (KB4018355)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812858");
-  script_version("$Revision: 9447 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-0950");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 16:37:45 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:51:42 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Word 2007 Service Pack 3 Information Disclosure Vulnerability (KB4018355)");
 

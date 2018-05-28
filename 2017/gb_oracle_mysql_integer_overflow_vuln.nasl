@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_integer_overflow_vuln.nasl 6075 2017-05-05 13:43:51Z antu123 $
+# $Id: gb_oracle_mysql_integer_overflow_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Oracle MySQL Server Integer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810773");
-  script_version("$Revision: 6075 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2017-3599");
   script_bugtraq_id(97754);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 15:43:51 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 11:10:40 +0530 (Thu, 04 May 2017)");
   script_name("Oracle MySQL Server Integer Overflow Vulnerability");
 
@@ -74,7 +74,6 @@ if (description)
   exit(0);
 }
 
-
 include("byte_func.inc");
 include("host_details.inc");
 
@@ -82,14 +81,7 @@ cpe_list = make_list( "cpe:/a:mysql:mysql", "cpe:/a:oracle:mysql");
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
-port = get_app_port(cpe:cpe_list);
-if(!port){
- port = 3306;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
+if(!port = get_app_port(cpe:cpe_list)) exit(0);
 
 if(get_kb_item("MySQL/" + port + "/blocked")){
   exit(0);
@@ -108,8 +100,8 @@ if("mysql_native_password" >!< res)
 }
 
 # Login request packet
-plen = string('\x26\x00\x00');		     # 3 Bytes Packet lenth
-packet_num = string('\x01');                 # 1 byte  Packet number 
+plen = string('\x26\x00\x00');		     # 3 Bytes Packet length
+packet_num = string('\x01');                 # 1 byte  Packet number
 packet_cap = string('\x85\xa2\xbf\x01');     # client capabilities (default)
 packet_max = string('\x00\x00\x00\x01');     # max packet size (default)
 packet_cset = string('\x21');                # charset (default)

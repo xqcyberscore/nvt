@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_turn_off_autoplay.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: win_turn_off_autoplay.nasl 9961 2018-05-25 13:02:30Z emoss $
 #
 # Check value for Turn off Autoplay
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109169");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:14:09 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,12 +39,14 @@ if(description)
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "Autoplay begins reading from a drive as 
-soon as you insert media in the drive. As a result, the setup file of programs 
-and the music on audio media start immediately.
-If you enable this policy setting, Autoplay is disabled on CD-ROM and removable 
-media drives, or disabled on all drives.
-This policy setting disables Autoplay on additional types of drives. You can not 
+  script_tag(name: "summary", value: "This test checks the setting for policy 
+'Turn off Autoplay' on Windows hosts (at least Windows 7).
+
+Autoplay begins reading from a drive as soon as you insert media in the drive. 
+As a result, the setup file of programs and the music on audio media start 
+immediately. If you enable the policy setting, Autoplay is disabled on CD-ROM 
+and removable media drives, or disabled on all drives.
+The policy setting disables Autoplay on additional types of drives. You can not 
 use this setting to enable Autoplay on drives on which it is disabled by default.
 If you disable or do not configure this policy setting, AutoPlay is enabled.");
   exit(0);

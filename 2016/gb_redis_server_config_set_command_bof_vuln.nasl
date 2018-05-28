@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_server_config_set_command_bof_vuln.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: gb_redis_server_config_set_command_bof_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Redis Server 'CONFIG SET' Command Buffer Overflow Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:redis:redis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809306");
-  script_version("$Revision: 7287 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2016-8339");
   script_bugtraq_id(93283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 15:17:52 +0530 (Thu, 03 Nov 2016)");
   script_name("Redis Server 'CONFIG SET' Command Buffer Overflow Vulnerability");
 
@@ -52,17 +52,17 @@ if (description)
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute an arbitrary code.
 
-  Impact Level: System/Application");  
+  Impact Level: System/Application");
 
   script_tag(name: "affected" , value:"Redis Server 3.2.x prior to 3.2.4");
 
   script_tag(name:"solution", value:"Upgrade to Redis Server 3.2.4 or later,
   For updates refer to http://redis.io");
- 
+
   script_tag(name:"solution_type", value:"VendorFix");
-  
+
   script_tag(name:"qod_type", value:"remote_vul");
- 
+
   script_xref(name : "URL" , value:"http://www.talosintelligence.com/reports/TALOS-2016-0206");
 
   script_category(ACT_ATTACK);
@@ -76,27 +76,14 @@ if (description)
 
 include("host_details.inc");
 
-## variable initialize
-redisPort = 0;
-soc = 0;
-payload_cmd = "";
-
-## Get redis port
 if(!redisPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## check port state
-if(!get_port_state(redisPort)){
-  exit(0);
-}
-
-## open socket
 if(!soc = open_sock_tcp(redisPort)){
   exit(0);
 }
 
-## Construct payload
 ## CONFIG SET  cmd's syntax
 ## 'CONFIG SET client-output-buffer-limit <class> <hard limit> <soft limit> <soft seconds>'
 payload_cmd = 'CONFIG SET client-output-buffer-limit "master 3735928559 3405691582 373529054"\r\n';
@@ -107,7 +94,6 @@ recv = recv(socket:soc, length:1024);
 
 close(soc);
 
-## Check thestring 'OK' from response,
 ## Vulnerable server respond with "OK"
 if('-ERR Invalid argument' >!< recv && 'OK' >< recv)
 {

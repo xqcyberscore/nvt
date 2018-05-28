@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805066");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 9978 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 12:59:34 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Spark Cluster Arbitrary Code Execution Vulnerability");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"Apache Spark contains a flaw that is
   triggered when submitting a specially crafted job to an unsecured
-  cluster."); 
+  cluster.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code.
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"affected", value:"
   Apache Spark Cluster versions 0.0.x, 1.1.x, 1.2.x, 1.3.x");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -66,31 +66,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 7777);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:7777);
-if (!http_port) {
-  http_port = 7777;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Try attack and check the response to confirm vulnerability
-## Confirm the applications also
 if(http_vuln_check(port:http_port, url:"/", check_header:TRUE,
    pattern:">Memory:<", extra_check: make_list(">Drivers:<",
    'Spark Master at spark')))

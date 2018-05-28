@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability
 #
@@ -25,47 +25,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103903";
-
-tag_insight = "The TELNET service on the ZTE ZXV10 W300 router 2.1.0
-has a hardcoded password ending with airocon for the admin account,
-which allows remote attackers to obtain administrative access by
-leveraging knowledge of the MAC address characters present at the
-beginning of the password.";
-
-tag_impact = "Attackers can exploit this issue to bypass the authentication
-mechanism and gain access to the vulnerable device.";
-
-tag_affected = "ZTE ZXV10 W300 running firmware version 2.1.0 is vulnerable; other
-versions may also be affected.
-
-Update 2015-08-28: At least the following models are also affected:
-Asus: DSL N12E
-Digicom: DG-5524T
-Observa :RTA01N
-PLDT: SpeedSurf 504AN
-ZTE: ZXV10 W300";
-
-tag_summary = "ZTE ZXV10 W300 wireless router is prone to a security-bypass
-vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Try to login into the telnet service.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103903");
  script_bugtraq_id(65310);
  script_cve_id("CVE-2014-0329");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7239 $");
+ script_version ("$Revision: 9982 $");
 
  script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
  script_tag(name:"qod_type", value:"exploit");
  script_tag(name:"solution_type", value:"NoneAvailable");
@@ -76,12 +49,31 @@ if (description)
  script_require_ports("Services/telnet", 23);
  script_require_udp_ports("Services/udp/snmp", 161);
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name : "impact" , value : "Attackers can exploit this issue to bypass the authentication
+mechanism and gain access to the vulnerable device.");
+ script_tag(name : "vuldetect" , value : "Try to login into the telnet service.");
+ script_tag(name : "insight" , value : "The TELNET service on the ZTE ZXV10 W300 router 2.1.0
+has a hardcoded password ending with airocon for the admin account,
+which allows remote attackers to obtain administrative access by
+leveraging knowledge of the MAC address characters present at the
+beginning of the password.");
+ script_tag(name : "solution" , value : "Ask the Vendor for an update.");
+ script_tag(name : "summary" , value : "ZTE ZXV10 W300 wireless router is prone to a security-bypass
+vulnerability.");
+ script_tag(name : "affected" , value : "ZTE ZXV10 W300 running firmware version 2.1.0 is vulnerable. Other
+versions may also be affected.
+
+Update 2015-08-28: At least the following models are also affected:
+
+Asus: DSL N12E
+
+Digicom: DG-5524T
+
+Observa :RTA01N
+
+PLDT: SpeedSurf 504AN
+
+ZTE: ZXV10 W300");
  exit(0);
 }
 
@@ -101,7 +93,7 @@ if( ! device )
 {
   banner = get_telnet_banner( port:telnet_port );
   if( banner && ( "User Access Verification" >< banner && "Username:" >< banner ) || banner =~ "(ZXV|N12E|SpeedSurf|RTA|DG-)"  ) device = TRUE;
-}  
+}
 
 if( ! device ) exit( 0 );
 
@@ -155,7 +147,7 @@ for( i = 0; i < 3; i++ )
   send( socket:soc, data: 'sh\r\n');
   recv = recv( socket:soc, length:2048);
   if( "ADSL#" >!< recv ) exit( 0 );
-  
+
   send( socket:soc, data: 'login show\r\n');
   recv = recv( socket:soc, length:2048);
   close( soc );
@@ -166,8 +158,8 @@ for( i = 0; i < 3; i++ )
              'it was possible to login and to obtain the following credentials:\n' +
               recv + '\n';
     security_message( port: telnet_port, data: report );
-    exit( 0 ); 
+    exit( 0 );
   }
-} 
+}
 
-exit( 99 ); 
+exit( 99 );

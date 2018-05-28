@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_rce_vuln.nasl 6449 2017-06-28 05:33:48Z santu $
+# $Id: gb_oracle_webLogic_server_rce_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
-# Oracle WebLogic Server Remote Code Execution Vulnerability 
+# Oracle WebLogic Server Remote Code Execution Vulnerability
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:bea:weblogic_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806622");
-  script_version("$Revision: 6449 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2015-4852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-11-17 14:28:17 +0530 (Tue, 17 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Remote Code Execution Vulnerability");
@@ -40,8 +41,7 @@ if(description)
   script_tag(name: "summary" , value:"The host is running Oracle WebLogic Server
   and is prone to remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to presence
   of a deserialization error.");
@@ -71,22 +71,10 @@ if(description)
   exit(0);
 }
 
-
-##
-#Code Starts Here
-##
-
 include("host_details.inc");
 include("version_func.inc");
 
-webVer = "";
-webPort = "";
-
 if(!webPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-if(!get_port_state(webPort)){
   exit(0);
 }
 
@@ -94,7 +82,6 @@ if(!webVer = get_app_version(cpe:CPE, port:webPort)){
   exit(0);
 }
 
-##Check for versions equal to 10.3.6.0, 12.1.2.0, 12.1.3.0, 12.2.1.0
 if(version_is_equal(version:webVer, test_version:"10.3.6.0")||
    version_is_equal(version:webVer, test_version:"12.1.2.0")||
    version_is_equal(version:webVer, test_version:"12.1.3.0")||

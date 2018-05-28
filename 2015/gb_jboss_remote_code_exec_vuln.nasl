@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_remote_code_exec_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_jboss_remote_code_exec_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # JBoss Application Server Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805373");
-  script_version("$Revision: 5843 $");
+  script_version("$Revision: 9978 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-04-30 14:34:53 +0530 (Thu, 30 Apr 2015)");
   script_name("JBoss Application Server Remote Code Execution Vulnerability");
 
@@ -52,8 +52,8 @@ if(description)
 
   script_tag(name: "affected" , value:"JBoss AS versions 3, 4, 5, 6.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name: "solution" , value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -71,7 +71,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"deprecated", value:TRUE); 
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
@@ -87,38 +87,18 @@ exit(66);
 include("http_func.inc");
 include("http_keepalive.inc");
 
-http_port ="";
-sndReq="";
-rcvRes="";
-url="";
-req="";
-res="";
-
-# Get HTTP Port
 http_port = get_http_port(default:8080);
-if(!http_port){
-  http_port = 8080;
-}
-
-# Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
 host = http_host_name( port:http_port );
 
 foreach dir (make_list_unique("/", "/jboss", "/jbossas", cgi_dirs()))
 {
-
   if( dir == "/" ) dir = "";
 
   sndReq = http_get(item:string(dir,"/"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  # Confirm the Application
   if(rcvRes && '>JBoss Application Server<' >< rcvRes)
   {
-    # Construct attack request
     url = "/jbossass/jbossass.jsp?ppp=id";
     req = string("GET ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",

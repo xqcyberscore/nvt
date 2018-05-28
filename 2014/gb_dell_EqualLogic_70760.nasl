@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_EqualLogic_70760.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_dell_EqualLogic_70760.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # Dell EqualLogic Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
  script_bugtraq_id(70760);
  script_cve_id("CVE-2013-3304");
  script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N"); 
- script_version ("$Revision: 6663 $");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+ script_version ("$Revision: 9982 $");
 
  script_name("Dell EqualLogic Directory Traversal Vulnerability");
 
@@ -48,10 +48,10 @@ arbitrary system files. Information harvested may aid in launching further attac
 
  script_tag(name: "summary", value:"Dell EqualLogicis prone to a directory-traversal vulnerability.");
 
- script_tag(name: "affected", value:"Dell EqualLogic Firmware versions 6.0 is vulnerable; other versions
+ script_tag(name: "affected", value:"Dell EqualLogic Firmware versions 6.0 is vulnerable. Other versions
 may also be affected.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2014-10-29 13:15:11 +0100 (Wed, 29 Oct 2014)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,18 +61,18 @@ may also be affected.");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
+ script_tag(name:"solution_type", value:"NoneAvailable");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+  
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
 
-if( http_vuln_check( port:port, url:"/", pattern:"<title>.*EqualLogic.*Group Manager</title>" ) )
+if( http_vuln_check( port:port, url:"/", pattern:"<title>.*EqualLogic.*Group Manager</title>", usecache:TRUE ) )
 {
   url = '//../../../../../../../../etc/master.passwd';
 
@@ -82,10 +82,7 @@ if( http_vuln_check( port:port, url:"/", pattern:"<title>.*EqualLogic.*Group Man
     security_message( port:port, data:report );
     exit( 0 );
   }
-
   exit( 99 );
-
 }
 
 exit(0);
-

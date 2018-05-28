@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 6737 2017-07-17 10:39:06Z ckuersteiner $
+# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
-# ISC BIND Security Bypass Vulnerability (Remote) 
+# ISC BIND Security Bypass Vulnerability (Remote)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106953");
-  script_version("$Revision: 6737 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-17 12:39:06 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 9978 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name: "creation_date", value: "2017-07-17 09:23:57 +0700 (Mon, 17 Jul 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:C/A:N");
@@ -81,9 +81,6 @@ if (!infos = get_app_location_and_proto(cpe: CPE, port: port))
   exit(0);
 
 proto = infos["proto"];
-
-if (!get_port_state(port))
-  exit(0);
 
 if (proto == "tcp")
   soc = open_sock_tcp(port);

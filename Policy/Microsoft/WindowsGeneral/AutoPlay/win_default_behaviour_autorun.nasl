@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_default_behaviour_autorun.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: win_default_behaviour_autorun.nasl 9961 2018-05-25 13:02:30Z emoss $
 #
 # Check value for Set the default behavior for AutoRun
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109168");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:07:44 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,11 +39,14 @@ if(description)
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "Autorun commands are generally stored in 
-autorun.inf files. They often launch the installation program or other routines.
+  script_tag(name: "summary", value: "This test checks the setting for policy 
+'Set the default behavior for AutoRun' on Windows hosts (at least Windows 7).
+
+Autorun commands are generally stored in autorun.inf files. They often launch 
+the installation program or other routines.
 Prior to Windows Vista, when media containing an autorun command is inserted, 
 the system will automatically execute the program without user intervention.
-This creates a major security concern as code may be executed without user's 
+This creates a major security concern as code may be executed without users 
 knowledge. The default behavior starting with Windows Vista is to prompt the 
 user whether autorun command is to be run. The autorun command is represented as 
 a handler in the Autoplay dialog.");

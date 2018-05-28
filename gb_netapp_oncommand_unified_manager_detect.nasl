@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_oncommand_unified_manager_detect.nasl 9627 2018-04-26 11:54:12Z jschulte $
+# $Id: gb_netapp_oncommand_unified_manager_detect.nasl 9959 2018-05-25 11:00:34Z ckuersteiner $
 #
 # NetApp OnCommand Unified Manager Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140357");
-  script_version("$Revision: 9627 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 13:54:12 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9959 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-25 13:00:34 +0200 (Fri, 25 May 2018) $");
   script_tag(name: "creation_date", value: "2017-09-05 13:25:35 +0700 (Tue, 05 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,7 +92,7 @@ foreach dir (make_list("/", "/um")) {
                              expr: '([0-9.]+)',
                              insloc: dir,
                              regPort: port,
-                             conlUrl: conclUrl );
+                             conclUrl: conclUrl );
 
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################                                                                  
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_password_manager_dll_hijacking_code_exec_vuln_may18_win.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_kaspersky_password_manager_dll_hijacking_code_exec_vuln_may18_win.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Kaspersky Password Manager DLL Hijacking Code Execution Vulnerability May18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:kaspersky:passwordmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812871");
-  script_version("$Revision: 9802 $");
+  script_version("$Revision: 9965 $");
   script_cve_id("CVE-2018-6306");
-  script_tag(name:"cvss_base", value:"4.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 11:31:27 +0530 (Fri, 04 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Kaspersky Password Manager DLL Hijacking Code Execution Vulnerability May18 (Windows)");

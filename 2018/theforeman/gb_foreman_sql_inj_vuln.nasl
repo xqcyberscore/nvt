@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_sql_inj_vuln.nasl 9309 2018-04-05 05:26:15Z ckuersteiner $
+# $Id: gb_foreman_sql_inj_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Foreman < 1.16.1 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:theforeman:foreman";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140939");
-  script_version("$Revision: 9309 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-05 07:26:15 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 9965 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-03 16:45:09 +0700 (Tue, 03 Apr 2018)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-1097");
 

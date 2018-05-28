@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mfc_xss_vuln_jan15.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_mfc_xss_vuln_jan15.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Brother MFC Administration Reflected Cross-Site Scripting Vulnerabilities - Jan15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805320");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2015-1056");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:15:26 +0530 (Mon, 12 Jan 2015)");
   script_name("Brother MFC Administration Reflected Cross-Site Scripting Vulnerabilities - Jan15");
 
@@ -62,42 +62,25 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
-##Code starts from here##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-cmsPort = "";
-
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
-if(!cmsPort){
-  cmsPort = 80;
-}
-## Check the port state
-if(!get_port_state(cmsPort)){
-  exit(0);
-}
 
-## Send and Receive the response
-dir = "";
-req = http_get(item:string(dir, "/general/status.html"), port:cmsPort);
+url = "/general/status.html";
+req = http_get(item:url, port:cmsPort);
 res = http_send_recv(port:cmsPort, data:req);
 
-## Confirming the application
 if(res && ">Brother MFC-J4410DW series<" >< res)
 {
-  ## Construct the attack request
-  url = dir + '?url="/><script>alert(document.cookie)</script><input type="hidden" value="';
+  url += '?url="/><script>alert(document.cookie)</script><input type="hidden" value="';
   if(http_vuln_check(port:cmsPort, url:url, check_header:TRUE,
     pattern:"<script>alert\(document.cookie\)</script>"))
   {

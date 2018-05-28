@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_printers_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_lexmark_printers_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
 #
 # Lexmark Printer Detection
 #
@@ -28,16 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103685");
+  script_version("$Revision: 9972 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_tag(name:"creation_date", value:"2013-03-28 11:31:24 +0100 (Thu, 28 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
-  script_tag(name:"creation_date", value:"2013-03-28 11:31:24 +0100 (Thu, 28 Mar 2013)");
   script_name("Lexmark Printer Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  # nb: Don't use http_version.nasl as the Detection should run as early
+  # as possible if the printer should be marked dead as requested.
+  script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -81,17 +83,17 @@ foreach url(keys(urls)) {
 
       cpe_model = tolower(model);
 
-      cpe = 'cpe:/h:lexmark:' + cpe_model;
+      cpe = "cpe:/h:lexmark:" + cpe_model;
       cpe = str_replace(string:cpe, find:" series", replace:"");
 
-      register_product(cpe:cpe, location:port + '/tcp', port:port);
+      register_product(cpe:cpe, location:port + "/tcp", port:port);
 
-      log_message(data:"The remote Host is a Lexmark " + model + " printer device.\nCPE: " + cpe + "\nConcluded: " + concluded, port:port);
+      log_message(port:port, data:"The remote Host is a Lexmark " + model + " printer device.\nCPE: " + cpe + "\nConcluded: " + concluded);
 
       pref = get_kb_item("global_settings/exclude_printers");
-      if( pref == "yes" ) {
-         set_kb_item( name:"Host/dead", value:TRUE );
-         log_message( port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
+      if(pref == "yes") {
+        log_message(port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
+        set_kb_item(name:"Host/dead", value:TRUE);
       }
       exit(0);
     }

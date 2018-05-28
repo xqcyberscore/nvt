@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability
 #
@@ -27,12 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804798");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 9982 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 16:42:38 +0530 (Fri, 14 Nov 2014)");
   script_name("ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability");
+  script_cve_id("CVE-2014-9184", "CVE-2014-9183");
 
   script_tag(name:"summary", value:"This host is installed with ZTE ZXDSL
   Modem and is prone to information disclosure vulnerability.");
@@ -50,12 +51,12 @@ if(description)
 
   script_tag(name:"affected", value:"ZTE ZXDSL 831CI Modem");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Nov/40");
@@ -65,32 +66,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if (!http_port) {
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Confirm the Exploit, Not able to confirm application
 ## So Doing more extra check
 if(http_vuln_check(port:http_port, url:"/adminpasswd.cgi", check_header:TRUE,
    pattern:">Admin account.*configuration of your ADSL<",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybris_dir_traversal_vuln.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_hybris_dir_traversal_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # hybris Commerce Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105955");
-  script_version("$Revision: 6211 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_version("$Revision: 9978 $");
+  script_tag(name : "last_modification", value : "$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name : "creation_date", value : "2015-02-25 14:49:12 +0700 (Wed, 25 Feb 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,8 +47,9 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "summary", value : "hybris Commerce Software Suite is vulnerable to a
 directory traversal attack.");
@@ -61,7 +62,7 @@ system where files are identified by a URL parameter named 'context' rather than
 name. The context is base64 encoded and consists among other parameters the file name.
 This file name is vulnerable to directory traversal.");
 
-  script_tag(name : "impact", value : "An unauthenticated attacker can retrieve arbitray files
+  script_tag(name : "impact", value : "An unauthenticated attacker can retrieve arbitrary files
 which might consist sensitive data which can be used for further attacks.");
 
   script_tag(name : "affected", value : "hybris Commerce Software Suite Releases 5.0.0, 5.0.3,
@@ -79,11 +80,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!port)
-  port = 80;
-
-if (!get_port_state(port))
-  exit(0);
 
 # base64 encoded "master|root|12345|text/plain|../../../../../../etc/passwd"
 trav = 'bWFzdGVyfHJvb3R8MTIzNDV8dGV4dC9wbGFpbnwuLi8uLi8uLi8uLi8uLi8uLi9ldGMvcGFzc3dkfC0';

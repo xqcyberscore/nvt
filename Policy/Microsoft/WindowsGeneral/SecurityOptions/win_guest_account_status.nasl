@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_guest_account_status.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: win_guest_account_status.nasl 9961 2018-05-25 13:02:30Z emoss $
 #
 # Check value for Accounts: Administrator account status (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109153");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 14:00:00 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,11 +40,13 @@ if(description)
   script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "The Accounts: Guest account status policy 
-setting determines whether the Guest account is enabled or disabled. This 
-account allows unauthenticated network users to gain access to the system by 
+  script_tag(name: "summary", value: "This test checks the setting for policy 
+'Accounts: Guest account status' on Windows hosts (at least Windows 7).
+
+The policy setting determines whether the Guest account is enabled or disabled. 
+This account allows unauthenticated network users to gain access to the system by 
 logging on as a Guest with no password. Unauthorized users can access any 
-resources that are accessible to the Guest account over the network. This means 
+resources that are accessible to the Guest account over the network. That means 
 that any network shared folders with permissions that allow access to the Guest 
 account, the Guests group, or the Everyone group will be accessible over the 
 network. This can lead to the exposure or corruption of data.");

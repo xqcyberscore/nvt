@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 9672 2018-04-29 08:24:10Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 9969 2018-05-25 17:29:11Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 9672 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-29 10:24:10 +0200 (Sun, 29 Apr 2018) $");
+  script_version("$Revision: 9969 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 19:29:11 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -404,7 +404,10 @@ else if( "SSH-2.0-MS_" >< banner )
   exit( 0 );
 }
 
-else if( "SSH-2.0-WeOnlyDo-wodFTPD" >< banner )
+# SSH-2.0-WeOnlyDo 2.4.3
+# SSH-2.0-WeOnlyDo-wodFTPD 3.3.0.424
+# Both from http://www.freesshd.com running on windows only
+else if( "SSH-2.0-WeOnlyDo" >< banner )
 {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );

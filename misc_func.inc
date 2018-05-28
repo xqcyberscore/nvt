@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 9793 2018-05-10 12:39:04Z cfischer $
+# $Id: misc_func.inc 9956 2018-05-25 09:21:51Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9793 $
+# $Revision: 9956 $
 #
 ###############################################################################
 
@@ -1439,4 +1439,66 @@ function get_all_udp_ports_list( ) {
   }
 
   return ports;
+}
+
+# This function gets the hostname of the target via get_host_name()
+# and if no IPv4/IPv6 address was returned by this function it 
+# returns a list containing the parts of the target hostname.
+#
+# For example a hostname of www.example.com returns a list containing
+# the following:
+# 1 -> www
+# 2 -> example
+# 3 -> com
+# 4 -> www.example
+# 5 -> www.example.com
+# 6 -> example.com
+# 7 -> com.example
+# 8 -> com.example.www
+#
+# TODO: We currently can't catch a example.com from www.sub.example.com
+function create_hostname_parts_list( ) {
+
+  local_var list, hn, hnp, hnl, p, parts, i;
+
+  list = make_list();
+  hn   = get_host_name();
+  hn = "www.example.com";
+
+  # nb: We don't want to add an IPv4/IPv6 address here...
+  if( ":" >!< hn && ! ereg( string:hn, pattern:"^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" ) ) {
+
+    hnp = split( hn, sep:".", keep:FALSE );
+    hnl = max_index( hnp );
+
+    parts = "";
+    for( i = 0; i < hnl; i++ ) {
+      # each single entry on its own
+      list = make_list( list, hnp[i] );
+      # concatenate each entry with the previous one
+      parts += "." + hnp[i];
+      parts = ereg_replace( pattern:"^\.", string:parts, replace:'' );
+      if( ! in_array( search:parts, array:list ) )
+        list = make_list( list, parts );
+    }
+
+    parts = "";
+    for( i = 1; i < hnl; i++ ) {
+      # This is a special case to skip the first part like www from www.example.com
+      parts += "." + hnp[i];
+      parts = ereg_replace( pattern:"^\.", string:parts, replace:'' );
+      if( ! in_array( search:parts, array:list ) )
+        list = make_list( list, parts );
+    }
+
+    parts = "";
+    for( i = hnl - 1; i >= 0; i-- ) {
+      # concatenate each entry with the previous one
+      parts += "." + hnp[i];
+      parts = ereg_replace( pattern:"^\.", string:parts, replace:'' );
+      if( ! in_array( search:parts, array:list ) )
+        list = make_list( list, parts );
+    }
+  }
+  return list;
 }

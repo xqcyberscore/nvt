@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1357.nasl 9560 2018-04-23 07:12:31Z cfischer $
+# $Id: deb_dla_1357.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Auto-generated from advisory DSA 1357-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891357");
-  script_version("$Revision: 9560 $");
+  script_version("$Revision: 9965 $");
   script_cve_id("CVE-2018-1000164");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1357-1] gunicorn security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 09:12:31 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 00:00:00 +0200 (Mon, 23 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

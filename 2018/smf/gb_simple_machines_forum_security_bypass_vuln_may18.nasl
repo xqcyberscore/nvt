@@ -1,6 +1,6 @@
-###############################################################################                                                                  
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_machines_forum_security_bypass_vuln_may18.nasl 9906 2018-05-18 10:34:56Z santu $
+# $Id: gb_simple_machines_forum_security_bypass_vuln_may18.nasl 9970 2018-05-26 11:40:06Z cfischer $
 #
 # Simple Machines Forum Security Bypass Vulnerability May18
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812886");
-  script_version("$Revision: 9906 $");
+  script_version("$Revision: 9970 $");
   script_cve_id("CVE-2018-10305");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-26 13:40:06 +0200 (Sat, 26 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 16:42:36 +0530 (Mon, 14 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Simple Machines Forum Security Bypass Vulnerability May18");
- 
+
   script_tag(name:"summary", value:"This host is running Simple Machines Forum and is
   prone to security bypass vulnerability.");
 
@@ -65,7 +65,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_simple_machines_forum_detect.nasl");
   script_mandatory_keys("SMF/installed");
   exit(0);
@@ -78,7 +78,7 @@ if(!sport = get_app_port(cpe: CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:sport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:sport, exit_no_version:TRUE)) exit(0);
 sver = infos['version'];
 spath = infos['location'];
 

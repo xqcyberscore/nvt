@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_n_sjas_sec_bypass_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_oracle_glassfish_n_sjas_sec_bypass_vuln.nasl 9964 2018-05-25 14:05:21Z cfischer $
 #
 # Oracle GlassFish/System Application Server Security Bypass Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801926");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 9964 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:05:21 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-0807");
   script_bugtraq_id(47438);
@@ -80,7 +80,7 @@ include("http_keepalive.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (!port = get_kb_item("GlassFishAdminConsole/port"))

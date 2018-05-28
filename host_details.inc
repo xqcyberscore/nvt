@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 9701 2018-05-03 06:24:12Z cfischer $
+# $Id: host_details.inc 9969 2018-05-25 17:29:11Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9701 $
+# $Revision: 9969 $
 #
 ###############################################################################
 
@@ -1304,6 +1304,8 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: Mojolicious (Perl)" || # Cross-platform
       banner == "Server: Java/0.0" || # Cross-platform, running on e.g. VIBNODE devices
       banner == "+OK POP3 ready" ||
+      banner == "+OK POP3" ||
+      banner == "* OK IMAPrev1" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       banner == "X-Powered-By: Express" || # Express Framework is supported on Windows, Linux/Unix etc.

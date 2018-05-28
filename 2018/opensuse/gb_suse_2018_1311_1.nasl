@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1311_1.nasl 9896 2018-05-18 06:15:05Z santu $
+# $Id: gb_suse_2018_1311_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # SuSE Update for libreoffice openSUSE-SU-2018:1311-1 (libreoffice)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851746");
-  script_version("$Revision: 9896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 08:15:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 9974 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:37:12 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-10119", "CVE-2018-10120");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libreoffice openSUSE-SU-2018:1311-1 (libreoffice)");
   script_tag(name:"summary", value:"Check the version of libreoffice");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_mantisbt_sql_inj_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # MantisBT 'filter_config_id' SQL Injection Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804345");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2014-2238");
   script_bugtraq_id(65903);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 10:36:53 +0530 (Tue, 13 May 2014)");
   script_name("MantisBT 'filter_config_id' SQL Injection Vulnerability");
 
   script_tag(name : "summary" , value : "This host is installed with MantisBT and is prone to SQL injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Get the installed version with the help of detect NVT and check the version
-  is vulnerable or not.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
   script_tag(name : "insight" , value : "The flaw is due to the 'admin_config_report.php' script not properly
   sanitizing user-supplied input to the 'filter_config_id' POST parameter.");
   script_tag(name : "impact" , value : "Successful exploitation will allow remote authenticated attacker to inject or
@@ -67,25 +66,13 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-manPort = "";
-manVer = "";
-
-## get the port
 if(!manPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check the port status
-if(!get_port_state(manPort)){
-  exit(0);
-}
-
-## Get the version
 if(!manVer = get_app_version(cpe:CPE, port:manPort)){
   exit(0);
 }

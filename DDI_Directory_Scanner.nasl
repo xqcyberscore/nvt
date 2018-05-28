@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 9880 2018-05-17 07:12:24Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 9956 2018-05-25 09:21:51Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 9880 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 09:12:24 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 9956 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:21:51 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -967,14 +967,9 @@ testDirList = make_list(
 "manager/status" );
 #TODO: Fill the list with the directories used in the foreach( cgi_dirs ) loop of the Detection-NVTs
 
-# Add domain name parts
-hn = get_host_name();
-if( ! ereg( string:hn, pattern:"^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" ) ) {
-  hnp = split( hn, sep:".", keep:FALSE );
-  foreach p( hnp ) {
-    testDirList = make_list( testDirList, p );
-  }
-}
+# Add domain name parts, create_hostname_parts_list() always returns a list, even an empty one
+hnlist = create_hostname_parts_list();
+testDirList = make_list( testDirList, hnlist );
 
 if( debug ) display( "::[ DDI Directory Scanner running in debug mode\n::\n" );
 

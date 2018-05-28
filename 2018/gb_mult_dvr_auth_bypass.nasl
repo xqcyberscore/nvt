@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_dvr_auth_bypass.nasl 9706 2018-05-03 09:22:42Z ckuersteiner $
+# $Id: gb_mult_dvr_auth_bypass.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Multiple DVR Products Authentication Bypass Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141061");
-  script_version("$Revision: 9706 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-03 11:22:42 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 9974 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name: "creation_date", value: "2018-05-03 13:51:37 +0700 (Thu, 03 May 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-9995");
 
@@ -55,8 +55,8 @@ crafted cookie header.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 03rd May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 28th May, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "http://misteralfa-hack.blogspot.cl/2018/04/tbk-vision-dvr-login-bypass.html");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # SafeNet SAS OWA Agent Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:safenet-inc:safenet_authentication_service_outlook_web_access_agen
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105152");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 9982 $");
   script_cve_id("CVE-2014-5359");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:07 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Directory Traversal Vulnerability");
 
@@ -72,11 +72,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-port = get_app_port( cpe:CPE );
-if( ! port ) port = 443;
-
-if( ! get_port_state( port ) ) exit( 0 );
-
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 files = traversal_files( "windows" );
 
 foreach file ( keys ( files ) )
@@ -90,4 +86,3 @@ foreach file ( keys ( files ) )
 }
 
 exit( 99 );
-

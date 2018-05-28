@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_teamcity_mult_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_jetbrains_teamcity_mult_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
 #
 # Jetbrains Teamcity Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805444");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 9978 $");
   script_cve_id("CVE-2014-10036", "CVE-2014-10002");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 10:25:40 +0530 (Tue, 07 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Jetbrains Teamcity Multiple Vulnerabilities");
@@ -43,8 +43,10 @@ if(description)
   check whether it is installed with vulnerable version or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - The feed/generateFeedUrl.html script does not validate input to the
   'cameFromUrl' parameter before returning it to users.
+
   - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -66,50 +68,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-# Variable Initialization
-http_port = "";
-tmcityVer = "";
-version = "";
-req = "";
-buf = "";
-url = "";
-
-# Get HTTP Port
 http_port = get_http_port(default:80);
-if (!http_port) {
-  http_port = 80;
-}
-
-# Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
 
 url = string("/login.html");
-req = http_get(item:url, port:http_port);
-buf = http_keepalive_send_recv(port:http_port, data:req, bodyonly:FALSE);
+buf = http_get_cache(item:url, port:http_port);
 
 if(buf && 'content="TeamCity (Log in to TeamCity -- TeamCity)' >< buf ||
           '/<title/>Log in to TeamCity.*/</title/>' >< buf)
 {
-  ### try to get version
   version = eregmatch(string: buf, pattern: "Version</span> ([0-9.]+)",icase:TRUE);
   if (version[1]) {
       tmcityVer=chomp(version[1]);
   }
 
-  ### checking for vulnerable version
   if(version_is_less(version:tmcityVer, test_version:"8.1"))
   {
     report = 'Installed version: ' + tmcityVer + '\n' +

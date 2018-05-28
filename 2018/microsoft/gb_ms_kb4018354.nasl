@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018354.nasl 9452 2018-04-12 06:07:51Z santu $
+# $Id: gb_ms_kb4018354.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Information Disclosure Vulnerability (KB4018354)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813134");
-  script_version("$Revision: 9452 $");
+  script_version("$Revision: 9974 $");
   script_cve_id("CVE-2018-0950");
   script_bugtraq_id(103642);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 08:07:51 +0200 (Thu, 12 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 14:42:32 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Information Disclosure Vulnerability (KB4018354)");
 

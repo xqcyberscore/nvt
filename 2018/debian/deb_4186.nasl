@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4186.nasl 9685 2018-05-02 07:07:01Z cfischer $
+# $Id: deb_4186.nasl 9965 2018-05-25 14:06:08Z cfischer $
 #
 # Auto-generated from advisory DSA 4186-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704186");
-  script_version("$Revision: 9685 $");
+  script_version("$Revision: 9965 $");
   script_cve_id("CVE-2018-1000164");
   script_name("Debian Security Advisory DSA 4186-1 (gunicorn - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 09:07:01 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-28 00:00:00 +0200 (Sat, 28 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

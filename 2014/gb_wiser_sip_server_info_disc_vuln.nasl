@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wiser_sip_server_info_disc_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_wiser_sip_server_info_disc_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
 #
 # Wiser SIP Server Information Disclosure Vulnerability
 #
@@ -27,49 +27,30 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804454");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 9982 $");
   script_bugtraq_id(67481);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-05-20 16:32:39 +0530 (Tue, 20 May 2014)");
   script_name("Wiser SIP Server Information Disclosure Vulnerability");
 
-  tag_summary =
-"This host is installed with Wiser SIP Server and is prone to information
-disclosure vulnerability.";
-
-  tag_vuldetect =
-"Send the crafted HTTP GET request and check is it possible to read
-the backup information.";
-
-  tag_insight =
-"Wiser contains a flaw that allow a remote attacker to gain access to
+  script_tag(name : "summary" , value : "This host is installed with Wiser SIP Server and is prone to information
+disclosure vulnerability.");
+  script_tag(name : "vuldetect" , value : "Send the crafted HTTP GET request and check is it possible to read
+the backup information.");
+  script_tag(name : "insight" , value : "Wiser contains a flaw that allow a remote attacker to gain access to
 backup information by sending a direct request for the
-/voip/sipserver/class/baixarBackup.php script.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to gain sensitive
+/voip/sipserver/class/baixarBackup.php script.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain sensitive
 information without prior authentication.
 
-Impact Level: Application";
-
-  tag_affected =
-"Wiser SIP Server version 2.10";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Wiser SIP Server version 2.10");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126700/");
@@ -77,8 +58,10 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -86,34 +69,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-sipPort = "";
-sipReq = "";
-sipRes = "";
-
-## Get HTTP Port
 sipPort = get_http_port(default:80);
-if(!sipPort){
-  sipPort = 80;
-}
-
-## Check the port state
-if(!get_port_state(sipPort))
-{
-  error_message(port:sipPort, data:"Required Port is down.");
-  exit(-1);
-}
 
 sipReq = http_get(item:"/voip/sipserver/login/", port:sipPort);
 sipRes = http_keepalive_send_recv(port:sipPort, data:sipReq, bodyonly:TRUE);
 
-## Confirm Application
 if(sipRes && ">SIP Server<" >< sipRes)
 {
   sipReq = http_get(item:"/voip/sipserver/class/baixarBackup.php", port:sipPort);
   sipRes = http_send_recv(port:sipPort, data:sipReq, bodyonly:FALSE);
 
-  ## Confirm the Exploit
   if ('radius.sql' >< sipRes && 'openser.sql' >< sipRes &&
       'Content-Description: File Transfer' >< sipRes)
   {
