@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_login.nasl 9347 2018-04-06 06:58:53Z cfischer $
-# Description: HTTP login page
+# $Id: http_login.nasl 9996 2018-05-29 07:18:44Z cfischer $
+#
+# HTTP login page
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,47 +22,37 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script logs onto a web server through a login page and
-stores the authentication / session cookie.";
+###############################################################################
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11149");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 9996 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
- 
- name = "HTTP login page";
- script_name(name);
-  
- 
+ script_name("HTTP login page");
  script_category(ACT_GATHER_INFO); # Has to run after find_service
  script_tag(name:"qod_type", value:"remote_banner");
- 
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "Settings";
- script_family(family);
+ script_family("Settings");
 
  # We first visit this page to get a cookie, just in case
  script_add_preference(name:"Login page :", type: "entry", value: "/");
  # Then we submit the username & password to the right form
  script_add_preference(name:"Login form :", type: "entry", value: "");
- # Here, we allow some kind of variable substitution. 
- script_add_preference(name:"Login form fields :", type: "entry", 
+ # Here, we allow some kind of variable substitution.
+ script_add_preference(name:"Login form fields :", type: "entry",
 	value:"user=%USER%&pass=%PASS%");
  script_dependencies("httpver.nasl", "logins.nasl");
  script_require_ports("Services/www", 80);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "This script logs onto a web server through a login page and
+stores the authentication / session cookie.");
  exit(0);
 }
 
 include("http_func.inc");
-
-# The script code starts here
 
 http_login = get_kb_item("http/login");
 http_pass = get_kb_item("http/password");
@@ -83,9 +75,6 @@ if (http_pass)
 }
 
 port = get_http_port(default:80);
-
-if(! get_port_state(port)) exit(0);
-
 soc = http_open_socket(port);
 if (! soc) exit(0);
 
@@ -103,9 +92,9 @@ if (http_login_page)
   cookies = egrep(pattern: "Set-Cookie2? *:", string: r);
   if (cookies)
   {
-    cookie1 = ereg_replace(string: cookies, 
+    cookie1 = ereg_replace(string: cookies,
 		pattern: "^Set-Cookie", replace: "Cookie");
-    c = ereg_replace(string: cookie1, 
+    c = ereg_replace(string: cookie1,
 	pattern: "^Cookie2? *: *", replace: "");
     #display("First cookie = ", c);
   }
@@ -148,7 +137,7 @@ foreach r (h) {
 
   # set_kb_item(name: string("/tmp/http/auth/", port), value: cookies);
   ##set_kb_item(name: "http/auth", value: cookies);
-  c = ereg_replace(string: cookies, 
+  c = ereg_replace(string: cookies,
         pattern: "^Cookie2? *: *", replace: "");
   #  display("Authentication cookie = ", c);
   }

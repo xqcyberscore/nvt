@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 28 May 2018 16:37:19 +0200
+# Automatically created on:  Tue, 29 May 2018 12:03:00 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39089,6 +39089,7 @@
 2018/debian/deb_dla_1385.nasl: GPLv2+
 2018/debian/deb_dla_1386.nasl: GPLv2+
 2018/debian/deb_dla_1387.nasl: GPLv2+
+2018/debian/deb_dla_1388.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39956,6 +39957,7 @@
 2018/huawei/gb_huawei-sa-20180328-01-authentication.nasl: GPLv2+
 2018/huawei/gb_huawei_switches_multiple_vulnerabilities.nasl: GPLv2+
 2018/huawei/gb_huawei_switch_inf_disclosure_vuln.nasl: GPLv2+
+2018/icewarp/gb_icewarp_CVE-2015-1503_dir_trav.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
@@ -40230,6 +40232,8 @@
 2018/moodle/gb_moodle_mult_vuln_may18_02_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_may18_03_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_may18_03_win.nasl: GPLv2+
+2018/moodle/gb_moodle_mult_vuln_may18_04_lin.nasl: GPLv2+
+2018/moodle/gb_moodle_mult_vuln_may18_04_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_xss_vuln_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_xss_vuln_win.nasl: GPLv2+
 2018/moodle/gb_moodle_priv_esc_vuln_jan18_01_lin.nasl: GPLv2+
@@ -41563,6 +41567,7 @@ gb_ibm_lotus_notes_detect_macosx.nasl: GPLv2+
 gb_ibm_lotus_symphony_detect_lin.nasl: GPLv2+
 gb_ibm_lotus_symphony_detect_win.nasl: GPLv2+
 gb_ibm_openadmin_tool_detect.nasl: GPLv2+
+gb_ibm_qradar_http_detect.nasl: GPLv2+
 gb_ibm_sametime_detect.nasl: GPLv2+
 gb_ibm_security_network_protection_version.nasl: GPLv2+
 gb_ibm_security_network_protection_web_interface_detection.nasl: GPLv2+
@@ -57645,6 +57650,7 @@ gsf/2018/ibm/gb_ibm_flashsystem_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_guardium_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_notes_privilege_escalation_apr18_win.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_qradar_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_storwize_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_tivoli_remote_control_info_disc_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ab_ethernet_detect.nasl 8549 2018-01-26 12:33:14Z cfischer $
+# $Id: gb_ab_ethernet_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # AB Ethernet Protocol (CSP) Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140694");
- script_version ("$Revision: 8549 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-26 13:33:14 +0100 (Fri, 26 Jan 2018) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name: "creation_date", value: "2018-01-19 15:48:31 +0700 (Fri, 19 Jan 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,9 +61,6 @@ include("misc_func.inc");
 # based on https://github.com/digitalbond/Redpoint/blob/master/cspv4-info.nse
 
 port = get_unknown_port(default: 2222);
-
-if (!get_port_state(port))
-  exit(0);
 
 soc = open_sock_tcp(port);
 if (!soc)

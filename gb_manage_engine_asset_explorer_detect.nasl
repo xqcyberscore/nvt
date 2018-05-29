@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_asset_explorer_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_manage_engine_asset_explorer_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # ZOHO Manage Engine Asset Explorer Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805189");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 15:22:45 +0530 (Fri, 22 May 2015)");
   script_name("ZOHO Manage Engine Asset Explorer Detection");
 
@@ -46,36 +46,23 @@ if (description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-vers = string("unknown");
-version = "";
-major = "";
-BUILD = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:8080);
-if(!http_port){
-  http_port = 8080;
-}
-
-## Check Port state
-if(!get_port_state(http_port))exit(0);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);
 
-## confirm the Application
 if(">ManageEngine AssetExplorer<" >< rcvRes)
 {
-  ## Grep for version and build number
+
   Version = eregmatch(pattern:"version&nbsp;([0-9.]+)<", string:rcvRes);
 
   if(!Version[1])
@@ -95,12 +82,10 @@ if(">ManageEngine AssetExplorer<" >< rcvRes)
 
   set_kb_item(name:"AssetExplorer/installed",value:TRUE);
 
-  ## Build CPE
   cpe = build_cpe(value:Version[1], exp:"^([0-9.]+)", base:"cpe:/a:zohocorp:manageengine_assetexplorer:");
   if(!cpe)
     cpe = 'cpe:/a:zohocorp:manageengine_assetexplorer';
 
-  ## Register Product and Build Report
   register_product(cpe:cpe, location:"/", port:http_port);
   log_message(data: build_detection_report(app: "Manage Engine AssetExplorer",
                                              version:Version[1],

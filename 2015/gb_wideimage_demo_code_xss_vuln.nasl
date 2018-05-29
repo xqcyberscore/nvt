@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wideimage_demo_code_xss_vuln.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_wideimage_demo_code_xss_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # WideImage Demo Code Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wideimage:wideimage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805683");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2015-5519");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-08-03 12:38:23 +0530 (Mon, 03 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WideImage Demo Code Cross Site Scripting Vulnerability");
@@ -75,39 +75,24 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + "/demo/?colors=255&demo=applyConvolution&dither=1&dither_cb=1&div=1&"+
             "match_palette=1&match_palette_cb=1&matrix=2%25200%25200%252c%2"+
             "5200%2520-1%25200%252c%25200%25200%2520-1%22%20onmouseover%3d"+
             "alert%28document.cookie%29%20bad%3d%22&offset=220&output=preset"+
             "%20for%20demo";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:"alert\(document.cookie\)", extra_check:">WideImage"))
 {

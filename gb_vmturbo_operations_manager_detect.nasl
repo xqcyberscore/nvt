@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_manager_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_vmturbo_operations_manager_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # VMTurbo Operations Manager Detection
 #
@@ -31,18 +31,13 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2014-08-18 13:58:41 +0200 (Mon, 18 Aug 2014)");
  script_name("VMTurbo Operations Manager Detection");
 
- tag_summary =
-"The script sends a connection request to the server and attempts
-to extract the version number from the reply.";
-
-
- script_tag(name : "summary" , value : tag_summary);
- 
+ script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts
+to extract the version number from the reply.");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
@@ -53,16 +48,12 @@ to extract the version number from the reply.";
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
-if( ! get_port_state( port ) ) exit (0);
 
 url = '/cgi-bin/vmtadmin.cgi?callType=ACTION&actionType=VERSIONS';
 req = http_get( item:url, port:port );
@@ -79,7 +70,7 @@ if( "vmtbuild:" >< buf && "vmtrelease:" >< buf )
   set_kb_item(name:"vmturbo/installed",value:TRUE);
 
   build = eregmatch( string: buf, pattern: "vmtbuild:([^,]+)",icase:TRUE );
-  if ( ! isnull( build[1] ) ) 
+  if ( ! isnull( build[1] ) )
   {
     buildNR = build[1];
     set_kb_item(name:"vmturbo/" + port + "/build",value:buildNR);
@@ -96,9 +87,6 @@ if( "vmtbuild:" >< buf && "vmtrelease:" >< buf )
                                              cpe:cpe,
                                              concluded: version[0] ),
                port:port );
-
-
 }
 
 exit(0);
-

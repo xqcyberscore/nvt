@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnp3_detect.nasl 8184 2017-12-20 03:02:40Z ckuersteiner $
+# $Id: gb_dnp3_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Distributed Network Protocol (DNP3) Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140597");
- script_version ("$Revision: 8184 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-20 04:02:40 +0100 (Wed, 20 Dec 2017) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name: "creation_date", value: "2017-12-13 16:47:57 +0700 (Wed, 13 Dec 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -214,9 +214,6 @@ function get_ctrl_type(id) {
 
 
 port = get_unknown_port(default: 20000);
-
-if (!get_port_state(port))
-  exit(0);
 
 soc = open_sock_tcp(port);
 if (!soc)

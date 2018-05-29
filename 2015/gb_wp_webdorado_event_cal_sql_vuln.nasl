@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_webdorado_event_cal_sql_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_wp_webdorado_event_cal_sql_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # WordPress Webdorado Spider Event Calendar SQL Injection
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805349");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2015-2196");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-03-09 18:19:33 +0530 (Mon, 09 Mar 2015)");
   script_name("WordPress Webdorado Spider Event Calendar SQL Injection");
 
@@ -54,8 +54,8 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress Spider Event Calendar Plugin 1.4.9");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -74,40 +74,26 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-time_taken = 0;
-wait_extra_sec = 5;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-# Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
 # Added three times, to make sure its working properly
 sleep = make_list(5, 7);
+time_taken = 0;
+wait_extra_sec = 5;
 
 # Use sleep time to check we are able to execute command
 foreach sec (sleep)
 {
-  # Construct attack request
   url = dir + "/wp-admin/admin-ajax.php?action=spiderbigcalendar_month&"
             +"theme_id=13&calendar=1&select=month,list,week,day,&date=2015-02"
             +"&many_sp_calendar=1&cur_page_url=%s&cat_id=1)%20AND%20SLEEP("
@@ -121,5 +107,5 @@ foreach sec (sleep)
   time_taken = stop - start;
   if(time_taken + 1 < sec || time_taken > (sec + wait_extra_sec)) exit(0);
 }
-security_message(http_port);
+security_message(port:http_port);
 exit(0);

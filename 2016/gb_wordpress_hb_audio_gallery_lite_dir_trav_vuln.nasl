@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 5831 2017-04-03 07:39:50Z teissa $
+# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807529");
-  script_version("$Revision: 5831 $");
+  script_version("$Revision: 9998 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:39:50 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:26 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read arbitrary files or not.");
 
-  script_tag(name:"insight", value:"Flaw is due to insufficient validation 
+  script_tag(name:"insight", value:"Flaw is due to insufficient validation
   of input via 'file_path' parameter to 'gallery/audio-download.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -50,10 +50,12 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"Wordpress Plugin HB Audio Gallery Lite 
+  script_tag(name:"affected", value:"Wordpress Plugin HB Audio Gallery Lite
   version 1.0.0");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -69,36 +71,21 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-content/plugins/hb-audio-gallery-lite/gallery/audio-download.php?'
           + 'file_path=../../../../wp-config.php&file_size=10';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:"DB_NAME", extra_check:make_list("DB_USER", "DB_PASSWORD")))
 {

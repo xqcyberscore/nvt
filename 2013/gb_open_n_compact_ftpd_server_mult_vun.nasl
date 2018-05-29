@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,50 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 9984 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
 
-   tag_summary =
-"The host is running Open and Compact FTPD server and is prone to
-authentication bypass and directory traversal vulnerabilities.";
+  script_tag(name : "summary" , value : "The host is running Open and Compact FTPD server and is prone to
+authentication bypass and directory traversal vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Send the crafted directory traversal attack request and check whether it
+is able to read the system file or not.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "insight" , value : "Multiple flaws due to,
 
-  tag_vuldetect =
-"Send the crafted directory traversal attack request and check whether it
-is able to read the system file or not.";
-
-  tag_insight =
-"Multiple flaws due to,
 - Access not being restricted to various FTP commands before a user is
   properly authenticated.
-- An Error in handling certain requests.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to execute FTP commands
+- An Error in handling certain requests.");
+  script_tag(name : "affected" , value : "Open and Compact FTP Server version 1.2 and prior.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute FTP commands
 without any authentication and read arbitrary files on the affected
 application.
 
-Impact Level: Application";
-
-  tag_affected =
-"Open and Compact FTP Server version 1.2 and prior.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: Application");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://1337day.com/exploit/21078");
@@ -86,75 +69,48 @@ features, remove the product or replace the product by another one.";
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-ftpPort = "";
-banner = "";
-soc = "";
-user = "";
-pass = "";
-
-## Get the default port of FTP
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-## check port status
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
-# Get the FTP banner
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if("Gabriel's FTP Server" >!< banner){
   exit(0);
 }
 
-## create the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc){
   exit(0);
 }
 
-## Get the FTP user name and password
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
 
-## if not user name is given try with anonymous
 if(!user){
   user = "anonymous";
 }
 
-## if not password is given try with anonymous
 if(!pass){
   pass = string("anonymous");
 }
 
-## Send the user name
 send(socket:soc, data:string("USER ", user, "\r\n"));
 buf = recv(socket:soc, length:512);
 
-## send the password
 send(socket:soc, data:string("PASS ", pass, "\r\n"));
 buf = recv(socket:soc, length:512);
 
-## Confirm the login success
 if("230 User" >!< buf && "logged in" >!< buf)
 {
  close(soc);
  exit(0);
 }
 
-## Change to PASV Mode
 ftpPort2 = ftp_get_pasv_port(socket:soc);
 if(!ftpPort2){
   close(soc);
   exit(0);
 }
 
-## Open a Socket and Send Crafted request
 soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
 if(!soc2)
 {
@@ -162,18 +118,15 @@ if(!soc2)
   exit(0);
 }
 
-## List the possible system files
 files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
 foreach file (files)
 {
-  ## Construct the attack request
   file = "../../../../../../../../../../../../../../../../" + file;
   attackreq = string("RETR ", file);
   send(socket:soc, data:string(attackreq, "\r\n"));
 
   result = ftp_recv_data(socket:soc2);
 
-  ## confirm the exploit
   if("\WINDOWS" >< result || "; for 16-bit app support" >< result
                                      || "[boot loader]" >< result)
   {

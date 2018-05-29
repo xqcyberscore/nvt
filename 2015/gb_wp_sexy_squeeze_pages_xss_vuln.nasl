@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805121");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2014-9176");
   script_bugtraq_id(71511);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:32:41 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability");
 
@@ -56,8 +56,8 @@ if(description)
   script_tag(name:"affected", value:"Wordpress InstaSqueeze Sexy Squeeze
   Pages Plugin");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -77,39 +77,23 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-content/plugins/instasqueeze/lp/index.php?id='
           + '"><script>alert(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
-## Extra check is not possible
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-  pattern:"<script>alert\(document.cookie\)</script>",
+  pattern:"<script>alert\(document\.cookie\)</script>",
   extra_check:"InstaSqueeze.com"))
 {
   report = report_vuln_url( port:http_port, url:url );

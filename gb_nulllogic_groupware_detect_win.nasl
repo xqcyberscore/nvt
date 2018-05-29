@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nulllogic_groupware_detect_win.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_nulllogic_groupware_detect_win.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # NullLogic Groupware Version Detection
 #
@@ -24,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of NullLogic Groupware
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800905");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NullLogic Groupware Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
+  script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("NullLogic_Groupware/banner");
   script_require_ports("Services/www", 4110);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed version of NullLogic Groupware
+  and sets the result in KB.");
   exit(0);
 }
 
@@ -51,19 +49,9 @@ include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800905";
 SCRIPT_DESC = "NullLogic Groupware Version Detection";
 
 ngPort = get_http_port(default:4110);
-if(!ngPort){
-  ngPort = 4110;
-}
-
-if(!get_port_state(ngPort)){
-  exit(0);
-}
-
 banner = get_http_banner(port:ngPort);
 if("NullLogic Groupware" >!< banner){
   exit(0);
@@ -75,10 +63,8 @@ if(ngVer[1] != NULL)
   set_kb_item(name:"NullLogic-Groupware/Ver", value:ngVer[1]);
   log_message(data:"NullLogic Groupware version " + ngVer[1] +
                          " was detected on the host");
-   
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe(value:ngVer[1], exp:"^([0-9.]+)", base:"cpe:/a:nulllogic:groupware:");
   if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-
+     register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 }

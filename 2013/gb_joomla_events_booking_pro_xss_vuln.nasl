@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_events_booking_pro_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_joomla_events_booking_pro_xss_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Joomla Joomseller Events Booking Pro 'info' Parameter XSS Vulnerability
 #
@@ -24,53 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: Application";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803851";
 CPE = "cpe:/a:joomla:joomla";
 
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803851");
+  script_version("$Revision: 9984 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 14:53:07 +0530 (Tue, 06 Aug 2013)");
   script_name("Joomla Joomseller Events Booking Pro 'info' Parameter XSS Vulnerability");
 
-  tag_summary =
-"This host is running Joomla Joomseller Event Booking Pro plugin and
-is prone to xss vulnerability.";
-
-  tag_vuldetect =
-"Send a crafted data via HTTP GET request and check whether it is able to read
-cookie or not.";
-
-  tag_insight =
-"Input passed via 'info' parameter to 'mod_eb_v5_mini_calendar/tmpl/tootip.php'
-is not properly sanitised before being returned to the user.";
-
-  tag_impact =
-"Successful exploitation will allow remote attacker to execute arbitrary HTML
+  script_tag(name : "summary" , value : "This host is running Joomla Joomseller Event Booking Pro plugin and
+is prone to xss vulnerability.");
+  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+cookie or not.");
+  script_tag(name : "solution" , value : "Upgrade to JSE Event version 1.0.3,
+For updates refer to http://joomseller.com/joomla-components/jse-event.html");
+  script_tag(name : "insight" , value : "Input passed via 'info' parameter to 'mod_eb_v5_mini_calendar/tmpl/tootip.php'
+is not properly sanitised before being returned to the user.");
+  script_tag(name : "affected" , value : "Joomla Components com_events_booking_v5 and com_jse_event before 1.0.3");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to execute arbitrary HTML
 or script code and or discloses sensitive information resulting in loss of
-confidentiality.";
+confidentiality.
 
-  tag_affected =
-"Joomla Components com_events_booking_v5 and com_jse_event before 1.0.3";
-
-  tag_solution =
-"Upgrade to JSE Event version 1.0.3,
-For updates refer to http://joomseller.com/joomla-components/jse-event.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Impact Level: Application");
   script_xref(name : "URL" , value : "http://inter5.org/archives/262789");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/527775");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomseller-events-booking-pro-jse-event-cross-site-scripting");
@@ -81,48 +60,27 @@ For updates refer to http://joomseller.com/joomla-components/jse-event.html";
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-dir = "";
-port = "";
-
-## Get HTTP Port
-port = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!port){
-  port = 80;
-}
-
-## Check the port status
-if(!get_port_state(port)){
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get Installed Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
-  exit(0);
-}
-
-## Construct attack request
 url = string(dir, '/modules/mod_eb_v5_mini_calendar/tmpl/tootip.php?info=' +
                   'eyJldmVudHMiOiI8c2NyaXB0PmFsZXJ0KGRvY3VtZW50LmxvY2F0aW' +
                   '9uKTs8L3NjcmlwdD4ifQ==');
 
-## Check the response to confirm vulnerability
 if(http_vuln_check(port:port, url:url, check_header:TRUE,
-               pattern:"><script>alert\(document.location\);</script>",
+               pattern:"><script>alert\(document\.location\);</script>",
                extra_check:"com_events_booking"))
 {
   security_message(port);

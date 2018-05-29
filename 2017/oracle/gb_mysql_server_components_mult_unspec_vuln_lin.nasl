@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_components_mult_unspec_vuln_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_mysql_server_components_mult_unspec_vuln_lin.nasl 9986 2018-05-28 14:50:35Z cfischer $
 #
 # MySQL Server Components Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812180");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 9986 $");
   script_cve_id("CVE-2012-1690", "CVE-2012-1688", "CVE-2012-1703");
   script_bugtraq_id(53074, 53067, 53058);
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:50:35 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 14:48:53 +0530 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -41,7 +41,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixMSQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Databases");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name : "insight" , value : "Multiple unspecified error in Server
   Optimizer and Server DML components.");
- 
+
   script_tag(name : "solution" , value : "Apply the patch from the below link,
   http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html");
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_sharespace_web_detect.nasl 8316 2018-01-08 09:13:17Z cfischer $
+# $Id: gb_wd_sharespace_web_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
-# Western Digital ShareSpace WEB GUI Detect 
+# Western Digital ShareSpace WEB GUI Detect
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812363");
-  script_version("$Revision: 8316 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:13:17 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 17:43:03 +0530 (Tue, 26 Dec 2017)");
   script_name("Western Digital ShareSpace WEB GUI Detect");
 
@@ -54,19 +54,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-dir = "";
-install = "";
-wdPort = 0;
-sndReq = "";
-rcvRes = "";
-
-if(!wdPort = get_http_port(default:80)){
-  exit(0);
-}
-
-if(!get_port_state(wdPort)){
-  exit(0);
-}
+wdPort = get_http_port(default:80);
 
 rcvRes = http_get_cache(port:wdPort, item:"/");
 if(rcvRes =~ "<title>WD ShareSpace.*ShareSpace<" && rcvRes =~ "Copyright.*Western Digital Technologies"
@@ -83,6 +71,6 @@ if(rcvRes =~ "<title>WD ShareSpace.*ShareSpace<" && rcvRes =~ "Copyright.*Wester
                                             install:location,
                                             cpe:cpe),
                                             port:wdPort);
-  exit(0);
 }
+
 exit(0);

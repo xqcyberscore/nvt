@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_syncrify_server_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Syncrify Server Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805550");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-05-11 18:53:08 +0530 (Mon, 11 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Syncrify Server Remote Version Detection");
@@ -46,41 +46,19 @@ if(description)
   script_family("Product detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 5800);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variables Initialization
-dir  = "";
-cpe = "";
-url = "";
-serVer = "";
-sndReq = "";
-rcvRes = "";
-serPort  = "";
-buildVer = "";
-
-## Get http Port
 serPort = get_http_port(default:5800);
-if(!serPort){
-  serPort = 5800;
-}
+rcvRes = http_get_cache(item: "/app", port:serPort);
 
-## Check the port status
-if(!get_port_state(serPort)){
-  exit(0);
-}
-
-## Send Request and receive response
-sndReq = http_get(item: "/app", port:serPort);
-rcvRes = http_send_recv(port:serPort, data:sndReq);
-
-## Confirm Application
 if(rcvRes && rcvRes =~ ">Powered by.*>Syncrify")
 {
   Version = eregmatch(pattern:"Syncrify.*Version..([0-9.]+).-.build.([0-9.]+)", string:rcvRes);
@@ -94,7 +72,6 @@ if(rcvRes && rcvRes =~ ">Powered by.*>Syncrify")
       set_kb_item(name:"syncrify/" + serPort + "/build",value:buildVer);
     }
 
-    ## Build CPE
     ## CPE currently not available, Need to update once available.
     ## using cpe:/a:syncrify:server: as CPE currently
     cpe = build_cpe(value:serVer, exp:"^([0-9.]+)", base:"cpe:/a:syncrify:server:");

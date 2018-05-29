@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_jul14_win.nasl 9579 2018-04-24 08:28:33Z cfischer $
+# $Id: gb_postgresql_priv_esc_vuln_jul14_win.nasl 9987 2018-05-28 14:56:22Z cfischer $
 #
 # PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804711");
-  script_version("$Revision: 9579 $");
+  script_version("$Revision: 9987 $");
   script_cve_id("CVE-2014-0067");
   script_bugtraq_id(65721);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:56:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 15:34:21 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PostgreSQL and is prone to local privilege
   escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of detect NVT and check the version
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to an error when creating a PostgreSQL database cluster during
   'make check'.");
@@ -56,7 +55,7 @@ if(description)
 
   script_tag(name:"solution", value:"Update to version 9.3.6, 9.4.1 or later.");
 
-  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57054");

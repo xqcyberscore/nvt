@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip1_no_auth.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: rip1_no_auth.nasl 9993 2018-05-29 06:02:50Z cfischer $
 #
 # RIP-1 Poisoning Routing Table
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105236");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6376 $");
+ script_version ("$Revision: 9993 $");
 
  script_name("RIP-1 Poisoning Routing Table");
 
@@ -49,10 +49,10 @@ RIP-2 and implement authentication'");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:02:50 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
- script_category(ACT_ATTACK);
- script_family("Databases");
+ script_category(ACT_GATHER_INFO);
+ script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("rip_detect.nasl");
  script_require_udp_ports("Services/udp/rip", 520);
@@ -71,4 +71,3 @@ if( get_kb_item("RIP-1/enabled") )
 }
 
 exit( 99 );
-

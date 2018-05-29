@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easyphp_web_server_mult_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_easyphp_web_server_mult_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # EasyPHP Webserver Multiple Vulnerabilities
 #
@@ -24,34 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to gain
-administrative access, disclose the information, inject PHP code/shell and
-execute a remote PHP Code.
-
-Impact Level: Application";
-
-tag_affected = "EasyPHP version 12.1 and prior";
-
-
-tag_insight = "The bug in EasyPHP WebServer Manager, its skipping
-authentication for certain requests. Which allows to bypass the authentication,
-disclose the information or execute a remote PHP code.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running EasyPHP Webserver and is prone to multiple
-vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803189");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 9984 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 11:29:34 +0530 (Tue, 09 Apr 2013)");
   script_name("EasyPHP Webserver Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/easyphp-webserver-php-command-execution");
@@ -61,12 +40,23 @@ if(description)
   script_family("Web Servers");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : "The bug in EasyPHP WebServer Manager, its skipping
+authentication for certain requests. Which allows to bypass the authentication,
+disclose the information or execute a remote PHP code.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "This host is running EasyPHP Webserver and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to gain
+administrative access, disclose the information, inject PHP code/shell and
+execute a remote PHP Code.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "EasyPHP version 12.1 and prior");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -74,27 +64,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  port = 80;
-}
-
-## Check the port status
-if(!get_port_state(port)){
-  exit(0);
-}
-
 if (!can_host_php(port:port)){
   exit(0);
 }
 
 #[EasyPHP] - Administration<
 if(http_vuln_check(port:port, url:"/phpinfo.php",
-   pattern:"\[EasyPHP\]", check_header:TRUE,
+   pattern:"\[EasyPHP\]", check_header:TRUE, usecache:TRUE,
    extra_check:make_list(">Configuration<", ">PHP Core<", "php.ini")))
 {
   security_message(port:port);

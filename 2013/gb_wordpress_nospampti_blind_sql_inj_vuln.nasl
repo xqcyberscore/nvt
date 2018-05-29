@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nospampti_blind_sql_inj_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_wordpress_nospampti_blind_sql_inj_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # WordPress NOSpamPTI Plugin 'comment_post_ID' Parameter SQL Injection Vulnerability
 #
@@ -24,56 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804021";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804021");
+  script_version("$Revision: 9984 $");
   script_cve_id("CVE-2013-5917");
   script_bugtraq_id(62580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 18:32:16 +0530 (Fri, 27 Sep 2013)");
   script_name("WordPress NOSpamPTI Plugin 'comment_post_ID' Parameter SQL Injection Vulnerability");
 
-  tag_summary =
-"This host is installed with WordPress NOSpamPTI plugin and is prone to sql
-injection vulnerability.";
-
-  tag_vuldetect =
-"Send a crafted HTTP POST request and check whether it is able to execute sql
-command or not.";
-
-  tag_insight =
-"Input passed via the 'comment_post_ID' parameter to wp-comments-post.php
-script is not properly sanitised before being used in the code.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to inject or manipulate SQL
+  script_tag(name : "summary" , value : "This host is installed with WordPress NOSpamPTI plugin and is prone to sql
+injection vulnerability.");
+  script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and check whether it is able to execute sql
+command or not.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "insight" , value : "Input passed via the 'comment_post_ID' parameter to wp-comments-post.php
+script is not properly sanitised before being used in the code.");
+  script_tag(name : "affected" , value : "WordPress NOSpamPTI Plugin version 2.1 and prior.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to inject or manipulate SQL
 queries in the back-end database, allowing for the manipulation or
 disclosure of arbitrary data.
 
-Impact Level: Application";
-
-  tag_affected =
-"WordPress NOSpamPTI Plugin version 2.1 and prior.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: Application");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -88,35 +68,13 @@ features, remove the product or replace the product by another one.";
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-## Variable Initialization
-http_port = 0;
-temp = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:http_port)){
+if(!http_port = get_app_port(cpe:CPE)) exit(0);
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
@@ -124,17 +82,17 @@ url = dir + "/wp-comments-post.php";
 
 sleep = make_list(1 , 3);
 
+host = http_host_name(port:http_port);
+
 foreach i (sleep)
 {
   comment = rand_str(length:8);
 
-  ## Construct the POST data
   postData = "author=OpenVAS&email=test%40mail.com&url=1&comment=" + comment  +
              "&submit=Post+Comment&comment_post_ID=1 AND SLEEP(" + i + ")&comment_parent=0";
 
-  ## Construct the POST request
   asReq = string("POST ", url, " HTTP/1.1\r\n",
-                 "Host: ", get_host_name(), "\r\n",
+                 "Host: ", host, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postData), "\r\n",
                  "\r\n", postData);

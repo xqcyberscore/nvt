@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Cisco Unity Express Multiple XSS and CSRF Vulnerabilities
 #
@@ -24,32 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary HTML
-  and script code in a users browser session in context of an affected site and
-  perform certain actions when a logged-in user visits a specially crafted web
-  page.
-  Impact Level: Application";
-
-tag_affected = "Cisco Unity Express version 7.x";
-tag_insight = "- Input passed via the 'gui_pagenotableData' parameter to Web/SA2/ScriptList.do
-    and 'holiday.description' parameter to /Web/SA3/AddHoliday.do are not
-    properly sanitized before being returned to the user.
-  - The application allows users to perform certain actions via HTTP requests
-    without performing proper validity checks to verify the requests.";
-tag_solution = "Upgrade to Cisco Unity Express 8.0 or later,
-  For updated refer to https://sso.cisco.com/autho/forms/CDClogin.html";
-tag_summary = "The host is installed with Cisco Unity Express and is prone to
-  multiple cross-site scripting and request forgery vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803167");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 9984 $");
   script_cve_id("CVE-2013-1114", "CVE-2013-1120");
   script_bugtraq_id(57677, 57678);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 11:33:49 +0530 (Wed, 06 Feb 2013)");
   script_name("Cisco Unity Express Multiple XSS and CSRF Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52045");
@@ -63,43 +46,38 @@ if(description)
   script_family("CISCO");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  and script code in a users browser session in context of an affected site and
+  perform certain actions when a logged-in user visits a specially crafted web page.
+
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Cisco Unity Express version 7.x");
+  script_tag(name : "insight" , value : "- Input passed via the 'gui_pagenotableData' parameter to Web/SA2/ScriptList.do
+    and 'holiday.description' parameter to /Web/SA3/AddHoliday.do are not
+    properly sanitized before being returned to the user.
+
+  - The application allows users to perform certain actions via HTTP requests
+    without performing proper validity checks to verify the requests.");
+  script_tag(name : "solution" , value : "Upgrade to Cisco Unity Express 8.0 or later,
+  For updated refer to https://sso.cisco.com/autho/forms/CDClogin.html");
+  script_tag(name : "summary" , value : "The host is installed with Cisco Unity Express and is prone to
+  multiple cross-site scripting and request forgery vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  port = 80;
-}
 
-## Check port state
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Construct the attack request
 url = '/Web/SA2/ScriptList.do?gui_pagenotableData=><script>alert' +
       '(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:port, url:url, pattern:"><script>alert\(" +
-   "document.cookie\)</script>", extra_check:make_list('com.cisco.aesop.vmgui',
+   "document\.cookie\)</script>", extra_check:make_list('com.cisco.aesop.vmgui',
    'com.cisco.aesop.gui'), check_header:TRUE))
 {
   report = report_vuln_url( port:port, url:url );

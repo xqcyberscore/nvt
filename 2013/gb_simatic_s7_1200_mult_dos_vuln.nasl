@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200_mult_dos_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_simatic_s7_1200_mult_dos_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Siemens SIMATIC S7-1200 Multiple Denial of Service Vulnerabilities
 #
@@ -27,34 +27,25 @@
 
 CPE = "cpe:/a:siemens:simatic_s7_1200";
 
-tag_impact = "Successful exploitation will allow attackers to cause denial
-of service via specially-crafted packets to TCP port 102 or UCP port 161.
-
-Impact Level: Application";
-
-tag_summary = "This host is installed with Siemens SIMATIC S7-1200 and is
-prone to multiple denial of service vulnerabilities.";
-
-tag_solution = "Upgrade to SIMATIC S7-1200 V4.0.0 or later,
-http://support.automation.siemens.com/WW/view/en/86567043 ";
-
-tag_insight = "Multiple flaws allows device management over TCP and UDP ports.";
-tag_affected = "Siemens SIMATIC S7-1200 2.x and 3.x";
-
 if (description)
 {
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause denial
+of service via specially-crafted packets to TCP port 102 or UCP port 161.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Siemens SIMATIC S7-1200 2.x and 3.x");
+  script_tag(name : "insight" , value : "Multiple flaws allows device management over TCP and UDP ports.");
+  script_tag(name : "solution" , value : "Upgrade to SIMATIC S7-1200 V4.0.0 or later,
+http://support.automation.siemens.com/WW/view/en/86567043 ");
+  script_tag(name : "summary" , value : "This host is installed with Siemens SIMATIC S7-1200 and is
+prone to multiple denial of service vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803387");
-  script_version ("$Revision: 6086 $");
+  script_version ("$Revision: 9984 $");
   script_cve_id("CVE-2013-0700","CVE-2013-2780");
   script_bugtraq_id(59399,57023);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-04-25 16:01:27 +0530 (Thu, 25 Apr 2013)");
   script_name("Siemens SIMATIC S7-1200 Multiple Denial of Service Vulnerabilities");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-0700");
@@ -73,26 +64,14 @@ if (description)
 
 include("host_details.inc");
 
-## Variable Initialization
-port = 0;
-version = "";
-
-## Get port
 if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check port status
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Get version
 if(!version = get_app_version(cpe:CPE, port:port)){
   exit(0);
 }
 
-## Check for version 2.x or 3.x
 if(version =~ "^(2\.|3\.)")
 {
   security_message(port:port);

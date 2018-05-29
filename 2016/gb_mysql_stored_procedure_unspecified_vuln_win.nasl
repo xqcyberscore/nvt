@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_stored_procedure_unspecified_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mysql_stored_procedure_unspecified_vuln_win.nasl 9986 2018-05-28 14:50:35Z cfischer $
 #
 # MySQL Stored Procedure Unspecified Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809815");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 9986 $");
   script_cve_id("CVE-2013-2376", "CVE-2013-1511");
   script_bugtraq_id(59227);
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:50:35 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 16:53:22 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name : "summary" , value : "The host is running MySQL and is prone to
   multiple unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name : "insight" , value : "Unspecified error in some unknown vectors
   related to Stored Procedure.");
@@ -68,7 +67,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_windows");
@@ -78,11 +77,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sqlPort = "";
-mysqlVer = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   CPE = "cpe:/a:mysql:mysql";
   if(!sqlPort = get_app_port(cpe:CPE)){
@@ -90,7 +84,6 @@ if(!sqlPort = get_app_port(cpe:CPE)){
   }
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

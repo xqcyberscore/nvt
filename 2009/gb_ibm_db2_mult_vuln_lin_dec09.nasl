@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_vuln_lin_dec09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ibm_db2_mult_vuln_lin_dec09.nasl 9992 2018-05-29 05:51:26Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities - Dec09 (Linux)
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows the attacker to potentially perform certain
-  actions with escalated privileges or to bypass certain security restrictions.
-  Impact Level: System/Application";
-tag_affected = "IBM DB2 version 8 prior to Fixpak 18
-  IBM DB2 version 9.1 prior to Fixpak 8
-  IBM DB2 version 9.5 prior to Fixpak 4
-  IBM DB2 version 9.7 prior to Fixpak 1";
-tag_insight = "Multiple flaws are due to:
-  - Unspecified error exists related to a table function when the definer
-    loses required privileges.
-  - Unspecified error that can be exploited to insert, update, or delete rows
-    in a table without having required privileges.
-  - Unspecified error in the handling of 'SET SESSION AUTHORIZATION' statements.
-  - Error in 'DASAUTO' command, it can be run by non-privileged users.";
-tag_solution = "Update DB2 8 Fixpak 18 or 9.1 Fixpak 8 or 9.5 Fixpak 4 or 9.7 Fixpak 1 or later.
-  For updates refer to http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053";
-tag_summary = "The host is installed with IBM DB2 and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801071");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9992 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 07:51:26 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,17 +43,41 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Databases");
   script_dependencies("secpod_ibm_db2_detect_linux_900217.nasl");
-  script_require_keys("Linux/IBM_db2/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Linux/IBM_db2/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation allows the attacker to potentially perform certain
+  actions with escalated privileges or to bypass certain security restrictions.
+
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "IBM DB2 version 8 prior to Fixpak 18
+
+  IBM DB2 version 9.1 prior to Fixpak 8
+
+  IBM DB2 version 9.5 prior to Fixpak 4
+
+  IBM DB2 version 9.7 prior to Fixpak 1");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+
+  - Unspecified error exists related to a table function when the definer
+    loses required privileges.
+
+  - Unspecified error that can be exploited to insert, update, or delete rows
+    in a table without having required privileges.
+
+  - Unspecified error in the handling of 'SET SESSION AUTHORIZATION' statements.
+
+  - Error in 'DASAUTO' command, it can be run by non-privileged users.");
+  script_tag(name : "solution" , value : "Update DB2 8 Fixpak 18 or 9.1 Fixpak 8 or 9.5 Fixpak 4 or 9.7 Fixpak 1 or later.
+
+  For updates refer to http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+  script_tag(name : "summary" , value : "The host is installed with IBM DB2 and is prone to multiple
+  vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -81,11 +86,10 @@ if(!ibmVer){
   exit(0);
 }
 
-# Check for IBM DB2 version 8 before FP18, 9.1 before FP8, 9.5 before FP4
 # 9.1 FP8 =>9.1.0.8, 9.5 FP4 =>9.5.0.4, 8 FP18 =>8.1.18, 9.7 FP1=> 9.7.0.1
 if(version_is_equal(version:ibmVer, test_version:"9.7.0.0")||
    version_in_range(version:ibmVer, test_version:"8.0", test_version2:"8.1.17")||
    version_in_range(version:ibmVer, test_version:"9.1", test_version2:"9.1.0.7")||
    version_in_range(version:ibmVer, test_version:"9.5", test_version2:"9.5.0.3")){
-  security_message(0);
+  security_message(port:0);
 }

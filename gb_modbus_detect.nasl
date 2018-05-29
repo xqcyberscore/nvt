@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 8471 2018-01-19 10:20:13Z ckuersteiner $
+# $Id: gb_modbus_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Modbus Detection
 #
@@ -29,8 +29,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106522");
- script_version ("$Revision: 8471 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-19 11:20:13 +0100 (Fri, 19 Jan 2018) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name: "creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,9 +59,6 @@ include("misc_func.inc");
 
 port = get_unknown_port(default: 502);
 
-if (!get_port_state(port))
-  exit(0);
-
 sock = open_sock_tcp(port);
 if (!sock)
   exit(0);
@@ -85,7 +82,7 @@ for (i=0; i<3; i++) {
     # skip 7 bytes of MBAP header
     offset = 7;
 
-    # we need at leas 7 more info bytes
+    # we need at least 7 more info bytes
     if (strlen(res) < (7 + offset))
       continue;
 
@@ -95,9 +92,9 @@ for (i=0; i<3; i++) {
 
     num_of_objects = ord(res[6 + offset]);
     data = substr(res, offset + 7);
-   
+
     start = 0;
- 
+
     for (i = 0; i<num_of_objects; i++) {
       id = ord(data[start]);
       length = ord(data[start + 1]);

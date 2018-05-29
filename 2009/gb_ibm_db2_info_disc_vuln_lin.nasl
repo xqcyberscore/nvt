@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_info_disc_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ibm_db2_info_disc_vuln_lin.nasl 9994 2018-05-29 06:22:58Z cfischer $
 #
 # IBM DB2 Information Disclosure Vulnerability (Linux)
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the security update.
-  http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678
-
-  *****
-  NOTE: Please, ignore the warning if Patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation will let the attacker gain sensitive information of
-  the affected remote system.
-  Impact Level: Application/System";
-tag_affected = "IBM DB2 Enterprise Server 9.1 before 9.1 FP7.
-  IBM DB2 Workgroup Server 9.1 before 9.1 FP7.
-  IBM DB2 Express Server 9.1 before 9.1 FP7.
-  IBM DB2 Personal Server 9.1 before 9.1 FP7.
-  IBM DB2 Connect Server 9.1 before 9.1 FP7.";
-tag_insight = "This flaw is due to the 'INNER JOIN' and 'OUTER JOIN' predicate which allows
-  remote attackers to execute arbitrary queries.";
-tag_summary = "This host is installed with IBM DB2 and is prone to Information
-  Disclosure Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800703");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 9994 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:22:58 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -62,19 +42,37 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("Databases");
   script_dependencies("secpod_ibm_db2_detect_linux_900217.nasl");
-  script_require_keys("Linux/IBM_db2/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("Linux/IBM_db2/Ver");
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker gain sensitive information of
+  the affected remote system.
+
+  Impact Level: Application/System");
+  script_tag(name : "affected" , value : "IBM DB2 Enterprise Server 9.1 before 9.1 FP7.
+
+  IBM DB2 Workgroup Server 9.1 before 9.1 FP7.
+
+  IBM DB2 Express Server 9.1 before 9.1 FP7.
+
+  IBM DB2 Personal Server 9.1 before 9.1 FP7.
+
+  IBM DB2 Connect Server 9.1 before 9.1 FP7.");
+  script_tag(name : "insight" , value : "This flaw is due to the 'INNER JOIN' and 'OUTER JOIN' predicate which allows
+  remote attackers to execute arbitrary queries.");
+  script_tag(name : "summary" , value : "This host is installed with IBM DB2 and is prone to Information
+  Disclosure Vulnerability.");
+  script_tag(name : "solution" , value : "Apply the security update.
+
+  http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678
+
+  *****
+  NOTE: Please, ignore the warning if Patch is already applied.
+  *****");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -83,8 +81,7 @@ if(appVer == NULL){
   exit(0);
 }
 
-# Check for IBM DB2 Server Products Version 9.1 before 9.1 FP7 (9.1.0.7)
 # version 9.1 FP6 => 9.1.0.6
 if(version_in_range(version:appVer, test_version:"9.1", test_version2:"9.1.0.6")){
-  security_message(0);
+  security_message(port:0);
 }

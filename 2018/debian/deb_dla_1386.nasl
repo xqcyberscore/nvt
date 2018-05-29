@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1386.nasl 9976 2018-05-28 07:01:36Z cfischer $
+# $Id: deb_dla_1386.nasl 9991 2018-05-29 04:56:09Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1386-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891386");
-  script_version("$Revision: 9976 $");
+  script_version("$Revision: 9991 $");
   script_cve_id("CVE-2018-7866", "CVE-2018-7873", "CVE-2018-7876", "CVE-2018-9009", "CVE-2018-9132");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1386-1] ming security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 09:01:36 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 06:56:09 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-28 00:00:00 +0200 (Mon, 28 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
@@ -77,7 +77,7 @@ swf file.
 
 CVE-2018-9009
 
-Various heap-based buffer overflow vulnerabilites in util/decompiler.c.
+Various heap-based buffer overflow vulnerabilities in util/decompiler.c.
 Remote attackers might leverage this vulnerability to cause a denial of
 service via a crafted swf file.
 

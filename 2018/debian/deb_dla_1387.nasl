@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1387.nasl 9976 2018-05-28 07:01:36Z cfischer $
+# $Id: deb_dla_1387.nasl 9991 2018-05-29 04:56:09Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1387-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891387");
-  script_version("$Revision: 9976 $");
+  script_version("$Revision: 9991 $");
   script_cve_id("CVE-2017-18248");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1387-1] cups security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 09:01:36 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 06:56:09 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-28 00:00:00 +0200 (Mon, 28 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

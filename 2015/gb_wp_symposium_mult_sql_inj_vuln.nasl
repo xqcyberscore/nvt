@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # WordPress WP Symposium Multiple SQL Injection Vulnerabilities
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806026");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 9998 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 15:13:35 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WordPress WP Symposium Multiple SQL Injection Vulnerabilities");
+  script_cve_id("CVE-2015-6522");
 
   script_tag(name: "summary" , value:"The host is installed with Wordpress
   WP Symposium plugin and is prone to multiple sql injection vulnerabilities.");
@@ -71,38 +72,23 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-http_port = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/wp-content/plugins/wp-symposium/get_album_item.php?size=version%28%29%20;%20--';
 
 sndReq = http_get(item:url,  port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:"([0-9.]+)",
                    extra_check:"Set-Cookie: PHPSESSID"))

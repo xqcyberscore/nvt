@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ba_systems_web_detect.nasl 8316 2018-01-08 09:13:17Z cfischer $
+# $Id: gb_ba_systems_web_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Building Automation Systems BAS-Device Web Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812371");
-  script_version("$Revision: 8316 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:13:17 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 10:21:46 +0530 (Wed, 03 Jan 2018)");
   script_name("Building Automation Systems BAS-Device Web Detection");
 
@@ -54,20 +54,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-dir = "";
-install = "";
-basPort = 0;
-sndReq = "";
-rcvRes = "";
-basVer = "";
-
-if(!basPort = get_http_port(default:80)){
-  exit(0);
-}
-
-if(!get_port_state(basPort)){
-  exit(0);
-}
+basPort = get_http_port(default:80);
 
 rcvRes = http_get_cache(port:basPort, item:"/");
 if(rcvRes =~ "Server: BAS([0-9A-Z]+) HTTPserv:00002")
@@ -93,6 +80,6 @@ if(rcvRes =~ "Server: BAS([0-9A-Z]+) HTTPserv:00002")
                                            cpe: cpe,
                                            concluded: "BAS Device Version:" + basVer + ", Model:" + Model),
                                            port: basPort);
-  exit(0);
 }
+
 exit(0);

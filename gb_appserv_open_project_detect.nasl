@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserv_open_project_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_appserv_open_project_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # AppServ Open Project Version Detection
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802428");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 13:02:43 +0530 (Mon, 16 Apr 2012)");
   script_name("AppServ Open Project Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,42 +56,23 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variables Initialization
-port  = 0;
-appVer = "";
-banner = "";
-sndReq = "";
-rcvRes = "";
-cpe    = "";
-location = "";
-
 port = get_http_port(default:80);
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Send the request and  confirm the response
 rcvRes = http_get_cache(item: "/", port:port);
 
-## Confirm AppServ Open Project
 if("title>AppServ Open Project" >< rcvRes && ">About AppServ" >< rcvRes)
 {
-  ## Grep for the version
   appVer = eregmatch(pattern:"AppServ Version ([0-9.]+)" , string:rcvRes);
   if(appVer[1] != NULL)
   {
-    ## Set the version
     set_kb_item(name:"www/" + port + "/AppServ",value:appVer[1]);
 
   }
   set_kb_item(name:"AppServ/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:appVer[1], exp:"^([0-9.]+)",
                     base:" cpe:/a:appserv_open_project:appserv:");
   if(isnull(cpe))

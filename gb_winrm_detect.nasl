@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winrm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_winrm_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Detection of WinRM
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103923");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 9996 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2014-03-19 12:39:47 +0100 (Wed, 19 Mar 2014)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -40,6 +40,8 @@ if (description)
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl");
  script_require_ports("Services/www", 5985, 5986);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : "Windows Remote Management (WinRM) is running at this port.
 
  Windows Remote Management (WinRM) is the Microsoft implementation of
@@ -55,17 +57,11 @@ include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:5985 );
-if( ! port ) exit( 0 );
-
-if( ! get_port_state( port ) ) exit( 0 );
-
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 
 req = 'POST /wsman HTTP/1.1\r\n' +
       'Authorization: Negotiate TlRMTVNTUAABAAAAt4II4gAAAAAAAAAAAAAAAAAAAAAGAHIXAAAADw==\r\n' +
-      'Content-Type: application/soap+xml;charset=UTF-8\r\n' + 
+      'Content-Type: application/soap+xml;charset=UTF-8\r\n' +
       'User-Agent: Microsoft WinRM Client OpenVAS\r\n' +
       'Host: ' + host + '\r\n' +
       'Content-Length: 0\r\n' +
@@ -74,11 +70,10 @@ req = 'POST /wsman HTTP/1.1\r\n' +
 
 buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( buf =~ "HTTP/1\.. 401" && "Server: Microsoft-HTTPAPI/" >< buf && "Negotiate TlRMTVNT" >< buf ) 
+if( buf =~ "HTTP/1\.. 401" && "Server: Microsoft-HTTPAPI/" >< buf && "Negotiate TlRMTVNT" >< buf )
 {
   register_service( port:port, ipproto:"tcp", proto:"winrm" );
   log_message( port:port );
-  exit( 0 );
-}  
+}
 
-exit( 0 ); 
+exit( 0 );

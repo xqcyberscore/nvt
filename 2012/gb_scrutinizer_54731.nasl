@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54731.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_scrutinizer_54731.nasl 9994 2018-05-29 06:22:58Z cfischer $
 #
 # Scrutinizer Default Password Security Bypass Vulnerability
 #
@@ -25,45 +25,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The MySQL component in Plixer Scrutinize is prone to a security-bypass vulnerability.
-
-Successful attacks can allow an attacker to gain access to
-the affected application using the default authentication
-credentials scrutremote:admin.
-
-Scrutinizer 9.5.0 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103533";
 CPE = "cpe:/a:dell:sonicwall_scrutinizer";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103533");
  script_bugtraq_id(54731);
  script_cve_id("CVE-2012-3951");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 9994 $");
 
  script_name("Scrutinizer Default Password Security Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54731");
  script_xref(name : "URL" , value : "http://www.plixer.com");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:22:58 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-08-08 12:18:06 +0200 (Wed, 08 Aug 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
+ script_family("Databases");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("mysql_version.nasl", "gb_scrutinizer_detect.nasl");
  script_require_ports("Services/www", 80, "Services/mysql", 3306);
  script_mandatory_keys("scrutinizer/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "The MySQL component in Plixer Scrutinize is prone to a security-bypass vulnerability.");
+ script_tag(name : "impact" , value : "Successful attacks can allow an attacker to gain access to
+the affected application using the default authentication credentials scrutremote:admin.");
+ script_tag(name : "affected" , value : "Scrutinizer 9.5.0 is vulnerable. Other versions may also be affected.");
+ script_tag(name : "solution" , value : "Vendor updates are available. Please see the references for more
+information.");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -72,7 +68,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("byte_func.inc");
 
-if(!web_port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0); 
+if(!web_port = get_app_port(cpe:CPE))exit(0);
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
@@ -96,12 +92,12 @@ res =  recv(socket:sock, length:plen);
 for (i=0; i<strlen(res); i++)  {
   if (ord(res[i]) != 0) {
     ver += res[i];
-  }             
+  }
     else {
     break;
-  }                   
+  }
 }
-  
+
 p = strlen(ver);
 if(p < 5)exit(0);
 
@@ -118,7 +114,7 @@ l = strlen(sha_pass3);
 
 for (i=0; i<l; i++) {
   pass += raw_string(ord(sha_pass1[i]) ^ ord(sha_pass3[i]));
-}  
+}
 
 
 req = raw_string(0x05,0xa6,0x0f,0x00,0x00,0x00,0x00,0x01,0x21,0x00,0x00,0x00,0x00,0x00,
@@ -175,7 +171,7 @@ while(1) {
     close(sock);
     security_message(port:port);
     exit(0);
-  }  
+  }
 
 }
 

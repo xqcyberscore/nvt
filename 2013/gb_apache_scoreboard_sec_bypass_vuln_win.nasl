@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)
 #
@@ -24,55 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: Application";
-
 CPE = "cpe:/a:apache:http_server";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803744";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7548 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803744");
+  script_version("$Revision: 9984 $");
   script_cve_id("CVE-2012-0031");
   script_bugtraq_id(51407);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 19:53:07 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)");
 
- tag_summary =
-"The host is running Apache HTTP Server and is prone to security bypass
-vulnerability.";
-
-  tag_vuldetect =
-"Get the installed version Apache HTTP Server with the help of detect NVT
-and check it is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to an error in 'inscoreboard.c', certain type field within
+  script_tag(name : "summary" , value : "The host is running Apache HTTP Server and is prone to security bypass
+vulnerability.");
+  script_tag(name : "vuldetect" , value : "Get the installed version Apache HTTP Server with the help of detect NVT
+and check it is vulnerable or not.");
+  script_tag(name : "solution" , value : "Upgrade to Apache HTTP Server 2.2.22 or later,
+For updates refer to http://svn.apache.org");
+  script_tag(name : "insight" , value : "The flaw is due to an error in 'inscoreboard.c', certain type field within
 a scoreboard shared memory segment leading to an invalid call to the free
-function.";
+function.");
+  script_tag(name : "affected" , value : "Apache HTTP Server version before 2.2.22 on windows.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to bypass certain security
+restrictions. Other attacks are also possible.
 
-  tag_impact =
-"Successful exploitation will allow remote attacker to bypass certain security
-restrictions. Other attacks are also possible.";
-
-  tag_affected =
-"Apache HTTP Server version before 2.2.22 on windows.";
-
-  tag_solution =
-"Upgrade to Apache HTTP Server 2.2.22 or later,
-For updates refer to http://svn.apache.org";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Impact Level: Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -87,26 +66,13 @@ For updates refer to http://svn.apache.org";
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-# variable initialization
-httpPort = 0;
-httpVers = "";
+if(!httpPort = get_app_port(cpe:CPE)) exit(0);
+if(!httpVers = get_app_version(cpe:CPE, port:httpPort)) exit(0);
 
-# get the port
-if(!httpPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)) exit(0);
-
-# check the port state
-if(!get_port_state(httpPort)) exit(0);
-
-# get the version
-if(!httpVers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:httpPort)) exit(0);
-
-# check the version
-if(httpVers && httpVers >!< "unknown" &&
-   version_is_less(version:httpVers, test_version:"2.2.22"))
+if(version_is_less(version:httpVers, test_version:"2.2.22"))
 {
   security_message(port:httpPort);
   exit(0);

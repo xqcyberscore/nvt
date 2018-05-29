@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_admin_52862.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_hp_onboard_admin_52862.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # HP Onboard Administrator Multiple Security Vulnerabilities
 #
@@ -25,41 +25,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103795";
 CPE = "cpe:/a:hp:onboard_administrator";
-
-tag_insight = "HP Onboard Administrator is prone to:
-1. A URI-redirection vulnerability
-2. An information-disclosure vulnerability
-3. A security-bypass vulnerability";
-
-tag_impact = "An attacker may exploit these issues to obtain sensitive information,
-bypass certain security restrictions, and redirect a user to a
-potentially malicious site; this may aid in phishing attacks.";
-
-tag_affected = "HP Onboard Administrator (OA) before 3.50";
-
-tag_summary = "HP Onboard Administrator is prone to multiple security vulnerabilities.";
-tag_solution = "Updates are available. Please see the references for more information.";
-tag_vuldetect = "Check if HP Onboard Administrator version is < 3.50";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103795");
  script_bugtraq_id(52862);
  script_cve_id("CVE-2012-0128","CVE-2012-0129","CVE-2012-0130");
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6074 $");
-
+ script_version ("$Revision: 9984 $");
  script_name("HP Onboard Administrator Multiple Security Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52862");
  script_xref(name:"URL", value:"http://h18004.www1.hp.com/products/blades/components/onboard/index.html?jumpid=reg_R1002_USEN");
  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03263573");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2013-10-01 11:28:03 +0200 (Tue, 01 Oct 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -69,31 +50,35 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name : "impact" , value : "An attacker may exploit these issues to obtain sensitive information,
+bypass certain security restrictions, and redirect a user to a
+potentially malicious site. This may aid in phishing attacks.");
+ script_tag(name : "vuldetect" , value : "Check if HP Onboard Administrator version is < 3.50");
+ script_tag(name : "insight" , value : "HP Onboard Administrator is prone to:
+
+1. A URI-redirection vulnerability
+
+2. An information-disclosure vulnerability
+
+3. A security-bypass vulnerability");
+ script_tag(name : "solution" , value : "Updates are available. Please see the references for more information.");
+ script_tag(name : "summary" , value : "HP Onboard Administrator is prone to multiple security vulnerabilities.");
+ script_tag(name : "affected" , value : "HP Onboard Administrator (OA) before 3.50");
+
+ script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
-
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(vers = get_app_version(cpe:CPE, port:port)) {
   if(version_is_less(version: vers, test_version: "3.50")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

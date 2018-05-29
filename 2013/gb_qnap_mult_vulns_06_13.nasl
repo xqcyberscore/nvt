@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_mult_vulns_06_13.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_qnap_mult_vulns_06_13.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Qnap Multiple Vulnerabilities
 #
@@ -25,29 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "QNAP VioStor NVR firmware version 4.0.3 and possibly earlier versions and QNAP
-NAS contains multiple vulnerabilities.
-
-1. Improper Access Control 
-VioStor NVR firmware version 4.0.3 and possibly earlier versions and QNAP NAS
-with the Surveillance Station Pro activated contains a hardcoded guest account
-and password which can be leveraged to login to the webserver. It has been
-reported that it is not possible to view or administer the guest account using
-the web interface.
-
-2. Cross-Site Request Forgery (CSRF). 
-VioStor NVR firmware version 4.0.3 and possibly earlier versions contains a
-cross-site request forgery vulnerability could allow an attacker to add a new
-administrative account to the server by tricking an administrator to click on a
-malicious link while they are currently logged into the webserver.";
-
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103732";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 7585 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103732");
+ script_version ("$Revision: 9984 $");
  script_cve_id("CVE-2013-0142","CVE-2013-0144");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,8 +38,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.qnap.com/");
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/927644");
  script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Serious-vulnerabilities-in-QNAP-storage-and-surveillance-systems-1883263.html");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2013-06-07 10:32:41 +0200 (Fri, 07 Jun 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -67,28 +48,44 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_mandatory_keys("http_server/banner");
  script_require_ports("Services/www", 80, 8080);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "QNAP VioStor NVR firmware version 4.0.3 and possibly earlier versions and QNAP
+NAS contains multiple vulnerabilities.
+
+1. Improper Access Control
+
+VioStor NVR firmware version 4.0.3 and possibly earlier versions and QNAP NAS
+with the Surveillance Station Pro activated contains a hardcoded guest account
+and password which can be leveraged to login to the webserver. It has been
+reported that it is not possible to view or administer the guest account using
+the web interface.
+
+2. Cross-Site Request Forgery (CSRF).
+
+VioStor NVR firmware version 4.0.3 and possibly earlier versions contains a
+cross-site request forgery vulnerability could allow an attacker to add a new
+administrative account to the server by tricking an administrator to click on a
+malicious link while they are currently logged into the webserver.");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
+
  exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port:port);
 if(!banner || "Server: http server" >!< banner)exit(0);
 
 url = '/cgi-bin/create_user.cgi';
 
-req = 'GET ' + url + ' HTTP/1.0\r\n' + 
+req = 'GET ' + url + ' HTTP/1.0\r\n' +
       '\r\n';
 
 resp = http_send_recv(port:port, data:req);
 
-if(resp !~ "HTTP/1.[0|1] 401")exit(0); 
+if(resp !~ "HTTP/1.[0|1] 401")exit(0);
 
 userpass64 = base64(str:"guest:guest");
 
@@ -99,10 +96,8 @@ req = 'GET ' + url + ' HTTP/1.0\r\n' +
 resp = http_send_recv(port:port, data:req);
 
 if(resp =~ "HTTP/1.[0|1] 200") {
-
   security_message(port:port);
   exit(0);
-
-}  
+}
 
 exit(0);

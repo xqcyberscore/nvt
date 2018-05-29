@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_splunk_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Splunk Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100693");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
   script_name("Splunk Detection");
 
@@ -50,36 +50,23 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-spPort = "";
-url = "";
-req = "";
-buf = "";
-version = "";
-
 spPort = get_http_port(default:8000);
-if(!get_port_state(spPort)){
-  exit(0);
-}
 
 foreach dir (make_list("", "/splunk/en-US/", "/en-US"))
 {
-  req = http_get(item:string(dir, "/account/login"), port:spPort);
-  buf = http_keepalive_send_recv(port:spPort, data:req, bodyonly:FALSE);
+  buf = http_get_cache(item:string(dir, "/account/login"), port:spPort);
 
-  ##Confirm Application
-  if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) && 
+  if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) &&
      ('Splunk Enterprise' >< buf || buf =~ 'product_type":( )?"enterprise'))
   {
 
     vers = string("unknown");
 
-    ### try to get version
     version = eregmatch(string:buf, pattern:"&copy;.*Splunk ([0-9.]+)",icase:TRUE);
     if(isnull(version[1])){
       version = eregmatch(string:buf, pattern:'version":"([0-9.]+)', icase:TRUE);
@@ -88,7 +75,6 @@ foreach dir (make_list("", "/splunk/en-US/", "/en-US"))
       vers=chomp(version[1]);
     }
 
-    ## check for build version
     b = eregmatch(string:buf, pattern:"&copy;.*Splunk.* build ([0-9.]+)", icase:TRUE);
     if(isnull(b[1])){
       b= eregmatch(string:buf, pattern:'build":"([0-9a-z.]+)', icase:TRUE);
@@ -97,17 +83,13 @@ foreach dir (make_list("", "/splunk/en-US/", "/en-US"))
       build = b[1];
     }
 
-    ## set core version
     set_kb_item(name: string("www/", spPort, "/splunk"), value: string(vers));
-
-    ## set the build version
     if(!isnull(build)) {
       set_kb_item(name: string("www/", spPort, "/splunk/build"), value: string(build));
     }
 
     set_kb_item(name:"Splunk/installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:splunk:splunk:");
     if(!cpe){
       cpe = "cpe:/a:splunk:splunk";

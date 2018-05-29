@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 9803 2018-05-11 12:17:39Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 9985 2018-05-28 14:39:02Z cfischer $
 #
 # SCP/SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 9803 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 14:17:39 +0200 (Fri, 11 May 2018) $");
+  script_version("$Revision: 9985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:39:02 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -96,13 +96,13 @@ files = make_array( "/sftp-config.json", '(tab key will cycle through the settin
                     "/WinSCP.ini", "^\[(Configuration|SshHostKeys)\]",
                     "/winscp.ini", "^\[(Configuration|SshHostKeys)\]",
                     # https://github.com/lukasz-wronski/vscode-ftp-sync/wiki/Sample-FTP-Sync-configs
-                    "/.vscode/ftp-sync.json", '("username": ?".*",|"password": ?".*",|"passphrase": ?".*",|"privateKeyPath": ?".*",)',
+                    "/.vscode/ftp-sync.json", '("password": ?".*",|"passphrase": ?".*",|"privateKeyPath": ?".*",)',
                     # https://atom.io/packages/sftp-deployment
-                    "/deployment-config.json", '("type": ?"s?ftp",|"user": ?".*",|"password": ?".*",|"passphrase": ?".*",|"sshKeyFile": ?".*",)',
+                    "/deployment-config.json", '("type": ?"s?ftp",|"password": ?".*",|"passphrase": ?".*",|"sshKeyFile": ?".*",)',
                     # https://atom.io/packages/remote-sync
-                    "/.remote-sync.json", '("transport": ?"(ftp|scp)",|"username": ?".*",|"password": ?".*",|"passphrase": ?".*",|"keyfile": ?".*",)',
+                    "/.remote-sync.json", '("transport": ?"(ftp|scp)",|"password": ?".*",|"passphrase": ?".*",|"keyfile": ?".*",)',
                     # https://atom.io/packages/remote-ftp
-                    "/.ftpconfig", '("protocol": ?"s?ftp",|"user": ?".*",|"pass": ?".*",|"passphrase": ?".*",|"promptForPass": ?(true|false),|"privatekey": ?".*",)' );
+                    "/.ftpconfig", '("protocol": ?"s?ftp",|"pass": ?".*",|"passphrase": ?".*",|"promptForPass": ?(true|false),|"privatekey": ?".*",)' );
 
 report = 'The following files were identified:\n';
 

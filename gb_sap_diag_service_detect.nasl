@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_diag_service_detect.nasl 9916 2018-05-22 08:07:25Z ckuersteiner $
+# $Id: gb_sap_diag_service_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # SAP DIAG Service Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141088");
-  script_version("$Revision: 9916 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-22 10:07:25 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 9996 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name: "creation_date", value: "2018-05-22 14:33:46 +0700 (Tue, 22 May 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 this host.
 
 DIAG is a propretiary communication protocol between the SAP GUI and the SAP application server.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -63,9 +63,6 @@ include("misc_func.inc");
 # Wireshark DIAG dissector https://github.com/CoreSecurity/SAP-Dissection-plug-in-for-Wireshark
 
 port = get_unknown_port(default: 3200);
-
-if (!get_port_state(port))
-  exit(0);
 
 soc = open_sock_tcp(port);
 if (!soc)
@@ -145,7 +142,6 @@ init_query = raw_string(# SAP NI Protocol
 
 send(socket: soc, data: init_query);
 
-# Get the response length
 recv = recv(socket: soc, length: 4);
 if (strlen(recv) != 4) {
   close(soc);

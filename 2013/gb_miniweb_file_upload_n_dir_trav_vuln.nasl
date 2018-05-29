@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
+# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803477");
-  script_version("$Revision: 9335 $");
+  script_version("$Revision: 9984 $");
   script_bugtraq_id(58946);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 18:42:05 +0530 (Wed, 17 Apr 2013)");
   script_name("MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and check whether it is able to upload
   arbirary file or not.");
 
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year since disclosure
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
 
@@ -65,33 +65,16 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_require_ports("Services/www", 8000);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-file = "";
-req = "";
-url = "";
-
-## Get HTTP Port
-port = get_http_port(default:8000);
-if(!port){
-  port = 8000;
-}
-
-## Check the port status
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Function to Upload the file
-function upload_file(url, file)
+function create_upload_req(url, file, host)
 {
   postData = string(
   '------WebKitFormBoundarybzq9yiXANBqlqUBo\r\n',
@@ -118,19 +101,19 @@ function upload_file(url, file)
   );
 }
 
+port = get_http_port(default:8000);
+host = http_host_name(port:port);
+
 url = "/AAAAAAAAAAAAAAAAAAAAA";
 file = string("ov-upload-test-", rand_str(length:5), ".txt");
-req = upload_file(url:url, file:file);
-
-## Upload the file
+req = create_upload_req(url:url, file:file, host:host);
 http_keepalive_send_recv(port:port, data: req);
 
-## Check whether the file is uploaded
 if(http_vuln_check(port:port, url:string("/", file), check_header:TRUE,
           pattern:"File-Upload-Vulnerability-Test"))
 {
-  msg = 'Scanner has created a file ' + file + ' to check the vulnerability.'+
-                                          ' Please remove this file as soon as possible.';
+  msg = 'Scanner has created a file ' + file + ' to check the vulnerability.' +
+        ' Please remove this file as soon as possible.';
   security_message(port:port, data:msg);
   exit(0);
 }

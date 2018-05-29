@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # Wordpress Photo Gallery Blind SQL injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805127");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2015-1055");
   script_bugtraq_id(72015);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 11:04:59 +0530 (Tue, 20 Jan 2015)");
   script_name("Wordpress Photo Gallery Blind SQL injection Vulnerability");
 
@@ -75,51 +75,32 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-http_port = "";
-time_taken = 0;
-wait_extra_sec = 5;
-
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Plugin installation Url
 url = dir + '/wp-content/plugins/photo-gallery/photo-gallery.php';
 sndReq = http_get(item:url,  port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-## Confirm Application
-if(rcvRes && rcvRes =~ "HTTP/1.. 200 OK")
+if(rcvRes && rcvRes =~ "^HTTP/1\.[01] 200")
 {
   ## Added two times, to make sure its working properly
   sleep = make_list(15000000, 25000000);
+  time_taken = 0;
+  wait_extra_sec = 5;
 
   ## Use sleep time to check we are able to execute command
   foreach sec (sleep)
   {
-    ## Construct the attack request
     url = dir + '/wp-admin/admin-ajax.php?tag_id=0&action=GalleryBox&current_view=0&'
               + 'image_id=1&gallery_id=1&theme_id=1&thumb_width=180&thumb_height=90&'
               + 'open_with_fullscreen=0&open_with_autoplay=0&image_width=800&image_h'
@@ -144,6 +125,6 @@ if(rcvRes && rcvRes =~ "HTTP/1.. 200 OK")
 
     if(time_taken + 1 < sec || time_taken > (sec + wait_extra_sec)) exit(0);
   }
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_web_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_vmware_esx_web_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # VMware ESX detection (Web)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103418");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 9996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 11:30:38 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,18 +60,12 @@ SCRIPT_DESC = "VMware ESX detection (Web)";
 port = get_http_port(default:443);
 transport = get_port_transport(port);
 
-if(!get_port_state(port)) {
-  exit(0);
-}
-
 soc = open_sock_tcp(port, transport: transport);
 if(!soc) {
   exit(0);
 }
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 req  = string("GET / HTTP/1.1\r\n");
 req += string("Host: ",host,"\r\n\r\n");

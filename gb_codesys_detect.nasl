@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codesys_detect.nasl 7836 2017-11-21 01:58:02Z ckuersteiner $
+# $Id: gb_codesys_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # CODESYS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140500");
- script_version ("$Revision: 7836 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-21 02:58:02 +0100 (Tue, 21 Nov 2017) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name: "creation_date", value: "2017-11-16 08:54:19 +0700 (Thu, 16 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,9 +62,6 @@ include("misc_func.inc");
 
 port = get_unknown_port(default: 2455);
 
-if (!get_port_state(port))
-  exit(0);
-
 soc = open_sock_tcp(port);
 if (!soc)
   exit(0);
@@ -74,12 +71,10 @@ lile_query = raw_string(0xbb, 0xbb, 0x01, 0x00, 0x00, 0x00, 0x01);
 # big endian query
 bige_query = raw_string(0xbb, 0xbb, 0x01, 0x00, 0x00, 0x01, 0x01);
 
-# try little endian query first
 send(socket: soc, data: lile_query);
 recv = recv(socket: soc, length: 512);
 
 if (!recv) {
-  # try big endian query
   send(socket: soc, data: bige_query);
   recv = recv(socket: soc, length: 512);
   if (!recv) {
@@ -88,7 +83,7 @@ if (!recv) {
   }
 }
 
-close(soc); 
+close(soc);
 
 if (hexstr(substr(recv, 0, 1)) != "bbbb" || strlen(recv) < 130)
   exit(0);

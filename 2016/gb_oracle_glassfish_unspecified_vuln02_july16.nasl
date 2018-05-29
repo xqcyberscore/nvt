@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln02_july16.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_oracle_glassfish_unspecified_vuln02_july16.nasl 9993 2018-05-29 06:02:50Z cfischer $
 #
 # Oracle GlassFish Server Unspecified Vulnerability -02 July16
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808706");
-  script_version("$Revision: 9927 $");
+  script_version("$Revision: 9993 $");
   script_cve_id("CVE-2016-5477");
   script_bugtraq_id(92032);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:02:50 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2016-07-22 12:27:52 +0530 (Fri, 22 Jul 2016)");
   script_name("Oracle GlassFish Server Unspecified Vulnerability -02 July16");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server
   and is prone to unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an error in the Administration 
+  script_tag(name:"insight", value:"The flaw exists due to an error in the Administration
   sub-component.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
@@ -56,6 +55,7 @@ if(description)
   and 3.0.1");
 
   script_tag(name:"solution", value:"Apply patches from below link,
+
   http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,7 +66,7 @@ if(description)
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Databases");
+  script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
   script_mandatory_keys("GlassFish/installed");
 

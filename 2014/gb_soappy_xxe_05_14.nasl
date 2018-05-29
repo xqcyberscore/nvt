@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soappy_xxe_05_14.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_soappy_xxe_05_14.nasl 9991 2018-05-29 04:56:09Z ckuersteiner $
 #
 # SOAPpy XML External Entities Information Disclosure Vulnerability
 #
@@ -28,13 +28,13 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105017");
- script_version("$Revision: 9982 $");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+ script_version("$Revision: 9991 $");
+ script_tag(name:"cvss_base", value:"5.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2014-3242", "CVE-2014-3243");
  script_name("SOAPpy XML External Entities Information Disclosure Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 06:56:09 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2014-05-06 11:10:06 +0200 (Tue, 06 May 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -43,7 +43,7 @@ if (description)
  script_mandatory_keys("SOAPpy/banner");
  script_require_ports("Services/www", 80);
 
- script_tag(name : "impact" , value : "An attacker can exploit this issue to obtain sensitive information;
+ script_tag(name : "impact" , value : "An attacker can exploit this issue to obtain sensitive information,
  this may lead to further attacks.");
  script_tag(name : "vuldetect" , value : "Send a special crafted HTTP POST XXE request and check the response.");
  script_tag(name : "insight" , value : "Processing of an external entity containing tainted data may lead to
@@ -51,10 +51,10 @@ if (description)
  script_tag(name : "solution" , value : "Ask the vendor for an update.");
  script_tag(name : "summary" , value : "SOAPpy is prone to an information-disclosure
  vulnerability");
- script_tag(name : "affected" , value : "SOAPpy <= 0.12.5 is vulnerable.");
+ script_tag(name : "affected" , value : "SOAPpy 0.12.5 and prior are vulnerable.");
 
  script_tag(name:"qod_type", value:"remote_app");
- script_tag(name:"solution_type", value:"NoneAvailable");
+ script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

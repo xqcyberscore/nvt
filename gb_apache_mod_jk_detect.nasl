@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_apache_mod_jk_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Apache mod_jk Module Version Detection
 #
@@ -24,39 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of Apache mod_jk Module
-  and saves the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800279");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 9996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 09:00:01 +0200 (Fri, 17 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache mod_jk Module Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
+  script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("mod_jk/banner");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed version of Apache mod_jk Module
+  and saves the result in KB.");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)){
-  exit(0);
-}
-
 banner = get_http_banner(port:port);
 if("mod_jk" >< banner)
 {
@@ -66,14 +59,13 @@ if("mod_jk" >< banner)
     set_kb_item(name:"www/" + port + "/Apache/Mod_Jk", value:version[1]);
     set_kb_item(name:"apache_modjk/installed", value:TRUE);
     log_message(port:port,data:"Mod JK version " + version[1] + " was detected on the host");
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:apache:mod_jk:");
     if(isnull(cpe))
       cpe = 'cpe:/a:apache:mod_jk';
 
     register_product(cpe:cpe, location:port + '/tcp', port:port);
-
-    exit(0);
   }
 }
+
+exit(0);

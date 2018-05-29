@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_admin_console_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_novell_groupwise_admin_console_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # GroupWise Administration Console Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 9633 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version ("$Revision: 9996 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2014-09-03 15:08:39 +0200 (Wed, 03 Sep 2014)");
  script_name("GroupWise Administration Console Detection");
 
@@ -48,18 +48,15 @@ request to the server and attempts to detect the GroupWise Administration Consol
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 port = get_http_port( default:9710 );
-if( ! get_port_state( port ) ) exit (0);
 
 url = "/gwadmin-console/login.jsp";
 req = http_get( item:url, port:port );
 buf = http_send_recv( port:port, data:req );
-
 if( buf == NULL ) exit( 0 );
 
 if( "<title>GroupWise Administration Console</title>" >< buf && "Novell, Inc" >< buf && "username_ui" >< buf )
@@ -76,8 +73,6 @@ if( "<title>GroupWise Administration Console</title>" >< buf && "Novell, Inc" ><
                                              cpe:cpe,
                                              concluded: 'Remote probe' ),
                port:port );
-
 }
 
 exit( 0 );
-

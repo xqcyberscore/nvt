@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 9991 2018-05-29 04:56:09Z ckuersteiner $
 #
 # ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804798");
-  script_version("$Revision: 9982 $");
-  script_tag(name:"cvss_base", value:"9.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 9991 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 06:56:09 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 16:42:38 +0530 (Fri, 14 Nov 2014)");
   script_name("ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability");
   script_cve_id("CVE-2014-9184", "CVE-2014-9183");

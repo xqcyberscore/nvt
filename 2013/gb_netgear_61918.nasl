@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_61918.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_netgear_61918.nasl 9984 2018-05-28 14:36:22Z cfischer $
 #
 # Multiple NetGear ProSafe Switches Information Disclosure Vulnerability
 #
@@ -25,49 +25,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "An attacker can exploit this issue to download configuration file and
-disclose sensitive information. Information obtained may aid in
-further attacks.
-Impact Level: Application";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103773";
-
-tag_insight = "The web management application fails to restrict URL access to differenti
-application areas. Remote, unauthenticated attackers could exploit this issue to
-download the device's startup-config, which contains administrator credentials in
-encrypted form.";
-
-
-tag_affected = "GS724Tv3 and GS716Tv2 - firmware 5.4.1.13
-GS724Tv3 and GS716Tv2 - firmware 5.4.1.10
-GS748Tv4              - firmware 5.4.1.14
-GS510TP               - firmware 5.4.0.6
-GS752TPS and GS728TPS - firmware 5.3.0.17
-GS728TS and GS725TS   - firmware 5.3.0.17
-GS752TXS and GS728TXS - firmware 6.1.0.12";
-
-tag_summary = "Multiple NetGear ProSafe switches are prone to an information-
-disclosure vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Try to read /filesystem/startup-config with a HTTP GET request and check the response.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103773");
  script_bugtraq_id(61918);
  script_cve_id("CVE-2013-4775","CVE-2013-4776");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 9984 $");
 
  script_name("Multiple NetGear ProSafe Switches  Information Disclosure Vulnerability");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61918");
  script_xref(name:"URL", value:"http://www.netgear.com");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
  script_tag(name:"creation_date", value:"2013-08-22 12:52:30 +0200 (Thu, 22 Aug 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -77,38 +48,52 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name : "impact" , value : "An attacker can exploit this issue to download configuration file and
+disclose sensitive information. Information obtained may aid in
+further attacks.
+
+Impact Level: Application");
+ script_tag(name : "vuldetect" , value : "Try to read /filesystem/startup-config with a HTTP GET request and check the response.");
+ script_tag(name : "insight" , value : "The web management application fails to restrict URL access to differenti
+application areas. Remote, unauthenticated attackers could exploit this issue to
+download the device's startup-config, which contains administrator credentials in
+encrypted form.");
+ script_tag(name : "solution" , value : "Ask the Vendor for an update.");
+ script_tag(name : "summary" , value : "Multiple NetGear ProSafe switches are prone to an information-
+disclosure vulnerability.");
+ script_tag(name : "affected" , value : "GS724Tv3 and GS716Tv2 - firmware 5.4.1.13
+
+GS724Tv3 and GS716Tv2 - firmware 5.4.1.10
+
+GS748Tv4              - firmware 5.4.1.14
+
+GS510TP               - firmware 5.4.0.6
+
+GS752TPS and GS728TPS - firmware 5.3.0.17
+
+GS728TS and GS725TS   - firmware 5.3.0.17
+
+GS752TXS and GS728TXS - firmware 6.1.0.12");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
+port = get_http_port(default:80);
 url = "/";
 
-if(http_vuln_check(port:port, url:url,pattern:"<TITLE>NETGEAR")) {
+if(http_vuln_check(port:port, url:url,pattern:"<TITLE>NETGEAR", usecache:TRUE)) {
 
   url = '/filesystem/startup-config';
-
   if(http_vuln_check(port:port, url:url,pattern:"Current Configuration", extra_check:make_list("System Description","System Software Version","network parms"))) {
     security_message(port:port);
     exit(0);
-  }  
-
+  }
   exit(99);
-
-}  
+}
 
 exit(0);
-
-
-   

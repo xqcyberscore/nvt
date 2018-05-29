@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_html5_mp3_player_path_disc_vuln.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_wp_html5_mp3_player_path_disc_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
 #
 # Wordpress Html5 Mp3 Player 'playlist.php' Path Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805120");
-  script_version("$Revision: 6345 $");
+  script_version("$Revision: 9998 $");
   script_cve_id("CVE-2014-9177");
   script_bugtraq_id(71512);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 12:56:08 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Html5 Mp3 Player 'playlist.php' Path Disclosure Vulnerability");
 
@@ -77,39 +77,24 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Wordpress Plugin Vulnerable URL
 url = dir + "/wp-content/plugins/html5-mp3-player-with-playlist/html5plus/playlist.php";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"<b>Fatal error</b>:  Call to a member function get_row\(\)",
    extra_check:make_list("on line <b>18</b>","html5plus/playlist.php")))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

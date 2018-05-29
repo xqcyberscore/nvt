@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plex_media_server_remote_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_plex_media_server_remote_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # Plex Media Server Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805225");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 9996 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:12 +0530 (Mon, 22 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Plex Media Server Remote Version Detection");
@@ -56,49 +56,28 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-# Variable Initialization
-sndReq = "";
-rcvRes = "";
-version = "";
-install = "/";
-plexPort = "";
-url = "/web/index.html";
-
 plexPort = get_http_port(default:32400);
-if(!plexPort){
-  plexPort = 32400;
-}
 
-if(!get_port_state(plexPort)){
-  exit(0);
-}
+url = "/web/index.html";
+rcvRes = http_get(item:url, port:plexPort);
 
-##Send and Receive Response
-sndReq = http_get(item:url, port:plexPort);
-rcvRes = http_keepalive_send_recv(port:plexPort, data:sndReq);
-
-##Confirm Application
 if(rcvRes && ">Plex" >< rcvRes && "X-Plex-Protocol" >< rcvRes)
 {
+  install = "/";
   sndReq = http_get(item:install, port:plexPort);
   rcvRes = http_keepalive_send_recv(port:plexPort, data:sndReq);
 
-  ##Grep version
   version = eregmatch(string:rcvRes, pattern:"myPlex.*version=.([0-9.]+.[a-zA-Z0-9]+)",
                                      icase:TRUE);
-
-  ##Check if version information is available
   if(version[1]){
     version = version[1];
-  }
-  else{
+  } else{
     version = "Unknown";
   }
 
   set_kb_item(name: string("www/", plexPort, "/plex_media_server"), value: string(version," under ",install));
   set_kb_item(name:"plex_media_server/installed", value:TRUE);
 
-  ##Build CPE and Register
   cpe = build_cpe(value:version, exp:"^([0-9.]+.[a-zA-Z0-9]+)", base:"cpe:/a:plex:plex_media_server:");
   if(isnull(cpe))
     cpe = 'cpe:/a:plex:plex_media_server';
@@ -111,5 +90,6 @@ if(rcvRes && ">Plex" >< rcvRes && "X-Plex-Protocol" >< rcvRes)
                                             cpe:cpe,
                                             concluded: version),
   port:plexPort);
-  exit(0);
 }
+
+exit(0);

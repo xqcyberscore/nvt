@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_detect.nasl 9440 2018-04-11 10:37:56Z cfischer $
+# $Id: gb_vmware_vcenter_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # VMware ESX detection (Web)
 #
@@ -30,8 +30,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103659");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9440 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:37:56 +0200 (Wed, 11 Apr 2018) $");
+ script_version("$Revision: 9996 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
  script_name("VMware vCenter detection (Web)");
 
@@ -56,14 +56,10 @@ include("http_func.inc");
 port = get_http_port(default:443);
 transport = get_port_transport(port);
 
-if(!get_port_state(port)) {
-  exit(0);
-}  
-
 soc = open_sock_tcp(port, transport: transport);
 if(!soc) {
   exit(0);
-}  
+}
 
 host = http_host_name(port:port);
 
@@ -73,7 +69,7 @@ req += string("Host: ",host,"\r\n\r\n");
 send(socket: soc, data: req);
 buf = recv(socket:soc, length:8192);
 
-if("VMware" >!< buf)exit(0); 
+if("VMware" >!< buf)exit(0);
 
 close(soc); # needed for the strange behaviour of esx 3.x
 soc = open_sock_tcp(port, transport: transport);

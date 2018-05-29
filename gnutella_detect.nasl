@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gnutella_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
-# Description: Gnutella servent detection
+# $Id: gnutella_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+#
+# Gnutella servent detection
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,13 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10946");
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 9996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -85,7 +87,7 @@ if( ! banner ) {
   }
 }
 
-# We should probably add more regex here. But there are 100+ Gnutella softwares
+# We should probably add more regex here. But there are 100+ Gnutella software
 if( egrep( pattern:"Gnutella|BearShare", string:banner, icase:TRUE ) ) {
   report = "Although this service did not answer to Gnutella protocol 0.4, it might be a Gnutella server.";
   log_message( port:port, data:report );

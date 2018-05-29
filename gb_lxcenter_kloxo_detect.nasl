@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lxcenter_kloxo_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_lxcenter_kloxo_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
 #
 # LxCenter Kloxo Detection
 #
@@ -24,58 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103977";
-SCRIPT_DESC = "LxCenter Kloxo Detection";
-
-tag_summary = "This host is running LxCenter Kloxo. Kloxo is a fully scriptable
-hosting plattform.";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.103977");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-
-  script_name(SCRIPT_DESC);
-
-
+  script_version("$Revision: 9996 $");
+  script_name("LxCenter Kloxo Detection");
   script_xref(name:"URL", value:"http://lxcenter.org/software/kloxo");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-02-22 22:54:04 +0700 (Sat, 22 Feb 2014)");
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 7778);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This host is running LxCenter Kloxo. Kloxo is a fully scriptable
+hosting platform.");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:7778);
-if (!get_port_state(port)) {
-  exit(0);
-}
 
 url = string("/login/");
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
+buf = http_get_cache(item:url, port:port);
 if (buf == NULL) {
   exit(0);
 }
 
 if (egrep(pattern:'Kloxo', string:buf, icase:TRUE)) {
   vers = string("unknown");
-  # try to get version
   version = eregmatch(string:buf, pattern:">Kloxo.* ([0-9.]+[a-z]-[0-9]+)<", icase:TRUE);
 
   if (!isnull(version[1])) {
