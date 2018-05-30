@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_multiview_event_cal_sql_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_wordpress_multiview_event_cal_sql_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Multi View Event Calendar SQL Injection Vulnerability
 #
@@ -29,11 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804870");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 10000 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 12:09:33 +0530 (Tue, 28 Oct 2014)");
+  script_cve_id("CVE-2014-8586");
 
   script_name("WordPress Multi View Event Calendar SQL Injection Vulnerability");
 
@@ -54,8 +55,8 @@ if(description)
 
   script_tag(name:"affected", value:"CP Multi View Event Calendar version 1.01");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
+  script_tag(name:"solution", value:"No known solution was made available for
+  at least one year since the disclosure of this vulnerability. Likely none will be
   provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -80,31 +81,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/?cpmvc_id=1&cpmvc_do_action=mvparse&f=datafeed&method=list&cal' +
             'id=1"SQLInjectionTest';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
    pattern:"You have an error in your SQL syntax.*SQLInjectionTest"))
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_photoshop_gif_mem_corruption_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_adobe_photoshop_gif_mem_corruption_vuln.nasl 10019 2018-05-30 08:30:43Z cfischer $
 #
 # Adobe Photoshop '.GIF' File Processing Memory Corruption Vulnerability
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply patch APSB11-22 for Adobe Photoshop CS5 and CS5.1
-  For updates refer to http://www.adobe.com/support/security/bulletins/apsb11-22.html
-
-  *****
-  NOTE: Ignore this warning if patch is applied already.
-  *****";
-
-tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
-  code and cause Denial of Service.
-  Impact Level: System/Application";
-tag_affected = "Adobe Photoshop CS5 through CS5.1";
-tag_insight = "The flaw is caused by memory corruptions error when processing a crafted
-  '.GIF' file.";
-tag_summary = "This host is installed with Adobe Photoshop and is prone to
-  remote code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902618");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10019 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 10:30:43 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2131");
   script_bugtraq_id(49106);
@@ -56,40 +40,46 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45587/");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-22.html");
 
-  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod", value:"30"); # nb: Version check below doesn't check the patch version...
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect.nasl");
-  script_require_keys("Adobe/Photoshop/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("Adobe/Photoshop/Ver");
+
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute arbitrary
+  code and cause Denial of Service.
+
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Adobe Photoshop CS5 through CS5.1");
+  script_tag(name : "insight" , value : "The flaw is caused by memory corruptions error when processing a crafted
+  '.GIF' file.");
+  script_tag(name : "summary" , value : "This host is installed with Adobe Photoshop and is prone to
+  remote code execution vulnerability.");
+  script_tag(name : "solution" , value : "Apply patch APSB11-22 for Adobe Photoshop CS5 and CS5.1
+  For updates refer to http://www.adobe.com/support/security/bulletins/apsb11-22.html
+
+  *****
+  NOTE: Ignore this warning if patch is applied already.
+  *****");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initiliazation
-adobeVer = "";
+cpe_list = make_list( "cpe:/a:adobe:photoshop_cs5",
+                      "cpe:/a:adobe:photoshop_cs5.1" );
 
-## Get version from KB
-## Check for adobe versions CS5 and CS5.1
-adobeVer = get_kb_item("Adobe/Photoshop/Ver");
-if(!adobeVer || "CS5" >!< adobeVer){
-  exit(0);
+if( ! vers = get_app_version( cpe:cpe_list ) ) exit( 0 );
+
+if( version_is_equal( version:vers, test_version:"12.0" ) ||
+    version_is_equal( version:vers, test_version:"12.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-adobeVer = eregmatch(pattern:"CS([0-9.]+) ?([0-9.]+)", string: adobeVer);
-
-if(!isnull(adobeVer[2]))
-{
-  ## Grep for Adobe Photoshop 12.0 and 12.1
-  if(version_is_equal(version:adobeVer[2], test_version:"12.0") ||
-     version_is_equal(version:adobeVer[2], test_version:"12.1")){
-    security_message(0);
-  }
-}
+exit( 99 );

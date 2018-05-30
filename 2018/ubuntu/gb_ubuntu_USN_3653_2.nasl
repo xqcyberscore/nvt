@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3653_2.nasl 9922 2018-05-22 13:11:24Z santu $
+# $Id: gb_ubuntu_USN_3653_2.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3653-2
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843529");
-  script_version("$Revision: 9922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:11:24 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:40:41 +0200 (Tue, 22 May 2018)");
-  script_cve_id("CVE-2018-3639", "CVE-2017-17449", "CVE-2017-17975", "CVE-2017-18203", 
-                "CVE-2017-18208", "CVE-2018-8822"); 
+  script_cve_id("CVE-2018-3639", "CVE-2017-17449", "CVE-2017-17975", "CVE-2017-18203",
+                "CVE-2017-18208", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
@@ -83,7 +83,7 @@ crash) or possibly execute arbitrary code. (CVE-2018-8822)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 

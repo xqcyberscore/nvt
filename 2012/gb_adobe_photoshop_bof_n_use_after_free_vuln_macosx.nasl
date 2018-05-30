@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 10020 2018-05-30 08:48:56Z cfischer $
 #
 # Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)
 #
@@ -24,31 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply patch for Adobe Photoshop CS5 and CS5.1,
-  For updates refer to http://helpx.adobe.com/photoshop/kb/security-update-photoshop.html
-
-  Or upgrade to Adobe Photoshop version CS6 or later,
-  For updates refer to http://www.adobe.com/downloads/";
-
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code.
-  Impact Level: Application/System";
-tag_affected = "Adobe Photoshop version prior to CS6 on Mac OS X";
-tag_insight = "The flaws are due to
-  - An insufficient input validation while decompressing TIFF images.
-  - An input sanitisation error when parsing TIFF images can be exploited
-    to cause a heap based buffer overflow via a specially crafted file.";
-tag_summary = "This host is installed with Adobe Photoshop and is prone to buffer
-  overflow and use after free vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802786");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 10020 $");
   script_cve_id("CVE-2012-2027", "CVE-2012-2028", "CVE-2012-2052", "CVE-2012-0275");
   script_bugtraq_id(53421, 52634, 53464, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 10:48:56 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 12:11:54 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)");
 
@@ -60,43 +44,57 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect_macosx.nasl");
-  script_require_keys("Adobe/Photoshop/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("Adobe/Photoshop/MacOSX/Version");
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code.
+
+  Impact Level: Application/System");
+  script_tag(name : "affected" , value : "Adobe Photoshop version prior to CS6 on Mac OS X");
+  script_tag(name : "insight" , value : "The flaws are due to
+
+  - An insufficient input validation while decompressing TIFF images.
+
+  - An input sanitisation error when parsing TIFF images can be exploited
+    to cause a heap based buffer overflow via a specially crafted file.");
+  script_tag(name : "summary" , value : "This host is installed with Adobe Photoshop and is prone to buffer
+  overflow and use after free vulnerabilities.");
+  script_tag(name : "solution" , value : "Apply patch for Adobe Photoshop CS5 and CS5.1,
+  For updates refer to http://helpx.adobe.com/photoshop/kb/security-update-photoshop.html
+
+  Or upgrade to Adobe Photoshop version CS6 or later,
+  For updates refer to http://www.adobe.com/downloads/");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-photoVer = "";
+cpe_list = make_list( "cpe:/a:adobe:photoshop_cs5",
+                      "cpe:/a:adobe:photoshop_cs5.1" );
 
-photoVer = get_kb_item("Adobe/Photoshop/MacOSX/Version");
-if(!photoVer){
-  exit(0);
+if( ! vers = get_app_version( cpe:cpe_list ) ) exit( 0 );
+
+## Adobe Photoshop CS5 (12.0.5) and CS5.1 (12.1.1)
+if( version_is_less( version:vers, test_version:"12.0.5" ) ) {
+  installed = "CS5 " + vers;
+  fixed = "CS5 12.0.5";
 }
 
-photoVer = eregmatch(pattern:"([0-9.]+)", string:photoVer);
-if(photoVer[0])
-{
-  ## Check for Adobe Photoshop versions with patch
-  ## Adobe Photoshop CS5 (12.0.5) and CS5.1 (12.1.1)
-  if(version_is_less(version:photoVer[0], test_version:"12.0.5"))
-  {
-    security_message(0);
-    exit(0);
-  }
-
-  if("12.1" >< photoVer)
-  {
-    if(version_is_less(version:photoVer[0], test_version:"12.1.1")){
-      security_message(0);
-    }
+if( vers =~ "^12\.1" ) {
+  if( version_is_less( version:vers, test_version:"12.1.1" ) ) {
+    installed = "CS5.1 " + vers;
+    fixed = "CS5.1 12.1.1";
   }
 }
+
+if( fixed ) {
+  report = report_fixed_ver( installed_version:installed, fixed_version:fixed );
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

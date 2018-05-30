@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3658_1.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_ubuntu_USN_3658_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for procps USN-3658-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843536");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:46:04 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-1122", "CVE-2018-1123", "CVE-2018-1124", "CVE-2018-1125", "CVE-2018-1126");
   script_tag(name:"cvss_base", value:"10.0");
@@ -69,7 +69,7 @@ execute arbitrary code. (CVE-2018-1126)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

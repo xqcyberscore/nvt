@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_DPC2420_12_12.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_cisco_DPC2420_12_12.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # Cisco DPC2420 Cross Site Scripting / File Disclosure
 #
@@ -25,16 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cisco DPC2420 router is prone to a file disclosure and and to a XSS
-vulnerability because it fails to sufficiently sanitize user
-supplied data.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103620";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5963 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103620");
+ script_version ("$Revision: 10005 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -42,7 +36,7 @@ if (description)
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118711/Cisco-DPC2420-Cross-Site-Scripting-File-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-12-10 11:09:30 +0100 (Mon, 10 Dec 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -51,32 +45,31 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "Cisco DPC2420 router is prone to a file disclosure and and to a XSS
+vulnerability because it fails to sufficiently sanitize user supplied data.");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = '/webstar.html';
 
-if(http_vuln_check(port:port, url:url,pattern:"<TITLE>Cisco Cable Modem")) {
+if(http_vuln_check(port:port, url:url, pattern:"<TITLE>Cisco Cable Modem", usecache:TRUE)) {
 
   url = '/filename.gwc';
 
   if(http_vuln_check(port:port, url:url,pattern:"Model Number", extra_check:make_list("Serial Number","User Password"))) {
-     
     security_message(port:port);
     exit(0);
-
-  }  
-
+  }
 }
 
 exit(0);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c6e8b5f529_leptonica_fc28.nasl 9896 2018-05-18 06:15:05Z santu $
+# $Id: gb_fedora_2018_c6e8b5f529_leptonica_fc28.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Fedora Update for leptonica FEDORA-2018-c6e8b5f529
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874576");
-  script_version("$Revision: 9896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 08:15:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:46:33 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-7442", "CVE-2018-7440", "CVE-2018-3836");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for leptonica FEDORA-2018-c6e8b5f529");
   script_tag(name:"summary", value:"Check the version of leptonica");

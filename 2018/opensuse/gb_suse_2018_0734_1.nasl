@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0734_1.nasl 9132 2018-03-19 11:22:37Z santu $
+# $Id: gb_suse_2018_0734_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2,)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851720");
-  script_version("$Revision: 9132 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:22:37 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-19 08:26:15 +0100 (Mon, 19 Mar 2018)");
-  script_cve_id("CVE-2017-12122", "CVE-2017-14440", "CVE-2017-14441", "CVE-2017-14442", 
+  script_cve_id("CVE-2017-12122", "CVE-2017-14440", "CVE-2017-14441", "CVE-2017-14442",
                 "CVE-2017-14448", "CVE-2017-14449", "CVE-2017-14450");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2,)");
   script_tag(name: "summary", value: "Check the version of SDL2,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "
   This update for SDL2 and SDL2_image fixes the following issues:
 
@@ -168,6 +167,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

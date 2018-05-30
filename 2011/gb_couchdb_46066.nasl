@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_46066.nasl 9992 2018-05-29 05:51:26Z cfischer $
+# $Id: gb_couchdb_46066.nasl 10013 2018-05-30 05:53:25Z cfischer $
 #
 # Apache CouchDB Web Administration Interface Cross Site Scripting Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apache:couchdb";
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103053");
- script_version("$Revision: 9992 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 07:51:26 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10013 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-30 07:53:25 +0200 (Wed, 30 May 2018) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_bugtraq_id(46066);
  script_tag(name:"cvss_base", value:"4.3");
@@ -37,7 +39,7 @@ if (description)
 
  script_name("Apache CouchDB Web Administration Interface Cross Site Scripting Vulnerability");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46066");
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/46066");
  script_xref(name : "URL" , value : "http://couchdb.apache.org/");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -66,16 +68,16 @@ credentials and launch other attacks.");
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:5984);
-if( ! version = get_kb_item("couchdb/" + port + "/version" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(version_in_range(version:version,test_version:"0.8.0",test_version2:"1.0.1")) {
-  security_message(port:port);
-  exit(0);
+if( version_in_range( version:vers, test_version:"0.8.0", test_version2:"1.0.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.0.2" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

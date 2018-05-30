@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_mx_inj_vuln.nasl 9420 2018-04-10 09:50:33Z ckuersteiner $
+# $Id: gb_roundcube_mx_inj_vuln.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Roundcube Webmail < 1.3.6 MX Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140959");
-  script_version("$Revision: 9420 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 11:50:33 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name: "creation_date", value: "2018-04-10 13:53:54 +0700 (Tue, 10 Apr 2018)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-9846");
 

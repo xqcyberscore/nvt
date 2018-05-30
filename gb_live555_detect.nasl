@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_detect.nasl 9202 2018-03-26 08:18:46Z asteins $
+# $Id: gb_live555_detect.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # LIVE555 Streaming Media Server Detection
 #
@@ -27,9 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107180");
-  script_version("$Revision: 9202 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 10:18:46 +0200 (Mon, 26 Mar 2018) $");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,15 +38,16 @@ if(description)
   script_family("Product detection");
   script_dependencies("rtsp_detect.nasl");
   script_require_ports("Services/rtsp", 8554);
+
   script_tag(name:"summary", value:"Detection of the installed version of LIVE555 Streaming Media Server.
 
-      The script detects the version of LIVE555 Streaming Media Server on the remote host via RSTP banner, to extract the version number and to set the KB entries.");
+  The script detects the version of LIVE555 Streaming Media Server on the remote host via RSTP banner,
+  to extract the version number and to set the KB entries.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -60,7 +60,6 @@ if (!banner = get_kb_item(string("RTSP/",port,"/Server")))
 {
   exit( 0 );
 }
-
 
 if ("LIVE555 Streaming Media" >< banner ) {
     version = "unknown";

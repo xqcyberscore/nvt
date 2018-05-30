@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Spreadsheet plugin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804872");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-8363", "CVE-2014-8364");
   script_bugtraq_id(69073, 69089);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 15:09:33 +0530 (Wed, 29 Oct 2014)");
 
   script_name("WordPress Spreadsheet plugin Multiple Vulnerabilities");
@@ -57,13 +57,13 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress Spreadsheet plugin version 0.62");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none
   will be provided anymore. General solution options are to upgrade to a
   newer release, disable respective features, remove the product or replace
   the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -82,36 +82,21 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + "/wp-content/plugins/wpSS/ss_handler.php?ss_id=%22/%3E%3Cscri" +
             "pt%3Ealert%28document.cookie%29;%3C/script%3E";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-  pattern:"<script>alert\(document.cookie\);</script>",
+  pattern:"<script>alert\(document\.cookie\);</script>",
   extra_check:">WordPress Spreadsheet"))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

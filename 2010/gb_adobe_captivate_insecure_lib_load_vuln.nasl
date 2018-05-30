@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_captivate_insecure_lib_load_vuln.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: gb_adobe_captivate_insecure_lib_load_vuln.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # Adobe Captivate Insecure Library Loading Vulnerability
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to execute
-arbitrary code and conduct DLL hijacking attacks.
-
-Impact Level: Application";
-
-tag_affected = "Adobe Captivate Version 5.0.0.596";
-
-tag_insight = "This flaw is due to the application insecurely loading certain
-librairies from the current working directory, which could allow attackers
-to execute arbitrary code by tricking a user into opening a file from a
-network share.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with Adobe Captivate and is prone to
-Insecure Library Loading vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801267");
-  script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 10022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3191");
   script_tag(name:"cvss_base", value:"9.3");
@@ -62,24 +42,34 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_captivate_detect.nasl");
   script_mandatory_keys("Adobe/Captivate/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute
+arbitrary code and conduct DLL hijacking attacks.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Adobe Captivate Version 5.0.0.596");
+  script_tag(name : "insight" , value : "This flaw is due to the application insecurely loading certain
+libraries from the current working directory, which could allow attackers
+to execute arbitrary code by tricking a user into opening a file from a
+network share.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "This host is installed with Adobe Captivate and is prone to
+Insecure Library Loading vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
-
 include("version_func.inc");
 
-## Get version from KB
 capVer = get_kb_item("Adobe/Captivate/Ver");
 
 if(capVer != NULL)
 {
-  ##Check for Adobe Captivate version 5.0.0.596
   if( version_is_equal(version:capVer, test_version: "5.0.0.596") ){
     security_message(0);
   }

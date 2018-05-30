@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Web Dorado Spider Video Player XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804788");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-8584");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-11-07 16:00:58 +0530 (Fri, 07 Nov 2014)");
   script_name("WordPress Web Dorado Spider Video Player XSS Vulnerability");
 
@@ -73,40 +73,25 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + "/wp-admin/admin-ajax.php?action=spiderVeideoPlayersettingsxml"
           + "&playlist=1&theme=6&s_v_player_id=<script>alert(document.cookie)</script>";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-  pattern:"<script>alert\(document.cookie\)</script>",
+  pattern:"<script>alert\(document\.cookie\)</script>",
   extra_check:"playlistBtnHint"))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

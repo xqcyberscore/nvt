@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3660_1.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_ubuntu_USN_3660_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-3660-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843537");
-  script_version("$Revision: 9983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:44:12 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2018-5150", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5159",
                 "CVE-2018-5168", "CVE-2018-5178", "CVE-2018-5161", "CVE-2018-5162",
@@ -85,7 +85,7 @@ obtain sensitive information. (CVE-2018-5185)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

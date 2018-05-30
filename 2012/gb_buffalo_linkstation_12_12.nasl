@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_linkstation_12_12.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_buffalo_linkstation_12_12.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # Buffalo Linkstation Privilege Escalation / Information Disclosure
 #
@@ -25,14 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Buffalo Linkstation suffers from information disclosure and privilege escalation vulnerabilities.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103617";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5977 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103617");
+ script_version("$Revision: 10005 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
@@ -40,41 +36,39 @@ if (description)
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118532/Buffalo-Linkstation-Privilege-Escalation-Information-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-12-03 17:27:36 +0100 (Mon, 03 Dec 2012)");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "Buffalo Linkstation suffers from information disclosure and privilege escalation vulnerabilities.");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = '/cgi-bin/top.cgi';
 
-if(http_vuln_check(port:port, url:url,pattern:"LinkStation")) {
+if(http_vuln_check(port:port, url:url, pattern:"LinkStation")) {
 
   url = '/modules/webaxs/module/files/password';
 
   if(http_vuln_check(port:port, url:url,pattern:"[a-zA-Z0-9.-_]+:[[a-zA-Z0-9.$/-_]+",check_header:TRUE,extra_check:"text/plain")) {
-     
     security_message(port:port);
     exit(0);
-
-  }  
-
+  }
 }
 
 exit(0);
-

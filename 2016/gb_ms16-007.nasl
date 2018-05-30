@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-007.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_ms16-007.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (3124901)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807029");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0014", "CVE-2016-0015", "CVE-2016-0016", "CVE-2016-0018",
                 "CVE-2016-0019", "CVE-2016-0020");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 09:01:03 +0530 (Wed, 13 Jan 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (3124901)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
@@ -44,9 +43,11 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to:
+
   - A security feature bypass vulnerability exists in Windows Remote Desktop
     Protocol, that is caused when Windows hosts running RDP services fail to
     prevent remote logon to accounts that have no passwords set.
+
   - Multiple elevation of privilege vulnerabilities exist when Windows
     improperly validates input before loading dynamic link library (DLL) files.");
 
@@ -56,20 +57,28 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-007");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -84,6 +93,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -92,23 +102,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of vulnerable file
 dllVer1 = fetch_file_version(sysPath, file_name:"System32\Advapi32.dll");
 dllVer2 = fetch_file_version(sysPath, file_name:"System32\Qedit.dll");
 dllVer3 = fetch_file_version(sysPath, file_name:"System32\Devenum.dll");
@@ -129,7 +132,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(dllVer1)
   {
-    ## Check for Advapi32.dll version
     if(version_is_less(version:dllVer1, test_version:"6.1.7601.19091"))
     {
       Vulnerable_range1 = "Less than 6.1.7601.19091";
@@ -143,7 +145,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
   if(dllVer3)
   {
-    ## Check for Devenum.dll version
     if(version_is_less(version:dllVer3, test_version:"6.6.7601.19091"))
     {
       Vulnerable_range3 = "Less than 6.6.7601.19091";
@@ -156,7 +157,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
     }
   }
 
-  ## Check for Mapi32.dll version
   if(dllVer4 && version_is_less(version:dllVer4, test_version:"1.0.2536.0"))
   {
     Vulnerable_range4 = "Less than 1.0.2536.0";
@@ -166,7 +166,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   ## Aeinv.dll is not for win2008r2
   if(hotfix_check_sp(win7:2, win7x64:2) > 0 && dllVer5)
   {
-    ## Check for Aeinv.dll version
     if(version_in_range(version:dllVer5, test_version:"10.0", test_version2:"10.0.11065.0999"))
     {
       Vulnerable_range5 = "10.0 - 10.0.11065.0999";
@@ -181,7 +180,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllVer1)
   {
-    ## Check for Advapi32.dll version
     if(version_is_less(version:dllVer1, test_version:"6.0.6002.19555"))
     {
       Vulnerable_range1 = "Less than 6.0.6002.19555";
@@ -196,7 +194,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   if(dllVer2)
   {
-    ## Check for Qedit.dll version
     if(version_is_less(version:dllVer2, test_version:"6.6.6002.19554"))
     {
       Vulnerable_range2 = "Less than 6.6.6002.19554";
@@ -211,7 +208,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   if(dllVer3)
   {
-    ## Check for Devenum.dll version
     if(version_is_less(version:dllVer3, test_version:"6.6.6002.19554"))
     {
       Vulnerable_range3 = "Less than 6.6.6002.19554";
@@ -223,7 +219,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
       VULN3 = TRUE ;
     }
   }
-  ## Check for Mapi32.dll version
   if(dllVer4 && version_is_less(version:dllVer4, test_version:"1.0.2536.0"))
   {
     Vulnerable_range4 = "Less than 1.0.2536.0";
@@ -231,10 +226,9 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-## Win 8 
+## Win 8
 else if(hotfix_check_sp(win8:1, win8x64:1) > 0)
 {
-  ## Check for Advapi32.dll version
   if(hotfix_check_sp(win8:1) > 0 && dllVer1)
   {
     if(version_is_less(version:dllVer1, test_version:"6.2.9200.17592"))
@@ -269,8 +263,7 @@ else if(hotfix_check_sp(win8:1, win8x64:1) > 0)
   }
 
   if(dllVer2)
-  { 
-    ## Check for Qedit.dll version
+  {
     if(version_is_less(version:dllVer2, test_version:"6.6.9200.17590"))
     {
       Vulnerable_range2 = "Less than 6.6.9200.17590";
@@ -285,7 +278,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1) > 0)
 
   if(dllVer3)
   {
-    ## Check for Devenum.dll  version
     if(version_is_less(version:dllVer3, test_version:"6.6.9200.17590"))
     {
       Vulnerable_range3 = "Less than 6.6.9200.17590";
@@ -297,7 +289,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1) > 0)
       VULN3 = TRUE ;
     }
   }
-  ## Check for Aeinv.dll version
   if(dllVer5 && version_in_range(version:dllVer5, test_version:"10.0", test_version2:"10.0.11065.0999"))
   {
     Vulnerable_range5 = "10.0 - 10.0.11065.0999";
@@ -310,7 +301,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 {
   if(dllVer6)
   {
-    ## Check for Advapi32.dll version
     if(version_is_less(version:dllVer6, test_version:"6.2.9200.17591"))
     {
       report = 'File checked:     ' + adPath64 + '\n' +
@@ -331,7 +321,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 
   if(dllVer2)
   {
-    ## Check for Qedit.dll version
     if(version_is_less(version:dllVer2, test_version:"6.6.9200.17590"))
     {
       Vulnerable_range2 = "Less than 6.6.9200.17590";
@@ -346,7 +335,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 
   if(dllVer3)
   {
-    ## Check for Devenum.dll  version
     if(version_is_less(version:dllVer3, test_version:"6.6.9200.17590"))
     {
       Vulnerable_range3 = "Less than 6.6.9200.17590";
@@ -364,25 +352,21 @@ else if(hotfix_check_sp(win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Advapi32.dll version
   if(dllVer1 && version_is_less(version:dllVer1, test_version:"6.3.9600.18155"))
   {
     Vulnerable_range1 = "Less than 6.3.9600.18155";
     VULN1 = TRUE ;
   }
-  ## Check for Qedit.dll version
   if(dllVer2 && version_is_less(version:dllVer2, test_version:"6.6.9600.18152"))
   {
     Vulnerable_range2 = "Less than 6.6.9600.18152";
     VULN2 = TRUE ;
   }
-  ## Check for Devenum.dll version
   if(dllVer3 && version_is_less(version:dllVer3, test_version:"6.6.9600.18154"))
   {
     Vulnerable_range3 = "Less than 6.6.9600.18154";
     VULN3 = TRUE ;
   }
-  ## Check for Aeinv.dll version
   if(dllVer5 && version_in_range(version:dllVer5, test_version:"10.0", test_version2:"10.0.11065.0999"))
   {
     Vulnerable_range5 = "10.0 - 10.0.11065.0999";
@@ -394,14 +378,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer2)
 {
   ## Windows 10 Core
-  ## Check for Qedit.dll version
   if(version_is_less(version:dllVer2, test_version:"10.0.10240.16644"))
   {
     Vulnerable_range2 = "Less than 10.0.10240.16644";
     VULN2 = TRUE ;
   }
   ## Windows 10 version 1511
-  ## Check for Qedit.dll version
   else if(version_in_range(version:dllVer2, test_version:"10.0.10586.0", test_version2:"10.0.10586.62"))
   {
     Vulnerable_range2 = "10.0.10586.0 - 10.0.10586.62";

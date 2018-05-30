@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-065.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_dotnet_framework_ms16-065.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3156757)
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807818");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0149");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:22:52 +0530 (Wed, 11 May 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3156757)");
 
   script_tag(name:"summary", value:"This host is missing an important security
@@ -51,11 +50,14 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 2.0 Service Pack 2 
+  script_tag(name:"affected", value:"Microsoft .NET Framework 2.0 Service Pack 2
+
   Microsoft .NET Framework 3.5
-  Microsoft .NET Framework 3.5.1 
-  Microsoft .NET Framework 4.5.2 
+
+  Microsoft .NET Framework 3.5.1
+
+  Microsoft .NET Framework 4.5.2
+
   Microsoft .NET Framework 4.6/4.6.1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -64,7 +66,6 @@ if(description)
   https://technet.microsoft.com/library/security/MS16-065");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3156757");
@@ -76,41 +77,31 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-dotPath = "";
-sysdllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3,
    win2008r2:2, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1,
    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   dotPath = registry_get_sz(key:key + item, item:"Path");
   if(dotPath && "\Microsoft.NET\Framework" >< dotPath)
   {
-    ## Get version from System.dll 
     sysdllVer = fetch_file_version(sysPath:dotPath, file_name:"System.dll");
 
     if(sysdllVer)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Traffic Analyzer Plugin XSS Vulnerability
 #
@@ -24,36 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to insert
-arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application";
-
-tag_affected = "WordPress Traffic Analyzer Plugin version 3.3.2 and prior";
-
-tag_insight = "The input passed via 'aoid' parameters to
-'/wp-content/plugins/trafficanalyzer/js/ta_loaded.js.php' script is not
-properly validated.";
-
-tag_solution = "Upgrade to WordPress Traffic Analyzer Plugin version 3.4.0 or
-later. For updates refer to http://wordpress.org/extend/plugins/trafficanalyzer";
-
-tag_summary = "This host is running WordPress with Traffic Analyzer plugin and
-is prone to cross site scripting vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803372";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803372");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2013-3526");
   script_bugtraq_id(58948);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2013-04-12 17:30:46 +0530 (Fri, 12 Apr 2013)");
   script_name("WordPress Traffic Analyzer Plugin XSS Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52929");
@@ -67,46 +48,43 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+arbitrary HTML and script code, which will be executed in a user's browser
+session in the context of an affected site.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "WordPress Traffic Analyzer Plugin version 3.3.2 and prior");
+  script_tag(name : "insight" , value : "The input passed via 'aoid' parameters to
+'/wp-content/plugins/trafficanalyzer/js/ta_loaded.js.php' script is not
+properly validated.");
+  script_tag(name : "solution" , value : "Upgrade to WordPress Traffic Analyzer Plugin version 3.4.0 or
+later. For updates refer to http://wordpress.org/extend/plugins/trafficanalyzer");
+  script_tag(name : "summary" , value : "This host is running WordPress with Traffic Analyzer plugin and
+is prone to cross site scripting vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  port = 80;
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
+if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-content/plugins/trafficanalyzer/js/ta_loaded.js.php?aoid='+
             '"><script>alert(document.cookie)</script>';
 
 if(http_vuln_check(port:port, url:url, check_header:TRUE,
-       pattern:"><script>alert\(document.cookie\)</script>"))
+       pattern:"><script>alert\(document\.cookie\)</script>"))
 {
-  security_message(port);
+  security_message(port:port);
   exit(0);
 }

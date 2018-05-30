@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_earth_insecure_lib_load_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_google_earth_insecure_lib_load_vuln.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # Google Earth Insecure Library Loading Vulnerability
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to execute
-arbitrary code and conduct DLL hijacking attacks.
-
-Impact Level: System/Application";
-
-tag_affected = "Google Earth Version 5.1.3535.3218";
-
-tag_insight = "This flaw is due to the application insecurely loading certain
-librairies from the current working directory, which could allow attackers
-to execute arbitrary code by tricking a user into opening a file from a
-network share.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with Google Earth and is prone to
-insecure library loading vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801273");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 10022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_cve_id("CVE-2010-3134");
   script_tag(name:"cvss_base", value:"9.3");
@@ -62,24 +42,34 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_earth_detect.nasl");
   script_mandatory_keys("Google/Earth/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute
+arbitrary code and conduct DLL hijacking attacks.
+
+Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Google Earth Version 5.1.3535.3218");
+  script_tag(name : "insight" , value : "This flaw is due to the application insecurely loading certain
+libraries from the current working directory, which could allow attackers
+to execute arbitrary code by tricking a user into opening a file from a
+network share.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "This host is installed with Google Earth and is prone to
+insecure library loading vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
-
 include("version_func.inc");
 
-## Get version from KB
 geVer = get_kb_item("Google/Earth/Ver");
 
 if(geVer != NULL)
 {
-  ##Check for Google Earth version 5.1.3535.3218
   if(version_is_equal(version:geVer, test_version:"5.1.3535.3218") ){
     security_message(0);
   }

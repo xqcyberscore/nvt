@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_56453.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: sw_magento_56453.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Magento SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -31,19 +31,14 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105226");
-  script_version("$Revision: 6443 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
   script_bugtraq_id(56453);
   script_cve_id("CVE-2011-5240");
-
   script_name("Magento SSL Certificate Validation Security Bypass Vulnerability");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
@@ -64,7 +59,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56453");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
@@ -77,9 +71,8 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_in_range( version:vers, test_version:"1.5", test_version2:"1.6.2" ) ) {
-
   security_message( port:port );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_paid_memberships_pro_dir_trav_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
+# $Id: gb_wp_paid_memberships_pro_dir_trav_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # Wordpress Paid Memberships Pro Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805106");
-  script_version("$Revision: 9334 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-8801");
   script_bugtraq_id(71293);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 15:32:20 +0530 (Thu, 27 Nov 2014)");
   script_name("Wordpress Paid Memberships Pro Directory Traversal Vulnerabilities");
 
@@ -73,38 +73,23 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-admin/admin-ajax.php?action=getfile&/../../wp-config.php';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:"DB_NAME", extra_check:make_list("DB_USER", "DB_PASSWORD")))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

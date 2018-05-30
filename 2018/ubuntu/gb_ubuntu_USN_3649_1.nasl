@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3649_1.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_ubuntu_USN_3649_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for qemu USN-3649-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843524");
-  script_version("$Revision: 9903 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:36:39 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2017-16845", "CVE-2018-7550", "CVE-2018-7858");
   script_tag(name:"cvss_base", value:"7.5");
@@ -66,7 +66,7 @@ affected Ubuntu 17.10 and Ubuntu 18.04 LTS. (CVE-2018-7858)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_alipay_plugin_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_wordpress_alipay_plugin_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Alipay plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804873");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-4514");
   script_bugtraq_id(70695);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 15:09:33 +0530 (Wed, 29 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -78,37 +78,22 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + "/wp-content/plugins/alipay/includes/api_tenpay/inc.tenpay_no"
           + "tify.php?$para_ret['total_fee=$para_ret['total_fee'><script>"
           + "alert(document.cookie)</script>";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-  pattern:"<script>alert\(document.cookie\)</script>",
+  pattern:"<script>alert\(document\.cookie\)</script>",
   extra_check:"tenpay"))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

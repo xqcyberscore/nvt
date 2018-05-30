@@ -1,6 +1,6 @@
-
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CPyth_man_in_mid.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_CPyth_man_in_mid.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # CPython Man In The Middle Attack Vulnerability
 #
@@ -29,18 +29,15 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107021");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2013-7440");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
   script_name("CPython Man In The Middle Attack Vulnerability");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -54,7 +51,6 @@ if(description)
   script_tag(name:"impact", value:"Allows unauthorized modification.");
   script_tag(name:"affected", value:"CPython before 2.7.9 and 3.x before 3.3.3.");
   script_tag(name:"solution", value:"Upgrade to 3.3.3 or a higher version if Python 3.x is installed, otherwise: upgrade to 2.7.9 or a higher version.");
-  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-014.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms16-014.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (3134228)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807065");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0040", "CVE-2016-0041", "CVE-2016-0042", "CVE-2016-0044",
                 "CVE-2016-0049");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 14:13:40 +0530 (Wed, 10 Feb 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (3134228)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
@@ -44,15 +43,21 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to:
+
   - Windows kernel improperly handles objects in memory.
+
   - Windows improperly validates input before loading dynamic link library
     (DLL) files.
+
   - Insufficient validation of input by Microsoft Sync Framework.
+
   - Kerberos fails to check the password change of a user signing into a
     workstation.
+
   - A security feature bypass vulnerability exists in Windows Remote Desktop
     Protocol, that is caused when Windows hosts running RDP services fail to
     prevent remote logon to accounts that have no passwords set.
+
   - Multiple elevation of privilege vulnerabilities exist when Windows
     improperly validates input before loading dynamic link library (DLL) files.");
 
@@ -62,23 +67,29 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-014");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3126587");
@@ -91,6 +102,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -99,23 +111,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,  win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of vulnerable file
 dllVer1 = fetch_file_version(sysPath, file_name:"System32\Winsync.dll");
 dllVer2 = fetch_file_version(sysPath, file_name:"System32\Ntdll.dll");
 dllVer3 = fetch_file_version(sysPath, file_name:"System32\Mtxoci.dll");
@@ -130,7 +135,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(dllVer2)
   {
-    ## Check for Ntdll.dll version
     if(version_is_less(version:dllVer2, test_version:"6.1.7601.19117"))
     {
       Vulnerable_range2 = "Less than 6.1.7601.19117";
@@ -144,7 +148,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
   if(dllVer3)
   {
-    ## Check for Mtxoci.dll version
     if(version_is_less(version:dllVer3, test_version:"2001.12.8531.19135"))
     {
       Vulnerable_range3 = "2001.12.8531.19135";
@@ -164,7 +167,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllVer2)
   {
-    ## Check for Ntdll.dll version
     if(version_is_less(version:dllVer2, test_version:"6.0.6002.19580"))
     {
       Vulnerable_range2 = "Less than 6.0.6002.19580";
@@ -178,7 +180,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
   if(dllVer3)
   {
-    ## Check for Mtxoci.dll version
     if(version_is_less(version:dllVer3, test_version:"2001.12.6932.19580"))
     {
       Vulnerable_range3 = "Less than 2001.12.6932.19580";
@@ -197,7 +198,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 {
   if(dllVer2)
   {
-    ## Check for  Ntdll.dl version
     if(version_is_less(version:dllVer2, test_version:"6.2.9200.17623"))
     {
       Vulnerable_range2 = "Less than 6.2.9200.17623";
@@ -211,7 +211,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
   if(dllVer3)
   {
-    ## Check for Mtxoci.dll version
     if(version_is_less(version:dllVer3, test_version:"2001.12.10130.17623"))
     {
       Vulnerable_range3 = "Less than 2001.12.10130.17623";
@@ -228,19 +227,16 @@ else if(hotfix_check_sp(win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Winsync.dll version
   if(dllVer1 && version_is_less(version:dllVer1, test_version:"2007.94.9600.18183"))
   {
     Vulnerable_range1 = "Less than 2007.94.9600.18183";
     VULN1 = TRUE ;
   }
-  ## Check for Ntdll.dll version
   if(dllVer2 && version_is_less(version:dllVer2, test_version:"6.3.9600.18192"))
   {
     Vulnerable_range2 = "Less than 6.3.9600.18192";
     VULN2 = TRUE ;
   }
-  ## Check for Mtxoci.dll version
   if(dllVer3 && version_is_less(version:dllVer3, test_version:"2001.12.10530.18192"))
   {
     Vulnerable_range3 = "Less than 2001.12.10530.18192";
@@ -252,14 +248,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer4)
 {
   ## Windows 10 Core
-  ## Check for Msorcl32.dll version
   if(version_is_less(version:dllVer4, test_version:"10.0.10240.16683"))
   {
     Vulnerable_range4 = "Less than 10.0.10240.16683";
     VULN4 = TRUE ;
   }
   ## Windows 10 version 1511
-  ## Check for Msorcl32.dll version
   else if(version_in_range(version:dllVer4, test_version:"10.0.10586.0", test_version2:"10.0.10586.102"))
   {
     Vulnerable_range4 = "10.0.10586.0 - 10.0.10586.102";

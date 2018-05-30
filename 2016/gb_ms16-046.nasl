@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-046.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-046.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3148538)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807313");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0135");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 09:03:18 +0530 (Wed, 13 Apr 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3148538)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-046.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
+  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"The flaw exists due to Windows Secondary
@@ -50,13 +49,14 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/en-us/library/security/MS16-046");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,31 +68,24 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Seclogon.dll'
 sysVer = fetch_file_version(sysPath, file_name:"System32\Seclogon.dll");
 if(!sysVer){
   exit(0);
@@ -101,7 +94,6 @@ if(!sysVer){
 ##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Seclogon.dll version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16724"))
   {
     Vulnerable_range = "Less than 10.0.10240.16724";
@@ -115,7 +107,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
   }
 }
 
-  
+
 if(VULN)
 {
   report = 'File checked:     ' + sysPath + "\System32\Seclogon.dll" + '\n' +

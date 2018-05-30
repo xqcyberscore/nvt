@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0429_1.nasl 8848 2018-02-16 13:40:24Z santu $
+# $Id: gb_suse_2018_0429_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # SuSE Update for leptonica openSUSE-SU-2018:0429-1 (leptonica)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851699");
-  script_version("$Revision: 8848 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:40:24 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 08:41:12 +0100 (Wed, 14 Feb 2018)");
   script_cve_id("CVE-2018-3836");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for leptonica openSUSE-SU-2018:0429-1 (leptonica)");
   script_tag(name: "summary", value: "Check the version of leptonica");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
   script_tag(name: "insight", value: "
   This update for leptonica fixes the following issues:
 
@@ -118,6 +117,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

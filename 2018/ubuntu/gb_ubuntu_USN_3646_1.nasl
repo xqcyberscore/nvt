@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3646_1.nasl 9896 2018-05-18 06:15:05Z santu $
+# $Id: gb_ubuntu_USN_3646_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for php7.2 USN-3646-1
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843523");
-  script_version("$Revision: 9896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 08:15:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 05:38:29 +0200 (Tue, 15 May 2018)");
-  script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547", 
-                "CVE-2018-10548", "CVE-2018-10549"); 
+  script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547",
+                "CVE-2018-10548", "CVE-2018-10549");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
@@ -73,7 +73,7 @@ crash, resulting in a denial of service. This issue only affected Ubuntu
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

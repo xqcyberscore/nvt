@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avast_av_insecure_lib_load_vul_win.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: secpod_avast_av_insecure_lib_load_vul_win.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # Avast! Antivirus File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -24,28 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow the attackers to execute
-arbitrary code and conduct DLL hijacking attacks.
-
-Impact Level: Application";
-
-tag_affected = "Avast! Antivirus version 5.0.594 and prior.";
-
-tag_insight = "The flaw is due to the application insecurely loading certain
-librairies from the current working directory, which could allow attackers
-to execute arbitrary code by tricking a user into opening a license file.";
-
-tag_solution = "Upgrade to version 5.0.677 or later,
-For updates refer to http://www.avast.com/eng/download.html";
-
-tag_summary = "This host is installed with avast! AntiVirus and is prone to
-insecure library loading vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902241");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 10022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3126");
   script_tag(name:"cvss_base", value:"9.3");
@@ -60,13 +43,23 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_av_detect_win.nasl");
   script_mandatory_keys("Avast!/AV/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute
+arbitrary code and conduct DLL hijacking attacks.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Avast! Antivirus version 5.0.594 and prior.");
+  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain
+libraries from the current working directory, which could allow attackers
+to execute arbitrary code by tricking a user into opening a license file.");
+  script_tag(name : "solution" , value : "Upgrade to version 5.0.677 or later,
+For updates refer to http://www.avast.com/eng/download.html");
+  script_tag(name : "summary" , value : "This host is installed with avast! AntiVirus and is prone to
+insecure library loading vulnerability.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-087.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: secpod_ms10-087.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2423930)
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code.
-  Impact Level: System";
-tag_affected = "Microsoft Office XP Service Pack 3
-  Microsoft Office 2003 Service Pack 3
-  Microsoft Office 2007 Service Pack 2
-  Microsoft Office 2010.";
-tag_insight = "Multiple flaws are caused by,
-  - a stack overflow error when processing malformed Rich Text Format data.
-  - a memory corruption error when processing Office Art Drawing records in
-    Office files.
-  - a memory corruption error when handling drawing exceptions.
-  - a memory corruption error when handling SPID data in Office documents.
-  - an error when loading certain librairies from the current working directory.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/MS10-087.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-087.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901166");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 10022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-11-10 14:58:25 +0100 (Wed, 10 Nov 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,26 +44,49 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code.
+
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Microsoft Office XP Service Pack 3
+
+  Microsoft Office 2003 Service Pack 3
+
+  Microsoft Office 2007 Service Pack 2
+
+  Microsoft Office 2010.");
+  script_tag(name : "insight" , value : "Multiple flaws are caused by,
+
+  - a stack overflow error when processing malformed Rich Text Format data.
+
+  - a memory corruption error when processing Office Art Drawing records in
+    Office files.
+
+  - a memory corruption error when handling drawing exceptions.
+
+  - a memory corruption error when handling SPID data in Office documents.
+
+  - an error when loading certain libraries from the current working directory.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+
+  http://www.microsoft.com/technet/security/bulletin/MS10-087.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-087.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name : "URL" , value : "http://secunia.com/advisories/38521");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2923");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS10-087.mspx");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Get File Version
 function FileVer (file, path)
 {
   share = ereg_replace(pattern:"([A-Za-z]):.*", replace:"\1$", string:path);
@@ -96,7 +100,6 @@ function FileVer (file, path)
 ## MS Office XP, 2003, 2007, 2010
 if(get_kb_item("MS/Office/Ver") =~ "^[10|11|12|14].*")
 {
-  ## Get Office File Path
   path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
   if(! path) {
@@ -109,7 +112,6 @@ if(get_kb_item("MS/Office/Ver") =~ "^[10|11|12|14].*")
     dllVer = FileVer(file:"\Mso.dll", path:offPath);
     if(dllVer)
     {
-      ## Grep for Mso.dll versions
       if(version_in_range(version:dllVer, test_version:"10.0", test_version2:"10.0.6866.9")   ||
          version_in_range(version:dllVer, test_version:"11.0", test_version2:"11.0.8328.9")   ||
          version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6545.5003")||

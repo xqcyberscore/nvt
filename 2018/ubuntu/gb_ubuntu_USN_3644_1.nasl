@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3644_1.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_ubuntu_USN_3644_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for openjdk-8 USN-3644-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843522");
-  script_version("$Revision: 9903 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-12 05:49:47 +0200 (Sat, 12 May 2018)");
-  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796", 
+  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796",
                 "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800",
-                "CVE-2018-2814", "CVE-2018-2815", "CVE-2018-2783"); 
+                "CVE-2018-2814", "CVE-2018-2815", "CVE-2018-2783");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
@@ -88,7 +88,7 @@ a denial of service or bypassed sandbox restrictions. (CVE-2018-2814)
 Apostolos Giannakidis discovered that the Serialization component
 of OpenJDK did not properly bound memory allocations in some
 situations. An attacker could use this to cause a denial of service
-(memory exhaustion). (CVE-2018-28 ... 
+(memory exhaustion). (CVE-2018-28 ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"openjdk-8 on Ubuntu 17.10 ,
@@ -102,7 +102,7 @@ situations. An attacker could use this to cause a denial of service
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.10|16\.04 LTS)");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_portable_win.nasl 9887 2018-05-17 13:35:46Z cfischer $
+# $Id: gb_firefox_detect_portable_win.nasl 10008 2018-05-29 14:08:40Z cfischer $
 #
 # Mozilla Firefox Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108443");
-  script_version("$Revision: 9887 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 10008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 16:08:40 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 11:47:59 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,14 +58,15 @@ include("wmi_file.inc");
 include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("smb_nt.inc");
 
 host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
+usrname = kb_smb_login();
+passwd  = kb_smb_password();
 
 if( ! host || ! usrname || ! passwd ) exit( 0 );
 
-domain = get_kb_item( "SMB/domain" );
+domain = kb_smb_domain();
 if( domain ) usrname = domain + '\\' + usrname;
 
 handle = wmi_connect( host:host, username:usrname, password:passwd );
@@ -76,6 +77,11 @@ if( ! handle ) exit( 0 );
 detectedList = get_kb_list( "Firefox/Win/InstallLocations" );
 
 fileList = wmi_file_file_search( handle:handle, fileName:"firefox", fileExtn:"exe" );
+if( ! fileList ) {
+  wmi_close( wmi_handle:handle );
+  exit( 0 );
+}
+
 fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
 

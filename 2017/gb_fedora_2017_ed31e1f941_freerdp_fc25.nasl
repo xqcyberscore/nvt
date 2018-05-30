@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_ed31e1f941_freerdp_fc25.nasl 6956 2017-08-18 06:02:43Z santu $
+# $Id: gb_fedora_2017_ed31e1f941_freerdp_fc25.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Fedora Update for freerdp FEDORA-2017-ed31e1f941
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873225");
-  script_version("$Revision: 6956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 08:02:43 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 07:36:21 +0200 (Tue, 08 Aug 2017)");
-  script_cve_id("CVE-2017-2836", "CVE-2017-2837", "CVE-2017-2838", "CVE-2017-2839", 
+  script_cve_id("CVE-2017-2836", "CVE-2017-2837", "CVE-2017-2838", "CVE-2017-2839",
                 "CVE-2017-2835", "CVE-2017-2834");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for freerdp FEDORA-2017-ed31e1f941");
   script_tag(name: "summary", value: "Check the version of freerdp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The xfreerdp Remote Desktop Protocol (RDP) 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "The xfreerdp Remote Desktop Protocol (RDP)
 client from the FreeRDP project.
 
 xfreerdp can connect to RDP servers such as Microsoft Windows machines, xrdp and
@@ -78,6 +77,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

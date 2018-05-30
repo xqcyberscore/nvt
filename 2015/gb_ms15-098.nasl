@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-098.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_ms15-098.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3089669)
 #
@@ -23,17 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805977");
-  script_version("$Revision: 6369 $");
-  script_cve_id("CVE-2015-2513", "CVE-2015-2514", "CVE-2015-2516", "CVE-2015-2519",
-                "CVE-2015-2530");
+  script_version("$Revision: 10017 $");
+  script_cve_id("CVE-2015-2513", "CVE-2015-2514", "CVE-2015-2516", "CVE-2015-2519", "CVE-2015-2530");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 08:14:47 +0530 (Wed, 09 Sep 2015)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3089669)");
 
   script_tag(name: "summary" , value:"This host is missing a critical security
@@ -51,18 +50,24 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8/8.1 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/ms15-098");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,6 +82,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -85,17 +91,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"CommonFilesDir");
 if(!sysPath){
@@ -104,7 +104,6 @@ if(!sysPath){
 
 sysPath = sysPath + "\Microsoft Shared\ink";
 
-## Get Version from Journal.dll file
 dllVer = fetch_file_version(sysPath, file_name:"Journal.dll");
 if(!dllVer){
   exit(0);
@@ -136,7 +135,6 @@ else if (dllVer =~ "^(6\.3\.9600\.)"){
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19465") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23773")){
     VULN = TRUE ;
@@ -146,7 +144,6 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 ## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18951") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23153")){
     VULN = TRUE ;
@@ -156,7 +153,6 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 ## Windows 8 and Windows Server 2012
 else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
- ## Check for Journal.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17467") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21580")){
     VULN = TRUE ;
@@ -166,7 +162,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.18005")){
     VULN = TRUE ;
   }
@@ -175,7 +170,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 ## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Journal.dll version
   ## Windows 10 Core
   if(version_is_less(version:dllVer, test_version:"10.0.10240.16485"))
   {

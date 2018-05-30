@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3657_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3657_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for linux-raspi2 USN-3657-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843534");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:40:50 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2017-17449", "CVE-2017-17975", "CVE-2017-18203", "CVE-2017-18208", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"7.2");
@@ -70,7 +70,7 @@ crash) or possibly execute arbitrary code. (CVE-2018-8822)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU17\.10");
   exit(0);
 }
 

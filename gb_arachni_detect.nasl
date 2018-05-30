@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arachni_detect.nasl 9252 2018-03-29 06:39:56Z asteins $
+# $Id: gb_arachni_detect.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Arachni Detection
 #
@@ -27,9 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107223");
-  script_version("$Revision: 9252 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 08:39:56 +0200 (Thu, 29 Mar 2018) $");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +49,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

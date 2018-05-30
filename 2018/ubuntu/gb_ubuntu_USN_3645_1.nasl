@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3645_1.nasl 9896 2018-05-18 06:15:05Z santu $
+# $Id: gb_ubuntu_USN_3645_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for firefox USN-3645-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843521");
-  script_version("$Revision: 9896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 08:15:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-12 05:48:49 +0200 (Sat, 12 May 2018)");
-  script_cve_id("CVE-2018-5150", "CVE-2018-5151", "CVE-2018-5153", "CVE-2018-5154", 
+  script_cve_id("CVE-2018-5150", "CVE-2018-5151", "CVE-2018-5153", "CVE-2018-5154",
                 "CVE-2018-5155", "CVE-2018-5157", "CVE-2018-5158", "CVE-2018-5159",
                 "CVE-2018-5163", "CVE-2018-5164", "CVE-2018-5168", "CVE-2018-5173",
                 "CVE-2018-5177", "CVE-2018-5180", "CVE-2018-5152", "CVE-2018-5166",
-                "CVE-2018-5169", "CVE-2018-5172", "CVE-2018-5176", "CVE-2018-5181", 
-                "CVE-2018-5182", "CVE-2018-5160", "CVE-2018-5175", "CVE-2018-5167"); 
+                "CVE-2018-5169", "CVE-2018-5172", "CVE-2018-5176", "CVE-2018-5181",
+                "CVE-2018-5182", "CVE-2018-5160", "CVE-2018-5175", "CVE-2018-5167");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
@@ -103,7 +103,7 @@ potentially exploit this to bypass intended security policies.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

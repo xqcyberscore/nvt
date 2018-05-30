@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # Microsoft Office Products Insecure Library Loading Vulnerability
 #
@@ -8,7 +8,7 @@
 # Antu Sanadi <santu@secpod.com>
 #
 # Copyright:
-# Copyright (c) 2010 SecPod, http://www.secpod.com
+# Copyright (c) 2015 SecPod, http://www.secpod.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902254");
-  script_version("$Revision: 6538 $");
+  script_version("$Revision: 10022 $");
   script_cve_id("CVE-2010-3141", "CVE-2010-3142", "CVE-2010-3146", "CVE-2010-3148");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:16:10 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Products Insecure Library Loading Vulnerability");
@@ -43,7 +43,7 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"The flaw is due to the application
-  insecurely loading certain librairies from the current working directory,
+  insecurely loading certain libraries from the current working directory,
   which could allow attackers to execute arbitrary code by tricking a user into
   opening a file from a network share.");
 
@@ -53,11 +53,14 @@ if(description)
   Impact Level: System/Application");
 
   script_tag(name: "affected" , value:"Microsoft Visio 2003,
-                                       Microsoft Office Groove 2007,
-                                       Microsoft Office PowerPoint 2007/2010");
+
+  Microsoft Office Groove 2007,
+
+  Microsoft Office PowerPoint 2007/2010");
 
   script_tag(name: "solution" , value:"Run Windows Update and update the listed
   hotfixes mentioned in the advisory from the below link.
+
   http://technet.microsoft.com/en-us/security/bulletin/ms11-055");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,7 +73,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2192");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2010 SecPod");
+  script_copyright("Copyright (C) 2015 SecPod");
   script_family("Windows");
   script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("MS/Office/Ver", "MS/Office/Prdts/Installed");
@@ -79,19 +82,15 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
-## Check for Office
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Check for Office power point
 ver = get_kb_item("SMB/Office/PowerPnt/Version");
 if(ver && (ver =~ "^(12|14)\..*"))
 {
@@ -103,7 +102,6 @@ if(ver && (ver =~ "^(12|14)\..*"))
   }
 }
 
-## check for office groove
 else if(ver = get_kb_item("SMB/Office/Groove/Version"))
 {
   if(ver && (ver =~ "^12\..*"))
@@ -124,7 +122,6 @@ if(VULN)
   exit(0);
 }
 
-## check for  Office Visio
 if(ovPath = registry_get_sz(item:"Path",
          key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\visio.exe"))
 {

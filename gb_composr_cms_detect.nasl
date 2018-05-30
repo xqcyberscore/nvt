@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_detect.nasl 9234 2018-03-28 08:11:31Z asteins $
+# $Id: gb_composr_cms_detect.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Composr CMS Detection
 #
@@ -27,9 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107216");
-  script_version("$Revision: 9234 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 10:11:31 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +39,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Detection of installed version of Composr CMS.
 
   The script tries to detect Composr CMS via HTTP request and to extract its version.");

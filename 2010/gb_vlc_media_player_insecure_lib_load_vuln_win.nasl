@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 10022 2018-05-30 09:20:48Z cfischer $
 #
 # VLC Media Player File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -26,24 +26,11 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation will allow the attackers to execute arbitrary code and
-  conduct DLL hijacking attacks.
-  Impact Level: Application.";
-tag_affected = "VLC Media Player version 1.1.3 and prior.";
-
-tag_insight = "The flaw is due to the application insecurely loading certain librairies
-  from the current working directory, which could allow attackers to execute
-  arbitrary code by tricking a user into opening a file from a network share.";
-tag_solution = "Upgrade to VLC version 1.1.4 or apply patch from below link,
-  For updates refer to http://www.videolan.org/vlc/";
-tag_summary = "This host is installed with VLC media player and is prone to insecure
-  library loading vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801500");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 10022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3124");
   script_tag(name:"cvss_base", value:"9.3");
@@ -60,13 +47,23 @@ if(description)
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+
+  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain libraries
+  from the current working directory, which could allow attackers to execute
+  arbitrary code by tricking a user into opening a file from a network share.");
+  script_tag(name : "solution" , value : "Upgrade to VLC version 1.1.4 or apply patch from below link,
+  For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name : "summary" , value : "This host is installed with VLC media player and is prone to insecure
+  library loading vulnerability.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute arbitrary code and
+  conduct DLL hijacking attacks.
+
+  Impact Level: Application.");
+  script_tag(name : "affected" , value : "VLC Media Player version 1.1.3 and prior.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

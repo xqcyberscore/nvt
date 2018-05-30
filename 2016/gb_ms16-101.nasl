@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-101.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_ms16-101.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Privilege Escalation Vulnerabilities (3178465)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808291");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-3237", "CVE-2016-3300");
   script_bugtraq_id(92290, 92296);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 08:32:49 +0530 (Wed, 10 Aug 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Escalation Vulnerabilities (3178465)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
@@ -44,33 +43,43 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to:
-  - An elevation of privilege vulnerability exists when Windows Netlogon 
+
+  - An elevation of privilege vulnerability exists when Windows Netlogon
     improperly establishes a secure communications channel to a domain controller.
-  - An elevation of privilege vulnerability exists in Windows when Kerberos 
-    improperly handles a password change request and falls back to 
-    NT LAN Manager (NTLM) Authentication Protocol as the default authentication 
+
+  - An elevation of privilege vulnerability exists in Windows when Kerberos
+    improperly handles a password change request and falls back to
+    NT LAN Manager (NTLM) Authentication Protocol as the default authentication
     protocol.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to bypass certain security restrictions and perform unauthorized actions by 
+  to bypass certain security restrictions and perform unauthorized actions by
   conducting a man-in-the-middle attack. This may lead to other attacks.
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-101");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -83,6 +92,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -91,24 +101,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
-if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3, 
-                   win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, 
+if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3,
+                   win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
                    win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of vulnerable file
 dllVer = fetch_file_version(sysPath, file_name:"System32\Lsasrv.dll");
 if(!dllVer){
   exit(0);
@@ -117,7 +120,6 @@ if(!dllVer){
 ## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.23497"))
   {
     Vulnerable_range = "Less than 6.1.7601.23497";
@@ -128,7 +130,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 ## Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19668"))
   {
     Vulnerable_range = "Less than 6.0.6002.19668";
@@ -141,11 +142,10 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
   }
 }
 
-## Windows 2012 
+## Windows 2012
 ## https://support.microsoft.com/en-us/kb/3177108
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.21941"))
   {
     Vulnerable_range = "Less than 6.2.9200.21941";
@@ -156,7 +156,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.18405"))
   {
     Vulnerable_range = "Less than 6.3.9600.18405";
@@ -168,7 +167,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   ## Windows 10 Core
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"10.0.10240.17071"))
   {
     Vulnerable_range = "Less than 10.0.10240.17071";
@@ -176,7 +174,6 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
   }
 
   ## Windows 10 version 1511
-  ## Check for Lsasrv.dll version
   else if(version_in_range(version:dllVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.544"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.544";

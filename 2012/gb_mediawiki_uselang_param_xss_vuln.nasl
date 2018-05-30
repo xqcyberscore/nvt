@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -24,30 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-  Impact Level: Application";
-tag_affected = "MediaWiki versions prior to 1.17.5, 1.8.x before 1.18.4 and 1.19.x before 1.19.1";
-tag_insight = "Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
-  properly sanitised in the 'outputPage()' function, before being returned
-  to the user.";
-tag_solution = "Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.
-  For updates refer to http://www.mediawiki.org/wiki/MediaWiki";
-tag_summary = "This host is running MediaWiki and is prone to cross site scripting
-  vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802910";
 CPE = "cpe:/a:mediawiki:mediawiki";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5956 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802910");
+  script_version("$Revision: 10005 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49484");
@@ -63,11 +50,23 @@ if(description)
   script_dependencies("secpod_mediawiki_detect.nasl");
   script_require_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script code in a user's browser session in the context of an affected site.
+
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "MediaWiki versions prior to 1.17.5, 1.8.x before 1.18.4 and 1.19.x before 1.19.1");
+  script_tag(name : "insight" , value : "Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
+  properly sanitised in the 'outputPage()' function, before being returned
+  to the user.");
+  script_tag(name : "solution" , value : "Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.
+
+  For updates refer to http://www.mediawiki.org/wiki/MediaWiki");
+  script_tag(name : "summary" , value : "This host is running MediaWiki and is prone to cross site scripting
+  vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -75,38 +74,15 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-req = "";
-res = "";
-host = "";
-dir = "";
-
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check port state
-if(!get_port_state(port)){
+if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get Host name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Get installed location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
-  exit(0);
-}
+host = http_host_name(port:port);
 
 url = dir + '/index.php/Main_Page?uselang=a%27%20onmouseover=eval(alert("document.cookie"))%20e=%27';
 req = string("GET ", url, " HTTP/1.1\r\n",
@@ -115,5 +91,5 @@ res = http_send_recv(port:port, data:req);
 
 if(egrep(pattern:"^HTTP/.* 200 OK", string:res) &&
          'alert("document.cookie")' >< res && ">MediaWiki" >< res){
- security_message(port);
+  security_message(port:port);
 }

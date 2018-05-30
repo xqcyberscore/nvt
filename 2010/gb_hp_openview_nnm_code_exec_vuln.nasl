@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_openview_nnm_code_exec_vuln.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: gb_hp_openview_nnm_code_exec_vuln.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # HP OpenView Network Node Manager Code Execution Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801389");
-  script_version("$Revision: 5428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(34812);
   script_cve_id("CVE-2009-0720");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("HP OpenView Network Node Manager Code Execution Vulnerability");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -48,28 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://marc.info/?l=bugtraq&m=124146030732511&w=2");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/May/1022163.html");
 
-  tag_solution = "Apply the patch from below link,
-  http://support.openview.hp.com/selfsolve/patches";
+  script_tag(name:"summary", value:"This host is running HP OpenView Network Node Manager and
+  is prone to code execution vulnerabilities.");
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error when processing specially crafted
+  data, which could allow remote attackers to crash an affected process or
+  execute arbitrary code via a malicious request.");
+  script_tag(name:"affected", value:"HP OpenView Network Node Manager versions 7.01, 7.51 and 7.53");
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
+  http://support.openview.hp.com/selfsolve/patches");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
   the context of an application.
 
-  Impact Level: System/Application";
-
-  tag_affected = "HP OpenView Network Node Manager versions 7.01, 7.51 and 7.53";
-
-  tag_insight = "The flaw is due to an unspecified error when processing specially crafted
-  data, which could allow remote attackers to crash an affected process or
-  execute arbitrary code via a malicious request.";
-
-  tag_summary = "This host is running HP OpenView Network Node Manager and
-  is prone to code execution vulnerabilities.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: System/Application");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -84,7 +74,6 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 get_app_version( cpe:CPE, port:port );
 if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) ) exit( 0 );
 
-## Check for HP OpenView Network Node Manager equal to 7.01, 7.51 and 07.53
 if( version_is_equal( version:vers, test_version:"B.07.51" ) ||
     version_is_equal( version:vers, test_version:"B.07.53" ) ||
     version_is_equal( version:vers, test_version:"B.07.01" ) ) {

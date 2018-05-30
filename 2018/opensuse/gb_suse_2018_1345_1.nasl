@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1345_1.nasl 9922 2018-05-22 13:11:24Z santu $
+# $Id: gb_suse_2018_1345_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # SuSE Update for libvorbis openSUSE-SU-2018:1345-1 (libvorbis)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851749");
-  script_version("$Revision: 9922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:11:24 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-19 05:43:01 +0200 (Sat, 19 May 2018)");
   script_cve_id("CVE-2017-14160", "CVE-2018-10393");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libvorbis openSUSE-SU-2018:1345-1 (libvorbis)");
   script_tag(name:"summary", value:"Check the version of libvorbis");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"
   This update for libvorbis fixes the following issues:
@@ -53,7 +53,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

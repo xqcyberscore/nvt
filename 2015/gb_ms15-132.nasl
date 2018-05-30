@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-132.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_ms15-132.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Remote Code Execution Vulnerability (3116162)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806645");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2015-6128", "CVE-2015-6132", "CVE-2015-6133");
   script_bugtraq_id(78612, 78614, 78615);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:32:19 +0530 (Wed, 09 Dec 2015)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Remote Code Execution Vulnerability (3116162)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
@@ -51,24 +50,31 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS15-132");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3108371");
@@ -82,6 +88,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -90,23 +97,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Catsrvut.dll'
 dllVer = fetch_file_version(sysPath, file_name:"System32\Catsrvut.dll");
 dllVer2 = fetch_file_version(sysPath, file_name:"System32\Authui.dll");
 if(!dllVer && !dllVer2){
@@ -116,7 +116,6 @@ if(!dllVer && !dllVer2){
 ## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllVer)
 {
-  ## Check for Catsrvut.dll version
   if(version_is_less(version:dllVer, test_version:"2001.12.8531.19062"))
   {
     Vulnerable_range = "Less than 2001.12.8531.19062";
@@ -133,7 +132,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllVer)
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0 && dllVer)
 {
-  ## Check for Catsrvut.dll version
   if(version_is_less(version:dllVer, test_version:"2001.12.6932.19537"))
   {
     Vulnerable_range = "Less than 2001.12.6932.19537";
@@ -151,7 +149,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
   if(dllVer)
   {
-    ## Check for Catsrvut.dll version
     if(version_is_less(version:dllVer, test_version:"2001.12.10130.17581"))
     {
       Vulnerable_range = "Less than 2001.12.10130.17581";
@@ -166,7 +163,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 
   if(dllVer2)
   {
-    ## Check for Authui.dll version
     if(version_is_less(version:dllVer2, test_version:"6.2.9200.17561"))
     {
       Vulnerable_range1 = "Less than 6.2.9200.17561";
@@ -183,13 +179,11 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Catsrvut.dll version
   if(dllVer && version_is_less(version:dllVer, test_version:"2001.12.10530.18146"))
   {
     Vulnerable_range = "Less than 2001.12.10530.18146";
     VULN = TRUE ;
   }
-  ## Check for Authui.dll version
   if(dllVer2 && version_is_less(version:dllVer2, test_version:"6.3.9600.18111"))
   {
     Vulnerable_range1 = "Less than 6.3.9600.18111";
@@ -201,14 +195,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer2)
 {
   ## Windows 10 Core
-  ## Check for Authui.dll version
   if(version_is_less(version:dllVer2, test_version:"10.0.10240.16603"))
   {
     Vulnerable_range = "Less than 10.0.10240.16603";
     VULN1 = TRUE ;
   }
   ## Windows 10 version 1511
-  ## Check for Authui.dll version
   if(version_in_range(version:dllVer2, test_version:"10.0.10586.0", test_version2:"10.0.10586.19"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.19";

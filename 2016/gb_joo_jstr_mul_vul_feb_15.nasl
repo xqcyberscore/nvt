@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joo_jstr_mul_vul_feb_15.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_joo_jstr_mul_vul_feb_15.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Joomla J2Store 3.1.6 Multiple SQL Injection Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107024");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2015-6513");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"creation_date", value:"2016-07-07 06:40:16 +0200 (Thu, 07 Jul 2016)");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated remote attacker to execute arbitrary SQL commands via the (1) sortby or (2) manufacturer_ids[] parameter to index.php.");
   script_tag(name:"affected", value:"J2Store v3.1.6 and previous versions. ");
-  script_tag(name:"solution", value:"Fixed in J2Store v3.1.7 version. ");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution", value:"Fixed in J2Store v3.1.7 version.");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132658/Joomla-J2Store-3.1.6-SQL-Injection.html");
   script_xref(name:"URL", value:"http://j2store.org/download-j2store/j2store-v3-3-1-7.html");

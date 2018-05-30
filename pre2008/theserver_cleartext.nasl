@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: theserver_cleartext.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: theserver_cleartext.nasl 10011 2018-05-30 01:12:59Z ckuersteiner $
 # Description: TheServer clear text password
 #
 # Authors:
@@ -22,12 +22,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "We were able to read the server.ini file
-It may contain sensitive information like clear text passwords.
-This flaw is known to affect TheServer.";
-
-tag_solution = "upgrade your software or reconfigure it";
-
 # References:
 #
 # Date:	 Mon, 14 Oct 2002 14:50:02 -0400 (EDT)
@@ -38,31 +32,32 @@ tag_solution = "upgrade your software or reconfigure it";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11914");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10011 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-30 03:12:59 +0200 (Wed, 30 May 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2002-2389");
  script_bugtraq_id(5250);
 
- name = "TheServer clear text password";
- script_name(name);
- 
+ script_tag(name: "solution_type", value: "Workaround");
 
+ script_name("TheServer clear text password");
  
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_probe");
  
  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
- family = "Remote file access";
- script_family(family);
+ script_family("Remote file access");
  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name: "solution", value: "Upgrade your software or reconfigure it.");
+
+ script_tag(name: "summary", value: "We were able to read the server.ini file It may contain sensitive
+information like clear text passwords. This flaw is known to affect TheServer.");
+
  exit(0);
 }
 
@@ -103,3 +98,4 @@ if (testfile(port: port, no404: no404, f: "/" + rand_str() + ".ini"))
 if (testfile(port: port, no404: no404, f: "/server.ini"))
   security_message(port);
 
+exit(0);

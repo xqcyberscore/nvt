@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_simatic_s7_1200.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2012-3037");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5988 $");
+ script_version("$Revision: 10005 $");
 
  script_name("Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
  script_xref(name : "URL" , value : "http://subscriber.communications.siemens.com/");
  script_xref(name : "URL" , value : "http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-240718.pdf");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-09-20 10:18:56 +0200 (Thu, 20 Sep 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
@@ -58,27 +58,23 @@ if (description)
  certificates. Successful exploits will cause victims to accept the
  certificates assuming they are from a legitimate site.
 
- Siemens SIMATIC S7-1200 versions 2.x are vulnerable; other versions
+ Siemens SIMATIC S7-1200 versions 2.x are vulnerable. Other versions
  may also be affected.");
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name: "solution_type", value: "VendorFix");
- exit(0);
 
+ exit(0);
 }
 
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!version = get_app_version(cpe:CPE, port:port))exit(0);
 
 if(version =~ "^2\.") {
-
   security_message(port:port);
   exit(0);
-
-}  
+}
 
 exit(99);

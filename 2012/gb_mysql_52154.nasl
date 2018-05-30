@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_52154.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_mysql_52154.nasl 10006 2018-05-29 14:01:46Z cfischer $
 #
 # MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability
 #
@@ -25,26 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "MySQL is prone to an unspecified remote code-execution vulnerability.
-
-Very few technical details are currently available. We will update
-this BID as more information emerges.
-
-An attacker can leverage this issue to execute arbitrary code within
-the context of the vulnerable application. Failed exploit attempts
-will result in a denial-of-service condition.
-
-MySQL 5.5.20 is vulnerable; other versions may also be vulnerable.";
-
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103472";
 CPE = "cpe:/a:mysql:mysql";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103472");
  script_bugtraq_id(52154);
- script_version ("$Revision: 6018 $");
+ script_version("$Revision: 10006 $");
 
  script_name("MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability");
 
@@ -56,34 +43,41 @@ if (description)
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 16:01:46 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-04-19 11:48:24 +0200 (Thu, 19 Apr 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("Databases");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("mysql_version.nasl");
  script_require_ports("Services/mysql", 3306);
  script_mandatory_keys("MySQL/installed");
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "MySQL is prone to an unspecified remote code-execution vulnerability.
+
+  This NVT has duplicated the NVT MySQL 'yaSSL' Remote Code Execution Vulnerability (OID: 1.3.6.1.4.1.25623.1.0.103471)
+  and was deprecated.");
+ script_tag(name : "impact" , value : "An attacker can leverage this issue to execute arbitrary code within
+the context of the vulnerable application. Failed exploit attempts
+will result in a denial-of-service condition.");
+ script_tag(name : "insight" , value : "Very few technical details are currently available. We will update
+this script as more information emerges.");
+ script_tag(name : "affected" , value : "MySQL 5.5.20 is vulnerable. Other versions may also be vulnerable.");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
+
+ script_tag(name:"deprecated", value:TRUE); # The BID was retired.
+
  exit(0);
 }
 
+exit(66);
+
 include("misc_func.inc");
 include("version_func.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
-sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!sqlPort){
-  sqlPort = 3306;
-}
-
-if(!get_port_state(sqlPort)){
-  exit(0);
-}
-
-mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort);
+if(!sqlPort = get_app_port(cpe:CPE)) exit(0);
+mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
 if(isnull(mysqlVer)){
   exit(0);
 }

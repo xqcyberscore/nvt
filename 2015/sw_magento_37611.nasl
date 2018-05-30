@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_37611.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: sw_magento_37611.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Magento Multiple HTML Injection Vulnerabilities
 #
@@ -31,18 +31,13 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105225");
-  script_version("$Revision: 6214 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 10017 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
   script_bugtraq_id(37611);
-
   script_name("Magento Multiple HTML Injection Vulnerabilities");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
@@ -55,14 +50,13 @@ if(description)
   script_tag(name : "vuldetect" , value : "Check the version.");
   script_tag(name : "impact" , value : "Attacker-supplied HTML or JavaScript code could run in the context of the
   affected site, potentially allowing the attacker to steal cookie-based authentication
-  credentials and to control how the site is rendered to the user; other attacks are also possible.");
-  script_tag(name : "affected" , value : "Magento 1.3.2.4 is vulnerable; other versions may also be affected.");
+  credentials and to control how the site is rendered to the user. Other attacks are also possible.");
+  script_tag(name : "affected" , value : "Magento 1.3.2.4 is vulnerable. Other versions may also be affected.");
   script_tag(name : "solution" , value : "Check for updated versions of Magento");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37611");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
@@ -75,9 +69,8 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"1.3.2.4" ) ) {
-
   security_message( port:port );
   exit( 0 );
-}  
+}
 
 exit( 99 );

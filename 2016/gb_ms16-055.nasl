@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-055.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_ms16-055.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3156754)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807691");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0168", "CVE-2016-0169", "CVE-2016-0170", "CVE-2016-0184",
                 "CVE-2016-0195");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:48:17 +0530 (Wed, 11 May 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3156754)");
 
   script_tag(name: "summary" , value:"This host is missing a critical security
@@ -43,10 +42,13 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to
-  - When Windows GDI component improperly discloses the contents of its memory.
-  - When Windows Imaging Component fails to properly handle objects in the memory.
-  - When Windows GDI component fails to properly handle objects in memory.");
+  script_tag(name: "insight" , value:"Multiple flaws are due to,
+
+  - Windows GDI component improperly discloses the contents of its memory.
+
+  - Windows Imaging Component fails to properly handle objects in the memory.
+
+  - Windows GDI component fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to obtain information to further compromise the user's system, and  install
@@ -54,20 +56,28 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-055");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -90,23 +100,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Gdi32.dll' and 'Windowscodecs.dll', "D3d10level9.dll"
 dllVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
 dllVer1 = fetch_file_version(sysPath, file_name:"System32\Windowscodecs.dll");
 dllVer2 = fetch_file_version(sysPath, file_name:"System32\D3d10level9.dll");
@@ -125,7 +128,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(dllVer)
   {
-    ## Check for Gdi32.dll version
     ## Presently GDR information is not available.
     if(version_is_less(version:dllVer, test_version:"6.1.7601.23418"))
     {
@@ -136,7 +138,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 
   else if(dllVer1)
   {
-    ## Check for Windowscodecs.dll version
     if(version_is_less(version:dllVer1, test_version:"6.1.7601.23418"))
     {
       Vulnerable_range1 = "Less than 6.1.7601.23418";
@@ -146,7 +147,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 
   else if(dllVer2)
   {
-    ##Check for D3d10level9.dll version
     if(version_is_less(version:dllVer2, test_version:"6.1.7601.23432"))
     {
       Vulnerable_range2 = "Less than 6.1.7601.23432";
@@ -161,7 +161,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllVer)
   {
-    ## Check for Gdi32.dll version
     if(version_is_less(version:dllVer, test_version:"6.0.6002.19636"))
     {
       Vulnerable_range = "Less than 6.0.6002.19636";
@@ -176,7 +175,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   else if(dllVer1)
   {
-    ## Check for Windowscodecs.dll version
     if(version_is_less(version:dllVer1, test_version:"7.0.6002.19636"))
     {
       Vulnerable_range1 = "Less than 7.0.6002.19636";
@@ -188,10 +186,9 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
       VULN1 = TRUE ;
     }
   }
-  
+
   else if(dllVer2)
   {
-    ## Check for D3d10level9.dll version
     if(version_is_less(version:dllVer2, test_version:"7.0.6002.19647"))
     {
       Vulnerable_range2 = "Less than 7.0.6002.19647";
@@ -208,7 +205,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 ## Windows 2012 x64
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Gdi32.dll version
   if(version_is_less(version:dllVer3, test_version:"6.2.9200.21831"))
   {
      report = 'File checked:     ' + GdiPath64 + '\n' +
@@ -217,40 +213,35 @@ else if(hotfix_check_sp(win2012:1) > 0)
      security_message(data:report);
      exit(0);
   }
-  
-  ## Check for Windowscodecs.dll version
+
   else if(version_is_less(version:dllVer1, test_version:"6.2.9200.21831"))
   {
      Vulnerable_range1 =  "Less than 6.2.9200.21831";
      VULN1 = TRUE;
   }
-  
-  ## Check for D3d10level9.dll version
+
   else if(version_is_less(version:dllVer2, test_version:"6.2.9200.21830"))
   {
      Vulnerable_range2 = "Less than 6.2.9200.21830";
      VULN2 = TRUE;
-  } 
+  }
 }
 
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Gdi32.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.18302"))
   {
     Vulnerable_range = "Less than 6.3.9600.18302";
     VULN = TRUE ;
   }
-  
-  ## Check for Windowscodecs.dll version
+
   else if(version_is_less(version:dllVer1, test_version:"6.3.9600.18302"))
   {
     Vulnerable_range1 = "Less than 6.3.9600.18302";
     VULN1 = TRUE ;
   }
- 
-  ## Check for D3d10level9.dll version
+
   else if(version_is_less(version:dllVer2, test_version:"6.3.9600.18302"))
   {
     Vulnerable_range2 = "Less than 6.3.9600.18302";
@@ -261,13 +252,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   ## Windows 10
-  ## Check for Gdi32.dll version
   if(version_is_less(version:dllVer, test_version:"10.0.10240.16841") )
   {
     Vulnerable_range = "Less than 10.0.10240.16841";
     VULN = TRUE;
   }
-  
+
   else if(version_in_range(version:dllVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.305"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.305";

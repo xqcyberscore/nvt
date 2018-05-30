@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-077.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_ms16-077.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Web Proxy Auto Discovery (WPAD) Privilege Elevation Vulnerabilities (3165191)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808085");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-3213", "CVE-2016-3236", "CVE-2016-3299");
   script_bugtraq_id(91111, 92387, 91114);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:55:09 +0530 (Wed, 15 Jun 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Web Proxy Auto Discovery (WPAD) Privilege Elevation Vulnerabilities (3165191)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
@@ -44,10 +43,13 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws exist,
+
   - when the Web Proxy Auto Discovery (WPAD) protocol falls back to
     a vulnerable proxy discovery process.
+
   - when Microsoft Windows improperly handles certain proxy discovery
     scenarios using the Web Proxy Auto Discovery (WPAD) protocol method.
+
   - when NetBIOS improperly handles responses.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
@@ -57,19 +59,26 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/en-us/library/security/MS16-077");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -82,6 +91,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -90,23 +100,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Ws2_32.dll'
 sysVer = fetch_file_version(sysPath, file_name:"System32\Ws2_32.dll");
 if(!sysVer){
   exit(0);
@@ -115,7 +118,6 @@ if(!sysVer){
 ##Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Ws2_32.dll version
   if(version_is_less(version:sysVer, test_version:"6.1.7601.23451"))
   {
     Vulnerable_range = "Less than 6.1.7601.23451";
@@ -126,7 +128,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 ##Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Ws2_32.dll version
   if(version_is_less(version:sysVer, test_version:"6.0.6002.19655"))
   {
     Vulnerable_range = "Less than 6.0.6002.19655";
@@ -142,7 +143,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 ##Windows 8.1 and Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ws2_32.dll version
   if(version_is_less(version:sysVer, test_version:"6.3.9600.18340"))
   {
     Vulnerable_range = "Less than 6.3.9600.18340";
@@ -153,7 +153,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 ##Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Ws2_32.dll version
   if(version_is_less(version:sysVer, test_version:"6.2.9200.21858"))
   {
     Vulnerable_range = "Less than 6.2.9200.21858";
@@ -164,7 +163,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
 ##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Ws2_32.dll version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16942"))
   {
     Vulnerable_range = "Less than 10.0.10240.16942";

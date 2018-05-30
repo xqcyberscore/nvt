@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3976.nasl 7212 2017-09-21 07:27:04Z teissa $
+# $Id: deb_3976.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 3976-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703976");
-  script_version("$Revision: 7212 $");
+  script_version("$Revision: 10012 $");
   script_cve_id("CVE-2017-2923", "CVE-2017-2924");
   script_name("Debian Security Advisory DSA 3976-1 (freexl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 09:27:04 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-17 00:00:00 +0200 (Sun, 17 Sep 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
@@ -60,7 +60,7 @@ For the unstable distribution (sid), these problems have been fixed in
 version 1.0.4-1.
 
 We recommend that you upgrade your freexl packages.");
-  script_tag(name:"summary",  value:"Marcin Icewall 
+  script_tag(name:"summary",  value:"Marcin Icewall
 Noga of Cisco Talos discovered two vulnerabilities in
 freexl, a library to read Microsoft Excel spreadsheets, which might
 result in denial of service or the execution of arbitrary code if a
@@ -97,5 +97,5 @@ if ((res = isdpkgvuln(pkg:"libfreexl1-dbg", ver:"1.0.0g-1+deb8u4", rls_regex:"DE
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

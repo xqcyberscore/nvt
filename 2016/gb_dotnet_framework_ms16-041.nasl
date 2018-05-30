@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-041.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_dotnet_framework_ms16-041.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807662");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-0148");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 12:18:40 +0530 (Wed, 13 Apr 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)");
 
   script_tag(name:"summary", value:"This host is missing an important security
@@ -55,10 +54,10 @@ if(description)
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-041");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3143693");
@@ -70,46 +69,34 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-dotPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Confirm .NET 4.6 is installed
 key = "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-##Fetch release version of dotnet
 version = registry_get_sz(key:key, item:"Version");
 if(!version){
   exit(0);
 }
 
-##Confirming DotNet 4.6 or 4.6.1 is installed
 if(version =~ "^4\.6")
 {
-  ##Get install Path of .NET 4.6 and 4.6.1
   dotPath = registry_get_sz(key:key, item:"InstallPath");
   if(dotPath && "Microsoft.NET" >< dotPath)
   {
-    ## Get version from mscorlib.dll file
     dllVer = fetch_file_version(sysPath:dotPath, file_name:"mscorlib.dll");
     if(dllVer)
     {

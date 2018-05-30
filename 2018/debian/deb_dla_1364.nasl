@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1364.nasl 9642 2018-04-27 07:17:02Z cfischer $
+# $Id: deb_dla_1364.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1364-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891364");
-  script_version("$Revision: 9642 $");
+  script_version("$Revision: 10012 $");
   script_cve_id("CVE-2017-17833");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1364-1] openslp-dfsg security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:17:02 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 00:00:00 +0200 (Fri, 27 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

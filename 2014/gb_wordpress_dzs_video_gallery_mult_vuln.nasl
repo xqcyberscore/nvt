@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dzs_video_gallery_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_wordpress_dzs_video_gallery_mult_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # WordPress Digital Zoom Studio (DZS) Video Gallery Plugin Multiple Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804899");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-9094");
   script_bugtraq_id(68525);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 20:20:50 +0530 (Fri, 28 Nov 2014)");
   script_name("WordPress Digital Zoom Studio (DZS) Video Gallery Plugin Multiple Vulnerabilities");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"summary", value:"This host is installed with WordPress
   Digital Zoom Studio (DZS) Video Gallery Plugin and is prone to multiple
@@ -47,11 +47,14 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - Input passed via 'designrand'and 'swfloc'  parameters to
   dzs-videogallery/deploy/designer/preview.php script is not properly validated
   before returning it to users.
+
   - Direct request for the /videogallery.php and /admin/sliderexport.php scripts
   discloses the software's installation path.
+
   - Input passed via the 'src' parameter is not properly sanitized upon submission
   to the img.php script.");
 
@@ -65,8 +68,8 @@ if(description)
   script_tag(name:"affected", value:"WordPress Digital Zoom Studio (DZS) Video
   Gallery Plugin");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
@@ -83,40 +86,25 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + "/wp-content/plugins/dzs-videogallery/deploy/designer/"
           + 'preview.php?swfloc="><script>alert(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-  pattern:"<script>alert\(document.cookie\)</script>",
+  pattern:"<script>alert\(document\.cookie\)</script>",
   extra_check:">Video"))
 {
-  security_message(http_port);
+  security_message(port:http_port);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_kb4011110.nasl 7233 2017-09-22 12:05:13Z santu $
+# $Id: gb_ms_outlook_kb4011110.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Office Outlook Defense In Depth Update (KB4011110)
 #
@@ -23,15 +23,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811787");
-  script_version("$Revision: 7233 $");
+  script_version("$Revision: 10017 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 14:05:13 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-20 14:40:52 +0530 (Wed, 20 Sep 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Defense In Depth Update (KB4011110)");
 
   script_tag(name:"summary", value:"This host is missing an important security
@@ -53,6 +53,7 @@ if(description)
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://support.microsoft.com/en-us/help/4011110");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,26 +64,20 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Outlook/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-# Variable Initialization
-outlookVer = "";
-outlookFile = "";
-
-## Check for Office outlook 2007
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 if(!outlookVer || !(outlookVer =~ "^12\.")){
   exit(0);
 }
 
-## Office outlook
 outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                               "\App Paths\OUTLOOK.EXE", item:"Path");
 if(!outlookFile){

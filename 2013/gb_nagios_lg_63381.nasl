@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_lg_63381.nasl 5699 2017-03-23 14:53:33Z cfi $
+# $Id: gb_nagios_lg_63381.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # Nagios Looking Glass Local File Include Vulnerability
 #
@@ -27,28 +27,17 @@
 
 CPE = "cpe:/a:nagios:nagios";
 
-tag_insight = "The application fails to adequately validate user-supplied input.";
-
-tag_impact = "An attacker can exploit this issue to obtain potentially sensitive
-information and execute arbitrary local scripts in the context of the
-Web server process. This may aid in further attacks.";
-
-tag_affected = "Nagios Looking Glass 1.1.0 beta 2 and prior are vulnerable.";
-tag_summary = "Nagios Looking Glass is prone to a local file-include vulnerability";
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Try to read the s3_config.inc.php via HTTP GET request.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103845");
  script_bugtraq_id(63381);
- script_version("$Revision: 5699 $");
+ script_version("$Revision: 10000 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
  script_name("Nagios Looking Glass Local File Include Vulnerability");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63381");
  script_xref(name:"URL", value:"http://www.nagios.org/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2013-12-03 10:16:11 +0100 (Tue, 03 Dec 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -58,12 +47,16 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("nagios/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name : "impact" , value : "An attacker can exploit this issue to obtain potentially sensitive
+information and execute arbitrary local scripts in the context of the
+Web server process. This may aid in further attacks.");
+ script_tag(name : "vuldetect" , value : "Try to read the s3_config.inc.php via HTTP GET request.");
+ script_tag(name : "insight" , value : "The application fails to adequately validate user-supplied input.");
+ script_tag(name : "solution" , value : "Ask the Vendor for an update.");
+ script_tag(name : "summary" , value : "Nagios Looking Glass is prone to a local file-include vulnerability");
+ script_tag(name : "affected" , value : "Nagios Looking Glass 1.1.0 beta 2 and prior are vulnerable.");
+
+ script_tag(name:"solution_type", value:"NoneAvailable");
 
  exit(0);
 }
@@ -71,10 +64,9 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("misc_func.inc"); 
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! can_host_php( port:port ) ) exit( 0 );
 
 dirs = make_list_unique( "/nspl_status", "/nlg", cgi_dirs( port:port ) );
 
@@ -102,7 +94,7 @@ foreach dir( dirs ) {
       security_message( port:port, data:report );
       exit( 0 );
     }
-  }  
-}  
+  }
+}
 
 exit( 99 );

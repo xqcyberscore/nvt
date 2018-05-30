@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cbf621a53c_leptonica_fc27.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_fedora_2018_cbf621a53c_leptonica_fc27.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Fedora Update for leptonica FEDORA-2018-cbf621a53c
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874224");
-  script_version("$Revision: 9117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:42:10 +0100 (Wed, 14 Mar 2018)");
   script_cve_id("CVE-2017-18196", "CVE-2018-3836", "CVE-2018-7186", "CVE-2018-7247");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for leptonica FEDORA-2018-cbf621a53c");
   script_tag(name: "summary", value: "Check the version of leptonica");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The library supports many operations 
-that are useful on 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "The library supports many operations
+that are useful on
  * Document images
  * Natural images
 
@@ -89,6 +88,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

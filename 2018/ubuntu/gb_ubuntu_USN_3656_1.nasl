@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3656_1.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_ubuntu_USN_3656_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
 #
 # Ubuntu Update for linux-raspi2 USN-3656-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843535");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:41:11 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2017-17975", "CVE-2017-18193", "CVE-2017-18222", "CVE-2018-1065", "CVE-2018-1068", "CVE-2018-1130", "CVE-2018-5803", "CVE-2018-7480", "CVE-2018-7757", "CVE-2018-7995", "CVE-2018-8781", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"10.0");
@@ -89,7 +89,7 @@ Linux kernel did not properly validate mmap offsets sent from userspace. A
 local attacker could use this to expose sensitive information (kernel
 memory) or possibly execute arbitrary code. (CVE-2018-8781)
 
-Si ... 
+Si ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"linux-raspi2 on Ubuntu 16.04 LTS");
@@ -102,7 +102,7 @@ Si ...
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 

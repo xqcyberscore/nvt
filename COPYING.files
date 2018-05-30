@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 29 May 2018 12:03:00 +0200
+# Automatically created on:  Wed, 30 May 2018 11:32:43 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38785,6 +38785,7 @@
 2018/debian/deb_4209.nasl: GPLv2+
 2018/debian/deb_4210.nasl: GPLv2+
 2018/debian/deb_4211.nasl: GPLv2+
+2018/debian/deb_4212.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39966,6 +39967,7 @@
 2018/ilias/gb_ilias_523_xss_vuln.nasl: GPLv2+
 2018/ilias/gb_ilias_524_xss_vuln.nasl: GPLv2+
 2018/ilias/gb_ilias_534_xss_vuln.nasl: GPLv2+
+2018/ilias/gb_ilias_default_credentials.nasl: GPLv2+
 2018/ilias/gb_ilias_eol.nasl: GPLv2+
 2018/ilias/gb_ilias_mult_vuln02_may18.nasl: GPLv2+
 2018/ilias/gb_ilias_mult_vuln03_may18.nasl: GPLv2+
@@ -40214,6 +40216,7 @@
 2018/moinmoin/gb_moinmoin_198_win.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_199_lin.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_199_win.nasl: GPLv2+
+2018/monstra/gb_monstra_cms_mult_vuln.nasl: GPLv2+
 2018/moodle/gb_moodle_auth_bypass_vuln_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_auth_bypass_vuln_win.nasl: GPLv2+
 2018/moodle/gb_moodle_bypass_vuln_jan18_01_lin.nasl: GPLv2+
@@ -40288,10 +40291,12 @@
 2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_dos_vuln_mar18.nasl: GPLv2+
 2018/ntp/gb_ntp_protocol_engine_dos_vuln.nasl: GPLv2+
+2018/nuuo/gb_nuuo_nvrmini2_file_upload_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_mult_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_priv_esc_vuln.nasl: GPLv2+
+2018/opencart/gb_opencart_mult_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln_0318.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_newlistname_sql_injec_vuln.nasl: GPLv2+
@@ -41708,6 +41713,7 @@ gb_maildrop_detect.nasl: GPLv2+
 gb_mako_web_server_detect.nasl: GPLv2+
 gb_malwarebytes_anti_exploit_detect_win.nasl: GPLv2+
 gb_malwarebytes_anti_malware_detect_win.nasl: GPLv2+
+gb_manageengine_adaudit_plus_detect.nasl: GPLv2+
 gb_manageengine_admanager_plus_detection.nasl: GPLv2+
 gb_manageengine_admanager_plus_detection_win.nasl: GPLv2+
 gb_manage_engine_appli_manager_detect.nasl: GPLv2+
@@ -41774,6 +41780,7 @@ gb_moinmoin_wiki_detect.nasl: GPLv2+
 gb_mongodb_detect.nasl: GPLv2+
 gb_mongodb_webadmin_detect.nasl: GPLv2+
 gb_monsta_ftp_detect.nasl: GPLv2+
+gb_monstra_cms_detect.nasl: GPLv2+
 gb_moodle_cms_detect.nasl: GPLv2+
 gb_moxa_awk_detect.nasl: GPLv2+
 gb_moxa_edr_devices_web_detect.nasl: GPLv2+
@@ -42090,6 +42097,7 @@ gb_sap_management_console_detect.nasl: GPLv2+
 gb_sap_maxdb_detect.nasl: GPLv2+
 gb_sap_msg_service_detect.nasl: GPLv2+
 gb_sap_netweaver_detect.nasl: GPLv2+
+gb_sap_rfc_detect.nasl: GPLv2+
 gb_sap_router_detect.nasl: GPLv2+
 gb_sap_webgui_detect.nasl: GPLv2+
 gb_sawmill_detect.nasl: GPLv2+
@@ -57924,6 +57932,7 @@ gsf/2018/sap/gb_sap_msg_server_acl_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_code_inj_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_xss_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_rfc_default_pw.nasl: GPLv2+
 gsf/2018/sap/gb_sap_webgui_default_pw.nasl: GPLv2+
 gsf/2018/schneider/gb_pelco_sarix_ip_camera_mult_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_clearscada_dos_vuln.nasl: GPLv2+
@@ -57973,6 +57982,7 @@ gsf/2018/wowza/gb_wowza_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/zabbix/gb_zabbix_xxe_vuln.nasl: GPLv2+
 gsf/2018/zend/gb_zendserver_xss_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_adaudit_plus_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_ncm_mult_vuln.nasl: GPLv2+
@@ -59516,6 +59526,16 @@ Policy/Microsoft/WindowsGeneral/AutoPlay/win_default_behaviour_autorun.nasl: GPL
 Policy/Microsoft/WindowsGeneral/AutoPlay/win_disallow_autoplay_nonvolume_devices.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/AutoPlay/win_turn_off_autoplay.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Defender/win_turn_off_defender.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_inboundcon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logdroppedpackets.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logfilepath.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logfilesize.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logsuccesspackets.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_notification.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_outboundcon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_status.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_publicfw_localconsecrules.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_publicfw_localfwrules.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_execute_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_read_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_write_access.nasl: GPLv2+
@@ -60724,6 +60744,7 @@ rsync_modules.nasl: GPLv2+
 rt_detect.nasl: GPLv2+
 rtsp_detect.nasl: GPLv2
 sahana_detect.nasl: GPLv2+
+sap.inc: GPLv2+
 secpod_activex.inc: GPLv2+
 secpod_admin_news_tools_detect.nasl: GPLv2+
 secpod_adobe_dreamweaver_detect.nasl: GPLv2+

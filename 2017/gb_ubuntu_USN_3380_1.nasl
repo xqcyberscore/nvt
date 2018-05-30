@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3380_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3380_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
 #
 # Ubuntu Update for freerdp USN-3380-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843272");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 10012 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 07:19:43 +0200 (Tue, 08 Aug 2017)");
   script_cve_id("CVE-2014-0250", "CVE-2014-0791", "CVE-2017-2834", "CVE-2017-2835",
                 "CVE-2017-2836", "CVE-2017-2837", "CVE-2017-2838", "CVE-2017-2839");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for freerdp USN-3380-1");
   script_tag(name: "summary", value: "Check the version of freerdp");

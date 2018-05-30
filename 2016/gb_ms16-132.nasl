@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-132.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_ms16-132.nasl 10017 2018-05-30 07:17:29Z cfischer $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3199120)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809466");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 10017 $");
   script_cve_id("CVE-2016-7210", "CVE-2016-7205", "CVE-2016-7217", "CVE-2016-7256");
   script_bugtraq_id(94030, 94033, 94066, 94156);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 09:56:10 +0530 (Wed, 09 Nov 2016)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3199120)");
 
   script_tag(name: "summary" , value:"This host is missing a critical security
@@ -44,10 +43,14 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
-  - When the ATMFD component improperly discloses the contents of its memory.
-  - When the Windows Animation Manager improperly handles objects in memory.
-  - When the Windows font library improperly handles specially crafted embedded fonts.
-  - When the Windows Media Foundation improperly handles objects in memory.");
+
+  - the ATMFD component improperly discloses the contents of its memory.
+
+  - the Windows Animation Manager improperly handles objects in memory.
+
+  - the Windows font library improperly handles specially crafted embedded fonts.
+
+  - the Windows Media Foundation improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to install programs, view, change, or delete data, or create new accounts with
@@ -56,19 +59,26 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS16-132");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -81,6 +91,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -89,18 +100,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllver = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3,
                    win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -116,7 +121,6 @@ if(!dllver && !edgeVer){
 ##Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllver)
 {
-  ## Check for Fontsub.dll version
   if(version_is_less(version:dllver, test_version:"6.1.7601.23587"))
   {
     Vulnerable_range = "Less than 6.1.7601.23587";
@@ -127,7 +131,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllver)
 ##Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0 && dllver)
 {
-  ## Check for Fontsub.dll version
   if(version_is_less(version:dllver, test_version:"6.0.6002.18272"))
   {
     Vulnerable_range = "Less than 6.0.6002.18272";
@@ -143,7 +146,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0 && dllver)
 ##Windows 8.1 and Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllver)
 {
-  ## Check for Fontsub.dll version
   if(version_is_less(version:dllver, test_version:"6.3.9600.17415"))
   {
     Vulnerable_range = "Less than 6.3.9600.17415";
@@ -154,7 +156,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllver)
 ##Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0 && dllver)
 {
-  ## Check for Fontsub.dll version
   if(version_is_less(version:dllver, test_version:"6.2.9200.16384"))
   {
     Vulnerable_range = "Less than 6.2.9200.16384";
@@ -165,7 +166,6 @@ else if(hotfix_check_sp(win2012:1) > 0 && dllver)
 ##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 {
-  ## Check for edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17184"))
   {
     Vulnerable_range2 = "Less than 11.0.10240.17184";
@@ -179,7 +179,6 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
   }
 
   ## Windows 10 version 1607
-  ## Check for edgehtml.dll version
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.446"))
   {
     Vulnerable_range2 = "11.0.14393.0 - 11.0.14393.446";
