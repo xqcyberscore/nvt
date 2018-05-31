@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 9476 2018-04-13 10:47:24Z cfischer $
+# $Id: ilo_detect.nasl 10036 2018-05-31 10:17:24Z ckuersteiner $
 #
 # HP Integrated Lights-Out Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20285");
-  script_version("$Revision: 9476 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:47:24 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 10036 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:17:24 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -143,7 +143,6 @@ if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett
     cpe += ':' + fw_vers;
   }
 
-  set_kb_item( name:"www/" + port + "/HP_ILO", value:TRUE );
   set_kb_item( name:"www/" + port + "/HP_ILO/fw_version", value:fw_vers );
   set_kb_item( name:"www/" + port + "/HP_ILO/ilo_version", value:ilo_vers );
   set_kb_item( name:"www/" + port + "/HP_ILO/sso", value:sso );
@@ -159,7 +158,8 @@ if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett
                                             concluded:concluded,
                                             concludedUrl:conclUrl,
                                             extra:extra ),
-                                            port:port );
+               port:port );
+  exit(0);
 }
 
 exit( 0 );

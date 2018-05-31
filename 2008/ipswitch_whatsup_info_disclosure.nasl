@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_whatsup_info_disclosure.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: ipswitch_whatsup_info_disclosure.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 # Description: Ipswitch WhatsUp Professional Multiple Vulnerabilities
 #
 # Authors:
@@ -22,57 +22,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server is affected by multiple flaws. 
-
-Description :
-
-The remote host appears to be running Ipswitch WhatsUp Professional,
-which is used to monitor states of applications, services and hosts. 
-
-The version of WhatsUp Professional installed on the remote host is
-prone to multiple issues, including source code disclosure and
-cross-site scripting vulnerabilities.";
-
-tag_solution = "Unknown at this time.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80068");;
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80068");
+ script_version("$Revision: 10033 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
- script_cve_id("CVE-2006-2351", "CVE-2006-2352", "CVE-2006-2353", "CVE-2006-2354", "CVE-2006-2355", "CVE-2006-2356", "CVE-2006-2357");
+ script_cve_id("CVE-2006-2351", "CVE-2006-2352", "CVE-2006-2353", "CVE-2006-2354", "CVE-2006-2355",
+                "CVE-2006-2356", "CVE-2006-2357");
  script_bugtraq_id(17964);
+
  script_xref(name:"OSVDB", value:"25469");
  script_xref(name:"OSVDB", value:"25470");
  script_xref(name:"OSVDB", value:"25471");
  script_xref(name:"OSVDB", value:"25472");
 
- name = "Ipswitch WhatsUp Professional Multiple Vulnerabilities";
- script_name(name);
- 
- 
+ script_name("Ipswitch WhatsUp Professional Multiple Vulnerabilities");
+
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- 
+ script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2006 David Maciejak");
- 
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 8022);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/433808/30/0/threaded");
- script_xref(name : "URL" , value : "http://www.ipswitch.com/products/whatsup/professional/");
  script_mandatory_keys("Ipswitch/banner");
+
+ script_tag(name: "solution", value: "Unknown at this time.");
+
+ script_tag(name: "summary", value: "The remote web server is affected by multiple flaws.
+
+Description :
+
+The remote host appears to be running Ipswitch WhatsUp Professional, which is used to monitor states of
+applications, services and hosts.
+
+The version of WhatsUp Professional installed on the remote host is prone to multiple issues, including source
+code disclosure and cross-site scripting vulnerabilities.");
+
+ script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/433808/30/0/threaded");
+ script_xref(name: "URL", value: "http://www.ipswitch.com/products/whatsup/professional/");
+
  exit(0);
 }
-
-#code
 
 include("http_func.inc");
 include("http_keepalive.inc");

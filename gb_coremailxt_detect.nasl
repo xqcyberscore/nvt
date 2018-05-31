@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coremailxt_detect.nasl 9921 2018-05-22 13:02:25Z jschulte $
+# $Id: gb_coremailxt_detect.nasl 10037 2018-05-31 10:25:24Z jschulte $
 #
 # Coremail XT Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113191");
-  script_version("$Revision: 9921 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:02:25 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:25:24 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 14:26:37 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,7 @@ port = get_http_port( default: 80 );
 
 foreach dir ( make_list_unique( '/', cgi_dirs( port: port ) ) ) {
   buf = http_get_cache( item: dir, port: port );
-  if( '<a href="http://www.coremail.cn" target="_blank">' >< buf ) {
+  if( 'href="/coremail' >< buf  || 'action="/coremail' >< buf ) {
     set_kb_item( name: 'coremail/detected', value: TRUE );
     version = "unknown";
 

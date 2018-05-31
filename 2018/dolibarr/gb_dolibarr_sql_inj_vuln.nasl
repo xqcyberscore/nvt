@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_sql_inj_vuln.nasl 9949 2018-05-24 12:33:20Z jschulte $
+# $Id: gb_dolibarr_sql_inj_vuln.nasl 10032 2018-05-31 04:45:07Z ckuersteiner $
 #
-# Dolibarr < 7.0.2 SQL Injection Vulnerability
+# Dolibarr < 7.0.2 Multiple Vulnerabilities
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113196");
-  script_version("$Revision: 9949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 14:33:20 +0200 (Thu, 24 May 2018) $");
+  script_version("$Revision: 10032 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 06:45:07 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 14:25:13 +0200 (Thu, 24 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,9 +38,9 @@ if( description )
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_cve_id("CVE-2018-9019");
+  script_cve_id("CVE-2018-9019", "CVE-2018-10092", "CVE-2018-10094", "CVE-2018-10095");
 
-  script_name("Dolibarr < 7.0.2 SQL Injection Vulnerability");
+  script_name("Dolibarr < 7.0.2 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -49,13 +49,25 @@ if( description )
   script_dependencies("gb_dolibarr_detect.nasl");
   script_mandatory_keys("Dolibarr/installed");
 
-  script_tag(name:"summary", value:"Dolibarr is prone to an SQL Injection Vulnerability.");
+  script_tag(name:"summary", value:"Dolibarr is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The vulnerability exists within the sortfield parameter to
-  /accountancy/admin/accountmodel.php, /accountancy/admin/categories_list.php,
-  /accountancy/admin/journals_list.php, /admin/dict.php, /admin/mails_templates.php, or /admin/website.php.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary code on the target host.");
+
+  script_tag(name:"insight", value:"Dolibarr is prone to multiple vulnerabilities:
+
+- SQL Injection (CVE-2018-9019)
+
+- Arbitrary command execution (CVE-2018-10092)
+
+- SQL Injection (CVE-2018-10094)
+
+- Cross-site scripting vulnerability (CVE-2018-10095)");
+
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary code on
+the target host.");
+
   script_tag(name:"affected", value:"Dolibarr through version 7.0.1.");
+
   script_tag(name:"solution", value:"Update to version 7.0.2.");
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/83b762b681c6dfdceb809d26ce95f3667b614739");

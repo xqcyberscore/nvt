@@ -24,12 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804060";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804060");
+  script_version("$Revision: 10029 $");
   script_cve_id("CVE-2013-5165", "CVE-2013-5166", "CVE-2013-5167", "CVE-2013-5168",
                 "CVE-2013-5169", "CVE-2013-5170", "CVE-2013-5171", "CVE-2013-5172",
                 "CVE-2013-5173", "CVE-2013-5174", "CVE-2013-5175", "CVE-2013-5176",
@@ -46,7 +44,7 @@ if(description)
                     60444, 77576);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 11:29:14 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Multiple Vulnerabilities - 01 Jan14");
 
@@ -99,29 +97,21 @@ For updates refer to http://support.apple.com/kb/HT1222";
 
 include("version_func.inc");
 
-## Variable Initialization
-osName = "";
-osVer = "";
-
-## Get the OS name
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
   exit (0);
 }
 
-## Get the OS Version
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
-}
-
-## Check for the Mac OS X
-if("Mac OS X" >< osName)
+if(osVer && osVer =~ "^([0-9.]+)")
 {
-  ## Check the affected OS versions
-  if(version_is_less(version:osVer, test_version:"10.9"))
+  if("Mac OS X" >< osName)
   {
-    security_message(0);
-    exit(0);
+    if(version_is_less(version:osVer, test_version:"10.9"))
+    {
+      security_message(0);
+      exit(0);
+    }
   }
 }
+exit(99);

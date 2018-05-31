@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su11-001.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_macosx_su11-001.nasl 10023 2018-05-30 09:57:40Z cfischer $
 #
 # Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)
 #
@@ -24,48 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code in
-  the context of the browser, inject scripts, bypass certain security
-  restrictions or cause a denial-of-service condition.
-  Impact Level: System/Application";
-tag_affected = "X11,
-  ATS,
-  PHP,
-  HFS,
-  Ruby,
-  Samba,
-  bzip2,
-  Kernel,
-  AirPort,
-  Apache,
-  ClamAV,
-  Mailman,
-  Libinfo,
-  libxml,
-  ImageIO,
-  Kerberos,
-  CoreText,
-  Terminal,
-  Installer,
-  QuickLook,
-  QuickTime,
-  Image RAW,
-  Subversion,
-  CarbonCore,
-  AppleScript,
-  File Quarantine";
-tag_insight = "For more information on the vulnerabilities refer to the links below.";
-tag_solution = "Upgrade to Mac OS X 10.6.7 or Run Mac Updates and update the Security
-  Update 2011-001
-  For updates refer to http://support.apple.com/kb/HT1222";
-tag_summary = "This host is missing an important security update according to
-  Mac OS X 10.6.6 Update/Mac OS X Security Update 2011-001.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902470");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10023 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:57:40 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-0172", "CVE-2010-1452", "CVE-2010-2068", "CVE-2011-0173",
                 "CVE-2011-0174", "CVE-2011-0175", "CVE-2011-0176", "CVE-2011-0177",
@@ -98,45 +61,96 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+
+  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code in
+  the context of the browser, inject scripts, bypass certain security
+  restrictions or cause a denial-of-service condition.
+
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "X11,
+
+  ATS,
+
+  PHP,
+
+  HFS,
+
+  Ruby,
+
+  Samba,
+
+  bzip2,
+
+  Kernel,
+
+  AirPort,
+
+  Apache,
+
+  ClamAV,
+
+  Mailman,
+
+  Libinfo,
+
+  libxml,
+
+  ImageIO,
+
+  Kerberos,
+
+  CoreText,
+
+  Terminal,
+
+  Installer,
+
+  QuickLook,
+
+  QuickTime,
+
+  Image RAW,
+
+  Subversion,
+
+  CarbonCore,
+
+  AppleScript,
+
+  File Quarantine");
+  script_tag(name : "insight" , value : "For more information on the vulnerabilities refer to the links below.");
+  script_tag(name : "solution" , value : "Upgrade to Mac OS X 10.6.7 or Run Mac Updates and update the Security
+  Update 2011-001
+
+  For updates refer to http://support.apple.com/kb/HT1222");
+  script_tag(name : "summary" , value : "This host is missing an important security update according to
+  Mac OS X 10.6.6 Update/Mac OS X Security Update 2011-001.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("pkg-lib-macosx.inc");
 include("version_func.inc");
 
-## Get the OS name
-osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+osName = get_kb_item( "ssh/login/osx_name" );
+if( ! osName ) exit( 0 );
 
-## Get the OS Version
-osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
-}
+osVer = get_kb_item( "ssh/login/osx_version" );
+if( ! osVer ) exit( 0 );
 
-## Check for the Mac OS X and Mac OS X Server
-if("Mac OS X" >< osName || "Mac OS X Server" >< osName)
-{
-  ## Check the affected OS versions
-  if(version_is_less_equal(version:osVer, test_version:"10.5.8") ||
-     version_in_range(version:osVer, test_version:"10.6", test_version2:"10.6.6"))
-  {
-    ## Check for the security update 2011.001
-    if(isosxpkgvuln(fixed:"com.apple.pkg.update.security.", diff:"2011.001"))
-    {
-      security_message(0);
-      exit(0);
+if( "Mac OS X" >< osName || "Mac OS X Server" >< osName ) {
+  if( version_is_less_equal( version:osVer, test_version:"10.5.8" ) ||
+      version_in_range( version:osVer, test_version:"10.6", test_version2:"10.6.6" ) ) {
+    if( isosxpkgvuln( fixed:"com.apple.pkg.update.security.", diff:"2011.001" ) ) {
+      report = report_fixed_ver( installed_version:osName + " " + osVer, fixed_version:"Install the missing security update 2011.001" );
+      security_message( port:0, data:report );
+      exit( 0 );
     }
   }
 }
+
+exit( 99 );

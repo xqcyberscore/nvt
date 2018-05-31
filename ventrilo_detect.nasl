@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ventrilo_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: ventrilo_detect.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 # Description: Ventrilo Server Detection
 #
 # Authors:
@@ -23,28 +23,32 @@
 #
 
 if (description) {
-  script_oid("1.3.6.1.4.1.25623.1.0.80092");;
+  script_oid("1.3.6.1.4.1.25623.1.0.80092");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Ventrilo Server Detection");
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2005-2008 Tenable Network Security");
   script_require_udp_ports(3784);
-  script_tag(name : "solution" , value : "Make sure the use of this software is made in accordance to your local
-security policy since Ventrilo is often associated with multi-player
-online games.");
-  script_tag(name : "summary" , value : "A VoIP service is listening on the remote host.
+
+  script_tag(name: "solution", value: "Make sure the use of this software is made in accordance to your local
+security policy since Ventrilo is often associated with multi-player online games.");
+
+  script_tag(name: "summary", value: "A VoIP service is listening on the remote host.
 
 Description :
 
-The remote host is running Ventrilo, a voice over IP (VoIP) software
-developed by Flagship Industries.");
-  script_xref(name : "URL" , value : "http://www.ventrilo.com/");
+The remote host is running Ventrilo, a voice over IP (VoIP) software developed by Flagship Industries.");
+
+  script_xref(name: "URL", value: "http://www.ventrilo.com/");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_60480.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: gb_hp_ilo_60480.nasl 10036 2018-05-31 10:17:24Z ckuersteiner $
 #
 # HP Integrated Lights-Out Remote Unauthorized Access Vulnerability
 #
@@ -32,10 +32,13 @@ if (description)
  script_cve_id("CVE-2013-2338");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9462 $");
+ script_version("$Revision: 10036 $");
+
  script_name("HP Integrated Lights-Out Remote Unauthorized Access Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:17:24 +0200 (Thu, 31 May 2018) $");
  script_tag(name:"creation_date", value:"2013-09-10 18:32:43 +0200 (Tue, 10 Sep 2013)");
+
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -46,16 +49,21 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60480");
  script_xref(name:"URL", value:"http://www.hp.com");
 
- script_tag(name : "impact" , value : "A remote attacker can exploit this issue to gain unauthorized
-administrative access to the affected application. Successful exploits
-will completely compromise the affected computer.");
- script_tag(name : "vuldetect" , value : "Check the firmware version.");
- script_tag(name : "insight" , value : "An unspecified vulnerability allows remote attackers to execute arbitrary code via unknown vectors.");
- script_tag(name : "solution" , value : "Updates are available.");
- script_tag(name : "summary" , value : "HP Integrated Lights-Out is prone to an unauthorized access
+ script_tag(name: "impact", value: "A remote attacker can exploit this issue to gain unauthorized administrative
+access to the affected application. Successful exploits will completely compromise the affected computer.");
+
+ script_tag(name: "vuldetect", value: "Check the firmware version.");
+
+ script_tag(name: "insight", value: "An unspecified vulnerability allows remote attackers to execute arbitrary
+code via unknown vectors.");
+
+ script_tag(name: "solution", value: "Updates are available.");
+
+ script_tag(name: "summary", value: "HP Integrated Lights-Out is prone to an unauthorized access
 vulnerability.");
- script_tag(name : "affected" , value : "HP Integrated Lights-Out 3 (aka iLO3) with firmware before 1.57 and
-4 (aka iLO4) with firmware before 1.22, when Single-Sign-On (SSO) is used.");
+
+ script_tag(name: "affected", value: "HP Integrated Lights-Out 3 (aka iLO3) with firmware before 1.57 and 4 (aka
+iLO4) with firmware before 1.22, when Single-Sign-On (SSO) is used.");
 
  script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 10028 2018-05-30 13:13:04Z cfischer $
 #
 # WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability
 #
@@ -24,30 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to upload arbitrary PHP code
-  and run it in the context of the Web server process.
-  Impact Level: System/Application";
-tag_affected = "WordPress wpStoreCart Plugin versions 2.5.27 to 2.5.29";
-tag_insight = "The wp-content/plugins/wpstorecart/php/upload.php script allowing to upload
-  files with arbitrary extensions to a folder inside the webroot. This can be
-  exploited to execute arbitrary PHP code by uploading a malicious PHP script.";
-tag_solution = "Upgrade to WordPress wpStoreCart Plugin version 2.5.30 or later,
-  For updates refer to http://wordpress.org/extend/plugins/wpstorecart/";
-tag_summary = "This host is running WordPress wpStoreCart Plugin and is prone to
-  file upload vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802915";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802915");
+  script_version("$Revision: 10028 $");
   script_cve_id("CVE-2012-3576");
   script_bugtraq_id(53896);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2012-07-17 15:31:41 +0530 (Tue, 17 Jul 2012)");
   script_name("WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49459");
@@ -60,55 +47,44 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("wordpress/installed");
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to upload arbitrary PHP code
+  and run it in the context of the Web server process.
+
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "WordPress wpStoreCart Plugin versions 2.5.27 to 2.5.29");
+  script_tag(name : "insight" , value : "The wp-content/plugins/wpstorecart/php/upload.php script allowing to upload
+  files with arbitrary extensions to a folder inside the webroot. This can be
+  exploited to execute arbitrary PHP code by uploading a malicious PHP script.");
+  script_tag(name : "solution" , value : "Upgrade to WordPress wpStoreCart Plugin version 2.5.30 or later,
+
+  For updates refer to http://wordpress.org/extend/plugins/wpstorecart/");
+  script_tag(name : "summary" , value : "This host is running WordPress wpStoreCart Plugin and is prone to
+  file upload vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-## Variable Initialization
-rcvRes = "";
-sndReq = "";
-url = "";
-port = 0;
-
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Port State
-if(! get_port_state(port)){
+if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(! can_host_php(port: port)){
-  exit(0);
-}
-
-## Get WordPress Installed Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
-  exit(0);
-}
-
-## Path to upload a file
 url = dir + "/wp-content/plugins/wpstorecart/php/upload.php";
 
-## Send and receive the response
 sndReq = http_get(item:url, port:port);
 rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-## Checking the response to confirm vulnerability
 ## On Non-vuln setup, response will be death 1
 if(egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes) &&
    '>alert("No upload found in $_FILES for Filedata' >< rcvRes && 'death 1' >!< rcvRes){

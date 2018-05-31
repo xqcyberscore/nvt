@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_detect_win.nasl 4635 2016-11-28 08:14:54Z antu123 $
+# $Id: gb_git_detect_win.nasl 10042 2018-05-31 12:56:04Z jschulte $
 #
 # Git Version Detection (Windows)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809817");
-  script_version("$Revision: 4635 $");
+  script_version("$Revision: 10042 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-28 09:14:54 +0100 (Mon, 28 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:56:04 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-23 16:58:28 +0530 (Wed, 23 Nov 2016)");
   script_name("Git Version Detection (Windows)");
 
   script_tag(name: "summary" , value: "Detection of installed version of
   Git.
-  
+
   The script logs in via smb, searches for 'Git Version' in the registry,
   gets version and installation path information from the registry.");
 
@@ -58,14 +58,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-gitPath = "";
-gitName = "";
-gitVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
@@ -76,7 +68,6 @@ if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-# Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                         "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -92,7 +83,6 @@ foreach key (key_list)
   {
     gitName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm for Git
     if("Git version" >< gitName)
     {
       gitVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -103,12 +93,10 @@ foreach key (key_list)
       }
       set_kb_item(name:"Git/Win/Ver", value:gitVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:gitVer, exp:"^([0-9.]+)", base:"cpe:/a:git_for_windows_project:git_for_windows:");
       if(isnull(cpe))
         cpe = "cpe:/a:git_for_windows_project:git_for_windows";
 
-      ## Register for 64 bit app on 64 bit OS
       if("64" >< os_arch)
       {
         set_kb_item(name:"Git/x64/Win/Ver", value:gitVer);
@@ -117,7 +105,6 @@ foreach key (key_list)
         if(isnull(cpe))
         cpe = "cpe:/a:git_for_windows_project:git_for_windows:x64";
       }
-      ## Register Product and Build Report
       register_product(cpe:cpe, location:gitPath);
       log_message(data: build_detection_report(app: gitName,
                                                version: gitVer,

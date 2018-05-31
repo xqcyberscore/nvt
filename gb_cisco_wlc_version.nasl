@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_cisco_wlc_version.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 #
 # Cisco Wireless LAN Controller Detection
 #
@@ -30,9 +30,10 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105430");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8370 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+ script_version ("$Revision: 10033 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
  script_tag(name:"creation_date", value:"2015-10-30 14:22:49 +0100 (Fri, 30 Oct 2015)");
+
  script_name("Cisco Wireless LAN Controller Detection");
 
  script_tag(name: "summary" , value: "This Script get the via SNMP or SSH detected WLC version");
@@ -44,16 +45,16 @@ if (description)
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_wlc_detect_snmp.nasl","gb_cisco_wlc_ssh_version.nasl");
  script_mandatory_keys("cisco_wlc/detected");
+
  exit(0);
 }
-
 
 include("host_details.inc");
 
 source = 'SSH';
 
 version = get_kb_item("cisco_wlc/version/ssh");
-if( ! version ) 
+if( ! version )
 {
   version = get_kb_item("cisco_wlc/version/snmp");
   source = 'SNMP';
@@ -75,7 +76,7 @@ register_product( cpe:cpe );
 report = 'Detected Cisco Wireless LAN Controller\nVersion: ' + version + '\nCPE: ' + cpe;
 if( model ) report += '\nModel: ' + model;
 
-report += '\nDetection source: ' + source;;
+report += '\nDetection source: ' + source;
 
 log_message( port:0, data:report );
 exit( 0 );

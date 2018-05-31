@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_version.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_cisco_csma_version.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 #
 # Cisco Content Security Management Appliance Detection
 #
@@ -28,19 +28,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105433");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 10033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2015-11-06 12:16:22 +0100 (Fri, 06 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("Cisco Content Security Management Appliance Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ironport_csma_detect.nasl", "gather-package-list.nasl");
   script_mandatory_keys("cisco_csm/installed");
 
-  script_tag(name:"summary", value:"This Script get the via HTTP(s) or SSH detected Cisco Content Security Management Appliance version");
+  script_tag(name:"summary", value:"This Script get the via HTTP(s) or SSH detected Cisco Content Security
+Management Appliance version");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -75,7 +78,7 @@ register_and_report_os( os:"Cisco AsyncOS", cpe:"cpe:/o:cisco:asyncos:" + versio
 report = 'Detected Cisco Content Security Management Appliance\nVersion: ' + version + '\nCPE: ' + cpe;
 if( model ) report += '\nModel: ' + model;
 
-report += '\nDetection source: ' + source;;
+report += '\nDetection source: ' + source;
 
 log_message( port:0, data:report );
 exit( 0 );

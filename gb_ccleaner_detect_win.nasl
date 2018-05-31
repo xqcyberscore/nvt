@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_detect_win.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ccleaner_detect_win.nasl 10039 2018-05-31 12:28:58Z mmartin $
 #
 # CCleaner Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811777");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 10039 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:28:58 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 11:52:53 +0530 (Tue, 19 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("CCleaner Detection (Windows)");
@@ -56,14 +56,13 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
-
 ## variable Initialization
 os_arch = "";
 appName = "";
 appVer = "";
 key = "";
 insloc = "";
-
+checkduplicate = ""; # Keep in here to make openvas-nasl-lint happy...
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
@@ -87,7 +86,7 @@ if("CCleaner" >< appName)
   if(!insloc){
     exit(0);
   }
-
+  location = insloc;
   ##Get Version
   appVer = fetch_file_version(sysPath:insloc, file_name:"CCleaner.exe");  
   if(appVer)
@@ -106,21 +105,28 @@ if("CCleaner" >< appName)
     {
       set_kb_item(name:"CCleanerx64/Win/Ver", value:appVer);
 
+ # TODO: Fix the detection instead of ignoring e.g. the same
+ # version of 32bit and 64bit apps are installed...
+ ##If same Thunderbird version has been detected already continue
+    if(appVer + ", " >< checkduplicate){
+      continue;
+    }
       ## build cpe and store it as host_detail
       cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:piriform:ccleaner:x64:");
       if(isnull(cpe))
         cpe = "cpe:/a:piriform:ccleaner:x64";
     }
 
-    ## Register Product and Build Report
-    register_product(cpe:cpe, location:insloc);
-
-    log_message(data: build_detection_report(app: "CCleaner",
-                                             version: appVer,
-                                             install: insloc,
-                                             cpe: cpe,
-                                             concluded: appVer));
+    if(location){
+    ##Assign detected version value to checkduplicate so as to check in next loop iteration
+      checkduplicate += appVer + ", ";
+    # Used in gb_ccleaner_detect_portable_win.nasl to detect doubled detections
+      set_kb_item(name:"CCleaner/Win/InstallLocations", value:tolower(location));
+      register_product(cpe:cpe, location:location);
+      log_message(port:0, data:build_detection_report(app:appName, version:appVer, install:location, cpe:cpe, concluded:appVer));
+  
     exit(0);
+    }
   }
 }
 exit(0);

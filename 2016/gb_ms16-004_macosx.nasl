@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-004_macosx.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_ms16-004_macosx.nasl 10029 2018-05-30 13:29:18Z santu $
 #
 # Microsoft Office Multiple Vulnerabilities (3124585) (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806195");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 10029 $");
   script_cve_id("CVE-2016-0010", "CVE-2016-0012", "CVE-2016-0035");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 12:53:57 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities (3124585) (Mac OS X)");
@@ -72,21 +72,16 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-## check the version from KB
-if(!offVer || (!offVer =~ "^(14)")){
-  exit(0);
-}
-
-## Check for Office Version < 2011 (14.6.0)
-if(version_is_less(version:offVer, test_version:"14.6.0"))
+if(offVer && offVer =~ "^(14\.)")
 {
-  report = 'File version:     ' + offVer   + '\n' +
-           'Vulnerable range: Less than 14.6.0' + '\n' ;
-  security_message(data:report);
+  ## Check for Office Version < 2011 (14.6.0)
+  if(version_is_less(version:offVer, test_version:"14.6.0"))
+  {
+    report = 'File version:     ' + offVer   + '\n' +
+             'Vulnerable range: Less than 14.6.0' + '\n' ;
+    security_message(data:report);
+  }
 }
+exit(99);

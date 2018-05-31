@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_passwd_min_age.nasl 9659 2018-04-27 11:55:11Z emoss $
+# $Id: win10_passwd_min_age.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 #
 # Check value for Minimum password age (WMI)
 #
@@ -27,22 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109105");
-  script_version("$Revision: 9659 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 10033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
+
   script_name('Microsoft Windows 10: Minimum password age');
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");;
+  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This policy setting determines the period
-of time (in days) that a password can be used before the system requires the
-user to change it.");
+
+  script_tag(name: "summary", value: "This policy setting determines the period of time (in days) that a password
+can be used before the system requires the user to change it.");
+
   exit(0);
 }
 
@@ -58,7 +61,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 type = 'Minimum password age';

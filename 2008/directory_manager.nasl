@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: directory_manager.nasl 9781 2018-05-09 13:39:09Z cfischer $
+# $Id: directory_manager.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 #
 # Directory Manager's edit_image.php
 #
@@ -28,15 +28,17 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.80054");;
-  script_version("$Revision: 9781 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.80054");
+  script_version("$Revision: 10033 $");
   script_bugtraq_id(3288);
   script_cve_id("CVE-2001-1020");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 15:39:09 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("Directory Manager's edit_image.php");
+
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Renaud Deraison");
   script_family("Web application abuses");

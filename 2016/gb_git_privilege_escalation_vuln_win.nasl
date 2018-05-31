@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_privilege_escalation_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_git_privilege_escalation_vuln_win.nasl 10042 2018-05-31 12:56:04Z jschulte $
 #
 # Git Privilege Escalation Vulnerability - Windows
 #
 # Authors:
-# Kashinath T <tkashinath@secpod.com> 
+# Kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,20 +29,19 @@ CPE = "cpe:/a:git_for_windows_project:git_for_windows";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809816");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 10042 $");
   script_cve_id("CVE-2016-9274");
   script_bugtraq_id(94289);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:56:04 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:18:59 +0530 (Tue, 22 Nov 2016)");
   script_name("Git Privilege Escalation Vulnerability - Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Git
   and is prone privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an untrusted search
   path vulnerability.");
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-git_ver = "";
-
-## Get version
 if(!git_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:git_ver, test_version:"2.0"))
 {
   report = report_fixed_ver(installed_version:git_ver, fixed_version:"2.0");

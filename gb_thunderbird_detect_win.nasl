@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_win.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: gb_thunderbird_detect_win.nasl 10039 2018-05-31 12:28:58Z mmartin $
 #
 # Mozilla Thunderbird Version Detection (Windows)
 #
@@ -39,10 +39,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800015");
-  script_version("$Revision: 8145 $");
+  script_version("$Revision: 10039 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:28:58 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Thunderbird Version Detection (Windows)");
@@ -70,6 +70,7 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("version_func.inc");
 
 ## Variable Initialization
 tbirdVer = "";
@@ -77,6 +78,7 @@ appPath = "";
 birdVer = "";
 path = "";
 cpe = "";
+checkduplicate = "";
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -122,6 +124,12 @@ foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
         if(birdVer[0])
           tbirdVer = birdVer[0];
       }
+      # TODO: Fix the detection instead of ignoring e.g. the same
+      # version of 32bit and 64bit apps are installed...
+      ##If same Thunderbird version has been detected already continue
+    if(tbirdVer + ", " >< checkduplicate){
+      continue;
+    }
 
       # Check for ESR installation
       path = registry_get_sz(key: key + "\Microsoft\Windows\CurrentVersion\",
@@ -130,7 +138,7 @@ foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
 
       appPath = path + "\Mozilla Thunderbird";
       exePath = appPath + "\update-settings.ini";
-
+      location = appPath;	
       share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
       file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
 
@@ -161,11 +169,16 @@ foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
 
         appName = 'Mozilla ThunderBird';
       }
+      if(location){
+      ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate += tbirdVer + ", ";
+      # Used in gb_thunderbird_detect_portable_win.nasl to detect doubled detections
+        set_kb_item(name:"Thunderbird/Win/InstallLocations", value:tolower(location));
+        register_product(cpe:cpe, location:location);
+        log_message(port:0, data:build_detection_report(app:appName, version:tbirdVer, install:location, cpe:cpe, concluded:tbirdVer));
 
-      register_product(cpe:cpe, location:appPath);
-
-      log_message(data: build_detection_report(app: appName, version: tbirdVer,
-                                               install: appPath, cpe:cpe, concluded:tbirdVer));
+     }
     }
   }
 }
+exit(0);

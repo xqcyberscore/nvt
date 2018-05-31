@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-107_macosx.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_ms_office_ms16-107_macosx.nasl 10029 2018-05-30 13:29:18Z santu $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-3185852(Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807367");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 10029 $");
   script_cve_id("CVE-2016-0141", "CVE-2016-3357");
   script_bugtraq_id(92903, 92786);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 14:45:19 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-3185852(Mac OS X)");
@@ -76,34 +76,26 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-## check the version
-if((!offVer =~ "^(14\.)")){
-  exit(0);
+if(offVer && offVer =~ "^(14\.)")
+{
+  if(version_is_less(version:offVer, test_version:"14.6.7"))
+  { 
+    report = 'File version:     ' + offVer   + '\n' +
+             'Vulnerable range: 14.1.0 - 14.6.7 ' + '\n' ;
+    security_message(data:report);
+    exit(0);
+  }
 }
 
-## Check for Office Version (14.6.7)
-if(version_is_less(version:offVer, test_version:"14.6.7"))
-{ 
+if(offVer =~ "^(15\.)" && version_is_less(version:offVer, test_version:"15.25.0"))
+{
   report = 'File version:     ' + offVer   + '\n' +
-           'Vulnerable range: 14.1.0 - 14.6.7 ' + '\n' ;
+           'Vulnerable range: 15.0 - 15.25.0 ' + '\n' ;
   security_message(data:report);
   exit(0);
 }
-
-## Check for Office Version (15.25.0)
-#if(offVer =~ "^(15\.)" && version_is_less(version:offVer, test_version:"15.25.0"))
-#{
-#  report = 'File version:     ' + offVer   + '\n' +
-#           'Vulnerable range: 15.0 - 15.25.0 ' + '\n' ;
-#  security_message(data:report);
-#  exit(0);
-#}
 exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: binlogin_overflow_telnet.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: binlogin_overflow_telnet.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 # Description: SysV /bin/login buffer overflow (telnet)
 #
 # Authors:
@@ -22,13 +22,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote /bin/login seems to crash when it receives too many
-environment variables.
-
-An attacker may use this flaw to gain a root shell on this system.";
-
-tag_solution = "Contact your vendor for a patch (or read the CERT advisory)";
-
 # Sun's patch makes /bin/login exits when it receives too many arguments,
 # hence making the detection of the flaw difficult. Our logic is the
 # following :
@@ -38,38 +31,43 @@ tag_solution = "Contact your vendor for a patch (or read the CERT advisory)";
 # Username: "openvas A=B..... x 100" -> should crash
 
 if (description) {
-   script_oid("1.3.6.1.4.1.25623.1.0.80049");;
-   script_version("$Revision: 9349 $");
-   script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
-   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-   script_xref(name:"IAVA", value:"2001-a-0014");
-   script_bugtraq_id(3681, 7481);
-   script_cve_id("CVE-2001-0797");
-   script_xref(name:"IAVA", value:"2002-A-0004");
-   script_tag(name:"cvss_base", value:"10.0");
-   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  name = "SysV /bin/login buffer overflow (telnet)";
-  script_name(name);
- 
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.80049");
+  script_version("$Revision: 10033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_xref(name: "IAVA", value:"2001-a-0014");
+  script_bugtraq_id(3681, 7481);
+  script_cve_id("CVE-2001-0797");
+  script_xref(name:"IAVA", value:"2002-A-0004");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+
+  script_name("SysV /bin/login buffer overflow (telnet)");
+
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- 
+
   script_copyright("This script is Copyright (C) 2001 Renaud Deraison");
 
-  family = "Gain a shell remotely";
-  script_family(family);
+  script_family("Gain a shell remotely");
 
   script_dependencies("find_service1.nasl");
   script_require_ports("Services/telnet", 23);
-   script_tag(name : "solution" , value : tag_solution);
-   script_tag(name : "summary" , value : tag_summary);
-   script_xref(name : "URL" , value : "http://www.cert.org/advisories/CA-2001-34.html");
+
+  script_tag(name: "solution", value: "Contact your vendor for a patch (or read the CERT advisory)");
+
+  script_tag(name: "summary", value: "The remote /bin/login seems to crash when it receives too many environment
+variables.
+
+An attacker may use this flaw to gain a root shell on this system.");
+
+  script_xref(name: "URL", value: "http://www.cert.org/advisories/CA-2001-34.html");
+
   exit(0);
 }
 
-
 include('telnet_func.inc');
+
 port = get_kb_item("Services/telnet");
 if(!port) port = 23;
 if(!get_port_state(port))exit(0);
@@ -100,8 +98,6 @@ function login(env, try)
  }
  return(0);
 }
-
-
 
 if(login(env:"", try: 1))
 {

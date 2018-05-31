@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 10001 2018-05-29 12:23:08Z jschulte $
+# $Id: gb_opencart_mult_vuln.nasl 10034 2018-05-31 09:22:45Z asteins $
 #
 # Opencart <= 3.0.2.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113202");
-  script_version("$Revision: 10001 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:23:08 +0200 (Tue, 29 May 2018) $");
+  script_version("$Revision: 10034 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-31 11:22:45 +0200 (Thu, 31 May 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:47:28 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if( description )
   script_dependencies("opencart_detect.nasl");
   script_mandatory_keys("OpenCart/installed");
 
-  script_tag(name:"summary", value:"Opencart is prone to mutliple vulnerabilities.");
+  script_tag(name:"summary", value:"Opencart is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 

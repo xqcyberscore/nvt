@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sympa_new_list_xss.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: sympa_new_list_xss.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
 # Description: Sympa New List Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -22,23 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a CGI script that is affected by a
-cross-site scripting vulnerability. 
-
-Description :
-
-According to its version number, the installation of Sympa on the
-remote host contains an HTML injection vulnerability that may allow a
-user who has the privileges to create a new list to inject HTML tags
-in the list description field.";
-
-tag_solution = "Update to version 4.1.3 or newer.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80090");;
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.80090");
+ script_version("$Revision: 10033 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,35 +37,37 @@ if(description)
  script_xref(name:"OSVDB", value:"9081");
  script_xref(name:"Secunia", value:"12339");
 
- name = "Sympa New List Cross-Site Scripting Vulnerability";
- script_name(name);
+ script_name("Sympa New List Cross-Site Scripting Vulnerability");
 
- 
  script_category(ACT_GATHER_INFO);
 
  script_copyright("This script is Copyright (C) 2004-2008 Tenable Network Security");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("sympa_detect.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2004-08/0293.html");
+
+ script_tag(name: "solution", value: "Update to version 4.1.3 or newer.");
+
+ script_tag(name: "summary", value: "The remote web server contains a CGI script that is affected by a
+cross-site scripting vulnerability.
+
+Description :
+
+According to its version number, the installation of Sympa on the remote host contains an HTML injection
+vulnerability that may allow a user who has the privileges to create a new list to inject HTML tags
+in the list description field.");
+
+ script_xref(name: "URL", value: "http://archives.neohapsis.com/archives/bugtraq/2004-08/0293.html");
+
  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);
 
-
-# Test an install.
 install = get_kb_item(string("www/", port, "/sympa"));
 if (isnull(install)) exit(0);
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");

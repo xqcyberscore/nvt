@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 9973 2018-05-27 10:58:30Z cfischer $
+# $Id: gather-package-list.nasl 10027 2018-05-30 12:54:24Z santu $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 9973 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-27 12:58:30 +0200 (Sun, 27 May 2018) $");
+  script_version("$Revision: 10027 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 14:54:24 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3319,8 +3319,9 @@ if( "Darwin" >< uname ) {
   set_kb_item( name:"ssh/login/osx_name", value:buf );
 
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -productVersion" ) );
-  set_kb_item( name:"ssh/login/osx_version", value:buf );
-  if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) ) {
+  if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) ) 
+  {
+    set_kb_item( name:"ssh/login/osx_version", value:match[1]);   
     register_and_report_os( os:"Mac OS X / macOS", version:match[1], cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Mac OS X / macOS", cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );

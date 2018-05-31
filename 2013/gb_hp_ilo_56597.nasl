@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_56597.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: gb_hp_ilo_56597.nasl 10036 2018-05-31 10:17:24Z ckuersteiner $
 #
 # HP Integrated Lights-Out Unspecified Information Disclosure Vulnerability
 #
@@ -32,9 +32,9 @@ if (description)
  script_cve_id("CVE-2012-3271");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9462 $");
+ script_version("$Revision: 10036 $");
  script_name("HP Integrated Lights-Out Unspecified Information Disclosure Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:17:24 +0200 (Thu, 31 May 2018) $");
  script_tag(name:"creation_date", value:"2013-09-10 18:14:19 +0200 (Tue, 10 Sep 2013)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
@@ -46,14 +46,19 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56597");
  script_xref(name:"URL", value:"http://www.hp.com");
 
- script_tag(name : "impact" , value : "Remote attackers can exploit this issue to gain access to sensitive
+ script_tag(name: "impact", value: "Remote attackers can exploit this issue to gain access to sensitive
 information that may aid in further attacks.");
- script_tag(name : "vuldetect" , value : "Check the firmware version.");
- script_tag(name : "insight" , value : "Allows remote attackers to obtain sensitive information via unknown vectors.");
- script_tag(name : "solution" , value : "Updates are available.");
- script_tag(name : "summary" , value : "HP Integrated Lights-Out is prone to an unspecified information-
+
+ script_tag(name: "vuldetect", value: "Check the firmware version.");
+
+ script_tag(name: "insight", value: "Allows remote attackers to obtain sensitive information via unknown vectors.");
+
+ script_tag(name: "solution", value: "Updates are available.");
+
+ script_tag(name: "summary", value: "HP Integrated Lights-Out is prone to an unspecified information
 disclosure vulnerability.");
- script_tag(name : "affected" , value : "Integrated Lights-Out 3 (aka iLO3) with firmware before 1.50 and
+
+ script_tag(name: "affected", value: "Integrated Lights-Out 3 (aka iLO3) with firmware before 1.50 and
 Integrated Lights-Out 4 (aka iLO4) with firmware before 1.13");
 
  script_tag(name:"solution_type", value:"VendorFix");
@@ -66,9 +71,11 @@ include("host_details.inc");
 include("version_func.inc");
 
 cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
+
 if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe  = infos['cpe'];
 port = infos['port'];
+
 if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );
 
 ilo_vers = get_kb_item( "www/" + port + "/HP_ILO/ilo_version" );

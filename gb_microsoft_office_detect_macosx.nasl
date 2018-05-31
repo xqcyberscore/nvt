@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_office_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_microsoft_office_detect_macosx.nasl 10029 2018-05-30 13:29:18Z santu $
 #
 # Microsoft Office Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802431");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 10029 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:50:16 +0530 (Wed, 09 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Version Detection (Mac OS X)");
@@ -90,18 +90,21 @@ if(!offVersion)
     offname = chomp(ssh_cmd(socket:sock, cmd:"defaults read  /Applications/" +
                    "Microsoft\ " + ver[0] + "/Contents/Info CFBundleGetInfoString"));
 
-    offname = eregmatch( pattern:'([0-9.]+) .*Microsoft Corporation', string:offname);
+   if("Microsoft Corporation" >< offname)
+   {
+     offname = eregmatch( pattern:'([0-9.]+) .*Microsoft Corporation', string:offname);
 
-    if(offname && offname[1] =~ "^(15|16)\.")
-    {
-      offVer = "2016";
-      location =  "/Applications/Microsoft\ " + ver[0] + "/Contents/Info.plist";
+      if(offname && offname[1] =~ "^(15|16)\.")
+      {
+        offVer = "2016";
+        location =  "/Applications/Microsoft\ " + ver[0] + "/Contents/Info.plist";
 
-      offVersion = offname[1];
+        offVersion = offname[1];
 
-      ## Exit if not getting version
-      if(!offVersion){
-        exit(0);
+        ## Exit if not getting version
+        if(!offVersion){
+          exit(0);
+        }
       }
     }
   }

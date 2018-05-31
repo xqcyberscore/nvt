@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 10029 2018-05-30 13:29:18Z santu $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 October-15
 #
@@ -30,7 +30,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806148");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 10029 $");
   script_cve_id("CVE-2015-5943", "CVE-2015-6983", "CVE-2015-7061", "CVE-2015-7060",
                 "CVE-2015-7059", "CVE-2015-7007", "CVE-2015-5945", "CVE-2015-6563",
                 "CVE-2014-3565", "CVE-2012-6151", "CVE-2015-7988", "CVE-2015-6994",
@@ -40,7 +40,7 @@ if(description)
                 "CVE-2015-7006", "CVE-2015-7003");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:54:16 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 October-15");
 
@@ -87,14 +87,14 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || !(osVer =~ "10.11")){
-  exit(0);
-}
-
-if(version_is_less(version:osVer, test_version:"10.11.1"))
+if(osVer && osVer =~ "^(10\.11)")
 {
-  report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11.1");
-  security_message(data:report);
-  exit(0);
+
+  if(version_is_less(version:osVer, test_version:"10.11.1"))
+  {
+    report = report_fixed_ver(installed_version:osVer, fixed_version:"10.11.1");
+    security_message(data:report);
+    exit(0);
+  }
 }
-exit(0);
+exit(99);
