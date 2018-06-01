@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1438_1.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_suse_2018_1438_1.nasl 10046 2018-06-01 02:46:35Z ckuersteiner $
 #
 # SuSE Update for opencv openSUSE-SU-2018:1438-1 (opencv)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851766");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10046 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 04:46:35 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 05:42:34 +0200 (Tue, 29 May 2018)");
-  script_cve_id("CVE-2017-1000450", "CVE-2017-17760", "CVE-2017-18009", "CVE-2018-5268", 
+  script_cve_id("CVE-2017-1000450", "CVE-2017-17760", "CVE-2017-18009", "CVE-2018-5268",
                 "CVE-2018-5269");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for opencv openSUSE-SU-2018:1438-1 (opencv)");
   script_tag(name:"summary", value:"Check the version of opencv");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"
   This update for opencv fixes the following issues:
@@ -60,7 +60,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

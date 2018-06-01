@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9892225623_gifsicle_fc27.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_fedora_2018_9892225623_gifsicle_fc27.nasl 10046 2018-06-01 02:46:35Z ckuersteiner $
 #
 # Fedora Update for gifsicle FEDORA-2018-9892225623
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874626");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10046 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 04:46:35 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 05:55:25 +0200 (Thu, 31 May 2018)");
   script_cve_id("CVE-2017-18120");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gifsicle FEDORA-2018-9892225623");
   script_tag(name:"summary", value:"Check the version of gifsicle");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Gifsicle is a command-line tool for creating, 
+  script_tag(name:"insight", value:"Gifsicle is a command-line tool for creating,
 editing, and getting information about GIF images and animations.
 
 Some more gifsicle features:

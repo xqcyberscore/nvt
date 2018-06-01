@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 6878 2017-08-09 05:39:14Z ckuersteiner $
+# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
 #
 # Dell KACE K1000 SMA Multiple SQL Injection Vulnerabilities
 #
@@ -24,20 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: Application";
-
-CPE = "cpe:/a:dell:kace_k1000_systems_management_appliance";
+CPE = "cpe:/a:quest:kace_systems_management_appliance";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803735");
-  script_version("$Revision: 6878 $");
+  script_version("$Revision: 10048 $");
   script_cve_id("CVE-2014-1671");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:39:14 +0200 (Wed, 09 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 20:18:38 +0530 (Mon, 12 Aug 2013)");
+
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Dell KACE K1000 SMA Multiple SQL Injection Vulnerabilities");
 
@@ -66,26 +65,26 @@ SQL queries in the back-end database, allowing for the manipulation or disclosur
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dell_kace_k1000_sma_detect.nasl");
-  script_mandatory_keys("kace_1000/detected");
+  script_dependencies("gb_quest_kace_sma_detect.nasl");
+  script_mandatory_keys("quest_kace_sma/detected", "quest_kace_sma/model");
   script_require_ports("Services/www", 80);
 
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Get HTTP Port
+model = get_kb_item("quest_kace_sma/model");
+if (model !~ "^(k|K)1000")
+  exit(0);
+
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-## Get Dell KACE K1000 Systems Management Appliance version
 if (!vers = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-## check the vulnerable versions
 if (version_is_less(version: vers, test_version: "5.5")) {
   report = report_fixed_ver(installed_version: vers, fixed_version: "5.5");
   security_message(port: port, data: report);

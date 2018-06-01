@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3dfee621af_wireshark_fc28.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_fedora_2018_3dfee621af_wireshark_fc28.nasl 10049 2018-06-01 08:09:17Z ckuersteiner $
 #
 # Fedora Update for wireshark FEDORA-2018-3dfee621af
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874628");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10049 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 10:09:17 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 05:55:29 +0200 (Thu, 31 May 2018)");
-  script_cve_id("CVE-2018-11362", "CVE-2018-11361", "CVE-2018-11360", "CVE-2018-11359", 
-                "CVE-2018-11358", "CVE-2018-11357", "CVE-2018-11356", "CVE-2018-11355", 
+  script_cve_id("CVE-2018-11362", "CVE-2018-11361", "CVE-2018-11360", "CVE-2018-11359",
+                "CVE-2018-11358", "CVE-2018-11357", "CVE-2018-11356", "CVE-2018-11355",
                 "CVE-2018-11354");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wireshark FEDORA-2018-3dfee621af");
   script_tag(name:"summary", value:"Check the version of wireshark");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Metapackage with installs wireshark-cli and 
+  script_tag(name:"insight", value:"Metapackage with installs wireshark-cli and
 wireshark-qt.
 ");
   script_tag(name:"affected", value:"wireshark on Fedora 28");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_2000_web_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
+# $Id: gb_dell_kace_2000_web_detect.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
 #
 # Dell KACE K2000 Detection
 #
@@ -30,8 +30,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103317");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9398 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
+ script_version("$Revision: 10048 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
  script_tag(name:"creation_date", value:"2011-11-11 10:17:05 +0100 (Fri, 11 Nov 2011)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -47,12 +47,19 @@ if (description)
 
  script_tag(name: "summary", value: "Detection of Dell KACE.
 
-The script sends a connection request to the server and attempts to extract the version number from the reply.");
+The script sends a connection request to the server and attempts to extract the version number from the reply.
+
+This NVT has been replaced by NVT 'Quest KACE Systems Management Applicance (SMA) Detection'
+(OID: 1.3.6.1.4.1.25623.1.0.141135).");
 
  script_xref(name: "URL", value: "http://www.kace.com/products/systems-deployment-appliance");
 
+ script_tag(name: "deprecated", value: TRUE);
+
  exit(0);
 }
+
+exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");

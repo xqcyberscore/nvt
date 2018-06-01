@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_2000_backdoor.nasl 6878 2017-08-09 05:39:14Z ckuersteiner $
+# $Id: gb_dell_kace_2000_backdoor.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
 #
 # Dell KACE K2000 Backdoor
 #
@@ -24,7 +24,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/h:dell:kace_k2000_systems_deployment_appliance';
+CPE = 'cpe:/a:quest:kace_systems_management_appliance';
 
 if (description)
 {
@@ -33,11 +33,13 @@ if (description)
  script_bugtraq_id(50605);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6878 $");
+ script_version ("$Revision: 10048 $");
+
+ script_tag(name: "solution_type", value: "VendorFix");
 
  script_name("Dell KACE K2000 Backdoor");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:39:14 +0200 (Wed, 09 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
  script_tag(name:"creation_date", value:"2011-11-11 11:42:28 +0100 (Fri, 11 Nov 2011)");
 
  script_tag(name:"qod_type", value:"remote_vul");
@@ -45,12 +47,14 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_dell_kace_2000_web_detect.nasl");
- script_mandatory_keys("kace_2000/detected");
+ script_dependencies("gb_quest_kace_sma_detect.nasl");
+ script_mandatory_keys("quest_kace_sma/detected", "quest_kace_sma/model");
  script_require_ports("Services/www", 80);
 
  script_tag(name: "summary", value: "The Dell KACE K2000 System Deployment Appliance contains a hidden
 administrator account that allow a remote attacker to take control of an affected device.");
+
+ script_tag(name: "solution", value: "Update to version 3.7 or later.");
 
  script_xref(name: "URL", value: "http://www.kb.cert.org/vuls/id/135606");
  script_xref(name: "URL", value: "http://www.kace.com/support/kb/index.php?action=artikel&id=1120&artlang=en");
@@ -63,7 +67,11 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if (!port = get_app_port(cpe: CPE))
-  exit(0);   
+  exit(0);
+
+model = get_kb_item("quest_kace_sma/model");
+if (model !~ "^(k|K)2000")
+  exit(0);
 
 req = http_get(item: "/", port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -93,7 +101,7 @@ req = string(
 
 res = http_send_recv(port:port, data:req);
 
-if(res =~ "HTTP/1.. 30") {
+if(res =~ "^HTTP/1.. 30") {
   loc = "/tasks";
   req = string(
   	       "GET ", loc , " HTTP/1.1\r\n",

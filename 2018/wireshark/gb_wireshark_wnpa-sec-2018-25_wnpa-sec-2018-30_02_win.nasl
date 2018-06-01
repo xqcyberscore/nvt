@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_02_win.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_02_win.nasl 10049 2018-06-01 08:09:17Z ckuersteiner $
 #
 # Wireshark Security Updates (wnpa-sec-2018-32_wnpa-sec-2018-27_wnpa-sec-2018-26) (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813372");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10049 $");
   script_cve_id("CVE-2018-11361", "CVE-2018-11355", "CVE-2018-11354");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 10:09:17 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 12:18:22 +0530 (Wed, 23 May 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-32_wnpa-sec-2018-27_wnpa-sec-2018-26) (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -53,7 +52,7 @@ if(description)
   - An error in string handling in 'epan/dissectors/packet-ieee1905.c' script.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to make Wireshark crash by injecting a malformed packet onto the wire or by 
+  to make Wireshark crash by injecting a malformed packet onto the wire or by
   convincing someone to read a malformed packet trace file.
 
   Impact Level: Application.");

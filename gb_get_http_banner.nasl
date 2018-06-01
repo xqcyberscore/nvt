@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 9204 2018-03-26 10:15:13Z asteins $
+# $Id: gb_get_http_banner.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140170");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9204 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-26 12:15:13 +0200 (Mon, 26 Mar 2018) $");
+ script_version ("$Revision: 10048 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
  script_name("HTTP Banner");
 
@@ -264,8 +264,7 @@ set_mandatory_key( key:"ATS", regex:"Server: ATS/", banner:banner );
 set_mandatory_key( key:"iTunes", regex:"DAAP-Server: iTunes/", banner:banner );
 set_mandatory_key( key:"BCReport", regex:"BCReport", banner:banner );
 set_mandatory_key( key:"CouchDB", regex:"Server: CouchDB/", banner:banner );
-set_mandatory_key( key:"X-KACE-Version", regex:"X-KACE-Version", banner:banner );
-set_mandatory_key( key:"k1000", regex:"X-DellKACE-Appliance: k1000", banner:banner );
+set_mandatory_key( key:"KACE-Appliance", regex:"X-(Dell)?KACE-Appliance:", banner:banner );
 set_mandatory_key( key:"SMC6128L2", regex:'Basic realm="SMC6128L2');
 set_mandatory_key( key:"kibana", regex:"kbn-name: kibana", banner:banner );
 set_mandatory_key( key:"SiemensGigaset-Server", regex:"Server: SiemensGigaset-Server", banner:banner );

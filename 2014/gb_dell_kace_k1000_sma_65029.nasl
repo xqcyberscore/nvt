@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_65029.nasl 6878 2017-08-09 05:39:14Z ckuersteiner $
+# $Id: gb_dell_kace_k1000_sma_65029.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
 #
 # Dell Kace 1000 Systems Management Appliance DS-2014-001 Multiple SQL Injection Vulnerabilities
 #
@@ -25,23 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:dell:kace_k1000_systems_management_appliance";
+CPE = "cpe:/a:quest:kace_systems_management_appliance";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103892");
  script_bugtraq_id(65029);
- script_version ("$Revision: 6878 $");
+ script_version ("$Revision: 10048 $");
  script_cve_id("CVE-2014-1671");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+
+ script_tag(name: "solution_type", value: "VendorFix");
 
  script_name("Dell Kace 1000 Systems Management Appliance DS-2014-001 Multiple SQL Injection Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.baesystemsdetica.com.au/Research/Advisories/Dell-KACE-K1000-SQL-Injection-%28DS-2014-001%29");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65029");
  
- script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:39:14 +0200 (Wed, 09 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
  script_tag(name:"creation_date", value:"2014-01-27 17:25:18 +0100 (Mon, 27 Jan 2014)");
 
  script_category(ACT_GATHER_INFO);
@@ -49,8 +51,8 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
 
- script_dependencies("gb_dell_kace_k1000_sma_detect.nasl");
- script_mandatory_keys("kace_1000/detected");
+ script_dependencies("gb_quest_kace_sma_detect.nasl");
+ script_mandatory_keys("quest_kace_sma/detected", "quest_kace_sma/model");
  script_require_ports("Services/www", 80);
 
  script_tag(name: "impact", value: "Exploiting these issues could allow an attacker to compromise the
@@ -67,7 +69,7 @@ an SQL query.");
  script_tag(name: "summary", value: "Dell Kace 1000 Systems Management Appliance is prone to multiple SQL
 injection vulnerabilities");
 
- script_tag(name: "affected", value: "Dell Kace 1000 Systems Management Appliance 5.4.76847 is vulnerable;
+ script_tag(name: "affected", value: "Dell Kace 1000 Systems Management Appliance 5.4.76847 is vulnerable,
 other versions may also be affected.");
 
  exit(0);
@@ -75,6 +77,10 @@ other versions may also be affected.");
 
 include("host_details.inc");
 include("version_func.inc");
+
+model = get_kb_item("quest_kace_sma/model");
+if (model !~ "^(k|K)1000")
+  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit (0);

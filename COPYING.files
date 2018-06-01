@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 31 May 2018 15:59:48 +0200
+# Automatically created on:  Fri, 01 Jun 2018 11:21:52 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -42088,6 +42088,7 @@ gb_qtweb_detect.nasl: GPLv2+
 gb_quagga_detect.nasl: GPLv2+
 gb_quagga_remote_detect.nasl: GPLv2+
 gb_quest_dr_series_appliance_detect.nasl: GPLv2+
+gb_quest_kace_sma_detect.nasl: GPLv2+
 gb_quick_heal_av_detect.nasl: GPLv2+
 gb_quick_heal_is_detect.nasl: GPLv2+
 gb_quick_heal_ts_detect.nasl: GPLv2+
@@ -57647,6 +57648,7 @@ gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51754851.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51920288.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K52167636.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52319810.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52521791.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K53931245.nasl: GPLv2+
@@ -57899,6 +57901,7 @@ gsf/2018/puppet/gb_puppet_enterprise_cert_auth_rev_prox_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_mult_xss_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_rce_vuln.nasl: GPLv2+
 gsf/2018/quest/gb_netvault_backup_mult_vuln.nasl: GPLv2+
+gsf/2018/quest/gb_quest_kace_sma_mult_vuln.nasl: GPLv2+
 gsf/2018/redlion/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_0151-01_kernel.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_0158-01_dhcp.nasl: GPLv2+
