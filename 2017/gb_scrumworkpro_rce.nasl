@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkpro_rce.nasl 9380 2018-04-06 11:04:51Z asteins $
+# $Id: gb_scrumworkpro_rce.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
 #
 # ScrumWorks Pro Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:collabnet:scrumworkspro';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107181");
-  script_version("$Revision: 9380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10055 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 13:57:36 +0200 (Mon, 25 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -43,17 +43,18 @@ if(description)
   script_tag(name: "summary", value: "The host is installed with ScrumWorks Pro and is prone to Remote
   Code Execution Vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
-  if the version is vulnerable or not.");
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight", value: "ScrumWorks Pro is prone to remote code execution vulnerability due
   to unsafe deserialization of bytes on the server side which lead to java deserialization attack.");
+
   script_tag(name: "impact" , value: "Remote attacker is able to execute arbitrary code with the
   permissions of the ScrumWorks application server.");
 
   script_tag(name: "affected", value: "ScrumWorks Pro version 6.7.0");
-  script_tag(name: "solution", value: "No solution or patch is available as of 06th April, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+
+  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL" , value: "https://blogs.securiteam.com/index.php/archives/3387");
 

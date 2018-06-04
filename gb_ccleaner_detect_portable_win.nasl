@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_detect_portable_win.nasl 10043 2018-05-31 13:41:41Z mmartin $
+# $Id: gb_ccleaner_detect_portable_win.nasl 10051 2018-06-01 11:09:18Z mmartin $
 #
 # CCleaner Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107315");
-  script_version("$Revision: 10043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 15:41:41 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 13:09:18 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 14:36:37 +0200 (Thu, 31 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -101,7 +101,7 @@ foreach filePath( fileList ) {
 
     if( vers == "Version" ) continue; # Just ignore the header of the list...
 
-    # Version of the thunderbird.exe file is something like 59.0.3.6691, 59.0.0.6478 or 60.0.1.6710
+    # Version of the ccleaner.exe file is something like 5.43.151.6522
     # so we need to catch only the first three parts of the version.
     if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 

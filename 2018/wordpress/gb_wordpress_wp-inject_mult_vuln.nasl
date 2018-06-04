@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp-inject_mult_vuln.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
+# $Id: gb_wordpress_wp-inject_mult_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
 #
 # WordPress ImageInject Plugin Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112181");
-  script_version("$Revision: 9338 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10055 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-01-09 09:40:00 +0100 (Tue, 09 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,8 +57,8 @@ if (description)
 
   script_tag(name: "affected", value: "WordPress ImageInject plugin up to and including version 1.15.");
 
-  script_tag(name: "solution", value: "No solution or patch available as of 6th April, 2018. Information regarding
-this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/ImageInject.md");
 

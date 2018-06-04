@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_libre_office_detect_win.nasl 10050 2018-06-01 09:47:31Z mmartin $
 #
 # LibreOffice Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902398");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 10050 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 11:47:31 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Version Detection (Windows)");
@@ -61,11 +61,13 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("version_func.inc");
 
 ## Variable Initialization
 officeName = "";
 officePath = "";
 officeVer = "";
+checkduplicate = "";
 
 if(!registry_key_exists(key:"SOFTWARE\LibreOffice"))
 {
@@ -106,14 +108,23 @@ foreach key (key_list)
     {
       ## Check for the version
       officeVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      
+      # TODO: Fix the detection instead of ignoring e.g. the same
+      # version of 32bit and 64bit apps are installed...
+      ##If same Libreoffice version has been detected already continue
+      
+      if(officeVer + ", " >< checkduplicate){
+        continue;
+      }
+
       if (officeVer != NULL)
       {
         officePath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(!officePath){
           officePath = "Could not able to get the install location";
         }
-
-        ## Set the KB item
+	location = officePath;
+	## Set the KB item
         set_kb_item(name:"LibreOffice/Win/Ver", value:officeVer);
 
         ## build cpe and store it as host_detail
@@ -129,10 +140,19 @@ foreach key (key_list)
           if(isnull(cpe))
             cpe = "cpe:/a:libreoffice:libreoffice:x64";
         }
-        register_product(cpe:cpe, location:officePath);
-        log_message(data: build_detection_report(app: officeName, version: officeVer,
-                                                 install: officePath, cpe:cpe, concluded:officeVer));
+        
+        if(location){
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+          checkduplicate += officeVer + ", ";
+        # Used in gb_libreoffice_detect_portable_win.nasl to detect doubled detections
+          set_kb_item(name:"LibreOffice/Win/InstallLocations", value:tolower(location));
+          register_product(cpe:cpe, location:location);
+          log_message(port:0, data:build_detection_report(app:officeName, version:officeVer, install:location, cpe:cpe, concluded:officeVer));
+
+        }
+
       }
     }
   }
 }
+exit(0);

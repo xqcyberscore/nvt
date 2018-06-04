@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_detection_win_900036.nasl 6738 2017-07-17 10:53:33Z cfischer $
+# $Id: secpod_opera_detection_win_900036.nasl 10053 2018-06-01 14:35:47Z tpassfeld $
 #
 # Opera Version Detection for Windows
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900036");
-  script_version("$Revision: 6738 $");
+  script_version("$Revision: 10053 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 12:53:33 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 16:35:47 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Opera Version Detection for Windows");
@@ -170,7 +170,7 @@ if(operaflag)
               "\5.0, Opera\Main", item:"Install Directory");
   if(operaPath) {
     operaPath += "\Opera";
-
+    set_kb_item(name:"Opera/Win/InstallLocations", value:tolower(operaPath));
     operaVer = fetch_file_version(sysPath: operaPath, file_name:"opera.exe");
     if(operaVer){
       OperaSet(operaVersion: operaVer, operaName: "Opera", operaPath: operaPath);

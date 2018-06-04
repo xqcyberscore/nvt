@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 9298 2018-04-04 10:42:18Z cfischer $
+# $Id: gb_mako_web_server_mult_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 9298 $");
+  script_version("$Revision: 10055 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:42:18 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mako Web Server Multiple Vulnerabilities");
@@ -67,15 +67,13 @@ if(description)
   script_tag(name:"affected", value:"Mako Web Server version 2.5. Other versions
   may also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  04th April, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to,
-  https://makoserver.net");
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/42683");
-  script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3391");
+  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/42683");
+  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3391");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

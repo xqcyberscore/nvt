@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_portable_win.nasl 10043 2018-05-31 13:41:41Z mmartin $
+# $Id: gb_thunderbird_detect_portable_win.nasl 10051 2018-06-01 11:09:18Z mmartin $
 #
 # Mozilla Thunderbird Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107314");
-  script_version("$Revision: 10043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 15:41:41 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-01 13:09:18 +0200 (Fri, 01 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 11:09:16 +0200 (Wed, 30 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -100,7 +100,7 @@ foreach filePath( fileList ) {
 
     if( vers == "Version" ) continue; # Just ignore the header of the list...
 
-    # Version of the thunderbird.exe file is something like 59.0.3.6691, 59.0.0.6478 or 60.0.1.6710
+    # Version of the thunderbird.exe file is something like 52.8.0  or 52.8.0.6710
     # so we need to catch only the first three parts of the version.
     if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
@@ -108,13 +108,7 @@ foreach filePath( fileList ) {
       set_kb_item( name:"Thunderbird/Win/Ver", value:version[1] );
       set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
       set_kb_item( name:"Thunderbird/Win/installed", value:TRUE );
-
-      # The portableapps.com installer is putting the 32bit version in App\Thunderbird and the 64bit into App\Thunderbird64.
-      # This is the only way to differ between 32bit and 64bit as we can't differ between 32 and 64bit based on the file information.
-      if( "thunderbird64" >< location )
-        cpe = "cpe:/a:mozilla:thunderbird:x64:";
-      else
-        cpe = "cpe:/a:mozilla:thunderbird:";
+      cpe = "cpe:/a:mozilla:thunderbird:";
       register_and_report_cpe( app:"Mozilla Thunderbird Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 9973 2018-05-27 10:58:30Z cfischer $
+# $Id: os_eol.inc 10056 2018-06-04 06:29:53Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9973 $
+# $Revision: 10056 $
 #
 ###############################################################################
 
@@ -305,6 +305,19 @@ eol_cpes['cpe:/o:fedoraproject:fedora_core:1'] = '2004-09-20';
 # Debian (https://en.wikipedia.org/wiki/List_of_Debian_releases#Release_table)
 eol_urls['cpe:/o:debian:debian_linux'] = 'https://en.wikipedia.org/wiki/List_of_Debian_releases#Release_table';
 eol_names['cpe:/o:debian:debian_linux'] = 'Debian GNU/Linux';
+eol_cpes['cpe:/o:debian:debian_linux:7.11'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.10'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.9'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.8'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.7'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.6'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.5'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.4'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.3'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.2'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.1'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7.0'] = '2018-05-31';
+eol_cpes['cpe:/o:debian:debian_linux:7'] = '2018-05-31';
 eol_cpes['cpe:/o:debian:debian_linux:6.0'] = '2016-02-29';
 eol_cpes['cpe:/o:debian:debian_linux:5.0'] = '2012-02-06';
 eol_cpes['cpe:/o:debian:debian_linux:4.0'] = '2010-02-15';
