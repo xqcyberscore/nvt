@@ -1,20 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_detect_win.nasl 10050 2018-06-01 09:47:31Z mmartin $
+# $Id: secpod_libre_office_detect_win.nasl 10066 2018-06-04 13:06:30Z cfischer $
 #
 # LibreOffice Version Detection (Windows)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
 #
-# Updated By Shakeel <bshakeel@secpod.com> on 2014-11-19
-# According to new script style
-#
 # Copyright:
 # Copyright (c) 2011 SecPod, http://www.secpod.com
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2014-07-08
-# Updated to support 32 and 64 bit
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -33,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902398");
-  script_version("$Revision: 10050 $");
+  script_version("$Revision: 10066 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 11:47:31 +0200 (Fri, 01 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 15:06:30 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
-  LibreOffice on Windows.
+  script_tag(name:"summary", value:"Detection of installed version of LibreOffice on Windows.
 
-  The script logs in via smb, searches for LibreOffice in the registry
-  and gets the version from registry.");
+  The script logs in via smb, searches for LibreOffice in the registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -53,106 +45,80 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
-## Variable Initialization
-officeName = "";
-officePath = "";
-officeVer = "";
-checkduplicate = "";
-
-if(!registry_key_exists(key:"SOFTWARE\LibreOffice"))
-{
+if(!registry_key_exists(key:"SOFTWARE\LibreOffice")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\LibreOffice")){
     exit(0);
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-}
-
-## Check for 32 bit App on 64 bit platform
-else if("x64" >< os_arch){
-  key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
-                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+} else if("x64" >< os_arch){
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 if(isnull(key_list)){
   exit(0);
 }
 
-foreach key (key_list)
-{
-  foreach item (registry_enum_keys(key:key))
-  {
+foreach key (key_list){
+
+  foreach item (registry_enum_keys(key:key)){
+
     officeName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Check the name of the application
-    if("LibreOffice" >< officeName)
-    {
-      ## Check for the version
-      officeVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-      
-      # TODO: Fix the detection instead of ignoring e.g. the same
-      # version of 32bit and 64bit apps are installed...
-      ##If same Libreoffice version has been detected already continue
-      
-      if(officeVer + ", " >< checkduplicate){
-        continue;
-      }
+    if("LibreOffice" >< officeName){
 
-      if (officeVer != NULL)
-      {
+      officeVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+
+      if(!isnull(officeVer)){
         officePath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(!officePath){
           officePath = "Could not able to get the install location";
         }
-	location = officePath;
-	## Set the KB item
+
         set_kb_item(name:"LibreOffice/Win/Ver", value:officeVer);
 
-        ## build cpe and store it as host_detail
         cpe = build_cpe(value:officeVer, exp:"^([0-9.]+)", base:"cpe:/a:libreoffice:libreoffice:");
         if(isnull(cpe))
           cpe = "cpe:/a:libreoffice:libreoffice";
 
-        if("64" >< os_arch && "Wow6432Node" >!< key)
-        {
+        if("64" >< os_arch && "Wow6432Node" >!< key){
+
           set_kb_item(name:"LibreOffice64/Win/Ver", value:officeVer);
           cpe = build_cpe(value:officeVer, exp:"^([0-9.]+)", base:"cpe:/a:libreoffice:libreoffice:x64:");
 
           if(isnull(cpe))
             cpe = "cpe:/a:libreoffice:libreoffice:x64";
         }
-        
-        if(location){
-        ##Assign detected version value to checkduplicate so as to check in next loop iteration
-          checkduplicate += officeVer + ", ";
-        # Used in gb_libreoffice_detect_portable_win.nasl to detect doubled detections
-          set_kb_item(name:"LibreOffice/Win/InstallLocations", value:tolower(location));
-          register_product(cpe:cpe, location:location);
-          log_message(port:0, data:build_detection_report(app:officeName, version:officeVer, install:location, cpe:cpe, concluded:officeVer));
 
-        }
+        # Used in gb_libreoffice_detect_portable_win.nasl to avoid doubled detections.
+        # We're also stripping a possible ending backslash away as the portable NVT is getting
+        # the file path without the ending backslash from WMI.
+        tmp_location = tolower(officePath);
+        tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
+        set_kb_item(name:"LibreOffice/Win/InstallLocations", value:tmp_location);
 
+        register_product(cpe:cpe, location:officePath);
+        log_message(port:0, data:build_detection_report(app:officeName, version:officeVer, install:officePath, cpe:cpe, concluded:officeVer));
       }
     }
   }
 }
+
 exit(0);

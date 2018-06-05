@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_may18_lin.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_php_mult_vuln_may18_lin.nasl 10057 2018-06-04 07:56:17Z cfischer $
 #
 # PHP Multiple Vulnerabilities May18 (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813160");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 10057 $");
   script_cve_id("CVE-2018-10549", "CVE-2018-10546", "CVE-2018-10548", "CVE-2018-10547");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 18:02:28 +0530 (Wed, 02 May 2018)");
   script_name("PHP Multiple Vulnerabilities May18 (Linux)");
 
@@ -95,11 +95,11 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!(phport = get_app_port(cpe: CPE))){
+if(isnull(phport = get_app_port(cpe: CPE))){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:phport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:phport, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

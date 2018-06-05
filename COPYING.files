@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 04 Jun 2018 08:53:34 +0200
+# Automatically created on:  Tue, 05 Jun 2018 08:04:17 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39969,6 +39969,7 @@
 2018/graphicsmagick/gb_graphicsmagick_mult_dos_vuln_win.nasl: GPLv2+
 2018/h2o/gb_h2o_dos_vuln1.nasl: GPLv2+
 2018/h2o/gb_h2o_dos_vuln2.nasl: GPLv2+
+2018/h2o/gb_h2o_heap_overflow_vuln.nasl: GPLv2+
 2018/h2o/gb_h2o_mult_vuln1.nasl: GPLv2+
 2018/h2o/gb_h2o_mult_vuln2.nasl: GPLv2+
 2018/hp/gb_hp_diagnostics_xss_n_click_jack_vuln.nasl: GPLv2+
@@ -40042,6 +40043,7 @@
 2018/lynxtechnology/gb_twonky_server_mult_vuln_active.nasl: GPLv2+
 2018/lynxtechnology/gb_twonky_server_mult_vuln.nasl: GPLv2+
 2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
+2018/mahara/gb_mahara_mult_vuln.nasl: GPLv2+
 2018/mahara/gb_mahara_xss_vuln.nasl: GPLv2+
 2018/malwarebytes/gb_malwarebytes_multiple_dos_vuln.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_sql_param_sql_inj_vuln_feb18_lin.nasl: GPLv2+
@@ -40238,6 +40240,7 @@
 2018/mikrotik/gb_mikrotik_router_os_winbox_info_disc_vuln.nasl: GPLv2+
 2018/miniupnp/gb_miniupnp_dos_vuln.nasl: GPLv2+
 2018/mit/gb_kerberos5_mult_vuln.nasl: GPLv2+
+2018/modx/gb_modx_cms_xss_vuln.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_lin.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_win.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_195_lin.nasl: GPLv2+
@@ -40941,6 +40944,7 @@ gb_3com_officeconnect_vpn_firewall_detect.nasl: GPLv2+
 gb_3cx_phone_system_detect.nasl: GPLv2+
 gb_4images_detect.nasl: GPLv2+
 gb_7zip_detect_lin.nasl: GPLv2+
+gb_7zip_detect_portable_win.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
@@ -41464,6 +41468,7 @@ gb_foxit_phantom_reader_detect.nasl: GPLv2+
 gb_foxit_reader_detect_lin.nasl: GPLv2+
 gb_foxit_reader_detect_macosx.nasl: GPLv2+
 gb_foxit_reader_detect.nasl: GPLv2+
+gb_foxit_reader_detect_portable_win.nasl: GPLv2+
 gb_foxmail_detect.nasl: GPLv2+
 gb_f-prot_av_detect_lin.nasl: GPLv2+
 gb_free_download_mang_detect.nasl: GPLv2+
@@ -41533,6 +41538,7 @@ gb_h2o_http_server_detect.nasl: GPLv2+
 gb_haraka_detect.nasl: GPLv2+
 gb_hastymail2_detect.nasl: GPLv2+
 gb_hhvm_detect.nasl: GPLv2+
+gb_hid_vertx_discoveryd_detect.nasl: GPLv2+
 gb_hirschmann_consolidation.nasl: GPLv2+
 gb_hirschmann_snmp_detect.nasl: GPLv2+
 gb_hirschmann_telnet_detect.nasl: GPLv2+
@@ -57692,6 +57698,7 @@ gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-245.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
+gsf/2018/hid/gb_hid_vertx_rce_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
@@ -57867,6 +57874,7 @@ gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
 gsf/2018/moxa/gb_moxa_edr810_info_discl_vuln.nasl: GPLv2+
 gsf/2018/myscada/gb_myscada_mypro7_hardcoded_ftp_credentials_vuln.nasl: GPLv2+
+gsf/2018/nch/gb_axon_virtual_pbx_mult_vuln.nasl: GPLv2+
 gsf/2018/netapp/gb_netapp_oncommand_um_code_exec_vuln.nasl: GPLv2+
 gsf/2018/netapp/gb_netapp_oncommand_um_priv_es_vuln_win.nasl: GPLv2+
 gsf/2018/netapp/gb_netapp_oncommand_um_rce_vuln_lin.nasl: GPLv2+

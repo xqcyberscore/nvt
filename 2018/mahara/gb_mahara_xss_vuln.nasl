@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_xss_vuln.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
+# $Id: gb_mahara_xss_vuln.nasl 10059 2018-06-04 09:23:28Z asteins $
 #
 # Mahara <16.10.9, <17.04.7, <17.10.4 XSS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112255");
-  script_version("$Revision: 9913 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10059 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:23:28 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 15:29:52 +0200 (Mon, 16 Apr 2018)");
 
   script_cve_id("CVE-2018-6182");
@@ -41,6 +41,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_mahara_detect.nasl");
+  script_mandatory_keys("mahara/detected");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 9887 2018-05-17 13:35:46Z cfischer $
+# $Id: gather-package-list-docker-container.inc 10057 2018-06-04 07:56:17Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9887 $
+# $Revision: 10057 $
 #
 ###############################################################################
 
@@ -303,7 +303,11 @@ OS_CPE = make_array(
     "OracleLinux4",    "cpe:/o:oracle:linux:4",
 
     # Gentoo
-    "GENTOO", "cpe:/o:gentoo:linux"
+    "GENTOO", "cpe:/o:gentoo:linux",
+
+    # Arch Linux
+    # nb: Arch Linux is a rolling release so there is no "real" version
+    "ArchLinux", "cpe:/o:archlinux:archlinux"
 );
 
 
@@ -1314,6 +1318,12 @@ function get_container_os( container_id, soc ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1");
+    return ret;
+  }
+
+  # nb: Arch Linux is a rolling release so there is no "real" version
+  if('NAME="Arch Linux"' >< rls) {
+    ret = register_detected_docker_os(container_id:container_id, os:"Arch Linux", oskey:"ArchLinux");
     return ret;
   }
 

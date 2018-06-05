@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axon_virtual_pbx_web_detect.nasl 4935 2017-01-04 10:03:48Z cfi $
+# $Id: gb_axon_virtual_pbx_web_detect.nasl 10065 2018-06-04 12:10:31Z asteins $
 #
 # Axon Virtual PBX Version Detection (HTTP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108033");
-  script_version("$Revision: 4935 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 11:03:48 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 10065 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 14:10:31 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-01-02 10:00:00 +0100 (Mon, 02 Jan 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,6 +64,7 @@ if( "title>Axon - Login" >< res || "Main Page'>Axon</td>" >< res || "target=_bla
 
   if( ! isnull( ver[1] ) ) version = ver[1];
 
+  set_kb_item( name:"Axon-Virtual-PBX/installed", value:TRUE );
   set_kb_item( name:"Axon-Virtual-PBX/www/" + port + "/ver", value:version );
   set_kb_item( name:"Axon-Virtual-PBX/www/installed", value:TRUE );
   

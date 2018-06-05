@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_detect_portable_win.nasl 10054 2018-06-01 14:40:55Z tpassfeld $
+# $Id: gb_opera_detect_portable_win.nasl 10060 2018-06-04 09:28:14Z cfischer $
 #
 # Opera Portable Version Detection (Windows)
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114004");
-  script_version("$Revision: 10054 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 16:40:55 +0200 (Fri, 01 Jun 2018) $");
-  script_tag(name:"creation_date", value:"2018-05-29 15:34:42 +0200 (Tue, 29 May 2018)");
+  script_version("$Revision: 10060 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:28:14 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-24 15:34:42 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Opera Portable Version Detection (Windows)");
@@ -58,29 +58,34 @@ include("wmi_file.inc");
 include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("smb_nt.inc");
 
 host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
+usrname = kb_smb_login();
+passwd  = kb_smb_password();
 
 if( ! host || ! usrname || ! passwd ) exit( 0 );
 
-domain = get_kb_item( "SMB/domain" );
+domain = kb_smb_domain();
 if( domain ) usrname = domain + '\\' + usrname;
 
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
+fileList = wmi_file_file_search( handle:handle, fileName:"opera", fileExtn:"exe" );
+if( ! fileList ) {
+  wmi_close( wmi_handle:handle );
+  exit( 0 );
+}
+
 # From secpod_opera_detection_win_900036.nasl to avoid a doubled detection of
 # a registry-based installation.
 detectedList = get_kb_list( "Opera/Win/InstallLocations" );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"opera", fileExtn:"exe" );
 fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
-  pathVersion = eregmatch(string: filePath, pattern:"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)");
 
-  if( filePath == "Name" ||  filePath == "c:\program files\opera\"+pathVersion[1]+"\opera.exe" ) continue; # Just ignore the header of the list as well as the path that was already detected...
+  if( filePath == "Name" ) continue; # Just ignore the header of the list...
 
   # wmi_file_file_search returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in secpod_opera_detection_win_900036.nasl
@@ -103,7 +108,6 @@ foreach filePath( fileList ) {
 
       set_kb_item( name:"Opera/Win/InstallLocations", value:tolower( location ) );
       set_kb_item( name:"Opera/Win/Version", value:version[1] );
-      set_kb_item( name:"Opera/Linux_or_Win/installed", value:TRUE );
 
       cpe = "cpe:/a:opera:opera_browser:";
 

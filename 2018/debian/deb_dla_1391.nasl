@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1391.nasl 10056 2018-06-04 06:29:53Z cfischer $
+# $Id: deb_dla_1391.nasl 10071 2018-06-05 02:13:25Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1391-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891391");
-  script_version("$Revision: 10056 $");
+  script_version("$Revision: 10071 $");
   script_cve_id("CVE-2017-11613", "CVE-2018-5784");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1391-1] tiff security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 08:29:53 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-05 04:13:25 +0200 (Tue, 05 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-04 00:00:00 +0200 (Mon, 04 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

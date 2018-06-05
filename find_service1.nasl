@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 9968 2018-05-25 15:53:27Z cfischer $
+# $Id: find_service1.nasl 10057 2018-06-04 07:56:17Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 9968 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 17:53:27 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -450,10 +450,33 @@ if( port == 515 && rhexstr =~ "^ff$") {
   exit( 0 );
 }
 
-if( "(Thread" >< r && ( "Notify Wlan Link" >< r ||
+# Running on a Hama IR110 WiFi Radio on port 514/tcp
+# (Thread0): [      2.185608] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [      2.185860] I2S    (2): Timer fired at 0x00215C2E
+# (Thread0): [      2.186123] SPDIF  (2): Timer fired at 0x00215E40
+# (Thread2): [     16.463611] NET    (2): Notify Eth Link i/f 1 UP
+# (Thread2): [     21.894697] NET    (2): Notify IP i/f 1 (192.168.0.1) UP
+# (Thread2): [     22.072539] HTTP   (2): Found existing handle 1 (hama.wifiradiofrontier.com:80)
+# (Thread2): [     22.158205] CB     (2): Received interface callback data ok.
+# (Thread2): [     23.451059] UI     (2): IntSetupWizard connected
+# (Thread0): [     25.139968] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [     25.140278] I2S    (2): Timer fired at 0x017F9D9A
+# (Thread0): [     25.140583] SPDIF  (2): Timer fired at 0x017FA01F
+# (Thread2): [     49.340946] RSA    (2): fsRsaGenerateKeyTask: Key created. Time taken 49299ms
+#
+# or
+#
+# (Thread0): [  11828.608232] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [  11828.608552] I2S    (2): Timer fired at 0xC10A3F89
+# (Thread0): [  11828.608895] SPDIF  (2): Timer fired at 0xC10A4232
+
+if( "(Thread" >< r && ( "Notify Wlan Link " >< r ||
+    "Notify Eth Link " >< r ||
     "Received unknown command on socket" >< r ||
     "fsfsFlashFileHandleOpen" >< r ||
-    "Found existing handle" >< r ) ) {
+    "Found existing handle " >< r ||
+    "After waiting approx. " >< r ||
+    "Timer fired at " >< r ) ) {
   register_service( port:port, proto:"wifiradio-setup", message:"A WiFi radio setup service seems to be running on this port." );
   log_message( port:port, data:"A WiFi radio setup service seems to be running on this port." );
   exit( 0 );
@@ -732,6 +755,33 @@ if( ( ( r0 =~ "^RPY [0-9] [0-9]" && "Content-Type: application/" >< r0 ) ||
 if( r =~ "^bsh % " || r =~ "^BeanShell " || "- by Pat Niemeyer (pat@pat.net)" >< r ) {
   register_service( port:port, proto:"beanshell", message:"A BeanShell listener service seems to be running on this port." );
   log_message( port:port, data:"A BeanShell listener service seems to be running on this port." );
+  exit( 0 );
+}
+
+# Running on a Hama IR110 WiFi Radio on port 10003/tcp
+# Response length is always 261 or 263 bytes...
+# 0x0000:  77 30 32 35 36 41 8F F6 EE 52 63 48 15 DB 14 B1    w0256A...RcH....
+# 0x0010:  92 B6 5D 67 58 D1 76 C4 0F 45 D8 82 73 81 A2 2F    ..]gX.v..E..s../
+# 0x0020:  F7 FD 49 F7 1B FB 94 93 56 C4 A6 9D 4D D7 67 FF    ..I.....V...M.g.
+# 0x0030:  16 69 40 39 97 3C 51 D7 91 BD 47 F2 08 C2 D3 0D    .i@9.<Q...G.....
+# 0x0040:  25 3C 7C 5C 9A 9D 4C C0 3E 7A 4A D6 D8 52 B4 57    %<|\..L.>zJ..R.W
+# 0x0050:  CF 48 DE 49 9A 58 6F BC 02 B5 E3 D3 AF 75 47 DA    .H.I.Xo......uG.
+# 0x0060:  83 BF 64 A4 D4 8E 24 00 BD C6 86 6C 69 AE DA B4    ..d...$....li...
+# 0x0070:  BE C7 00 A0 24 58 0D F1 04 59 22 3C 4C EF C6 51    ....$X...Y"<L..Q
+# 0x0080:  0B 8B 1A 09 B6 DC 3F 2C 1C A8 5C A7 07 CD C3 05    ......?,..\.....
+# 0x0090:  00 6B E1 59 4A 1F 53 04 74 26 BD 03 EB 8E 74 9F    .k.YJ.S.t&....t.
+# 0x00A0:  8E 48 EF F7 95 B0 B6 28 A9 5E 10 EB 47 88 02 97    .H.....(.^..G...
+# 0x00B0:  B3 20 11 65 B0 01 9F 14 7B 33 03 58 E3 D4 B1 C2    . .e....{3.X....
+# 0x00C0:  25 41 7D 9A 6E B7 F2 98 78 90 51 FE 5C 32 42 EC    %A}.n...x.Q.\2B.
+# 0x00D0:  8E FD AD 93 E7 51 9D 82 19 79 12 76 EA 91 B4 4F    .....Q...y.v...O
+# 0x00E0:  48 52 1B BB E3 F8 C3 B9 3A 37 6C BB E0 3A 32 49    HR......:7l..:2I
+# 0x00F0:  88 D9 25 79 D4 AB 05 72 C8 79 1A 6C 21 40 BF 7C    ..%y...r.y.l!@.|
+# 0x0100:  11 68 2E DD 1C                                     .h...
+#
+# nb: Pattern is not that reliable so checking the length as well...
+if( r =~ "^w0256" && ( r_len == 261 || r_len == 263 ) ) {
+  register_service( port:port, proto:"wifiradio-unknown", message:"An unknown service related to a WiFi radio seems to be running on this port." );
+  log_message( port:port, data:"An unknown service related to a WiFi radio seems to be running on this port." );
   exit( 0 );
 }
 

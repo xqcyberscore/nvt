@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_detect.nasl 10037 2018-05-31 10:25:24Z jschulte $
+# $Id: gb_monstra_cms_detect.nasl 10057 2018-06-04 07:56:17Z cfischer $
 #
 # Monstra CMS Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113203");
-  script_version("$Revision: 10037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:25:24 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 15:42:35 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ foreach dir( make_list_unique( "/", "/monstra", cgi_dirs( port: port ) ) ) {
   if( dir == "/" )
     dir = "";
 
-  buf = http_get_cache( item: dir, port: port );
+  buf = http_get_cache( item: dir + "/", port: port );
 
   if( '<a href="http://monstra.org" target="_blank">Monstra</a>' >< buf || '<meta name="generator" content="Powered by Monstra' >< buf ) {
     set_kb_item( name: "monstra_cms/detected", value: TRUE );

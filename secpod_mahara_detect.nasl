@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_detect.nasl 9497 2018-04-16 14:19:44Z asteins $
+# $Id: secpod_mahara_detect.nasl 10059 2018-06-04 09:23:28Z asteins $
 #
 # Mahara Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900381");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 16:19:44 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 10059 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:23:28 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mahara Version Detection");
@@ -72,9 +72,9 @@ foreach dir( make_list_unique( "/mahara" , "/", "/mahara/htdocs", "/htdocs", cgi
     rcvRes = http_get_cache( item: dir + "/admin/index.php", port:port );
   }
 
-  # Check for Welcome page and Login Page with proper Response
   if( rcvRes =~ "HTTP/1.. 200" && ( "Log in to Mahara" >< rcvRes || "Welcome to Mahara" >< rcvRes ) ) {
 
+    set_kb_item( name:"mahara/detected", value:TRUE );
     version = "unknown";
 
     foreach file( make_list( "/Changelog", "/ChangeLog", "/debian/Changelog" ) ) {
@@ -99,12 +99,10 @@ foreach dir( make_list_unique( "/mahara" , "/", "/mahara/htdocs", "/htdocs", cgi
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/Mahara", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:mahara:mahara:" );
     if( isnull( cpe ) )
         cpe = 'cpe:/a:mahara:mahara';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Mahara",

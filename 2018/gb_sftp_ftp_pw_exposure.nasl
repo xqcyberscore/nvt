@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 9985 2018-05-28 14:39:02Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 10058 2018-06-04 08:35:21Z cfischer $
 #
 # SCP/SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 9985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:39:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10058 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 10:35:21 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -82,27 +82,28 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-files = make_array( "/sftp-config.json", '(tab key will cycle through the settings|"type": ?"s?ftps?",|"username": ?".*",|"password": ?".*",)',
-                    "/ftpsync.settings", '(upload_on_save: ?(true|false),|username: ?.*,|password: ?.*,)',
-                    "/recentservers.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
-                    "/sitemanager.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
-                    "/filezilla.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
-                    "/FileZilla.xml", "(^<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.*</(Host|Protocol|User|Pass)>)",
+                    # https://blog.sucuri.net/2012/11/psa-sftpftp-password-exposure-via-sftp-config-json.html
+files = make_array( "/sftp-config.json", '^[\\s/]*(The tab key will cycle through the settings|"type": ?"s?ftps?",|"username": ?".+",|"password": ?".+",)',
+                    "/ftpsync.settings", '^[\\s]*(upload_on_save: ?(true|false),|username: ?.+,|password: ?.+,)',
+                    "/recentservers.xml", "^[\s]*(<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.+</(Host|Protocol|User|Pass)>)",
+                    "/sitemanager.xml", "^[\s]*(<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.+</(Host|Protocol|User|Pass)>)",
+                    "/filezilla.xml", "^[\s]*(<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.+</(Host|Protocol|User|Pass)>)",
+                    "/FileZilla.xml", "^[\s]*(<FileZilla[0-9]?>|<(Host|Protocol|User|Pass)>.+</(Host|Protocol|User|Pass)>)",
                     # http://fileformats.archiveteam.org/wiki/WS_FTP_configuration_files
-                    "/WS_FTP.ini", "^\[_config_\]",
-                    "/ws_ftp.ini", "^\[_config_\]",
-                    "/WS_FTP.INI", "^\[_config_\]",
+                    "/WS_FTP.ini", "^[\s]*\[_config_\]",
+                    "/ws_ftp.ini", "^[\s]*\[_config_\]",
+                    "/WS_FTP.INI", "^[\s]*\[_config_\]",
                     # https://github.com/OliverKohlDSc/Terminals/blob/master/DLLs/Tools/winscp553/WinSCP.ini
-                    "/WinSCP.ini", "^\[(Configuration|SshHostKeys)\]",
-                    "/winscp.ini", "^\[(Configuration|SshHostKeys)\]",
+                    "/WinSCP.ini", "^[\s]*\[(Configuration|SshHostKeys)\]",
+                    "/winscp.ini", "^[\s]*\[(Configuration|SshHostKeys)\]",
                     # https://github.com/lukasz-wronski/vscode-ftp-sync/wiki/Sample-FTP-Sync-configs
-                    "/.vscode/ftp-sync.json", '("password": ?".*",|"passphrase": ?".*",|"privateKeyPath": ?".*",)',
+                    "/.vscode/ftp-sync.json", '^[\\s]*("username": ?".+",|"password": ?".+",|"passphrase": ?".+",|"privateKeyPath": ?".+",)',
                     # https://atom.io/packages/sftp-deployment
-                    "/deployment-config.json", '("type": ?"s?ftp",|"password": ?".*",|"passphrase": ?".*",|"sshKeyFile": ?".*",)',
+                    "/deployment-config.json", '^[\\s]*("type": ?"s?ftp",|"user": ?".+",|"password": ?".+",|"passphrase": ?".+",|"sshKeyFile": ?".+",)',
                     # https://atom.io/packages/remote-sync
-                    "/.remote-sync.json", '("transport": ?"(ftp|scp)",|"password": ?".*",|"passphrase": ?".*",|"keyfile": ?".*",)',
+                    "/.remote-sync.json", '^[\\s]*("transport": ?"(ftp|scp)",|"username": ?".+",|"password": ?".+",|"passphrase": ?".+",|"keyfile": ?".+",)',
                     # https://atom.io/packages/remote-ftp
-                    "/.ftpconfig", '("protocol": ?"s?ftp",|"pass": ?".*",|"passphrase": ?".*",|"promptForPass": ?(true|false),|"privatekey": ?".*",)' );
+                    "/.ftpconfig", '^[\\s]*("protocol": ?"s?ftp",|"user": ?".+",|"pass": ?".+",|"passphrase": ?".+",|"promptForPass": ?(true|false),|"privatekey": ?".+",)' );
 
 report = 'The following files were identified:\n';
 

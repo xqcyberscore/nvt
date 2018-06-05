@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_detect.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
+# $Id: gb_dell_kace_k1000_sma_detect.nasl 10063 2018-06-04 10:09:59Z cfischer $
 #
 # Dell KACE K1000 Systems Management Appliance (SMA) Detection
 #
@@ -24,14 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803734");
-  script_version("$Revision: 10048 $");
+  script_version("$Revision: 10063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 12:09:59 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 19:47:34 +0530 (Mon, 12 Aug 2013)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell KACE K1000 Systems Management Appliance (SMA) Detection");
@@ -49,7 +48,7 @@ This NVT has been replaced by NVT 'Quest KACE Systems Management Applicance (SMA
 
   script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("k1000/banner");
+  script_mandatory_keys("KACE-Appliance/banner");
 
   script_tag(name: "deprecated", value: TRUE);
 
@@ -63,13 +62,10 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get the banner
 banner = get_http_banner(port: port);
 
-## Confirm the application
 if("X-DellKACE-Appliance: k1000" >< banner)
 {
   version = "unknown";
@@ -82,12 +78,10 @@ if("X-DellKACE-Appliance: k1000" >< banner)
 
   set_kb_item(name: "kace_1000/detected", value: TRUE);
 
-  ## build CPE
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dell:kace_k1000_systems_management_appliance:");
   if(!cpe)
     cpe = 'cpe:/a:dell:kace_k1000_systems_management_appliance';
 
-  ## Register the product
   register_product(cpe: cpe, location: '/', port: port);
 
   log_message(data: build_detection_report(app: "Dell KACE K1000",version: version, install: '/', cpe: cpe,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_axon_virtual_pbx_detect.nasl 4901 2017-01-02 09:17:23Z cfi $
+# $Id: secpod_axon_virtual_pbx_detect.nasl 10065 2018-06-04 12:10:31Z asteins $
 #
 # Axon Virtual PBX Version Detection (SIP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900983");
-  script_version("$Revision: 4901 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 10:17:23 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 10065 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 14:10:31 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,6 +64,7 @@ if( "Axon Virtual PBX" >< banner ) {
 
   if( ! isnull( ver[1] ) ) version = ver[1];
 
+  set_kb_item( name:"Axon-Virtual-PBX/installed", value:TRUE );
   set_kb_item( name:"Axon-Virtual-PBX/sip/" + port + "/ver", value:version );
   set_kb_item( name:"Axon-Virtual-PBX/sip/installed", value:TRUE );
   

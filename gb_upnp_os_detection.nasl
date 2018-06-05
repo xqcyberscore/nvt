@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_upnp_os_detection.nasl 9674 2018-04-29 09:59:32Z cfischer $
+# $Id: gb_upnp_os_detection.nasl 10070 2018-06-04 14:43:22Z cfischer $
 #
 # UPnP Protocol OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108200");
-  script_version("$Revision: 9674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-29 11:59:32 +0200 (Sun, 29 Apr 2018) $");
+  script_version("$Revision: 10070 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 16:43:22 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,8 +68,8 @@ if( "FRITZ!Box" >< banner ) {
 # Server: Linux/2.4.22-1.2115.nptl UPnP/1.0 miniupnpd/1.0
 if( egrep( pattern:"^SERVER: Linux", string:banner, icase:TRUE ) ) {
   version = eregmatch( pattern:"Server: Linux(/|\-)([0-9.x]+)", string:banner, icase:TRUE );
-  if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:"Linux", version:version[1], cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  if( ! isnull( version[2] ) ) {
+    register_and_report_os( os:"Linux", version:version[2], cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }

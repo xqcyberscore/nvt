@@ -1,23 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_win.nasl 10039 2018-05-31 12:28:58Z mmartin $
+# $Id: gb_thunderbird_detect_win.nasl 10066 2018-06-04 13:06:30Z cfischer $
 #
 # Mozilla Thunderbird Version Detection (Windows)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
-#
-# Updated by: Madhuri D <dmadhuri@secpod.com> on 2011-09-08
-#    Added security_message to display the version of thunderbird
-#
-# Update By:  Rachana Shetty <srachana@secpod.com> on 2012-11-27
-# Updated to detect ThunderBird ESR version and according to CR-57
-#
-# Update By:  Thanga Prakash S <tprakash@secpod.com> on 2013-09-23
-# According to new style script_tags and Fixed issue in identifying ESR.
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2014-07-08
-# Updated to support 32 and 64 bit
 #
 # Copyright:
 # Copyright (c) 2008 Greenbone Networks GmbH, http://www.greenbone.net
@@ -39,22 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800015");
-  script_version("$Revision: 10039 $");
+  script_version("$Revision: 10066 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:28:58 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 15:06:30 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Thunderbird Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Mozilla Thunderbird on Windows.
+  script_tag(name:"summary", value:"Detection of installed version of Mozilla Thunderbird on Windows.
 
-The script logs in via smb, searches for Mozilla thunderBird in the registry
-and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  The script logs in via smb, searches for Mozilla Thunderbird in the registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -62,123 +45,91 @@ and gets the version from registry.";
   script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
-## Variable Initialization
-tbirdVer = "";
-appPath = "";
-birdVer = "";
-path = "";
-cpe = "";
-checkduplicate = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE";
+} else if("x64" >< os_arch){
+  key = "SOFTWARE\Wow6432Node";
 }
 
-## Presently 64bit application is not available
-## Check for 32 bit App on 64 bit platform
-else if("x64" >< os_arch){
-  key =  "SOFTWARE\Wow6432Node";
-}
+foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org")) {
 
-foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
-{
-  if(registry_key_exists(key: regKey))
-  {
-    # Get ThunderBird Version from Registry
-    birdVer = registry_get_sz(item:"CurrentVersion",
-                              key: regKey + "\Mozilla Thunderbird");
+  if(registry_key_exists(key:regKey)) {
 
-    if(birdVer)
-    {
+    birdVer = registry_get_sz(item:"CurrentVersion", key:regKey + "\Mozilla Thunderbird");
+
+    if(birdVer) {
+
       # Special case for thunderbird 1.5 (Get the version from file)
-      if(birdVer =~ "^(1.5)")
-      {
-       filePath = registry_get_sz(item:"PathToExe",
-                                   key: regKey + "\Mozilla Thunderbird 1.5\bin");
-        if(!filePath)
-          exit(0);
+      if(birdVer =~ "^(1.5)") {
 
-        tbirdVer = GetVersionFromFile(file: filePath,verstr: "prod");
-        if(!tbirdVer) exit(0);
-      }
-      else
-      {
+       filePath = registry_get_sz(item:"PathToExe", key:regKey + "\Mozilla Thunderbird 1.5\bin");
+       if(!filePath) exit(0);
+       tbirdVer = GetVersionFromFile(file:filePath, verstr:"prod");
+       if(!tbirdVer) exit(0);
+      } else {
         birdVer = eregmatch(pattern:"[0-9.]+", string:birdVer);
-        if(birdVer[0])
-          tbirdVer = birdVer[0];
+        if(birdVer[0]) tbirdVer = birdVer[0];
       }
-      # TODO: Fix the detection instead of ignoring e.g. the same
-      # version of 32bit and 64bit apps are installed...
-      ##If same Thunderbird version has been detected already continue
-    if(tbirdVer + ", " >< checkduplicate){
-      continue;
-    }
 
-      # Check for ESR installation
-      path = registry_get_sz(key: key + "\Microsoft\Windows\CurrentVersion\",
-                             item:"ProgramFilesDir");
+      path = registry_get_sz(key:key + "\Microsoft\Windows\CurrentVersion\", item:"ProgramFilesDir");
       if(!path) exit(0);
 
       appPath = path + "\Mozilla Thunderbird";
       exePath = appPath + "\update-settings.ini";
-      location = appPath;	
       share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
       file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
 
       ## Read the content of .ini file
       readmeText = read_file(share:share, file:file, offset:0, count:3000);
 
-      if(readmeText && readmeText =~ "comm-esr")
-      {
-        set_kb_item(name:"Thunderbird-ESR/Win/Ver", value:tbirdVer);
-        set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+      if(readmeText && readmeText =~ "comm-esr") {
 
-        ## build cpe
+        set_kb_item(name:"Thunderbird-ESR/Win/Ver", value:tbirdVer);
+        set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
+
         cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird_esr:");
         if(isnull(cpe))
           cpe = "cpe:/a:mozilla:thunderbird_esr";
 
-        appName = 'Mozilla ThunderBird ESR';
-      }
-      else
-      {
-        set_kb_item(name:"Thunderbird/Win/Ver", value:tbirdVer);
-        set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+        appName = 'Mozilla Thunderbird ESR';
 
-        ## build cpe
+      } else {
+
+        set_kb_item(name:"Thunderbird/Win/Ver", value:tbirdVer);
+        set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
+
         cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird:");
         if(isnull(cpe))
           cpe = "cpe:/a:mozilla:thunderbird";
 
-        appName = 'Mozilla ThunderBird';
+        appName = 'Mozilla Thunderbird';
       }
-      if(location){
-      ##Assign detected version value to checkduplicate so as to check in next loop iteration
-        checkduplicate += tbirdVer + ", ";
-      # Used in gb_thunderbird_detect_portable_win.nasl to detect doubled detections
-        set_kb_item(name:"Thunderbird/Win/InstallLocations", value:tolower(location));
-        register_product(cpe:cpe, location:location);
-        log_message(port:0, data:build_detection_report(app:appName, version:tbirdVer, install:location, cpe:cpe, concluded:tbirdVer));
 
-     }
+      # Used in gb_thunderbird_detect_portable_win.nasl to avoid doubled detections.
+      # We're also stripping a possible ending backslash away as the portable NVT is getting
+      # the file path without the ending backslash from WMI.
+      tmp_location = tolower(appPath);
+      tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
+      set_kb_item(name:"Thunderbird/Win/InstallLocations", value:tmp_location);
+
+      register_product(cpe:cpe, location:appPath);
+      log_message(port:0, data:build_detection_report(app:appName, version:tbirdVer, install:appPath, cpe:cpe, concluded:tbirdVer));
     }
   }
 }
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10027 2018-05-30 12:54:24Z santu $
+# $Id: gather-package-list.nasl 10057 2018-06-04 07:56:17Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10027 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 14:54:24 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 10057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -389,7 +389,11 @@ OS_CPE = make_array(
     "HPUX10.01", "cpe:/o:hp:hp-ux:10.01",
 
     # FortiOS
-    "FortiOS", "cpe:/o:fortinet:fortios"
+    "FortiOS", "cpe:/o:fortinet:fortios",
+
+    # Arch Linux
+    # nb: Arch Linux is a rolling release so there is no "real" version
+    "ArchLinux", "cpe:/o:archlinux:archlinux"
 );
 
 # GNU/Linux platforms:
@@ -2729,8 +2733,16 @@ if( "openSUSE Leap 42.1" >< rls ) {
   exit( 0 );
 }
 
+# nb: Arch Linux is a rolling release so there is no "real" version
+if( 'NAME="Arch Linux"' >< rls ) {
+  set_kb_item( name:"ssh/login/arch_linux", value:TRUE );
+  log_message( port:port, data:"We are able to login and detect that you are running Arch Linux. Note: Local Security Checks (LSC) are not available for this OS." );
+  register_detected_os( os:"Arch Linux", oskey:"ArchLinux" );
+  exit( 0 );
+}
+
 # nb: In SLES12+ /etc/SuSE-release is deprecated in favor of /etc/os-release
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/SuSE-release");
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/SuSE-release" );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/SuSE-release: ' + rls + '\n\n';
@@ -3319,9 +3331,9 @@ if( "Darwin" >< uname ) {
   set_kb_item( name:"ssh/login/osx_name", value:buf );
 
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -productVersion" ) );
-  if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) ) 
+  if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) )
   {
-    set_kb_item( name:"ssh/login/osx_version", value:match[1]);   
+    set_kb_item( name:"ssh/login/osx_version", value:match[1]);
     register_and_report_os( os:"Mac OS X / macOS", version:match[1], cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Mac OS X / macOS", cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
