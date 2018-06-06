@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_version.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: secpod_putty_version.nasl 10082 2018-06-05 12:51:08Z tpassfeld $
 #
 # PuTTY Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900618");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 10082 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-05 14:51:08 +0200 (Tue, 05 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 12:54:52 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Version Detection");
@@ -71,7 +71,7 @@ if("x86" >< os_arch){
                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Presently 64bit application is not available
+##Presently 64bit application is not available
 else if("x64" >< os_arch){
   key_list = make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -85,7 +85,7 @@ foreach key (key_list)
 
     if("PuTTY" >< appName)
     {
-      insloc = registry_get_sz(key:key,item:"InstallLocation");
+      insloc = registry_get_sz(key:key + item,item:"InstallLocation");
       if(!insloc){
         insloc = "Could not find the install location from registry";
       }
@@ -99,13 +99,17 @@ foreach key (key_list)
       }
       if(appVer)
       {
-        set_kb_item(name:"PuTTY/Version", value:appVer[0]);
+        set_kb_item(name:"PuTTY/Version", value:appVer);
 
         cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:putty:putty:");
         if(isnull(cpe))
           cpe = "cpe:/a:putty:putty";
 
-        register_product(cpe:cpe, location:insloc);
+	tmp_location = tolower(insloc);
+	tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
+        set_kb_item(name:"PuTTY/Win/InstallLocations", value:tmp_location);
+
+	register_product(cpe:cpe, location:insloc);
 
         log_message(data: build_detection_report(app: "PuTTY",
                                                  version: appVer,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
+# $Id: gb_canon_printers_detect.nasl 10080 2018-06-05 12:31:46Z jschulte $
 #
 # Canon Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 9972 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_version("$Revision: 10080 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-05 14:31:46 +0200 (Tue, 05 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,6 +60,7 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 buf  = http_get_cache( item:"/index.html", port:port );
 buf2 = http_get_cache( item:"/", port:port );
+buf3 = http_get_cache( item:"/tlogin.cgi", port:port );
 
 # If updating here please also update the check in dont_print_on_printers.nasl
 if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
@@ -91,6 +92,20 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
       cpe_printer_model = tolower( model );
       cpe = "cpe:/h:canon:" + cpe_printer_model;
       cpe = str_replace( string:cpe, find:" ", replace:"_" );
+    }
+  }
+
+  if( ! model ) {
+    shorter = ereg_replace( string:buf3, pattern:'\n', replace:'' );
+    short = ereg_replace( string:shorter, pattern:'\r', replace:'' );
+
+    printer_model = eregmatch( pattern:'Device Name:</font></td>[\\s]{0,}<td nowrap >([A-Za-z0-9]+)</td>', string:short );
+    if( !isnull( printer_model[1] ) ) {
+      model = printer_model[1];
+      set_kb_item( name:"canon_printer_model", value:model );
+      cpe_printer_model = tolower( model );
+      cpe = "cpe:/h:canon:" + cpe_printer_model;
+      cpe = str_replace( string:cpe, find: " ", replace:"_" );
     }
   }
 

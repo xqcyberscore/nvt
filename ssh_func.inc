@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 8968 2018-02-27 12:55:48Z cfischer $
+# $Id: ssh_func.inc 10084 2018-06-05 14:52:08Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8968 $
+# $Revision: 10084 $
 #
 ###############################################################################
 
@@ -1415,11 +1415,11 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
 
   # From draft-ietf-secsh-auth-kbdinteract-06.txt document :
   # Server should now send SSH_MSG_USERAUTH_INFO_REQUEST.
-  # REQUEST can ask additionnal informations (like a new password).
+  # REQUEST can ask additional information (like a new password).
   # But if all is correct num-prompts is set to 0 and client must
   # reply with an empty SSH_MSG_USERAUTH_INFO_RESPONSE.
   # So we just send an empty response and look if authentication
-  # works. If remote server asked for additionnal informations,
+  # works. If remote server asked for additional information,
   # authentication will just failed.
   if (ord(payload[0]) == 60)
   {
@@ -1937,6 +1937,8 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
       ret_ssh_buf = ssh_cmd_pty( sess:sess, cmd:cmd, pattern:pattern, timeout:timeout, retry:retry, clear_buffer:clear_buffer );
     else
       ret_ssh_buf = ssh_request_exec( sess, cmd:cmd, stdout:0, stderr:0 );
+
+    ret_ssh_buf = ssh_clean_cmd_from_err( data:ret_ssh_buf );
 
     if( get_kb_item( "global_settings/ssh/debug" ) ) {
       debug_str = 'SSH DEBUG: ' + get_host_ip() + ':\n' +
@@ -2575,4 +2577,25 @@ function get_ssh_server_banner( port ) {
   }
 
   return banner;
+}
+
+# This functions cleans a passed string from e.g. the following:
+#
+# uname: Could not chdir to home directory /home/test: No such file or directory
+# Could not chdir to home directory /home/test: No such file or directory
+# Could not chdir to home directory /home/test: Permission denied
+#
+# and returns the cleaned string back.
+#
+# Those messages itself might show up if a user for the SSH connection is used without e.g. a
+# home directory on the target host.
+#
+function ssh_clean_cmd_from_err( data ) {
+
+  local_var data;
+
+  # nb: Keep the pattern in single quotes...
+  data = ereg_replace( string:data, pattern:'^([a-zA-Z]+: )?Could not chdir to home directory [^:]+: (No such file or directory|Permission denied)[\r\n]*', replace:"" );
+
+  return data;
 }
