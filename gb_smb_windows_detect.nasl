@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_smb_windows_detect.nasl 10088 2018-06-06 06:48:44Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10088 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 08:48:44 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -188,7 +188,11 @@ if( ( winVal == "6.3" ) && ( "Windows Server 2016" >< winName ) && ( "64" >< arc
 }
 
 ## Fallback if none of the above is matching, also report as "unknown" OS.
-register_unknown_os_banner( banner:"winVal = " + winVal + ", winName = " + winName + ", arch = " + arch, banner_type_name:banner_type, banner_type_short:"smb_win_banner" );
+## Some embedded XP versions are only providing a winVal but not a winName. Avoid a unknown reporting for those and just register the OS
+if( winVal && winName ) {
+  register_unknown_os_banner( banner:"winVal = " + winVal + ", winName = " + winName + ", arch = " + arch, banner_type_name:banner_type, banner_type_short:"smb_win_banner" );
+}
+
 register_win_version( cpe_base:"cpe:/o:microsoft:windows", win_vers:"", servpack:csdVer, os_name:winName );
 
 #nb: If updating / adding OS detection here please also update gb_windows_cpe_detect.nasl and smb_reg_service_pack.nasl

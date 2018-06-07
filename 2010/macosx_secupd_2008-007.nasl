@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_secupd_2008-007.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Mac OS X Security Update 2008-007
 #
@@ -23,43 +24,20 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Mac OS X operating system.
-
- For more information see:
- http://support.apple.com/kb/HT3216";
-
-tag_summary = "The remote host is missing Security Update 2008-007.
- One or more of the following components are affected:
-
- Apache
- Certificates
- ClamAV
- ColorSync
- CUPS
- Finder
- launchd
- libxslt
- MySQL Server
- Networking
- PHP
- Postfix
- PSNormalizer
- QuickLook
- rlogin
- Script Editor
- Single Sign-On
- Tomcat
- vim
- Weblog";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102025");
- script_version("$Revision: 8258 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+ script_version("$Revision: 10090 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
- script_cve_id("CVE-2007-6420","CVE-2008-1678","CVE-2008-2364","CVE-2008-1389","CVE-2008-3912","CVE-2008-3913","CVE-2008-3914","CVE-2008-3642","CVE-2008-3641","CVE-2008-3643","CVE-2008-1767","CVE-2007-2691","CVE-2007-5969","CVE-2008-0226","CVE-2008-0227","CVE-2008-2079","CVE-2008-3645","CVE-2007-4850","CVE-2008-0674","CVE-2008-2371","CVE-2008-3646","CVE-2008-3647","CVE-2008-4211","CVE-2008-4212","CVE-2008-4214","CVE-2007-6286","CVE-2008-0002","CVE-2008-1232","CVE-2008-1947","CVE-2008-2370","CVE-2008-2938","CVE-2007-5333","CVE-2007-5342","CVE-2007-5461","CVE-2008-2712","CVE-2008-4101","CVE-2008-3432","CVE-2008-3294","CVE-2008-4215");
+ script_cve_id("CVE-2007-6420", "CVE-2008-1678", "CVE-2008-2364", "CVE-2008-1389", "CVE-2008-3912",
+               "CVE-2008-3913", "CVE-2008-3914", "CVE-2008-3642", "CVE-2008-3641", "CVE-2008-3643",
+               "CVE-2008-1767", "CVE-2007-2691", "CVE-2007-5969", "CVE-2008-0226", "CVE-2008-0227",
+               "CVE-2008-2079", "CVE-2008-3645", "CVE-2007-4850", "CVE-2008-0674", "CVE-2008-2371",
+               "CVE-2008-3646", "CVE-2008-3647", "CVE-2008-4211", "CVE-2008-4212", "CVE-2008-4214",
+               "CVE-2007-6286", "CVE-2008-0002", "CVE-2008-1232", "CVE-2008-1947", "CVE-2008-2370",
+               "CVE-2008-2938", "CVE-2007-5333", "CVE-2007-5342", "CVE-2007-5461", "CVE-2008-2712",
+               "CVE-2008-4101", "CVE-2008-3432", "CVE-2008-3294", "CVE-2008-4215");
  script_name("Mac OS X Security Update 2008-007");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,10 +47,61 @@ if(description)
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT3216");
+
+ script_tag(name:"summary", value:"The remote host is missing Security Update 2008-007.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ Apache
+
+ Certificates
+
+ ClamAV
+
+ ColorSync
+
+ CUPS
+
+ Finder
+
+ launchd
+
+ libxslt
+
+ MySQL Server
+
+ Networking
+
+ PHP
+
+ Postfix
+
+ PSNormalizer
+
+ QuickLook
+
+ rlogin
+
+ Script Editor
+
+ Single Sign-On
+
+ Tomcat
+
+ vim
+
+ Weblog");
+
+ script_tag(name:"solution", value:"Update your Mac OS X operating system.
+
+ For more information see:
+ http://support.apple.com/kb/HT3216");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -83,7 +112,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

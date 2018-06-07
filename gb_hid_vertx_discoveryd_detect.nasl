@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hid_vertx_discoveryd_detect.nasl 10062 2018-06-04 10:02:31Z ckuersteiner $
+# $Id: gb_hid_vertx_discoveryd_detect.nasl 10097 2018-06-06 10:50:30Z cfischer $
 #
 # HID VertX Detection (discoveryd)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141137");
-  script_version("$Revision: 10062 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-04 12:02:31 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10097 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-06-04 12:33:52 +0700 (Mon, 04 Jun 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ extract its version.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_open_udp_ports.nasl");
-  script_require_ports("Services/udp/unknown", 4050, 4070);
+  script_require_udp_ports("Services/udp/unknown", 4050, 4070);
 
   script_xref(name: "URL", value: "https://www.hidglobal.com/products/controllers");
 

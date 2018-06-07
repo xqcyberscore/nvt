@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_kace_sma_detect.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
+# $Id: gb_quest_kace_sma_detect.nasl 10097 2018-06-06 10:50:30Z cfischer $
 #
 # Quest KACE Systems Management Applicance (SMA) Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141135");
-  script_version("$Revision: 10048 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 10097 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-06-01 10:51:22 +0700 (Fri, 01 Jun 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
 The script sends a connection request to the server and attempts to detect Quest KACE Systems Management
 Applicance (SMA) and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,6 @@ Applicance (SMA) and to extract its version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("KACE-Appliance/banner");
   script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "https://www.quest.com/kace/");
 

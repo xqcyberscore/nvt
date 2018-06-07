@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 10025 2018-05-30 10:37:33Z jschulte $
+# $Id: gb_monstra_cms_mult_vuln.nasl 10089 2018-06-06 07:43:47Z asteins $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 10025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 12:37:33 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 10089 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 09:43:47 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -40,7 +40,8 @@ if( description )
 
   script_cve_id("CVE-2018-11472", "CVE-2018-11473", "CVE-2018-11474", "CVE-2018-11475",
                 "CVE-2018-18048", "CVE-2018-6383", "CVE-2018-6550", "CVE-2018-9037",
-                "CVE-2018-9038", "CVE-2018-10109", "CVE-2018-10118", "CVE-2018-10121");
+                "CVE-2018-9038", "CVE-2018-10109", "CVE-2018-10118", "CVE-2018-10121",
+                "CVE-2018-11678");
 
   script_name("Monstra CMS <= 3.0.4 Multiple Vulnerabilities");
 
@@ -82,7 +83,9 @@ if( description )
     related to plugins/box/pages/pages.admin.php.
 
   - plugins/box/pages/pages.admin.php has a stored XSS vulnerability when an attacker has access to the editor role,
-    and enters the payload in the title section of an admin/index.php?id.pages&action.edit_page&name.error404 (aka Edit 404 page) action.");
+    and enters the payload in the title section of an admin/index.php?id.pages&action.edit_page&name.error404 (aka Edit 404 page) action.
+
+  - plugins/box/users/users.plugin.php allows Login Rate Limiting Bypass via manipulation of the login_attempts cookie.");
   script_tag(name:"affected", value:"Monstra CMS through version 3.0.4.");
   script_tag(name:"solution", value:"No known solution is available as of 29th May, 2018.
   Information regarding this issue will be updated once solution details are available.");

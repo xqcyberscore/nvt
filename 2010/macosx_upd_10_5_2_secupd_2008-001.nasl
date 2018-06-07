@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_upd_10_5_2_secupd_2008-001.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Mac OS X 10.5.2 Update / Security Update 2008-001
 #
@@ -23,33 +24,14 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Mac OS X operating system.
-
- For more information see:
- http://support.apple.com/kb/HT1457";
-
-tag_summary = "The remote host is missing Mac OS X 10.5.2 Update / Security Update 2008-001.
- One or more of the following components are affected:
-
- Directory Services
- Foundation
- Launch Services
- Mail
- NFS
- Open Directory
- Parental Controls
- Samba
- Terminal
- X11";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102029");
- script_version("$Revision: 8440 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+ script_version("$Revision: 10090 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
- script_cve_id("CVE-2007-0355","CVE-2008-0035","CVE-2008-0038","CVE-2008-0039","CVE-2008-0040","CVE-2008-0041","CVE-2007-6015","CVE-2008-0042","CVE-2007-4568","CVE-2008-0037");
+ script_cve_id("CVE-2007-0355", "CVE-2008-0035", "CVE-2008-0038", "CVE-2008-0039", "CVE-2008-0040",
+               "CVE-2008-0041", "CVE-2007-6015", "CVE-2008-0042", "CVE-2007-4568", "CVE-2008-0037");
  script_name("Mac OS X 10.5.2 Update / Mac OS X Security Update 2008-001");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,10 +41,41 @@ if(description)
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT1457");
+
+ script_tag(name:"summary", value:"The remote host is missing Mac OS X 10.5.2 Update / Security Update 2008-001.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ Directory Services
+
+ Foundation
+
+ Launch Services
+
+ Mail
+
+ NFS
+
+ Open Directory
+
+ Parental Controls
+
+ Samba
+
+ Terminal
+
+ X11");
+
+ script_tag(name:"solution", value:"Update your Mac OS X operating system.
+
+ For more information see:
+ http://support.apple.com/kb/HT1457");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -73,7 +86,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

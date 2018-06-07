@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_java_for_10_6_upd_1.nasl 10091 2018-06-06 08:42:19Z cfischer $
 #
 # Java for Mac OS X 10.6 Update 1
 #
@@ -23,24 +24,15 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Java for Mac OS X.
-
- For more information see:
- http://support.apple.com/kb/HT3969";
-
-tag_summary = "The remote host is missing Java for Mac OS X 10.6 Update 1.
- One or more of the following components are affected:
-
- Java";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102046");
- script_version("$Revision: 8168 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+ script_version("$Revision: 10091 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:42:19 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-28 13:49:16 +0200 (Fri, 28 May 2010)");
- script_cve_id("CVE-2009-3869","CVE-2009-3871","CVE-2009-3875","CVE-2009-3874","CVE-2009-3728","CVE-2009-3872","CVE-2009-3868","CVE-2009-3867","CVE-2009-3884","CVE-2009-3873","CVE-2009-3877","CVE-2009-3865","CVE-2009-3866","CVE-2009-2843");
+ script_cve_id("CVE-2009-3869", "CVE-2009-3871", "CVE-2009-3875", "CVE-2009-3874", "CVE-2009-3728",
+               "CVE-2009-3872", "CVE-2009-3868", "CVE-2009-3867", "CVE-2009-3884", "CVE-2009-3873",
+               "CVE-2009-3877", "CVE-2009-3865", "CVE-2009-3866", "CVE-2009-2843");
  script_name("Java for Mac OS X 10.6 Update 1");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,11 +41,24 @@ if(description)
  script_family("Mac OS X Local Security Checks");
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+ script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT3969");
+
+ script_tag(name:"summary", value:"The remote host is missing Java for Mac OS X 10.6 Update 1.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ Java");
+
+ script_tag(name:"solution", value:"Update your Java for Mac OS X.
+
+ For more information see:
+ http://support.apple.com/kb/HT3969");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -64,7 +69,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

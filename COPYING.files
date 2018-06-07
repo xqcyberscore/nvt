@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 06 Jun 2018 08:54:48 +0200
+# Automatically created on:  Thu, 07 Jun 2018 09:11:14 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38555,6 +38555,7 @@
 2018/bigtree/gb_bigtree_rce_vuln.nasl: GPLv2+
 2018/bigtree/gb_bigtree_xss_vuln.nasl: GPLv2+
 2018/buffalo/gb_buffalo_WZR-1750DHP2_mult_vuln.nasl: GPLv2+
+2018/canon/gb_canon_printers_auth_bypass.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0008_kernel_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0013_microcode_ctl_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_0023_qemu-img_centos7.nasl: GPLv2+
@@ -40979,6 +40980,7 @@ gb_7zip_detect_portable_win.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
+gb_abb_ipgateway_detect.nasl: GPLv2+
 gb_abb-microscada_detect_win.nasl: GPLv2+
 gb_ab_ethernet_detect.nasl: GPLv2+
 gb_abyss_detect.nasl: GPLv2+
@@ -41109,6 +41111,7 @@ gb_atlassian_crowd_detect.nasl: GPLv2+
 gb_atlassian_crucible_detect.nasl: GPLv2+
 gb_atlassian_fisheye_crucible_detect.nasl: GPLv2+
 gb_autodesk_backburner_detect.nasl: GPLv2+
+gb_autopsy_detect_win.nasl: GPLv2+
 gb_avant_browser_detect.nasl: GPLv2+
 gb_avast_av_detect_lin.nasl: GPLv2+
 gb_avast_av_detect_win.nasl: GPLv2+
@@ -41719,6 +41722,7 @@ gb_iwork_detect_macosx.nasl: GPLv2+
 gb_jasig_cas_server_detect.nasl: GPLv2+
 gb_jasperreports_detect.nasl: GPLv2+
 gb_java_prdts_detect_lin.nasl: GPLv2+
+gb_java_prdts_detect_portable_win.nasl: GPLv2+
 gb_java_prdts_detect_win.nasl: GPLv2+
 gb_jboss_on_detect.nasl: GPLv2+
 gb_jetbrains_ide_detection.nasl: GPLv2+
@@ -42174,6 +42178,7 @@ gb_ros_detect.nasl: GPLv2+
 gb_rpi_cam_control_detect.nasl: GPLv2+
 gb_rsa_archer_detect.nasl: GPLv2+
 gb_rsa_auth_agent_detect_win.nasl: GPLv2+
+gb_rsa_web_threat_detection_detect.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
 gb_saia_pcd_web_detect.nasl: GPLv2+
@@ -57427,6 +57432,7 @@ gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_win.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: GPLv2+
+gsf/2018/abb/gb_abb_ipgateway_mult_vuln.nasl: GPLv2+
 gsf/2018/abb/gb_microscada_privilege_escalation_vuln.nasl: GPLv2+
 gsf/2018/acrolinx/gb_acrolinx_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
@@ -57495,6 +57501,7 @@ gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asaanyconnect.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asa_inspect.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180606-asaftd.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180207-esacsm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180110-ucm.nasl: GPLv2+
@@ -57513,6 +57520,7 @@ gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180502-fpwr-codp.
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180502-fpwr-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180502-fpwr-txdos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180516-firepwr-pb.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180606-FireSIGHT-vpn-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180117-iess.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180207-ios.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180328-bfd.nasl: GPLv2+
@@ -57552,6 +57560,7 @@ gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-wfw.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-xepriv.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-xesc.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180418-cbr8.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180606-aaa.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180131-ipv6.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180328-lldp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180418-iosxr.nasl: GPLv2+
@@ -57572,10 +57581,12 @@ gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_jabber_mult_xss_vuln_cisco-sa-20180221-jcf_jcf1_win.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180502-cms-cx.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180606-cms-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nx-os.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180307-cpcp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-cpcp-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-cpi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-prime-infrastructure.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180502-prime-upload.nasl: GPLv2+
@@ -57628,6 +57639,7 @@ gsf/2018/emc/gb_emc_avamar_access_ctrl_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_mult_vuln.nasl: GPLv2+
+gsf/2018/emc/gb_rsa_web_threat_detection_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/emerson/gb_emerson_micro_buf_overflow_vuln.nasl: GPLv2+
 gsf/2018/epignosis/gb_efront_cms_eol.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_cookie_info_discl_vuln.nasl: GPLv2+
@@ -57749,6 +57761,7 @@ gsf/2018/hp/gb_micro_focus_operations_orchestration_KM03103896.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180131-01-ibmc-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180509-01-bypass-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180523-01-json-en.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-01-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-02-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-03-server-en.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_encryption_prot_security_bypass_vuln.nasl: GPLv2+

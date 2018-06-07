@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10084 2018-06-05 14:52:08Z cfischer $
+# $Id: ssh_func.inc 10092 2018-06-06 09:46:11Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10084 $
+# $Revision: 10092 $
 #
 ###############################################################################
 
@@ -2579,23 +2579,35 @@ function get_ssh_server_banner( port ) {
   return banner;
 }
 
-# This functions cleans a passed string from e.g. the following:
+# @brief This functions cleans a passed string from various known messages
+#        returned by the ssh_cmd() function which might interfere with various
+#        detection pattern relying on a string without those messages.
 #
-# uname: Could not chdir to home directory /home/test: No such file or directory
-# Could not chdir to home directory /home/test: No such file or directory
-# Could not chdir to home directory /home/test: Permission denied
+# @param data the string to clean
 #
-# and returns the cleaned string back.
-#
-# Those messages itself might show up if a user for the SSH connection is used without e.g. a
-# home directory on the target host.
+# @returns the cleaned string
 #
 function ssh_clean_cmd_from_err( data ) {
 
   local_var data;
 
+  # uname: Could not chdir to home directory /home/test: No such file or directory
+  # Could not chdir to home directory /home/test: No such file or directory
+  # Could not chdir to home directory /home/test: Permission denied
+  #
+  # Those messages itself might show up if a user for the SSH connection is used without e.g. a
+  # home directory on the target host.
+  #
   # nb: Keep the pattern in single quotes...
   data = ereg_replace( string:data, pattern:'^([a-zA-Z]+: )?Could not chdir to home directory [^:]+: (No such file or directory|Permission denied)[\r\n]*', replace:"" );
+
+  # Returned on Mac OS X if the subversion binary is called with the --version parameter.
+  # It is unknown why some systems behaving like this and which other applications/binaries are affected.
+  #
+  # xcode-select: error: no developer tools were found at '/Applications/Xcode.app', and no install could be requested (perhaps no UI is present), please install manually from 'developer.apple.com'.
+  #
+  # nb: Keep the pattern in single quotes...
+  data = ereg_replace( string:data, pattern:'^xcode-select: error: no developer tools were found at \'/Applications/Xcode\\.app\', and no install could be requested \\(perhaps no UI is present\\), please install manually from \'developer\\.apple\\.com\'\\.[\r\n]*', replace:"" );
 
   return data;
 }

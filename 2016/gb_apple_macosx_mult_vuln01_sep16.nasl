@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_sep16.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_sep16.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 September-2016
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807888");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 10090 $");
   script_cve_id("CVE-2016-4694", "CVE-2016-5768", "CVE-2016-5769", "CVE-2016-5770",
                 "CVE-2016-5771", "CVE-2016-5772", "CVE-2016-5773", "CVE-2016-6174",
                 "CVE-2016-6288", "CVE-2016-6289", "CVE-2016-6290", "CVE-2016-6291",
@@ -50,7 +50,7 @@ if(description)
                     92111, 91403, 92115, 91401, 93060, 93056);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:22:55 +0530 (Wed, 28 Sep 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 September-2016");
 
@@ -92,7 +92,6 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
@@ -105,12 +104,12 @@ if(!osVer){
   exit(0);
 }
 
-if("Mac OS X" >< osName)
-{
-  if(version_in_range(version:osVer, test_version: "10.7.5", test_version2:"10.11.6"))
-  {
+if("Mac OS X" >< osName && osVer =~ "^10\."){
+  if(version_in_range(version:osVer, test_version: "10.7.5", test_version2:"10.11.6")){
     report = report_fixed_ver(installed_version:osVer, fixed_version:"According to the vendor an upgrade to version 10.12 is required to mitigate this vulnerabilities. Please see the advisory (HT207170) for more info.");
-    security_message(data:report);
+    security_message(port:0, data:report);
     exit(0);
   }
 }
+
+exit(99);

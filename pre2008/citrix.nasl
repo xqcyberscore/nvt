@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: citrix.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: citrix.nasl 10105 2018-06-07 06:15:01Z cfischer $
 #
-# Citrix published applications
+# Citrix Published Applications Enumeration (Remote)
 #
 # Authors:
 # John Lampe <j_lampe@bellsouth.net>
@@ -29,32 +29,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11138");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 08:15:01 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_bugtraq_id(5817);
-  script_name("Citrix published applications");
+  script_name("Citrix Published Applications Enumeration (Remote)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 John Lampe...j_lampe@bellsouth.net");
   script_family("General");
   script_require_udp_ports(1604);
 
-  script_tag(name:"summary", value:"Attempt to enumerate Citrix published Applications");
+  script_xref(name:"URL", value:"https://web.archive.org/web/20061225071711/http://sh0dan.org:80/files/hackingcitrix.txt");
+  script_xref(name:"URL", value:"http://www.securiteam.com/exploits/5CP0B1F80S.html");
+
+  script_tag(name:"summary", value:"The script attempts to enumerate Citrix published Applications.");
+
+  script_tag(name:"impact", value:"The Citrix server is configured in a way which may allow an
+  external attacker to enumerate remote services.");
+
+  script_tag(name:"solution", value:"See the references on how to secure the Citrix installation.");
 
   script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
 
 port = 1604;
-trickmaster =  raw_string( 0x20, 0x00, 0x01, 0x30, 0x02, 0xFD, 0xA8, 0xE3 );
+if( ! get_udp_port_state( port ) ) exit( 0 );
+if( ! soc = open_sock_udp( port ) ) exit( 0 );
+
+trickmaster  = raw_string( 0x20, 0x00, 0x01, 0x30, 0x02, 0xFD, 0xA8, 0xE3 );
 trickmaster += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 trickmaster += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 trickmaster += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-get_pa =  raw_string( 0x2A, 0x00, 0x01, 0x32, 0x02, 0xFD );
+send( socket:soc, data:trickmaster );
+res = recv( socket:soc, length:1024 );
+close( soc );
+if( ! res ) exit( 0 );
+if( ! soc = open_sock_udp( port ) ) exit( 0 );
+
+get_pa  = raw_string( 0x2A, 0x00, 0x01, 0x32, 0x02, 0xFD );
 get_pa += raw_string( 0xa8, 0xe3, 0x00, 0x00, 0x00, 0x00 );
 get_pa += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 get_pa += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
@@ -62,25 +80,14 @@ get_pa += raw_string( 0x00, 0x00, 0x00, 0x00, 0x21, 0x00 );
 get_pa += raw_string( 0x02, 0x00, 0x00, 0x00, 0x00, 0x00 );
 get_pa += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-if( ! get_udp_port_state( port ) ) exit( 0 );
+send( socket:soc, data:get_pa );
+res = recv( socket:soc, length:1024 );
+close( soc );
+if( ! res ) exit( 0 );
 
-soc = open_sock_udp( port );
-if( soc ) {
-  send( socket:soc, data:trickmaster );
-  incoming = recv(socket:soc, length:1024);
-  close( soc );
-  if( incoming ) {
-    soc = open_sock_udp( port );
-    send( socket:soc, data:get_pa );
-    incoming = recv( socket:soc, length:1024 );
-    if( incoming ) {
-      mywarning = string( "The Citrix server is configured in a way which may allow an external attacker\n" );
-      mywarning = string( mywarning, "to enumerate remote services.\n\n" );
-      mywarning = string( mywarning, "Solution: see http://sh0dan.org/files/hackingcitrix.txt for more info" );
-      security_message( port:port, data:mywarning, proto:"udp" );
-      exit( 0 );
-    }
-  }
+if( res =~ '\x02\x00\x06\x44' ) {
+  security_message( port:port, proto:"udp" );
+  exit( 0 );
 }
 
 exit( 99 );

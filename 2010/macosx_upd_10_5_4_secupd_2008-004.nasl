@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_upd_10_5_4_secupd_2008-004.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Mac OS X 10.5.4 Update / Mac OS X Security Update 2008-004
 #
@@ -23,35 +24,17 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Mac OS X operating system.
-
- For more information see:
- http://support.apple.com/kb/HT2163";
-
-tag_summary = "The remote host is missing Mac OS X 10.5.4 Update / Mac OS X Security Update 2008-004.
- One or more of the following components are affected:
-
- Alias Manager
- CoreTypes
- c++filt
- Dock
- Launch Services
- Net-SNMP
- Ruby
- SMB File Server
- System Configuration
- Tomcat
- VPN
- WebKit";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102032");
- script_version("$Revision: 8338 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+ script_version("$Revision: 10090 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
- script_cve_id("CVE-2008-2308","CVE-2008-2309","CVE-2008-2310","CVE-2008-2314","CVE-2008-2311","CVE-2008-0960","CVE-2008-2662","CVE-2008-2663","CVE-2008-2664","CVE-2008-2725","CVE-2008-2726","CVE-2008-1145","CVE-2008-1105","CVE-2008-2313","CVE-2005-3164","CVE-2007-1355","CVE-2007-2449","CVE-2007-2450","CVE-2007-3382","CVE-2007-3383","CVE-2007-5333","CVE-2007-3385","CVE-2007-5461","CVE-2007-6276","CVE-2008-2307");
+ script_cve_id("CVE-2008-2308", "CVE-2008-2309", "CVE-2008-2310", "CVE-2008-2314", "CVE-2008-2311",
+               "CVE-2008-0960", "CVE-2008-2662", "CVE-2008-2663", "CVE-2008-2664", "CVE-2008-2725",
+               "CVE-2008-2726", "CVE-2008-1145", "CVE-2008-1105", "CVE-2008-2313", "CVE-2005-3164",
+               "CVE-2007-1355", "CVE-2007-2449", "CVE-2007-2450", "CVE-2007-3382", "CVE-2007-3383",
+               "CVE-2007-5333", "CVE-2007-3385", "CVE-2007-5461", "CVE-2007-6276", "CVE-2008-2307");
  script_name("Mac OS X 10.5.4 Update / Mac OS X Security Update 2008-004");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,10 +44,45 @@ if(description)
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT2163");
+
+ script_tag(name:"summary", value:"The remote host is missing Mac OS X 10.5.4 Update / Mac OS X Security Update 2008-004.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ Alias Manager
+
+ CoreTypes
+
+ c++filt
+
+ Dock
+
+ Launch Services
+
+ Net-SNMP
+
+ Ruby
+
+ SMB File Server
+
+ System Configuration
+
+ Tomcat
+
+ VPN
+
+ WebKit");
+
+ script_tag(name:"solution", value:"Update your Mac OS X operating system.
+
+ For more information see:
+ http://support.apple.com/kb/HT2163");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -75,7 +93,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

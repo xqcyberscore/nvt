@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_machform_mult_vuln.nasl 10030 2018-05-31 02:49:25Z ckuersteiner $
+# $Id: gb_machform_mult_vuln.nasl 10097 2018-06-06 10:50:30Z cfischer $
 #
 # Appnitro MachForm Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:appnitro:machform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141126");
-  script_version("$Revision: 10030 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-31 04:49:25 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10097 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-05-31 09:43:14 +0700 (Thu, 31 May 2018)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_analysis");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name: "solution_type", value: "NoneAvailable");
 
   script_name("Appnitro MachForm Multiple Vulnerabilities");
 

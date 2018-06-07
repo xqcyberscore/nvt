@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_ibmc_upnp_detect.nasl 10085 2018-06-06 04:38:22Z ckuersteiner $
+# $Id: gb_huawei_ibmc_upnp_detect.nasl 10097 2018-06-06 10:50:30Z cfischer $
 #
 # Huawei iBMC Detection (UPnP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141141");
-  script_version("$Revision: 10085 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 06:38:22 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 10097 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-06-06 08:31:40 +0700 (Wed, 06 Jun 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ version.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_upnp_detect.nasl");
-  script_require_ports("Services/udp/upnp", 1900);
+  script_require_udp_ports("Services/udp/upnp", 1900);
   script_mandatory_keys("upnp/identified");
 
   exit(0);

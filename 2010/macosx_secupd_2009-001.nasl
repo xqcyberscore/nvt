@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_secupd_2009-001.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Mac OS X Security Update 2009-001
 #
@@ -23,46 +24,22 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Mac OS X operating system.
-
- For more information see:
- http://support.apple.com/kb/HT3438";
-
-tag_summary = "The remote host is missing Security Update 2009-001.
- One or more of the following components are affected:
-
- AFP Server
- Apple Pixlet Video
- CarbonCore
- CFNetwork
- Certificate Assistant
- ClamAV
- CoreText
- CUPS
- DS Tools
- fetchmail
- Folder Manager
- FSEvents
- Network Time
- perl
- Printing
- python
- Remote Apple Events
- Safari RSS
- servermgrd
- SMB
- SquirrelMail
- X11
- XTerm";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102026");
- script_version("$Revision: 8440 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+ script_version("$Revision: 10090 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
- script_cve_id("CVE-2009-0142","CVE-2009-0009","CVE-2009-0020","CVE-2009-0011","CVE-2008-5050","CVE-2008-5314","CVE-2009-0012","CVE-2008-5183","CVE-2009-0013","CVE-2007-4565","CVE-2008-2711","CVE-2009-0014","CVE-2009-0015","CVE-2008-1927","CVE-2009-0017","CVE-2008-1679","CVE-2008-1721","CVE-2008-1887","CVE-2008-2315","CVE-2008-2316","CVE-2008-3142","CVE-2008-3144","CVE-2008-4864","CVE-2007-4965","CVE-2008-5031","CVE-2009-0018","CVE-2009-0019","CVE-2009-0137","CVE-2009-0138","CVE-2009-0139","CVE-2009-0140","CVE-2008-2379","CVE-2008-3663","CVE-2008-1377","CVE-2008-1379","CVE-2008-2360","CVE-2008-2361","CVE-2008-2362","CVE-2006-1861","CVE-2006-3467","CVE-2007-1351","CVE-2008-1806","CVE-2008-1807","CVE-2008-1808","CVE-2007-1352","CVE-2007-1667","CVE-2009-0141");
+ script_cve_id("CVE-2009-0142", "CVE-2009-0009", "CVE-2009-0020", "CVE-2009-0011", "CVE-2008-5050",
+               "CVE-2008-5314", "CVE-2009-0012", "CVE-2008-5183", "CVE-2009-0013", "CVE-2007-4565",
+               "CVE-2008-2711", "CVE-2009-0014", "CVE-2009-0015", "CVE-2008-1927", "CVE-2009-0017",
+               "CVE-2008-1679", "CVE-2008-1721", "CVE-2008-1887", "CVE-2008-2315", "CVE-2008-2316",
+               "CVE-2008-3142", "CVE-2008-3144", "CVE-2008-4864", "CVE-2007-4965", "CVE-2008-5031",
+               "CVE-2009-0018", "CVE-2009-0019", "CVE-2009-0137", "CVE-2009-0138", "CVE-2009-0139",
+               "CVE-2009-0140", "CVE-2008-2379", "CVE-2008-3663", "CVE-2008-1377", "CVE-2008-1379",
+               "CVE-2008-2360", "CVE-2008-2361", "CVE-2008-2362", "CVE-2006-1861", "CVE-2006-3467",
+               "CVE-2007-1351", "CVE-2008-1806", "CVE-2008-1807", "CVE-2008-1808", "CVE-2007-1352",
+               "CVE-2007-1667", "CVE-2009-0141");
  script_name("Mac OS X Security Update 2009-001");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -72,10 +49,67 @@ if(description)
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT3438");
+
+ script_tag(name:"summary", value:"The remote host is missing Security Update 2009-001.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ AFP Server
+
+ Apple Pixlet Video
+
+ CarbonCore
+
+ CFNetwork
+
+ Certificate Assistant
+
+ ClamAV
+
+ CoreText
+
+ CUPS
+
+ DS Tools
+
+ fetchmail
+
+ Folder Manager
+
+ FSEvents
+
+ Network Time
+
+ perl
+
+ Printing
+
+ python
+
+ Remote Apple Events
+
+ Safari RSS
+
+ servermgrd
+
+ SMB
+
+ SquirrelMail
+
+ X11
+
+ XTerm");
+
+ script_tag(name:"solution", value:"Update your Mac OS X operating system.
+
+ For more information see:
+ http://support.apple.com/kb/HT3438");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -86,7 +120,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

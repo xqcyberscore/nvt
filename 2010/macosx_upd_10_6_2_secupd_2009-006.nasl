@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: macosx_upd_10_6_2_secupd_2009-006.nasl 10090 2018-06-06 08:06:04Z cfischer $
 #
 # Mac OS X 10.6.2 Update / Mac OS X Security Update 2009-006
 #
@@ -23,60 +24,23 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Update your Mac OS X operating system.
-
- For more information see:
- http://support.apple.com/kb/HT3937";
-
-tag_summary = "The remote host is missing Mac OS X 10.6.2 Update / Mac OS X Security Update 2009-006.
- One or more of the following components are affected:
-
- AFP Client
- Adaptive Firewall
- Apache
- Apache Portable Runtime
- ATS
- Certificate Assistant
- CoreGraphics
- CoreMedia
- CUPS
- Dictionary
- DirectoryService
- Disk Images
- Dovecot
- Event Monitor
- fetchmail
- file
- FTP Server
- Help Viewer
- ImageIO
- International Components for Unicode
- IOKit
- IPSec
- Kernel
- Launch Services
- libsecurity
- libxml
- Login Window
- OpenLDAP
- OpenSSH
- PHP
- QuickDraw Manager
- QuickLook
- QuickTime
- FreeRADIUS
- Screen Sharing
- Spotlight
- Subversion";
-
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102038");
- script_version("$Revision: 8447 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+ script_version("$Revision: 10090 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
- script_cve_id("CVE-2009-2819","CVE-2009-2818","CVE-2009-0023","CVE-2009-1191","CVE-2009-1195","CVE-2009-1890","CVE-2009-1891","CVE-2009-1955","CVE-2009-1956","CVE-2009-2823","CVE-2009-2412","CVE-2009-2824","CVE-2009-2825","CVE-2009-2826","CVE-2009-2202","CVE-2009-2799","CVE-2009-2820","CVE-2009-2831","CVE-2009-2828","CVE-2009-2827","CVE-2009-3235","CVE-2009-2829","CVE-2009-2666","CVE-2009-2830","CVE-2009-2832","CVE-2009-2808","CVE-2009-2285","CVE-2009-2833","CVE-2009-2834","CVE-2009-1574","CVE-2009-1632","CVE-2009-2835","CVE-2009-2810","CVE-2009-2409","CVE-2009-2414","CVE-2009-2416","CVE-2009-2836","CVE-2009-2408","CVE-2007-5707","CVE-2007-6698","CVE-2008-0658","CVE-2008-5161","CVE-2009-3291","CVE-2009-3292","CVE-2009-3293","CVE-2009-2837","CVE-2009-2838","CVE-2009-2203","CVE-2009-2798","CVE-2009-3111","CVE-2009-2839","CVE-2009-2840","CVE-2009-2411");
+ script_cve_id("CVE-2009-2819", "CVE-2009-2818", "CVE-2009-0023", "CVE-2009-1191", "CVE-2009-1195",
+               "CVE-2009-1890", "CVE-2009-1891", "CVE-2009-1955", "CVE-2009-1956", "CVE-2009-2823",
+               "CVE-2009-2412", "CVE-2009-2824", "CVE-2009-2825", "CVE-2009-2826", "CVE-2009-2202",
+               "CVE-2009-2799", "CVE-2009-2820", "CVE-2009-2831", "CVE-2009-2828", "CVE-2009-2827",
+               "CVE-2009-3235", "CVE-2009-2829", "CVE-2009-2666", "CVE-2009-2830", "CVE-2009-2832",
+               "CVE-2009-2808", "CVE-2009-2285", "CVE-2009-2833", "CVE-2009-2834", "CVE-2009-1574",
+               "CVE-2009-1632", "CVE-2009-2835", "CVE-2009-2810", "CVE-2009-2409", "CVE-2009-2414",
+               "CVE-2009-2416", "CVE-2009-2836", "CVE-2009-2408", "CVE-2007-5707", "CVE-2007-6698",
+               "CVE-2008-0658", "CVE-2008-5161", "CVE-2009-3291", "CVE-2009-3292", "CVE-2009-3293",
+               "CVE-2009-2837", "CVE-2009-2838", "CVE-2009-2203", "CVE-2009-2798", "CVE-2009-3111",
+               "CVE-2009-2839", "CVE-2009-2840", "CVE-2009-2411");
  script_name("Mac OS X 10.6.2 Update / Mac OS X Security Update 2009-006");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -86,10 +50,95 @@ if(description)
  script_require_ports("Services/ssh", 22);
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("ssh/login/osx_name","ssh/login/osx_version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
+
+ script_xref(name:"URL", value:"http://support.apple.com/kb/HT3937");
+
+ script_tag(name:"summary", value:"The remote host is missing Mac OS X 10.6.2 Update / Mac OS X Security Update 2009-006.");
+
+ script_tag(name:"affected", value:"One or more of the following components are affected:
+
+ AFP Client
+
+ Adaptive Firewall
+
+ Apache
+
+ Apache Portable Runtime
+
+ ATS
+
+ Certificate Assistant
+
+ CoreGraphics
+
+ CoreMedia
+
+ CUPS
+
+ Dictionary
+
+ DirectoryService
+
+ Disk Images
+
+ Dovecot
+
+ Event Monitor
+
+ fetchmail
+
+ file
+
+ FTP Server
+
+ Help Viewer
+
+ ImageIO
+
+ International Components for Unicode
+
+ IOKit
+
+ IPSec
+
+ Kernel
+
+ Launch Services
+
+ libsecurity
+
+ libxml
+
+ Login Window
+
+ OpenLDAP
+
+ OpenSSH
+
+ PHP
+
+ QuickDraw Manager
+
+ QuickLook
+
+ QuickTime
+
+ FreeRADIUS
+
+ Screen Sharing
+
+ Spotlight
+
+ Subversion");
+
+ script_tag(name:"solution", value:"Update your Mac OS X operating system.
+
+ For more information see:
+ http://support.apple.com/kb/HT3937");
+
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -100,7 +149,7 @@ ssh_osx_name = get_kb_item("ssh/login/osx_name");
 if (!ssh_osx_name) exit (0);
 
 ssh_osx_ver = get_kb_item("ssh/login/osx_version");
-if (!ssh_osx_ver) exit (0);
+if (!ssh_osx_ver || ssh_osx_ver !~ "^10\.") exit (0);
 
 ssh_osx_rls = ssh_osx_name + ' ' + ssh_osx_ver;
 

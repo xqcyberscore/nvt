@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_detect_portable_win.nasl 10060 2018-06-04 09:28:14Z cfischer $
+# $Id: gb_libreoffice_detect_portable_win.nasl 10093 2018-06-06 09:54:29Z mmartin $
 #
 # Libreoffice Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107316");
-  script_version("$Revision: 10060 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:28:14 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10093 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 11:54:29 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 10:18:42 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -89,9 +89,8 @@ foreach filePath( fileList ) {
 
   # wmi_file_file_search returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in secpod_libre_office_detect_win.nasl
-  location = filePath - "program\soffice.exe";
+  location = filePath - "\program\soffice.exe";
   if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
-
   # nb: wmi_file_fileversion needs doubled backslash in the path but
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );

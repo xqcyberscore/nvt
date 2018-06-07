@@ -59,10 +59,11 @@ include("wmi_file.inc");
 include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("smb_nt.inc");
 
 host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
+usrname = kb_smb_login();
+passwd  = kb_smb_password();
 
 if( ! host || ! usrname || ! passwd ) exit( 0 );
 

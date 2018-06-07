@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10070 2018-06-04 14:43:22Z cfischer $
+# $Id: sw_http_os_detection.nasl 10088 2018-06-06 06:48:44Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10070 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 16:43:22 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10088 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 08:48:44 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,6 +64,12 @@ function check_http_banner( port ) {
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;
+
+    # Server: EWS-NIC5/15.18
+    # Server: EWS-NIC5/96.55
+    # Running on different printers from e.g. Xerox, Dell or Epson. The OS is undefined so just return...
+    # nb: Keep in single quotes
+    if( egrep( pattern:'^Server: EWS-NIC5/([0-9.]+)[\r\n]*$', string:banner ) ) return;
 
     # Server: CTCFC/1.0
     # Commtouch Anti-Spam Daemon (ctasd.bin) running on Windows and Linux (e.g. IceWarp Suite)

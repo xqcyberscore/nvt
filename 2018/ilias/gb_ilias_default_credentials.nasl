@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_default_credentials.nasl 10026 2018-05-30 11:52:53Z jschulte $
+# $Id: gb_ilias_default_credentials.nasl 10101 2018-06-06 14:01:29Z cfischer $
 #
 # Ilias Default Credentials
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107313");
-  script_version("$Revision: 10026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 13:52:53 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 10101 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-06 16:01:29 +0200 (Wed, 06 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 14:54:24 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,50 +56,49 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.ilias.de/docu/goto_docu_pg_6488_367.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ilias:ilias";
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
 
 function check_v53( port, dir ) {
 
   local_var port, dir, req, res, clientid, phpsessionid, data, add_headers, report;
 
-  req = http_get( port: port, item: dir + "/" );
-  res = http_keepalive_send_recv( port: port, data: req );
+  req = http_get( port:port, item:dir + "/" );
+  res = http_keepalive_send_recv( port:port, data:req );
 
-  clientid = get_cookie_from_header( buf: res, pattern: "ilClientId=([^; ]+)" );
+  clientid = get_cookie_from_header( buf:res, pattern:"ilClientId=([^; ]+)" );
   if( isnull( clientid ) ) return;
 
-  phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+  phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
   if( isnull( phpsessionid ) ) return;
 
   data = string( "username=root&password=homer&cmd%5BdoStandardAuthentication%5D=Login" );
   add_headers = make_array( "Cookie", "ilClientId=" + clientid + ";" + "PHPSESSID=" + phpsessionid, "Content-Type", "application/x-www-form-urlencoded" );
-  req = http_post_req( port: port, url: dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=wr&baseClass=ilStartUpGUI&rtoken=", data: data , add_headers: add_headers );
-  res = http_keepalive_send_recv( port: port, data: req );
+  req = http_post_req( port:port, url:dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=wr&baseClass=ilStartUpGUI&rtoken=", data:data, add_headers:add_headers );
+  res = http_keepalive_send_recv( port:port, data:req );
 
   if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res ) ) {
 
-    phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+    phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
     if( isnull( phpsessionid ) ) return;
 
     req = http_get_req( port:port, url:location, add_headers:make_array( "Cookie", "ilClientId=" + clientid + ";" + "PHPSESSID=" + phpsessionid ) );
-    res = http_keepalive_send_recv( port: port, data: req );
+    res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res) ) {
-    req = http_get_req( port:port, url:location, add_headers:make_array( "Cookie", "ilClientId=" + clientid + ";" + "PHPSESSID=" + phpsessionid ) );
-    res = http_keepalive_send_recv( port: port, data: req );
+    if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res) ) {
+      req = http_get_req( port:port, url:location, add_headers:make_array( "Cookie", "ilClientId=" + clientid + ";" + "PHPSESSID=" + phpsessionid ) );
+      res = http_keepalive_send_recv( port:port, data:req );
     }
   }
 
   if( "You have to change your initial password before you can start using ILIAS services." >< res ) {
-    report = "It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'.";
-    security_message( port: port, data: report );
+    security_message( port:port, data:"It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'." );
     exit( 0 );
   }
   return;
@@ -109,85 +108,84 @@ function check_v50( port, dir ) {
 
   local_var port, dir, req, res, clientid, sessionid, phpsessionid, authchallenge, data, add_headers, report;
 
-  req = http_get( port: port, item: dir + "/" );
-  res = http_keepalive_send_recv( port: port, data: req );
+  req = http_get( port:port, item:dir + "/" );
+  res = http_keepalive_send_recv( port:port, data:req );
 
-  sessionid = get_cookie_from_header( buf: res, pattern: "SESSID=([^; ]+)" );
+  sessionid = get_cookie_from_header( buf:res, pattern:"SESSID=([^; ]+)" );
   if( isnull( sessionid ) ) return;
 
-  clientid = get_cookie_from_header( buf: res, pattern: "ilClientId=([^; ]+)" );
+  clientid = get_cookie_from_header( buf:res, pattern:"ilClientId=([^; ]+)" );
   if( isnull( clientid ) ) return;
 
-  phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+  phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
   if( isnull( phpsessionid ) ) return;
 
   data = string( "username=root&password=homer&cmd%5BshowLogin%5D=Login" );
   add_headers = make_array( "Cookie", "SESSID=" + sessionid +";" + "ilClientId=" + clientid +";" + "iltest=cookie" + ";" + "PHPSESSID=" + phpsessionid +";" +"authchallenge=" + authchallenge +";", "Content-Type", "application/x-www-form-urlencoded" );
-  req = http_post_req( port: port, url: dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=30&baseClass=ilStartUpGUI&rtoken=", data: data , add_headers: add_headers );
+  req = http_post_req( port:port, url:dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=30&baseClass=ilStartUpGUI&rtoken=", data:data, add_headers:add_headers );
   res = http_keepalive_send_recv( port: port, data: req );
   if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res ) ) {
 
-    phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+    phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
     if( isnull( phpsessionid ) ) return;
 
-    authchallenge = get_cookie_from_header( buf: res, pattern: "authchallenge=([^; ]+)" );
+    authchallenge = get_cookie_from_header( buf:res, pattern:"authchallenge=([^; ]+)" );
     if( isnull( authchallenge ) ) return;
 
     req = http_get_req( port:port, url:location, add_headers:make_array( "Cookie", "ilClientId=" + clientid + ";"  + "PHPSESSID=" + phpsessionid + ";" + "authchallenge=" + authchallenge ) );
-    res = http_keepalive_send_recv( port: port, data: req );
+    res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res ) ) {
-    req = http_get_req( port:port, url:location, add_headers:make_array( "ilClientId=" + clientid + ";" +  "PHPSESSID=" + phpsessionid +";" + "authchallenge=" + authchallenge ) );
-    res = http_keepalive_send_recv( port: port, data: req );
+    if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res ) ) {
+      req = http_get_req( port:port, url:location, add_headers:make_array( "ilClientId=" + clientid + ";" +  "PHPSESSID=" + phpsessionid +";" + "authchallenge=" + authchallenge ) );
+      res = http_keepalive_send_recv( port:port, data:req );
     }
   }
 
   if( "Welcome to your Personal Desktop!" >< res ) {
-    report = "It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'.";
-    security_message( port: port, data: report );
+    security_message( port:port, data:"It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'." );
     exit( 0 );
   }
-return;
+  return;
 }
 
 function check_v44( port, dir ) {
 
   local_var port, dir, req, res, clientid, phpsessionid, authchallenge, data, add_headers, report;
 
-  req = http_get( port: port, item: dir + "/" );
-  res = http_keepalive_send_recv( port: port, data: req );
+  req = http_get( port:port, item:dir + "/" );
+  res = http_keepalive_send_recv( port:port, data:req );
 
-  clientid = get_cookie_from_header( buf: res, pattern: "ilClientId=([^; ]+)" );
+  clientid = get_cookie_from_header( buf:res, pattern:"ilClientId=([^; ]+)" );
   if( isnull( clientid ) ) return;
 
-  phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+  phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
   if( isnull( phpsessionid ) ) return;
 
   data = string( "username=root&password=homer&cmd%5BshowLogin%5D=Login" );
   add_headers = make_array( "Cookie", "ilClientId=" + clientid +";" + "PHPSESSID=" +  phpsessionid + ";" + "iltest=cookie", "Content-Type", "application/x-www-form-urlencoded" );
 
-  req = http_post_req( port: port, url: dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=nm&baseClass=ilStartUpGUI&rtoken=", data: data , add_headers: add_headers );
-  res = http_keepalive_send_recv( port: port, data: req );
+  req = http_post_req( port:port, url:dir + "/ilias.php?lang=en&client_id=" + clientid + "&cmd=post&cmdClass=ilstartupgui&cmdNode=nm&baseClass=ilStartUpGUI&rtoken=", data:data, add_headers:add_headers );
+  res = http_keepalive_send_recv( port:port, data:req );
   if( res =~ "^HTTP/1\.[01] 302" && location = extract_location_from_redirect( port:port, data:res ) ) {
 
-    phpsessionid = get_cookie_from_header( buf: res, pattern: "PHPSESSID=([^; ]+)" );
+    phpsessionid = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
     if( isnull( phpsessionid ) ) return;
 
-    authchallenge = get_cookie_from_header( buf: res, pattern: "authchallenge=([^; ]+)" );
+    authchallenge = get_cookie_from_header( buf:res, pattern:"authchallenge=([^; ]+)" );
     if( isnull( authchallenge ) ) return;
 
     req = http_get_req( port:port, url:location, add_headers:make_array( "Cookie", "iltest=cookie" + ";" + "ilClientId=" + clientid + ";"  + "PHPSESSID=" + phpsessionid + ";" + "authchallenge=" + authchallenge ) );
-    res = http_keepalive_send_recv( port: port, data: req );
-    }
+    res = http_keepalive_send_recv( port:port, data:req );
+  }
+
   if( "<h1>Welcome to your Personal Desktop!</h1>" >< res ) {
-    report = "It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'.";
-    security_message( port: port, data: report );
+    security_message( port:port, data:"It was possible to log in to the Web Interface using the default user 'root' with the default password 'homer'." );
     exit( 0 );
   }
 }
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
 check_v53( port:port, dir:dir );
