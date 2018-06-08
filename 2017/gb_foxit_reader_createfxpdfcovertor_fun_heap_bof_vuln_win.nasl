@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_createfxpdfcovertor_fun_heap_bof_vuln_win.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_foxit_reader_createfxpdfcovertor_fun_heap_bof_vuln_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader 'CreateFXPDFConvertor' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810906");
-  script_version("$Revision: 5962 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2016-3740");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:41:48 +0530 (Fri, 07 Apr 2017)");
   script_name("Foxit Reader 'CreateFXPDFConvertor' Function Buffer Overflow Vulnerability (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to heap based buffer overfolw vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to heap-based buffer 
-  overflow error in the 'CreateFXPDFConvertor' function in 
-  'ConvertToPdf_x86.dll'."); 
+  script_tag(name: "insight" , value:"The flaw is due to heap-based buffer
+  overflow error in the 'CreateFXPDFConvertor' function in
+  'ConvertToPdf_x86.dll'.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code via crafted TIFF image.
@@ -54,7 +53,7 @@ if(description)
 
   script_tag(name: "affected" , value:"Foxit Reader version 7.3.4.311");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version 8.0 
+  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version 8.0
   or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -74,15 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version 7.3.4.311
 if(version_is_equal(version:foxitVer, test_version:"7.3.4.311"))
 {
   report = report_fixed_ver(installed_version:foxitVer, fixed_version:"8.0");

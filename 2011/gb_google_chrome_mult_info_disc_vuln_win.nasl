@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_google_chrome_mult_info_disc_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -24,28 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to gain sensitive
-  information about visited web pages by calling getComputedStyle method or
-  via a crafted HTML document.
-  Impact Level: Application";
-tag_affected = "Google Chrome version 4.x on Windows.";
-tag_insight = "Multiple vulnerabilities are due to implementation erros in,
-  - The JavaScript failing to restrict the set of values contained in the
-    object returned by the getComputedStyle method.
-  - The Cascading Style Sheets (CSS) failing to handle the visited pseudo-class.";
-tag_solution = "Upgrade to the Google Chrome version 5.0 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "The host is installed with Google Chrome and is prone to multiple
-  information disclosure vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802355");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2010-5073", "CVE-2010-5069");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 11:15:25 +0530 (Fri, 09 Dec 2011)");
   script_name("Google Chrome Multiple Information Disclosure Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://w2spconf.com/2010/papers/p26.pdf");
@@ -53,13 +39,21 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain sensitive
+  information about visited web pages by calling getComputedStyle method or
+  via a crafted HTML document.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version 4.x on Windows.");
+  script_tag(name : "insight" , value : "Multiple vulnerabilities are due to implementation erros in,
+  - The JavaScript failing to restrict the set of values contained in the
+    object returned by the getComputedStyle method.
+  - The Cascading Style Sheets (CSS) failing to handle the visited pseudo-class.");
+  script_tag(name : "solution" , value : "Upgrade to the Google Chrome version 5.0 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+  information disclosure vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -68,13 +62,11 @@ if(description)
 
 include("version_func.inc");
 
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Versions 4.x
 if(version_in_range(version:chromeVer, test_version:"4.0", test_version2:"4.2")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

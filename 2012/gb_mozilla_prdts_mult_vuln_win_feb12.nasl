@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_feb12.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_win_feb12.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802580");
-  script_version("$Revision: 9911 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2012-0442", "CVE-2012-0444", "CVE-2012-0449", "CVE-2011-3659");
   script_bugtraq_id(51756, 51753, 51754, 51755);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 19:24:43 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows)");
 
@@ -46,7 +46,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl",
                       "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
+                      "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service or
   possibly execute arbitrary code via unknown vectors.
@@ -89,7 +89,7 @@ if(!isnull(ffVer))
   if(version_is_less(version:ffVer, test_version:"3.6.26") ||
      version_in_range(version:ffVer, test_version:"4.0", test_version2:"9.0"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -102,7 +102,7 @@ if(!isnull(seaVer))
 {
   if(version_is_less(version:seaVer, test_version:"2.7"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -115,6 +115,6 @@ if(!isnull(tbVer))
 {
   if(version_is_less(version:tbVer, test_version:"3.1.18") ||
      version_in_range(version:tbVer, test_version:"5.0", test_version2:"9.0")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

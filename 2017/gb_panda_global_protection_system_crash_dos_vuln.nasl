@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 9410 2018-04-09 14:01:43Z asteins $
+# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
 #
 # Panda Global Protection System Crash DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108315");
-  script_version("$Revision: 9410 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 16:01:43 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 10128 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 12:31:33 +0100 (Wed, 20 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -50,12 +50,17 @@ if( description )
   script_mandatory_keys("Panda/GlobalProtection/Ver");
 
   script_tag(name:"summary", value:"Panda Global Protection through 17.00.01 is vulnerable to multiple vulnerabilities that can cause a system crash.");
+
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the system.");
+
   script_tag(name:"insight", value:"A system crash can be caused through both a 0xb3702c04 or 0xb3702c44 DeviceIoControl request.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to crash the machine, effectively denying access to it.");
+
   script_tag(name:"affected", value:"Panda Global Protection through version 17.00.01");
-  script_tag(name:"solution", value:"No solution or patch is available as of 09th April, 2018.
-      Information regarding this issue will be updated once solution details are available.");
+
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c04_");
   script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c44");
@@ -72,7 +77,7 @@ cpe_list = make_list( "cpe:/a:pandasecurity:panda_global_protection_2010",
 if( ! version = get_app_version( cpe: cpe_list ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "17.00.01" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( data: report, port: 0 );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 7125 2017-09-14 08:26:29Z cfischer $
+# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -29,29 +29,28 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811585");
-  script_version("$Revision: 7125 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2017-10952", "CVE-2017-10951");
   script_bugtraq_id(100412, 100409);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 13:07:23 +0530 (Mon, 21 Aug 2017)");
   script_name("Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to multiple remote code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
 
-  - The lack of proper validation of user-supplied data in the 'saveAs JavaScript' 
-    function, which can lead to writing arbitrary files into attacker controlled 
+  - The lack of proper validation of user-supplied data in the 'saveAs JavaScript'
+    function, which can lead to writing arbitrary files into attacker controlled
     locations.
 
-  - The lack of proper validation of a user-supplied string before using it to 
-    execute a system call in app.launchURL method."); 
+  - The lack of proper validation of a user-supplied string before using it to
+    execute a system call in app.launchURL method.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute code under the context of the current process.
@@ -76,7 +75,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -85,11 +84,8 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
 ## All foxit reader installations are detected as vulnerable independent of version
-## Because Foxit refused to patch both the vulnerabilities because they would not work with the 
+## Because Foxit refused to patch both the vulnerabilities because they would not work with the
 ## "safe reading mode" feature that fortunately comes enabled by default in Foxit Reader.
 if(foxitVer = get_app_version(cpe:CPE, nofork:TRUE))
 {

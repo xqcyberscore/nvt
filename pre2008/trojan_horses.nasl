@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: trojan_horses.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: trojan_horses.nasl 10114 2018-06-07 10:06:23Z cfischer $
 #
 # Trojan horses
 #
@@ -31,7 +31,7 @@
 # Subject: Remote Shell Trojan: Threat, Origin and the Solution
 # Date: Sun, 9 Sep 2001 14:40:27 +0300
 # CC: incidents@securityfocus.com, focus-virus@securityfocus.com, vulnwatch@vulnwatch.org, contribute@linuxsecurity.org
-# 
+#
 # Date: Mon, 10 Mar 2003 01:54:12 -0500
 # From: "Russ" <Russ.Cooper@RC.ON.CA>
 # Subject: Alert: New Worm - W32/Deloder on TCP445
@@ -42,13 +42,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11157");
-  script_version("$Revision: 7551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 10114 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:06:23 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Trojan horses");
-  ## script_category(ACT_GATHER_INFO); 
   # Make sure we run after all service detection plugins
   # Otherwise, the list of dependencies would be too long
   script_category(ACT_ATTACK);
@@ -63,13 +62,10 @@ if(description)
   script_require_ports("Services/unknown");
   script_mandatory_keys("Host/runs_windows");
 
-  tag_summary = "An unknown service runs on this port. It is sometimes opened by Trojan horses.
-  Unless you know for sure what is behind it, you'd better check your system.";
+  script_tag(name:"solution", value:"If a trojan horse is running, run a good antivirus scanner.");
 
-  tag_solution = "If a trojan horse is running, run a good antivirus scanner.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"An unknown service runs on this port. It is sometimes opened by Trojan horses.
+  Unless you know for sure what is behind it, you'd better check your system.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -86,7 +82,7 @@ include("host_details.inc");
 # http://www.simovits.com/trojans/trojans.html
 # http://www.bekkoame.ne.jp/~s_ita/port/port1-99.html
 # and some antivirus web sites
-# 
+#
 trojanlist = "
 UDP 1 Socket de Troie
 TCP 2 Death
@@ -124,7 +120,7 @@ TCP 88 PWSteal.Likmet
 TCP 99 Hidden Port, Mandragore, NCX, Gnuman
 TCP 101 Udps.10
 TCP 110 Bancos, Civcat, ProMail trojan
-TCP 113 Invisible Identd Deamon, Kazimas, Randex, W32.Korgo, W32.Spybot, W32.Mydoom, W32.Linkbot, W32.Bofra
+TCP 113 Invisible Identd Daemon, Kazimas, Randex, W32.Korgo, W32.Spybot, W32.Mydoom, W32.Linkbot, W32.Bofra
 TCP 119 Happy99, Horrortel
 TCP 121 Attack Bot, God Message, JammerKillah
 TCP 122 Upfudoor
@@ -191,8 +187,8 @@ TCP 911 Dark Shadow, NetCrack
 TCP 956 Crat
 TCP 961 ierk8243
 TCP 999 Chat power, Deep Throat, Foreplay, Reduced Foreplay, WinSatan
-TCP 1000 Connecter, Der Späher / Der Spaeher, Direct Connection, Nibu
-TCP 1001 Der Späher / Der Spaeher, Le Guardien, Silencer, WTheef, WebEx, Wortbot, Ghoice.12, Nibu, W32.Dumaru, Wortbot
+TCP 1000 Connecter, Der Spaeher / Der Spaeher, Direct Connection, Nibu
+TCP 1001 Der Spaeher / Der Spaeher, Le Guardien, Silencer, WTheef, WebEx, Wortbot, Ghoice.12, Nibu, W32.Dumaru, Wortbot
 TCP 1005 Theef
 TCP 1008 Lion
 TCP 1010 Doly Trojan
@@ -288,7 +284,7 @@ TCP 1272 The Matrix
 TCP 1309 Jittar
 TCP 1313 NETrojan
 TCP 1337 Shadyshell, OptixPro.11.b
-TCP 1338 Millenium Worm
+TCP 1338 Millennium Worm
 TCP 1349 Bo dll
 TCP 1386 Dagger
 TCP 1394 Backdoor G-1, GoFriller
@@ -334,9 +330,9 @@ TCP 1987 Ciadoor.B
 TCP 1988 W32.Kipis
 TCP 1991 PitFall
 TCP 1999 Back Door, Bifrose, SubSeven, TransScout
-TCP 2000 Der Späher / Der Spaeher, Esteems, Insane Network, Last 2000, Remote Explorer 2000, Senna Spy Trojan Generator, Feardoor, Fearic, CNK.A
+TCP 2000 Der Spaeher / Der Spaeher, Esteems, Insane Network, Last 2000, Remote Explorer 2000, Senna Spy Trojan Generator, Feardoor, Fearic, CNK.A
 UDP 2000 Fearic
-TCP 2001 Der Späher / Der Spaeher, Trojan Cow, OICQSer.165, OICQSer.17
+TCP 2001 Der Spaeher / Der Spaeher, Trojan Cow, OICQSer.165, OICQSer.17
 TCP 2002 Singu, Slapper, W32.Beagle
 TCP 2004 OICQSer.165, OICQSer.17
 TCP 2005 OICQSer.165, OICQSer.17, Sequel, W32.Reatle
@@ -557,7 +553,7 @@ TCP 5638 PC Crasher
 TCP 5662 W32.Fanbot
 TCP 5665 Kipis.B
 TCP 5679 HLLW.Nautic
-TCP 5695 Assasin.D
+TCP 5695 Assassin.D
 TCP 5732 W32.Bolgi.Worm
 TCP 5742 WinCrash
 TCP 5748 Ranck
@@ -590,7 +586,7 @@ TCP 6430 Mirab (file transfer)
 TCP 6556 W32.Toxbot
 TCP 6564 Sdbot
 TCP 6565 Nemog
-TCP 6595 Assasin.C
+TCP 6595 Assassin.C
 TCP 6631 Sdbot
 TCP 6660 W32.Spybot
 TCP 6661 TEMan, Weia-Meia
@@ -621,7 +617,7 @@ TCP 6883 Delta Source DarkStar (??)
 TCP 6912 Shit Heep
 TCP 6939 Indoctrination
 TCP 6967 Diagcfg
-TCP 6969 2000 Cracks, Danton, GateCrasher, IRC 3, Net Controller, Priority, Armageddon.B, Assasin.B, Khaos, Sparta.B, Robi, Ratega, Floodnet
+TCP 6969 2000 Cracks, Danton, GateCrasher, IRC 3, Net Controller, Priority, Armageddon.B, Assassin.B, Khaos, Sparta.B, Robi, Ratega, Floodnet
 TCP 6970 GateCrasher
 TCP 7000 BAT.Boohoo.Worm, Exploit Translation Server, Kazimas, Remote Grab, SubSeven, SubSeven 2.1 Gold, W32.Gaobot, Spyboter, W32.Mydoom,
 W32.Mytob
@@ -780,7 +776,7 @@ TCP 12000 Satancrew, W32.Mytob
 TCP 12065 Berbew
 TCP 12076 Gjamer
 TCP 12121 Balkart
-TCP 12223 Hack´99 KeyLogger
+TCP 12223 Hack'99 KeyLogger
 TCP 12310 PreCursor
 TCP 12321 Roxe.B
 TCP 12345 Adore sshd, Ashley, cron / crontab, Fat Bitch trojan, GabanBus, icmp_client.c, icmp_pipe.c, Mypic , NetBus , NetBus Toy, NetBus worm, Pie Bill Gates, ValvNet, Whack Job, X-bill, Amitis.B
@@ -802,7 +798,7 @@ TCP 13010 BitchController, Hacker Brasil - HBR
 TCP 13013 PsychWard
 TCP 13014 PsychWard
 TCP 13173 Amitis.B
-TCP 13223 Hack´99 KeyLogger
+TCP 13223 Hack'99 KeyLogger
 TCP 13298 Theef.C
 TCP 13473 Chupacabra
 TCP 14247 Beagle/Mitglieder
@@ -851,8 +847,8 @@ TCP 19703 Sonic
 TCP 19864 ICQ Revenge
 TCP 19907 W32.Zotob
 TCP 19937 Gaster
-TCP 20000 Millenium
-TCP 20001 Insect, Millenium, Millenium (Lm)
+TCP 20000 Millennium
+TCP 20001 Insect, Millennium, Millennium (Lm)
 TCP 20002 AcidkoR
 TCP 20005 Mosucker
 TCP 20023 VP Killer
@@ -922,11 +918,11 @@ TCP 27379 Optix.04
 UDP 27444 Trinoo
 TCP 27551 Amitis
 TCP 27573 SubSeven
-TCP 27589 Assasin/SANISI.A
+TCP 27589 Assassin/SANISI.A
 TCP 27665 Trinoo
 TCP 27999 W32.Mytob
 TCP 28253 Berbew
-TCP 28431 Hack´a´Tack
+TCP 28431 Hack'a'Tack
 TCP 28678 Exploiter
 TCP 28876 Globe
 TCP 28882 Mitglieder
@@ -973,13 +969,13 @@ TCP 31557 Xanadu
 TCP 31666 BOWhack
 TCP 31693 Turkojan
 TCP 31745 BuschTrommel
-TCP 31785 Hack´a´Tack
-TCP 31787 Hack´a´Tack
-TCP 31788 Hack´a´Tack
-UDP 31789 Hack´a´Tack
-TCP 31790 Hack´a´Tack
-UDP 31791 Hack´a´Tack
-TCP 31792 Hack´a´Tack
+TCP 31785 Hack'a'Tack
+TCP 31787 Hack'a'Tack
+TCP 31788 Hack'a'Tack
+UDP 31789 Hack'a'Tack
+TCP 31790 Hack'a'Tack
+UDP 31791 Hack'a'Tack
+TCP 31792 Hack'a'Tack
 TCP 32001 Donald Dick
 TCP 32100 Peanut Brittle, Project nEXT
 TCP 32121 Berbew.E
@@ -1164,7 +1160,7 @@ close(soc);
 
 name = ereg_replace(string: str, pattern: req, replace: "");
 name = ereg_replace(string: name, pattern: " *, *", replace: string("\n\t"));
-m = string("An unknown service runs on this port.\n", 
+m = string("An unknown service runs on this port.\n",
 	"It is sometimes opened by this/these Trojan horse(s):\n\t",
 	name,"\n");
 if (banner) m = string(m, "Here is the service banner:\n", banner, "\n\n");

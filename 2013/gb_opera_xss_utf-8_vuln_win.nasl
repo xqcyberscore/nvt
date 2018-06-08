@@ -25,50 +25,31 @@
 ###############################################################################
 
 CPE = "cpe:/a:opera:opera_browser";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804102";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804102");
+  script_version("$Revision: 10137 $");
   script_cve_id("CVE-2013-4705");
   script_bugtraq_id(31795);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-10-01 09:52:30 +0530 (Tue, 01 Oct 2013)");
   script_name("Opera Cross-Site Scripting (XSS) Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Opera and is prone to XSS attack.";
 
-  tag_vuldetect =
-"Get the installed version of Opera with the help of detect NVT and check
-the version is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to some error when encoding settings are set to UTF-8.";
-
-  tag_impact =
-"Successful exploitation will let attacker to execute an arbitrary web
+  script_tag(name : "summary" , value : "This host is installed with Opera and is prone to XSS attack.");
+  script_tag(name : "vuldetect" , value : "Get the installed version of Opera with the help of detect NVT and check
+the version is vulnerable or not.");
+  script_tag(name : "solution" , value : "Upgrade to Opera version 15.00 or later,
+For updates refer to http://www.opera.com");
+  script_tag(name : "insight" , value : "The flaw is due to some error when encoding settings are set to UTF-8.");
+  script_tag(name : "affected" , value : "Opera versions prior to 15.00 on Windows.");
+  script_tag(name : "impact" , value : "Successful exploitation will let attacker to execute an arbitrary web
 script or HTML on the user's web browser.
 
-Impact Level: Application";
-
-  tag_affected =
-"Opera versions prior to 15.00 on Windows.";
-
-  tag_solution =
-"Upgrade to Opera version 15.00 or later,
-For updates refer to http://www.opera.com";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -78,7 +59,7 @@ For updates refer to http://www.opera.com";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_mandatory_keys("Opera/Win/Version");
   exit(0);
 }
@@ -87,17 +68,12 @@ For updates refer to http://www.opera.com";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-operaVer = "";
-
-## Get version
-if(!operaVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!operaVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:operaVer, test_version:"15.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

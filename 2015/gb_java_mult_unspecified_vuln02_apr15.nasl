@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_apr15.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_java_mult_unspecified_vuln02_apr15.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Windows)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805536");
-  script_version("$Revision: 7699 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2015-0491", "CVE-2015-0488", "CVE-2015-0480", "CVE-2015-0478",
                 "CVE-2015-0477", "CVE-2015-0469", "CVE-2015-0460", "CVE-2015-0459");
   script_bugtraq_id(74094, 74111, 74104, 74147, 74119, 74072, 74097, 74083);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 16:34:06 +0530 (Tue, 21 Apr 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   JRE and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to,
   - An error in the Java Cryptography Extension (JCE) subcomponent's RSA signature
@@ -83,7 +82,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -92,10 +91,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
-
-## Get version
 if(!jreVer = get_app_version(cpe:CPE))
 {
   CPE = "cpe:/a:sun:jre";
@@ -106,7 +101,6 @@ if(!jreVer = get_app_version(cpe:CPE))
 
 if(jreVer =~ "^(1\.(8|7|6|5))")
 {
-  ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.40")||
      version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.76")||
      version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.91")||

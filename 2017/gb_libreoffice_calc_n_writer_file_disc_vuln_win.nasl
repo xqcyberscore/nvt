@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_calc_n_writer_file_disc_vuln_win.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_libreoffice_calc_n_writer_file_disc_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice Calc And Writer File Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810578");
-  script_version("$Revision: 8091 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2017-3157");
   script_bugtraq_id(96402);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-03-07 12:02:02 +0530 (Tue, 07 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Calc And Writer File Disclosure Vulnerability (Windows)");
@@ -42,17 +42,16 @@ if(description)
   script_tag(name: "summary" , value:"The host is installed with LibreOffice
   and is prone to arbitrary file disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as embedded Objects in 
-  writer and calc can contain previews of their content. A document can be 
-  crafted which contains an embedded object that is a link to an existing file 
-  on the targets system. On load the preview of the embedded object will be 
+  script_tag(name: "insight" , value:"The flaw exists as embedded Objects in
+  writer and calc can contain previews of their content. A document can be
+  crafted which contains an embedded object that is a link to an existing file
+  on the targets system. On load the preview of the embedded object will be
   updated to reflect the content of the file on the target system.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow local
-  attacker to obtain sensitive information that may aid in launching further 
+  attacker to obtain sensitive information that may aid in launching further
   attacks.
 
   Impact Level: Application");
@@ -71,7 +70,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
   exit(0);
 }
@@ -79,16 +78,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-libreVer = "";
-report = "";
-
-## Get version
 if(!libreVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:libreVer, test_version:"5.1.6"))
 {
   fix = "5.1.6";

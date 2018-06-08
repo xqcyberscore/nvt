@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022141.nasl 9785 2018-05-09 14:27:34Z santu $
+# $Id: gb_ms_kb4022141.nasl 10145 2018-06-08 14:34:24Z asteins $
 #
 # Microsoft Word 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4022141)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813221");
-  script_version("$Revision: 9785 $");
+  script_version("$Revision: 10145 $");
   script_cve_id("CVE-2018-8161");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:34:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 10:57:38 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Word 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4022141)");
 

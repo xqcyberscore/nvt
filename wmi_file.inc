@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test Library functions
-# $Id: wmi_file.inc 10064 2018-06-04 10:17:38Z cfischer $
+# $Id: wmi_file.inc 10110 2018-06-07 09:04:19Z cfischer $
 #
 # WMI Client Functions for Directories and Files
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10064 $
+# $Revision: 10110 $
 #
 ###############################################################################
 
@@ -273,7 +273,7 @@ function wmi_file_fileversion(handle, filePath)
     return(0);
   }
 
-  fileVer = ereg_replace(pattern:"[.:0-9a-zA-Z \\_\-]+\|", string:fileVer, replace:"");
+  fileVer = ereg_replace(pattern:"[.:0-9a-zA-Z \\_\-\+]+\|", string:fileVer, replace:"");
   return fileVer;
 }
 

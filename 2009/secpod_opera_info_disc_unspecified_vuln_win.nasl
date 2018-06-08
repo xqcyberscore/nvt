@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_unspecified_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_opera_info_disc_unspecified_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Information Disclosure and Unspecified Vulnerabilities - (Windows)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to launch cross-site
-  scripting attacks or potentially obtain sensitive information and second
-  issue has an unknown, but moderate, impact.
-  Impact Level: Application";
-tag_affected = "Opera version prior to 10.10 on Windows.";
-tag_insight = "- Opera stores certain scripting error messages in variables which can be
-    read by web sites which can be exploited to execute arbitrary HTML and
-    script code in a user's browser session.
-  - A vulnerability is due to an unspecified error.";
-tag_solution = "Upgrade to Opera 10.10
-  http://www.opera.com/download/?custom=yes";
-tag_summary = "The host is installed with Opera Web Browser and is prone to
-  Information Disclosure and other unspecified vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900986");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,13 +41,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to launch cross-site
+  scripting attacks or potentially obtain sensitive information and second
+  issue has an unknown, but moderate, impact.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version prior to 10.10 on Windows.");
+  script_tag(name : "insight" , value : "- Opera stores certain scripting error messages in variables which can be
+    read by web sites which can be exploited to execute arbitrary HTML and
+    script code in a user's browser session.
+  - A vulnerability is due to an unspecified error.");
+  script_tag(name : "solution" , value : "Upgrade to Opera 10.10.
+  http://www.opera.com/download");
+  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  Information Disclosure and other unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,7 +69,9 @@ if(!operaVer){
   exit(0);
 }
 
-# Check if version is lesser than 10.10 => 10.1
 if(version_is_less(version:operaVer, test_version:"10.1")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

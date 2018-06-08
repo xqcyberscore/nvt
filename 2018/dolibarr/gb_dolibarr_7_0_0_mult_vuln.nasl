@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 9441 2018-04-11 11:37:08Z jschulte $
+# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
 #
 # Dolibarr 7.0.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113155");
-  script_version("$Revision: 9441 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 13:37:08 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 10128 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -50,16 +50,19 @@ if( description )
   script_mandatory_keys("Dolibarr/installed");
 
   script_tag(name:"summary", value:"Dolibarr ERP / CRM is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
-  Dolibarr ERP/CRM is affected by stored Cross-Site Scripting (XSS).
+- Dolibarr ERP/CRM is affected by stored Cross-Site Scripting (XSS).
 
-  Dolibarr ERP/CRM is affected by multiple SQL injection vulnerabilities
-  via comm/propal/list.php (viewstatut parameter) or comm/propal/list.php (propal_statut parameter, aka search_statut parameter).");
+- Dolibarr ERP/CRM is affected by multiple SQL injection vulnerabilities via comm/propal/list.php (viewstatut
+parameter) or comm/propal/list.php (propal_statut parameter, aka search_statut parameter).");
+
   script_tag(name:"affected", value:"Dolibarr through version 7.0.0");
-  script_tag(name:"solution", value:"No solution or patch is available as of 11th April, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-010");
 
@@ -75,7 +78,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "7.0.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( data: report, port: port );
   exit( 0 );
 }

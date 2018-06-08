@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_nov16_win.nasl 4650 2016-11-30 13:18:14Z antu123 $
+# $Id: gb_foxit_reader_mult_vuln_nov16_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Vulnerabilities Nov16 (windows)
 #
@@ -29,28 +29,27 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809303");
-  script_version("$Revision: 4650 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2016-8878", "CVE-2016-8879", "CVE-2016-8877", "CVE-2016-8876",
                 "CVE-2016-8875");
-  script_bugtraq_id(93608); 
+  script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-30 14:18:14 +0100 (Wed, 30 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 13:36:41 +0530 (Thu, 03 Nov 2016)");
   script_name("Foxit Reader Multiple Vulnerabilities Nov16 (windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
   - The heap buffer overflow and heap corruption vulnerabilities.
   - An Use-After-Free vulnerability.
   - An Out-of-Bounds Read or Out-of-Bounds Write vulnerability.
   - A Null Pointer Deference vulnerability.
-  - An Integer Overflow vulnerability."); 
+  - An Integer Overflow vulnerability.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to leak sensitive information, execute remote code and also to cause a
@@ -69,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -78,15 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:foxitVer, test_version:"8.1"))
 {
   report = report_fixed_ver(installed_version:foxitVer, fixed_version:"8.1");

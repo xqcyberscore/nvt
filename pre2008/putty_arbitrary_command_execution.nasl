@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: putty_arbitrary_command_execution.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: putty_arbitrary_command_execution.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
 # Description: PuTTY window title escape character arbitrary command execution
 #
 # Authors:
@@ -7,7 +7,7 @@
 # based on work from (C) Tenable Network Security
 #
 # Copyright:
-# Copyright (C) 2004 David Maciejak
+# Copyright (C) 2005 David Maciejak
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -23,21 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "PuTTY is a free SSH client.
-  This version contains a flaw that may allow a malicious user to insert
-  arbitrary commands and execute them.
-  The issue is triggered when an attacker sends commands,
-  preceded by terminal emulator escape sequences.
-  It is possible that the flaw may allow arbitrary code execution
-  resulting in a loss of integrity.";
-
-tag_solution = "Upgrade to version 0.54 or newer";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14262");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10142 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-0069");
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,12 +36,19 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
-  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Windows");
-  script_dependencies("secpod_putty_version.nasl","secpod_reg_enum.nasl");
+  script_dependencies("gb_putty_portable_detect.nasl","secpod_reg_enum.nasl");
   script_require_keys("PuTTY/Version");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : "Upgrade to version 0.54 or newer");
+  script_tag(name : "solution_type", value : "VendorFix");
+  script_tag(name : "summary" , value : "PuTTY is a free SSH client.
+  This version contains a flaw that may allow a malicious user to insert
+  arbitrary commands and execute them.
+  The issue is triggered when an attacker sends commands,
+  preceded by terminal emulator escape sequences.
+  It is possible that the flaw may allow arbitrary code execution
+  resulting in a loss of integrity.");
   exit(0);
 }
 
@@ -65,6 +62,6 @@ if(!puttyVer){
 }
 
 if(version_is_less_equal(version:puttyVer, test_version:"0.53")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
 

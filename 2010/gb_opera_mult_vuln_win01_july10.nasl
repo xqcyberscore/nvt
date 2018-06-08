@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win01_july10.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: gb_opera_mult_vuln_win01_july10.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities july-10 (Win01)
 #
@@ -24,32 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to cause a denial of service or
-  execute arbitrary code.
-  Impact Level: Application";
-tag_affected = "Opera version prior to 10.60 and prior on Windows.";
-tag_insight = "The multiple flaws are cause due to:
-  - Browser does not properly prevent certain double-click operations from running
-    a program located on a web site.
-  - Browser does not properly restrict certain interaction between plug-ins, file
-    inputs, and the clipboard, which allows attackers to trigger the uploading of
-    arbitrary files via a crafted web site.
-  - Error in the handling of popup blocker via a 'javascript:' URL and a
-    'ake click'.
-  - Error in the handling of an ended event handler that changes the SRC attribute
-    of an AUDIO element.
-  - Error in the handling of certain HTML content that has an unclosed 'SPAN' element
-    with absolute positioning.";
-tag_solution = "Upgrade to Opera 10.60 or later,
-  For updates refer to http://www.opera.com/download/?os=windows&list=all";
-tag_summary = "The host is installed with Opera web browser and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801369");
-  script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 18:57:03 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2657", "CVE-2010-2658", "CVE-2010-2662", "CVE-2010-2663",
                 "CVE-2010-2664");
@@ -65,26 +44,48 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service or
+  execute arbitrary code.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version prior to 10.60 and prior on Windows.");
+  script_tag(name : "insight" , value : "The multiple flaws are caused due to:
+
+  - Browser does not properly prevent certain double-click operations from running
+    a program located on a web site.
+
+  - Browser does not properly restrict certain interaction between plug-ins, file
+    inputs, and the clipboard, which allows attackers to trigger the uploading of
+    arbitrary files via a crafted web site.
+
+  - Error in the handling of popup blocker via a 'javascript:' URL and a
+    'ake click'.
+
+  - Error in the handling of an ended event handler that changes the SRC attribute
+    of an AUDIO element.
+
+  - Error in the handling of certain HTML content that has an unclosed 'SPAN' element
+    with absolute positioning.");
+  script_tag(name : "solution" , value : "Upgrade to Opera 10.60 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Opera web browser and is prone to
+  multiple vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Opera version from from KB list
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check if version is lesser than 10.60
 if(version_is_less(version:operaVer, test_version:"10.60")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

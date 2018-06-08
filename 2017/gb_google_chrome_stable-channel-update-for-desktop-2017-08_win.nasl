@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-08_win.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-08_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-08)-Windows
 #
 # Authors:
-# Kashinath T <tkashinath@secpod.com> 
+# Kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,18 +29,17 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811640");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 10133 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 11:53:44 +0530 (Tue, 29 Aug 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-08)-Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Google Chrome
   and is prone to an unknown vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an unknown error.");
 
@@ -62,7 +61,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -71,15 +70,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"60.0.3112.113"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"60.0.3112.113");

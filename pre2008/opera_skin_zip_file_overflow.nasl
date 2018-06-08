@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_skin_zip_file_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: opera_skin_zip_file_overflow.nasl 10137 2018-06-08 12:38:04Z asteins $
 # Description: Opera skin zip file buffer overflow vulnerability
 #
 # Authors:
@@ -24,22 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Opera - an alternative web browser.
-  This version is vulnerable to a security weakness.
-
-  A problem has been identified in the handling of zipped skin
-  files by Opera. Because of this, it may be possible for an attacker
-  to gain unauthorized access to a system using the vulnerable browser.";
-
-tag_solution = "Install Opera 7.23 or newer.";
-
 # Ref: Jouko Pynnonen
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14250");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9089);
   script_tag(name:"cvss_base", value:"9.3");
@@ -50,10 +41,16 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : "Install Opera 7.23 or newer.");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The remote host is using Opera - an alternative web browser.
+  This version is vulnerable to a security weakness.
+
+  A problem has been identified in the handling of zipped skin
+  files by Opera. Because of this, it may be possible for an attacker
+  to gain unauthorized access to a system using the vulnerable browser.");
   exit(0);
 }
 
@@ -66,5 +63,8 @@ if(!OperaVer){
 }
 
 if(version_is_less_equal(version:OperaVer, test_version:"7.22")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

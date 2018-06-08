@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_cmd_exec_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_google_chrome_cmd_exec_vuln.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Argument Injection Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code
-  in the context of the web browser and can compromise the remote system
-  by executing mailcious commands.";
-tag_affected = "Google Chrome version 1.0.154.36 and prior on Windows";
-tag_insight = "The flaw is due to lack of sanitization check of user supplied input via
-  --renderer-path option in a chromehtml: URI.";
-tag_solution = "Upgrade to Google Chrome version 4.1.249.1064 or later.
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host has installed Google Chrome and is prone to argument
-  injection vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900419");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,14 +41,20 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary code
+  in the context of the web browser and can compromise the remote system
+  by executing mailcious commands.");
+  script_tag(name : "affected" , value : "Google Chrome version 1.0.154.36 and prior on Windows");
+  script_tag(name : "insight" , value : "The flaw is due to lack of sanitization check of user supplied input via
+  --renderer-path option in a chromehtml: URI.");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 4.1.249.1064 or later.
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host has installed Google Chrome and is prone to argument
+  injection vulnerability.");
 
   exit(0);
 }
@@ -73,5 +68,8 @@ if(!chromeVer){
 }
 
 if(version_is_less_equal(version:chromeVer, test_version:"1.0.154.36")){
-  security_message(0);
+  security_message(port:0, data:"The target host was found to be vulnerable");
+  exit(0);
 }
+
+exit(99);

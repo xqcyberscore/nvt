@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Web Script Execution Vulnerabilities - June09
 #
@@ -24,43 +24,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary web script
-  in an https site's context and spoof an arbitrary https site by letting a
-  browser obtain a valid certificate.
-  Impact Level: Application
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 1.0.154.53 on Windows.";
-tag_insight = "- Displays a cached certificate for a '4xx' or '5xx' CONNECT response page
-    returned by a proxy server, which can exploited by sending the browser a
-    valid certificate from this site during one request, and then sending the
-    browser a crafted 502 response page upon a subsequent request.
-  - Error exists in src/net/http/http_transaction_winhttp.cc while the HTTP
-    Host header to determine the context of a document provided in a '4xx' or
-    '5xx' CONNECT response from a proxy server, which can be exploited by
-    modifying this CONNECT response, aka an 'SSL tampering' attack.
-  - Detects http content in https web pages only when the top-level frame uses
-    https. This can be exploited by modifying an http page to include an https
-    iframe that references a script file on an http site, related to
-    'HTTP-Intended-but-HTTPS-Loadable (HPIHSL) pages.'";
-tag_solution = "Upgrade to Google Chrome version 4.1.249.1064 or later.
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host has Google Chrome installed and is prone to Web Script
-  Execution vulnerabilities.";
-
-desc2 = "
-  Vulnerability Insight:
-  - Detects http content in https web pages only when the top-level frame uses
-    https. This can be exploited by modifying an http page to include an https
-    iframe that references a script file on an http site, related to,
-    'HTTP-Intended-but-HTTPS-Loadable (HPIHSL) pages.'
-
-  Impact:
-  Successful exploitation will allow attacker to execute arbitrary web script
-  in an https site's context.
-
-  Affected Software/OS:
-  Google Chrome version 3.0.187.1 and prior on Windows.";
-
 if(description)
 {
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=479880");
@@ -70,8 +33,8 @@ if(description)
   script_cve_id("CVE-2009-2060", "CVE-2009-2071", "CVE-2009-2068");
 
   script_oid("1.3.6.1.4.1.25623.1.0.900370");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -80,16 +43,37 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary web script
+  in an https site's context and spoof an arbitrary https site by letting a
+  browser obtain a valid certificate.
+
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version through 3.0.187.1 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
+
+  - Displays a cached certificate for a '4xx' or '5xx' CONNECT response page
+    returned by a proxy server, which can exploited by sending the browser a
+    valid certificate from this site during one request, and then sending the
+    browser a crafted 502 response page upon a subsequent request.
+
+  - Error exists in src/net/http/http_transaction_winhttp.cc while the HTTP
+    Host header to determine the context of a document provided in a '4xx' or
+    '5xx' CONNECT response from a proxy server, which can be exploited by
+    modifying this CONNECT response, aka an 'SSL tampering' attack.
+
+  - Detects http content in https web pages only when the top-level frame uses
+    https. This can be exploited by modifying an http page to include an https
+    iframe that references a script file on an http site, related to
+    'HTTP-Intended-but-HTTPS-Loadable (HPIHSL) pages.'");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 4.1.249.1064 or later.
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host has Google Chrome installed and is prone to Web Script
+  Execution vulnerabilities.");
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -98,12 +82,9 @@ if(!chromeVer){
   exit(0);
 }
 
-# Check for Google Chrome version < 1.0.154.53
-if(version_is_less(version:chromeVer, test_version:"1.0.154.53")){
-  security_message(0);
+if(version_is_less(version:chromeVer, test_version:"3.0.187.1")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
-# Check for Google Chrome version 1.0.154.53 <= 3.0.187.1
-else if(version_in_range(version:chromeVer, test_version:"1.0.154.53",
-                         test_version2:"3.0.187.1")){
-  security_message(data:desc2);
-}
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_mult_vuln.nasl 10059 2018-06-04 09:23:28Z asteins $
+# $Id: gb_mahara_mult_vuln.nasl 10119 2018-06-07 11:43:32Z asteins $
 #
 # Mahara <17.04.8, <17.10.5, <18.04.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112290");
-  script_version("$Revision: 10059 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:23:28 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10119 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 13:43:32 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-04 10:26:06 +0200 (Mon, 04 Jun 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -75,10 +75,8 @@ CPE = "cpe:/a:mahara:mahara";
 
 include( "host_details.inc" );
 include( "version_func.inc" );
-include( "http_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! can_host_php( port: port ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_equal( version: version, test_version: "18.04" ) ) {

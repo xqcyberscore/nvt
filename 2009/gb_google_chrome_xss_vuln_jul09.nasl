@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_xss_vuln_jul09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_google_chrome_xss_vuln_jul09.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Cross-Site Scripting Vulnerability - July09
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to conduct
-Cross-Site Scripting attacks via vectors related to injecting a Refresh header
-or specifying the content of a Refresh header.
-
-Impact Level: Application";
-
-tag_affected = "Google Chrome version 1.0.154.48 and prior.";
-
-tag_insight = "Error exists when application fails to block 'javascript:' URIs
-in Refresh headers in HTTP responses.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host has Google Chrome installed and is prone to Cross-Site
-Scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800828");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,13 +43,22 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct
+Cross-Site Scripting attacks via vectors related to injecting a Refresh header
+or specifying the content of a Refresh header.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version 1.0.154.48 and prior.");
+  script_tag(name : "insight" , value : "Error exists when application fails to block 'javascript:' URIs
+in Refresh headers in HTTP responses.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "This host has Google Chrome installed and is prone to Cross-Site
+Scripting vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -81,7 +71,9 @@ if(!chromeVer){
   exit(0);
 }
 
-# Check for Google Chrome version <= 1.0.154.48
 if(version_is_less_equal(version:chromeVer, test_version:"1.0.154.48")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

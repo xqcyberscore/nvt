@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 9303 2018-04-04 13:18:17Z asteins $
+# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Windows)
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806054");
-  script_version("$Revision: 9303 $");
+  script_version("$Revision: 10133 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 12:19:25 +0530 (Mon, 07 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Google Chrome
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to browser address field
   does not properly sanitize user supplied input.");
@@ -65,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -74,15 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less_equal(version:chromeVer, test_version:"45.0.2454.93"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

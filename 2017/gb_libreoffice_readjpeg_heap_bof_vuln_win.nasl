@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_readjpeg_heap_bof_vuln_win.nasl 6987 2017-08-22 13:34:14Z santu $
+# $Id: gb_libreoffice_readjpeg_heap_bof_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice 'ReadJPEG' Function Heap Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811583");
-  script_version("$Revision: 6987 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2017-8358");
   script_bugtraq_id(98395);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 15:34:14 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 12:11:47 +0530 (Fri, 18 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice 'ReadJPEG' Function Heap Buffer Overflow Vulnerability (Windows)");
@@ -42,25 +42,24 @@ if(description)
   script_tag(name: "summary" , value:"The host is installed with LibreOffice
   and is prone to a heap buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a heap-based buffer 
-  overflow error related to the 'ReadJPEG' function in 
+  script_tag(name: "insight" , value:"The flaw is due to a heap-based buffer
+  overflow error related to the 'ReadJPEG' function in
   'vcl/source/filter/jpeg/jpegc.cxx' script.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow
-  attacker to execute arbitrary code within the context of the affected 
-  application. Failed exploit attempts will result in a denial-of-service 
+  attacker to execute arbitrary code within the context of the affected
+  application. Failed exploit attempts will result in a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"LibreOffice versions 5.2.6 and earlier 
+  script_tag(name: "affected" , value:"LibreOffice versions 5.2.6 and earlier
   on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to LibreOffice version
-  5.2.7 or later. For updates refer to http://www.libreoffice.org 
+  5.2.7 or later. For updates refer to http://www.libreoffice.org
   Note: 5.2 series end of life is June 4, 2017");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
   exit(0);
 }
@@ -77,16 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-libreVer = "";
-report = "";
-
-## Get version
 if(!libreVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:libreVer, test_version:"5.2.7"))
 {
   report = report_fixed_ver(installed_version:libreVer, fixed_version:"Upgrade to 5.2.7 or later");

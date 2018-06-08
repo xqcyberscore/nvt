@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_rce_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_foxit_reader_mult_rce_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807556");
-  script_version("$Revision: 5650 $");
-  script_cve_id("CVE-2016-4059", "CVE-2016-4060", "CVE-2016-4061", "CVE-2016-4062", 
+  script_version("$Revision: 10140 $");
+  script_cve_id("CVE-2016-4059", "CVE-2016-4060", "CVE-2016-4061", "CVE-2016-4062",
                 "CVE-2016-4063", "CVE-2016-4064", "CVE-2016-4065");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 16:44:43 +0530 (Mon, 25 Apr 2016)");
   script_name("Foxit Reader Multiple Remote Code Execution Vulnerabilities");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws are due to,
   - The multiple Use-after-free vulnerabilities.
   - The error in parsing malformed content stream.
-  - The application recursively called the format error of some PDFs and led to 
+  - The application recursively called the format error of some PDFs and led to
     no response when opening the PDF.
-  - The destructor of the object whose generation number is -1 in the PDF file 
-    could release the file handle which had been imported by the application 
+  - The destructor of the object whose generation number is -1 in the PDF file
+    could release the file handle which had been imported by the application
     layer.
-  - The error in decoding corrupted images during PDF conversion with the gflags 
+  - The error in decoding corrupted images during PDF conversion with the gflags
     app enabled.
-  - The XFA's underlying data failed to synchronize with that of 
+  - The XFA's underlying data failed to synchronize with that of
     PhantomPDF/Reader caused by the re-layout underlying XFA.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
@@ -62,7 +61,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version 7.3.0.118 and 
+  script_tag(name: "affected" , value:"Foxit Reader version 7.3.0.118 and
   earlier.");
 
   script_tag(name: "solution" , value:"Upgrade to Foxit Reader version
@@ -79,7 +78,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -87,15 +86,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Foxit Reader version 7.3.4 = 7.3.4.311
 if(version_is_less_equal(version:foxitVer, test_version:"7.3.0.118"))
 {

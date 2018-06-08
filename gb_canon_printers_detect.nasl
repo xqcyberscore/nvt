@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 10100 2018-06-06 12:51:49Z jschulte $
+# $Id: gb_canon_printers_detect.nasl 10143 2018-06-08 13:43:47Z santu $
 #
 # Canon Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 10100 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 14:51:49 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 10143 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,13 +60,13 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 buf  = http_get_cache( item:"/index.html", port:port );
 buf2 = http_get_cache( item:"/", port:port );
-buf3 = http_get_cache( item:"/tlogin.cgi", port:port );
 
 # If updating here please also update the check in dont_print_on_printers.nasl
 if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     "CANON HTTP Server" >< buf || ( "erver: Catwalk" >< buf2 && "com.canon.meap.service" >< buf2 ) ||
-    ( 'canonlogo.gif" alt="CANON"' >< buf2 && ">Copyright CANON INC" >< buf2 ) ) {
-
+    ( (('canonlogo.gif" alt="CANON"' >< buf2) || ("canonlogo.gif" >< buf2 && "Series</title>" >< buf2)) &&
+       ">Copyright CANON INC" >< buf2 ) ) 
+{
   set_kb_item( name:"target_is_printer", value:TRUE );
   set_kb_item( name:"canon_printer/installed", value:TRUE );
   set_kb_item( name:"canon_printer/port", value:port );
@@ -81,32 +81,31 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
   }
 
   if( ! model ) {
-    # <span id="deviceName">iR-ADV C3330  / iR-ADV C3330 /  </span>
-    # <span id="deviceName">iR-ADV C5235 - JWC04988  / iR-ADV C5235 /  VIetnam</span>
-    # <span id="deviceName">iR-ADV C5255  / iR-ADV C5255 /  </span>
-    # <span id="deviceName">iR-ADV 8595 / iR-ADV 8595 / </span>
-    printer_model = eregmatch( pattern:'<span id="deviceName">([^/<]+)', string:buf2 );
-    if( printer_model[1] ) {
-      model = chomp( printer_model[1] );
+    # <span id="deviceName">MF210&nbsp;Series&nbsp;-&nbsp;Admin&nbsp;office / MF210 Series / </span>
+    printer_model = eregmatch( pattern:'<span id="deviceName".* / ([A-Za-z0-9 ]+) / ', string:buf2 );
+    if(!printer_model[1] )
+    {
+      # <span id="deviceName">iR-ADV C3330  / iR-ADV C3330 /  </span>
+      # <span id="deviceName">iR-ADV C5235 - JWC04988  / iR-ADV C5235 /  VIetnam</span>
+      # <span id="deviceName">iR-ADV C5255  / iR-ADV C5255 /  </span>
+      # <span id="deviceName">iR-ADV 8595 / iR-ADV 8595 / </span>
+      printer_model = eregmatch( pattern:'<span id="deviceName">([^/<]+)', string:buf2 );
+    }
+    if( printer_model[1] ) 
+    {
+      ##Remove Non-Breaking SPace
+      if("&nbsp;" >< printer_model[1]){
+        canon_model = ereg_replace(pattern:"&nbsp;", replace:" ", string:printer_model[1]);
+      } else {
+        canon_model =  printer_model[1] ;
+      }
+      
+      model = chomp( canon_model );
+
       set_kb_item( name:"canon_printer_model", value:model );
       cpe_printer_model = tolower( model );
       cpe = "cpe:/h:canon:" + cpe_printer_model;
       cpe = str_replace( string:cpe, find:" ", replace:"_" );
-    }
-  }
-
-  if( ! model ) {
-    shorter = ereg_replace( string:buf3, pattern:'\n', replace:'' );
-    short = ereg_replace( string:shorter, pattern:'\r', replace:'' );
-    short = ereg_replace( string:short, pattern:'  ', replace:'' );
-
-    printer_model = eregmatch( pattern:'Product Name:</font></td>[\\s\\t]{0,}<td nowrap >([A-Za-z0-9]+)</td>', string:short );
-    if( !isnull( printer_model[1] ) ) {
-      model = printer_model[1];
-      set_kb_item( name:"canon_printer_model", value:model );
-      cpe_printer_model = tolower( model );
-      cpe = "cpe:/h:canon:" + cpe_printer_model;
-      cpe = str_replace( string:cpe, find: " ", replace:"_" );
     }
   }
 
@@ -122,10 +121,11 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
   }
 
   register_product( cpe:cpe, location:port + "/tcp", port:port );
-  report = 'The remote Host is a ' + model + ' printer device.\nCPE: ' + cpe;
-  if( printer_model[1] )
-    report += '\nConcluded: ' + printer_model[0];
-  log_message( port:port, data:report );
+  log_message(data:build_detection_report(app:"Canon " + model + " Printer Device",
+                                            version: firm_ver[1],
+                                            install:port + "/tcp",
+                                            cpe:cpe,
+                                            concluded:printer_model[0]));
 
   pref = get_kb_item( "global_settings/exclude_printers" );
   if( pref == "yes" ) {
@@ -133,5 +133,4 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     set_kb_item( name:"Host/dead", value:TRUE );
   }
 }
-
 exit( 0 );

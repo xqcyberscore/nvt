@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rpc_rstatd.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: secpod_rpc_rstatd.nasl 10121 2018-06-07 12:44:05Z cfischer $
 #
 # Check for RPC rstatd Service
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901206");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 10121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -39,9 +39,8 @@ if(description)
   script_name("Check for RPC rstatd Service");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_dependencies("find_service.nasl");
   script_family("Useless services");
-  script_dependencies("secpod_rpc_portmap.nasl");
+  script_dependencies("secpod_rpc_portmap.nasl", "find_service.nasl");
   script_require_keys("rpc/portmap");
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0624");
@@ -49,24 +48,26 @@ if(description)
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/Remote_procedure_call");
   script_xref(name:"URL", value:"http://www.iss.net/security_center/advice/Services/SunRPC/rpc.rstatd/default.htm");
 
-  tag_insight = "rstatd service an rpc server which provides remotely monitorable statistics
+  script_tag(name:"solution", value:"Disable rstatd service, If not needed.");
+
+  script_tag(name:"summary", value:"This remote host is running rstatd service.");
+
+  script_tag(name:"insight", value:"rstatd service an rpc server which provides remotely monitorable statistics
   obtained from the kernel such as,
+
   - system uptime
+
   - cpu usage
+
   - disk usage
+
   - network usage
+
   - load averages
+
   - and more
 
-  Impact Level: System";
-
-  tag_solution = "Disable rstatd service, If not needed.";
-
-  tag_summary = "This remote host is running rstatd service.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
+  Impact Level: System");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -83,7 +84,6 @@ RPC_PROG = 100001;
 ## Default protocol is UDP
 proto = "udp";
 
-## Get rstatd udp port, if not tcp port
 port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_UDP );
 if( ! port ) {
   port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_TCP );
@@ -105,7 +105,6 @@ if( proto == "udp" ) {
 if( ! soc ) exit( 0 );
 
 data = NULL;
-## Construct RPC Packet
 rpc_paket = construct_rpc_packet( program:RPC_PROG, prog_ver:3,
                                   procedure:1, data:data, udp:proto );
 
@@ -128,8 +127,6 @@ if( proto == "tcp" ) {
   pos = 20 + 4;
 }
 
-## Confirm rstat response by
-## Checking Accept State: RPC executed successfully (0)
 if( ord( resp[pos] ) == 0 && ord( resp[pos+1] ) == 0 &&
     ord( resp[pos+2] ) == 0 && ord( resp[pos+3] ) == 0 ) {
   security_message( port:port, proto:proto );

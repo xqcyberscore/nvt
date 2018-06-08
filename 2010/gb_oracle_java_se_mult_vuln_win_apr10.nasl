@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Multiple Vulnerabilities (Windows)
 #
@@ -24,29 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attacks will allow attackers to affect confidentiality, integrity,
-  and availability via unknown vectors.
-  Impact Level: Application";
-tag_affected = "Sun Java SE version 6 Update 18, 5.0 Update 23 on Windows.";
-tag_insight = "Multiple flaws are due to memory corruptions, buffer overflows, input
-  validation and implementation errors in following components,
-   - HotSpot Server
-   - Java Runtime Environment
-   - Java Web Start
-   - Java Plug-in
-   - Java 2D
-   - Sound and
-   - imageIO components,";
-tag_solution = "Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24,
-  http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html";
-tag_summary = "This host is installed with Sun Java SE and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800499");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:20:50 +0200 (Wed, 07 Apr 2010)");
   script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085",
                 "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090",
@@ -69,13 +51,33 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful attacks will allow attackers to affect confidentiality, integrity,
+  and availability via unknown vectors.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Sun Java SE version 6 Update 18, 5.0 Update 23 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to memory corruptions, buffer overflows, input
+  validation and implementation errors in following components,
+
+   - HotSpot Server
+
+   - Java Runtime Environment
+
+   - Java Web Start
+
+   - Java Plug-in
+
+   - Java 2D
+
+   - Sound and
+
+   - imageIO components,");
+  script_tag(name : "solution" , value : "Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24,
+  http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to multiple
+  vulnerabilities.");
   exit(0);
 }
 
@@ -83,26 +85,24 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  # Check for 1.6 < 1.6.0_18 (6 Update 18), 1.5 < 1.5.0_23(5 Update 23)
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.18") ||
      version_in_range(version:jdkVer, test_version:"1.5", test_version2:"1.5.0.23")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Get KB for JRE Version On Windows
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
-  # Check for 1.6 < 1.6.0_18(6 Update 18), 1.5 < 1.6.0_23(6 Update 23)
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.18") ||
      version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.23")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_detection_win_900123.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: secpod_apple_itunes_detection_win_900123.nasl 10124 2018-06-07 13:56:22Z santu $
 #
 # Apple iTunes Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900123");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 10124 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:56:22 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_name("Apple iTunes Version Detection (Windows)");
 
@@ -57,14 +57,6 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ituneName = "";
-insPath = "";
-ituneVer = "";
-cpe = "";
-
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
@@ -86,18 +78,17 @@ foreach item (registry_enum_keys(key:key))
     }
 
     ituneVer = registry_get_sz(key: key + item, item:"DisplayVersion");
-    if(ituneVer) {
-
+    if(ituneVer) 
+    {
       set_kb_item(name:"iTunes/Win/Installed", value:TRUE);
+      set_kb_item(name:"iTunes/Win/Ver", value:ituneVer);
+      register_and_report_cpe( app:ituneName, ver:ituneVer, base:"cpe:/a:apple:itunes:", expr:"^([0-9.]+)", insloc:insPath );
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch) {
         set_kb_item(name:"iTunes/Win64/Ver", value:ituneVer);
         register_and_report_cpe( app:ituneName, ver:ituneVer, base:"cpe:/a:apple:itunes:x64:", expr:"^([0-9.]+)", insloc:insPath );
-      } else {
-        set_kb_item(name:"iTunes/Win/Ver", value:ituneVer);
-        register_and_report_cpe( app:ituneName, ver:ituneVer, base:"cpe:/a:apple:itunes:", expr:"^([0-9.]+)", insloc:insPath );
       }
+     
     }
     exit(0);
   }

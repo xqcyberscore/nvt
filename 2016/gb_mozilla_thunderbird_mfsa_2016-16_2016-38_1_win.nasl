@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-16_2016-38_1_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-16_2016-38_1_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-16_2016-38_1 )-Windows
 #
@@ -29,26 +29,25 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808695");
-  script_version("$Revision: 5867 $");
-  script_cve_id("CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792", 
-		"CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796", 
-		"CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800", 
-		"CVE-2016-2801", "CVE-2016-2802", "CVE-2016-1979", "CVE-2016-1950", 
-		"CVE-2016-1974", "CVE-2016-1953", "CVE-2016-1964", "CVE-2016-1961", 
-		"CVE-2016-1960", "CVE-2016-1957", "CVE-2016-1956", "CVE-2016-1955", 
+  script_version("$Revision: 10135 $");
+  script_cve_id("CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792",
+		"CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796",
+		"CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
+		"CVE-2016-2801", "CVE-2016-2802", "CVE-2016-1979", "CVE-2016-1950",
+		"CVE-2016-1974", "CVE-2016-1953", "CVE-2016-1964", "CVE-2016-1961",
+		"CVE-2016-1960", "CVE-2016-1957", "CVE-2016-1956", "CVE-2016-1955",
 		"CVE-2016-1954", "CVE-2016-1952");
   script_bugtraq_id(84222, 84221, 84223, 84219, 84218);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 11:44:05 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-16_2016-38_1 )-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist, Refer to the reference
   link for more information.");
@@ -59,7 +58,7 @@ if(description)
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
+  script_tag(name: "affected" , value:"Mozilla Thunderbird version before
   45 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 45
@@ -85,7 +84,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }
@@ -94,15 +93,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"45"))
 {
   report = report_fixed_ver(installed_version:tbVer, fixed_version:"45");

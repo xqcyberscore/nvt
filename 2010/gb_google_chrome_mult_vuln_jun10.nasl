@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jun10.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_google_chrome_mult_vuln_jun10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome multiple vulnerabilities - June 10
 #
@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow the attackers to cause denial of service.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 5.0.375.55";
-tag_insight = "Multiple flaws are due to:
-  - An error in canonicalization of URLs, which does not properly follow the
-    safe browsing 'specification&qts' requirements for canonicalization of
-    'URLs'.
-  - A memory error when processing vectors related to the Safe Browsing
-    functionality.
-  - Unspecified erorrs when processing vectors involving 'unload' event handlers,
-    which allow remote attackers to spoof the URL bar.
-  - Unspecified errors when processing unknown vectors, which allows remote
-    attackers to bypass the 'whitelist-mode' plugin blocker.
-  - Unspecified errors when handling the vectors related to the 'drag + drop'
-    functionality allows remote attackers to cause a denial of service.
-  - It does not properly execute 'JavaScript' code in the extension context,
-    which has unspecified impact and remote attack vectors.";
-tag_solution = "Upgrade to the Google Chrome 5.0.375.55 or later,
-  For updates refer to http://www.google.com/chromeVer";
-tag_summary = "The host is running Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800785");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_cve_id("CVE-2010-2105", "CVE-2010-2106", "CVE-2010-2107",
                 "CVE-2010-2108", "CVE-2010-2109", "CVE-2010-2110");
@@ -64,26 +42,50 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to cause denial of service.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 5.0.375.55");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+
+  - An error in canonicalization of URLs, which does not properly follow the
+    safe browsing 'specification&qts' requirements for canonicalization of
+    'URLs'.
+
+  - A memory error when processing vectors related to the Safe Browsing
+    functionality.
+
+  - Unspecified erorrs when processing vectors involving 'unload' event handlers,
+    which allow remote attackers to spoof the URL bar.
+
+  - Unspecified errors when processing unknown vectors, which allows remote
+    attackers to bypass the 'whitelist-mode' plugin blocker.
+
+  - Unspecified errors when handling the vectors related to the 'drag + drop'
+    functionality allows remote attackers to cause a denial of service.
+
+  - It does not properly execute 'JavaScript' code in the extension context,
+    which has unspecified impact and remote attack vectors.");
+  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 5.0.375.55 or later,
+  For updates refer to http://www.google.com/chromeVer");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is running Google Chrome and is prone to multiple
+  vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 5.0.375.55
 if(version_is_less(version:chromeVer, test_version:"5.0.375.55")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

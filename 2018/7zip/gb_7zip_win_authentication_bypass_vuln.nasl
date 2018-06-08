@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_win_authentication_bypass_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
+# $Id: gb_7zip_win_authentication_bypass_vuln.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # 7zip Authentication Bypass Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107311");
-  script_version("$Revision: 9965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 16:01:22 +0200 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,13 +40,13 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_7zip_detect_win.nasl");
+  script_dependencies("gb_7zip_detect_portable_win.nasl");
   script_mandatory_keys("7zip/Win/Ver");
   script_tag(name:"summary", value:"7zip is prone to a authentication bypass vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"7-Zip through 18.01 on Windows implements the Large memory pages option
   by calling the LsaAddAccountRights function to add the SeLockMemoryPrivilege privilege to the user's account,
-  which makes it easier for attackers to bypass intended access restrictions by using this privilege in the 
+  which makes it easier for attackers to bypass intended access restrictions by using this privilege in the
   context of a sandboxed process.");
   script_tag(name:"affected", value:"7zip through version 18.01.");
   script_tag(name:"solution", value:"Upgrade to 7zip version 18.03 or later.");

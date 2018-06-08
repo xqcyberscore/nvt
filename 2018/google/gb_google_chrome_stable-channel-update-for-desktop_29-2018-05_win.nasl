@@ -1,5 +1,5 @@
 ##############################################################################                                                                  # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_29-2018-05_win.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_29-2018-05_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_29-2018-05)-Windows
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813505");
-  script_version("$Revision: 10041 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126",
                 "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130",
                 "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134",
@@ -37,15 +37,14 @@ if(description)
                 "CVE-2018-6143", "CVE-2018-6144", "CVE-2018-6145", "CVE-2018-6147");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 10:55:29 +0530 (Wed, 30 May 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_29-2018-05)-Windows");
 
   script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -54,11 +53,11 @@ if(description)
   - Type confusion in Blink.
 
   - Overly permissive policy in WebUSB.
-  
+
   - Heap buffer overflow in Skia.
- 
+
   - Use after free in indexedDB.
- 
+
   - uXSS in Chrome on iOS.
 
   - Out of bounds memory access in WebRTC, V8 and PDFium.
@@ -83,13 +82,13 @@ if(description)
 
   - Password fields not taking advantage of OS protections in Views.");
 
-  script_tag(name: "impact" , value:"Successful exploitation can potentially 
-  result in the execution of arbitrary code or even enable full remote code 
+  script_tag(name: "impact" , value:"Successful exploitation can potentially
+  result in the execution of arbitrary code or even enable full remote code
   execution capabilities and some unspecified impacts.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 67.0.3396.62 
+  script_tag(name: "affected" , value:"Google Chrome version prior to 67.0.3396.62
   on Windows.");
 
   script_tag(name: "solution", value:"Upgrade to Google Chrome version
@@ -104,7 +103,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }

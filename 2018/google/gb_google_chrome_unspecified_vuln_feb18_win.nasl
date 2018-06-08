@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_unspecified_vuln_feb18_win.nasl 8868 2018-02-19 13:51:23Z santu $
+# $Id: gb_google_chrome_unspecified_vuln_feb18_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Unspecified Security Vulnerability Feb18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812805");
-  script_version("$Revision: 8868 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2018-6056");
   script_bugtraq_id(103003);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 14:51:23 +0100 (Mon, 19 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 13:44:45 +0530 (Fri, 16 Feb 2018)");
   script_name("Google Chrome Unspecified Security Vulnerability Feb18 (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 64.0.3282.167 
+  script_tag(name: "affected" , value:"Google Chrome version prior to 64.0.3282.167
   on Windows");
 
   script_tag(name: "solution" , value:"Upgrade to Google Chrome version 64.0.3282.167
@@ -62,12 +62,12 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/02/stable-channel-update-for-desktop_13.html");
-  
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
-  script_mandatory_keys("GoogleChrome/Win/Ver");                                                               
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
 
@@ -86,4 +86,4 @@ if(version_is_less(version:vers, test_version:"64.0.3282.167"))
   security_message(data:report);
   exit(0);
 }
-exit(0); 
+exit(0);

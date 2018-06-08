@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_extented_validation_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_opera_extented_validation_info_disc_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Extended Validation Information Disclosure Vulnerabilities (Windows)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to steal sensitive security
-  information.
-  Impact Level: Application";
-tag_affected = "Opera version before 11.51";
-tag_insight = "Multiple flaws are due to an error when loading content from trusted
-  sources in an unspecified sequence that causes the address field and page
-  information dialog to contain security information based on the trusted site
-  and loading an insecure site to appear secure via unspecified actions related
-  to Extended Validation.";
-tag_solution = "Upgrade to Opera version 11.51 or later.
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera and is prone to information
-  disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802332");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-3388","CVE-2011-3389");
   script_bugtraq_id(49388);
@@ -56,13 +42,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to steal sensitive security
+  information.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version before 11.51");
+  script_tag(name : "insight" , value : "Multiple flaws are due to an error when loading content from trusted
+  sources in an unspecified sequence that causes the address field and page
+  information dialog to contain security information based on the trusted site
+  and loading an insecure site to appear secure via unspecified actions related
+  to Extended Validation.");
+  script_tag(name : "solution" , value : "Upgrade to Opera version 11.51 or later.
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to information
+  disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,7 +69,6 @@ if(!operaVer){
   exit(0);
 }
 
-# Check for opera version < 11.51
 if(version_is_less(version:operaVer, test_version:"11.51")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

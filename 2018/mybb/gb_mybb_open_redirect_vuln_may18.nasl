@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_open_redirect_vuln_may18.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_mybb_open_redirect_vuln_may18.nasl 10145 2018-06-08 14:34:24Z asteins $
 #
 # MyBB Open Redirection Vulnerability-May18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813403");
-  script_version("$Revision: 9983 $");
+  script_version("$Revision: 10145 $");
   script_cve_id("CVE-2018-10678");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:34:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 15:25:41 +0530 (Tue, 22 May 2018)");
   ## Affected only with with Microsoft Edge
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

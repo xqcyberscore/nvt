@@ -29,21 +29,20 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808621");
-  script_version("$Revision: 7724 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3500", "CVE-2016-3503",
                 "CVE-2016-3508", "CVE-2016-3550");
   script_bugtraq_id(91945, 91996, 91972, 91951);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-01 July 2016 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
   - A flaw in the Hotspot component.
@@ -60,7 +59,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 115 and prior, 
+  script_tag(name: "affected" , value:"Oracle Java SE 6 update 115 and prior,
   7 update 101 and prior, and 8 update 92 and prior on Windows.");
 
   script_tag(name: "solution" , value:"Apply the patch from below link,
@@ -75,7 +74,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -83,9 +82,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-jreVer = "";
 
 infos = get_app_version_and_location(cpe:CPE);
 if(!infos)
@@ -99,7 +95,6 @@ jrePath = infos['location'];
 
 if(jreVer =~ "^(1\.(6|7|8))")
 {
-  ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.115") ||
      version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.101") ||
      version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.92"))

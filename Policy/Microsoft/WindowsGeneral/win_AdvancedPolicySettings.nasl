@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_AdvancedPolicySettings.nasl 9961 2018-05-25 13:02:30Z emoss $
+# $Id: win_AdvancedPolicySettings.nasl 10116 2018-06-07 10:39:19Z cfischer $
 #
 # Read all Windows Advanced Policy Security Settings (Windows)
 #
@@ -27,20 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109001");
-  script_version("$Revision: 9961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-06-23 12:03:14 +0200 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"registry");
   script_name("Read all Windows Policy Security Settings (Windows)");
   script_family("IT-Grundschutz");
-  script_tag(name:"summary",value:"Read all Windows Advanced Policy Security Settings (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
+
+  script_tag(name:"summary",value:"Read all Windows Advanced Policy Security Settings (Windows)");
+
+  script_tag(name:"qod_type", value:"registry");
 
   exit(0);
 }
@@ -55,8 +56,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -80,14 +81,13 @@ function auditing (pol){
 }
 
 host = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
+usrname = kb_smb_login();
+domain  = kb_smb_domain();
 
 if (domain){
   usrname = domain + '/' + usrname;
 }
-passwd = get_kb_item("SMB/password");
-
+passwd = kb_smb_password();
 
 AdvancedPolicy = win_cmd_exec(cmd:"auditpol /get /category:*", password:passwd, username:usrname);
 AdvancedPolicy = split(AdvancedPolicy, keep:FALSE);
@@ -317,7 +317,6 @@ foreach pol (AdvancedPolicy) {
     val = auditing(pol);
     set_kb_item(name:"WMI/AdvancedPolicy/GroupMembership", value:val);
   }
-
 }
 
 exit(0);

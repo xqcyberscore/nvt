@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_bigtree_xss_vuln.nasl 10145 2018-06-08 14:34:24Z asteins $
 #
 # BigTree CMS < 4.2.22 XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112264");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10145 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:34:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 13:38:22 +0200 (Wed, 02 May 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_cve_id("CVE-2018-10364");
   script_name("BigTree CMS < 4.2.22 XSS Vulnerability");
   script_category(ACT_GATHER_INFO);

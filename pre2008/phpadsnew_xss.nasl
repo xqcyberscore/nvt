@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpadsnew_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: phpadsnew_xss.nasl 10111 2018-06-07 09:30:55Z cfischer $
 #
 # phpAdsNew Multiple Vulnerabilities
 #
 # Authors:
 # Noam Rathaus
-# Changes by Tenable:
-#  - Added a BID
-#  - Added script_version()
 #
 # Copyright:
 # Copyright (C) 2005 Noam Rathaus
@@ -34,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17335");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 10111 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 11:30:55 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0791");
   script_bugtraq_id(12803);
@@ -49,17 +46,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"impact", value:"An attacker may use the cross site scripting bug to preform phishing
+  script_tag(name:"impact", value:"An attacker may use the cross site scripting bug to perform phishing
   attacks.");
+
   script_tag(name:"summary", value:"phpAdsNew is an open-source ad server, with an integrated banner
   management interface and tracking system for gathering statistics. With phpAdsNew you can easily
   rotate paid banners and your own in-house advertisements. You can even integrate banners from
   third party advertising companies.
 
   The product has been found to contain two vulnerabilities:
+
    * Path disclosure vulnerability
+
    * Cross Site Scripting");
 
+  script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -69,7 +70,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {

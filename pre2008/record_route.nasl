@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: record_route.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Record route
+# $Id: record_route.nasl 10114 2018-06-07 10:06:23Z cfischer $
+#
+# Record route
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,10 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin sends packets with the 'Record Route' option. 
-It is a complement to traceroute.";
+###############################################################################
 
 # References:
 # RFC 792 Internet Control Message Protocol
@@ -31,34 +30,26 @@ It is a complement to traceroute.";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12264");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "Record route";
- script_name(name);
- 
-
-
- 
-
-# script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.12264");
+  script_version("$Revision: 10114 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:06:23 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Record route");
   script_tag(name:"qod_type", value:"remote_vul");
- # See bugtraq ID # 10653
- script_category(ACT_DESTRUCTIVE_ATTACK);
-  
- script_copyright("This script is Copyright (C) 2004 Michel Arboi");
- family = "General";
- script_family(family);
- 
- script_tag(name : "summary" , value : tag_summary);
- script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
- exit(0);
+  # See bugtraq ID # 10653
+  script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_family("General");
+  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+
+  script_tag(name:"summary", value:"This plugin sends packets with the 'Record Route' option.
+It is a complement to traceroute.");
+
+  exit(0);
 }
 
-#
 include("misc_func.inc");
 include("dump.inc");
 
@@ -75,7 +66,7 @@ function report(packet, proto)
 
  if ( ! packet ) return 0;
 
- rep = strcat('Here is the route recorded between ', srcaddr, 
+ rep = strcat('Here is the route recorded between ', srcaddr,
 	' and ', dstaddr, ' :\n');
 
  ihl = (ord(packet[0]) & 0xF) * 4;
@@ -102,7 +93,7 @@ rr = raw_string(	7,	# RR
  + crap(length: 36, data: raw_string(0));
 
 
-# We cannot use icmp_seq to identifies the datagrams because 
+# We cannot use icmp_seq to identifies the datagrams because
 # forge_icmp_packet() is buggy. So we use the data instead
 
 filter = strcat("icmp and icmp[0]=0 and src ", dstaddr, " and dst ", srcaddr);
@@ -112,9 +103,9 @@ for (i = 0; i < 8; i ++)
   filter = strcat(filter, " and icmp[", i+8, "]=", ord(d[i]));
 
 ip = forge_ip_packet(ip_hl: 15, ip_v: 4, ip_tos: 0, ip_id: rand() % 65536,
-	ip_off: 0, ip_ttl : 0x40, ip_p: IPPROTO_ICMP, ip_src : srcaddr, 
+	ip_off: 0, ip_ttl : 0x40, ip_p: IPPROTO_ICMP, ip_src : srcaddr,
 	data: rr, ip_len: 38+36);
-icmp = forge_icmp_packet(ip: ip, icmp_type:8, icmp_code:0, icmp_seq: 0, 
+icmp = forge_icmp_packet(ip: ip, icmp_type:8, icmp_code:0, icmp_seq: 0,
 	icmp_id: rand() % 65536, data: d);
 r = NULL;
 for (i = 0; i < n && ! r; i ++)

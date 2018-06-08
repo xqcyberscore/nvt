@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-20_win.nasl 6987 2017-08-22 13:34:14Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-20_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2017-20 )-Windows
 #
@@ -8,7 +8,7 @@
 # Shakeel <bshakeel@secpod.com>
 #
 # Copyright:
-# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,41 +29,56 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811711");
-  script_version("$Revision: 6987 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2017-7800", "CVE-2017-7801", "CVE-2017-7809", "CVE-2017-7784",
                 "CVE-2017-7802", "CVE-2017-7785", "CVE-2017-7786", "CVE-2017-7753",
-                "CVE-2017-7787", "CVE-2017-7807", "CVE-2017-7792", "CVE-2017-7804", 
+                "CVE-2017-7787", "CVE-2017-7807", "CVE-2017-7792", "CVE-2017-7804",
                 "CVE-2017-7791", "CVE-2017-7782", "CVE-2017-7803", "CVE-2017-7779" );
   script_bugtraq_id(100196, 100197, 100203, 100202, 100206, 100315, 100234, 100242,
                     100240, 100243, 100201);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 15:34:14 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 11:51:43 +0530 (Mon, 21 Aug 2017)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2017-20 )-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exist due to,
+
   - Use-after-free in WebSockets during disconnection.
+
   - Use-after-free with marquee during window resizing.
+
   - Use-after-free while deleting attached editor DOM node.
+
   - Use-after-free with image observers.
+
   - Use-after-free resizing image elements.
+
   - Buffer overflow manipulating ARIA attributes in DOM.
+
   - Buffer overflow while painting non-displayable SVG.
+
   - Out-of-bounds read with cached style data and pseudo-elements.
+
   - Same-origin policy bypass with iframes through page reloads.
+
   - Domain hijacking through AppCache fallback.
+
   - Buffer overflow viewing certificates with an extremely long OID.
+
   - Memory protection bypass through WindowsDllDetourPatcher.
+
   - Spoofing following page navigation with data: protocol and modal alerts.
+
   - WindowsDllDetourPatcher allocates memory without DEP protections.
+
   - CSP containing sandbox improperly applied.
+
   - Memory safety bugs.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
@@ -87,7 +102,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }
@@ -96,18 +111,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"52.3"))
 {
   report = report_fixed_ver(installed_version:tbVer, fixed_version:"52.3");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

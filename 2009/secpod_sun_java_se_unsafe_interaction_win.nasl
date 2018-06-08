@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_unsafe_interaction_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_sun_java_se_unsafe_interaction_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Unsafe Interaction In Sun Java SE Abstract Window Toolkit (Windows)
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attacks will allow attackers to trick a user into interacting
-  unsafely with an untrusted applet.
-  Impact Level: System/Application";
-tag_affected = "Sun Java SE version 6.0 before Update 15 on Windows.";
-tag_insight = "An error in the Abstract Window Toolkit (AWT) implementation on Windows
-  2000 Professional does not provide a Security Warning Icon.";
-tag_solution = "Upgrade to Java SE version 6 Update 15
-  http://java.sun.com/javase/downloads/index.jsp";
-tag_summary = "This host is installed with Sun Java SE and is prone to Unsafe
-  Interaction.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900820");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,13 +39,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful attacks will allow attackers to trick a user into interacting
+  unsafely with an untrusted applet.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Sun Java SE version 6.0 before Update 15 on Windows.");
+  script_tag(name : "insight" , value : "An error in the Abstract Window Toolkit (AWT) implementation on Windows
+  2000 Professional does not provide a Security Warning Icon.");
+  script_tag(name : "solution" , value : "Upgrade to Java SE version 6 Update 15
+  http://java.sun.com/javase/downloads/index.jsp");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to Unsafe
+  Interaction.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -71,25 +65,21 @@ if(hotfix_check_sp(win2k:5) <= 0){
   exit(0);
 }
 
-# Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 
 if(jdkVer)
 {
-  # Check for 1.6 < 1.6.0_15 (6 Update 15)
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.14")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Get KB for JRE Version On Windows
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer)
 {
-  # Check for 1.6 < 1.6.0_15 (6 Update 15)
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.14")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

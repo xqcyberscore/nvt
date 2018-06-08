@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_mult_vuln.nasl 9623 2018-04-26 09:11:35Z jschulte $
+# $Id: gb_apache_tika_server_mult_vuln.nasl 10127 2018-06-08 02:54:24Z ckuersteiner $
 #
 # Apache Tika Server 1.17 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113167");
-  script_version("$Revision: 9623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 11:11:35 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10127 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 04:54:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 11:12:13 +0200 (Thu, 26 Apr 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

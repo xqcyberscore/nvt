@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_july08_900001.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_opera_mult_vuln_july08_900001.nasl 10137 2018-06-08 12:38:04Z asteins $
 # Description: Opera for Windows Unspecified Code Execution Vulnerabilities July-08
 #
 # Authors:
@@ -22,30 +22,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
-
-tag_impact = "Successful exploitation could grant the remote attacker
-        to execute arbitrary malicious code to retrieve random samples
-        of the user's memory, which may contain sensitive data.
-Impact Level : SYSTEM";
-
-tag_solution = "Upgrade to Opera version 9.51,
- http://www.opera.com/download/";
-
-tag_affected = "Opera Version 5 to 9.50 on Windows (All)";
-
-tag_insight = "The flaws are due to the way the Web Browser handles certain
-        canvas functions that can cause the canvas to be painted with
-        very small amounts of data constructed from random memory, which
-        allows canvas images to be read and analyzed by JavaScript.";
-
-
-tag_summary = "The remote host is running Opera Web Browser, which is prone
- to multiple vulnerabilities.";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.900001");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10137 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-3078");
  script_bugtraq_id(30068);
@@ -56,14 +37,23 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
  script_family("General");
  script_name("Opera for Windows Unspecified Code Execution Vulnerabilities July-08");
- script_dependencies("secpod_opera_detection_win_900036.nasl");
+ script_dependencies("gb_opera_detect_portable_win.nasl");
  script_require_keys("Opera/Win/Version");
  script_xref(name : "URL" , value : "http://www.opera.com/support/search/view/887/");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "impact" , value : tag_impact);
+ script_tag(name : "summary" , value : "The remote host is running Opera Web Browser, which is prone
+ to multiple vulnerabilities.");
+ script_tag(name : "insight" , value : "The flaws are due to the way the Web Browser handles certain
+        canvas functions that can cause the canvas to be painted with
+        very small amounts of data constructed from random memory, which
+        allows canvas images to be read and analyzed by JavaScript.");
+ script_tag(name : "affected" , value : "Opera Version 5 to 9.50 on Windows (All)");
+ script_tag(name : "solution" , value : "Upgrade to Opera version 9.51,
+ http://www.opera.com/download/");
+ script_tag(name : "solution_type" , value : "VendorFix");
+ script_tag(name : "impact" , value : "Successful exploitation could grant the remote attacker
+        to execute arbitrary malicious code to retrieve random samples
+        of the user's memory, which may contain sensitive data.
+Impact Level : SYSTEM");
  exit(0);
 }
 
@@ -76,5 +66,8 @@ if(!OperaVer){
 }
 
 if(version_is_less_equal(version:OperaVer, test_version:"9.50")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

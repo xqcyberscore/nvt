@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_ccleaner_exe_backdoor_vuln.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ccleaner_ccleaner_exe_backdoor_vuln.nasl 10139 2018-06-08 12:48:22Z asteins $
 #
 # CCleaner 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:piriform:ccleaner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811779");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 10139 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:48:22 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 13:28:32 +0530 (Tue, 19 Sep 2017)");
   script_name("CCleaner 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with CCleaner
   and is prone to backdoor trojan installation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an unauthorized
   modification of the 'CCleaner.exe' binary resulted in an insertion of a two-stage
@@ -64,7 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_ccleaner_detect_win.nasl");
+  script_dependencies("gb_ccleaner_detect_portable_win.nasl");
   script_mandatory_keys("CCleaner/Win/Ver");
   exit(0);
 }
@@ -73,22 +72,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ccVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 ## Only 32-bit platform is affected
 if((!os_arch) || ("x86" >!< os_arch)){
   exit(0);
 }
 
-## Get version
 if(!ccVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version, 5.33.6162
 if(ccVer == "5.33.0.6162")
 {
   report = report_fixed_ver(installed_version:ccVer, fixed_version:"5.34.6207");

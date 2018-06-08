@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities (win)
 #
@@ -30,30 +30,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to obtain sensitive information,
-  execute arbitrary code in the context of the browser, bypass certain security
-  restrictions.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 4.1.249.1059 on windows";
-tag_insight = "Multiple flaws are due to:
-  - Type confusion error with 'forms'
-  - An unspecified error in the handling of 'HTTP requests', which leads to
-    cross-site request forgery attacks.
-  - An error related to 'chrome://net-internals' and 'chrome://downloads',
-    which leads to cross-site scripting attacks
-  - Error related to local file references through 'developer tools'
-  - Pages that might load with privileges of the 'New Tab page'.
-  - An unspecified error in 'V8 bindings' causes a denial of service";
-tag_solution = "Upgrade to the version 4.1.249.1059 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome Web Browser and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902050");
-  script_version("$Revision: 8447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_cve_id("CVE-2010-1502", "CVE-2010-1767", "CVE-2010-1500", "CVE-2010-1503",
                 "CVE-2010-1504", "CVE-2010-1505", "CVE-2010-1506", "CVE-2010-1767");
@@ -68,13 +49,32 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to obtain sensitive information,
+  execute arbitrary code in the context of the browser, bypass certain security
+  restrictions.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 4.1.249.1059 on windows");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+  - Type confusion error with 'forms'
+
+  - An unspecified error in the handling of 'HTTP requests', which leads to
+    cross-site request forgery attacks.
+
+  - An error related to 'chrome://net-internals' and 'chrome://downloads',
+    which leads to cross-site scripting attacks
+
+  - Error related to local file references through 'developer tools'
+
+  - Pages that might load with privileges of the 'New Tab page'.
+
+  - An unspecified error in 'V8 bindings' causes a denial of service");
+  script_tag(name : "solution" , value : "Upgrade to the version 4.1.249.1059 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome Web Browser and is prone
+  to multiple vulnerabilities.");
   exit(0);
 }
 
@@ -86,7 +86,9 @@ if(!gcVer){
   exit(0);
 }
 
-# Check for google chrome Version less than 4.1.249.1059
 if(version_is_less(version:gcVer, test_version:"4.1.249.1059")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

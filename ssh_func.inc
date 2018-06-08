@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10092 2018-06-06 09:46:11Z cfischer $
+# $Id: ssh_func.inc 10107 2018-06-07 07:37:31Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10092 $
+# $Revision: 10107 $
 #
 ###############################################################################
 
@@ -2585,7 +2585,7 @@ function get_ssh_server_banner( port ) {
 #
 # @param data the string to clean
 #
-# @returns the cleaned string
+# @return the cleaned string
 #
 function ssh_clean_cmd_from_err( data ) {
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_remote_location_object_flaw.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: opera_remote_location_object_flaw.nasl 10137 2018-06-08 12:38:04Z asteins $
 # Description: Opera remote location object cross-domain scripting vulnerability
 #
 # Authors:
@@ -24,27 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host contains a web browser that is affected by
-  multiple flaws.
-
-  Description :
-  The remote host is using Opera, an alternative web browser.
-  This version of Opera on the remote host fails to block write access to
-  the 'location' object.  This could allow a user to create a specially
-  crafted URL to overwrite methods within the 'location' object that would
-  execute arbitrary code in a user's browser within the trust relationship
-  between the browser and the server, leading to a loss of confidentiality
-  and integrity.";
-
-tag_solution = "Upgrade to Opera 7.54 or newer.";
-
 # Ref: GreyMagic Software
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14261");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2570");
   script_bugtraq_id(10873);
@@ -55,10 +41,21 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : "Upgrade to Opera 7.54 or newer.");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The remote host contains a web browser that is affected by
+  multiple flaws.
+
+  Description :
+  The remote host is using Opera, an alternative web browser.
+  This version of Opera on the remote host fails to block write access to
+  the 'location' object.  This could allow a user to create a specially
+  crafted URL to overwrite methods within the 'location' object that would
+  execute arbitrary code in a user's browser within the trust relationship
+  between the browser and the server, leading to a loss of confidentiality
+  and integrity.");
   script_xref(name : "URL" , value : "http://www.greymagic.com/security/advisories/gm008-op/");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/754/");
   exit(0);
@@ -73,5 +70,8 @@ if(!OperaVer){
 }
 
 if(version_is_less_equal(version:OperaVer, test_version:"7.53")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

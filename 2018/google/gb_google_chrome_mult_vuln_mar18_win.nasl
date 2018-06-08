@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_mar18_win.nasl 9052 2018-03-08 09:39:18Z santu $
+# $Id: gb_google_chrome_mult_vuln_mar18_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Security Vulnerabilities Mar18 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812819");
-  script_version("$Revision: 9052 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2018-6057", "CVE-2018-6058", "CVE-2018-6059", "CVE-2018-6060",
                 "CVE-2018-6061", "CVE-2018-6062", "CVE-2018-6063", "CVE-2018-6064",
                 "CVE-2018-6065", "CVE-2018-6066", "CVE-2018-6067", "CVE-2018-6068",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2018-6081", "CVE-2018-6082", "CVE-2018-6083");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-08 10:39:18 +0100 (Thu, 08 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 11:13:56 +0530 (Wed, 07 Mar 2018)");
   script_name("Google Chrome Multiple Security Vulnerabilities Mar18 (Windows)");
 
@@ -99,12 +99,12 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL" , value:"https://chromereleases.googleblog.com/2018/03/stable-channel-update-for-desktop.html");
-  
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
-  script_mandatory_keys("GoogleChrome/Win/Ver");                                                               
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
 

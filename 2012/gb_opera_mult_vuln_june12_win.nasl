@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_june12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_opera_mult_vuln_june12_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Multiple Vulnerabilities - June12 (Windows)
 #
@@ -24,37 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  script code, disclose sensitive information or spoof the originating URL
-  of a trusted web site and carry out phishing-style attacks.
-  Impact Level: System/Application";
-tag_affected = "Opera version prior to 11.65 on Windows";
-tag_insight = "- An error when displaying preferences within a small window can be exploited
-    to execute arbitrary code by tricking a user into entering a specific
-    keyboard sequence.
-  - An error when displaying pop-up windows can be exploited to execute script
-    code by tricking a user into following a specific sequence of events.
-  - An error when handling JSON resources can be exploited to bypass the cross
-    domain policy restriction and disclose certain information to other sites.
-  - An unspecified error can be exploited to display arbitrary content while
-    showing the URL of a trusted web site in the address bar.
-  - An error when handling page loads can be exploited to display arbitrary
-    content while showing the URL of a trusted web site in the address.";
-tag_solution = "Upgrade to Opera version 11.65 or 12 or later,
-  For updates refer to http://www.opera.com/";
-tag_summary = "The host is installed with Opera and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802646");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 10137 $");
   script_bugtraq_id(54011);
   script_cve_id("CVE-2012-3555", "CVE-2012-3556", "CVE-2012-3557", "CVE-2012-3558",
                 "CVE-2012-3560");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Vulnerabilities - June12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49533/");
@@ -68,13 +47,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  script code, disclose sensitive information or spoof the originating URL
+  of a trusted web site and carry out phishing-style attacks.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Opera version prior to 11.65 on Windows");
+  script_tag(name : "insight" , value : "- An error when displaying preferences within a small window can be exploited
+    to execute arbitrary code by tricking a user into entering a specific
+    keyboard sequence.
+  - An error when displaying pop-up windows can be exploited to execute script
+    code by tricking a user into following a specific sequence of events.
+  - An error when handling JSON resources can be exploited to bypass the cross
+    domain policy restriction and disclose certain information to other sites.
+  - An unspecified error can be exploited to display arbitrary content while
+    showing the URL of a trusted web site in the address bar.
+  - An error when handling page loads can be exploited to display arbitrary
+    content while showing the URL of a trusted web site in the address.");
+  script_tag(name : "solution" , value : "Upgrade to Opera version 11.65 or 12 or later,
+  For updates refer to http://www.opera.com/");
+  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -84,13 +78,11 @@ include("version_func.inc");
 
 operaVer = "";
 
-## Get Opera version from KB
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check for opera version is less than 11.65
 if(version_is_less(version:operaVer, test_version:"11.65")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

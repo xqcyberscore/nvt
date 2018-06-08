@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_nov09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_nov09.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Nov09
 #
@@ -24,34 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary JavaScript code
-  and disclose the content of local files, memory corruption or CPU consumption
-  and which may result in Denial of Service condition.
-  Impact Level: System/Application";
-tag_affected = "Google Chrome version prior to 3.0.195.32 on Windows.";
-tag_insight = "- Error in 'browser/download/download_exe.cc', which fails to display a
-    warning when a user downloads and opens '.svg', '.mht' or '.xml' files.
-    This can be exploited to disclose the content of local files via a
-    specially crafted web page.
-  - An error in the Gears SQL API implementation can be exploited to put SQL
-    metadata into a bad state and cause a memory corruption.
-  - An error in WebKit, which can be exploited via a web page that calls the
-    JavaScript setInterval method, which triggers an incompatibility between
-    the 'WTF::currentTime' and 'base::Time' functions.
-  - Error in 'WebFrameLoaderClient::dispatchDidChangeLocationWithinPage' function
-    in 'src/webkit/glue/webframeloaderclient_impl.cc' and which can be exploited
-    via a page-local link, related to an 'empty redirect chain,' as demonstrated
-    by a message in Yahoo! Mail.";
-tag_solution = "Upgrade to version 3.0.195.32 or later.
-  http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900890");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-11-17 15:16:05 +0100 (Tue, 17 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -67,26 +44,50 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary JavaScript code
+  and disclose the content of local files, memory corruption or CPU consumption
+  and which may result in Denial of Service condition.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 3.0.195.32 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
+
+  - Error in 'browser/download/download_exe.cc', which fails to display a
+    warning when a user downloads and opens '.svg', '.mht' or '.xml' files.
+    This can be exploited to disclose the content of local files via a
+    specially crafted web page.
+
+  - An error in the Gears SQL API implementation can be exploited to put SQL
+    metadata into a bad state and cause a memory corruption.
+
+  - An error in WebKit, which can be exploited via a web page that calls the
+    JavaScript setInterval method, which triggers an incompatibility between
+    the 'WTF::currentTime' and 'base::Time' functions.
+
+  - Error in 'WebFrameLoaderClient::dispatchDidChangeLocationWithinPage' function
+    in 'src/webkit/glue/webframeloaderclient_impl.cc' and which can be exploited
+    via a page-local link, related to an 'empty redirect chain,' as demonstrated
+    by a message in Yahoo! Mail.");
+  script_tag(name : "solution" , value : "Upgrade to version 3.0.195.32 or later.
+  http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-# Get for Chrome Version
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-# Check for Google Chrome version < 3.0.195.32
 if(version_is_less(version:chromeVer, test_version:"3.0.195.32")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_websockets_dos_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_mozilla_thunderbird_websockets_dos_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird 'WebSockets' Denial of Service Vulnerability (Windows)
 #
@@ -24,28 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to cause a denial of service
-  (memory corruption and application crash) or possibly execute arbitrary
-  code via unspecified vectors.
-  Impact Level: System/Application";
-
-tag_affected = "Thunderbird versions before 16.0.1 on Windows";
-tag_insight = "Error in the WebSockets implementation, allows remote attackers to cause a
-  denial of service.";
-tag_solution = "Upgrade to Thunderbird version to 16.0.1 or later,
-  http://www.mozilla.org/en-US/thunderbird";
-tag_summary = "The host is installed with Mozilla Thunderbird and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803392");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Thunderbird 'WebSockets' Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
@@ -54,13 +41,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service
+  (memory corruption and application crash) or possibly execute arbitrary
+  code via unspecified vectors.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Thunderbird versions before 16.0.1 on Windows");
+  script_tag(name : "insight" , value : "Error in the WebSockets implementation, allows remote attackers to cause a
+  denial of service.");
+  script_tag(name : "solution" , value : "Upgrade to Thunderbird version to 16.0.1 or later,
+  http://www.mozilla.org/en-US/thunderbird");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Thunderbird and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,16 +62,12 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-tbVer = "";
-
 # Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer)
 {
-  # Grep for Thunderbird version
   if(version_is_less(version:tbVer, test_version:"16.0.1")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

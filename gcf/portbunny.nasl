@@ -1,5 +1,6 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: portbunny.nasl 9367 2018-04-06 07:37:00Z cfischer $
+# $Id: portbunny.nasl 10116 2018-06-07 10:39:19Z cfischer $
 #
 # Use portbunny as scanner
 #
@@ -21,70 +22,64 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin runs portbunny scan to find open ports.
-Portbunny is (Linux only) kernel module port scanner 
-suitable for large internal portscans.
-This is experimental plugin, use with care.";
+###############################################################################
 
 # TODO:
 # - report back banners grabbed
-# - script_oid
-# - sign the script
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80002");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9367 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:37:00 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "portbunny (NASL wrapper)";
- script_name(name);
-
-
- script_category(ACT_SCANNER);
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_oid("1.3.6.1.4.1.25623.1.0.80002");
+  script_version("$Revision: 10116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("portbunny (NASL wrapper)");
+  script_category(ACT_SCANNER);
   script_copyright("This script is Copyright (C) 2008 Vlatko Kosturjak");
- family = "Port scanners";
- script_family(family);
- script_add_preference(name:"Wait longer for triggers to return", type:"checkbox", value: "no");
- script_dependencies("toolcheck.nasl", "ping_host.nasl");
- script_mandatory_keys("Tools/Present/portbunny");
- script_tag(name : "summary" , value : tag_summary);
+  script_family("Port scanners");
+  script_add_preference(name:"Wait longer for triggers to return", type:"checkbox", value: "no");
+  script_dependencies("toolcheck.nasl", "ping_host.nasl");
+  script_mandatory_keys("Tools/Present/portbunny");
+
+  script_tag(name:"summary", value:"This plugin runs portbunny scan to find open ports.
+
+  Portbunny is (Linux only) kernel module port scanner suitable for large internal portscans.
+  This is experimental plugin, use with care.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
  exit(0);
 }
 
 ip = get_host_ip();
 esc_ip = ""; l = strlen(ip);
-for (i = 0; i < l; i ++) 
+for (i = 0; i < l; i ++)
   if (ip[i] == '.')
     esc_ip = strcat(esc_ip, "\.");
   else
     esc_ip = strcat(esc_ip, ip[i]);
 
- i = 0;
- argv[i++] = "portbunny";
- argv[i++] = "-u";
+i = 0;
+argv[i++] = "portbunny";
+argv[i++] = "-u";
 
- p = script_get_preference("Wait longer for triggers to return");
- if ( p) argv[i++] = "-w";
+p = script_get_preference("Wait longer for triggers to return");
+if ( p) argv[i++] = "-w";
 
- argv[i++] = ip;
- pr = get_preference("port_range");
- if (! pr) pr = "1-65535"; 
- argv[i++] = "-p";
- argv[i++] = pr;
+argv[i++] = ip;
+pr = get_preference("port_range");
+if (! pr) pr = "1-65535";
+argv[i++] = "-p";
+argv[i++] = pr;
 
-
- res = pread(cmd: "portbunny", argv: argv, cd: 1, nice: 5);
+res = pread(cmd: "portbunny", argv: argv, cd: 1, nice: 5);
 
 # debug
-#	display("\n====DEBUG===\n");
-#	display(res);
-#	display("\n====DEBUG===\n");
+# display("\n====DEBUG===\n");
+# display(res);
+# display("\n====DEBUG===\n");
 
 # IP_ADDRESS:PORT:TYPE:FULL_BANNER
 # 127.0.0.1     53      OPEN            domain
@@ -96,22 +91,22 @@ foreach line(split(res))
 {
   v = eregmatch(string: line, pattern: '^'+esc_ip+'[ \t]*([0-9]+)[ \t]*([A-Z]+)[ \t]*([A-Za-z0-9]*)');
 # debug
-#	display (":");
-#	if (isnull(v)) display ("null:"+esc_ip);
-#	else display (v[1]+":"+v[2]+":"+v[3]);
-#	display ("\n");
+# display (":");
+# if (isnull(v)) display ("null:"+esc_ip);
+# else display (v[1]+":"+v[2]+":"+v[3]);
+# display ("\n");
   if (! isnull(v) && v[2] == "OPEN")
   {
-	n_ports++;
-	port = v[1];
-	proto = "tcp";
-   scanner_add_port(proto: proto, port: port);
+    n_ports++;
+    port = v[1];
+    proto = "tcp";
+    scanner_add_port(proto: proto, port: port);
   }
 }
 
 if (n_ports == 0)
 {
-	security_message(port:0, proto:"tcp",data:"Host does not have any open TCP port");
+  security_message(port:0, proto:"tcp",data:"Host does not have any open TCP port");
 }
 
 set_kb_item(name: "Host/scanned", value: TRUE);

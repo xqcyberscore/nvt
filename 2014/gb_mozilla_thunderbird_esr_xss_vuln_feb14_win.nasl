@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)
 #
@@ -25,53 +25,33 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:thunderbird_esr";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804505";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804505");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:45:33 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
-cross site scripting vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to the program does not validate input related to data URLs in
-IFRAME elements or EMBED or OBJECT element before returning it to users.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary script code
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird ESR and is prone to multiple
+cross site scripting vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Flaw is due to the program does not validate input related to data URLs in
+IFRAME elements or EMBED or OBJECT element before returning it to users.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary script code
 in a user's browser session within the trust relationship between their
 browser and the server.
 
-Impact Level: Application";
-
-  tag_affected =
-"Mozilla Thunderbird version ESR 17.x through 17.0.10 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Thunderbird version 23.0 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Mozilla Thunderbird version ESR 17.x through 17.0.10 on Windows");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 23.0 or later,
+For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,7 +61,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
   exit(0);
 }
@@ -90,17 +70,12 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
-if(!tbVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_in_range(version:tbVer, test_version:"17.0", test_version2:"17.0.10"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

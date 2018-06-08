@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln04_oct14.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_java_mult_unspecified_vuln04_oct14.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804865");
-  script_version("$Revision: 7699 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2014-6562", "CVE-2014-6485", "CVE-2014-6468");
   script_bugtraq_id(70523, 70519, 70488);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:53:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2014 (Windows)");
@@ -69,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -77,10 +77,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
-
-## Get version
 if(!jreVer = get_app_version(cpe:CPE))
 {
   CPE = "cpe:/a:sun:jre";
@@ -91,10 +87,9 @@ if(!jreVer = get_app_version(cpe:CPE))
 
 if(jreVer =~ "^(1\.(7|8))")
 {
-  ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.20"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

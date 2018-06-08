@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802579");
-  script_version("$Revision: 9911 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 
@@ -45,7 +45,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl",
                       "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
+                      "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to get sensitive information.
   Impact Level: Application");
@@ -82,7 +82,7 @@ if(!isnull(ffVer))
   if(version_is_less(version:ffVer, test_version:"3.6.26") ||
      version_in_range(version:ffVer, test_version:"4.0", test_version2:"6.0"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -95,7 +95,7 @@ if(!isnull(seaVer))
 {
   if(version_is_less(version:seaVer, test_version:"2.4"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -108,6 +108,6 @@ if(!isnull(tbVer))
 {
   if(version_is_less(version:tbVer, test_version:"3.1.18") ||
      version_in_range(version:tbVer, test_version:"5.0", test_version2:"6.0")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

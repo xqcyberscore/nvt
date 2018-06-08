@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portscanner_missing.nasl 9277 2018-04-03 09:52:47Z cfischer $
+# $Id: gb_portscanner_missing.nasl 10122 2018-06-07 13:09:58Z cfischer $
 #
 # Check for enabled / working Port scanner plugin
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108323");
-  script_version("$Revision: 9277 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 11:52:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 10122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 11:21:18 +0100 (Tue, 30 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,12 +67,12 @@ if(description)
   exit(0);
 }
 
-# If the host was marked as dead we probably havn't scanned
+# If the host was marked as dead we probably haven't scanned
 # it with a portscanner so no need to continue here.
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
 
 # We have scanned the host. This is for the case if optimize_test
-# is set to "no" and thus script_exclude_keys above is not evaluated.
+# is set to "no" and thus script exclude keys above is not evaluated.
 if( get_kb_item( "Host/scanned" ) ) exit( 0 );
 
 # If the scan configuration / ping_host.nasl isn't using a mark_dead = yes

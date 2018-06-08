@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_url_code_exec_vuln_win.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: gb_opera_url_code_exec_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -24,26 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "Opera version prior to 11.64 on Windows";
-tag_insight = "The flaw is due to improper allocation of memory for URL strings,
-  which allows remote attackers to execute arbitrary code or cause a denial
-  of service (memory corruption and application crash) via a crafted string.";
-tag_solution = "Upgrade to Opera version 11.64 or later,
-  For updates refer to http://www.opera.com/";
-tag_summary = "The host is installed with Opera and is prone to code execution
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802652");
-  script_version("$Revision: 8671 $");
+  script_version("$Revision: 10137 $");
   script_cve_id("CVE-2012-3561");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 17:17:17 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027066");
@@ -53,13 +41,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  code or cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Opera version prior to 11.64 on Windows");
+  script_tag(name : "insight" , value : "The flaw is due to improper allocation of memory for URL strings,
+  which allows remote attackers to execute arbitrary code or cause a denial
+  of service (memory corruption and application crash) via a crafted string.");
+  script_tag(name : "solution" , value : "Upgrade to Opera version 11.64 or later,
+  For updates refer to http://www.opera.com/");
+  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to code execution
+  vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,13 +63,11 @@ include("version_func.inc");
 
 operaVer = "";
 
-## Get Opera version from KB
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check for opera version is less than 11.64
 if(version_is_less(version:operaVer, test_version:"11.64")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_sun_java_jre_dos_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities (Windows)
 #
@@ -24,34 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attacker to cause XSS, arbitrary code
-  execution, various buffer overflows, bypass security restrictions and can
-  cause denial of service attacks inside the context of the affected system.
-  Impact Level: System";
-tag_affected = "Sun Java JRE 6 Update 12 and prior.
-  Sun Java JRE 5.0 Update 17 and prior.
-  Sun Java JRE 1.4.2_19 and prior.
-  Sun Java JRE 1.3.1_24 and prior.";
-tag_insight = "For more information about vulnerabilities on Sun Java go through reference.";
-tag_solution = "Upgrade to JRE version 6 Update 13
-  http://java.sun.com/javase/downloads/index.jsp
-  OR
-  Upgrade to JRE version 5 Update 18
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
-  OR
-  Upgrade to JRE version 1.4.2_20
-  http://java.sun.com/j2se/1.4.2/download.html
-  OR
-  Upgrade to JRE version 1.3.1_25
-  http://java.sun.com/j2se/1.3/download.html";
-tag_summary = "This host is installed with Sun Java JDK/JRE and is prone to
-  Multiple Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800384");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,13 +46,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attacker to cause XSS, arbitrary code
+  execution, various buffer overflows, bypass security restrictions and can
+  cause denial of service attacks inside the context of the affected system.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Sun Java JRE 6 Update 12 and prior.
+  Sun Java JRE 5.0 Update 17 and prior.
+  Sun Java JRE 1.4.2_19 and prior.
+  Sun Java JRE 1.3.1_24 and prior.");
+  script_tag(name : "insight" , value : "For more information about vulnerabilities on Sun Java go through reference.");
+  script_tag(name : "solution" , value : "Upgrade to JRE version 6 Update 13
+  http://java.sun.com/javase/downloads/index.jsp
+  OR
+  Upgrade to JRE version 5 Update 18
+  http://java.sun.com/javase/downloads/index_jdk5.jsp
+  OR
+  Upgrade to JRE version 1.4.2_20
+  http://java.sun.com/j2se/1.4.2/download.html
+  OR
+  Upgrade to JRE version 1.3.1_25
+  http://java.sun.com/j2se/1.3/download.html");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java JDK/JRE and is prone to
+  Multiple Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -91,12 +85,11 @@ if(!jreVer){
 
 if(jreVer)
 {
-  # Check for 1.3 < 1.3.1_25, 1.4 < 1.4.2_20, 1.5 < 1.5.0_18 (5 Update 18),
   # and 1.6 < 1.6.0_13 (6 Update 13)
   if(version_in_range(version:jreVer, test_version:"1.3", test_version2:"1.3.1.24") ||
      version_in_range(version:jreVer, test_version:"1.4", test_version2:"1.4.2.19") ||
      version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.17") ||
      version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.12")) {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

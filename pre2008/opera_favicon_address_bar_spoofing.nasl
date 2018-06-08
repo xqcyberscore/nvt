@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_favicon_address_bar_spoofing.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: opera_favicon_address_bar_spoofing.nasl 10137 2018-06-08 12:38:04Z asteins $
 # Description: Opera web browser address bar spoofing weakness (2)
 #
 # Authors:
@@ -24,7 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host contains a web browser that is vulnerable to
+# Ref: GreyMagic <http://www.greymagic.com/> and Tom Gilder
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.14245");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2004-0537");
+  script_bugtraq_id(10452);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_name("Opera web browser address bar spoofing weakness (2)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"registry");
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Windows");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
+  script_require_keys("Opera/Win/Version");
+  script_tag(name : "solution" , value : "Install to Opera 7.51 or newer.");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The remote host contains a web browser that is vulnerable to
   address bar spoofing attacks.
 
   Description :
@@ -38,31 +59,7 @@ tag_summary = "The remote host contains a web browser that is vulnerable to
   real address with spaces.
 
   This issue can be used to spoof information in the address bar, page
-  bar and page/window cycler.";
-
-tag_solution = "Install to Opera 7.51 or newer.";
-
-# Ref: GreyMagic <http://www.greymagic.com/> and Tom Gilder
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.14245");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_cve_id("CVE-2004-0537");
-  script_bugtraq_id(10452);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_name("Opera web browser address bar spoofing weakness (2)");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
-  script_copyright("This script is Copyright (C) 2004 David Maciejak");
-  script_family("Windows");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  bar and page/window cycler.");
   script_xref(name : "URL" , value : "http://www.greymagic.com/security/advisories/gm007-op/");
   script_xref(name : "URL" , value : "http://www.opera.com/windows/changelogs/751/");
   exit(0);
@@ -77,5 +74,8 @@ if(!OperaVer){
 }
 
 if(version_is_less_equal(version:OperaVer, test_version:"7.50")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

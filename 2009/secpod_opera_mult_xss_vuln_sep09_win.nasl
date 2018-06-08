@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_xss_vuln_sep09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_opera_mult_xss_vuln_sep09_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Multiple Cross-Site Scripting Vulnerabilities - Sep09 (Windows)
 #
@@ -24,28 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Attacker can exploit this issue to conduct XSS attacks to inject
-arbitrary web script or HTML.
-
-Impact Level: Application";
-
-tag_affected = "Opera version 9.x and 10.x on Windows.";
-
-tag_insight = "An error in the application which can be exploited to obtain
-complete control over feeds via a 'RSS' or 'Atom' feed. It is related to the
-rendering of the application/rss+xml content type as 'scripted content'.";
-
-tag_solution = "Upgrade to version 10.1 or later,
-For updates refer to http://www.opera.com";
-
-tag_summary = "This host is installed with Opera and is prone to multiple
-Cross-Site Scripting vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900857");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,13 +41,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_mandatory_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Attacker can exploit this issue to conduct XSS attacks to inject
+arbitrary web script or HTML.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 9.x and 10.x on Windows.");
+  script_tag(name : "insight" , value : "An error in the application which can be exploited to obtain
+complete control over feeds via a 'RSS' or 'Atom' feed. It is related to the
+rendering of the application/rss+xml content type as 'scripted content'.");
+  script_tag(name : "solution" , value : "Upgrade to version 10.1 or later,
+For updates refer to http://www.opera.com");
+  script_tag(name : "summary" , value : "This host is installed with Opera and is prone to multiple
+Cross-Site Scripting vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -78,7 +68,6 @@ if(!operaVer){
   exit(0);
 }
 
-# Check for Opera version 9.x and 10.x
 if(operaVer =~ "^(9|10)\..*"){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

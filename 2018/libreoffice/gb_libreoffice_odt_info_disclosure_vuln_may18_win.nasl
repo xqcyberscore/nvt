@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 
 if(description)                                                                                                                                 {
   script_oid("1.3.6.1.4.1.25623.1.0.812872");
-  script_version("$Revision: 9802 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 13:33:47 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)");
@@ -40,10 +40,9 @@ if(description)                                                                 
   script_tag(name:"summary", value:"This host is installed with LibreOffice and
   is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists within an 
+  script_tag(name:"insight", value:"The flaw exists within an
   office:document-content element in a .odt XML document.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
@@ -65,7 +64,7 @@ if(description)                                                                 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
   exit(0);
 }

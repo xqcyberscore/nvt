@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_unspecified_vuln_jul10.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: secpod_google_chrome_mult_unspecified_vuln_jul10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Unspcified Vulnerabilities - July 10
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow the attackers to cause a denial of
-  service (memory corruption) or possibly have unspecified other impact
-  via unknown vectors.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 5.0.375.125";
-tag_insight = "Multiple flaws are due to:
-  - Not properly mitigate an unspecified flaw in the 'GNU C Library', which
-    has unknown impact and attack vectors.
-  - Not properly mitigate an unspecified flaw in the 'Windows kernel'.
-  - An unspecified error exists related to large 'canvases'.
-  - An unspecified error in the 'layout code' can be exploited to disclose
-    memory content.
-  - An unspecified error in the 'rendering code' and 'SVG handling' can be
-    exploited to corrupt memory.
-  - Unexpected truncation and improper eliding of hostnames.";
-tag_solution = "Upgrade to the Google Chrome 5.0.375.125 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "The host isnstalled with Google Chrome and is prone to multiple
-  unspecified vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902092");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2898", "CVE-2010-2897", "CVE-2010-2900",
                 "CVE-2010-2899", "CVE-2010-2901", "CVE-2010-2903",
@@ -63,26 +43,48 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to cause a denial of
+  service (memory corruption) or possibly have unspecified other impact
+  via unknown vectors.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 5.0.375.125");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+
+  - Not properly mitigate an unspecified flaw in the 'GNU C Library', which
+    has unknown impact and attack vectors.
+
+  - Not properly mitigate an unspecified flaw in the 'Windows kernel'.
+
+  - An unspecified error exists related to large 'canvases'.
+
+  - An unspecified error in the 'layout code' can be exploited to disclose
+    memory content.
+
+  - An unspecified error in the 'rendering code' and 'SVG handling' can be
+    exploited to corrupt memory.
+
+  - Unexpected truncation and improper eliding of hostnames.");
+  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 5.0.375.125 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host isnstalled with Google Chrome and is prone to multiple
+  unspecified vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 5.0.375.125
 if(version_is_less(version:chromeVer, test_version:"5.0.375.125")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

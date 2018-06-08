@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813090");
-  script_version("$Revision: 9974 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2018-10120");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)");
 
-  script_tag(name:"summary", value:"This host is installed with LibreOffice and 
+  script_tag(name:"summary", value:"This host is installed with LibreOffice and
   is prone to a memory corruption vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
@@ -53,10 +53,10 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"LibreOffice before 5.4.6.1 and 6.x before 
+  script_tag(name: "affected" , value:"LibreOffice before 5.4.6.1 and 6.x before
   6.0.2.1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to LibreOffice version 5.4.6.1 or 
+  script_tag(name: "solution" , value:"Upgrade to LibreOffice version 5.4.6.1 or
   6.0.2.1 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
   exit(0);
 }
@@ -87,7 +87,7 @@ else if(vers =~ "^6\." && version_is_less(version:vers, test_version:"6.0.2.1"))
   fix = "6.0.2.1";
 }
 
-if(fix) 
+if(fix)
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
   security_message(data:report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_comments_xss_vuln.nasl 9410 2018-04-09 14:01:43Z asteins $
+# $Id: gb_centreon_comments_xss_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
 #
 # Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811735");
-  script_version("$Revision: 9410 $");
+  script_version("$Revision: 10128 $");
   script_cve_id("CVE-2015-7672");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 16:01:43 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 13:47:50 +0530 (Mon, 11 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability");
@@ -54,9 +54,8 @@ if(description)
 
   script_tag(name:"affected", value:"Centreon version 2.6.1");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 09th
-  April, 2018. Information regarding this issue will be updated once solution details
-  are available. For updates refer to https://www.centreon.com ");
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -84,7 +83,7 @@ if(!cenVer = get_app_version(cpe:CPE, port:cenPort)){
 
 if(version_is_equal(version:cenVer, test_version:"2.6.1"))
 {
-  report = report_fixed_ver(installed_version:cenVer, fixed_version:"None Available");
+  report = report_fixed_ver(installed_version:cenVer, fixed_version:"None");
   security_message(data:report, port:cenPort);
   exit(0);
 }

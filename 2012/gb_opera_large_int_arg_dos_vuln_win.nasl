@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_large_int_arg_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_opera_large_int_arg_dos_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Large Integer Argument Denial of Service Vulnerability (Windows)
 #
@@ -24,34 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation may allow remote attackers to cause
-a denial of service via a large integer argument.
-
-Impact Level: Application";
-
-tag_affected = "Opera version 11.60 and prior.";
-
-tag_insight = "The flaw is due to an improper handling of argument sent to the
-functions Int32Array, Float32Array, Float64Array, Uint32Array, Int16Array
-or ArrayBuffer, which can be exploited to crash the Opera via a large
-integer argument to these functions.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is installed with Opera and is prone to denial of
-service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802395");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 10137 $");
   script_cve_id("CVE-2012-1003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 16:13:59 +0530 (Wed, 08 Feb 2012)");
   script_name("Opera Large Integer Argument Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73027");
@@ -60,13 +40,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation may allow remote attackers to cause
+a denial of service via a large integer argument.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 11.60 and prior.");
+  script_tag(name : "insight" , value : "The flaw is due to an improper handling of argument sent to the
+functions Int32Array, Float32Array, Float64Array, Uint32Array, Int16Array
+or ArrayBuffer, which can be exploited to crash the Opera via a large
+integer argument to these functions.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to denial of
+service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
@@ -75,16 +65,14 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-operaVer = NULL;
-
-#Get Version
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-# Check for opera version < 11.60
 if(version_is_less_equal(version:operaVer, test_version:"11.60")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct10_win.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_opera_mult_vuln_oct10_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities October-10 (Windows)
 #
@@ -24,35 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  on the target user's system, can obtain potentially sensitive information.
-  Impact Level: Application";
-tag_affected = "Opera Web Browser Version prior 10.63";
-tag_insight = "Multiple flaws are cause due to:
-  - Failure to prevent interpretation of a 'cross-origin' document as a 'CSS'
-    stylesheet when the document lacks a CSS token sequence.
-  - An error when altering the size of the browser window may cause the wrong
-    part of the URL of a web page to be displayed.
-  - An error in the handling of reloads and redirects combined with caching may
-    result in scripts executing in the wrong security context.
-  - Failure to properly verify the origin of video content, which allows remote
-    attackers to obtain sensitive information by using a video stream as HTML5
-    canvas content.
-  - Failure to properly restrict web script in unspecified circumstances involving
-    reloads and redirects.
-  - Failure to properly select the security context of JavaScript code associated
-    with an error page.
-  - Error in 'SVG' document in an 'IMG' element.";
-tag_solution = "Upgrade to Opera Web Browser Version 10.63 or later,
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801474");
-  script_version("$Revision: 8457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-4043", "CVE-2010-4044", "CVE-2010-4046", "CVE-2010-4045",
                 "CVE-2010-4047", "CVE-2010-4049", "CVE-2010-4048", "CVE-2010-4050");
@@ -67,13 +43,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
+  on the target user's system, can obtain potentially sensitive information.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera Web Browser Version prior 10.63");
+  script_tag(name : "insight" , value : "Multiple flaws are cause due to:
+  - Failure to prevent interpretation of a 'cross-origin' document as a 'CSS'
+    stylesheet when the document lacks a CSS token sequence.
+  - An error when altering the size of the browser window may cause the wrong
+    part of the URL of a web page to be displayed.
+  - An error in the handling of reloads and redirects combined with caching may
+    result in scripts executing in the wrong security context.
+  - Failure to properly verify the origin of video content, which allows remote
+    attackers to obtain sensitive information by using a video stream as HTML5
+    canvas content.
+  - Failure to properly restrict web script in unspecified circumstances involving
+    reloads and redirects.
+  - Failure to properly select the security context of JavaScript code associated
+    with an error page.
+  - Error in 'SVG' document in an 'IMG' element.");
+  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 10.63 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "summary" , value : "The host is installed with Opera browser and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -82,13 +76,11 @@ if(description)
 
 include("version_func.inc");
 
-## Get Opera Version from KB
 operaVer = get_kb_item("Opera/Win/Version");
 
 if(operaVer)
 {
-  ## Grep for Opera Versions prior to 10.63
   if(version_is_less(version:operaVer, test_version:"10.63")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

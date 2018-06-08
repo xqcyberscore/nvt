@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_code_exec_vuln_win01.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_java_code_exec_vuln_win01.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Code Execution Vulnerability (Windows-01)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attacks will allow attackers to execute arbitrary code in the
-  context of the affected application with system privileges.
-  Impact Level: Application";
-tag_affected = "Oracle Java SE 6 Update 21 through 6 Update 23";
-tag_insight = "The flaw is due to an error in 'Java Runtime Environment (JRE)',
-  which allows remote untrusted Java Web Start applications and untrusted Java
-  applets to affect confidentiality, integrity, and availability via unknown
-  vectors related to deployment.";
-tag_solution = "Upgrade to Oracle Java SE 6 Update 24 or later,
-  For updates refer to http://java.com/en/download/index.jsp";
-tag_summary = "This host is installed with Sun Java SE and is prone to code
-  execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902350");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4463");
   script_bugtraq_id(46386);
@@ -54,13 +41,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful attacks will allow attackers to execute arbitrary code in the
+  context of the affected application with system privileges.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Oracle Java SE 6 Update 21 through 6 Update 23");
+  script_tag(name : "insight" , value : "The flaw is due to an error in 'Java Runtime Environment (JRE)',
+  which allows remote untrusted Java Web Start applications and untrusted Java
+  applets to affect confidentiality, integrity, and availability via unknown
+  vectors related to deployment.");
+  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE 6 Update 24 or later,
+  For updates refer to http://java.com/en/download/index.jsp");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to code
+  execution vulnerability.");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0405");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
   exit(0);
@@ -70,26 +65,24 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Get KB for JRE Version On Windows
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
 
-  # Check version from 1.6.0.21 to 1.6.0.23
   if(version_in_range(version:jreVer, test_version:"1.6.0.21", test_version2:"1.6.0.23"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  # Check version from 1.6.0.21 to 1.6.0.23
-  if(version_in_range(version:jdkVer, test_version:"1.6.0.21", test_version2:"1.6.0.23")){  
-     security_message(0);
+  if(version_in_range(version:jdkVer, test_version:"1.6.0.21", test_version2:"1.6.0.23")){
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
+     exit(0);
   }
 }
 
+exit(99);

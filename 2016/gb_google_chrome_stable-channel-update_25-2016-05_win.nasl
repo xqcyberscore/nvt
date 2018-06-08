@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_25-2016-05_win.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_google_chrome_stable-channel-update_25-2016-05_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_25-2016-05)-Windows
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,24 +29,23 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807334");
-  script_version("$Revision: 5513 $");
-  script_cve_id("CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675", 
-                "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679", 
-                "CVE-2016-1680", "CVE-2016-1681", "CVE-2016-1682", "CVE-2016-1683", 
-                "CVE-2016-1684", "CVE-2016-1685", "CVE-2016-1686", "CVE-2016-1687", 
-                "CVE-2016-1688", "CVE-2016-1689", "CVE-2016-1690", "CVE-2016-1691", 
+  script_version("$Revision: 10133 $");
+  script_cve_id("CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675",
+                "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679",
+                "CVE-2016-1680", "CVE-2016-1681", "CVE-2016-1682", "CVE-2016-1683",
+                "CVE-2016-1684", "CVE-2016-1685", "CVE-2016-1686", "CVE-2016-1687",
+                "CVE-2016-1688", "CVE-2016-1689", "CVE-2016-1690", "CVE-2016-1691",
                 "CVE-2016-1692", "CVE-2016-1693", "CVE-2016-1694", "CVE-2016-1695");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-05-30 13:22:34 +0530 (Mon, 30 May 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_25-2016-05)-Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to
   - Cross-origin bypass in extension bindings.
@@ -78,7 +77,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name: "affected" , value:"Google Chrome version
   prior to 51.0.2704.63 on Windows");
 
   script_tag(name: "solution", value:"Upgrade to Google Chrome version
@@ -94,7 +93,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -102,15 +101,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"51.0.2704.63"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"51.0.2704.63");

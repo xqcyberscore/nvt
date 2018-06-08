@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Freetype Engine Integer Overflow Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attacker execute arbitrary code or crash an
-  affected application or gain the same user rights as the logged-on user.
-  Impact Level: System/Application";
-tag_affected = "Foxit Reader version prior to 4.0.0.0619";
-tag_insight = "The flaw is due to an error in FreeType engine when handling certain
-  invalid font type, which allows attackers to execute arbitrary code.";
-tag_solution = "Upgrade to Foxit Reader version 4.0.0.0619 or later.
-  For updates refer to http://www.foxitsoftware.com/downloads/";
-tag_summary = "The host is installed with Foxit Reader and is prone to
-  integer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902605");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10140 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1908");
   script_bugtraq_id(48359);
@@ -54,13 +43,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attacker execute arbitrary code or crash an
+  affected application or gain the same user rights as the logged-on user.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Foxit Reader version prior to 4.0.0.0619");
+  script_tag(name : "insight" , value : "The flaw is due to an error in FreeType engine when handling certain
+  invalid font type, which allows attackers to execute arbitrary code.");
+  script_tag(name : "solution" , value : "Upgrade to Foxit Reader version 4.0.0.0619 or later.
+  For updates refer to http://www.foxitsoftware.com/downloads/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to
+  integer overflow vulnerability.");
   exit(0);
 }
 
@@ -75,5 +70,8 @@ if(!foxVer){
 
 ## To check Foxit Reader version before 4.0.0.0619
 if(version_is_less(version:foxVer,test_version:"4.0.0.0619")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

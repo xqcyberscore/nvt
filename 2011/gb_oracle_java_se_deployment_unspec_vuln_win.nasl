@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_deployment_unspec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_oracle_java_se_deployment_unspec_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)
 #
@@ -24,26 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to affect confidentiality,
-  integrity, and availability via unknown vectors.
-  Impact Level: System/Application";
-tag_affected = "Oracle Java SE versions 6 Update 27 and earlier.";
-tag_insight = "The flaw is due to unspecified error in the 'Deployment' sub-component.";
-tag_solution = "Upgrade to Oracle Java SE versions 6 Update 29 or later.
-  For updates refer to
-  http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html";
-tag_summary = "This host is installed with Oracle Java SE and is prone to
-  unspecified vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802278");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2011-3516");
   script_bugtraq_id(50229);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");
@@ -52,13 +41,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to affect confidentiality,
+  integrity, and availability via unknown vectors.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Oracle Java SE versions 6 Update 27 and earlier.");
+  script_tag(name : "insight" , value : "The flaw is due to unspecified error in the 'Deployment' sub-component.");
+  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE versions 6 Update 29 or later.
+  For updates refer to
+  http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
+  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to
+  unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -67,25 +61,21 @@ if(description)
 
 include("version_func.inc");
 
-## Get JRE Version from KB
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
 
-  ## Check for Oracle Java SE versions 6 Update 27 and earlier
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.27"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Get JDK Version from KB
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  ## Check for Oracle Java SE versions 6 Update 27 and earlier
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.27")) {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

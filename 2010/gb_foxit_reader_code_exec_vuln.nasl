@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_code_exec_vuln.nasl 8269 2018-01-02 07:28:22Z teissa $
+# $Id: gb_foxit_reader_code_exec_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Arbitrary Command Execution Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attacker to execute arbitrary code or crash an
-  affected application.
-  Impact Level: Application";
-tag_affected = "Foxit Reader version prior to 3.2.1.0401";
-tag_insight = "The flaw exists due to error in hadling 'PDF' files which runs executable
-  embedded program inside a PDF automatically without asking for user permission.";
-tag_solution = "Upgrade to the version 3.2.1.0401 or later,
-  For updates refer to http://www.foxitsoftware.com/downloads/";
-tag_summary = "The host is installed with Foxit Reader and is prone to
-  arbitrary command execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801313");
-  script_version("$Revision: 8269 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
+  script_version("$Revision: 10140 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1239");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,13 +43,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attacker to execute arbitrary code or crash an
+  affected application.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Foxit Reader version prior to 3.2.1.0401");
+  script_tag(name : "insight" , value : "The flaw exists due to error in handling 'PDF' files which runs executable
+  embedded program inside a PDF automatically without asking for user permission.");
+  script_tag(name : "solution" , value : "Upgrade to the version 3.2.1.0401 or later,
+  For updates refer to http://www.foxitsoftware.com/downloads/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to
+  arbitrary command execution vulnerability.");
   exit(0);
 }
 
@@ -71,6 +66,9 @@ foxVer = get_kb_item("Foxit/Reader/Ver");
 if(foxVer)
 {
   if(version_is_less(version:foxVer,test_version:"3.2.1.0401")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
   }
 }
+
+exit(99);

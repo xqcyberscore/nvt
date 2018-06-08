@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_wemo_switch_auth_bypass_vuln.nasl 9410 2018-04-09 14:01:43Z asteins $
+# $Id: gb_belkin_wemo_switch_auth_bypass_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
 #
 # Belkin WeMo Switch Access Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:belkin:wemo_home_automation_firmware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140283");
-  script_version("$Revision: 9410 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-09 16:01:43 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 10128 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name: "creation_date", value: "2017-08-08 13:57:04 +0700 (Tue, 08 Aug 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -59,8 +59,8 @@ Switch by sending a crafted SOAP request to '/upnp/control/basicevent1'.");
 
   script_tag(name: "affected", value: "Belkin WeMo Switch firmware 2.00.10966 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 09th April, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+this issue will be updated once solution details are available.");
 
   exit(0);
 }

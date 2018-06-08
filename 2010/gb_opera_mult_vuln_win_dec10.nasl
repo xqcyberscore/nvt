@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_dec10.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_opera_mult_vuln_win_dec10.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities December-10 (Windows)
 #
@@ -24,34 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to obtain sensitive
-  information and cause a denial of service.
-  Impact Level: Application";
-tag_affected = "Opera Web Browser Version prior 11.00";
-tag_insight = "Multiple flaws are cause due to:
-  - WAP fails to clear 'WML' form fields after manual navigation to a new web
-    site, which allows remote attackers to obtain sensitive information.
-  - Not properly constrain dialogs to appear on top of rendered documents.
-  - Unspecified vulnerability which has unknown impact and attack vectors.
-  - Not display a page's security indication, when Opera Turbo is enabled.
-  - Not properly handling security policies during updates to extensions.
-  - Fails to present information about problematic 'X.509' certificates on
-    https web sites, when 'Opera Turbo' is used.
-  - Unspecified vulnerability in the auto-update functionality, which leads
-    to a denial of service.
-  - Fails to implement the Insecure Third Party Module warning message.
-  - Enabling 'WebSockets' functionality, which has unspecified impact and
-    remote attack vectors.";
-tag_solution = "Upgrade to Opera Web Browser Version 11.00 or later,
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801495");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4579", "CVE-2010-4580", "CVE-2010-4581", "CVE-2010-4582",
                 "CVE-2010-4583", "CVE-2010-4584", "CVE-2010-4585", "CVE-2010-4586",
@@ -67,26 +44,54 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
+  information and cause a denial of service.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera Web Browser Version prior 11.00");
+  script_tag(name : "insight" , value : "Multiple flaws are caused due to:
+
+  - WAP fails to clear 'WML' form fields after manual navigation to a new web
+    site, which allows remote attackers to obtain sensitive information.
+
+  - Not properly constrain dialogs to appear on top of rendered documents.
+
+  - Unspecified vulnerability which has unknown impact and attack vectors.
+
+  - Not display a page's security indication, when Opera Turbo is enabled.
+
+  - Not properly handling security policies during updates to extensions.
+
+  - Fails to present information about problematic 'X.509' certificates on
+    https web sites, when 'Opera Turbo' is used.
+
+  - Unspecified vulnerability in the auto-update functionality, which leads
+    to a denial of service.
+
+  - Fails to implement the Insecure Third Party Module warning message.
+
+  - Enabling 'WebSockets' functionality, which has unspecified impact and
+    remote attack vectors.");
+  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 11.00 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Opera browser and is prone to multiple
+  vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Opera Version from KB
 operaVer = get_kb_item("Opera/Win/Version");
 
 if(operaVer)
 {
-  ## Grep for Opera Versions prior to 11.00
   if(version_is_less(version:operaVer, test_version:"11.00")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
   }
 }
+
+exit(99);

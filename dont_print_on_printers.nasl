@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 9937 2018-05-23 14:17:21Z cfischer $
+# $Id: dont_print_on_printers.nasl 10143 2018-06-08 13:43:47Z santu $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 9937 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:17:21 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10143 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -297,7 +297,9 @@ foreach port( ports ) {
   url = "/";
   buf = http_get_cache( item:url, port:port );
   if( ( "erver: Catwalk" >< buf && "com.canon.meap.service" >< buf ) ||
-      ( 'canonlogo.gif" alt="CANON"' >< buf && ">Copyright CANON INC" >< buf ) ) {
+      ( (('canonlogo.gif" alt="CANON"' >< buf) || ("canonlogo.gif" >< buf && "Series</title>" >< buf)) &&
+       ">Copyright CANON INC" >< buf ) ) {
+
     is_printer = TRUE;
     reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
     break;

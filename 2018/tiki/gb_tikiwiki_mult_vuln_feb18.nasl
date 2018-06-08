@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
 #
-# Tiki Wiki Multiple Vulnerabilities Feb18 
+# Tiki Wiki Multiple Vulnerabilities Feb18
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
@@ -30,14 +30,14 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 9338 $");
+  script_version("$Revision: 10128 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
-  
+
   script_tag(name:"summary", value:"The host is installed with Tiki Wiki CMS
   and is prone to multiple vulnerabilities.");
 
@@ -46,7 +46,7 @@ if (description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - The CMS allows upload of .PNG file which is actually having SVG content without 
+  - The CMS allows upload of .PNG file which is actually having SVG content without
     checking.
 
   - The CMS does not validate the user input for special characters.
@@ -61,9 +61,8 @@ if (description)
 
   script_tag(name:"affected", value:"Tiki Wiki version 17.1");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 6th April, 2018. Information
-regarding this issue will be updated once solution details are available.");
-  
+  script_tag(name:"solution", value:"No known solution is available as of 08th June, 2018. Information regarding this issue will be updated once solution details are available.");
+
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://websecnerd.blogspot.in/2018/01/tiki-wiki-cms-groupware-17.html");
@@ -88,7 +87,7 @@ path = infos['location'];
 
 if(version_is_equal(version:vers, test_version:"17.1"))
 {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"None Available", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"None", install_path:path);
   security_message(data:report, port:port);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_code_exec_vuln_may18_win.nasl 9979 2018-05-28 08:58:29Z santu $
+# $Id: gb_foxit_reader_mult_code_exec_vuln_may18_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Code Execution Vulnerabilities - May18 (Windows)
 #
@@ -30,21 +30,20 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812897");
-  script_version("$Revision: 9979 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2018-5674", "CVE-2018-5677", "CVE-2018-5676", "CVE-2018-5675",
                 "CVE-2018-5678", "CVE-2018-5680", "CVE-2018-5679", "CVE-2018-7407",
                 "CVE-2018-7406");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:58:29 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 15:43:57 +0530 (Fri, 25 May 2018)");
   script_name("Foxit Reader Multiple Code Execution Vulnerabilities - May18 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader and
   is prone to multiple code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -71,7 +70,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }

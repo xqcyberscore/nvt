@@ -1,14 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dbman_cgi.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: dbman_cgi.nasl 10122 2018-06-07 13:09:58Z cfischer $
 #
 # DBMan CGI server information leakage
 #
 # Authors:
 # Noam Rathaus <noamr@securiteam.com>
-# Changes by rd :
-#  - script_id
-#  - script_bugtraq_id(1178);
+# Changes by rd
 #
 # Copyright:
 # Copyright (C) 2000 SecuriTeam
@@ -30,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10403");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 10122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1178);
   script_tag(name:"cvss_base", value:"6.4");

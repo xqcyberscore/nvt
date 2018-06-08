@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
 #
 # PuTTY Information Disclosure vulnerability Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805434");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 10142 $");
   script_cve_id("CVE-2015-2157");
   script_bugtraq_id(72825);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-03-31 13:05:20 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Information Disclosure vulnerability Mar15 (Windows)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name: "summary" , value:"The host is installed with PuTTY and is
   prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to the program failing to
   clear SSH-2 private key information from the memory during the saving or
@@ -66,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_putty_version.nasl");
+  script_dependencies("gb_putty_portable_detect.nasl");
   script_mandatory_keys("PuTTY/Version");
   exit(0);
 }
@@ -75,16 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-puttyVer = "";
-report = "";
-
-## Get version
 if(!puttyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:puttyVer, test_version:"0.51", test_version2:"0.63"))
 {
   report = 'Installed version: ' + puttyVer + '\n' +

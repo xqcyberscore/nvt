@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_code_exe_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_sun_java_jre_code_exe_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Sun Java JRE Remote Code Execution Vulnerability (Windows)
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code in
-  the context of the affected application.
-  Impact Level: Application.";
-tag_affected = "Sun Java JRE 6 prior to 6 Update 17 on Windows.";
-tag_insight = "- A command execution vulnerability in the Java Runtime Environment Deployment
-    Toolkit may be exploited via specially crafted web pages.
-  - An error occurs while using security model permissions when removing
-    installer extensions and may allow an untrusted applications to run
-    as a trusted application.
-  - An error occurs while handling interaction between a signed JAR file
-    and a JNLP application or applet.";
-tag_solution = "Upgrade to JRE version 6 Update 17
-  http://java.sun.com/javase/downloads/index.jsp";
-tag_summary = "This host is installed with Sun Java JRE and is prone to Remote
-  Code Execution Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800977");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-11-13 15:48:12 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -59,13 +43,23 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary code in
+  the context of the affected application.
+  Impact Level: Application.");
+  script_tag(name : "affected" , value : "Sun Java JRE 6 prior to 6 Update 17 on Windows.");
+  script_tag(name : "insight" , value : "- A command execution vulnerability in the Java Runtime Environment Deployment
+    Toolkit may be exploited via specially crafted web pages.
+  - An error occurs while using security model permissions when removing
+    installer extensions and may allow an untrusted applications to run
+    as a trusted application.
+  - An error occurs while handling interaction between a signed JAR file
+    and a JNLP application or applet.");
+  script_tag(name : "solution" , value : "Upgrade to JRE version 6 Update 17
+  http://java.sun.com/javase/downloads/index.jsp");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java JRE and is prone to Remote
+  Code Execution Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -88,10 +82,9 @@ foreach ver (version)
 {
   if(ver)
   {
-    # Check for 1.6 < 1.6.0_17 (6 Update 17)
     if(version_in_range(version:ver, test_version:"1.6", test_version2:"1.6.0.16"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

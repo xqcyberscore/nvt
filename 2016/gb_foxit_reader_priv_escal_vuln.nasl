@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_priv_escal_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_foxit_reader_priv_escal_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Local Privilege Escalation Vulnerability
 #
@@ -29,30 +29,29 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807560");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2015-8843");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 10:28:01 +0530 (Tue, 26 Apr 2016)");
   script_name("Foxit Reader Local Privilege Escalation Vulnerability");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in 
-  FoxitCloudUpdateService service which can trigger a memory corruption condition 
+  script_tag(name: "insight" , value:"The flaw is due to an error in
+  FoxitCloudUpdateService service which can trigger a memory corruption condition
   by writing certain data to a shared memory region.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow 
+  script_tag(name: "impact" , value:"Successful exploitation will allow
   attackers to execute code under the context of system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version 7.2.0.722 
+  script_tag(name: "affected" , value:"Foxit Reader version 7.2.0.722
   and earlier.");
 
   script_tag(name: "solution" , value:"Upgrade to Foxit Reader version
@@ -68,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -76,15 +75,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Foxit Reader version 7.2.2 = 7.2.2.929
 if(version_is_less_equal(version:foxitVer, test_version:"7.2.0.722"))
 {

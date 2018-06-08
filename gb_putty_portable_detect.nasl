@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_portable_detect.nasl 10082 2018-06-05 12:51:08Z tpassfeld $
+# $Id: gb_putty_portable_detect.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
 #
 # PuTTY Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114006");
-  script_version("$Revision: 10082 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 14:51:08 +0200 (Tue, 05 Jun 2018) $");
+  script_version("$Revision: 10142 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 18:16:21 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,7 +92,7 @@ foreach filePath( fileList ) {
   # to keep the install location registration the same way like in secpod_putty_version.nasl
   location = filePath - "\putty.exe";
   if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
-	
+
   # nb: wmi_file_fileversion needs doubled backslash in the path but
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );

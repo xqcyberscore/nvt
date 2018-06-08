@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_yarr_code_exec_vuln_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_yarr_code_exec_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products 'YARR' Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802173");
-  script_version("$Revision: 9911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_cve_id("CVE-2011-3232");
   script_bugtraq_id(49850);
@@ -44,7 +44,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl",
                       "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
+                      "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code in the
   context of the user running the affected application.
@@ -77,7 +77,7 @@ ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"7.0")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
      exit(0);
   }
 }
@@ -88,7 +88,7 @@ if(seaVer)
 {
   if(version_is_less(version:seaVer, test_version:"2.4"))
   {
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
      exit(0);
   }
 }
@@ -98,6 +98,6 @@ tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
   if(version_is_less(version:tbVer, test_version:"7.0")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

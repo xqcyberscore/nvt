@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: X.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: X.nasl 10123 2018-06-07 13:22:15Z cfischer $
 #
 # X Server Detection
 #
@@ -8,10 +8,7 @@
 # John Jackson <jjackson@attrition.org>
 # Pavel Kankovsky <kan@dcit.cz>:
 # proper X11 protocol handling
-# Changes by rd :
-# - description
-# - minor style issues
-# - script_require_ports()
+# Changes by rd
 #
 # Copyright:
 # Copyright (C) 2000 John Jackson
@@ -32,14 +29,14 @@
 
 # Fri May 12 15:58:21 GMT 2000
 # Test for an "open" X server
-# An X server's access control is disabled (e.g. through an "xhost +" command) and 
-# allows anyone to connect to the server. 
+# An X server's access control is disabled (e.g. through an "xhost +" command) and
+# allows anyone to connect to the server.
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10407");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10123 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:22:15 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,22 +47,20 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(6000, 6001, 6002, 6003, 6004, 6005, 6006, 6007, 6008, 6009);
 
-  tag_summary = "This plugin detects X Window servers.
+  script_tag(name:"summary", value:"This plugin detects X Window servers.
 
-  X11 is a client - server protocol. Basically, the server is in charge of the 
-  screen, and the clients connect to it and send several requests like drawing 
-  a window or a menu, and the server sends events back to the clients, such as 
+  X11 is a client - server protocol. Basically, the server is in charge of the
+  screen, and the clients connect to it and send several requests like drawing
+  a window or a menu, and the server sends events back to the clients, such as
   mouse clicks, key strokes, and so on...
 
-  An improperly configured X server will accept connections from clients from 
-  anywhere. This allows an attacker to make a client connect to the X server to 
+  An improperly configured X server will accept connections from clients from
+  anywhere. This allows an attacker to make a client connect to the X server to
   record the keystrokes of the user, which may contain sensitive information,
   such as account passwords.
   This can be prevented by using xauth, MIT cookies, or preventing
-  the X server from listening on TCP (a Unix sock is used for local 
-  connections)";
-
-  script_tag(name:"summary", value:tag_summary);
+  the X server from listening on TCP (a Unix sock is used for local
+  connections)");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -78,7 +73,7 @@ include("misc_func.inc");
 
 function riptext( data, begin, length ) {
 
-  local_var data, begin, length, cound, end, text;
+  local_var data, begin, length, count, end, text;
 
   count = begin;
   end = begin + length - 1;

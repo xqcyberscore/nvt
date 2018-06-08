@@ -29,51 +29,32 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804706");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:04:28 +0530 (Fri, 04 Jul 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 July14 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Thunderbird and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
 - An error in the 'RefreshDriverTimer::TickDriver' function in the SMIL
   Animation Controller.
 - An error in the 'nsTextEditRules::CreateMozBR' function.
 - An Unspecified error in the browser engine.
-- And some unspecified errors exist.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to conduct clickjacking attacks
+- And some unspecified errors exist.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct clickjacking attacks
 and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Thunderbird version before 24.6 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Thunderbird version 24.6 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Thunderbird version before 24.6 on Windows");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 24.6 or later,
+For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -82,7 +63,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }
@@ -91,17 +72,12 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"24.6"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

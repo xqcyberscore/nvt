@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 7618 2017-11-02 06:51:15Z cfischer $
+# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 10116 2018-06-07 10:39:19Z cfischer $
 #
 # Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability
 #
@@ -28,39 +28,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902935");
-  script_version("$Revision: 7618 $");
+  script_version("$Revision: 10116 $");
   script_cve_id("CVE-2012-4964");
   script_bugtraq_id(56692);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 07:51:15 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-11-28 13:37:22 +0530 (Wed, 28 Nov 2012)");
   script_name("Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability");
-
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/281284");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Nov/196");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118413/samsung-backdoor.txt");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("SNMP");
-  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("snmp_detect.nasl");
   script_require_udp_ports("Services/udp/snmp", 161, 1118);
   script_mandatory_keys("SNMP/detected");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to access an affected device
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/281284");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Nov/196");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118413/samsung-backdoor.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to access an affected device
   with administrative privileges, make changes to the device configuration and
   access to sensitive information.
+
   Impact Level: System/Application");
-  script_tag(name : "insight" , value : "Samsung printers (as well as some Dell printers manufactured by Samsung)
+
+  script_tag(name:"insight", value:"Samsung printers (as well as some Dell printers manufactured by Samsung)
   contain a hardcoded SNMP full read-write community string that remains
   active even when SNMP is disabled in the printer management utility.");
-  script_tag(name : "solution" , value : "Upgrade Samsung Printer to 20121031 or later,
+
+  script_tag(name:"solution", value:"Upgrade Samsung Printer to 20121031 or later,
   http://www.samsung.com/in/consumer/pc-peripherals-printer/laser-printer-multifunction/");
-  script_tag(name : "summary" , value : "This host has Samsung Printer firmware and is prone to authentication bypass
+
+  script_tag(name:"summary", value:"This host has Samsung Printer firmware and is prone to authentication bypass
   vulnerability.");
-  script_tag(name : "affected" , value : "Samsung Printers firmware version prior to 20121031
+
+  script_tag(name:"affected", value:"Samsung Printers firmware version prior to 20121031
 
   NOTE: Samsung has stated that models released after October 31, 2012 are not
         affected by this vulnerability. Samsung has also indicated that they
@@ -71,7 +74,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
-
 }
 
 include("dump.inc");
@@ -124,7 +126,7 @@ function test(community,port) {
   for (i=0; i<3; i++) {
 
     sendata = raw_string(
-                  0x30, 0x82, len_hi, len_lo, 
+                  0x30, 0x82, len_hi, len_lo,
                   0x02, 0x01, i, 0x04,
                   sz);
 

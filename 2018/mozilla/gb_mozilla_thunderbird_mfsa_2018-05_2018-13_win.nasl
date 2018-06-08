@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-Windows
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812892");
-  script_version("$Revision: 9934 $");
-  script_cve_id("CVE-2018-5183", "CVE-2018-5184", "CVE-2018-5154", "CVE-2018-5155", 
-                "CVE-2018-5159", "CVE-2018-5161", "CVE-2018-5162", "CVE-2018-5170", 
-                "CVE-2018-5168", "CVE-2018-5174", "CVE-2018-5178", "CVE-2018-5185", 
+  script_version("$Revision: 10135 $");
+  script_cve_id("CVE-2018-5183", "CVE-2018-5184", "CVE-2018-5154", "CVE-2018-5155",
+                "CVE-2018-5159", "CVE-2018-5161", "CVE-2018-5162", "CVE-2018-5170",
+                "CVE-2018-5168", "CVE-2018-5174", "CVE-2018-5178", "CVE-2018-5185",
                 "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 11:26:11 +0530 (Tue, 22 May 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The Flaw exist due to,
 
   - Momory corruption issues in Skia library.
-  
+
   - Remote content in encrypted messages.
 
   - While enumerating attributes during SVG animations with clip paths.
@@ -58,7 +57,7 @@ if(description)
 
   - 32-bit integer use in an array without integer overflow checks in Skia
     library.
- 
+
   - Crafted message headers.
 
   - src attribute of remote images, or links.
@@ -79,7 +78,7 @@ if(description)
 
   script_tag(name: "impact" , value:"Successful exploitation of this
   vulnerability will allow remote attackers to reads and writes invalid buffer,
-  disclosure of plaintext, use-after-free vulnerability, integer overflow, 
+  disclosure of plaintext, use-after-free vulnerability, integer overflow,
   hang on receiving the message, user opening a remote attachment which is a
   different file type than expected, allow a malicious site to install a theme
   without user interaction, allow an unknown and potentially dangerous file to
@@ -87,7 +86,7 @@ if(description)
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
+  script_tag(name: "affected" , value:"Mozilla Thunderbird version before
   52.8 on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.8
@@ -100,7 +99,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }

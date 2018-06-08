@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_bof_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: gb_foxit_reader_mult_bof_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Buffer Overflow Vulnerabilities
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow the attackers to execute arbitrary code
-  in the context of an application that uses the affected library. Failed
-  exploit attempts will likely result in denial-of-service conditions.
-  Impact Level: Application";
-tag_affected = "Foxit Reader version prior to 4.1.1 (4.1.1.0805)";
-tag_insight = "Multiple flaws are due to an error in the handling of 'PDF'
-  documents. It is not properly rendering the PDF documents.";
-tag_solution = "Upgrade to the Foxit Reader version 4.1.1 or later,
-  For updates refer to http://www.foxitsoftware.com/downloads/index.php";
-tag_summary = "The host is installed with Foxit Reader and is prone to multiple
-  buffer overflow vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801425");
-  script_version("$Revision: 8338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 10140 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42241);
   script_tag(name:"cvss_base", value:"6.8");
@@ -54,26 +42,34 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to execute arbitrary code
+  in the context of an application that uses the affected library. Failed
+  exploit attempts will likely result in denial-of-service conditions.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Foxit Reader version prior to 4.1.1 (4.1.1.0805)");
+  script_tag(name : "insight" , value : "Multiple flaws are due to an error in the handling of 'PDF'
+  documents. It is not properly rendering the PDF documents.");
+  script_tag(name : "solution" , value : "Upgrade to the Foxit Reader version 4.1.1 or later,
+  For updates refer to http://www.foxitsoftware.com/downloads/index.php");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to multiple
+  buffer overflow vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get the version from KB
 foxitVer = get_kb_item("Foxit/Reader/Ver");
 if(!foxitVer){
   exit(0);
 }
 
-## Check for Foxit Reader Version less than 4.1.1.0805
 if(version_is_less(version:foxitVer, test_version:"4.1.1.0805")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

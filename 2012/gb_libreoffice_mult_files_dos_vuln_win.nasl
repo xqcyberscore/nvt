@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice Import Files Denial of Service Vulnerabilities (Windows)
 #
@@ -24,28 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause a denial of
-  service condition.
-  Impact Level: Application";
-tag_affected = "LibreOffice version 3.5.x before 3.5.7.2 and 3.6.x before 3.6.1";
-
-tag_insight = "The flaws exist in multiple import files, which allows attacker to crash
-  the application via a crafted file in the .xls (Excel), .wmf
-  (Window Meta File) or Open Document Format files.";
-tag_solution = "Upgrade to LibreOffice version 3.5.7.2 or 3.6.1 or later.
-  For updates refer to http://www.libreoffice.org/download/";
-tag_summary = "This host is installed with LibreOffice and is prone to denial of
-  service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803064");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2012-4233");
   script_bugtraq_id(56352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:04:53 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Import Files Denial of Service Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027727");
@@ -55,13 +42,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_require_keys("LibreOffice/Win/Ver");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : "The flaws exist in multiple import files, which allows attacker to crash
+  the application via a crafted file in the .xls (Excel), .wmf
+  (Window Meta File) or Open Document Format files.");
+  script_tag(name : "solution" , value : "Upgrade to LibreOffice version 3.5.7.2 or 3.6.1 or later.
+  For updates refer to http://www.libreoffice.org/download/");
+  script_tag(name : "summary" , value : "This host is installed with LibreOffice and is prone to denial of
+  service vulnerability.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a denial of
+  service condition.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "LibreOffice version 3.5.x before 3.5.7.2 and 3.6.x before 3.6.1");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,14 +65,12 @@ include("version_func.inc");
 
 officeVer = "";
 
-## Get the version from KB
 officeVer = get_kb_item("LibreOffice/Win/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Check for LibreOffice version 3.6.0.x and 3.5.x before 3.5.7.2
-if(officeVer =~ "^3.6.0" ||
+if(officeVer =~ "^3\.6\.0" ||
    version_in_range(version:officeVer, test_version:"3.5", test_version2:"3.5.7.1")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_dec08_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_thunderbird_mult_vuln_dec08_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities December-08 (Windows)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The host is installed with Mozilla Thunderbird and is prone to
-  multiple vulnerabilities.
-
-  Vulnerability:
-  Refer to the reference links for more information on the vulnerabilities.";
-
-tag_impact = "Successful exploitation could result in remote arbitrary code execution,
-  bypass security restrictions, sensitive information disclosure, cross
-  site scripting attacks and execute JavaScript code with chrome privileges.
-  Impact Level: System";
-tag_affected = "Thunderbird version prior to 2.0.0.19 on Windows.";
-tag_solution = "Upgrade to Thunderbird version 2.0.0.19
-  http://www.mozilla.com/en-US/thunderbird/all.html";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800090");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,12 +48,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in remote arbitrary code execution,
+  bypass security restrictions, sensitive information disclosure, cross
+  site scripting attacks and execute JavaScript code with chrome privileges.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Thunderbird version prior to 2.0.0.19 on Windows.");
+  script_tag(name : "solution" , value : "Upgrade to Thunderbird version 2.0.0.19
+  http://www.mozilla.com/en-US/thunderbird/all.html");
+  script_tag(name : "summary" , value : "The host is installed with Mozilla Thunderbird and is prone to
+  multiple vulnerabilities.
+
+  Vulnerability:
+  Refer to the reference links for more information on the vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -83,5 +77,5 @@ if(!tbVer){
 
 # Thunderbird version < 2.0.0.19
 if(version_is_less(version:tbVer, test_version:"2.0.0.19")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

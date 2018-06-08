@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_widget_info_disc_vuln_win_july10.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: gb_opera_widget_info_disc_vuln_win_july10.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser 'widget' Information Disclosure Vulnerability july-10 (Windows)
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to obtain potentially sensitive
-  information via a crafted web site.
-  Impact Level: Application";
-tag_affected = "Opera version prior to 10.50 on Windows.";
-tag_insight = "The flaw is due to error in handling of 'widget' properties, which
-  makes widget properties accessible to third-party domains.";
-tag_solution = "Upgrade to Opera 10.50 or later,
-  For updates refer to http://www.opera.com/download/?os=windows&list=all";
-tag_summary = "The host is installed with Opera web browser and is prone to
-  information disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801371");
-  script_version("$Revision: 8338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 18:57:03 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2659");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,26 +43,33 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers obtain potentially sensitive
+  information via a crafted web site.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version prior to 10.50 on Windows.");
+  script_tag(name : "insight" , value : "The flaw is due to error in handling of 'widget' properties, which
+  makes widget properties accessible to third-party domains.");
+  script_tag(name : "solution" , value : "Upgrade to Opera 10.50 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Opera web browser and is prone to
+  information disclosure vulnerability.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Opera version from from KB list
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check if version is lesser than 10.50
 if(version_is_less(version:operaVer, test_version:"10.50")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_apr10.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: gb_google_chrome_mult_vuln_apr10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities (win)
 #
@@ -24,34 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary code, bypass
-  security restrictions, sensitive information disclosure, and can cause other
-  attacks.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 4.1.249.1036 on Windows.";
-tag_insight = "Multiple flaws are due to:
-  - An error in handling 'SVG' document.
-  - Multiple race conditions in the 'sandbox' infrastructure.
-  - An error in 'sandbox' infrastructure which does not properly use pointers.
-  - An error in proceesing of 'HTTP' headers, processes HTTP headers before
-    invoking the SafeBrowsing feature.
-  - not having the expected behavior for attempts to delete Web SQL
-    Databases and clear the 'Strict Transport Security (STS)' state.
-  - An error in processing of 'HTTP Basic Authentication dialog'.
-  - Multiple integer overflows errors when processing 'WebKit JavaScript'
-    objects.
-  - not properly restricting cross-origin operations, which has unspecified
-    impact and remote attack vectors.";
-tag_solution = "Upgrade to the version 4.1.249.1036 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome Web Browser and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801312");
-  script_version("$Revision: 8187 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1228", "CVE-2010-1229", "CVE-2010-1230", "CVE-2010-1231",
                 "CVE-2010-1232", "CVE-2010-1233", "CVE-2010-1234", "CVE-2010-1235",
@@ -66,13 +43,39 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary code, bypass
+  security restrictions, sensitive information disclosure, and can cause other
+  attacks.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 4.1.249.1036 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+
+  - An error in handling 'SVG' document.
+
+  - Multiple race conditions in the 'sandbox' infrastructure.
+
+  - An error in 'sandbox' infrastructure which does not properly use pointers.
+
+  - An error in proceesing of 'HTTP' headers, processes HTTP headers before
+    invoking the SafeBrowsing feature.
+
+  - not having the expected behavior for attempts to delete Web SQL
+    Databases and clear the 'Strict Transport Security (STS)' state.
+
+  - An error in processing of 'HTTP Basic Authentication dialog'.
+
+  - Multiple integer overflows errors when processing 'WebKit JavaScript'
+    objects.
+
+  - not properly restricting cross-origin operations, which has unspecified
+    impact and remote attack vectors.");
+  script_tag(name : "solution" , value : "Upgrade to the version 4.1.249.1036 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome Web Browser and is prone to
+  multiple vulnerabilities.");
   exit(0);
 }
 
@@ -84,7 +87,9 @@ if(!gcVer){
   exit(0);
 }
 
-# Check for google chrome Version less than 4.1.249.1036
 if(version_is_less(version:gcVer, test_version:"4.1.249.1036")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

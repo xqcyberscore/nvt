@@ -1,6 +1,6 @@
 #################################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Java JRE deploytk.dll ActiveX Control Multiple BOF Vulnerabilities
 #
@@ -24,32 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #################################################################################
 
-tag_solution = "Upgrade to Sun Java JRE version 6 Update 20 or later.
-  For updates refer to http://java.sun.com
-
-  Workaround:
-  Set the killbit for the CLSID {CAFEEFAC-DEC7-0000-0000-ABCDEFFEDCBA}
-  http://support.microsoft.com/kb/240797";
-
-tag_impact = "Attacker may exploit this issue to launch JRE installation and execute
-  arbitrary script code on the victim's system, and can deny the service.
-  Impact Level: System/Application";
-tag_affected = "Sun Java JRE version 6 Update 1 to 6 Update 13 and prior
-  Sun Microsystems, deploytk.dll version 6.0.130.3 and prior";
-tag_insight = "Multiple buffer overflows are due to,
-  - error in deploytk.dll file control while processing the setInstallerType,
-    setAdditionalPackages, compareVersion, getStaticCLSID and launch method.
-  - error in installLatestJRE or installJRE method in deploytk.dll control and
-    it can allow attacker to launch JRE installation processes.
-  - error in launch method can cause script code execution via a .jnlp URL.";
-tag_summary = "This host is installed with Java JRE Deployment Toolkit ActiveX and
-  is prone to multiple buffer overflow vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900354");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,14 +41,29 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "An attacker may exploit this issue to launch JRE installation and execute
+  arbitrary script code on the victim's system, and can deny the service.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Sun Java JRE version 6 Update 1 to 6 Update 13 and prior
+  Sun Microsystems, deploytk.dll version 6.0.130.3 and prior");
+  script_tag(name : "insight" , value : "Multiple buffer overflows are due to,
+  - error in deploytk.dll file control while processing the setInstallerType,
+    setAdditionalPackages, compareVersion, getStaticCLSID and launch method.
+  - error in installLatestJRE or installJRE method in deploytk.dll control and
+    it can allow attacker to launch JRE installation processes.
+  - error in launch method can cause script code execution via a .jnlp URL.");
+  script_tag(name : "summary" , value : "This host is installed with Java JRE Deployment Toolkit ActiveX and
+  is prone to multiple buffer overflow vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to Sun Java JRE version 6 Update 20 or later.
+  For updates refer to http://java.sun.com
+
+  Workaround:
+  Set the killbit for the CLSID {CAFEEFAC-DEC7-0000-0000-ABCDEFFEDCBA}
+  http://support.microsoft.com/kb/240797");
+  script_tag(name : "solution_type" , value : "VendorFix");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8665");
   script_xref(name : "URL" , value : "http://www.shinnai.net/xplits/TXT_mhxRKrtrPLyAHRFNm7QR.html");
   exit(0);
@@ -104,11 +98,13 @@ if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.1
     exit(0);
   }
 
-  # Check for version of deploytk.dll
   if(version_is_less_equal(version:dllVer, test_version:"6.0.130.3"))
   {
     if(is_killbit_set(clsid:"{CAFEEFAC-DEC7-0000-0000-ABCDEFFEDCBA}") == 0){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
+      exit(0);
     }
   }
 }
+
+exit(99);

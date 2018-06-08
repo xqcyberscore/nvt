@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_getsvgdocument_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_google_chrome_getsvgdocument_xss_vuln.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome 'getSVGDocument' Cross-Site Scripting Vulnerability
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to conduct XSS attacks
-  on the victim's system via SVG document.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 3.0.195.21 on Windows.";
-tag_insight = "Error exists when 'getSVGDocument' method omits an unspecified access check
-  which can be exploited by remote web servers to bypass the Same Origin
-  Policy and conduct XSS attacks via unknown vectors.";
-tag_solution = "Upgrade to Google Chrom version 3.0.195.21 or later
-  http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to Cross-Site
-  Scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900860");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -55,13 +43,19 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct XSS attacks
+  on the victim's system via SVG document.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 3.0.195.21 on Windows.");
+  script_tag(name : "insight" , value : "Error exists when 'getSVGDocument' method omits an unspecified access check
+  which can be exploited by remote web servers to bypass the Same Origin
+  Policy and conduct XSS attacks via unknown vectors.");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrom version 3.0.195.21 or later.");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to Cross-Site
+  Scripting vulnerability.");
   exit(0);
 }
 
@@ -73,7 +67,9 @@ if(!chromeVer){
   exit(0);
 }
 
-# Check for Google Chrome version < 3.0.195.21
 if(version_is_less(version:chromeVer, test_version:"3.0.195.21")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

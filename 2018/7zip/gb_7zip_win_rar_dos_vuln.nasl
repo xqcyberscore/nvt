@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_win_rar_dos_vuln.nasl 9827 2018-05-15 06:11:22Z emoss $
+# $Id: gb_7zip_win_rar_dos_vuln.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # 7zip RAR Denial of Service Vulnerability (Windows)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description) 
+if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107312");
-  script_version("$Revision: 9827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:11:22 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 16:37:09 +0200 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -40,12 +40,12 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_7zip_detect_win.nasl");
+  script_dependencies("gb_7zip_detect_portable_win.nasl");
   script_mandatory_keys("7zip/Win/Ver");
   script_tag(name:"summary", value:"7zip is prone to a RAR Denial of Service Vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Incorrect initialization logic of RAR decoder objects in 7-Zip 18.03 and before 
-  can lead to usage of uninitialized memory, allowing remote attackers to cause a denial of service (segmentation fault) 
+  script_tag(name:"insight", value:"Incorrect initialization logic of RAR decoder objects in 7-Zip 18.03 and before
+  can lead to usage of uninitialized memory, allowing remote attackers to cause a denial of service (segmentation fault)
   or execute arbitrary code via a crafted RAR archive.");
   script_tag(name:"affected", value:"7zip through version 18.03.");
   script_tag(name:"solution", value:"Upgrade to 7zip version 18.05 or later.");

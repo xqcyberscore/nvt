@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_spoofing_vuln_win.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: secpod_opera_spoofing_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser Address Bar Spoofing Vulnerability june-10 (Windows)
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to conduct spoofing
-attacks via a crafted HTML document.
-
-Impact Level: Application";
-
-tag_affected = "Opera version 10.54 and prior on Windows.";
-
-tag_insight = "The flaw is due to an error in handling of address bar, which
-does not properly manage the address bar between the request to open a URL and
-the retrieval of the new document's content.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is installed with Opera Web Browser and is prone to
-spoofing vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902216");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-07-02 08:02:13 +0200 (Fri, 02 Jul 2010)");
   script_cve_id("CVE-2010-2455");
   script_tag(name:"cvss_base", value:"4.3");
@@ -59,13 +40,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let attackers to conduct spoofing
+attacks via a crafted HTML document.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 10.54 and prior on Windows.");
+  script_tag(name : "insight" , value : "The flaw is due to an error in handling of address bar, which
+does not properly manage the address bar between the request to open a URL and
+the retrieval of the new document's content.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+spoofing vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
@@ -74,13 +64,14 @@ if(description)
 
 include("version_func.inc");
 
-## Get Opera version from from KB list
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check if version is lesser than 10.54
 if(version_is_less_equal(version:operaVer, test_version:"10.54")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

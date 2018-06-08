@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_sep10.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_win_sep10.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities sep-10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801450");
-  script_version("$Revision: 9911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-2760", "CVE-2010-2764", "CVE-2010-2766", "CVE-2010-2765",
                 "CVE-2010-2768", "CVE-2010-2767", "CVE-2010-2769", "CVE-2010-3166",
@@ -50,7 +50,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
+                      "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service,
   execute arbitrary code, or cause buffer overflow.
@@ -98,7 +98,7 @@ if(ffVer)
   if(version_in_range(version:ffVer, test_version:"3.6", test_version2:"3.6.8") ||
      version_in_range(version:ffVer, test_version:"3.5", test_version2:"3.5.11"))
      {
-       security_message(0);
+       security_message( port: 0, data: "The target host was found to be vulnerable" );
        exit(0);
      }
 }
@@ -109,7 +109,7 @@ if(smVer != NULL)
 {
   if(version_is_less(version:smVer, test_version:"2.0.7"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -120,6 +120,6 @@ if(tbVer != NULL)
 {
   if(version_in_range(version:tbVer, test_version:"3.1", test_version2:"3.1.2") ||
      version_in_range(version:tbVer, test_version:"3.0", test_version2:"3.0.6")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

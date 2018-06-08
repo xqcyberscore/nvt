@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webgl_texture_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_google_chrome_webgl_texture_info_disc_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome WebGL Texture Information Disclosure Vulnerability (Windows)
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to gain
-sensitive information.
-
-Impact Level: Application";
-
-tag_affected = "Google Chrome version 11 on windows.";
-
-tag_insight = "The flaw is present in the application, which does not block use
-of a cross-domain image as a WebGL texture.";
-
-tag_solution = "Apply the update from vendor.
-For updates refer to http://www.google.com/chrome";
-
-tag_summary = "This host is installed with Google Chrome and is prone to
-information disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802303");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2599");
   script_tag(name:"cvss_base", value:"4.3");
@@ -55,13 +39,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain
+sensitive information.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version 11 on windows.");
+  script_tag(name : "insight" , value : "The flaw is present in the application, which does not block use
+of a cross-domain image as a WebGL texture.");
+  script_tag(name : "solution" , value : "Apply the update from vendor.
+For updates refer to http://www.google.com/chrome");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to
+information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,7 +65,6 @@ if(!chromeVer){
   exit(0);
 }
 
-# Check for Google Chrome version 11
 if(chromeVer =~ "^11\."){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

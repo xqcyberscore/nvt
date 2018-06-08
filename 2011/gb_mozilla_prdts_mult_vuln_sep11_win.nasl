@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_sep11_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_sep11_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802150");
-  script_version("$Revision: 9911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2981", "CVE-2011-2984", "CVE-2011-2378");
   script_bugtraq_id(49218, 49219, 49214);
@@ -44,7 +44,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl",
                       "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
+                      "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code in the
   context of the affected application. Failed exploit attempts will likely
@@ -78,7 +78,7 @@ ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"3.6.20")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
      exit(0);
   }
 }
@@ -89,7 +89,7 @@ if(seaVer)
 {
   if(version_in_range(version:seaVer, test_version:"2.0", test_version2:"2.2"))
   {
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
      exit(0);
   }
 }
@@ -99,6 +99,6 @@ tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {
   if(version_in_range(version:tbVer, test_version:"3.0", test_version2:"3.1.11")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

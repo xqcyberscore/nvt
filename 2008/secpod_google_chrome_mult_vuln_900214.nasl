@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_900214.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_900214.nasl 10133 2018-06-08 11:13:34Z asteins $
 # Description: Google Chrome multiple vulnerabilities
 #
 # Authors:
@@ -26,30 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "A remote user could cause Denial of Service conditions or can execute arbitrary
-  code by convincing the users to visit a malicious website.
-  Impact Level : Application";
-
-tag_solution = "Upgrade to Google Chrome 0.2.149.29 or later.
-  For updates refer to http://www.google.com/chrome";
-
-tag_affected = "Google Chrome Version 0.2.149.27";
-
-tag_insight = "Multiple flaws are due to:
-  - the Browser failing to handle specially crafted HTML img tags, certain
-    user-supplied data, HTTP view-source headers, and HTML href tags.
-  - the Browser allows users to download arbitrary files without confirmation.
-  - the Browser fails to perform adequate validation on user supplied data.";
-
-
-tag_summary = "This host has Google Chrome web browser installed, which is prone
-  to arbitrary code execution and Denial of Service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900214");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,16 +43,25 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Denial of Service");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/6367");
   script_xref(name : "URL" , value : "http://evilfingers.com/advisory/google_chrome_poc.php");
   script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Sep/1020823.html");
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "summary" , value : "This host has Google Chrome web browser installed, which is prone
+  to arbitrary code execution and Denial of Service vulnerabilities.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+  - the Browser failing to handle specially crafted HTML img tags, certain
+    user-supplied data, HTTP view-source headers, and HTML href tags.
+  - the Browser allows users to download arbitrary files without confirmation.
+  - the Browser fails to perform adequate validation on user supplied data.");
+  script_tag(name : "affected" , value : "Google Chrome Version 0.2.149.27");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrome 0.2.149.29 or later.
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "impact" , value : "A remote user could cause Denial of Service conditions or can execute arbitrary
+  code by convincing the users to visit a malicious website.
+  Impact Level : Application");
   exit(0);
 }
 
@@ -81,8 +71,10 @@ include("version_func.inc");
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(chromeVer != NULL)
 {
-  # Check for Google Chrome version 0.2.149.27
   if(version_is_equal(version:chromeVer, test_version:"0.2.149.27")){
-     security_message(0);
+     security_message(port:0, data:"The target host was found to be vulnerable");
+     exit(0);
    }
 }
+
+exit(99);

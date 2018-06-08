@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to JDK/JRE version 6 Update 22
-  http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
-
-  or
-  Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/javacpuoct2010-176258.html
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation will allow attackers to manipulate or gain knowledge
-  of sensitive information, bypass restrictions, cause a denial of service or
-  compromise a vulnerable system.
-  Impact Level: System/Application";
-tag_affected = "Oracle Java JDK/JRE version 6 Update 21 on windows";
-tag_insight = "Multiple flaws are caused by errors in the 2D, CORBA, Deployment, JRE,
-  Java Web Start, New Java Plug-in, Sound, Deployment Toolkit, JSSE, Kerberos,
-  Networking, Swing, and JNDI components.";
-tag_summary = "This host is installed with Oracle Java JDK/JRE and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801530");
-  script_version("$Revision: 8250 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3550", "CVE-2010-3551", "CVE-2010-3552", "CVE-2010-3553",
                 "CVE-2010-3554", "CVE-2010-3555", "CVE-2010-3556", "CVE-2010-3557",
@@ -68,13 +46,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to manipulate or gain knowledge
+  of sensitive information, bypass restrictions, cause a denial of service or
+  compromise a vulnerable system.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Oracle Java JDK/JRE version 6 Update 21 on windows");
+  script_tag(name : "insight" , value : "Multiple flaws are caused by errors in the 2D, CORBA, Deployment, JRE,
+  Java Web Start, New Java Plug-in, Sound, Deployment Toolkit, JSSE, Kerberos,
+  Networking, Swing, and JNDI components.");
+  script_tag(name : "summary" , value : "This host is installed with Oracle Java JDK/JRE and is prone to
+  multiple vulnerabilities.");
+  script_tag(name : "solution" , value : "Upgrade to JDK/JRE version 6 Update 22
+  http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
+
+  or
+  Apply the patch from below link,
+  http://www.oracle.com/technetwork/topics/security/javacpuoct2010-176258.html
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -83,16 +76,14 @@ if(description)
 
 include("version_func.inc");
 
-# Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
   if(jdkVer)
   {
-    # Check for 1.6 < 1.6.0_22 (6 Update 22)
     if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.21"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -103,9 +94,8 @@ if(jreVer)
 {
   if(jreVer)
   {
-    # Grep for JRE Version 1.6 < 1.6.0_22 (6 Update 22)
     if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.21")) {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

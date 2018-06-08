@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_heap_bof_vuln_aug17_win.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_libreoffice_mult_heap_bof_vuln_aug17_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice Multiple Heap Buffer Overflow Vulnerabilities Aug17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811715");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2017-7870", "CVE-2016-10327");
   script_bugtraq_id(97667);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-23 10:45:49 +0530 (Wed, 23 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Multiple Heap Buffer Overflow Vulnerabilities Aug17 (Windows)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name: "summary" , value:"The host is installed with LibreOffice
   and is prone to multiple heap buffer overflow vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
   - Windows Metafiles (WMF) can contain polygons which under certain circumstances
@@ -73,7 +72,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
   exit(0);
 }
@@ -81,16 +80,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-libreVer = "";
-report = "";
-
-## Get version
 if(!libreVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:libreVer, test_version:"5.2.5"))
 {
   report = report_fixed_ver(installed_version:libreVer, fixed_version:"Upgrade to 5.2.5 or later");

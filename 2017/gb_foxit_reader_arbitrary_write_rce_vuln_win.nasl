@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbitrary_write_rce_vuln_win.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: gb_foxit_reader_arbitrary_write_rce_vuln_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Arbitrary Write RCE Vulnerability (Windows)
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811501");
-  script_version("$Revision: 6757 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2017-10994");
   script_bugtraq_id(99499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 11:24:37 +0530 (Tue, 11 Jul 2017)");
   script_name("Foxit Reader Arbitrary Write RCE Vulnerability (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to an arbitrary write RCE vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an input validation 
-  error."); 
+  script_tag(name: "insight" , value:"The flaw is due to an input validation
+  error.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code within the context of the affected 
-  application. Failed exploit attempts will likely cause a denial-of-service 
+  attackers to execute arbitrary code within the context of the affected
+  application. Failed exploit attempts will likely cause a denial-of-service
   condition.
 
   Impact Level: System/Application");
@@ -68,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }
 
-## Check for vulnerable version
 ## 8.3.1 == 8.3.1.21155
 if(version_is_less(version:foxitVer, test_version:"8.3.1.21155"))
 {

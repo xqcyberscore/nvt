@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_oct2017-3236626_01_win.nasl 7711 2017-11-09 10:31:37Z cfischer $
+# $Id: gb_java_oct2017-3236626_01_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Security Updates (oct2017-3236626) 01 - Windows
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812036");
-  script_version("$Revision: 7711 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2017-10309" );
   script_bugtraq_id(101328);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 11:31:37 +0100 (Thu, 09 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 13:01:47 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Java SE Security Updates (oct2017-3236626) 01 - Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw exists due to a flaw in the Deployment
   component of the application.");
@@ -65,7 +64,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -77,10 +76,8 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-##Check version
 if(vers =~ "^((1\.8)|(9))")
 {
-  ##Check for vulnerable versions
   if(version_in_range(version:vers, test_version:"1.8.0", test_version2:"1.8.0.144")||
      vers == "9.0")
   {

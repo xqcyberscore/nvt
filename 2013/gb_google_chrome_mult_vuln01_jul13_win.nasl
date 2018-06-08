@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_jul13_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-01 July13 (Windows)
 #
@@ -24,13 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: System/Application";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803902");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2013-2880", "CVE-2013-2879", "CVE-2013-2878", "CVE-2013-2877",
                 "CVE-2013-2876", "CVE-2013-2875", "CVE-2013-2874", "CVE-2013-2873",
                 "CVE-2013-2872", "CVE-2013-2871", "CVE-2013-2870", "CVE-2013-2869",
@@ -39,53 +36,46 @@ if(description)
                     61060, 61053, 61054, 61058, 61050, 61049);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 18:40:12 +0530 (Tue, 16 Jul 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July13 (Windows)");
 
-  tag_summary =
-"The host is installed with Google Chrome and is prone to multiple
-vulnerabilities.";
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code,
+bypass security restrictions, disclose potentially sensitive data, or cause
+denial of service condition.
 
-  tag_insight =
-"Multiple flaws due to,
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 28.0.1500.71 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws due to,
+
  - Error exists when setting up sign-in and sync operations.
+
  - An out-of-bounds read error exists within text handling.
+
  - 'parser.c in libxml2' has out-of-bounds read error, related to the lack of
    checks for the XML_PARSER_EOF state.
+
  - 'browser/extensions/api/tabs/tabs_api.cc' does not enforce restrictions on
    the capture of screenshots by extensions.
+
  - An out-of-bounds read error exists in SVG handling.
+
  - Unspecified error related to GL textures, only when an Nvidia GPU is used.
+
  - Unspecified use-after-free vulnerabilities.
+
  - An out-of-bounds read error exists within JPEG2000 handling.
+
  - Unspecified error exists within sync of NPAPI extension component.
+
  - Does not properly prevent pop.
- - HTTPS implementation does not ensure how headers are terminated.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code,
-bypass security restrictions, disclose potentially sensitive data, or cause
-denial of service condition.";
-
-  tag_affected =
-"Google Chrome version prior to 28.0.1500.71 on Windows.";
-
-  tag_solution =
-"Upgrade to the Google Chrome 28.0.1500.71 or later,
-For updates refer to http://www.google.com/chrome ";
-
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "summary" , value : tag_summary);
+ - HTTPS implementation does not ensure how headers are terminated.");
+  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 28.0.1500.71 or later,
+For updates refer to http://www.google.com/chrome ");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -94,7 +84,7 @@ For updates refer to http://www.google.com/chrome ";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -102,18 +92,13 @@ For updates refer to http://www.google.com/chrome ";
 
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 28.0.1500.71
 if(version_is_less(version:chromeVer, test_version:"28.0.1500.71"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

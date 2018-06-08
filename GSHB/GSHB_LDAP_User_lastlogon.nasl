@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_lastlogon.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_LDAP_User_lastlogon.nasl 10121 2018-06-07 12:44:05Z cfischer $
 #
 # Search in LDAP the lastLogonTimestamp of Users.
 #
@@ -8,11 +8,10 @@
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # Set in an Workgroup Environment under Vista with enabled UAC this DWORD to access WMI:
 # HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,29 +27,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script search in LDAP the lastLogonTimestamp of Users.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96170");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 09:43:28 +0200 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"exploit");
   script_name("Search in LDAP the lastLogonTimestamp of Users.");
-
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-#  script_require_ports(139, 445, 389);
-#  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
   script_dependencies("GSHB_WMI_OSInfo.nasl");
+
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"This script search in LDAP the lastLogonTimestamp of Users.");
+
+  script_tag(name:"qod_type", value:"exploit");
+
   exit(0);
 }
 
@@ -124,9 +122,9 @@ function argd(bind,CN,passwd)
   argd[d++] = "-h";
   argd[d++] = get_host_ip();
   argd[d++] = "-b";
-  argd[d++] = "CN=Partitions,CN=Configuration," + bindloop; 
+  argd[d++] = "CN=Partitions,CN=Configuration," + bindloop;
   argd[d++] = "-D";
-  argd[d++] = CN + "," + OU +"," + bindloop; 
+  argd[d++] = CN + "," + OU +"," + bindloop;
   argd[d++] = "-w";
   argd[d++] = passwd;
   argd[d++] = "msDS-Behavior-Version";
@@ -160,9 +158,9 @@ function args(bind,CN,passwd)
   argv[i++] = "-h";
   argv[i++] = get_host_ip();
   argv[i++] = "-b";
-  argv[i++] = bindloop; 
+  argv[i++] = bindloop;
   argv[i++] = "-D";
-  argv[i++] = CN + "," + OU +"," + bindloop; 
+  argv[i++] = CN + "," + OU +"," + bindloop;
   argv[i++] = "-w";
   argv[i++] = passwd;
   argv[i++] = "(&(objectCategory=person)(objectClass=user))";

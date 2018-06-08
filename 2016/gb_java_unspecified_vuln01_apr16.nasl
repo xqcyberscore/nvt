@@ -29,19 +29,18 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807552");
-  script_version("$Revision: 7724 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2016-3426");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-04-22 10:41:22 +0530 (Fri, 22 Apr 2016)");
   script_name("Oracle Java SE Unspecified Vulnerability April 2016 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to an unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The flaw is due to an unspecified vulnerability.");
 
@@ -50,7 +49,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Oracle Java SE 8 update 77 and prior 
+  script_tag(name: "affected" , value:"Oracle Java SE 8 update 77 and prior
   on Windows.");
 
   script_tag(name: "solution" , value:"Apply the patch from below link,
@@ -65,7 +64,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -74,9 +73,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
-
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 
 jreVer = infos['version'];
@@ -84,9 +80,8 @@ jrePath = infos['location'];
 
 if(jreVer =~ "^(1\.8)")
 {
-  ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.77"))
-  { 
+  {
     report = report_fixed_ver(installed_version:jreVer, fixed_version:"Apply the patch", install_path:jrePath);
     security_message(data:report);
     exit(0);

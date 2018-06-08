@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803204");
-  script_version("$Revision: 9911 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2013-0764", "CVE-2013-0768", "CVE-2013-0757", "CVE-2013-0745",
                 "CVE-2013-0747", "CVE-2013-0752", "CVE-2013-0755", "CVE-2013-0756");
   script_bugtraq_id(57211, 57204, 57236, 57240, 57241, 57213, 57215);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 16:41:34 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)");
 
@@ -53,7 +53,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, cause a denial of service or execute
@@ -101,7 +101,7 @@ if(ffVer || fesrVer)
   if(version_is_less(version:ffVer, test_version:"18.0")||
      version_in_range(version:fesrVer, test_version:"17.0", test_version2:"17.0.1"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -114,7 +114,7 @@ if(seaVer)
 {
   if(version_is_less(version:seaVer, test_version:"2.15"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -130,7 +130,7 @@ if(tbVer || tbesrVer)
   if(version_is_less(version:tbVer, test_version:"17.0.2")||
      version_in_range(version:tbesrVer, test_version:"17.0", test_version2:"17.0.1"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

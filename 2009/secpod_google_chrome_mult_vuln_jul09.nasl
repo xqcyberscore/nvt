@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_jul09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_jul09.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Jul09
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code with the  privileges of the logged on user by bypassing the sandbox
-  and may crash the browser.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 2.0.172.37";
-tag_insight = "The multiple flaws are due to,
-  - Heap overflow error when evaluating a specially crafted regular expression
-    in Javascript within sandbox.
-  - Error while allocating memory buffers for a renderer (tab) process.";
-tag_solution = "Upgrade to Google Chrome version 2.0.172.37
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host has Google Chrome installed and is prone to Multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900695");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,13 +43,24 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  code with the  privileges of the logged on user by bypassing the sandbox
+  and may crash the browser.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 2.0.172.37");
+  script_tag(name : "insight" , value : "The multiple flaws are due to,
+
+  - Heap overflow error when evaluating a specially crafted regular expression
+    in Javascript within sandbox.
+
+  - Error while allocating memory buffers for a renderer (tab) process.");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 2.0.172.37.
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host has Google Chrome installed and is prone to Multiple
+  vulnerabilities.");
   exit(0);
 }
 
@@ -73,8 +70,10 @@ include("version_func.inc");
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(chromeVer != NULL)
 {
-  # Check for Google Chrome version < 2.0.172.37
   if(version_is_less(version:chromeVer, test_version:"2.0.172.37")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
   }
 }
+
+exit(99);

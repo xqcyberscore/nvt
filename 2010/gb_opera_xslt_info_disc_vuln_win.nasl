@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xslt_info_disc_vuln_win.nasl 8269 2018-01-02 07:28:22Z teissa $
+# $Id: gb_opera_xslt_info_disc_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera 'XSLT' Information Disclosure Vulnerability - (Windows)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to obtain sensitive
-  information via a crafted document.
-  Impact Level: Application";
-tag_affected = "Opera version 10.50 and on Windows.";
-tag_insight = "The flaw is due to an error in handling of 'XSLT' constructs which can
-  cause Opera to retrieve the wrong contents for the resulting document. These
-  contents will appear randomly from the cached versions of any Web page that
-  has previously been visited.";
-tag_solution = "Upgrade to the opera version 10.51 or later,
-  For updates refer to http://www.opera.com/download/?os=windows&list=all";
-tag_summary = "The host is installed with Opera Web Browser and is prone to
-  information disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801310");
-  script_version("$Revision: 8269 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1310");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,13 +41,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
+  information via a crafted document.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 10.50 and on Windows.");
+  script_tag(name : "insight" , value : "The flaw is due to an error in handling of 'XSLT' constructs which can
+  cause Opera to retrieve the wrong contents for the resulting document. These
+  contents will appear randomly from the cached versions of any Web page that
+  has previously been visited.");
+  script_tag(name : "solution" , value : "Upgrade to the opera version 10.51 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,13 +63,14 @@ if(description)
 
 include("version_func.inc");
 
-## Get Opera version from from KB list
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check if version is lesser than 10.51
 if(version_is_less(version:operaVer, test_version:"10.51")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

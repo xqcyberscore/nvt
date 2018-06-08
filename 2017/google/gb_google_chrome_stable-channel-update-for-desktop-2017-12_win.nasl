@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12)-Windows
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,23 +29,22 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812235");
-  script_version("$Revision: 8027 $");
-  script_cve_id("CVE-2017-15407", "CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410", 
-                "CVE-2017-15411", "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415", 
-                "CVE-2017-15416", "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419", 
-                "CVE-2017-15420", "CVE-2017-15422", "CVE-2017-15423", "CVE-2017-15424", 
+  script_version("$Revision: 10133 $");
+  script_cve_id("CVE-2017-15407", "CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410",
+                "CVE-2017-15411", "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415",
+                "CVE-2017-15416", "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419",
+                "CVE-2017-15420", "CVE-2017-15422", "CVE-2017-15423", "CVE-2017-15424",
                 "CVE-2017-15425", "CVE-2017-15426", "CVE-2017-15427");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:28:49 +0530 (Thu, 07 Dec 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12)-Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
 
@@ -81,12 +80,12 @@ if(description)
 
   script_tag(name: "impact" , value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to execute arbitrary script,
-  conduct spoofing attacks, data corruption or denial of service and 
+  conduct spoofing attacks, data corruption or denial of service and
   information leak.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name: "affected" , value:"Google Chrome version
   prior to 63.0.3239.84 on Windows");
 
   script_tag(name: "solution", value:"Upgrade to Google Chrome version
@@ -102,7 +101,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }

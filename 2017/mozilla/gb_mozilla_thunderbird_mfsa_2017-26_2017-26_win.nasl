@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-26_2017-26_win.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-26_2017-26_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2017-26_2017-26)-Windows
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812403");
-  script_version("$Revision: 8027 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 11:21:23 +0530 (Thu, 07 Dec 2017)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2017-26_2017-26)-Windows");
 
   script_tag(name: "summary" , value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws exist due to,
 
@@ -65,7 +64,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }

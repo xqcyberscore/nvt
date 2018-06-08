@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_webservice_rfd_win.nasl 9023 2018-03-05 07:08:45Z cfischer $
+# $Id: gb_libreoffice_webservice_rfd_win.nasl 10138 2018-06-08 12:45:06Z asteins $
 #
 # LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108332");
-  script_version("$Revision: 9023 $");
+  script_version("$Revision: 10138 $");
   script_cve_id("CVE-2018-6871");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 12:24:46 +0100 (Mon, 12 Feb 2018)");
   script_name("LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_libre_office_detect_win.nasl");
+  script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
 
   script_xref(name:"URL", value:"https://www.libreoffice.org/about-us/security/advisories/cve-2018-1055/");
@@ -52,7 +52,7 @@ if(description)
   of a Detection-NVT and check if the version is vulnerable or not.");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers
-  to read arbitrary files via =WEBSERVICE calls in a document, which use the
+  to read arbitrary files via WEBSERVICE calls in a document, which use the
   COM.MICROSOFT.WEBSERVICE function.
 
   Impact Level: Application/System");

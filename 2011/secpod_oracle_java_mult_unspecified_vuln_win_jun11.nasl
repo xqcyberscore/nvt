@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win_jun11.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win_jun11.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities - June11 (Windows)
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code in
-  the context of the application.
-  Impact Level: Application";
-tag_affected = "Oracle Java SE versions 6 Update 25 and prior, 5.0 Update 29 and prior,
-  and 1.4.2_31 and prior.";
-tag_insight = "Multiple flaws are due to unspecified errors in the following
-  components:
-  - 2D
-  - AWT
-  - Sound
-  - Swing
-  - HotSpot
-  - Networking
-  - Deserialization
-  - Java Runtime Environment";
-tag_solution = "Upgrade to Oracle Java SE version 6 Update 26, 5.0 Update 30, 1.4.2_32
-  or later. For updates refer to http://java.com/en/download/index.jsp";
-tag_summary = "This host is installed with Oracle Java SE and is prone to multiple
-  unspecified vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902524");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0864", "CVE-2011-0865", "CVE-2011-0866", "CVE-2011-0867",
                 "CVE-2011-0871", "CVE-2011-0873", "CVE-2011-0802", "CVE-2011-0814",
@@ -64,44 +44,66 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary code in
+  the context of the application.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Oracle Java SE versions 6 Update 25 and prior, 5.0 Update 29 and prior,
+  and 1.4.2_31 and prior.");
+  script_tag(name : "insight" , value : "Multiple flaws are due to unspecified errors in the following
+  components:
+
+  - 2D
+
+  - AWT
+
+  - Sound
+
+  - Swing
+
+  - HotSpot
+
+  - Networking
+
+  - Deserialization
+
+  - Java Runtime Environment");
+  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE version 6 Update 26, 5.0 Update 30, 1.4.2_32
+  or later. For updates refer to http://java.com/en/download/index.jsp");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to multiple
+  unspecified vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get JRE Version from KB
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
 
-  ## Check for Oracle Java SE versions 6 Update 25 and prior, 5.0 Update 29 and prior,
   ## and 1.4.2_31 and prior
   if(version_is_less_equal(version:jreVer, test_version:"1.4.2.31") ||
      version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.25") ||
      version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.29"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Get JDK Version from KB
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  ## Check for Oracle Java SE versions 6 Update 25 and prior, 5.0 Update 29 and prior,
   ## and 1.4.2_31 and prior
   if(version_is_less_equal(version:jdkVer, test_version:"1.4.2.31") ||
      version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.25") ||
      version_in_range(version:jdkVer, test_version:"1.5", test_version2:"1.5.0.29")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
+     exit(0);
   }
 }
+
+exit(99);

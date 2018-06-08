@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_nov09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_sun_java_jre_mult_vuln_nov09_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Nov09 (Windows)
 #
@@ -24,44 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attacker to execute arbitrary code,
-  gain escalated privileges, bypass security restrictions and cause denial
-  of service attacks inside the context of the affected system.
-  Impact Level: System/Application.";
-tag_affected = "Sun Java JDK/JRE 6 prior to 6 Update 17
-  Sun Java JDK/JRE 5 prior to 5 Update 22
-  Sun Java JDK/JRE 1.4.x prior to 1.4.2_24
-  Sun Java JDK/JRE 1.3.x prior to 1.3.1_27 on Windows.";
-tag_insight = "Multiple flaws occur due to,
-  - Error when decoding 'DER' encoded data and parsing HTTP headers.
-  - Error when verifying 'HMAC' digests.
-  - Integer overflow error in the 'JPEG JFIF' Decoder while processing
-    malicious image files.
-  - A buffer overflow error in the 'setDiffICM()' and 'setBytePixels()'
-    functions in the Abstract Window Toolkit (AWT).
-  - Unspecified error due to improper parsing of color profiles of images.
-  - A buffer overflow error due to improper implementation of the
-    'HsbParser.getSoundBank()' function.
-  - Three unspecified errors when processing audio or image files.";
-tag_solution = "Upgrade to JDK/JRE version 6 Update 17 or later.
-  http://java.sun.com/javase/downloads/index.jsp
-  OR
-  Upgrade to JDK/JRE version 5 Update 22
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
-  OR
-  Upgrade to JDK/JRE version 1.4.2_24
-  http://java.sun.com/j2se/1.4.2/download.html
-  OR
-  Upgrade to JDK/JRE version 1.3.1_27
-  http://java.sun.com/j2se/1.3/download.html";
-tag_summary = "This host is installed with Sun Java JDK/JRE and is prone to
-  Multiple Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800972");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-11-13 15:48:12 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -77,13 +44,40 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation allows remote attacker to execute arbitrary code,
+  gain escalated privileges, bypass security restrictions and cause denial
+  of service attacks inside the context of the affected system.
+  Impact Level: System/Application.");
+  script_tag(name : "affected" , value : "Sun Java JDK/JRE 6 prior to 6 Update 17
+  Sun Java JDK/JRE 5 prior to 5 Update 22
+  Sun Java JDK/JRE 1.4.x prior to 1.4.2_24
+  Sun Java JDK/JRE 1.3.x prior to 1.3.1_27 on Windows.");
+  script_tag(name : "insight" , value : "Multiple flaws occur due to,
+  - Error when decoding 'DER' encoded data and parsing HTTP headers.
+  - Error when verifying 'HMAC' digests.
+  - Integer overflow error in the 'JPEG JFIF' Decoder while processing
+    malicious image files.
+  - A buffer overflow error in the 'setDiffICM()' and 'setBytePixels()'
+    functions in the Abstract Window Toolkit (AWT).
+  - Unspecified error due to improper parsing of color profiles of images.
+  - A buffer overflow error due to improper implementation of the
+    'HsbParser.getSoundBank()' function.
+  - Three unspecified errors when processing audio or image files.");
+  script_tag(name : "solution" , value : "Upgrade to JDK/JRE version 6 Update 17 or later.
+  http://java.sun.com/javase/downloads/index.jsp
+  OR
+  Upgrade to JDK/JRE version 5 Update 22
+  http://java.sun.com/javase/downloads/index_jdk5.jsp
+  OR
+  Upgrade to JDK/JRE version 1.4.2_24
+  http://java.sun.com/j2se/1.4.2/download.html
+  OR
+  Upgrade to JDK/JRE version 1.3.1_27
+  http://java.sun.com/j2se/1.3/download.html");
+  script_tag(name : "summary" , value : "This host is installed with Sun Java JDK/JRE and is prone to
+  Multiple Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -106,14 +100,13 @@ foreach ver (version)
 {
   if(ver)
   {
-    # Check for 1.3 < 1.3.1_27, 1.4 < 1.4.2_24, 1.5 < 1.5.0_22 (5 Update 22),
     #       and 1.6 < 1.6.0_17 (6 Update 17)
     if(version_in_range(version:ver, test_version:"1.3", test_version2:"1.3.1.26")||
        version_in_range(version:ver, test_version:"1.4", test_version2:"1.4.2.23")||
        version_in_range(version:ver, test_version:"1.5", test_version2:"1.5.0.21")||
        version_in_range(version:ver, test_version:"1.6", test_version2:"1.6.0.16"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

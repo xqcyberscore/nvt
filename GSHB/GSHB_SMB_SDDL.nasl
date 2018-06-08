@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMB_SDDL.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SMB_SDDL.nasl 10121 2018-06-07 12:44:05Z cfischer $
 #
 # File and Folder ACL (Windows)
 #
@@ -27,41 +27,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script List File and Folder ACL (Windows).";
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96041");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10121 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"registry");  
   script_name("File and Folder ACL (Windows)");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
-   
-#  script_require_ports(139, 445);
+  script_mandatory_keys("Tools/Present/wmi", "Compliance/Launch/GSHB");
   script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
-#  script_dependencies("secpod_reg_enum.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"The script List File and Folder ACL (Windows).");
+
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 
+include("smb_nt.inc");
 
 host    = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
+usrname = kb_smb_name();
+domain  = kb_smb_domain();
 if (domain){
   usrname = domain + '\\' + usrname;
 }
-passwd  = get_kb_item("SMB/password");
+passwd  = kb_smb_password();
+
 OSVER = get_kb_item("WMI/WMI_OSVER");
 osdrive = get_kb_item("WMI/WMI_OSDRIVE");
 oswindir = get_kb_item("WMI/WMI_OSWINDIR");

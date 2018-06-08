@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_archive_handling_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_7zip_archive_handling_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # 7-Zip Unspecified Archive Handling Vulnerability (Windows)
 #
@@ -24,20 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary code in the
-  affected system and cause denial of service.";
-tag_affected = "7zip version prior to 4.57 on Windows.";
-tag_insight = "This flaw occurs due to memory corruption while handling malformed archives.";
-tag_solution = "Upgrade to 7zip version 4.57
-  http://www.7-zip.org";
-tag_summary = "This host is installed with 7zip and is prone to Unspecified
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800261");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,13 +42,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_7zip_detect_win.nasl");
+  script_dependencies("gb_7zip_detect_portable_win.nasl");
   script_require_keys("7zip/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary code in the
+  affected system and cause denial of service.");
+  script_tag(name : "affected" , value : "7zip version prior to 4.57 on Windows.");
+  script_tag(name : "insight" , value : "This flaw occurs due to memory corruption while handling malformed archives.");
+  script_tag(name : "solution" , value : "Upgrade to 7zip version 4.57
+  http://www.7-zip.org");
+  script_tag(name : "summary" , value : "This host is installed with 7zip and is prone to Unspecified
+  vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -70,7 +64,6 @@ if(!version){
   exit(0);
 }
 
-# Grep for 7zip version prior to 4.57
 if(version_is_less(version:version, test_version:"4.57")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_win.nasl 10135 2018-06-08 11:42:28Z asteins $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 Feb13 (Windows)
 #
@@ -24,34 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code,
-  memory corruption, bypass certain security restrictions and compromise
-  a user's system.
-  Impact Level: System/Application";
-
-tag_affected = "Mozilla Thunderbird version before 17.0.3 on Windows";
-tag_insight = "- Error when handling a WebIDL object
-  - Error in displaying the content of a 407 response of a proxy
-  - Unspecified errors in 'nsSaveAsCharset::DoCharsetConversion()' function,
-    Chrome Object Wrappers (COW) and in System Only Wrappers (SOW).
-  - Use-after-free error in the below functions
-    'nsDisplayBoxShadowOuter::Paint()'
-    'nsPrintEngine::CommonPrint()'
-    'nsOverflowContinuationTracker::Finish()'
-    'nsImageLoadingContent::OnStopContainer()'
-  - Out-of-bound read error in below functions
-    'ClusterIterator::NextCluster()'
-    'nsCodingStateMachine::NextState()'
-    'mozilla::image::RasterImage::DrawFrameTo()', when rendering GIF images.";
-tag_solution = "Upgrade to Mozilla Thunderbird version 17.0.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/thunderbird";
-tag_summary = "This host is installed with Mozilla Thunderbird and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803424");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2013-0784", "CVE-2013-0783", "CVE-2013-0782", "CVE-2013-0781",
                 "CVE-2013-0780", "CVE-2013-0779", "CVE-2013-0778", "CVE-2013-0777",
                 "CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
@@ -60,7 +36,7 @@ if(description)
                     58034, 58041, 58038, 58042, 58044);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 15:11:54 +0530 (Thu, 21 Feb 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities -01 Feb13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52249");
@@ -72,13 +48,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_require_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code,
+  memory corruption, bypass certain security restrictions and compromise
+  a user's system.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Mozilla Thunderbird version before 17.0.3 on Windows");
+  script_tag(name : "insight" , value : "- Error when handling a WebIDL object
+  - Error in displaying the content of a 407 response of a proxy
+  - Unspecified errors in 'nsSaveAsCharset::DoCharsetConversion()' function,
+    Chrome Object Wrappers (COW) and in System Only Wrappers (SOW).
+  - Use-after-free error in the below functions
+    'nsDisplayBoxShadowOuter::Paint()'
+    'nsPrintEngine::CommonPrint()'
+    'nsOverflowContinuationTracker::Finish()'
+    'nsImageLoadingContent::OnStopContainer()'
+  - Out-of-bound read error in below functions
+    'ClusterIterator::NextCluster()'
+    'nsCodingStateMachine::NextState()'
+    'mozilla::image::RasterImage::DrawFrameTo()', when rendering GIF images.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 17.0.3 or later,
+  For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -87,18 +80,13 @@ if(description)
 
 include("version_func.inc");
 
-# Variable initialization
-ffVer = "";
-
-# Get the version from the kb
 ffVer = get_kb_item("Thunderbird/Win/Ver");
 
 if(ffVer)
 {
-  # Check for vulnerable version
   if(version_is_less(version:ffVer, test_version:"17.0.3"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

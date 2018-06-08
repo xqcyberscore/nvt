@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-01_win.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-01_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-01)-Windows
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,27 +29,26 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810523");
-  script_version("$Revision: 5441 $");
-  script_cve_id("CVE-2017-5007", "CVE-2017-5006", "CVE-2017-5008", "CVE-2017-5010", 
-                "CVE-2017-5011", "CVE-2017-5009", "CVE-2017-5012", "CVE-2017-5013", 
-                "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5019", "CVE-2017-5016", 
-                "CVE-2017-5017", "CVE-2017-5018", "CVE-2017-5020", "CVE-2017-5021", 
-                "CVE-2017-5022", "CVE-2017-5023", "CVE-2017-5024", "CVE-2017-5025", 
+  script_version("$Revision: 10133 $");
+  script_cve_id("CVE-2017-5007", "CVE-2017-5006", "CVE-2017-5008", "CVE-2017-5010",
+                "CVE-2017-5011", "CVE-2017-5009", "CVE-2017-5012", "CVE-2017-5013",
+                "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5019", "CVE-2017-5016",
+                "CVE-2017-5017", "CVE-2017-5018", "CVE-2017-5020", "CVE-2017-5021",
+                "CVE-2017-5022", "CVE-2017-5023", "CVE-2017-5024", "CVE-2017-5025",
                 "CVE-2017-5026" );
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 16:45:20 +0530 (Fri, 27 Jan 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-01)-Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
-  - Multiple universal XSS errors in Blink component, chrome://apps and 
+  - Multiple universal XSS errors in Blink component, chrome://apps and
     chrome://downloads.
   - An improper access restriction for files in Devtools.
   - An out of bounds memory access error in WebRTC.
@@ -83,7 +82,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -92,15 +91,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"56.0.2924.76"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"56.0.2924.76");

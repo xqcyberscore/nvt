@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xml_dos_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_opera_xml_dos_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Web Browser XML Denial Of Service Vulnerability (Windows)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker craft a malicious XML page
-  and cause denial of service by persuading the user to open the malicious
-  arbitrary page.
-  Impact Level: Application";
-tag_affected = "Opera version 9.64 and prior on Windows.";
-tag_insight = "This flaw is due to improper boundary check while parsing XML
-  documents containing an overly large number of nested elements.";
-tag_solution = "Upgrade to Opera version 10.00 or later.
-  For updates refer to http://www.opera.com/download";
-tag_summary = "The host is installed with Opera Web Browser and is prone to
-  XML Denial of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800550");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -53,13 +41,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker craft a malicious XML page
+  and cause denial of service by persuading the user to open the malicious
+  arbitrary page.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 9.64 and prior on Windows.");
+  script_tag(name : "insight" , value : "This flaw is due to improper boundary check while parsing XML
+  documents containing an overly large number of nested elements.");
+  script_tag(name : "solution" , value : "Upgrade to Opera version 10.00 or later.
+  For updates refer to http://www.opera.com/download");
+  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  XML Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -74,5 +68,5 @@ if(!operaVer){
 }
 
 if(version_is_less_equal(version:operaVer, test_version:"9.64")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

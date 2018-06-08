@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_aug10.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: secpod_google_chrome_mult_vuln_aug10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome multiple vulnerabilities - (Aug10)
 #
@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  in the context of the browser, cause denial-of-service conditions, or disclose
-  sensitive information.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 5.0.375.127 on Windows";
-tag_insight = "The flaws are due to:
-  - A memory corruption with 'Geolocation' support.
-  - An error in supporting the 'Ruby' language.
-  - An error in 'Omnibox' implementation, which fails to anticipate entry of
-    passwords.
-  - An Error in implementing the notifications feature, history feature.
-  - A memory corruption in 'MIME' type handling.
-  - An error in text-editing implementation, which fails to properly perform
-    casts, which has unspecified impact and attack vectors.
-  - A memory corruption error  when processing 'SVG' files, file dialogs.
-  - An unspecified error in the 'Windows kernel', which has unknown impact and
-    attack vectors.";
-tag_solution = "Upgrade to Google Chrome version 5.0.375.127 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902096");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-08-26 15:28:03 +0200 (Thu, 26 Aug 2010)");
   script_cve_id("CVE-2010-3120", "CVE-2010-3119", "CVE-2010-3118", "CVE-2010-3117",
                 "CVE-2010-3116", "CVE-2010-3115", "CVE-2010-3114", "CVE-2010-3113",
@@ -64,13 +42,38 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
+  in the context of the browser, cause denial-of-service conditions, or disclose
+  sensitive information.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 5.0.375.127 on Windows");
+  script_tag(name : "insight" , value : "The flaws are due to:
+
+  - A memory corruption with 'Geolocation' support.
+
+  - An error in supporting the 'Ruby' language.
+
+  - An error in 'Omnibox' implementation, which fails to anticipate entry of
+    passwords.
+
+  - An Error in implementing the notifications feature, history feature.
+
+  - A memory corruption in 'MIME' type handling.
+
+  - An error in text-editing implementation, which fails to properly perform
+    casts, which has unspecified impact and attack vectors.
+
+  - A memory corruption error  when processing 'SVG' files, file dialogs.
+
+  - An unspecified error in the 'Windows kernel', which has unknown impact and
+    attack vectors.");
+  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 5.0.375.127 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/");
   script_xref(name : "URL" , value : "http://seclists.org/cert/2010/182");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/");
@@ -82,13 +85,14 @@ if(description)
 
 include("version_func.inc");
 
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 5.0.375.127
 if(version_is_less(version:chromeVer, test_version:"5.0.375.127")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

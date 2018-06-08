@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_50659.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: gb_cms_made_simple_50659.nasl 10122 2018-06-07 13:09:58Z cfischer $
 #
 # CMS Made Simple Remote Database Corruption Vulnerability
 #
@@ -28,39 +28,36 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103332");
- script_bugtraq_id(50659);
- script_version ("$Revision: 8680 $");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("CMS Made Simple Remote Database Corruption Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103332");
+  script_bugtraq_id(50659);
+  script_version("$Revision: 10122 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_name("CMS Made Simple Remote Database Corruption Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-15 11:29:14 +0100 (Tue, 15 Nov 2011)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("cms_made_simple_detect.nasl");
+  script_mandatory_keys("cmsmadesimple/installed");
 
- script_bugtraq_id(50659);
+  script_xref(name:"URL", value:"http://www.cmsmadesimple.org/2011/08/Announcing-CMSMS-1-9-4-3---Security-Release/");
+  script_xref(name:"URL", value:"http://www.cmsmadesimple.org/");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 
- script_xref(name: "URL", value: "http://www.cmsmadesimple.org/2011/08/Announcing-CMSMS-1-9-4-3---Security-Release/");
- script_xref(name: "URL", value: "http://www.cmsmadesimple.org/");
+  script_tag(name:"summary", value:"CMS Made Simple is prone to a vulnerability that could result in the
+  corruption of the database.");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
- script_tag(name:"creation_date", value:"2011-11-15 11:29:14 +0100 (Tue, 15 Nov 2011)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("cms_made_simple_detect.nasl");
- script_mandatory_keys("cmsmadesimple/installed");
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to corrupt the database.");
 
- script_tag(name: "solution", value: "Updates are available. Please see the references for more details.");
+  script_tag(name:"affected", value:"Versions prior to CMS Made Simple 1.9.4.3 are vulnerable.");
 
- script_tag(name: "summary", value: "CMS Made Simple is prone to a vulnerability that could result in the
-corruption of the database.
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name: "solution_type", value: "VendorFix");
 
-An attacker can exploit this vulnerability to corrupt the database.
-
-Versions prior to CMS Made Simple 1.9.4.3 are vulnerable.");
-
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

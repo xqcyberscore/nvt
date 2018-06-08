@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_firefox_xul_spoof.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: mozilla_firefox_xul_spoof.nasl 10135 2018-06-08 11:42:28Z asteins $
 # Description: Mozilla/Firefox user interface spoofing
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14181");
-  script_version("$Revision: 9910 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10135 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10796, 10832);
   script_cve_id("CVE-2004-0763", "CVE-2004-0764");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "solution" , value : "None at this time");
   script_tag(name : "summary" , value : "The remote host is using Mozilla and/or Firefox, an alternative web browser.
@@ -68,7 +68,7 @@ if(mozVer)
 {
   if(version_is_less(version:mozVer ,test_version:"1.7"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -79,5 +79,7 @@ if(!tunBirdVer){
 }
 
 if(version_is_less(version:tunBirdVer ,test_version:"0.7")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
+
+exit(99);

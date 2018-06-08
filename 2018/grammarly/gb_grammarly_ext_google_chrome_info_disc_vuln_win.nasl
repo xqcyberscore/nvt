@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows
 #
 # Authors:
-# Shakeel <bshakeel@secpod.com> 
+# Shakeel <bshakeel@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812696");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2018-6654");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:22:37 +0530 (Thu, 08 Feb 2018)");
   script_name("Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows");
 
   script_tag(name:"summary", value:"The host is installed with Grammarly Spell
   Checker for Google Chrome and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Grammarly Spell 
+  script_tag(name:"vuldetect", value:"Get the installed version of Grammarly Spell
   Checker for Google Chrome and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"The flaw exists as the extension exposes its
@@ -66,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver", "WMI/access_successful", "SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);

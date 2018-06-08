@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_jul11.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_opera_mult_vuln_win_jul11.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Windows)
 #
@@ -24,21 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "Opera Web Browser Version prior 11.50";
-tag_insight = "For information about vulnerability refer the references.";
-tag_solution = "Upgrade to Opera Web Browser Version 11.50 or later,
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802107");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1337", "CVE-2011-2609", "CVE-2011-2610",
                 "CVE-2011-2611", "CVE-2011-2612", "CVE-2011-2613",
@@ -59,26 +49,32 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
+  and cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Opera Web Browser Version prior 11.50");
+  script_tag(name : "insight" , value : "For information about the vulnerability refer to the references.");
+  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 11.50 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "The host is installed with Opera browser and is prone to multiple
+  vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Opera Version from KB
 operaVer = get_kb_item("Opera/Win/Version");
 
 if(operaVer)
 {
-  ## Grep for Opera Versions prior to 11.50
   if(version_is_less(version:operaVer, test_version:"11.50")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
   }
 }
+
+exit(99);

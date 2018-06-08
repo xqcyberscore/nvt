@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 4694 2016-12-07 06:43:41Z antu123 $
+# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # 7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:7-zip:7-zip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808160");
-  script_version("$Revision: 4694 $");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2016-2335");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 07:43:41 +0100 (Wed, 07 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 16:27:54 +0530 (Mon, 13 Jun 2016)");
   script_name("7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with 7Zip
   and is prone to code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an out of bound
   read error in the 'CInArchive::ReadFileItem method' functionality.");
@@ -66,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
-  script_dependencies("gb_7zip_detect_win.nasl");
+  script_dependencies("gb_7zip_detect_portable_win.nasl");
   script_mandatory_keys("7zip/Win/Ver");
   exit(0);
 }
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-zipVer = "";
-
-## Get version
 if(!zipVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## grep for version only(incase of beta versions)
 zipVer1 = eregmatch(pattern:"([0-9.]+)", string:zipVer);
 if(zipVer1){
   zipVer1 = zipVer1[1];

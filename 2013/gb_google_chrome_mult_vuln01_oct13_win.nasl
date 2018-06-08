@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_oct13_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct2013 (Windows)
 #
@@ -25,12 +25,11 @@
 ###############################################################################
 
 CPE = "cpe:/a:google:chrome";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804105";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804105");
+  script_version("$Revision: 10133 $");
   script_cve_id("CVE-2013-2906","CVE-2013-2923","CVE-2013-2924","CVE-2013-2922",
                 "CVE-2013-2921","CVE-2013-2907","CVE-2013-2908","CVE-2013-2909",
                 "CVE-2013-2910","CVE-2013-2911","CVE-2013-2912","CVE-2013-2913",
@@ -39,42 +38,24 @@ if(description)
   script_bugtraq_id(62752);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 14:27:23 +0530 (Mon, 07 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct2013 (Windows)");
 
-  tag_summary =
-"This host is installed with Google Chrome and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version of Google Chrome with the help of detect NVT and
-check it is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws exists, For more details refer the reference section.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to cause a denial of
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Get the installed version of Google Chrome with the help of detect NVT and
+check it is vulnerable or not.");
+  script_tag(name : "solution" , value : "Upgrade to version 30.0.1599.66 or later
+For updates refer to http://www.google.com/chrome");
+  script_tag(name : "insight" , value : "Multiple flaws exists, For more details refer the reference section.");
+  script_tag(name : "affected" , value : "Google Chrome version before 30.0.1599.66 on Windows");
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a denial of
 service and to spoof the address bar or possibly have unspecified other
 impacts via some known or unknown vectors.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Google Chrome version before 30.0.1599.66 on Windows";
-
-  tag_solution =
-"Upgrade to version 30.0.1599.66 or later
-For updates refer to http://www.google.com/chrome";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -84,7 +65,7 @@ For updates refer to http://www.google.com/chrome";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }
@@ -93,17 +74,12 @@ For updates refer to http://www.google.com/chrome";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
-if(!chromeVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chromeVer, test_version:"30.0.1599.66"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,15 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pollit.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: pollit.nasl 10122 2018-06-07 13:09:58Z cfischer $
 #
 # Poll It v2.0 cgi
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
-# Changes by rd :
-#    - attempt to read /etc/passwd
-#    - script_id
-#    - script_bugtraq_id(1431);
+# Changes by rd
 #
 # Copyright:
 # Copyright (C) 2000 Thomas Reinke
@@ -31,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10459");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 10122 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1431);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,15 +43,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "'Poll_It_SSI_v2.0.cgi' is installed. This CGI has
+  script_tag(name:"solution", value:"remove 'Poll_It_SSI_v2.0.cgi' from /cgi-bin.");
+
+  script_tag(name:"summary", value:"'Poll_It_SSI_v2.0.cgi' is installed. This CGI has
   a well known security flaw that lets an attacker retrieve any file from
-  the remote system, e.g. /etc/passwd.";
+  the remote system, e.g. /etc/passwd.");
 
-  tag_solution = "remove 'Poll_It_SSI_v2.0.cgi' from /cgi-bin.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

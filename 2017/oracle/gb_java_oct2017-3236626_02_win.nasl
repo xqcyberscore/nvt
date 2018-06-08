@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_oct2017-3236626_02_win.nasl 8443 2018-01-17 14:24:16Z gveerendra $
+# $Id: gb_java_oct2017-3236626_02_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Security Updates (oct2017-3236626) 02 - Windows
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812037");
-  script_version("$Revision: 8443 $");
-  script_cve_id("CVE-2017-10388", "CVE-2017-10293", "CVE-2017-10346", "CVE-2017-10345", 
+  script_version("$Revision: 10144 $");
+  script_cve_id("CVE-2017-10388", "CVE-2017-10293", "CVE-2017-10346", "CVE-2017-10345",
                 "CVE-2017-10285", "CVE-2017-10356", "CVE-2017-10348", "CVE-2017-10295",
                 "CVE-2017-10349", "CVE-2017-10347", "CVE-2017-10274", "CVE-2017-10355",
                 "CVE-2017-10357", "CVE-2017-10281" );
@@ -38,15 +38,14 @@ if(description)
                     101348, 101382, 101333, 101369, 101355, 101378);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 15:24:16 +0100 (Wed, 17 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 13:03:18 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Java SE Security Updates (oct2017-3236626) 02 - Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to flaws in the
   'Hotspot', 'RMI ', 'Libraries', 'Smart Card IO', 'Security', 'Javadoc', 'JAXP',
@@ -55,7 +54,7 @@ if(description)
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   will allow remote attackers to gain elevated privileges, partially access and
   partially modify data, access sensitive data, obtain sensitive information or
-  cause a denial of service, 
+  cause a denial of service,
 
   Impact Level: System/Application");
 
@@ -71,7 +70,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }

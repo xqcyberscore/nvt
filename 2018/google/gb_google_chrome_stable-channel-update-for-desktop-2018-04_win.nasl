@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_win.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_win.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Windows
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813094");
-  script_version("$Revision: 9527 $");
-  script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088", 
-                "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092", 
-                "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096", 
-                "CVE-2018-6097", "CVE-2018-6098", "CVE-2018-6099", "CVE-2018-6100", 
-                "CVE-2018-6101", "CVE-2018-6102", "CVE-2018-6103", "CVE-2018-6104", 
-                "CVE-2018-6105", "CVE-2018-6106", "CVE-2018-6107", "CVE-2018-6108", 
-                "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112", 
-                "CVE-2018-6113", "CVE-2018-6114", "CVE-2018-6115", "CVE-2018-6116", 
+  script_version("$Revision: 10133 $");
+  script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
+                "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
+                "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096",
+                "CVE-2018-6097", "CVE-2018-6098", "CVE-2018-6099", "CVE-2018-6100",
+                "CVE-2018-6101", "CVE-2018-6102", "CVE-2018-6103", "CVE-2018-6104",
+                "CVE-2018-6105", "CVE-2018-6106", "CVE-2018-6107", "CVE-2018-6108",
+                "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112",
+                "CVE-2018-6113", "CVE-2018-6114", "CVE-2018-6115", "CVE-2018-6116",
                 "CVE-2018-6117");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:30:38 +0530 (Wed, 18 Apr 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Windows");
 
   script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -69,16 +68,16 @@ if(description)
 
   - An insufficient protection of remote debugging prototol in DevTools.
 
-  - An incorrect handling of promises in V8, files by FileAPI, plaintext files 
+  - An incorrect handling of promises in V8, files by FileAPI, plaintext files
     via 'file://'.
 
   - An incorrect low memory handling in WebAssembly.
 
   - A content security policy bypass error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to conduct spoofing attacks, bypass security restrictions, cause
-  denial of service condition and also some unspecified impacts. 
+  denial of service condition and also some unspecified impacts.
 
   Impact Level: Application");
 
@@ -94,7 +93,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   exit(0);
 }

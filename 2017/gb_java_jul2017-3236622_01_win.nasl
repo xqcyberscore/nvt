@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jul2017-3236622_01_win.nasl 8443 2018-01-17 14:24:16Z gveerendra $
+# $Id: gb_java_jul2017-3236622_01_win.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811241");
-  script_version("$Revision: 8443 $");
-  script_cve_id("CVE-2017-10198", "CVE-2017-10096", "CVE-2017-10135", "CVE-2017-10110", 
-                "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10074", "CVE-2017-10053", 
+  script_version("$Revision: 10144 $");
+  script_cve_id("CVE-2017-10198", "CVE-2017-10096", "CVE-2017-10135", "CVE-2017-10110",
+                "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10074", "CVE-2017-10053",
                 "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10243", "CVE-2017-10102",
                 "CVE-2017-10101", "CVE-2017-10107", "CVE-2017-10109", "CVE-2017-10105",
                 "CVE-2017-10081", "CVE-2017-10193", "CVE-2017-10067", "CVE-2017-10108" );
@@ -39,24 +39,23 @@ if(description)
                     99827, 99712, 99674, 99719, 99847, 99851, 99853, 99854, 99756, 99846);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 15:24:16 +0100 (Wed, 17 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:49:40 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple
   unspecifide errors in 'Security', 'AWT', 'ImageIO', 'JAXP', 'Libraries',
-  'RMI', 'Hotspot' , 'JCE', 'JAX-WS', '2D', 'Serialization', 'Deployment'  
+  'RMI', 'Hotspot' , 'JCE', 'JAX-WS', '2D', 'Serialization', 'Deployment'
   component of the application.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this
   vulnerability will allow remote attackers to have an impact on
-  confidentiality, integrity and availablility. 
+  confidentiality, integrity and availablility.
 
   Impact Level: System/Application");
 
@@ -75,7 +74,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }

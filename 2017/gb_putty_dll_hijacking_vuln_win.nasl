@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dll_hijacking_vuln_win.nasl 5479 2017-03-03 14:40:33Z cfi $
+# $Id: gb_putty_dll_hijacking_vuln_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
 #
 # PuTTY DLL Hijacking Vulnerability (Windows)
 #
@@ -29,31 +29,30 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810541");
-  script_version("$Revision: 5479 $");
+  script_version("$Revision: 10142 $");
   script_cve_id("CVE-2016-6167");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 15:40:33 +0100 (Fri, 03 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 14:25:24 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY DLL Hijacking Vulnerability (Windows)");
-  
+
   script_tag(name: "summary" , value:"The host is installed with PuTTY and is
   prone to dll hijacking vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to multiple untrusted search 
+  script_tag(name: "insight" , value:"The flaw is due to multiple untrusted search
   path errors.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of the affected application. 
+  attackers to execute arbitrary code in the context of the affected application.
   Failed exploit attempts will result in a denial of service condition.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"PuTTY beta 0.67(Windows installers 
+  script_tag(name: "affected" , value:"PuTTY beta 0.67(Windows installers
   created by Inno Setup for version 0.67) on Windows.");
 
   script_tag(name: "solution" , value:"Upgrade to PuTTY version 0.67 or later
@@ -67,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("secpod_putty_version.nasl");
+  script_dependencies("gb_putty_portable_detect.nasl");
   script_mandatory_keys("PuTTY/Version");
   exit(0);
 }
@@ -77,16 +76,10 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-puttyVer = "";
-report = "";
-
-## Get version
 if(!puttyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
@@ -99,19 +92,17 @@ if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1";
 }
 
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1";
 }
 
-## Grep for vulnerable version
 if(version_is_equal(version:puttyVer, test_version:"0.67"))
 {
   inLocation = registry_get_sz(key:key,item:"Inno Setup: App Path");
   if(!inLocation){
     exit(0);
   }
- 
+
   report = report_fixed_ver(installed_version:puttyVer, fixed_version:"0.67 (MSI format for PuTTY's Windows installer)");
   security_message(data:report);
   exit(0);

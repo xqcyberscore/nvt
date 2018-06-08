@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_info_disc_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_opera_mult_info_disc_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
 #
 # Opera Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -24,36 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to gain
-sensitive information about visited web pages by calling getComputedStyle
-method or via a crafted HTML document.
-
-Impact Level: Application";
-
-tag_affected = "Opera version 10.50 on Windows";
-
-tag_insight = "Multiple flaws are due to implementation erros in,
-- The JavaScript failing to restrict the set of values contained in the
-object returned by the getComputedStyle method.
-- The Cascading Style Sheets (CSS) failing to handle the visited
-pseudo-class.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is installed with Opera and is prone to multiple
-information disclosure vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802363");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 10137 $");
   script_cve_id("CVE-2010-5072", "CVE-2010-5068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 16:10:28 +0530 (Fri, 09 Dec 2011)");
   script_name("Opera Multiple Information Disclosure Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://w2spconf.com/2010/papers/p26.pdf");
@@ -61,13 +39,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain
+sensitive information about visited web pages by calling getComputedStyle
+method or via a crafted HTML document.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "Opera version 10.50 on Windows");
+  script_tag(name : "insight" , value : "Multiple flaws are due to implementation erros in,
+- The JavaScript failing to restrict the set of values contained in the
+object returned by the getComputedStyle method.
+- The Cascading Style Sheets (CSS) failing to handle the visited
+pseudo-class.");
+  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+since the disclosure of this vulnerability. Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective
+features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to multiple
+information disclosure vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
@@ -80,7 +70,9 @@ if(!operaVer){
   exit(0);
 }
 
-# Check for opera version is equal to 10.50
 if(version_is_equal(version:operaVer, test_version:"10.50")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

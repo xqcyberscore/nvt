@@ -29,28 +29,27 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807551");
-  script_version("$Revision: 7724 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2016-0695", "CVE-2016-0687", "CVE-2016-0686", "CVE-2016-3443",
                 "CVE-2016-3427", "CVE-2016-3425", "CVE-2016-3422", "CVE-2016-3449");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-04-22 10:41:22 +0530 (Fri, 22 Apr 2016)");
   script_name("Oracle Java SE Multiple Vulnerabilities April 2016 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"The multiple flaws are due to,
-  - The Security component in 'OpenJDK' failed to check the digest algorithm 
+  - The Security component in 'OpenJDK' failed to check the digest algorithm
     strength when generating DSA signatures.
-  - The JAXP component in 'OpenJDK' failed to properly handle Unicode surrogate 
+  - The JAXP component in 'OpenJDK' failed to properly handle Unicode surrogate
     pairs used as part of the XML attribute values.
-  - The RMI server implementation in the JMX component in 'OpenJDK' did not 
-    restrict which classes can be deserialized when deserializing authentication 
+  - The RMI server implementation in the JMX component in 'OpenJDK' did not
+    restrict which classes can be deserialized when deserializing authentication
     credentials.
   - Multiple unspecified vulnerabilities.");
 
@@ -60,7 +59,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 113 and prior, 
+  script_tag(name: "affected" , value:"Oracle Java SE 6 update 113 and prior,
   7 update 99 and prior and 8 update 77 and prior on Windows.");
 
   script_tag(name: "solution" , value:"Apply the patch from below link,
@@ -75,7 +74,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -83,9 +82,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-jreVer = "";
 
 infos = get_app_version_and_location(cpe:CPE);
 if(!infos)
@@ -100,7 +96,6 @@ jrePath = infos['location'];
 
 if(jreVer =~ "^(1\.(6|7|8))")
 {
-  ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.113") ||
      version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.99") ||
      version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.77"))

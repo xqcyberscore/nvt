@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 9943 2018-05-24 08:08:15Z cfischer $
+# $Id: http_func.inc 10107 2018-06-07 07:37:31Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9943 $
+# $Revision: 10107 $
 #
 ###############################################################################
 
@@ -200,22 +200,37 @@ function php_ver_match( banner, pattern ) {
   return( 0 );
 }
 
+# @brief This functions checks if the remote HTTP server is responding
+#        to an HTTP GET request.
+#
+# @param port  the port of the remote server to check
+# @param retry the amount of retries until the check is considered as failed.
+#              This parameter is optional and defaults to 2 retries and is
+#              limited to a max. of 5 retries.
+#
+# @return TRUE if the remote HTTP server is not responding, FALSE otherwise
+#
 function http_is_dead( port, retry ) {
 
-  local_var soc, url, req, code, h, h2, b, i;
+  local_var port, retry, i, soc, url, req, code, h, h2, b;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_is_dead" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_is_dead" );
+    return FALSE;
+  }
 
   if( ! retry ) retry = 2;
+  if( retry > 5 ) retry = 5; # nb: Limit the amount of retries to a sane default
 
   i = 0;
   soc = http_open_socket( port );
   while( ! soc && i++ < retry ) {
-    sleep( 1 ); # Should we use sleep(i) ?
+    sleep( i );
     soc = http_open_socket( port );
     if( _http_debug ) display( "DEBUG: i = ", i, "\n" );
   }
-  if( ! soc ) return( 1 );
+  if( ! soc ) return TRUE;
+
   # NB: http_head does not work against SWAT & VNC (& probably others...)
   url = strcat( "/OpenVASTest", rand(), ".html" );
   req = http_get( item:url, port:port );
@@ -228,14 +243,16 @@ function http_is_dead( port, retry ) {
     b = http_recv_body( socket:soc, headers:h2 );
   }
   http_close_socket( soc );
-  if( ! code ) return( 1 );
+  if( ! code ) return TRUE;
+
   # 500: internal server error
   # 501: not implemented = unsupported method...
   # 502: Bad gateway = upstream server sends an invalid response
   # 503: service unavailable = temporary overloading...
   # 504: gateway timeout = no timely response from upstream server
-  if( ereg( pattern:"^HTTP/1\.[01] +50[234]", string:code ) ) return( 1 );
-  return( 0 );
+  if( ereg( pattern:"^HTTP/1\.[01] +50[234]", string:code ) ) return TRUE;
+
+  return FALSE;
 }
 
 # This function was originally written by SecurITeam in

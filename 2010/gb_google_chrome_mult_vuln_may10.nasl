@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_may10.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_google_chrome_mult_vuln_may10.nasl 10133 2018-06-08 11:13:34Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Windows - May10
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to bypass security restrictions,
-  and potentially compromise a user's system.
-  Impact Level: System/Application";
-tag_affected = "Google Chrome version prior to 4.1.249.1064";
-tag_insight = "Multiple flaws are due to,
-  - unspecified error while handling HTML5 media and fonts, which can be exploited
-    to cause a memory corruption via unknown vectors.
-  - unspecified error in Google URL, which allows to bypass the same origin policy
-    via unspecified vectors.";
-tag_solution = "Upgrade to the version 4.1.249.1064
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome Web Browser and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800770");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 10133 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:36:02 +0200 (Fri, 07 May 2010)");
   script_cve_id("CVE-2010-1664", "CVE-2010-1663", "CVE-2010-1665");
   script_tag(name:"cvss_base", value:"10.0");
@@ -56,26 +42,38 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_win.nasl");
+  script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to bypass security restrictions,
+  and potentially compromise a user's system.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Google Chrome version prior to 4.1.249.1064");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
+
+  - unspecified error while handling HTML5 media and fonts, which can be exploited
+    to cause a memory corruption via unknown vectors.
+
+  - unspecified error in Google URL, which allows to bypass the same origin policy
+    via unspecified vectors.");
+  script_tag(name : "solution" , value : "Upgrade to the version 4.1.249.1064
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name : "solution_type" , value : "VendorFix");
+  script_tag(name : "summary" , value : "This host is installed with Google Chrome Web Browser and is prone
+  to multiple vulnerabilities.");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Google Chrome Ver from KB
 gcVer = get_kb_item("GoogleChrome/Win/Ver");
 if(!gcVer){
   exit(0);
 }
 
-## Check for google chrome Version less than 4.1.249.1064
 if(version_is_less(version:gcVer, test_version:"4.1.249.1064")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

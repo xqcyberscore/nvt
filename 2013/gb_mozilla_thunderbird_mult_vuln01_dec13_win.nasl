@@ -25,31 +25,27 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:thunderbird";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804043";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804043");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2013-5609", "CVE-2013-5613", "CVE-2013-5615", "CVE-2013-5616",
                 "CVE-2013-5618", "CVE-2013-6671", "CVE-2013-6673");
   script_bugtraq_id(64204, 64203, 64216, 64209, 64211, 64212, 64213);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 17:30:34 +0530 (Mon, 23 Dec 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Dec13 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Thunderbird and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 24.2 or later,
+For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
 - Use-after-free vulnerability in the PresShell::DispatchSynthMouseMove
   function.
 - JavaScript implementation does not properly enforce certain
@@ -59,29 +55,13 @@ is vulnerable or not.";
 - unspecified error in nsGfxScrollFrameInner::IsLTR function.
 - Flaw is due to the program ignoring the setting to remove the trust for
   extended validation (EV) capable root certificates.
-";
-
-  tag_impact =
-"Successful exploitation will allow attackers to conduct cross-site scripting
+");
+  script_tag(name : "affected" , value : "Mozilla Thunderbird version before 24.2 on Windows");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct cross-site scripting
 attacks, bypass certain security restrictions, disclose potentially sensitive
 information, and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Thunderbird version before 24.2 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Thunderbird version 24.2 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -90,7 +70,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
   exit(0);
 }
@@ -99,17 +79,12 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
-if(!tbVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"24.2"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

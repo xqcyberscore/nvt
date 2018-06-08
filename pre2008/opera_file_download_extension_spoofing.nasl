@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_file_download_extension_spoofing.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: opera_file_download_extension_spoofing.nasl 10137 2018-06-08 12:38:04Z asteins $
 # Description: Opera web browser file download extension spoofing
 #
 # Authors:
@@ -24,24 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Opera - an alternative web browser.
-  This version contains a flaw that may allow a malicious user
-  to trick a user into running arbitrary code.
-  The issue is triggered when an malicious web site provides a file for download,
-  but crafts the filename in such a way that the file is executed, rather than saved.
-  It is possible that the flaw may allow arbitrary code execution resulting in a
-  loss of confidentiality, integrity, and/or availability.
-
-  Solution : Install Opera 7.50 or newer.";
-
 
 # Ref: Secunia <http://www.secunia.com>
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14247");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10137 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2083");
   script_bugtraq_id(9640);
@@ -53,9 +43,18 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_dependencies("secpod_opera_detection_win_900036.nasl");
+  script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "The remote host is using Opera - an alternative web browser.
+  This version contains a flaw that may allow a malicious user
+  to trick a user into running arbitrary code.
+  The issue is triggered when an malicious web site provides a file for download,
+  but crafts the filename in such a way that the file is executed, rather than saved.
+  It is possible that the flaw may allow arbitrary code execution resulting in a
+  loss of confidentiality, integrity, and/or availability.");
+
+  script_tag(name : "solution", value : "Install Opera 7.50 or newer.");
+  script_tag(name : "solution_type" , value : "VendorFix");
   exit(0);
 }
 
@@ -68,5 +67,8 @@ if(!OperaVer){
 }
 
 if(version_is_less_equal(version:OperaVer, test_version:"7.49")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

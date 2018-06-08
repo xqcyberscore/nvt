@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 9746 2018-05-07 12:15:27Z emoss $
+# $Id: policy_functions.inc 10120 2018-06-07 12:17:10Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -42,6 +42,19 @@ function policy_set_kb(val){
   oid = get_script_oid();
   # save as string, because value can be "0", which would lead to not set the kb_entry
   set_kb_item(name:oid, value:string(val));
+}
+
+function policy_fixtext(fixtext){
+  local_var fixtext, name;
+  name = get_script_oid() + '/FIX';
+  fixtext = str_replace(string:fixtext,find:'\n', replace:' ');
+  set_kb_item(name:name, value:fixtext);
+}
+
+function policy_control_name(title){
+  local_var title, name;
+  name = get_script_oid() + '/NAME';
+  set_kb_item(name:name, value:title);
 }
 
 function policy_logging_registry(type,key,item,value){

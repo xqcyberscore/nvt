@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_vuln04_apr14.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_java_mult_vuln04_apr14.nasl 10144 2018-06-08 14:06:26Z asteins $
 #
 # Oracle Java SE Multiple Vulnerabilities-04 Apr 2014 (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804547");
-  script_version("$Revision: 7699 $");
+  script_version("$Revision: 10144 $");
   script_cve_id("CVE-2014-0463", "CVE-2014-0464", "CVE-2014-2410");
   script_bugtraq_id(66908, 66913, 66886);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 16:48:49 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle Java SE Multiple Vulnerabilities-04 Apr 2014 (Windows)");
 
   script_tag(name: "summary" , value:"This host is installed with Oracle Java
   SE and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple vulnerabilities exists, For more
   details about the vulnerabilities refer the reference section.");
@@ -67,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   exit(0);
 }
@@ -76,17 +75,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
-
-## Get version
 if(!jreVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(jreVer =~ "^(1\.8)")
 {
-  ##Check for Oracle Java SE Versions
   if(version_is_equal(version:jreVer, test_version:"1.8.0"))
   {
     report = report_fixed_ver(installed_version:jreVer, fixed_version: "8u5");

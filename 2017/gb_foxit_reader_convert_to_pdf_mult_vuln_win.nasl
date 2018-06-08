@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_convert_to_pdf_mult_vuln_win.nasl 6143 2017-05-17 10:03:21Z teissa $
+# $Id: gb_foxit_reader_convert_to_pdf_mult_vuln_win.nasl 10140 2018-06-08 12:58:24Z asteins $
 #
 # Foxit Reader Multiple Vulnerabilities - May17 (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107143");
-  script_version("$Revision: 6143 $");
+  script_version("$Revision: 10140 $");
   script_cve_id("CVE-2017-6883", "CVE-2017-8454", "CVE-2017-8455", "CVE-2017-8453");
   script_bugtraq_id(96870, 98317, 98320, 98319);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 12:03:21 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 18:47:49 +0530 (Wed, 05 Apr 2017)");
   script_name("Foxit Reader Multiple Vulnerabilities - May17 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
   - An error within the parsing of TIFF images. The issue results from the lack
@@ -50,12 +49,12 @@ if(description)
     the end of an allocated object.
   - Multiple errors within the parsing of fonts in PDF files.The issue results
     from the lack of proper validation of user-supplied data, which can result
-    in a read past the end of an allocated object."); 
+    in a read past the end of an allocated object.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (out-of-bounds read and application crash) 
-  via a crafted TIFF image. The vulnerability could lead to information disclosure; 
-  an attacker can leverage this in conjunction with other vulnerabilities to execute 
+  attackers to cause a denial of service (out-of-bounds read and application crash)
+  via a crafted TIFF image. The vulnerability could lead to information disclosure;
+  an attacker can leverage this in conjunction with other vulnerabilities to execute
   code in the context of the current process.
 
   Impact Level: System/Application");
@@ -77,7 +76,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_foxit_reader_detect.nasl");
+  script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("Foxit/Reader/Ver");
   exit(0);
 }
@@ -86,15 +85,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(version_is_less_equal(version:foxitVer, test_version:"8.2.0.2051"))
 {
   report = report_fixed_ver(installed_version:foxitVer, fixed_version:"8.2.1");

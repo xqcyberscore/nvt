@@ -25,54 +25,34 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:thunderbird_esr";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804011";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804011");
+  script_version("$Revision: 10135 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725", "CVE-2013-1726",
                 "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735", "CVE-2013-1736",
                 "CVE-2013-1737");
   script_bugtraq_id(62463, 62460, 62467, 62482, 62473, 62469, 62479, 62478, 62475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 15:33:00 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 Sep13 (Windows)");
 
-  tag_summary =
-"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"For more details about the vulnerabilities, refer the reference section.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to gain escalated privileges,
+  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird ESR and is prone to multiple
+vulnerabilities.");
+  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
+  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird ESR version 17.0.9 or later,
+For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name : "insight" , value : "For more details about the vulnerabilities, refer the reference section.");
+  script_tag(name : "affected" , value : "Mozilla Thunderbird ESR version 17.x before 17.0.9 on Windows");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to gain escalated privileges,
 disclose potentially sensitive information, bypass certain security
 restrictions, and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Thunderbird ESR version 17.x before 17.0.9 on Windows";
-
-  tag_solution =
-"Upgrade to Mozilla Thunderbird ESR version 17.0.9 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,7 +61,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_thunderbird_detect_win.nasl");
+  script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
   exit(0);
 }
@@ -90,18 +70,13 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
-if(!tbVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(tbVer =~ "^17\." && version_in_range(version:tbVer, test_version:"17.0",
                                                        test_version2:"17.0.8"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
