@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_604574c943_xen_fc27.nasl 9691 2018-05-02 11:26:19Z santu $
+# $Id: gb_fedora_2018_604574c943_xen_fc27.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Fedora Update for xen FEDORA-2018-604574c943
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874408");
-  script_version("$Revision: 9691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 13:26:19 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:54 +0530 (Wed, 02 May 2018)");
-  script_cve_id("CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595", 
-                "CVE-2017-17566", "CVE-2017-17563", "CVE-2017-17564", "CVE-2017-17565", 
-                "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597", 
-                "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588", 
+  script_cve_id("CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595",
+                "CVE-2017-17566", "CVE-2017-17563", "CVE-2017-17564", "CVE-2017-17565",
+                "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597",
+                "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588",
                 "CVE-2017-15593", "CVE-2017-15594", "CVE-2018-10472", "CVE-2018-10471");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2018-604574c943");
   script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "This package contains the XenD daemon 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "This package contains the XenD daemon
 and xm command line tools, needed to manage virtual machines running under the
 Xen hypervisor
 ");

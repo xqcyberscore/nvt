@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1317_1.nasl 9896 2018-05-18 06:15:05Z santu $
+# $Id: gb_suse_2018_1317_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # SuSE Update for php5 openSUSE-SU-2018:1317-1 (php5)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851745");
-  script_version("$Revision: 9896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 08:15:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:37:02 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547", "CVE-2018-10548");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2018:1317-1 (php5)");
   script_tag(name:"summary", value:"Check the version of php5");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
 the target host.");
   script_tag(name:"insight", value:"
   This update for php5 fixes the following issues:
@@ -56,7 +56,7 @@ the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

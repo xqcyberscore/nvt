@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_eb69078020_xen_fc26.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_eb69078020_xen_fc26.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Fedora Update for xen FEDORA-2018-eb69078020
 #
@@ -27,24 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874435");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-13 05:45:06 +0200 (Sun, 13 May 2018)");
-  script_cve_id("CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595", 
-                "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597", 
-                "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588", 
-                "CVE-2017-15593", "CVE-2017-15594", "CVE-2017-17046", "CVE-2017-13673", 
-                "CVE-2017-13672", "CVE-2017-14316", "CVE-2017-14318", "CVE-2017-14317", 
-                "CVE-2017-14319", "CVE-2017-9330", "CVE-2017-9524", "CVE-2017-10664", 
-                "CVE-2017-11334", "CVE-2017-8309", "CVE-2017-8379", "CVE-2017-5579", 
-                "CVE-2017-7718", "CVE-2017-12135", "CVE-2017-12137", "CVE-2017-12136", 
+  script_cve_id("CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595",
+                "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597",
+                "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588",
+                "CVE-2017-15593", "CVE-2017-15594", "CVE-2017-17046", "CVE-2017-13673",
+                "CVE-2017-13672", "CVE-2017-14316", "CVE-2017-14318", "CVE-2017-14317",
+                "CVE-2017-14319", "CVE-2017-9330", "CVE-2017-9524", "CVE-2017-10664",
+                "CVE-2017-11334", "CVE-2017-8309", "CVE-2017-8379", "CVE-2017-5579",
+                "CVE-2017-7718", "CVE-2017-12135", "CVE-2017-12137", "CVE-2017-12136",
                 "CVE-2017-12855", "CVE-2018-10472", "CVE-2018-10471");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2018-eb69078020");
   script_tag(name:"summary", value:"Check the version of xen");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"This package contains the XenD daemon and xm command line
 tools, needed to manage virtual machines running under the

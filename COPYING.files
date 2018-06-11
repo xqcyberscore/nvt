@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 08 Jun 2018 16:58:36 +0200
+# Automatically created on:  Mon, 11 Jun 2018 08:25:25 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -59744,6 +59744,22 @@ Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_disable_cad.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_display_last_user.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_machine_acc_lockout_threshold.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_machine_inactivity_limit.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_message_title_users_logon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_message_users_attempt_logon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_num_previous_logon_cache.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_prompt_change_password.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_smart_card_removal_behaviour.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_enum_sam_accounts.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_sam_shares.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_translation.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_digitally_sign_communications_always.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_digitally_sign_communications_server_agrees.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_unencrypted_password_smb.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_disconnect_logon_hours_expires.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_idle_time_suspending.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_always.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_possible.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_spn_validation_level.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_execute_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_read_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_cd_dvd_deny_write_access.nasl: GPLv2+

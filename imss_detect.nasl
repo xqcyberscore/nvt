@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imss_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: imss_detect.nasl 10147 2018-06-11 03:00:29Z ckuersteiner $
 #
 # Trend Micro IMSS console management detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17244");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10147 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:00:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("Trend Micro IMSS console management detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Service detection");
@@ -41,17 +43,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host appears to run Trend Micro Interscan Messaging Security 
-  Suite, connections are allowed to the web console management.
+  script_tag(name:"summary", value:"The remote host appears to run Trend Micro Interscan Messaging Security Suite,
+connections are allowed to the web console management.
 
-  Make sure that only authorized hosts can connect to this service, as the
-  information of its existence may help an attacker to make more sophisticated
-  attacks against the remote network.";
-
-  tag_solution = "Filter incoming traffic to this port";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+Make sure that only authorized hosts can connect to this service, as the information of its existence may help an
+attacker to make more sophisticated attacks against the remote network.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

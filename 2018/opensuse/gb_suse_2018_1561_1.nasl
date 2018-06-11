@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1561_1.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_suse_2018_1561_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # SuSE Update for ocaml openSUSE-SU-2018:1561-1 (ocaml)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851777");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 05:47:55 +0200 (Thu, 07 Jun 2018)");
   script_cve_id("CVE-2018-9838");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ocaml openSUSE-SU-2018:1561-1 (ocaml)");
   script_tag(name:"summary", value:"Check the version of ocaml");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"
   This update for ocaml fixes the following issues:
@@ -52,7 +52,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

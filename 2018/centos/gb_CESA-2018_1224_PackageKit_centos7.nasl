@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1224_PackageKit_centos7.nasl 10076 2018-06-05 08:44:03Z santu $
+# $Id: gb_CESA-2018_1224_PackageKit_centos7.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
-# CentOS Update for PackageKit CESA-2018:1224 centos7 
+# CentOS Update for PackageKit CESA-2018:1224 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882896");
-  script_version("$Revision: 10076 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 10:44:03 +0200 (Tue, 05 Jun 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:32 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2018-1106");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for PackageKit CESA-2018:1224 centos7 ");
   script_tag(name:"summary", value:"Check the version of PackageKit");

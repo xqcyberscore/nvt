@@ -28,29 +28,23 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.866587");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-08-20 15:17:05 +0530 (Tue, 20 Aug 2013)");
   script_cve_id("CVE-2013-2233");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("Fedora Update for ansible FEDORA-2013-12389");
 
-  tag_insight = "Ansible is a radically simple model-driven configuration management,
+
+  script_tag(name : "affected" , value : "ansible on Fedora 19");
+  script_tag(name : "insight" , value : "Ansible is a radically simple model-driven configuration management,
 multi-node deployment, and remote task execution system. Ansible works
 over SSH and does not require any software or daemons to be installed
 on remote nodes. Extension modules can be written in any language and
 are transferred to managed machines automatically.
-";
-
-  tag_affected = "ansible on Fedora 19";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+");
+  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2013-12389");
@@ -83,6 +77,6 @@ if(release == "FC19")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_products_invalid_mem_access_vuln.nasl 9948 2018-05-24 11:25:38Z jschulte $
+# $Id: gb_huawei_products_invalid_mem_access_vuln.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Huawei Products Invalid Memory Access Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113195");
-  script_version("$Revision: 9948 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 13:25:38 +0200 (Thu, 24 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 12:32:45 +0200 (Thu, 24 May 2018)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

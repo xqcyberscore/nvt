@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a459acd54b_ruby_fc27.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_fedora_2018_a459acd54b_ruby_fc27.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Fedora Update for ruby FEDORA-2018-a459acd54b
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874655");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 05:57:35 +0200 (Thu, 07 Jun 2018)");
-  script_cve_id("CVE-2018-8778", "CVE-2017-17742", "CVE-2018-8777", "CVE-2018-8780", 
+  script_cve_id("CVE-2018-8778", "CVE-2017-17742", "CVE-2018-8777", "CVE-2018-8780",
                 "CVE-2018-8779", "CVE-2018-6914");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ruby FEDORA-2018-a459acd54b");
   script_tag(name:"summary", value:"Check the version of ruby");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Ruby is the interpreted scripting language 
-for quick and easy object-oriented programming.  It has many features to process 
+  script_tag(name:"insight", value:"Ruby is the interpreted scripting language
+for quick and easy object-oriented programming.  It has many features to process
 text files and to do system management tasks (as in Perl).  It is simple,
 straight-forward, and extensible.
 ");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3634_1.nasl 9668 2018-04-28 08:25:13Z cfischer $
+# $Id: gb_ubuntu_USN_3634_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Ubuntu Update for packagekit USN-3634-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843508");
-  script_version("$Revision: 9668 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-28 10:25:13 +0200 (Sat, 28 Apr 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:37:17 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2018-1106");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for packagekit USN-3634-1");
   script_tag(name: "summary", value: "Check the version of packagekit");

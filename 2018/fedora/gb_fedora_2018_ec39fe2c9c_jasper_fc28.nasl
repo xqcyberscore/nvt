@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ec39fe2c9c_jasper_fc28.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_fedora_2018_ec39fe2c9c_jasper_fc28.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Fedora Update for jasper FEDORA-2018-ec39fe2c9c
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874645");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 13:07:02 +0200 (Tue, 05 Jun 2018)");
-  script_cve_id("CVE-2016-9396", "CVE-2016-9387", "CVE-2016-9388", "CVE-2016-9389", 
-                "CVE-2016-9390", "CVE-2016-9391", "CVE-2016-9392", "CVE-2016-9393", 
+  script_cve_id("CVE-2016-9396", "CVE-2016-9387", "CVE-2016-9388", "CVE-2016-9389",
+                "CVE-2016-9390", "CVE-2016-9391", "CVE-2016-9392", "CVE-2016-9393",
                 "CVE-2016-9394", "CVE-2016-9560");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for jasper FEDORA-2018-ec39fe2c9c");
   script_tag(name:"summary", value:"Check the version of jasper");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"This package contains an implementation of 
-the image compression standard JPEG-2000, Part 1. It consists of tools for 
+  script_tag(name:"insight", value:"This package contains an implementation of
+the image compression standard JPEG-2000, Part 1. It consists of tools for
 conversion to and from the JP2 and JPC formats.
 ");
   script_tag(name:"affected", value:"jasper on Fedora 28");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_events-manager_xss_vuln.nasl 9866 2018-05-16 13:26:29Z asteins $
+# $Id: gb_wordpress_events-manager_xss_vuln.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # WordPress Events Manager Plugin < 5.9 XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112284");
-  script_version("$Revision: 9866 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-16 15:26:29 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-05-16 13:13:00 +0200 (Wed, 16 May 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-0576");
 

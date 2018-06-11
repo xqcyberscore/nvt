@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1502_1.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_suse_2018_1502_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # SuSE Update for kernel openSUSE-SU-2018:1502-1 (kernel)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851776");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:47:45 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2017-5715");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kernel openSUSE-SU-2018:1502-1 (kernel)");
   script_tag(name:"summary", value:"Check the version of kernel");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"
   This update provides rebuilt kernel modules for openSUSE Leap 42.3 with
@@ -46,7 +46,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

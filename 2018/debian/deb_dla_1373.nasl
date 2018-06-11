@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1373.nasl 9814 2018-05-14 05:49:28Z cfischer $
+# $Id: deb_dla_1373.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1373-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891373");
-  script_version("$Revision: 9814 $");
+  script_version("$Revision: 10148 $");
   script_cve_id("CVE-2018-10545", "CVE-2018-10547", "CVE-2018-10548"); # nb: The generator is wrongly adding CVE-2018-5712 here, keep this in mind when overwriting this NVT...
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1373-1] php5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:49:28 +0200 (Mon, 14 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 00:00:00 +0200 (Mon, 14 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

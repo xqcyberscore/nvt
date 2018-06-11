@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a3b7c7eb79_PackageKit_fc27.nasl 9691 2018-05-02 11:26:19Z santu $
+# $Id: gb_fedora_2018_a3b7c7eb79_PackageKit_fc27.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
 #
 # Fedora Update for PackageKit FEDORA-2018-a3b7c7eb79
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874407");
-  script_version("$Revision: 9691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 13:26:19 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 10148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:59:00 +0530 (Wed, 02 May 2018)");
   script_cve_id("CVE-2018-1106");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for PackageKit FEDORA-2018-a3b7c7eb79");
   script_tag(name: "summary", value: "Check the version of PackageKit");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "PackageKit is a D-Bus abstraction layer 
+  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name: "insight", value: "PackageKit is a D-Bus abstraction layer
 that allows the session user to manage packages in a secure way using a cross-distro,
 cross-architecture API.
 ");

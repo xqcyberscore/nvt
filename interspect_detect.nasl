@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: interspect_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: interspect_detect.nasl 10147 2018-06-11 03:00:29Z ckuersteiner $
 #
 # CheckPoint InterSpect
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15614");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10147 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:00:29 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("CheckPoint InterSpect");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Service detection");
@@ -42,12 +44,15 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The remote host seems to be running CheckPoint InterSpect,
-  an internet security gateway. 
+  an internet security gateway.
 
-  The OpenVAS host is liked to have been put in quarantine, 
+  The OpenVAS host is liked to have been put in quarantine,
   its activity will be dropped for 30 minutes by default.";
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote host seems to be running CheckPoint InterSpect, an internet
+security gateway.
+
+The scanner host is liked to have been put in quarantine, its activity will be dropped for 30 minutes by default.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
