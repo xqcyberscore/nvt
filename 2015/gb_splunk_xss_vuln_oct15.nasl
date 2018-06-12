@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_xss_vuln_oct15.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_splunk_xss_vuln_oct15.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
 #
 # Splunk Enterprise Cross-Site Scripting Vulnerability -Oct15
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805772");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 10149 $");
   script_cve_id("CVE-2015-7604");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-10-30 10:45:47 +0530 (Fri, 30 Oct 2015)");
+
   script_name("Splunk Enterprise Cross-Site Scripting Vulnerability -Oct15");
 
   script_tag(name: "summary" , value:"The host is installed with Splunk and is
   prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight" , value:"Flaw is due to improper validation of
   user-supplied input passed via unspecified vectors before being returned
@@ -62,8 +62,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAPAM");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1033655");
+  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAPAM");
+  script_xref(name: "URL", value: "http://www.securitytracker.com/id/1033655");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

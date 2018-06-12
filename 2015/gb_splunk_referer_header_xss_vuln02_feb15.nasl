@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 6709 2017-07-12 15:16:14Z cfischer $
+# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
 #
 # Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805333");
-  script_version("$Revision: 6709 $");
+  script_version("$Revision: 10149 $");
   script_cve_id("CVE-2014-8301");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15");
 
@@ -59,9 +59,9 @@ if(description)
   later. For updates refer to http://www.splunk.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  
+
   script_tag(name:"qod_type", value:"exploit");
-  
+
   script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAANHS#announce4");
 
   script_category(ACT_ATTACK);
@@ -77,20 +77,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-ses_id = "";
-dir = "";
-
 if(!http_port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:http_port)) exit(0);
 
 sndReq = http_get(item:string(dir, "/account/login"), port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-## Get the session id
 ses_id = eregmatch(pattern:string("session_id_" + http_port + "=([0-9a-z]*)"),
                    string:rcvRes);
 if(!ses_id[1]){
@@ -101,7 +93,6 @@ host = http_host_name(port:http_port);
 
 url = dir + "/i18ncatalog?autoload=1";
 
-## Construct the attack request
 sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Host:", host, "\r\n",
                 "Accept-Encoding: gzip, deflate","\r\n",
@@ -110,7 +101,6 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Content-Length: 0","\r\n\r\n");
 rcvRes = http_send_recv(port:http_port, data:sndReq);
 
-#Confirm Exploit
 if("alert(document.cookie)" >< rcvRes && ">405 Method Not Allowed<" >< rcvRes)
 {
   security_message(http_port);

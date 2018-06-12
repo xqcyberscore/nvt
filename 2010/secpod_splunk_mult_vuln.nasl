@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_mult_vuln.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: secpod_splunk_mult_vuln.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
 #
 # Splunk Multiple vulnerabilities
 #
@@ -24,61 +24,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to obtain sensitive information
-  and gain privileges.
-  Impact Level: Application";
-tag_affected = "Splunk version 4.0.0 through 4.1.4";
-tag_insight = "- XML parser is vulnerable to XXE (XML eXternal Entity) attacks,
-    which allows remote authenticated users to obtain sensitive information
-    and gain privileges.
-  - SPLUNKD_SESSION_KEY parameter is vulnerable to session hijacking.";
-tag_solution = "Upgrade to Splunk version 4.1.5 or later,
-  For updates refer to http://www.splunk.com/download";
-tag_summary = "This host is running Splunk and is prone to multiple
-  vulnerabilities.";
+CPE = 'cpe:/a:splunk:splunk';
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901152");
-  script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 10149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3322", "CVE-2010-3323");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+
+  script_tag(name: "solution_type", value: "VendorFix");
+
   script_name("Splunk Multiple vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAFQ6");
+
+  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAFQ6");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_splunk_detect.nasl");
+  script_mandatory_keys("Splunk/installed");
   script_require_ports("Services/www", 8000);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name: "impact", value: "Successful exploitation will allow attackers to obtain sensitive information
+and gain privileges.");
+
+  script_tag(name: "affected", value: "Splunk version 4.0.0 through 4.1.4");
+
+  script_tag(name: "insight", value: "- XML parser is vulnerable to XXE (XML eXternal Entity) attacks, which
+allows remote authenticated users to obtain sensitive information and gain privileges.
+
+- SPLUNKD_SESSION_KEY parameter is vulnerable to session hijacking.");
+
+  script_tag(name: "solution", value: "Upgrade to Splunk version 4.1.5 or later, For updates refer to
+http://www.splunk.com/download");
+
+  script_tag(name: "summary", value:  "This host is running Splunk and is prone to multiple vulnerabilities.");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Get Splunk Port
-port = get_http_port(default:8000);
-if(!get_port_state(port)) {
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_in_range(version: version, test_version: "4.0", test_version2:"4.1.4")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.1.5");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-## Get Splunk Version from KB
-vers = get_kb_item(string("www/", port, "/splunk"));
-if(!isnull(vers))
-{
-  ## Check for Splunk Versions 4.0.0 through 4.1.4
-  if(version_in_range(version: vers, test_version: "4.0", test_version2:"4.1.4")){
-    security_message(port:port);
-  }
-}
+exit(99);

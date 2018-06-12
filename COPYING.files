@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 11 Jun 2018 08:25:25 +0200
+# Automatically created on:  Tue, 12 Jun 2018 09:23:22 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38832,6 +38832,13 @@
 2018/debian/deb_4216.nasl: GPLv2+
 2018/debian/deb_4217.nasl: GPLv2+
 2018/debian/deb_4218.nasl: GPLv2+
+2018/debian/deb_4219.nasl: GPLv2+
+2018/debian/deb_4220.nasl: GPLv2+
+2018/debian/deb_4221.nasl: GPLv2+
+2018/debian/deb_4222.nasl: GPLv2+
+2018/debian/deb_4223.nasl: GPLv2+
+2018/debian/deb_4224.nasl: GPLv2+
+2018/debian/deb_4225.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40109,6 +40116,7 @@
 2018/lutron/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
 2018/lynxtechnology/gb_twonky_server_mult_vuln_active.nasl: GPLv2+
 2018/lynxtechnology/gb_twonky_server_mult_vuln.nasl: GPLv2+
+2018/lynxtechnology/gb_twonky_server_xss_vuln.nasl: GPLv2+
 2018/magentocommerce/gb_magento_mult_vuln1.nasl: GPLv2+
 2018/mahara/gb_mahara_mult_vuln.nasl: GPLv2+
 2018/mahara/gb_mahara_xss_vuln.nasl: GPLv2+
@@ -40670,6 +40678,7 @@
 2018/sugarcrm/gb_sugarcrm_multiple_sql_inj_vuln.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_xxe_vuln.nasl: GPLv2+
 2018/support/gb_superantispyware_mult_vuln.nasl: GPLv2+
+2018/symphony/gb_symphony_cms_xss_vuln.nasl: GPLv2+
 2018/teamtest/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/telerik/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/telerik/gb_sitefinity_mult_vuln.nasl: GPLv2+
@@ -41069,6 +41078,7 @@ gb_adobe_dng_converter_detect_macosx.nasl: GPLv2+
 gb_adobe_dng_converter_detect_win.nasl: GPLv2+
 gb_adobe_flash_player_detect_lin.nasl: GPLv2+
 gb_adobe_flash_player_detect_win.nasl: GPLv2+
+gb_adobe_flash_player_plugin_detect_win.nasl: GPLv2+
 gb_adobe_flash_professional_detect_macosx.nasl: GPLv2+
 gb_adobe_flash_professional_detect_win.nasl: GPLv2+
 gb_adobe_fms_detect.nasl: GPLv2+
@@ -41396,6 +41406,7 @@ gb_cygwin_detect_win.nasl: GPLv2+
 gb_dahua_devices_detect.nasl: GPLv2+
 gb_dalim_es_detect.nasl: GPLv2+
 gb_dasan_gpon_ont_detect.nasl: GPLv2+
+gb_dedecms_detect.nasl: GPLv2+
 gb_default_credentials_options.nasl: GPLv2+
 gb_dell_drac_detect.nasl: GPLv2+
 gb_dell_kace_2000_web_detect.nasl: GPLv2+
@@ -57700,6 +57711,7 @@ gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
 gsf/2018/cyberark/gb_cyberark_password_vault_mem_discl_vuln.nasl: GPLv2+
 gsf/2018/cyberark/gb_cyberark_password_vault_rce_vuln.nasl: GPLv2+
+gsf/2018/dell/gb_dell_idrac_mult_vuln.nasl: GPLv2+
 gsf/2018/dell/gb_sonicwall_gms_multiple_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
@@ -58151,6 +58163,7 @@ gsf/2018/sonatype/gb_sonatype_nexus_xss_vuln.nasl: GPLv2+
 gsf/2018/sophos/gb_sophos_end_prot_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/sophos/gb_sophos_xg_xss_vuln.nasl: GPLv2+
 gsf/2018/splunk/gb_splunk_enterprise_mult_saml_vuln.nasl: GPLv2+
+gsf/2018/splunk/gb_splunk_info_discl_vuln.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
 gsf/2018/unitrends/gb_unitrends_mult_vuln.nasl: GPLv2+

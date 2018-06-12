@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3662_1.nasl 10086 2018-06-06 04:57:58Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3662_1.nasl 10156 2018-06-12 06:31:24Z cfischer $
 #
 # Ubuntu Update for nvidia-graphics-drivers-384 USN-3662-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843538");
-  script_version("$Revision: 10086 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 06:57:58 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 10156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 08:31:24 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:05 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2018-6249", "CVE-2018-6253");
   script_tag(name:"cvss_base", value:"7.2");
@@ -53,7 +53,7 @@ on the system.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|16\.04 LTS)");
   exit(0);
 }
 

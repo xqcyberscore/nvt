@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_default_login.nasl 7161 2017-09-18 07:43:57Z cfischer $
+# $Id: gb_dell_drac_default_login.nasl 10154 2018-06-12 04:56:22Z ckuersteiner $
 #
 # Dell Remote Access Controller Default Login
 #
@@ -25,75 +25,78 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote Dell Remote Access Controller is prone to a
-default account authentication bypass vulnerability. This issue may be
-exploited by a remote attacker to gain access to sensitive information
-or modify system configuration without requiring authentication.";
-
-
-tag_solution = "Change the password.";
-
-CPE = 'cpe:/h:dell:remote_access_card'; 
+CPE = 'cpe:/h:dell:remote_access_card';
 
 if (description)
 {
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- 
+ script_tag(name: "solution", value: "Change the password.");
+
+ script_tag(name: "summary", value: "The remote Dell Remote Access Controller is prone to a default account
+authentication bypass vulnerability. This issue may be exploited by a remote attacker to gain access to sensitive
+information or modify system configuration without requiring authentication.");
+
  script_oid("1.3.6.1.4.1.25623.1.0.103681");
- script_version ("$Revision: 7161 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
+ script_version ("$Revision: 10154 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-12 06:56:22 +0200 (Tue, 12 Jun 2018) $");
  script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
+ script_tag(name: "solution_type", value: "Mitigation");
+
  script_name("Dell Remote Access Controller Default Login");
+
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_dell_drac_detect.nasl");
  script_require_ports("Services/www", 443);
- script_mandatory_keys("dell_remote_access_controller/version");
+ script_mandatory_keys("dell_idrac/installed", "dell_idrac/generation");
+
  exit(0);
 }
 
-include("http_func.inc"); 
+include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE))exit(0);
+# TODO: check for iDRAC8
+cpe_list = make_list("cpe:/a:dell:idrac4", "cpe:/a:dell:idrac5", "cpe:/a:dell:idrac6", "cpe:/a:dell:idrac7");
 
-version = get_kb_item("dell_remote_access_controller/version");
-if(!version)exit(0);
+if (!infos = get_all_app_port_from_list(cpe_list: cpe_list))
+  exit(0);
+port = infos['port'];
+
+generation = get_kb_item("dell_idrac/generation");
+if (!generation)
+  exit(0);
 
 function check_iDRAC_default_login(version) {
-
-  if(!version || version !~ "^[4-7]$")return FALSE;
-
   user = 'root';
   pass = 'calvin';
 
-  if(version == "4") {
+  if (version == "4") {
     urls = make_list('/cgi/login');
     posts = make_list('user=' + user + '&hash=' + pass);
     login_success = make_list('top.location.replace("/cgi/main")');
-  }  
+  }
 
-  else if(version == 5) {
+  else if (version == 5) {
     urls = make_list('/cgi-bin/webcgi/login');
     posts = make_list('user=' + user + '&password=' + pass);
     login_fail = '<RC>0x140004</RC>';
-  }  
+  }
 
   else if(version == 6 || version == 7) {
     urls = make_list('/data/login','/Applications/dellUI/RPC/WEBSES/create.asp');
     posts = make_list('user=' + user + '&password=' + pass, 'WEBVAR_PASSWORD=' + pass  + '&WEBVAR_USERNAME=' + user  + '&WEBVAR_ISCMCLOGIN=0');
     login_success = make_list('<authResult>0</authResult>',"'USERNAME' : 'root'");
-  }  
+  }
 
   else {
     return FALSE;
-  }  
+  }
 
   host = http_host_name(port:port);
 
@@ -109,7 +112,7 @@ function check_iDRAC_default_login(version) {
       if(!soc) return FALSE;
 
       len = strlen(post);
- 
+
       req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -126,7 +129,7 @@ function check_iDRAC_default_login(version) {
       send(socket:soc, data:req);
       while(recv = recv(socket:soc, length:1024)) {
         buf += recv;
-      }  
+      }
 
       close(soc);
 
@@ -138,24 +141,23 @@ function check_iDRAC_default_login(version) {
         return TRUE;
       }
 
-      if(login_success) { 
+      if(login_success) {
         foreach ls (login_success) {
           if(ls >< buf) {
             return TRUE;
-          }  
-        }  
+          }
+        }
       }
 
     }
-  }  
+  }
 }
 
-if(check_iDRAC_default_login(version:version)) {
+if(check_iDRAC_default_login(version:generation)) {
 
   message = 'It was possible to login with username "root" and password "calvin".\n';
   security_message(port:port, data:message);
   exit(0);
-
 }
 
 exit(99);

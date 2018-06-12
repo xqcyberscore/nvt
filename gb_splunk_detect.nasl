@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_splunk_detect.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
 #
 # Splunk Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100693");
-  script_version("$Revision: 9996 $");
+  script_version("$Revision: 10149 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
   script_name("Splunk Detection");
 
@@ -55,53 +55,53 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-spPort = get_http_port(default:8000);
+port = get_http_port(default:8000);
 
-foreach dir (make_list("", "/splunk/en-US/", "/en-US"))
-{
-  buf = http_get_cache(item:string(dir, "/account/login"), port:spPort);
+foreach dir (make_list_unique("/", "/splunk/en-US", "/en-US", cgi_dirs(port: port))) {
+  install = dir;
+  if (dir == "/")
+    dir = "";
 
-  if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) &&
-     ('Splunk Enterprise' >< buf || buf =~ 'product_type":( )?"enterprise'))
+  buf = http_get_cache(item: dir + "/account/login", port: port);
+
+  if (egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) &&
+      ('Splunk Enterprise' >< buf || buf =~ 'product_type":( )?"enterprise'))
   {
-
-    vers = string("unknown");
+    vers = "unknown";
 
     version = eregmatch(string:buf, pattern:"&copy;.*Splunk ([0-9.]+)",icase:TRUE);
-    if(isnull(version[1])){
+    if (isnull(version[1]))
       version = eregmatch(string:buf, pattern:'version":"([0-9.]+)', icase:TRUE);
-    }
-    if(!isnull(version[1])){
-      vers=chomp(version[1]);
-    }
+
+    if (!isnull(version[1]))
+      vers = version[1];
 
     b = eregmatch(string:buf, pattern:"&copy;.*Splunk.* build ([0-9.]+)", icase:TRUE);
-    if(isnull(b[1])){
+    if (isnull(b[1]))
       b= eregmatch(string:buf, pattern:'build":"([0-9a-z.]+)', icase:TRUE);
-    }
-    if(!isnull(b[1])){
-      build = b[1];
-    }
 
-    set_kb_item(name: string("www/", spPort, "/splunk"), value: string(vers));
-    if(!isnull(build)) {
-      set_kb_item(name: string("www/", spPort, "/splunk/build"), value: string(build));
+    if (!isnull(b[1]))
+      build = b[1];
+
+    set_kb_item(name: string("www/", port, "/splunk"), value: string(vers));
+    if (!isnull(build)) {
+      set_kb_item(name: string("www/", port, "/splunk/build"), value: string(build));
+      extra = "Build:  " + build;
     }
 
     set_kb_item(name:"Splunk/installed", value:TRUE);
 
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:splunk:splunk:");
-    if(!cpe){
+    if (!cpe)
       cpe = "cpe:/a:splunk:splunk";
-    }
 
-    register_product(cpe:cpe, location:dir, port:spPort);
+    register_product(cpe: cpe, location: install, port: port);
 
-    log_message(data: build_detection_report(app: "Splunk",
-                                             version: vers,
-                                             install: dir,
-                                             cpe: cpe,
-                                             concluded: string(vers)), port: spPort);
+    log_message(data: build_detection_report(app: "Splunk", version: vers, install: install, cpe: cpe,
+                                             concluded: version[0], extra: extra),
+                port: port);
     exit(0);
   }
 }
+
+exit(0);

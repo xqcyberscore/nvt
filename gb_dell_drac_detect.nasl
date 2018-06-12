@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_detect.nasl 4653 2016-12-01 11:41:20Z cfi $
+# $Id: gb_dell_drac_detect.nasl 10154 2018-06-12 04:56:22Z ckuersteiner $
 #
 # Dell Remote Access Controller Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103680");
-  script_version("$Revision: 4653 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-01 12:41:20 +0100 (Thu, 01 Dec 2016) $");
+  script_version("$Revision: 10154 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 06:56:22 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,12 +51,69 @@ if(description)
   exit(0);
 }
 
+include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:443 );
 
+# some newer versions like iDRAC7/8 and probably later has to be handled separate
+url = "/login.html";
+req = http_get_req(port: port, url: "/login.html", add_headers: make_array("Accept-Encoding", "gzip, deflate"));
+res = http_keepalive_send_recv(port: port, data: req);
+
+if ('<title id="titleLbl_id"></title>' >< res && "log_thisDRAC" >< res) {
+  version = "unknown";
+
+  url = '/session?aimGetProp=fwVersionFull';
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  vers = eregmatch(pattern: 'fwVersionFull" :"([^(" ]+)( \\(Build ([0-9]+)\\))?', string: res);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    concUrl = url;
+
+    if (!isnull(vers[3])) {
+      build = vers[3];
+      set_kb_item(name: "dell_idrac/build", value: build);
+      extra = "Build:  " + build;
+    }
+  }
+
+  set_kb_item(name: "dell_idrac/installed", value: TRUE);
+
+  req = http_post_req( port: port, url: "/data?get=prodServerGen");
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  generation = "";
+  gen = eregmatch(pattern: "<prodServerGen>([^<]+)", string: res);
+  if (!isnull(gen[1])) {
+    if (gen[1] == "12G") {
+      generation = "7";
+      set_kb_item(name: "dell_idrac/generation", value: generation);
+    }
+    else if (gen[1] == "13G") {
+      generation = "8";
+      set_kb_item(name: "dell_idrac/generation", value: generation);
+    }
+  }
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dell:idrac" + generation + ":");
+  if (!cpe)
+    cpe = 'cpe:/a:dell:idrac' + generation;
+
+  register_product(cpe: cpe, location: "/", port: port);
+
+  log_message(data: build_detection_report(app: "Dell iDRAC" + generation, version: version, install: "/",
+                                           cpe: cpe, concluded: vers[0], concludedUrl: concUrl, extra: extra),
+              port: port);
+  exit(0);
+}
+
+
+# Testing for older versions
 urls = make_array();
 
 urls['/cgi/lang/en/login.xsl'] = 'Dell Remote Access Controller ([0-9]{1})';
@@ -76,9 +133,6 @@ info_url_regex[6] = make_list('Version ([^<]+)<br>','var fwVer = "([^"]+)";','Ve
 info_url[7] = make_list('/public/about.html');
 info_url_regex[7] = make_list('var fwVer = "([^("]+)";');
 
-info_url[8] = make_list('/public/about.html'); # untested
-info_url_regex[8] = make_list('var fwVer = "([^("]+)";'); # untested
-
 foreach url ( keys( urls ) )
 {
   req = http_get( item:url, port:port );
@@ -91,9 +145,10 @@ foreach url ( keys( urls ) )
   version = eregmatch( pattern:urls[url], string:buf );
   if( isnull( version[1] ) ) continue;
 
-  set_kb_item(name:"dell_remote_access_controller/version", value:version[1]);
-
-  cpe = 'cpe:/h:dell:remote_access_card:' + version[1];
+  set_kb_item(name: "dell_idrac/installed", value: TRUE);
+  generation = version[1];
+  if (!isnull(version[1]))
+    set_kb_item(name: "dell_idrac/generation", value: generation);
 
   iv = int( version[1] );
   iv_urls = info_url[iv];
@@ -113,6 +168,7 @@ foreach url ( keys( urls ) )
         if( ! isnull( fw_version[1] ) )
         {
           fw = fw_version[1];
+          concUrl = iv_url;
           break;
         }
       }
@@ -124,30 +180,24 @@ foreach url ( keys( urls ) )
           f = eregmatch( pattern:'^([0-9.]+)\\(Build ([0-9]+)\\)', string:fw );
           if( ! isnull( f[1] ) ) fw = f[1];
           if( ! isnull( f[2] ) )
-            set_kb_item(name:"dell_remote_access_controller/fw_build", value:f[2]);
+            set_kb_item(name: "dell_idrac/build", value: f[2]);
+            extra = "Build:  " + f[2];
         }
-
-        set_kb_item(name:"dell_remote_access_controller/fw_version", value:fw);
-
-        cpe_fw = str_replace(string:tolower(fw), find:" ", replace:"_");
-        cpe_fw = str_replace(string:tolower(cpe_fw), find:"(", replace:"_");
-        cpe_fw = str_replace(string:tolower(cpe_fw), find:")", replace:"");
-        cpe_fw = str_replace(string:tolower(cpe_fw), find:"__", replace:"_");
-
-        cpe = cpe + ':firmware_' + cpe_fw;
         break;
       }
     }
   }
 
-  if( cpe )
-  {
-     register_product(cpe:cpe, location:url, port:port);
-     log_message(data: build_detection_report(app:"Dell Remote Access Controller", version:fw, install:url, cpe:cpe, concluded: version[0]),
-                 port:port);
-     exit( 0 );
-  }
+  cpe = build_cpe(value: fw, exp: "^([0-9.]+)", base: "cpe:/a:dell:idrac" + generation + ":");
+  if (!cpe)
+    cpe = 'cpe:/a:dell:idrac' + generation;
+
+  register_product(cpe: cpe, location: "/", port: port);
+
+  log_message(data: build_detection_report(app:"Dell iDRAC" + generation, version: fw, install: "/", cpe: cpe,
+                                           concluded: fw_version[0], concludedUrl: concUrl, extra: extra),
+              port: port);
+  exit( 0 );
 }
 
 exit( 0 );
-

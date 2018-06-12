@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 6197 2017-05-23 11:14:19Z teissa $
+# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
 #
 # Splunk Enterprise Open Redirection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809013");
-  script_version("$Revision: 6197 $");
+  script_version("$Revision: 10149 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 13:14:19 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Splunk Enterprise Open Redirection Vulnerability");
@@ -42,19 +42,18 @@ if(description)
   script_tag(name: "summary" , value:"This host is installed with Splunk
   Enterprise and is prone to an open redirection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name: "insight", value:"The flaw is due to an unspecified input
   validation error.");
 
   script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
   could permit an attacker to redirect a user to an attacker controlled website.
-  
+
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Splunk Enterprise versions 6.4.x before 
-  6.4.3, 6.3.x before 6.3.6, 6.2.x before 6.2.10, 6.1.x before 6.1.11, 6.0.x 
+  script_tag(name: "affected" , value:"Splunk Enterprise versions 6.4.x before
+  6.4.3, 6.3.x before 6.3.6, 6.2.x before 6.2.10, 6.1.x before 6.1.11, 6.0.x
   before 6.0.12, 5.0.x before 5.0.16");
 
   script_tag(name: "solution" , value:"Upgrade to Splunk Enterprise version 6.4.3
@@ -63,8 +62,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAPQ6");
-  
+  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAPQ6");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -74,27 +73,17 @@ if(description)
   exit(0);
 }
 
-
-##Code starts here
-
 include("host_details.inc");
 include("version_func.inc");
 
-##variable initialization
-splver = "";
-splport = 0;
-
-##Get Port
 if(!splport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!splver = get_app_version(cpe:CPE, port:splport)){
   exit(0);
 }
 
-## Check Splunk Enterprise vulnerable versions
 if(version_in_range(version:splver, test_version:"6.4.0", test_version2:"6.4.2"))
 {
   fix = "6.4.3";
@@ -137,3 +126,5 @@ if(VULN)
   security_message(data:report, port:splport);
   exit(0);
 }
+
+exit(99);
