@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10057 2018-06-04 07:56:17Z cfischer $
+# $Id: gather-package-list.nasl 10164 2018-06-12 11:48:11Z jschulte $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10164 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 13:48:11 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -417,6 +417,10 @@ function register_rpms( buf ) {
   set_kb_item( name:"ssh/login/rpms", value:";" + buf );
 }
 
+function register_npms( buf ) {
+  set_kb_item( name:"ssh/login/npms", value:buf );
+}
+
 port = get_preference( "auth_port_ssh" );
 if( ! port ) port = get_kb_item( "Services/ssh" );
 if( ! port ) port = 22;
@@ -427,6 +431,9 @@ if( ! sock ) exit( 0 );
 # First command: Grab uname -a of the remote system
 uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30 );
 if( isnull( uname ) ) exit( 0 );
+
+buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 npm list" );
+if( ! isnull( buf ) && "command not found" >!< buf ) register_npms( buf:buf );
 
 if( "HyperIP Command Line Interface" >< uname ) {
 
@@ -3360,14 +3367,21 @@ if( "Darwin" >< uname ) {
 #{ "JDS",        "/etc/sun-release",         },
 #{ "Yellow Dog", "/etc/yellowdog-release",   },
 
-report = 'System identifier unknown:\n\n';
-report += uname;
-report += '\n\nTherefore no local security checks applied (missing list of installed packages) ';
-report += 'though SSH login provided and works.';
+if( uname ) {
+  report  = 'System identifier unknown:\n\n';
+  report += uname;
+  report += '\n\nTherefore no local security checks applied (missing list of installed packages) ';
+  report += 'though SSH login provided and works.';
+} else {
+  report  = 'System identifier unknown. Therefore no local security checks applied ';
+  report += '(missing list of installed packages) though SSH login provided and works.';
+}
 
 log_message( port:port, data:report );
 
-_unknown_os_info = 'uname: ' + uname + '\n\n' + _unknown_os_info;
-register_unknown_os_banner( banner:_unknown_os_info, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+if( _unknown_os_info ) {
+  if( uname ) _unknown_os_info = 'uname: ' + uname + '\n\n' + _unknown_os_info;
+  register_unknown_os_banner( banner:_unknown_os_info, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+}
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 9162 2018-03-21 15:30:50Z cfischer $
+# $Id: secpod_wordpress_detect_900182.nasl 10163 2018-06-12 11:26:57Z cfischer $
 #
 # WordPress Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 9162 $");
+  script_version("$Revision: 10163 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 16:30:50 +0100 (Wed, 21 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 13:26:57 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -174,7 +174,7 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( res && res =~ "^HTTP/1\.[01] 200" && 
+    if( res && res =~ "^HTTP/1\.[01] 200" &&
           ( "/wp-login.php?action=lostpassword" >< res ||
             "/wp-admin/load-" >< res ||
             res =~ "/wp-content/(plugins|themes|uploads)/"
@@ -200,20 +200,35 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
   }
 
   ##Finally the /readme.html file, this is down below as it might
-  ##be not always updated by the admin
+  ##be not always updated by the admin. Additionally the version isn't
+  ##exposed anymore since 3.7.x
   if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/readme.html";
     res = http_get_cache( item:url, port:port );
 
-    if( res && res =~ "^HTTP/1\.[01] 200" && "WordPress" >< res ) {
+    # <title>WordPress &rsaquo; ReadMe</title> -> 1.5.x
+    # <title>WordPress &#8250; ReadMe</title> -> 4.9.x
+    if( res && res =~ "^HTTP/1\.[01] 200" && res =~ "<title>WordPress.*ReadMe</title>" ) {
 
       if( dir == "" ) rootInstalled = TRUE;
       wpFound  = TRUE;
       version  = "unknown";
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-      vers = eregmatch( pattern:"> Version ([0-9.]+)", string:res );
+      # <h1 style="text-align: center"><img alt="WordPress" src="http://wordpress.org/images/wordpress.gif" /> <br />
+      #         Version 1.5</h1>
+      #
+      # <h1 id="logo" style="text-align: center">
+      #         <img alt="WordPress" src="wp-admin/images/wordpress-logo.png" />
+      #         <br /> Version 2.5
+      # </h1>
+      #
+      # <h1 id="logo">
+      #         <a href="http://wordpress.org/"><img alt="WordPress" src="wp-admin/images/wordpress-logo.png" /></a>
+      #         <br /> Version 3.6.1
+      # </h1>
+      vers = eregmatch( pattern:"<br />.*Version ([0-9.]+).*</h1>", string:res );
       if( vers[1] ) {
         version = vers[1];
         ## Check if the version is already set

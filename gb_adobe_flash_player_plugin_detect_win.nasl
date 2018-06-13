@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 10153 2018-06-11 15:09:01Z mmartin $
+# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 10161 2018-06-12 10:21:02Z asteins $
 #
 # Adobe Flash Player Plugin Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107320");
-  script_version("$Revision: 10153 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 17:09:01 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 10161 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:21:02 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:23:58 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,8 +45,8 @@ if(description)
   The script logs in via WMI, searches for Adobe Flash Player Plugins on the filesystem
   and gets the installed version if found.
 
-  To enable the search for portable versions of this product you need to 'Enable Detection 
-  of Portable Apps on Windows' in the Options for Local Security Checks 
+  To enable the search for portable versions of this product you need to 'Enable Detection
+  of Portable Apps on Windows' in the Options for Local Security Checks
   (OID: 1.3.6.1.4.1.25623.1.0.100509) of your scan config.");
 
   script_tag(name:"qod_type", value:"registry");
@@ -78,39 +78,39 @@ fileList = wmi_query(wmi_handle:handle, query:query);
 
 if( fileList ){
   files = split (fileList, keep:FALSE );
-  foreach file (files){
-  if(file == "FileName|Name|Path" ) continue;
-  file_split = split (file, sep:"|", keep:FALSE );
-  filename = file_split[0];
 
-  version_split = split(filename, sep:"_", keep:FALSE);
-  version = version_split[1]+ "." +version_split[2]+ "." +version_split[3] + "." +version_split[4];
-  location = "c:" +file_split[2];
+  foreach file ( files ) {
+    if(file == "FileName|Name|Path" ) continue;
 
-  set_kb_item( name:"AdobeFlashPlayer/Win/InstallLocations", value:tolower( location ) );
-  set_kb_item(name:"AdobeFlashPlayer/Win/Installed", value:TRUE);
+    file_split = split (file, sep:"|", keep:FALSE );
+    filename = file_split[0];
 
-if ("system32" >< location) {
-  base = "cpe:/a:adobe:flash_player:x64:"; 
-  app = "Adobe Flash Player Plugin 64bit";
+    version_split = split(filename, sep:"_", keep:FALSE);
+    version = version_split[1]+ "." +version_split[2]+ "." +version_split[3] + "." +version_split[4];
+    location = "c:" +file_split[2];
 
-} else if ("syswow64" >< location) { 
-  
-  base = "cpe:/a:adobe:flash_player:"; 
-  app = "Adobe Flash Player Plugin 32bit";
+    if ( version && version =~ "^([0-9.]+)" ) {
+      set_kb_item( name:"AdobeFlashPlayer/Win/InstallLocations", value:tolower( location ) );
+      set_kb_item( name:"AdobeFlashPlayer/Win/Installed", value:TRUE );
 
-  } else if ("NPSWF64" >< filename) {     
-   
-    base = "cpe:/a:adobe:flash_player:x64:"; 
-    app = "Adobe Flash Player Plugin 64bit Portable";
-    
-    } else {   
-    
-      base = "cpe:/a:adobe:flash_player:"; 
-      app = "Adobe Flash Player Plugin 32bit Portable";
-      } 
-register_and_report_cpe( app:app, ver:version, base:base, expr:"^([0-9.]+)", insloc:location );
+      if ("system32" >< location) {
+        base = "cpe:/a:adobe:flash_player:x64:";
+        app = "Adobe Flash Player Plugin 64bit";
+      } else if ("syswow64" >< location) {
+        base = "cpe:/a:adobe:flash_player:";
+        app = "Adobe Flash Player Plugin 32bit";
+      } else if ("NPSWF64" >< filename) {
+        base = "cpe:/a:adobe:flash_player:x64:";
+        app = "Adobe Flash Player Plugin 64bit Portable";
+      } else {
+        base = "cpe:/a:adobe:flash_player:";
+        app = "Adobe Flash Player Plugin 32bit Portable";
+      }
+
+      register_and_report_cpe( app:app, ver:version, base:base, expr:"^([0-9.]+)", insloc:location );
+    }
   }
 }
+
 wmi_close( wmi_handle:handle );
 exit( 0 );

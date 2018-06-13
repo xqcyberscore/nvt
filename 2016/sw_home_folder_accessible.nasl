@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_home_folder_accessible.nasl 9727 2018-05-04 09:12:47Z cfischer $
+# $Id: sw_home_folder_accessible.nasl 10157 2018-06-12 07:23:04Z cfischer $
 #
 # Linux Home Folder Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111108");
-  script_version("$Revision: 9727 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 10157 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:23:04 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -117,13 +117,13 @@ files = make_array( "/.ssh/authorized_keys", "^(ecdsa-sha2-nistp256|ssh-rsa|ssh-
                     "/.ssh/id_ecdsa.pub", "^ecdsa-sha2-nistp256",
                     "/.ssh/id_ed25519", "^-----(BEGIN|END) (ENCRYPTED|OPENSSH) PRIVATE KEY-----",
                     "/.ssh/id_ed25519.pub", "^ssh-ed25519",
-                    "/.mysql_history", "^(INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL|GRANT ALL ON|grant all on|FLUSH PRIVILEGES|flush privileges)",
-                    "/.sqlite_history", "^(\.tables|\.quit|\.databases|INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL)",
-                    "/.psql_history", "^(INSERT INTO|insert into|DELETE FROM|delete from|DROP TABLE|drop table|CREATE DATABASE|create database|select all|SELECT ALL|GRANT ALL ON|grant all on)",
+                    "/.mysql_history", "^(INSERT INTO |DELETE FROM |(DROP|CREATE) TABLE |(DROP|CREATE) (DATABASE|SCHEMA) |SELECT ALL |GRANT ALL ON |FLUSH PRIVILEGES)",
+                    "/.sqlite_history", "^(INSERT INTO |DELETE FROM |(DROP|CREATE) TABLE |(DROP|CREATE) (DATABASE|SCHEMA) |SELECT ALL |\.tables|\.quit|\.databases)",
+                    "/.psql_history", "^(INSERT INTO |DELETE FROM |(DROP|CREATE) TABLE |(DROP|CREATE) (DATABASE|SCHEMA) |SELECT ALL |GRANT ALL ON )",
                     "/.sh_history", "^(less|more|wget |curl |grep |chmod |chown |iptables|ifconfig|history|touch |head|tail|mkdir |sudo)",
                     "/.bash_history", "^(less|more|wget |curl |grep |chmod |chown |iptables|ifconfig|history|touch |head|tail|mkdir |sudo)",
-                    "/.profile", "^# ~/.profile:",
-                    "/.bashrc", "^# ~/.bashrc:" );
+                    "/.profile", "^# ~/\.profile:",
+                    "/.bashrc", "^# ~/\.bashrc:" );
 
 report = 'The following files were identified:\n';
 

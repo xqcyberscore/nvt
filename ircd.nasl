@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ircd.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: ircd.nasl 10160 2018-06-12 10:06:38Z cfischer $
 #
 # IRC daemon identification
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11156");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10160 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -46,6 +46,8 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
+
 port = get_kb_item( "Services/irc" );
 if( ! port ) port = 6667;
 if( ! get_port_state( port ) ) exit( 0 );
@@ -59,7 +61,7 @@ for( i = 0; i < 9; i++ ) nick += raw_string( 0x41 + ( rand() % 10 ) );
 user = nick;
 
 req = string( "NICK ", nick, "\r\n",
-              "USER ", nick, " ", this_host_name(), " ", get_host_name(), 
+              "USER ", nick, " ", this_host_name(), " ", get_host_name(),
               " :", user, "\r\n" );
 send( socket:soc, data:req );
 
@@ -68,10 +70,10 @@ while( a = recv_line( socket:soc, length:4096 ) ) {
     a = ereg_replace( pattern:"PING", replace:"PONG", string:a );
     send( socket:soc, data:a );
   } else if( a =~ "^ERROR :Closing Link" ) {
-    report = 'Unable to get the version of this service due to the error:\n\n' + a;
-    set_kb_item( name:"ircd/detected", value:TRUE );
-    log_message( port:port, data:report );
     close( soc );
+    set_kb_item( name:"ircd/detected", value:TRUE );
+    log_message( port:port, data:'Unable to get the version of this service due to the error:\n\n' + a );
+    register_service( port:port, proto:"irc", message:"An IRC server seems to be running on this port." );
     exit( 0 );
   }
 }
@@ -84,6 +86,7 @@ close( soc );
 
 if( ! v ) exit( 0 );
 
+register_service( port:port, proto:"irc", message:"An IRC server seems to be running on this port." );
 set_kb_item( name:"irc/banner/" + port, value:v );
 set_kb_item( name:"ircd/detected", value:TRUE );
 set_kb_item( name:"ircd/banner", value:TRUE );
@@ -93,6 +96,5 @@ set_kb_item( name:"ircd/banner", value:TRUE );
 v2 = ereg_replace( string:v, pattern:": *[^ ]+ +[0-9]+ +[a-zA-Z0-9]+ +([^ ]+) +[^ ]+ *:(.*)", replace:"\1 \2" );
 if( v == v2 ) exit( 0 );
 
-m = "The IRC server version is : " + v2;
-log_message( port:port, data:m );
+log_message( port:port, data:"The IRC server version is : " + v2 );
 exit( 0 );

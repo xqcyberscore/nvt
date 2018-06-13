@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10088 2018-06-06 06:48:44Z cfischer $
+# $Id: sw_http_os_detection.nasl 10160 2018-06-12 10:06:38Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10088 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 08:48:44 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 10160 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1108,6 +1108,9 @@ if( ( serverbanner && "Server: CUPS/" >< serverbanner ) || defaultpage =~ "<TITL
 if( defaultpage && user_agent = egrep( pattern:"^User-Agent:(.*)$", string:defaultpage, icase:TRUE ) ) {
 
   banner_type = "HTTP Server banner";
+
+  # If our user agent is echoed back to us just ignore it...
+  if( OPENVAS_HTTP_USER_AGENT >< user_agent ) exit( 0 );
 
   # LibreOffice Online WebSocket server: https://github.com/LibreOffice/online/blob/master/wsd/README
   # This is the only service i have seen so far which is responding with a User-Agent: header

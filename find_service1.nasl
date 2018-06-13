@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10057 2018-06-04 07:56:17Z cfischer $
+# $Id: find_service1.nasl 10160 2018-06-12 10:06:38Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10160 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -782,6 +782,15 @@ if( r =~ "^bsh % " || r =~ "^BeanShell " || "- by Pat Niemeyer (pat@pat.net)" ><
 if( r =~ "^w0256" && ( r_len == 261 || r_len == 263 ) ) {
   register_service( port:port, proto:"wifiradio-unknown", message:"An unknown service related to a WiFi radio seems to be running on this port." );
   log_message( port:port, data:"An unknown service related to a WiFi radio seems to be running on this port." );
+  exit( 0 );
+}
+
+# Unknown telnet service running on 23/tcp. The check is not that reliable so checking the port as well...
+# 0x00:  43 6F 6E 6E 65 63 74 69 6F 6E 20 72 65 66 75 73    Connection refus
+# 0x10:  65 64 0D 0A                                        ed.. 
+if( port == 23 && rhexstr == "436F6E6E656374696F6E20726566757365640D0A" ) {
+  register_service( port:port, proto:"telnet", message:"A telnet service rejecting the access of the scanner seems to be running on this port." );
+  log_message( port:port, data:"A telnet service rejecting the access of the scanner seems to be running on this port." );
   exit( 0 );
 }
 

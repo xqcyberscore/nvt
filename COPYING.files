@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 12 Jun 2018 09:23:22 +0200
+# Automatically created on:  Wed, 13 Jun 2018 08:29:12 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38839,6 +38839,8 @@
 2018/debian/deb_4223.nasl: GPLv2+
 2018/debian/deb_4224.nasl: GPLv2+
 2018/debian/deb_4225.nasl: GPLv2+
+2018/debian/deb_4226.nasl: GPLv2+
+2018/debian/deb_4227.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39330,6 +39332,8 @@
 2018/debian/deb_dla_998.nasl: GPLv2+
 2018/debian/deb_dla_999.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2017-014.nasl: GPLv2+
+2018/digium/gb_asterisk_AST-2018-007.nasl: GPLv2+
+2018/digium/gb_asterisk_AST-2018-008.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_com_inj_vuln.nasl: GPLv2+
@@ -40082,6 +40086,8 @@
 2018/intelbras/gb_ncloud300_router_auth_bypass_vuln.nasl: GPLv2+
 2018/invisionpower/gb_invision_sqli_vuln.nasl: GPLv2+
 2018/invoiceplane/gb_invoiceplane_xss_vuln.nasl: GPLv2+
+2018/isc/gb_isc_bind_access_control_vuln_jun18_lin.nasl: GPLv2+
+2018/isc/gb_isc_bind_access_control_vuln_jun18_win.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_lin.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_win.nasl: GPLv2+
 2018/isc/gb_isc_bind_mult_dos_vuln_may18.nasl: GPLv2+
@@ -40400,6 +40406,7 @@
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl: GPLv2+
 2018/nghttp2/gb_nghttp2_dos_vuln.nasl: GPLv2+
 2018/nlnetlabs/gb_unbound_dos_vuln.nasl: GPLv2+
+2018/nodejs/gb_malicious_npm_packages.nasl: GPLv2+
 2018/ntp/gb_ntp_auth_symmetric_passv_peering_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_dos_vuln_mar18.nasl: GPLv2+
@@ -41393,6 +41400,7 @@ gb_corel_pdf_fusion_detect_win.nasl: GPLv2+
 gb_coremailxt_detect.nasl: GPLv2+
 gb_couchdb_detect.nasl: GPLv2+
 gb_cpcreator_detect.nasl: GPLv2+
+gb_crestron_ctp_detect.nasl: GPLv2+
 gb_crux_products_detect.nasl: GPLv2+
 gb_cscart_detect.nasl: GPLv2+
 gb_cscope_detect.nasl: GPLv2+
@@ -57709,6 +57717,8 @@ gsf/2018/citrix/gb_xenserver_ctx234679.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235225.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
+gsf/2018/crestron/gb_crestron_cmd_inj_vuln.nasl: GPLv2+
+gsf/2018/crestron/gb_crestron_mult_vuln.nasl: GPLv2+
 gsf/2018/cyberark/gb_cyberark_password_vault_mem_discl_vuln.nasl: GPLv2+
 gsf/2018/cyberark/gb_cyberark_password_vault_rce_vuln.nasl: GPLv2+
 gsf/2018/dell/gb_dell_idrac_mult_vuln.nasl: GPLv2+
@@ -59762,12 +59772,30 @@ Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_message_users_attempt_lo
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_num_previous_logon_cache.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_prompt_change_password.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_smart_card_removal_behaviour.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_allow_storage_password_credentials.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_access_piped_shares.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_enum_sam_accounts.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_sam_shares.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_anonymous_translation.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_clients_allowed_remote_sam.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_permissions_anonymous_user.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_pipes_accessed_anonym.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_remote_access_reg_paths.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_remote_reg_sub_paths.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_shared_access_anonym.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkAccess/win_na_sharing_security_model_local.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_digitally_sign_communications_always.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_digitally_sign_communications_server_agrees.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkClient/win_nc_unencrypted_password_smb.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_encryption_types_kerberos.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_lanman_auth_level.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_ldap_client_signing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_local_sys_comp_ntlm.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_localsys_null_fallback.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_min_session_sec_ntlm_client.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_min_session_sec_ntlm_server.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_pku2u_authentication.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/NetworkSecurity/win_nsec_store_lanman_hash_passwd.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_disconnect_logon_hours_expires.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_idle_time_suspending.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_always.nasl: GPLv2+
@@ -59784,6 +59812,18 @@ Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_wpd_deny_read_access.
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_wpd_deny_write_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SecurityOptions/win_administrator_account_status.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SecurityOptions/win_guest_account_status.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemCryptography/win_sc_strong_key_protect.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemObjects/win_so_case_insensitive_subsystems.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemObjects/win_so_default_perm_internal.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_admin_approval_mode.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_all_admins_approval_mode.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_apps_install_prompt.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_behavior_elevation_prompt_users.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_behaviour_elevation_prompt_admin.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_elevate_apps_sec_locations.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_sec_desktop_when_prompt.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_uiaccess_apps.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_virtualize_file_reg_fail.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_AdvancedPolicySettings.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/win_use_wu_server_path.nasl: GPLv2+

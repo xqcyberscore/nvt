@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 9956 2018-05-25 09:21:51Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 10157 2018-06-12 07:23:04Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 9956 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:21:51 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10157 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:23:04 +0200 (Tue, 12 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,8 +41,13 @@ if(description)
   script_require_ports("Services/www", 80 );
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"The script attempts to identify files containing sensitive data
-  e.g. software (Blog, CMS) configuration at the remote web server.");
+  script_tag(name:"summary", value:"The script attempts to identify files containing sensitive data at the remote web server like e.g.:
+
+  - software (Blog, CMS) configuration
+
+  - database backup files
+
+  - SSH or SSL/TLS Private-Keys");
 
   script_tag(name:"vuldetect", value:"Enumerate the remote web server and check if sensitive files are accessible.");
 
@@ -87,14 +92,33 @@ genericfiles = make_array(
 "/config.development.json", 'Ghost Database Configuration File containing a username and/or password.#-#"database" ?:#-#"(user|password)"',
 "/config.production.json", 'Ghost Database Configuration File containing a username and/or password.#-#"database" ?:#-#"(user|password)"',
 # https://docs.djangoproject.com/en/2.0/ref/settings/
-"/settings.py", "Django Configuration File containing a SECRET_KEY or a username and/or password.#-#(SECRET_KEY ?=|'USER' ?:|'PASSWORD' ?:)"
+"/settings.py", "Django Configuration File containing a SECRET_KEY or a username and/or password.#-#(SECRET_KEY ?=|'USER' ?:|'PASSWORD' ?:)",
+# https://blog.dewhurstsecurity.com/2018/06/07/database-sql-backup-files-alexa-top-1-million.html
+# https://github.com/hannob/snallygaster/blob/a423d4063f37763f9288505c0baca69e216daa7c/snallygaster#L352-L355
+"/dump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/database.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/1.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/backup.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/data.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/db_backup.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/dbdump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/db.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/localhost.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/mysql.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/site.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/sql.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/temp.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/users.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/translate.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+"/mysqldump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )'
 );
 
-# Add domain specific key names from above
+# Add domain specific key names and backup files from above
 hnlist = create_hostname_parts_list();
 foreach hn( hnlist ) {
   genericfiles["/" + hn + ".key"] = 'SSL/TLS Private-Key is publicly accessible.#-#BEGIN (RSA|DSA|DSS|EC)? ?PRIVATE KEY';
   genericfiles["/" + hn + ".pem"] = 'SSL/TLS Private-Key is publicly accessible.#-#BEGIN (RSA|DSA|DSS|EC)? ?PRIVATE KEY';
+  genericfiles["/" + hn + ".sql"] = 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )';
 }
 
 magentofiles = make_array(
