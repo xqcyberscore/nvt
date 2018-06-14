@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_malicious_npm_packages.nasl 10164 2018-06-12 11:48:11Z jschulte $
+# $Id: gb_malicious_npm_packages.nasl 10172 2018-06-13 07:41:24Z asteins $
 #
 # Malicious NPM package detection
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113208");
-  script_version("$Revision: 10164 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 13:48:11 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10172 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-13 09:41:24 +0200 (Wed, 13 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 13:13:13 +0200 (Tue, 12 Jun 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name: "cvss_base", value: "7.5");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"package");
 

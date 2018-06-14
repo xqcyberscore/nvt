@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_detect_portable_win.nasl 10067 2018-06-04 13:47:58Z mmartin $
+# $Id: gb_7zip_detect_portable_win.nasl 10176 2018-06-13 12:18:19Z cfischer $
 #
 # 7zip Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107317");
-  script_version("$Revision: 10067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 15:47:58 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10176 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-13 14:18:19 +0200 (Wed, 13 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 13:53:08 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,49 +79,50 @@ if( ! fileList ) {
 
 # From gb_7zip_detect_win.nasl to avoid a doubled detection of
 # a registry-based installation.
-  detectedList = get_kb_list( "7zip/Win/InstallLocations" );
+detectedList = get_kb_list( "7zip/Win/InstallLocations" );
 
-  fileList = split( fileList, keep:FALSE );
+fileList = split( fileList, keep:FALSE );
 
-  foreach filePath( fileList ) {
+foreach filePath( fileList ) {
 
-    if( filePath == "Name" ) continue; # Just ignore the header of the list...
+  if( filePath == "Name" ) continue; # Just ignore the header of the list...
 
-    # wmi_file_file_search returns the .exe filename so we're stripping it away
-    # to keep the install location registration the same way like in gb_7zip_detect_win.nasl
-    location = filePath - "\7zfm.exe";
+  # wmi_file_file_search returns the .exe filename so we're stripping it away
+  # to keep the install location registration the same way like in gb_7zip_detect_win.nasl
+  location = filePath - "\7zfm.exe";
 
-    if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
+  if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
 
-    # nb: wmi_file_fileversion needs doubled backslash in the path but
-    # wmi_file_file_search returns single backslash in the path...
-    filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
+  # nb: wmi_file_fileversion needs doubled backslash in the path but
+  # wmi_file_file_search returns single backslash in the path...
+  filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-    versList = wmi_file_fileversion( handle:handle, filePath:filePath );
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath );
+  versList = split( versList, keep:FALSE );
 
-    versList = split( versList, keep:FALSE );
+  foreach vers( versList ) {
 
-      foreach vers( versList ) {
+    if( vers == "Version" ) continue; # Just ignore the header of the list...
 
-        if( vers == "Version" ) continue; # Just ignore the header of the list...
-        # Version of the 7zFM.exe file is something like 18.5.0.0
-        # so we need to catch only the first three parts of the version.
-        if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
-          set_kb_item( name:"7zip/Win/InstallLocations", value:tolower( location ) );
+    # Version of the 7zFM.exe file is something like 18.5.0.0
+    # so we need to catch only the first three parts of the version.
+    if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
-        # The portableapps.com installer is putting the 32bit version in App\7-Zip and the 64bit into App\7-Zip64.
-        # This is the only way to differ between 32bit and 64bit as we can't differ between 32 and 64bit based on the file information.
-        if( "7-zip64" >< location ) {
-	  cpe = "cpe:/a:7-zip:7-zip:x64";
-          set_kb_item( name:"7zip64/Win/Ver", value:version[1] );      
-        } else {
-	  cpe = "cpe:/a:7-zip:7-zip";
-          set_kb_item( name:"7zip/Win/Ver", value:version[1] );        
-        }  
-        register_and_report_cpe( app:"7-Zip Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
+      set_kb_item( name:"7zip/Win/InstallLocations", value:tolower( location ) );
+
+      # The portableapps.com installer is putting the 32bit version in App\7-Zip and the 64bit into App\7-Zip64.
+      # This is the only way to differ between 32bit and 64bit as we can't differ between 32 and 64bit based on the file information.
+      if( "7-zip64" >< location ) {
+        cpe = "cpe:/a:7-zip:7-zip:x64";
+        set_kb_item( name:"7zip64/Win/Ver", value:version[1] );
+      } else {
+        cpe = "cpe:/a:7-zip:7-zip";
+        set_kb_item( name:"7zip/Win/Ver", value:version[1] );
       }
+      register_and_report_cpe( app:"7-Zip Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
     }
-  } 
+  }
+}
 
 wmi_close( wmi_handle:handle );
 

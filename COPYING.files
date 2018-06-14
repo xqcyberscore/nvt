@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 13 Jun 2018 08:29:12 +0200
+# Automatically created on:  Thu, 14 Jun 2018 08:57:01 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -40154,11 +40154,13 @@
 2018/microsoft/gb_ms_kb2899590.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3114416.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3114874.nasl: GPLv2+
+2018/microsoft/gb_ms_kb3115248.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3141547.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3162075.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3172436.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3172459.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011143.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4011186.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011200.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011201.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011213.nasl: GPLv2+
@@ -40229,6 +40231,7 @@
 2018/microsoft/gb_ms_kb4018362.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4018382.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4018383.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4018387.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4018396.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4018398.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4018399.nasl: GPLv2+
@@ -40236,6 +40239,18 @@
 2018/microsoft/gb_ms_kb4022141.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4022146.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4022150.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022151.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022160.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022169.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022174.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022177.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022182.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022191.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022196.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022197.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022199.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022205.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022209.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4054993.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4054994.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4054995.nasl: GPLv2+
@@ -40293,6 +40308,13 @@
 2018/microsoft/gb_ms_kb4103727.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4103729.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4103731.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284815.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284819.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284826.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284835.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284860.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284874.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4284880.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_may18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_rce_vuln_mar18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_sec_bypass_vuln_mar18.nasl: GPLv2+
@@ -40606,6 +40628,8 @@
 2018/owncloud/gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_stack_overflow_vuln.nasl: GPLv2+
 2018/pandasecurity/gb_panda_global_protection_mult_vuln.nasl: GPLv2+
+2018/patniemeyer/gb_beanshell_rce_http.nasl: GPLv2+
+2018/patniemeyer/gb_beanshell_rce_telnet.nasl: GPLv2+
 2018/peersec-networks/gb_matrixssl_mult_vuln.nasl: GPLv2+
 2018/perl/gb_perl_heap_buffer_overflow_vuln02_may18_win.nasl: GPLv2+
 2018/perl/gb_perl_heap_buffer_overflow_vuln_may18_win.nasl: GPLv2+
@@ -40686,6 +40710,7 @@
 2018/sugarcrm/gb_sugarcrm_xxe_vuln.nasl: GPLv2+
 2018/support/gb_superantispyware_mult_vuln.nasl: GPLv2+
 2018/symphony/gb_symphony_cms_xss_vuln.nasl: GPLv2+
+2018/synology/gb_synology_sa_18_15.nasl: GPLv2+
 2018/teamtest/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/telerik/gb_sitefinity_auth_bypass.nasl: GPLv2+
 2018/telerik/gb_sitefinity_mult_vuln.nasl: GPLv2+
@@ -42498,6 +42523,8 @@ gb_upnp_detect.nasl: GPLv2+
 gb_upnp_os_detection.nasl: GPLv2+
 gb_up_time_detect.nasl: GPLv2+
 gb_uptime_infrastructure_monitor_remote_detect.nasl: GPLv2+
+gb_utorrent_detect_portable_win.nasl: GPLv2+
+gb_utorrent_detect_win.nasl: GPLv2+
 gb_vacron_nvr_detect.nasl: GPLv2+
 gb_vanderbilt_ip_camera_detect.nasl: GPLv2+
 gb_varnish_detect.nasl: GPLv2+
@@ -57785,6 +57812,7 @@ gsf/2018/f5/gb_f5_big_ip_K34035645.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34341852.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35135935.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35453761.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K37250780.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K37442533.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
@@ -57850,6 +57878,7 @@ gsf/2018/hp/gb_hp_network_automation_mult_vuln_hpesbgn03740.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_info_disc_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_micro_focus_operations_orchestration_KM03103896.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_ar3200_huawei-sa-20180613-01-openssl-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180131-01-ibmc-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180509-01-bypass-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180523-01-json-en.nasl: GPLv2+
@@ -57934,6 +57963,7 @@ gsf/2018/microsoft/gb_ms_exchange_server_malwr_prot_eng_rce_vuln_apr18.nasl: GPL
 gsf/2018/microsoft/gb_ms_ie_kb4092946.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114889.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114998.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb3115197.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011579.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011586.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011599.nasl: GPLv2+
@@ -57957,11 +57987,18 @@ gsf/2018/microsoft/gb_ms_kb4018356.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4018381.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4018388.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4018390.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4018391.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4018393.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022130.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022135.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022142.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4022145.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022173.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022179.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022183.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022190.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022203.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4022210.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4034044.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056564.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4056613.nasl: GPLv2+
@@ -58014,6 +58051,10 @@ gsf/2018/microsoft/gb_ms_kb4103768.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4130944.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4131188.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4134651.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4230467.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4234459.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4284855.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4294413.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_excel_services_kb4018343.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
@@ -58060,6 +58101,8 @@ gsf/2018/pfsense/gb_pfsense_webgui_code_exec_n_xss_vuln.nasl: GPLv2+
 gsf/2018/printeron/gb_printeron_mult_vuln.nasl: GPLv2+
 gsf/2018/pruftechnik/gb_vibnode_eol.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cert_auth_rev_prox_vuln.nasl: GPLv2+
+gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6512.nasl: GPLv2+
+gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6513.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_mult_xss_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_rce_vuln.nasl: GPLv2+
 gsf/2018/quest/gb_netvault_backup_mult_vuln.nasl: GPLv2+
@@ -59815,6 +59858,40 @@ Policy/Microsoft/WindowsGeneral/SecurityOptions/win_guest_account_status.nasl: G
 Policy/Microsoft/WindowsGeneral/SystemCryptography/win_sc_strong_key_protect.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemObjects/win_so_case_insensitive_subsystems.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemObjects/win_so_default_perm_internal.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_bt_handsfree_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_bt_support_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_computer_browser.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_error_reporting_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_event_collector.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_ftp_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_homegroup_listener.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_homegroup_provider.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_http_web_proxy_auto_discovery.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_iis_admin_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_inet_connection_sharing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_iscsi_initiator_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_lanman_server.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_linklayer_topology_discovery_mapper.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_media_player_netsharing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_peer_name_resolution_protocol.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_peer_networking_grouping.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_peer_networking_identity_man.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_pnrp_autoreg.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_problem_reports_control_panel.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_ras_auto.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_rdesktop_configuration.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_rdesktop_services.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_rdesktop_umrdpservice.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_remote_management.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_remote_registry.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_routing_remote_access.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_rpc_locator.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_simple_tcp_ip_services.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_snmp_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_ssdp_discovery.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_upnp_device_host.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_web_management_service.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_www_publishing.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_admin_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_all_admins_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_apps_install_prompt.nasl: GPLv2+

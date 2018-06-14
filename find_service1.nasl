@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10160 2018-06-12 10:06:38Z cfischer $
+# $Id: find_service1.nasl 10178 2018-06-13 12:50:54Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10160 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10178 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-13 14:50:54 +0200 (Wed, 13 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -755,6 +755,7 @@ if( ( ( r0 =~ "^RPY [0-9] [0-9]" && "Content-Type: application/" >< r0 ) ||
 if( r =~ "^bsh % " || r =~ "^BeanShell " || "- by Pat Niemeyer (pat@pat.net)" >< r ) {
   register_service( port:port, proto:"beanshell", message:"A BeanShell listener service seems to be running on this port." );
   log_message( port:port, data:"A BeanShell listener service seems to be running on this port." );
+  set_kb_item( name:"beanshell_listener/detected", value:TRUE ); # nb: No default port. Key is used as mandatory_key().
   exit( 0 );
 }
 
