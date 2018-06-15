@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evolution_script_cms_css_vuln.nasl 9505 2018-04-17 09:16:54Z asteins $
+# $Id: gb_evolution_script_cms_css_vuln.nasl 10198 2018-06-14 11:26:36Z asteins $
 #
 # Evolution Script CMS v5.3 - Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:evolution:script';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107219");
-  script_version("$Revision: 9505 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 10198 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 13:26:36 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,12 +49,16 @@ if(description)
 
   script_tag(name: "affected", value: "Evolution Script CMS Version 5.3");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of
-  17th April, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to https://www.evolutionscript.com/");
+  script_tag(name: "solution", value: "No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.
+
+  A workaround is to parse or escape the status parameter content.
+  Disallow the usage of special chars to prevent further script code injection attacks.
+  Parse the ticket support content list and include an own exception-handling.");
 
   script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Jun/14");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 

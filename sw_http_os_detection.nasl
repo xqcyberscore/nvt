@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10160 2018-06-12 10:06:38Z cfischer $
+# $Id: sw_http_os_detection.nasl 10206 2018-06-15 06:25:29Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10160 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10206 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 08:25:29 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -386,6 +386,12 @@ function check_http_banner( port ) {
     }
 
     if( "Microsoft-HTTPAPI" >< banner || ( "Apache" >< banner && ( "(Win32)" >< banner || "(Win64)" >< banner ) ) ) {
+      register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      return banner;
+    }
+
+    # MS Lync
+    if( egrep( pattern:"^Server: RTC/(5\.0|6\.0)", string:banner ) ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
       return banner;
     }

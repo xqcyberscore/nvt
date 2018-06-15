@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: plaxo_installed.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Plaxo Client Is Installed
+# $Id: plaxo_installed.nasl 10200 2018-06-14 14:39:20Z cfischer $
+#
+# Plaxo Client Is Installed
 #
 # Authors:
 # Tom Ferris
@@ -20,12 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host has the Plaxo Client software installed. Plaxo is a contact manager.
-Make sure its use is compatible with your corporate security policy.";
-
-tag_solution = "Uninstall this software if it does not match your security policy";
+###############################################################################
 
 # <tommy@security-protocols.com>
 # 6/29/2005
@@ -33,36 +30,41 @@ tag_solution = "Uninstall this software if it does not match your security polic
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.18591");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.18591");
+  script_version("$Revision: 10200 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 16:39:20 +0200 (Thu, 14 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Plaxo Client Is Installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 Tom Ferris <tommy@security-protocols.com>");
+  script_family("Windows");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- name = "Plaxo Client Is Installed";
+  script_tag(name:"summary", value:"The remote host has the Plaxo Client software installed. Plaxo is a contact manager.
+  Make sure its use is compatible with your corporate security policy.");
 
- script_name(name);
+  script_tag(name:"solution", value:"Uninstall this software if it does not match your security policy");
 
-
-
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
 
- script_copyright("This script is Copyright (C) 2005 Tom Ferris <tommy@security-protocols.com>");
- family = "Windows";
- script_family(family);
-
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/Registry/Enumerated");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-if ( ! get_kb_item("SMB/Registry/Enumerated") ) exit(1);
+include("smb_nt.inc");
+include("secpod_smb_func.inc");
 
-key = "SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/CurrentVersion/Uninstall/Plaxo/DisplayName";
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+if( ! registry_key_exists( key:key ) ) exit( 0 );
 
-if (get_kb_item (key))
-  log_message(get_kb_item("SMB/transport"));
+foreach item( registry_enum_keys( key:key ) ) {
+  name = registry_get_sz( key:key + item, item:"DisplayName" );
+  if( "Plaxo" >< name ) {
+    log_message( port:0 );
+  }
+}
+
+exit( 0 );

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: trillian_installed.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Trillian is installed
+# $Id: trillian_installed.nasl 10200 2018-06-14 14:39:20Z cfischer $
+#
+# Trillian is installed
 #
 # Authors:
 # Xue Yong Zhi <xueyong@udel.edu>
@@ -20,52 +22,49 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host is using Trillian - a p2p software, 
-which may not be suitable for a business environment.";
-
-tag_solution = "Uninstall this software";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11428");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2002-2162");
- script_bugtraq_id(5677, 5733, 5755, 5765, 5769, 5775, 5776, 5777, 5783);
+  script_oid("1.3.6.1.4.1.25623.1.0.11428");
+  script_version("$Revision: 10200 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 16:39:20 +0200 (Thu, 14 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2002-2162");
+  script_bugtraq_id(5677, 5733, 5755, 5765, 5769, 5775, 5776, 5777, 5783);
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Trillian is installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
+  script_family("Peer-To-Peer File Sharing");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- # no cve_id
- 
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"summary", value:"The remote host is using Trillian - a p2p software,
+  which may not be suitable for a business environment.");
 
- name = "Trillian is installed";
+  script_tag(name:"solution", value:"Uninstall this software");
 
- script_name(name);
- 
-
-
-
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
- family = "Peer-To-Peer File Sharing";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/Registry/Enumerated");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
+include("smb_nt.inc");
+include("secpod_smb_func.inc");
 
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+if( ! registry_key_exists( key:key ) ) exit( 0 );
 
-rootfile = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/CurrentVersion/Uninstall/Trillian/DisplayName");
+foreach item( registry_enum_keys( key:key ) ) {
+  name = registry_get_sz( key:key + item, item:"DisplayName" );
+  if( name == "Trillian" ) {
+    security_message( port:0 );
+    exit( 0 );
+  }
+}
 
-if(rootfile) security_message(get_kb_item("SMB/transport")); 
+exit( 99 );

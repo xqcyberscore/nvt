@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lsc_options.nasl 9887 2018-05-17 13:35:46Z cfischer $
+# $Id: lsc_options.nasl 10184 2018-06-14 07:21:05Z cfischer $
 #
 # This script allows to set some Options for LSC.
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100509");
-  script_version("$Revision: 9887 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 10184 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:21:05 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,9 +62,9 @@ if( find_enabled )
   set_kb_item( name:"ssh/lsc/enable_find", value:find_enabled );
 
 if( nfs_search_enabled )
-  set_kb_item( name:"ssh/lsc/descend_ofs", value: nfs_search_enabled );
+  set_kb_item( name:"ssh/lsc/descend_ofs", value:nfs_search_enabled );
 
-if( search_portable )
+if( search_portable && "yes" >< search_portable )
   set_kb_item( name:"win/lsc/search_portable_apps", value:TRUE );
 
 exit( 0 );

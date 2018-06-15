@@ -1,12 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: sip_detection.nasl 10183 2018-06-14 07:16:58Z cfischer $
 #
 # Detect SIP Compatible Hosts (UDP)
 #
 # Authors:
 # Noam Rathaus
-# Modified by Michael Meyer 2009-05-04
 #
 # Copyright:
 # Copyright (C) 2003 Noam Rathaus
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11963");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10183 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,16 +41,10 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.cs.columbia.edu/sip/");
 
-  script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic
-  to this port.");
-
   script_tag(name:"summary", value:"A Voice Over IP service is listening on the remote port.
 
   The remote host is running SIP (Session Initiation Protocol), a protocol
-  used for Internet conferencing and telephony.
-
-  Make sure the use of this program is done in accordance with your corporate
-  security policy.");
+  used for Internet conferencing and telephony.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -62,12 +55,28 @@ include("misc_func.inc");
 include("sip.inc");
 
 proto = "udp";
+found = FALSE;
 port = get_unknown_port( default:5060, ipproto:proto );
 
 req = construct_sip_options_req( port:port, proto:proto );
 res = sip_send_recv( port:port, data:req, proto:proto );
 
-if( "SIP/2.0" >!< res ) exit( 0 );
+if( res =~ "^SIP/2\.0 [0-9]+" || egrep( string:res, pattern:"^Via: SIP/2\.0/UDP" ) ) {
+  found = TRUE;
+} else {
+  # Found on the IceWarp Suite (but there might be more similar products). This is a SIP service which isn't responding to our
+  # SIP OPTIONS request so try HTTP GET again (see find_service1.nasl) to get the full banner (yes, this seems to be working for UDP as well...)
+  soc = open_sock_udp( port );
+  if( ! soc ) exit( 0 );
+  send( socket:soc, data:'GET / HTTP/1.0\r\n\r\n' );
+  res = recv( socket:soc, length:4096 );
+  close( soc );
+  if( res =~ "^SIP/2\.0 [0-9]+" && egrep( string:res, pattern:"^Via: " ) ) {
+    found = TRUE;
+  }
+}
+
+if( ! found ) exit( 0 );
 
 replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:res );
 

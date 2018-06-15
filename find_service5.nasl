@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 9459 2018-04-12 10:23:11Z cfischer $
+# $Id: find_service5.nasl 10183 2018-06-14 07:16:58Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 9459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 12:23:11 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 10183 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Service Detection with 'SIP' Request");
-  script_category(ACT_GATHER_INFO); 
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
   script_dependencies("find_service4.nasl");
@@ -85,7 +85,8 @@ if( '\0' >< r )
 
 rhexstr = hexstr( r );
 
-if( r =~ "^SIP/2\.0" || r =~ "^Via: SIP/2\.0" ) {
+# Fallback for the find_service1.nasl check if the service is only answering to SIP OPTIONS requests.
+if( r =~ "^SIP/2\.0 [0-9]+" || egrep( string:r, pattern:"^Via: SIP/2\.0/TCP" ) ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
   log_message( port:port, data:"A service supporting the SIP protocol was idendified." );
   exit( 0 );
@@ -126,7 +127,7 @@ if( rhexstr =~ "^61637070000[0-9]000[0-9]" ) { # nb: The following parts seems t
   exit( 0 );
 }
 
-# 0x00:  70 02 77 61                                        p.wa 
+# 0x00:  70 02 77 61                                        p.wa
 if( rhexstr =~ "^70027761$" ) {
   register_service( port:port, proto:"activemq_mqtt", message:"A ActiveMQ MQTT service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ MQTT service seems to be running on this port." );

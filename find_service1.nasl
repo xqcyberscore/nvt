@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10178 2018-06-13 12:50:54Z cfischer $
+# $Id: find_service1.nasl 10183 2018-06-14 07:16:58Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10178 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 14:50:54 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 10183 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -212,7 +212,7 @@ else
 r_len = strlen( r );
 if( r_len == 0 ) {
   soc = open_sock_tcp( port );
-  if( ! soc )  exit( 0 );
+  if( ! soc ) exit( 0 );
   send( socket:soc, data:'GET / HTTP/1.0\r\n\r\n' );
   r = recv( socket:soc, length:4096 );
   close( soc );
@@ -741,15 +741,15 @@ if( ( ( r0 =~ "^RPY [0-9] [0-9]" && "Content-Type: application/" >< r0 ) ||
 }
 
 # https://github.com/beanshell/beanshell/blob/master/src/main/resources/bsh/commands/server.bsh
-# 0x00:  42 65 61 6E 53 68 65 6C 6C 20 32 2E 30 62 34 20    BeanShell 2.0b4 
+# 0x00:  42 65 61 6E 53 68 65 6C 6C 20 32 2E 30 62 34 20    BeanShell 2.0b4
 # 0x10:  2D 20 62 79 20 50 61 74 20 4E 69 65 6D 65 79 65    - by Pat Niemeye
 # 0x20:  72 20 28 70 61 74 40 70 61 74 2E 6E 65 74 29 0A    r (pat@pat.net).
-# 0x30:  62 73 68 20 25 20 2F 2F 20 45 72 72 6F 72 3A 20    bsh % // Error: 
+# 0x30:  62 73 68 20 25 20 2F 2F 20 45 72 72 6F 72 3A 20    bsh % // Error:
 # 0x40:  50 61 72 73 65 72 20 45 72 72 6F 72 3A 20 49 6E    Parser Error: In
 # 0x50:  20 66 69 6C 65 3A 20 3C 75 6E 6B 6E 6F 77 6E 3E     file: <unknown>
 # 0x60:  20 45 6E 63 6F 75 6E 74 65 72 65 64 20 22 48 6F     Encountered "Ho
 # 0x70:  73 74 22 20 61 74 20 6C 69 6E 65 20 32 2C 20 63    st" at line 2, c
-# 0x80:  6F 6C 75 6D 6E 20 31 2E 0A 0A 62 73 68 20 25 20    olumn 1...bsh % 
+# 0x80:  6F 6C 75 6D 6E 20 31 2E 0A 0A 62 73 68 20 25 20    olumn 1...bsh %
 #
 # nb: With and without the banner. Just to be sure...
 if( r =~ "^bsh % " || r =~ "^BeanShell " || "- by Pat Niemeyer (pat@pat.net)" >< r ) {
@@ -788,10 +788,40 @@ if( r =~ "^w0256" && ( r_len == 261 || r_len == 263 ) ) {
 
 # Unknown telnet service running on 23/tcp. The check is not that reliable so checking the port as well...
 # 0x00:  43 6F 6E 6E 65 63 74 69 6F 6E 20 72 65 66 75 73    Connection refus
-# 0x10:  65 64 0D 0A                                        ed.. 
+# 0x10:  65 64 0D 0A                                        ed..
 if( port == 23 && rhexstr == "436F6E6E656374696F6E20726566757365640D0A" ) {
   register_service( port:port, proto:"telnet", message:"A telnet service rejecting the access of the scanner seems to be running on this port." );
   log_message( port:port, data:"A telnet service rejecting the access of the scanner seems to be running on this port." );
+  exit( 0 );
+}
+
+# Found on the IceWarp Suite (but there might be more similar products). This is a SIP service
+# which isn't responding to our SIP OPTIONS request of sip_detection_tcp.nasl and find_service5.nasl
+# 0x00:  53 49 50 2F 32 2E 30 20 34 30 30 20 42 61 64 20    SIP/2.0 400 Bad
+# 0x10:  52 65 71 75 65 73 74 0D 0A 55 73 65 72 2D 41 67    Request..User-Ag
+# 0x20:  65 6E 74 3A 20 49 63 65 57 61 72 70 20 53 49 50    ent: IceWarp SIP
+# 0x30:  20 31 31 2E 31 2E 32 2E 31 20 44 45 42 37 20 78     11.1.2.1 DEB7 x
+# 0x40:  36 34 0D 0A 43 6F 6E 74 65 6E 74 2D 4C 65 6E 67    64..Content-Leng
+# 0x50:  74 68 3A 20 30 0D 0A 56 69 61 3A 20 3B 72 65 63    th: 0..Via: ;rec
+# 0x60:  65 69 76 65 64 3D 31 39 32 2E 31 36 38 2E 31 2E    eived=192.168.1.
+# 0x70:  31 30 3B 72 70 6F 72 74 3D 34 35 34 36 31 3B 74    10;rport=45461;t
+# 0x80:  72 61 6E 73 70 6F 72 74 3D 54 43 50 0D 0A 48 6F    ransport=TCP..Ho
+# 0x90:  73 74 3A 20 74 65 73 74 0D 0A 0D 0A                st: test....
+#
+# Another special case on e.g. a AVM FRITZ!Box
+# 0x0000:  53 49 50 2F 32 2E 30 20 34 30 30 20 49 6C 6C 65    SIP/2.0 400 Ille
+# 0x0010:  67 61 6C 20 72 65 71 75 65 73 74 20 6C 69 6E 65    gal request line
+# 0x0020:  0D 0A 46 72 6F 6D 3A 20 3C 73 69 70 3A 6D 69 73    ..From: <sip:mis
+# 0x0030:  73 69 6E 67 3E 0D 0A 54 6F 3A 20 3C 73 69 70 3A    sing>..To: <sip:
+# 0x0040:  6D 69 73 73 69 6E 67 3E 3B 74 61 67 3D 62 61 64    missing>;tag=bad
+# 0x0050:  72 65 71 75 65 73 74 0D 0A 55 73 65 72 2D 41 67    request..User-Ag
+# 0x0060:  65 6E 74 3A 20 46 52 49 54 5A 21 4F 53 0D 0A 43    ent: FRITZ!OS..C
+# 0x0070:  6F 6E 74 65 6E 74 2D 4C 65 6E 67 74 68 3A 20 30    ontent-Length: 0
+# 0x0080:  0D 0A 0D 0A 53 49 50 2F 32 2E 30 20 34 30 30 20    ....
+if( r =~ "^SIP/2\.0 [0-9]+" && egrep( string:r, pattern:"^Via: " ) ||
+    r =~ "^SIP/2\.0 400 Illegal request line..From: <sip:missing>..To: <sip:missing>;tag=badrequest..User-Agent: " ) {
+  register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol seems to be running on this port." );
+  log_message( port:port, data:"A service supporting the SIP protocol seems to be running on this port." );
   exit( 0 );
 }
 

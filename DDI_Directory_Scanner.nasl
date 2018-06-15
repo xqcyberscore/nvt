@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 9956 2018-05-25 09:21:51Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 10187 2018-06-14 09:18:39Z mmartin $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 9956 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:21:51 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10187 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 11:18:39 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -615,6 +615,7 @@ testDirList = make_list(
 "objects",
 "odbc",
 "offers",
+"ojs",
 "old",
 "old_files",
 "oldfiles",

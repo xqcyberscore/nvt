@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 10095 2018-06-06 10:11:49Z cfischer $
+# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 10203 2018-06-14 16:42:00Z cfischer $
 #
 # Microsoft Windows SMB/NETBIOS NULL Session Authentication Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801991");
-  script_version("$Revision: 10095 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 12:11:49 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 10203 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 18:42:00 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-1999-0519");
   script_tag(name:"cvss_base", value:"7.5");
@@ -145,7 +145,7 @@ foreach s(make_list("A$", "C$", "D$", "ADMIN$", "WINDOWS$", "ROOT", "WINNT$", "I
     tid = tconx_extract_tid(reply:r);
     if(tid){
       close(soc);
-      report = "It was possible to login at the share '" + s + " " + creds;
+      report = "It was possible to login at the share '" + s + "' " + creds;
       security_message(port:port, data:report);
       exit(0);
     }

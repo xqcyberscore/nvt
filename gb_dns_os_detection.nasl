@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_os_detection.nasl 8556 2018-01-27 11:28:01Z cfischer $
+# $Id: gb_dns_os_detection.nasl 10185 2018-06-14 07:39:38Z cfischer $
 #
 # DNS Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108014");
-  script_version("$Revision: 8556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-27 12:28:01 +0100 (Sat, 27 Jan 2018) $");
+  script_version("$Revision: 10185 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:39:38 +0200 (Thu, 14 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:13:48 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -93,7 +93,7 @@ foreach proto( make_list( "udp", "tcp" ) ) {
     }
 
     # PowerDNS Authoritative Server 3.4.11 (jenkins@autotest.powerdns.com built 20170116223245 mockbuild@buildhw-05.phx2.fedoraproject.org)
-    if( "for Fedora Linux" >< banner || ( "PowerDNS Authoritative Server" >< banner || "jenkins@autotest.powerdns.com" >< banner && ".fedoraproject.org" >< banner ) ) {
+    if( "for Fedora Linux" >< banner || ( ( "PowerDNS" >< banner || "jenkins@autotest.powerdns.com" >< banner ) && ".fedoraproject.org" >< banner ) ) {
       register_and_report_os( os:"Fedora Linux", cpe:"cpe:/o:fedoraproject:fedora", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       continue;
     }
@@ -125,7 +125,7 @@ foreach proto( make_list( "udp", "tcp" ) ) {
 
     # PowerDNS" "Authoritative" "Server" "3.4.11" "(jenkins@autotest.powerdns.com" "built" "20171130121213" "root@rpmb-64-centos-65)
     # PowerDNS" "Authoritative" "Server" "3.4.10" "(jenkins@autotest.powerdns.com" "built" "20170306160718" "root@rpmbuild-64-centos-7.dev.cpanel.net)
-    if( "PowerDNS" >< banner || "jenkins@autotest.powerdns.com" >< banner && "-centos-" >< banner ) {
+    if( ( "PowerDNS" >< banner || "jenkins@autotest.powerdns.com" >< banner ) && "-centos-" >< banner ) {
       if( "-centos-7" >< banner ) {
         register_and_report_os( os:"CentOS", version:"7", cpe:"cpe:/o:centos:centos", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else if( "-centos-65" >< banner ) {
