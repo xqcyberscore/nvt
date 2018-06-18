@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10107 2018-06-07 07:37:31Z cfischer $
+# $Id: ssh_func.inc 10228 2018-06-15 16:18:37Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10107 $
+# $Revision: 10228 $
 #
 ###############################################################################
 
@@ -55,32 +55,6 @@ ssh_host_key_algos = make_list( "ssh-rsa",
 
                                 #"rsa-sha2-256", # Those two seems to be currently unsupported in libssh
                                 #"rsa-sha2-512" );
-
-# ssh_hex2raw() copied from misc_func.inc as we don't want to taint ssh_func.inc with
-# a third-party include
-function ssh_hex2raw(s)
-{
- local_var i, j, ret, l;
-
- s = chomp(s);  # remove trailing blanks, CR, LF...
- l = strlen(s);
- #if (l % 2 ) display("ssh_hex2raw: odd string: ", s, "\n");
- for(i=0;i<l;i+=2)
- {
-  if(ord(s[i]) >= ord("0") && ord(s[i]) <= ord("9"))
-        j = int(s[i]);
-  else
-        j = int((ord(s[i]) - ord("a")) + 10);
-
-  j *= 16;
-  if(ord(s[i+1]) >= ord("0") && ord(s[i+1]) <= ord("9"))
-        j += int(s[i+1]);
-  else
-        j += int((ord(s[i+1]) - ord("a")) + 10);
-  ret += raw_string(j);
- }
- return ret;
-}
 
 function kb_ssh_login() {
   return string( get_kb_item( "Secret/SSH/login" ) );
@@ -2308,9 +2282,8 @@ function ssh_broken_random_login( port ) {
     user = "Anonymous";
     pass = "";
   } else {
-    if( ! defined_func( "rand_str" ) ) include( "misc_func.inc" );
-    user = rand_str( length:8, charset:"abcdefghiklmnopqrstuvwxyz" );
-    pass = rand_str( length:8, charset:"ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz" );
+    user = ssh_rand_str( length:8, charset:"abcdefghiklmnopqrstuvwxyz" );
+    pass = ssh_rand_str( length:8, charset:"ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz" );
   }
 
   if( ! soc = open_sock_tcp( port ) ) return;
@@ -2610,4 +2583,25 @@ function ssh_clean_cmd_from_err( data ) {
   data = ereg_replace( string:data, pattern:'^xcode-select: error: no developer tools were found at \'/Applications/Xcode\\.app\', and no install could be requested \\(perhaps no UI is present\\), please install manually from \'developer\\.apple\\.com\'\\.[\r\n]*', replace:"" );
 
   return data;
+}
+
+# copied from misc_func.inc as we don't want to taint ssh_func.inc with
+# a third-party include
+# TODO: Remove and use rand_str() from misc_func.inc once openvas-nasl-lint
+# can handle .inc includes using a function from another include.
+function ssh_rand_str( length, charset ) {
+
+  local_var l, i, s, n, length, charset;
+
+  if( ! charset )
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+  if( isnull( length ) )
+    length = 8;
+  l = strlen( charset );
+  s = "";
+  for( i = 0; i < length; i++ ) {
+    n = rand() % l;
+    s += charset[n];
+  }
+  return s;
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_youtube_gallery_sql_inj_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_joomla_youtube_gallery_sql_inj_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
 #
 # Joomla! YouTube Gallery Component 'gallery.php' SQL Injection Vulnerability
 #
@@ -29,90 +29,68 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804720");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 10212 $");
   script_cve_id("CVE-2014-4960");
   script_bugtraq_id(68676);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 16:09:39 +0530 (Thu, 24 Jul 2014)");
   script_name("Joomla! YouTube Gallery Component 'gallery.php' SQL Injection Vulnerability");
 
-  tag_summary =
-"This host is installed with Joomla! YouTube Gallery Component and is prone
-to sql injection vulnerability.";
+  script_tag(name: "solution_type", value: "VendorFix");
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the
-version is vulnerable or not.";
+  script_tag(name: "summary", value: "This host is installed with Joomla! YouTube Gallery Component and is prone
+to sql injection vulnerability.");
 
-  tag_insight =
-"Flaw is due to the /com_youtubegallery/models/gallery.php script not properly
-sanitizing user-supplied input to the 'listid' and 'themeid' parameters.";
+  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary SQL
-statements on the vulnerable system, which may leads to access or modify data
-in the underlying database.
+  script_tag(name: "insight", value: "Flaw is due to the /com_youtubegallery/models/gallery.php script not
+properly sanitizing user-supplied input to the 'listid' and 'themeid' parameters.");
 
-Impact Level: Application";
+  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary SQL
+statements on the vulnerable system, which may leads to access or modify data in the underlying database.");
 
-  tag_affected =
-"Joomla! YouTube Gallery Component version 4.1.7, Prior versions may also be
-affected.";
+  script_tag(name: "affected", value: "Joomla! YouTube Gallery Component version 4.1.7, Prior versions may also be
+affected.");
 
-  tag_solution =
-"Upgrade to version 4.1.9 or higher,
-For updates refer to http://www.joomlaboat.com/youtube-gallery";
+  script_tag(name: "solution", value: "Upgrade to version 4.1.9 or higher.");
 
+  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/34087");
+  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/127497");
 
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34087");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127497");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if (!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Joomla Location
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if (!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
 
-## Construct the attack request
+if (dir == "/")
+  dir = "";
+
 url = dir + "/index.php?option=com_youtubegallery&view=youtubegallery"
           + "&listid=1'SQLInjectionTest&themeid=1";
 
-## Try attack and check the response to confirm vulnerability
-if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
-   pattern:"You have an error in your SQL syntax.*SQLInjectionTest"))
-{
-  security_message(http_port);
+if (http_vuln_check(port:http_port, url:url, check_header:FALSE,
+                    pattern:"You have an error in your SQL syntax.*SQLInjectionTest")) {
+  report = report_vuln_url(port: http_port, url: url);
+  security_message(port: http_port, data: report);
   exit(0);
 }
+
+exit(99);

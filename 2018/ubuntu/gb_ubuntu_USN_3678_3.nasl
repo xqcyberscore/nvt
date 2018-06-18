@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3678_3.nasl 10204 2018-06-15 02:21:57Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3678_3.nasl 10215 2018-06-15 10:24:04Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3678-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843559");
-  script_version("$Revision: 10204 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 04:21:57 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10215 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 05:54:35 +0200 (Wed, 13 Jun 2018)");
   script_cve_id("CVE-2018-1092", "CVE-2018-8087", "CVE-2018-10021");
   script_tag(name:"cvss_base", value:"7.1");
@@ -61,7 +61,7 @@ could use this to cause a denial of service (memory exhaustion).
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
   exit(0);
 }
 

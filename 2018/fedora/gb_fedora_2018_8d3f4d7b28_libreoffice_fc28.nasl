@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_8d3f4d7b28_libreoffice_fc28.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_8d3f4d7b28_libreoffice_fc28.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Fedora Update for libreoffice FEDORA-2018-8d3f4d7b28
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874481");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 05:56:44 +0200 (Wed, 16 May 2018)");
   script_cve_id("CVE-2018-10583");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libreoffice FEDORA-2018-8d3f4d7b28");
   script_tag(name:"summary", value:"Check the version of libreoffice");

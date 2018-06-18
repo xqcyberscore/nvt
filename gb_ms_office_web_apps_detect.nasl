@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_ms_office_web_apps_detect.nasl 10220 2018-06-15 12:17:34Z santu $
 #
 # Microsoft Office Web Apps Detection
 #
@@ -24,16 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802466";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 9584 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802466");
+  script_version("$Revision: 10220 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:17:34 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:29:56 +0530 (Thu, 11 Oct 2012)");
   script_name("Microsoft Office Web Apps Detection");
 
@@ -46,8 +44,6 @@ version and sets the KB.";
 
 
   script_tag(name : "summary" , value : tag_summary);
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -62,50 +58,88 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-insPath = "";
-spName = "";
-spVer = "";
-item = "";
-cpe = "";
-key = "";
-
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-foreach item (registry_enum_keys(key:key))
+if((registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Office14.WCSERVER")) || 
+  (registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Office15.WacServer")))
 {
-  spName = registry_get_sz(key:key + item, item:"DisplayName");
-  if(spName && egrep(pattern:"^Microsoft.* Office Web Apps\s?$", string:spName))
+
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Office14.WCSERVER",
+                       "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Office15.WacServer");
+  foreach key(key_list)
   {
-    spVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(spVer)
+    spName = registry_get_sz(key:key, item:"DisplayName");
+    if(spName && spName =~ "^Microsoft.*Office Web Apps")
     {
-      ## Get the installation path
-      insPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!insPath){
-        insPath = "Could not find the install location from registry";
+      spVer = registry_get_sz(key:key, item:"DisplayVersion");
+      if(spVer)
+      {
+        ## Get the installation path
+        insPath = registry_get_sz(key:key, item:"InstallLocation");
+        if(!insPath){
+          insPath = "Could not find the install location from registry";
+        }
+
+        set_kb_item(name:"MS/Office/Web/Apps/Path", value:insPath);
+        set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+
+        ## Set the KB item
+        set_kb_item(name:"MS/Office/Web/Apps/Ver", value:spVer);
+        set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+        cpe = build_cpe(value:spVer, exp:"^([0-9.]+)",
+                             base:"cpe:/a:microsoft:office_web_apps:");
+
+        if(!cpe)
+          cpe = "cpe:/a:microsoft:office_web_apps";
+
+        register_product(cpe:cpe, location:insPath);
+
+        log_message(data: build_detection_report(app:"Microsoft Office Web Apps ",
+                                                version:spVer, install:insPath, cpe:cpe,
+                                                concluded: spVer));
+
       }
+    }
+  }
+}
 
-      set_kb_item(name:"MS/Office/Web/Apps/Path", value:insPath);
-      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+if(!installdetect)
+{
+  foreach item (registry_enum_keys(key:key))
+  {
+    spName = registry_get_sz(key:key + item, item:"DisplayName");
+    if(spName && egrep(pattern:"^Microsoft.*Office Web Apps\s?$", string:spName))
+    {
+      installdetect = TRUE;
+      spVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      if(spVer)
+      {
+        ## Get the installation path
+        insPath = registry_get_sz(key:key + item, item:"InstallLocation");
+        if(!insPath){
+          insPath = "Could not find the install location from registry";
+        }
+        set_kb_item(name:"MS/Office/Web/Apps/Path", value:insPath);
+        set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-      ## Set the KB item
-      set_kb_item(name:"MS/Office/Web/Apps/Ver", value:spVer);
-      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
-      cpe = build_cpe(value:spVer, exp:"^([0-9.]+)",
-                           base:"cpe:/a:microsoft:office_web_apps:");
+        ## Set the KB item
+        set_kb_item(name:"MS/Office/Web/Apps/Ver", value:spVer);
+        set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+        cpe = build_cpe(value:spVer, exp:"^([0-9.]+)",
+                             base:"cpe:/a:microsoft:office_web_apps:");
 
-      if(!cpe)
-        cpe = "cpe:/a:microsoft:office_web_apps";
+        if(!cpe)
+          cpe = "cpe:/a:microsoft:office_web_apps";
 
-      register_product(cpe:cpe, location:insPath);
+        register_product(cpe:cpe, location:insPath);
 
-      log_message(data: build_detection_report(app:"Microsoft Office Web Apps ",
-                                              version:spVer, install:insPath, cpe:cpe,
-                                              concluded: spVer));
+        log_message(data: build_detection_report(app:"Microsoft Office Web Apps ",
+                                                version:spVer, install:insPath, cpe:cpe,
+                                                concluded: spVer));
+      }
     }
   }
 }

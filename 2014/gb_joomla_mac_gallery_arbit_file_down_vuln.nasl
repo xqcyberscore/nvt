@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
 #
 # Joomla! Mac Gallery Component Arbitrary File Download Vulnerability
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804772");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 10212 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:56:04 +0530 (Tue, 07 Oct 2014)");
+
   script_tag(name:"qod_type", value:"remote_vul");
-
-
 
   script_name("Joomla! Mac Gallery Component Arbitrary File Download Vulnerability");
 
@@ -58,54 +57,46 @@ if(description)
   script_tag(name:"affected", value:"Joomla! Mac Gallery Component version 1.5
   and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none
-  will be provided anymore. General solution options are to upgrade to a newer
-  release, disable respective features, remove the product or replace the
-  product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34755");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128341");
+  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/34755");
+  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/128341");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
+
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if (!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Joomla Location
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if (!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
 
-## Construct the attack request
+if (dir == "/")
+  dir = "";
+
 url = dir + "/index.php?option=com_macgallery&view=download&albumid=../../web.config.txt";
 
-## Check the response to confirm vulnerability, extra check not possible
-if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
-   pattern:"<configuration>", extra_check:"Joomla! Rule"))
-{
+if (http_vuln_check(port:http_port, url:url, check_header:FALSE, pattern:"<configuration>",
+                    extra_check:"Joomla! Rule")) {
   report = report_vuln_url( port:http_port, url:url );
   security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

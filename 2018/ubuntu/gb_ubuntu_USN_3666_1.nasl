@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3666_1.nasl 10156 2018-06-12 06:31:24Z cfischer $
+# $Id: gb_ubuntu_USN_3666_1.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # Ubuntu Update for python-oslo.middleware USN-3666-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843541");
-  script_version("$Revision: 10156 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 08:31:24 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:14 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2017-2592");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for python-oslo.middleware USN-3666-1");
   script_tag(name:"summary", value:"Check the version of python-oslo.middleware");

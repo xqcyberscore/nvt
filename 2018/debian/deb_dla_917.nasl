@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_917.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_917.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DLA 917-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890917");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2015-8270", "CVE-2015-8271", "CVE-2015-8272");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 917-1] rtmpdump security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"rtmpdump on Debian Linux");
   script_tag(name:"insight", value:"A small dumper for media content streamed over the RTMP protocol (like BBC's
 iPlayer high quality streams). Supplying an RTMP URL will result in a dumped
@@ -98,5 +98,5 @@ if ((res = isdpkgvuln(pkg:"rtmpdump", ver:"2.4+20111222.git4e06e21-1+deb7u1", rl
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

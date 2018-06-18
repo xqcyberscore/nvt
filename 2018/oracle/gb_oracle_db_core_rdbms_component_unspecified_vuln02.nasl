@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln02.nasl 8578 2018-01-30 09:43:28Z asteins $
+# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln02.nasl 10234 2018-06-18 09:06:34Z cfischer $
 #
 # Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability-02
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812737");
-  script_version("$Revision: 8578 $");
+  script_version("$Revision: 10234 $");
   script_cve_id("CVE-2018-2575");
   script_bugtraq_id(102547);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 10:43:28 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 11:06:34 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-01-19 16:41:33 +0530 (Fri, 19 Jan 2018)");
   script_name("Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability-02");
 
@@ -66,16 +66,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("OracleDatabaseServer/installed", "Host/runs_windows");
+  script_mandatory_keys("OracleDatabaseServer/installed", "Host/runs_windows"); # From the advisory: Applicable only to Windows platform.
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-dbport = "";
-dbVer = "";
 
 if(!dbport = get_app_port(cpe:CPE)){
   exit(0);
@@ -92,4 +88,5 @@ if(dbVer == "11.2.0.4" ||
   security_message(data:report, port:dbport);
   exit(0);
 }
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1000.nasl 9250 2018-03-29 05:55:29Z cfischer $
+# $Id: deb_dla_1000.nasl 10227 2018-06-15 15:26:32Z emoss $
 #
 # Auto-generated from advisory DLA 1000-1 using nvtgen 1.0
 # Script version:1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891000");
-  script_version("$Revision: 9250 $");
+  script_version("$Revision: 10227 $");
   script_cve_id("CVE-2017-9261", "CVE-2017-9262", "CVE-2017-9405", "CVE-2017-9407", "CVE-2017-9409", "CVE-2017-9439", "CVE-2017-9500", "CVE-2017-9501");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1000-1] imagemagick security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 07:55:29 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 17:26:32 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,14 +48,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"imagemagick on Debian Linux");
   script_tag(name:"insight", value:"ImageMagick is a software suite to create, edit, and compose bitmap images.
 It can read, convert and write images in a variety of formats (over 100)
 including DPX, EXR, GIF, JPEG, JPEG-2000, PDF, PhotoCD, PNG, Postscript,
 SVG, and TIFF. Use ImageMagick to translate, flip, mirror, rotate, scale,
 shear and transform images, adjust image colors, apply various special
-effects, or draw text, lines, polygons, ellipses and Bézier curves.
+effects, or draw text, lines, polygons, ellipses and Bezier curves.
 All manipulations can be achieved through shell commands as well as through
 an X11 graphical interface (display).");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
@@ -116,5 +116,5 @@ if ((res = isdpkgvuln(pkg:"perlmagick", ver:"8:6.7.7.10-5+deb7u15", rls_regex:"D
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

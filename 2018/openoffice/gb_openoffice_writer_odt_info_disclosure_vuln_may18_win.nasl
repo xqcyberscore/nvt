@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Apache OpenOffice Writer ODT file Information Disclosure Vulnerability May18 (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 
 if(description)                                                                                                                                 {
   script_oid("1.3.6.1.4.1.25623.1.0.812873");
-  script_version("$Revision: 9802 $");
+  script_version("$Revision: 10231 $");
   script_cve_id("CVE-2018-10583");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 15:19:54 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Writer ODT file Information Disclosure Vulnerability May18 (Windows)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2c965abb15_dpdk_fc28.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_fedora_2018_2c965abb15_dpdk_fc28.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Fedora Update for dpdk FEDORA-2018-2c965abb15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874604");
-  script_version("$Revision: 9983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:55:09 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2018-1059");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dpdk FEDORA-2018-2c965abb15");
   script_tag(name:"summary", value:"Check the version of dpdk");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_invision_sqli_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_invision_sqli_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
 #
 # Invision Power Board 3.4.5 SQLi Vulnerability
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:invision_power_services:invision_power_board";
+
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113143");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10212 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 12:47:45 +0100 (Thu, 22 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -50,11 +52,17 @@ if( description )
   script_mandatory_keys("invision_power_board/installed");
 
   script_tag(name:"summary", value:"Invision Power Board is prone to an SQL Injection Vulnerability.");
+
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The flaw exists due to insufficient sanitation of the 'cld' parameter.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary SQL commands on the target system.
-  This would result in effects ranging from information disclosure to gaining complete access over the target system.");
+
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary SQL
+commands on the target system. This would result in effects ranging from information disclosure to gaining
+complete access over the target system.");
+
   script_tag(name:"affected", value:"Invision Power Board through version 3.4.5.");
+
   script_tag(name:"solution", value:"Update to version 3.4.6.");
 
   script_xref(name:"URL", value:"http://dringen.blogspot.de/2014/07/invision-power-board-blind-sql.html");
@@ -62,10 +70,8 @@ if( description )
   exit( 0 );
 }
 
-CPE = "cpe:/a:invision_power_services:invision_power_board";
-
-include( "host_details.inc" );
-include( "version_func.inc" );
+include("host_details.inc");
+include("version_func.inc");
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );

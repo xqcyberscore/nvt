@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netop_detect_udp.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: netop_detect_udp.nasl 10209 2018-06-15 08:15:11Z cfischer $
 #
 # NetOp products UDP detection
 #
 # Authors:
-# Martin O'Neal of Corsaire (http://www.corsaire.com)  
+# Martin O'Neal of Corsaire (http://www.corsaire.com)
 # Jakob Bohm of Danware (http://www.danware.dk)
 #
 # Copyright:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15766");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10209 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 10:15:11 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,27 +54,22 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("netop.inc");
 include("http_func.inc"); # For make_list_unique()
 
 function test( port ) {
-
   socket = open_sock_udp( port );
-  
   if( socket ) {
-
     send( socket:socket, data:helo_pkt_udp ); # helo_pkt_udp is global in netop.inc
-  
     banner_pkt = recv( socket:socket, length:1500, timeout:3 );
-  
     close(socket);
-
     netop_check_and_add_banner();
   }
 }
 
 addr = get_host_ip();
-proto_nam = 'udp';
+proto_nam = "udp";
 
 ports = get_all_udp_ports_list();
 # Adding the default ports if unscanned_closed_udp = no

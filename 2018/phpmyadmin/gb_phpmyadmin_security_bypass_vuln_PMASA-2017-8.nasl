@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_security_bypass_vuln_PMASA-2017-8.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_phpmyadmin_security_bypass_vuln_PMASA-2017-8.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # phpMyAdmin Security Bypass Vulnerability-PMASA-2017-8
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813163");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 10231 $");
   script_cve_id("CVE-2017-18264");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 12:01:22 +0530 (Thu, 03 May 2018)");
   script_name("phpMyAdmin Security Bypass Vulnerability-PMASA-2017-8");
 

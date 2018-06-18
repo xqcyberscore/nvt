@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_win_dos_vuln.nasl 9827 2018-05-15 06:11:22Z emoss $
+# $Id: gb_openvpn_win_dos_vuln.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # OpenVPN 2.4.x < 2.4.6 DoS Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107310");
-  script_version("$Revision: 9827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:11:22 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 09:50:01 +0200 (Fri, 11 May 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   script_cve_id("CVE-2018-9336");

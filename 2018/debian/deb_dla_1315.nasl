@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1315.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
+# $Id: deb_dla_1315.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1315-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891315");
-  script_version("$Revision: 9594 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2018-1064", "CVE-2018-5748");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1315-1] libvirt security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"libvirt on Debian Linux");
   script_tag(name:"insight", value:"Libvirt is a C toolkit to interact with the virtualization capabilities
 of recent versions of Linux (and other OSes).");
@@ -92,5 +92,5 @@ if ((res = isdpkgvuln(pkg:"python-libvirt", ver:"0.9.12.3-1+deb7u3", rls_regex:"
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

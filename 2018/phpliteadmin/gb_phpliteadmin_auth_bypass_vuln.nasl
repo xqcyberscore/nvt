@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpliteadmin_auth_bypass_vuln.nasl 9677 2018-04-30 08:27:18Z ckuersteiner $
+# $Id: gb_phpliteadmin_auth_bypass_vuln.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # phpLiteAdmin Authentication Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:phpliteadmin_project:phpliteadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141018");
-  script_version("$Revision: 9677 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-30 10:27:18 +0200 (Mon, 30 Apr 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-04-24 09:02:06 +0700 (Tue, 24 Apr 2018)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-10362");
 

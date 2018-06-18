@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3671_1.nasl 10182 2018-06-14 07:00:55Z santu $
+# $Id: gb_ubuntu_USN_3671_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
 #
 # Ubuntu Update for git USN-3671-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843545");
-  script_version("$Revision: 10182 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:00:55 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10215 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 05:47:44 +0200 (Thu, 07 Jun 2018)");
   script_cve_id("CVE-2018-11235", "CVE-2018-11233");
   script_tag(name:"cvss_base", value:"10.0");
@@ -59,7 +59,7 @@ use this to cause a denial of service or expose sensitive information.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

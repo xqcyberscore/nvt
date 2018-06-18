@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1381.nasl 9942 2018-05-24 06:58:00Z cfischer $
+# $Id: deb_dla_1381.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1381-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891381");
-  script_version("$Revision: 9942 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2017-18271", "CVE-2017-18273", "CVE-2018-11251");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1381-1] imagemagick security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 08:58:00 +0200 (Thu, 24 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 00:00:00 +0200 (Thu, 24 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"imagemagick on Debian Linux");
   script_tag(name:"insight", value:"ImageMagick is a software suite to create, edit, and compose bitmap images.
 It can read, convert and write images in a variety of formats (over 100)

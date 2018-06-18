@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1383_1.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_suse_2018_1383_1.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # SuSE Update for wget openSUSE-SU-2018:1383-1 (wget)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851759");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:47:51 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-0494");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for wget openSUSE-SU-2018:1383-1 (wget)");
   script_tag(name:"summary", value:"Check the version of wget");

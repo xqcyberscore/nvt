@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nghttp2_dos_vuln.nasl 9800 2018-05-11 09:27:46Z ckuersteiner $
+# $Id: gb_nghttp2_dos_vuln.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # nghttp2 < 1.31.1 DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:nghttp2:nghttp2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140984");
-  script_version("$Revision: 9800 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-11 11:27:46 +0200 (Fri, 11 May 2018) $");
+  script_version("$Revision: 10224 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-04-16 15:11:28 +0700 (Mon, 16 Apr 2018)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-1000168"); 
 

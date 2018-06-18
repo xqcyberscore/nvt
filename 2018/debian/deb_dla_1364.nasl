@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1364.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: deb_dla_1364.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1364-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891364");
-  script_version("$Revision: 10012 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2017-17833");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1364-1] openslp-dfsg security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 00:00:00 +0200 (Fri, 27 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"openslp-dfsg on Debian Linux");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1.2.1-9+deb7u2.

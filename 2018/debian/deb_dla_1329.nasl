@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1329.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: deb_dla_1329.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1329-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891329");
-  script_version("$Revision: 9488 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2018-1000127");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1329-1] memcached security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 00:00:00 +0200 (Mon, 02 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"memcached on Debian Linux");
   script_tag(name:"insight", value:"Danga Interactive developed memcached to enhance the speed of LiveJournal.com,
 a site which was already doing 20 million+ dynamic page views per day for 1
@@ -81,5 +81,5 @@ if ((res = isdpkgvuln(pkg:"memcached", ver:"1.4.13-0.2+deb7u4", rls_regex:"DEB7\
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

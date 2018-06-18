@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test
-# $Id: netop.inc 12135 2011-11-18 11:38:04Z hdoreau $
-# Description: Methods for handling netop
+###############################################################################
+# OpenVAS Include File
+# $Id: netop.inc 10234 2018-06-18 09:06:34Z cfischer $
+#
+# Methods for handling netop
 #
 # Authors:
-# Martin O'Neal of Corsaire (http://www.corsaire.com)  
+# Martin O'Neal of Corsaire (http://www.corsaire.com)
 # Jakob Bohm of Danware (http://www.danware.dk)
 #
 # Copyright:
@@ -22,22 +24,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# $Revision: 10234 $
+#
+###############################################################################
 
-# The original script produced by Martin O'Neal has been heavily modified 
-# by Jakob Bohm to provide additional product detail, plus also to limit 
-# any unnecessary information leakage caused by the scanning process itself. 
-# Jakob has also rewritten the test set as a whole to use the minimum of 
-# network traffic and make the process as efficient as possible. All together 
+# The original script produced by Martin O'Neal has been heavily modified
+# by Jakob Bohm to provide additional product detail, plus also to limit
+# any unnecessary information leakage caused by the scanning process itself.
+# Jakob has also rewritten the test set as a whole to use the minimum of
+# network traffic and make the process as efficient as possible. All together
 # a jolly good show.
-
-include("misc_func.inc");
 
 ############## Meta-information recorded in the name of the KB entry ################
 
 local_var port;
 local_var addr;
 global_var proto_nam;
-
 
 ############## HELO packets in NetOps native format ################
 
@@ -47,7 +49,7 @@ global_var quit_pkt_stream;
 
 ############## Received reply in NetOps native format ##################
 
-global_var banner_pkt; 
+global_var banner_pkt;
 
 ############## General derived strings ##################
 
@@ -59,31 +61,53 @@ local_var netop_prod_typ;
 local_var netop_prod_nam;
 local_var netop_prod_dsc;
 
-################### HELO packet for UDP only ##################
+# copied from misc_func.inc as we don't want to taint netop.inc with
+# a third-party include
+# TODO: Remove and use hex2raw() from misc_func.inc once openvas-nasl-lint
+# can handle .inc includes using a function from another include.
+_netop_func_debug = FALSE;
+function netop_hex2raw( s ) {
 
-helo_pkt_udp=
-	hex2raw(
-		s:'d6818106010000f70e5301044e657373'+
-		  '757301436f7273616972ff0100008701') + # 0-31
-	crap(length:32 , data: raw_string(0x20))      + # 32-63
-	crap(length:224, data: raw_string(0x00));       # 64-288
+  local_var i, j, ret, l, s;
+
+  if( isnull( s ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#s#-#netop_hex2raw" );
+
+  s = chomp( s );  # remove trailing blanks, CR, LF...
+  l = strlen( s );
+  if( l % 2 ) {
+    if( _netop_func_debug ) display( "hex2raw: odd string: ", s, "\n" );
+    l --;
+  }
+  s = tolower( s );
+  for( i = 0; i < l; i += 2) {
+  if( ord( s[i] ) >= ord( "0" ) && ord( s[i] ) <= ord( "9" ) )
+    j = int( s[i] );
+  else
+    j = int( ( ord( s[i] ) - ord( "a" ) ) + 10 );
+
+  j *= 16;
+  if( ord( s[i + 1] ) >= ord( "0" ) && ord( s[ i + 1] ) <= ord( "9" ) )
+    j += int( s[i+1] );
+  else
+    j += int( ( ord( s[ i + 1 ] ) - ord( "a" ) ) + 10 );
+  ret += raw_string( j );
+ }
+ return ret;
+}
+
+################### HELO packet for UDP only ##################
+helo_pkt_udp = netop_hex2raw(s:'d6818106010000f70e5301044e657373757301436f7273616972ff0100008701') + # 0-31
+               crap(length:32, data:raw_string(0x20)) + # 32-63
+               crap(length:224, data:raw_string(0x00)); # 64-288
 
 ################### Generic HELO packet ##################
+helo_pkt_gen = netop_hex2raw(s:'d6818106010000f73e4e010400000000000001436f7273616972ff0100008701') + # 0-31
+               crap(length:32, data:raw_string(0x20)) + # 32-63
+               crap(length:224, data:raw_string(0x00)); # 64-288
 
-helo_pkt_gen=
-	hex2raw(
-		s:'d6818106010000f73e4e010400000000'+
-		  '000001436f7273616972ff0100008701') + # 0-31
-	crap(length:32 , data: raw_string(0x20))      + # 32-63
-	crap(length:224, data: raw_string(0x00));       # 64-288
-			
 ################### QUIT packet for stream transports (tcp etc.)  ##################
-
-quit_pkt_stream=
-	hex2raw(
-		s:'d681810000f900f9eee3')             + # 0-9
-	crap(length:16, data: raw_string(0x00));        # 10-25
-			
+quit_pkt_stream = netop_hex2raw(s:'d681810000f900f9eee3') + # 0-9
+                  crap(length:16, data:raw_string(0x00));   # 10-25
 
 ################### utility functions ##################
 
@@ -122,7 +146,7 @@ function ip_dot2raw(ip_dot)
 	{
 		int32=raw_string(int(ip_dot[octet]),int32);
 	}
-	
+
 	return(int32);
 }
 
@@ -135,7 +159,7 @@ function ip_raw2dot(int32)
 	local_var ip_dot;
 
 	ip_dot=int(ord(int32[3]))+"."+int(ord(int32[2]))+"."+int(ord(int32[1]))+"."+int(ord(int32[0]));
-	
+
 	return(ip_dot);
 }
 
@@ -176,21 +200,21 @@ function netop_product_ident()
 	local_var school_stud_dsc;
 	local_var rc_also_host;
 	local_var rc_host_dsc;
-	
-	school_phrase1 = 
+
+	school_phrase1 =
 		'During the session, the Teacher' +
 		' has extensive control over the users computer,' +
 		' with very few restrictions, as is appropriate' +
 		' when the teacher can be assumed to be a higher' +
 		' authority than the student.';
-	
+
 	school_stud_dsc =
 		'NetOp School Student (client) allows its user to' +
 		' participate in live online education or training' +
 		' sessions broadcast from a computer running NetOp' +
 		' School Teacher.\n\n' +
 		school_phrase1;
-	
+
 	rc_also_host =
 		' is also a fully' +
 		' featured NetOp Remote Control Host, which allows' +
@@ -198,7 +222,7 @@ function netop_product_ident()
 		' managed from any NetOp Remote Control Guest' +
 		' subject to a separate set of configurable' +
 		' security restrictions.';
-	
+
 	rc_host_dsc =
 		'NetOp Remote Control Host is a service / agent,' +
 		' which allows the computer on which it is running' +
@@ -206,8 +230,8 @@ function netop_product_ident()
 		' NetOp Remote Control Guest program, subject to a' +
 		' wide selection of configurable security and' +
 		' authentication restrictions.';
-	
-	
+
+
 	if (     (ord(netop_kb_val[63]) & 0x08) != 0  ||
 	         netop_banner_items(typ:17)     != '' )
 	{
@@ -312,7 +336,7 @@ function netop_product_ident()
 		netop_prod_nam = 'NetOp Remote Control Host or Guest';
 		netop_prod_dsc = rc_host_dsc;
 	}
-	
+
 	netop_prod_dsc += '\n\nSee http://www.netop.com for more info.\n';
 
 }
@@ -380,9 +404,9 @@ function netop_log_detected()
 			' uninstall it and investigate why and how it was' +
 			' installed.\n';
 	}
-	
+
 	security_message(proto:proto_nam, port:port, data:msg);
-	
+
 }
 
 ################ Extract information from KB value and key ################
@@ -400,7 +424,7 @@ function netop_kb_derive()
 	proto_nam = chomp(substr(netop_kb_key, 0, 7));
 	port      = ord(netop_kb_key[9]) * 256 + ord(netop_kb_key[8]);
 	addr      = ip_raw2dot(int32: substr(netop_kb_key, 16, 31));
-	
+
 	netop_product_ident();
 }
 
@@ -415,7 +439,7 @@ function netop_each_found()
 	}
 	else
 	{
-		netop_kb_val = hex2raw(s:netop_kb_val);
+		netop_kb_val = netop_hex2raw(s:netop_kb_val);
 		netop_kb_derive();
 		return 1;
 	}
@@ -442,8 +466,8 @@ function netop_check_and_add_banner()
 	}
 
 	blen = strlen(banner_pkt);
-	if(blen > 23                    && 
-	   ord(banner_pkt[0])==0xd6     && 
+	if(blen > 23                    &&
+	   ord(banner_pkt[0])==0xd6     &&
 	   banner_pkt[1]==banner_pkt[2] &&
 	   ((ord(banner_pkt[7])==0xf8 &&
 	     blen >= 32 &&
@@ -454,8 +478,8 @@ function netop_check_and_add_banner()
 		{
 			banner_pkt = substr(banner_pkt, 0, 26);
 		}
-		
-		
+
+
 		# Force packet size before adding to knowledge base
 		netop_kb_val =
 		   netop_zeropad(str: (netop_kb_key + banner_pkt), len: 320);
@@ -468,10 +492,10 @@ function netop_check_and_add_banner()
 		set_kb_item(
 			name:'NetOp/allbanners',
 			value:hexstr(netop_kb_val));
-		
+
 		s1 = proto_nam + '/';
 		if (s1 == 'tcp/') s1 ='';
-		
+
 		s2 = 'Known/' + proto_nam + '/' + port;
 		set_kb_item(name:s2, value:netop_svcidstr);
 		s2 = 'Services/' + s1 + netop_svcidstr;
@@ -487,7 +511,4 @@ function netop_check_and_add_banner()
 	}
 }
 
-
-
 ################### end of netop.inc ##################
-

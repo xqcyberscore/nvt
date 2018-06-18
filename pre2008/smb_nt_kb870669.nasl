@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_kb870669.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: ADODB.Stream object from Internet Explorer (KB870669)
+# $Id: smb_nt_kb870669.nasl 10213 2018-06-15 10:04:26Z cfischer $
+#
+# ADODB.Stream object from Internet Explorer (KB870669)
 #
 # Authors:
 # Noam Rathaus noamr@beyondsecurity.com
@@ -20,58 +22,46 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "An ADO stream object represents a file in memory.  The stream object contains 
-several methods for reading and writing binary files and text files. 
-When this by-design functionality is combined with known security 
-vulnerabilities in Microsoft Internet Explorer, an Internet Web site could
-execute script from the Local Machine zone.
-
-This behavior occurs because the ADODB.Stream object permits
-access to the hard disk when the ADODB.Stream object is hosted
-in Internet Explorer.";
-
-tag_solution = "http://support.microsoft.com/?kbid=870669";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12298");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(10514);
- script_tag(name:"cvss_base", value:"7.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- name = "ADODB.Stream object from Internet Explorer (KB870669)";
+  script_oid("1.3.6.1.4.1.25623.1.0.12298");
+  script_version("$Revision: 10213 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(10514);
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_name("ADODB.Stream object from Internet Explorer (KB870669)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated");
 
- script_name(name);
+  script_tag(name:"summary", value:"An ADO stream object represents a file in memory. The stream object contains
+  several methods for reading and writing binary files and text files.
 
+  When this by-design functionality is combined with known security
+  vulnerabilities in Microsoft Internet Explorer, an Internet Web site could
+  execute script from the Local Machine zone.");
 
+  script_tag(name:"insight", value:"This behavior occurs because the ADODB.Stream object permits
+  access to the hard disk when the ADODB.Stream object is hosted in Internet Explorer.");
 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"The vendor has released updates, please see http://support.microsoft.com/?kbid=870669");
+
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- family = "Windows : Microsoft Bulletins";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/Registry/Enumerated");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("secpod_reg.inc");
 
-port = get_kb_item("SMB/transport");
-if(!port)port = 139;
-
 value = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/Internet Explorer/ActiveX Compatibility/{00000566-0000-0010-8000-00AA006D2EA4}/Compatibility Flags");
 
-if ( value && value != 1024  && hotfix_missing(name:"870669") )
-   security_message(port);
+if ( value && value != 1024 && hotfix_missing(name:"870669") )
+  security_message(port:0);

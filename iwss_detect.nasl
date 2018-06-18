@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iwss_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: iwss_detect.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
 #
 # Trend Micro IWSS console management detection
 #
@@ -27,30 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17200");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10212 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Trend Micro IWSS console management detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
-  script_family("Service detection");
+  script_family("Product detection");
   # nb: Don't add a dependency to http_version.nasl or gb_get_http_banner.nasl to avoid cyclic dependency to embedded_web_server_detect.nasl
   script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 1812);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host appears to run the Trend Micro Interscan Web Security Suite.
+  script_tag(name:"solution", value: "Filter incoming traffic to this port");
 
-  Make sure that only authorized hosts can connect to this service, as the
-  information of its existence may help an attacker to make more sophisticated
-  attacks against the remote network.";
+  script_tag(name:"summary", value: "The remote host appears to run the Trend Micro Interscan Web Security Suite.
 
-  tag_solution = "Filter incoming traffic to this port";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+Make sure that only authorized hosts can connect to this service, as the information of its existence may help an
+attacker to make more sophisticated attacks against the remote network.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -70,4 +66,4 @@ if( "<title>Trend Micro InterScan Web Security Suite</title>" >< rep ) {
   set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
 }
 
-exit( 99 );
+exit(0);

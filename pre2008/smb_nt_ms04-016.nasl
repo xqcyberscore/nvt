@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-016.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Vulnerability in DirectPlay Could Allow Denial of Service (839643)
+# $Id: smb_nt_ms04-016.nasl 10213 2018-06-15 10:04:26Z cfischer $
+#
+# Vulnerability in DirectPlay Could Allow Denial of Service (839643)
 #
 # Authors:
 # Noam Rathaus noamr@beyondsecurity.com
@@ -20,59 +22,49 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "A denial of service vulnerability exists in the implementation of the
-IDirectPlay4 application programming interface (API) of Microsoft DirectPlay
-because of a lack of robust packet validation.
-
-If a user is running a networked DirectPlay application,
-an attacker who successfully exploited this vulnerability could
-cause the DirectPlay application to fail. The user would have
-to restart the application to resume functionality.";
-
-tag_solution = "http://www.microsoft.com/technet/security/bulletin/ms04-016.mspx";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12267");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(10487);
- script_cve_id("CVE-2004-0202");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- name = "Vulnerability in DirectPlay Could Allow Denial of Service (839643)";
+  script_oid("1.3.6.1.4.1.25623.1.0.12267");
+  script_version("$Revision: 10213 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(10487);
+  script_cve_id("CVE-2004-0202");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Vulnerability in DirectPlay Could Allow Denial of Service (839643)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated", "SMB/WindowsVersion");
 
- script_name(name);
+  script_tag(name:"summary", value:"A denial of service vulnerability exists in the implementation of the
+  IDirectPlay4 application programming interface (API) of Microsoft DirectPlay because of a lack of robust
+  packet validation.");
 
+  script_tag(name:"impact", value:"If a user is running a networked DirectPlay application,
+  an attacker who successfully exploited this vulnerability could cause the DirectPlay application to fail.
+  The user would have to restart the application to resume functionality.");
 
+  script_tag(name:"solution", value:"The vendor has released updates, please see http://www.microsoft.com/technet/security/bulletin/ms04-016.mspx");
 
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- family = "Windows : Microsoft Bulletins";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/Registry/Enumerated");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("secpod_reg.inc");
 
-vers = get_kb_item("SMB/WindowsVersion");
-if ( !vers ) exit(0);
-
 dvers = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/DirectX/Version");
 if ( !dvers ) exit(0);
+
+vers = get_kb_item("SMB/WindowsVersion");
+if ( !vers ) exit(0);
 
 if ( vers == "5.0" )
 {
@@ -85,7 +77,7 @@ if ( vers == "5.0" )
 	( dvers != "4.09.00.0901" ) &&
 	( dvers != "4.09.00.0902" ) )
 	exit (0);
-} 
+}
 
 
 if ( vers == "5.1" )
@@ -95,7 +87,7 @@ if ( vers == "5.1" )
 	( dvers != "4.09.00.0901" ) &&
 	( dvers != "4.09.00.0902" ) )
 	exit (0);
-} 
+}
 
 
 if ( vers == "5.2" )
@@ -104,7 +96,7 @@ if ( vers == "5.2" )
 	( dvers != "4.09.00.0901" ) &&
 	( dvers != "4.09.00.0902" ) )
 	exit (0);
-} 
+}
 
 if ( hotfix_check_sp(win2k:5, xp:2, win2003:1) <= 0 ) exit(0);
 if ( hotfix_missing(name:"KB839643") > 0 &&
@@ -112,5 +104,4 @@ if ( hotfix_missing(name:"KB839643") > 0 &&
      hotfix_missing(name:"KB839643-DirectX81") > 0 &&
      hotfix_missing(name:"KB839643-DirectX82") > 0 &&
      hotfix_missing(name:"KB839643-DirectX9")  > 0 )
-	security_message(get_kb_item("SMB/transport"));
-
+  security_message(port:0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 9006 2018-03-02 08:08:10Z cfischer $
+# $Id: ping_host.nasl 10223 2018-06-15 14:26:20Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 9006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 09:08:10 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 10223 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:26:20 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -162,7 +162,11 @@ if( "no" >< icmp_ping && "no" >< tcp_ping && "no" >< arp_ping && "no" >< sp_only
   exit( 0 );
 }
 
-if( "no" >< mark_dead && "no" >< report_dead ) exit( 0 );
+if( "no" >< mark_dead && "no" >< report_dead ) {
+  if( "yes" >< log_output )
+    log_message( data:"'Log nmap output' was set to 'yes' but 'Report about unrechable Hosts' and 'Mark unrechable Hosts as dead (not scanning)' to no. Plugin will exit without logging." );
+  exit( 0 );
+}
 
 if( "yes" >< use_nmap && ! find_in_path( 'nmap' ) ) {
   log_message( data:'Nmap was selected for host discovery but is not present on this system.\nFalling back to built-in discovery method.' );

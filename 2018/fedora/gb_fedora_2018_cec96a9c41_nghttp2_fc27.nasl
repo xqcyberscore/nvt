@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cec96a9c41_nghttp2_fc27.nasl 9581 2018-04-24 09:03:17Z santu $
+# $Id: gb_fedora_2018_cec96a9c41_nghttp2_fc27.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # Fedora Update for nghttp2 FEDORA-2018-cec96a9c41
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874374");
-  script_version("$Revision: 9581 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:03:17 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-21 09:10:24 +0200 (Sat, 21 Apr 2018)");
   script_cve_id("CVE-2018-1000168");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nghttp2 FEDORA-2018-cec96a9c41");
   script_tag(name: "summary", value: "Check the version of nghttp2");

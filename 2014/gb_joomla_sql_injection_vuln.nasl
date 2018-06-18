@@ -24,54 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804310";
 CPE = "cpe:/a:joomla:joomla";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804310");
+  script_version("$Revision: 10212 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 21:04:07 +0530 (Mon, 10 Feb 2014)");
+
   script_name("Joomla SQL Injection Vulnerability");
 
-  tag_summary =
-"The host is running Joomla and is prone to SQL injection vulnerability.";
+  script_tag(name: "solution_type", value: "VendorFix");
 
-  tag_vuldetect =
-"Send a crafted exploit string via HTTP GET request and check whether it
-is possible to execute sql query.";
+  script_tag(name: "summary", value: "The host is running Joomla and is prone to SQL injection vulnerability.");
 
-  tag_insight =
-"The flaw is due to an improper validation of 'id' parameter passed to
-'index.php' script.";
+  script_tag(name: "vuldetect", value: "Send a crafted exploit string via HTTP GET request and check whether it
+is possible to execute a sql query.");
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary SQL
-commands in applications database and gain complete control over the vulnerable
-web application.
+  script_tag(name: "insight", value: "The flaw is due to an improper validation of 'id' parameter passed to
+'index.php' script.");
 
-Impact Level: Application";
+  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary SQL
+commands in applications database and gain complete control over the vulnerable web application.");
 
-  tag_affected =
-"Joomla version 3.2.1 and probably other versions.";
+  script_tag(name: "affected", value: "Joomla version 3.2.1 and probably other versions.");
 
-  tag_solution =
-"Upgrade to version 3.2.3 or later,
-For updates refer to http://www.joomla.org";
+  script_tag(name: "solution", value:"Upgrade to version 3.2.3 or later.");
 
+  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/31459/");
+  script_xref(name: "URL", value: "http://exploitsdownload.com/exploit/na/joomla-321-sql-injection");
 
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31459/");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-321-sql-injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
@@ -79,6 +64,7 @@ For updates refer to http://www.joomla.org";
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -86,29 +72,22 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-jmPort = "";
-req = "";
-res = "";
-url = "";
-
-## Get Joomla Port
-if(!jmPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if (!jmPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Joomla Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:jmPort)){
+if (!dir = get_app_location(cpe:CPE, port:jmPort))
   exit(0);
-}
 
-## Construct the Attack Request
+if (dir == "/")
+  dir = "";
+
 url = dir + '/index.php/weblinks-categories?id=/';
 
-## Try attack and check the error to confirm vulnerability.
-if(http_vuln_check(port:jmPort, url:url, pattern:"report the error below",
-   extra_check:make_list("tag_id", "SQL=SELECT")))
-{
-  security_message(jmPort);
+if (http_vuln_check(port:jmPort, url:url, pattern:"report the error below",
+                   extra_check:make_list("tag_id", "SQL=SELECT"))) {
+  report = report_vuln_url(port: jmPort, url: url);
+  security_message(port: jmPort, data: report);
   exit(0);
 }
+
+exit(0);

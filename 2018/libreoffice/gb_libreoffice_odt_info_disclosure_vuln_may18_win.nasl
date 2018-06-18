@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 
 if(description)                                                                                                                                 {
   script_oid("1.3.6.1.4.1.25623.1.0.812872");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 10231 $");
   script_cve_id("CVE-2018-10583");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 13:33:47 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)");

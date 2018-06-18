@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 9878 2018-05-17 05:17:32Z santu $
+# $Id: secpod_adobe_prdts_detect_win.nasl 10216 2018-06-15 11:24:33Z jschulte $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900319");
-  script_version("$Revision: 9878 $");
+  script_version("$Revision: 10216 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:17:32 +0200 (Thu, 17 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 13:24:33 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -54,7 +54,7 @@ and gets the version from 'DisplayVersion' string in registry.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies( "smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
@@ -115,7 +115,6 @@ foreach key (keylist)
         if(readerVer != NULL && insPath)
         {
 
-          ## Check if version is already set
           if (readerVer + ", " >< checkdupRdr){
             continue;
           }
@@ -136,12 +135,10 @@ foreach key (keylist)
 
       else if(egrep(string:adobeName, pattern:"^(Adobe Acrobat)"))
       {
-        ## Get the version
         acrobatVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         insPath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(acrobatVer != NULL && insPath)
         {
-          ## Check if version is already set
           if (acrobatVer + ", " >< checkdupAcrbt){
             continue;
           }
@@ -153,7 +150,6 @@ foreach key (keylist)
           set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
           register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
 
-          ## Set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
             register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );

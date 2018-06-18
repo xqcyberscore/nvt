@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_uk-cookie-consent_xss_vuln.nasl 9621 2018-04-26 08:27:24Z asteins $
+# $Id: gb_wordpress_uk-cookie-consent_xss_vuln.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # WordPress Cookie Consent Plugin XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112260");
-  script_version("$Revision: 9621 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 10:27:24 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-04-26 10:40:00 +0200 (Thu, 26 Apr 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-10310");
 

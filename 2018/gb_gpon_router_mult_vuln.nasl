@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_router_mult_vuln.nasl 9794 2018-05-10 14:58:47Z cfischer $
+# $Id: gb_gpon_router_mult_vuln.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # GPON Home Routers Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113170");
-  script_version("$Revision: 9794 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-10 16:58:47 +0200 (Thu, 10 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:26:55 +0200 (Thu, 03 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"exploit");
 

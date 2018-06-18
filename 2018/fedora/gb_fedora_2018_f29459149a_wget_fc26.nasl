@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f29459149a_wget_fc26.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_f29459149a_wget_fc26.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # Fedora Update for wget FEDORA-2018-f29459149a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874438");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 05:47:14 +0200 (Mon, 14 May 2018)");
   script_cve_id("CVE-2018-0494", "CVE-2017-13089", "CVE-2017-13090");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wget FEDORA-2018-f29459149a");
   script_tag(name:"summary", value:"Check the version of wget");

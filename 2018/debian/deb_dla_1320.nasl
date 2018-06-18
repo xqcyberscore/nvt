@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1320.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: deb_dla_1320.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1320-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891320");
-  script_version("$Revision: 9488 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2018-1050");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1320-1] samba security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-03-28 00:00:00 +0200 (Wed, 28 Mar 2018)");
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
@@ -49,7 +49,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"samba on Debian Linux");
   script_tag(name:"insight", value:"Samba is an implementation of the SMB/CIFS protocol for Unix systems,
 providing support for cross-platform file and printer sharing with
@@ -134,5 +134,5 @@ if ((res = isdpkgvuln(pkg:"winbind", ver:"3.6.6-6+deb7u16", rls_regex:"DEB7\.[0-
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

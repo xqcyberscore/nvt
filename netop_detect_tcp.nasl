@@ -1,9 +1,11 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netop_detect_tcp.nasl 9347 2018-04-06 06:58:53Z cfischer $
-# Description: NetOp products TCP detection
+# $Id: netop_detect_tcp.nasl 10209 2018-06-15 08:15:11Z cfischer $
+#
+# NetOp products TCP detection
 #
 # Authors:
-# Martin O'Neal of Corsaire (http://www.corsaire.com)  
+# Martin O'Neal of Corsaire (http://www.corsaire.com)
 # Jakob Bohm of Danware (http://www.danware.dk)
 #
 # Copyright:
@@ -21,98 +23,63 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "This script detects if the remote system has a Danware NetOp
-program enabled and running on TCP.  These programs are used
-for remote system administration, for telecommuting and for
-live online training and usually allow authenticated users to
-access the local system remotely.
-
-Specific information will be given depending on the program
-detected";
-
-# declare description
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15765");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10209 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 10:15:11 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-  name="NetOp products TCP detection";
-  script_name(name);
-  summary= "Determines if the remote host has any Danware NetOp program active on TCP";
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("NetOp products TCP detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This NASL script is Copyright 2004 Corsaire Limited and Danware Data A/S.");
   script_family("Service detection");
   script_dependencies("find_service.nasl","find_service2.nasl");
-  script_tag(name : "summary" , value : tag_summary);
   script_require_ports("Services/unknown", 6502, 1971);
+
+  script_tag(name:"summary", value:"This script detects if the remote system has a Danware NetOp
+  program enabled and running on TCP.  These programs are used for remote system administration,
+  for telecommuting and for live online training and usually allow authenticated users to access
+  the local system remotely.
+
+  Specific information will be given depending on the program detected");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
+include("misc_func.inc");
+include("netop.inc");
 
+function test(port) {
 
-############## declarations ################
+  if(!get_port_state(port)) return;
 
-# includes
-include('netop.inc');
-include('global_settings.inc');
+  socket = open_sock_tcp(port, transport:ENCAPS_IP);
 
-# declare function
-function test(port)
-{
-	if ( ! get_port_state(port) ) return 0;
+  if(socket){
 
-	# open connection
-	socket=open_sock_tcp(port, transport:ENCAPS_IP);
-	
-	# check that connection succeeded
-	if(socket)
-	{
-		########## packet one of two ##########
-		
-		# send packet
-		send(socket:socket, data:helo_pkt_gen);
-	
-		# receive response
-		banner_pkt = recv(socket:socket, length:1500, timeout: 3);
-		
-		# check response contains correct contents and
-		#   log response accordingly.
-		
-		netop_check_and_add_banner();
-		
-		########## packet two of two ##########
-		
-		if (ord(netop_kb_val[39]) == 0xF8)
-		{
-			send(socket:socket,data:quit_pkt_stream);
-		}
-		close(socket);
-	}
+    ########## packet one of two ##########
+    send(socket:socket, data:helo_pkt_gen);
+    banner_pkt = recv(socket:socket, length:1500, timeout:3);
+    netop_check_and_add_banner();
+
+    ########## packet two of two ##########
+    if(ord(netop_kb_val[39]) == 0xF8){
+      send(socket:socket, data:quit_pkt_stream);
+    }
+    close(socket);
+  }
 }
 
+addr = get_host_ip();
+proto_nam = "tcp";
 
-############## script ################
-
-# initialise variables
-local_var socket;
-addr=get_host_ip();
-proto_nam='tcp';
-
-# test default ports
 test(port:6502);
-#test(port:1971); #Tested below
-
-# retrieve and test unknown services
-port = get_unknown_port( default:1971 );
+port = get_unknown_port(default:1971);
 test(port:port);
 exit(0);
-
-############## End of TCP-specific detection script ################
-

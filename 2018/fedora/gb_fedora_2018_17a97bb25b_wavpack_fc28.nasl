@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_17a97bb25b_wavpack_fc28.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_fedora_2018_17a97bb25b_wavpack_fc28.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Fedora Update for wavpack FEDORA-2018-17a97bb25b
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874613");
-  script_version("$Revision: 9983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-27 05:53:17 +0200 (Sun, 27 May 2018)");
   script_cve_id("CVE-2018-10536", "CVE-2018-10537", "CVE-2018-10538", "CVE-2018-10539", 
                 "CVE-2018-10540");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wavpack FEDORA-2018-17a97bb25b");
   script_tag(name:"summary", value:"Check the version of wavpack");

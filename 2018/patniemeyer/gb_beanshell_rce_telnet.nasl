@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_beanshell_rce_telnet.nasl 10178 2018-06-13 12:50:54Z cfischer $
+# $Id: gb_beanshell_rce_telnet.nasl 10234 2018-06-18 09:06:34Z cfischer $
 #
 # BeanShell Remote Server Mode RCE Vulnerability (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108445");
-  script_version("$Revision: 10178 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 14:50:54 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 10234 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 11:06:34 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 14:51:12 +0200 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Gain a shell remotely");
-  script_dependencies("find_service1.nasl");
+  script_dependencies("find_service1.nasl", "os_detection.nasl");
   script_mandatory_keys("beanshell_listener/detected"); # No default port
 
   script_xref(name:"URL", value:"http://www.beanshell.org/");

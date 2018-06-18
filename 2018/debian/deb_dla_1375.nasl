@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1375.nasl 9814 2018-05-14 05:49:28Z cfischer $
+# $Id: deb_dla_1375.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # Auto-generated from advisory DSA 1375-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891375");
-  script_version("$Revision: 9814 $");
+  script_version("$Revision: 10224 $");
   script_cve_id("CVE-2018-0494");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1375-1] wget security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:49:28 +0200 (Mon, 14 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 00:00:00 +0200 (Mon, 14 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"wget on Debian Linux");
   script_tag(name:"insight", value:"Wget is a network utility to retrieve files from the web
 using HTTP(S) and FTP, the two most widely used internet

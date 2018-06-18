@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_utorrent_detect_portable_win.nasl 10175 2018-06-13 11:53:08Z tpassfeld $
+# $Id: gb_utorrent_detect_portable_win.nasl 10208 2018-06-15 07:53:13Z cfischer $
 #
 # uTorrent Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114008");
-  script_version("$Revision: 10175 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 13:53:08 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 10208 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 09:53:13 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 17:24:16 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,6 @@ if(description)
 }
 
 include("wmi_file.inc");
-include("wmi_misc.inc");
 include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
@@ -96,7 +95,7 @@ foreach filePath( fileList ) {
   # nb: wmi_file_fileversion needs doubled backslash in the path but
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
-  
+
   versList = wmi_file_fileversion( handle:handle, filePath:filePath );
   versList = split( versList, keep:FALSE );
   foreach vers( versList ) {

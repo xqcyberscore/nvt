@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_ping.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: mssql_ping.nasl 10226 2018-06-15 14:47:11Z cfischer $
 #
 # Microsoft's SQL UDP Info Query
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "It is possible to determine the remote MS SQL server version.
-
-Microsoft SQL server has a function wherein remote users can
-query the database server for the version that is being run.
-The query takes place over the same UDP port which handles the
-mapping of multiple SQL server instances on the same machine.
-
-CAVEAT: It is important to note that, after Version 8.00.194,
-Microsoft decided not to update this function. This means that
-the data returned by the SQL ping is inaccurate for newer releases
-of SQL Server.";
-
-tag_solution = "If you are not running multiple instances of Microsoft SQL Server
-on the same machine, it is suggested you filter incoming traffic to this port.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10674");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10226 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:47:11 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,8 +38,18 @@ if(description)
   script_family("Windows");
   script_require_udp_ports(1434);
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"If you are not running multiple instances of Microsoft SQL Server
+  on the same machine, it is suggested you filter incoming traffic to this port.");
+
+  script_tag(name:"summary", value:"It is possible to determine the remote MS SQL server version.
+
+  Microsoft SQL server has a function wherein remote users can query the database server for the
+  version that is being run. The query takes place over the same UDP port which handles the
+  mapping of multiple SQL server instances on the same machine.
+
+  CAVEAT: It is important to note that, after Version 8.00.194, Microsoft decided not to update
+  this function. This means that the data returned by the SQL ping is inaccurate for newer releases
+  of SQL Server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -89,14 +84,14 @@ r = str_replace( find:";", replace:" ", string:r );
 
 if( r ) {
 
-  report = string("OpenVAS sent a MS SQL 'ping' request. The result was : \n\n", r);
+  report = string("The scanner has sent a MS SQL 'ping' request. The result was : \n\n", r);
 
-  if( "version" >< tolower( r ) ) { 
+  if( "version" >< tolower( r ) ) {
     version = eregmatch( pattern:"Version ([0-9.]+)", string:r );
     if( ! isnull( version[1] ) ) {
       set_kb_item( name:"mssql/remote_version", value:version[1] );
-    }  
-  }  
+    }
+  }
 
   register_service( port:port, ipproto:"udp", proto:"mssql", message:"A MS SQL Browser Service seems to be running on this port." );
   log_message( port:port, protocol:"udp", data:report );

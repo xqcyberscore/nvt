@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_c9d8011d69_mingw-libsoup_fc25.nasl 7021 2017-08-30 06:29:55Z santu $
+# $Id: gb_fedora_2017_c9d8011d69_mingw-libsoup_fc25.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Fedora Update for mingw-libsoup FEDORA-2017-c9d8011d69
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873310");
-  script_version("$Revision: 7021 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 08:29:55 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-08-25 08:20:06 +0200 (Fri, 25 Aug 2017)");
   script_cve_id("CVE-2017-2885");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mingw-libsoup FEDORA-2017-c9d8011d69");
   script_tag(name: "summary", value: "Check the version of mingw-libsoup");

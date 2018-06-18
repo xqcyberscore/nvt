@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 10176 2018-06-13 12:18:19Z cfischer $
+# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 10232 2018-06-18 05:55:14Z cfischer $
 #
 # Adobe Flash Player Plugin Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107320");
-  script_version("$Revision: 10176 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 14:18:19 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 10232 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 07:55:14 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:23:58 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +72,7 @@ if( domain ) usrname = domain + '\\' + usrname;
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-query = "SELECT Name from CIM_DataFile Where FileName LIKE 'NPSWF%' and Extension = 'dll'";
+query = "SELECT Name from CIM_DataFile Where NOT PathName LIKE '%c:\\windows\\installer%' and FileName LIKE 'NPSWF%' and Extension = 'dll'";
 fileList = wmi_query( wmi_handle:handle, query:query );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6c01a593b0_ncurses_fc27.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_fedora_2018_6c01a593b0_ncurses_fc27.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Fedora Update for ncurses FEDORA-2018-6c01a593b0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874625");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 05:55:22 +0200 (Thu, 31 May 2018)");
   script_cve_id("CVE-2018-10754");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ncurses FEDORA-2018-6c01a593b0");
   script_tag(name:"summary", value:"Check the version of ncurses");

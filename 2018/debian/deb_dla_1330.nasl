@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1330.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: deb_dla_1330.nasl 10219 2018-06-15 12:00:55Z cfischer $
 #
 # Auto-generated from advisory DSA 1330-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891330");
-  script_version("$Revision: 9643 $");
+  script_version("$Revision: 10219 $");
   script_cve_id("CVE-2018-0739");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1330-1] openssl security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 00:00:00 +0200 (Mon, 02 Apr 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"openssl on Debian Linux");
   script_tag(name:"insight", value:"This package contains the openssl binary and related tools.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
@@ -89,5 +89,5 @@ if ((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb7u4", rls_regex:"DEB7\.[0-
 if (report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3676_2.nasl 10199 2018-06-14 13:09:24Z santu $
+# $Id: gb_ubuntu_USN_3676_2.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
 #
 # Ubuntu Update for linux-aws USN-3676-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843547");
-  script_version("$Revision: 10199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 15:09:24 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 05:54:16 +0200 (Tue, 12 Jun 2018)");
   script_cve_id("CVE-2018-1092", "CVE-2018-1093", "CVE-2018-10940", "CVE-2018-8087");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3676-2");
   script_tag(name:"summary", value:"Check the version of linux-aws");
@@ -67,7 +67,7 @@ service (memory exhaustion). (CVE-2018-8087)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 

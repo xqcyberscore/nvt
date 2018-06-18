@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4200.nasl 9831 2018-05-15 07:30:38Z cfischer $
+# $Id: deb_4200.nasl 10224 2018-06-15 14:29:06Z cfischer $
 #
 # Auto-generated from advisory DSA 4200-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704200");
-  script_version("$Revision: 9831 $");
+  script_version("$Revision: 10224 $");
   script_cve_id("CVE-2018-10380");
   script_name("Debian Security Advisory DSA 4200-1 (kwallet-pam - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:30:38 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 00:00:00 +0200 (Mon, 14 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

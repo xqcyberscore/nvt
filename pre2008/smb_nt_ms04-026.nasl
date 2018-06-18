@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-026.nasl 9324 2018-04-05 09:28:03Z cfischer $
+# $Id: smb_nt_ms04-026.nasl 10213 2018-06-15 10:04:26Z cfischer $
 #
 # Vulnerability in Exchange Server 5.5 Outlook Web Access XSS (842436)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14254");
-  script_version("$Revision: 9324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 11:28:03 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 10213 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10902);
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,9 +45,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "find_service.nasl", "http_version.nasl" );
-  script_require_keys("SMB/Registry/Enumerated");
-  script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports("Services/www", 80, 139, 445);
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"This vulnerability could allow an attacker to convince a user
   to run a malicious script. If this malicious script is run, it would execute
