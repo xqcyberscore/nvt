@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: dont_print_on_printers.nasl 10248 2018-06-19 07:28:49Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10248 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:28:49 +0200 (Tue, 19 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -189,7 +189,7 @@ if( get_port_state( port ) ) {
 
   if( soc ) {
     send( socket:soc, data:'\x1b%-12345X@PJL INFO ID\r\n\x1b%-12345X\r\n' );
-    r = recv(socket: soc, length: 512 );
+    r = recv( socket:soc, length:512 );
     se = socket_get_error( soc );
     close( soc );
     if( "@PJL" >< r || ( ! r && se == ETIMEDOUT ) ) {
@@ -297,11 +297,19 @@ foreach port( ports ) {
   url = "/";
   buf = http_get_cache( item:url, port:port );
   if( ( "erver: Catwalk" >< buf && "com.canon.meap.service" >< buf ) ||
-      ( (('canonlogo.gif" alt="CANON"' >< buf) || ("canonlogo.gif" >< buf && "Series</title>" >< buf)) &&
+      ( ( ( 'canonlogo.gif" alt="CANON"' >< buf ) || ( 'canonlogo.gif" alt=' >< buf ) || ( "canonlogo.gif" >< buf && "Series</title>" >< buf ) ) &&
        ">Copyright CANON INC" >< buf ) ) {
-
     is_printer = TRUE;
     reason     = "Canon Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+    break;
+  }
+
+  # Brother HL Printer from gb_brother_hl_series_printer_detect.nasl
+  # If updating here please also update the check in gb_brother_hl_series_printer_detect.nasl
+  buf = http_get_cache( item:"/general/information.html?kind=item", port:port );
+  if( buf =~ "<title>Brother HL.*series</title>" && buf =~ "Copyright.*Brother Industries" ) {
+    is_printer = TRUE;
+    reason     = "Brother Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
     break;
   }
 

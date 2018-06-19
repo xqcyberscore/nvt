@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pkg-lib-deb.inc 6138 2017-05-16 14:34:59Z teissa $
+# $Id: pkg-lib-deb.inc 10245 2018-06-19 06:43:31Z cfischer $
 #
 # Check if debian package is up to date
 #
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
-# $Revision: 6138 $
+# $Revision: 10245 $
 #
 ###############################################################################
 
@@ -43,8 +43,6 @@
 # so that we can revcomp accurately determines which revision is the latest
 # We're passing in rls so that we can use it if we need to - but for now,
 # the only instances causing us problems are debian lenny
-
-
 
 # This variable is defined at inclusion time. It's declared global and is set
 # to True if isdpkgvuln() is called for an OS version and a package name that
@@ -74,7 +72,7 @@ function dpkgnorm( str, rls ) {
 # dpkg gives us the package name and version number nicely separated out.
 function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
 
-  local_var kbrls, rpms, pat, matches, rc, pat_a, pat_b, report, remove_arch;
+  local_var kbrls, pkgs, pat, matches, rc, pat_a, pat_b, report, remove_arch;
 
   if( ! pkg ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#isdpkgvuln#-#pkg" );
@@ -102,18 +100,18 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
       return NULL;
   }
 
-  rpms = get_kb_item( "ssh/login/packages" );
-  if( ! rpms ) return NULL;
+  pkgs = get_kb_item( "ssh/login/packages" );
+  if( ! pkgs ) return NULL;
 
   if( remove_arch ) {
     # TBD: What about other ARCH variants like arm?
     # TODO: Consider moving to dpkgnorm
-    rpms = ereg_replace( pattern:":i386", replace:"", string:rpms );
-    rpms = ereg_replace( pattern:":amd64", replace:"", string:rpms );
+    pkgs = ereg_replace( pattern:":i386", replace:"", string:pkgs );
+    pkgs = ereg_replace( pattern:":amd64", replace:"", string:pkgs );
   }
 
   pat = string("ii  (", pkg, ") +([0-9]:)?([^ ]+)");
-  matches = eregmatch( pattern:pat, string:rpms );
+  matches = eregmatch( pattern:pat, string:pkgs );
   if( isnull( matches ) ) {
     return NULL;
   }
@@ -125,9 +123,10 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
   pat_b = dpkgnorm( str:ver, rls:rls );
   rc = revcomp( a:pat_a, b:pat_b );
   if( rc < 0 ) {
-    report = "Package " + pkg + " version " + matches[3] + ' is installed which is known to be vulnerable.\n';
+    report  = 'Vulnerable package: ' + pkg + '\n';
+    report += 'Installed version:  ' + matches[3] + '\n';
+    report += 'Fixed version:      ' + ver + '\n\n';
     return report;
   }
   return NULL;
 }
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 10237 2018-06-18 14:06:54Z cfischer $
 #
 # vBulletin 'url' GET Parameter Open Redirect Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812677");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 10237 $");
   script_cve_id("CVE-2018-6200");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-18 16:06:54 +0200 (Mon, 18 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 12:48:53 +0530 (Thu, 08 Feb 2018)");
   script_name("vBulletin 'url' GET Parameter Open Redirect Vulnerability");
 
@@ -54,8 +54,8 @@ if(description)
   script_tag(name:"affected", value:"vBulletin versions 3.x.x and 4.2.x through
   4.2.5");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  12th April, 2018. Information regarding this issue will be updated once
+  script_tag(name:"solution", value:"No known solution is available as of
+  18th June, 2018. Information regarding this issue will be updated once
   solution details are available.
 
   For details refer to https://www.vbulletin.com");
@@ -74,14 +74,9 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-req = "";
-res = "";
-vPort  = "";
 
 if(!vPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -101,7 +96,7 @@ foreach sub_url(make_list("http://www.example.com/", "aHR0cDovL3d3dy5leGFtcGxlLm
   req = http_get_req(port: vPort, url: url);
   res = http_keepalive_send_recv(port:vPort, data:req);
 
-  if((res =~ "HTTP/1.. 200" && "invalid URL being redirected" >!< res) &&
+  if((res =~ "^HTTP/1\.[01] 200" && "invalid URL being redirected" >!< res) &&
      ((res =~ "title>.*Redirecting.*</title>" && res =~ '<meta.*URL=http://www.example.com/">' && ">Redirecting" >< res) ||
       (res =~ "<input.*url=aHR0cDovL3d3dy5leGFtcGxlLmNvbS8=" && res =~ '<meta http-equiv="refresh" content=".*URL=http.*www.example.com')))
   {

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_series_printer_detect.nasl 10182 2018-06-14 07:00:55Z santu $
+# $Id: gb_brother_hl_series_printer_detect.nasl 10246 2018-06-19 07:07:36Z cfischer $
 #
-# Brother HL Series Printers Detection 
+# Brother HL Series Printers Detection
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -28,24 +28,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813390");
-  script_version("$Revision: 10182 $");
+  script_version("$Revision: 10246 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:00:55 +0200 (Thu, 14 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:07:36 +0200 (Tue, 19 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 15:18:41 +0530 (Wed, 06 Jun 2018)");
   script_name("Brother HL Series Printers Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of
-  Brother HL Series Printer.
+  script_tag(name:"summary", value:"Detection of Brother HL Series Printers.
 
-  The script sends a connection request to the server and attempts to extract
-  the version number from the reply.");
+  The script sends a connection request to the remote host and
+  attempts to detect if the remote host is a Brother HL Series printer.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  # nb: Don't use http_version.nasl as the Detection should run as early
+  # as possible if the printer should be marked dead as requested.
+  script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -62,7 +63,8 @@ if(!brPort = get_http_port(default:80)){
 
 res = http_get_cache(item:"/general/information.html?kind=item", port:brPort);
 
-if(res =~ "<title>Brother HL.*series</title>" && res =~ "Copyright.*Brother Industries") 
+# If updating here please also update the check in dont_print_on_printers.nasl
+if(res =~ "<title>Brother HL.*series</title>" && res =~ "Copyright.*Brother Industries")
 {
   version = "unknown";
   model = "unknown";
@@ -71,7 +73,7 @@ if(res =~ "<title>Brother HL.*series</title>" && res =~ "Copyright.*Brother Indu
 
   model = eregmatch(pattern:'modelName"><h1>([0-9A-Z-]+) series</h1>', string:res);
   ver = eregmatch(pattern:"Firmware&#32;Version</dt><dd>([0-9.]+)</dd>", string:res);
-  
+
   if(model[1])
   {
     model = model[1];
@@ -94,6 +96,11 @@ if(res =~ "<title>Brother HL.*series</title>" && res =~ "Copyright.*Brother Indu
                                             cpe:cpe,
                                             concluded:model + " Firmware " + version),
                                             port:brPort );
+  pref = get_kb_item( "global_settings/exclude_printers" );
+  if( pref == "yes" ) {
+    log_message( port:brPort, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.' );
+    set_kb_item( name:"Host/dead", value:TRUE );
+  }
   exit(0);
 }
 exit(0);

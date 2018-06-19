@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_canon_printers_detect.nasl 10247 2018-06-19 07:14:03Z santu $
 #
 # Canon Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10247 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,7 @@ buf2 = http_get_cache( item:"/", port:port );
 # If updating here please also update the check in dont_print_on_printers.nasl
 if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     "CANON HTTP Server" >< buf || ( "erver: Catwalk" >< buf2 && "com.canon.meap.service" >< buf2 ) ||
-    ( (('canonlogo.gif" alt="CANON"' >< buf2) || ("canonlogo.gif" >< buf2 && "Series</title>" >< buf2)) &&
+    ( (('canonlogo.gif" alt="CANON"' >< buf2) || ('canonlogo.gif" alt=' >< buf2) || ("canonlogo.gif" >< buf2 && "Series</title>" >< buf2)) &&
        ">Copyright CANON INC" >< buf2 ) ) 
 {
   set_kb_item( name:"target_is_printer", value:TRUE );

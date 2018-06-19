@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: gb_plone_detect.nasl 10250 2018-06-19 09:38:59Z jschulte $
 #
 # Plone  Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103735");
- script_version ("$Revision: 5820 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+ script_version("$Revision: 10250 $");
+ script_tag(name:"last_modification", value:"$Date:2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017)$");
  script_tag(name:"creation_date", value:"2013-06-12 11:17:19 +0200 (Wed, 12 Jun 2013)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if (description)
 
  script_name("Plone Detection");
 
- script_tag(name: "summary", value: "Detection of Plone CMS.
+ script_tag(name:"summary", value:"Detection of Plone CMS.
 
 The script sends a connection request to the server and attempts to detect the presence of Plone CMS and to
 extract its version.");

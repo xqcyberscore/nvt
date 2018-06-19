@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 9956 2018-05-25 09:21:51Z cfischer $
+# $Id: misc_func.inc 10245 2018-06-19 06:43:31Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9956 $
+# $Revision: 10245 $
 #
 ###############################################################################
 
@@ -453,8 +453,8 @@ function construct_rpc_packet( program, prog_ver, procedure, data, udp, credenti
   header  = mkdword( xid );                          ## XID
   header += mkdword( 0 );                            ## Message Type: Call (0)
   header += mkdword( 2 );                            ## RPC Version: 2
-  header += mkdword( program );                      ## Prgram
-  header += mkdword( prog_ver );                     ## Prgram Version
+  header += mkdword( program );                      ## Program
+  header += mkdword( prog_ver );                     ## Program Version
   header += mkdword( procedure );                    ## Procedure
 
   ## Credentials
@@ -1087,7 +1087,7 @@ function get_host_open_tcp_port( ) {
   ports = get_all_tcp_ports_list();
   if( isnull( ports[0] ) ) exit( 0 );
 
-  return ports[0]; # TDB: Bring some randomness into this?
+  return ports[0]; # TBD: Bring some randomness into this?
 
 }
 
@@ -1442,7 +1442,7 @@ function get_all_udp_ports_list( ) {
 }
 
 # This function gets the hostname of the target via get_host_name()
-# and if no IPv4/IPv6 address was returned by this function it 
+# and if no IPv4/IPv6 address was returned by this function it
 # returns a list containing the parts of the target hostname.
 #
 # For example a hostname of www.example.com returns a list containing

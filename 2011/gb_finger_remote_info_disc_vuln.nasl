@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finger_remote_info_disc_vuln.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: gb_finger_remote_info_disc_vuln.nasl 10245 2018-06-19 06:43:31Z cfischer $
 #
 # Finger Service Remote Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802236");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 10245 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-19 08:43:31 +0200 (Tue, 19 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,27 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46");
   script_xref(name:"URL", value:"http://www.iss.net/security_center/reference/vuln/finger-running.htm");
 
-  tag_impact = "Successful exploitation will allow attacker to obtain sensitive information
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
   that could aid in further attacks.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "GNU Finger.";
+  script_tag(name:"affected", value:"GNU Finger.");
 
-  tag_insight = "The flaw exists due to finger service exposes valid user information to any
-  entity on the network.";
+  script_tag(name:"insight", value:"The flaw exists due to finger service exposes valid user information to any
+  entity on the network.");
 
-  tag_solution = "Disable finger service, or install a finger service or daemon that
-  limits the type of information provided.";
+  script_tag(name:"summary", value:"This host is running Finger service and is prone to information
+  disclosure vulnerability.");
 
-  tag_summary = "This host is running Finger service and is prone to information
-  disclosure vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Disable finger service, or install a finger service or daemon that
+  limits the type of information provided.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -77,22 +71,18 @@ if(description)
 
 port = get_kb_item( "Services/finger" );
 if( ! port ) port = 79;
-
 if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-## Confirm Finger
 banner = recv( socket:soc, length:2048, timeout:5 );
-if( banner ) exit( 0 ); #TDB: Really exit here if a banner was received?
+if( banner ) exit( 0 ); #TBD: Really exit here if a banner was received?
 
-## Send And Receive The Response
 send( socket:soc, data:string( "root\r\n" ) );
 res = recv( socket:soc, length:2048 );
 close( soc );
 
-## Confirm Vulnerability
 if( "Login" >< res || "User" >< res || "logged" >< res ) {
   security_message( port:port );
   exit( 0 );

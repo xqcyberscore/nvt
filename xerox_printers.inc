@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
+# $Id: xerox_printers.inc 10245 2018-06-19 06:43:31Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7288 $
+# $Revision: 10245 $
 #
 ###############################################################################
 
@@ -43,7 +43,7 @@ function get_xerox_detect_urls() {
   xerox_detect_urls['/hdjobq.htm']      = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                    # WorkCentre M118 a.o
   xerox_detect_urls['/home.html']       = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';               # Phaser 3435 a.o
 
-  # Detection string from dont_print_on_printers.nasl. TDB: Include here?
+  # Detection string from dont_print_on_printers.nasl. TBD: Include here?
   # if( banner && "Server: Xerox_MicroServer/Xerox" >< banner || "Server: EWS-NIC" >< banner || "<title>DocuPrint" >< banner || "<title>Phaser" >< banner || ( "XEROX WORKCENTRE" >< banner && "Xerox Corporation. All Rights Reserved." >< banner ) || ( "DocuCentre" >< banner && "Fuji Xerox Co., Ltd." >< banner ) ) {
 
   return xerox_detect_urls;
