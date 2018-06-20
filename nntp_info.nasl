@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nntp_info.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: nntp_info.nasl 10254 2018-06-19 10:43:15Z jschulte $
 # Description: Misc information on News server
 #
 # Authors:
@@ -22,56 +22,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "This script detects if the NNTP server is open to outside,
-counts the number of groups, and tries to post outside.
-This channel may been used by virus or trojan.";
-
-tag_solution = "Disable the server if it is not used";
-
 # NNTP protocol is defined by RFC 977
 # NNTP message format is defined by RFC 1036 (obsoletes 850); see also RFC 822.
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11033");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10254 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018)$");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- name = "Misc information on News server";
- script_name(name);
- 
+  script_name("Misc information on News server");
 
- 
- 
+
+
+
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- 
+
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "General";
- script_family(family);
+  script_family("General");
 
  script_dependencies("find_service_3digits.nasl");
  script_require_ports("Services/nntp", 119);
 
  #
- script_add_preference(name:"From address : ", type:"entry", 
+ script_add_preference(name:"From address : ", type:"entry",
 			value:"OpenVAS <listme@listme.dsbl.org>");
- script_add_preference(name:"Test group name regex : ", type:"entry", 
+ script_add_preference(name:"Test group name regex : ", type:"entry",
 			value:"f[a-z]\.tests?");
  script_add_preference(name:"Max crosspost : ", type:"entry", value:"7");
  #
  script_add_preference(name:"Local distribution", type:"checkbox", value:"yes");
  script_add_preference(name:"No archive", type:"checkbox", value:"no");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name :"solution", value :"Disable the server if it is not used");
+ script_tag(name :"summary", value :"This script detects if the NNTP server is open to outside,
+counts the number of groups, and tries to post outside.
+This channel may been used by virus or trojan.");
  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include('global_settings.inc');
 include('network_func.inc');
@@ -99,8 +89,8 @@ more_headers = strcat(
 	'X-OpenVAS: OpenVAS can be found at http://www.openvas.org/\r\n',
 	'X-Abuse-1: The machine at ', get_host_ip(),
 	' was scanned from ', this_host(), '\r\n',
-	"X-Abuse-2: If you [", get_host_ip(), 
-	"] are not currently running a security audit, please complain to them [",  
+	"X-Abuse-2: If you [", get_host_ip(),
+	"] are not currently running a security audit, please complain to them [",
 	this_host(),
 	'], not to the OpenVAS team\r\n',
 	'X-Abuse-3: fields Path and NNTP-Posting-Host may give you more reliable information\r\n',
@@ -122,10 +112,9 @@ if (!s) exit(0);
 
 buff = recv_line(socket:s, length:2048);
 
-ready=0; posting=0; noauth=1; 
-nolist=0; 
+ready=0; posting=0; noauth=1;
+nolist=0;
 
-# Try to connect to the server
 
 if ("200 " >< buff) { ready=1; posting=1;}
 if ("201 " >< buff) { ready=1;}
@@ -163,7 +152,7 @@ testRE = "^(" + testRE + ") .*$";
 max_crosspost = script_get_preference("Max crosspost : ");
 if (! max_crosspost) { max_crosspost = 7; }
 
-if (noauth) 
+if (noauth)
 notice += 'This NNTP server allows unauthenticated connections\n';
 
 if (!noauth) {
@@ -176,7 +165,7 @@ if (! posting) {
  notice += 'This NNTP server does not allow posting\n';
 }
 
-# No use to go on if we are unable to authenticate 
+# No use to go on if we are unable to authenticate
 if (! authenticated && ! noauth) {
  send(socket:s, data: 'QUIT\r\n');
  close(s);
@@ -195,8 +184,8 @@ if (! ereg(pattern:"^2[0-9][0-9] ", string:buff)) { nolist=1; }
 total_len = 8; nbg = 1;
 testNGlist = "alt.test";
 
-altNB=0; bizNB=0; compNB=0; miscNB=0; 
-newsNB=0; recNB=0; sciNB=0; socNB=0; 
+altNB=0; bizNB=0; compNB=0; miscNB=0;
+newsNB=0; recNB=0; sciNB=0; socNB=0;
 talkNB=0; humanitiesNB=0;
 
 if (!nolist) {
@@ -232,30 +221,29 @@ if (!nolist) {
  }
 
  notice = string(notice,
-		"For your information, we counted ", 
-		n, 
+		"For your information, we counted ",
+		n,
 		" newsgroups on this NNTP server:\n",
 		altNB, " in the alt hierarchy, ",
-		recNB, " in rec, ", 
-		bizNB, " in biz, ", 
-		sciNB, " in sci, ", 
-		socNB, " in soc, ", 
-		miscNB, " in misc, ", 
-		newsNB, " in news, ", 
-		compNB, " in comp, ", 
-		talkNB, " in talk, ", 
+		recNB, " in rec, ",
+		bizNB, " in biz, ",
+		sciNB, " in sci, ",
+		socNB, " in soc, ",
+		miscNB, " in misc, ",
+		newsNB, " in news, ",
+		compNB, " in comp, ",
+		talkNB, " in talk, ",
 		humanitiesNB, " in humanities.\n"
 	);
 }
 
 if (nbg > 1) more_headers += 'Followup-To: alt.test\r\n';
 
-if ("yes" >< local_distrib && is_private_addr()) 
+if ("yes" >< local_distrib && is_private_addr())
  local_warning= 'This message should not appear on a public news server.\r\n';
 else
  local_warning = '\r\n';
 
-# Try to post a message
 
 msgid = nntp_make_id(str: "post");
 # display(string("testNGlist=", testNGlist, "\n"));
@@ -269,13 +257,13 @@ msg = strcat(
 	'Content-Type: text/plain; charset: us-ascii\r\n',
 	'Lines: 2\r\n',
 	'\r\n',
-	'Test message (post). Please ignore.\r\n', 
+	'Test message (post). Please ignore.\r\n',
 	local_warning, '.\r\n');
 
 posted = nntp_post(socket: s, message: msg);
 if (posted == -1)
-log_message(port: port, 
-data: "The server rejected the message. Try again without 'local distribution' 
+log_message(port: port,
+data: "The server rejected the message. Try again without 'local distribution'
 if you don't mind leaking information outside");
 
 
@@ -323,7 +311,7 @@ sup = strcat(
 	'Content-Type: text/plain; charset: us-ascii\r\n',
 	'Lines: 2\r\n',
 	'\r\n',
-	'Test message (supersede). Please ignore.\r\n', 
+	'Test message (supersede). Please ignore.\r\n',
 	local_warning, '.\r\n');
 
 s = nntp_connect(port:port, username: user, password: pass);
@@ -358,13 +346,13 @@ can = strcat(
 	"Subject: cmsg cancel ", msgid, '\r\n',
 	"From: ", fromaddr, '\r\n',
 	"Message-ID: ", canid, '\r\n',
-	"Control: cancel ", msgid, '\r\n', 
+	"Control: cancel ", msgid, '\r\n',
 	more_headers,
 	'Content-Type: text/plain; charset: us-ascii\r\n',
 	'Lines: 2\r\n',
 	'\r\n',
 	'Test message (cancel). Please ignore.\r\n',
-	local_warning, '.\r\n');	
+	local_warning, '.\r\n');
 
 s = nntp_connect(port:port, username: user, password: pass);
 if (s) {

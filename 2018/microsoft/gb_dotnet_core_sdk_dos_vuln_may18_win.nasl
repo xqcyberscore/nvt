@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_core_sdk_dos_vuln_may18_win.nasl 9834 2018-05-15 08:51:49Z santu $
+# $Id: gb_dotnet_core_sdk_dos_vuln_may18_win.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
 #
 # .NET Core SDK Denial of Service Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:microsoft:.netcore_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813190");
-  script_version("$Revision: 9834 $");
+  script_version("$Revision: 10262 $");
   script_cve_id("CVE-2018-0765");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 14:17:38 +0530 (Tue, 15 May 2018)");
   script_name(".NET Core SDK Denial of Service Vulnerability (Windows)");
 

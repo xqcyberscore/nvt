@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_logrotate_vuln_may18_win.nasl 9800 2018-05-11 09:27:46Z ckuersteiner $
+# $Id: gb_postgresql_logrotate_vuln_may18_win.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
 #
 # PostgreSQL logrotate Vulnerability - May18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:postgresql:postgresql';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141083");
-  script_version("$Revision: 9800 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-11 11:27:46 +0200 (Fri, 11 May 2018) $");
+  script_version("$Revision: 10262 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-05-11 16:05:24 +0700 (Fri, 11 May 2018)");
-  script_tag(name: "cvss_base", value: "6.1");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
 
   script_cve_id("CVE-2018-1115");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_dir_trav.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: gb_http_default_dir_trav.nasl 10263 2018-06-20 04:40:23Z ckuersteiner $
 #
 # Generic HTTP Directory Traversal Check
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113002");
-  script_version("$Revision: 8106 $");
+  script_version("$Revision: 10263 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 21:42:54 +0700 (Wed, 13 Dec 2017)$");
   script_tag(name:"creation_date", value:"2017-09-26 10:00:00 +0200 (Tue, 26 Sep 2017)");
   script_name("Generic HTTP Directory Traversal Check");
   script_category(ACT_ATTACK);
@@ -78,10 +78,12 @@ if( ! cgis ) exit( 0 );
 
 traversal = make_list( "/",
                       crap( data: "../", length: 3*6 ),
+                      crap( data: ".../", length: 4*6 ),
                       crap( data: "%2e%2e%2f", length: 9*6 ),
                       crap( data: "%2e%2e/", length: 6*6 ),
                       crap( data: "..%2f", length: 5*6 ),
                       crap( data: "..\", length: 3*6 ),
+                      crap( data: "...\", length: 4*6 ),
                       crap( data: "%2e%2e%5c", length: 9*6 ),
                       crap( data: "%2e%2e\", length: 7*6 ),
                       crap( data: "..%5c", length: 5*6 ),

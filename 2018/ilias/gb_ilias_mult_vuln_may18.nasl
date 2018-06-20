@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_mult_vuln_may18.nasl 9900 2018-05-18 07:57:02Z asteins $
+# $Id: gb_ilias_mult_vuln_may18.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
 #
 # ILIAS < 5.1.27, 5.2.16, 5.3.5 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112288");
-  script_version("$Revision: 9900 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 09:57:02 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 10262 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name: "creation_date", value: "2018-05-18 09:30:08 +0200 (Fri, 18 May 2018)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2018-11117", "CVE-2018-11118", "CVE-2018-11119", "CVE-2018-11120");
 

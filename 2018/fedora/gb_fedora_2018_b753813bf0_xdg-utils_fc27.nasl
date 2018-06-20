@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b753813bf0_xdg-utils_fc27.nasl 9922 2018-05-22 13:11:24Z santu $
+# $Id: gb_fedora_2018_b753813bf0_xdg-utils_fc27.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
 #
 # Fedora Update for xdg-utils FEDORA-2018-b753813bf0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874584");
-  script_version("$Revision: 9922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:11:24 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10262 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-18 05:49:55 +0200 (Fri, 18 May 2018)");
   script_cve_id("CVE-2017-18266");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xdg-utils FEDORA-2018-b753813bf0");
   script_tag(name:"summary", value:"Check the version of xdg-utils");

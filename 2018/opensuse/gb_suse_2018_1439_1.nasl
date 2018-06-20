@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1439_1.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_suse_2018_1439_1.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
 #
 # SuSE Update for GraphicsMagick openSUSE-SU-2018:1439-1 (GraphicsMagick)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851768");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10262 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 05:42:54 +0200 (Tue, 29 May 2018)");
   script_cve_id("CVE-2017-18271");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for GraphicsMagick openSUSE-SU-2018:1439-1 (GraphicsMagick)");
   script_tag(name:"summary", value:"Check the version of GraphicsMagick");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10107 2018-06-07 07:37:31Z cfischer $
+# $Id: http_func.inc 10266 2018-06-20 10:19:52Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10107 $
+# $Revision: 10266 $
 #
 ###############################################################################
 
@@ -35,7 +35,12 @@ if ( ! OPENVAS_HTTP_USER_AGENT = get_kb_item( "http/user-agent" ) )
 
 # Enables debugging output for a few functions below
 global_var _http_debug;
-_http_debug = 0;
+_http_debug = FALSE;
+
+# global vars passed to e.g. http_keepalive.inc
+global_var http_cgi_disabled, optimize_test_enabled;
+http_cgi_disabled     = get_kb_item( "Settings/disable_cgi_scanning" );
+optimize_test_enabled = get_preference( "optimize_test" );
 
 function headers_split( h ) {
 
@@ -133,13 +138,24 @@ function get_http_banner( port, file, ignore_broken ) {
   return( banner );
 }
 
-# Submitted by Georges Dagousset
-# Usage: port = get_http_port( default:80 );
+# @brief This function returns all HTTP ports of the target system which
+#        are saved in the KB entry "Services/www" found by the scanner.
+#        If no ports where found open it will exit. In the case if the
+#        "unscanned_closed" scanner setting is set to "no" it will return
+#        the port passed via the default parameter.
+#
+# @param default             the port to return if "unscanned_closed" is set to "no" and no ports have been found open
+# @param ignore_broken       returns the ports even if they are known to be "broken"
+# @param ignore_cgi_disabled returns the ports even if CGI scanning is disabled
+#
+# @return the open / found HTTP ports or the port passed via the default parameter in the case of no found ports and "unscanned_closed" is set to "no"
+#
 function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
 
-  local_var default, port, p, ignore_broken, ignore_cgi_disabled, optimize;
+  local_var default, port, p, ignore_broken, ignore_cgi_disabled;
+  # nb: http_cgi_disabled and optimize_test_enabled are global vars
 
-  if( ! default ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
+  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
 
   port = get_kb_item( "Services/www" );
   if( port ) default = port;
@@ -149,11 +165,9 @@ function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
   if( http_is_fragile_port( port:default ) ) exit( 0 );
 
   if( ! ignore_cgi_disabled ) {
-    if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {
-      optimize = get_preference( "optimize_test" );
-
-      if( optimize && "yes" >< optimize ) {
-        set_kb_item( name: "nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#get_http_port" );
+    if( http_cgi_disabled ) {
+      if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
+        set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#get_http_port" );
       }
       exit( 0 );
     }
@@ -200,7 +214,7 @@ function php_ver_match( banner, pattern ) {
   return( 0 );
 }
 
-# @brief This functions checks if the remote HTTP server is responding
+# @brief This function checks if the remote web server is responding
 #        to an HTTP GET request.
 #
 # @param port  the port of the remote server to check
@@ -208,7 +222,7 @@ function php_ver_match( banner, pattern ) {
 #              This parameter is optional and defaults to 2 retries and is
 #              limited to a max. of 5 retries.
 #
-# @return TRUE if the remote HTTP server is not responding, FALSE otherwise
+# @return TRUE if the remote web server is not responding, FALSE otherwise
 #
 function http_is_dead( port, retry ) {
 
@@ -472,13 +486,13 @@ function http_send_recv( port, data ) {
 function cgi_dirs( port ) {
 
   local_var port, kb, optimize, usercgis;
+  # nb: http_cgi_disabled and optimize_test_enabled are global vars
 
   if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#cgi_dirs" );
 
-  if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {
-    optimize = get_preference( "optimize_test" );
-    if( optimize && "yes" >< optimize ) {
-      set_kb_item( name: "nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#cgi_dirs()" );
+  if( http_cgi_disabled ) {
+    if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
+      set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#cgi_dirs()" );
     }
     #return NULL; # Old behaviour
     exit( 0 ); # Throws a "nasl_array_iterator: unhandled type 57" message if cgi_dirs() is called within a foreach but not within a make_list()

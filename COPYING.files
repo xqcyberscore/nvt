@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 19 Jun 2018 12:52:53 +0200
+# Automatically created on:  Wed, 20 Jun 2018 13:08:28 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -40705,6 +40705,7 @@
 2018/patniemeyer/gb_beanshell_rce_http.nasl: GPLv2+
 2018/patniemeyer/gb_beanshell_rce_telnet.nasl: GPLv2+
 2018/peersec-networks/gb_matrixssl_mult_vuln.nasl: GPLv2+
+2018/peersec-networks/gb_matrixssl_side_channel_vuln.nasl: GPLv2+
 2018/perl/gb_perl_heap_buffer_overflow_vuln02_may18_win.nasl: GPLv2+
 2018/perl/gb_perl_heap_buffer_overflow_vuln_may18_win.nasl: GPLv2+
 2018/perl/gb_perl_heap_buffer_over-read_vuln_may18_win.nasl: GPLv2+
@@ -57986,6 +57987,7 @@ gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_universal_cmdb_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/hp/gb_hpe_universal_csrf_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo2_multiple_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-12542.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-8987.nasl: GPLv2+
@@ -58002,6 +58004,7 @@ gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-01-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-02-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-03-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_usg6300_huawei-sa-20170802-01-usg-en.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_usg9500_dos_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_encryption_prot_security_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_os_command_injection_vuln_apr18.nasl: GPLv2+
@@ -58073,6 +58076,7 @@ gsf/2018/kaspersky/gb_kaspersky_smg_mult_vuln.nasl: GPLv2+
 gsf/2018/logicaldoc/gb_logicaldoc_mult_vuln.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_comm_inj_vuln.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_mult_vuln.nasl: GPLv2+
+gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_SB10240.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_nsm_mult_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_exchange_server_privilege_elevation_vuln_apr18.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_exchange_server_rce_and_dos_vuln_apr18.nasl: GPLv2+

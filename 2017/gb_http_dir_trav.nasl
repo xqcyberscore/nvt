@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_dir_trav.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_http_dir_trav.nasl 10263 2018-06-20 04:40:23Z ckuersteiner $
 #
 # Generic HTTP Directory Traversal
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106756");
-  script_version("$Revision: 7577 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 10263 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-06-20 06:40:23 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name: "creation_date", value: "2017-04-18 14:50:27 +0200 (Tue, 18 Apr 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -48,7 +48,7 @@ if (description)
 
   script_tag(name: "summary", value: "Generic check for HTTP directory traversal vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends crafted HTTP requests and checks the reponse.");
+  script_tag(name: "vuldetect", value: "Sends crafted HTTP requests and checks the response.");
 
   script_tag(name: "solution", value: "Contact the vendor for a solution.");
 
@@ -64,10 +64,12 @@ port = get_http_port(default: 80);
 
 traversal = make_list("",
                       crap(data: "../", length: 3*6),
+                      crap(data: ".../", length: 4*6),
                       crap(data: "%2e%2e%2f", length: 9*6),
                       crap(data: "%2e%2e/", length: 6*6),
                       crap(data: "..%2f", length: 5*6),
                       crap(data: "..\", length: 3*6),
+                      crap(data: "...\", length: 4*6),
                       crap(data: "%2e%2e%5c", length: 9*6),
                       crap(data: "%2e%2e\", length: 7*6),
                       crap(data: "..%5c", length: 5*6),

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 9943 2018-05-24 08:08:15Z cfischer $
+# $Id: http_keepalive.inc 10260 2018-06-19 15:20:12Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9943 $
+# $Revision: 10260 $
 #
 ###############################################################################
 
@@ -765,34 +765,26 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
   return req;
 }
 
-function recv_http_buf( port, url, bodyonly, nocache )
-{
-  local_var port, url, bodyonly, nocache, req;
+function recv_http_buf( port, url, bodyonly, nocache ) {
+
+  local_var port, url, bodyonly, nocache, req, res;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#recv_http_buf" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#recv_http_buf" );
     return;
   }
 
   if( ! url ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#recv_http_buf" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#recv_http_buf" );
     return;
   }
 
-  if( ! nocache )
-  {
+  if( ! nocache ) {
     if( ! egrep( pattern:"(\?|&|#|;|\[|\]|=)", string:url  ) )
-      return http_get_cache( item:url,
-                             port:port );
-
+      return http_get_cache( item:url, port:port );
   }
 
   req = http_get( item:url, port:port );
-  return http_keepalive_send_recv( port:port,
-                                   data:http_get( item:url, port:port ),
-                                   bodyonly:bodyonly );
-
-  return;
-
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:bodyonly );
+  return res;
 }
-
