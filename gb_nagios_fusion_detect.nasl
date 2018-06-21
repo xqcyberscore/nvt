@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_fusion_detect.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_nagios_fusion_detect.nasl 10267 2018-06-20 11:21:46Z cfischer $
 #
 # Nagios Fusion Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813251");
-  script_version("$Revision: 10247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 13:21:46 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-18 13:05:09 +0530 (Mon, 18 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Nagios Fusion Version Detection");
-  script_tag(name:"summary", value:"Detection of installed version of Nagios
+  script_tag(name:"summary", value:"Detects the installed version of Nagios
   Fusion.
 
   The script sends a connection request to the server and attempts to extract
@@ -48,14 +48,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-get_http_port(default:80);
-
+port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/Nagios", "/nagiosfusion", "/fusion", cgi_dirs( port:port ) ) )
@@ -64,7 +62,7 @@ foreach dir( make_list_unique( "/", "/Nagios", "/nagiosfusion", "/fusion", cgi_d
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/login.php", port:port );
+  rcvRes = http_get_cache( item:dir + "/login.php", port:port );
   if(rcvRes =~ ">Login.*Nagios Fusion</title" && '"product" value="nagiosfusion">' >< rcvRes)
   {
 
@@ -77,7 +75,7 @@ foreach dir( make_list_unique( "/", "/Nagios", "/nagiosfusion", "/fusion", cgi_d
 
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + port + "/NagiosFusion", value:tmp_version);
- 
+
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:nagiosfusion:nagiosfusion:");
     if(isnull(cpe))
       cpe = 'cpe:/a:nagiosfusion:nagiosfusion';
@@ -91,5 +89,5 @@ foreach dir( make_list_unique( "/", "/Nagios", "/nagiosfusion", "/fusion", cgi_d
                                                port:port );
   }
 }
-exit( 99 );
 
+exit( 0 );

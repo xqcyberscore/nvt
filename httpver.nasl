@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 6089 2017-05-09 13:03:19Z cfi $
+# $Id: httpver.nasl 10272 2018-06-20 12:57:08Z cfischer $
 #
 # HTTP-Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 6089 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 15:03:19 +0200 (Tue, 09 May 2017) $");
+  script_version("$Revision: 10272 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 14:57:08 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -53,10 +53,13 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
+# nb: Always keep http_host_name() before http_open_socket() as the first
+# could fork with multiple vhosts and the childs would share the same
+# socket causing race conditions and similar.
+host = http_host_name( port:port );
+
 soc = http_open_socket( port );
 if( ! soc ) exit( 0 );
-
-host = http_host_name( port:port );
 
 req = string( "GET / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
@@ -66,7 +69,7 @@ req = string( "GET / HTTP/1.1\r\n",
               "\r\n" );
 send( socket:soc, data:req );
 buf = http_recv_headers2( socket:soc );
-close( soc );
+http_close_socket( soc );
 if( isnull( buf ) || buf == "" ) exit( 0 );
 
 # https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_error
@@ -96,12 +99,12 @@ else {
                 "\r\n" );
   send( socket:soc, data:req );
   buf = http_recv_headers2( socket:soc );
-  close( soc );
+  http_close_socket( soc );
   if( isnull( buf ) || buf == "" ) exit( 0 );
 
   # https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_error
   # Don't check for 505 as some servers might return 505 for a HTTP/1.0 request if they support only 0.9
-  # TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files? 
+  # TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files?
   if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
     set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
     set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );

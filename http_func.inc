@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10266 2018-06-20 10:19:52Z cfischer $
+# $Id: http_func.inc 10278 2018-06-21 06:28:53Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10266 $
+# $Revision: 10278 $
 #
 ###############################################################################
 
@@ -106,36 +106,57 @@ function hex2dec( xvalue ) {
   return int( ret );
 }
 
+# @brief This function creates a HTTP GET request for "/" or a specific URL,
+#        sends the request to the target, receives the response and extracts
+#        the HTTP header (banner) without the body from the response.
+#        If a header was received it is saved into the knowledge base.
+#        If a header was requested which was requested previously the cached
+#        header will be returned instead of doing a new request.
+#
+# @param port          the HTTP port of the target
+# @param file          the URL/file to request, defaults to "/"
+# @param ignore_broken returns the banner even if the remote host was known to be "broken"
+#
+# @return the header of the remote host or NULL if no response was received, no port parameter was passed or the remote port wasn't scanned
+#
 function get_http_banner( port, file, ignore_broken ) {
 
+  local_var port, file, ignore_broken;
   local_var soc, sb, banner, req, body;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_banner" );
+  if( ! port ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_banner" );
+    return NULL;
+  }
+
+  if( ! get_port_state( port ) ) return NULL;
 
   if( ! file ) file = "/";
-
-  if( ! get_port_state( port ) ) return (0);
-
   sb = strcat( "www/real_banner/", port, file );
   banner = get_kb_item( sb );
-  if( banner ) return( banner );
+  if( banner ) return banner;
 
   sb = strcat( "www/banner/", port, file );
   banner = get_kb_item( sb );
-  if( banner ) return( banner );
+  if( banner ) return banner;
 
   if( ! ignore_broken )
     if( get_kb_item( "Services/www/" + port + "/broken" ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
-  soc = http_open_socket( port );
-  if( ! soc ) return( NULL );
+  # nb: Always keep http_get() before http_open_socket() as the first could
+  # fork with multiple vhosts and the childs would share the same socket
+  # causing race conditions and similar.
   req = http_get( item:file, port:port );
+  soc = http_open_socket( port );
+  if( ! soc ) return NULL;
+
   send( socket:soc, data:req );
   banner = http_recv_headers2( socket:soc );
-  #body = http_recv_body( socket:soc, headers:banner );
+  #body = http_recv_body( socket:soc, headers:banner ); # TBD: What's the purpose of this?
   http_close_socket( soc );
+
   if( banner ) replace_kb_item( name:sb, value:banner );
-  return( banner );
+  return banner;
 }
 
 # @brief This function returns all HTTP ports of the target system which
@@ -233,8 +254,15 @@ function http_is_dead( port, retry ) {
     return FALSE;
   }
 
-  if( ! retry ) retry = 2;
+  if( ! retry )   retry = 2;
   if( retry > 5 ) retry = 5; # nb: Limit the amount of retries to a sane default
+
+  # nb: http_head does not work against SWAT & VNC (& probably others...)
+  # nb: Always keep http_get() before http_open_socket() as the first could
+  # fork with multiple vhosts and the childs would share the same socket
+  # causing race conditions and similar.
+  url = strcat( "/OpenVASTest", rand(), ".html" );
+  req = http_get( item:url, port:port );
 
   i = 0;
   soc = http_open_socket( port );
@@ -244,10 +272,6 @@ function http_is_dead( port, retry ) {
     if( _http_debug ) display( "DEBUG: i = ", i, "\n" );
   }
   if( ! soc ) return TRUE;
-
-  # NB: http_head does not work against SWAT & VNC (& probably others...)
-  url = strcat( "/OpenVASTest", rand(), ".html" );
-  req = http_get( item:url, port:port );
 
   send( socket:soc, data:req );
   code = recv_line( socket:soc, length:1024 );
@@ -269,49 +293,80 @@ function http_is_dead( port, retry ) {
   return FALSE;
 }
 
-# This function was originally written by SecurITeam in
-# badblue_directory_traversal.nasl
-# I (=MA) enhanced it.
-# NB: it works with AUTOEXEC.BAT, WIN.INI and BOOT.INI
-# quickcheck should be set to 0 if the server does not return clean 404 code,
-# i.e., if "www/no404/"+port is defined in the KB
-
+# @brief This function requests a specified URL and checks the response if it
+#        is containing pattern for windows related files (autoexec.bat, win.ini
+#        and boot.ini).
+#
+# @param port        the port of the remote server to check
+# @param url         the URL to check
+# @param quickcheck  if set to TRUE the response is only checked for an existing HTTP 200 status code
+#
+# @return TRUE if the remote web server has responded with the expected pattern, FALSE otherwise and
+#              NULL in the case where no connection to the target could be established or not all
+#              required parameters where passed.
+#
 function do_check_win_dir_trav( port, url, quickcheck ) {
 
+  local_var port, url, quickcheck;
   local_var soc, req, cod, buf;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#do_check_win_dir_trav" );
-  if( ! url ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#do_check_win_dir_trav" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#do_check_win_dir_trav" );
+    return NULL;
+  }
+  if( ! url ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#do_check_win_dir_trav" );
+    return NULL;
+  }
 
   if( _http_debug ) display( "DEBUG: check_win_dir_trav(port=", port, ", url=", url, ", quickcheck=", quickcheck, ")\n" );
+
+  # nb: Always keep http_get() before http_open_socket() as the first could
+  # fork with multiple vhosts and the childs would share the same socket
+  # causing race conditions and similar.
+  req = http_get( item:url, port:port );
   soc = http_open_socket( port );
   if( ! soc ) {
     if( _http_debug ) display( "DEBUG: check_win_dir_trav: cannot open socket to ", port, "\n" );
-    return( 0 );
+    return NULL;
   }
 
-  req = http_get( item:url, port:port );
   send( socket:soc, data:req );
   cod = recv_line( socket:soc, length:80 );
   buf = http_recv( socket:soc, code:cod );
+  http_close_socket( soc );
 
   if( "content-encoding: gzip" >< tolower( buf ) )
     buf = http_gunzip( buf:buf );
 
-  http_close_socket( soc );
-
   if( quickcheck ) {
-    if( " 200 " >< cod ) return( 1 );
-    return( 0 );
+    if( " 200 " >< cod ) return TRUE;
+    return FALSE;
   }
 
   if( "; for 16-bit app support" >< buf || "[boot loader]" >< buf ) {
-    return( 1 );
+    return TRUE;
   }
-  return( 0 );
+  return FALSE;
 }
 
+# @brief This function requests a specified URL and checks the response if it
+#        is containing pattern for windows related files (autoexec.bat, win.ini
+#        and boot.ini). It is an extension to the do_check_win_dir_trav function
+#        and is additionally checking if the web server is responding with the
+#        expected pattern on a non-existent random file.
+#
+# @param port        the port of the remote server to check
+# @param url         the URL to check
+# @param quickcheck  if set to TRUE the response is only checked for an existing HTTP 200 status code
+#
+# @return TRUE if the remote web server has responded with the expected pattern, FALSE otherwise and
+#              NULL in the case where no connection to the target could be established, not all
+#              required parameters where passed or if the web server is responding with the expected
+#              pattern on a non-existent random file.
+#
 function check_win_dir_trav( port, url, quickcheck ) {
+  local_var port, url, quickcheck;
   if( do_check_win_dir_trav( port:port, url:url + rand(), quickcheck:quickcheck ) )
     return NULL;
   else

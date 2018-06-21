@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dont_scan_fragile_device.nasl 8546 2018-01-26 10:25:32Z cfischer $
+# $Id: gb_dont_scan_fragile_device.nasl 10268 2018-06-20 11:25:08Z asteins $
 #
 # Do not scan fragile devices or ports
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108298");
-  script_version("$Revision: 8546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 11:25:32 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 10268 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-20 13:25:08 +0200 (Wed, 20 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 14:08:04 +0100 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,6 +68,7 @@ if(description)
   exit(0);
 }
 
+include("ftp_func.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
 
@@ -222,6 +223,15 @@ if( get_port_state( port ) ) {
     if( recv && strlen( recv ) == 124 && hexstr( substr( recv, 0, 3 ) ) == "000000f9" ) {
       fragile_exclude_and_report( reason:"- The detected Lantronix Device is known to crash if this port is scanned.", port:30718, exclude_from_tls:TRUE );
     }
+  }
+}
+
+# Devices running Nucleus RTOS on ftp 21/tcp
+port = 21;
+if( get_port_state( port ) ) {
+  banner = get_ftp_banner( port:port );
+  if( banner && ( banner =~ "220 Nucleus FTP Server \(Version [0-9.]+\) ready" ) ) {
+    fragile_exclude_and_report( reason: "- The detected device running Nucleus RTOS is known to crash if this port is scanned.", port:21, exclude_from_tls:TRUE );
   }
 }
 
