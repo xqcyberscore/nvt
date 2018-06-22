@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1733_1.nasl 10279 2018-06-21 07:32:57Z santu $
+# $Id: gb_suse_2018_1733_1.nasl 10292 2018-06-22 03:53:38Z cfischer $
 #
 # SuSE Update for aubio openSUSE-SU-2018:1733-1 (aubio)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851793");
-  script_version("$Revision: 10279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 09:32:57 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 05:53:38 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:06:10 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2017-17554");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for aubio openSUSE-SU-2018:1733-1 (aubio)");
   script_tag(name:"summary", value:"Check the version of aubio");

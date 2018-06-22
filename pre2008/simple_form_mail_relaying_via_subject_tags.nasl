@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: simple_form_mail_relaying_via_subject_tags.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: simple_form_mail_relaying_via_subject_tags.nasl 10285 2018-06-21 12:22:45Z cfischer $
 #
 # Simple Form Mail Relaying via Subject Tags Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14713");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 10285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,16 +42,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://worldcommunity.com/opensource/utilities/simple_form.html");
 
-  tag_summary = "The target is running at least one instance of Simple Form which fails
-  to remove newlines from variables used to construct message headers.
-  A remote attacker can exploit this flaw to add to the list of
-  recipients, enabling him to use Simple Form on the target as a proxy
-  for sending abusive mail or spam.";
+  script_tag(name:"solution", value:"Upgrade to Simple Form 2.3 or later.");
 
-  tag_solution = "Upgrade to Simple Form 2.3 or later.";
+  script_tag(name:"summary", value:"The target is running at least one instance of Simple Form which fails
+  to remove newlines from variables used to construct message headers.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"A remote attacker can exploit this flaw to add to the list of
+  recipients, enabling him to use Simple Form on the target as a proxy for sending abusive mail or spam.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,24 +56,18 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( debug_level ) display("debug: searching for mail relaying via subject tags vulnerability in Simple Form on ", host, ":", port, ".\n");
-
 host = http_host_name( port:port );
 
-# Check for the form in each of the CGI dirs.
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   url = dir + "/s_form.cgi";
 
   if( is_cgi_installed_ka( item:url, port:port ) ) {
-
-    if (debug_level) display("debug: checking ", url, "...\n");
 
     # Exploit the form and *preview* the message to determine if the
     # vulnerability exists. Note: this doesn't actually inject a
@@ -156,9 +147,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
                   "Content-Length: ", strlen(postdata), "\r\n",
                   "\r\n",
                   postdata );
-    if( debug_level ) display("debug: sending =>>", req, "<<\n");
     res = http_keepalive_send_recv( port:port, data:req );
-    if( debug_level ) display("debug: received =>>", res, "<<\n");
 
     # Look at the preview and see whether we get *our* preview_response_title.
     if( res >< "OpenVAS Plugin Test:!:xtra_recipients:!:" &&

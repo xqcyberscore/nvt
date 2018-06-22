@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3687_1.nasl 10279 2018-06-21 07:32:57Z santu $
+# $Id: gb_ubuntu_USN_3687_1.nasl 10284 2018-06-21 11:19:30Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3687-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843564");
-  script_version("$Revision: 10279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 09:32:57 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 13:19:30 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 06:01:01 +0200 (Tue, 19 Jun 2018)");
   script_cve_id("CVE-2018-12293", "CVE-2018-4190", "CVE-2018-4199", "CVE-2018-4218", "CVE-2018-4222", "CVE-2018-4232", "CVE-2018-4233");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,7 @@ attacks, and arbitrary code execution.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

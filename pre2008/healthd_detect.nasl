@@ -1,17 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: healthd_detect.nasl 4233 2016-10-07 10:53:48Z cfi $
+# $Id: healthd_detect.nasl 10288 2018-06-21 13:26:05Z cfischer $
 #
 # HealthD detection
 #
 # Authors:
-# Noam Rathaus <noamr@securiteam.com> 
-# Script audit and contributions from Carmichael Security <http://www.carmichaelsecurity.com>
-# Erik Anderson <eanders@carmichaelsecurity.com>
-# Should cover BID: 1107
+# Noam Rathaus <noamr@securiteam.com>
 #
 # Copyright:
-# Copyright (C) 2001 Noam Rathaus <noamr@securiteam.com> 
+# Copyright (C) 2001 Noam Rathaus <noamr@securiteam.com>
 # Copyright (C) 2001 SecuriTeam
 #
 # This program is free software; you can redistribute it and/or modify
@@ -31,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10731");
-  script_version("$Revision: 4233 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 12:53:48 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 10288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 15:26:05 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -43,21 +40,19 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/healthd", "Services/unknown", 1281);
 
-  tag_summary = "The FreeBSD Health Daemon was detected.
-  The HealthD provides remote administrators with information about the 
+  script_tag(name:"solution", value:"Configure your firewall to block access to this port.");
+
+  script_tag(name:"summary", value:"The FreeBSD Health Daemon was detected.
+
+  The HealthD provides remote administrators with information about the
   current hardware temperature, fan speed, etc, allowing them to monitor
-  the status of the server.";
+  the status of the server.");
 
-  tag_impact = "Such information about the hardware's current state might be sensitive; 
-  it is recommended that you do not allow access to this service from the network.";
-
-  tag_solution = "Configure your firewall to block access to this port.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Such information about the hardware's current state might be sensitive.
+  It is recommended that you do not allow access to this service from the network.");
 
   script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -73,23 +68,23 @@ if( get_port_state( port ) ) {
 
   if( soc ) {
     data = string( "foobar" );
-    resultsend = send( socket:soc, data:data );
-    resultrecv = recv( socket:soc, length:8192 );
+    send( socket:soc, data:data );
+    res = recv( socket:soc, length:8192 );
 
-    if( "ERROR: Unsupported command" >< resultrecv ) {
+    if( "ERROR: Unsupported command" >< res ) {
 
       set_kb_item( name:"healthd/installed", value:TRUE );
       register_service( port:port, proto:"healthd");
 
       data = string("VER d");
-      resultsend = send( socket:soc, data:data );
-      resultrecv = recv( socket:soc, length:8192 );
+      send( socket:soc, data:data );
+      res = recv( socket:soc, length:8192 );
       close( soc );
 
-      if( "ERROR: Unsupported command" >< resultrecv ) {
+      if( "ERROR: Unsupported command" >< res ) {
         security_message( port:port );
       } else {
-        data = string( "The HealthD version we found is: ", resultrecv, "\n" );
+        data = string( "The HealthD version we found is: ", res, "\n" );
         security_message( port:port, data:data );
       }
       exit( 0 );

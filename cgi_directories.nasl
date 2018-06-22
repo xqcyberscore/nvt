@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 9819 2018-05-14 11:54:00Z cfischer $
+# $Id: cgi_directories.nasl 10283 2018-06-21 11:10:20Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 9819 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 13:54:00 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 10283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 13:10:20 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -121,7 +121,7 @@ if( get_kb_item( "global_settings/disable_generic_webapp_scanning" ) ) {
   report += 'Generic web application scanning is disabled for this host via the "Enable generic web application scanning" option within the "Global variable settings" of the scan config in use.\n\n';
 }
 
-if( get_kb_item( "Services/www/" + port + "/broken" ) ) {
+if( http_is_marked_broken( port:port ) ) {
   report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
 }
 

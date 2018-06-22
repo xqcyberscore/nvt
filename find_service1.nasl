@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10183 2018-06-14 07:16:58Z cfischer $
+# $Id: find_service1.nasl 10280 2018-06-21 08:12:50Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10183 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10280 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 10:12:50 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -789,7 +789,7 @@ if( r =~ "^w0256" && ( r_len == 261 || r_len == 263 ) ) {
 # Unknown telnet service running on 23/tcp. The check is not that reliable so checking the port as well...
 # 0x00:  43 6F 6E 6E 65 63 74 69 6F 6E 20 72 65 66 75 73    Connection refus
 # 0x10:  65 64 0D 0A                                        ed..
-if( port == 23 && rhexstr == "436F6E6E656374696F6E20726566757365640D0A" ) {
+if( port == 23 && rhexstr == "436f6e6e656374696f6e20726566757365640d0a" ) {
   register_service( port:port, proto:"telnet", message:"A telnet service rejecting the access of the scanner seems to be running on this port." );
   log_message( port:port, data:"A telnet service rejecting the access of the scanner seems to be running on this port." );
   exit( 0 );
@@ -822,6 +822,14 @@ if( r =~ "^SIP/2\.0 [0-9]+" && egrep( string:r, pattern:"^Via: " ) ||
     r =~ "^SIP/2\.0 400 Illegal request line..From: <sip:missing>..To: <sip:missing>;tag=badrequest..User-Agent: " ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol seems to be running on this port." );
   log_message( port:port, data:"A service supporting the SIP protocol seems to be running on this port." );
+  exit( 0 );
+}
+
+# Citrix NetScaler Metric Exchange Protocol on 3011/tcp
+# 0x00:  10 00 00 00 A5 A5 00 00 D4 00 60 01 00 00 00 00    ..........`.....
+if( rhexstr == "10000000a5a50000d400600100000000" ) {
+  register_service( port:port, proto:"mep", message:"A service supporting the Metric Exchange Protocol (MEP) seems to be running on this port." );
+  log_message( port:port, data:"A service supporting the Metric Exchange Protocol (MEP) seems to be running on this port." );
   exit( 0 );
 }
 

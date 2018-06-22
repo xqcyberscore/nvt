@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10278 2018-06-21 06:28:53Z cfischer $
+# $Id: http_func.inc 10283 2018-06-21 11:10:20Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10278 $
+# $Revision: 10283 $
 #
 ###############################################################################
 
@@ -41,6 +41,11 @@ _http_debug = FALSE;
 global_var http_cgi_disabled, optimize_test_enabled;
 http_cgi_disabled     = get_kb_item( "Settings/disable_cgi_scanning" );
 optimize_test_enabled = get_preference( "optimize_test" );
+
+# Global keys to avoid that we're repeatedly asking redis for something we already know
+global_var _http_is_broken_array;
+# nb: key is the port or NULL (if not previously checked, value TRUE/FALSE if broken or not
+_http_is_broken_array = make_array();
 
 function headers_split( h ) {
 
@@ -141,7 +146,7 @@ function get_http_banner( port, file, ignore_broken ) {
   if( banner ) return banner;
 
   if( ! ignore_broken )
-    if( get_kb_item( "Services/www/" + port + "/broken" ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
+    if( http_is_marked_broken( port:port ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
   # nb: Always keep http_get() before http_open_socket() as the first could
   # fork with multiple vhosts and the childs would share the same socket
@@ -195,7 +200,7 @@ function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
   }
 
   if( ! ignore_broken ) {
-    p = get_kb_item( "Services/www/" + default + "/broken" );
+    p = http_is_marked_broken( port:default );
     if( p ) exit( 0 );
   }
 
@@ -986,4 +991,41 @@ function extract_basic_auth( data ) {
   if( realm[1] ) infos["realm"] = chomp( realm[1] );
 
   return infos;
+}
+
+# @brief This function returns the info if a remote web server was internally
+#        (in the KB) marked as "broken". It will also save the information in
+#        an internal array to avoid that redis is queried.
+#
+# @param port        the port of the remote server
+#
+# @return TRUE if the remote web server was marked as broken, FALSE otherwise and
+#              NULL in the case where the port parameter wasn't passed.
+#
+function http_is_marked_broken( port ) {
+
+  local_var port, marked_broken;
+  # nb: _http_is_broken_array is a global_var (see on top)
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#extract_location_from_redirect" );
+    return NULL;
+  }
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( _http_is_broken_array[port] ) ) {
+    if( _http_is_broken_array[port] )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
+  marked_broken = get_kb_item( "Services/www/" + port + "/broken" );
+  if( marked_broken )
+    _http_is_broken_array[port] = TRUE;
+  else
+    _http_is_broken_array[port] = FALSE;
+
+  return marked_broken;
 }

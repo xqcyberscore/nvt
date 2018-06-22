@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3689_1.nasl 10279 2018-06-21 07:32:57Z santu $
+# $Id: gb_ubuntu_USN_3689_1.nasl 10284 2018-06-21 11:19:30Z cfischer $
 #
 # Ubuntu Update for libgcrypt20 USN-3689-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843565");
-  script_version("$Revision: 10279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 09:32:57 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 13:19:30 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:05:46 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2018-0495");
   script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ private keys.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

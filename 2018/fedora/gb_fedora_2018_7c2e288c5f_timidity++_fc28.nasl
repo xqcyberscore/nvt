@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_7c2e288c5f_timidity++_fc28.nasl 10279 2018-06-21 07:32:57Z santu $
+# $Id: gb_fedora_2018_7c2e288c5f_timidity++_fc28.nasl 10292 2018-06-22 03:53:38Z cfischer $
 #
 # Fedora Update for timidity++ FEDORA-2018-7c2e288c5f
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874716");
-  script_version("$Revision: 10279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 09:32:57 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 05:53:38 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-21 06:20:55 +0200 (Thu, 21 Jun 2018)");
   script_cve_id("CVE-2017-11546", "CVE-2017-11547", "CVE-2017-11549");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for timidity++ FEDORA-2018-7c2e288c5f");
   script_tag(name:"summary", value:"Check the version of timidity++");

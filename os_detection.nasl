@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 9701 2018-05-03 06:24:12Z cfischer $
+# $Id: os_detection.nasl 10291 2018-06-21 20:22:50Z asteins $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 9701 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 10291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 22:22:50 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,6 +66,7 @@ if(description)
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
                       "gb_ssh_os_detection.nasl", # nmap_net.nasl not added as this is in ACT_SCANNER (and doesn't use register_and_report_os yet)
+                      "gb_citrix_netscaler_version.nasl",
                       "gb_junos_snmp_version.nasl", "gb_snmp_os_detection.nasl",
                       "gb_dns_os_detection.nasl", "gb_ftp_os_detection.nasl",
                       "smb_nativelanman.nasl", "gb_ucs_detect.nasl",
@@ -78,7 +79,7 @@ if(description)
                       "ms_rdp_detect.nasl", "gb_apache_activemq_detect.nasl",
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
                       "ident_process_owner.nasl", "gb_pihole_detect.nasl",
-                      "gb_dropbear_ssh_detect.nasl",
+                      "gb_dropbear_ssh_detect.nasl", "gb_nec_communication_platforms_detect.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.

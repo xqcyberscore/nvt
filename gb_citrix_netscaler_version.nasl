@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_version.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_version.nasl 10280 2018-06-21 08:12:50Z cfischer $
 #
 # Citrix NetScaler Detection Consolidation
 #
@@ -30,8 +30,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105271");
- script_version ("$Revision: 8384 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
+ script_version ("$Revision: 10280 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-06-21 10:12:50 +0200 (Thu, 21 Jun 2018) $");
  script_tag(name: "creation_date", value: "2015-05-11 16:54:59 +0200 (Mon, 11 May 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,10 +71,14 @@ foreach source (make_list("ssh", "snmp", "http")) {
   }
 }
 
+# TODO: Set a correct CPE based on the Netscaler Product like e.g. NetScaler Gateway on /epa/epa.html
+# See e.g. https://nvd.nist.gov/products/cpe/search/results?keyword=cpe%3a%2fo%3acitrix*&status=FINAL&orderBy=CPEURI&namingFormat=2.2&startIndex=0
 if (detected_version != "unknown") {
-  cpe = "cpe:/a:citrix:netscaler:" + detected_version;
+  cpe    = "cpe:/a:citrix:netscaler:" + detected_version;
+  os_cpe = "cpe:/o:citrix:netscaler:" + detected_version;
 } else {
-  cpe = "cpe:/a:citrix:netscaler";
+  cpe    = "cpe:/a:citrix:netscaler";
+  os_cpe = "cpe:/o:citrix:netscaler";
 }
 
 # SSH
@@ -120,6 +124,8 @@ if (http_ports = get_kb_list("citrix_netscaler/http/port")) {
     register_product(cpe: cpe, location: port + '/tcp', port: port, service: "www");
   }
 }
+
+register_and_report_os(os: "Citrix NetScaler OS", cpe: os_cpe, desc: "Citrix NetScaler Detection Consolidation", runs_key: "unixoide");
 
 enh_build = get_kb_item("citrix_netscaler/enhanced_build");
 if (enh_build)

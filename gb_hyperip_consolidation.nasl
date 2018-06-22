@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hyperip_consolidation.nasl 8951 2018-02-26 11:47:22Z cfischer $
+# $Id: gb_hyperip_consolidation.nasl 10293 2018-06-22 04:31:23Z cfischer $
 #
 # NetEx HyperIP Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108347");
-  script_version("$Revision: 8951 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:47:22 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 10293 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 06:31:23 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 12:49:56 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -88,8 +88,8 @@ if( ssh_login_ports = get_kb_list( "hyperip/ssh-login/port" ) ) {
     if( concluded ) {
       extra += 'Concluded: ' + concluded + '\n';
     }
-    register_product( cpe:app_cpe, location:location, port:port, service:"ssh" );
-    register_product( cpe:os_cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"ssh-login" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"ssh-login" );
   }
 }
 
@@ -100,8 +100,8 @@ if( ssh_banner_ports = get_kb_list( "hyperip/ssh-banner/port" ) ) {
     if( concluded ) {
       extra += 'Concluded: ' + concluded + '\n';
     }
-    register_product( cpe:app_cpe, location:location, port:port, service:"ssh" );
-    register_product( cpe:os_cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"ssh-banner" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"ssh-banner" );
   }
 }
 
@@ -143,7 +143,7 @@ report += build_detection_report( app:"NetEx HyperIP",
                                   cpe:os_cpe );
 
 if( extra ) {
-  report += '\n\nDetection methods:\n'; 
+  report += '\n\nDetection methods:\n';
   report += extra;
 }
 
