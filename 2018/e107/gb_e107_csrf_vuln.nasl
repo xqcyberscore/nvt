@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_csrf_vuln.nasl 9870 2018-05-16 13:53:17Z asteins $
+# $Id: gb_e107_csrf_vuln.nasl 10302 2018-06-22 13:15:51Z cfischer $
 #
 # e107 < 2.1.8 CSRF Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113187");
-  script_version("$Revision: 9870 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 15:53:17 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10302 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:15:51 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 15:14:23 +0200 (Wed, 16 May 2018)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

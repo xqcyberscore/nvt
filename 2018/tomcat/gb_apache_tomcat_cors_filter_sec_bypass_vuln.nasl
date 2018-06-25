@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_cors_filter_sec_bypass_vuln.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_apache_tomcat_cors_filter_sec_bypass_vuln.nasl 10307 2018-06-25 05:05:34Z asteins $
 #
 # Apache Tomcat 'CORS Filter' Setting Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813378");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10307 $");
   script_cve_id("CVE-2018-8014");
   script_bugtraq_id(104203);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:31:15 +0530 (Tue, 22 May 2018)");
   script_name("Apache Tomcat 'CORS Filter' Setting Security Bypass Vulnerability");
 

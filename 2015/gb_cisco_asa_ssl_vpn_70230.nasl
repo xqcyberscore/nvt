@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 10297 2018-06-22 09:03:44Z ckuersteiner $
 #
 # Cisco ASA Software Information Disclosure Vulnerability
 #
@@ -14,7 +14,7 @@
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cisco:adaptive_security_appliance_software";
+CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
@@ -34,24 +34,24 @@ if (description)
  script_cve_id("CVE-2014-3398");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 9442 $");
+ script_version("$Revision: 10297 $");
 
  script_name("Cisco ASA Software Information Disclosure Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70230");
  script_xref(name:"URL", value:"http://www.cisco.com/");
 
- script_tag(name: "impact" , value:"An attacker can leverage this issue to obtain sensitive information
+ script_tag(name:"impact", value:"An attacker can leverage this issue to obtain sensitive information
 that may aid in further attacks.");
 
- script_tag(name: "vuldetect" , value:"Try to access /CSCOSSLC/config-auth and check the response");
- script_tag(name: "solution" , value:"Updates are available.");
- script_tag(name: "summary" , value:"Cisco ASA Software is prone to an information-disclosure
+ script_tag(name:"vuldetect", value:"Try to access /CSCOSSLC/config-auth and check the response");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"summary", value:"Cisco ASA Software is prone to an information-disclosure
 vulnerability.");
- script_tag(name: "insight" , value:"This issue is being tracked by Cisco bug ID CSCuq65542.");
- script_tag(name:"solution_type", value: "VendorFix");
+ script_tag(name:"insight", value:"This issue is being tracked by Cisco bug ID CSCuq65542.");
+ script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-22 11:03:44 +0200 (Fri, 22 Jun 2018) $");
  script_tag(name:"creation_date", value:"2015-02-03 11:59:05 +0100 (Tue, 03 Feb 2015)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -69,7 +69,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service: "www" ) ) exit( 0 );
 
 url = '/CSCOSSLC/config-auth';
 req = http_get( item:url, port:port );

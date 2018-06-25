@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 10272 2018-06-20 12:57:08Z cfischer $
+# $Id: httpver.nasl 10310 2018-06-25 08:19:12Z cfischer $
 #
 # HTTP-Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 10272 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 14:57:08 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 10310 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 10:19:12 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,7 @@ if(description)
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   # nb: Don't add a dependency to http_version.nasl to avoid cyclic dependency to embedded_web_server_detect.nasl
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "apache_SSL_complain.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -50,6 +50,27 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+
+# This function makes sure that we're not setting two different
+# HTTP versions for the same port. This could happen if we have
+# multiple vhosts and some of the checks below failed. Instead
+# of setting a new HTTP version or overwriting a previous detected
+# one the highest detected HTTP version is kept.
+function set_http_ver_nd_exit( port, httpver ) {
+
+  local_var port, httpver, _httpver;
+
+  _httpver = get_kb_item( "http/" + port );
+  if( ! _httpver ) {
+    set_kb_item( name:"http/" + port, value:httpver );
+    exit( 0 );
+  }
+
+  if( int( httpver ) > int( _httpver ) )
+    replace_kb_item( name:"http/" + port, value:httpver );
+
+  exit( 0 );
+}
 
 port = get_http_port( default:80 );
 
@@ -82,13 +103,11 @@ if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
 }
 
 else if( buf =~ "^HTTP/1\.1 [1-5][0-9][0-9]" ) {
-  set_kb_item( name:"http/" + port, value:"11" );
-  exit( 0 );
+  set_http_ver_nd_exit( port:port, httpver:"11" );
 }
 
 else if( buf =~ "^HTTP/1\.0 [1-5][0-9][0-9]" ) {
-  set_kb_item( name:"http/" + port, value:"10" );
-  exit( 0 );
+  set_http_ver_nd_exit( port:port, httpver:"10" );
 }
 
 else {
@@ -112,12 +131,9 @@ else {
   }
 
   else if( buf =~ "^HTTP/1\.0 [1-5][0-9][0-9]" ) {
-    set_kb_item( name:"http/" + port, value:"10" );
-    exit( 0 );
+    set_http_ver_nd_exit( port:port, httpver:"10" );
   }
 }
 
 ## if all fail set to 1.0 anyway
-set_kb_item( name:"http/" + port, value:"10" );
-
-exit( 0 );
+set_http_ver_nd_exit( port:port, httpver:"10" );

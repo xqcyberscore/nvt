@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_connect_now.nasl 10289 2018-06-21 14:05:41Z emoss $
+# $Id: win_connect_now.nasl 10305 2018-06-22 13:48:30Z emoss $
 #
 # Check value for Configuration of wireless settings using Windows Connect Now
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109335");
-  script_version("$Revision: 10289 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 16:05:41 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10305 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:48:30 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-21 15:08:48 +0200 (Thu, 21 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -70,7 +70,7 @@ title = 'Configuration of wireless settings using Windows Connect Now';
 fixtext = 'Set following UI path accordingly:
 Computer Configuration/Administrative Templates/Network/Windows Connect Now/' + title;
 type = 'HKLM';
-key = ' Software\\Policies\\Microsoft\\Windows\\WCN\\Registrars';
+key = 'Software\\Policies\\Microsoft\\Windows\\WCN\\Registrars';
 item = 'EnableRegistrars';
 
 value = registry_get_dword(key:key, item:item, type:type);

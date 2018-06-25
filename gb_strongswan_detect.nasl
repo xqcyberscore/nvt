@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_strongswan_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: gb_strongswan_detect.nasl 10300 2018-06-22 12:47:31Z jschulte $
 #
 # StrongSwan Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of StrongSwan and
-  sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800631");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 10300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 14:47:31 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StrongSwan Version Detection");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of StrongSwan and
+  sets the result in KB.");
   exit(0);
 }
 
@@ -53,8 +51,6 @@ include("host_details.inc");
 include("ssh_func.inc");
 include("version_func.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800631";
 SCRIPT_DESC = "StrongSwan Version Detection";
 
 swan_sock = ssh_login_or_reuse_connection();
@@ -73,14 +69,13 @@ foreach swanBin (paths)
   {
     set_kb_item(name:"Openswan_or_StrongSwan/Lin/Installed", value:TRUE);
     set_kb_item(name:"StrongSwan/Ver", value:swanVer[1]);
-    log_message(data:"StrongSwan version " + swanVer[1] + " running at location " 
+    log_message(data:"StrongSwan version " + swanVer[1] + " running at location "
                        + swanBin + " was detected on the host");
     ssh_close_connection();
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: swanVer[1], exp:"^([0-9.]+)",base:"cpe:/a:strongswan:strongswan:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

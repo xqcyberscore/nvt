@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_dos_vuln_squid_2018_3.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_squid_dos_vuln_squid_2018_3.nasl 10302 2018-06-22 13:15:51Z cfischer $
 #
 # Squid Proxy Cache Denial of Service Vulnerability (SQUID-2018:3)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:squid-cache:squid';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813402");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10302 $");
   script_cve_id("CVE-2018-1172");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:15:51 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:25:41 +0530 (Tue, 22 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Proxy Cache Denial of Service Vulnerability (SQUID-2018:3)");

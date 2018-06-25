@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_newlistname_sql_injec_vuln.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_openemr_newlistname_sql_injec_vuln.nasl 10307 2018-06-25 05:05:34Z asteins $
 #
 # OpenEMR 'newlistname' Parameter SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813198");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10307 $");
   script_cve_id("CVE-2018-9250");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-21 11:43:58 +0530 (Mon, 21 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenEMR 'newlistname' Parameter SQL Injection Vulnerability");

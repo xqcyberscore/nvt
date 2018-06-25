@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 10291 2018-06-21 20:22:50Z asteins $
+# $Id: host_details.inc 10296 2018-06-22 06:59:42Z asteins $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10291 $
+# $Revision: 10296 $
 #
 ###############################################################################
 
@@ -122,6 +122,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
     "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.103809", # gb_junos_snmp_version.nasl
@@ -150,7 +151,6 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -206,6 +206,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
     "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
@@ -234,7 +235,6 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );

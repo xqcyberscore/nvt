@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_7cd077ddd3_xen_fc26.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_fedora_2018_7cd077ddd3_xen_fc26.nasl 10307 2018-06-25 05:05:34Z asteins $
 #
 # Fedora Update for xen FEDORA-2018-7cd077ddd3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874616");
-  script_version("$Revision: 9983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10307 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-28 05:53:47 +0200 (Mon, 28 May 2018)");
   script_cve_id("CVE-2018-8897", "CVE-2018-10982", "CVE-2018-10981", "CVE-2018-7540", 
                 "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595", "CVE-2017-17044", 
@@ -39,8 +39,8 @@ if(description)
                 "CVE-2017-9330", "CVE-2017-9524", "CVE-2017-10664", "CVE-2017-11334", 
                 "CVE-2017-8309", "CVE-2017-8379", "CVE-2017-5579", "CVE-2017-7718", 
                 "CVE-2017-12135", "CVE-2017-12137", "CVE-2017-12136", "CVE-2017-12855");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2018-7cd077ddd3");
   script_tag(name:"summary", value:"Check the version of xen");

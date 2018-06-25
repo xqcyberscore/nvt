@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_cisco_asa_detect.nasl 10297 2018-06-22 09:03:44Z ckuersteiner $
 #
 # Cisco ASA SSL VPN Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105033");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9608 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+ script_version("$Revision: 10297 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-22 11:03:44 +0200 (Fri, 22 Jun 2018) $");
  script_tag(name:"creation_date", value:"2014-05-26 15:00:41 +0200 (Mon, 26 May 2014)");
  script_name("Cisco ASA SSL VPN Detection");
 
- script_tag(name:"summary" , value:"The script sends a connection request to the server and attempts
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
 to extract the version number from the reply.");
 
  script_category(ACT_GATHER_INFO);
@@ -103,11 +103,11 @@ vers = 'unknown';
 version = eregmatch( string:buf, pattern:'<version.*>([^<]+)</version>' );
 if( ! isnull( version[1] ) ) vers = version[1]; # Example: 9.0(2)
 
-cpe = build_cpe( value:vers, exp:"^([0-9.()]+)", base:"cpe:/a:cisco:adaptive_security_appliance_software:" );
+cpe = build_cpe( value:vers, exp:"^([0-9.()]+)", base:"cpe:/a:cisco:asa:" );
 if( isnull( cpe ) )
-  cpe = 'cpe:/a:cisco:adaptive_security_appliance_software';
+  cpe = 'cpe:/a:cisco:asa';
 
-register_product( cpe:cpe, location:'/', port:port );
+register_product( cpe:cpe, location:'/', port:port, service: "www" );
 
 log_message(data: build_detection_report(app:"Cisco ASA SSL VPN",
                                          version:vers,

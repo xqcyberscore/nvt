@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 22 Jun 2018 08:35:38 +0200
+# Automatically created on:  Mon, 25 Jun 2018 13:11:43 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38524,7 +38524,10 @@
 2018/apache/gb_apache_solr_xxe_vuln_may18.nasl: GPLv2+
 2018/apache/gb_apache_solr_xxe_vuln.nasl: GPLv2+
 2018/apache/gb_apache_struts_rest_plugin_dos_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tika_server_java_code_exec_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tika_server_junrar_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_mult_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tika_server_xxe_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_lin.nasl: GPLv2+
@@ -38855,6 +38858,8 @@
 2018/debian/deb_4230.nasl: GPLv2+
 2018/debian/deb_4231.nasl: GPLv2+
 2018/debian/deb_4232.nasl: GPLv2+
+2018/debian/deb_4233.nasl: GPLv2+
+2018/debian/deb_4234.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39607,6 +39612,7 @@
 2018/fedora/gb_fedora_2018_43712163de_webkitgtk4_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_44c6f91560_libtiff_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_44e1c23700_qt5-qtwebengine_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_44f8a7454d_qemu_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_455803056d_prosody_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_45d8b8ae21_puppet_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_46f48df07d_flac_fc27.nasl: GPLv2+
@@ -39632,6 +39638,7 @@
 2018/fedora/gb_fedora_2018_5051dbd15e_dhcp_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_505e83d30e_webkitgtk4_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_50f0da5d38_tomcat_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_527698a904_libvirt_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_52d79f4f36_dovecot_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_52ee188215_cobbler_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_537c8312fc_kernel_fc28.nasl: GPLv2+
@@ -40651,6 +40658,8 @@
 2018/opensuse/gb_suse_2018_1724_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_1727_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_1733_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_1770_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_1773_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -40780,6 +40789,7 @@
 2018/qnap/gb_qnap_qts_20171222.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_info_disc_vuln_apr18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_xss_vuln_apr18.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_xss_vuln_jun18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_xss_vuln_nas-201804-27.nasl: GPLv2+
 2018/quest/gb_quest_dr_series_appliance_default_cred_vuln.nasl: GPLv2+
 2018/redatam/gb_redatam_dir_trav_vuln.nasl: GPLv2+
@@ -41010,6 +41020,8 @@
 2018/ubuntu/gb_ubuntu_USN_3687_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3688_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3689_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3690_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3691_1.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
@@ -57523,6 +57535,7 @@ gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171129-nxos8.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171129-nxos9.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171129-nxos.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171129-switch.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-cli-injection.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_pcp_cisco-sa-20171101-cpcp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_prime_dcnm_cisco-sa-20171129-dcnm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_small_bussiness_300_series_switch_dos_vuln.nasl: GPLv2+
@@ -57757,6 +57770,7 @@ gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asaanyconnect.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asa_inspect.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180606-asaftd_active.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180606-asaftd.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180207-esacsm.nasl: GPLv2+
@@ -57771,6 +57785,7 @@ gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180418-ucm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180516-cucm-cup-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-cucm-xfs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-ucm-xss.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180620-ucmim-ps-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180207-esacsm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180207-fss.nasl: GPLv2+
@@ -57857,13 +57872,19 @@ gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fx-os-fabric-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-fx-os-fabric-execution.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-n3k-n9k-clisnmp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-n4k-snmp-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxosadmin.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-api-execution.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxosbgp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-bo.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-cdp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-cli-execution.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-fabric-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nx-os-fabric-services-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxosigmp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-nxapi.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-rbaccess.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxosrbac.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxossnmp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180307-cpcp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-cpcp-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-diskdos.nasl: GPLv2+
@@ -58376,6 +58397,7 @@ gsf/2018/rhel/gb_RHSA-2018_1879-01_glibc.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1883-01_samba4.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1929-01_libvirt.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_1932-01_zsh.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_1957-01_git.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
@@ -59913,6 +59935,7 @@ Policy/Microsoft/Office2013/office2013_telemetry_data_collection.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_trust_bar_notifications.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_vml_for_browser_graphics.nasl: GPLv2+
 Policy/Microsoft/Windows10/MSSecurityGuide/win_sg_defender_pua.nasl: GPLv2+
+Policy/Microsoft/Windows10/Network/win_autoconnect_allowed_oem.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_limit_local_account_blank_password_console.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_rename_admin_account.nasl: GPLv2+
@@ -59928,6 +59951,7 @@ Policy/Microsoft/Windows10/SystemServices/win_xbox_game_monitoring.nasl: GPLv2+
 Policy/Microsoft/Windows10/SystemServices/win_xbox_live_auth_manager.nasl: GPLv2+
 Policy/Microsoft/Windows10/SystemServices/win_xbox_live_game_save.nasl: GPLv2+
 Policy/Microsoft/Windows10/SystemServices/win_xbox_live_networking.nasl: GPLv2+
+Policy/Microsoft/Windows10/System/win_allow_protected_credentials.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_computer_from_network.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_credential_manager_trusted_caller.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_act_as_part_of_os.nasl: GPLv2+
@@ -60079,9 +60103,12 @@ Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_always.n
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_sign_communication_possible.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/NetworkServer/win_ns_spn_validation_level.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_connect_now.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_connect_now_wizards.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_dc_multicast_name_resolution.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_dc_netbios_node_type.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_disable_ipv6.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_fblock_non_domain.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/Network/win_fminimize_connections.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_font_providers.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_hardened_unc_path.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Network/win_insecure_guest_logons.nasl: GPLv2+
@@ -60139,6 +60166,32 @@ Policy/Microsoft/WindowsGeneral/SystemServices/win_ssdp_discovery.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_upnp_device_host.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_web_management_service.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_www_publishing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_access_store.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_bootstart_driver_initialization.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_content_file_updates.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_continue_experience_device.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_cust_experience.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_devices_already_installed.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_devices_id.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_drivers_already_installed.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_drivers_setup_classes.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt_driver.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_download_print_driver_http.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_error_reporting.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_handwriting_data_sharing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_handwriting_error_sharing.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_inet_connection_wizard.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_messenger_cust_experience.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_background_policy.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_background_refresh_gp.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_gpo_list_changes.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_publishing_wizard.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_registration.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_no_web_services.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_order_print_pic_task.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_printing_over_http.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_process_creation_cmd_line.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_admin_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_all_admins_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_apps_install_prompt.nasl: GPLv2+

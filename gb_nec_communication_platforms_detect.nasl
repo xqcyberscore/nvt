@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nec_communication_platforms_detect.nasl 10291 2018-06-21 20:22:50Z asteins $
+# $Id: gb_nec_communication_platforms_detect.nasl 10296 2018-06-22 06:59:42Z asteins $
 #
 # NEC Communication Platforms Devices Detection
 #
@@ -32,8 +32,8 @@ if (description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_version("$Revision: 10291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 22:22:50 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 08:59:42 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-21 12:10:11 +0200 (Thu, 21 Jun 2018)");
 
   script_name("NEC Communication Platforms Devices Detection");
@@ -111,7 +111,15 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
     set_kb_item( name:"nec/communication_platforms/model", value:model );
     set_kb_item( name:"nec/communication_platforms/version", value:version );
 
-    register_and_report_cpe( app: "NEC Communication Platforms", ver: version, concluded: version_match[0], base: "cpe:/o:nec:communication_platforms_" + tolower(model) +":" , expr: '([0-9.]+)', insloc: install, regPort: port, conclUrl: concluded_url );
+		base = "cpe:/o:nec:communication_platforms_" + tolower(model);
+		app = "NEC Communication Platforms";
+
+		os_cpe = build_cpe( value:version, exp:"([0-9.]+)", base:base + ":" );
+		if( ! os_cpe )
+  		os_cpe = base;
+
+		register_and_report_os( os:app, cpe:os_cpe, banner_type:"HTTP Login Page", port:port, desc:"NEC Communication Platforms Devices Detection", runs_key:"unixoide" );
+		register_and_report_cpe( app:app, ver:version, concluded:version_match[0], cpename:os_cpe, insloc:install, regPort:port, conclUrl:concluded_url );
 
 		exit(0);
   }

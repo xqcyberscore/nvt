@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10280 2018-06-21 08:12:50Z cfischer $
+# $Id: find_service1.nasl 10310 2018-06-25 08:19:12Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10280 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 10:12:50 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10310 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 10:19:12 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
-  script_dependencies("find_service.nasl", "cifs445.nasl");
+  script_dependencies("find_service.nasl", "cifs445.nasl", "apache_SSL_complain.nasl");
   script_require_ports("Services/unknown");
 
   script_tag(name:"summary", value:"This plugin performs service detection.

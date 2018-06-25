@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 10302 2018-06-22 13:15:51Z cfischer $
 #
 # Nagios XI Multiple Vulnerabilities-April18
 #
@@ -31,13 +31,13 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813215");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10302 $");
   script_cve_id("CVE-2018-8733", "CVE-2018-8734", "CVE-2018-8735", "CVE-2018-8736",
                 "CVE-2018-10736", "CVE-2018-10735", "CVE-2018-10738", "CVE-2018-10737",
                 "CVE-2018-10810");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:15:51 +0200 (Fri, 22 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 10:44:16 +0530 (Fri, 27 Apr 2018)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Nagios XI Multiple Vulnerabilities-April18");

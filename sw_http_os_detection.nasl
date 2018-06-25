@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10206 2018-06-15 06:25:29Z cfischer $
+# $Id: sw_http_os_detection.nasl 10306 2018-06-24 10:42:21Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10206 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 08:25:29 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10306 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-24 12:42:21 +0200 (Sun, 24 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1126,6 +1126,14 @@ if( defaultpage && user_agent = egrep( pattern:"^User-Agent:(.*)$", string:defau
     exit( 0 );
   }
   register_unknown_os_banner( banner:user_agent, banner_type_name:banner_type, banner_type_short:"http_user_agent_banner", port:port );
+}
+
+# TODO: There might be more of such default pages for other Distros...
+# But at least Ubuntu is using the index.nginx-debian.html as well.
+url = "/index.nginx-debian.html";
+buf = http_get_cache( item:url, port:port );
+if( buf && buf =~ "^HTTP/1\.[01] 200" && "<title>Welcome to nginx!</title>" >< buf ) {
+  register_and_report_os( os:"Debian GNU/Linux or Ubuntu", cpe:"cpe:/o:debian:debian_linux", banner_type:"HTTP Server default page", port:port, banner:report_vuln_url( port:port, url:url, url_only:TRUE ), desc:SCRIPT_DESC, runs_key:"unixoide" );
 }
 
 exit( 0 );
