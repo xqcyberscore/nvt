@@ -1,9 +1,11 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mod_rootme_backdoor.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Apache mod_rootme Backdoor
+# $Id: mod_rootme_backdoor.nasl 10317 2018-06-25 14:09:46Z cfischer $
+#
+# Apache mod_rootme Backdoor
 #
 # Authors:
-# Noam Rathaus and upgraded by Alexei Chicheev for mod_rootme v.0.3 detection 
+# Noam Rathaus and upgraded by Alexei Chicheev for mod_rootme v.0.3 detection
 #
 # Copyright:
 # Copyright (C) 2004 Noam Rathaus and upgraded (15.03.2005) by Alexei Chicheev for mod_rootme v.0.3 detection
@@ -20,42 +22,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote system appears to be running the mod_rootme module,
-this module silently allows a user to gain a root shell access
-to the machine via HTTP requests.";
-
-tag_solution = "- Remove the mod_rootme module from httpd.conf/modules.conf
-- Consider reinstalling the computer, as it is likely to have been 
-compromised by an intruder";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13644");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  name = "Apache mod_rootme Backdoor";
-  script_name(name);
- 
- 
-  summary = "Detect mod_rootme Backdoor";
- 
+  script_name("Apache mod_rootme Backdoor");
   script_category(ACT_GATHER_INFO);
- 
-  script_copyright("This script is Copyright (C) 2004 Noam Rathaus and upgraded (15.03.2005) by Alexei Chicheev for mod_rootme v.0.3 detection");
-
-  family = "Malware";
-  script_family(family);
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Malware");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("apache/banner");
   script_require_ports("Services/www", 80);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"solution", value:"- Remove the mod_rootme module from httpd.conf/modules.conf
+
+  - Consider reinstalling the computer, as it is likely to have been compromised by an intruder");
+
+  script_tag(name:"summary", value:"The remote system appears to be running the mod_rootme module,
+  this module silently allows a user to gain a root shell access to the machine via HTTP requests.");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
 
@@ -63,13 +57,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (! port) exit(0);
-
 banner = get_http_banner(port:port);
 if ( ! banner || "Apache" >!< banner ) exit(0);
-
-if(!get_port_state(port))exit(0);
 if ( get_kb_item("Services/www/" + port + "/embedded" ) ) exit(0);
+
+host = http_host_name(port:port);
 
 soc = open_sock_tcp(port);
 if (soc)
@@ -78,22 +70,21 @@ if (soc)
  # We need to emulate a netcat, slow sending, single line each time, unlike HTTP that can
  # receive everything as a block
  send(socket:soc, data:string("GET root HTTP/1.0\n",
-                              "Host: ", get_host_name(),"\r\n"));
+                              "Host: ", host,"\r\n"));
  sleep(1);
  send(socket:soc, data:string("\n"));
  sleep(1);
  res_vx = recv(socket:soc, length:1024);
  if ( ! res_vx ) exit(0);
  send(socket:soc, data:string("id\r\n",
-                              "Host: ", get_host_name(), "\r\n"));
+                              "Host: ", host, "\r\n"));
  res = recv(socket:soc, length:1024);
  if (res == NULL) exit(0);
  if (ereg(pattern:"^uid=[0-9]+\(root\)", string:res) && ereg(pattern:"^rootme-[0-9].[0-9] ready", string:res_vx))
  {
   send(socket:soc, data:string("exit\r\n",
-                               "Host: ", get_host_name(), "\r\n")); # If we don't exit we can cause Apache to crash
+                               "Host: ", host, "\r\n")); # If we don't exit we can cause Apache to crash
   security_message(port:port);
  }
  close(soc);
 }
-

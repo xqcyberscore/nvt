@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: 404.inc 9735 2018-05-05 11:42:04Z cfischer $
+# $Id: 404.inc 10316 2018-06-25 12:34:33Z cfischer $
 #
 # Include to provide common error messages interpreted as a 404
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9735 $
+# $Revision: 10316 $
 #
 ###############################################################################
 
@@ -71,6 +71,7 @@ errmessages_404 = make_list(
 ">Login<",
 "<br/>Pi-<b>hole</b>: Your black hole for Internet advertisements", # Pi-hole catchall page
 "cannot be found", # IIS and probably more
+"No route found for ", # Symfony framework, should throw an 404 Not Found but there might be other deployments where this doesn't apply.
 "Requested resource does not exist" ); # SAP NetWeaver
 
 global_var errmessges_404;

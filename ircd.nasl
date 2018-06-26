@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ircd.nasl 10160 2018-06-12 10:06:38Z cfischer $
+# $Id: ircd.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # IRC daemon identification
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11156");
-  script_version("$Revision: 10160 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,6 +52,8 @@ port = get_kb_item( "Services/irc" );
 if( ! port ) port = 6667;
 if( ! get_port_state( port ) ) exit( 0 );
 
+host = get_host_name();
+
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
@@ -61,7 +63,7 @@ for( i = 0; i < 9; i++ ) nick += raw_string( 0x41 + ( rand() % 10 ) );
 user = nick;
 
 req = string( "NICK ", nick, "\r\n",
-              "USER ", nick, " ", this_host_name(), " ", get_host_name(),
+              "USER ", nick, " ", this_host_name(), " ", host,
               " :", user, "\r\n" );
 send( socket:soc, data:req );
 

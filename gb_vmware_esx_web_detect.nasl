@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_web_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_vmware_esx_web_detect.nasl 10312 2018-06-25 11:10:27Z cfischer $
 #
-# VMware ESX detection (Web)
+# VMware ESX Detection (Web)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103418");
-  script_version("$Revision: 9996 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_version("$Revision: 10312 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 11:30:38 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("VMware ESX detection (Web)");
+  script_name("VMware ESX Detection (Web)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -58,38 +58,34 @@ include("http_keepalive.inc");
 SCRIPT_DESC = "VMware ESX detection (Web)";
 
 port = get_http_port(default:443);
-transport = get_port_transport(port);
+host = http_host_name(port:port);
 
-soc = open_sock_tcp(port, transport: transport);
+soc = open_sock_tcp(port);
 if(!soc) {
   exit(0);
 }
 
-host = http_host_name(port:port);
-
 req  = string("GET / HTTP/1.1\r\n");
-req += string("Host: ",host,"\r\n\r\n");
+req += string("Host: ", host, "\r\n\r\n");
 
-send(socket: soc, data: req);
+send(socket:soc, data:req);
 buf = recv(socket:soc, length:8192);
 close(soc);
 
-if("VMware ESX" >!< buf && "ID_EESX_Welcome" >!< buf)
-{
+if("VMware ESX" >!< buf && "ID_EESX_Welcome" >!< buf){
   url = '/ui/';
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
   if( "esxUiApp" >!< buf || "root.title" >!< buf ) exit( 0 );
 }
 
-soc = open_sock_tcp(port, transport: transport);
+soc = open_sock_tcp(port);
 if(!soc)exit(0);
 
 vers = "unknown";
 
 req  = string("POST /sdk HTTP/1.1\r\n");
-req += string("Host: ",host,"\r\n");
+req += string("Host: ", host, "\r\n");
 req += string("Content-Type: application/x-www-form-urlencoded\r\n");
 req += string("Content-Length: 348\r\n\r\n");
 req += string('
@@ -102,8 +98,9 @@ req += string('
 </env:Envelope>');
 req += string("\r\n");
 
-send(socket: soc, data: req);
+send(socket:soc, data:req);
 buf = recv(socket:soc, length:8192);
+close(soc);
 
 if("RetrieveServiceContentResponse" >< buf) {
 
@@ -135,17 +132,14 @@ if("RetrieveServiceContentResponse" >< buf) {
   if(!isnull(r[1])) {
     rs = r[1];
   }
-
 }
-
-close(soc);
 
 if("ESXi" >< typ) {
   cpe_string = "cpe:/o:vmware:esxi";
-  set_kb_item(name:"VMware/ESX/typ/ESXi",value:TRUE); # ESXi
+  set_kb_item(name:"VMware/ESX/typ/ESXi", value:TRUE); # ESXi
 } else {
   cpe_string = "cpe:/o:vmware:esx";
-  set_kb_item(name:"VMware/ESX/typ/ESXs",value:TRUE); # ESX Server
+  set_kb_item(name:"VMware/ESX/typ/ESXs", value:TRUE); # ESX Server
 }
 
 if(vers != "unknown") {
@@ -156,10 +150,10 @@ if(vers != "unknown") {
 
 register_and_report_os( os:"VMware ESX(i)", cpe:cpe, banner_type:"HTTP banner", port:port, desc:SCRIPT_DESC, runs_key:"unixoide" );
 
-set_kb_item(name:"VMware/GSX-Server/web/version",value:vers);
-set_kb_item(name:"VMware/ESX/version",value:vers);
-set_kb_item(name:"VMware/ESX/installed",value:TRUE);
-set_kb_item(name:"VMware/ESX/port",value:port);
+set_kb_item(name:"VMware/GSX-Server/web/version", value:vers);
+set_kb_item(name:"VMware/ESX/version", value:vers);
+set_kb_item(name:"VMware/ESX/installed", value:TRUE);
+set_kb_item(name:"VMware/ESX/port", value:port);
 
 result_txt = 'Detected ' + typ  + ' Version: ';
 result_txt += vers;

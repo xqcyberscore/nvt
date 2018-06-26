@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 9047 2018-03-07 14:32:51Z cfischer $
+# $Id: find_service2.nasl 10315 2018-06-25 12:19:08Z asteins $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 9047 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 15:32:51 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 10315 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 14:19:08 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1365,7 +1365,13 @@ if( "cvs [pserver]" >< r ) {
   report_and_exit( port:port, data:"A CVS pserver is running on this port" );
 }
 
-if( "@ABCDEFGHIJKLMNOPQRSTUV" >< r ) {
+# Ensuring that at least 3 patterns match
+# In case a pattern is missing or doesn't make it into the response (due to it being slow), the service will still be reported
+chargen_found = 0;
+foreach chargen_pattern( make_list( '!"#$%&\'()*+,-./', "ABCDEFGHIJ", "abcdefg", "0123456789" ) ) {
+  if( chargen_pattern >< r ) chargen_found++;
+}
+if( chargen_found > 2 ) {
   register_service( port:port, proto:"chargen" );
   report_and_exit( port:port, data:"A chargen server is running on this port" );
 }

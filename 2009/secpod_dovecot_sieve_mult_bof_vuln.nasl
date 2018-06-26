@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 10327 2018-06-26 11:35:30Z jschulte $
 #
 # Dovecot Sieve Plugin Multiple Buffer Overflow Vulnerabilities
 #
@@ -24,29 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the patch  or upgrade to Dovecot version 1.1.4 or 1.1.7
-  http://www.dovecot.org/download.html
-  http://hg.dovecot.org/dovecot-sieve-1.1/rev/049f22520628
-  http://hg.dovecot.org/dovecot-sieve-1.1/rev/4577c4e1130d
-
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful attack could allow malicious people to crash an affected
-  application or execute arbitrary code.
-  Impact Level: Application";
-tag_affected = "Dovecot versions 1.0 before 1.0.4 and 1.1 before 1.1.7";
-tag_insight = "Multiple buffer overflow errors in the CMU libsieve when processing
-  malicious SIEVE scripts.";
-tag_summary = "This host has Dovecot Sieve Plugin installed and is prone to
-  multiple Buffer Overflow Vulnerabilities";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901026");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10327 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 13:35:30 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,34 +36,51 @@ if(description)
   script_bugtraq_id(36377);
   script_name("Dovecot Sieve Plugin Multiple Buffer Overflow Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/53248");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2641");
-  script_xref(name : "URL" , value : "http://www.dovecot.org/list/dovecot-news/2009-September/000135.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53248");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2641");
+  script_xref(name:"URL", value:"http://www.dovecot.org/list/dovecot-news/2009-September/000135.html");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("secpod_dovecot_detect.nasl");
-  script_require_keys("Dovecot/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_dependencies("gb_dovecot_consolidation.nasl");
+  script_require_keys("dovecot/detected");
+  script_tag(name:"impact", value:"Successful attack could allow malicious people to crash an affected
+  application or execute arbitrary code.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Dovecot versions 1.0 before 1.0.4 and 1.1 before 1.1.7");
+  script_tag(name:"insight", value:"Multiple buffer overflow errors in the CMU libsieve when processing
+  malicious SIEVE scripts.");
+  script_tag(name:"summary", value:"This host has Dovecot Sieve Plugin installed and is prone to
+  multiple Buffer Overflow Vulnerabilities");
+  script_tag(name:"solution", value:"Apply the patch  or upgrade to Dovecot version 1.1.4 or 1.1.7
+
+  *****
+  NOTE: Ignore this warning, if above mentioned patch is already applied.
+  *****");
+
+  script_xref(name:"URL", value:"http://www.dovecot.org/download.html");
+  script_xref(name:"URL", value:"http://hg.dovecot.org/dovecot-sieve-1.1/rev/049f22520628");
+  script_xref(name:"URL", value:"http://hg.dovecot.org/dovecot-sieve-1.1/rev/4577c4e1130d");
+
   exit(0);
 }
 
+CPE = "cpe:/a:dovecot:dovecot";
 
-include("version_func.inc");
+include( "host_details.inc" );
+include( "version_func.inc" );
 
-dovecotVer = get_kb_item("Dovecot/Ver");
-if(dovecotVer != NULL)
+if( ! dovecotVer = get_app_version( cpe: CPE ) ) exit( 0 );
+
+if( version_in_range( version: dovecotVer, test_version: "1.0", test_version2: "1.0.3" ) ||
+  version_in_range( version: dovecotVer, test_version: "1.1", test_version2: "1.1.6" ) )
 {
-  if(version_in_range(version:dovecotVer, test_version:"1.0", test_version2:"1.0.3") ||
-    version_in_range(version:dovecotVer, test_version:"1.1", test_version2:"1.1.6"))
-  {
-    security_message(0);
-    exit(0);
-  }
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit( 0 );
 }
+
+exit( 99 );

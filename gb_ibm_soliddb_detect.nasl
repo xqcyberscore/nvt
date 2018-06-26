@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_ibm_soliddb_detect.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # SolidDB Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100721");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10317 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-07-21 19:56:46 +0200 (Wed, 21 Jul 2010)");
   script_name("SolidDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,12 +57,14 @@ include("misc_func.inc");
 include("host_details.inc");
 
 port = get_unknown_port( default:1315 );
+host = get_host_name();
+
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
 user = "DBA";
 pass = raw_string( 0x76, 0xce, 0xa5, 0x2d, 0x72, 0x4f, 0x6f, 0x02 );
-tcp = string( "tcp ", get_host_name(), " ", port );
+tcp = string( "tcp ", host, " ", port );
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
 # TODO: id is currently undefined here

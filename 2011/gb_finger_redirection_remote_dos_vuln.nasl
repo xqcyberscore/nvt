@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finger_redirection_remote_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_finger_redirection_remote_dos_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # Finger Redirection Remote Denial of Service Vulnerability
 #
@@ -27,75 +27,72 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802231");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-1999-0106");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Finger Redirection Remote Denial of Service Vulnerability");
-
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/47");
-  script_xref(name : "URL" , value : "http://www.securityspace.com/smysecure/catid.html?id=10073");
-  script_xref(name : "URL" , value : "http://www.iss.net/security_center/reference/vuln/finger-bomb.htm");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Finger abuses");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/finger", 79);
 
-  script_tag(name : "impact" , value : "Successful exploitation will let the attacker to use this computer as a relay
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/47");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?id=10073");
+  script_xref(name:"URL", value:"http://www.iss.net/security_center/reference/vuln/finger-bomb.htm");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker to use this computer as a relay
   to gather information on a third-party network or cause a denial of service.
+
   Impact Level: Application");
-  script_tag(name : "affected" , value : "GNU Finger.");
-  script_tag(name : "insight" , value : "The flaw exists due to finger daemon allows redirecting a finger request to
+
+  script_tag(name:"affected", value:"GNU Finger.");
+
+  script_tag(name:"insight", value:"The flaw exists due to finger daemon allows redirecting a finger request to
   remote sites using the form finger 'username@hostname1@hostname2'.");
-  script_tag(name : "solution" , value : "Upgrade to GNU finger 1.37 or later,
+
+  script_tag(name:"solution", value:"Upgrade to GNU finger 1.37 or later,
   For updates refer, ftp://prep.ai.mit.edu/old-gnu/finger/finger-1.37.tar.gz");
-  script_tag(name : "summary" , value : "This host is running Finger service and is prone to denial of
+
+  script_tag(name:"summary", value:"This host is running Finger service and is prone to denial of
   service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
-
-## Get Finger Port
 port = get_kb_item("Services/finger");
 if(!port){
   port = 79;
 }
 
-## Check Port Status
 if(! get_port_state(port)){
   exit(0);
 }
 
-## Open TCP Socket
+host = get_host_name();
+
 soc = open_sock_tcp(port);
 if(! soc){
   exit(0);
 }
 
-## Confirm Finger
 banner = recv(socket:soc, length:2048, timeout:5);
 if(banner) {
   exit(0);
 }
 
-host = get_host_name();
 req = "root@" + host + "\r\n";
 
-## Send And Receive The Response
 send(socket: soc, data: req);
 res = recv(socket:soc, length:65535);
 close(soc);
 
-## Confirm Vulnerability
 res = tolower(res);
 if( res && "such user" >!< res && "doesn't exist" >!< res &&
     "???" >!< res && "invalid" >!< res && "forward" >!< res){

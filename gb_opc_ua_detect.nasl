@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opc_ua_detect.nasl 4412 2016-11-03 15:31:24Z mime $
+# $Id: gb_opc_ua_detect.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # OPC-UA Detection
 #
@@ -25,32 +25,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140050");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4412 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-03 16:31:24 +0100 (Thu, 03 Nov 2016) $");
- script_tag(name:"creation_date", value:"2016-11-03 14:59:49 +0100 (Thu, 03 Nov 2016)");
- script_name("OPC-UA Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.140050");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-03 14:59:49 +0100 (Thu, 03 Nov 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("OPC-UA Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/unknown", 4840);
 
- script_tag(name: "summary" , value: "This script performs detection of OPC-UA Servers.");
+  script_tag(name:"summary", value:"This script performs detection of OPC-UA Servers.");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/unknown", 4840);
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
 include("byte_func.inc");
 
 port = get_unknown_port( default:4840 );
+host = get_host_name();
 
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 
@@ -60,7 +61,7 @@ opc_req_header = raw_string('HEL', # Message Type (Hello)
                             'F'    # Chunk Type
                            );
 
-EndPointUrl = 'opc.tcp://' + get_host_name() + ':' + port;
+EndPointUrl = 'opc.tcp://' + host + ':' + port;
 
 epu_len = strlen( EndPointUrl );
 epu_len = mkdword( epu_len );
@@ -90,4 +91,3 @@ register_service( port:port, proto:'opc-ua' );
 log_message( port:port, data:"A OPC-UA Server seems to be running at this port." );
 
 exit( 0 );
-

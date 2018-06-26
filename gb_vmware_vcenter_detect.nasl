@@ -1,14 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_vmware_vcenter_detect.nasl 10312 2018-06-25 11:10:27Z cfischer $
 #
-# VMware ESX detection (Web)
+# VMware ESX Detection (Web)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2012 Greenbone Networks GmbH
+# Copyright (c) 2013 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -25,28 +25,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_tag(name:"cvss_base", value:"0.0");
- script_oid("1.3.6.1.4.1.25623.1.0.103659");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
- script_name("VMware vCenter detection (Web)");
+  script_oid("1.3.6.1.4.1.25623.1.0.103659");
+  script_version("$Revision: 10312 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("VMware vCenter Detection (Web)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.vmware.com");
 
- script_tag(name : "summary" , value : "This host is running VMware vCenter.");
- script_xref(name : "URL" , value : "http://www.vmware.com");
+  script_tag(name:"summary", value:"This host is running VMware vCenter.");
 
- script_tag(name:"qod_type", value:"remote_banner");
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("cpe.inc");
@@ -54,31 +55,28 @@ include("host_details.inc");
 include("http_func.inc");
 
 port = get_http_port(default:443);
-transport = get_port_transport(port);
+host = http_host_name(port:port);
 
-soc = open_sock_tcp(port, transport: transport);
-if(!soc) {
+soc = open_sock_tcp(port);
+if(!soc){
   exit(0);
 }
 
-host = http_host_name(port:port);
-
 req  = string("GET / HTTP/1.1\r\n");
-req += string("Host: ",host,"\r\n\r\n");
+req += string("Host: ", host, "\r\n\r\n");
 
-send(socket: soc, data: req);
+send(socket:soc, data:req);
 buf = recv(socket:soc, length:8192);
-
+close(soc); # needed for the strange behaviour of esx 3.x
 if("VMware" >!< buf)exit(0);
 
-close(soc); # needed for the strange behaviour of esx 3.x
-soc = open_sock_tcp(port, transport: transport);
+soc = open_sock_tcp(port);
 if(!soc)exit(0);
 
 vers = "unknown";
 
 req  = string("POST /sdk HTTP/1.1\r\n");
-req += string("Host: ",host,"\r\n");
+req += string("Host: ", host, "\r\n");
 req += string("Content-Type: application/x-www-form-urlencoded\r\n");
 req += string("Content-Length: 348\r\n\r\n");
 req += string('
@@ -91,8 +89,9 @@ req += string('
 </env:Envelope>');
 req += string("\r\n");
 
-send(socket: soc, data: req);
+send(socket:soc, data:req);
 buf = recv(socket:soc, length:8192);
+close(soc);
 
 if("RetrieveServiceContentResponse" >!< buf)exit(0);
 if("<fullName>VMware vCenter Server" >!< buf)exit(0);
@@ -119,9 +118,6 @@ if(!isnull(r[1])) {
   rs = r[1];
 }
 
-
-close(soc);
-
 cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:vmware:vcenter:");
 if(isnull(cpe))
   cpe = 'cpe:/a:vmware:vcenter';
@@ -129,14 +125,14 @@ if(isnull(cpe))
 register_product(cpe:cpe, location:port + "/tcp", port:port);
 
 set_kb_item(name:"VMware_vCenter/installed", value:TRUE);
-set_kb_item(name:"VMware_vCenter/version", value: vers);
-set_kb_item(name:"VMware_vCenter/build", value: build);
-set_kb_item(name:"VMware_vCenter/port", value: port);
+set_kb_item(name:"VMware_vCenter/version", value:vers);
+set_kb_item(name:"VMware_vCenter/build", value:build);
+set_kb_item(name:"VMware_vCenter/port", value:port);
 
 # mandatory key for gb_apache_struts_CVE_2017_5638.nasl
-set_kb_item(name:"www/action_jsp_do", value: TRUE);
+set_kb_item(name:"www/action_jsp_do", value:TRUE);
 
-log_message(data: build_detection_report(app:"VMware vCenter Server", version:vers, install:port + '/tcp', cpe:cpe, concluded: rs),
+log_message(data:build_detection_report(app:"VMware vCenter Server", version:vers, install:port + '/tcp', cpe:cpe, concluded:rs),
             port:port);
 
 exit(0);

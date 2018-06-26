@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_policyd-weight_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: sw_policyd-weight_detect.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # poliycd-weight Server Detection
 #
@@ -28,19 +28,18 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111037");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2015-09-12 10:00:00 +0200 (Sat, 12 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("poliycd-weight Server Detection");
- 
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection"); 
+  script_family("Service detection");
   script_dependencies("find_service_3digits.nasl");
   script_require_ports("Services/unknown", 12525);
 
-  script_tag(name : "summary" , value : "The script checks the presence of a policyd-weight server.");
+  script_tag(name:"summary", value:"The script checks the presence of a policyd-weight server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -52,38 +51,36 @@ include("misc_func.inc");
 
 port = get_unknown_port( default:12525 );
 
+host = get_host_name();
+
 soc = open_sock_tcp( port );
-if( soc ) {
+if( ! soc ) exit( 0 );
 
-  host = get_host_name();
+req = "helo_name=" + host + '\r\n' +
+      "sender=openvas@" + host + '\r\n' +
+      "client_address=" + get_host_ip() + '\r\n' +
+      "request=smtpd_access_policy" + '\r\n\r\n';
 
-  req = "helo_name=" + host + '\r\n' + 
-        "sender=openvas@" + host + '\r\n' +
-        "client_address=" + get_host_ip() + '\r\n' +
-        "request=smtpd_access_policy" + '\r\n\r\n';
+send( socket:soc, data:req );
+buf = recv( socket:soc, length:256 );
+close( soc );
 
-  send( socket:soc, data:req );
+if( concluded = egrep( string:buf, pattern:"action=(ACTION|DUNNO|550|450|PREPEND)(.*)" ) ) {
 
-  buf = recv( socket:soc, length:256 );
-  close( soc );
+  install = port + "/tcp";
+  register_service( port:port, proto:"policyd-weight" );
+  set_kb_item( name:"policyd-weight/installed", value:TRUE );
 
-  if( concluded = egrep( string:buf, pattern:"action=(ACTION|DUNNO|550|450|PREPEND)(.*)" ) ) {
+  ## CPE is currently not registered
+  cpe = 'cpe:/a:policyd-weight:policyd-weight';
 
-    register_service(port:port, proto:"policyd-weight");
-    set_kb_item( name:"policyd-weight/installed", value: TRUE );
+  register_product( cpe:cpe, location:install, port:port );
 
-    ## CPE is currently not registered
-    cpe = 'cpe:/a:policyd-weight:policyd-weight';
-
-    ## Register Product and Build Report
-    register_product( cpe:cpe, location:port + '/tcp', port:port );
-
-    log_message( data:build_detection_report( app:"policyd-weight server",
-                                                   install:port + '/tcp',
-                                                   cpe:cpe,
-                                                   concluded:concluded ),
-                                                   port:port );
-  }
+  log_message( data:build_detection_report( app:"policyd-weight server",
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:concluded ),
+                                            port:port );
 }
 
 exit( 0 );

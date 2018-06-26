@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_overflows.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Generic SMTP overflows
+# $Id: smtp_overflows.nasl 10317 2018-06-25 14:09:46Z cfischer $
+#
+# Generic SMTP overflows
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,50 +22,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote SMTP server crashes when it is send a command 
-with a too long argument.
-
-A cracker might use this flaw to kill this service or worse,
-execute arbitrary code on your server.";
-
-tag_solution = "upgrade your MTA or change it.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11772");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  name = "Generic SMTP overflows";
-  script_name(name);
- 
-
-
-		    
- 
-  summary = "Tries overflows on SMTP commands arguments"; 
- 
+  script_name("Generic SMTP overflows");
   script_category(ACT_DESTRUCTIVE_ATTACK);
-  script_tag(name:"qod_type", value:"remote_active");
- 
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
- 
-  family = "SMTP problems";
-  script_family(family);
+  script_family("SMTP problems");
   script_dependencies("sendmail_expn.nasl", "smtpserver_detect.nasl");
   script_exclude_keys("SMTP/wrapped");
   script_require_ports("Services/smtp", 25);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"solution", value:"Upgrade your MTA or change it.");
+
+  script_tag(name:"summary", value:"The remote SMTP server crashes when it is send a command
+  with a too long argument.
+
+  A cracker might use this flaw to kill this service or worse, execute arbitrary code on your server.");
+
+  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
-
-#
 
 include("smtp_func.inc");
 
@@ -72,20 +60,22 @@ if (! port) port = 25;
 if (get_kb_item('SMTP/'+port+'/broken')) exit(0);
 if(! get_port_state(port)) exit(0);
 
+host = get_host_name();
+
 soc = open_sock_tcp(port);
 if (! soc) exit(0);
 banner = smtp_recv_banner(socket:soc);
 
 cmds = make_list(
-	"HELO", 
-	"EHLO", 
-	"MAIL FROM:", 
-	"RCPT TO:", 
+	"HELO",
+	"EHLO",
+	"MAIL FROM:",
+	"RCPT TO:",
 	"ETRN");
 args = make_list(
-	"test.example.org", 
-	"test.example.org", 
-	strcat("test@", get_host_name()),
+	"test.example.org",
+	"test.example.org",
+	strcat("test@", host),
 	strcat("test@[", get_host_ip(), "]"),
 	"test.example.org");
 n = max_index(cmds);
@@ -93,10 +83,10 @@ n = max_index(cmds);
 for (i = 0; i < n; i ++)
 {
   ##display("cmd> ", cmds[i], "\n");
-  send(socket: soc, 
-       data: string(cmds[i], " ", 
-                    str_replace(string: args[i], 
-                                find: "test", 
+  send(socket: soc,
+       data: string(cmds[i], " ",
+                    str_replace(string: args[i],
+                                find: "test",
                                 replace: crap(4095)),
                     "\r\n"));
   repeat

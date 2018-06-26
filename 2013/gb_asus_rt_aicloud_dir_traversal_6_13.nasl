@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_rt_aicloud_dir_traversal_6_13.nasl 9991 2018-05-29 04:56:09Z ckuersteiner $
+# $Id: gb_asus_rt_aicloud_dir_traversal_6_13.nasl 10322 2018-06-26 06:37:28Z cfischer $
 #
 # Multiple Asus Router Directory Traversal Vulnerability
 #
@@ -25,56 +25,61 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103747");
- script_version ("$Revision: 9991 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Multiple Asus Router Directory Traversal Vulnerability");
- script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/asus-rt-n66u-directory-traversal");
- script_xref(name:"URL", value:"http://heise.de/-2105778");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 06:56:09 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2013-06-26 13:46:49 +0200 (Wed, 26 Jun 2013)");
- script_cve_id("CVE-2013-4937");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("RT-Device/banner");
+  script_oid("1.3.6.1.4.1.25623.1.0.103747");
+  script_version("$Revision: 10322 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Multiple Asus Router Directory Traversal Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2013-06-26 13:46:49 +0200 (Wed, 26 Jun 2013)");
+  script_cve_id("CVE-2013-4937");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("RT-Device/banner");
 
- script_tag(name : "summary" , value : "The remote Asus router is prone to a directory traversal
-vulnerability.");
- script_tag(name : "vuldetect" , value : "Try to read /etc/shadow.");
- script_tag(name : "solution" , value : "Turn off AiCloud service.");
- script_tag(name : "affected" , value : "Vulnerable Asus Models:
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/asus-rt-n66u-directory-traversal");
+  script_xref(name:"URL", value:"http://heise.de/-2105778");
 
-RT-AC66R   Dual-Band Wireless-AC1750 Gigabit Router
+  script_tag(name:"summary", value:"The remote Asus router is prone to a directory traversal
+  vulnerability.");
 
-RT-AC66U   Dual-Band Wireless-AC1750 Gigabit Router
+  script_tag(name:"vuldetect", value:"Try to read /etc/shadow.");
 
-RT-N66R     Dual-Band Wireless-N900 Gigabit Router with 4-Port Ethernet Switch
+  script_tag(name:"solution", value:"Turn off AiCloud service.");
 
-RT-N66U     Dual-Band Wireless-N900 Gigabit Router
+  script_tag(name:"affected", value:"Vulnerable Asus Models:
 
-RT-AC56U   Dual-Band Wireless-AC1200 Gigabit Router
+  RT-AC66R   Dual-Band Wireless-AC1750 Gigabit Router
 
-RT-N56R     Dual-Band Wireless-AC1200 Gigabit Router
+  RT-AC66U   Dual-Band Wireless-AC1750 Gigabit Router
 
-RT-N56U     Dual-Band Wireless-AC1200 Gigabit Router
+  RT-N66R     Dual-Band Wireless-N900 Gigabit Router with 4-Port Ethernet Switch
 
-RT-N14U     Wireless-N300 Cloud Router
+  RT-N66U     Dual-Band Wireless-N900 Gigabit Router
 
-RT-N16       Wireless-N300 Gigabit Router
+  RT-AC56U   Dual-Band Wireless-AC1200 Gigabit Router
 
-RT-N16R     Wireless-N300 Gigabit Router");
- script_tag(name : "impact" , value : "Disclosure of cleartext passwords.");
+  RT-N56R     Dual-Band Wireless-AC1200 Gigabit Router
 
- script_tag(name:"solution_type", value:"Workaround");
+  RT-N56U     Dual-Band Wireless-AC1200 Gigabit Router
 
- exit(0);
+  RT-N14U     Wireless-N300 Cloud Router
+
+  RT-N16       Wireless-N300 Gigabit Router
+
+  RT-N16R     Wireless-N300 Gigabit Router");
+
+  script_tag(name:"impact", value:"Disclosure of cleartext passwords.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Workaround");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -85,24 +90,13 @@ if( banner !~ 'Basic realm="RT-' ) exit( 0 );
 
 ssl_port = 443;
 if( ! get_port_state( ssl_port ) ) exit( 99 );
-soc = open_sock_tcp( ssl_port );
-if( ! soc ) exit( 0 );
 
 url = '/smb/tmp/etc/shadow';
-
 req = http_get( item:url, port:ssl_port );
-send( socket:soc, data:req );
+res = http_send_recv( port:ssl_port, data:req );
 
-while( buf = recv( socket:soc, length:512 ) )
-{
-  recv += buf;
-}
-
-close( soc );
-
-if( egrep( pattern:"(nas|admin|nobody):.*:0:[01]:.*:", string:recv ) )
-{
-  report =  '\n\nBy requesting the URL "/smb/tmp/etc/shadow" we received the following response:\n\n' + recv + '\n';
+if( egrep( pattern:"(nas|admin|nobody):.*:0:[01]:.*:", string:res ) ){
+  report = '\n\nBy requesting the URL "/smb/tmp/etc/shadow" we received the following response:\n\n' + res + '\n';
   security_message( port:ssl_port, data:report );
   exit(0);
 }

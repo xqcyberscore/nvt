@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_trace.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: http_trace.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # HTTP TRACE
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11040");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,10 +54,10 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:80 );
+req = http_get( port:port, item:"/" );
+
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
-
-req = http_get( port:port, item:"/" );
 send( socket: soc, data: req );
 heads = http_recv_headers2( socket:soc );
 via = egrep( pattern:"^Via: ", string:heads );
@@ -149,7 +149,7 @@ for( i = 0; i < 99; i++ ) {
     i = 9999;
   }
 }
-  
+
 trace = "";
 count = 0;
 

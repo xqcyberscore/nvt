@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xmpp_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: xmpp_detect.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # XMPP Detection
 #
@@ -24,33 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100489");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5505 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
- script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("XMPP Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.100489");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("XMPP Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/xmpp-client", 5222, "Services/xmpp-server", 5269);
 
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/xmpp-client", 5222, "Services/xmpp-server", 5269);
+  script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/Jabber");
 
- script_tag(name : "summary" , value : "This host is running the Extensible Messaging and Presence Protocol (XMPP)
- (formerly named Jabber). XMPP is an open, XML-based protocol originally aimed at
- near-real-time, extensible instant messaging (IM) and presence information
- (e.g., buddy lists), but now expanded into the broader realm of
- message-oriented middleware.");
+  script_tag(name:"summary", value:"This host is running the Extensible Messaging and Presence Protocol(XMPP)
+  (formerly named Jabber). XMPP is an open, XML-based protocol originally aimed at
+  near-real-time, extensible instant messaging (IM) and presence information
+  (e.g., buddy lists), but now expanded into the broader realm of
+  message-oriented middleware.");
 
- script_xref(name : "URL" , value : "http://en.wikipedia.org/wiki/Jabber");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"qod_type", value:"remote_banner");
-
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -67,9 +66,9 @@ function delete_user(soc) {
   send(socket:soc, data:req);
   buf = recv(socket:soc,length:512);
   close(soc);
-  
+
   return 0;
-}  
+}
 
 #TODO for newer versions of the NVT:
 # - jabber:iq:auth/xep-0078 is deprecated and
@@ -82,9 +81,10 @@ function delete_user(soc) {
 # - Remove Service/xmpp after all NVTs are
 #   updated.
 
-host = get_host_name();
 ports = get_kb_list("Services/xmpp-server");
 if(!ports) ports = make_list(5269);
+
+host = get_host_name();
 
 foreach port(ports) {
 
@@ -105,7 +105,7 @@ foreach port(ports) {
       if (!isnull(buf) && "xmlns:stream=" >< buf && "jabber:server" >< buf) {
         register_service(port: port, ipproto:"tcp", proto: 'xmpp-server');
         set_kb_item(name:"xmpp/installed", value:TRUE);
-        log_message(port:port,data:"A XMPP server-to-server service was identified");
+        log_message(port:port, data:"A XMPP server-to-server service was identified");
       }
     }
   }
@@ -118,7 +118,7 @@ if(!get_port_state(port))exit(0);
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
 
-get_from = "<stream:stream xmlns='jabber:client' " + 
+get_from = "<stream:stream xmlns='jabber:client' " +
            "xmlns:stream='http://etherx.jabber.org/streams' " +
            "version='1.0' " +
            "to='" + host  + "'>";
@@ -126,10 +126,10 @@ get_from = "<stream:stream xmlns='jabber:client' " +
 send(socket:soc, data:get_from);
 buf = recv(socket:soc, length:512);
 
-if(isnull(buf) || "xmlns:stream=" >!< buf || "jabber:client" >!< buf) { 
+if(isnull(buf) || "xmlns:stream=" >!< buf || "jabber:client" >!< buf) {
   close(soc);
   exit(0);
-}  
+}
 
 register_service(port: port, ipproto:"tcp", proto: 'xmpp'); #Keep until older NVTs are opdated for xmpp-client service
 set_kb_item(name:"xmpp/installed", value:TRUE);
@@ -167,7 +167,7 @@ buf = recv(socket:soc,length:512);
 if(isnull(buf) || "instructions" >!< buf) {
   close(soc);
   exit(0);
-}  
+}
 
 USER = "openvas-" + rand();
 
@@ -186,7 +186,7 @@ buf = recv(socket:soc,length:512);
 if(isnull(buf) || "result" >!< buf) {
   close(soc);
   exit(0);
-}  
+}
 
 req = "<iq id='A2' type='get'>" +
       "<query xmlns='jabber:iq:auth'>" +
@@ -229,7 +229,7 @@ buf = recv(socket:soc,length:512);
 if("<version>" >!< buf || "<name>" >!< buf) {
   delete_user(soc: soc);
   exit(0);
-}  
+}
 
 version = eregmatch(pattern: "<version>(.*)</version>", string: buf);
 server = eregmatch(pattern: "<name>(.*)</name>", string: buf);
@@ -238,7 +238,7 @@ os = eregmatch(pattern: "<os>(.*)</os>", string: buf);
 if(!isnull(server[1])) {
   server_name = server[1];
   set_kb_item(name: "xmpp/" + port + "/server", value: server_name);
-}  
+}
 
 if(!isnull(version[1])) {
   server_version = version[1];

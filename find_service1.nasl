@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10310 2018-06-25 08:19:12Z cfischer $
+# $Id: find_service1.nasl 10315 2018-06-25 12:19:08Z asteins $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10310 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 10:19:12 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10315 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 14:19:08 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -849,6 +849,19 @@ if( rhexstr =~ "^15030[0-3]00020[1-2]..$" ||
   register_service( port:port, proto:"ssl", message:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
   log_message( port:port, data:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
   exit( 0 );
+}
+
+# chargen services
+# Ensuring that at least 3 patterns match
+# In case a pattern is missing or doesn't make it into the response (due to it being slow), the service will still be reported
+chargen_found = 0;
+foreach chargen_pattern( make_list( '!"#$%&\'()*+,-./', "ABCDEFGHIJ", "abcdefg", "0123456789" ) ) {
+  if( chargen_pattern >< r ) chargen_found++;
+}
+if( chargen_found > 2 ) {
+    register_service( port:port, proto:"chargen" );
+    log_message( port:port, data:"A chargen service seems to be running on this port." );
+    exit( 0 );
 }
 
 exit( 0 );

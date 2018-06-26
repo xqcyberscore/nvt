@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_weak_passwords.nasl 8889 2018-02-20 14:16:20Z cfischer $
+# $Id: gb_postgresql_weak_passwords.nasl 10312 2018-06-25 11:10:27Z cfischer $
 #
-# PostgreSQL weak password 
+# PostgreSQL weak password
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103552");
-  script_version("$Revision: 8889 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:16:20 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 10312 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 14:28:02 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -47,8 +47,8 @@ if(description)
 
   script_tag(name:"solution", value:"Change the password as soon as possible.");
 
-  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -62,7 +62,7 @@ function check_login(user, password, port) {
 
   local_var soc, req, len, data, res, typ, code, pass, passlen, salt, x;
 
-  soc = open_sock_tcp(port, transport:get_port_transport(port));
+  soc = open_sock_tcp(port);
   if (!soc) exit(0);
 
   h = raw_string((0x03 >> 8) & 0xFF, 0x03 & 0xFF,(0x00 >> 8) & 0xFF, 0x00 & 0xFF);
@@ -87,36 +87,36 @@ function check_login(user, password, port) {
   if (isnull(res) || res[0] != "R") {
     close(soc);
     exit(0);
-  }  
+  }
 
   res += recv(socket:soc, length:4);
   if (strlen(res) < 5) {
     close(soc);
     exit(0);
-  }  
+  }
 
   x = substr(res, 1, 4);
 
-  len = ord(x[0]) << 24 | ord(x[1]) << 16 | ord(x[2]) << 8 | ord(x[3]); 
+  len = ord(x[0]) << 24 | ord(x[1]) << 16 | ord(x[2]) << 8 | ord(x[3]);
   res += recv(socket:soc, length:len);
 
   if(strlen(res) < len || strlen(res) < 8) {
     close(soc);
     return FALSE;
-  }  
+  }
 
   typ = substr(res, strlen(res)-6,strlen(res)-5);
   typ = ord(typ[1]);
 
-  if(typ != 5) { 
+  if(typ != 5) {
     close(soc);
     return FALSE;
-  }  
+  }
 
   salt = substr(res, strlen(res)-4);
   userpass = hexstr(MD5( password + user));
   pass = 'md5' + hexstr(MD5( userpass + salt));
-  
+
   passlen = strlen(pass) + 5;
 
   req = string(raw_string(0x70), raw_string((passlen >> 24 ) & 0xff,(passlen >> 16 ) & 0xff, (passlen >>  8 ) & 0xff,(passlen) & 0xff), pass, raw_string(0));
@@ -127,7 +127,7 @@ function check_login(user, password, port) {
   if(isnull(res) || res[0] != "R") {
     close(soc);
     return FALSE;
-  }  
+  }
 
   res += recv(socket:soc, length:8);
 
@@ -136,7 +136,7 @@ function check_login(user, password, port) {
     return FALSE;
   }
 
-  code = substr(res,5,strlen(res)); 
+  code = substr(res,5,strlen(res));
 
   if(res[0] == "R" && hexstr(code) == "00000000") {
 
@@ -153,21 +153,20 @@ function check_login(user, password, port) {
     if(isnull(res) || res[0] != "T") {
       close(soc);
       return FALSE;
-    }  
+    }
 
     res += recv(socket:soc, length:1024);
     close(soc);
 
     if("PostgreSQL" >< res && "SELECT" >< res) return TRUE;
-
-  }  
+  }
 
   close(soc);
   return FALSE;
 
 }
 
-passwords = make_list("postgres","","pgadmin","admin","root","password","123456","12345678","qwerty","letmein","database");
+passwords = make_list("postgres", "", "pgadmin", "admin", "root", "password", "123456", "12345678", "qwerty", "letmein", "database");
 
 foreach password (passwords) {
 
@@ -183,10 +182,9 @@ foreach password (passwords) {
 
     data += '\n\n';
 
-    security_message(port:port,data:data);
+    security_message(port:port, data:data);
     exit(0);
-
-  }  
-}  
+  }
+}
 
 exit(99);
