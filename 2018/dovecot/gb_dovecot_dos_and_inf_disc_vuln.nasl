@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_dos_and_inf_disc_vuln.nasl 10327 2018-06-26 11:35:30Z jschulte $
+# $Id: gb_dovecot_dos_and_inf_disc_vuln.nasl 10339 2018-06-27 08:03:37Z jschulte $
 #
 # Dovecot <= 2.2.33 DoS and Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113214");
-  script_version("$Revision: 10327 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 13:35:30 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10339 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:03:37 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:44:04 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:P");
@@ -70,12 +70,11 @@ CPE = "cpe:/a:dovecot:dovecot";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
 
 if( version_in_range( version: version, test_version: "2.0.0", test_version2: "2.2.33" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2.2.34" );
-  security_message( data: report, port: port );
+  security_message( data: report, port: 0 );
   exit( 0 );
 }
 

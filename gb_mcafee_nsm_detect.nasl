@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_nsm_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_mcafee_nsm_detect.nasl 10332 2018-06-26 13:42:18Z asteins $
 #
 # McAfee Network Security Manager (NSM) Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140948");
-  script_version("$Revision: 9633 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-05 10:54:07 +0700 (Thu, 05 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10332 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:42:18 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-05 10:54:07 +0700 (Thu, 05 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("McAfee Network Security Manager (NSM) Detection");
+  script_name("McAfee Network Security Manager(NSM)Detection");
 
-  script_tag(name: "summary" , value: "Detection of Acrolinx.
+  script_tag(name:"summary", value:"Detection of McAfee NSM.
 
 The script sends a connection request to the server and attempts to detect McAfee Network Security Manager and to
 extract its version.");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.mcafee.com/");
+  script_xref(name:"URL", value:"https://www.mcafee.com/");
 
   exit(0);
 }

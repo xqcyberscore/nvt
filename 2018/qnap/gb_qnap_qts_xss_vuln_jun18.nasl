@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_xss_vuln_jun18.nasl 10300 2018-06-22 12:47:31Z jschulte $
+# $Id: gb_qnap_qts_xss_vuln_jun18.nasl 10331 2018-06-26 13:26:19Z jschulte $
 #
 # QNAP QTS <= 4.2.6, <= 4.3.3, 4.3.4 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113211");
-  script_version("$Revision: 10300 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 14:47:31 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 10331 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:26:19 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 14:07:21 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -69,25 +69,23 @@ include( "version_func.inc" );
 if( ! model = get_kb_item( "qnap/model" ) ) exit( 0 );
 CPE = "cpe:/h:qnap:" + tolower( model );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
-if( ! build = get_kb_item( "qnap/build" ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
 
-if( version_is_less_equal( version: version, test_version: "4.2.6_20180504" ) ) {
-    report = report_fixed_ver( installed_version: version, fixed_version: "4.2.6 build 20180504" );
-    security_message( data: report, port: port );
-    exit( 0 );
+if( version_is_less( version: version, test_version: "4.2.6_20180504" ) ) {
+  report = report_fixed_ver( installed_version: version, fixed_version: "4.2.6 build 20180504" );
+  security_message( data: report, port: 0 );
+  exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "4.3.4_00000000", test_version2: "4.3.4_20171223" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "4.3.4 build 20171230" );
-  security_message( data: report, port: port );
+  security_message( data: report, port: 0 );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "4.3.0", test_version2: "4.3.3_20171213" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "4.3.3 build 20180126" );
-  security_message( data: report, port: port );
+  security_message( data: report, port: 0 );
   exit( 0 );
 }
 

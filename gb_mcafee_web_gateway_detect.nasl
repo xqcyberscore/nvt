@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_mcafee_web_gateway_detect.nasl 10332 2018-06-26 13:42:18Z asteins $
 #
 # McAfee Web Gateway (MWG) Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804419");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10332 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:42:18 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:04:12 +0530 (Tue, 08 Apr 2014)");
   script_name("McAfee Web Gateway (MWG) Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of McAfee Web Gateway (MWG).
+  script_tag(name:"summary", value:"Detection of McAfee Web Gateway (MWG).
 
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
@@ -51,28 +51,19 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-mwgPort = "";
-mwgVer = "";
-mwgBanner = "";
-
-## Check the port state
 mwgPort = get_http_port(default:8080);
 
 mwgBanner = get_http_banner(port:mwgPort);
 
-##  Confirm the application
 if("McAfee Web Gateway" >!< mwgBanner) exit(0);
 
 version = "unknown";
 
-## Match the version from banner
 mwgVer = eregmatch(pattern:"McAfee Web Gateway ([0-9.]+)", string:mwgBanner);
 if(mwgVer[1]) {
   version = mwgVer[1];
@@ -81,12 +72,10 @@ if(mwgVer[1]) {
 set_kb_item(name:"www/" + mwgPort + "/McAfee/Web/Gateway", value:version);
 set_kb_item(name:"McAfee/Web/Gateway/installed", value:TRUE);
 
-## Build the CPE
 cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:web_gateway:");
 if(isnull(cpe))
   cpe = 'cpe:/a:mcafee:web_gateway';
 
-## Register the product
 register_product(cpe:cpe, location:mwgPort + '/tcp', port:mwgPort);
 
 log_message(data: build_detection_report(app:"McAfee Web Gateway",
@@ -95,3 +84,4 @@ log_message(data: build_detection_report(app:"McAfee Web Gateway",
                                          cpe:cpe,
                                          concluded: mwgVer[0]),
                                          port:mwgPort);
+exit(0);

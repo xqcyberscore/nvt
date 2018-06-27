@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_mult_vuln_jun18.nasl 10327 2018-06-26 11:35:30Z jschulte $
+# $Id: gb_dovecot_mult_vuln_jun18.nasl 10339 2018-06-27 08:03:37Z jschulte $
 #
 # Dovecot <= 2.2.34 and 2.3.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113213");
-  script_version("$Revision: 10327 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 13:35:30 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10339 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:03:37 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:28:52 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
@@ -73,18 +73,17 @@ CPE = "cpe:/a:dovecot:dovecot";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
 
 if( version_is_equal( version: version, test_version: "2.3.0" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2.3.1" );
-  security_message( data: report, port: port );
+  security_message( data: report, port: 0 );
   exit( 0 );
 }
 
 if( version_in_range( version: version, test_version: "2.0.0", test_version2: "2.2.33" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2.2.34" );
-  security_message( data: report, port: port );
+  security_message( data: report, port: 0 );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 9734 2018-05-04 15:21:31Z cfischer $
+# $Id: products_eol.inc 10332 2018-06-26 13:42:18Z asteins $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9734 $
+# $Revision: 10332 $
 #
 ###############################################################################
 
@@ -125,6 +125,31 @@ eol_cpes[ 'cpe:/a:joomla:joomla' ] = make_array(
 eol_cpes[ 'cpe:/a:mariadb:mariadb' ] = make_array(
   'versions',      '10.2:2022-05-23;10.1:2020-10-17;10.0:2019-03-31;5.5:2020-04-11;5.3:2017-03-01;5.2:2015-11-10;5.1:2015-02-01',
   'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.mcafee.com/enterprise/en-au/support/product-eol.html
+# https://kc.mcafee.com/corporate/index?page=content&id=KB85857
+eol_cpes[ 'cpe:/a:mcafee:email_gateway' ] = make_array(
+  'versions', '7.6:2016-10-12',
+  'version_regex', '^([0-9]\\.[0-9])'
+);
+
+# https://kc.mcafee.com/corporate/index?page=content&id=KB88252
+eol_cpes[ 'cpe:/a:mcafee:epolicy_orchestrator' ] = make_array(
+  'versions', '5.3:2019-01-31;5.1:2017-12-3',
+  'version_regex', '^([0-9]\\.[0-9])'
+);
+
+# https://kc.mcafee.com/corporate/index?page=content&id=KB86212
+eol_cpes[ 'cpe:/a:mcafee:virusscan_enterprise_for_linux' ] = make_array(
+  'versions', '2.0.2:2017-12-31;2.0.1:2016-12-31;2.0.0:2016-12-31;1.9.1:2017-12-31;1.9.0:2016-12-31',
+  'version_regex', '^([0-9]\\.[0-9]\\.[0-9])'
+);
+
+# https://kc.mcafee.com/corporate/index?page=content&id=KB88950
+eol_cpes[ 'cpe:/a:mcafee:web_gateway' ] = make_array(
+  'versions', '7.6:2018-12-31;7.5:2017-12-31;7.4:2016-12-31',
+  'version_regex', '^([0-9]\\.[0-9])'
 );
 
 # https://www.mediawiki.org/wiki/Version_lifecycle

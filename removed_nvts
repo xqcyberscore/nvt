@@ -1,0 +1,3 @@
+Policy/Microsoft/Windows10/win10_allowtelemetry.nasl*
+Policy/Microsoft/Windows10/win10_prevent_onedrive_file_storage.nasl*
+Policy/Microsoft/Windows10/win10_disable_location_provider.nasl*

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_bitlocker_drives_recovered.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_bitlocker_drives_recovered.nasl 10333 2018-06-26 13:47:29Z emoss $
 #
 # Check value for Choose how BitLocker-protected fixed drives can be recovered
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109372");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10333 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:47:29 +0200 (Tue, 26 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 13:59:07 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
-  script_name('Microsoft Windows: Recovering of BitLocker-protected fixed drives');
+  script_name('Microsoft Windows: BitLocker-protected fixed drives recovery');
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");

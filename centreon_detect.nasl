@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: centreon_detect.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: centreon_detect.nasl 10341 2018-06-27 08:37:11Z jschulte $
 #
 # Centreon Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100427");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8680 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
+ script_version("$Revision: 10341 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:37:11 +0200 (Wed, 27 Jun 2018) $");
  script_tag(name:"creation_date", value:"2010-01-06 10:44:19 +0100 (Wed, 06 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Centreon Detection");
@@ -83,6 +83,7 @@ foreach dir( make_list_unique( "/centreon", cgi_dirs( port:port ) ) ) {
 
     register_product(cpe:cpe, location:install, port:port);
 
+    # Be wary that this is "Centreon Web", whose version may differ from "Centreon"
     log_message( data: build_detection_report(app: "Centreon", version: vers, install: install, cpe: cpe,
                                               concluded: version[0]),
                  port:port );

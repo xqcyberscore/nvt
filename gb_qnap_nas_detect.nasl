@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_detect.nasl 8462 2018-01-18 12:59:58Z cfischer $
+# $Id: gb_qnap_nas_detect.nasl 10339 2018-06-27 08:03:37Z jschulte $
 #
 # QNAP NAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103875");
-  script_version("$Revision: 8462 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 13:59:58 +0100 (Thu, 18 Jan 2018) $");
+  script_version("$Revision: 10339 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:03:37 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -140,6 +140,7 @@ foreach url ( urls ) {
   set_kb_item(name:"qnap/port", value:port);
   set_kb_item(name:"qnap/dismodel", value:displaymodel);
 
+  # Version is registered as following: 4.3.4_20180528
   register_product(cpe:cpe, location:'/', port:port);
 
   log_message(data: build_detection_report(app:"'QNAP " + model + "'", version:vers, install:'/', cpe:cpe, concluded: version[0]),
