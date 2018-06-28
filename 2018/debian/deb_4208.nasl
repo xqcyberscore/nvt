@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4208.nasl 9942 2018-05-24 06:58:00Z cfischer $
+# $Id: deb_4208.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # Auto-generated from advisory DSA 4208-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704208");
-  script_version("$Revision: 9942 $");
+  script_version("$Revision: 10349 $");
   script_cve_id("CVE-2018-1122", "CVE-2018-1123", "CVE-2018-1124", "CVE-2018-1125", "CVE-2018-1126");
   script_name("Debian Security Advisory DSA 4208-1 (procps - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 08:58:00 +0200 (Thu, 24 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 00:00:00 +0200 (Tue, 22 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

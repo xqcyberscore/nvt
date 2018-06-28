@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10330 2018-06-26 12:54:48Z cfischer $
+# $Id: find_service1.nasl 10347 2018-06-27 15:16:56Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10330 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 14:54:48 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10347 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:16:56 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -851,6 +851,7 @@ if( chargen_found > 2 ) {
 if( rhexstr == "0300000902f0802180" ) {
   register_service( port:port, proto:"ms-wbt-server", message:"A service (e.x. Xrdp) supporting the Microsoft Remote Desktop Protocol (RDP) seems to be running on this port." );
   log_message( port:port, data:"A service (e.x. Xrdp) supporting the Microsoft Remote Desktop Protocol (RDP) seems to be running on this port." );
+  set_kb_item( "rdp/" + port + "/isxrdp", value:TRUE ); # Later used in check_xrdp() of ms_rdp_detect.nasl to avoid an already done request.
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # Adobe Dreamweaver Command Injection Vulnerability Mar18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813039");
-  script_version("$Revision: 9117 $");
+  script_version("$Revision: 10349 $");
   script_cve_id("CVE-2018-4924");
   script_bugtraq_id(103395);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Command Injection Vulnerability Mar18 (Windows)");

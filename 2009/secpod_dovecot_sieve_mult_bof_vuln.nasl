@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 10327 2018-06-26 11:35:30Z jschulte $
+# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 10350 2018-06-27 16:07:51Z cfischer $
 #
 # Dovecot Sieve Plugin Multiple Buffer Overflow Vulnerabilities
 #
@@ -8,7 +8,7 @@
 # Antu Sanadi <santu@secpod.com>
 #
 # Copyright:
-# Copyright (c) 2008 SecPod, http://www.secpod.com
+# Copyright (c) 2009 SecPod, http://www.secpod.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901026");
-  script_version("$Revision: 10327 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 13:35:30 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10350 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 18:07:51 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,25 +42,27 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2641");
   script_xref(name:"URL", value:"http://www.dovecot.org/list/dovecot-news/2009-September/000135.html");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2008 SecPod");
+  script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("gb_dovecot_consolidation.nasl");
-  script_require_keys("dovecot/detected");
+  script_mandatory_keys("dovecot/detected");
+
   script_tag(name:"impact", value:"Successful attack could allow malicious people to crash an affected
   application or execute arbitrary code.
+
   Impact Level: Application");
+
   script_tag(name:"affected", value:"Dovecot versions 1.0 before 1.0.4 and 1.1 before 1.1.7");
+
   script_tag(name:"insight", value:"Multiple buffer overflow errors in the CMU libsieve when processing
   malicious SIEVE scripts.");
+
   script_tag(name:"summary", value:"This host has Dovecot Sieve Plugin installed and is prone to
   multiple Buffer Overflow Vulnerabilities");
-  script_tag(name:"solution", value:"Apply the patch  or upgrade to Dovecot version 1.1.4 or 1.1.7
 
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the patch  or upgrade to Dovecot version 1.1.4 or 1.1.7");
 
   script_xref(name:"URL", value:"http://www.dovecot.org/download.html");
   script_xref(name:"URL", value:"http://hg.dovecot.org/dovecot-sieve-1.1/rev/049f22520628");
@@ -74,7 +76,7 @@ CPE = "cpe:/a:dovecot:dovecot";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! dovecotVer = get_app_version( cpe: CPE ) ) exit( 0 );
+if( ! dovecotVer = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
 
 if( version_in_range( version: dovecotVer, test_version: "1.0", test_version2: "1.0.3" ) ||
   version_in_range( version: dovecotVer, test_version: "1.1", test_version2: "1.1.6" ) )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_mult_vuln_jun18.nasl 10339 2018-06-27 08:03:37Z jschulte $
+# $Id: gb_dovecot_mult_vuln_jun18.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # Dovecot <= 2.2.34 and 2.3.0 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113213");
-  script_version("$Revision: 10339 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:03:37 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 10349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:28:52 +0200 (Tue, 26 Jun 2018)");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

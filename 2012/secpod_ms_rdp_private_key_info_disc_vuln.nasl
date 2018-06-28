@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_rdp_private_key_info_disc_vuln.nasl 4234 2016-10-07 11:31:16Z cfi $
+# $Id: secpod_ms_rdp_private_key_info_disc_vuln.nasl 10344 2018-06-27 13:00:46Z cfischer $
 #
 # Microsoft RDP Server Private Key Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902658");
-  script_version("$Revision: 4234 $");
+  script_version("$Revision: 10344 $");
   script_cve_id("CVE-2005-1794");
   script_bugtraq_id(13818);
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 13:31:16 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 13:38:23 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -39,41 +39,35 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows");
   script_dependencies("ms_rdp_detect.nasl");
-  script_require_ports("Services/msrdp", 3389);
-  #script_mandatory_keys("msrpd/detected"); #Only add once ms_rdp_detect.nasl was verified against the vulnerable systems
+  script_require_ports("Services/ms-wbt-server", 3389);
+  script_mandatory_keys("rdp/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/15605/");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/21954");
   script_xref(name:"URL", value:"http://www.oxid.it/downloads/rdp-gbu.pdf");
   script_xref(name:"URL", value:"http://sourceforge.net/p/xrdp/mailman/message/32732056");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain
+  sensitive information.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected", value:"All Microsoft-compatible RDP (5.2 or earlier) software.");
+
+  script_tag(name:"insight", value:"The flaw is due to RDP server which stores an RSA private key
+  used for signing a terminal server's public key in the mstlsapi.dll library,
+  which allows remote attackers to calculate a valid signature and further
+  perform a man-in-the-middle (MITM) attacks to obtain sensitive information.");
+
+  script_tag(name:"summary", value:"This host is running Remote Desktop Protocol server and is prone
+  to information disclosure vulnerability.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.
 
-  A Workaround is to connect only to terminal services over trusted networks.";
-
-  tag_impact = "Successful exploitation could allow remote attackers to gain
-  sensitive information.
-
-  Impact Level: System/Application";
-
-  tag_affected = "All Microsoft-compatible RDP (5.2 or earlier) softwares";
-
-  tag_insight = "The flaw is due to RDP server which stores an RSA private key
-  used for signing a terminal server's public key in the mstlsapi.dll library,
-  which allows remote attackers to calculate a valid signature and further
-  perform a man-in-the-middle (MITM) attacks to obtain sensitive information.";
-
-  tag_summary = "This host is running Remote Desktop Protocol server and is prone
-  to information disclosure vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  A Workaround is to connect only to terminal services over trusted networks.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -99,31 +93,13 @@ function reverse_data(data)
   return val;
 }
 
-## Variable Initialization
-port   = 0;
-soc    = 0;
-req    = "";
-resp   = "";
-blob   = "";
-sig    = "";
-e      = "";
-n      = "";
-firstStr = "";
-endStr   = "";
-publicKey = "";
-keyHash   = "";
-publickeyLen  = "";
-key_decrypted ="";
-
-port = get_kb_item( "Services/msrdp" );
+port = get_kb_item( "Services/ms-wbt-server" );
 if( ! port ) port = 3389; # Default port
-
 if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-## Construct MCS connect-initial Req
 req = raw_string(0x03, 0x00, 0x01, 0x96, 0x02, 0xf0, 0x80, 0x7f, 0x65,
                  0x82, 0x01, 0x8a, 0x04, 0x01, 0x01, 0x04, 0x01, 0x01,
                  0x01, 0x01, 0xff, 0x30, 0x20, 0x02, 0x02, 0x00, 0x22,
@@ -182,7 +158,6 @@ if(!resp || ("RSA1" >!< resp)){
 blob = strstr (resp, "RSA1");
 firstStr = strlen(resp) - strlen(blob) - 16;
 
-# Get public key length
 publickeyLen = getdword(blob:blob, pos:8) / 8;
 endStr = firstStr + 0x24 + publickeyLen + 7;
 if(strlen(resp) < endStr){
@@ -213,18 +188,16 @@ n = reverse_data(data:n);
 # Size of both the signatures should be same
 if(strlen(sig) == strlen(n))
 {
-  ## Get MD5 of Public Key
   keyHash = MD5(publicKey);
 
-  decrypted = rsa_public_decrypt(sig:sig,e:e,n:n);
+  decrypted = rsa_public_decrypt(sig:sig, e:e, n:n);
 
   key_decrypted = reverse_data(data:decrypted);
   if(!key_decrypted){
     exit (0);
   }
 
-  if (keyHash >< key_decrypted)
-  {
+  if (keyHash >< key_decrypted){
     security_message( port:port );
     exit( 0 );
   }

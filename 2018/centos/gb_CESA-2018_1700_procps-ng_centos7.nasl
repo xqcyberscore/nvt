@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1700_procps-ng_centos7.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_CESA-2018_1700_procps-ng_centos7.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # CentOS Update for procps-ng CESA-2018:1700 centos7 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882892");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 05:47:22 +0200 (Wed, 30 May 2018)");
   script_cve_id("CVE-2018-1124", "CVE-2018-1126");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for procps-ng CESA-2018:1700 centos7 ");
   script_tag(name:"summary", value:"Check the version of procps-ng");

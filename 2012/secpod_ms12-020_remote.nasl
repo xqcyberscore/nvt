@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-020_remote.nasl 4234 2016-10-07 11:31:16Z cfi $
+# $Id: secpod_ms12-020_remote.nasl 10344 2018-06-27 13:00:46Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)
 #
@@ -30,20 +30,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902818");
-  script_version("$Revision: 4234 $");
+  script_version("$Revision: 10344 $");
   script_cve_id("CVE-2012-0002", "CVE-2012-0152");
   script_bugtraq_id(52353, 52354);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 13:31:16 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:21:31 +0100 (Fri, 16 Mar 2012)");
   script_name("Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod & ITrust");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("ms_rdp_detect.nasl");
-  script_require_ports("Services/msrdp", 3389);
-  #script_mandatory_keys("msrpd/detected"); #Only add once ms_rdp_detect.nasl was verified against the vulnerable systems
+  script_require_ports("Services/ms-wbt-server", 3389);
+  script_mandatory_keys("msrdp/detected");
 
   script_xref(name:"URL", value:"http://blog.binaryninjas.org/?p=58");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48395");
@@ -51,33 +51,32 @@ if(description)
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1026790");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-020");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code as the logged-on user or cause a denial of service condition.
 
-  Impact Level: System/Application";
+  Impact Level: System/Application");
 
-  tag_affected = "Microsoft Windows 7 Service Pack 1 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 2 and prior
-  Microsoft Windows Server 2008 Service Pack 2 and prior";
 
-  tag_insight = "The flaws are due to the way Remote Desktop Protocol accesses an
+  Microsoft Windows Server 2008 Service Pack 2 and prior");
+
+  script_tag(name:"insight", value:"The flaws are due to the way Remote Desktop Protocol accesses an
   object in memory that has been improperly initialized or has been deleted
-  and the way RDP service processes the packets.";
+  and the way RDP service processes the packets.");
 
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-020";
 
-  tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS12-020.";
+  http://technet.microsoft.com/en-us/security/bulletin/ms12-020");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS12-020.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -87,15 +86,13 @@ if(description)
 
 include("bin.inc");
 
-port = get_kb_item( "Services/msrdp" );
+port = get_kb_item( "Services/ms-wbt-server" );
 if( ! port ) port = 3389; # Default port
-
 if( ! get_port_state( port ) ) exit( 0 );
 
 sock = open_sock_tcp( port );
 if( ! sock ) exit( 0 );
 
-## Construct RDP connection request
 data = bin_pack(format:"!L", 0);
 rdp = bin_pack(format:"<BBS", 1, 0, 8) + data;
 data = bin_pack(format:"!SSB", 0, 0, 0) + rdp;
@@ -106,7 +103,6 @@ tpkt = bin_pack(format:"!BBS", 3, 0, 19) + x224_1;
 send(socket:sock, data:tpkt);
 res = recv(socket:sock, length:8192);
 
-# Confirm a RDP Service is listening
 if(!res){
    exit(0);
 }
@@ -117,7 +113,6 @@ if  (((len == 22) && (response != "0300000b06d00000123400")) #XP/2000 RDP Connec
    exit(0);
 }
 
-## Construct Attack Request
 data = bin_pack(format:"!B", 0x80);
 x224_2 = bin_pack(format:"!BB", 2, 0xf0) + data;
 
@@ -156,6 +151,7 @@ response = recv(socket:sock, length:8192);
 if (!response || strlen(response) < 11){
    exit(0);
 }
+
 ret = response[9] + response[10];
 tmp_user = bin_unpack(format:"!S", blob:ret);
 user2 = tmp_user['data'];
@@ -174,7 +170,7 @@ if (ret == raw_string("\x3e\x00")){
   data = bin_pack(format:"!BBS", 3, 0, 12) + tmp;
   send(socket:sock, data:data);
   ret = recv(socket:sock, length:8192);
-  security_message(port);
+  security_message(port:port);
 }
 
 close(sock);

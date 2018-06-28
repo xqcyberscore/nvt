@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_rdp.nasl 5240 2017-02-08 16:35:35Z mime $
+# $Id: gb_starttls_rdp.nasl 10344 2018-06-27 13:00:46Z cfischer $
 #
 # Microsoft Remote Desktop Protocol STARTTLS Detection
 #
@@ -29,18 +29,20 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140152");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_version("$Revision: 5240 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 17:35:35 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 10344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2017-02-08 11:18:12 +0100 (Wed, 08 Feb 2017)");
   script_name("Microsoft Remote Desktop Protocol STARTTLS Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("ms_rdp_detect.nasl");
-  script_require_ports("Services/msrdp", 3389);
-  script_mandatory_keys("msrpd/detected");
+  script_require_ports("Services/ms-wbt-server", 3389);
+  script_mandatory_keys("rdp/detected");
 
-  script_tag(name:"summary", value:"The Microsoft Remote Desktop Protocol (RDP) is running at this host and supporting STARTTLS");
+  script_tag(name:"summary", value:"A service supporting the Microsoft Remote Desktop Protocol(RDP) and STARTTLS
+  is running at this host.");
+
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -48,7 +50,9 @@ if(description)
 
 include("misc_func.inc");
 
-if( ! port = get_kb_item("Services/msrdp") ) exit( 0 );
+port = get_kb_item( "Services/ms-wbt-server" );
+if( ! port ) port = 3389; # Default port
+if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -71,7 +75,6 @@ req = raw_string( 0x03,       # version
 
 send( socket:soc, data:req );
 buf = recv( socket:soc, length:19 );
-
 close( soc );
 
 # https://msdn.microsoft.com/en-us/library/cc240501.aspx
@@ -92,14 +95,10 @@ if( len != 8 ) exit( 0 );
 # 0x00000001 = TLS 1.0, 1.1 or 1.2
 # 0x00000002 = CredSSP (https://msdn.microsoft.com/en-us/library/cc240806.aspx)
 
-if( type == 2 && ( sproto == 1 || sproto == 2 ) )
-{
+if( type == 2 && ( sproto == 1 || sproto == 2 ) ) {
   set_kb_item( name:"msrdp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"msrdp" );
-
   log_message( port:port );
-  exit( 0 );
 }
 
 exit( 0 );
-

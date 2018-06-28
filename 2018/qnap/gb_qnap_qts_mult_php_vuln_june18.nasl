@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_mult_php_vuln_june18.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_qnap_qts_mult_php_vuln_june18.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # QNAP QTS Multiple PHP Vulnerabilities-June18
 #
@@ -27,11 +27,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813519");
-  script_version("$Revision: 10324 $");
+  script_version("$Revision: 10349 $");
   script_cve_id("CVE-2016-1283", "CVE-2017-16642", "CVE-2018-5711", "CVE-2018-5712");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 17:13:13 +0530 (Mon, 11 Jun 2018)");
   script_name("QNAP QTS Multiple PHP Vulnerabilities-June18");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_redirect_method_xss_vuln.nasl 9957 2018-05-25 09:29:47Z santu $
+# $Id: gb_joomla_redirect_method_xss_vuln.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # Joomla! Core 'Redirect' Method XSS Vulnerability (20180508)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813411");
-  script_version("$Revision: 9957 $");
+  script_version("$Revision: 10349 $");
   script_cve_id("CVE-2018-11328");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 11:29:47 +0200 (Fri, 25 May 2018) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 13:55:14 +0530 (Wed, 23 May 2018)");
   script_name("Joomla! Core 'Redirect' Method XSS Vulnerability (20180508)");
 

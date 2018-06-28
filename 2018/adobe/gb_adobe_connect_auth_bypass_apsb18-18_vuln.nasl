@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl 9816 2018-05-14 07:56:52Z santu $
+# $Id: gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl 10349 2018-06-27 15:50:28Z cfischer $
 #
 # Adobe Connect Authentication Bypass Vulnerability (APSB18-18)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813361");
-  script_version("$Revision: 9816 $");
+  script_version("$Revision: 10349 $");
   script_cve_id("CVE-2018-4994");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 09:56:52 +0200 (Mon, 14 May 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 12:59:18 +0530 (Fri, 11 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## A mitigation is available to customers by modifying Tomcat filters to

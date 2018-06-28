@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 9887 2018-05-17 13:35:46Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 10351 2018-06-27 16:43:15Z cfischer $
 #
 # Windows LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 9887 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 10351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-27 18:43:15 +0200 (Wed, 27 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,6 +51,11 @@ if(description)
 
 include("smb_nt.inc");
 include("misc_func.inc");
+
+_kb_login = kb_smb_login();
+# The user hasn't filled out a login name so no need to
+# report the infos below if no LSC scan was requested.
+if( ! strlen( _kb_login ) > 0 ) exit( 0 );
 
 lanman = get_kb_item( "SMB/NativeLanManager" );
 samba  = get_kb_item( "SMB/samba" );
@@ -99,9 +104,6 @@ if( ! transport = kb_smb_transport() )
 else
   transport += "/tcp";
 
-if( ! login = kb_smb_login() )
-  login = empty_text;
-
 if( ! name = kb_smb_name() )
   name = empty_text;
 
@@ -112,7 +114,7 @@ if( ! sys32root = smb_get_system32root() )
   sys32root = empty_text;
 
 info_array["Port configured for authenciated scans (kb_smb_transport())"] = transport;
-info_array["User used for authenciated scans (kb_smb_login())"] = login;
+info_array["User used for authenciated scans (kb_smb_login())"] = _kb_login;
 info_array["Domain used for authenciated scans (kb_smb_domain())"] = domain;
 info_array["SMB name used for authenciated scans (kb_smb_name())"] = name;
 info_array["Path to the OS SystemRoot (smb_get_systemroot())"] = sysroot;
