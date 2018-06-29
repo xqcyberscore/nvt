@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_modbus_detect.nasl 10368 2018-06-29 09:48:41Z ckuersteiner $
 #
 # Modbus Detection
 #
@@ -29,8 +29,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106522");
- script_version ("$Revision: 9996 $");
- script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10368 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-06-29 11:48:41 +0200 (Fri, 29 Jun 2018) $");
  script_tag(name: "creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,8 @@ Modbus is a serial communications protocol for use with programmable logic contr
 
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_family("Service detection");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "nessus_detect.nasl"); # nessus_detect.nasl to avoid double check for
+                                                                 # echo tests.
  script_require_ports("Services/unknown", 502, 503);
 
  script_xref(name: "URL", value: "http://www.modbus.org/");
@@ -58,6 +59,26 @@ Modbus is a serial communications protocol for use with programmable logic contr
 include("misc_func.inc");
 
 port = get_unknown_port(default: 502);
+
+# Set by nessus_detect.nasl if we have hit a service which echos everything back
+if (get_kb_item("generic_echo_test/" + port + "/failed"))
+  exit(0);
+
+# Set by nessus_detect.nasl as well. We don't need to do the same test multiple times...
+if (!get_kb_item("generic_echo_test/" + port + "/tested")) {
+  soc = open_sock_tcp(port);
+  if (!soc)
+    exit(0);
+
+  send(socket: soc, data: "TestThis\r\n");
+  r = recv_line(socket: soc, length: 10);
+  close(soc);
+  # We don't want to be fooled by echo & the likes
+  if ("TestThis" >< r) {
+    set_kb_item(name: "generic_echo_test/" + port + "/failed", value: TRUE);
+    exit(0);
+  }
+}
 
 sock = open_sock_tcp(port);
 if (!sock)
@@ -133,19 +154,19 @@ for (i=0; i<3; i++) {
 
     register_service(port: port, ipproto: "tcp", proto: "modbus");
 
-    report = "A Modbus service is running at this port.\n\nThe following information was extracted:\n\n" +
-             "Vendor Name:           " + vendor + "\n" +
-             "Product Code:          " + prod_code + "\n" +
-             "Software Version:      " + version + "\n";
+    report = 'A Modbus service is running at this port.\n\nThe following information was extracted:\n\n' +
+             'Vendor Name:           ' + vendor + '\n' +
+             'Product Code:          ' + prod_code + '\n' +
+             'Software Version:      ' + version + '\n';
 
     if (vendor_url)
-      report += "Vendor URL:            " + vendor_url + "\n";
+      report += 'Vendor URL:            ' + vendor_url + '\n';
     if (prod_name)
-      report += "Product Name:          " + prod_name + "\n";
+      report += 'Product Name:          ' + prod_name + '\n';
     if (model)
-      report += "Model Name:            " + model + "\n";
+      report += 'Model Name:            ' + model + '\n';
     if (user_app_name)
-      report += "User Application Name: " + user_app_name + "\n";
+      report += 'User Application Name: ' + user_app_name + '\n';
 
     log_message(port: port, data: report);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_cassandra_detect.nasl 9754 2018-05-08 11:00:12Z cfischer $
+# $Id: gb_apache_cassandra_detect.nasl 10369 2018-06-29 11:18:22Z asteins $
 #
 # Apache Cassandra Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105065");
-  script_version("$Revision: 9754 $");
+  script_version("$Revision: 10369 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 13:18:22 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2014-07-18 18:29:45 +0200 (Fri, 18 Jul 2014)");
   script_name("Apache Cassandra Detection");
   script_category(ACT_GATHER_INFO);
@@ -123,6 +123,8 @@ if( ! isnull( version[1] ) ) vers = version[1];
 cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:apache:cassandra:" );
 if( ! cpe )
   cpe = "cpe:/a:apache:cassandra";
+
+set_kb_item( name:"apache/cassandra/detected", value:TRUE );
 
 register_service( port:port, proto:"cassandra" );
 register_product( cpe:cpe, location:install, port:port );
