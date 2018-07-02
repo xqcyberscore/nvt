@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3681_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3681_1.nasl 10374 2018-07-02 04:44:41Z asteins $
 #
 # Ubuntu Update for imagemagick USN-3681-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843556");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 05:45:46 +0200 (Wed, 13 Jun 2018)");
   script_cve_id("CVE-2017-1000445", "CVE-2017-1000476", "CVE-2017-10995", "CVE-2018-6405",
                 "CVE-2017-11352", "CVE-2017-11533", "CVE-2017-11535", "CVE-2017-11537",
@@ -61,8 +61,8 @@ if(description)
                 "CVE-2018-11625", "CVE-2018-11655", "CVE-2018-11656", "CVE-2018-5246",
                 "CVE-2018-5247", "CVE-2018-5248", "CVE-2018-5357", "CVE-2018-5358",
                 "CVE-2018-7443", "CVE-2018-8804", "CVE-2018-8960", "CVE-2018-9133");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3681-1");
   script_tag(name:"summary", value:"Check the version of imagemagick");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1385.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_1385.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 1385-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891385");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10373 $");
   script_cve_id("CVE-2018-8013");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1385-1] batik security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-28 00:00:00 +0200 (Mon, 28 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

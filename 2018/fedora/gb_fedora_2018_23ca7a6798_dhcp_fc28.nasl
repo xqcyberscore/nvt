@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_23ca7a6798_dhcp_fc28.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_23ca7a6798_dhcp_fc28.nasl 10374 2018-07-02 04:44:41Z asteins $
 #
 # Fedora Update for dhcp FEDORA-2018-23ca7a6798
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874563");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 06:07:16 +0200 (Wed, 16 May 2018)");
   script_cve_id("CVE-2018-1111");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dhcp FEDORA-2018-23ca7a6798");
   script_tag(name:"summary", value:"Check the version of dhcp");

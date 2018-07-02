@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4214.nasl 10056 2018-06-04 06:29:53Z cfischer $
+# $Id: deb_4214.nasl 10374 2018-07-02 04:44:41Z asteins $
 #
 # Auto-generated from advisory DSA 4214-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704214");
-  script_version("$Revision: 10056 $");
+  script_version("$Revision: 10374 $");
   script_cve_id("CVE-2018-8012");
   script_name("Debian Security Advisory DSA 4214-1 (zookeeper - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 08:29:53 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-01 00:00:00 +0200 (Fri, 01 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

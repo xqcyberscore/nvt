@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3641_1.nasl 9830 2018-05-15 07:16:12Z cfischer $
+# $Id: gb_ubuntu_USN_3641_1.nasl 10374 2018-07-02 04:44:41Z asteins $
 #
 # Ubuntu Update for linux USN-3641-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843518");
-  script_version("$Revision: 9830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:16:12 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 10374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 05:33:44 +0200 (Wed, 09 May 2018)");
   script_cve_id("CVE-2018-8897", "CVE-2018-1087", "CVE-2018-1000199");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3641-1");
   script_tag(name:"summary", value:"Check the version of linux");

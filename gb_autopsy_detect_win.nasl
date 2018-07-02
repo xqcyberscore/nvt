@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autopsy_detect_win.nasl 10210 2018-06-15 08:16:38Z asteins $
+# $Id: gb_autopsy_detect_win.nasl 10375 2018-07-02 04:57:17Z asteins $
 #
 # Autopsy Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112295");
-  script_version("$Revision: 10210 $");
+  script_version("$Revision: 10375 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 10:16:38 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:57:17 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 12:56:06 +0200 (Wed, 06 Jun 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Autopsy Version Detection (Windows)");
@@ -59,44 +59,42 @@ include("version_func.inc");
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch) exit(0);
 
-if(registry_key_exists(key:"SOFTWARE\Wow6432Node\The Sleuth Kit\Autopsy")) {
 
-  if("x86" >< os_arch) {
-    key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-  }
-  else if("x64" >< os_arch) {
-    key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
-                          "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
-  }
+if("x86" >< os_arch) {
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+}
+else if("x64" >< os_arch) {
+  key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+}
 
-  if(isnull(key_list)) exit(0);
+if(isnull(key_list)) exit(0);
 
-  foreach key (key_list) {
-    foreach item (registry_enum_keys(key:key)) {
-      name = registry_get_sz(key:key + item, item:"DisplayName");
+foreach key (key_list) {
+  foreach item (registry_enum_keys(key:key)) {
+    name = registry_get_sz(key:key + item, item:"DisplayName");
 
-      if(name =~ "Autopsy") {
-        version = registry_get_sz(key:key + item, item:"DisplayVersion");
-        insloc = registry_get_sz(key:key + item, item:"InstallLocation");
+    if(name =~ "^Autopsy") {
+      version = registry_get_sz(key:key + item, item:"DisplayVersion");
+      insloc = registry_get_sz(key:key + item, item:"InstallLocation");
 
-        if(!version) {
-          if(!insloc) {
-            insloc = "Unable to find the install location";
-          } else {
-            version = fetch_file_version(sysPath:insloc + "bin", file_name:"autopsy.exe");
-          }
+      if(!version) {
+        if(!insloc) {
+          insloc = "Unable to find the install location";
+        } else {
+          version = fetch_file_version(sysPath:insloc + "bin", file_name:"autopsy.exe");
         }
+      }
 
-        if(version) {
-          set_kb_item(name:"Autopsy/Win/Installed", value:TRUE);
+      if(version) {
+        set_kb_item(name:"Autopsy/Win/Installed", value:TRUE);
 
-          if("64" >< os_arch && "Wow6432Node" >!< key)
-            base = "cpe:/a:sleuthkit:autopsy:x64:";
-          else
-            base = "cpe:/a:sleuthkit:autopsy:";
+        if("64" >< os_arch && "Wow6432Node" >!< key)
+          base = "cpe:/a:sleuthkit:autopsy:x64:";
+        else
+          base = "cpe:/a:sleuthkit:autopsy:";
 
-          register_and_report_cpe(app:"Autopsy", ver:version, concluded:version, base:base, expr:"^([0-9.]+)", insloc:insloc);
-        }
+        register_and_report_cpe(app:"Autopsy", ver:version, concluded:version, base:base, expr:"^([0-9.]+)", insloc:insloc);
       }
     }
   }

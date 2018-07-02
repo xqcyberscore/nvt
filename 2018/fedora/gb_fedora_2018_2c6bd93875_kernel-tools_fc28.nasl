@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2c6bd93875_kernel-tools_fc28.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_2c6bd93875_kernel-tools_fc28.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
 #
 # Fedora Update for kernel-tools FEDORA-2018-2c6bd93875
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874726");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 06:00:25 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-11412");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel-tools FEDORA-2018-2c6bd93875");
   script_tag(name:"summary", value:"Check the version of kernel-tools");

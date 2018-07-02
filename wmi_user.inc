@@ -219,3 +219,15 @@ function wmi_local_users(handle)
   return LocalUserList;
 }
 
+function wmi_useraccounts_active(handle)
+{
+  query = "Select SID from Win32_UserAccount WHERE Status='Ok'";
+  usrList = wmi_query(wmi_handle:handle, query:query);
+
+  if(("NTSTATUS" >< usrList) || !usrList){
+    set_kb_item(name:"WMI/UserAccount/Active", value:"Error");
+    return(0);
+  }
+  set_kb_item(name:"WMI/UserAccount/Active", value:usrList);
+  return usrList;
+}

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4215.nasl 10056 2018-06-04 06:29:53Z cfischer $
+# $Id: deb_4215.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4215-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704215");
-  script_version("$Revision: 10056 $");
+  script_version("$Revision: 10373 $");
   script_cve_id("CVE-2017-5662", "CVE-2018-8013");
   script_name("Debian Security Advisory DSA 4215-1 (batik - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 08:29:53 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-02 00:00:00 +0200 (Sat, 02 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl 10352 2018-06-28 07:09:51Z santu $
+# $Id: gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl 10371 2018-06-29 13:27:39Z santu $
 #
 # WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813454");
-  script_version("$Revision: 10352 $");
+  script_version("$Revision: 10371 $");
+  script_cve_id("CVE-2018-12895");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 09:09:51 +0200 (Thu, 28 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 12:51:49 +0530 (Wed, 27 Jun 2018)");
   script_name("WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)");
 

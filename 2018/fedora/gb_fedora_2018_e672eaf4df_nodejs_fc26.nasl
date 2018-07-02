@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e672eaf4df_nodejs_fc26.nasl 9489 2018-04-16 05:58:08Z santu $
+# $Id: gb_fedora_2018_e672eaf4df_nodejs_fc26.nasl 10374 2018-07-02 04:44:41Z asteins $
 #
 # Fedora Update for nodejs FEDORA-2018-e672eaf4df
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874337");
-  script_version("$Revision: 9489 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:58:08 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 10374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 06:24:33 +0200 (Sat, 07 Apr 2018)");
   script_cve_id("CVE-2018-7158", "CVE-2018-7159", "CVE-2018-7160");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nodejs FEDORA-2018-e672eaf4df");
   script_tag(name: "summary", value: "Check the version of nodejs");

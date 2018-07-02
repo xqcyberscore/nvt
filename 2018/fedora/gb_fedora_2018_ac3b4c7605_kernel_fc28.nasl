@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ac3b4c7605_kernel_fc28.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_ac3b4c7605_kernel_fc28.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
 #
 # Fedora Update for kernel FEDORA-2018-ac3b4c7605
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874566");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 06:07:18 +0200 (Wed, 16 May 2018)");
   script_cve_id("CVE-2018-10322", "CVE-2018-10323", "CVE-2018-1108");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2018-ac3b4c7605");
   script_tag(name:"summary", value:"Check the version of kernel");
