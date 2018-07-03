@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10347 2018-06-27 15:16:56Z cfischer $
+# $Id: find_service1.nasl 10381 2018-07-03 08:49:51Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:16:56 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 10381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-03 10:49:51 +0200 (Tue, 03 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -115,8 +115,8 @@ if( strlen( r0 ) > 0 ) { # We have a spontaneous banner
     exit( 0 );
   }
 
-  if( match( string:r0, pattern:'220 *FTP Server ready\r\n' ) ||
-      match( string:r0, pattern:'220 *FTP server ready.\r\n' ) ) { # e.g. 220 AP9630 Network Management Card AOS v6.0.6 FTP server ready.
+  if( match( string:r0, pattern:'220 *FTP Server ready\r\n', icase:TRUE ) ||
+      match( string:r0, pattern:'220 *FTP Server ready.\r\n', icase:TRUE ) ) { # e.g. 220 AP9630 Network Management Card AOS v6.0.6 FTP server ready.
     report_service( port:port, svc:"ftp" );
     exit( 0 );
   }
@@ -476,7 +476,9 @@ if( "(Thread" >< r && ( "Notify Wlan Link " >< r ||
     "fsfsFlashFileHandleOpen" >< r ||
     "Found existing handle " >< r ||
     "After waiting approx. " >< r ||
-    "Timer fired at " >< r ) ) {
+    "Timer fired at " >< r ||
+    "ControlSocketServerInstructClientToLeave" >< r ||
+    ( "WFSAPI" >< r && "File not found" >< r ) ) ) {
   register_service( port:port, proto:"wifiradio-setup", message:"A WiFi radio setup service seems to be running on this port." );
   log_message( port:port, data:"A WiFi radio setup service seems to be running on this port." );
   exit( 0 );

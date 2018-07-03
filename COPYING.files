@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 02 Jul 2018 13:21:09 +0200
+# Automatically created on:  Tue, 03 Jul 2018 12:35:47 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38870,6 +38870,8 @@
 2018/debian/deb_4233.nasl: GPLv2+
 2018/debian/deb_4234.nasl: GPLv2+
 2018/debian/deb_4235.nasl: GPLv2+
+2018/debian/deb_4236.nasl: GPLv2+
+2018/debian/deb_4237.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41974,9 +41976,11 @@ gb_html_parser_detect_lin.nasl: GPLv2+
 gb_httpdx_server_detect.nasl: GPLv2+
 gb_http_file_server_detect.nasl: GPLv2+
 gb_http_security_headers_detect.nasl: GPLv2+
+gb_huawei_dp300_detect.nasl: GPLv2+
 gb_huawei_ibmc_http_detect.nasl: GPLv2+
 gb_huawei_ibmc_upnp_detect.nasl: GPLv2+
 gb_huawei_switch_detect.nasl: GPLv2+
+gb_huawei_te_detect.nasl: GPLv2+
 gb_huawei_VP9660_mcu_detect.nasl: GPLv2+
 gb_huawei_vsp_snmp_detect.nasl: GPLv2+
 gb_humax_gateway_detect.nasl: GPLv2+
@@ -57657,6 +57661,8 @@ gsf/2017/emc/gb_emc_isilon_onefs_priv_esc_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_emc_isilon_onefs_xss_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_rsa_archer_mult_vuln1.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K02230327.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K02236463.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K02613439.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K02692210.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K02714910.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K07369970.nasl: GPLv2+
@@ -57676,6 +57682,7 @@ gsf/2017/f5/gb_f5_big_ip_K22317030.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K22541983.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K23030550.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K24465120.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K24578092.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K25033460.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K30201296.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K31603170.nasl: GPLv2+
@@ -57692,7 +57699,9 @@ gsf/2017/f5/gb_f5_big_ip_K53084033.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K54358225.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K55102452.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K59448931.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K60104355.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K61223103.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K61429540.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K62279530.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K65615624.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K70938105.nasl: GPLv2+
@@ -58184,14 +58193,17 @@ gsf/2018/hp/gb_hp_sitescope_info_disc_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_micro_focus_operations_orchestration_KM03103896.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ar3200_huawei-sa-20180613-01-openssl-en.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_dp300_mult_vuln.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180131-01-ibmc-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180509-01-bypass-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180523-01-json-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-01-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-02-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-03-server-en.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_te_devices_mult_vuln.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_usg6300_huawei-sa-20170802-01-usg-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_usg9500_dos_vuln.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_usg_huawei-sa-20180630-01-cops-en.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_encryption_prot_security_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_os_command_injection_vuln_apr18.nasl: GPLv2+
