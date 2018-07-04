@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_virii.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: smb_virii.nasl 10389 2018-07-04 06:37:37Z cfischer $
 #
 # The remote host is infected by a virus
 #
@@ -25,62 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script checks for the presence of different virii on the remote
-host, by using the SMB credentials you provide OpenVAS with.
-
-- W32/Badtrans-B
-- JS_GIGGER.A@mm
-- W32/Vote-A
-- W32/Vote-B
-- CodeRed
-- W32.Sircam.Worm@mm
-- W32.HLLW.Fizzer@mm
-- W32.Sobig.B@mm
-- W32.Sobig.E@mm
-- W32.Sobig.F@mm
-- W32.Sobig.C@mm
-- W32.Yaha.J@mm
-- W32.mimail.a@mm
-- W32.mimail.c@mm
-- W32.mimail.e@mm
-- W32.mimail.l@mm
-- W32.mimail.p@mm
-- W32.Welchia.Worm
-- W32.Randex.Worm
-- W32.Beagle.A
-- W32.Novarg.A
-- Vesser
-- NetSky.C
-- Doomran.a
-- Beagle.m
-- Beagle.j
-- Agobot.FO
-- NetSky.W
-- Sasser
-- W32.Wallon.A
-- W32.MyDoom.M
-- W32.MyDoom.AI
-- W32.MyDoom.AX
-- W32.Aimdes.B
-- W32.Aimdes.C
-- W32.ahker.D
-- Hackarmy.i
-- W32.Erkez.D/Zafi.d
-- Winser-A
-- Berbew.K
-- Hotword.b
-- W32.Backdoor.Ginwui.B
-- W32.Wargbot
-- W32.Randex.GEL
-- W32.Fujacks.B";
-
-tag_solution = "See the URLs which will appear in the report";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80043");
-  script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+  script_version("$Revision: 10389 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:37:37 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -88,12 +37,107 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Tenable Network Security");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"See the URLs which will appear in the report.");
+
+  script_tag(name:"summary", value:"This script checks for the presence of different virii on the remote
+  host, by using the SMB credentials you provide OpenVAS with.");
+
+
+  script_tag(name:"insight", value:"The following virii are checked:
+
+  - W32/Badtrans-B
+
+  - JS_GIGGER.A@mm
+
+  - W32/Vote-A
+
+  - W32/Vote-B
+
+  - CodeRed
+
+  - W32.Sircam.Worm@mm
+
+  - W32.HLLW.Fizzer@mm
+
+  - W32.Sobig.B@mm
+
+  - W32.Sobig.E@mm
+
+  - W32.Sobig.F@mm
+
+  - W32.Sobig.C@mm
+
+  - W32.Yaha.J@mm
+
+  - W32.mimail.a@mm
+
+  - W32.mimail.c@mm
+
+  - W32.mimail.e@mm
+
+  - W32.mimail.l@mm
+
+  - W32.mimail.p@mm
+
+  - W32.Welchia.Worm
+
+  - W32.Randex.Worm
+
+  - W32.Beagle.A
+
+  - W32.Novarg.A
+
+  - Vesser
+
+  - NetSky.C
+
+  - Doomran.a
+
+  - Beagle.m
+
+  - Beagle.j
+
+  - Agobot.FO
+
+  - NetSky.W
+
+  - Sasser
+
+  - W32.Wallon.A
+
+  - W32.MyDoom.M
+
+  - W32.MyDoom.AI
+
+  - W32.MyDoom.AX
+
+  - W32.Aimdes.B
+
+  - W32.Aimdes.C
+
+  - W32.ahker.D
+
+  - Hackarmy.i
+
+  - W32.Erkez.D/Zafi.d
+
+  - Winser-A
+
+  - Berbew.K
+
+  - Hotword.b
+
+  - W32.Backdoor.Ginwui.B
+
+  - W32.Wargbot
+
+  - W32.Randex.GEL
+
+  - W32.Fujacks.B");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"registry");
@@ -109,8 +153,6 @@ local_var nname, url, key, item, exp;
 if(!get_kb_item("SMB/WindowsVersion")){
  exit(0);
 }
-
-if(get_kb_item("SMB/samba"))exit(0);
 
 function check_reg(nname, url, key, item, exp)
 {

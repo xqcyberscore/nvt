@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 9683 2018-05-02 06:13:56Z cfischer $
+# $Id: smb_nt.inc 10393 2018-07-04 07:23:20Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9683 $
+# $Revision: 10393 $
 #
 ###############################################################################
 
@@ -143,14 +143,34 @@ function kb_smb_transport() {
   return transport;
 }
 
+# @brief This function returns the info if the remote host is a Samba server.
+#        Note: NVTs calling this function needs a dependency to netbios_name_get.nasl
+#        and smb_nativelanman.nasl.
+#
+# @return TRUE if the remote host is a Samba server, FALSE otherwise
+#
 function kb_smb_is_samba() {
 
-  local_var is_samba;
+  local_var is_samba, lanman;
 
   if( ! isnull( __kb_smb_is_samba ) ) {
     is_samba = __kb_smb_is_samba;
   } else {
-    is_samba = string( get_kb_item( "SMB/samba" ) );
+
+    lanman = get_kb_item( "SMB/NativeLanManager" );
+    if( strlen( lanman ) > 0 ) {
+      if( "samba" >< tolower( lanman ) ) {
+        is_samba = TRUE;
+      } else {
+        is_samba = FALSE;
+      }
+    } else {
+      if( get_kb_item( "SMB/samba" ) ) {
+        is_samba = TRUE;
+      } else {
+        is_samba = FALSE;
+      }
+    }
     __kb_smb_is_samba = is_samba;
   }
   return is_samba;
@@ -393,7 +413,7 @@ function session_extract_sessionid( reply ) {
 
   if( strlen( reply ) < 52 ) return FALSE;
 
-  start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
+  start = stridx( reply, "SMB" ); # TBD: What's the purpose of this? This will be replaced one line below again...
   start = 4 + 4 + 2 + 2 + 2 + 2 + 2 + 2 + 4 + 4 + 8 + 4 + 4;
 
   #NTLMSSP challenge is 8 bytes in size
@@ -458,7 +478,7 @@ function smb_neg_prot_NTLMSSP( soc ) {
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_neg_prot_NTLMSSP" );
 
-  # constructing SMB header, also incudes the message type and length
+  # constructing SMB header, also includes the message type and length
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
   neg_prot = raw_string( 0x00, 0x00, 0x00, 0xd4, 0xff, 0x53, 0x4d, 0x42,
@@ -543,7 +563,7 @@ function smb_neg_prot_NTLMSSP( soc ) {
     # get_smb2_signature function is not present, send smb1 req only
     if( ( smb == "SMB2" ) && ( NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 ) ) {
 
-      # constructing SMB header, also incudes the message type and length
+      # constructing SMB header, also includes the message type and length
       g_mhi = multiplex_id / 256;
       g_mlo = multiplex_id % 256;
       neg_prot = raw_string( 0x00, 0x00, 0x00, 0xbe,
@@ -951,7 +971,7 @@ function smb_session_setup_NTLMSSP_extract_addrlist( ret ) {
   if( isnull( ret ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ret#-#smb_session_setup_NTLMSSP_extract_addrlist" );
 
   start = stridx( ret, "NTLMSSP", 0 );
-  # to find address list - length, shift byte postions
+  # to find address list - length, shift byte positions
   start += 8 + 4; #ntlmssp(8) + message type(4)
   start += 2 + 2 + 4 + 4 + 8 + 8; # domainlen(2) + domain maxlen(2) + offset(4) + flags(4) + challenge(8) + reserved(8);
 
@@ -959,7 +979,7 @@ function smb_session_setup_NTLMSSP_extract_addrlist( ret ) {
   addrlist_len_str += ret[start];
   addrlist_len = hextodec( str:( hexstr( addrlist_len_str ) ) );
 
-  # to find address list - offset, shift byte postions
+  # to find address list - offset, shift byte positions
   start += 2 + 2; #address list len(2) + address list max len(2)
 
   for( i = ( start + 3 ); i > ( start - 1 ); i-- ) {
@@ -2615,7 +2635,7 @@ function smb2_tconx_extract_tid( reply ) {
 
   if( strlen( reply ) < 44 ) return FALSE;
 
-  start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
+  start = stridx( reply, "SMB" ); # TBD: What's the purpose of this? This will be replaced one line below again...
   start = 4 + 4 + 2 + 2 + 2 + 2 + 2 + 2 + 4 + 4 + 8 + 4;
   #NTLMSSP tid is 4 bytes in size
   tid = (substr( reply, start, start + 3 ) );
@@ -2986,7 +3006,7 @@ function smb2ntcreatex_extract_pipe( reply ) {
   if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#smb2ntcreatex_extract_pipe" );
   if( strlen( reply ) < 148 ) return NULL;
 
-  start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
+  start = stridx( reply, "SMB" ); # TBD: What's the purpose of this? This will be replaced one line below again...
   start = 64 + 64 + 4;
   #NTLMSSP challenge is 8 bytes in size
   ret = ( substr( reply, start, start + 15 ) );
@@ -5966,7 +5986,7 @@ function registry2_decode_dword( data ) {
 # Queries the knowledge base, if item not found, tries to establish a #
 # smb connection to the remote host.                                  #
 # Returns NULL  if important connection parameters are missing,       #
-#               connection couldnt be established or                  #
+#               connection couldn't be established or                  #
 #               if key or item could not be found                     #
 #               --> No FALSE because a DWORD could be 0               #
 #         and the value of the queried key otherwise                  #
@@ -6246,7 +6266,7 @@ function registry_get_binary( key, item, type ) {
 # Queries the knowledge base, if item not found, tries to establish a #
 # smb connection to the remote host.                                  #
 # Returns NULL  if important connection parameters are missing        #
-#               or connection couldnt be established                  #
+#               or connection couldn't be established                  #
 #         FALSE if key or item could not be found                     #
 #         and the value of the queried key otherwise                  #
 #---------------------------------------------------------------------#

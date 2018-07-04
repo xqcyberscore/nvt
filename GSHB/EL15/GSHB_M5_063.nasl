@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_063.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_063.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.063
 #
@@ -27,31 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95062");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M5.063: Einsatz von GnuPG oder PGP");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05063.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
+  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_WMI_GnuPGandPGP.nasl", "GSHB/GSHB_SSH_pubring.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_WMI_GnuPGandPGP.nasl", "GSHB/GSHB_SSH_pubring.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
   script_require_keys("WMI/GnuPGVersion");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.063: Einsatz von GnuPG oder PGP.
 
-Stand: 14. Ergänzungslieferung (14. EL).
-");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05063.html");
+
+  script_tag(name:"summary", value:"IT-Grundschutz M5.063: Einsatz von GnuPG oder PGP.
+
+  Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"registry");
 
   exit(0);
 }
 
 include("itg.inc");
+include("smb_nt.inc");
 
 name = 'IT-Grundschutz M5.063: Einsatz von GnuPG oder PGP\n';
 
@@ -68,9 +69,8 @@ gshbm = "GSHB Maßnahme 5.063: ";
 pubrings = get_kb_item("GSHB/pubrings");
 log = get_kb_item("GSHB/pubrings/log");
 
-SAMBA = get_kb_item("SMB/samba");
+SAMBA = kb_smb_is_samba();
 SSHUNAME = get_kb_item("ssh/login/uname");
-
 
 if (SAMBA || (SSHUNAME && "command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME)){
   rpms = get_kb_item("ssh/login/packages");

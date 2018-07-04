@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spysweeper_corp_installed.nasl 8370 2018-01-11 09:44:52Z cfischer $
-# Description: Webroot SpySweeper Enterprise Check
+# $Id: spysweeper_corp_installed.nasl 10390 2018-07-04 06:46:11Z cfischer $
+#
+# Webroot SpySweeper Enterprise Check
 #
 # Authors:
 # Montgomery County
@@ -22,31 +24,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80046");
-  script_version("$Revision: 8370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 10390 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:46:11 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Webroot SpySweeper Enterprise Check");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
-  script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security"); 
+  script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl","smb_enum_services.nasl");
+  script_dependencies("smb_enum_services.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "solution" , value : "Make sure Spy Sweeper Ent is installed,
+
+  script_tag(name:"solution", value:"Make sure Spy Sweeper Enterprise is installed,
   running and using the latest VDEFS.");
-  script_tag(name : "summary" , value : "This plugin checks that the remote host has
+
+  script_tag(name:"summary", value:"This plugin checks that the remote host has
   Webroot Spy Sweeper Enterprise installed and properly running, and makes sure
   that the latest Vdefs are loaded.");
- exit(0);
+
+  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include("smb_nt.inc");
@@ -57,8 +63,6 @@ include("host_details.inc");
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
-
-if(get_kb_item("SMB/samba"))exit(0);
 
 #==================================================================#
 # Section 1. Utilities                                             #
@@ -72,20 +76,20 @@ function check_signature_version ()
 {
   local_var key, item, key_h, value, path, vers;
 
-  key = "SOFTWARE\Webroot\Enterprise\CommAgent\"; 
-  item = "sdfv"; 
+  key = "SOFTWARE\Webroot\Enterprise\CommAgent\";
+  item = "sdfv";
 
   if(!registry_key_exists(key:key)){
     return NULL;
-  }    
+  }
 
-  value = registry_get_sz(item:item, key:key); 
+  value = registry_get_sz(item:item, key:key);
   if(value) {
     set_kb_item(name: "Antivirus/SpySweeperEnt/signature", value:value);
     return value;
   } else {
     return NULL;
-  }   
+  }
 }
 
 
@@ -116,7 +120,6 @@ function check_product_version ()
     ver = "Unable to determine version";
     set_kb_item(name: "Antivirus/SpySweeperEnt/version", value:ver);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"Spy Sweeper Ent", ver:ver, base:"cpe:/a:webroot_software:spy_sweeper_enterprise:",
                             expr:"^([0-9.]+)");
     exit(0);
@@ -124,8 +127,7 @@ function check_product_version ()
    ver = string(version);
    set_kb_item(name: "Antivirus/SpySweeperEnt/version", value:ver);
 
-   ## build cpe and store it as host_detail
-   register_and_report_cpe(app:"Spy Sweeper Ent", ver:ver, base:"cpe:/a:webroot_software:spy_sweeper_enterprise:", 
+   register_and_report_cpe(app:"Spy Sweeper Ent", ver:ver, base:"cpe:/a:webroot_software:spy_sweeper_enterprise:",
                             expr:"^([0-9.]+)");
    return ver;
 }
@@ -150,7 +152,7 @@ if (registry_key_exists(key:key))
 
 if (!value)
 {
-  exit(0);  
+  exit(0);
 }
 
 set_kb_item(name: "Antivirus/SpySweeperEnt/installed", value:TRUE);
@@ -182,15 +184,15 @@ else
 #-------------------------------------------------------------#
 # Checks the virus signature version                          #
 #-------------------------------------------------------------#
-current_signature_version = check_signature_version (); 
+current_signature_version = check_signature_version ();
 
 #-------------------------------------------------------------#
 # Checks if Spy Sweeper is running                            #
 # Both of these need to running in order to ensure proper     #
-# operation.                                                  # 
+# operation.                                                  #
 #-------------------------------------------------------------#
 
-services = get_kb_item("SMB/svcs"); 
+services = get_kb_item("SMB/svcs");
 
 if ( services )
 {
@@ -217,7 +219,7 @@ warning = 0;
 # We first report information about the antivirus
 #
 report = "
-The remote host has the Webroot Spy Sweeper Enterprise installed. It has 
+The remote host has the Webroot Spy Sweeper Enterprise installed. It has
 been fingerprinted as :
 
 ";
@@ -238,12 +240,12 @@ virus = "";
 if(current_signature_version && current_signature_version>0) {
   if ( int(current_signature_version) < int(virus) )
   {
-    report += "The remote host has an out-dated version of the Spy 
+    report += "The remote host has an out-dated version of the Spy
 Sweeper virus signatures. Last version is " + virus + "
 
   ";
     warning = 1;
-  }    
+  }
 }
 
 #
@@ -269,7 +271,7 @@ else
 
 if (warning)
 {
-  report += "As a result, the remote host might be infected by spyware 
+  report += "As a result, the remote host might be infected by spyware
 received by browsing or other means.";
 
   security_message(port:0, data:report);

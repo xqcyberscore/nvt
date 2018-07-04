@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savce_installed.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Symantec Anti Virus Corporate Edition Check
+# $Id: savce_installed.nasl 10390 2018-07-04 06:46:11Z cfischer $
+#
+# Symantec Anti Virus Corporate Edition Check
 #
 # Authors:
 # Rewritten by Montgomery County
@@ -23,44 +25,39 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin checks that the remote host has Symantec AntiVirus 
-Corporate installed and properly running, and makes sure that the latest 
-Vdefs are loaded.
-
-This NVT has been depreciated as it produces false positives.
-Also it is not referenced by any other NVT.";
-
-tag_solution = "Make sure SAVCE is installed, running and using the latest
-VDEFS.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80040");
- script_version("$Revision: 9349 $");
- script_tag(name:"deprecated", value:TRUE);
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- name = "Symantec Anti Virus Corporate Edition Check";
+  script_oid("1.3.6.1.4.1.25623.1.0.80040");
+  script_version("$Revision: 10390 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:46:11 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Symantec Anti Virus Corporate Edition Check");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
+  script_family("Windows");
+  script_dependencies("smb_enum_services.nasl", "smb_reg_service_pack.nasl");
+  script_mandatory_keys("SMB/WindowsVersion");
+  script_require_ports(139, 445);
 
- script_name(name);
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"Make sure SAVCE is installed, running and using the latest
+  VDEFS.");
+
+  script_tag(name:"summary", value:"This plugin checks that the remote host has Symantec AntiVirus
+  Corporate installed and properly running, and makes sure that the latest Vdefs are loaded.");
+
+  script_tag(name:"deprecated", value:TRUE);
+
   script_tag(name:"qod_type", value:"registry");
- script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security"); 
- family = "Windows"; 
- script_family(family);
- script_dependencies("secpod_reg_enum.nasl","smb_enum_services.nasl");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
-##This NVT is depreciated as it produces false positives.
+##This NVT is deprecated as it produces false positives.
 ## Moreover it is not referenced by any of the NVTs.
 exit(66);
 
@@ -68,15 +65,11 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.80040";
 SCRIPT_DESC = "Symantec Anti Virus Corporate Edition Check";
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
-
-if(get_kb_item("SMB/samba"))exit(0);
 
 global_var soft_path;
 
@@ -87,25 +80,25 @@ function check_signature_version ()
 {
   local_var key, item, items, key_h, val, value, path, vers;
 
-  key = soft_path + "Symantec\InstalledApps\"; 
+  key = soft_path + "Symantec\InstalledApps\";
 
    if(!registry_key_exists(key:key)){
       return NULL;
-   } 
+   }
 
    value = registry_get_sz(item:"AVENGEDEFS", key:key);
    if (value) path = value;
    if (isnull(path)) return NULL;
 
-   key = soft_path + "Symantec\SharedDefs\"; 
+   key = soft_path + "Symantec\SharedDefs\";
 
    if(!registry_key_exists(key:key)){
     return 0;
-   }  
+   }
 
    items = make_list(
-      "DEFWATCH_10", 
-      "NAVCORP_72", 
+      "DEFWATCH_10",
+      "NAVCORP_72",
       "NAVCORP_70",
       "NAVNT_50_AP1"
     );
@@ -114,7 +107,7 @@ function check_signature_version ()
     {
       value = registry_get_sz(item:item, key:key);
       if(!value || isnull (value) )continue;
-      
+
         val = value;
         if (stridx(val, path) == 0)
         {
@@ -122,7 +115,7 @@ function check_signature_version ()
           if ("." >< val) val = val - strstr(val, ".");
           if (isnull(vers) || int(vers) < int(val)) vers = val;
         }
-      
+
     }
 
   if (!vers) return NULL;
@@ -153,7 +146,7 @@ function check_product_version ()
 
   if(!registry_key_exists(key:key)){
     return 0;
-  }  
+  }
 
    version = registry_get_sz(item:item, key:key);
 
@@ -176,10 +169,9 @@ function check_product_version ()
 
     set_kb_item(name: "Antivirus/SAVCE/version", value:version);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:symantec:norton_antivirus:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     return version;
    }
@@ -197,20 +189,20 @@ key = "SOFTWARE\Wow6432Node\Symantec\InstalledApps\";
 item = "SAVCE";
 
 if(registry_key_exists(key:key)){
-  soft_path = "SOFTWARE\Wow6432Node\"; 
-}  
+  soft_path = "SOFTWARE\Wow6432Node\";
+}
 
 if (!soft_path)
 {
  key = "SOFTWARE\Symantec\InstalledApps\";
  if(registry_key_exists(key:key)){
    soft_path = "SOFTWARE\";
- }  
+ }
 }
 
 if (soft_path)
 {
- value = registry_get_sz(item:item, key:key); 
+ value = registry_get_sz(item:item, key:key);
 }
 else
 {
@@ -219,7 +211,7 @@ else
 
 if (!value)
 {
-  exit(0);  
+  exit(0);
 }
 
 set_kb_item(name: "Antivirus/SAVCE/installed", value:TRUE);
@@ -230,13 +222,13 @@ set_kb_item(name: "Antivirus/SAVCE/installed", value:TRUE);
 #-------------------------------------------------------------#
 
 # Take the first signature version key
-current_signature_version = check_signature_version (); 
+current_signature_version = check_signature_version ();
 
 #-------------------------------------------------------------#
 # Checks if Antivirus is running                              #
 #-------------------------------------------------------------#
 
-services = get_kb_item("SMB/svcs"); 
+services = get_kb_item("SMB/svcs");
 
 # Thanks to Jeff Adams for Symantec service.
 if ( services )
@@ -263,7 +255,7 @@ item = "Parent";
 
 if (registry_key_exists(key:key))
 {
- parent = registry_get_sz(item:item, key:key); 
+ parent = registry_get_sz(item:item, key:key);
 }
 
 if ( strlen(parent)<=1 )
@@ -273,7 +265,7 @@ if ( strlen(parent)<=1 )
 else
 {
   set_kb_item(name: "Antivirus/SAVCE/parent", value:parent);
-}  
+}
 
 # var initialization
 warning = 0;
@@ -282,7 +274,7 @@ warning = 0;
 # We first report information about the antivirus
 #
 report = "
-The remote host has the Symantec Antivirus Corporate installed. It has 
+The remote host has the Symantec Antivirus Corporate installed. It has
 been fingerprinted as :
 
 ";
@@ -301,7 +293,7 @@ virus = "20080923";
 if(current_signature_version>0) {
   if ( int(current_signature_version) < ( int(virus) - 1 ) )
   {
-    report += "The remote host has an out-dated version of the Symantec 
+    report += "The remote host has an out-dated version of the Symantec
 Corporate virus signatures. Last version is " + virus + "
 
   ";

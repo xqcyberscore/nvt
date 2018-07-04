@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3694_1.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_ubuntu_USN_3694_1.nasl 10388 2018-07-04 05:22:47Z cfischer $
 #
 # Ubuntu Update for nasm USN-3694-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843571");
-  script_version("$Revision: 10374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_version("$Revision: 10388 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:22:47 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-29 05:46:02 +0200 (Fri, 29 Jun 2018)");
   script_cve_id("CVE-2017-10686", "CVE-2017-11111", "CVE-2017-14228", "CVE-2017-17810", "CVE-2017-17811", "CVE-2017-17812", "CVE-2017-17813", "CVE-2017-17814", "CVE-2017-17815", "CVE-2017-17816", "CVE-2017-17817", "CVE-2017-17818", "CVE-2017-17819", "CVE-2017-17820", "CVE-2018-8881");
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,7 @@ code.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 

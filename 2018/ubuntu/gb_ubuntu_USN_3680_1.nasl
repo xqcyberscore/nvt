@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3680_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3680_1.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Ubuntu Update for libvirt USN-3680-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843557");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 05:54:24 +0200 (Wed, 13 Jun 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2018-1064");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libvirt USN-3680-1");
   script_tag(name:"summary", value:"Check the version of libvirt");

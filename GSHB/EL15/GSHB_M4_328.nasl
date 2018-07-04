@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_328.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_328.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.328
 #
@@ -27,34 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94236");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.328: Sichere Grundkonfiguration eines Samba-Servers");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04328.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_SSH_Samba.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("GSHB/GSHB_SSH_Samba.nasl","netbios_name_get.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.328: Sichere Grundkonfiguration eines Samba-Servers
 
-Stand: 14. Ergänzungslieferung (14. EL).
-");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04328.html");
+
+  script_tag(name:"summary", value:"IT-Grundschutz M4.328: Sichere Grundkonfiguration eines Samba-Servers
+
+  Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"package");
 
   exit(0);
 }
 
 include("itg.inc");
+include("smb_nt.inc");
 
 name = 'IT-Grundschutz M4.328: Sichere Grundkonfiguration eines Samba-Servers\n';
 
-samba = get_kb_item("SMB/samba");
+samba = kb_smb_is_samba();
 global = get_kb_item("GSHB/SAMBA/global");
 netlogon = get_kb_item("GSHB/SAMBA/netlogon");
 smbpasswd = get_kb_item("GSHB/SAMBA/smbpasswd");
@@ -106,7 +107,7 @@ if(!samba){
 }else if(global == "error"){
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
-  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log); 
+  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
 }else if(global == "none" || global == "novalentrys"){
   result = string("Fehler");
   desc = string('Auf dem System wurde keine Konfiguration für einen\nSamba-Dateiserver gefunden.');
@@ -139,14 +140,14 @@ if(!samba){
           passdbbackend_res = "ne";
           passdbbackend_desc = '\n- Es muss sichergestellt werden, dass ein Benutzer\nkeine Hash-Werte aus dem Backend auslesen kann. Bei\nden Backends tdbsam sollte daher nur der Benutzer\n"root" Lese- und Schreibzugriff auf die Datei haben,\nin denen die Benutzerinformationen abgelegt werden.\n';
         }
-      } 
+      }
       else if ("smbpasswd" >< passdbbackend){
         if (smbpasswd !~ "-rw-------.*"){
           passdbbackend_res = "ne";
           passdbbackend_desc = '\n- Es muss sichergestellt werden, dass ein Benutzer\nkeine Hash-Werte aus dem Backend auslesen kann. Bei\nden Backends smbpasswd sollte daher nur der Benutzer\n"root" Lese- und Schreibzugriff auf die Datei haben,\nin denen die Benutzerinformationen abgelegt werden.\n';
         }else{
           passdbbackend_res = "ne";
-          passdbbackend_desc = '\n- Es sollte von der Verwendung des smbpasswd-Backends\nabgesehen werden. Es muss sichergestellt werden, dass\nein Benutzer keine Hash-Werte aus dem Backend auslesen\nkann.\nBei den Backends smbpasswd sollte daher nur der\nBenutzer "root" Lese- und Schreibzugriff auf die Datei\nhaben,\nin denen die Benutzerinformationen abgelegt\nwerden.\n';                  
+          passdbbackend_desc = '\n- Es sollte von der Verwendung des smbpasswd-Backends\nabgesehen werden. Es muss sichergestellt werden, dass\nein Benutzer keine Hash-Werte aus dem Backend auslesen\nkann.\nBei den Backends smbpasswd sollte daher nur der\nBenutzer "root" Lese- und Schreibzugriff auf die Datei\nhaben,\nin denen die Benutzerinformationen abgelegt\nwerden.\n';
         }
       }
     }
@@ -158,7 +159,7 @@ if(!samba){
       if("no" >!< ntlmauth || ntlmauth == "false"){
         ntlmauth_res = "ne";
         ntlmauth_desc = string('\n- Damit Samba nur NTLMv2 einsetzt, muss der Parameter\n-ntlm auth = no- in der Konfigurationsdatei smb.conf\ngesetzt werden.\n');
-      }    
+      }
     }
     if (hostsallow_res == "ne" || validusers_res == "ne" || interfaces_res == "ne" || netlogon_res == "ne" || passdbbackend_res == "ne" || ntlmauth == "ne"){
       result = string("nicht erfüllt");
@@ -167,13 +168,13 @@ if(!samba){
       result = string("erfüllt");
       desc = string('Die Grundkonfiguration Ihres Samba-Servers entspricht\nder Maßnahme 4.328.');
       if (links_res == "ne") desc += string('\nBeachten Sie aber:\n' + links_desc);
-    }    
+    }
   }
 }
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_328/result", value:result);

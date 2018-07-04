@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 10393 2018-07-04 07:23:20Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10393 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,6 +42,7 @@ if(description)
   script_family("Windows");
   # Don't add a dependency to os_detection.nasl. This will cause a dependency sycle.
   script_dependencies("toolcheck.nasl", "smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/password", "SMB/login", "Tools/Present/wmi");
   script_exclude_keys("SMB/samba");
 
@@ -71,10 +72,7 @@ function split_ver( value ) {
 SCRIPT_DESC = "Windows Application CPE Detection";
 BANNER_TYPE = "Registry access via SMB";
 
-lanman = get_kb_item( "SMB/NativeLanManager" );
-samba  = get_kb_item( "SMB/samba" );
-
-if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
+if( kb_smb_is_samba() ) exit( 0 );
 
 host      = get_host_ip();
 usrname   = kb_smb_login();
@@ -140,48 +138,48 @@ if(!handle || !handlereg){
     if (com) spver = "6a";
   }
   smbregentries = registry_enum_keys(key:key);
-  foreach entrie (smbregentries)
+  foreach entry (smbregentries)
   {
-    if (entrie == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
-    else if (entrie == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
-    else if (entrie == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
-    else if (entrie == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entrie == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
-    else if (entrie == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
-    val = registry_get_sz(key:key + entrie, item:"DisplayName");
+    if (entry == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
+    else if (entry == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
+    else if (entry == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
+    else if (entry == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entry == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
+    else if (entry == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
+    val = registry_get_sz(key:key + entry, item:"DisplayName");
     if (val){
       smbkeylist += val +";";
-      smbkeylist += registry_get_sz(key:key + entrie, item:"DisplayVersion") + "|";
+      smbkeylist += registry_get_sz(key:key + entry, item:"DisplayVersion") + "|";
     }
   }
   smbregentriesx = registry_enum_keys(key:keyx);
   if (smbregentriesx)
   {
     x64 = "1";
-    foreach entriex (smbregentriesx)
+    foreach entryx (smbregentriesx)
     if (!MSNMess){
-      if (entriex == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
-      else if (entriex == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
-      else if (entriex == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
-      else if (entriex == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entriex == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
-      else if (entriex == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
+      if (entryx == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
+      else if (entryx == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
+      else if (entryx == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
+      else if (entryx == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entryx == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
+      else if (entryx == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
     }
     {
-      val = registry_get_sz(key:keyx + entriex, item:"DisplayName");
+      val = registry_get_sz(key:keyx + entryx, item:"DisplayName");
       if (val){
         smbkeylist += val +";";
-        smbkeylist += registry_get_sz(key:keyx + entriex, item:"DisplayVersion") + "|";
+        smbkeylist += registry_get_sz(key:keyx + entryx, item:"DisplayVersion") + "|";
       }
     }
   }
 
   netfrmregentries = registry_enum_keys(key:netfrm);
-  foreach entrie (netfrmregentries)
+  foreach entry (netfrmregentries)
   {
-    install = registry_get_dword(key:netfrm + entrie, item:"Install");
+    install = registry_get_dword(key:netfrm + entry, item:"Install");
     if (install){
-      netfrmkeylist += entrie + ";";
-      netfrmkeylist += registry_get_sz(key:netfrm + entrie, item:"Version") + ";";
-      netfrmkeylist += registry_get_dword(key:netfrm + entrie, item:"SP") + "|";
+      netfrmkeylist += entry + ";";
+      netfrmkeylist += registry_get_sz(key:netfrm + entry, item:"Version") + ";";
+      netfrmkeylist += registry_get_dword(key:netfrm + entry, item:"SP") + "|";
     }
   }
 
@@ -190,25 +188,25 @@ if(!handle || !handlereg){
 
   officeregentries = registry_enum_keys(key:officekey);
   if (officeregentries){
-    foreach entrie (officeregentries)
+    foreach entry (officeregentries)
     {
-      val = registry_get_sz(key:officekey + entrie + "\Common\InstallRoot\", item:"Path");
+      val = registry_get_sz(key:officekey + entry + "\Common\InstallRoot\", item:"Path");
       if (val){
-        msodll = registry_get_sz(key:officekey + entrie + "\Common\FilesPaths\", item:"mso.dll");
+        msodll = registry_get_sz(key:officekey + entry + "\Common\FilesPaths\", item:"mso.dll");
         if (msodll) officepath  = val;
         officebakpath  += val + ";";
-        OfficeVer = entrie[i];
+        OfficeVer = entry[i];
       }
       visiopath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", item:"Path");
       if (visiopath){
-        if(!VisioCRV)VisioCRV = registry_get_sz(key:officekey + entrie + "\Visio\", item:"CurrentlyRegisteredVersion");
-        valv = registry_get_sz(key:officekey + entrie[i] + "\Visio\", item:"InstalledVersion");
+        if(!VisioCRV)VisioCRV = registry_get_sz(key:officekey + entry + "\Visio\", item:"CurrentlyRegisteredVersion");
+        valv = registry_get_sz(key:officekey + entry[i] + "\Visio\", item:"InstalledVersion");
         if (valv )VisioRegVer = valv;
         if(!VisioRegVer){
-          Visioregentries = registry_enum_keys(key:officekey + entrie + "\Visio\");
-          if(!Visioentrie)Visioentrie = Visioregentries;
-          for(v=0; v<max_index(Visioentrie); v++){
-            valv = VisioRegVer = registry_get_sz(key:officekey + entrie + "\Visio\" + Visioentrie[v], item:"InstalledVersion");
+          Visioregentries = registry_enum_keys(key:officekey + entry + "\Visio\");
+          if(!Visioentry)Visioentry = Visioregentries;
+          for(v=0; v<max_index(Visioentry); v++){
+            valv = VisioRegVer = registry_get_sz(key:officekey + entry + "\Visio\" + Visioentry[v], item:"InstalledVersion");
             if (valv )VisioRegVer = valv;
           }
         }
@@ -217,11 +215,11 @@ if(!handle || !handlereg){
   }
   worksregentries = registry_enum_keys(key:works);
   if(worksregentries){
-    foreach entrie (worksregentries)
+    foreach entry (worksregentries)
     {
-      val = registry_get_sz(key:works + entrie, item:"Installdir");
+      val = registry_get_sz(key:works + entry, item:"Installdir");
       if (val) {
-        ver = registry_get_sz(key:works + entrie, item:"CurrentVersion");
+        ver = registry_get_sz(key:works + entry, item:"CurrentVersion");
         if (ver) workspath  = val;
         worksVer = ver;
       }
@@ -231,27 +229,27 @@ if(!handle || !handlereg){
   if (x64){
     officeregentriesx = registry_enum_keys(key:officexkey);
     if(officeregentriesx){
-      foreach entrie (officeregentriesx)
+      foreach entry (officeregentriesx)
       {
-        val1 = registry_get_sz(key:officexkey + entrie + "\Common\InstallRoot\", item:"Path");
+        val1 = registry_get_sz(key:officexkey + entry + "\Common\InstallRoot\", item:"Path");
         if (val1) {
-          msodll1 = registry_get_sz(key:officexkey + entrie + "\Common\FilesPaths\", item:"mso.dll");
+          msodll1 = registry_get_sz(key:officexkey + entry + "\Common\FilesPaths\", item:"mso.dll");
           if (msodll1) officepath  = val1;
           if (msodll1) msodll  = msodll1;
           officebakpath  += val1 + ";";
-          OfficeVer = entrie;
+          OfficeVer = entry;
         }
         if(!visiopath)visiopath = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", item:"Path");
         if (visiopath){
-          if(!VisioCRV)VisioCRV = registry_get_sz(key:officexkey + entrie + "\Visio\", item:"CurrentlyRegisteredVersion");
-          if(!VisioRegVer)xvalv = registry_get_sz(key:officexkey + entrie + "\Visio\", item:"InstalledVersion");
+          if(!VisioCRV)VisioCRV = registry_get_sz(key:officexkey + entry + "\Visio\", item:"CurrentlyRegisteredVersion");
+          if(!VisioRegVer)xvalv = registry_get_sz(key:officexkey + entry + "\Visio\", item:"InstalledVersion");
           if (xvalv )VisioRegVer = xvalv;
           if(!VisioRegVer){
-            Visioregentries = registry_enum_keys(key:officexkey + entrie + "\Visio\");
-            #Visioentrie = split(Visioregentries, sep:"|", keep:0);
-            if(!Visioentrie)Visioentrie = Visioregentries;
-            for(v=0; v<max_index(Visioentrie); v++){
-              xvalv = registry_get_sz(key:officexkey + entrie + "\Visio\" + Visioentrie[v], item:"InstalledVersion");
+            Visioregentries = registry_enum_keys(key:officexkey + entry + "\Visio\");
+            #Visioentry = split(Visioregentries, sep:"|", keep:0);
+            if(!Visioentry)Visioentry = Visioregentries;
+            for(v=0; v<max_index(Visioentry); v++){
+              xvalv = registry_get_sz(key:officexkey + entry + "\Visio\" + Visioentry[v], item:"InstalledVersion");
               if (xvalv )VisioRegVer = xvalv;
             }
           }
@@ -260,11 +258,11 @@ if(!handle || !handlereg){
     }
     worksregentriesx = registry_enum_keys(key:works);
     if(worksregentriesx){
-      foreach entrie (worksregentriesx)
+      foreach entry (worksregentriesx)
       {
-        val1 = registry_get_sz(key:works + entrie, item:"Installdir");
+        val1 = registry_get_sz(key:works + entry, item:"Installdir");
         if (val1) {
-          ver1 = registry_get_sz(key:works + entrie, item:"CurrentVersion");
+          ver1 = registry_get_sz(key:works + entry, item:"CurrentVersion");
           if (ver1) workspath  = val1;
           if (ver1)worksVer = ver1;
         }
@@ -597,18 +595,18 @@ else if(handle && handlereg){
 
   regentries = wmi_reg_enum_key(wmi_handle:handlereg, key:key);
   if (regentries){
-    entrie = split(regentries, sep:"|", keep:0);
-    for(i=0; i<max_index(entrie); i++)
+    entry = split(regentries, sep:"|", keep:0);
+    for(i=0; i<max_index(entry); i++)
     {
-      if (entrie[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
-      else if (entrie[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
-      else if (entrie[i] == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
-      else if (entrie[i] == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entrie[i] == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
-      else if (entrie[i] == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
-      val = wmi_reg_get_sz(wmi_handle:handlereg, key:key + entrie[i], key_name:"DisplayName");
+      if (entry[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
+      else if (entry[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
+      else if (entry[i] == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
+      else if (entry[i] == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entry[i] == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
+      else if (entry[i] == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
+      val = wmi_reg_get_sz(wmi_handle:handlereg, key:key + entry[i], key_name:"DisplayName");
       if (val){
         keylist += val +";";
-        keylist += wmi_reg_get_sz(wmi_handle:handlereg, key:key + entrie[i], key_name:"DisplayVersion") + "|";
+        keylist += wmi_reg_get_sz(wmi_handle:handlereg, key:key + entry[i], key_name:"DisplayVersion") + "|";
       }
     }
   }
@@ -616,62 +614,62 @@ else if(handle && handlereg){
     x64 = "1";
     regentriesx += wmi_reg_enum_key(wmi_handle:handlereg, key:keyx);
     if (regentriesx){
-      entriex = split(regentriesx, sep:"|", keep:0);
-      for(i=0; i<max_index(entriex); i++)
+      entryx = split(regentriesx, sep:"|", keep:0);
+      for(i=0; i<max_index(entryx); i++)
       {
         if (!MSNMess){
-          if (entriex[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
-          else if (entriex[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
-          else if (entriex[i] == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
-          else if (entriex[i] == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entriex[i] == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
-          else if (entriex[i] == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
+          if (entryx[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600208}") MSNMess = "6.2";
+          else if (entryx[i] == "{ABEB838C-A1A7-4C5D-B7E1-8B4314600820}") MSNMess = "7.0";
+          else if (entryx[i] == "{CEB3A11A-03EA-11DA-BFBD-00065BBDC0B5}") MSNMess = "7.5";
+          else if (entryx[i] == "{FCE50DB8-C610-4C42-BE5C-193F46C6F812}" || entryx[i] == "{7A837109-E671-470D-B489-F1EBE471D220}") MSNMess = "8.0";
+          else if (entryx[i] == "{571700F0-DB9D-4B3A-B03D-35A14BB5939F}") MSNMess = "8.1";
         }
-        valx = wmi_reg_get_sz(wmi_handle:handlereg, key:keyx + entriex[i], key_name:"DisplayName");
+        valx = wmi_reg_get_sz(wmi_handle:handlereg, key:keyx + entryx[i], key_name:"DisplayName");
         if (valx){
           keylist += valx +";";
-          keylist += wmi_reg_get_sz(wmi_handle:handlereg, key:keyx + entriex[i], key_name:"DisplayVersion") + "|";
+          keylist += wmi_reg_get_sz(wmi_handle:handlereg, key:keyx + entryx[i], key_name:"DisplayVersion") + "|";
         }
       }
     }
   }
   netfrmregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:netfrm);
   if (netfrmregentries){
-    entrie = split(netfrmregentries, sep:"|", keep:0);
-    for(i=0; i<max_index(entrie); i++)
+    entry = split(netfrmregentries, sep:"|", keep:0);
+    for(i=0; i<max_index(entry); i++)
     {
-      install = wmi_reg_get_dword_val(wmi_handle:handlereg, key:netfrm + entrie[i], val_name:"Install");
+      install = wmi_reg_get_dword_val(wmi_handle:handlereg, key:netfrm + entry[i], val_name:"Install");
       if (install){
-        netfrmkeylist += entrie[i] + ";";
-        netfrmkeylist += wmi_reg_get_sz(wmi_handle:handlereg, key:netfrm + entrie[i], key_name:"Version") + ";";
-        netfrmkeylist += wmi_reg_get_dword_val(wmi_handle:handlereg, key:netfrm + entrie[i], val_name:"SP") + "|";
+        netfrmkeylist += entry[i] + ";";
+        netfrmkeylist += wmi_reg_get_sz(wmi_handle:handlereg, key:netfrm + entry[i], key_name:"Version") + ";";
+        netfrmkeylist += wmi_reg_get_dword_val(wmi_handle:handlereg, key:netfrm + entry[i], val_name:"SP") + "|";
       }
     }
   }
   officeregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:officekey);
   if (officeregentries){
-    entrie = NULL;
-    entrie = split(officeregentries, sep:"|", keep:0);
-    if(!entrie)entrie = officeregentries;
-    for(i=0; i<max_index(entrie); i++)
+    entry = NULL;
+    entry = split(officeregentries, sep:"|", keep:0);
+    if(!entry)entry = officeregentries;
+    for(i=0; i<max_index(entry); i++)
     {
-      val = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entrie[i] + "\Common\InstallRoot\", key_name:"Path");
+      val = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entry[i] + "\Common\InstallRoot\", key_name:"Path");
       if (val) {
-        msodll = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entrie[i] + "\Common\FilesPaths\", key_name:"mso.dll");
+        msodll = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entry[i] + "\Common\FilesPaths\", key_name:"mso.dll");
         if (msodll) officepath  = val;
         officebakpath  += val + ";";
-        OfficeVer = entrie[i];
+        OfficeVer = entry[i];
       }
       visiopath = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", key_name:"Path");
       if (visiopath){
-        if(!VisioCRV)VisioCRV = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entrie[i] + "\Visio\", key_name:"CurrentlyRegisteredVersion");
-        valv = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entrie[i] + "\Visio\", key_name:"InstalledVersion");
+        if(!VisioCRV)VisioCRV = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entry[i] + "\Visio\", key_name:"CurrentlyRegisteredVersion");
+        valv = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entry[i] + "\Visio\", key_name:"InstalledVersion");
         if (valv )VisioRegVer = valv;
         if(!VisioRegVer){
-          Visioregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:officekey + entrie[i] + "\Visio\");
-          Visioentrie = split(Visioregentries, sep:"|", keep:0);
-          if(!Visioentrie)Visioentrie = Visioregentries;
-          for(v=0; v<max_index(Visioentrie); v++){
-            valv = VisioRegVer = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entrie[i] + "\Visio\" + Visioentrie[v], key_name:"InstalledVersion");
+          Visioregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:officekey + entry[i] + "\Visio\");
+          Visioentry = split(Visioregentries, sep:"|", keep:0);
+          if(!Visioentry)Visioentry = Visioregentries;
+          for(v=0; v<max_index(Visioentry); v++){
+            valv = VisioRegVer = wmi_reg_get_sz(wmi_handle:handlereg, key:officekey + entry[i] + "\Visio\" + Visioentry[v], key_name:"InstalledVersion");
             if (valv )VisioRegVer = valv;
           }
         }
@@ -680,14 +678,14 @@ else if(handle && handlereg){
   }
   worksregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:works);
   if(worksregentries){
-    entrie = NULL;
-    entrie = split(worksregentries, sep:"|", keep:0);
-    if(!entrie)entrie = worksregentries;
-    for(i=0; i<max_index(entrie); i++)
+    entry = NULL;
+    entry = split(worksregentries, sep:"|", keep:0);
+    if(!entry)entry = worksregentries;
+    for(i=0; i<max_index(entry); i++)
     {
-      val = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entrie[i], key_name:"Installdir");
+      val = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entry[i], key_name:"Installdir");
       if (val) {
-        ver = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entrie[i], key_name:"CurrentVersion");
+        ver = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entry[i], key_name:"CurrentVersion");
         if (ver) workspath  = val;
         worksVer = ver;
       }
@@ -696,30 +694,30 @@ else if(handle && handlereg){
   if (x64){
     officeregentriesx = wmi_reg_enum_key(wmi_handle:handlereg, key:officexkey);
     if(officeregentriesx){
-      entrie = NULL;
-      entrie = split(officeregentriesx, sep:"|", keep:0);
-      if(!entrie)entrie = officeregentriesx;
-      for(i=0; i<max_index(entrie); i++)
+      entry = NULL;
+      entry = split(officeregentriesx, sep:"|", keep:0);
+      if(!entry)entry = officeregentriesx;
+      for(i=0; i<max_index(entry); i++)
       {
-        val1 = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Common\InstallRoot\", key_name:"Path");
+        val1 = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entry[i] + "\Common\InstallRoot\", key_name:"Path");
         if (val1) {
-          msodll1 = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Common\FilesPaths\", key_name:"mso.dll");
+          msodll1 = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entry[i] + "\Common\FilesPaths\", key_name:"mso.dll");
           if (msodll1) officepath  = val1;
           if (msodll1) msodll  = msodll1;
           officebakpath  += val1 + ";";
-          OfficeVer = entrie[i];
+          OfficeVer = entry[i];
         }
         if(!visiopath)visiopath = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", key_name:"Path");
         if (visiopath){
-          if(!VisioCRV)VisioCRV = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\", key_name:"CurrentlyRegisteredVersion");
-          if(!VisioRegVer)xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\", key_name:"InstalledVersion");
+          if(!VisioCRV)VisioCRV = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entry[i] + "\Visio\", key_name:"CurrentlyRegisteredVersion");
+          if(!VisioRegVer)xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entry[i] + "\Visio\", key_name:"InstalledVersion");
           if (xvalv )VisioRegVer = xvalv;
           if(!VisioRegVer){
-            Visioregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\");
-            Visioentrie = split(Visioregentries, sep:"|", keep:0);
-            if(!Visioentrie)Visioentrie = Visioregentries;
-            for(v=0; v<max_index(Visioentrie); v++){
-              xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\" + Visioentrie[v], key_name:"InstalledVersion");
+            Visioregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:officexkey + entry[i] + "\Visio\");
+            Visioentry = split(Visioregentries, sep:"|", keep:0);
+            if(!Visioentry)Visioentry = Visioregentries;
+            for(v=0; v<max_index(Visioentry); v++){
+              xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entry[i] + "\Visio\" + Visioentry[v], key_name:"InstalledVersion");
               if (xvalv )VisioRegVer = xvalv;
             }
           }
@@ -728,14 +726,14 @@ else if(handle && handlereg){
     }
     worksregentriesx = wmi_reg_enum_key(wmi_handle:handlereg, key:works);
     if(worksregentriesx){
-      entrie = NULL;
-      entrie = split(worksregentriesx, sep:"|", keep:0);
-      if(!entrie)entrie = worksregentriesx;
-      for(i=0; i<max_index(entrie); i++)
+      entry = NULL;
+      entry = split(worksregentriesx, sep:"|", keep:0);
+      if(!entry)entry = worksregentriesx;
+      for(i=0; i<max_index(entry); i++)
       {
-        val1 = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entrie[i], key_name:"Installdir");
+        val1 = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entry[i], key_name:"Installdir");
         if (val1) {
-          ver1 = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entrie[i], key_name:"CurrentVersion");
+          ver1 = wmi_reg_get_sz(wmi_handle:handlereg, key:works + entry[i], key_name:"CurrentVersion");
           if (ver1) workspath  = val1;
           if (ver1)worksVer = ver1;
         }
@@ -967,7 +965,7 @@ else if(handle && handlereg){
 #  wmi_close(wmi_handle:handlereg);
 }
 
-##Check if keylist exists and set missing wmi variable for future work
+# nb: Check if keylist exists and set missing wmi variable for future work
 if (!keylist) keylist = smbkeylist;
 if (!sqlregentries) sqlregentries = smbsqlregentries;
 if (!sqlregentriesx) sqlregentriesx = smbsqlregentriesx;
@@ -1452,7 +1450,7 @@ if (OSVER == "6.2"){
   }
 }
 
-# TODO: Add Windows 10, Server 2016 and Windos Embedded support via WMI
+# TODO: Add Windows 10, Server 2016 and Windows Embedded support via WMI
 if (OSVER == "6.3"){
   if(OSTYPE == "1"){#Windows 8.1
     register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
@@ -2284,14 +2282,14 @@ if (sqlregentries || sqlregentriesx){
   mssql = NULL;
   cpe = "cpe:/a:microsoft:sql_server";
   if(sqlregentries){
-    entrie = NULL;
-    if (!smbsqlregentries)entrie = split(sqlregentries, sep:"|", keep:FALSE);
-    if(!entrie)entrie = sqlregentries;
-    for(i=0; i<max_index(entrie); i++)
+    entry = NULL;
+    if (!smbsqlregentries)entry = split(sqlregentries, sep:"|", keep:FALSE);
+    if(!entry)entry = sqlregentries;
+    for(i=0; i<max_index(entry); i++)
     {
       val = NULL;
-      if(handlereg)val = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", key_name:"CurrentVersion");
-      else val = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", item:"CurrentVersion");
+      if(handlereg)val = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entry[i] + "\MSSQLServer\CurrentVersion", key_name:"CurrentVersion");
+      else val = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entry[i] + "\MSSQLServer\CurrentVersion", item:"CurrentVersion");
 
       if( ! val || isnull( val ) ) continue;
 
@@ -2343,14 +2341,14 @@ if (sqlregentries || sqlregentriesx){
     }
   }
   if(sqlregentriesx){
-    entrie = NULL;
-    if (!smbsqlregentriesx)entrie = split(sqlregentriesx, sep:"|", keep:FALSE);
-    if(!entrie)entrie = sqlregentriesx;
-    for(i=0; i<max_index(entrie); i++)
+    entry = NULL;
+    if (!smbsqlregentriesx)entry = split(sqlregentriesx, sep:"|", keep:FALSE);
+    if(!entry)entry = sqlregentriesx;
+    for(i=0; i<max_index(entry); i++)
     {
       val = NULL;
-      if(handlereg)val = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", key_name:"CurrentVersion");
-      else val = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", item:"CurrentVersion");
+      if(handlereg)val = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entry[i] + "\MSSQLServer\CurrentVersion", key_name:"CurrentVersion");
+      else val = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entry[i] + "\MSSQLServer\CurrentVersion", item:"CurrentVersion");
 
       if( ! val || isnull( val ) ) continue;
 

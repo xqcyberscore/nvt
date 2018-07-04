@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 10160 2018-06-12 10:06:38Z cfischer $
+# $Id: unknown_services.nasl 10385 2018-07-03 14:30:51Z cfischer $
 #
 # Collect banner of unknown services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 10160 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 12:06:38 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10385 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-03 16:30:51 +0200 (Tue, 03 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,7 +49,7 @@ if(description)
                       "famd_detect.nasl", "find_service6.nasl",
                       "gb_ab_ethernet_detect.nasl", "gb_aerospike_telnet_detect.nasl",
                       "gb_aerospike_xdr_detect.nasl", "gb_amqp_detect.nasl",
-                      "gb_apache_cassandra_detect.nasl",
+                      "gb_android_adb_detect.nasl", "gb_apache_cassandra_detect.nasl",
                       "gb_apache_derby_detect.nasl", "gb_apache_jserv_detect.nasl",
                       "gb_arkeia_virtual_appliance_detect_617.nasl", "gb_backupexec_detect.nasl",
                       "gb_check_mk_agent_detect.nasl", "gb_codesys_detect.nasl",

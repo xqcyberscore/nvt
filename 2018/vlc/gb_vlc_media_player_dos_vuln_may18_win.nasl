@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_may18_win.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_vlc_media_player_dos_vuln_may18_win.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # VLC Media Player Denial-of-Service Vulnerability May18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813501");
-  script_version("$Revision: 10041 $");
+  script_version("$Revision: 10387 $");
   script_cve_id("CVE-2018-11516");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:40:50 +0530 (Tue, 29 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Denial-of-Service Vulnerability May18 (Windows)");

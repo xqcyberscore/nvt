@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_527698a904_libvirt_fc28.nasl 10299 2018-06-22 11:50:53Z santu $
+# $Id: gb_fedora_2018_527698a904_libvirt_fc28.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Fedora Update for libvirt FEDORA-2018-527698a904
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874720");
-  script_version("$Revision: 10299 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 13:50:53 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 06:02:25 +0200 (Fri, 22 Jun 2018)");
   script_cve_id("CVE-2018-3639");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libvirt FEDORA-2018-527698a904");
   script_tag(name:"summary", value:"Check the version of libvirt");

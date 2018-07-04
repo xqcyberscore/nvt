@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 9184 2018-03-23 08:18:41Z cfischer $
+# $Id: smb_enum_services.nasl 10393 2018-07-04 07:23:20Z cfischer $
 #
 # SMB Enumerate Services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 9184 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 09:18:41 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 10393 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,22 +42,18 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
 
-  tag_summary = "This plugin implements the SvcOpenSCManager() and
-  SvcEnumServices() calls to obtain the list of active and inactive
-  services and drivers of the remote host, using the MS-DCE/RPC
-  protocol over SMB.";
-
-  tag_impact = "An attacker may use this feature to gain better
-  knowledge of the remote host.";
-
-  tag_solution = "To prevent access to the services and drivers
+  script_tag(name:"solution", value:"To prevent access to the services and drivers
   list, you should either have tight login restrictions,
   so that only trusted users can access your host, and/or you
-  should filter incoming traffic to this port.";
+  should filter incoming traffic to this port.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"An attacker may use this feature to gain better
+  knowledge of the remote host.");
+
+  script_tag(name:"summary", value:"This plugin implements the SvcOpenSCManager() and
+  SvcEnumServices() calls to obtain the list of active and inactive
+  services and drivers of the remote host, using the MS-DCE/RPC
+  protocol over SMB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,9 +63,7 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-lanman = get_kb_item( "SMB/NativeLanManager" );
-samba  = get_kb_item( "SMB/samba" );
-if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
+if( kb_smb_is_samba() ) exit( 0 );
 
 #--------------------------------------------------------#
 # Decodes the data sent back by svcenumservicesstatus()  #
@@ -371,7 +365,7 @@ function svcenumservicesstatus( soc, name, uid, tid, pipe, handle, svc_type, svc
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
 
-  # get what's left - smbreadX request
+  # nb: get what's left - smbreadX request
   if( ord( r[9] ) ) {
     req = smbreadx( tid_low:tid_low, tid_high:tid_high, uid_low:uid_low, uid_high:uid_high, pipe_low:pipe_low, pipe_high:pipe_high );
     send( socket:soc, data:req );
@@ -525,7 +519,7 @@ if(ord(prot[4]) == 254)
   r = smb_session_request(soc:soc, remote:name);
   if(!r) { close(soc); exit(0); }
 
-  ##Try negotiating with SMB1
+  ##nb: Try negotiating with SMB1
   prot = smb_neg_prot_NTLMv1(soc:soc);
   if(!prot)
   {

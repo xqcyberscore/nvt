@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_suspicious_files.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Potentially unwanted software
+# $Id: smb_suspicious_files.nasl 10389 2018-07-04 06:37:37Z cfischer $
+#
+# Potentially unwanted software
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -21,48 +23,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script checks for the presence of files and programs which 
-might have been installed without the consent of the user of the
-remote host.
-
-Verify each of the applications found to see if they are compliant
-with your organization's security policy.";
-
-tag_solution = "See the URLs which will appear in the report";
+###############################################################################
 
 # BHO X http://computercops.biz/clsid.php?type=5 update 27012005
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80042");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- name = "Potentially unwanted software";
+  script_oid("1.3.6.1.4.1.25623.1.0.80042");
+  script_version("$Revision: 10389 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:37:37 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Potentially unwanted software");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 David Maciejak and Tenable Network Security");
+  script_family("Windows");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_mandatory_keys("SMB/WindowsVersion");
+  script_require_ports(139, 445);
 
- script_name(name);
+  script_tag(name:"solution", value:"Verify each of the applications found to see if they are compliant
+  with your organization's security policy. See the URLs which will appear in the report for more info.");
  
+  script_tag(name:"summary", value:"This script checks for the presence of files and programs which
+  might have been installed without the consent of the user of the remote host.");
 
-
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2005 David Maciejak and Tenable Network Security");
- family = "Windows";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include("smb_nt.inc");
@@ -74,8 +64,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
    exit(0);
 }
 
-if ( get_kb_item("SMB/samba") ) exit(0);
-
 function check_reg(nname, url, key, item, exp)
 {
   local_var key_h, value, sz, report;
@@ -83,12 +71,12 @@ function check_reg(nname, url, key, item, exp)
   key = "SOFTWARE\Classes\" + key;
   if(!registry_key_exists(key:key)){
     return 0;
-  } 
-    
+  }
+
   foreach value (registry_enum_values(key:key)) {
 
     if ( ! isnull(value) )  {
-      sz = value; 
+      sz = value;
     }  else {
       continue;
     }
@@ -102,9 +90,9 @@ report = string(
 this software and that its use matches your corporate security
 policy.\n\n",
 "Solution: ", url);
- 
+
    security_message(port:kb_smb_transport(), data:report);
-  } 
+  }
  }
 }
 
@@ -114,7 +102,7 @@ i = 0;
 
 function fill_names()
 {
- local_var files, n, i, j;
+ local_var files, n, i, j, debug;
 
  nname = make_list();
  url  = make_list();
@@ -133,7 +121,7 @@ function fill_names()
        files[j+3] =~ "^ITEM" &&
        files[j+4] =~ "^EXP") )
         {
-	 display("Error at line ", j,"\n");
+	 if(debug) display("Error at line ", j,"\n");
 	 break;
 	}
    nname[i]	= files[j++] - "NAME=";
@@ -325,7 +313,7 @@ KEY=CLSID\{00000000-C1EC-0345-6EC2-4D0300000000}\InprocServer32
 ITEM=
 EXP=ZServ.dll
 NAME=AdBreak
-URL=http://www.doxdesk.com/parasite/AdBreak.html 
+URL=http://www.doxdesk.com/parasite/AdBreak.html
 KEY=CLSID\{00000000-D9E3-4BC6-A0BD-3D0CA4BE5271}\InprocServer32
 ITEM=
 EXP=Fhfmm.dll
@@ -345,7 +333,7 @@ KEY=CLSID\{00000015-A527-34E7-25C2-03A4E313B2E9}\InprocServer32
 ITEM=
 EXP=winsrvs_1.dll
 NAME=aBetterinternet/Transponder variant
-URL=http://doxdesk.com/parasite/Transponder.html 
+URL=http://doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{00000026-8735-428D-B81F-DD098223B25F}\InprocServer32
 ITEM=
 EXP=speer.dll
@@ -355,12 +343,12 @@ KEY=CLSID\{00000049-8F91-4D9C-9573-F016E7626484}\InprocServer32
 ITEM=
 EXP=ceres.dll
 NAME=FavoriteMan
-URL=http://www.doxdesk.com/parasite/FavoriteMan.html 
+URL=http://www.doxdesk.com/parasite/FavoriteMan.html
 KEY=CLSID\{000000DA-0786-4633-87C6-1AA7A4429EF1}\InprocServer32
 ITEM=
 EXP=emesx.dll
 NAME=FavoriteMan/FOne
-URL=http://www.doxdesk.com/parasite/FavoriteMan.html 
+URL=http://www.doxdesk.com/parasite/FavoriteMan.html
 KEY=CLSID\{000000F1-34E3-4633-87C6-1AA7A44296DA}\InprocServer32
 ITEM=
 EXP=FOne.dll
@@ -380,27 +368,27 @@ KEY=CLSID\{00000250-0320-4DD4-BE4F-7566D2314352}\InprocServer32
 ITEM=
 EXP=VoiceIP.dll
 NAME=Transponder
-URL=http://www.doxdesk.com/parasite/Transponder.html 
+URL=http://www.doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{0000026A-8230-4DD4-BE4F-6889D1E74167}\InprocServer32
 ITEM=
 EXP=Tps108.dll
 NAME=Transponder
-URL=http://www.doxdesk.com/parasite/Transponder.html 
+URL=http://www.doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{00000273-8230-4DD4-BE4F-6889D1E74167}\InprocServer32
 ITEM=
 EXP=host.dll
 NAME=IPInsight
-URL=http://www.doxdesk.com/parasite/IPInsight.html 
+URL=http://www.doxdesk.com/parasite/IPInsight.html
 KEY=CLSID\{000004CC-E4FF-4F2C-BC30-DBEF0B983BC9}\InprocServer32
 ITEM=
 EXP=Ipinsigt.dll
 NAME=VX2 Transponder variant
-URL=http://www.doxdesk.com/parasite/Transponder.html 
+URL=http://www.doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{00000580-C637-11D5-831C-00105AD6ACF0}\InprocServer32
 ITEM=
 EXP=Msview.dll
 NAME=VX2.aBetterInternet
-URL=http://www.doxdesk.com/parasite/Transponder.html 
+URL=http://www.doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{000006B1-19B5-414A-849F-2A3C64AE6939}\InprocServer32
 ITEM=
 EXP=bi.dll
@@ -415,7 +403,7 @@ KEY=CLSID\{00000EF1-0786-4633-87C6-1AA7A44296DA}\InprocServer32
 ITEM=
 EXP=ATPartners.dll
 NAME=FavoriteMan
-URL=http://www.doxdesk.com/parasite/FavoriteMan.html 
+URL=http://www.doxdesk.com/parasite/FavoriteMan.html
 KEY=CLSID\{00000EF1-34E3-4633-87C6-1AA7A44296DA}\InprocServer32
 ITEM=
 EXP=F1.dll
@@ -560,7 +548,7 @@ KEY=CLSID\{0199DF25-9820-4bd5-9FEE-5A765AB4371E}\InprocServer32
 ITEM=
 EXP=IncFindBHO170.dll
 NAME=PeopleOnPage/AproposMedia
-URL=http://www.doxdesk.com/parasite/AproposMedia.html 
+URL=http://www.doxdesk.com/parasite/AproposMedia.html
 KEY=CLSID\{01C5BF6C-E699-4CD7-BEA1-786FA05C83AB}\InprocServer32
 ITEM=
 EXP=AproposPlugin.dll
@@ -610,7 +598,7 @@ KEY=CLSID\{0345B059-8731-42BC-B7B7-5121014B02C6}\InprocServer32
 ITEM=
 EXP=ChangeURL_30.dll
 NAME=TOPicks
-URL=http://www.doxdesk.com/parasite/TOPicks.html 
+URL=http://www.doxdesk.com/parasite/TOPicks.html
 KEY=CLSID\{0352960F-47BE-11D5-AB93-00D0B760B4EB}\InprocServer32
 ITEM=
 EXP=Htcheck2.dll
@@ -620,7 +608,7 @@ KEY=CLSID\{0421701D-CF13-4E70-ADF0-45A953E7CB8B}\InprocServer32
 ITEM=
 EXP=RH.dll
 NAME=IncrediFind variant
-URL=http://www.doxdesk.com/parasite/KeenValue.html 
+URL=http://www.doxdesk.com/parasite/KeenValue.html
 KEY=CLSID\{0428FFC7-1931-45b7-95CB-3CBB919777E1}\InprocServer32
 ITEM=
 EXP=PerfectNavBHO.dll
@@ -635,7 +623,7 @@ KEY=CLSID\{046D6EA4-15E3-4b27-8010-45BD78A9219E}\InprocServer32
 ITEM=
 EXP=inetkw.dll
 NAME=Excite Search bar
-URL=http://www.excite.com/ 
+URL=http://www.excite.com/
 KEY=CLSID\{04719991-296F-4958-AA0F-FA25FFA5008B}\InprocServer32
 ITEM=
 EXP=X8bar.dll
@@ -645,7 +633,7 @@ KEY=CLSID\{0519A9C9-064A-4cbc-BC47-D0EACD581477}\InprocServer32
 ITEM=
 EXP=icooue.dll
 NAME=ShopForGood/Marketdart
-URL=http://www.kephyr.com/spywarescanner/library/shopforgood/index.phtml 
+URL=http://www.kephyr.com/spywarescanner/library/shopforgood/index.phtml
 KEY=CLSID\{05BBB56A-2A69-4A5C-BFDA-43295DD67434}\InprocServer32
 ITEM=
 EXP=Winy.dll
@@ -660,7 +648,7 @@ KEY=CLSID\{06CAD548-14DD-4fa3-9EA9-05F83C18CBD7}\InprocServer32
 ITEM=
 EXP=MSPXS32.DLL
 NAME=7FaSSt /7Search
-URL=http://www.doxdesk.com/parasite/7FaSSt.html 
+URL=http://www.doxdesk.com/parasite/7FaSSt.html
 KEY=CLSID\{06DFEDAA-6196-11D5-BFC8-00508B4A487D}\InprocServer32
 ITEM=
 EXP=7Search.dll
@@ -680,7 +668,7 @@ KEY=CLSID\{08227B4B-54FE-4C4D-809F-BCA46292FC5B}\InprocServer32
 ITEM=
 EXP=Zedd4.dll
 NAME=SideStep
-URL=http://www.doxdesk.com/parasite/SideStep.html 
+URL=http://www.doxdesk.com/parasite/SideStep.html
 KEY=CLSID\{08351226-6472-43BD-8A40-D9221FF1C4CE}\InprocServer32
 ITEM=
 EXP=SbCIe026.dll
@@ -735,7 +723,7 @@ KEY=CLSID\{094176F1-BF35-4bcb-B68A-108DFB8C3825}\InprocServer32
 ITEM=
 EXP=MTSBAR.DLL
 NAME=ClientMan
-URL=http://www.doxdesk.com/parasite/ClientMan.html 
+URL=http://www.doxdesk.com/parasite/ClientMan.html
 KEY=CLSID\{0982868C-47F0-4EFB-A664-C7B0B1015808}\InprocServer32
 ITEM=
 EXP=Newads~1.dll
@@ -775,7 +763,7 @@ KEY=CLSID\{0B90AA1B-F649-44C3-9FD3-736C332CBBCF}\InprocServer32
 ITEM=
 EXP=IEEnhancer.dll
 NAME=ClientMan
-URL=http://www.doxdesk.com/parasite/ClientMan.html 
+URL=http://www.doxdesk.com/parasite/ClientMan.html
 KEY=CLSID\{0BA1C6EB-D062-4E37-9DB5-B07743276324}\InprocServer32
 ITEM=
 EXP=ms****.dll
@@ -790,17 +778,17 @@ KEY=CLSID\{0D7DC475-59EB-4781-985F-A6F5D4E2BC73}\InprocServer32
 ITEM=
 EXP=Lie1D6Ff.dll
 NAME=BrowserAid/FeaturedResults
-URL=http://www.doxdesk.com/parasite/BrowserAid.html 
+URL=http://www.doxdesk.com/parasite/BrowserAid.html
 KEY=CLSID\{0DDBB570-0396-44C9-986A-8F6F61A51C2F}\InprocServer32
 ITEM=
 EXP=Msiefr40.dll
 NAME=Deltabar : Deltaclick
-URL=http://support.microsoft.com/?kbid=316770 
+URL=http://support.microsoft.com/?kbid=316770
 KEY=CLSID\{0FC817C2-3B45-11D4-8340-0050DA825906}\InprocServer32
 ITEM=
 EXP=DeltaClick.dll
 NAME=Whazit
-URL=http://www.doxdesk.com/parasite/Whazit.html 
+URL=http://www.doxdesk.com/parasite/Whazit.html
 KEY=CLSID\{10955232-B671-11D7-8066-0040F6F477E4}\InprocServer32
 ITEM=
 EXP=whattn.dll
@@ -815,7 +803,7 @@ KEY=CLSID\{11904CE8-632A-4856-A7CC-00B33FE71BD8}\InprocServer32
 ITEM=
 EXP=Spp3.dll
 NAME=SearchSquire
-URL=http://www.doxdesk.com/parasite/SearchSquire.html 
+URL=http://www.doxdesk.com/parasite/SearchSquire.html
 KEY=CLSID\{11990E9F-2A4D-11D6-9507-02608CDD2842}\InprocServer32
 ITEM=
 EXP=SearchSquire.dll
@@ -860,7 +848,7 @@ KEY=CLSID\{1433F750-E53F-11D8-9669-0800200C9A66}\InprocServer32
 ITEM=
 EXP=STRAd32.dll
 NAME=ShopNavSearch/Srng
-URL=http://www.doxdesk.com/parasite/Srng.html 
+URL=http://www.doxdesk.com/parasite/Srng.html
 KEY=CLSID\{14B3D246-6274-40B5-8D50-6C2ADE2AB29B}\InprocServer32
 ITEM=
 EXP=Snhelper.dll
@@ -1025,7 +1013,7 @@ KEY=CLSID\{1F48AA48-C53A-4E21-85E7-AC7CC6B5FFA8}\InprocServer32
 ITEM=
 EXP=win
 NAME=ToolbarCC/Rnd
-URL=http://www.doxdesk.com/parasite/ToolbarCC.html 
+URL=http://www.doxdesk.com/parasite/ToolbarCC.html
 KEY=CLSID\{1F48AA48-C53A-4E21-85E7-AC7CC6B5FFAF}\InprocServer32
 ITEM=
 EXP=dll
@@ -1040,7 +1028,7 @@ KEY=CLSID\{1F48AA48-C53A-4E21-85E7-AC7CC6B5FFB2}\InprocServer32
 ITEM=
 EXP=MS
 NAME=i-lookup/Abeb
-URL=http://www.doxdesk.com/parasite/ILookup.html 
+URL=http://www.doxdesk.com/parasite/ILookup.html
 KEY=CLSID\{2038A287-4221-4F76-A7C0-ADDD77AFABB3}\InprocServer32
 ITEM=
 EXP=abeb.dll
@@ -1060,12 +1048,12 @@ KEY=CLSID\{208E7E77-507A-4649-B0C9-D39E9049C7A2}\InprocServer32
 ITEM=
 EXP=ibho.dll
 NAME=CustomToolbar
-URL=http://www.doxdesk.com/parasite/CustomToolbar.html 
+URL=http://www.doxdesk.com/parasite/CustomToolbar.html
 KEY=CLSID\{21301D69-B8F1-46AA-B0B5-09EE2285914C}\InprocServer32
 ITEM=
 EXP=CustomToolbar.dll
 NAME=SearchEnhancement hijacker
-URL=http://groups.google.com/groups?q=searchenhancement&hl=en&lr=&ie=UTF-8&oe=UTF-8&selm=5fa201c33b6c%24abac7a20%243101280a%40phx.gbl&rnum=1 
+URL=http://groups.google.com/groups?q=searchenhancement&hl=en&lr=&ie=UTF-8&oe=UTF-8&selm=5fa201c33b6c%24abac7a20%243101280a%40phx.gbl&rnum=1
 KEY=CLSID\{22941A26-7033-432C-94C7-6371DE343822}\InprocServer32
 ITEM=
 EXP=Scbar.dll
@@ -1215,7 +1203,7 @@ KEY=CLSID\{2D38A51A-23C9-48a1-A33C-48675AA2B494}\InprocServer32
 ITEM=
 EXP=winres.dll
 NAME=i-lookup/Drbr
-URL=http://www.doxdesk.com/parasite/ILookup.html 
+URL=http://www.doxdesk.com/parasite/ILookup.html
 KEY=CLSID\{2D556983-83D7-4630-9AA5-27C74CA27B79}\InprocServer32
 ITEM=
 EXP=Drbr.dll
@@ -1630,7 +1618,7 @@ KEY=CLSID\{4E7BD74F-2B8D-469E-D7F9-FE60B89CAC3F}\InprocServer32
 ITEM=
 EXP=bvillage.dll
 NAME=SearchCentrix variant
-URL=http://www.kephyr.com/spywarescanner/library/searchcentrix.mygeek/index.phtml 
+URL=http://www.kephyr.com/spywarescanner/library/searchcentrix.mygeek/index.phtml
 KEY=CLSID\{4E7BD74F-2B8D-469E-D9FB-FA6BAD98FA7D}\InprocServer32
 ITEM=
 EXP=MyGeek.dll - MyGeek/Search-o-Matic2000
@@ -2320,7 +2308,7 @@ KEY=CLSID\{8DB672BD-330F-11D8-8168-00C02623048A}\InprocServer32
 ITEM=
 EXP=Testadit.dll
 NAME=WurldMedia
-URL=http://www.doxdesk.com/parasite/WurldMedia.html 
+URL=http://www.doxdesk.com/parasite/WurldMedia.html
 KEY=CLSID\{8E9C4F32-BD3F-4C49-9AF5-3F4C5D32EBD7}\InprocServer32
 ITEM=
 EXP=mbho.dll
@@ -2560,7 +2548,7 @@ KEY=CLSID\{A2833482-B023-4C65-B09D-EE47A4E8CC56}\InprocServer32
 ITEM=
 EXP=botnet1.dll
 NAME= BonziBuddy
-URL=http://accs-net.com/smallfish/bonzi.htm 
+URL=http://accs-net.com/smallfish/bonzi.htm
 KEY=CLSID\{A28C2A31-3AB0-4118-922F-F6B3184F5495}\InprocServer32
 ITEM=
 EXP=WebCompass.dll
@@ -2864,8 +2852,8 @@ URL=http://www.sophos.com/virusinfo/analyses/trojbamerb.html
 KEY=CLSID\{C41A1C0E-EA6C-11D4-B1B8-444553540000}\InprocServer32
 ITEM=
 EXP=rundll32.dll
-NAME=http://www.doxdesk.com/parasite/InetSpeak.html
-URL=eBoom Search Bar,  InetSpeak varian
+NAME=eBoom Search Bar,  InetSpeak variant
+URL=http://www.doxdesk.com/parasite/InetSpeak.html
 KEY=CLSID\{C4D99500-4C77-11D4-93B7-0040950570BA}\InprocServer32
 ITEM=
 EXP=boombar.dll
@@ -2930,7 +2918,7 @@ KEY=CLSID\{C82B55F0-60E0-478C-BC55-E4E22F11301D}\InprocServer32
 ITEM=
 EXP=Chgrgs.dll
 NAME=Webhancer
-URL=http://www.cexx.org/webhancer.htm 
+URL=http://www.cexx.org/webhancer.htm
 KEY=CLSID\{C900B400-CDFE-11D3-976A-00E02913A9E0}\InprocServer32
 ITEM=
 EXP=Whiehlpr.dll
@@ -3615,7 +3603,7 @@ KEY=CLSID\{FF905E0C-CFE9-4A90-AFFF-C13AF5D908F0}\InprocServer32
 ITEM=
 EXP=CasinoRewardsExplorerToolbar.dll
 NAME=VX2 Variant
-URL=http://www.doxdesk.com/parasite/Transponder.html 
+URL=http://www.doxdesk.com/parasite/Transponder.html
 KEY=CLSID\{FFD2825E-0785-40C5-9A41-518F53A8261F}\InprocServer32
 ITEM=
 EXP=SiteHlpr.dll
@@ -3695,15 +3683,15 @@ for(i=0;nname[i];i++)
 {
    my_file = string(rootfile, "\",exp[i]);
 
-   file  = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1", string:my_file); 
+   file  = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1", string:my_file);
    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:my_file);
    myread = read_file(file:file, share:share, offset:0, count:8);
 
    if(myread)
    {
-    report = string("The dll ", nname[i], " (", my_file ,") is present on the remote host\nSolution: ", url[i]); 
+    report = string("The dll ", nname[i], " (", my_file ,") is present on the remote host\nSolution: ", url[i]);
     security_message(port:0, data:report);
-  } 
+  }
 }
 
 exit(0);

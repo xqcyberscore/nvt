@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3692_1.nasl 10359 2018-06-28 11:32:28Z santu $
+# $Id: gb_ubuntu_USN_3692_1.nasl 10388 2018-07-04 05:22:47Z cfischer $
 #
 # Ubuntu Update for openssl USN-3692-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843569");
-  script_version("$Revision: 10359 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 13:32:28 +0200 (Thu, 28 Jun 2018) $");
+  script_version("$Revision: 10388 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:22:47 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 05:49:24 +0200 (Wed, 27 Jun 2018)");
   script_cve_id("CVE-2018-0495", "CVE-2018-0732", "CVE-2018-0737");
   script_tag(name:"cvss_base", value:"10.0");
@@ -63,7 +63,7 @@ cache-timing attack and recover private RSA keys. (CVE-2018-0737)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

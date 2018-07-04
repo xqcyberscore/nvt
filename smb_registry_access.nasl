@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 9851 2018-05-16 05:52:56Z cfischer $
+# $Id: smb_registry_access.nasl 10393 2018-07-04 07:23:20Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 9851 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 07:52:56 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 10393 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,9 +64,7 @@ if( ! strlen( gos_version ) > 0 ||
   old_routine = TRUE;
 }
 
-lanman = get_kb_item( "SMB/NativeLanManager" );
-samba  = get_kb_item( "SMB/samba" );
-if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
+if( kb_smb_is_samba() ) exit( 0 );
 
 port = kb_smb_transport();
 if( ! port ) port = 139;

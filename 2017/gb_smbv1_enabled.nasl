@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_enabled.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_smbv1_enabled.nasl 10393 2018-07-04 07:23:20Z cfischer $
 #
 # SMBv1 enabled (Remote Check)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140151");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 10393 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-02-04 09:33:13 +0100 (Sat, 04 Feb 2017)");
   script_name("SMBv1 enabled (Remote Check)");
   script_category(ACT_GATHER_INFO);
@@ -38,7 +38,6 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_smb_version_detect.nasl", "netbios_name_get.nasl",
                       "smb_nativelanman.nasl", "os_detection.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("smb_v1/supported", "Host/runs_windows");
   script_exclude_keys("SMB/samba");
 
@@ -69,19 +68,16 @@ exit(66);
 include("smb_nt.inc");
 include("host_details.inc");
 
-if( get_kb_item( "SMB/samba" ) ) exit( 99 );
-if( "samba" >< tolower( get_kb_item( "SMB/SERVER" ) ) ) exit( 99 );
+if( kb_smb_is_samba() ) exit( 0 );
 
 port = kb_smb_transport();
 
 if( ! port ) port = 139;
 if( ! get_port_state( port ) ) exit( 0 );
 
-if( get_kb_item( "smb_v1/supported" ) )
-{
+if( get_kb_item( "smb_v1/supported" ) ) {
   log_message( port:port );
   exit( 0 );
 }
 
 exit( 99 );
-

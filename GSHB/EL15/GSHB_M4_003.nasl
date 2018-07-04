@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_003.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_003.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.003
 #
@@ -27,42 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94174");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.003: Einsatz von Viren-Schutzprogrammen");
-
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04003.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_WMI_Antivir.nasl", "gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("GSHB/GSHB_WMI_Antivir.nasl", "gather-package-list.nasl");
-#  script_require_keys("WMI/Antivir");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.003: Einsatz von Viren-Schutzprogrammen.
 
-Stand: 14. Ergänzungslieferung (14. EL).
-");
+  script_tag(name:"summary", value:"IT-Grundschutz M4.003: Einsatz von Viren-Schutzprogrammen.
+
+  Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04003.html");
+
+  script_tag(name:"qod_type", value:"package");
 
   exit(0);
 }
 
 include("itg.inc");
+include("smb_nt.inc");
 
 name = 'IT-Grundschutz M4.003: Einsatz von Viren-Schutzprogrammen\n';
 
 gshbm =  "IT-Grundschutz M4.003: ";
 
-SAMBA = get_kb_item("SMB/samba");
+SAMBA = kb_smb_is_samba();
 SSHUNAME = get_kb_item("ssh/login/uname");
 
 if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME))){
-  rpms = get_kb_item("ssh/login/packages"); 
+  rpms = get_kb_item("ssh/login/packages");
   if (rpms){
     pkg1 = "clamav";
     pkg2 = "clamav-freshclam";
@@ -71,12 +70,12 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     pat2 = string("ii  (", pkg2, ") +([0-9]:)?([^ ]+)");
     desc1 = eregmatch(pattern:pat1, string:rpms);
     desc2 = eregmatch(pattern:pat2, string:rpms);
-    
+
     name1 = desc1[1];
     version1 = desc1[3];
     name2 = desc2[1];
     version2 = desc2[3];
-        
+
   }else if(rpms = get_kb_item("ssh/login/rpms")){
     tmp = split(rpms, keep:0);
     if (max_index(tmp) <= 1){
@@ -89,7 +88,7 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     pkg1 = "clamav";
     pkg2 = "clamav-freshclam";
     pkg3 = "clamav-update";
-   
+
     pat1 = string("(", pkg1, ")~([0-9/.]+)~([0-9a-zA-Z/.-_]+)");
     pat2 = string("(", pkg2, ")~([0-9/.]+)~([0-9a-zA-Z/.-_]+)");
     pat3 = string("(", pkg3, ")~([0-9/.]+)~([0-9a-zA-Z/.-_]+)");
@@ -111,8 +110,8 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
      rpms = get_kb_item("ssh/login/solpackages");
      pkg1 = "clamav";
      pat1 = string("([a-zA-Z0-9]+)[ ]{1,}(.*", pkg1, ".*)[ ]{1,}([a-zA-Z0-9/\._ \(\),-:\+\{\}\&]+)");
-     
-    desc1 = eregmatch(pattern:pat1, string:rpms);     
+
+    desc1 = eregmatch(pattern:pat1, string:rpms);
     if (desc1){
       name1 = desc1[3];
     }
@@ -204,13 +203,13 @@ else if (!SAMBA && (!SSHUNAME || "command not found" >< SSHUNAME || "CYGWIN" >< 
       result = string("Fehler");
       desc = string("Beim Testen des Systems trat ein unbekannter\nFehler auf.");
   }
-}  
+}
 
 else{
       result = string("Fehler");
       desc = string("Beim Testen des Systems trat ein unbekannter\nFehler auf.");
 }
-  
+
 set_kb_item(name:"GSHB/M4_003/result", value:result);
 set_kb_item(name:"GSHB/M4_003/desc", value:desc);
 set_kb_item(name:"GSHB/M4_003/name", value:name);

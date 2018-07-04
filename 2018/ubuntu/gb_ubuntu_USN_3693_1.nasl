@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3693_1.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_ubuntu_USN_3693_1.nasl 10388 2018-07-04 05:22:47Z cfischer $
 #
 # Ubuntu Update for jasper USN-3693-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843570");
-  script_version("$Revision: 10374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_version("$Revision: 10388 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:22:47 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-28 05:48:22 +0200 (Thu, 28 Jun 2018)");
   script_cve_id("CVE-2015-5203", "CVE-2015-5221", "CVE-2016-10248", "CVE-2016-10250", "CVE-2016-8883", "CVE-2016-8887", "CVE-2016-9262", "CVE-2016-9387", "CVE-2016-9388", "CVE-2016-9389", "CVE-2016-9390", "CVE-2016-9391", "CVE-2016-9392", "CVE-2016-9393", "CVE-2016-9394", "CVE-2016-9396", "CVE-2016-9600", "CVE-2017-1000050", "CVE-2017-6850");
   script_tag(name:"cvss_base", value:"6.8");
@@ -53,7 +53,7 @@ privileges of the user invoking the program.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

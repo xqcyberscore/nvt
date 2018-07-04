@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3f61c5cf7c_rubygem-sinatra_fc28.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_3f61c5cf7c_rubygem-sinatra_fc28.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Fedora Update for rubygem-sinatra FEDORA-2018-3f61c5cf7c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874728");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 06:00:28 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-11627");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for rubygem-sinatra FEDORA-2018-3f61c5cf7c");
   script_tag(name:"summary", value:"Check the version of rubygem-sinatra");

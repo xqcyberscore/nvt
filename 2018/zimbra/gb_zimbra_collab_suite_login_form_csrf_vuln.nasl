@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_collab_suite_login_form_csrf_vuln.nasl 10076 2018-06-05 08:44:03Z santu $
+# $Id: gb_zimbra_collab_suite_login_form_csrf_vuln.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Zimbra Collaboration Suite Login Form CSRF Vulnerability 
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813506");
-  script_version("$Revision: 10076 $");
+  script_version("$Revision: 10387 $");
   script_cve_id("CVE-2015-7610");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 10:44:03 +0200 (Tue, 05 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:27 +0530 (Tue, 05 Jun 2018)");
   script_name("Zimbra Collaboration Suite Login Form CSRF Vulnerability");
 

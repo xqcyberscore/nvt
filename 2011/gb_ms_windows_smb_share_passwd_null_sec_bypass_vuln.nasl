@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 10203 2018-06-14 16:42:00Z cfischer $
+# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 10393 2018-07-04 07:23:20Z cfischer $
 #
 # Microsoft Windows SMB/NETBIOS NULL Session Authentication Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801991");
-  script_version("$Revision: 10203 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 18:42:00 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10393 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-1999-0519");
   script_tag(name:"cvss_base", value:"7.5");
@@ -86,11 +86,7 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-lanman = get_kb_item("SMB/NativeLanManager");
-
-if(get_kb_item("SMB/samba") || "samba" >< tolower(lanman)){
-  exit(0);
-}
+if( kb_smb_is_samba() ) exit( 0 );
 
 port = kb_smb_transport();
 if(!port){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 10016 2018-05-30 06:57:23Z ckuersteiner $
+# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # NUUO NVRmini 2 File Upload Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:nuuo:nuuo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141124");
-  script_version("$Revision: 10016 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-30 08:57:23 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-05-30 13:34:16 +0700 (Wed, 30 May 2018)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:C/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-11523");
 

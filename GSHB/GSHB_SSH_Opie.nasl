@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_Opie.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_Opie.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # Check the System if Opie-Server and Opie-Client installed
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,37 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Check the System if Opie-Server and Opie-Client installed.
-  
-  Read /etc/pam.d/opie, List Files und /etc/pam.d/ with -include opie- entry,
-  Read ChallengeResponseAuthentication entry in /etc/ssh/sshd_config";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96097");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-02 09:25:45 +0200 (Wed, 02 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");  
   script_name("Check the System if Opie-Server and Opie-Client installed");
-
-  desc = "
-  Summary:
-  " + tag_summary;
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
+  script_dependencies("gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"Check the System if Opie-Server and Opie-Client are installed.
+
+  Read /etc/pam.d/opie, List Files und /etc/pam.d/ with -include opie- entry,
+  Read ChallengeResponseAuthentication entry in /etc/ssh/sshd_config");
+
+  script_tag(name:"qod_type", value:"package");
+
   exit(0);
 }
 
 cmdline = 0;
 include("ssh_func.inc");
+include("smb_nt.inc");
 
 port = get_preference("auth_port_ssh");
 if(!port) port = get_kb_item("Services/ssh");
@@ -78,7 +73,7 @@ if(!sock) {
 }
 
 
-SAMBA = get_kb_item("SMB/samba");
+SAMBA = kb_smb_is_samba();
 SSHUNAME = get_kb_item("ssh/login/uname");
 
 if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME))){
@@ -93,11 +88,11 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     desc1 = eregmatch(pattern:pat1, string:rpms);
     desc2 = eregmatch(pattern:pat2, string:rpms);
   }else{
-  
+
     rpms = get_kb_item("ssh/login/rpms");
-    
+
     tmp = split(rpms, keep:0);
-  
+
     if (max_index(tmp) <= 1)rpms = ereg_replace(string:rpms, pattern:";", replace:'\n');
 
     pkg1 = "opie-server";
@@ -109,7 +104,7 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     pat3 = string("(", pkg3, ")([0-9/.]+)~([0-9a-zA-Z/.-_]+)");
     desc1 = eregmatch(pattern:pat1, string:rpms);
     desc2 = eregmatch(pattern:pat2, string:rpms);
-    desc3 = eregmatch(pattern:pat3, string:rpms);    
+    desc3 = eregmatch(pattern:pat3, string:rpms);
   }
 
   if (desc1 || desc3) OPIESERVER = "yes";
@@ -133,10 +128,10 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
   if ("grep: command not found" >< ssh_opie) ssh_opie = "nogrep";
   if (ssh_opie =~ ".*Keine Berechtigung.*" ||  ssh_opie =~ ".*Permission denied.*") ssh_opie = "norights";
   if (ssh_opie == "") ssh_opie = "empty";
-}  
+}
 else{
   OPIESERVER = "windows";
-  OPIECLIENT = "windows";  
+  OPIECLIENT = "windows";
 }
 
 set_kb_item(name: "GSHB/OPIE/SERVICES", value:services_opie);
@@ -144,5 +139,5 @@ set_kb_item(name: "GSHB/OPIE/PAM", value:pam_opie);
 set_kb_item(name: "GSHB/OPIE/SSH", value:ssh_opie);
 set_kb_item(name: "GSHB/OPIE/CLIENT", value:OPIECLIENT);
 set_kb_item(name: "GSHB/OPIE/SERVER", value:OPIESERVER);
-  
-exit(0);  
+
+exit(0);

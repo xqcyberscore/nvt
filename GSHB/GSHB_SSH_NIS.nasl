@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_NIS.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_NIS.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # Test System if NIS Server ore Client installed
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,34 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Test System if NIS Server ore Client installed.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96102");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:05:51 +0200 (Fri, 07 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_active");  
   script_name("Test System if NIS Server ore Client installed");
-
-  desc = "
-  Summary:
-  " + tag_summary;
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
+  script_dependencies("gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"Test System if NIS Server or Client are installed.");
+
+  script_tag(name:"qod_type", value:"package");
+
   exit(0);
 }
 
 cmdline = 0;
 include("ssh_func.inc");
+include("smb_nt.inc");
 
 port = get_preference("auth_port_ssh");
 if(!port) port = get_kb_item("Services/ssh");
@@ -84,7 +79,7 @@ if(!sock) {
     set_kb_item(name: "GSHB/NIS/log", value:error);
     exit(0);
 }
-SAMBA = get_kb_item("SMB/samba");
+SAMBA = kb_smb_is_samba();
 SSHUNAME = get_kb_item("ssh/login/uname");
 
 if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME))){
@@ -95,27 +90,27 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     pkg2 = "yp-tools";
     pkg3 = "ypbind";
     pkg4 = "ypserv";
-    pkg5 = "rpcbind";    
-    pkg6 = "portmap";    
+    pkg5 = "rpcbind";
+    pkg6 = "portmap";
 
     pat1 = string("ii  (", pkg1, ") +([0-9]:)?([^ ]+)");
     pat2 = string("ii  (", pkg2, ") +([0-9]:)?([^ ]+)");
     pat3 = string("ii  (", pkg3, ") +([0-9]:)?([^ ]+)");
     pat4 = string("ii  (", pkg4, ") +([0-9]:)?([^ ]+)");
     pat5 = string("ii  (", pkg5, ") +([0-9]:)?([^ ]+)");
-    pat6 = string("ii  (", pkg6, ") +([0-9]:)?([^ ]+)");        
+    pat6 = string("ii  (", pkg6, ") +([0-9]:)?([^ ]+)");
     desc1 = eregmatch(pattern:pat1, string:rpms);
     desc2 = eregmatch(pattern:pat2, string:rpms);
     desc3 = eregmatch(pattern:pat3, string:rpms);
     desc4 = eregmatch(pattern:pat4, string:rpms);
     desc5 = eregmatch(pattern:pat5, string:rpms);
-    desc6 = eregmatch(pattern:pat6, string:rpms);        
+    desc6 = eregmatch(pattern:pat6, string:rpms);
   }else{
-  
+
     rpms = get_kb_item("ssh/login/rpms");
-    
+
     tmp = split(rpms, keep:0);
-  
+
     if (max_index(tmp) <= 1)rpms = ereg_replace(string:rpms, pattern:";", replace:'\n');
 
     pkg1 = "nis";
@@ -123,8 +118,8 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     pkg3 = "ypbind";
     pkg4 = "ypserv";
     pkg5 = "rpcbind";
-    pkg6 = "portmap";    
-    
+    pkg6 = "portmap";
+
     pat1 = string("(", pkg1, ")~([0-9a-zA-Z/.-_/+]+)~([0-9a-zA-Z/.-_]+)");
     pat2 = string("(", pkg2, ")~([0-9a-zA-Z/.-_/+]+)~([0-9a-zA-Z/.-_]+)");
     pat3 = string("(", pkg3, ")~([0-9a-zA-Z/.-_/+]+)~([0-9a-zA-Z/.-_]+)");
@@ -159,7 +154,7 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     if ("ready and waiting" >< ypbind || "ist bereit und wartet" >< ypbind) ypbind = "yes";
     else ypbind = "unknown";
   }
-  
+
   ypserv = ssh_cmd(socket:sock, cmd:"ps -C ypserv");
   if ("bash: /bin/ps:" >!< ypserv){
     Lst = split(ypserv, keep:0);
@@ -171,10 +166,10 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     if ("ready and waiting" >< ypserv || "ist bereit und wartet" >< ypserv) ypserv = "yes";
     else ypserv = "unknown";
   }
-}  
+}
 else{
   nisserver = "windows";
-  nisclient = "windows";  
+  nisclient = "windows";
 }
 
 
@@ -187,8 +182,8 @@ for(i=0; i<max_index(Lst); i++){
   if (Lst[i] =~ "^\+.*:.*:0:0:.*:.*:.*") userval = "yes";
   else  if (Lst[i] =~ "^\+.*::0:0:.*:.*:.*") userval = "yes";
   if (Lst[i] =~ "^[^\+]*:.*:0:0:.*:.*:.*") {
-    if (userval != "yes") LocalUID0 = "first"; 
-    else LocalUID0 = "not first"; 
+    if (userval != "yes") LocalUID0 = "first";
+    else LocalUID0 = "not first";
   }
 }
 Lst = split(group, keep:0);
@@ -198,7 +193,7 @@ for(i=0; i<max_index(Lst); i++){
   if ("+:*:0:" >< Lst[i]) NisPlusGroupwpw = "yes";
   if ("+:*::" >< Lst[i]) NisPlusGenGroupwpw = "yes";
 }
-  
+
   securenets = ssh_cmd(socket:sock, cmd:"grep -v '^#' /etc/ypserv.securenets");
   hostsdeny = ssh_cmd(socket:sock, cmd:"grep -v '^#' /etc/hosts.deny | grep ypserv:");
   hostsallow = ssh_cmd(socket:sock, cmd:"grep -v '^#' /etc/hosts.allow | grep ypserv:");

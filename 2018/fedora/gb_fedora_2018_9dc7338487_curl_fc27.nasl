@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9dc7338487_curl_fc27.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_fedora_2018_9dc7338487_curl_fc27.nasl 10387 2018-07-04 05:21:03Z cfischer $
 #
 # Fedora Update for curl FEDORA-2018-9dc7338487
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874598");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:57:24 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-1000300", "CVE-2018-1000301", "CVE-2018-1000120", "CVE-2018-1000121", 
                 "CVE-2018-1000122", "CVE-2018-1000005", "CVE-2018-1000007", "CVE-2017-8816", 
                 "CVE-2017-8817", "CVE-2017-1000257", "CVE-2017-1000254");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for curl FEDORA-2018-9dc7338487");
   script_tag(name:"summary", value:"Check the version of curl");

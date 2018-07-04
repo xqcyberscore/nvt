@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 03 Jul 2018 12:35:47 +0200
+# Automatically created on:  Wed, 04 Jul 2018 12:29:00 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -40582,6 +40582,7 @@
 2018/ntp/gb_ntp_dos_vuln_mar18.nasl: GPLv2+
 2018/ntp/gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_protocol_engine_dos_vuln.nasl: GPLv2+
+2018/nucom/gb_nucom_cve-2018-8755.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvrmini2_file_upload_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
@@ -40730,6 +40731,7 @@
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_improper_priv_manag_vuln_june18.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_mult_vuln01_june18.nasl: GPLv2+
+2018/openxchange/gb_open_xchange_appsuite_mult_vuln_july18.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_path_trav_vuln_june18.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_xss_vuln_june18.nasl: GPLv2+
 2018/oracle/gb_oracle_db_application_express_component_unspecified_vuln.nasl: GPLv2+
@@ -41112,6 +41114,8 @@
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
 2018/wampserver/gb_wampserver_csrf_vuln.nasl: GPLv2+
 2018/wampserver/gb_wampserver_xss_vuln.nasl: GPLv2+
+2018/wanscam/gb_wanscam_admin_credentials_disclosure.nasl: GPLv2+
+2018/wanscam/gb_wanscam_onvif_dos_vuln.nasl: GPLv2+
 2018/webmin/gb_usermin_xss_vuln_mar18_lin.nasl: GPLv2+
 2018/webmin/gb_usermin_xss_vuln_mar18_win.nasl: GPLv2+
 2018/webmin/gb_webmin_inf_disc_vuln.nasl: GPLv2+
@@ -41384,6 +41388,7 @@ gb_aloaha_pdf_viewer_detect.nasl: GPLv2+
 gb_ametys_cms_detect.nasl: GPLv2+
 gb_ami_megarac_sp_web_detect.nasl: GPLv2+
 gb_amqp_detect.nasl: GPLv2+
+gb_android_adb_detect.nasl: GPLv2+
 gb_an_guestbook_detect.nasl: GPLv2+
 gb_antiweb_detect.nasl: GPLv2+
 gb_aol_detect.nasl: GPLv2+
@@ -42327,6 +42332,7 @@ gb_novell_zhm_detect.nasl: GPLv2+
 gb_ntopng_detect.nasl: GPLv2+
 gb_ntp_detect_lin.nasl: GPLv2+
 gb_nuance_pdf_reader_detect_win.nasl: GPLv2+
+gb_nucom_device_detect.nasl: GPLv2+
 gb_nullftp_server_detect.nasl: GPLv2+
 gb_nulllogic_groupware_detect_win.nasl: GPLv2+
 gb_nuralstorm_webmail_detect.nasl: GPLv2+
@@ -57684,6 +57690,7 @@ gsf/2017/f5/gb_f5_big_ip_K23030550.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K24465120.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K24578092.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K25033460.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K29146534.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K30201296.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K31603170.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K34125394.nasl: GPLv2+
@@ -57694,6 +57701,7 @@ gsf/2017/f5/gb_f5_big_ip_K43322910.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K43945001.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K45432295.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K51390683.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K51801290.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K52320548.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K53084033.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K54358225.nasl: GPLv2+
@@ -58606,7 +58614,6 @@ gsf/2018/vmware/gb_vmware_workstation_virtua_printing_out_of_bounds_read_vuln_wi
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0001.nasl: GPLv2+
-gsf/2018/wanscam/gb_wanscam_admin_credentials_disclosure.nasl: GPLv2+
 gsf/2018/wowza/gb_wowza_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/zabbix/gb_zabbix_xxe_vuln.nasl: GPLv2+
@@ -58615,6 +58622,8 @@ gsf/2018/zohocorp/gb_manageengine_adaudit_plus_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_13740.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_xss_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manage_engine_desktop_central_access_ctrl_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manage_engine_eventlog_analyzer_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_ncm_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_netflow_analyzer_mult_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Netstat_natcp.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: GSHB_WMI_Netstat_natcp.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # Get Windows TCP Netstat over win_cmd_exec
 #
@@ -9,11 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Set in an Workgroup Environment under Windows Vista and greater,
-# with enabled UAC this DWORD to access WMI:
-# HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -32,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94251");
-  script_version("$Revision: 7551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:12:52 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,8 +36,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("toolcheck.nasl", "smb_login.nasl", "os_detection.nasl");
-  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi", "SMB/password", "SMB/login", "Host/runs_windows");
+  script_dependencies("smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_mandatory_keys("Compliance/Launch/GSHB", "SMB/password", "SMB/login");
+  script_require_ports(139, 445);
+  script_exclude_keys("SMB/samba");
 
   script_tag(name:"summary", value:"Get Windows TCP Netstat over win_cmd_exec");
 
@@ -54,15 +51,13 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-samba = get_kb_item( "SMB/samba" );
-if( samba ) exit( 0 );
-
+if( kb_smb_is_samba() ) exit( 0 );
 if( ! defined_func("win_cmd_exec") ) exit( 0 );
 
 host    = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
-passwd  = get_kb_item("SMB/password");
+usrname = kb_smb_login();
+domain  = kb_smb_domain();
+passwd  = kb_smb_password();
 if (domain){
   usrname = domain + '/' + usrname;
 }

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nav_installed.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Norton Anti Virus Check
+# $Id: nav_installed.nasl 10390 2018-07-04 06:46:11Z cfischer $
+#
+# Norton Anti Virus Check
 #
 # Authors:
 # This script has been rewritten by Tenable Network Security
@@ -22,34 +24,33 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin checks that the remote host has Norton Antivirus installed and
-properly running, and makes sure that the latest Vdefs are loaded.";
-
-tag_solution = "Make sure NAV is installed, running and using the latest VDEFS.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80038");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"6.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- name = "Norton Anti Virus Check";
- script_name(name);
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.80038");
+  script_version("$Revision: 10390 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:46:11 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Norton Anti Virus Check");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
+  script_family("Windows");
+  script_dependencies("smb_enum_services.nasl", "smb_reg_service_pack.nasl");
+  script_mandatory_keys("SMB/WindowsVersion");
+  script_require_ports(139, 445);
+
+  script_tag(name:"solution", value:"Make sure NAV is installed, running and using the latest VDEFS.");
+
+  script_tag(name:"summary", value:"This plugin checks that the remote host has Norton Antivirus installed and
+  properly running, and makes sure that the latest Vdefs are loaded.");
+
   script_tag(name:"qod_type", value:"registry");
- script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security"); 
- family = "Windows"; 
- script_family(family);
- script_dependencies("secpod_reg_enum.nasl","smb_enum_services.nasl");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include("smb_nt.inc");
@@ -57,8 +58,6 @@ include("smb_nt.inc");
 if(!get_kb_item("SMB/WindowsVersion")){
    exit(0);
 }
-
-if(get_kb_item("SMB/samba"))exit(0);
 
 #==================================================================#
 # Section 1. Utilities                                             #
@@ -72,30 +71,30 @@ function check_database_version ()
 {
   local_var key, item, key_h, value, path, vers;
 
-  key = "SOFTWARE\Symantec\SharedDefs\"; 
-  item = "DEFWATCH_10"; 
+  key = "SOFTWARE\Symantec\SharedDefs\";
+  item = "DEFWATCH_10";
 
   if (registry_key_exists(key:key))
   {
-   value = registry_get_sz(item:item, key:key);  
+   value = registry_get_sz(item:item, key:key);
    if (value)
      vers = value;
    else
    {
-    item = "NAVCORP_70"; 
-    value = registry_get_sz(item:item, key:key);  
+    item = "NAVCORP_70";
+    value = registry_get_sz(item:item, key:key);
     if (value)
       vers = value;
     else
     {
-     item = "NAVNT_50_AP1"; 
-     value = registry_get_sz(item:item, key:key);  
+     item = "NAVNT_50_AP1";
+     value = registry_get_sz(item:item, key:key);
      if (value)
        vers = value;
      else
      {
-      item = "AVDEFMGR"; 
-      value = registry_get_sz(item:item, key:key);  
+      item = "AVDEFMGR";
+      value = registry_get_sz(item:item, key:key);
       if (!value)
       {
        return NULL;
@@ -103,12 +102,12 @@ function check_database_version ()
       else
        vers = value;
      }
-    }    
+    }
    }
   }
 
-  key = "SOFTWARE\Symantec\InstalledApps\"; 
-  item = "AVENGEDEFS"; 
+  key = "SOFTWARE\Symantec\InstalledApps\";
+  item = "AVENGEDEFS";
   if (registry_key_exists(key:key))
   {
    value = registry_get_sz(item:item, key:key);
@@ -123,7 +122,7 @@ function check_database_version ()
     return vers;
   } else {
     return NULL;
-  }   
+  }
 }
 
 
@@ -134,15 +133,15 @@ function check_product_version (reg)
 {
   local_var key, item, key_h, value;
 
-  key = reg; 
-  item = "version"; 
+  key = reg;
+  item = "version";
   if (registry_key_exists(key:key))
   {
    value =  registry_get_sz(item:item, key:key);
    if (value)
      return value;
   }
-  
+
   return NULL;
 }
 
@@ -156,11 +155,11 @@ key = "SOFTWARE\Symantec\InstalledApps\";
 item = "NAVNT";
 if (registry_key_exists(key:key))
 {
- value = registry_get_sz(item:"SAVCE", key:key); 
+ value = registry_get_sz(item:"SAVCE", key:key);
  if (!value)
  {
   value = registry_get_sz(item:item, key:key);
-  if (!value) 
+  if (!value)
   {
    item = "SAVCE";
    value = registry_get_sz(item:item, key:key);
@@ -169,7 +168,7 @@ if (registry_key_exists(key:key))
 }
 if (!value || isnull(value))
 {
-  exit(0);  
+  exit(0);
 }
 
 set_kb_item(name: "Antivirus/Norton/installed", value:TRUE);
@@ -180,14 +179,14 @@ set_kb_item(name: "Antivirus/Norton/installed", value:TRUE);
 #-------------------------------------------------------------#
 
 # Take the first database version key
-current_database_version = check_database_version (); 
- 
+current_database_version = check_database_version ();
+
 
 #-------------------------------------------------------------#
 # Checks if Antivirus is running                              #
 #-------------------------------------------------------------#
 
-services = get_kb_item("SMB/svcs"); 
+services = get_kb_item("SMB/svcs");
 
 # Thanks to Jeff Adams for Symantec service.
 if ( services )
@@ -206,7 +205,7 @@ if ( services )
 product_version = check_product_version (reg:"SOFTWARE\Symantec\Norton AntiVirus");
 if(!product_version || isnull(product_version)) {
  exit(0);
-}  
+}
 
 #==================================================================#
 # Section 3. Final Report                                          #

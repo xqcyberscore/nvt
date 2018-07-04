@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_333.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_333.nasl 10396 2018-07-04 09:13:46Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.333
 #
@@ -27,34 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94240");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.333: Sichere Konfiguration von Winbind unter Samba");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04333.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl", "gather-package-list.nasl", "GSHB/GSHB_SSH_fstab.nasl","GSHB/GSHB_SSH_Samba.nasl","netbios_name_get.nasl", "GSHB/GSHB_SSH_nsswitch.nasl" );
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.333: Sichere Konfiguration von Winbind unter Samba
+  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_fstab.nasl","GSHB/GSHB_SSH_Samba.nasl", "GSHB/GSHB_SSH_nsswitch.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
 
-Stand: 14. Ergänzungslieferung (14. EL).
-");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04333.html");
+
+  script_tag(name:"summary", value:"IT-Grundschutz M4.333: Sichere Konfiguration von Winbind unter Samba
+
+  Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"package");
 
   exit(0);
 }
 
 include("itg.inc");
+include("smb_nt.inc");
 
 name = 'IT-Grundschutz M4.333: Sichere Konfiguration von Winbind unter Samba\n';
 
-samba = get_kb_item("SMB/samba");
+samba = kb_smb_is_samba();
 global = get_kb_item("GSHB/SAMBA/global");
 reiserfs = get_kb_item("GSHB/FSTAB/reiserfs");
 global = tolower(global);
@@ -114,13 +115,13 @@ if(!samba){
 }else if(global == "error"){
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
-  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log); 
+  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
 }else if("domain" >!< security && "ads" >!< security){
   result = string("nicht zutreffend");
   desc = string('Der Samba Server auf dem System läuft nicht im\n-domain- oder -ads- Security-Modus.');
 }else{
   if ((idmapbackend == "false" || idmapbackend == "tdb") && reiserfs != "noreiserfs"){
-    result = string("nicht erfüllt");  
+    result = string("nicht erfüllt");
     desc = string('Auf dem System läuft folgende Partition mit ReiserFS:\n' + reiserfs +'\nIhr -idmap backend- ist auf tdb eingestellt.\nSämtliche Samba-Datenbanken im TDB-Format sollten auf einer\nPartition gespeichert werden, die nicht ReiserFS als\nDateisystem verwendet.');
   }else if(templatehd == "false" || '/%d/%u' >!< templatehd){
     result = string("nicht erfüllt");
@@ -130,14 +131,14 @@ if(!samba){
       result = string("erfüllt");
       desc = string('Existieren Vertrauensstellungen zwischen Domänen im\nInformationsverbund, so muss eines der folgenden ID-\nMapping-Backends verwendet werden:\n- Backend rid mit idmap domains Konfiguration.\n- Backend ldap mit idmap domains Konfiguration.\n- Backend ad.\n- Backend nss.');
     }else if ("rid" >< idmapbackend || "ldap" >< idmapbackend){
-      result = string("erfüllt");    
+      result = string("erfüllt");
       if ("rid" >< idmapbackend && idmapdomains != "false" && idmapconfig != "false") desc = string('Sie benutzen das ID-Mapping-Backend -rid- mit\nfolgender Konfiguration:\n' + idmapdomains + idmapconfig);
       else if ("ldap" >< idmapbackend && idmapdomains != "false" && idmapconfig != "false") desc = string('Sie benutzen das ID-Mapping-Backend -ldap- mit\nfolgender Konfiguration:\n' + idmapdomains + idmapconfig);
       else if ("rid" >< idmapbackend && (idmapdomains == "false" || idmapconfig == "false")) desc = string('Sie benutzen das ID-Mapping-Backend -rid-.\nExistieren Vertrauensstellungen zwischen Domänen im\nInformationsverbund,so muss -idmap domains-\nkonfiguriert werden.');
       else if ("ldap" >< idmapbackend && (idmapdomains == "false" || idmapconfig == "false")) desc = string('Sie benutzen das ID-Mapping-Backend -ldap-.\nExistieren Vertrauensstellungen zwischen Domänen im\nInformationsverbund, so muss -idmap domains-\nkonfiguriert werden.');
-      
+
     }else{
-      result = string("erfüllt");    
+      result = string("erfüllt");
       if ("nss" >< idmapbackend) desc = string('Sie benutzen das ID-Mapping-Backend -nss-');
       else if ("ad" >< idmapbackend) desc = string('Sie benutzen das ID-Mapping-Backend -ad-');
     }
@@ -146,7 +147,7 @@ if(!samba){
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_333/result", value:result);
