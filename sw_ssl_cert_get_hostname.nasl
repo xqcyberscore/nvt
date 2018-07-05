@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 9467 2018-04-13 06:21:59Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 10412 2018-07-05 10:23:47Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 9467 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 10412 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:23:47 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -123,7 +123,7 @@ if ( ! isnull( tmpHostnames ) ) {
 
       # Don't ping known host, wildcard cert or localhost/localdomain hostnames
       if( hostname == tmpHostname || "*." >< tmpHostname || tmpHostname == "localhost" || tmpHostname == "localdomain" ) continue;
-      
+
       # Same goes for IP addresses within the CN/SAN
       if( eregmatch( pattern:ipv4pattern, string:tmpHostname ) || eregmatch( pattern:ipv6pattern, string:tmpHostname ) ) continue;
 
@@ -163,6 +163,11 @@ if( resolvableFound ) {
     set_kb_item( name:"DNS_via_SSL_TLS_Cert", value:tmp );
     register_host_detail( name:"DNS-via-SSL-TLS-Cert", value:tmp, desc:"SSL/TLS: Hostname discovery from server certificate" );
     report += tmp + '\n';
+
+    # Available since GVM-10 / git commit cf2ed60
+    if( defined_func( add_host_name ) )
+      add_host_name( hostname:tmp, source:"SSL/TLS server certificate" );
+
   }
   report += '\n';
 }

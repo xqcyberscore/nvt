@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # TCP Sequence Number Approximation Reset Denial of Service Vulnerability
 #
@@ -28,18 +28,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902815");
   script_bugtraq_id(10183);
-  script_version("$Revision: 8671 $");
+  script_version("$Revision: 10411 $");
   script_cve_id("CVE-2004-0230");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 15:15:15 +0530 (Thu, 01 Mar 2012)");
   script_name("TCP Sequence Number Approximation Reset Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");
-  script_dependencies("secpod_open_tcp_ports.nasl");
+  script_dependencies("secpod_open_tcp_ports.nasl", "global_settings.nasl");
   script_mandatory_keys("TCP/PORTS");
+  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/15886");
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA04-111A.html");
@@ -51,32 +52,25 @@ if(description)
   script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/csa/cisco-sa-20040420-tcp-nonios.html");
   script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/csa/cisco-sa-20040420-tcp-nonios.html");
 
-  tag_summary = "The host is running TCP services and is prone to denial of service
-  vulnerability.";
+  script_tag(name:"summary", value:"The host is running TCP services and is prone to denial of service
+  vulnerability.");
 
-  tag_solution = "Please see the referenced advisories for more information on obtaining
-  and applying fixes.";
+  script_tag(name:"vuldetect", value:"A TCP Reset packet with a different sequence number is sent to
+  the target. A previously open connection is then checked to see if the target closed it or not.");
 
-  tag_insight = "The flaw is triggered when spoofed TCP Reset packets are received by the
-  targeted TCP stack and will result in loss of availability for the attacked TCP services.";
+  script_tag(name:"solution", value:"Please see the referenced advisories for more information on obtaining
+  and applying fixes.");
 
-  tag_affected = "TCP/IP v4";
+  script_tag(name:"insight", value:"The flaw is triggered when spoofed TCP Reset packets are received by the
+  targeted TCP stack and will result in loss of availability for the attacked TCP services.");
 
-  tag_impact = "Successful exploitation will allow remote attackers to guess sequence numbers
-  and cause a denial of service to persistent TCP connections by repeatedly injecting a TCP RST packet.";
+  script_tag(name:"affected", value:"TCP/IP v4");
 
-  tag_vuldetect = "A TCP Reset packet with a different sequence number is sent to
-  the target. A previously open connection is then checked to see if the target closed it or not.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to guess sequence numbers
+  and cause a denial of service to persistent TCP connections by repeatedly injecting a TCP RST packet.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -84,45 +78,26 @@ if(description)
 include("global_settings.inc");
 include("misc_func.inc");
 
-## Variable Initialization
-soc = 0;
-port = 0;
-srcport =0;
-filter = "";
-ip = NULL;
-tcp = NULL;
-res = NULL;
-flags = NULL;
-dstip = NULL;
-srcip = NULL;
-tcp_seq = NULL;
-
-## Check for IPV6
 if(TARGET_IS_IPV6()){
   exit(0);
 }
 
-## Check for localhost
 if(islocalhost()){
  exit(0);
 }
 
-## Get Open TCP Port
 port = get_host_open_tcp_port();
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
 }
 
-## Get Source Port
 srcport = get_source_port(soc);
 if(!srcport){
   exit(0);
 }
 
-## Get Source and Destination IP
 dstip = get_host_ip();
 srcip = this_host();
 
@@ -137,11 +112,9 @@ if(!res){
   exit(0);
 }
 
-## Get acknowledgement number and tcp flags
 tcp_seq = get_tcp_element(tcp:res, element:"th_ack");
 flags = get_tcp_element(tcp:res, element:"th_flags");
 
-## Check Whether the connection is closed or not
 if(!tcp_seq || (flags & TH_FIN) || (flags & TH_RST)) {
   exit(0);
 }
@@ -177,11 +150,9 @@ send_packet(tcp, pcap_active:FALSE);
 res = send_capture(socket:soc, data:"X", pcap_filter:filter);
 if(res)
 {
-  ## Get the flag and confirm the vulnerability
   flags = get_tcp_element(tcp:res, element:"th_flags");
 
-  ## Check for RST flag
   if (flags & TH_RST){
-    security_message(port:0); 
+    security_message(port:0);
   }
 }

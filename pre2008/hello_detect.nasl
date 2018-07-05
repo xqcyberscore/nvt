@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hello_detect.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: hello_detect.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # DCN HELLO detection
 #
@@ -31,31 +31,29 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11913");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7175 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DCN HELLO detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Service detection");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
-  tag_summary = "The remote IP stack answers to an obsolete protocol.
+  script_tag(name:"summary", value:"The remote IP stack answers to an obsolete protocol.
 
   Description :
 
   The remote host is running HELLO, an obsolete routing protocol.
-  If possible, this IP protocol should be disabled.";
+  If possible, this IP protocol should be disabled.");
 
-  tag_solution = "If this protocol is not needed, disable it or filter incoming traffic going
-  to IP protocol #63.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"If this protocol is not needed, disable it or filter incoming traffic going
+  to IP protocol #63.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   exit(0);
 }

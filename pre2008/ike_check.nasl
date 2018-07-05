@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ike_check.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: IPSEC IKE check
+# $Id: ike_check.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# IPSEC IKE check
 #
 # Authors:
 # John Lampe <jwlampe@nessus.org>
@@ -23,15 +25,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_solution = "Contact your vendor for a patch
-Reference : See RFC 2409";
-
-tag_summary = "The remote IPSEC server seems to have a problem negotiating
-bogus IKE requests.
-
-An attacker may use this flaw to disable your VPN remotely.";
+###############################################################################
 
 # Bert Salaets: Some (older, pre-NAT-T) ISAKMP implementations won't respond on
 #	UDP packets with src.port != 500
@@ -44,33 +38,33 @@ An attacker may use this flaw to disable your VPN remotely.";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10941");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.10941");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("IPSEC IKE check");
+  script_category(ACT_KILL_HOST);
+  script_copyright("This script is Copyright (C) 2002 John Lampe...j_lampe@bellsouth.net");
+  script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
- name = "IPSEC IKE check";
- script_name(name);
+  script_tag(name:"summary", value:"The remote IPSEC server seems to have a problem negotiating
+  bogus IKE requests.");
 
+  script_tag(name:"impact", value:"An attacker may use this flaw to disable your VPN remotely.");
 
- script_category(ACT_KILL_HOST);
+  script_tag(name:"solution", value:"Contact your vendor for a patch
+
+  Reference : See RFC 2409");
+
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_copyright("This script is Copyright (C) 2002 John Lampe...j_lampe@bellsouth.net");
- family = "Denial of Service";
- script_family(family);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
-
- script_exclude_keys("keys/TARGET_IS_IPV6");
- exit(0);
+  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 if(TARGET_IS_IPV6())exit(0);
 
@@ -318,7 +312,7 @@ udpip = forge_udp_packet(                        ip : ip,
 filter = string("udp and src host ", get_host_ip(), " and dst host " , this_host(), " and dst port 500 and src port 500");
 live = send_packet(udpip, pcap_active:TRUE, pcap_filter:filter);
 foo = strlen(live);
-if (foo < 20) 
+if (foo < 20)
 	exit(0);
 
 MV = stored;

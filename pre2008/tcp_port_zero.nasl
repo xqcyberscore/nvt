@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_port_zero.nasl 5614 2017-03-20 12:04:28Z cfi $
+# $Id: tcp_port_zero.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Port TCP:0 Open
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18164");
-  script_version("$Revision: 5614 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:04:28 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,18 +40,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Malware");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "global_settings.nasl");
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
-  tag_summary = "TCP port 0 is open on the remote host. This is highly suspicious as
-  this TCP port is reserved and should not be used. This might be a backdoor (REx).";
+  script_tag(name:"solution", value:"Check your system");
 
-  tag_solution = "Check your system";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"TCP port 0 is open on the remote host. This is highly suspicious as
+  this TCP port is reserved and should not be used. This might be a backdoor (REx).");
 
   script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -63,7 +61,7 @@ saddr = this_host();
 daddr = get_host_ip();
 sport = rand() % 64512 + 1024;
 dport = 0;
-filter = strcat('src port ', dport, ' and src host ', daddr, 
+filter = strcat('src port ', dport, ' and src host ', daddr,
 	' and dst port ', sport, ' and dst host ', saddr);
 
 ip = forge_ip_packet(	ip_v:4, ip_hl:5, ip_tos:0,ip_off:0,ip_len:20,

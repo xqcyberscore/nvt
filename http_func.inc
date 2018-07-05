@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10283 2018-06-21 11:10:20Z cfischer $
+# $Id: http_func.inc 10406 2018-07-05 05:54:02Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10283 $
+# $Revision: 10406 $
 #
 ###############################################################################
 
@@ -307,8 +307,8 @@ function http_is_dead( port, retry ) {
 # @param quickcheck  if set to TRUE the response is only checked for an existing HTTP 200 status code
 #
 # @return TRUE if the remote web server has responded with the expected pattern, FALSE otherwise and
-#              NULL in the case where no connection to the target could be established or not all
-#              required parameters where passed.
+#         NULL in the case where no connection to the target could be established or not all
+#         required parameters where passed.
 #
 function do_check_win_dir_trav( port, url, quickcheck ) {
 
@@ -357,8 +357,8 @@ function do_check_win_dir_trav( port, url, quickcheck ) {
 
 # @brief This function requests a specified URL and checks the response if it
 #        is containing pattern for windows related files (autoexec.bat, win.ini
-#        and boot.ini). It is an extension to the do_check_win_dir_trav function
-#        and is additionally checking if the web server is responding with the
+#        and boot.ini). It is an extension to @ref do_check_win_dir_trav and
+#        is additionally checking if the web server is responding with the
 #        expected pattern on a non-existent random file.
 #
 # @param port        the port of the remote server to check
@@ -366,9 +366,9 @@ function do_check_win_dir_trav( port, url, quickcheck ) {
 # @param quickcheck  if set to TRUE the response is only checked for an existing HTTP 200 status code
 #
 # @return TRUE if the remote web server has responded with the expected pattern, FALSE otherwise and
-#              NULL in the case where no connection to the target could be established, not all
-#              required parameters where passed or if the web server is responding with the expected
-#              pattern on a non-existent random file.
+#         NULL in the case where no connection to the target could be established, not all
+#         required parameters where passed or if the web server is responding with the expected
+#         pattern on a non-existent random file.
 #
 function check_win_dir_trav( port, url, quickcheck ) {
   local_var port, url, quickcheck;
@@ -997,10 +997,10 @@ function extract_basic_auth( data ) {
 #        (in the KB) marked as "broken". It will also save the information in
 #        an internal array to avoid that redis is queried.
 #
-# @param port        the port of the remote server
+# @param port the port of the remote server
 #
 # @return TRUE if the remote web server was marked as broken, FALSE otherwise and
-#              NULL in the case where the port parameter wasn't passed.
+#         NULL in the case where the port parameter wasn't passed.
 #
 function http_is_marked_broken( port ) {
 

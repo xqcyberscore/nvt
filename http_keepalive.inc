@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 10271 2018-06-20 12:45:27Z cfischer $
+# $Id: http_keepalive.inc 10406 2018-07-05 05:54:02Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10271 $
+# $Revision: 10406 $
 #
 ###############################################################################
 
@@ -508,7 +508,8 @@ function get_http_page( port, url, max_redirects ) {
 #        If a response was received it is saved into the knowledge base.
 #        If an URL was requested which was requested previously the cached
 #        response will be returned instead of doing a new request.
-#        nb: The global_var __ka_last_request can be used to access the "req"
+#
+# @note  The global_var __ka_last_request can be used to access the "req"
 #        crafted by this function.
 #
 # @param port the HTTP port of the target
@@ -568,7 +569,7 @@ function http_get_cache( port, item ) {
 #        was found a security_message() is reported and the script exit afterwards.
 #
 # @param default_port  the default HTTP port to assume if no open ports was found on the target host
-# @param extra_dirs    additional directories to check which are added to the found directories of cgi_dirs(). If empty only cgi_dirs() is used.
+# @param extra_dirs    additional directories to check which are added to the found directories of @ref cgi_dirs. If empty only @ref cgi_dirs is used.
 # @param unique_dir    the directory which should be checked, if this parameter is passed extra_dirs will be ignored.
 # @param check_request the request / item to sent in the HTTP GET request
 # @param extra_check   a pattern to check additionally to the check_result in form of a regex

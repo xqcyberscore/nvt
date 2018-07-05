@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: fw1_udp_DoS.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: fw1_udp_DoS.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Checkpoint Firewall-1 UDP denial of service
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11905");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1419);
   script_tag(name:"cvss_base", value:"7.8");
@@ -37,31 +37,28 @@ if(description)
   script_category(ACT_FLOOD);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
-  tag_summary = "The machine (or a router on the way) crashed when it was flooded by
-  incorrect UDP packets.";
+  script_tag(name:"solution", value:"If this is a FW-1, enable the antispoofing rule. Otherwise,
+  contact your software vendor for a patch.");
 
-  tag_affected = "This attack was known to work against Firewall-1 3.0, 4.0 or 4.1";
+  script_tag(name:"impact", value:"An attacker may use this flaw to shut down this server, thus
+  preventing you from working properly.");
 
-  tag_impact = "An attacker may use this flaw to shut down this server, thus
-  preventing you from working properly.";
+  script_tag(name:"affected", value:"This attack was known to work against Firewall-1 3.0, 4.0 or 4.1");
 
-  tag_solution = "If this is a FW-1, enable the antispoofing rule; otherwise, contact your software vendor for a patch.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact" , value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The machine (or a router on the way) crashed when it was flooded by
+  incorrect UDP packets.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
-
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   exit(0);
 }
 
 if( TARGET_IS_IPV6() ) exit( 0 );
+if( islocalhost() ) exit( 0 );
 
 # Ensure that the host is still up
 start_denial();

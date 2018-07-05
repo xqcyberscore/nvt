@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_overflow.nasl 8237 2017-12-22 10:33:02Z cfischer $
-# Description: TFTPD overflow
+# $Id: tftpd_overflow.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# TFTPD overflow
 #
 # Authors:
 # Michel Arboi <mikhail@nessus.org>
@@ -20,46 +22,44 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # Not tested against a vulnerable server!
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.18264");
- script_version("$Revision: 8237 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- # Not sure for 10526 or 11584
- # BID=6043 / CVE-2002-1542 is different
- script_bugtraq_id(401, 5328, 7819);
- script_cve_id("CVE-2002-0813", "CVE-2003-0380");
- script_name( "TFTPD overflow");
+  script_oid("1.3.6.1.4.1.25623.1.0.18264");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  # Not sure for 10526 or 11584
+  # BID=6043 / CVE-2002-1542 is different
+  script_bugtraq_id(401, 5328, 7819);
+  script_cve_id("CVE-2002-0813", "CVE-2003-0380");
+  script_name("TFTPD overflow");
+  # Not ACT_DESTRUCTIVE_ATTACK (see CVE-2002-0813)
+  script_category(ACT_KILL_HOST);
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
- # Not ACT_DESTRUCTIVE_ATTACK (see CVE-2002-0813)
- script_category(ACT_KILL_HOST);
- 
- script_copyright("This script is Copyright (C) 2005 Michel Arboi");
- script_family( "Gain a shell remotely");
- script_dependencies("tftpd_detect.nasl");
- script_require_udp_ports("Services/udp/tftp", 69);
+  script_tag(name:"solution", value:"Upgrade your software, or disable this service");
 
- script_tag(name : "solution" , value : "Upgrade your software, or disable this service");
- script_tag(name : "summary" , value : "The remote TFTP server dies when it receives a too big UDP datagram.");
- script_tag(name : "impact" , value : "A cracker may use this flaw to disable your server, or even execute
- arbitrary code on your system.");
+  script_tag(name:"summary", value:"The remote TFTP server dies when it receives a too big UDP datagram.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"impact", value:"A cracker may use this flaw to disable your server, or even execute
+  arbitrary code on your system.");
 
- script_tag(name:"qod_type", value:"exploit");
- script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"exploit");
 
- exit(0);
+  exit(0);
 }
 
-#
 include('global_settings.inc');
 include('dump.inc');
 
@@ -79,10 +79,10 @@ function tftp_ping(port, huge)
   req = '\x00\x01OpenVAS'+rand()+'\0netascii\0';
 
  sport = rand() % 64512 + 1024;
- ip = forge_ip_packet(ip_hl : 5, ip_v: 4,  ip_tos:0, 
+ ip = forge_ip_packet(ip_hl : 5, ip_v: 4,  ip_tos:0,
 	ip_len:20, ip_off:0, ip_ttl:64, ip_p:IPPROTO_UDP,
 	ip_src: this_host());
-		     
+
  u = forge_udp_packet(ip:ip, uh_sport: sport, uh_dport:port, uh_ulen: 8 + strlen(req), data:req);
 
  filter = 'udp and dst port ' + sport + ' and src host ' + get_host_ip() + ' and udp[8:1]=0x00';
@@ -107,7 +107,7 @@ function tftp_ping(port, huge)
  return FALSE;
 }
 
-# 
+#
 port = get_kb_item('Services/udp/tftp');
 if (! port) port = 69;
 if (! tftp_ping(port: port)) exit(0);

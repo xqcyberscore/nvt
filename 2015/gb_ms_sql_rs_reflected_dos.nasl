@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sql_rs_reflected_dos.nasl 10226 2018-06-15 14:47:11Z cfischer $
+# $Id: gb_ms_sql_rs_reflected_dos.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # MS SQL Server Resolution Service Amplification Reflected DRDoS
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105187");
-  script_version("$Revision: 10226 $");
+  script_version("$Revision: 10411 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("MS SQL Server Resolution Service Amplification Reflected DRDoS");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:47:11 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-01-26 13:45:36 +0100 (Mon, 26 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("mssql_ping.nasl");
+  script_dependencies("mssql_ping.nasl", "global_settings.nasl");
   script_mandatory_keys("MSSQL/UDP/Ping");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
 

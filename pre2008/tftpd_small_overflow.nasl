@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_small_overflow.nasl 8237 2017-12-22 10:33:02Z cfischer $
-# Description: TFTPD small overflow
+# $Id: tftpd_small_overflow.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# TFTPD small overflow
 #
 # Authors:
 # Josh Zlatin-Amishav <josh@tkos.co.il>
@@ -20,45 +22,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # This plugin is just a very slightly modified version of tftpd_overflow.nasl
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.18493");
- script_version("$Revision: 8237 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_bugtraq_id(13908);
- script_name("TFTPD small overflow");
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.18493");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_bugtraq_id(13908);
+  script_name("TFTPD small overflow");
+  script_category(ACT_KILL_HOST);
+  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
+  script_family("Gain a shell remotely");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
- script_category(ACT_KILL_HOST);
- 
- script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
- script_family( "Gain a shell remotely");
- script_dependencies("tftpd_detect.nasl");
- script_require_udp_ports("Services/udp/tftp", 69);
+  script_tag(name:"solution", value:"Upgrade your software, or disable this service.");
 
- script_tag(name : "solution" , value : "Upgrade your software, or disable this service");
- script_tag(name : "summary" , value : "The remote TFTP server dies when it receives a small UDP 
- datagram.");
- script_tag(name : "impact" , value : "A malicious user may use this flaw to disable your server.");
- script_tag(name : "insight" , value : "The remote device freezes or reboots when a UDP datagram of 284 bytes in length
- is sent to the TFTP server.");
+  script_tag(name:"summary", value:"The remote TFTP server dies when it receives a small UDP datagram.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"impact", value:"A malicious user may use this flaw to disable your server.");
 
- script_tag(name:"qod_type", value:"exploit");
- script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_tag(name:"insight", value:"The remote device freezes or reboots when a UDP datagram of 284 bytes in length
+  is sent to the TFTP server.");
 
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"exploit");
+
+  exit(0);
 }
 
-#
 include('global_settings.inc');
 include('dump.inc');
 
@@ -78,10 +77,10 @@ function tftp_ping(port, huge)
   req = '\x00\x01OpenVAS'+rand()+'\0netascii\0';
 
  sport = rand() % 64512 + 1024;
- ip = forge_ip_packet(ip_hl : 5, ip_v: 4,  ip_tos:0, 
+ ip = forge_ip_packet(ip_hl : 5, ip_v: 4,  ip_tos:0,
 	ip_len:20, ip_off:0, ip_ttl:64, ip_p:IPPROTO_UDP,
 	ip_src: this_host());
-		     
+
  u = forge_udp_packet(ip:ip, uh_sport: sport, uh_dport:port, uh_ulen: 8 + strlen(req), data:req);
 
  filter = 'udp and dst port ' + sport + ' and src host ' + get_host_ip() + ' and udp[8:1]=0x00';

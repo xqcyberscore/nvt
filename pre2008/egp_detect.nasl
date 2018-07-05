@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: egp_detect.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: EGP detection
+# $Id: egp_detect.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# EGP detection
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,42 +22,39 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote IP stack answers to an obsolete protocol.
-
-Description :
-
-The remote host is running EGP, an obsolete routing protocol.
-
-If possible, this IP protocol should be disabled.";
-
-tag_solution = "If this protocol is not needed, disable it or filter incoming traffic going
-to IP protocol #8";
+###############################################################################
 
 # See RFC 827 & RFC 888
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11908");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-
-  name = "EGP detection";
-  script_name(name);
- 
- 
-  summary = "Sends an EGP Neighbor Acquisition Message";
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("EGP detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner"); 
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Service detection");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("global_settings.nasl");
   script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+
+  script_tag(name:"solution", value:"If this protocol is not needed, disable it or filter incoming traffic going
+  to IP protocol #8");
+
+  script_tag(name:"summary", value:"The remote IP stack answers to an obsolete protocol.
+
+  Description :
+
+  The remote host is running EGP, an obsolete routing protocol.
+
+  If possible, this IP protocol should be disabled.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -63,6 +62,7 @@ if(description)
 ##include("dump.inc");
 include('global_settings.inc');
 include("network_func.inc");
+
 if (islocalhost() ) exit(0);
 if(TARGET_IS_IPV6())exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.nasl 8002 2017-12-06 07:17:58Z cfischer $
+# $Id: host_details.nasl 10407 2018-07-05 07:11:01Z cfischer $
 #
 # Host Details
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103997");
-  script_version("$Revision: 8002 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-06 08:17:58 +0100 (Wed, 06 Dec 2017) $");
+  script_version("$Revision: 10407 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 09:11:01 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-03-16 12:21:12 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,8 @@ if(description)
   script_family("Service detection");
   script_category(ACT_END);
   script_dependencies("gb_wmi_get-dns_name.nasl", "netbios_name_get.nasl", "sw_ssl_cert_get_hostname.nasl",
-                      "gb_host_id_tag_ssh.nasl", "host_scan_end.nasl", "gb_tls_version.nasl");
+                      "gb_host_id_tag_ssh.nasl", "host_scan_end.nasl", "gb_tls_version.nasl",
+                      "gb_hostname_determ_reporting.nasl");
 
   script_tag(name:"summary", value:"This scripts aggregates the OS detection information gathered by several
   NVTs and store it in a structured and unified way.");
@@ -56,6 +57,8 @@ include("host_details.inc");
 hostname = get_host_name();
 hostip   = get_host_ip();
 
+# TODO: Remove once OpenVAS 9 is end of life and allow each of the
+# plugins below registering the determied hostname via add_host_name().
 if( ! isnull( hostname ) && hostname != '' && hostname != hostip ) {
   register_host_detail( name:"hostname", value:hostname, desc:SCRIPT_DESC );
   #nb: This just has duplicated the hostame above (see r30003 in trunk)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_amplification_attack.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_dns_amplification_attack.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # DNS Amplification Attack
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103718");
-  script_version ("$Revision: 5655 $");
+  script_version("$Revision: 10411 $");
   script_cve_id("CVE-2006-0987");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 11:31:19 +0200 (Tue, 28 May 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,18 +38,15 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("dns_server.nasl");
+  script_dependencies("dns_server.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("DNS/identified");
-  script_exclude_keys("keys/islocalhost","keys/islocalnet","keys/is_private_addr");
+  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
 
   script_xref(name:"URL", value:"http://www.us-cert.gov/ncas/alerts/TA13-088A");
   script_xref(name:"URL", value:"http://www.isotf.org/news/DNS-Amplification-Attacks.pdf");
 
-  tag_summary = "A misconfigured Domain Name System (DNS) server can be exploited to participate
-  in a Distributed Denial of Service (DDoS) attack.";
-
-  tag_insight = "A Domain Name Server (DNS) Amplification attack is a popular form of
+  script_tag(name:"insight", value:"A Domain Name Server (DNS)Amplification attack is a popular form of
   Distributed Denial of Service (DDoS) that relies on the use of publicly
   accessible open recursive DNS servers to overwhelm a victim system with DNS
   response traffic.
@@ -64,10 +61,10 @@ if(description)
   leveraging a botnet to perform additional spoofed DNS queries, an attacker can
   produce an overwhelming amount of traffic with little effort. Additionally,
   because the responses are legitimate data coming from valid servers, it is
-  especially difficult to block these types of attacks.";
+  especially difficult to block these types of attacks.");
 
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"A misconfigured Domain Name System (DNS)server can be exploited to participate
+  in a Distributed Denial of Service (DDoS) attack.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

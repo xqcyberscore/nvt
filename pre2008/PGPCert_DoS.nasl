@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PGPCert_DoS.nasl 9324 2018-04-05 09:28:03Z cfischer $
+# $Id: PGPCert_DoS.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # NAI PGP Cert Server DoS
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10442");
-  script_version("$Revision: 9324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 11:28:03 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1343);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2001 John Lampe....j_lampe@bellsouth.net");
-  script_dependencies("secpod_open_tcp_ports.nasl");
+  script_dependencies("secpod_open_tcp_ports.nasl", "global_settings.nasl");
   script_mandatory_keys("TCP/PORTS");
   script_require_ports(4000);
   script_exclude_keys("keys/TARGET_IS_IPV6");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to the latest version.");
 
   script_tag(name:"summary", value:"It was possible to make the remote PGP Cert Server
-  crash by spoofing a TCP connection that seems to
-  come from an unresolvable IP address.");
+  crash by spoofing a TCP connection that seems to come from an unresolvable IP address.");
 
   script_tag(name:"impact", value:"An attacker may use this flaw to prevent your PGP
   certificate server from working properly.");
@@ -69,7 +68,6 @@ soc = open_sock_tcp(port1);
 if(!soc)exit(0);
 close(soc);
 
-#get a sequence number from the target
 dstaddr=get_host_ip();
 srcaddr=this_host();
 IPH = 20;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_amplification_attack.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_memcached_amplification_attack.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Memcached Amplification Attack (Memcrashed)
 #
@@ -32,9 +32,9 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108357");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 10411 $");
   script_cve_id("CVE-2018-1000115");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-03-01 08:31:24 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Denial of Service");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
-  script_dependencies("gb_memcached_detect_udp.nasl");
+  script_dependencies("gb_memcached_detect_udp.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/memcached", 11211);
   script_mandatory_keys("Memcached/detected");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
@@ -52,10 +52,10 @@ if(description)
   script_xref(name:"URL", value:"https://www.arbornetworks.com/blog/asert/memcached-reflection-amplification-description-ddos-attack-mitigation-recommendations/");
   script_xref(name:"URL", value:"https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/");
 
-  tag_summary = "A publicly accessible Memcached server can be exploited to participate
-  in a Distributed Denial of Service (DDoS) attack.";
+  script_tag(name:"summary", value:"A publicly accessible Memcached server can be exploited to participate
+  in a Distributed Denial of Service (DDoS) attack.");
 
-  tag_insight = "An Amplification attack is a popular form of Distributed Denial
+  script_tag(name:"insight", value:"An Amplification attack is a popular form of Distributed Denial
   of Service (DDoS) that relies on the use of publicly accessible Memcached
   servers to overwhelm a victim system with response traffic.
 
@@ -69,9 +69,9 @@ if(description)
   victim. By leveraging a botnet to perform additional spoofed queries, an
   attacker can produce an overwhelming amount of traffic with little effort.
   Additionally, because the responses are legitimate data coming from valid
-  clients, it is especially difficult to block these types of attacks.";
+  clients, it is especially difficult to block these types of attacks.");
 
-  tag_solution = "The following mitigation possibilities are currently available:
+  script_tag(name:"solution", value:"The following mitigation possibilities are currently available:
 
   - Disable public access to the UDP port of this Memcached server.
 
@@ -80,11 +80,7 @@ if(description)
 
   - Disable the UDP protocol by specifying '-U 0' on server startup.
 
-  - Update to Memcached to 1.5.6 which disables the UDP protocol by default.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
+  - Update to Memcached to 1.5.6 which disables the UDP protocol by default.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");

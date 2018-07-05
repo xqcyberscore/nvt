@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: labrea.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: scan for LaBrea tarpitted hosts
+# $Id: labrea.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# scan for LaBrea tarpitted hosts
 #
 # Authors:
 # John Lampe...j_lampe@bellsouth.net
@@ -20,37 +22,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script performs a labrea tarpit scan, by
-sending a bogus ACK and ACK-windowprobe to a potential
-host.  It also sends a TCP SYN to test for non-persisting
-labrea machines.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10796");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "scan for LaBrea tarpitted hosts";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.10796");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("scan for LaBrea tarpitted hosts");
+  script_category(ACT_SCANNER);
+  script_copyright("This script is Copyright (C) 2001 by John Lampe");
+  script_family("Port scanners");
+  script_dependencies("ping_host.nasl");
+  script_exclude_keys("keys/TARGET_IS_IPV6"); # nb: This doesn't work as global_settings.nasl is in ACT_SETTINGS which is > ACT_SCANNER so we can't run global_settings.nasl before this one...
 
+  script_tag(name:"summary", value:"This script performs a labrea tarpit scan, by
+  sending a bogus ACK and ACK-windowprobe to a potential host. It also sends a TCP SYN
+  to test for non-persisting labrea machines.");
 
-
- script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_active");
 
-
- script_copyright("This script is Copyright (C) 2001 by John Lampe");
- family = "Port scanners";
- script_family(family);
- script_dependencies("ping_host.nasl");
- script_tag(name : "summary" , value : tag_summary);
- script_exclude_keys("keys/TARGET_IS_IPV6");
- exit(0);
+  exit(0);
 }
 
 

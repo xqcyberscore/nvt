@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: tftpd_dir_trav.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 7153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Remote file access");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 

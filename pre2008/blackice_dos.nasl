@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: blackice_dos.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: blackice_dos.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # BlackIce DoS (ping flood)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10927");
-  script_version("$Revision: 8144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4025);
   script_tag(name:"cvss_base", value:"7.5");
@@ -41,26 +41,23 @@ if(description)
   script_category(ACT_FLOOD);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   #script_add_preference(name:"Flood length :", type:"entry", value:"600");
   #script_add_preference(name:"Data length :", type:"entry", value:"10000");
   #script_add_preference(name:"MTU :",  type:"entry", value:"576");
 
-  tag_summary = "It was possible to crash the remote machine by flooding it
-  with 10 KB ping packets.";
+  script_tag(name:"solution", value:"Upgrade your BlackIce software or remove it.");
 
-  tag_impact = "A cracker may use this attack to make this host crash continuously, preventing
-  you from working properly.";
+  script_tag(name:"impact", value:"A cracker may use this attack to make this host crash continuously, preventing
+  you from working properly.");
 
-  tag_solution = "Upgrade your BlackIce software or remove it.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"It was possible to crash the remote machine by flooding it
+  with 10 KB ping packets.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
-  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   exit(0);
 }

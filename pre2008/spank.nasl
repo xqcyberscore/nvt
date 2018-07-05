@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spank.nasl 10107 2018-06-07 07:37:31Z cfischer $
+# $Id: spank.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # 'spank' Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11901");
-  script_version("$Revision: 10107 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 09:37:31 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -37,6 +37,7 @@ if(description)
   script_category(ACT_KILL_HOST);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
   script_tag(name:"summary", value:"The remote host answers to TCP packets that are coming from a multicast

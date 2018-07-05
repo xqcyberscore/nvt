@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ospf_detect.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: ospf_detect.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # OSPF detection
 #
@@ -30,40 +30,37 @@
 # to 0.
 #
 # Table 8: OSPF packet types.
-#    1      Hello                  Discover/maintain  neighbors             
-#    2      Database Description   Summarize database contents              
-#    3      Link State Request     Database download                        
-#    4      Link State Update      Database update                          
+#    1      Hello                  Discover/maintain  neighbors
+#    2      Database Description   Summarize database contents
+#    3      Link State Request     Database download
+#    4      Link State Update      Database update  
 #    5      Link State Ack         Flooding acknowledgment
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11906");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7175 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("OSPF detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Service detection");
+  script_dependencies("global_settings.nasl");
+  script_mandatory_keys("keys/islocalnet");
+  script_exclude_keys("keys/islocalhost");
 
-  tag_summary = "The remote host is running an OSPF (Open Shortest Path First) agent.
+  script_tag(name:"summary", value:"The remote host is running an OSPF (Open Shortest Path First) agent.
 
   Description :
 
-  The remote host is running OSPF, a popular routing protocol.";
+  The remote host is running OSPF, a popular routing protocol.");
 
-  tag_solution = "If the remote service is not used, disable it.";
+  script_tag(name:"solution", value:"If the remote service is not used, disable it.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-
-  script_tag(name:"qod_type", value:"remote_banner"); 
-
-  script_exclude_keys("keys/islocalhost");
-  script_mandatory_keys("keys/islocalnet");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -75,7 +72,7 @@ if ( ! islocalnet() ) exit(0);
 
 join_multicast_group("224.0.0.5");	# AllSPFRouters
 join_multicast_group("224.0.0.6");	# AllDRouters
-# join_multicast_group is necessary, because pcap_next does not put the 
+# join_multicast_group is necessary, because pcap_next does not put the
 # interface in promiscuous mode
 
 function on_exit()
@@ -92,9 +89,9 @@ function extract_ip_addr(pkt, off)
     return '0.0.0.0';
 
   return
-	strcat(	ord(pkt[off+0]), ".", 
-		ord(pkt[off+1]), ".", 
-		ord(pkt[off+2]), ".", 
+	strcat(	ord(pkt[off+0]), ".",
+		ord(pkt[off+1]), ".",
+		ord(pkt[off+2]), ".",
 		ord(pkt[off+3]));
 }
 

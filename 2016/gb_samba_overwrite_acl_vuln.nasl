@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_overwrite_acl_vuln.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_samba_overwrite_acl_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba Overwrite ACLs Vulnerability
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807711");
-  script_version("$Revision: 8882 $");
+  script_version("$Revision: 10398 $");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:53 +0530 (Wed, 06 Apr 2016)");
   script_name("Samba Overwrite ACLs Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_mandatory_keys("samba/detected");
+  script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_tag(name:"summary", value:"This host is running Samba and is prone
   to overwrite ACLs vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper handling
   of the request,a UNIX SMB1 call, to create a symlink.");
@@ -74,26 +73,28 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! sambaPort = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! sambaVer = get_app_version( cpe:CPE, port:sambaPort ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+vers = infos['version'];
+loc = infos['location'];
 
-if( version_in_range( version:sambaVer, test_version:"3.2.0", test_version2:"4.1.22" ) ) {
+if( version_in_range( version:vers, test_version:"3.2.0", test_version2:"4.1.22" ) ) {
   fix = "4.1.23";
   VULN = TRUE ;
-} else if( version_in_range( version:sambaVer, test_version:"4.2.0", test_version2:"4.2.8" ) ) {
+} else if( version_in_range( version:vers, test_version:"4.2.0", test_version2:"4.2.8" ) ) {
   fix = "4.2.9";
   VULN = TRUE ;
-} else if( version_in_range( version:sambaVer, test_version:"4.3.0", test_version2:"4.3.5" ) ) {
+} else if( version_in_range( version:vers, test_version:"4.3.0", test_version2:"4.3.5" ) ) {
   fix = "4.3.6";
   VULN = TRUE ;
-} else if( version_in_range( version:sambaVer, test_version:"4.4.0", test_version2:"4.4.0rc3" ) ) {
+} else if( version_in_range( version:vers, test_version:"4.4.0", test_version2:"4.4.0rc3" ) ) {
   fix = "4.4.0rc4";
   VULN = TRUE ;
 }
 
 if( VULN ) {
-  report = report_fixed_ver( installed_version:sambaVer, fixed_version:fix );
-  security_message( data:report, port:sambaPort );
+  report = report_fixed_ver( installed_version:vers, fixed_version:fix, install_path:loc );
+  security_message( data:report, port:port );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_23972_version.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_samba_23972_version.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)
 #
@@ -31,19 +31,19 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108012");
-  script_version("$Revision: 8882 $");
+  script_version("$Revision: 10398 $");
   script_cve_id("CVE-2007-2447");
   script_bugtraq_id(23972);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-10-31 12:47:00 +0200 (Mon, 31 Oct 2016)");
   script_name("Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Gain a shell remotely");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_mandatory_keys("samba/detected");
+  script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/23972");
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2007-2447.html");
@@ -69,11 +69,13 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+vers = infos['version'];
+loc = infos['location'];
 
 if( version_is_less_equal( version:vers, test_version:"3.0.25rc3" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"See referenced vendor advisory");
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See referenced vendor advisory", install_path:loc );
   security_message( port:port, data:report );
   exit( 0 );
 }

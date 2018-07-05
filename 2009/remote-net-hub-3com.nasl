@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-net-hub-3com.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: remote-net-hub-3com.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # 3com hub test NVT
 # replaces 3com_hub C plugin
@@ -28,16 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80103");
-  script_version("$Revision: 7277 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-08-10 06:09:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_copyright("(C) 2009 Vlatko Kosturjak");
   script_name("3com switch2hub");
   script_category(ACT_DENIAL);
-  script_dependencies("find_service.nasl");
   script_family("Denial of Service");
+  script_dependencies("find_service.nasl", "global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
+
   script_add_preference(name:"Network interface on OpenVAS box (used for scanning):", type:"entry", value:"");
   script_add_preference(name:"Fake IP (alive and on same subnet as scanner):", type:"entry", value:"");
   script_add_preference(name:"Number of packets:", type:"entry", value:"1000000");
@@ -47,17 +49,19 @@ if(description)
 
   script_tag(name:"solution", value:"Lock Mac addresses on each port of the remote switch or
   buy newer switch.");
+
   script_tag(name:"summary", value:"The remote host is subject to the switch to hub flood attack.");
+
   script_tag(name:"insight", value:"The remote host on the local network seems to be connected through a
   switch which can be turned into a hub when flooded by different mac addresses. The theory is to send a
   lot of packets (> 1000000) to the port of the switch we are connected to, with random mac addresses.
   This turns the switch into learning mode, where traffic goes everywhere.");
+
   script_tag(name:"impact", value:"An attacker may use this flaw in the remote switch
   to sniff data going to this host");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Workaround");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   exit(0);
 }

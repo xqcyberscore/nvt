@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jolt2.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: jolt2
+# $Id: jolt2.nasl 10411 2018-07-05 10:15:10Z cfischer $
+#
+# jolt2
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,48 +22,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The machine (or a gateway on the network path) crashed when
-flooded with incorrectly fragmented packets.
-This is known as the 'jolt2' denial of service attack.
-
-An attacker may use this flaw to shut down this server or router,
-thus preventing you from working properly.";
-
-tag_solution = "contact your operating system vendor for a patch.";
+###############################################################################
 
 # Note: the original exploit looks buggy. I tried to reproduce it here.
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11902");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1312);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2000-0482");
+  script_oid("1.3.6.1.4.1.25623.1.0.11902");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1312);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2000-0482");
+  script_name("jolt2");
+  script_category(ACT_FLOOD);
+  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
+  script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
- name = "jolt2";
- script_name(name);
+  script_tag(name:"solution", value:"Contact your operating system vendor for a patch.");
+
+  script_tag(name:"summary", value:"The machine (or a gateway on the network path) crashed when
+  flooded with incorrectly fragmented packets.
  
+  This is known as the 'jolt2' denial of service attack.");
 
- script_category(ACT_FLOOD);
+  script_tag(name:"impact", value:"An attacker may use this flaw to shut down this server or router,
+  thus preventing you from working properly.");
+
   script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2003 Michel Arboi");
- family = "Denial of Service";
- script_family(family);
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
-
- script_exclude_keys("keys/TARGET_IS_IPV6");
- exit(0);
+  exit(0);
 }
-
-#
 
 if(TARGET_IS_IPV6())exit(0);
 

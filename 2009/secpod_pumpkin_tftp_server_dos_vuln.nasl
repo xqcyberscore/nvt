@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # PumpKIN TFTP Server Denial of Service Vulnerability
 #
@@ -29,45 +29,46 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900648");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 08:03:45 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2008-6791");
   script_bugtraq_id(31922);
   script_name("PumpKIN TFTP Server Denial of Service Vulnerability");
-
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/6838");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/46122");
-
   script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("secpod_pumpkin_tftp_detect.nasl");
+  script_dependencies("secpod_pumpkin_tftp_detect.nasl", "global_settings.nasl");
   script_require_keys("PumpKIN/TFTP/Ver");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause denial of
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/6838");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46122");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
   service to legitimate users.");
-  script_tag(name : "affected" , value : "PumpKIN TFTP Server version 2.7.2.0 and prior");
-  script_tag(name : "insight" , value : "Error exists when server fails handling certain input via
+
+  script_tag(name:"affected", value:"PumpKIN TFTP Server version 2.7.2.0 and prior");
+
+  script_tag(name:"insight", value:"Error exists when server fails handling certain input via
   sending an overly long Mode field.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running PumpKIN TFTP Server and is prone to Denial
+
+  script_tag(name:"summary", value:"This host is running PumpKIN TFTP Server and is prone to Denial
   of Service Vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
-  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -116,7 +117,6 @@ function tftp_attack(port, attack)
     if(rep)
     {
       data = get_udp_element(udp: rep, element:"data");
-      # Checks for valid tftp response
       if(data[0] == '\0' && (data[1] == '\x03' || data[1] == '\x05')){
         return TRUE;
       }

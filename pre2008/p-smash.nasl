@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: p-smash.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: p-smash.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # p-smash DoS (ICMP 9 flood)
 #
@@ -28,14 +28,13 @@
 ###############################################################################
 
 # According to "Paulo Ribeiro" <prrar@NITNET.COM.BR> on VULN-DEV,
-# Windows 9x cannot handle ICMP type 9 messages.
 # This should slow down Windows 95 and crash Windows 98
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11024");
-  script_version("$Revision: 8144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -43,29 +42,29 @@ if(description)
   script_category(ACT_KILL_HOST);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
+
   # script_add_preference(name:"Flood length :", type:"entry", value:"5000");
   # script_add_preference(name:"Data length :", type:"entry", value:"500");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=KB;en-us;q216141");
 
-  tag_summary = "It was possible to crash the remote machine by flooding it with ICMP type 9 packets.";
+  script_tag(name:"solution", value:"Upgrade your Windows 9x operating system or change it.");
 
-  tag_impact = "A cracker may use this attack to make this host crash continuously, preventing you
-  from working properly.";
+  script_tag(name:"impact", value:"A cracker may use this attack to make this host crash continuously, preventing you
+  from working properly.");
 
-  tag_solution = "Upgrade your Windows 9x operating system or change it.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_tag(name:"summary", value:"It was possible to crash the remote machine by flooding it with ICMP type 9 packets.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
 if( TARGET_IS_IPV6() ) exit( 0 );
+if( islocalhost() ) exit( 0 );
 
 # Ensure that the host is still up
 start_denial();

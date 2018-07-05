@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-smtp-smad.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: remote-smtp-smad.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Sendmail smad Vulnerability - replaces smad plugin
 #
@@ -24,39 +24,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80102");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-03-14 11:48:12 +0100 (Sat, 14 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_copyright("(C) 2009 Vlatko Kosturjak");
   script_name("Sendmail smad Vulnerability");
   script_category(ACT_DENIAL);
-  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
+  script_dependencies("find_service.nasl", "smtpserver_detect.nasl", "global_settings.nasl");
   script_family("Denial of Service");
   script_require_ports("Services/smtp", 25);
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://online.securityfocus.com/archive/1/11073");
 
-  tag_summary = "The remote host is subject to the
-  'smad' attack(sendmail accept dos).";
+  script_tag(name:"solution", value:"Upgrade your Linux kernel to a newer version
+  or filter incoming traffic to this port.");
 
-  tag_insight = "Smad  prevents sendmail from accepting legitimate connections.
+  script_tag(name:"summary", value:"The remote host is subject to the
+  'smad' attack(sendmail accept dos).");
+
+  script_tag(name:"insight", value:"Smad prevents sendmail from accepting legitimate connections.
   A cracker may use this flaw to prevent you from receiving any email, thus lowering the
   interest of being connected to internet. This attack is specific to some versions of the
   Linux kernel. There are various security bugs in the implementation of this service
-  which can be used by an intruder to gain a root account rather easily.";
-
-  tag_solution = "Upgrade your Linux kernel to a newer version
-  or filter incoming traffic to this port.";
-
-  script_tag(name:"solution" , value:tag_solution);
-  script_tag(name:"summary" , value:tag_summary);
-  script_tag(name:"insight" , value:tag_insight);
+  which can be used by an intruder to gain a root account rather easily.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
-  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   exit(0);
 }

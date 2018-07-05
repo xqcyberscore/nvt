@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_YaTFTPSvr_50441.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_YaTFTPSvr_50441.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # YaTFTPSvr TFTP Server Directory Traversal Vulnerability
 #
@@ -24,38 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103321");
- script_bugtraq_id(50441);
- script_version ("$Revision: 8236 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("YaTFTPSvr TFTP Server Directory Traversal Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103321");
+  script_bugtraq_id(50441);
+  script_version("$Revision: 10411 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("YaTFTPSvr TFTP Server Directory Traversal Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
+  script_category(ACT_ATTACK);
+  script_family("Remote file access");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50441");
- script_xref(name : "URL" , value : "http://sites.google.com/site/zhaojieding2/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520302");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50441");
+  script_xref(name:"URL", value:"http://sites.google.com/site/zhaojieding2/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520302");
 
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
- script_category(ACT_ATTACK);
- script_family("Remote file access");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("tftpd_detect.nasl");
- script_require_udp_ports("Services/udp/tftp", 69);
- script_tag(name : "summary" , value : "YaTFTPSvr TFTP Server is prone to a directory-traversal vulnerability
- because it fails to sufficiently sanitize user-supplied input.");
- script_tag(name : "impact" , value : "A remote attacker could exploit this vulnerability using directory-
- traversal strings (such as '../') to upload and download arbitrary
- files outside of the TFTP server root directory. This could help the
- attacker launch further attacks.");
- script_tag(name : "affected" , value : "YaTFTPSvr 1.0.1.200 is vulnerable; other versions may also be
- affected.");
+  script_tag(name:"summary", value:"YaTFTPSvr TFTP Server is prone to a directory-traversal vulnerability
+  because it fails to sufficiently sanitize user-supplied input.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_exclude_keys("keys/TARGET_IS_IPV6");
- exit(0);
+  script_tag(name:"impact", value:"A remote attacker could exploit this vulnerability using directory-
+  traversal strings (such as '../') to upload and download arbitrary files outside of the TFTP server
+  root directory. This could help the attacker launch further attacks.");
+
+  script_tag(name:"affected", value:"YaTFTPSvr 1.0.1.200 is vulnerable. Other versions may also be
+  affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 if(TARGET_IS_IPV6())exit(0);
@@ -63,7 +71,7 @@ if(TARGET_IS_IPV6())exit(0);
 port = get_kb_item("Services/udp/tftp");
 
 if(!port){
-    port = 69;
+  port = 69;
 }
 
 if(!get_port_state(port))exit(0);
@@ -90,14 +98,14 @@ for (i = 0; i < 2; i ++) {
        c = substr(data, 4);
 
        if("[boot loader]" >< c) {
-         security_message(port:port); 
+         security_message(port:port);
 	 exit(0);
-       }	 
+       }
 
-    }  
+    }
 
-  }  
+  }
 
-}  
+}
 
 exit(99);

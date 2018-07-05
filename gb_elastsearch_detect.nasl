@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastsearch_detect.nasl 8997 2018-03-01 12:45:32Z cfischer $
+# $Id: gb_elastsearch_detect.nasl 10400 2018-07-04 14:14:24Z cfischer $
 #
 # Elasticsearch and Logstash Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105031");
-  script_version("$Revision: 8997 $");
+  script_version("$Revision: 10400 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:45:32 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 16:14:24 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 15:00:02 +0200 (Thu, 22 May 2014)");
   script_name("Elasticsearch and Logstash Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,6 +80,8 @@ if( "application/json" >< buf && ( "build_hash" >< buf || "build_timestamp" >< b
   if( "health" >< buf || "status" >< buf || "index" >< buf ) {
     extra  = "Collected information (truncated) from " + report_vuln_url( port:port, url:url, url_only:TRUE ) + ' :\n\n';
     extra += substr( buf, 0, 1000 );
+    set_kb_item( name:"elasticsearch/noauth", value:TRUE );
+    set_kb_item( name:"elasticsearch/" + port + "/noauth", value:TRUE );
   }
 
   # nb: Note that we're registering Logstash here as well until

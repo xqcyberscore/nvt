@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 9745 2018-05-07 11:45:41Z cfischer $
+# $Id: smb_nativelanman.nasl 10399 2018-07-04 13:23:27Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 9745 $");
+  script_version("$Revision: 10399 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 15:23:27 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -126,15 +126,26 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
       if( "samba" >< tolower( smb_str ) ) {
 
         version = "unknown";
-        install = port + '/tcp';
-        vers = eregmatch( string:smb_str, pattern:"Samba ([0-9.]+)" );
-        if( vers[1] ) version = vers[1];
+        install = port + "/tcp";
+        # nb: See https://www.samba.org/samba/samba/history/ for some of the possible versions
+        vers = eregmatch( string:smb_str, pattern:"Samba ([0-9.]+)(a|b|c|d|p[0-9]|rc[0-9])?" );
+        if( vers[1] ) {
+          version = vers[1];
+          if( vers[2] ) version += vers[2];
+        }
 
         samba = TRUE;
-        set_kb_item( name:"SMB/samba", value:TRUE ); # TODO: Decide which one to use and update all other NVTs
-        set_kb_item( name:"samba/detected", value:TRUE );
+        # nb: Used together with netbios_name_get.nasl (and kb_smb_is_samba) to just decide if
+        # Samba is installed or not without any requirement that a version exists.
+        set_kb_item( name:"SMB/samba", value:TRUE );
 
-        cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:samba:samba:" );
+        # nb: Used together with gb_samba_detect.nasl if the NVT needs an exposed version.
+        set_kb_item( name:"samba/smb_or_ssh/detected", value:TRUE );
+
+        # nb: Used if an NVT should do an active remote check.
+        set_kb_item( name:"samba/smb/detected", value:TRUE );
+
+        cpe = build_cpe( value:version, exp:"([0-9.]+)(a|b|c|d|p[0-9]|rc[0-9])?", base:"cpe:/a:samba:samba:" );
         if( ! cpe )
           cpe = "cpe:/a:samba:samba";
 

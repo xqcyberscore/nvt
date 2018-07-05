@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 9035 2018-03-06 12:28:45Z cfischer $
+# $Id: tcp_timestamps.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 9035 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-06 13:28:45 +0100 (Tue, 06 Mar 2018) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -36,9 +36,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2007 Michel Arboi");
-  script_dependencies("secpod_open_tcp_ports.nasl");
+  script_dependencies("secpod_open_tcp_ports.nasl", "global_settings.nasl");
   script_mandatory_keys("TCP/PORTS");
-  script_add_preference(name: "Delay (seconds):", value: "1", type: "entry");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
+
+  script_add_preference(name:"Delay (seconds):", value:"1", type:"entry");
 
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc1323.txt");
 
@@ -70,7 +72,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   exit(0);
 }

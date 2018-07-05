@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ece_flag.nasl 8204 2017-12-21 06:20:35Z cfischer $
+# $Id: ece_flag.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Firewall ECE-bit bypass
 #
@@ -28,40 +28,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12118");
-  script_version("$Revision: 8204 $");
+  script_version("$Revision: 10411 $");
   script_cve_id("CVE-2001-0183");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:20:35 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2293);
   script_name("Firewall ECE-bit bypass");
   script_category(ACT_GATHER_INFO);
   script_family("Firewalls");
   script_copyright("This script is Copyright (C) 2004 Andrey I. Zakharov and John Lampe");
-  script_dependencies("os_detection.nasl");
+  script_dependencies("os_detection.nasl", "global_settings.nasl");
   script_mandatory_keys("Host/runs_unixoide");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/2293/");
 
-  tag_summary = "The remote host seems vulnerable to a bug wherein a remote
-  attacker can circumvent the firewall by setting the ECE bit
-  within the TCP flags field.";
+  script_tag(name:"summary", value:"The remote host seems vulnerable to a bug wherein a remote
+  attacker can circumvent the firewall by setting the ECE bit within the TCP flags field.");
 
-  tag_affected = "At least one firewall (ipfw) is known to exhibit this sort
+  script_tag(name:"affected", value:"At least one firewall (ipfw) is known to exhibit this sort
   of behavior.
 
-  Known vulnerable systems include all FreeBSD 3.x ,4.x, 3.5-STABLE,
-  and 4.2-STABLE.";
+  Known vulnerable systems include all FreeBSD 3.x ,4.x, 3.5-STABLE, and 4.2-STABLE.");
 
-  tag_solution = "If you are running FreeBSD 3.X, 4.x, 3.5-STABLE,
+  script_tag(name:"solution", value:"If you are running FreeBSD 3.X, 4.x, 3.5-STABLE,
   4.2-STABLE, upgrade your firewall. If you are not running FreeBSD,
-  contact your firewall vendor for a patch.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  contact your firewall vendor for a patch.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

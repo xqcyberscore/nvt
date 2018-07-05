@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: record_route.nasl 10114 2018-06-07 10:06:23Z cfischer $
+# $Id: record_route.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Record route
 #
@@ -31,21 +31,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12264");
-  script_version("$Revision: 10114 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:06:23 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10411 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Record route");
-  script_tag(name:"qod_type", value:"remote_vul");
   # See bugtraq ID # 10653
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
   script_family("General");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
   script_tag(name:"summary", value:"This plugin sends packets with the 'Record Route' option.
-It is a complement to traceroute.");
+  It is a complement to traceroute.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }

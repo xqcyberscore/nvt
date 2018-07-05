@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_40884.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_samba_40884.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba 'SMB1 Packet Chaining' Unspecified Remote Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100680");
-  script_version("$Revision: 8882 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 10398 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-18 12:11:06 +0200 (Fri, 18 Jun 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,26 +41,21 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
-  script_mandatory_keys("samba/detected");
+  script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40884");
   script_xref(name:"URL", value:"http://www.samba.org");
   script_xref(name:"URL", value:"http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=873");
   script_xref(name:"URL", value:"http://www.samba.org/samba/security/CVE-2010-2063.html");
 
-  tag_summary = "Samba is prone to an unspecified memory-corruption vulnerability.";
+  script_tag(name:"summary", value:"Samba is prone to an unspecified memory-corruption vulnerability.");
 
-  tag_impact = "Attackers can exploit this issue to execute arbitrary code in the
-  context of the application. Failed attacks may cause a denial-of-service condition.";
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code in the
+  context of the application. Failed attacks may cause a denial-of-service condition.");
 
-  tag_affected = "Samba versions prior to 3.3.13 are vulnerable.";
+  script_tag(name:"affected", value:"Samba versions prior to 3.3.13 are vulnerable.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -71,11 +66,13 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+vers = infos['version'];
+loc = infos['location'];
 
 if( version_in_range( version:vers, test_version:"3", test_version2:"3.3.12" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"3.3.13");
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.3.13", install_path:loc );
   security_message( port:port, data:report );
   exit( 0 );
 }
