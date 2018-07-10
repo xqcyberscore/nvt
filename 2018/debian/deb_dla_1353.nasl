@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1353.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_1353.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
-# Auto-generated from advisory DSA 1353-1 using nvtgen 1.0
+# Auto-generated from advisory DLA 1353-1 using nvtgen 1.0
 # Script version: 1.0
 #
 # Author:
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891353");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2018-7322", "CVE-2018-7323", "CVE-2018-7324", "CVE-2018-7332", "CVE-2018-7334",
                 "CVE-2018-7335", "CVE-2018-7336", "CVE-2018-7337", "CVE-2018-7417", "CVE-2018-7418",
                 "CVE-2018-7419", "CVE-2018-7420");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1353-1] wireshark security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 00:00:00 +0200 (Thu, 19 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_buffer_overflow_vuln_jan15.nasl 4498 2016-11-14 13:59:33Z cfi $
+# $Id: gb_php_mult_buffer_overflow_vuln_jan15.nasl 10456 2018-07-09 06:10:17Z cfischer $
 #
 # PHP Multiple Buffer Overflow Vulnerabilities - Jan15
 #
@@ -29,35 +29,36 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805410");
-  script_version("$Revision: 4498 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2014-8626");
   script_bugtraq_id(70928);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 14:59:33 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 17:55:40 +0530 (Tue, 06 Jan 2015)");
   script_name("PHP Multiple Buffer Overflow Vulnerabilities - Jan15");
 
-  script_tag(name: "summary" , value:"This host is installed with PHP and is
+  script_tag(name:"summary", value:"This host is installed with PHP and is
   prone to denial of service and arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The multiple flaws are due to
+  script_tag(name:"insight", value:"The multiple flaws are due to
+
   - Improper validation of user supplied input passed to date_from_ISO8601()
     function in xmlrpc.c
+
   - including a timezone field in a date, leading to improper XML-RPC
     encoding.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service or possibly execute arbitrary code.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "PHP versions 5.2.x before 5.2.7");
+  script_tag(name:"affected", value:"PHP versions 5.2.x before 5.2.7");
 
-  script_tag(name: "solution" , value: "Upgrade to PHP version 5.2.7 or later");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.7 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -69,11 +70,9 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -81,8 +80,7 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-if(phpVer =~ "^(5\.2)"){
-  ## check the version
+if(phpVer =~ "^5\.2"){
   if(version_in_range(version:phpVer, test_version:"5.2.0", test_version2:"5.2.6")){
     report = report_fixed_ver(installed_version:phpVer, fixed_version:"5.2.7");
     security_message(data:report, port:phpPort);

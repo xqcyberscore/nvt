@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_lin.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812512");
-  script_version("$Revision: 9094 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2016-10712");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 12:02:20 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Linux)");
 
@@ -52,10 +52,10 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"PHP versions before 5.5.32, 7.0.x before 
+  script_tag(name:"affected", value:"PHP versions before 5.5.32, 7.0.x before
   7.0.3, and 5.6.x before 5.6.18 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.5.32, 7.0.3, 
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.5.32, 7.0.3,
   or 5.6.18 or later. For updates refer to http://www.php.net");
 
   script_xref(name:"URL", value:"https://vuldb.com/?id.113055");
@@ -69,10 +69,9 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

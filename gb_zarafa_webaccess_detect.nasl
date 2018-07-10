@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webaccess_detect.nasl 9321 2018-04-05 08:15:14Z jschulte $
+# $Id: gb_zarafa_webaccess_detect.nasl 10451 2018-07-07 09:59:25Z cfischer $
 #
 # Zarafa WebAccess Detection
 #
@@ -25,43 +25,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105136");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 9321 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:15:14 +0200 (Thu, 05 Apr 2018) $");
- script_tag(name:"creation_date", value:"2014-12-08 10:46:34 +0100 (Mon, 08 Dec 2014)");
- script_name("Zarafa WebAccess Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105136");
+  script_version("$Revision: 10451 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:59:25 +0200 (Sat, 07 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2014-12-08 10:46:34 +0100 (Mon, 08 Dec 2014)");
+  script_name("Zarafa WebAccess Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary" , value: "The script sends a connection
-request to the server and attempts to extract the version number
-from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection
+  request to the server and attempts to extract the version number from the reply.");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
 
 url = '/webaccess/';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
+buf = http_get_cache( item:url, port:port );
 if( "<title>Zarafa WebAccess" >!< buf ) exit( 0 );
 
 vers = 'unknown';
@@ -69,13 +66,13 @@ version = eregmatch( pattern:'<span id="version">([^<]+)</span>', string:buf );
 if( ! isnull( version[1] ) ) vers = version[1];
 
 set_kb_item(name:"zarafa_webaccess/installed",value:TRUE);
-replace_kb_item(name:"zarafa/installed",value:TRUE);
+set_kb_item(name:"zarafa/installed",value:TRUE);
 
 cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:zarafa:zarafa:" );
-if( isnull( cpe ) ) 
+if( isnull( cpe ) )
   cpe = "cpe:/a:zarafa:zarafa";
 
-cpe = str_replace( string:cpe, find:"-", replace:".");  
+cpe = str_replace( string:cpe, find:"-", replace:".");
 
 register_product( cpe:cpe, location:url, port:port );
 
@@ -87,4 +84,3 @@ log_message( data: build_detection_report( app:"Zarafa WebAccess",
              port:port );
 
 exit(0);
-

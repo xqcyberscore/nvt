@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_dec15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_php_mult_dos_vuln_dec15_lin.nasl 10456 2018-07-09 06:10:17Z cfischer $
 #
 # PHP Multiple Denial of Service Vulnerabilities - 01 - Dec15 (Linux)
 #
@@ -29,24 +29,25 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806649");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2015-7804", "CVE-2015-7803");
   script_bugtraq_id(76959);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 17:44:53 +0530 (Tue, 15 Dec 2015)");
   script_name("PHP Multiple Denial of Service Vulnerabilities - 01 - Dec15 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An Off-by-one error in the 'phar_parse_zipfile' function within ext/phar/zip.c
     script.
+
   - An error in the 'phar_get_entry_data' function in ext/phar/util.c script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
@@ -62,7 +63,6 @@ if(description)
   later. For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
@@ -73,24 +73,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_unixoide");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version 5.6.x before 5.6.14
-if(phpVer =~ "^(5\.6)")
+if(phpVer =~ "^5\.6")
 {
   if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.13"))
   {
@@ -99,7 +92,6 @@ if(phpVer =~ "^(5\.6)")
   }
 }
 
-##Check for version less 5.5.30
 else if(version_is_less(version:phpVer, test_version:"5.5.30"))
 {
   fix = "5.5.30";

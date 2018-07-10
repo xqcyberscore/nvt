@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_mult_vuln.nasl 10119 2018-06-07 11:43:32Z asteins $
+# $Id: gb_mahara_mult_vuln.nasl 10446 2018-07-06 14:59:06Z ckuersteiner $
 #
 # Mahara <17.04.8, <17.10.5, <18.04.1 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112290");
-  script_version("$Revision: 10119 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 13:43:32 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10446 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 16:59:06 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-04 10:26:06 +0200 (Mon, 04 Jun 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

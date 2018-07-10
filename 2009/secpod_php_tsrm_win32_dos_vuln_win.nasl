@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'tsrm_win32.c' Denial Of Service Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900872");
-  script_version("$Revision: 7552 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,35 +41,28 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/383831.php");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/31064.php");
 
-  tag_impact = "Successful exploitation will allow attackers to cause Denial of Service in
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause Denial of Service in
   the victim's system.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP version prior to 5.2.11 on Windows.";
+  script_tag(name:"affected", value:"PHP version prior to 5.2.11 on Windows.");
 
-  tag_insight = "An error occurs in popem 'API' function in TSRM/tsrm_win32.c, when running on
+  script_tag(name:"insight", value:"An error occurs in popem 'API' function in TSRM/tsrm_win32.c, when running on
   certain Windows operating systems. It can be caused via a crafted 'e' or 'er'
   string in the second argument (aka mode), possibly related to the '_fdopen'
-  function in the Microsoft C runtime library.";
+  function in the Microsoft C runtime library.");
 
-  tag_solution = "Upgrade to version 5.2.11 or later
-  http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to version 5.2.11 or later
+  http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to Denial of Service
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -83,7 +76,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-# Check for PHP version 5.2.11
 if( version_is_less( version:phpVer, test_version:"5.2.11" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.11" );
   security_message( data:report, port:phpPort );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_xss_vuln_aug16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_php_xss_vuln_aug16_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
 #
 # PHP Cross-Site Scripting Vulnerability - Aug16 (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808799");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10457 $");
   script_cve_id("CVE-2015-8935");
   script_bugtraq_id(92356);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 15:18:31 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Cross-Site Scripting Vulnerability - Aug16 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to  the 'sapi_header_op'
   function in 'main/SAPI.c' script supports deprecated line folding without
@@ -62,7 +61,6 @@ if(description)
   or 5.6.6, or later. For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=68978");
@@ -71,30 +69,24 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_windows");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version before 5.4.38
 if(version_is_less(version:phpVer, test_version:"5.4.38"))
 {
   fix = '5.4.38';
   VULN = TRUE;
 }
 
-## Check for version 5.5.x before 5.5.22
-else if(phpVer =~ "^(5\.5)")
+else if(phpVer =~ "^5\.5")
 {
   if(version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.21"))
   {
@@ -103,8 +95,7 @@ else if(phpVer =~ "^(5\.5)")
   }
 }
 
-## Check for version 5.6.x before 5.6.6
-else if(phpVer =~ "^(5\.6)")
+else if(phpVer =~ "^5\.6")
 {
   if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.5"))
   {

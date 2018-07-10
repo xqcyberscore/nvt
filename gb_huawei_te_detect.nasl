@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_te_detect.nasl 10377 2018-07-02 11:31:15Z ckuersteiner $
+# $Id: gb_huawei_te_detect.nasl 10453 2018-07-07 15:35:36Z cfischer $
 #
 # Huawei TE Device Detection
 #
@@ -28,29 +28,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141255");
-  script_version("$Revision: 10377 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-02 13:31:15 +0200 (Mon, 02 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-02 10:43:45 +0200 (Mon, 02 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10453 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 17:35:36 +0200 (Sat, 07 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-02 10:43:45 +0200 (Mon, 02 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Huawei TE Device Detection");
 
-  script_tag(name: "summary" , value: "Detection of Huawei TE devices.
+  script_tag(name:"summary", value:"Detection of Huawei TE devices.
 
 The script sends a connection request to the server and attempts to detect Huawei TE devices (Telepresence and
 Video Conferencing Endpoints) and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 5000);
+  script_mandatory_keys("telnet/banner/available");
 
-  script_xref(name: "URL", value: "https://e.huawei.com/uk/products/cloud-communications/telepresence-video-conferencing");
+  script_xref(name:"URL", value:"https://e.huawei.com/uk/products/cloud-communications/telepresence-video-conferencing");
 
   exit(0);
 }
@@ -64,6 +65,9 @@ include("telnet_func.inc");
 port = get_telnet_port(default: 5000);
 
 banner = get_telnet_banner(port: port);
+if (! banner || banner == "")
+  exit(0);
+
 banner = bin2string(ddata: banner, nonprint_replacement: ' ');
 
 if (banner =~ "Huawei TE[0-9]0") {

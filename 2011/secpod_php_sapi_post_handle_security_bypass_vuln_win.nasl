@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_sapi_post_handle_security_bypass_vuln_win.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: secpod_php_sapi_post_handle_security_bypass_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP SAPI_POST_HANDLER_FUNC() Security Bypass Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902606");
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-2202");
   script_bugtraq_id(48259);
@@ -40,37 +40,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("os_detection.nasl","gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_dependencies("os_detection.nasl", "gb_php_detect.nasl");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/44874");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1025659");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/67999");
   script_xref(name:"URL", value:"http://svn.php.net/viewvc?view=revision&revision=312103");
 
-  tag_impact = "Successful exploitation could allow remote attackers to delete files from
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to delete files from
   the root directory, which may aid in further attacks.
 
-  Impact Level: System/Application";
+  Impact Level: System/Application");
 
-  tag_affected = "PHP version prior to 5.3.7";
+  script_tag(name:"affected", value:"PHP version prior to 5.3.7");
 
-  tag_insight = "The flaw is due to an error in 'SAPI_POST_HANDLER_FUNC()' function in
+  script_tag(name:"insight", value:"The flaw is due to an error in 'SAPI_POST_HANDLER_FUNC()' function in
   rfc1867.c when handling files via a 'multipart/form-data' POST request. which
-  allows attacker to bypass security restriction.";
+  allows attacker to bypass security restriction.");
 
-  tag_solution = "Upgrade to PHP version 5.3.7 or later.
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.7 or later.
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to security bypass
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

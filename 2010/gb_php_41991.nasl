@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_41991.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_41991.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Versions Prior to 5.3.3/5.2.14 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100726");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41991);
   script_cve_id("CVE-2010-2531","CVE-2010-2484");
@@ -41,27 +41,21 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41991");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php#5.3.3");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  tag_summary = "PHP is prone to multiple security vulnerabilities.";
-
-  tag_impact = "An attacker can exploit these issues to execute arbitrary code, crash
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code, crash
   the affected application, gain access to sensitive information and
-  bypass security restrictions. Other attacks are also possible.";
+  bypass security restrictions. Other attacks are also possible.");
 
-  tag_affected = "PHP 5.3 (Prior to 5.3.3) PHP 5.2 (Prior to 5.2.14)";
+  script_tag(name:"affected", value:"PHP 5.3 (Prior to 5.3.3) PHP 5.2 (Prior to 5.2.14)");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to multiple security vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -79,7 +73,7 @@ if( vers =~ "^5\.2" ) {
   if( version_is_less( version:vers, test_version:"5.2.14" ) ) {
     vuln = TRUE;
     fix = "5.2.14";
-  } 
+  }
 } else if( vers =~ "^5\.3" ) {
   if( version_is_less( version:vers, test_version:"5.3.3" ) ) {
     vuln = TRUE;

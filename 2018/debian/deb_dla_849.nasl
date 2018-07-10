@@ -1,10 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_849.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_849.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
 # Auto-generated from advisory DLA 849-1 using nvtgen 1.0
-# Script version:1.0
-# #
+# Script version: 1.0
+#
 # Author:
 # Greenbone Networks
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890849");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2016-9588", "CVE-2017-2636", "CVE-2017-5669", "CVE-2017-5986", "CVE-2017-6214", "CVE-2017-6345", "CVE-2017-6346", "CVE-2017-6348", "CVE-2017-6353");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 849-1] linux security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 00:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

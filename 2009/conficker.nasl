@@ -1,13 +1,6 @@
-#############################################################################
-#  Based on the work of Tim Brown <timb@nth-dimension.org.uk> as published
-#  here, http://www.nth-dimension.org.uk/blog.php?id=72 along with the
-#  associated NASL from SecPod
-#
-#  Updated SRVSVC and ntrPathCanonicalize Request Packets with Description.
-#   - By Chandan S
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 9386 2018-04-06 12:25:50Z cfischer $
+# $Id: conficker.nasl 10421 2018-07-05 12:17:22Z cfischer $
 #
 # Conficker Detection
 #
@@ -28,46 +21,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Conficker is a worm that spreads on Windows Platforms. This malware could
-spread Windows file shares protected with weak passwords or to which a
-logged on domain administrator has access, by copying itself to removable
-storage devices and by exploiting the MS08-067 Windows Server service
-vulnerability.
-
-This malware generates infections files to set up to run as a service and
-also using a random name when Windows starts under system32, and tries to
-modify permissions on the service registry entries so that they are not
-visible to the user. Such registry entries are under,
-'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SvcHost' and
-'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RANDOM_SERVICE_NAME'
-
-The plugin determines Conficker variants B or C. It likeley works against systems
-that allow anonymous login, otherwise Credentials can be supplied.";
-
-tag_impact = "Successful exploitation could allow remote attackers to take complete
-control of an affected system and capable of stealing all kind of sensitive
-information and can even spread across the Network.
-Impact Level: System/Network.";
-tag_affected = "Microsoft Windows 2K Service Pack 4 and prior.
-Microsoft Windows XP Service Pack 3 and prior.
-Microsoft Windows 2003 Service Pack 2 and prior.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download
-and update mentioned hotfixes in the advisory from the below link,
-http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx
-      and
-Use Conficker Removal Tools, or Known Security Products to remove
-conficker worm.";
-tag_summary = "This host seems to be contaminated with infectious Conficker Worm.";
+#############################################################################
+#  Based on the work of Tim Brown <timb@nth-dimension.org.uk> as published
+#  here, http://www.nth-dimension.org.uk/blog.php?id=72 along with the
+#  associated NASL from SecPod
+#
+#  Updated SRVSVC and ntrPathCanonicalize Request Packets with Description.
+#   - By Chandan S
+#############################################################################
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.dshield.org/diary.html?storyid=5860");
-  script_xref(name : "URL" , value : "http://www.anti-spyware-101.com/remove-conficker");
-  script_xref(name : "URL" , value : "http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
   script_oid("1.3.6.1.4.1.25623.1.0.900091");
-  script_version("$Revision: 9386 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:25:50 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -77,36 +44,77 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Malware");
   script_name("Conficker Detection");
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"Mitigation");
-  script_dependencies("secpod_reg_enum.nasl", "nmap_nse/gb_nmap_p2p_conficker.nasl",
-                      "nmap_nse/gb_nmap_smb_check_vulns.nasl", "os_detection.nasl");
+  script_dependencies("nmap_nse/gb_nmap_p2p_conficker.nasl", "nmap_nse/gb_nmap_smb_check_vulns.nasl", "os_detection.nasl",
+                      "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
+  script_xref(name:"URL", value:"http://www.dshield.org/diary.html?storyid=5860");
+  script_xref(name:"URL", value:"http://www.anti-spyware-101.com/remove-conficker");
+  script_xref(name:"URL", value:"http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to take complete
+  control of an affected system and capable of stealing all kind of sensitive information and can even
+  spread across the Network.
+
+  Impact Level: System/Network.");
+
+  script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior.
+
+  Microsoft Windows XP Service Pack 3 and prior.
+
+  Microsoft Windows 2003 Service Pack 2 and prior.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
+  and update mentioned hotfixes in the advisory from the below link,
+
+  http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx
+
+  and
+
+  Use Conficker Removal Tools, or Known Security Products to remove conficker worm.");
+
+  script_tag(name:"summary", value:"This host seems to be contaminated with infectious Conficker Worm.");
+
+  script_tag(name:"insight", value:"Conficker is a worm that spreads on Windows Platforms. This malware could
+  spread Windows file shares protected with weak passwords or to which a logged on domain administrator has
+  access, by copying itself to removable storage devices and by exploiting the MS08-067 Windows Server service
+  vulnerability.
+
+  This malware generates infections files to set up to run as a service and also using a random name when Windows
+  starts under system32, and tries to modify permissions on the service registry entries so that they are not
+  visible to the user. Such registry entries are under,
+
+  'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SvcHost' and
+
+  'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RANDOM_SERVICE_NAME'
+
+  The plugin determines Conficker variants B or C. It likely works against systems that allow anonymous login,
+  otherwise Credentials can be supplied.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 
+if( kb_smb_is_samba() ) exit( 0 );
+
 # First of all check whether nmap already detected an infection.
 res = get_kb_list("conficker/nse");
 if (!isnull(res)) {
-    report = 'Nmap (http://nmap.org) has detected a possible infection:\n';
+  report = 'Nmap (http://nmap.org) has detected a possible infection:\n';
 
-    foreach msg (res) {
-        report += msg + '\n';
-    }
-    security_message(port:0, data:report);
-    exit(0);
+  foreach msg (res) {
+    report += msg + '\n';
+  }
+  security_message(port:0, data:report);
+  exit(0);
 }
 
 name = kb_smb_name();
@@ -164,7 +172,6 @@ if(ord(prot[4]) == 254)
   r = smb_session_request(soc:soc, remote:name);
   if(!r) { close(soc); exit(0); }
 
-  ##Try negotiating with SMB1
   prot = smb_neg_prot_NTLMv1(soc:soc);
   if(!prot)
   {

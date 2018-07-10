@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_22496.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_22496.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 5.2.0 and Prior Versions Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100606");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(22496);
   script_cve_id("CVE-2007-0905","CVE-2007-0906","CVE-2007-0907","CVE-2007-0908","CVE-2007-0909","CVE-2007-0910");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/22496");
@@ -55,23 +54,18 @@ if(description)
   script_xref(name:"URL", value:"http://rhn.redhat.com/errata/RHSA-2007-0089.html");
   script_xref(name:"URL", value:"http://www.novell.com/linux/security/advisories/2007_44_php.html");
 
-  tag_solution = "The vendor has released updates to address these issues. Contact the
+  script_tag(name:"affected", value:"These issues are reported to affect PHP 4.4.4 and prior versions in
+  the 4 branch, and 5.2.0 and prior versions in the 5 branch. Other versions may also be vulnerable.");
+
+  script_tag(name:"solution", value:"The vendor has released updates to address these issues. Contact the
   vendor for details on obtaining and applying the appropriate updates.
 
-  Please see the advisories for more information.";
+  Please see the advisories for more information.");
 
-  tag_summary = "PHP 5.2.0 and prior versions are prone to multiple security
+  script_tag(name:"summary", value:"PHP 5.2.0 and prior versions are prone to multiple security
   vulnerabilities. Successful exploits could allow an attacker to write
   files in unauthorized locations, cause a denial-of-service condition,
-  and potentially execute code.";
-
-  tag_affected = "These issues are reported to affect PHP 4.4.4 and prior versions in
-  the 4 branch, and 5.2.0 and prior versions in the 5 branch; other
-  versions may also be vulnerable.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  and potentially execute code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

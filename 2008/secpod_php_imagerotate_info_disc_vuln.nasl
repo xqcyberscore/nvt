@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_imagerotate_info_disc_vuln.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: secpod_php_imagerotate_info_disc_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'imageRotate()' Memory Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900186");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,34 +40,27 @@ if(description)
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Dec/1021494.html");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/33002.php");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/33002-2.php");
 
-  tag_impact = "Successful exploitation could let the attacker read the contents of arbitrary
+  script_tag(name:"impact", value:"Successful exploitation could let the attacker read the contents of arbitrary
   memory locations through a crafted value for an indexed image.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP version 5.x to 5.2.8 on all running platform.";
+  script_tag(name:"affected", value:"PHP version 5.x to 5.2.8 on all running platform.");
 
-  tag_insight = "The flaw is due to improper validation of bgd_color or clrBack
-  argument in imageRotate function.";
+  script_tag(name:"insight", value:"The flaw is due to improper validation of bgd_color or clrBack
+  argument in imageRotate function.");
 
-  tag_solution = "Upgrade to PHP version 5.2.9 or later.
-  For updates refer to http://www.php.net/";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.9 or later.
+  For updates refer to http://www.php.net/");
 
-  tag_summary = "The host is running PHP and is prone to Memory Information
-  Disclosure vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running PHP and is prone to Memory Information
+  Disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -81,7 +74,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-# Grep for version 5.0. to  5.2.8 
 if( version_in_range( version:phpVer, test_version:"5.0", test_version2:"5.2.8" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.9" );
   security_message( data:report, port:phpPort );

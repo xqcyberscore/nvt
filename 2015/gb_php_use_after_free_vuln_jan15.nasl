@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_use_after_free_vuln_jan15.nasl 4498 2016-11-14 13:59:33Z cfi $
+# $Id: gb_php_use_after_free_vuln_jan15.nasl 10456 2018-07-09 06:10:17Z cfischer $
 #
 # PHP Use-After-Free Remote Code EXecution Vulnerability - Jan15
 #
@@ -29,34 +29,33 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805411");
-  script_version("$Revision: 4498 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2014-8142");
   script_bugtraq_id(71791);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 14:59:33 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 10:42:19 +0530 (Wed, 07 Jan 2015)");
   script_name("PHP Use-After-Free Remote Code EXecution Vulnerability - Jan15");
 
-  script_tag(name: "summary" , value:"This host is installed with PHP and is
+  script_tag(name:"summary", value:"This host is installed with PHP and is
   prone to use-after-free vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to Use-after-free
+  script_tag(name:"insight", value:"The flaw is due to Use-after-free
   vulnerability in the process_nested_data function in ext/standard/var
   _unserializer.re in PHP.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code via a crafted unserialize call.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "PHP versions 5.4.x before 5.4.36,
+  script_tag(name:"affected", value:"PHP versions 5.4.x before 5.4.36,
   5.5.x before 5.5.20 and 5.6.x before 5.6.4");
 
-  script_tag(name: "solution" , value: "Upgrade to PHP version 5.4.36
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.36
   or 5.5.20 or 5.6.4 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,7 +69,6 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
   exit(0);
 }
@@ -81,8 +79,7 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-if(phpVer =~ "^(5\.(4|5|6))"){
-  ## check the version
+if(phpVer =~ "^5\.[4-6]"){
   if(version_in_range(version:phpVer, test_version:"5.4.0", test_version2:"5.4.35")||
      version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.19")||
      version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.3")){

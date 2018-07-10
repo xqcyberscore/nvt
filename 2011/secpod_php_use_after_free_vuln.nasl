@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_use_after_free_vuln.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: secpod_php_use_after_free_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'substr_replace()' Use After Free Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902356");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1148");
   script_bugtraq_id(46843);
@@ -41,35 +41,28 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://bugs.php.net/bug.php?id=54238");
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2011/03/13/3");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
   arbitrary code in the context of a web server. Failed attempts will likely
   result in denial-of-service conditions.
 
-  Impact Level: Network";
+  Impact Level: Network");
 
-  tag_affected = "PHP version 5.3.6 and prior.";
+  script_tag(name:"affected", value:"PHP version 5.3.6 and prior.");
 
-  tag_insight = "The flaw is due to passing the same variable multiple times to
+  script_tag(name:"insight", value:"The flaw is due to passing the same variable multiple times to
   the 'substr_replace()' function, which makes the PHP to use the same pointer in
-  three variables inside the function.";
+  three variables inside the function.");
 
-  tag_solution = "Upgrade to PHP version 5.3.7 or later.
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.7 or later.
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to Use After Free
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to Use After Free
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

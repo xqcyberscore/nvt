@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mbstring_func_overload_dos_vuln.nasl 4504 2016-11-14 15:04:32Z cfi $
+# $Id: gb_php_mbstring_func_overload_dos_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'mbstring.func_overload' DoS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800373");
-  script_version("$Revision: 4504 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:04:32 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
@@ -41,34 +41,30 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://bugs.php.net/bug.php?id=27421");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=479272");
 
-  tag_impact = "Successful exploitation will let the local attackers to crash an affected web server.
-  Impact Level: Application";
+  script_tag(name:"impact", value:"Successful exploitation will let the local attackers to crash an affected web server.
+  Impact Level: Application");
 
-  tag_affected = "PHP version 4.4.4 and prior
+  script_tag(name:"affected", value:"PHP version 4.4.4 and prior
+
   PHP 5.1.x to 5.1.6
-  PHP 5.2.x to 5.2.5";
 
-  tag_insight = "This bug is due to an error in 'mbstring.func_overload' setting in .htaccess
+  PHP 5.2.x to 5.2.5");
+
+  script_tag(name:"insight", value:"This bug is due to an error in 'mbstring.func_overload' setting in .htaccess
   file. It can be exploited via modifying behavior of other sites hosted on
   the same web server which causes this setting to be applied to other virtual
-  hosts on the same server.";
+  hosts on the same server.");
 
-  tag_solution = "Apply patch from below link,
-  http://php.net";
+  script_tag(name:"solution", value:"Apply patch from below link,
 
-  tag_summary = "The host is running PHP and is prone to denial of service vulnerability.";
+  http://php.net");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running PHP and is prone to denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

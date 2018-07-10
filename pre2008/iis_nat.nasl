@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_nat.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: iis_nat.nasl 10418 2018-07-05 11:22:00Z cfischer $
 #
 # Private IP address leaked in HTTP headers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10759");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10418 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:22:00 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1499);
   script_cve_id("CVE-2000-0649");
@@ -39,9 +39,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Alert4Web.com, 2003 Westpoint Ltd");
   script_family("Web Servers");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("keys/is_private_addr", "Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/218180");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/1499/");
@@ -83,9 +83,9 @@ foreach dir( make_list( "/", "/images", "/Autodiscover", "/Autodiscover/Autodisc
         '\r\n';
   buf = http_keepalive_send_recv( port:port, data:req );
 
-  # Check for private IP addresses in the banner
+  # nb: Check for private IP addresses in the banner
   # Ranges are: 10.x.x.x, 172.16-31.x.x, 192.168.x.x
-  # TBD: regex for all IPv6 adresses and then pass to is_private_addr(addr, use_globals:FALSE) ?
+  # TBD: regex for all IPv6 addresses and then pass to is_private_addr(addr, use_globals:FALSE) ?
   private_ip = eregmatch( pattern:"([^12]10\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|172\.(1[6-9]|2[0-9]|3[0-1])\.[0-9]{1,3}\.[0-9]{1,3}|192\.168\.[0-9]{1,3}\.[0-9]{1,3})", string:buf );
   if( ! isnull( private_ip ) && ! egrep( pattern:"Oracle.*/10\.", string:buf ) ) {
     report = "This web server leaks the following private IP address : " + private_ip[0] + '\n\n';

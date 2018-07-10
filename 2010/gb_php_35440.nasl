@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_35440.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_35440.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'exif_read_data()' JPEG Image Processing Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100581");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_bugtraq_id(35440);
   script_cve_id("CVE-2009-2687");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35440");
@@ -51,20 +50,15 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2009-08/0339.html");
   script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100072880");
 
-  tag_summary = "PHP is prone to a denial-of-service vulnerability in its
-  exif_read_data()' function.";
+  script_tag(name:"impact", value:"Successful exploits may allow remote attackers to cause denial-of-
+  service conditions in applications that use the vulnerable function.");
 
-  tag_impact = "Successful exploits may allow remote attackers to cause denial-of-
-  service conditions in applications that use the vulnerable function.";
+  script_tag(name:"affected", value:"Versions prior to PHP 5.2.10 are affected.");
 
-  tag_affected = "Versions prior to PHP 5.2.10 are affected.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a denial-of-service vulnerability in its
+  exif_read_data()' function.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

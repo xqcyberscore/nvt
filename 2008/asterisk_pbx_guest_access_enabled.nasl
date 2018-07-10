@@ -1,15 +1,15 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: asterisk_pbx_guest_access_enabled.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: asterisk_pbx_guest_access_enabled.nasl 10415 2018-07-05 10:51:54Z cfischer $
 #
 # Asterisk PBX SIP Service Guest Access Enabled
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 # Fix by George A. Theall when the system answers the call
 #
 # Copyright:
-# Copyright (C) 2007 Ferdy Riphagen
+# Copyright (C) 2008 Ferdy Riphagen
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,17 +30,18 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.9999993");
-  script_version("$Revision: 4887 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 10415 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_name("Asterisk PBX SIP Service Guest Access Enabled");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
-  script_dependencies("secpod_asterisk_detect.nasl");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
+  script_dependencies("secpod_asterisk_detect.nasl", "global_settings.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
+  script_exclude_keys("keys/islocalhost");
 
   script_xref(name:"URL", value:"http://www.voip-info.org/wiki/index.php?page=Asterisk+sip+allowguest");
 
@@ -51,10 +52,10 @@ if(description)
 
   Description :
 
-  Asterisk an open-source PBX is installed on the remote system. 
+  Asterisk an open-source PBX is installed on the remote system.
   The SIP service is accepting SIP peers to use the proxy server
   as guest users. Unauthenticated users can use the proxy
-  without supplying the required 'more secure' authentication. 
+  without supplying the required 'more secure' authentication.
 
   Guest access is enabled by default if 'allowguest=no' is not set
   in 'sip.conf'. Guest peers use the context defined under the

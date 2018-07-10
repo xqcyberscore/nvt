@@ -1,10 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_938.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_938.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
 # Auto-generated from advisory DLA 938-1 using nvtgen 1.0
-# Script version:1.0
-# #
+# Script version: 1.0
+#
 # Author:
 # Greenbone Networks
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890938");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2017-8386");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 938-1] git security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
   script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
   script_tag(name:"affected", value:"git on Debian Linux");
   script_tag(name:"insight", value:"Git is popular version control system designed to handle very large
-projects with speed and efficiency; it is used for many high profile
+projects with speed and efficiency. It is used for many high profile
 open source projects, most notably the Linux kernel.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1:1.7.10.4-1+wheezy4.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_51806.nasl 4501 2016-11-14 14:41:36Z cfi $
+# $Id: gb_php_51806.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP Security Bypass Vulnerability
 #
@@ -34,15 +34,14 @@ if(description)
   script_cve_id("CVE-2012-0057");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 4501 $");
-  script_name("PHP  Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:41:36 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_name("PHP Security Bypass Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 10:58:35 +0200 (Thu, 12 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51806");
@@ -51,19 +50,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  tag_summary = "PHP is prone to a security-bypass vulnerability.";
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to bypass certain security
+  restrictions and create arbitrary files in the context of the application.");
 
-  tag_impact = "Remote attackers can exploit this issue to bypass certain security
-  restrictions and create arbitrary files in the context of the application.";
+  script_tag(name:"affected", value:"Versions prior to PHP 5.3.9 are vulnerable.");
 
-  tag_affected = "Versions prior to PHP 5.3.9 are vulnerable.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a security-bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

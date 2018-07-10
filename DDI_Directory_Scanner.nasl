@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 10187 2018-06-14 09:18:39Z mmartin $
+# $Id: DDI_Directory_Scanner.nasl 10452 2018-07-07 10:59:52Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 10187 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 11:18:39 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 12:59:52 +0200 (Sat, 07 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -511,6 +511,7 @@ testDirList = make_list(
 "iisadmin",
 "iisprotect",
 "iissamples",
+"ikiwiki",
 "image",
 "imagenes",
 "imagery",
@@ -847,9 +848,12 @@ testDirList = make_list(
 "way-board",
 "web",
 "web800fo",
-"webaccess",
 "webadmin",
 "webalizer",
+# <-- e.g. Zarafa
+"webaccess",
+"webapp",
+# -->
 "webapps",
 "webboard",
 "webcart",
@@ -1046,7 +1050,7 @@ if( res =~ "^HTTP/1\.[01] 200" ) {
 }
 
 # test for servers which return 200/403/401 for everything
-req = http_get( item:"/NonExistant" + rand() + "/", port:port );
+req = http_get( item:"/non-existent" + rand() + "/", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
 if( isnull( res ) ) failedReqs++;
@@ -1161,7 +1165,7 @@ foreach cdir( testDirList ) {
   if( Check401 && http_code == 401 ) {
 
     if( header = egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
-      if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " containig a WWW-Authenticate header, adding to the dirs requiring auth...\n" );
+      if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " containing a WWW-Authenticate header, adding to the dirs requiring auth...\n" );
       basic_auth = extract_basic_auth( data:res );
       add_auth_dir_list( dir:ScanRootDir + cdir, port:port, basic:basic_auth["basic_auth"], realm:basic_auth["realm"] );
     } else {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1553_1.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_suse_2018_1553_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # SuSE Update for git openSUSE-SU-2018:1553-1 (git)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851774");
-  script_version("$Revision: 10143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:47:36 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2018-11233", "CVE-2018-11235");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for git openSUSE-SU-2018:1553-1 (git)");
   script_tag(name:"summary", value:"Check the version of git");

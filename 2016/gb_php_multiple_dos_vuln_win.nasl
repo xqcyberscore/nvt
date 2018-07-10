@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_dos_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_php_multiple_dos_vuln_win.nasl 10455 2018-07-09 05:52:14Z cfischer $
 #
 # PHP 'gdImageScaleTwoPass()' Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,25 +29,26 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808610");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10455 $");
   script_cve_id("CVE-2015-8877", "CVE-2015-8879", "CVE-2015-8874");
   script_bugtraq_id(90866, 90842, 90714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP 'gdImageScaleTwoPass()' Multiple Denial of Service Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An improper handling of driver behavior for SQL_WVARCHAR columns in the
     'odbc_bindcols function' in 'ext/odbc/php_odbc.c' script.
-  - The 'gdImageScaleTwoPass' function in gd_interpolation.c script in the 
+
+  - The 'gdImageScaleTwoPass' function in gd_interpolation.c script in the
     GD Graphics Library uses inconsistent allocate and free approaches.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
@@ -62,7 +63,6 @@ if(description)
   or later. For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
@@ -71,22 +71,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_windows");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version before 5.6.12
 if(version_is_less(version:phpVer, test_version:"5.6.12"))
 {
   report = report_fixed_ver(installed_version:phpVer, fixed_version:"5.6.12");

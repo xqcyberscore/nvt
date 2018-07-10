@@ -1,10 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1045.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_1045.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
 # Auto-generated from advisory DLA 1045-1 using nvtgen 1.0
-# Script version:1.0
-# #
+# Script version: 1.0
+#
 # Author:
 # Greenbone Networks
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891045");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2017-10799", "CVE-2017-11102", "CVE-2017-11140", "CVE-2017-11403", "CVE-2017-11636", "CVE-2017-11637", "CVE-2017-11638", "CVE-2017-11641", "CVE-2017-11642", "CVE-2017-11643");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1045-1] graphicsmagick security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3671_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3671_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # Ubuntu Update for git USN-3671-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843545");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 05:47:44 +0200 (Thu, 07 Jun 2018)");
   script_cve_id("CVE-2018-11235", "CVE-2018-11233");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for git USN-3671-1");
   script_tag(name:"summary", value:"Check the version of git");

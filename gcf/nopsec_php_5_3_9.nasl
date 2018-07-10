@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_php_5_3_9.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: nopsec_php_5_3_9.nasl 10460 2018-07-09 07:50:03Z cfischer $
 #
 # PHP Version < 5.3.9 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110012");
-  script_version("$Revision: 6841 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 10460 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:50:03 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-06-14 13:15:22 +0200 (Thu, 14 Jun 2012)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -41,15 +41,12 @@ if(description)
   script_family("Web application abuses");
   script_copyright("Copyright NopSec Inc. 2012");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
-  tag_solution = "Upgrade PHP to 5.3.9 or versions after.";
-  tag_summary = "PHP version < 5.3.9 suffers from multiple vulnerabilities such as DOS by sending crafted requests
-  including hash collision parameter values. Several errors exist in some certain functions as well.";
+  script_tag(name:"solution", value:"Upgrade PHP to 5.3.9 or versions after.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP version < 5.3.9 suffers from multiple vulnerabilities such as DOS by sending crafted requests
+  including hash collision parameter values. Several errors exist in some certain functions as well.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

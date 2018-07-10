@@ -1,10 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_865.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_865.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
 # Auto-generated from advisory DLA 865-1 using nvtgen 1.0
-# Script version:1.0
-# #
+# Script version: 1.0
+#
 # Author:
 # Greenbone Networks
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890865");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2017-7177");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 865-1] suricata security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 00:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ attacks / probes by searching packet content.");
 
 We recommend that you upgrade your suricata packages.");
   script_tag(name:"summary",  value:"It was discovered that there was a vulnerability in suricata, an intrusion
-detection tool; the IP protocol was not being used to match fragments with
+detection tool. The IP protocol was not being used to match fragments with
 their packets allowing a carefully constructed packet (with a different
 protocol) to be matched, thus creating a packet that would not be
 re-assembled by the destination host.");

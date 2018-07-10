@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 9704 2018-05-03 08:05:02Z cfischer $
+# $Id: telnet_func.inc 10434 2018-07-06 09:33:22Z cfischer $
 #
 # Methods to handle telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9704 $
+# $Revision: 10434 $
 #
 ###############################################################################
 
@@ -53,51 +53,72 @@ function get_telnet_banner( port, timeout ) {
   soc = open_sock_tcp( port );
   if( ! soc ) return( 0 );
   banner = telnet_negotiate( socket:soc, timeout:timeout );
-  close( soc );
-  if( strlen( banner ) )
+  if( strlen( banner ) ) {
     replace_kb_item( name:sb, value:str_replace( find:raw_string(0), replace:'', string:banner ) );
+
+    # nb: Some devices need a separate exit to accept subsequent requests
+    if( "Sollae Systems" >< banner && ( banner =~ "lsh>$" || banner =~ "msh>$" || "password" >< banner ) ) {
+      send( socket:soc, data:'exit\r\n' );
+    }
+  }
+
+  close( soc );
   return( banner );
 }
 
-
+# @brief This function negotiate a telnet connection via the passed socket
+#        and returns any received data from the connected service.
+#
+# @param socket  the socket of the remote system to connect to.
+# @param timeout an optional timeout for the connection, defaults to 3 seconds if
+#                this parameter is not specified.
+#
+# @return The received data or NULL if no data was received or no / a wrong
+#         socket was passed to the function.
+#
 function telnet_negotiate( socket, timeout ) {
 
   local_var socket, timeout;
   local_var opt, code, s, counter, counter2, buf, prev;
 
-  if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#telnet_negotiate" );
+  if( ! socket ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#telnet_negotiate" );
+    return NULL;
+  }
 
   counter = 0;
-  if (!timeout || timeout < 0)
-    # default timeout
-    timeout = 3;
+  if( ! timeout || timeout < 0 ) timeout = 3; # default timeout
 
   while( TRUE ) {
     s = recv( socket:socket, length:1, timeout:timeout );
     if( ! strlen( s ) ) break;
-    if( ord( s[0] ) != 0xff ) buf += s;
-    else {
-      counter++;
-    s  = recv( socket:socket, length:2 );
 
-    if( ord( s[0] ) == OPT_DO ) send( socket:socket, data:raw_string( 0xff, OPT_WONT ) + s[1] );
-    if( ord( s[0] ) == OPT_WILL ) send( socket:socket, data:raw_string( 0xff, OPT_DONT ) + s[1] );
-    if( ord( s[0] ) == OPT_SUBOPT ) {
-      # The remote telnet server is autistic :/
-      prev = recv(socket:socket, length:1);
-      counter2 = 0;
-      while( ord( prev ) != 0xff && ord( s[0] ) != OPT_ENDSUBOPT ) {
-        prev = s;
-        # No timeout - the answer is supposed to be cached
-        s = recv( socket:socket, length:1, timeout:0 );
-        if ( ! strlen( s ) ) return buf;
-        counter2++;
-	if( counter2 >= 100 ) return buf;
+    if( ord( s[0] ) != 0xff ) {
+      buf += s;
+    } else {
+      counter++;
+      s = recv( socket:socket, length:2 );
+
+      if( ord( s[0] ) == OPT_DO ) {
+        send( socket:socket, data:raw_string( 0xff, OPT_WONT ) + s[1] );
+      } else if( ord( s[0] ) == OPT_WILL ) {
+        send( socket:socket, data:raw_string( 0xff, OPT_DONT ) + s[1] );
+      } else if( ord( s[0] ) == OPT_SUBOPT ) {
+        # The remote telnet server is autistic :/
+        prev = recv( socket:socket, length:1 );
+        counter2 = 0;
+        while( ord( prev ) != 0xff && ord( s[0] ) != OPT_ENDSUBOPT ) {
+          prev = s;
+          # No timeout - the answer is supposed to be cached
+          s = recv( socket:socket, length:1, timeout:0 );
+          if ( ! strlen( s ) ) return buf;
+          counter2++;
+	  if( counter2 >= 100 ) return buf;
+        }
       }
-    }
-    # Not necessary and may introduce endless loops
-    #if ( ord(s[0]) == OPT_DONT ) send( socket:socket, data:raw_string( 0xff, OPT_WONT ) + s[1] );
-    #if ( ord(s[0]) == OPT_WONT ) send( socket:socket, data:raw_string( 0xff, OPT_DONT ) + s[1] );
+      # Not necessary and may introduce endless loops
+      #if ( ord(s[0]) == OPT_DONT ) send( socket:socket, data:raw_string( 0xff, OPT_WONT ) + s[1] );
+      #if ( ord(s[0]) == OPT_WONT ) send( socket:socket, data:raw_string( 0xff, OPT_DONT ) + s[1] );
     }
     if( counter >= 100 || strlen( buf ) >= 4096 ) break;
   }

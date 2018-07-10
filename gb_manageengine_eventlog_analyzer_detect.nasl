@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_detect.nasl 9340 2018-04-06 04:54:54Z ckuersteiner $
+# $Id: gb_manageengine_eventlog_analyzer_detect.nasl 10475 2018-07-10 08:55:35Z ckuersteiner $
 #
 # ManageEngine EventLog Analyzer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140952");
-  script_version("$Revision: 9340 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-06 06:54:54 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10475 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-10 10:55:35 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-04-06 11:12:19 +0700 (Fri, 06 Apr 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
 
   script_name("ManageEngine EventLog Analyzer Detection");
 
-  script_tag(name: "summary" , value: "Detection of ManageEngine EventLog Analyzer Detection.
+  script_tag(name: "summary" , value: "Detection of ManageEngine EventLog Analyzer.
 
 The script sends a connection request to the server and attempts to detect ManageEngine EventLog Analyzer and to
 extract its version.");

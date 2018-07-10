@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mitm_vuln_july16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_php_mitm_vuln_july16_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
 #
 # PHP Man-in-the-Middle Attack Vulnerability - Jul16 (Linux)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808628");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10455 $");
   script_cve_id("CVE-2016-5385", "CVE-2016-6128");
   script_bugtraq_id(91821, 91509);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-07-26 11:55:14 +0530 (Tue, 26 Jul 2016)");
   script_name("PHP Man-in-the-Middle Attack Vulnerability - Jul16 (Linux)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");
@@ -53,17 +52,16 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to Man-in-the-middle attack vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The web servers running in a CGI or 
-  CGI-like context may assign client request Proxy header values to internal 
-  HTTP_PROXY environment variables and 'HTTP_PROXY' is improperly trusted by some 
+  script_tag(name:"insight", value:"The web servers running in a CGI or
+  CGI-like context may assign client request Proxy header values to internal
+  HTTP_PROXY environment variables and 'HTTP_PROXY' is improperly trusted by some
   PHP libraries and applications and flaw exist in the gdImageCropThreshold
   function in 'gd_crop.c' in the GD Graphics Library.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
-  remote, unauthenticated to conduct MITM attacks on internal server subrequests 
+  remote, unauthenticated to conduct MITM attacks on internal server subrequests
   or direct the server to initiate connections to arbitrary hosts or to cause a
   denial of service.
 

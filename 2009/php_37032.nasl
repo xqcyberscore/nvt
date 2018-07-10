@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_37032.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: php_37032.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'symlink()' 'open_basedir' Restriction Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100352");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-11-18 12:44:57 +0100 (Wed, 18 Nov 2009)");
   script_bugtraq_id(37032);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37032");
@@ -48,26 +47,26 @@ if(description)
   script_xref(name:"URL", value:"http://securityreason.com/achievement_exploitalert/14");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  tag_summary = "PHP is prone to an 'open_basedir' restriction-bypass vulnerability
-  because of a design error.";
+  script_tag(name:"impact", value:"Successful exploits could allow an attacker to read and write files in
+  unauthorized locations.");
 
-  tag_impact = "Successful exploits could allow an attacker to read and write files in
-  unauthorized locations.";
+  script_tag(name:"affected", value:"PHP 5.2.11 and 5.3.0 are vulnerable. Other versions may also be
+  affected.");
 
-  tag_insight = "This vulnerability would be an issue in shared-hosting configurations
+  script_tag(name:"insight", value:"This vulnerability would be an issue in shared-hosting configurations
   where multiple users can create and execute arbitrary PHP script code.
   In such cases, 'open_basedir' restrictions are expected to isolate
-  users from each other.";
+  users from each other.");
 
-  tag_affected = "PHP 5.2.11 and 5.3.0 are vulnerable; other versions may also be
-  affected.";
+  script_tag(name:"summary", value:"PHP is prone to an 'open_basedir' restriction-bypass vulnerability
+  because of a design error.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

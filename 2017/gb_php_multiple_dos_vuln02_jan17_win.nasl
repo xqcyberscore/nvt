@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_dos_vuln02_jan17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_php_multiple_dos_vuln02_jan17_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108055");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2016-10159", "CVE-2016-10160");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -41,7 +41,6 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");
@@ -53,6 +52,7 @@ if(description)
   of the detect NVT and check if the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - A integer overflow in the phar_parse_pharfile function in ext/phar/phar.c
   via a truncated manifest entry in a PHAR archive.
 

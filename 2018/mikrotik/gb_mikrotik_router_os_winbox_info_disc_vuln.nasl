@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_os_winbox_info_disc_vuln.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_mikrotik_router_os_winbox_info_disc_vuln.nasl 10444 2018-07-06 14:02:50Z ckuersteiner $
 #
 # Mikrotik RouterOS 'Winbox Service' Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813155");
-  script_version("$Revision: 9628 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10444 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 16:02:50 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 11:34:56 +0530 (Wed, 25 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Mikrotik RouterOS 'Winbox Service' Information Disclosure Vulnerability");

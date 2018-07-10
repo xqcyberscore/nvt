@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_timelib_meridian_heap_bof_vuln_lin.nasl 8360 2018-01-10 14:47:00Z cfischer $
+# $Id: gb_php_timelib_meridian_heap_bof_vuln_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812073");
-  script_version("$Revision: 8360 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2017-16642");
   script_bugtraq_id(101745);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 15:47:00 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 18:55:09 +0530 (Thu, 09 Nov 2017)");
   script_name("PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Linux)");
 
@@ -70,7 +70,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 

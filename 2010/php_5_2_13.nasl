@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_5_2_13.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: php_5_2_13.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP < 5.2.13 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100511");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-02-27 19:39:22 +0100 (Sat, 27 Feb 2010)");
   script_bugtraq_id(38182,38431,38430);
   script_cve_id("CVE-2010-1128", "CVE-2010-1129");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38182");
@@ -53,10 +52,9 @@ if(description)
   script_xref(name:"URL", value:"http://svn.php.net/viewvc/php/php-src/branches/PHP_5_2/ext/session/session.c?r1=293036&r2=294272");
   script_xref(name:"URL", value:"http://svn.php.net/viewvc/php/php-src/branches/PHP_5_3/ext/session/session.c?r1=293036&r2=294272");
 
-  tag_summary = "The remote web server has installed a PHP Version which is prone to
-  Multiple Vulnerabilities.";
+  script_tag(name:"affected", value:"PHP versions prior to 5.2.13 are affected.");
 
-  tag_insight = "Multiple vulnerabilities exist due to:
+  script_tag(name:"insight", value:"Multiple vulnerabilities exist due to:
 
   1. A 'safe_mode' restriction-bypass vulnerability. Successful exploits
   could allow an attacker to write session files in arbitrary directions.
@@ -65,16 +63,12 @@ if(description)
   could allow an attacker to access files in unauthorized locations or
   create files in any writable directory.
 
-  3. An unspecified security vulnerability that affects LCG entropy.";
+  3. An unspecified security vulnerability that affects LCG entropy.");
 
-  tag_affected = "PHP versions prior to 5.2.13 are affected.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote web server has installed a PHP Version which is prone to
+  Multiple Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

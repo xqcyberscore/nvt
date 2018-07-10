@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_php_parserr_bof_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_php_php_parserr_bof_vuln_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
 #
 # PHP 'php_parserr' Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809742");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10457 $");
   script_cve_id("CVE-2014-4049");
   script_bugtraq_id(68007);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 17:06:26 +0530 (Mon, 05 Dec 2016)");
   script_name("PHP 'php_parserr' Heap Based Buffer Overflow Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to heap-based buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to buffer overflow error
   in the 'php_parserr' function in ext/standard/dns.c script.");
@@ -69,17 +68,13 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_windows");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-## Variable Initialization
-phpPort = "";
-phpVer = "";
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 
@@ -87,11 +82,11 @@ if(!phpVer = get_app_version(cpe:CPE, port:phpPort)){
   exit(0);
 }
 
-if(phpVer =~ "^(5\.)")
+if(phpVer =~ "^5\.")
 {
   ## 5.6.0alpha1, 5.6.0alpha2, 5.6.0alpha3, 5.6.0alpha4, 5.6.0alpha5
   ## 5.6.0beta1, 5.6.0beta2, 5.6.0beta3, 5.6.0beta4
-  if(phpVer =~ "^(5.6.0alpha)" || phpVer =~ "^(5.6.0beta)") 
+  if(phpVer =~ "^(5.6.0alpha)" || phpVer =~ "^(5.6.0beta)")
   {
     VULN = TRUE;
     fix = "5.6.0";

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1392.nasl 10307 2018-06-25 05:05:34Z asteins $
+# $Id: deb_dla_1392.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
-# Auto-generated from advisory DSA 1392-1 using nvtgen 1.0
+# Auto-generated from advisory DLA 1392-1 using nvtgen 1.0
 # Script version: 1.0
 #
 # Author:
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891392");
-  script_version("$Revision: 10307 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2018-1093", "CVE-2018-10940", "CVE-2018-1130", "CVE-2018-8897");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1392-1] linux security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-04 00:00:00 +0200 (Mon, 04 Jun 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

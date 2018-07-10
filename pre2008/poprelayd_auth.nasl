@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 6063 2017-05-03 09:03:05Z teissa $
-# Description: poprelayd & sendmail authentication problem
+# $Id: poprelayd_auth.nasl 10415 2018-07-05 10:51:54Z cfischer $
+#
+# poprelayd & sendmail authentication problem
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -23,7 +25,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # References:
 # Date:  Tue, 3 Jul 2001 19:05:10 +0200 (CEST)
@@ -33,38 +35,38 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11080");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(2986);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2001-1075");
- script_name("poprelayd & sendmail authentication problem");
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- script_family("SMTP problems");
- script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl", 
-		     "smtp_relay.nasl", "smtp_settings.nasl",
-                     "sw_postfix_detect.nasl");
- script_exclude_keys("SMTP/wrapped", "SMTP/postfix", "SMTP/qmail");
- script_require_ports("Services/smtp", 25, 465, 587);
+  script_oid("1.3.6.1.4.1.25623.1.0.11080");
+  script_version("$Revision: 10415 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(2986);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2001-1075");
+  script_name("poprelayd & sendmail authentication problem");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("SMTP problems");
+  script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl",
+                      "smtp_relay.nasl", "smtp_settings.nasl",
+                      "sw_postfix_detect.nasl", "global_settings.nasl");
+  script_exclude_keys("keys/islocalhost", "SMTP/wrapped", "SMTP/postfix", "SMTP/qmail");
+  script_require_ports("Services/smtp", 25, 465, 587);
 
- script_tag(name:"solution", value:"Disable poprelayd");
- script_tag(name:"summary", value:"The remote SMTP server allows relaying for authenticated users. 
- It is however possible to poison the logs; this means that spammers would be able to use
- your server to send their e-mails to the world, thus wasting your network bandwidth and getting you
- blacklisted.
+  script_tag(name:"solution", value:"Disable poprelayd.");
 
- *** Some SMTP servers such as Postfix will display a false positive here");
+  script_tag(name:"summary", value:"The remote SMTP server allows relaying for authenticated users.
+  It is however possible to poison the logs which means that spammers would be able to use
+  your server to send their e-mails to the world, thus wasting your network bandwidth and getting you
+  blacklisted.
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"Mitigation");
+  *** Some SMTP servers such as Postfix will display a false positive here");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
  exit(0);
 }
-
 
 include("smtp_func.inc");
 
@@ -83,7 +85,7 @@ data = smtp_recv_banner(socket:soc);
 if(!data)exit(0);
 
 domain = get_kb_item("Settings/third_party_domain");
- 
+
 hel = string("HELO ", domain, "\r\n");
 send(socket:soc, data:hel);
 data = recv_line(socket:soc, length:1024);

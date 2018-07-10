@@ -1,7 +1,7 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_php_5_2_1.nasl 6841 2017-08-03 11:59:21Z emoss $
-# 
+# $Id: nopsec_php_5_2_1.nasl 10460 2018-07-09 07:50:03Z cfischer $
+#
 # PHP Version < 5.2.1 Multiple Vulnerabilities
 #
 # Authors:
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110175");
-  script_version("$Revision: 6841 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 10460 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:50:03 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:43:12 +0100 (Thu, 21 Jun 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,22 +40,18 @@ if(description)
                 "CVE-2007-1701", "CVE-2007-1824", "CVE-2007-1825", "CVE-2007-1835", "CVE-2007-1884",
                 "CVE-2007-1885", "CVE-2007-1886", "CVE-2007-1887", "CVE-2007-1889", "CVE-2007-1890",
                 "CVE-2007-4441", "CVE-2007-4586");
-  script_bugtraq_id(21508, 22496, 22805, 22806, 22862, 22922, 23119, 23120, 23219, 23233, 23234, 
+  script_bugtraq_id(21508, 22496, 22805, 22806, 22862, 22922, 23119, 23120, 23219, 23233, 23234,
                     23235, 23236, 23237, 23238);
   script_name("PHP Version < 5.2.1 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright NopSec Inc. 2012");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
-  tag_solution = "Update PHP to version 5.2.1 or later.";
+  script_tag(name:"solution", value:"Update PHP to version 5.2.1 or later.");
 
-  tag_summary = "PHP version smaller than 5.2.1 suffers from multiple vulnerabilities.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP version smaller than 5.2.1 suffers from multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 10412 2018-07-05 10:23:47Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 10425 2018-07-05 14:11:33Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 10412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:23:47 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 16:11:33 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,8 +70,8 @@ ipv6pattern = "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7
 
 # nb: There are differences between inetutils and iputils packages and versions.
 # Some packages have e.g. a ping6 binary, others just a symlink from ping6 to ping.
-
-# Check if the ping command supports the -6/-4 parameter
+#
+# First check if the ping command supports the -6/-4 parameter
 check = pread( cmd:"ping", argv:make_list( "--usage" ), cd:1 );
 if( "Usage: ping" >< check && "64]" >< check ) {
   param64 = TRUE;
@@ -165,7 +165,7 @@ if( resolvableFound ) {
     report += tmp + '\n';
 
     # Available since GVM-10 / git commit cf2ed60
-    if( defined_func( add_host_name ) )
+    if( defined_func( "add_host_name" ) )
       add_host_name( hostname:tmp, source:"SSL/TLS server certificate" );
 
   }

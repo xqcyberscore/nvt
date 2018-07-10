@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 9930 2018-05-23 06:43:36Z cfischer $
+# $Id: snmp_detect.nasl 10437 2018-07-06 11:30:42Z cfischer $
 #
 # A SNMP Agent is running
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 9930 $");
+  script_version("$Revision: 10437 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 08:43:36 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 13:30:42 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
@@ -163,6 +163,12 @@ if( defined_func( "snmpv3_get" ) ) {
   } else if( v3check == 2 ) {
     SNMP_v3 = TRUE;
   }
+
+  # Some SNMP devices (namely Huawei Versatile Routing Platform Software, Version 5.160)
+  # can't handle subsequent SNMP requests if a login via SNMPv3 failed. We want to do
+  # a sleep for such devices here to avoid that e.g. gb_snmp_sysdesc.nasl is failing
+  # to detect the SNMP SysDesc via SNMPv1/2.
+  sleep( 5 );
 
   # Notify the user if the provided community string did not work
   if( ! SNMPv1 && ! SNMPv2c && provided_community && strlen( provided_community ) > 0 ) {

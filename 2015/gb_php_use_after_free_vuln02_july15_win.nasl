@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805691");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2015-1351");
   script_bugtraq_id(71929);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:10:57 +0530 (Thu, 23 Jul 2015)");
   script_name("PHP Use-After-Free Denial Of Service Vulnerability - 02 - Jul15 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to Use-after-free
   vulnerability in the '_zend_shared_memdup' function in 'zend_shared_alloc.c'
@@ -61,7 +60,6 @@ if(description)
   For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"http://bugzilla.redhat.com/show_bug.cgi?id=1185900");
@@ -71,24 +69,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_windows");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version 5.6.x before 5.6.8
-if(phpVer =~ "^(5\.6)")
+if(phpVer =~ "^5\.6")
 {
   if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.7"))
   {
@@ -97,8 +88,7 @@ if(phpVer =~ "^(5\.6)")
   }
 }
 
-## Check for version 5.5.x before 5.5.25
-if(phpVer =~ "^(5\.5)")
+if(phpVer =~ "^5\.5")
 {
   if(version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.24"))
   {

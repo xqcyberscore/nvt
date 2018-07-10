@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_grapheme_extract_dos_vuln.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_grapheme_extract_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'grapheme_extract()' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801860");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0420");
   script_bugtraq_id(46429);
@@ -41,7 +41,6 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65437");
@@ -49,33 +48,27 @@ if(description)
   script_xref(name:"URL", value:"http://securityreason.com/achievement_securityalert/94");
   script_xref(name:"URL", value:"http://svn.php.net/viewvc/php/php-src/trunk/ext/intl/grapheme/grapheme_string.c?r1=306449&r2=306448&pathrev=306449");
 
-  tag_solution = "Apply the patch
+  script_tag(name:"impact", value:"Successful exploitation could allows context-dependent attackers to cause a
+  denial of service.
+
+  Impact Level: Network");
+
+  script_tag(name:"affected", value:"PHP version 5.3.5");
+
+  script_tag(name:"insight", value:"A flaw is caused by a NULL pointer dereference in the 'grapheme_extract()'
+  function in the Internationalization extension (Intl) for ICU which allows
+  context-dependent attackers to cause a denial of service via an invalid size
+  argument.");
+
+  script_tag(name:"solution", value:"Apply the patch
   http://svn.php.net/viewvc?view=revision&revision=306449
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****";
+  *****");
 
-  tag_impact = "Successful exploitation could allows context-dependent attackers to cause a
-  denial of service.
-
-  Impact Level: Network";
-
-  tag_affected = "PHP version 5.3.5";
-
-  tag_insight = "A flaw is caused by a NULL pointer dereference in the 'grapheme_extract()'
-  function in the Internationalization extension (Intl) for ICU which allows
-  context-dependent attackers to cause a denial of service via an invalid size
-  argument.";
-
-  tag_summary = "This host is running PHP and is prone to NULL pointer dereference
-  denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to NULL pointer dereference
+  denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_imap_do_open_dos_vuln.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_imap_do_open_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'ext/imap/php_imap.c' Use After Free Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801583");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2010-4150");
   script_bugtraq_id(44980);
@@ -41,30 +41,23 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
-  tag_impact = "Successful exploitation could allow local attackers to crash the affected
+  script_tag(name:"impact", value:"Successful exploitation could allow local attackers to crash the affected
   application, denying service to legitimate users.
 
-  Impact Level: Application/Network";
+  Impact Level: Application/Network");
 
-  tag_affected = "PHP version 5.2 before 5.2.15 and 5.3 before 5.3.4";
+  script_tag(name:"affected", value:"PHP version 5.2 before 5.2.15 and 5.3 before 5.3.4");
 
-  tag_insight = "The flaw is due to an erron in 'imap_do_open' function in the IMAP
-  extension 'ext/imap/php_imap.c'.";
+  script_tag(name:"insight", value:"The flaw is due to an erron in 'imap_do_open' function in the IMAP
+  extension 'ext/imap/php_imap.c'.");
 
-  tag_solution = "Upgrade to PHP 5.2.15 or 5.3.4
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP 5.2.15 or 5.3.4
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to denial of service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to denial of service
+  vulnerability.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/63390");
   script_xref(name:"URL", value:"http://svn.php.net/viewvc?view=revision&revision=305032");

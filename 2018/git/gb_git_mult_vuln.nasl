@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_mult_vuln.nasl 10042 2018-05-31 12:56:04Z jschulte $
+# $Id: gb_git_mult_vuln.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # Git 2.13.x, 2.14.x, 2.15.x, 2.16.x, 2.17.x Multiple Vulnerabilities (Windows)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113205");
-  script_version("$Revision: 10042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:56:04 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 14:37:56 +0200 (Thu, 31 May 2018)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

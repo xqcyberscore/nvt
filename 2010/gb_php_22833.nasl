@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_22833.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_22833.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Ovrimos Extension Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100604");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(22833);
   script_cve_id("CVE-2007-1379","CVE-2007-1378");
@@ -41,29 +41,23 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/22833");
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"http://www.php-security.org/MOPB/MOPB-13-2007.html");
 
-  tag_summary = "PHP is prone to a code-execution vulnerability due to a design error
-  in a vulnerable extension.";
+  script_tag(name:"impact", value:"Successful exploits may allow an attacker to execute arbitrary code in
+  the context of the affected application. Failed exploits would likely crash PHP.");
 
-  tag_insight = "For this vulnerability to occur, the non-maintained 'Ovrimos SQL
-  Server Extension' must have been compiled into the targeted PHP implementation.";
+  script_tag(name:"affected", value:"PHP versions prior to 4.4.5 or 5.2.1 with a compiled 'Ovrimos SQL Server
+  Extension' are vulnerable to this issue.");
 
-  tag_impact = "Successful exploits may allow an attacker to execute arbitrary code in
-  the context of the affected application. Failed exploits would likely crash PHP.";
+  script_tag(name:"insight", value:"For this vulnerability to occur, the non-maintained 'Ovrimos SQL
+  Server Extension' must have been compiled into the targeted PHP implementation.");
 
-  tag_affected = "PHP versions prior to 4.4.5 or 5.2.1 with a compiled 'Ovrimos SQL Server
-  Extension' are vulnerable to this issue.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a code-execution vulnerability due to a design error
+  in a vulnerable extension.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

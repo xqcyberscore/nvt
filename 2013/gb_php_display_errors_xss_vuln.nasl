@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_display_errors_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_php_display_errors_xss_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'display_errors' Cross Site Scripting Vulnerability
 #
@@ -29,39 +29,32 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803778");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 10458 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 13:02:20 +0530 (Tue, 26 Nov 2013)");
   script_name("PHP 'display_errors' Cross Site Scripting Vulnerability");
 
-  tag_summary = "This host is installed with PHP and is prone to cross site scripting
-  vulnerability.";
+  script_tag(name:"summary", value:"This host is installed with PHP and is prone to cross site scripting
+  vulnerability.");
 
-  tag_vuldetect = "Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.";
+  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
+  the version is vulnerable or not.");
 
-  tag_insight = "The flaw is due to an error in handling 'display_errors', when display_errors
-  is set to on and html_errors is set to on.";
+  script_tag(name:"solution", value:"Upgrade to latest version of PHP,
+  http://www.php.net/downloads.php");
 
-  tag_impact = "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  script_tag(name:"insight", value:"The flaw is due to an error in handling 'display_errors', when display_errors
+  is set to on and html_errors is set to on.");
+
+  script_tag(name:"affected", value:"PHP versions 5.3.10 and 5.4.0");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
   context of an affected site.
 
-  Impact Level: Application";
-
-  tag_affected = "PHP versions 5.3.10 and 5.4.0";
-
-  tag_solution = "Upgrade to latest version of PHP,
-  http://www.php.net/downloads.php";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Impact Level: Application");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/111695/");
   script_xref(name:"URL", value:"http://dl.packetstormsecurity.net/1204-exploits/php-xss.txt");
@@ -70,7 +63,6 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -85,7 +77,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## check the version
 if(version_is_equal(version:phpVer, test_version:"5.3.10") ||
    version_is_equal(version:phpVer, test_version:"5.4.0")){
   report = report_fixed_ver(installed_version:phpVer, fixed_version:"5.3.11/5.4.1");

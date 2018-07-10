@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10245 2018-06-19 06:43:31Z cfischer $
+# $Id: misc_func.inc 10431 2018-07-06 06:55:46Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10245 $
+# $Revision: 10431 $
 #
 ###############################################################################
 
@@ -1441,29 +1441,32 @@ function get_all_udp_ports_list( ) {
   return ports;
 }
 
-# This function gets the hostname of the target via get_host_name()
-# and if no IPv4/IPv6 address was returned by this function it
-# returns a list containing the parts of the target hostname.
+# @brief This function gets the hostname of the target via get_host_name()
+#        and if no IPv4/IPv6 address was returned by this function it
+#        returns a list containing the parts of the target hostname.
 #
-# For example a hostname of www.example.com returns a list containing
-# the following:
-# 1 -> www
-# 2 -> example
-# 3 -> com
-# 4 -> www.example
-# 5 -> www.example.com
-# 6 -> example.com
-# 7 -> com.example
-# 8 -> com.example.www
+#        For example a hostname of www.example.com returns a list containing
+#        the following:
+#        1 -> www
+#        2 -> example
+#        3 -> com
+#        4 -> www.example
+#        5 -> www.example.com
+#        6 -> example.com
+#        7 -> com.example
+#        8 -> com.example.www
 #
-# TODO: We currently can't catch a example.com from www.sub.example.com
+# @todo We currently can't catch a example.com from www.sub.example.com
+#
+# @return a list containing the parts of the target hostname, an empty list
+#         if get_host_name() returned an IPv4/IPv6 address.
+#
 function create_hostname_parts_list( ) {
 
   local_var list, hn, hnp, hnl, p, parts, i;
 
   list = make_list();
   hn   = get_host_name();
-  hn = "www.example.com";
 
   # nb: We don't want to add an IPv4/IPv6 address here...
   if( ":" >!< hn && ! ereg( string:hn, pattern:"^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" ) ) {

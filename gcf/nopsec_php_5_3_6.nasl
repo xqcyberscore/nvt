@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_php_5_3_6.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: nopsec_php_5_3_6.nasl 10460 2018-07-09 07:50:03Z cfischer $
 #
 # PHP Version 5.3 < 5.3.6 Multiple Vulnerabilities
 #
@@ -29,11 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110013");
-  script_version("$Revision: 6841 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 10460 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:50:03 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-06-14 13:15:22 +0200 (Thu, 14 Jun 2012)");
   script_tag(name:"cvss_base", value:"7.5");
-  script_cve_id("CVE-2011-0421", "CVE-2011-0708", "CVE-2011-1092", "CVE-2011-1153", "CVE-2011-1464", "CVE-2011-1466", "CVE-2011-1467", "CVE-2011-1468", "CVE-2011-1469", "CVE-2011-1470");
+  script_cve_id("CVE-2011-0421", "CVE-2011-0708", "CVE-2011-1092", "CVE-2011-1153", "CVE-2011-1464",
+                "CVE-2011-1466", "CVE-2011-1467", "CVE-2011-1468", "CVE-2011-1469", "CVE-2011-1470");
   script_bugtraq_id(46354, 46365, 46786, 46854);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP Version 5.3 < 5.3.6 Multiple Vulnerabilities");
@@ -41,16 +42,12 @@ if(description)
   script_family("Web application abuses");
   script_copyright("Copyright NopSec Inc. 2012");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
-  tag_summary = "PHP version < 5.3.6 suffers multiple vulnerabilities such as integer overflow vulnerability,
-  buffer overflow error and several casting errors.";
+  script_tag(name:"solution", value:"Upgrade PHP to 5.3.6 or later versions.");
 
-  tag_solution = "Upgrade PHP to 5.3.6 or later versions.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP version < 5.3.6 suffers multiple vulnerabilities such as integer overflow vulnerability,
+  buffer overflow error and several casting errors.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

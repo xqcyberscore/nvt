@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_40948.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_40948.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'SplObjectStorage' Unserializer Arbitrary Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100684");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,28 +41,22 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40948");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=605641");
   script_xref(name:"URL", value:"http://www.php.net");
 
-  tag_summary = "PHP is prone to a vulnerability that an attacker could exploit to
+  script_tag(name:"impact", value:"Successful exploits will compromise the application and possibly
+  the computer.");
+
+  script_tag(name:"affected", value:"PHP 5 through 5.3.2 are vulnerable.");
+
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+
+  script_tag(name:"summary", value:"PHP is prone to a vulnerability that an attacker could exploit to
   execute arbitrary code with the privileges of the user running the
-  affected application.";
-
-  tag_impact = "Successful exploits will compromise the application and possibly
-  the computer.";
-
-  tag_affected = "PHP 5 through 5.3.2 are vulnerable.";
-
-  tag_solution = "Updates are available; please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  affected application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

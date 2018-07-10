@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_53403.nasl 4501 2016-11-14 14:41:36Z cfi $
+# $Id: gb_php_53403.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP Directory Traversal Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_cve_id("CVE-2012-1172");
-  script_version("$Revision: 4501 $");
+  script_version("$Revision: 10458 $");
   script_name("PHP Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53403");
@@ -42,34 +42,27 @@ if (description)
   script_xref(name:"URL", value:"http://www.php.net/archive/2012.php#id2012-04-26-1");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:41:36 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 11:25:16 +0200 (Tue, 08 May 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
-  tag_summary = "PHP is prone to a directory-traversal vulnerability because it fails
-  to properly sanitize user-supplied input.";
+  script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to retrieve, corrupt or
+  upload arbitrary files at arbitrary locations that could aid in further attacks.");
 
-  tag_insight = "Remote attackers can use specially crafted requests with directory-
+  script_tag(name:"affected", value:"PHP version before 5.3.10 and 5.4.x including 5.4.0");
+
+  script_tag(name:"insight", value:"Remote attackers can use specially crafted requests with directory-
   traversal sequences ('../') to retrieve, corrupt or upload arbitrary
-  files in the context of the application.";
+  files in the context of the application.");
 
-  tag_impact = "Exploiting this issue may allow an attacker to retrieve, corrupt or
-  upload arbitrary files at arbitrary locations that could aid in further attacks.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  tag_affected = "PHP version before 5.3.10 and 5.4.x including 5.4.0";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a directory-traversal vulnerability because it fails
+  to properly sanitize user-supplied input.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

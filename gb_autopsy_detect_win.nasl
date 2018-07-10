@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autopsy_detect_win.nasl 10375 2018-07-02 04:57:17Z asteins $
+# $Id: gb_autopsy_detect_win.nasl 10420 2018-07-05 12:14:53Z jschulte $
 #
 # Autopsy Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112295");
-  script_version("$Revision: 10375 $");
+  script_version("$Revision: 10420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:57:17 +0200 (Mon, 02 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:14:53 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 12:56:06 +0200 (Wed, 06 Jun 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Autopsy Version Detection (Windows)");
@@ -57,8 +57,11 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch) exit(0);
+if(!os_arch)
+  exit(0);
 
+if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\The Sleuth Kit") && !registry_key_exists(key:"SOFTWARE\The Sleuth Kit"))
+  exit( 0 );
 
 if("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");

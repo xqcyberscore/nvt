@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_97178_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_php_97178_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP Server Side Request Forgery Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108138");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2017-7272");
   script_bugtraq_id(97178);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 06:00:00 +0200 (Tue, 18 Apr 2017)");
   script_name("PHP Server Side Request Forgery Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -42,7 +42,6 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");
   script_xref(name:"URL", value:"http://bugs.php.net/74216");
@@ -62,7 +61,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHP versions 7.0.x before 7.0.18 and 7.1.x before 7.1.4.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 7.0.18, 7.1.4 
+  script_tag(name:"solution", value:"Upgrade to PHP version 7.0.18, 7.1.4
   or later. For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");

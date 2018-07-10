@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Mail relaying (thorough test)
+# $Id: smtp_relay2.nasl 10417 2018-07-05 11:19:48Z cfischer $
+#
+# Mail relaying (thorough test)
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -21,14 +23,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote SMTP server appears to be insufficiently protected against relaying
-This means that spammers might be able to use your mail server
-to send their mails to the world.";
-
-tag_solution = "upgrade your software or improve the configuration so that
-your SMTP server cannot be used as a relay any more.";
+###############################################################################
 
 # References
 # Date: Mon, 25 Aug 2003 05:38:53 -0700
@@ -43,34 +38,33 @@ your SMTP server cannot be used as a relay any more.";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11852");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-1999-0512");
- name = "Mail relaying (thorough test)";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.11852");
+  script_version("$Revision: 10417 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:19:48 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-1999-0512");
+  script_name("Mail relaying (thorough test)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
+  script_family("SMTP problems");
+  script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl",
+                      "smtp_relay.nasl", "smtp_settings.nasl", "global_settings.nasl");
+  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "SMTP/wrapped", "SMTP/qmail", "SMTP/spam");
+  script_require_ports("Services/smtp", 25);
 
+  script_tag(name:"solution", value:"Upgrade your software or improve the configuration so that
+  your SMTP server cannot be used as a relay any more.");
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"The remote SMTP server appears to be insufficiently protected against relaying
+  This means that spammers might be able to use your mail server to send their mails to the world.");
+
   script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_copyright("This script is Copyright (C) 2003 Michel Arboi");
-
- family = "SMTP problems";
- script_family(family);
- script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl",
-	"smtp_relay.nasl", "smtp_settings.nasl");
- script_exclude_keys("SMTP/wrapped", "SMTP/qmail", "SMTP/spam");
- script_require_ports("Services/smtp", 25);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
-
-#
 
 include("smtp_func.inc");
 include("misc_func.inc");

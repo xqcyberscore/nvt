@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 9932 2018-05-23 08:50:07Z cfischer $
+# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 10423 2018-07-05 13:03:28Z santu $
 #
 # Microsoft Windows Unquoted Path Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107303");
-  script_version("$Revision: 9932 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:50:07 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10423 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 15:03:28 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:14:54 +0100 (Fri, 23 Mar 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"9.3");
@@ -50,12 +50,13 @@ if(description)
                 "CVE-2016-4158", "CVE-2016-5793", "CVE-2016-6935", "CVE-2017-1000475", "CVE-2017-14030",
                 "CVE-2017-15383", "CVE-2017-3757", "CVE-2017-3756", "CVE-2017-3751", "CVE-2017-6005",
                 "CVE-2017-7180", "CVE-2016-8225", "CVE-2016-8102", "CVE-2016-3161", "CVE-2016-5852",
-                "CVE-2013-0513", "CVE-2018-2406", "CVE-2018-5470", "CVE-2015-8988");
+                "CVE-2013-0513", "CVE-2018-2406", "CVE-2018-5470", "CVE-2015-8988", "CVE-2018-0594",
+                "CVE-2018-0595");
 
   script_xref(name:"URL", value:"https://gallery.technet.microsoft.com/scriptcenter/Windows-Unquoted-Service-190f0341#content");
   script_xref(name:"URL", value:"http://www.ryanandjeffshow.com/blog/2013/04/11/powershell-fixing-unquoted-service-paths-complete/");
   script_xref(name:"URL", value:"https://www.tecklyfe.com/remediation-microsoft-windows-unquoted-service-path-enumeration-vulnerability/");
-
+  script_xref(name:"URL", value:"https://blogs.technet.microsoft.com/srd/2018/04/04/triaging-a-dll-planting-vulnerability");
   script_tag(name:"summary", value:"The script tries to detect Windows 'Uninstall' registry entries and 'Services' using an
   unquoted path containing at least one whitespace.");
 

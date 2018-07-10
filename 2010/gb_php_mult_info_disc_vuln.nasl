@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_info_disc_vuln.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_mult_info_disc_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Multiple Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801359");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-2190", "CVE-2010-2191");
   script_tag(name:"cvss_base", value:"6.4");
@@ -40,39 +40,34 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.php-security.org/2010/05/30/mops-2010-048-php-substr_replace-interruption-information-leak-vulnerability/index.html");
   script_xref(name:"URL", value:"http://www.php-security.org/2010/05/30/mops-2010-047-php-trimltrimrtrim-interruption-information-leak-vulnerability/index.html");
 
-  tag_impact = "Successful exploitation could allow local attackers to bypass
+  script_tag(name:"impact", value:"Successful exploitation could allow local attackers to bypass
   certain security restrictions and to obtain sensitive information.
 
-  Impact Level: Network";
+  Impact Level: Network");
 
-  tag_affected = "PHP version 5.2 through 5.2.13 and 5.3 through 5.3.2";
+  script_tag(name:"affected", value:"PHP version 5.2 through 5.2.13 and 5.3 through 5.3.2");
 
-  tag_insight = "Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Error in 'trim()', 'ltrim()','rtrim()' and 'substr_replace()' functions,
   which causes a userspace interruption of an internal function within the
   call time pass by reference feature.
+
   - Error in 'parse_str()', 'preg_match()', 'unpack()' and 'pack()' functions,
   'ZEND_FETCH_RW()', 'ZEND_CONCAT()', and 'ZEND_ASSIGN_CONCAT()' opcodes, and
   the 'ArrayObject::uasort' method, trigger memory corruption by causing a
-  userspace interruption of an internal function or handler.";
+  userspace interruption of an internal function or handler.");
 
-  tag_solution = "Upgrade to PHP version 5.2.14/5.3.3 or later
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.14/5.3.3 or later
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to multiple information
-  disclosure  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to multiple information
+  disclosure  vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: smtp_relay.nasl 10417 2018-07-05 11:19:48Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -26,27 +26,31 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100073");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_name("Mail relaying");
- 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_family("SMTP problems");
- script_dependencies("smtpserver_detect.nasl","sendmail_expn.nasl","smtp_settings.nasl");
- script_exclude_keys("SMTP/wrapped", "SMTP/qmail");
- script_require_ports("Services/smtp", 25);
- script_tag(name : "solution" , value : "Improve the configuration of your SMTP server so that your SMTP server 
+  script_oid("1.3.6.1.4.1.25623.1.0.100073");
+  script_version("$Revision: 10417 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:19:48 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Mail relaying");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("SMTP problems");
+  script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl", "smtp_settings.nasl", "global_settings.nasl");
+  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "SMTP/wrapped", "SMTP/qmail");
+  script_require_ports("Services/smtp", 25);
+
+  script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
   cannot be used as a relay any more.");
- script_tag(name : "summary" , value : "The remote SMTP server is insufficiently protected against relaying
-  This means that spammers might be able to use your mail server 
+
+  script_tag(name:"summary", value:"The remote SMTP server is insufficiently protected against relaying
+  This means that spammers might be able to use your mail server
   to send their mails to the world.");
- exit(0);
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include("smtp_func.inc");
@@ -67,7 +71,7 @@ if(!domain)domain = 'example.com';
 
 soc = smtp_open(port: port, helo: NULL);
 if(!soc)exit(0);
- 
+
 src_name = this_host_name();
 FROM = string('openvas@', src_name);
 TO = string('openvas@', domain);
@@ -96,20 +100,20 @@ if("250" >!< answer)exit(0);
       data=string("data\r\n");
       send(socket: soc, data: data);
       data_rcv = smtp_recv_line(socket: soc);
-      
+
       if(egrep(pattern:"3[0-9][0-9]", string:data_rcv)) {
 
         send(socket: soc, data: string("OpenVAS-Relay-Test\r\n.\r\n"));
 	mail_send = smtp_recv_line(socket: soc);
-	
+
 	if("250" >< mail_send) {
           security_message(port:port);
           set_kb_item(name:"SMTP/" + port + "/spam", value:TRUE);
           set_kb_item(name:"SMTP/spam", value:TRUE);
           smtp_close(socket: soc);
           exit(0);
-	}  
-      
+	}
+
       }
     }
     smtp_close(socket: soc);

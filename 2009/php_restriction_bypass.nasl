@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_restriction_bypass.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: php_restriction_bypass.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Multiple Restriction-Bypass Vulnerabilities
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100281");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
-  script_bugtraq_id(36555,36554);
+  script_bugtraq_id(36555, 36554);
+  script_cve_id("CVE-2009-3557", "CVE-2009-3558");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("PHP Multiple Restriction-Bypass Vulnerabilities");
@@ -40,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36555");
@@ -53,28 +53,21 @@ if(description)
   script_xref(name:"URL", value:"http://securityreason.com/securityalert/6600");
   script_xref(name:"URL", value:"http://www.php.net");
 
-  tag_summary = "PHP is prone to a 'safe_mode' and to a 'open_basedir' restriction-bypass vulnerability.";
+  script_tag(name:"summary", value:"PHP is prone to a 'safe_mode' and to a 'open_basedir' restriction-bypass vulnerability.");
 
-  tag_vuldetect = "Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.";
+  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
+  the version is vulnerable or not.");
 
-  tag_insight = "This vulnerability would be an issue in shared-hosting configurations
-  where multiple users can create and execute arbitrary PHP script code; the 'safe_mode'
-  and the 'open_basedir' restrictions are assumed to isolate users from each other.";
+  script_tag(name:"insight", value:"This vulnerability would be an issue in shared-hosting configurations
+  where multiple users can create and execute arbitrary PHP script code. The 'safe_mode'
+  and the 'open_basedir' restrictions are assumed to isolate users from each other.");
 
-  tag_impact = "Successful exploits could allow an attacker to access files in unauthorized locations or
-  create files in any writable directory and in unauthorized locations.";
+  script_tag(name:"impact", value:"Successful exploits could allow an attacker to access files in unauthorized locations or
+  create files in any writable directory and in unauthorized locations.");
 
-  tag_affected = "PHP 5.2.11 and 5.3.0 are vulnerable; other versions may also be affected.";
+  script_tag(name:"affected", value:"PHP 5.2.11 and 5.3.0 are vulnerable. Other versions may also be affected.");
 
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

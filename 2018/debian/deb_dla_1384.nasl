@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1384.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: deb_dla_1384.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
-# Auto-generated from advisory DSA 1384-1 using nvtgen 1.0
+# Auto-generated from advisory DLA 1384-1 using nvtgen 1.0
 # Script version: 1.0
 #
 # Author:
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891384");
-  script_version("$Revision: 10262 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2017-18266");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1384-1] xdg-utils security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-28 00:00:00 +0200 (Mon, 28 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_vuln_jul_win.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_php_multiple_vuln_jul_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP Multiple Vulnerabilities - Jul17 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811481");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2017-11145", "CVE-2017-11144", "CVE-2017-11146", "CVE-2017-11628",
                 "CVE-2017-7890");
   script_bugtraq_id(99492, 99550, 99605, 99612, 99489);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 19:28:21 +0530 (Tue, 11 Jul 2017)");
   script_name("PHP Multiple Vulnerabilities - Jul17 (Windows)");
 
@@ -57,12 +57,12 @@ if(description)
 
   - A stack-based buffer overflow in the zend_ini_do_op() function in
    'Zend/zend_ini_parser.c' script.
-  
-  - The GIF decoding function gdImageCreateFromGifCtx in gd_gif_in.c in the GD 
+
+  - The GIF decoding function gdImageCreateFromGifCtx in gd_gif_in.c in the GD
     Graphics Library (aka libgd) does not zero colorMap arrays before use.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to leak information from the interpreter, crash PHP 
+  remote attackers to leak information from the interpreter, crash PHP
   interpreter and also disclose sensitive information.
 
   Impact Level: Application");
@@ -83,15 +83,12 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-fix = "";
-vers = "";
 
 if(isnull(port = get_app_port(cpe:CPE))){
   exit(0);

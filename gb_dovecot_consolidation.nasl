@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_consolidation.nasl 10329 2018-06-26 12:53:07Z jschulte $
+# $Id: gb_dovecot_consolidation.nasl 10450 2018-07-07 09:48:13Z cfischer $
 #
 # Dovecot Detection (Consolidation)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113212");
-  script_version("$Revision: 10329 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 14:53:07 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10450 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:48:13 +0200 (Sat, 07 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 11:11:11 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,35 +54,49 @@ if( description )
   exit( 0 );
 }
 
-include( "host_details.inc" );
-include( "cpe.inc" );
+include("host_details.inc");
+include("cpe.inc");
 
-CPE = "cpe:/a:dovecot:dovecot:";
-detected_version = "unknown";
+if( ! get_kb_item( "dovecot/detected" ) ) exit( 0 );
 
-if( version = get_kb_item( "dovecot/ssh/version" ) && version != "unknown" ) {
-  detected_version = version;
+base_cpe = "cpe:/a:dovecot:dovecot";
+report   = "";
+
+info_list = get_kb_list( "dovecot/detection-info" );
+
+foreach info( info_list ) {
+
+  _info_list = split( info, sep:"#--#", keep:FALSE );
+  if( max_index( _info_list ) != 6 ) continue; # Something went wrong and not all required infos are there...
+
+  # Format set by secpod_dovecot_detect.nasl and sw_dovecot_detect.naslis:
+  # Detection-Name#--#service#--#port#--#location#--#version#--#concluded
+  name      = _info_list[0];
+  service   = _info_list[1];
+  port      = _info_list[2];
+  location  = _info_list[3];
+  version   = _info_list[4];
+  concluded = _info_list[5];
+
+  if( version != "unknown" )
+    cpe = base_cpe + ":" + version;
+  else
+    cpe = base_cpe;
+
+  register_product( cpe:cpe, location:location, port:port, service:service );
+
+  if( report )
+    report += '\n\n';
+
+  report += build_detection_report( app:"Dovecot",
+                                    version:version,
+                                    install:location,
+                                    cpe:cpe,
+                                    concluded:concluded );
+  report += '\n\nDetection Method: ' + name;
 }
 
-concluded_protocols = "";
-extra = 'Concluded via:\r\n\r\n';
-foreach source ( make_list( "imap", "pop3", "ssh" ) ) {
-  if( ( location = get_kb_item( "dovecot/" + source + "/location" ) )
-    && ( concluded = get_kb_item( "dovecot/" + source + "/concluded" ) ) ) {
-    extra += source + ' from "' + concluded + '" at "' + location + '"\r\n\r\n';
-
-    if( concluded_protocols == "" )
-      concluded_protocols = source;
-    else
-      concluded_protocols += ', ' + source;
-  }
-}
-
-register_and_report_cpe( app: "Dovecot",
-                         ver: detected_version,
-                         concluded: concluded_protocols,
-                         base: CPE,
-                         expr: '^([0-9.]+)',
-                         extra: extra );
+if( report )
+  log_message( port:0, data:report );
 
 exit( 0 );

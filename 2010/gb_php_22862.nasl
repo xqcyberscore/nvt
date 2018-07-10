@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_22862.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_22862.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Shared Memory Functions Resource Verification Arbitrary Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100605");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(22862);
   script_cve_id("CVE-2007-1376");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/22862");
@@ -49,23 +48,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"http://lists.suse.com/archive/suse-security-announce/2007-May/0007.html");
 
-  tag_summary = "PHP shared memory functions (shmop) are prone to an arbitrary-code-
-  execution vulnerability.";
-
-  tag_impact = "An attacker may exploit this issue to execute arbitrary code within
+  script_tag(name:"impact", value:"An attacker may exploit this issue to execute arbitrary code within
   the context of the affected webserver. The attacker may also gain access to RSA keys
-  of the SSL certificate.";
+  of the SSL certificate.");
 
-  tag_affected = "This issue affects PHP 4 versions prior to 4.4.5 and PHP 5 versions
-  prior to 5.2.1.";
+  script_tag(name:"affected", value:"This issue affects PHP 4 versions prior to 4.4.5 and PHP 5 versions
+  prior to 5.2.1.");
 
-  tag_solution = "The vendor released versions 4.4.5 and 5.2.1 to address this issue.
-  Please see the references for more information.";
+  script_tag(name:"solution", value:"The vendor released versions 4.4.5 and 5.2.1 to address this issue.
+  Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP shared memory functions (shmop)are prone to an arbitrary-code-
+  execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

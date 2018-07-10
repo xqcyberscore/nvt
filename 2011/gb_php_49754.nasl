@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_49754.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_49754.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'is_a()' Function Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103296");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 15:33:11 +0200 (Wed, 12 Oct 2011)");
   script_bugtraq_id(49754);
   script_cve_id("CVE-2011-3379");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49754");
@@ -49,21 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"http://www.byte.nl/blog/2011/09/23/security-bug-in-is_a-function-in-php-5-3-7-5-3-8/");
 
-  tag_summary = "PHP is prone to a remote file-include vulnerability because it
-  fails to properly implement the 'is_a()' function.";
-
-  tag_impact = "Exploiting this issue may allow an attacker to compromise PHP
+  script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to compromise PHP
   applications using the affected function. This may also result in a
-  compromise of the underlying system; other attacks are also possible.";
+  compromise of the underlying system. Other attacks are also possible.");
 
-  tag_affected = "PHP 5.3.7 and 5.3.8 are vulnerable.";
+  script_tag(name:"affected", value:"PHP 5.3.7 and 5.3.8 are vulnerable.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a remote file-include vulnerability because it
+  fails to properly implement the 'is_a()' function.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

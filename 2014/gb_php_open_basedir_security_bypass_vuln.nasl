@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_open_basedir_security_bypass_vuln.nasl 4499 2016-11-14 14:06:43Z cfi $
+# $Id: gb_php_open_basedir_security_bypass_vuln.nasl 10456 2018-07-09 06:10:17Z cfischer $
 #
 # PHP 'open_basedir' Security Bypass Vulnerability
 #
@@ -29,41 +29,34 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804241");
-  script_version("$Revision: 4499 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2012-1171");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:06:43 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:40:59 +0530 (Wed, 19 Feb 2014)");
   script_name("PHP 'open_basedir' Security Bypass Vulnerability");
 
-  tag_summary = "This host is installed with PHP and is prone to security bypass
-  vulnerability.";
+  script_tag(name:"summary", value:"This host is installed with PHP and is prone to security bypass
+  vulnerability.");
 
-  tag_vuldetect = "Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.";
+  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
+  the version is vulnerable or not.");
 
-  tag_insight = "The flaw is in libxml RSHUTDOWN function which allows to bypass open_basedir
-  protection mechanism through stream_close method call.";
+  script_tag(name:"insight", value:"The flaw is in libxml RSHUTDOWN function which allows to bypass open_basedir
+  protection mechanism through stream_close method call.");
 
-  tag_impact = "Successful exploitation will allow remote attackers to read arbitrary files.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary files.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP versions 5.x.0 to 5.0.5, 5.1.0 to 5.1.6, 5.2.0 to 5.2.17, 5.3.0 to
-  5.3.27, 5.4.0 to 5.4.23 and 5.5.0 to 5.5.6.";
+  script_tag(name:"affected", value:"PHP versions 5.x.0 to 5.0.5, 5.1.0 to 5.1.6, 5.2.0 to 5.2.17, 5.3.0 to
+  5.3.27, 5.4.0 to 5.4.23 and 5.5.0 to 5.5.6.");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+  features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=802591");
 
@@ -71,7 +64,6 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -86,7 +78,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## check the version
 if(version_in_range(version:phpVer, test_version:"5.0.0", test_version2:"5.0.5") ||
    version_in_range(version:phpVer, test_version:"5.1.0", test_version2:"5.1.6") ||
    version_in_range(version:phpVer, test_version:"5.2.0", test_version2:"5.2.17") ||

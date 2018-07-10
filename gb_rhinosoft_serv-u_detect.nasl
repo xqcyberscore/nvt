@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rhinosoft_serv-u_detect.nasl 9885 2018-05-17 12:31:41Z jschulte $
+# $Id: gb_rhinosoft_serv-u_detect.nasl 10451 2018-07-07 09:59:25Z cfischer $
 #
 # Rhino Software Serv-U SSH and FTP Server Version Detection (Remote)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801117");
-  script_version("$Revision: 9885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 14:31:41 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 10451 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:59:25 +0200 (Sat, 07 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -71,7 +71,7 @@ foreach port( ftpPorts ) {
 
       vers = "unknown";
       set_kb_item( name:"Serv-U/FTP/installed", value:TRUE );
-      replace_kb_item( name:"Serv-U/detected", value:TRUE );
+      set_kb_item( name:"Serv-U/detected", value:TRUE );
       install = port + '/tcp';
 
       version = eregmatch( pattern:"Serv-U FTP Server v([0-9.]+)", string:banner );
@@ -112,7 +112,7 @@ if( banner && "serv-u" >< tolower( banner ) ) {
 
   vers = "unknown";
   set_kb_item( name:"Serv-U/SSH/installed", value:TRUE );
-  replace_kb_item( name:"Serv-U/detected", value:TRUE );
+  set_kb_item( name:"Serv-U/detected", value:TRUE );
   install = sshPort + '/tcp';
 
   version = eregmatch( pattern:"Serv-U_([0-9.]+)", string:banner );

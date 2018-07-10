@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_phar_error_page_reflected_xss_n_dos_vuln_win.nasl 8731 2018-02-09 07:50:57Z asteins $
+# $Id: gb_php_phar_error_page_reflected_xss_n_dos_vuln_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
 #
 # PHP 'PHAR' Error Page Reflected XSS And DoS Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812732");
-  script_version("$Revision: 8731 $");
+  script_version("$Revision: 10454 $");
   script_cve_id("CVE-2018-5712", "CVE-2018-5711");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-19 14:45:34 +0530 (Fri, 19 Jan 2018)");
   script_name("PHP 'PHAR' Error Page Reflected XSS And DoS Vulnerabilities (Windows)");
 
@@ -45,24 +45,24 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - An input validation error on the PHAR 404 error page via the URI of a request 
+  - An input validation error on the PHAR 404 error page via the URI of a request
     for a .phar file.
 
-  - An integer signedness error in gd_gif_in.c in the GD Graphics Library 
+  - An integer signedness error in gd_gif_in.c in the GD Graphics Library
     (aka libgd).");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows
-  attacker to execute arbitrary script code in the browser of an unsuspecting 
-  user in the context of the affected site. This may allow the attacker to 
+  attacker to execute arbitrary script code in the browser of an unsuspecting
+  user in the context of the affected site. This may allow the attacker to
   steal cookie-based authentication credentials and to launch other attacks
   and will also lead to a denial of service and exhausting the server resources.
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"PHP versions before 5.6.33, 7.0.x before 
+  script_tag(name:"affected", value:"PHP versions before 5.6.33, 7.0.x before
   7.0.27, 7.1.x before 7.1.13, and 7.2.x before 7.2.1");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.33, 7.0.27, 
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.33, 7.0.27,
   7.1.13 or 7.2.1 or later. For updates refer to http://www.php.net");
 
   script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
@@ -77,7 +77,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 

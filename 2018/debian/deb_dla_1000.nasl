@@ -1,10 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1000.nasl 10227 2018-06-15 15:26:32Z emoss $
+# $Id: deb_dla_1000.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
 # Auto-generated from advisory DLA 1000-1 using nvtgen 1.0
-# Script version:1.0
-# #
+# Script version: 1.0
+#
 # Author:
 # Greenbone Networks
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891000");
-  script_version("$Revision: 10227 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2017-9261", "CVE-2017-9262", "CVE-2017-9405", "CVE-2017-9407", "CVE-2017-9409", "CVE-2017-9439", "CVE-2017-9500", "CVE-2017-9501");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1000-1] imagemagick security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 17:26:32 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

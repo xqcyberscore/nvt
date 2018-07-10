@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upnp_xp.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: upnp_xp.nasl 10415 2018-07-05 10:51:54Z cfischer $
 #
 # scan for UPNP hosts
 #
@@ -27,29 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10829");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 10415 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3723);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-0876");
   script_name("scan for UPNP hosts");
-  # # this check was replaced by gb_upnp_detect.nasl (1.3.6.1.4.1.25623.1.0.103652)
+  # this check was replaced by gb_upnp_detect.nasl (1.3.6.1.4.1.25623.1.0.103652)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 by John Lampe");
   script_family("Windows");
+  script_dependencies("global_settings.nasl");
   script_require_ports(5000);
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
-  tag_summary = "Microsoft Universal Plug n Play is running on this machine.  This service is dangerous for many
-  different reasons.";
+  script_tag(name:"summary", value:"Microsoft Universal Plug n Play is running on this machine. This service is dangerous for many
+  different reasons.");
 
-  tag_solution = "To disable UPNP, see http://grc.com/UnPnP/UnPnP.htm";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"To disable UPNP, see http://grc.com/UnPnP/UnPnP.htm");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_tag(name:"deprecated", value:TRUE);
 
@@ -62,6 +62,7 @@ include('global_settings.inc');
 
 if(islocalhost())exit(0);
 if(TARGET_IS_IPV6())exit(0);
+
 #script based on eeye advisory Multiple Remote Windows XP/ME/98 Vulnerabilities
 
   myaddr = this_host();
@@ -135,7 +136,7 @@ if(TARGET_IS_IPV6())exit(0);
   if (flags & TH_SYN) {
        security_message(port:1900,protocol:"udp");
   }
-  exit(0);     
+  exit(0);
   }
   }
 

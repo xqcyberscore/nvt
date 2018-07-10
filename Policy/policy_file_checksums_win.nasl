@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 7794 2017-11-16 14:27:38Z cfischer $
+# $Id: policy_file_checksums_win.nasl 10421 2018-07-05 12:17:22Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 7794 $");
+  script_version("$Revision: 10421 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 15:27:38 +0100 (Thu, 16 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -45,15 +45,17 @@ if(description)
   script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#file-checksums");
 
   script_add_preference(name:"List all and not only the first 100 entries", type:"checkbox", value:"no");
+
+  # nb: "Programm" is a typo here (and below) but can't be changed as it would break existing scan configs.
   script_add_preference(name:"Install hash test Programm on the Target", type:"checkbox", value:"no");
   script_add_preference(name:"Delete hash test Programm after the test", type:"checkbox", value:"yes");
   script_add_preference(name:"Target checksum File", type:"file", value:"");
 
-  tag_summary = "Checks the checksums (MD5 or SHA1) of specified files in Windows";
+  script_tag(name:"summary", value:"Checks the checksums (MD5 or SHA1) of specified files in Windows");
 
-  tag_vuldetect = "This script transfers the application rehash.exe v0.2 to the target encoded in a VB Script.
+  script_tag(name:"vuldetect", value:"This script transfers the application rehash.exe v0.2 to the target encoded in a VB Script.
   This is done via a WMI connection (win_cmd_exec()) as Base64 code.
-  The script will then execute the VB Script over WMI, with the command 'cscript //nologo %temp%\\greenbone_base64_to_exe.vbs' to decode the Base64 code of the rehash.exe programm.
+  The script will then execute the VB Script over WMI, with the command 'cscript //nologo %temp%\\greenbone_base64_to_exe.vbs' to decode the Base64 code of the rehash.exe program.
   After decoding the VB Script will be deleted with the command 'del %temp%\\greenbone_base64_to_exe.vbs'.
 
   Subsequently, the application rehash.exe will be started. It will verify checksums based on the data supplied through the option 'Target checksum File'.
@@ -64,10 +66,7 @@ if(description)
 
   Sourcecode for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-src.zip/download
 
-  Binary for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-win.zip/download";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  Binary for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-win.zip/download");
 
   script_tag(name:"qod", value:"98"); # direct authenticated file analysis is pretty reliable
 
@@ -85,6 +84,8 @@ if( ! checksumlist ) exit( 0 );
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );  #TBD: Report this in the error NVT?
 
 include("smb_nt.inc");
+
+if( kb_smb_is_samba() ) exit( 0 );
 
 function exit_cleanly() {
   set_kb_item( name:"policy/file_checksums_win/no_timeout", value:TRUE );
@@ -128,6 +129,7 @@ function check_file( file ) {
 }
 
 listall = script_get_preference( "List all and not only the first 100 entries" );
+# nb: Programm is a typo, see above...
 delete  = script_get_preference( "Delete hash test Programm after the test" );
 install = script_get_preference( "Install hash test Programm on the Target" );
 maxlist = 100;

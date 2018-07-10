@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wmi_access.nasl 9243 2018-03-28 12:35:07Z cfischer $
+# $Id: gb_wmi_access.nasl 10421 2018-07-05 12:17:22Z cfischer $
 #
 # Check for access via WMI
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108205");
-  script_version("$Revision: 9243 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 14:35:07 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 10421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 13:47:59 +0200 (Wed, 09 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("toolcheck.nasl", "smb_login.nasl", "smb_nativelanman.nasl");
+  script_dependencies("toolcheck.nasl", "smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Tools/Present/wmi", "SMB/password", "SMB/login");
   script_exclude_keys("SMB/samba");
@@ -51,13 +51,20 @@ if(description)
   exit(0);
 }
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
+include("smb_nt.inc");
 
+if( kb_smb_is_samba() ) exit( 0 );
+
+host    = get_host_ip();
+usrname = kb_smb_login();
+passwd  = kb_smb_password();
 if( ! host || ! usrname || ! passwd ) exit( 0 );
 
-domain = get_kb_item( "SMB/domain" );
+# The user hasn't filled out a login so no need
+# to check if WMI access is possible.
+if( ! strlen( usrname ) > 0 ) exit( 0 );
+
+domain = kb_smb_domain();
 if( domain ) usrname = domain + '\\' + usrname;
 
 handle = wmi_connect( host:host, username:usrname, password:passwd );

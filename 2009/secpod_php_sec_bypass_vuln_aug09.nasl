@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_sec_bypass_vuln_aug09.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: secpod_php_sec_bypass_vuln_aug09.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Security Bypass Vulnerability - Aug09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900835");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-09-02 09:58:59 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,34 +41,27 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/383831.php");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/31064.php");
 
-  tag_impact = "Successful exploitation will let the local attacker execute arbitrary code and
+  script_tag(name:"impact", value:"Successful exploitation will let the local attacker execute arbitrary code and
   can bypass security restriction in the context of the web application.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP version 5.2.5";
+  script_tag(name:"affected", value:"PHP version 5.2.5");
 
-  tag_insight = "Error exists when application fails to enforce 'safe_mode_exec_dir' and
+  script_tag(name:"insight", value:"Error exists when application fails to enforce 'safe_mode_exec_dir' and
   'open_basedir' restrictions for certain functions, which can be caused via
   the exec, system, shell_exec, passthru, or popen functions, possibly
-  involving pathnames such as 'C:' drive notation.";
+  involving pathnames such as 'C:' drive notation.");
 
-  tag_solution = "Upgrade to PHP version 5.3.2 or later,
-  For updates refer to http://www.php.net/";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.2 or later,
+  For updates refer to http://www.php.net/");
 
-  tag_summary = "This host is running PHP and is prone to Security Bypas vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to Security Bypas vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -82,7 +75,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-# Check for PHP version 5.2.5
 if( version_is_equal( version:phpVer, test_version:"5.2.5" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.3.2" );
   security_message( data:report, port:phpPort );

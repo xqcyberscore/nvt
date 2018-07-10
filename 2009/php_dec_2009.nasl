@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_dec_2009.nasl 4505 2016-11-14 15:16:47Z cfi $
+# $Id: php_dec_2009.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP < 5.2.12 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100409");
-  script_version("$Revision: 4505 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:16:47 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-12-18 16:46:00 +0100 (Fri, 18 Dec 2009)");
   script_bugtraq_id(37390,37389);
   script_cve_id("CVE-2009-4143","CVE-2009-4142");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37390");
@@ -54,26 +53,21 @@ if(description)
   script_xref(name:"URL", value:"http://d.hatena.ne.jp/t_komura/20091004/1254665511");
   script_xref(name:"URL", value:"http://bugs.php.net/bug.php?id=49785");
 
-  tag_summary = "PHP is prone to a cross-site scripting vulnerability and to a code
-  execution vulnerability.";
-
-  tag_impact = "Attackers can exploit the code execution vulnerability to execute
+  script_tag(name:"impact", value:"Attackers can exploit the code execution vulnerability to execute
   arbitrary code within the context of the PHP process. This may allow
-  them to bypass intended security restrictions or gain elevated privileges. 
+  them to bypass intended security restrictions or gain elevated privileges.
 
   An attacker may leverage the cross-site scripting vulnerability to
   execute arbitrary script code in the browser of an unsuspecting user
   in the context of the affected site. This may let the attacker steal
-  cookie-based authentication credentials and launch other attacks.";
+  cookie-based authentication credentials and launch other attacks.");
 
-  tag_affected = "Versions prior to PHP 5.2.12 are vulnerable.";
+  script_tag(name:"affected", value:"Versions prior to PHP 5.2.12 are vulnerable.");
 
-  tag_solution = "Updates are available; please see the references for more information.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a cross-site scripting vulnerability and to a code
+  execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

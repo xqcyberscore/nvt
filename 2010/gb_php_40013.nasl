@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_40013.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_40013.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'sqlite_single_query()' and 'sqlite_array_query()' Arbitrary Code Execution Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100631");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-05-10 13:21:57 +0200 (Mon, 10 May 2010)");
   script_bugtraq_id(40013);
   script_cve_id("CVE-2010-1868");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40013");
@@ -50,21 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"http://php-security.org/2010/05/07/mops-submission-03-sqlite_single_query-sqlite_array_query-uninitialized-memory-usage/index.html");
 
-  tag_summary = "PHP is prone to multiple vulnerabilities that may allow
-  attackers to execute arbitrary code.";
-
-  tag_impact = "Attackers can exploit these issues to run arbitrary code within the
+  script_tag(name:"impact", value:"Attackers can exploit these issues to run arbitrary code within the
   context of the PHP process. This may allow them to bypass intended
-  security restrictions or gain elevated privileges.";
+  security restrictions or gain elevated privileges.");
 
-  tag_affected = "PHP 5.3.0 through 5.3.2, PHP 5.2.0 through 5.2.13 are vulnerable";
+  script_tag(name:"affected", value:"PHP 5.3.0 through 5.3.2, PHP 5.2.0 through 5.2.13 are vulnerable");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to multiple vulnerabilities that may allow
+  attackers to execute arbitrary code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

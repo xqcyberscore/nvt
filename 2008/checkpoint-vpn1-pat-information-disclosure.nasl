@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 10412 2018-07-05 10:23:47Z cfischer $
+# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 10450 2018-07-07 09:48:13Z cfischer $
 #
 # Checkpoint VPN-1 PAT information disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80096");
-  script_version("$Revision: 10412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:23:47 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10450 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:48:13 +0200 (Sat, 07 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-11-05 16:59:22 +0100 (Wed, 05 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -85,9 +85,19 @@ include("host_details.inc");
 if(TARGET_IS_IPV6())exit(0);
 if(islocalhost())exit(0);
 
+port = 18264;
+if (!get_port_state(port)){
+  exit(0);
+}
+
+if (!soc = open_sock_tcp(port)){
+  exit(0);
+}
+
+close(soc);
+
 SCRIPT_DESC = "Checkpoint VPN-1 PAT information disclosure";
 
-## functions for script
 function packet_construct(_ip_src, _ip_ttl)
 {
   _ip_id = rand() % 65535;
@@ -108,16 +118,11 @@ function packet_parse(_icmp, _ip_dst, _ttl)
   _data = "";
   if ((_ip_p == IPPROTO_TCP) && (_ip_dst2 != _ip_dst) && (_ih_dport == 18264))
   {
-    _data = "Internal IP disclosed: " + _ip_dst2 + " (ttl: "+_ttl+")";
+    _data = "Internal IP disclosed: " + _ip_dst2 + " (ttl: " +_ttl + ')\n';
     set_kb_item(name:"Checkpoint/Manager/ipaddress", value:_ip_dst2);
     register_host_detail(name:"App", value:"cpe:/a:checkpoint:vpn-1", desc:SCRIPT_DESC);
   }
   return _data;
-}
-
-port = 18264;
-if (!get_port_state(port)){
-  exit(0);
 }
 
 sourceipaddress = this_host();
@@ -131,7 +136,7 @@ for (ttl = 1; ttl <= 50; ttl ++)
   if (responsepacket)
   {
     reportdata = packet_parse(_icmp:responsepacket, _ip_dst:destinationipaddress, _ttl:ttl);
-    reportout = reportout+reportdata;
+    reportout = reportout + reportdata;
   }
 }
 

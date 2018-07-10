@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: propfind_internal_ip.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: propfind_internal_ip.nasl 10418 2018-07-05 11:22:00Z cfischer $
 #
 # Private IP address Leaked using the PROPFIND method
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12113");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 10418 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:22:00 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -37,14 +37,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) Sword & Shield Enterprise Security, Inc., 2004");
   script_family("Web Servers");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("keys/is_private_addr", "Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"see http://support.microsoft.com/default.aspx?scid=KB%3BEN-US%3BQ218180&ID=KB%3BEN-US%3BQ218180");
 
-  script_tag(name:"summary", value:"The remote web server leaks a private IP address through the WebDAV interface.  If this 
-  web server is behind a Network Address Translation (NAT) firewall or proxy server, then 
+  script_tag(name:"summary", value:"The remote web server leaks a private IP address through the WebDAV interface. If this
+  web server is behind a Network Address Translation (NAT) firewall or proxy server, then
   the internal IP addressing scheme has been leaked.
 
   This is typical of IIS 5.0 installations that are not configured properly.
@@ -65,18 +65,17 @@ include("network_func.inc");
 if( is_private_addr() ) exit( 0 );
 
 port = get_http_port( default:80 );
-
 host = http_host_name( port:port );
 
-# Build the custom HTTP/1.0 request for the server to respond to
+# nb: Build the custom HTTP/1.0 request for the server to respond to
 req = 'PROPFIND / HTTP/1.0\r\n' +
-      'Host: ' + host + '\r\n' + 
+      'Host: ' + host + '\r\n' +
       'Content-Length: 0\r\n\r\n';
 buf = http_keepalive_send_recv( port:port, data:req );
 
 # now check for RFC 1918 addressing in the returned data - not necessarily in the header
 # Ranges are: 10.x.x.x, 172.16-31.x.x, 192.168.x.x
-# TBD: regex for all IPv6 adresses and then pass to is_private_addr(addr, use_globals:FALSE) ?
+# TBD: regex for all IPv6 addresses and then pass to is_private_addr(addr, use_globals:FALSE) ?
 private_ip = eregmatch( pattern:"([^12]10\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|172\.(1[6-9]|2[0-9]|3[0-1])\.[0-9]{1,3}\.[0-9]{1,3}|192\.168\.[0-9]{1,3}\.[0-9]{1,3})", string:buf );
 if( ! isnull( private_ip ) && private_ip !~ "Oracle.*/10\." ) {
   report = "This web server leaks the following private IP address : " + private_ip[0] + '\n\n';

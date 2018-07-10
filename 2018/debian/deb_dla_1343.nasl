@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1343.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_1343.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
-# Auto-generated from advisory DSA 1343-1 using nvtgen 1.0
+# Auto-generated from advisory DLA 1343-1 using nvtgen 1.0
 # Script version: 1.0
 #
 # Author:
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891343");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2018-6358", "CVE-2018-7867", "CVE-2018-7868", "CVE-2018-7870",
                 "CVE-2018-7871", "CVE-2018-7872", "CVE-2018-7875", "CVE-2018-9165");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1343-1] ming security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 00:00:00 +0200 (Mon, 09 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

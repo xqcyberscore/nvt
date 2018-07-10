@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_typeinfo_code_exec_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
+# $Id: secpod_php_typeinfo_code_exec_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'com_print_typeinfo()' Remote Code Execution Vulnerability (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902836");
-  script_version("$Revision: 7549 $");
+  script_version("$Revision: 10458 $");
   script_bugtraq_id(53621);
   script_cve_id("CVE-2012-2376");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-05-23 15:15:15 +0530 (Wed, 23 May 2012)");
   script_name("PHP 'com_print_typeinfo()' Remote Code Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("os_detection.nasl","gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_dependencies("os_detection.nasl", "gb_php_detect.nasl");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53621");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18861");
@@ -51,31 +50,25 @@ if(description)
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2012/05/20/2");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/112851/php54-exec.txt");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
   arbitrary code in the context of a webserver. Failed attempts will likely result
   in denial of service conditions.
 
-  Impact Level: System/Application";
+  Impact Level: System/Application");
 
-  tag_affected = "PHP Version 5.4.3 and prior on Windows";
+  script_tag(name:"affected", value:"PHP Version 5.4.3 and prior on Windows");
 
-  tag_insight = "The flaw is due to an error in the 'com_print_typeinfo()' function,
+  script_tag(name:"insight", value:"The flaw is due to an error in the 'com_print_typeinfo()' function,
   which allows remote attackers to execute arbitrary code via crafted arguments
-  that trigger incorrect handling of COM object VARIANT types.";
+  that trigger incorrect handling of COM object VARIANT types.");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
+  features, remove the product or replace the product by another one.");
 
-  tag_summary = "This host is installed with PHP and is prone to remote code
-  execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is installed with PHP and is prone to remote code
+  execution vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -89,7 +82,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for PHP Version 5.4.3 and prior
 if(version_is_less_equal(version:phpVer, test_version:"5.4.3")){
   report = report_fixed_ver(installed_version:phpVer, fixed_version:"N/A");
   security_message(data:report, port:phpPort);

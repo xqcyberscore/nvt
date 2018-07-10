@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_sec_bypass_vuln.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_sec_bypass_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'extract()' Function Security Bypass Vulnerability
 #
 # Authors:
-# Madhuri D <dmadhuri@secpod.com> 
+# Madhuri D <dmadhuri@secpod.com>
 #
 # Copyright:
 # Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801731");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2011-0752");
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,41 +40,33 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.php.net/releases/5_2_15.php");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/12/13/4");
 
-  tag_impact = "Successful exploitation could allows remote attackers to bypass intended
+  script_tag(name:"impact", value:"Successful exploitation could allows remote attackers to bypass intended
   access restrictions by modifying data structures that were not intended
   to depend on external input.
 
-  Impact Level: Network";
+  Impact Level: Network");
 
-  tag_affected = "PHP version prior to 5.2.15";
+  script_tag(name:"affected", value:"PHP version prior to 5.2.15");
 
-  tag_insight = "The flaw is due to error in 'extract()' function, it does not prevent
-  use of the 'EXTR_OVERWRITE' parameter to overwrite the GLOBALS superglobal array.";
+  script_tag(name:"insight", value:"The flaw is due to error in 'extract()' function, it does not prevent
+  use of the 'EXTR_OVERWRITE' parameter to overwrite the GLOBALS superglobal array.");
 
-  tag_solution = "Upgrade to PHP version 5.2.15 or later
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.15 or later
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to security bypass
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

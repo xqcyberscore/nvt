@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl 10220 2018-06-15 12:17:34Z santu $
+# $Id: gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # Apple Xcode Code Execution And Information Disclosure Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:xcode";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813606");
-  script_version("$Revision: 10220 $");
+  script_version("$Revision: 10430 $");
   script_cve_id("CVE-2018-11235", "CVE-2018-11233");
   script_bugtraq_id(104345, 104346);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:17:34 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 10:59:39 +0530 (Thu, 14 Jun 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Xcode Code Execution And Information Disclosure Vulnerabilities");

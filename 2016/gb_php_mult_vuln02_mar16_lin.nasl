@@ -29,29 +29,30 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807506");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10455 $");
   script_cve_id("CVE-2015-8617", "CVE-2015-8616");
   script_bugtraq_id(79655, 79672);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 16:56:54 +0530 (Tue, 01 Mar 2016)");
   script_name("PHP Multiple Vulnerabilities - 02 - Mar16 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An use-after-free vulnerability in the 'Collator::sortWithSortKeys' function
     in 'ext/intl/collator/collator_sort.c' script.
-  - A format string vulnerability in the 'zend_throw_or_error' function in 
+
+  - A format string vulnerability in the 'zend_throw_or_error' function in
     'Zend/zend_execute_API.c' script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to execute arbitrary code within the context of the affected 
+  remote attackers to execute arbitrary code within the context of the affected
   application and to crash the affected application.
 
   Impact Level: Application");
@@ -62,7 +63,6 @@ if(description)
   For updates refer to http://www.php.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name:"URL", value:"http://php.net/ChangeLog-7.php");
@@ -72,23 +72,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php/installed", "Host/runs_unixoide");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-phpPort = "";
-phpVer = "";
-
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-## Check for version 7.0.0.
 if(version_is_equal(version:phpVer, test_version:"7.0.0"))
 {
   report = report_fixed_ver(installed_version:phpVer, fixed_version:"7.0.0");

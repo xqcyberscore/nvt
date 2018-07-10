@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 10421 2018-07-05 12:17:22Z cfischer $
 #
 # Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902588");
-  script_version("$Revision: 10411 $");
+  script_version("$Revision: 10421 $");
   script_cve_id("CVE-2005-0048", "CVE-2005-0688", "CVE-2004-0790",
                 "CVE-2004-1060", "CVE-2004-0230");
   script_bugtraq_id(13116, 13658, 13124, 10183);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-11-21 15:15:15 +0530 (Mon, 21 Nov 2011)");
   script_name("Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability");
   script_category(ACT_KILL_HOST);
@@ -83,6 +83,8 @@ include("host_details.inc");
 if(TARGET_IS_IPV6()){
   exit(0);
 }
+
+if( kb_smb_is_samba() ) exit( 0 );
 
 port = kb_smb_transport();
 if(!port) {

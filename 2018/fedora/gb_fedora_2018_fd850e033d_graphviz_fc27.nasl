@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fd850e033d_graphviz_fc27.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_fedora_2018_fd850e033d_graphviz_fc27.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # Fedora Update for graphviz FEDORA-2018-fd850e033d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874624");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10430 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 06:04:34 +0200 (Wed, 30 May 2018)");
   script_cve_id("CVE-2018-10196");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for graphviz FEDORA-2018-fd850e033d");
   script_tag(name:"summary", value:"Check the version of graphviz");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_aug17_win.nasl 7544 2017-10-24 11:07:43Z cfischer $
+# $Id: gb_php_dos_vuln_aug17_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
 #
 # PHP Denial of Service Vulnerability - Aug17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811411");
-  script_version("$Revision: 7544 $");
+  script_version("$Revision: 10457 $");
   script_cve_id("CVE-2017-11362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:07:43 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 10:19:01 +0530 (Tue, 01 Aug 2017)");
   script_name("PHP Denial of Service Vulnerability - Aug17 (Windows)");
 
@@ -67,15 +67,12 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-fix = "";
-vers = "";
 
 if(isnull(phpport = get_app_port(cpe:CPE))){
   exit(0);
@@ -85,14 +82,14 @@ if(! vers = get_app_version(cpe:CPE, port:phpport)){
   exit(0);
 }
 
-if (vers =~ "^(7\.0)")
+if (vers =~ "^7\.0")
 {
   if(version_is_less(version:vers, test_version:"7.0.21")){
     fix = "7.0.21";
   }
 }
 
-else if(vers =~ "^(7\.1)")
+else if(vers =~ "^7\.1")
 {
   if(version_is_less(version:vers, test_version:"7.1.7")){
     fix = "7.1.7";

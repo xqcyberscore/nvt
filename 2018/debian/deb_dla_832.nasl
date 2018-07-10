@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_832.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_832.nasl 10474 2018-07-10 08:12:26Z cfischer $
 #
-# Auto-generated from advisory DSA 832-1 using nvtgen 1.0
+# Auto-generated from advisory DLA 832-1 using nvtgen 1.0
 # Script version: 1.0
 #
 # Author:
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890832");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 10474 $");
   script_cve_id("CVE-2016-10188", "CVE-2016-10189", "CVE-2017-5668");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 832-1] bitlbee security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 00:00:00 +0200 (Thu, 29 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

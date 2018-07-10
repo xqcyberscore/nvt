@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_detect.nasl 7233 2017-09-22 12:05:13Z santu $
+# $Id: gb_ibm_websphere_mq_detect.nasl 10462 2018-07-09 08:35:44Z ckuersteiner $
 #
 # IBM WebSphere MQ Version Detection (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805546");
-  script_version("$Revision: 7233 $");
+  script_version("$Revision: 10462 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 14:05:13 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 10:35:44 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-05-06 11:01:01 +0530 (Wed, 06 May 2015)");
   script_name("IBM WebSphere MQ Version Detection (Windows)");
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   IBM WebSphere MQ.
 
   The script logs in via smb, searches for 'IBM WebSphere MQ'
@@ -43,18 +43,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
 }
-
-## variable Initialization
-os_arch = "";
-key = "";
-mqPath = "";
-mqVer = "";
-mqName = "";
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -62,19 +55,15 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\IBM\WebSphere MQ\Installation\Installation1");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\IBM\WebSphere MQ\Installation\Installation1",
@@ -85,10 +74,8 @@ foreach key( key_list ) {
 
   foreach item( registry_enum_keys( key:key ) )
   {
-    ##Get application name
     mqName = registry_get_sz(key:key, item:"ProgramFolder");
 
-    #### Confirm Application
     if("IBM WebSphere MQ" >< mqName || "IBM MQ" >< mqName)
     {
       mqVer = registry_get_sz(key:key, item:"BuildDate");
@@ -103,24 +90,21 @@ foreach key( key_list ) {
       }
 
       set_kb_item(name:"IBM/Websphere/MQ/Win/Ver", value:mqVer);
+      set_kb_item(name:"IBM/Websphere/MQ/installed", value: TRUE);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:mqVer, exp:"^([0-9.]+)", base:"cpe:/a:ibm:websphere_mq:");
       if(isnull(cpe))
         cpe = "cpe:/a:ibm:websphere_mq";
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch)
       {
         set_kb_item(name:"IBM/Websphere/MQ/Win64/Ver", value:mqVer);
 
-        ## Build CPE
         cpe = build_cpe(value:mqVer, exp:"^([0-9.]+)", base:"cpe:/a:ibm:websphere_mq:x64:");
 
         if(isnull(cpe))
           cpe = "cpe:/a:ibm:websphere_mq:x64";
       }
-      ##register cpe
       register_product(cpe:cpe, location:mqPath);
       log_message(data: build_detection_report(app: mqName,
                                                version: mqVer,

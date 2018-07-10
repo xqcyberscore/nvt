@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_23219.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_23219.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Printf() Function 64bit Casting Multiple Format String Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100595");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
   script_bugtraq_id(23219);
   script_cve_id("CVE-2007-1884");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/23219");
@@ -51,22 +50,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/releases/5_2_1.php");
   script_xref(name:"URL", value:"http://www.php.net");
 
-  tag_summary = "PHP is prone to multiple format-string vulnerabilities due to
-  a design error when casting 64-bit variables to 32 bits.";
+  script_tag(name:"impact", value:"Attackers may be able to exploit these issues to execute arbitrary
+  code in the context of the webserver process or to cause denial-of-service conditions.");
 
-  tag_impact = "Attackers may be able to exploit these issues to execute arbitrary
-  code in the context of the webserver process or to cause denial-of-service conditions.";
+  script_tag(name:"affected", value:"These issues affect PHP versions prior to 4.4.5 and 5.2.1 running on
+  64-bit computers.");
 
-  tag_affected = "These issues affect PHP versions prior to 4.4.5 and 5.2.1 running on
-  64-bit computers.";
+  script_tag(name:"solution", value:"The vendor released versions 5.2.1 and 4.4.5 to address these issues.
+  Please see the references for more information.");
 
-  tag_solution = "The vendor released versions 5.2.1 and 4.4.5 to address these issues.
-  Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to multiple format-string vulnerabilities due to
+  a design error when casting 64-bit variables to 32 bits.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
+# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)
 #
@@ -29,46 +29,42 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802408");
-  script_version("$Revision: 7549 $");
+  script_version("$Revision: 10458 $");
   script_cve_id("CVE-2011-4885", "CVE-2012-0788", "CVE-2012-0789");
   script_bugtraq_id(51193, 51952, 52043);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-01-03 16:47:40 +0530 (Tue, 03 Jan 2012)");
   script_name("PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("os_detection.nasl","gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_dependencies("os_detection.nasl", "gb_php_detect.nasl");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
-  tag_impact = "Successful exploitation could allow remote attackers to cause a denial
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial
   of service via a specially crafted form sent in a HTTP POST request.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP Version 5.3.8 and prior.";
+  script_tag(name:"affected", value:"PHP Version 5.3.8 and prior.");
 
-  tag_insight = "The flaws are due to an error in,
+  script_tag(name:"insight", value:"The flaws are due to an error in,
+
   - A hash generation function when hashing form posts and updating a hash
     table. This can be exploited to cause a hash collision resulting in high
     CPU consumption via a specially crafted form sent in a HTTP POST request.
+
   - PDORow implementation, when interacting with the session feature.
-  - timezone functionality, when handling php_date_parse_tzfile cache.";
 
-  tag_solution = "Upgrade PHP to 5.3.9 or later,
-  For updates refer to http://php.net/downloads.php";
+  - timezone functionality, when handling php_date_parse_tzfile cache.");
 
-  tag_summary = "This host is installed with PHP and is prone to remote denial of
-  service vulnerability.";
+  script_tag(name:"solution", value:"Upgrade PHP to 5.3.9 or later,
+  For updates refer to http://php.net/downloads.php");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is installed with PHP and is prone to remote denial of
+  service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -92,7 +88,6 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-##Check for PHP version
 if(version_is_less_equal(version:phpVer, test_version:"5.3.8")){
   report = report_fixed_ver(installed_version:phpVer, fixed_version:"5.3.9");
   security_message(data:report, port:phpPort);

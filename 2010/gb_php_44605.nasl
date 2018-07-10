@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_44605.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_44605.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP 'xml_utf8_decode()' UTF-8 Input Validation Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100901");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-11-10 13:18:12 +0100 (Wed, 10 Nov 2010)");
   script_bugtraq_id(44605);
   script_tag(name:"cvss_base", value:"6.8");
@@ -41,7 +41,6 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44605");
@@ -52,21 +51,16 @@ if(description)
   script_xref(name:"URL", value:"http://comments.gmane.org/gmane.comp.security.oss.general/3684");
   script_xref(name:"URL", value:"http://www.mandriva.com/en/security/advisories?name=MDVSA-2010:224");
 
-  tag_summary = "PHP is prone to a vulnerability because it fails to
-  sufficiently sanitize user-supplied input.";
-
-  tag_impact = "Exploiting this issue can allow attackers to provide unexpected input
+  script_tag(name:"impact", value:"Exploiting this issue can allow attackers to provide unexpected input
   and possibly bypass input-validation protection mechanisms. This can
-  aid in further attacks that may utilize crafted user-supplied input.";
+  aid in further attacks that may utilize crafted user-supplied input.");
 
-  tag_affected = "Versions prior to PHP 5.3.4 are vulnerable.";
+  script_tag(name:"affected", value:"Versions prior to PHP 5.3.4 are vulnerable.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a vulnerability because it fails to
+  sufficiently sanitize user-supplied input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

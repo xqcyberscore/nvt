@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_xml_parser_bof_vuln_july13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_php_xml_parser_bof_vuln_july13_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP XML Handling Heap Buffer Overflow Vulnerability - Jul13 (Windows)
 #
@@ -29,41 +29,34 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803729");
-  script_version("$Revision: 7548 $");
+  script_version("$Revision: 10458 $");
   script_cve_id("CVE-2013-4113");
   script_bugtraq_id(61128);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-07-30 12:28:05 +0530 (Tue, 30 Jul 2013)");
   script_name("PHP XML Handling Heap Buffer Overflow Vulnerability - Jul13 (Windows)");
 
-   tag_summary = "This host is running PHP and is prone to heap based buffer overflow
-  vulnerability.";
+  script_tag(name:"summary", value:"This host is running PHP and is prone to heap based buffer overflow
+  vulnerability.");
 
-  tag_insight = "The flaw is triggered as user-supplied input is not properly validated when
-  handling malformed XML input.";
+  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and
+  check it is vulnerable or not.");
 
-  tag_vuldetect = "Get the installed version of PHP with the help of detect NVT and
-  check it is vulnerable or not.";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.27 or later,
+  For updates refer to http://php.net/");
 
-  tag_impact = "Successful exploitation will allow attackers to cause a heap-based buffer
+  script_tag(name:"insight", value:"The flaw is triggered as user-supplied input is not properly validated when
+  handling malformed XML input.");
+
+  script_tag(name:"affected", value:"PHP version prior to 5.3.27");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a heap-based buffer
   overflow, resulting in a denial of service or potentially allowing the
   execution of arbitrary code.
 
-  Impact Level: Application";
-
-  tag_affected = "PHP version prior to 5.3.27";
-
-  tag_solution = "Upgrade to PHP version 5.3.27 or later,
-  For updates refer to http://php.net/";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Impact Level: Application");
 
   script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=65236");
@@ -73,9 +66,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("os_detection.nasl","gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_dependencies("os_detection.nasl", "gb_php_detect.nasl");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -89,8 +81,7 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-if(phpVer =~ "^(5\.3)"){
-  ##Check for PHP version
+if(phpVer =~ "^5\.3"){
   if(version_in_range(version:phpVer, test_version:"5.3", test_version2: "5.3.26")){
     report = report_fixed_ver(installed_version:phpVer, fixed_version:"5.3.27");
     security_message(data:report, port:phpPort);

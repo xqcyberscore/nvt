@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_denial_of_service_nov14.nasl 4499 2016-11-14 14:06:43Z cfi $
+# $Id: gb_php_denial_of_service_nov14.nasl 10456 2018-07-09 06:10:17Z cfischer $
 #
 # PHP 'donate' function Denial of Service Vulnerability - Nov14
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804884");
-  script_version("$Revision: 4499 $");
+  script_version("$Revision: 10456 $");
   script_cve_id("CVE-2014-3710");
   script_bugtraq_id(70807);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:06:43 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2014-11-17 12:25:37 +0530 (Mon, 17 Nov 2014)");
   script_name("PHP 'donate' function Denial of Service Vulnerability - Nov14");
 
-  script_tag(name: "summary" , value:"This host is installed with PHP and is
+  script_tag(name:"summary", value:"This host is installed with PHP and is
   prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an out-of-bounds
+  script_tag(name:"insight", value:"The flaw is due to an out-of-bounds
   read error in the 'donote' function in readelf.c script.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow a local
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker to conduct a denial of service attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "PHP versions 5.4.x before 5.4.35,
+  script_tag(name:"affected", value:"PHP versions 5.4.x before 5.4.35,
   5.5.x before 5.5.19 and 5.6.x before 5.6.3");
 
-  script_tag(name: "solution" , value: "Upgrade to PHP version 5.4.35 or 5.5.19
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.35 or 5.5.19
   or 5.6.3 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,7 +68,6 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
   exit(0);
 }
@@ -80,8 +78,7 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-if(phpVer =~ "^(5\.(4|5|6))"){
-  ## check the version
+if(phpVer =~ "^5\.[4-6]"){
   if(version_in_range(version:phpVer, test_version:"5.4.0", test_version2:"5.4.34")||
      version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.18")||
      version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.2")){

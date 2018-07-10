@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_45668.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_45668.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'zend_strtod()' Function Floating-Point Value Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103020");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:28:19 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,7 +41,6 @@ if(description)
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45668");
@@ -51,22 +50,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploringbinary.com/php-hangs-on-numeric-value-2-2250738585072011e-308/");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  tag_summary = "PHP is prone to a remote denial-of-service vulnerability.";
+  script_tag(name:"impact", value:"Successful attacks will cause applications written in PHP to hang,
+  creating a denial-of-service condition.");
 
-  tag_impact = "Successful attacks will cause applications written in PHP to hang,
-  creating a denial-of-service condition.";
+  script_tag(name:"affected", value:"PHP 5.3.3 is vulnerable. Other versions may also be affected.");
 
-  tag_affected = "PHP 5.3.3 is vulnerable; other versions may also be affected.";
+  script_tag(name:"insight", value:"The vulnerability is due to the Floating-Point Value that exist in zend_strtod function");
 
-  tag_solution = "Updates are available. Please see the references for more details.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 
-  tag_insight = "The vulnerability is due to the Floating-Point Value that exist in zend_strtod function";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to a remote denial-of-service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

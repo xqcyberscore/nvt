@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_apr09.nasl 4504 2016-11-14 15:04:32Z cfi $
+# $Id: gb_php_dos_vuln_apr09.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Denial Of Service Vulnerability - April09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800393");
-  script_version("$Revision: 4504 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:04:32 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:49:13 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,36 +40,29 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.php.net/releases/5_2_9.php");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/04/01/9");
 
-  tag_solution = "Upgrade to PHP version 5.2.9 or above,
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"PHP version prior to 5.2.9");
+
+  script_tag(name:"insight", value:"Improper handling of .zip file while doing extraction via
+  php_zip_make_relative_path function in php_zip.c file.");
+
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.9 or above,
   http://www.php.net/downloads.php
 
   Workaround:
   For workaround refer below link,
-  http://cvs.php.net/viewvc.cgi/php-src/ext/json/JSON_parser.c?r1=1.1.2.14&r2=1.1.2.15";
+  http://cvs.php.net/viewvc.cgi/php-src/ext/json/JSON_parser.c?r1=1.1.2.14&r2=1.1.2.15");
 
-  tag_impact = "Successful exploitation could result in denial of service condition.
-
-  Impact Level: Application";
-
-  tag_affected = "PHP version prior to 5.2.9";
-
-  tag_insight = "Improper handling of .zip file while doing extraction via
-  php_zip_make_relative_path function in php_zip.c file.";
-
-  tag_summary = "The host is installed with PHP and is prone to Denial of
-  Service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is installed with PHP and is prone to Denial of
+  Service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

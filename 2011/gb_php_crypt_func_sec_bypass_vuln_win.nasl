@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_crypt_func_sec_bypass_vuln_win.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_php_crypt_func_sec_bypass_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP 'crypt()' Function Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802329");
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-3189");
   script_bugtraq_id(48259);
@@ -40,42 +40,34 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("os_detection.nasl","gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_dependencies("os_detection.nasl", "gb_php_detect.nasl");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/45678");
   script_xref(name:"URL", value:"http://www.php.net/archive/2011.php#id2011-08-22-1");
 
-  tag_impact = "Successful exploitation could allow remote attackers to bypass authentication
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass authentication
   via an arbitrary password.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "PHP version 5.3.7 on Windows";
+  script_tag(name:"affected", value:"PHP version 5.3.7 on Windows");
 
-  tag_insight = "The flaw is due to an error in 'crypt()' function which returns the
+  script_tag(name:"insight", value:"The flaw is due to an error in 'crypt()' function which returns the
   salt value instead of hash value when executed with MD5 hash, which allows
-  attacker to bypass authentication via an arbitrary password.";
+  attacker to bypass authentication via an arbitrary password.");
 
-  tag_solution = "Upgrade to PHP version 5.3.8 or later.
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.8 or later.
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to security bypass
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

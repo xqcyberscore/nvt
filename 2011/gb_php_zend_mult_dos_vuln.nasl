@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_zend_mult_dos_vuln.nasl 4502 2016-11-14 14:48:19Z cfi $
+# $Id: gb_php_zend_mult_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
 #
 # PHP Zend and GD Multiple Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801586");
-  script_version("$Revision: 4502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 15:48:19 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4697", "CVE-2010-4698");
   script_tag(name:"cvss_base", value:"6.8");
@@ -40,36 +40,31 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://bugs.php.net/52879");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
 
-  tag_impact = "Successful exploitation could allow local attackers to crash the affected
+  script_tag(name:"impact", value:"Successful exploitation could allow local attackers to crash the affected
   application, denying service to legitimate users.
 
-  Impact Level: Application/Network";
+  Impact Level: Application/Network");
 
-  tag_affected = "PHP version prior to 5.2.15 and 5.3.x before 5.3.4";
+  script_tag(name:"affected", value:"PHP version prior to 5.2.15 and 5.3.x before 5.3.4");
 
-  tag_insight = "The flaws are due to:
+  script_tag(name:"insight", value:"The flaws are due to:
+
   - An use-after-free error in the 'Zend' engine, which allows remote attackers
     to cause a denial of service.
+
   - A stack-based buffer overflow in the 'GD' extension, which allows attackers
-    to cause a denial of service.";
+    to cause a denial of service.");
 
-  tag_solution = "Upgrade to PHP 5.3.5 or later
-  For updates refer to http://www.php.net/downloads.php";
+  script_tag(name:"solution", value:"Upgrade to PHP 5.3.5 or later
+  For updates refer to http://www.php.net/downloads.php");
 
-  tag_summary = "This host is running PHP and is prone to multiple denial of
-  service vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running PHP and is prone to multiple denial of
+  service vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

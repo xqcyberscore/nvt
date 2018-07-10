@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_response_flood.nasl 4463 2016-11-10 08:01:39Z cfi $
+# $Id: dns_response_flood.nasl 10415 2018-07-05 10:51:54Z cfischer $
 #
 # Multiple Vendor DNS Response Flooding Denial Of Service
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15753");
-  script_version("$Revision: 4463 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:01:39 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 10415 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,27 +44,26 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2004 Cedric Tissieres, Objectif Securite");
+  script_dependencies("dns_server.nasl", "global_settings.nasl");
   script_mandatory_keys("DNS/identified");
-  script_dependencies("dns_server.nasl");
+  script_exclude_keys("keys/islocalhost");
 
-  tag_summary = "Multiple DNS vendors are reported susceptible to a denial of service
-  vulnerability (Axis Communication, dnrd, Don Moore, Posadis).";
+  script_xref(name:"URL", value:"https://web.archive.org/web/20041112055702/http://www.uniras.gov.uk/vuls/2004/758884/index.htm");
 
-  tag_insight = "This vulnerability results in vulnerable DNS servers entering into an infinite
+  script_tag(name:"insight", value:"This vulnerability results in vulnerable DNS servers entering into an infinite
   query and response message loop, leading to the consumption of network and
-  CPU resources, and denying DNS service to legitimate users.";
+  CPU resources, and denying DNS service to legitimate users.");
 
-  tag_impact = "An attacker may exploit this flaw by finding two vulnerable servers and
-  set up a 'ping-pong' attack between the two hosts.";
+  script_tag(name:"impact", value:"An attacker may exploit this flaw by finding two vulnerable servers and
+  set up a 'ping-pong' attack between the two hosts.");
 
-  tag_solution = "http://www.uniras.gov.uk/vuls/2004/758884/index.htm";
+  script_tag(name:"solution", value:"Please see the reference for platform specific remediations.");
 
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Multiple DNS vendors are reported susceptible to a denial of service
+  vulnerability (Axis Communication, dnrd, Don Moore, Posadis).");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

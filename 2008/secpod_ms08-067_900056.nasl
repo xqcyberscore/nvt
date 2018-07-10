@@ -1,30 +1,6 @@
-#############################################################################
-#  Based on the work of Tim Brown <timb@nth-dimension.org.uk> as published
-#  here, http://www.nth-dimension.org.uk/blog.php?id=72
-############################################################################
-
-tag_impact = "Successful exploitation could allow remote attackers to take
-  complete control of an affected system.
-  Impact Level: System
-
-  Variants of Conficker worm are based on the above described vulnerability.
-  More details regarding the worm and means to resolve this can be found at,
-  http://technet.microsoft.com/en-us/security/dd452420.aspx";
-
-tag_affected = "Microsoft Windows 2K Service Pack 4 and prior.
-  Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2003 Service Pack 2 and prior.";
-tag_insight = "Flaw is due to an error in the Server Service, that does not properly
-  handle specially crafted RPC requests.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-067.";
-
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-067_900056.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-067_900056.nasl 10421 2018-07-05 12:17:22Z cfischer $
 # Description: Vulnerability in Server Service Could Allow Remote Code Execution (958644)
 #
 # Authors:
@@ -32,9 +8,6 @@ tag_summary = "This host is missing a critical security update according to
 #
 # Copyright:
 # Copyright (C) 2008 SecPod, http://www.secpod.com
-#
-# Updated By: Madhuri D <dmadhuri@secpod.com> on 2012-02-29
-#   - Update the code to work on windows 2003-SP2 (32/64 bit) os
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -50,11 +23,16 @@ tag_summary = "This host is missing a critical security update according to
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+#############################################################################
+#  Based on the work of Tim Brown <timb@nth-dimension.org.uk> as published
+#  here, http://www.nth-dimension.org.uk/blog.php?id=72
+############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900056");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-10-30 14:46:44 +0100 (Thu, 30 Oct 2008)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -64,25 +42,47 @@ if(description)
   script_category(ACT_DENIAL);
   script_family("Windows : Microsoft Bulletins");
   script_name("Vulnerability in Server Service Could Allow Remote Code Execution (958644)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32326");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/827267");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/46040");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1021091");
-  script_xref(name : "URL" , value : "http://blogs.securiteam.com/index.php/archives/1150");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
-
-  script_dependencies("secpod_reg_enum.nasl", "os_detection.nasl");
+  script_dependencies("os_detection.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
 
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32326");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/827267");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46040");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1021091");
+  script_xref(name:"URL", value:"http://blogs.securiteam.com/index.php/archives/1150");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
+
+  script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior.
+
+  Microsoft Windows XP Service Pack 3 and prior.
+
+  Microsoft Windows 2003 Service Pack 2 and prior.");
+
+  script_tag(name:"insight", value:"Flaw is due to an error in the Server Service, that does not properly
+  handle specially crafted RPC requests.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
+  and update mentioned hotfixes in the advisory from the below link,
+
+  http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
+
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS08-067.");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to take
+  complete control of an affected system.
+
+  Impact Level: System
+
+  Variants of Conficker worm are based on the above described vulnerability.
+  More details regarding the worm and means to resolve this can be found at,
+  http://technet.microsoft.com/en-us/security/dd452420.aspx");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -93,44 +93,7 @@ if(safe_checks()){
   exit(0);
 }
 
-## Variable Initialization
-name = "";
-login = "";
-pass  = "";
-domain = "";
-port = "";
-r = "";
-prot = "";
-uid = "";
-tid = "";
-tid_high = "";
-tid_low = "";
-uid_high = "";
-uid_low = "";
-fid_low = "";
-fid_high = "";
-fid2_low = "";
-fid2_high = "";
-smb_nt_andx_req = "";
-smb_nt_andx_resp = "";
-dcerpc_bind_srvsvc_req = "";
-dcerpc_bind_srvsvc_resp = "";
-smb_andx_req = "";
-smb_andx_resp = "";
-smb_nt_andx_req1 = "";
-smb_nt_andx_resp1 = "";
-dcerpc_bind_wkssvc_req = "";
-dcerpc_bind_wkssvc_resp = "";
-smb_andx_req1 = "";
-smb_andx_resp1 = "";
-netdeluse_req = "";
-netdeluse_resp = "";
-netpath_cmp_req = "";
-netpath_cmp_resp = "";
-smb_tree_dis_req = "";
-smb_tree_dis_resp = "";
-smb_logoff_req = "";
-smb_logoff_resp = "";
+if( kb_smb_is_samba() ) exit( 0 );
 
 name = kb_smb_name();
 login = kb_smb_login();
@@ -203,7 +166,6 @@ smb_nt_andx_req = raw_string(0x00, 0x00, 0x00, 0x66, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_nt_andx_req);
 
-## Check the response
 smb_nt_andx_resp = smb_recv(socket:soc);
 
 if(smb_nt_andx_resp && strlen(smb_nt_andx_resp) < 107)
@@ -212,7 +174,6 @@ if(smb_nt_andx_resp && strlen(smb_nt_andx_resp) < 107)
   exit(0);
 }
 
-## Get fid from response
 fid_low = ord(smb_nt_andx_resp[42]);
 fid_high = ord(smb_nt_andx_resp[43]);
 
@@ -241,7 +202,6 @@ dcerpc_bind_srvsvc_req = raw_string(0x00, 0x00, 0x00, 0x88, 0xff, 0x53, 0x4d,
 
 send(socket:soc, data:dcerpc_bind_srvsvc_req);
 
-## Check the response
 dcerpc_bind_srvsvc_resp = smb_recv(socket:soc);
 
 if(!dcerpc_bind_srvsvc_resp)
@@ -263,7 +223,6 @@ smb_andx_req = raw_string(0x00, 0x00, 0x00, 0x3c, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_andx_req);
 
-## Check the response
 smb_andx_resp = smb_recv(socket:soc);
 
 if(!smb_andx_resp)
@@ -290,7 +249,6 @@ smb_nt_andx_req1 = raw_string(0x00, 0x00, 0x00, 0x66, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_nt_andx_req1);
 
-##Check the response
 smb_nt_andx_resp1 = smb_recv(socket:soc);
 
 if(smb_nt_andx_resp1 && strlen(smb_nt_andx_resp1) < 107)
@@ -299,7 +257,6 @@ if(smb_nt_andx_resp1 && strlen(smb_nt_andx_resp1) < 107)
   exit(0);
 }
 
-## Get the FID from response
 fid2_low = ord(smb_nt_andx_resp1[42]);
 fid2_high = ord(smb_nt_andx_resp1[43]);
 
@@ -328,7 +285,6 @@ dcerpc_bind_wkssvc_req = raw_string(0x00, 0x00, 0x00, 0x88, 0xff, 0x53, 0x4d,
 
 send(socket:soc, data:dcerpc_bind_wkssvc_req);
 
-## Check the response
 dcerpc_bind_wkssvc_resp = smb_recv(socket:soc);
 
 if(!dcerpc_bind_wkssvc_resp)
@@ -350,7 +306,6 @@ smb_andx_req1 = raw_string(0x00, 0x00, 0x00, 0x3c, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_andx_req1);
 
-## Check the response
 smb_andx_resp1 = smb_recv(socket:soc);
 
 if(!smb_andx_resp1)
@@ -398,7 +353,6 @@ netpath_cmp_req= raw_string(0x00, 0x00, 0x01, 0x10, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:netpath_cmp_req);
 
-## Check the response
 netpath_cmp_resp = smb_recv(socket:soc);
 
 if(!netpath_cmp_resp)
@@ -417,7 +371,6 @@ smb_tree_dis_req = raw_string(0x00, 0x00, 0x00, 0x23, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_tree_dis_req);
 
-## Check the response
 smb_tree_dis_resp = smb_recv(socket:soc);
 
 if(!smb_tree_dis_resp)
@@ -436,7 +389,6 @@ smb_logoff_req = raw_string(0x00, 0x00, 0x00, 0x27, 0xff, 0x53, 0x4d, 0x42,
 
 send(socket:soc, data:smb_logoff_req);
 
-## Check the response
 smb_logoff_resp = smb_recv(socket:soc);
 
 if(!smb_logoff_resp)
@@ -445,9 +397,7 @@ if(!smb_logoff_resp)
   exit(0);
 }
 
-## Checking netpath_cmp_resp, to confirm the vuln
-## After applying the patch, netpath_cmp_resp contains,
-## Windows Error: WERR_INVALID_NAME (0x0000007b)
+## nb: Checking netpath_cmp_resp, to confirm the vuln. After applying the patch, netpath_cmp_resp contains Windows Error: WERR_INVALID_NAME (0x0000007b)
 if(ord(netpath_cmp_resp[84]) == 00 && ord(netpath_cmp_resp[85]) == 00 &&
    ord(netpath_cmp_resp[86]) == 00 && ord(netpath_cmp_resp[87]) == 00){
   security_message(port);

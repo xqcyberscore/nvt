@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_dir_trav_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: gb_antiweb_dir_trav_vuln.nasl 10430 2018-07-06 05:26:03Z cfischer $
 #
 # Anti-Web Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:anti-web:anti-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106886");
-  script_version("$Revision: 9425 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 10430 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-9097", "CVE-2017-9664", "CVE-2017-17888");
 

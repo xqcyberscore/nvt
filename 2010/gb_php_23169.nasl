@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_23169.nasl 4503 2016-11-14 15:00:22Z cfi $
+# $Id: gb_php_23169.nasl 10459 2018-07-09 07:41:24Z cfischer $
 #
 # PHP Zip_Entry_Read() Integer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100601");
-  script_version("$Revision: 4503 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:00:22 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10459 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(23169);
   script_cve_id("CVE-2007-1777");
@@ -41,30 +41,24 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_php_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/23169");
   script_xref(name:"URL", value:"http://www.php-security.org/MOPB/MOPB-35-2007.html");
   script_xref(name:"URL", value:"http://www.php.net/");
 
-  tag_summary = "PHP is prone to an integer-overflow vulnerability because it
-  fails to ensure that integer values aren't overrun. Attackers
-  may exploit this issue to cause a heap-based buffer overflow.";
-
-  tag_impact = "Exploiting this issue may allow attackers to execute arbitrary machine
+  script_tag(name:"impact", value:"Exploiting this issue may allow attackers to execute arbitrary machine
   code in the context of the affected application. Failed exploit
-  attempts will likely result in a denial-of-service condition.";
+  attempts will likely result in a denial-of-service condition.");
 
-  tag_affected = "This issue affects versions prior to PHP 4.4.5.";
+  script_tag(name:"affected", value:"This issue affects versions prior to PHP 4.4.5.");
 
-  tag_solution = "Reports indicate that PHP 4.4.5 addresses this issue. Please contact
-  the vendor for more information.";
+  script_tag(name:"solution", value:"Reports indicate that PHP 4.4.5 addresses this issue. Please contact
+  the vendor for more information.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"PHP is prone to an integer-overflow vulnerability because it
+  fails to ensure that integer values aren't overrun. Attackers
+  may exploit this issue to cause a heap-based buffer overflow.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
