@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_code_exec_vuln_apsa08-07_macosx.nasl 10492 2018-07-12 13:42:55Z santu $
+# $Id: gb_adobe_illustrator_code_exec_vuln_apsa08-07_macosx.nasl 10495 2018-07-13 06:13:03Z ckuersteiner $
 #
 # Adobe Illustrator Remote Code Execution Vulnerability-Mac OS X (apsa08-07)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:illustrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813495");
-  script_version("$Revision: 10492 $");
+  script_version("$Revision: 10495 $");
   script_cve_id("CVE-2008-3961");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 15:42:55 +0200 (Thu, 12 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:13:03 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 15:41:49 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Remote Code Execution Vulnerability-Mac OS X (apsa08-07)");

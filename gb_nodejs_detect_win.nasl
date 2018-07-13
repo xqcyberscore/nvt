@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_detect_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
+# $Id: gb_nodejs_detect_win.nasl 10502 2018-07-13 13:19:46Z santu $
 #
 # Node.js Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805941");
-  script_version("$Revision: 8189 $");
+  script_version("$Revision: 10502 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 15:19:46 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-08-04 17:21:51 +0530 (Tue, 04 Aug 2015)");
   script_name("Node.js Version Detection (Windows)");
 
@@ -55,26 +55,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-noPath = "";
-noVer = "";
-noName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -92,7 +81,6 @@ foreach key (key_list)
   {
     appName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm for Node.js
     if("Node.js" >< appName)
     {
       noVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -102,15 +90,15 @@ foreach key (key_list)
       }
 
       set_kb_item(name:"Nodejs/Win/Installed", value:TRUE);
+      set_kb_item(name:"Nodejs/Win/Ver", value:noVer);
+      register_and_report_cpe( app:"Node.js", ver:noVer, base:"cpe:/a:nodejs:node.js:", expr:"^([0-9.]+)", insloc:noPath );
 
-      ## Register for 64 bit app on 64 bit OS
-      if("64" >< os_arch && "Wow6432Node" >!< key) {
+      if("64" >< os_arch && "Wow6432Node" >!< key)
+      {
         set_kb_item(name:"Nodejs64/Win/Ver", value:noVer);
         register_and_report_cpe( app:"Node.js", ver:noVer, base:"cpe:/a:nodejs:node.js:x64:", expr:"^([0-9.]+)", insloc:noPath );
-      } else {
-        set_kb_item(name:"Nodejs/Win/Ver", value:noVer);
-        register_and_report_cpe( app:"Node.js", ver:noVer, base:"cpe:/a:nodejs:node.js:", expr:"^([0-9.]+)", insloc:noPath );
       }
     }
   }
 }
+exit(0);

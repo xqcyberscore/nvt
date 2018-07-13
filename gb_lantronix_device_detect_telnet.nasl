@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10493 2018-07-12 15:26:38Z mmartin $
+# $Id: gb_lantronix_device_detect_telnet.nasl 10498 2018-07-13 07:23:55Z mmartin $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 17:26:38 +0200 (Thu, 12 Jul 2018) $");
+  script_version("$Revision: 10498 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 09:23:55 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,7 @@ banner = get_telnet_banner( port:port );
 # Default bannner, they might appear on e.g. 23/tcp or 9999/tcp
 
 if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
-    ( "IQinVision " >!< banner && banner =~ 'Type HELP at the .* prompt for assistance' ) || ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
+    ( ( banner !~ "(IQinVision )|(IQEye )" )  && banner =~ 'Type HELP at the .* prompt for assistance' ) || ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
     # Some branded devices not providing the "Lantronix" banner but still using their firmware.
     # nb: Only use / report if this was detected on the (on some devices) hardcoded port 9999/tcp.
     ( port == 9999 && "Software version " >< banner && "MAC address " >< banner ) ) {

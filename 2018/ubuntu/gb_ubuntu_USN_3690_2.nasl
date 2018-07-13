@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3690_2.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_ubuntu_USN_3690_2.nasl 10495 2018-07-13 06:13:03Z ckuersteiner $
 #
 # Ubuntu Update for amd64-microcode USN-3690-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843581");
-  script_version("$Revision: 10480 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:13:03 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 05:49:44 +0200 (Fri, 06 Jul 2018)");
   script_cve_id("CVE-2017-5715");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for amd64-microcode USN-3690-2");
   script_tag(name:"summary", value:"Check the version of amd64-microcode");

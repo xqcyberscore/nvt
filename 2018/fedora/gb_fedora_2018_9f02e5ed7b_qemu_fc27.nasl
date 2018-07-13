@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9f02e5ed7b_qemu_fc27.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_fedora_2018_9f02e5ed7b_qemu_fc27.nasl 10495 2018-07-13 06:13:03Z ckuersteiner $
 #
 # Fedora Update for qemu FEDORA-2018-9f02e5ed7b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874779");
-  script_version("$Revision: 10480 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:13:03 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 06:06:30 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2018-3639", "CVE-2017-15038", "CVE-2017-15268");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qemu FEDORA-2018-9f02e5ed7b");
   script_tag(name:"summary", value:"Check the version of qemu");

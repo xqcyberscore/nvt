@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_default_credentials.nasl 10494 2018-07-12 16:33:39Z mmartin $
+# $Id: gb_lantronix_device_default_credentials.nasl 10497 2018-07-13 07:16:49Z mmartin $
 #
 # Lantronix Devices Default Credentials Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107329");
-  script_version("$Revision: 10494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 18:33:39 +0200 (Thu, 12 Jul 2018) $");
+  script_version("$Revision: 10497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 09:16:49 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 18:29:24 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +38,7 @@ if( description )
 
   script_tag(name:"solution_type", value:"Mitigation");
 
-  #script_cve_id("");
+  script_cve_id("CVE-2018-14018");
 
   script_name("Lantronix Devices Default Credentials Vulnerability");
 
