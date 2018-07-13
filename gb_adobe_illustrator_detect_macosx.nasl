@@ -1,11 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_adobe_illustrator_detect_macosx.nasl 10492 2018-07-12 13:42:55Z santu $
 #
 # Adobe Illustrator Version Detection (Mac OS X)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
+#
+# Updated to detect Adobe Illustrator Version CC
+# Updated By: Shakeel <bshakeel@secpod.com> on 12-July-2018
 #
 # Copyright:
 # Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,20 +30,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802787");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 10492 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-12 15:42:55 +0200 (Thu, 12 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:13:07 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Version Detection (Mac OS X)");
 
-
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe Illustrator.
+  script_tag(name : "summary" , value : "Detection of installed version of Adobe
+Illustrator.
 
 The script logs in via ssh, searches for folder 'Adobe Illustrator.app' and
 queries the related 'info.plist' file for string 'CFBundleVersion' via command
 line option 'defaults read'.");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -65,25 +69,53 @@ foreach ver (make_list("", "2", "3", "4", "5", "5.1", "5.5", "6"))
              "Adobe\ Illustrator\ CS" + ver +"/Adobe\ Illustrator.app/" +
              "Contents/Info CFBundleVersion"));
   if(isnull(illuVer) || "does not exist" >< illuVer){
-     continue;
+    continue;
   }
 
-  set_kb_item(name: "Adobe/Illustrator/MacOSX/Version", value:illuVer);
+  install = TRUE ;
+  version = illuVer ;
+  app = 'Adobe Illustrator CS';
+  application = app + " " + ver ;
+}
 
-  cpe = build_cpe(value:illuVer, exp:"^([0-9.]+)",
-                   base:"cpe:/a:adobe:illustrator_cs" + ver + ":");
-  if(isnull(cpe))
-    cpe='cpe:/a:adobe:illustrator_cs' + ver;
+if(!install)
+{
+  foreach ver (make_list("", "2014", "2015", "2017", "2018"))
+  {
+    illuVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
+               "Adobe\ Illustrator\ CC\ " + ver +"/Adobe\ Illustrator.app/" +
+               "Contents/Info CFBundleVersion"));
+    if(isnull(illuVer) || "does not exist" >< illuVer){
+      continue;
+    }
 
-  path = '/Applications/Adobe Illustrator CS' + ver + '/Adobe Illustrator.app';
+    install = TRUE ;
+    version = illuVer ;
+    app = 'Adobe Illustrator CC';
+    application = app + " " + ver ;
+  }
+}
+
+if(install)
+{
+  set_kb_item(name: "Adobe/Illustrator/MacOSX/Version", value:version);
+
+  cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:adobe:illustrator:");
+  if(isnull(cpe)){
+    cpe='cpe:/a:adobe:illustrator';
+  }
+
+  path = '/Applications/' + application + '/Adobe Illustrator.app';
 
   register_product(cpe:cpe, location:path);
 
-  log_message(data: build_detection_report(app:"Adobe Illustrator",
-                                           version:illuVer,
+  log_message(data: build_detection_report(app:application,
+                                           version:version,
                                            install:path,
                                            cpe:cpe,
-                                           concluded: illuVer));
+                                           concluded: version));
+  close(sock);
+  exit(0);
 }
-
 close(sock);
+exit(99);

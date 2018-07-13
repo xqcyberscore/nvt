@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openbsd_portmap_dos_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_openbsd_portmap_dos_vuln.nasl 10491 2018-07-12 12:11:05Z santu $
 #
 # OpenBSD Portmap Remote Denial of Service Vulnerability
 #
@@ -27,17 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803091");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 10491 $");
   script_bugtraq_id(56671);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-12 14:11:05 +0200 (Thu, 12 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-12-26 10:49:16 +0530 (Wed, 26 Dec 2012)");
   script_name("OpenBSD Portmap Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_rpc_portmap.nasl");
+  script_dependencies("secpod_rpc_portmap.nasl", "os_detection.nasl");
+  script_mandatory_keys("Host/runs_unixoide");
   script_require_keys("rpc/portmap");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/51299/");

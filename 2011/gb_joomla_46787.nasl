@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_46787.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_joomla_46787.nasl 10485 2018-07-11 15:10:07Z ckuersteiner $
 #
 # Joomla! Prior to 1.6.1 Multiple Security Vulnerabilities
 #
@@ -24,20 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:joomla:joomla";
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103114");
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_version("$Revision: 10485 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-07-11 17:10:07 +0200 (Wed, 11 Jul 2018) $");
  script_tag(name:"creation_date", value:"2011-03-09 13:38:24 +0100 (Wed, 09 Mar 2011)");
  script_bugtraq_id(46787);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
  script_name("Joomla! Prior to 1.6.1 Multiple Security Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46787");
- script_xref(name : "URL" , value : "http://www.joomla.org/announcements/release-news/5350-joomla-161-released.html");
- script_xref(name : "URL" , value : "http://www.joomla.org/");
+ script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46787");
+ script_xref(name:"URL", value:"http://www.joomla.org/announcements/release-news/5350-joomla-161-released.html");
+ script_xref(name:"URL", value:"http://www.joomla.org/");
 
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
@@ -46,26 +49,34 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("joomla/installed");
 
- script_tag(name : "solution" , value : "The vendor released a patch. Please see the references for more
- information.");
- script_tag(name : "summary" , value : "Joomla! is prone to multiple security vulnerabilities including:
+ script_tag(name:"solution", value:"The vendor released a patch. Please see the references for more
+information.");
 
- An SQL-injection issue
- A path-disclosure vulnerability
- Multiple cross-site scripting issues
- Multiple information-disclosure vulnerabilities
- A URI-redirection vulnerability
- A security-bypass vulnerability
- A cross-site request-forgery vulnerability
- A denial-of-service vulnerability");
- script_tag(name : "impact" , value : "An attacker can exploit these vulnerabilities to execute arbitrary
- script code in the browser of an unsuspecting user in the context of
- the affected site, steal cookie-based authentication credentials,
- disclose or modify sensitive information, exploit latent
- vulnerabilities in the underlying database, deny service to legitimate
- users, redirect a victim to a potentially malicious site, or perform
- unauthorized actions. Other attacks are also possible.");
- script_tag(name : "affected" , value : "Versions prior to Joomla! 1.6.1 are vulnerable.");
+ script_tag(name:"summary", value:"Joomla! is prone to multiple security vulnerabilities including:
+
+- An SQL-injection issue
+
+- A path-disclosure vulnerability
+
+- Multiple cross-site scripting issues
+
+- Multiple information-disclosure vulnerabilities
+
+- A URI-redirection vulnerability
+
+- A security-bypass vulnerability
+
+- A cross-site request-forgery vulnerability
+
+- A denial-of-service vulnerability");
+
+ script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected site, steal cookie-based authentication
+credentials, disclose or modify sensitive information, exploit latent vulnerabilities in the underlying database,
+deny service to legitimate users, redirect a victim to a potentially malicious site, or perform unauthorized
+actions. Other attacks are also possible.");
+
+ script_tag(name:"affected", value:"Versions prior to Joomla! 1.6.1 are vulnerable.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,20 +85,19 @@ if (description)
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if (!can_host_php(port:port)) exit(0);
+if (!port = get_app_port(cpe:CPE))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"joomla")) {
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-  if(version_is_less(version: vers, test_version: "1.6.1")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: version, test_version: "1.6.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.6.1");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(99);

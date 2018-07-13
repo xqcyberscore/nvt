@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_win.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_adobe_illustrator_detect_win.nasl 10492 2018-07-12 13:42:55Z santu $
 #
 # Adobe Illustrator Detection (Windows)
 #
@@ -12,7 +12,7 @@
 # Because logic is not proper and it is not used by any scripts.
 #
 # Copyright:
-# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2012 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -31,22 +31,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802789");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10492 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-12 15:42:55 +0200 (Thu, 12 Jul 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:02:06 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Illustrator Detection (Windows)");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe Illustrator on Windows.
+  script_tag(name : "summary" , value : "Detection of installed version of Adobe
+Illustrator on Windows.
 
 The script logs in via smb, searches for Adobe Illustrator in the
 registry and gets the version.");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
@@ -116,7 +117,7 @@ foreach item (registry_enum_keys(key:key))
       }
       register_product(cpe:cpe, location:ilsPath);
 
-      log_message(data: build_detection_report(app: "Adobe Illustrator",
+      log_message(data: build_detection_report(app: ilsName,
                                                version: ilsVer,
                                                install: ilsPath,
                                                cpe: cpe,

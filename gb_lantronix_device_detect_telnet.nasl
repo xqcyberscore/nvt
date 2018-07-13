@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10479 2018-07-11 08:57:16Z mmartin $
+# $Id: gb_lantronix_device_detect_telnet.nasl 10493 2018-07-12 15:26:38Z mmartin $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10479 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 10:57:16 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-12 17:26:38 +0200 (Thu, 12 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,10 +59,10 @@ banner = get_telnet_banner( port:port );
 # Lantronix MSS-VIA Version V3.6/3(000201)
 # Lantronix MSS4 Version B3.7/108(030909)
 # Lantronix SCS1600 Version 2.0/5(040701)
+# Default bannner, they might appear on e.g. 23/tcp or 9999/tcp
 
-    # Default bannner, they might appear on e.g. 23/tcp or 9999/tcp
 if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
-    ( "Lantronix" >< banner && "prompt for assistance" >< banner )  || "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ||
+    ( "IQinVision " >!< banner && banner =~ 'Type HELP at the .* prompt for assistance' ) || ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
     # Some branded devices not providing the "Lantronix" banner but still using their firmware.
     # nb: Only use / report if this was detected on the (on some devices) hardcoded port 9999/tcp.
     ( port == 9999 && "Software version " >< banner && "MAC address " >< banner ) ) {
@@ -83,6 +83,7 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
   set_kb_item( name:"lantronix_device/telnet/" + port + "/version", value:version );
 
   type = "unknown";
+
   if( "Lantronix" >!< banner && "Software version " >< banner && "MAC address " >< banner ) {
     type = "Branded";
   } else if( "Lantronix Inc. - Modbus Bridge" >< banner ) {
@@ -98,8 +99,41 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
   } else if( _type = eregmatch( pattern:"Lantronix ([A-Z0-9-]+) ", string:banner ) ) {
     type = _type[1];
   }
-  set_kb_item( name:"lantronix_device/telnet/" + port + "/type", value:type );
+  
+  if ( type == "unknown" ) {
+    username = "login";
+    access = FALSE;
 
+    soc = open_sock_tcp( port );
+    if( ! soc )
+      exit( 0 );
+
+    recv1 = recv( socket:soc, length:2048, timeout:10 );
+
+  if ( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
+     send( socket:soc, data:username + '\r\n' );
+     recv2 = recv( socket:soc, length:2048, timeout:10 );
+ 
+     if ( recv2 =~ "Local_.+>" ) {
+     access = TRUE;
+     set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );      
+    }
+  }
+
+  if ( access ) {
+    send( socket:soc, data:'show server\r\n' );
+    recv3 = recv( socket:soc, length:2048, timeout:10 );
+    typerecv = eregmatch( pattern: "Ident String: ([a-zA-Z0-9]+)", string:bin2string( ddata:recv3, noprint_replacement:'' ) );
+   
+    if(!isnull(typerecv[1])){
+      type = typerecv[1];
+    }
+  }
+  
+  close( soc );
+
+  set_kb_item( name:"lantronix_device/telnet/" + port + "/type", value:type );
+  
   if( mac = eregmatch( pattern:"MAC address ([0-9a-fA-F]{12})", string:bin2string( ddata:banner, noprint_replacement:'' ) ) ) {
     plain_mac = mac[1];
     for( i = 0; i < 12; i++ ) {
@@ -110,6 +144,6 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
     replace_kb_item( name:"Host/mac_address", value:full_mac );
     info["MAC"] = mac;
   }
+ }
 }
-
 exit( 0 );

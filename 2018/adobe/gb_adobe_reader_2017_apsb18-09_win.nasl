@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_2017_apsb18-09_win.nasl 9878 2018-05-17 05:17:32Z santu $
+# $Id: gb_adobe_reader_2017_apsb18-09_win.nasl 10480 2018-07-11 10:23:47Z santu $
 #
 # Adobe Reader 2107 Security Updates(apsb18-09)-Windows
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813231");
-  script_version("$Revision: 9878 $");
+  script_version("$Revision: 10480 $");
   script_cve_id("CVE-2018-4990", "CVE-2018-4947", "CVE-2018-4948", "CVE-2018-4966",
                 "CVE-2018-4968", "CVE-2018-4978", "CVE-2018-4982", "CVE-2018-4984",
-                "CVE-2018-4946", "CVE-2018-4952", "CVE-2018-4954", "CVE-2018-4958",
+                "CVE-2018-4996", "CVE-2018-4952", "CVE-2018-4954", "CVE-2018-4958",
                 "CVE-2018-4959", "CVE-2018-4961", "CVE-2018-4971", "CVE-2018-4974",
                 "CVE-2018-4977", "CVE-2018-4980", "CVE-2018-4983", "CVE-2018-4988",
                 "CVE-2018-4989", "CVE-2018-4950", "CVE-2018-4979", "CVE-2018-4949",
@@ -41,10 +41,10 @@ if(description)
                 "CVE-2018-4969", "CVE-2018-4970", "CVE-2018-4972", "CVE-2018-4973",
                 "CVE-2018-4975", "CVE-2018-4976", "CVE-2018-4981", "CVE-2018-4986",
                 "CVE-2018-4985", "CVE-2018-4953", "CVE-2018-4987", "CVE-2018-4965",
-                "CVE-2018-4993", "CVE-2018-4994", "CVE-2018-4960");
+                "CVE-2018-4993", "CVE-2018-4995", "CVE-2018-4960");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:17:32 +0200 (Thu, 17 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 12:13:36 +0530 (Tue, 15 May 2018)");
   script_name("Adobe Reader 2017 Security Updates(apsb18-09)-Windows");
 
