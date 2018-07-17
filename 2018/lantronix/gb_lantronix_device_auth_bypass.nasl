@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_auth_bypass.nasl 10493 2018-07-12 15:26:38Z mmartin $
+# $Id: gb_lantronix_device_auth_bypass.nasl 10515 2018-07-16 13:27:42Z asteins $
 #
 # Lantronix Devices Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107328");
-  script_version("$Revision: 10493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 17:26:38 +0200 (Thu, 12 Jul 2018) $");
+  script_version("$Revision: 10515 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-16 15:27:42 +0200 (Mon, 16 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 13:43:57 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,12 +49,12 @@ if( description )
   script_dependencies("gb_lantronix_device_version.nasl");
   script_mandatory_keys("lantronix_device/detected");
 
-  script_tag(name:"summary", value:"Lantronix devices do not require a password for TELNET access.");
+  script_tag(name:"summary", value:"Lantronix devices do not require a password for telnet access.");
   script_tag(name:"vuldetect", value:"Checks if the target device is vulnerable.");
   script_tag(name:"impact", value:"If not configured manually the device has no password authentication enabled by default.
   Attackers can gain access, gather infomation about the internal network and try to elevate their provileges.");
   script_tag(name:"affected", value:"Lantronixs Devices with telnet access.");
-  script_tag(name:"solution", value:"Consult the documentation of your device to set a proper username/password combination 
+  script_tag(name:"solution", value:"Consult the documentation of your device to set a proper username/password combination
   and/or restrict remote telnet access.");
 
   script_xref(name:"URL", value:"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12925");
@@ -64,31 +64,39 @@ if( description )
 
 include( "host_details.inc" );
 
-port = get_kb_item("lantronix_device/telnet/port");
+port = get_kb_item( "lantronix_device/telnet/port" );
 username = "login";
 
-if( ! get_kb_item("lantronix_device/telnet/" + port + "/access") ) {
-  
+if( ! get_kb_item( "lantronix_device/telnet/" + port + "/access" ) ) {
+
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
-    recv1 = recv( socket:soc, length:2048, timeout:10 );
+  if( ! soc )
+    exit( 0 );
+
+  recv1 = recv( socket:soc, length:2048, timeout:10 );
 
   if( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
     send( socket:soc, data:username + '\r\n' );
     recv2 = recv( socket:soc, length:2048, timeout:10 );
-    close(soc);
-    
+    close( soc );
+
     if( recv2 =~ "Local_.+>" ) {
-     
+
       vuln = TRUE;
-      set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );
-    }  
+      set_kb_item( name:"lantronix_device/telnet/" + port + "/access", value:TRUE );
+    }
   }
-} else { vuln = TRUE; }
+} else {
+  vuln = TRUE;
+}
+
+if( soc )
+  close( soc );
 
 if( vuln ) {
   report = "It was possible to gain telnet access with username '" + username + "' and no password.";
   security_message( port:port, data:report );
-  exit(0);
+  exit( 0 );
 }
+
 exit( 99 );

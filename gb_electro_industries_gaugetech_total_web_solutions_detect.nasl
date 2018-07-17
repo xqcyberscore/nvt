@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_electro_industries_gaugetech_total_web_solutions_detect.nasl 10443 2018-07-06 12:04:26Z santu $
+# $Id: gb_electro_industries_gaugetech_total_web_solutions_detect.nasl 10510 2018-07-16 10:53:51Z cfischer $
 #
 # Electro Industries GaugeTech Total Web Solutions Remote Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813628");
-  script_version("$Revision: 10443 $");
+  script_version("$Revision: 10510 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 14:04:26 +0200 (Fri, 06 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:53:51 +0200 (Mon, 16 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 11:28:37 +0530 (Wed, 04 Jul 2018)");
   script_name("Electro Industries GaugeTech Total Web Solutions Remote Detection");
 
@@ -51,7 +51,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

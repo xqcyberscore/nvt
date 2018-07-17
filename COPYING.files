@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 13 Jul 2018 16:23:41 +0200
+# Automatically created on:  Mon, 16 Jul 2018 19:40:06 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38920,6 +38920,10 @@
 2018/debian/deb_4240.nasl: GPLv2+
 2018/debian/deb_4241.nasl: GPLv2+
 2018/debian/deb_4242.nasl: GPLv2+
+2018/debian/deb_4243.nasl: GPLv2+
+2018/debian/deb_4244.nasl: GPLv2+
+2018/debian/deb_4245.nasl: GPLv2+
+2018/debian/deb_4246.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39254,6 +39258,14 @@
 2018/debian/deb_dla_1416.nasl: GPLv2+
 2018/debian/deb_dla_1417.nasl: GPLv2+
 2018/debian/deb_dla_1418.nasl: GPLv2+
+2018/debian/deb_dla_1419.nasl: GPLv2+
+2018/debian/deb_dla_1420.nasl: GPLv2+
+2018/debian/deb_dla_1421.nasl: GPLv2+
+2018/debian/deb_dla_1422.nasl: GPLv2+
+2018/debian/deb_dla_1425.nasl: GPLv2+
+2018/debian/deb_dla_1426.nasl: GPLv2+
+2018/debian/deb_dla_1427.nasl: GPLv2+
+2018/debian/deb_dla_1428.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40730,22 +40742,22 @@
 2018/nghttp2/gb_nghttp2_dos_vuln.nasl: GPLv2+
 2018/nlnetlabs/gb_unbound_dos_vuln.nasl: GPLv2+
 2018/nodejs/gb_malicious_npm_packages.nasl: GPLv2+
-2018/node.js/gb_nodejs_dns_rebinding_vuln_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dns_rebinding_vuln_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln01_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln01_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln02_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln02_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln03_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln03_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln04_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln04_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln05_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_dos_vuln05_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_http_content_length_spaces_vuln_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_http_content_length_spaces_vuln_win.nasl: GPLv2+
-2018/node.js/gb_nodejs_path_mod_regex_dos_vuln_macosx.nasl: GPLv2+
-2018/node.js/gb_nodejs_path_mod_regex_dos_vuln_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dns_rebinding_vuln_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dns_rebinding_vuln_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln01_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln01_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln02_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln02_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln03_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln03_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln04_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln04_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln05_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_dos_vuln05_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_http_content_length_spaces_vuln_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_http_content_length_spaces_vuln_win.nasl: GPLv2+
+2018/nodejs/gb_nodejs_path_mod_regex_dos_vuln_macosx.nasl: GPLv2+
+2018/nodejs/gb_nodejs_path_mod_regex_dos_vuln_win.nasl: GPLv2+
 2018/ntp/gb_ntp_auth_symmetric_passv_peering_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_dos_vuln_mar18.nasl: GPLv2+
@@ -41369,6 +41381,7 @@
 2018/wordpress/gb_wordpress_mult_vuln_apr18_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_jan18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_jan18_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_ninja-forms_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_photo-gallery_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_pixelyoursite_xss_vuln.nasl: GPLv2+
@@ -42970,7 +42983,9 @@ gb_tor_browser_detect_lin.nasl: GPLv2+
 gb_tor_detect_win.nasl: GPLv2+
 gb_torrent_trader_classic_detect.nasl: GPLv2+
 gb_tortoise_svn_detect.nasl: GPLv2+
+gb_tp_link_wireless_access_point_detect.nasl: GPLv2+
 gb_tp_link_wireless_n_router_detect.nasl: GPLv2+
+gb_tp_link_wireless_range_extender_detect.nasl: GPLv2+
 gb_trane_tracer_sc_detect.nasl: GPLv2+
 gb_trane_tracer_sc_web_detect.nasl: GPLv2+
 gb_trango_devices_detect.nasl: GPLv2+
@@ -58651,6 +58666,7 @@ gsf/2018/f5/gb_f5_big_ip_K90803619.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K91229003.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K94778122.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K95432245.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortianalyzer_FG-IR-17-019.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-17-305.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-014.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-022.nasl: GPLv2+
@@ -58658,6 +58674,7 @@ gsf/2018/fortinet/gb_fortimanager_FG-IR-17-305.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-006.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-014.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-022.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-019.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-160.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-231.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-245.nasl: GPLv2+
@@ -58765,10 +58782,18 @@ gsf/2018/juniper/gb_junos_jsa10851.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10852.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10854.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10855.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10857.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10858.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10859.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10860.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10861.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10863.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10864.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10865.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10866.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10868.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10869.nasl: GPLv2
+gsf/2018/juniper/gb_junos_jsa10871.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_mult_vuln_apr18.nasl: GPLv2+
 gsf/2018/juniper/gb_pulse_connect_secure_dos_vuln.nasl: GPLv2+

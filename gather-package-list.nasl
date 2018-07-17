@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10164 2018-06-12 11:48:11Z jschulte $
+# $Id: gather-package-list.nasl 10509 2018-07-16 10:19:56Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10164 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 13:48:11 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:19:56 +0200 (Mon, 16 Jul 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -219,11 +219,13 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
     "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
+    "DEB8.11", "cpe:/o:debian:debian_linux:8.11",
     "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
@@ -2745,6 +2747,21 @@ if( 'NAME="Arch Linux"' >< rls ) {
   set_kb_item( name:"ssh/login/arch_linux", value:TRUE );
   log_message( port:port, data:"We are able to login and detect that you are running Arch Linux. Note: Local Security Checks (LSC) are not available for this OS." );
   register_detected_os( os:"Arch Linux", oskey:"ArchLinux" );
+  exit( 0 );
+}
+
+if( "NAME=NixOS" >< rls || "ID=nixos" >< rls ) {
+  set_kb_item( name:"ssh/login/nixos", value:TRUE );
+  # e.g. VERSION_ID="18.09pre145524.2a8a5533d18"
+  version = eregmatch( pattern:'VERSION_ID="([^"]+)"', string:rls );
+  if( version[1] ) {
+    log_message( port:port, data:"We are able to login and detect that you are running NixOS " + version[1] + ". Note: Local Security Checks (LSC) are not available for this OS." );
+    register_and_report_os( os:"NixOS", version:version[1], cpe:"cpe:/o:nixos_project:nixos", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    log_message( port:port, data:"We are able to login and detect that you are running an unknown NixOS release. Note: Local Security Checks (LSC) are not available for this OS." );
+    register_and_report_os( os:"NixOS", cpe:"cpe:/o:nixos_project:nixos", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_unknown_os_banner( banner:'Unknown NixOS release.\n\ncat /etc/os-release: ' + rls, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+  }
   exit( 0 );
 }
 

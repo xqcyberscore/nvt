@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 10057 2018-06-04 07:56:17Z cfischer $
+# $Id: gather-package-list-docker-container.inc 10509 2018-07-16 10:19:56Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 10057 $
+# $Revision: 10509 $
 #
 ###############################################################################
 
@@ -148,11 +148,13 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
     "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
+    "DEB8.11", "cpe:/o:debian:debian_linux:8.11",
     "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
@@ -307,7 +309,13 @@ OS_CPE = make_array(
 
     # Arch Linux
     # nb: Arch Linux is a rolling release so there is no "real" version
-    "ArchLinux", "cpe:/o:archlinux:archlinux"
+    "ArchLinux", "cpe:/o:archlinux:archlinux",
+
+    # NixOS
+    # nb: NixOS has version strings like the following:
+    # VERSION_ID="18.09pre145524.2a8a5533d18"
+    # For now just register the CPE without the version...
+    "NixOS", "cpe:/o:nixos_project:nixos"
 );
 
 
@@ -1324,6 +1332,11 @@ function get_container_os( container_id, soc ) {
   # nb: Arch Linux is a rolling release so there is no "real" version
   if('NAME="Arch Linux"' >< rls) {
     ret = register_detected_docker_os(container_id:container_id, os:"Arch Linux", oskey:"ArchLinux");
+    return ret;
+  }
+
+  if( "NAME=NixOS" >< rls || "ID=nixos" >< rls ) {
+    ret = register_detected_docker_os(container_id:container_id, os:"NixOS", oskey:"NixOS");
     return ret;
   }
 

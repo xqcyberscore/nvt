@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10498 2018-07-13 07:23:55Z mmartin $
+# $Id: gb_lantronix_device_detect_telnet.nasl 10518 2018-07-16 15:14:30Z mmartin $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 09:23:55 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 10518 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-16 17:14:30 +0200 (Mon, 16 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,9 @@ banner = get_telnet_banner( port:port );
 # Default bannner, they might appear on e.g. 23/tcp or 9999/tcp
 
 if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
-    ( ( banner !~ "(IQinVision )|(IQEye )" )  && banner =~ 'Type HELP at the .* prompt for assistance' ) || ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
+    # nb: Both are covered in a separate Detection-NVT
+    ( ( banner !~ "(IQinVision )|(IQEye )" )  && banner =~ 'Type HELP at the .* prompt for assistance' ) ||
+    ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
     # Some branded devices not providing the "Lantronix" banner but still using their firmware.
     # nb: Only use / report if this was detected on the (on some devices) hardcoded port 9999/tcp.
     ( port == 9999 && "Software version " >< banner && "MAC address " >< banner ) ) {
@@ -105,32 +107,32 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
     access = FALSE;
 
     soc = open_sock_tcp( port );
-    if( ! soc )
-      exit( 0 );
+    if( soc ) {
 
-    recv1 = recv( socket:soc, length:2048, timeout:10 );
+      recv1 = recv( socket:soc, length:2048, timeout:10 );
 
-  if ( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
-     send( socket:soc, data:username + '\r\n' );
-     recv2 = recv( socket:soc, length:2048, timeout:10 );
+      if ( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
+        send( socket:soc, data:username + '\r\n' );
+        recv2 = recv( socket:soc, length:2048, timeout:10 );
  
-     if ( recv2 =~ "Local_.+>" ) {
-     access = TRUE;
-     set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );      
-    }
-  }
+        if ( recv2 =~ "Local_.+>" ) {
+          access = TRUE;
+          set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );      
+        }
+      }
 
-  if ( access ) {
-    send( socket:soc, data:'show server\r\n' );
-    recv3 = recv( socket:soc, length:2048, timeout:10 );
-    typerecv = eregmatch( pattern: "Ident String: ([a-zA-Z0-9]+)", string:bin2string( ddata:recv3, noprint_replacement:'' ) );
-   
-    if(!isnull(typerecv[1])){
-      type = typerecv[1];
+      if ( access ) {
+        send( socket:soc, data:'show server\r\n' );
+        recv3 = recv( socket:soc, length:2048, timeout:10 );
+        # Ident String: EPS100
+        typerecv = eregmatch( pattern: "Ident String: ([a-zA-Z0-9]+)", string:bin2string( ddata:recv3, noprint_replacement:'' ) );
+        if(!isnull(typerecv[1])){
+          type = typerecv[1];
+        }
+      }
+      close( soc );
     }
   }
-  
-  close( soc );
 
   set_kb_item( name:"lantronix_device/telnet/" + port + "/type", value:type );
   
@@ -142,8 +144,6 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
     }
     register_host_detail( name:"MAC", value:full_mac, desc:"Get the MAC Address via Lantronix Telnet banner" );
     replace_kb_item( name:"Host/mac_address", value:full_mac );
-    info["MAC"] = mac;
   }
- }
 }
 exit( 0 );

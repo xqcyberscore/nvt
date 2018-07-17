@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3707_1.nasl 10496 2018-07-13 06:18:05Z santu $
+# $Id: gb_ubuntu_USN_3707_1.nasl 10504 2018-07-13 14:34:38Z ckuersteiner $
 #
 # Ubuntu Update for ntp USN-3707-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843586");
-  script_version("$Revision: 10496 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:18:05 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 10504 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-13 16:34:38 +0200 (Fri, 13 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 05:56:31 +0200 (Tue, 10 Jul 2018)");
   script_cve_id("CVE-2018-7182", "CVE-2018-7183", "CVE-2018-7184", "CVE-2018-7185");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ntp USN-3707-1");
   script_tag(name:"summary", value:"Check the version of ntp");

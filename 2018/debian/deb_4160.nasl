@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4160.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
+# $Id: deb_4160.nasl 10505 2018-07-16 07:40:54Z asteins $
 #
 # Auto-generated from advisory DSA 4160-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704160");
-  script_version("$Revision: 9594 $");
+  script_version("$Revision: 10505 $");
   script_cve_id("CVE-2018-8754");
   script_name("Debian Security Advisory DSA 4160-1 (libevt - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-16 09:40:54 +0200 (Mon, 16 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-01 00:00:00 +0200 (Sun, 01 Apr 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
