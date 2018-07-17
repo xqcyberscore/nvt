@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 10526 2018-07-17 10:24:27Z ckuersteiner $
 #
 # Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability
 #
@@ -30,11 +30,12 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807741");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 10526 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:24:27 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-04-19 12:07:40 +0530 (Tue, 19 Apr 2016)");
+
   script_name("Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability");
 
   script_tag(name: "summary" , value:"This host is installed with ManageEngine
@@ -69,29 +70,23 @@ if (description)
   script_dependencies("gb_manage_engine_desktop_central_detect.nasl");
   script_mandatory_keys("ManageEngine/Desktop_Central/installed");
   script_require_ports("Services/www", 8040);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-meVer = "";
-mePort = "";
-
-## get the port
-if(!mePort = get_app_port(cpe:CPE)){
+if (!mePort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get the version
-if(!meVer = get_app_version(cpe:CPE, port:mePort)){
+if (!meVer = get_app_version(cpe:CPE, port:mePort))
   exit(0);
-}
 
-if(version_is_equal(version:meVer, test_version:"91099"))
-{
+if (version_is_equal(version:meVer, test_version:"91099")) {
   report = report_fixed_ver(installed_version:meVer, fixed_version:"92026");
   security_message(data:report, port:mePort);
   exit(0);
 }
+
+exit(99);

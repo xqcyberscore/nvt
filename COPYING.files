@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 16 Jul 2018 19:40:06 +0200
+# Automatically created on:  Tue, 17 Jul 2018 16:06:01 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39266,6 +39266,7 @@
 2018/debian/deb_dla_1426.nasl: GPLv2+
 2018/debian/deb_dla_1427.nasl: GPLv2+
 2018/debian/deb_dla_1428.nasl: GPLv2+
+2018/debian/deb_dla_1429.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40764,6 +40765,7 @@
 2018/ntp/gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_protocol_engine_dos_vuln.nasl: GPLv2+
 2018/nucom/gb_nucom_cve-2018-8755.nasl: GPLv2+
+2018/nuuo/gb_nuuo_nvr_default_credentials.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvrmini2_file_upload_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
@@ -58341,6 +58343,7 @@ gsf/2018/atlassian/gb_atlassian_jira_jraserver-67076.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67106.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67107.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67289-67290.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_jira_jraserver-67526.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_oauth_ssrf_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_xss_vuln.nasl: GPLv2+
 gsf/2018/barni/gb_master_ip_camera01_mult_vuln.nasl: GPLv2+
@@ -59158,6 +59161,7 @@ gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manage_engine_desktop_central_access_ctrl_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_desktop_central_info_discl_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manage_engine_eventlog_analyzer_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_exchange_reporter_rce_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln1.nasl: GPLv2+

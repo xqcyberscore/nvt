@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_manage_engine_desktop_central_detect.nasl 10526 2018-07-17 10:24:27Z ckuersteiner $
 #
 # ManageEngine Desktop Central MSP Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805717");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 10526 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:24:27 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Desktop Central MSP Version Detection");
@@ -51,48 +51,34 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-##Get ManageEngine Desktop Central MSP
 mePort = get_http_port(default:8040);
 
-##Send Request and Receive Response
 res = http_get_cache(port: mePort, item: "/configurations.do");
 
-#Confirm application
-if(">ManageEngine Desktop Central" >< res)
-{
-  ver = eregmatch(pattern:'id="buildNum" value="([0-9]+)', string:res);
-  if(!ver[1]){
-   meVer = "Unknown";
-  }
-  else {
-    meVer = ver[1];
-  }
+if (">ManageEngine Desktop Central" >< res) {
+  meVer = "unknown";
 
-  ## Set the KB
-  set_kb_item(name:"www/" + mePort + "/", value:meVer);
+  ver = eregmatch(pattern:'id="buildNum" value="([0-9]+)', string:res);
+  if (!isnull(ver[1]))
+    meVer = ver[1];
+
+#  set_kb_item(name:"www/" + mePort + "/", value:meVer);
   set_kb_item(name:"ManageEngine/Desktop_Central/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:meVer, exp:"^([0-9]+)", base:"cpe:/a:zohocorp:manageengine_desktop_central:");
-  if(isnull(cpe))
+  if(!cpe)
     cpe = "cpe:/a:zohocorp:manageengine_desktop_central";
 
   register_product(cpe:cpe, location:"/", port:mePort);
-  log_message(data: build_detection_report(app:"ManageEngine Desktop Central MSP",
-                                           version:meVer,
-                                           install:"/",
-                                           cpe:cpe,
-                                           concluded:ver[0]),
-                                           port:mePort);
+
+  log_message(data: build_detection_report(app:"ManageEngine Desktop Central MSP", version:meVer, install:"/",
+                                           cpe:cpe,  concluded:ver[0]),
+              port:mePort);
   exit(0);
 }
 

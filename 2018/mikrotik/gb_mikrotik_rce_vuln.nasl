@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_rce_vuln.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
+# $Id: gb_mikrotik_rce_vuln.nasl 10527 2018-07-17 11:34:48Z jschulte $
 #
 # MikroTik RouterOS RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140895");
-  script_version("$Revision: 9559 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-28 12:42:03 +0700 (Wed, 28 Mar 2018)");
+  script_version("$Revision: 10527 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 13:34:48 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-28 12:42:03 +0700 (Wed, 28 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_cve_id("CVE-2018-7719");
+  script_cve_id("CVE-2018-7445");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MikroTik RouterOS RCE Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_mikrotik_router_routeros_consolidation.nasl");
   script_mandatory_keys("mikrotik/detected");
 
-  script_tag(name: "summary", value: "MikroTik RouterOS is prone to a remote code execution vulnerability in the
+  script_tag(name:"summary", value:"MikroTik RouterOS is prone to a remote code execution vulnerability in the
 SMB service.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The buffer overflow was found in the MikroTik RouterOS SMB service when
+  script_tag(name:"insight", value:"The buffer overflow was found in the MikroTik RouterOS SMB service when
 processing NetBIOS session request messages. Remote attackers with access to the service can exploit this
 vulnerability and gain code execution on the system. The overflow occurs before authentication takes place, so it
 is possible for an unauthenticated remote attacker to exploit it.");
 
-  script_tag(name: "affected", value: "MikroTik RouterOS prior to version 6.41.3.");
+  script_tag(name:"affected", value:"MikroTik RouterOS prior to version 6.41.3.");
 
-  script_tag(name: "solution", value: "Update to version 6.41.3 or later.");
+  script_tag(name:"solution", value:"Update to version 6.41.3 or later.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/44290/");
-  script_xref(name: "URL", value: "https://www.coresecurity.com/advisories/mikrotik-routeros-smb-buffer-overflow");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44290/");
+  script_xref(name:"URL", value:"https://www.coresecurity.com/advisories/mikrotik-routeros-smb-buffer-overflow");
 
   exit(0);
 }

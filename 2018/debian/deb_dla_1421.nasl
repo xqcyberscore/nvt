@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1421.nasl 10506 2018-07-16 08:53:49Z cfischer $
+# $Id: deb_dla_1421.nasl 10520 2018-07-17 07:26:39Z cfischer $
 #
 # Auto-generated from advisory DLA 1421-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,17 +31,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891421");
-  script_version("$Revision: 10506 $");
+  script_version("$Revision: 10520 $");
   script_cve_id("CVE-2015-9096", "CVE-2016-2339", "CVE-2016-7798", "CVE-2017-0898", "CVE-2017-0899",
                 "CVE-2017-0900", "CVE-2017-0901", "CVE-2017-0902", "CVE-2017-0903", "CVE-2017-10784",
                 "CVE-2017-14033", "CVE-2017-14064", "CVE-2017-17405", "CVE-2017-17742", "CVE-2017-17790",
                 "CVE-2018-1000075", "CVE-2018-1000076", "CVE-2018-1000077", "CVE-2018-1000078", "CVE-2018-1000079",
                 "CVE-2018-6914", "CVE-2018-8777", "CVE-2018-8778", "CVE-2018-8779", "CVE-2018-8780");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1421-1] ruby2.1 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 10:53:49 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 09:26:39 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 00:00:00 +0200 (Mon, 16 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

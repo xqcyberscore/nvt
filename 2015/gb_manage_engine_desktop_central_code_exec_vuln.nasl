@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 10526 2018-07-17 10:24:27Z ckuersteiner $
 #
 # ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability
 #
@@ -30,11 +30,12 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805716");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 10526 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:24:27 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
+
   script_name("ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability");
 
   script_tag(name: "summary" , value:"This host is installed with ManageEngine
@@ -70,31 +71,23 @@ if (description)
   script_dependencies("gb_manage_engine_desktop_central_detect.nasl");
   script_mandatory_keys("ManageEngine/Desktop_Central/installed");
   script_require_ports("Services/www", 8383);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-meVer = "";
-mePort = "";
-
-## get the port
-if(!mePort = get_app_port(cpe:CPE)){
+if(!mePort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get the version
-if(!meVer = get_app_version(cpe:CPE, port:mePort)){
+if(!meVer = get_app_version(cpe:CPE, port:mePort))
   exit(0);
-}
 
-if(version_is_less(version:meVer, test_version:"90075"))
-{
-  report = 'Installed Version: ' + meVer + '\n' +
-           'Fixed Version:     90075 \n';
+if(version_is_less(version:meVer, test_version:"90075")) {
+  report = report_fixed_ver(installed_version: meVer, fixed_version: "90075");
   security_message(data:report, port:mePort);
   exit(0);
 }
+
+exit(0);
