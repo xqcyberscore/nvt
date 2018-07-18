@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: gb_policy_cpe_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # CPE-based Policy Check Violations
 #
@@ -55,14 +55,14 @@ if(description)
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_version("$Revision: 8897 $");
+  script_version("$Revision: 10530 $");
   script_name("CPE-based Policy Check Violations");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:43:01 +0700 (Mon, 06 Jan 2014)");
   script_category(ACT_END);
   script_family("Policy");
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
-  script_dependencies("gb_policy_cpe.nasl");
+  script_dependencies("Policy/gb_policy_cpe.nasl");
   script_mandatory_keys("policy/cpe/checkfor");
 
   script_tag(name:"summary", value:"Shows all CPEs which are either present or missing (depending on what to check for) from CPE-based Policy Check.");

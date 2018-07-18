@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_error.nasl 6327 2017-06-13 13:38:15Z cfischer $
+# $Id: gb_policy_orientierungshilfe_win10_error.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # AKIF Orientierungshilfe Windows 10: Fehler
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108081");
-  script_version("$Revision: 6327 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 15:38:15 +0200 (Tue, 13 Jun 2017) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_policy_orientierungshilfe_win10.nasl");
+  script_dependencies("Policy/gb_policy_orientierungshilfe_win10.nasl");
   script_mandatory_keys("policy/orientierungshilfe_win10/error");
 
   script_tag(name:"summary", value:"Listet alle Fehler der 'AKIF Orientierungshilfe Windows 10 Uberpruefung' auf.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 9508 2018-04-17 10:00:46Z ckuersteiner $
+# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 10535 2018-07-18 06:44:49Z asteins $
 #
 # ManageEngine OpManager Weak Encryption Algorithm Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140279");
-  script_version("$Revision: 9508 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-17 12:00:46 +0200 (Tue, 17 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-07 16:08:23 +0700 (Mon, 07 Aug 2017)");
+  script_version("$Revision: 10535 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-18 08:44:49 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-07 16:08:23 +0700 (Mon, 07 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2015-9107");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("ManageEngine OpManager Weak Encryption Algorithm Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_manage_engine_opmanager_detect.nasl");
   script_mandatory_keys("OpManager/installed");
 
-  script_tag(name: "summary", value: "ManageEngine OpManager is prone to a weak encryption algorithm
+  script_tag(name:"summary", value:"ManageEngine OpManager is prone to a weak encryption algorithm
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Zoho ManageEngine OpManager uses a custom encryption algorithm to protect
+  script_tag(name:"insight", value:"Zoho ManageEngine OpManager uses a custom encryption algorithm to protect
 the credential used to access the monitored devices. The implemented algorithm doesn't use a per-system key or
 even a salt. Therefore, it's possible to create a universal decryptor.");
 
-  script_tag(name: "affected", value: "ManageEngine OpManager version 11 until 12.2.");
+  script_tag(name:"affected", value:"ManageEngine OpManager version 11 until 12.2.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 17th April, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://github.com/theguly/DecryptOpManager");
+  script_xref(name:"URL", value:"https://github.com/theguly/DecryptOpManager");
 
   exit(0);
 }

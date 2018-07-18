@@ -28,8 +28,8 @@ tag_summary = "This plugin runs phrasen/drescher to find SSH accounts & password
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80106"); 
- script_version("$Revision: 9367 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:37:00 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10530 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
  script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
  name = "phrasen|drescher: SSH";
  script_name(name);
@@ -43,7 +43,7 @@ if(description)
  script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
  script_family("Brute force attacks");
  script_require_ports("Services/ssh", 22);
- script_dependencies("toolcheck.nasl", "remote-pwcrack-options.nasl", "find_service.nasl");
+ script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "find_service.nasl");
  script_mandatory_keys("Tools/Present/pd", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

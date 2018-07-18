@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_docker_skipped.nasl 5107 2017-01-25 17:31:44Z mime $
+# $Id: gb_policy_docker_skipped.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Docker Compliance Check: Skipped
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140125");
-  script_version("$Revision: 5107 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 18:31:44 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name: "creation_date", value: "2017-01-19 11:24:37 +0100 (Thu, 19 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_policy_docker.nasl");
+  script_dependencies("Policy/gb_policy_docker.nasl");
   script_mandatory_keys("docker/docker_test/has_skipped_tests","docker/docker_test/report_skipped");
 
   script_tag(name: "summary", value: "Lists all the Docker Compliance Policy Checks errors.");

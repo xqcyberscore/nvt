@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_tls_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: gb_policy_tls_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # SSL/TLS: Policy Check Violations
 #
@@ -47,7 +47,7 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105780");
-  script_version("$Revision: 8897 $");
+  script_version("$Revision: 10530 $");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,13 +55,13 @@ if(description)
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 14:30:12 +0200 (Tue, 28 Jun 2016)");
   script_name("SSL/TLS: Policy Check Violations");
   script_category(ACT_END);
   script_family("Policy");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_policy_tls.nasl");
+  script_dependencies("Policy/gb_policy_tls.nasl");
   script_mandatory_keys("tls_policy/perform_test", "ssl_tls/port");
 
   script_tag(name:"summary", value:"SSL/TLS Policy Check Violations");

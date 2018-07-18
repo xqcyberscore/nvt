@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry_ok.nasl 7811 2017-11-17 11:52:16Z cfischer $
+# $Id: policy_registry_ok.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Windows Registry Check: OK 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105989");
-  script_version("$Revision: 7811 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 12:52:16 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 12:45:19 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("policy_registry.nasl");
+  script_dependencies("Policy/policy_registry.nasl");
   script_mandatory_keys("policy/registry/started");
 
   script_tag(name:"summary", value:"List registry entries which pass the registry

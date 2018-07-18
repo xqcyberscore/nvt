@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance_error.nasl 7784 2017-11-16 08:42:29Z cfischer $
+# $Id: policy_cisco_ios_compliance_error.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Cisco IOS Compliance Check: Error
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106434");
-  script_version("$Revision: 7784 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name: "creation_date", value: "2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("policy_cisco_ios_compliance.nasl");
+  script_dependencies("Policy/policy_cisco_ios_compliance.nasl");
   script_mandatory_keys("policy/cisco_ios_compliance/error");
 
   script_tag(name: "summary", value: "Lists all errors from the Cisco IOS Compliance Policy Check.");

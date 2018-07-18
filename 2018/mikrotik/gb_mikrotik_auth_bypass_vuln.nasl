@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_auth_bypass_vuln.nasl 9939 2018-05-23 14:50:30Z cfischer $
+# $Id: gb_mikrotik_auth_bypass_vuln.nasl 10535 2018-07-18 06:44:49Z asteins $
 #
 # MikroTik RouterOS 6.41.4 Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113156");
-  script_version("$Revision: 9939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10535 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-18 08:44:49 +0200 (Wed, 18 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 13:17:37 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if the target is a vulnerable device running a vulnerable firmware version.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to gain access to the target host's internal network.");
   script_tag(name:"affected", value:"MikroTik RouterOS through version 6.41.4");
-  script_tag(name:"solution", value:"No solution or patch is available as of 17th April, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://janis-streib.de/2018/04/11/mikrotik-openvpn-security/");

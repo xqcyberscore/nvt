@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_error.nasl 7828 2017-11-20 11:35:04Z cfischer $
+# $Id: gb_policy_cpe_error.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # CPE-based Policy Check Error
 #
@@ -29,14 +29,14 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108291");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7828 $");
+  script_version("$Revision: 10530 $");
   script_name("CPE-based Policy Check Error");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 12:35:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 11:42:20 +0100 (Mon, 20 Nov 2017)");
   script_category(ACT_END);
   script_family("Policy");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_policy_cpe.nasl");
+  script_dependencies("Policy/gb_policy_cpe.nasl");
   script_mandatory_keys("policy/cpe/invalid_line/found");
 
   script_tag(name:"summary", value:"Shows all CPEs from the CPE-based Policy Check which have an invalid syntax.");

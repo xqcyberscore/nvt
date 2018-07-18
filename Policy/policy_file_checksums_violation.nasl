@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: policy_file_checksums_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # List File Checksum Violations
 #
@@ -47,7 +47,7 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103942");
-  script_version("$Revision: 8897 $");
+  script_version("$Revision: 10530 $");
   script_name("File Checksums: Violations");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
@@ -56,12 +56,12 @@ if(description)
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 10:56:19 +0200 (Wed, 21 Aug 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_dependencies("policy_file_checksums.nasl");
+  script_dependencies("Policy/policy_file_checksums.nasl");
   script_mandatory_keys("policy/file_checksums/started");
 
   script_tag(name:"summary", value:"List files with checksum violations");

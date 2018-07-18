@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.3.nasl 8925 2018-02-22 13:39:46Z emoss $
+# $Id: GSHB_SYS.2.2.3.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # IT-Grundschutz Baustein: SYS.2.2.3 Clients unter Windows 10
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109034");
-  script_version("$Revision: 8925 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 14:39:46 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 07:42:28 +0200 (Wed, 13 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
-  script_tag(name:"qod", value:"97");  
+  script_tag(name:"qod", value:"97");
   script_name('SYS.2.2.3 Clients unter Windows 10');
   script_xref(name : "URL" , value : " https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_3_Clients_unter_Windows_10.html ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
-  script_tag(name : "summary" , value : 'Ziel dieses Bausteins ist der Schutz von Informationen, 
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
+  script_tag(name : "summary" , value : 'Ziel dieses Bausteins ist der Schutz von Informationen,
       die durch und auf Windows 10-Clients verarbeiten werden.');
-  
+
   exit(0);
 }
 
@@ -64,7 +64,7 @@ oder es konnte keine Verbindung zum Host hergestellt werden.");
 }
 
 host    = get_host_ip();
-usrname = kb_smb_login(); 
+usrname = kb_smb_login();
 domain  = kb_smb_domain();
 if( domain ){
   usrname_handle = domain + '\\' + usrname;
@@ -196,7 +196,7 @@ if( ! SeDenyInteractiveLogonRight ){
     line = split(line, sep:'|', keep:FALSE);
     if( tolower(line[0]) == 'accountlist' ){
       continue;
-    }   
+    }
 
     for( y=0; y<=max_index(line)-3; y++ ){
       desc += line[y];
@@ -204,8 +204,8 @@ if( ! SeDenyInteractiveLogonRight ){
         desc += '\n';
       }else{
         desc += ', ';
-      }   
-    }   
+      }
+    }
   }
 }
 
@@ -220,7 +220,7 @@ if( ! SeInteractiveLogonRight ){
     line = split(line, sep:'|', keep:FALSE);
     if( tolower(line[0]) == 'accountlist' ){
       continue;
-    }   
+    }
 
     for( y=0; y<=max_index(line)-3; y++ ){
       desc += line[y];
@@ -228,8 +228,8 @@ if( ! SeInteractiveLogonRight ){
         desc += '\n';
       }else{
         desc += ', ';
-      }   
-    }   
+      }
+    }
   }
 }
 
@@ -755,13 +755,13 @@ if( SecureBoot == "1" ){
   }else{
     desc += 'Der geschützte Modus für LSASS ist nicht aktiviert. Dieser sollte aktiviert und der Status bei Systemstart überwacht werden.\n';
     result = 'nicht erfüllt';
-  } 
+  }
 }else{
   BootOption = win_cmd_exec(cmd:'type C:\\Windows\\Panther\\setupact.log|find /i "Detected boot environment"', password:passwd, username:usrname_WmiCmd);
   if( BootOption ){
     UEFI = ereg(string:BootOption, pattern:"Detected boot environment: (EFI|UEFI)", icase:TRUE, multiline:TRUE);
   }
-  
+
   desc += 'SecureBoot ist deaktiviert.\n';
   if( UEFI ){
     desc += 'Der Host ist ein UEFI-basiertes System. Dementsprechend sollte SecureBoot aktiviert werden.\n';

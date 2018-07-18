@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bad_ssh_host_keys.nasl 9748 2018-05-07 13:37:23Z cfischer $
+# $Id: gb_bad_ssh_host_keys.nasl 10533 2018-07-17 18:58:21Z cfischer $
 #
 # Known SSH Host Key
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105497");
-  script_version("$Revision: 9748 $");
+  script_version("$Revision: 10533 $");
   script_name("Known SSH Host Key");
   script_cve_id("CVE-2015-6358", "CVE-2015-7255", "CVE-2015-7256", "CVE-2015-7276", "CVE-2015-8251",
-                "CVE-2015-8260", "CVE-2009-4510"); # TODO: , "CVE-2008-0166"
+                "CVE-2015-8260", "CVE-2009-4510", "CVE-2008-0166");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 15:37:23 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 20:58:21 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 13:21:28 +0100 (Tue, 05 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -46,9 +46,9 @@ if(description)
   script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/566724");
   script_xref(name:"URL", value:"http://blogs.intevation.de/thomas/hetzner-duplicate-ed25519-ssh-host-keys/");
   script_xref(name:"URL", value:"https://www.vsecurity.com/download/advisories/20100409-2.txt");
-  #script_xref(name:"URL", value:"https://wiki.debian.org/SSLkeys");
-  #script_xref(name:"URL", value:"https://www.debian.org/security/2008/dsa-1571");
-  #script_xref(name:"URL", value:"https://github.com/g0tmi1k/debian-ssh");
+  script_xref(name:"URL", value:"https://wiki.debian.org/SSLkeys");
+  script_xref(name:"URL", value:"https://www.debian.org/security/2008/dsa-1571");
+  script_xref(name:"URL", value:"https://github.com/g0tmi1k/debian-ssh");
 
   script_tag(name:"summary", value:"The remote host uses a default SSH host key that is shared among
   multiple installations.");
@@ -63,10 +63,10 @@ if(description)
   The most common fingerprint was found to be shared among 245.000 installations where the least common was
   still present 321 times.
 
+  - SSH host keys generated with a vulnerable OpenSSL version on Debian and derivates (CVE-2008-0166).
+
   - Devices of Multiple Vendors (Cisco, ZTE, ZyXEL, OpenStage, OpenScape, TANDBERG) using hardcoded SSH host keys
   (CVE-2015-6358, CVE-2015-7255, CVE-2015-7256, CVE-2015-7276, CVE-2015-8251, CVE-2015-8260, CVE-2009-4510).");
-
-  # - SSH host keys generated with a vulnerable OpenSSL version on Debian and derivates (CVE-2008-0166).
 
   script_tag(name:"vuldetect", value:"Checks if the remote host responds with a known SSH host key.");
 
@@ -97,10 +97,34 @@ foreach algo( ssh_host_key_algos ) {
     _report += algo + "  " + host_key + '\n';
     bhk_found = TRUE;
   }
+
+  # Those two are workarounds as we can't include such huge lists into NASL/NVTs.
+  # The greps will return something like "dd:f3:cc:a5:94:95:d3:75:45:be:26:be:1b:13:e0:05"
+  # (including the double apostrophe) if a match was found.
+  # nb: Make sure to update the path below if moving the includes or this NVT around.
+  if( algo == "ssh-rsa" ) {
+    argv = make_list( "grep", host_key,
+                      "../bad_rsa_ssh_host_keys.txt" );
+    res = pread( cmd:"grep", argv:argv, cd:FALSE );
+    if( res == '"' + host_key + '"' ) {
+      _report += algo + "  " + host_key + '\n';
+      bhk_found = TRUE;
+    }
+  }
+
+  if( algo == "ssh-dss" ) {
+    argv = make_list( "grep", host_key,
+                      "../bad_dsa_ssh_host_keys.txt" );
+    res = pread( cmd:"grep", argv:argv, cd:FALSE );
+    if( res == '"' + host_key + '"' ) {
+      _report += algo + "  " + host_key + '\n';
+      bhk_found = TRUE;
+    }
+  }
 }
 
 if( bhk_found ) {
-  report = 'The following known hosts key(s) were found:\n' + _report;
+  report = 'The following known SSH hosts key(s) were found:\n' + _report;
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_BSI-TR-03116-4_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: policy_BSI-TR-03116-4_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # List negative results from Policy for BSI-TR-03116-4 Test
 #
@@ -46,8 +46,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96179");
-  script_version("$Revision: 8897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-03-07 09:23:42 +0100 (Mon, 07 Mar 2016)");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("policy_BSI-TR-03116-4.nasl");
+  script_dependencies("Policy/policy_BSI-TR-03116-4.nasl");
   script_mandatory_keys("policy/BSI-TR-03116-4/fail", "ssl_tls/port");
 
   script_tag(name:"summary", value:"List negative results from Policy for BSI-TR-03116-4 Test");

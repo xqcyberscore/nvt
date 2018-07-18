@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_docker_violation.nasl 8897 2018-02-21 09:04:23Z cfischer $
+# $Id: gb_policy_docker_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Docker Compliance Check: Failed
 #
@@ -47,8 +47,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140122");
-  script_version("$Revision: 8897 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-21 10:04:23 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name: "creation_date", value: "2017-01-19 10:35:52 +0100 (Thu, 19 Jan 2017)");
   if( use_severity ) {
     script_tag(name:"cvss_base", value:"10.0");
@@ -67,7 +67,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_policy_docker.nasl");
+  script_dependencies("Policy/gb_policy_docker.nasl");
   script_mandatory_keys("docker/docker_test/has_failed_tests","docker/docker_test/report_failed");
 
   script_tag(name: "summary", value: "Lists all the Docker Compliance Policy Checks which did NOT pass.");

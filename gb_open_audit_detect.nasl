@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_audit_detect.nasl 9599 2018-04-25 08:48:11Z ckuersteiner $
+# $Id: gb_open_audit_detect.nasl 10538 2018-07-18 10:58:40Z santu $
 #
 # Opmantek Open-AudIT Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141024");
-  script_version("$Revision: 9599 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-25 10:48:11 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 10538 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-04-25 14:59:28 +0700 (Wed, 25 Apr 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,12 +64,13 @@ include("http_keepalive.inc");
 port = get_http_port(default: 80);
 
 url = '/omk/oae/login';
+
 res = http_get_cache(port: port, item: url);
 
-if ("<title>Opmantek</title>" >< res && res =~"Open-AudIT (Community|Enterprise)?") {
+if ("<title>Opmantek</title>" >< res && res =~"Open-AudIT (Community|Enterprise|Professional)?") {
   version = "unknown";
 
-  vers = eregmatch(pattern: "Open-AudIT( Community|Enterprise)? ([0-9.]+)", string: res);
+  vers = eregmatch(pattern: "Open-AudIT( Community| Enterprise| Professional)? ([0-9.]+)", string: res);
   if (!isnull(vers[2])) {
     version = vers[2];
     concUrl = url;

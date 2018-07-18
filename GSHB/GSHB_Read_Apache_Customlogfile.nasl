@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Customlogfile.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_Read_Apache_Customlogfile.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Reading Apache Logiles (win)
 #
@@ -29,8 +29,8 @@ tag_summary = "Reading Apache CustomLogfiles";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96022");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
    
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_Apache.nasl", "GSHB_Read_Apache_Config.nasl");
+  script_dependencies("secpod_reg_enum.nasl", "GSHB/GSHB_WMI_Apache.nasl", "GSHB/GSHB_Read_Apache_Config.nasl");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

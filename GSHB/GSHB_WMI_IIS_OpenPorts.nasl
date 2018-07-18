@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_IIS_OpenPorts.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: GSHB_WMI_IIS_OpenPorts.nasl 10530 2018-07-17 14:15:42Z asteins $
 #
 # Test over WMI, if Microsoft IIS installed an list open Ports (win)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96029");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 10530 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,13 +40,13 @@ if(description)
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl", "secpod_open_tcp_ports.nasl");
+  script_dependencies("secpod_reg_enum.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "secpod_open_tcp_ports.nasl");
 
   tag_summary = "Test over WMI, if Microsoft IIS installed an list open Ports:";
 
   script_tag(name:"summary", value:tag_summary);
 
-  script_tag(name:"qod_type", value:"registry");  
+  script_tag(name:"qod_type", value:"registry");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink-dir815_mult_vuln_2.nasl 9509 2018-04-17 10:59:32Z asteins $
+# $Id: gb_dlink-dir815_mult_vuln_2.nasl 10535 2018-07-18 06:44:49Z asteins $
 #
 # D-Link DIR-815 Rev.B Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112258");
-  script_version("$Revision: 9509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 12:59:32 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 10535 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-18 08:44:49 +0200 (Wed, 18 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 10:05:29 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if( description )
 
   - An attacker can use the XSS to target which is an authenticated user in order to steal the authentication cookies. (CVE-2018-10107, CVE-2018-10108)");
   script_tag(name:"affected", value:"D-Link DIR-815 Rev.B up to and including version 2.07.B01");
-  script_tag(name:"solution", value:"No solution or patch is available as of 17th April, 2018. Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2018. Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/iceMatcha/Some-Vulnerabilities-of-D-link-Dir815/blob/master/Vulnerabilities_Summary.md");
 
