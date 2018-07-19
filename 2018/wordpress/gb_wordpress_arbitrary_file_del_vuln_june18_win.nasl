@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl 10544 2018-07-19 11:20:39Z asteins $
 #
 # WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813454");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 10544 $");
   script_cve_id("CVE-2018-12895");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-19 13:20:39 +0200 (Thu, 19 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 12:51:49 +0530 (Wed, 27 Jun 2018)");
   script_name("WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)");
 
@@ -47,7 +47,7 @@ if(description)
   sanitization of user input data in the 'wp-includes/post.php' script before
   passing on to a file deletion function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to delete any file of the wordPress installation and any other file
   on the server on which the PHP process user has the proper permissions to delete.
   Also capability of arbitrary file deletion can be used to circumvent some
@@ -55,17 +55,16 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"All wordPress versions through version 4.9.6
+  script_tag(name:"affected", value:"All wordPress versions through version 4.9.6
   on Windows");
 
-  script_tag(name: "solution" , value:"No known solution is available as of
-  27th June, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 4.9.7.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "https://blog.ripstech.com/2018/wordpress-file-delete-to-code-execution");
-  script_xref(name : "URL" , value : "https://wordpress.org/download");
+  script_xref(name:"URL", value:"https://blog.ripstech.com/2018/wordpress-file-delete-to-code-execution");
+  script_xref(name:"URL", value:"https://wordpress.org/download");
+  script_xref(name:"URL", value:"https://wordpress.org/news/2018/07/wordpress-4-9-7-security-and-maintenance-release/");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -88,7 +87,7 @@ path = infos['location'];
 
 if(version_is_less_equal(version:vers, test_version:"4.9.6"))
 {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"4.9.7", install_path:path);
   security_message(data:report, port:wordPort);
   exit(0);
 }

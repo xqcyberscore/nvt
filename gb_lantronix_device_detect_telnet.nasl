@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10518 2018-07-16 15:14:30Z mmartin $
+# $Id: gb_lantronix_device_detect_telnet.nasl 10541 2018-07-19 07:53:28Z mmartin $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10518 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 17:14:30 +0200 (Mon, 16 Jul 2018) $");
+  script_version("$Revision: 10541 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-19 09:53:28 +0200 (Thu, 19 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,7 +63,7 @@ banner = get_telnet_banner( port:port );
 
 if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
     # nb: Both are covered in a separate Detection-NVT
-    ( ( banner !~ "(IQinVision )|(IQEye )" )  && banner =~ 'Type HELP at the .* prompt for assistance' ) ||
+    ( ( banner !~ "(IQinVision|IQEye) " ) && banner =~ 'Type HELP at the .* prompt for assistance' ) ||
     ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< banner && "Setup Mode" >< banner ) ) ) ||
     # Some branded devices not providing the "Lantronix" banner but still using their firmware.
     # nb: Only use / report if this was detected on the (on some devices) hardcoded port 9999/tcp.
@@ -132,6 +132,9 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
       }
       close( soc );
     }
+    # nb: We don't want to report other devices which might have the same "Type HELP"
+    # banner as Lantronix devices.
+    exit( 0 );
   }
 
   set_kb_item( name:"lantronix_device/telnet/" + port + "/type", value:type );

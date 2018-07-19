@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 18 Jul 2018 14:48:28 +0200
+# Automatically created on:  Thu, 19 Jul 2018 13:51:45 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38723,6 +38723,13 @@
 2018/centos/gb_CESA-2018_1979_pki-base_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_1997_libvirt_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_2001_qemu-img_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2112_firefox_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2113_firefox_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2123_python_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2162_qemu-guest-agent_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2164_kernel_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2180_gnupg2_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2181_gnupg2_centos7.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_5392896132_dhcp_fc26.nasl: GPLv2+
 2018/centos/gb_fedora_2018_98684f429b_xen_fc27.nasl: GPLv2+
@@ -38733,6 +38740,8 @@
 2018/centreon/gb_centreon_mult_vuln_jun18.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_lin.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_win.nasl: GPLv2+
+2018/clamav/gb_clamav_mult_vuln_july18_lin.nasl: GPLv2+
+2018/clamav/gb_clamav_mult_vuln_july18_win.nasl: GPLv2+
 2018/clamav/gb_clamav_xar_n_pdf_files_mult_vuln_lin.nasl: GPLv2+
 2018/clamav/gb_clamav_xar_n_pdf_files_mult_vuln_win.nasl: GPLv2+
 2018/clipbucket/gb_clipbucket_mult_vuln.nasl: GPLv2+
@@ -38925,6 +38934,7 @@
 2018/debian/deb_4244.nasl: GPLv2+
 2018/debian/deb_4245.nasl: GPLv2+
 2018/debian/deb_4246.nasl: GPLv2+
+2018/debian/deb_4247.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40424,6 +40434,7 @@
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_flash_player_for_ie_edge_apsb18-05.nasl: GPLv2+
 2018/microsoft/gb_microsoft_windows_unquoted_path_vulnerabilities.nasl: GPLv2+
+2018/microsoft/gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl: GPLv2+
 2018/microsoft/gb_ms_defender_malware_prot_eng_rce_vuln_apr18.nasl: GPLv2+
 2018/microsoft/gb_ms_ie_kb4089187.nasl: GPLv2+
 2018/microsoft/gb_ms_ie_mult_vuln_kb4056568.nasl: GPLv2+
@@ -40638,6 +40649,7 @@
 2018/microsoft/gb_orangeworm_kwampirs_trojan_detect.nasl: GPLv2+
 2018/microsoft/gb_powershell_editor_services_rce_vuln.nasl: GPLv2+
 2018/microsoft/gb_spectre_variant2_branch_tar_inj_update_disable.nasl: GPLv2+
+2018/microsoft/gb_windows_mail_client_info_disc_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_auth_bypass_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_dos_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_rce_vuln.nasl: GPLv2+
@@ -40646,6 +40658,7 @@
 2018/milesight/gb_milesight_network_camera_default_credentials.nasl: GPLv2+
 2018/miniupnp/gb_miniupnp_dos_vuln.nasl: GPLv2+
 2018/mit/gb_kerberos5_mult_vuln.nasl: GPLv2+
+2018/mobotix/gb_mobotix_webcam_default_credentials.nasl: GPLv2+
 2018/modx/gb_modx_cms_xss_vuln.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_lin.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_win.nasl: GPLv2+
@@ -40745,6 +40758,7 @@
 2018/nagiosxi/gb_nagios_xi_mult_vuln.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_lin.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl: GPLv2+
+2018/nextcloud/gb_nextcloud_server_image_preview_access_control_vuln_lin.nasl: GPLv2+
 2018/nghttp2/gb_nghttp2_dos_vuln.nasl: GPLv2+
 2018/nlnetlabs/gb_unbound_dos_vuln.nasl: GPLv2+
 2018/nodejs/gb_malicious_npm_packages.nasl: GPLv2+
@@ -41027,6 +41041,9 @@
 2018/oracle/gb_oracle_virtualbox_jan2018-3236628_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_jan2018-3236628_macosx.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_jan2018-3236628_win.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_jul2018-4258247_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_jul2018-4258247_macosx.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_jul2018-4258247_win.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_01.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl: GPLv2+
 2018/otrs/gb_otrs_info_disc_vuln.nasl: GPLv2+
@@ -41362,6 +41379,7 @@
 2018/ubuntu/gb_ubuntu_USN_3714_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3715_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3716_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3717_1.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
@@ -42486,6 +42504,7 @@ gb_minihttpd_detect.nasl: GPLv2+
 gb_miniupnp_detect_tcp.nasl: GPLv2+
 gb_miniupnp_detect_udp.nasl: GPLv2+
 gb_mitel_enterprise_manager_detect.nasl: GPLv2+
+gb_mobotix_webcam_detect.nasl: GPLv2+
 gb_modbus_detect.nasl: GPLv2+
 gb_modx_cms_detect.nasl: GPLv2+
 gb_moinmoin_wiki_detect.nasl: GPLv2+
@@ -58631,6 +58650,7 @@ gsf/2018/f5/gb_f5_big_ip_K17403481.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K19634255.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20134942.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
@@ -58663,13 +58683,16 @@ gsf/2018/f5/gb_f5_big_ip_K37442533.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K42142782.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43267483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44923228.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K45320419.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K45325728.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K46121888.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K46940010.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K48224824.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50254952.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
@@ -58689,6 +58712,7 @@ gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62201098.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62750376.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K64552448.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K70321874.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
@@ -58698,6 +58722,7 @@ gsf/2018/f5/gb_f5_big_ip_K75543432.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K77508618.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K77671456.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K78131906.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K82038789.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K82570157.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K83043359.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K84024430.nasl: GPLv2+
