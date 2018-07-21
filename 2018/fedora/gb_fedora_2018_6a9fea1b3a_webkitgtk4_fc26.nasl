@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6a9fea1b3a_webkitgtk4_fc26.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_fedora_2018_6a9fea1b3a_webkitgtk4_fc26.nasl 10557 2018-07-20 13:48:28Z asteins $
 #
 # Fedora Update for webkitgtk4 FEDORA-2018-6a9fea1b3a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874592");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10557 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 05:08:47 +0200 (Tue, 22 May 2018)");
   script_cve_id("CVE-2018-4200");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for webkitgtk4 FEDORA-2018-6a9fea1b3a");
   script_tag(name:"summary", value:"Check the version of webkitgtk4");

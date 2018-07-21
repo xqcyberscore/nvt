@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lsc_options.nasl 10184 2018-06-14 07:21:05Z cfischer $
+# $Id: lsc_options.nasl 10559 2018-07-20 14:21:03Z cfischer $
 #
 # This script allows to set some Options for LSC.
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100509");
-  script_version("$Revision: 10184 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:21:05 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10559 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:21:03 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,9 +45,33 @@ if(description)
 
   script_add_preference(name:"Enable Detection of Portable Apps on Windows", type:"checkbox", value:"no");
 
+  script_add_preference(name:"Allow the usage of win_cmd_exec for remote commands on Windows", type:"checkbox", value:"yes");
+
   script_tag(name:"summary", value:"This script allows users to set some Options for Local Security Checks.
 
   These data are stored in the knowledge base and used by other tests.");
+
+  script_tag(name:"insight", value:"- Also use 'find' command to search for Applications:
+
+  Setting this option to 'no' disables the use of the 'find' command via SSH against Unixoide targets. This reduces scan
+  time but might reduce detection coverage of e.g. local installed applications.
+
+  - Descend directories on other filesystem (don't add -xdev to find):
+
+  During the scan 'find' is used to detect e.g. local installed applications via SSH on Unixoide targets. This command is descending on
+  special (network-)filesystems like NFS, SMB or similar mounted on the target host by default. Setting this option to 'no' might reduce the
+  scan time if network based filesystems are not searched for installed applications.
+
+  - Enable Detection of Portable Apps on Windows:
+
+  Setting this option to 'yes' enables the Detection of Portable Apps on Windows via WMI. Enabling this option might increase scan time
+  as well as load on the target host.
+
+  - Allow the usage of win_cmd_exec for remote commands on Windows:
+
+  Some AV solutions might block remote commands called on the remote host via a scanner internal 'win_cmd_exe' function. Setting
+  this option to 'no' disables the usage of this function (as a workaround for issues during the scan) with the risk of lower
+  scan coverage against Windows targets.");
 
   script_tag(name:"qod_type", value:"general_note");
 
@@ -57,6 +81,7 @@ if(description)
 find_enabled       = script_get_preference("Also use 'find' command to search for Applications");
 nfs_search_enabled = script_get_preference("Descend directories on other filesystem (don't add -xdev to find)");
 search_portable    = script_get_preference("Enable Detection of Portable Apps on Windows");
+allow_win_cmd_exec = script_get_preference("Allow the usage of win_cmd_exec for remote commands on Windows");
 
 if( find_enabled )
   set_kb_item( name:"ssh/lsc/enable_find", value:find_enabled );
@@ -66,5 +91,8 @@ if( nfs_search_enabled )
 
 if( search_portable && "yes" >< search_portable )
   set_kb_item( name:"win/lsc/search_portable_apps", value:TRUE );
+
+if( allow_win_cmd_exec && "no" >< allow_win_cmd_exec )
+  set_kb_item( name:"win/lsc/disallow_win_cmd_exec", value:TRUE );
 
 exit( 0 );

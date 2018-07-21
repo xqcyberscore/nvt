@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208849_02.nasl 10124 2018-06-07 13:56:22Z santu $
+# $Id: gb_apple_macosx_HT208849_02.nasl 10557 2018-07-20 13:48:28Z asteins $
 #
 # Apple MacOSX Security Updates(HT208849)-02
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813511");
-  script_version("$Revision: 10124 $");
+  script_version("$Revision: 10557 $");
   script_cve_id("CVE-2018-4211", "CVE-2018-4249", "CVE-2018-4159", "CVE-2018-4193");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:56:22 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-04 14:09:07 +0530 (Mon, 04 Jun 2018)");
   script_name("Apple MacOSX Security Updates(HT208849)-02");
 

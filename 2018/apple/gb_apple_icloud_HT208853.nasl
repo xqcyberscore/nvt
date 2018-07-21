@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT208853.nasl 10124 2018-06-07 13:56:22Z santu $
+# $Id: gb_apple_icloud_HT208853.nasl 10557 2018-07-20 13:48:28Z asteins $
 #
 # Apple iCloud Security Updates(HT208853)
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813514");
-  script_version("$Revision: 10124 $");
+  script_version("$Revision: 10557 $");
   script_cve_id("CVE-2018-4224", "CVE-2018-4225", "CVE-2018-4226", "CVE-2018-4232", 
                 "CVE-2018-4192", "CVE-2018-4214", "CVE-2018-4204", "CVE-2018-4246", 
                 "CVE-2018-4200", "CVE-2018-4201", "CVE-2018-4218", "CVE-2018-4233", 
                 "CVE-2018-4188", "CVE-2018-4190", "CVE-2018-4199", "CVE-2018-4222");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:56:22 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 11:24:10 +0530 (Wed, 06 Jun 2018)");
   script_name("Apple iCloud Security Updates(HT208853)");
 

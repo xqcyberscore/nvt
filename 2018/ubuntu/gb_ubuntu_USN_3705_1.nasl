@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3705_1.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_ubuntu_USN_3705_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
 #
 # Ubuntu Update for firefox USN-3705-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843582");
-  script_version("$Revision: 10480 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 05:49:47 +0200 (Fri, 06 Jul 2018)");
   script_cve_id("CVE-2018-5156", "CVE-2018-5186", "CVE-2018-5187", "CVE-2018-5188", 
                 "CVE-2018-12358", "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12361", 
@@ -69,7 +69,7 @@ could potentially exploit this to obtain full browser permissions.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

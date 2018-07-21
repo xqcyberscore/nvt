@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anydesk_detect_win.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_anydesk_detect_win.nasl 10545 2018-07-19 12:03:39Z cfischer $
 #
 # AnyDesk Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813553");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 10545 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-19 14:03:39 +0200 (Thu, 19 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 15:50:15 +0530 (Fri, 06 Jul 2018)");
    script_tag(name:"qod_type", value:"registry");
   script_name("AnyDesk Version Detection (Windows)");
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   AnyDesk.
 
   The script logs in via smb, searches for 'AnyDesk' in the registry and gets
@@ -43,15 +43,13 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208741.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_safari_HT208741.nasl 10557 2018-07-20 13:48:28Z asteins $
 #
 # Apple Safari Security Updates(HT208741)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813319");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 10557 $");
   script_cve_id("CVE-2018-4200", "CVE-2018-4204");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 11:47:33 +0530 (Wed, 25 Apr 2018)");
   script_name("Apple Safari Security Updates(HT208741)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_dns_cache_output.nasl 7344 2017-10-05 06:05:36Z cfischer $
+# $Id: gb_microsoft_windows_dns_cache_output.nasl 10560 2018-07-20 15:08:34Z cfischer $
 #
 # Microsoft Windows DNS Cache Output
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112060");
-  script_version("$Revision: 7344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:05:36 +0200 (Thu, 05 Oct 2017) $");
+  script_version("$Revision: 10560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 17:08:34 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-09-28 11:44:12 +0200 (Thu, 28 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,6 +44,7 @@ if(description)
   script_family("Windows");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/registry_access", "Tools/Present/wmi");
+  script_exclude_keys("win/lsc/disallow_win_cmd_exec");
 
   script_tag(name:"summary", value:"This plugin creates a comma-separated (CSV) output of the target's DNS cache (from the 'ipconfig /displaydns' command).
 
@@ -60,6 +61,10 @@ include("smb_nt.inc");
 run_routine = script_get_preference( "Collect and report Microsoft Windows DNS Cache" );
 if( ! run_routine ) run_routine = "no";
 if( run_routine == "no" ) exit( 0 );
+
+if( get_kb_item( "win/lsc/disallow_win_cmd_exec" ) ) {
+  exit( 0 );
+}
 
 username = kb_smb_login();
 password = kb_smb_password();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 9128 2018-03-19 07:45:38Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 10561 2018-07-20 15:11:40Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -50,8 +50,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 9128 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 08:45:38 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 10561 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 17:11:40 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,23 +59,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("2014/gb_ms_wmi_accessible_shares.nasl");
+  script_dependencies("gb_ms_wmi_accessible_shares.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("WMI/Accessible_Shares");
-
-  tag_summary = "Get Windows File-Shares, shared for Everyone.";
+  script_exclude_keys("win/lsc/disallow_win_cmd_exec");
 
   if( old_routine ) {
     script_add_preference(name:"Run routine (please see NOTE)", type:"checkbox", value:"no");
 
-    tag_summary += "
+    script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.
 
     NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
     service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
-    to avoid modifications on the target system. Please see the script preferences on how to enable this.";
+    to avoid modifications on the target system. Please see the script preferences on how to enable this.");
+  } else {
+    script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.");
   }
-
-  script_tag(name:"summary", value:tag_summary);
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -88,6 +87,10 @@ include("smb_nt.inc");
 if( old_routine ) {
   run_script = script_get_preference( "Run routine (please see NOTE)" );
   if( run_script == "no" ) exit( 0 );
+}
+
+if( get_kb_item( "win/lsc/disallow_win_cmd_exec" ) ) {
+  exit( 0 );
 }
 
 host    = get_host_ip();

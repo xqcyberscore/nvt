@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 8211 2017-12-21 10:38:01Z cfischer $
+# $Id: cpe.inc 10552 2018-07-20 10:33:43Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,10 +28,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8211 $
+# $Revision: 10552 $
 #
 ###############################################################################
 
+# @brief This function extens a given CPE base (like e.g. cpe:/a:vendor:product:)
+#        with a given value if the passed expression in the exp is matching this value.
+#
+# @param value the value to append to the given CPE base
+# @param exp   the regex expression where the given value needs to be match against
+# @param base  the CPE base in the form of cpe:/a:vendor:product:
+#
+# @return A string containing the CPE base with the appended value (if the expression has matched),
+#         NULL otherwise.
+#
 function build_cpe( value, exp, base ) {
 
   local_var value, exp, base, res, last;
@@ -51,21 +61,37 @@ function build_cpe( value, exp, base ) {
     return NULL;
   }
 
-  res = eregmatch(string:value, pattern:exp, icase:TRUE);
-  if (res[1]) {
+  res = eregmatch( string:value, pattern:exp, icase:TRUE );
+  if( res[1] ) {
     last = strlen(base) - 1;
-    if (":" >!< base[last]) {
+    if( ":" >!< base[last] ) {
       return base;
-    } else if (res[1] && res[2]) {
-      return string(base, res[1], ":", res[2]);
-    } else if (res[1]) {
-      return string(base, res[1]);
+    } else if( res[1] && res[2] ) {
+      return string(base, res[1], ":", res[2] );
+    } else if( res[1] ) {
+      return string( base, res[1] );
     }
   }
   return NULL;
 }
 
-## Function to Register Product and Build report
+# @brief This function registers a given product CPE with the given info in the knowledge base.
+#        Additionally it will build a report message about this detection and sends it via a
+#        log_message() to the manager.
+#
+# @param app        the Name of the App which should be registered, this is included in the report message.
+# @param ver        the Version of the App which should be registered.
+# @param concluded  the text string where the product detection was concluded from.
+# @param cpename    a full CPE string in the form of e.g. cpe:/a:vendor:product or cpe:/a:vendor:product:1.2.3 which should be registered
+# @param base       a base CPE string in the form of e.g. cpe:/a:vendor:product: which is used to build a CPE with an appended version
+# @param expr       a regex expression which is used to match the ver parameter against and which is added to the base CPE if a match was found.
+# @param insloc     the location/URL where the product was detected.
+# @param regPort    the Port where the product was detected.
+# @param regService the Service (e.g. www, ftp, snmp) where the product was detected.
+# @param regProto   the network protocol (e.g. tcp, udp) where the product was detected.
+# @param conclUrl   the URL/location where the product was detected from
+# @param extra      any extra information which should be added to the report message.
+#
 function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insloc, regPort, regService, regProto, conclUrl, extra ) {
 
   local_var app, ver, concluded, cpename, base, expr, insloc, regPort, regService, regProto, conclUrl, extra;
@@ -75,16 +101,14 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
     return NULL;
   }
 
-  ## setting location if location variable value is null
   if( ! insloc ) insloc = "unknown";
-
-  ## setting concluded if value is null
   if( ! concluded && ver ) concluded = ver;
-
-  ## setting version to unknown if not available
   if( ! ver || ver == "" ) ver = "unknown";
-
   if( ! regProto ) regProto = "tcp";
+
+  #nb: make sure that we're at least registering a default port to 0
+  #for local detections via e.g. SSH
+  if( isnull( regPort ) ) regPort = 0;
 
   if( ! cpename && base ) {
     cpename = build_cpe( value:ver, exp:expr, base:base );
@@ -105,6 +129,5 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
                                               concludedUrl:conclUrl ),
                                               port:regPort,
                                               proto:regProto );
-    return NULL;
   }
 }

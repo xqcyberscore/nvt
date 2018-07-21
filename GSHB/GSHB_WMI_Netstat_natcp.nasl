@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Netstat_natcp.nasl 10396 2018-07-04 09:13:46Z cfischer $
+# $Id: GSHB_WMI_Netstat_natcp.nasl 10560 2018-07-20 15:08:34Z cfischer $
 #
 # Get Windows TCP Netstat over win_cmd_exec
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94251");
-  script_version("$Revision: 10396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 10560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 17:08:34 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:12:52 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,6 +64,11 @@ if (domain){
 
 if(!host || !usrname || !passwd){
   set_kb_item(name:"GSHB/WMI/NETSTAT/log", value:"nocred");
+  exit(0);
+}
+
+if(get_kb_item("win/lsc/disallow_win_cmd_exec")){
+  set_kb_item(name:"GSHB/WMI/NETSTAT/log", value:"win_cmd_exec manually disabled");
   exit(0);
 }
 

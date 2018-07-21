@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 10157 2018-06-12 07:23:04Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 10553 2018-07-20 10:47:37Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 10157 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:23:04 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 12:47:37 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "drupal_detect.nasl", "sw_magento_detect.nasl");
-  script_require_ports("Services/www", 80 );
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script attempts to identify files containing sensitive data at the remote web server like e.g.:
@@ -112,6 +112,11 @@ genericfiles = make_array(
 "/translate.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
 "/mysqldump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )'
 );
+
+# https://doc.nette.org/en/configuring or https://github.com/nette/examples/blob/master/CD-collection/app/config.neon
+foreach nettedir( make_list( "/app/config", "/app", "" ) ) {
+  genericfiles[nettedir + "/config.neon"] = "Nette Framework config file is publicly accessible.#-#^(php:|application:|database:|services:|security:|# SECURITY WARNING: it is CRITICAL|latte:|session:|extensions:)#-#^ *(date.timezone:|mapping:|dsn:|- App\Model\|debugger:|users:|roles:|resources:|errorPresenter:|catchExceptions:|silentLinks:|user:|password:|macros:)";
+}
 
 # Add domain specific key names and backup files from above
 hnlist = create_hostname_parts_list();

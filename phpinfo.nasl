@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 10537 2018-07-18 07:58:47Z cfischer $
+# $Id: phpinfo.nasl 10552 2018-07-20 10:33:43Z cfischer $
 #
 # phpinfo() output accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 10537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 09:58:47 +0200 (Wed, 18 Jul 2018) $");
+  script_version("$Revision: 10552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 12:33:43 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -73,7 +73,7 @@ function get_php_version( data ) {
 }
 
 report = 'The following files are calling the function phpinfo() which disclose potentially sensitive information to the remote attacker:\n';
-files = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php", "/i.php" );
+files = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php", "/i.php", "/test.php?mode=phpinfo" );
 
 port = get_http_port( default:80 );
 # nb: Don't use can_host_php() here as this NVT is reporting PHP as well

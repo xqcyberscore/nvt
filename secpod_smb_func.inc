@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 9184 2018-03-23 08:18:41Z cfischer $
+# $Id: secpod_smb_func.inc 10552 2018-07-20 10:33:43Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9184 $
+# $Revision: 10552 $
 #
 ###############################################################################
 
@@ -127,15 +127,18 @@ function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
   return NULL;
 }
 
-########################################################################
-# Enumerate registry values for a given key
-# param:
-#       key: REGISTRY_KEY
-########################################################################
+# @brief This function enumerates existing registry values for a given key.
+#        It will gather all required info about the SMB registry
+#        from the knowledge base.
+#
+# @param key the registry key to enumerate for values
+# @param type the registry type HKCU, HKU or HKLM to enumerate
+#
+# @return A list containing the existing values of the given key, otherwise an empty list
+#
+function registry_enum_values( key, type ) {
 
-function registry_enum_values( key ) {
-
-  local_var key, list, soc, r, prot, uid, tid, pipe, handle;
+  local_var key, type, list, soc, r, prot, uid, tid, pipe, handle;
   local_var name, login, pass, domain, port;
 
   name    =  kb_smb_name();
@@ -155,6 +158,7 @@ function registry_enum_values( key ) {
     return list;
   }
 
+  if( ! type ) type = "HKLM";
   if( ! port ) port = 445;
 
   soc = open_sock_tcp( port );
@@ -216,7 +220,17 @@ function registry_enum_values( key ) {
     return list;
   }
 
-  handle = registry_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  if( type == "HKLM" ) {
+    handle = registry_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else if( type == "HKU" ) {
+    handle = registry_open_hku( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else if( type == "HKCU" ) {
+    handle = registry_open_hkcu( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else {
+    close( soc );
+    return list;
+  }
+
   if( ! handle ) {
     close( soc );
     return list;
@@ -237,15 +251,18 @@ function registry_enum_values( key ) {
   return list;
 }
 
-##############################################################################
-# Enumerate registry keys
-# param:
-#       key: REGISTRY_KEY
-###############################################################################
+# @brief This function enumerates registry keys via SMB.
+#        It will gather all required info about the SMB registry
+#        from the knowledge base.
+#
+# @param key the registry key to enumerate
+# @param type the registry type HKCU, HKU or HKLM to enumerate
+#
+# @return A list containing the existing registry keys, otherwise an empty list
+#
+function registry_enum_keys( key, type ) {
 
-function registry_enum_keys( key ) {
-
-  local_var key, list, soc, r, prot, uid, tid, pipe, handle;
+  local_var key, type, list, soc, r, prot, uid, tid, pipe, handle;
   local_var name, login, pass, domain, port;
 
   name    =  kb_smb_name();
@@ -265,6 +282,7 @@ function registry_enum_keys( key ) {
     return list;
   }
 
+  if( ! type ) type = "HKLM";
   if( ! port ) port = 445;
 
   soc = open_sock_tcp( port );
@@ -324,7 +342,17 @@ function registry_enum_keys( key ) {
     return list;
   }
 
-  handle = registry_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  if( type == "HKLM" ) {
+    handle = registry_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else if( type == "HKU" ) {
+    handle = registry_open_hku( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else if( type == "HKCU" ) {
+    handle = registry_open_hkcu( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  } else {
+    close( soc );
+    return list;
+  }
+  
   if( ! handle ) {
     close( soc );
     return list;

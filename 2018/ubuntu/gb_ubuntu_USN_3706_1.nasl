@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3706_1.nasl 10496 2018-07-13 06:18:05Z santu $
+# $Id: gb_ubuntu_USN_3706_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
 #
 # Ubuntu Update for libjpeg-turbo USN-3706-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843584");
-  script_version("$Revision: 10496 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:18:05 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 10556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 05:55:48 +0200 (Tue, 10 Jul 2018)");
   script_cve_id("CVE-2014-9092", "CVE-2016-3616", "CVE-2017-15232", "CVE-2018-11212", 
                 "CVE-2018-11213", "CVE-2018-11214", "CVE-2018-1152"); 
@@ -56,7 +56,7 @@ code.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

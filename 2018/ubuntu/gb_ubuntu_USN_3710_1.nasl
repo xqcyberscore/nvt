@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3710_1.nasl 10496 2018-07-13 06:18:05Z santu $
+# $Id: gb_ubuntu_USN_3710_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
 #
 # Ubuntu Update for curl USN-3710-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843590");
-  script_version("$Revision: 10496 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:18:05 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 10556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 05:57:41 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-0500");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,7 @@ to crash, resulting in a denial of service, or possibly execute arbitrary code."
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(17\.10|18\.04 LTS)");
   exit(0);
 }
 
