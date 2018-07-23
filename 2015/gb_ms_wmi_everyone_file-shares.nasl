@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 10561 2018-07-20 15:11:40Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 10563 2018-07-22 10:40:42Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -50,8 +50,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 10561 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 17:11:40 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10563 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,7 @@ if(description)
   script_dependencies("gb_ms_wmi_accessible_shares.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("WMI/Accessible_Shares");
-  script_exclude_keys("win/lsc/disallow_win_cmd_exec");
+  script_exclude_keys("win/lsc/disable_win_cmd_exec");
 
   if( old_routine ) {
     script_add_preference(name:"Run routine (please see NOTE)", type:"checkbox", value:"no");
@@ -89,7 +89,7 @@ if( old_routine ) {
   if( run_script == "no" ) exit( 0 );
 }
 
-if( get_kb_item( "win/lsc/disallow_win_cmd_exec" ) ) {
+if( get_kb_item( "win/lsc/disable_win_cmd_exec" ) ) {
   exit( 0 );
 }
 

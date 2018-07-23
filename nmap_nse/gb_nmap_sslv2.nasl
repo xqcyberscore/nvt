@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_sslv2.nasl 6603 2017-07-07 10:21:45Z cfischer $
+# $Id: gb_nmap_sslv2.nasl 10577 2018-07-23 12:26:05Z cfischer $
 #
 # Wrapper for Nmap SSLv2 NSE script
 #
@@ -26,17 +26,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script attempts to check whether the server supports obsolete
-  and less secure SSLv2 and discovers which ciphers it supports.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) sslv2.nse.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801666");
-  script_version("$Revision: 6603 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:21:45 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 10577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 14:48:59 +0100 (Mon, 27 Dec 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,28 +40,28 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-
-  script_dependencies("toolcheck.nasl", "find_service.nasl", "gb_tls_version_get.nasl");
+  script_dependencies("nmap_nse.nasl", "find_service.nasl", "gb_tls_version_get.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
-
   script_mandatory_keys("Tools/Launch/nmap_nse", "Tools/Present/nmap", "ssl_tls/port");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script attempts to check whether the server supports obsolete
+  and less secure SSLv2 and discovers which ciphers it supports.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) sslv2.nse.");
+
   exit(0);
 }
 
 
 include ("http_func.inc");
 
-## Check for Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## Get HTTP Ports
 port = get_http_port(default:443);
 if(!port){
   exit(0);

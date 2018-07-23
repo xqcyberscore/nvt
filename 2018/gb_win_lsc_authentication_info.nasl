@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 10559 2018-07-20 14:21:03Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 10563 2018-07-22 10:40:42Z cfischer $
 #
 # Windows LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 10559 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:21:03 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10563 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ kb_array = make_array( "WMI/access_successful", "Access via WMI possible",
                        "Tools/Present/wmi", "Extended WMI support available via openvas-smb module",
                        "Tools/Present/smb", "Extended SMB support available via openvas-smb module",
                        "win/lsc/search_portable_apps", "Enable Detection of Portable Apps on Windows",
-                       "win/lsc/disallow_win_cmd_exec", "Allow the usage of win_cmd_exec for remote commands on Windows",
+                       "win/lsc/disable_win_cmd_exec", "Disable the usage of win_cmd_exec for remote commands on Windows",
                        "SMB/registry_access", "Access to the registry possible",
                        "SMB/WindowsVersion", "Version number of the OS",
                        "SMB/WindowsBuild", "Build number of the OS",

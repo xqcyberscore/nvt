@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_sniffer_detect.nasl 9364 2018-04-06 07:33:03Z cfischer $
+# $Id: gb_nmap_sniffer_detect.nasl 10577 2018-07-23 12:26:05Z cfischer $
 #
 # Wrapper for Nmap Sniffer Detect NSE script.
 #
@@ -26,29 +26,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script attempts to check if a target on a local Ethernet has
-  its network card in promiscuous mode.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) sniffer-detect.nse.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801806");
-  script_version("$Revision: 9364 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: Sniffer Detect");
   script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
+  script_dependencies("nmap_nse.nasl");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script attempts to check if a target on a local Ethernet has
+  its network card in promiscuous mode.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) sniffer-detect.nse.");
+
   exit(0);
 }
 

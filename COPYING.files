@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 20 Jul 2018 18:03:59 +0200
+# Automatically created on:  Mon, 23 Jul 2018 15:19:23 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39288,6 +39288,10 @@
 2018/debian/deb_dla_1431.nasl: GPLv2+
 2018/debian/deb_dla_1432.nasl: GPLv2+
 2018/debian/deb_dla_1433.nasl: GPLv2+
+2018/debian/deb_dla_1435.nasl: GPLv2+
+2018/debian/deb_dla_1436.nasl: GPLv2+
+2018/debian/deb_dla_1437.nasl: GPLv2+
+2018/debian/deb_dla_1438.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42894,6 +42898,7 @@ gb_rpi_cam_control_detect.nasl: GPLv2+
 gb_rsa_archer_detect.nasl: GPLv2+
 gb_rsa_auth_agent_detect_win.nasl: GPLv2+
 gb_rsa_web_threat_detection_detect.nasl: GPLv2+
+gb_rtsp_os_detection.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
 gb_saia_pcd_web_detect.nasl: GPLv2+
@@ -43159,6 +43164,8 @@ gb_vibnode_ftp_detect.nasl: GPLv2+
 gb_vibnode_http_detect.nasl: GPLv2+
 gb_vibnode_telnet_detect.nasl: GPLv2+
 gb_vicidial_detect.nasl: GPLv2+
+gb_vicon_device_detect_snmp.nasl: GPLv2+
+gb_vicon_device_detect_telnet.nasl: GPLv2+
 gb_videoiq_camera_detect.nasl: GPLv2+
 gb_vimbadmin_detect.nasl: GPLv2+
 gb_virit_explorer_lite_detect.nasl: GPLv2+
@@ -58687,6 +58694,7 @@ gsf/2018/efi/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_avamar_access_ctrl_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
+gsf/2018/emc/gb_rsa_archer_DSA-2018-130.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_web_threat_detection_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/emerson/gb_emerson_micro_buf_overflow_vuln.nasl: GPLv2+
@@ -59099,6 +59107,7 @@ gsf/2018/opmantek/gb_open_audit_xss_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_ebusiness_suite_redirect_param_open_redirect_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_micros_pos_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2628_active.nasl: GPLv2+
+gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2893_active.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_01.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_02.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_03.nasl: GPLv2+
@@ -60405,8 +60414,8 @@ nmap_nse/gb_nmap_telnet_brute.nasl: GPLv2+
 nmap_nse/gb_nmap_upnp_info.nasl: GPLv2+
 nmap_nse/gb_nmap_whois.nasl: GPLv2+
 nmap_nse/gb_nmap_x11_access.nasl: GPLv2+
+nmap_nse.nasl: GPLv2+
 nmap_nse_net.nasl: GPLv2+
-nmap_nse/nmap_nse.nasl: GPLv2+
 nntp_func.inc: GPLv2
 nntp_info.nasl: GPLv2
 nntpserver_detect.nasl: GPLv2

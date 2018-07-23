@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: os_fingerprint.nasl 10573 2018-07-23 10:44:26Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10573 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:44:26 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,7 +76,8 @@ if(description)
                       "ms_rdp_detect.nasl", "gb_apache_activemq_detect.nasl",
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
                       "ident_process_owner.nasl", "gb_pihole_detect.nasl",
-                      "gb_dropbear_ssh_detect.nasl", "gb_android_adb_detect.nasl", # but without gb_nmap_os_detection.nasl and the own os_fingerprint.nasl
+                      "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
+                      "gb_android_adb_detect.nasl", # but without gb_nmap_os_detection.nasl and the own os_fingerprint.nasl
                       "global_settings.nasl"); # nb: Extra dependency for the script_exclude_keys below
   script_exclude_keys("keys/TARGET_IS_IPV6");
 

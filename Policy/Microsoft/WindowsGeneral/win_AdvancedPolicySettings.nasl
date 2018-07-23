@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_AdvancedPolicySettings.nasl 10202 2018-06-14 15:02:02Z emoss $
+# $Id: win_AdvancedPolicySettings.nasl 10563 2018-07-22 10:40:42Z cfischer $
 #
 # Read all Windows Advanced Policy Security Settings (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109001");
-  script_version("$Revision: 10202 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 17:02:02 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10563 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-06-23 12:03:14 +0200 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,6 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("Compliance/Launch");
 
   script_tag(name:"summary",value:"Read all Windows Advanced Policy Security Settings (Windows)");
@@ -87,6 +88,11 @@ if (domain){
   usrname = domain + '/' + usrname;
 }
 passwd = kb_smb_password();
+
+if( get_kb_item( "win/lsc/disable_win_cmd_exec" ) ) {
+  policy_logging(text:'Error: Usage of win_cmd_exec required for this check was disabled manually within "Options for Local Security Checks (OID: 1.3.6.1.4.1.25623.1.0.100509)".');
+  exit(0);
+}
 
 AdvancedPolicy = win_cmd_exec(cmd:"auditpol /get /category:*", password:passwd, username:usrname);
 if(!AdvancedPolicy || "smb sessionerror" >< tolower(AdvancedPolicy)){
@@ -515,7 +521,7 @@ Computer Configuration/Windows Settings/Security Settings/Advanced Audit Policy 
     val = auditing(pol);
     name = 'Distribution Group Management';
     fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Advanced Audit Policy Configuration/Audit Policies/Account Management/' + name;    
+Computer Configuration/Windows Settings/Security Settings/Advanced Audit Policy Configuration/Audit Policies/Account Management/' + name;
     set_kb_item(name:"WMI/AdvancedPolicy/DistributionGroupManagement", value:val);
     set_kb_item(name:"WMI/AdvancedPolicy/DistributionGroupManagement/NAME", value:name);
     set_kb_item(name:"WMI/AdvancedPolicy/DistributionGroupManagement/FIX", value:fixtext);

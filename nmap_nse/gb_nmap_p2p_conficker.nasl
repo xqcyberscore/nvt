@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_p2p_conficker.nasl 9364 2018-04-06 07:33:03Z cfischer $
+# $Id: gb_nmap_p2p_conficker.nasl 10577 2018-07-23 12:26:05Z cfischer $
 #
 # Wrapper for Nmap P2P Conficker NSE script.
 #
@@ -26,25 +26,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script attempts to check if a host is infected with Conficker.C
-  or higher, based on Conficker's peer to peer communication.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) p2p-conficker.nse.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801816");
-  script_version("$Revision: 9364 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Nmap NSE: P2P Conficker");
   script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
+  script_dependencies("nmap_nse.nasl");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
+
   script_add_preference(name: "checkall :", value: "no",type: "checkbox");
   script_add_preference(name: "checkconficker :", value: "no",type: "checkbox");
   script_add_preference(name: "realip :", value: "",type: "entry");
@@ -59,21 +57,21 @@ if(description)
   script_add_preference(name: "smbsign :", value: "",type: "entry");
   script_add_preference(name: "randomseed :", value: "",type: "entry");
 
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script attempts to check if a host is infected with Conficker.C
+  or higher, based on Conficker's peer to peer communication.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) p2p-conficker.nse.");
+
   exit(0);
 }
 
 
-## Check for Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## Get SMB Port
 port = script_get_preference("smbport :");
 if (port !~ '^[0-9]+$')
 {
@@ -83,7 +81,6 @@ if (port !~ '^[0-9]+$')
 argv = make_list("nmap", "-vv", "--script=p2p-conficker.nse", "-p", port,
                   get_host_ip());
 
-## Get the preferences
 i = 0;
 if( "yes" == script_get_preference("checkall :")){
   args[i++] = "checkall=1";

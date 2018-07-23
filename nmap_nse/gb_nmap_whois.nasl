@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_whois.nasl 9364 2018-04-06 07:33:03Z cfischer $
+# $Id: gb_nmap_whois.nasl 10577 2018-07-23 12:26:05Z cfischer $
 #
 # Wrapper for Nmap WHOIS NSE script.
 #
@@ -26,30 +26,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script queries the WHOIS services of Regional Internet
-  Registries (RIR) and attempts to retrieve information about the IP Address
-  Assignment which contains the Target IP Address.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) whois.nse.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801657");
-  script_version("$Revision: 9364 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 14:48:59 +0100 (Mon, 27 Dec 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_name("Nmap NSE: WHOIS");
   script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
+  script_dependencies("nmap_nse.nasl");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script queries the WHOIS services of Regional Internet
+  Registries (RIR) and attempts to retrieve information about the IP Address
+  Assignment which contains the Target IP Address.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) whois.nse.");
+
   exit(0);
 }
 

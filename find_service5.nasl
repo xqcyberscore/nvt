@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 10183 2018-06-14 07:16:58Z cfischer $
+# $Id: find_service5.nasl 10573 2018-07-23 10:44:26Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 10183 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10573 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:44:26 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -131,6 +131,26 @@ if( rhexstr =~ "^61637070000[0-9]000[0-9]" ) { # nb: The following parts seems t
 if( rhexstr =~ "^70027761$" ) {
   register_service( port:port, proto:"activemq_mqtt", message:"A ActiveMQ MQTT service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ MQTT service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  52 54 53 50 2F 31 2E 30 20 32 30 30 20 4F 4B 0D    RTSP/1.0 200 OK.
+# 0x10:  0A 43 53 65 71 3A 20 36 33 31 30 34 20 4F 50 54    .CSeq: 63104 OPT
+# 0x20:  49 4F 4E 53 0D 0A 50 75 62 6C 69 63 3A 20 4F 50    IONS..Public: OP
+# 0x30:  54 49 4F 4E 53 2C 20 44 45 53 43 52 49 42 45 2C    TIONS, DESCRIBE,
+# 0x40:  20 50 4C 41 59 2C 20 50 41 55 53 45 2C 20 53 45     PLAY, PAUSE, SE
+# 0x50:  54 55 50 2C 20 54 45 41 52 44 4F 57 4E 2C 20 53    TUP, TEARDOWN, S
+# 0x60:  45 54 5F 50 41 52 41 4D 45 54 45 52 2C 20 47 45    ET_PARAMETER, GE
+# 0x70:  54 5F 50 41 52 41 4D 45 54 45 52 0D 0A 44 61 74    T_PARAMETER..Dat
+# 0x80:  65 3A 20 20 4D 6F 6E 2C 20 4A 75 6C 20 32 33 20    e:  Mon, Jul 23  # nb: ending space...
+# 0x90:  32 30 31 38 20 31 37 3A 32 31 3A 31 38 20 47 4D    2018 17:21:18 GM
+# 0xA0:  54 0D 0A 0D 0A                                     T....
+#
+# nb: Some RTSP services seems to no answer to the probes in find_service2.nasl
+# but answering to the SIP request above.
+if( r =~ "^RTSP/1\.[0-9]+" && ( "CSeq: " >< r || "Public: " >< r || "Server: " >< r ) ) {
+  register_service( port:port, proto:"rtsp", message:"A streaming server seems to be running on this port." );
+  log_message( port:port, data:"A streaming server seems to be running on this port." );
   exit( 0 );
 }
 

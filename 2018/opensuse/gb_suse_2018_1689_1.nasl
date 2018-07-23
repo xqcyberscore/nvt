@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1689_1.nasl 10220 2018-06-15 12:17:34Z santu $
+# $Id: gb_suse_2018_1689_1.nasl 10565 2018-07-23 05:20:18Z asteins $
 #
 # SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851785");
-  script_version("$Revision: 10220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:17:34 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10565 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 07:20:18 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:48:03 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2016-1000338", "CVE-2016-1000339", "CVE-2016-1000340", "CVE-2016-1000341", 
                 "CVE-2016-1000342", "CVE-2016-1000343", "CVE-2016-1000344", "CVE-2016-1000345", 
                 "CVE-2016-1000346", "CVE-2016-1000352", "CVE-2017-13098");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)");
   script_tag(name:"summary", value:"Check the version of bouncycastle");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_8f5a50e4d7_slurm_fc27.nasl 10199 2018-06-14 13:09:24Z santu $
+# $Id: gb_fedora_2018_8f5a50e4d7_slurm_fc27.nasl 10565 2018-07-23 05:20:18Z asteins $
 #
 # Fedora Update for slurm FEDORA-2018-8f5a50e4d7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874673");
-  script_version("$Revision: 10199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 15:09:24 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10565 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 07:20:18 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 06:02:36 +0200 (Mon, 11 Jun 2018)");
   script_cve_id("CVE-2018-10995");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for slurm FEDORA-2018-8f5a50e4d7");
   script_tag(name:"summary", value:"Check the version of slurm");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_finger.nasl 9364 2018-04-06 07:33:03Z cfischer $
+# $Id: gb_nmap_finger.nasl 10574 2018-07-23 11:55:34Z cfischer $
 #
 # Wrapper for Nmap Finger NSE script.
 #
@@ -26,41 +26,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script attempts to retrieve a list of usernames using the finger service.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) finger.nse.";
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801685");
-  script_version("$Revision: 9364 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10574 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 13:55:34 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: Finger");
   script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_family("Nmap NSE");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script attempts to retrieve a list of usernames using the finger service.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) finger.nse.");
+
   exit(0);
 }
 
-
-## Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## Get Finger Port
 port = get_kb_item("Services/finger");
 if(!port){
   exit(0);

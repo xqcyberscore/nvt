@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 10421 2018-07-05 12:17:22Z cfischer $
+# $Id: policy_file_checksums_win.nasl 10563 2018-07-22 10:40:42Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 10421 $");
+  script_version("$Revision: 10563 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -171,6 +171,11 @@ if( ! username && ! password ) exit_cleanly(); #TBD: Report this in the error NV
 
 domain = kb_smb_domain();
 if( domain ) username = domain + "/" + username;
+
+if( get_kb_item( "win/lsc/disable_win_cmd_exec" ) ) {
+  set_kb_item( name:"policy/file_checksums_win/general_error_list", value:"Usage of win_cmd_exec required for this check was disabled manually within 'Options for Local Security Checks (OID: 1.3.6.1.4.1.25623.1.0.100509)'." );
+  exit_cleanly();
+}
 
 # This always defaults to TRUE but was there since the beginning of this NVT
 # and currently needs to stay to not break existing scan configs.

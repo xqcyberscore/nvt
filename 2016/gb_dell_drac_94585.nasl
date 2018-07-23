@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_94585.nasl 10154 2018-06-12 04:56:22Z ckuersteiner $
+# $Id: gb_dell_drac_94585.nasl 10569 2018-07-23 09:01:04Z cfischer $
 #
 # Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability
 #
@@ -25,42 +25,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140083");
- script_bugtraq_id(94585);
- script_cve_id("CVE-2016-5685");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 10154 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140083");
+  script_bugtraq_id(94585);
+  script_cve_id("CVE-2016-5685");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 11:01:04 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-30 13:23:23 +0100 (Wed, 30 Nov 2016)");
+  script_version("$Revision: 10569 $");
+  script_name("Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_dell_drac_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("dell_idrac/installed", "dell_idrac/generation");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_xref(name:"URL", value:"http://en.community.dell.com/techcenter/extras/m/white_papers/20443326");
 
- script_name("Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability");
+  script_tag(name:"vuldetect", value:"Check the firmware version");
 
- script_xref(name:"URL", value:"http://en.community.dell.com/techcenter/extras/m/white_papers/20443326");
+  script_tag(name:"solution", value:"Update to 2.40.40.40 or higher");
 
- script_tag(name:"last_modification", value:"$Date: 2018-06-12 06:56:22 +0200 (Tue, 12 Jun 2018) $");
- script_tag(name:"creation_date", value:"2016-11-30 13:23:23 +0100 (Wed, 30 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_dell_drac_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("dell_idrac/installed", "dell_idrac/generation");
+  script_tag(name:"summary", value:"Dell iDRAC7 and iDRAC8 devices with firmware before 2.40.40.40 allow
+  authenticated users to gain Bash shell access through a string injection.");
 
- script_tag(name:"vuldetect", value: "Check the firmware version");
+  script_tag(name:"affected", value:"Dell iDRAC7 and iDRAC8 devices with firmware before 2.40.40.40");
 
- script_tag(name:"solution", value: "Update to 2.40.40.40 or higher");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"summary", value:"Dell iDRAC7 and iDRAC8 devices with firmware before 2.40.40.40 allow
-authenticated users to gain Bash shell access through a string injection.");
-
- script_tag(name:"affected", value: "Dell iDRAC7 and iDRAC8 devices with firmware before 2.40.40.40");
-
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

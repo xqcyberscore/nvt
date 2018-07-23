@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_93a43993aa_soundtouch_fc28.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_93a43993aa_soundtouch_fc28.nasl 10565 2018-07-23 05:20:18Z asteins $
 #
 # Fedora Update for soundtouch FEDORA-2018-93a43993aa
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874823");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10565 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 07:20:18 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 06:05:05 +0200 (Tue, 17 Jul 2018)");
   script_cve_id("CVE-2017-9258", "CVE-2017-9259", "CVE-2017-9260");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for soundtouch FEDORA-2018-93a43993aa");
   script_tag(name:"summary", value:"Check the version of soundtouch");

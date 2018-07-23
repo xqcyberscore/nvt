@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_brute.nasl 9364 2018-04-06 07:33:03Z cfischer $
+# $Id: gb_nmap_smb_brute.nasl 10577 2018-07-23 12:26:05Z cfischer $
 #
 # Wrapper for Nmap SMB Brute NSE script.
 #
@@ -26,25 +26,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script attempts to get SMB login credentials by guessing
-  usernames and passwords.
-
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) smb-brute.nse.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801268");
-  script_version("$Revision: 9364 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:33:03 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-09-08 13:20:44 +0200 (Wed, 08 Sep 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Nmap NSE: SMB Brute");
   script_category(ACT_ATTACK);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
+  script_dependencies("nmap_nse.nasl");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
+
   script_add_preference(name: "smblockout :", value: "no",type: "checkbox");
   script_add_preference(name: "canaries :", value: "",type: "entry");
   script_add_preference(name: "brutelimit :", value: "",type: "entry");
@@ -64,21 +62,21 @@ if(description)
   script_add_preference(name: "smbsign :", value: "",type: "entry");
   script_add_preference(name: "randomseed :", value: "",type: "entry");
 
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script attempts to get SMB login credentials by guessing
+  usernames and passwords.
+
+  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) smb-brute.nse.");
+
   exit(0);
 }
 
 
-## Check for Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## Get SMB Port
 port = script_get_preference("smbport :");
 if (port !~ '^[0-9]+$'){
   port = 445;
@@ -87,7 +85,6 @@ if (port !~ '^[0-9]+$'){
 argv = make_list("nmap", "--script=smb-brute.nse", "-p", port,
                   get_host_ip());
 
-## Get the preferences
 i = 0;
 if( "yes" == script_get_preference("smblockout :")){
   args[i++] = "smblockout=1";

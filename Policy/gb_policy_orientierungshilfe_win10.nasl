@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10.nasl 7150 2017-09-15 13:20:49Z cfischer $
+# $Id: gb_policy_orientierungshilfe_win10.nasl 10563 2018-07-22 10:40:42Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Ueberpruefungen
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108078");
-  script_version("$Revision: 7150 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 10563 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsName");
   script_require_ports(139, 445);
 
@@ -56,6 +56,10 @@ if(description)
 }
 
 include("smb_nt.inc");
+
+if( get_kb_item( "win/lsc/disable_win_cmd_exec" ) ) {
+  win_cmd_exec_disabled = TRUE;
+}
 
 function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name, startup_type, wmi_username, wmi_password ) {
 
@@ -107,6 +111,10 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
     text_response = check_desc + '||' + check_num + '||' + check_type + '||' + service_name + '||' + startup_type + '||';
 
     if( defined_func( "win_cmd_exec" ) ) {
+
+      if( win_cmd_exec_disabled ) {
+        return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen. Die Verwendung der benoetigten win_cmd_exec Funktion wurde in "Options for Local Security Checks (OID: 1.3.6.1.4.1.25623.1.0.100509)" manuell deaktiviert.\n' );
+      }
 
       cmd = "cmd /c sc qc " + service_name;
       serQueryRes = win_cmd_exec( cmd:cmd, password:wmi_password, username:wmi_username );
@@ -170,7 +178,7 @@ if( "Windows 10" >!< windows_name ) {
   exit( 0 );
 }
 
-# Windows 10 LTSB (Long Term Servicing Branch) does not have Cortana, Microsoft Edge or Windows Store installed. Thus some registry entries do not have to be set or may vary (IE instead of Edge for example)
+# nb: Windows 10 LTSB (Long Term Servicing Branch) does not have Cortana, Microsoft Edge or Windows Store installed. Thus some registry entries do not have to be set or may vary (IE instead of Edge for example)
 if( "LTSB" >< windows_name ) {
   ltsb_version = TRUE;
 }
