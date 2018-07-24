@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smtp_open_relay.nasl 10578 2018-07-23 12:52:08Z cfischer $
+# $Id: gb_nmap_smtp_open_relay.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap SMTP Open Relay NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801601");
-  script_version("$Revision: 10578 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:52:08 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-10-08 10:33:58 +0200 (Fri, 08 Oct 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,10 +43,10 @@ if(description)
   script_require_ports("Services/smtp", 25);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name:"smtp-open-relay.ip :", value: "",type: "entry");
-  script_add_preference(name:"smtp-open-relay.to :", value: "",type: "entry");
-  script_add_preference(name:"smtp-open-relay.domain :", value: "",type: "entry");
-  script_add_preference(name:"smtp-open-relay.from :", value: "",type: "entry");
+  script_add_preference(name:"smtp-open-relay.ip :", value:"", type:"entry");
+  script_add_preference(name:"smtp-open-relay.to :", value:"", type:"entry");
+  script_add_preference(name:"smtp-open-relay.domain :", value:"", type:"entry");
+  script_add_preference(name:"smtp-open-relay.from :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to check if a SMTP server is vulnerable to mail relaying.
 
@@ -93,7 +93,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

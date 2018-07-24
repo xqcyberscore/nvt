@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1438.nasl 10566 2018-07-23 07:41:10Z cfischer $
+# $Id: deb_dla_1438.nasl 10583 2018-07-24 05:32:53Z cfischer $
 #
 # Auto-generated from advisory DLA 1438-1 using nvtgen 1.0
 # Script version: 1.1
@@ -31,16 +31,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891438");
-  script_version("$Revision: 10566 $");
+  script_version("$Revision: 10583 $");
   script_cve_id("CVE-2016-1516", "CVE-2017-1000450", "CVE-2017-12597", "CVE-2017-12598", "CVE-2017-12599",
                 "CVE-2017-12601", "CVE-2017-12603", "CVE-2017-12604", "CVE-2017-12605", "CVE-2017-12606",
                 "CVE-2017-12862", "CVE-2017-12863", "CVE-2017-12864", "CVE-2017-14136", "CVE-2017-17760",
                 "CVE-2018-5268", "CVE-2018-5269");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1438-1] opencv security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 09:41:10 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 07:32:53 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 00:00:00 +0200 (Mon, 23 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

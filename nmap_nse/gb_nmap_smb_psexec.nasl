@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_psexec.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_smb_psexec.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap SMB psexec NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801817");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -43,25 +42,25 @@ if(description)
   script_dependencies("nmap_nse.nasl");
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "nohide :", value: "no",type: "checkbox");
-  script_add_preference(name: "cleanup :", value: "no",type: "checkbox");
-  script_add_preference(name: "nocipher :", value: "no",type: "checkbox");
-  script_add_preference(name: "nocleanup :", value: "no",type: "checkbox");
-  script_add_preference(name: "sharepath :", value: "",type: "entry");
-  script_add_preference(name: "config :", value: "",type: "entry");
-  script_add_preference(name: "time :", value: "",type: "entry");
-  script_add_preference(name: "key :", value: "",type: "entry");
-  script_add_preference(name: "share :", value: "",type: "entry");
-  script_add_preference(name: "smbusername :", value: "",type: "entry");
-  script_add_preference(name: "smbpassword :", value: "",type: "entry");
-  script_add_preference(name: "smbdomain :", value: "",type: "entry");
-  script_add_preference(name: "smbport :", value: "",type: "entry");
-  script_add_preference(name: "smbtype :", value: "",type: "entry");
-  script_add_preference(name: "smbnoguest :", value: "",type: "entry");
-  script_add_preference(name: "smbhash :", value: "",type: "entry");
-  script_add_preference(name: "smbbasic :", value: "",type: "entry");
-  script_add_preference(name: "smbsign :", value: "",type: "entry");
-  script_add_preference(name: "randomseed :", value: "",type: "entry");
+  script_add_preference(name:"nohide :", value:"no", type:"checkbox");
+  script_add_preference(name:"cleanup :", value:"no", type:"checkbox");
+  script_add_preference(name:"nocipher :", value:"no", type:"checkbox");
+  script_add_preference(name:"nocleanup :", value:"no", type:"checkbox");
+  script_add_preference(name:"sharepath :", value:"", type:"entry");
+  script_add_preference(name:"config :", value:"", type:"entry");
+  script_add_preference(name:"time :", value:"", type:"entry");
+  script_add_preference(name:"key :", value:"", type:"entry");
+  script_add_preference(name:"share :", value:"", type:"entry");
+  script_add_preference(name:"smbusername :", value:"", type:"entry");
+  script_add_preference(name:"smbpassword :", value:"", type:"entry");
+  script_add_preference(name:"smbdomain :", value:"", type:"entry");
+  script_add_preference(name:"smbport :", value:"", type:"entry");
+  script_add_preference(name:"smbtype :", value:"", type:"entry");
+  script_add_preference(name:"smbnoguest :", value:"", type:"entry");
+  script_add_preference(name:"smbhash :", value:"", type:"entry");
+  script_add_preference(name:"smbbasic :", value:"", type:"entry");
+  script_add_preference(name:"smbsign :", value:"", type:"entry");
+  script_add_preference(name:"randomseed :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to implement remote process execution, allowing
   a user to run a series of programs on a remote machine and read the output.
@@ -70,7 +69,6 @@ if(description)
 
   exit(0);
 }
-
 
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
@@ -84,8 +82,7 @@ if (port !~ '^[0-9]+$')
   port = 445;
 }
 
-argv = make_list("nmap", "--script=smb-psexec.nse", "-p", port,
-                 "-v", get_host_ip());
+argv = make_list("nmap", "--script=smb-psexec.nse", "-p", port, "-v", get_host_ip());
 
 i = 0;
 if( "yes" == script_get_preference("nohide :")){
@@ -169,7 +166,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 
 if(res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dhcp_discover.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_dhcp_discover.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap DHCP Discover NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801693");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,10 +42,10 @@ if(description)
   script_dependencies("nmap_nse.nasl");
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "randomize_mac :", value: "",type: "entry");
-  script_add_preference(name: "fake_requests :", value: "",type: "entry");
-  script_add_preference(name: "requests :", value: "",type: "entry");
-  script_add_preference(name: "dhcptype :", value: "",type: "entry");
+  script_add_preference(name:"randomize_mac :", value:"", type:"entry");
+  script_add_preference(name:"fake_requests :", value:"", type:"entry");
+  script_add_preference(name:"requests :", value:"", type:"entry");
+  script_add_preference(name:"dhcptype :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to retrieve information from a DHCP server
   by sending a DHCPDISCOVER request.
@@ -61,11 +61,9 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
  exit(0);
 }
 
-## DHCP Port
 port = 67;
 
-argv = make_list("nmap", "-sU", "--script=dhcp-discover.nse", "-p", port,
-                  get_host_ip());
+argv = make_list("nmap", "-sU", "--script=dhcp-discover.nse", "-p", port, get_host_ip());
 
 i = 0;
 if( pref = script_get_preference("randomize_mac :")){
@@ -93,7 +91,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

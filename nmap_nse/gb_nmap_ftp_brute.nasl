@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_ftp_brute.nasl 10574 2018-07-23 11:55:34Z cfischer $
+# $Id: gb_nmap_ftp_brute.nasl 10580 2018-07-23 13:56:07Z cfischer $
 #
 # Wrapper for Nmap FTP Brute NSE script.
 #
@@ -27,12 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801241");
-  script_version("$Revision: 10574 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 13:55:34 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:56:07 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:16:51 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,18 +39,19 @@ if(description)
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
   script_family("Nmap NSE");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "nmap_nse.nasl");
+  script_require_ports("Services/ftp", 21);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "limit :", value: "",type: "entry");
-  script_add_preference(name: "passlimit :", value: "",type: "entry");
-  script_add_preference(name: "userlimit :", value: "",type: "entry");
-  script_add_preference(name: "userdb :", value: "",type: "entry");
-  script_add_preference(name: "passdb :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.passlimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.timelimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.userlimit :", value: "",type: "entry");
+  script_add_preference(name:"limit :", value:"", type:"entry");
+  script_add_preference(name:"passlimit :", value:"", type:"entry");
+  script_add_preference(name:"userlimit :", value:"", type:"entry");
+  script_add_preference(name:"userdb :", value:"", type:"entry");
+  script_add_preference(name:"passdb :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.passlimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.timelimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.userlimit :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to get FTP login credentials by guessing
   usernames and passwords.
@@ -67,45 +67,44 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
  exit(0);
 }
 
-port = get_kb_item("Services/ftp");
-if(!port){
-  exit(0);
-}
-
-argv = make_list( "nmap", "--script=ftp-brute", "-p", port, get_host_ip());
+include("ftp_func.inc");
 
 i = 0;
 if( pref = script_get_preference("limit :")){
-  args[i++] = "limit="+pref;
+  args[i++] = "limit=" + pref;
 }
 
 if( pref = script_get_preference("passlimit :")){
-  args[i++] = "passlimit="+pref;
+  args[i++] = "passlimit=" + pref;
 }
 
 if( pref = script_get_preference("userlimit :")){
-  args[i++] = "userlimit="+pref;
+  args[i++] = "userlimit=" + pref;
 }
 
 if( pref = script_get_preference("userdb :")){
-  args[i++] = "userdb="+pref;
+  args[i++] = "userdb=" + pref;
 }
 
 if( pref = script_get_preference("passdb :")){
-  args[i++] = "passdb="+pref;
+  args[i++] = "passdb=" + pref;
 }
 
 if( pref = script_get_preference("unpwdb.passlimit :")){
-  args[i++] = "unpwdb.passlimit="+pref;
+  args[i++] = "unpwdb.passlimit=" + pref;
 }
 
 if( pref = script_get_preference("unpwdb.timelimit :")){
-  args[i++] = "unpwdb.timelimit="+pref;
+  args[i++] = "unpwdb.timelimit=" + pref;
 }
 
 if( pref = script_get_preference("unpwdb.userlimit :")){
-  args[i++] = "unpwdb.userlimit="+pref;
+  args[i++] = "unpwdb.userlimit=" + pref;
 }
+
+port = get_ftp_port(default:21);
+
+argv = make_list( "nmap", "--script=ftp-brute", "-p", port, get_host_ip());
 
 if(i > 0)
 {
@@ -116,7 +115,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

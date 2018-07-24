@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_userdir_enum.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_http_userdir_enum.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap HTTP UserDir Enum NSE script
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801297");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-10-25 14:34:05 +0200 (Mon, 25 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,9 +44,9 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("Tools/Launch/nmap_nse", "Tools/Present/nmap");
 
-  script_add_preference(name: "http-max-cache-size :", value: "",type: "entry");
-  script_add_preference(name: "http.useragent :", value: "",type: "entry");
-  script_add_preference(name: "pipeline :", value: "",type: "entry");
+  script_add_preference(name:"http-max-cache-size :", value:"", type:"entry");
+  script_add_preference(name:"http.useragent :", value:"", type:"entry");
+  script_add_preference(name:"pipeline :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to enumerate valid usernames on web servers
   running with the mod_userdir module.
@@ -57,8 +56,7 @@ if(description)
   exit(0);
 }
 
-
-include ("http_func.inc");
+include("http_func.inc");
 
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
@@ -67,9 +65,6 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
 }
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 argv = make_list("nmap","--script=http-userdir-enum.nse","-p",port,get_host_ip());
 
@@ -95,7 +90,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: znc_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: znc_detect.nasl 10587 2018-07-24 10:11:50Z cfischer $
 #
 # ZNC Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100243");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10587 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 12:11:50 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,9 +39,9 @@ if(description)
   script_dependencies("find_service.nasl", "find_service2.nasl", "http_version.nasl");
   script_require_ports("Services/irc", "Services/www", 6667);
 
-  script_tag(name:"summary", value:"This host is running ZNC, an IRC Bouncer.");
-
   script_xref(name:"URL", value:"http://en.znc.in/wiki/ZNC");
+
+  script_tag(name:"summary", value:"This host is running ZNC, an IRC Bouncer.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -71,16 +71,18 @@ foreach port( ports ) {
   if( egrep( pattern:"irc\.znc\.in NOTICE AUTH", string:buf, icase:TRUE ) ||
       ( "irc.znc.in" >< buf && "Password required" >< buf ) ) {
 
-    vers = "unknown";
+    vers    = "unknown";
+    install = port + "/tcp";
 
     set_kb_item( name:"znc/installed", value:TRUE );
+    set_kb_item( name:"znc/irc/detected", value:TRUE );
 
-    cpe = 'cpe:/a:znc:znc';
-    register_product( cpe:cpe, location:port + '/tcp', port:port, service:"irc" );
+    cpe = "cpe:/a:znc:znc";
+    register_product( cpe:cpe, location:install, port:port, service:"irc" );
 
     log_message( data:build_detection_report( app:"ZNC",
                                               version:vers,
-                                              install:port + '/tcp',
+                                              install:install,
                                               cpe:cpe,
                                               concluded:buf ),
                                               port:port );
@@ -91,13 +93,13 @@ if( get_kb_item( "Settings/disable_cgi_scanning" ) ) exit( 0 );
 
 httpPort = get_http_port( default:6667 );
 banner = get_http_banner( port:httpPort );
-
 buf = http_get_cache( item:"/", port:httpPort );
 
 # only way to get version is from webadmin-module (if enabled).
 if( ( banner && "Server: ZNC" >< banner ) || ( buf && "ZNC - Web Frontend" >< buf ) ) {
 
-  vers = "unknown";
+  vers    = "unknown";
+  install = httpPort + "/tcp";
 
   version = eregmatch( string:banner, pattern:"Server: ZNC (- )?([0-9.]+)", icase:TRUE );
 
@@ -105,21 +107,25 @@ if( ( banner && "Server: ZNC" >< banner ) || ( buf && "ZNC - Web Frontend" >< bu
     vers = version[2];
   } else {
     version = eregmatch( string:buf, pattern:"ZNC (- )?([0-9.]+)", icase:TRUE );
-    if ( ! isnull( version[2] ) ) vers = version[2];
+    if ( ! isnull( version[2] ) )
+      vers = version[2];
   }
 
-  if( vers != "unknown" ) set_kb_item( name:"znc/version", value:vers );
+  if( vers != "unknown" )
+    set_kb_item( name:"znc/version", value:vers );
+
   set_kb_item( name:"znc/installed", value:TRUE );
+  set_kb_item( name:"znc/web/detected", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:znc:znc:" );
   if( isnull( cpe ) )
-    cpe = 'cpe:/a:znc:znc';
+    cpe = "cpe:/a:znc:znc";
 
-  register_product( cpe:cpe, location:httpPort + '/tcp', port:httpPort, service:"www" );
+  register_product( cpe:cpe, location:install, port:httpPort, service:"www" );
 
   log_message( data:build_detection_report( app:"ZNC",
                                             version:vers,
-                                            install:httpPort + '/tcp',
+                                            install:install,
                                             cpe:cpe,
                                             concluded:version[0] ),
                                             port:httpPort );

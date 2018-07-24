@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_cert_details.nasl 6090 2017-05-09 14:38:15Z cfi $
+# $Id: ssl_cert_details.nasl 10591 2018-07-24 11:56:38Z cfischer $
 #
 # SSL/TLS: Collect and Report Certificate Details
 #
@@ -26,12 +26,12 @@
 ###############################################################################
 
 ##
-# This is a list of KB entries created by this script.  To avoid
+# This is a list of KB entries created by this script. To avoid
 # storing certificate details over and over again we use the SHA-256
-# fingerprint of a certificate as the unique identifier.  The reason
+# fingerprint of a certificate as the unique identifier. The reason
 # we do not use SHA-1 here is that we expect to see SHA-1 collisions
 # for valid X.509 certificates in the not too far future. OpenVAS
-# should be able to single those attacks out.  It is easier to use
+# should be able to single those attacks out. It is easier to use
 # SHA-256 right now, than to switch to it later.
 #
 # The following keys are all prefixed with:
@@ -41,7 +41,7 @@
 # /serial    => Serial number as hex string
 # /issuer    => Issuer as rfc2253 string
 # /subject   => Subject as rfc2253 string
-# /subject/N => Subject alt names with N counting from 1.  The format
+# /subject/N => Subject alt names with N counting from 1. The format
 #               is either an rfc2253 string as used above, an rfc2822
 #               mailbox name indicated by the first character being a
 #               left angle bracket or an S-expression in advanced
@@ -55,7 +55,7 @@
 # /hostnames => All hostnames (CN from subject and all dns-name
 #               altSubjectNames) as a comma delimited string.
 #
-# These entries give detailed information about a certificate.  A
+# These entries give detailed information about a certificate. A
 # server may return several certificates: The actual server
 # certificates may be followed by other certificates which make up
 # the chain.  Further the server may return different certificates
@@ -64,9 +64,9 @@
 # HostDetails/SSLInfo/<port>        <fingerprint>, <fingerprint>, ...
 # HostDetails/SSLInfo/<port>/<host> <fingerprint>, <fingerprint>, ...
 #
-# If there is an error with one of the certificates, the fingerprint
-# is replaced by the string "[ERROR]".  NVTs evaluating the
-# fingerprints should thus check whether first character of each
+# If there is an error with one of the certificates, the
+# fingerprint is replaced by the string "[ERROR]". NVTs evaluating
+# the fingerprints should thus check whether first character of each
 # fingerprint is a '['.
 #
 # The preliminary report format is:
@@ -91,8 +91,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103692");
-  script_version("$Revision: 6090 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 16:38:15 +0200 (Tue, 09 May 2017) $");
+  script_version("$Revision: 10591 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 13:56:38 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 14:14:14 +0200 (Tue, 09 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -180,15 +180,13 @@ function read_and_parse_certs( cert, port ) {
     }
   }
 
-  # Register the certificate and the port
   prefix = "HostDetails/SSLInfo/";
 
   # FIXME: Extend get_server_cert and return an array of certificates.
-
   # FIXME: What to do if the server returns random certificates?
 
   set_kb_item( name:prefix + port, value:fpr );
-  set_kb_item( name:"ssl/cert/avail", value:TRUE ); # dummy for broken script_mandatory_keys (when KB entry is a list)
+  set_kb_item( name:"ssl/cert/avail", value:TRUE ); # dummy for broken script_mandatory_keys when KB entry is a list
 
   # FIXME: We need a list of virtual hostnames to request
   # certificates using the SNI.
@@ -196,7 +194,6 @@ function read_and_parse_certs( cert, port ) {
   cert_close( certobj );
 }
 
-# Iterate over the host details keys Cert and SSL and report them.
 function report_ssl_cert_details() {
 
   local_var certs, key, fpr, tmp, ssls, oid, description, report, issuer, serial, not_before, not_after, image;

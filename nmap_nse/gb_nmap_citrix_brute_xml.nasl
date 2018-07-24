@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_citrix_brute_xml.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_citrix_brute_xml.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap Citrix Brute XML NSE script
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801818");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,15 +44,15 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("Tools/Launch/nmap_nse", "Tools/Present/nmap");
 
-  script_add_preference(name: "userdb :", value: "",type: "entry");
-  script_add_preference(name: "passdb :", value: "",type: "entry");
-  script_add_preference(name: "ntdomain :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.passlimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.timelimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.userlimit :", value: "",type: "entry");
-  script_add_preference(name: "http-max-cache-size :", value: "",type: "entry");
-  script_add_preference(name: "http.useragent :", value: "",type: "entry");
-  script_add_preference(name: "http.pipeline :", value: "",type: "entry");
+  script_add_preference(name:"userdb :", value:"", type:"entry");
+  script_add_preference(name:"passdb :", value:"", type:"entry");
+  script_add_preference(name:"ntdomain :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.passlimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.timelimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.userlimit :", value:"", type:"entry");
+  script_add_preference(name:"http-max-cache-size :", value:"", type:"entry");
+  script_add_preference(name:"http.useragent :", value:"", type:"entry");
+  script_add_preference(name:"http.pipeline :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to guess valid credentials for the Citrix PN
   Web Agent XML Service.
@@ -72,9 +71,6 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
 }
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 argv = make_list("nmap","--script=citrix-brute-xml.nse","-p",port,get_host_ip());
 
@@ -124,7 +120,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 
 if(res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_snmp_brute.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_snmp_brute.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap SNMP Brute NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801802");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,8 +42,8 @@ if(description)
   script_dependencies("nmap_nse.nasl");
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name:"snmplist :", value: "",type: "entry");
-  script_add_preference(name:"snmpcommunity :", value: "",type: "entry");
+  script_add_preference(name:"snmplist :", value:"", type:"entry");
+  script_add_preference(name:"snmpcommunity :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to find an SNMP community string by brute force guessing.
 
@@ -53,19 +52,15 @@ if(description)
   exit(0);
 }
 
-
-## Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## SNMP Port
 port = 161;
 
-argv =  make_list("nmap", "-sU", "--script=snmp-brute.nse", "-p", port,
-                  get_host_ip());
+argv =  make_list("nmap", "-sU", "--script=snmp-brute.nse", "-p", port, get_host_ip());
 
 i = 0;
 if( pref = script_get_preference("snmplist :")){
@@ -85,7 +80,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

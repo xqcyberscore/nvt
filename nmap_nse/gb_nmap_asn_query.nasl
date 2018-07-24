@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_asn_query.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_asn_query.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap ASN Query NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801649");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-12-07 14:25:15 +0100 (Tue, 07 Dec 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +42,7 @@ if(description)
   script_dependencies("nmap_nse.nasl");
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "dns :", value: "",type: "entry");
+  script_add_preference(name:"dns :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to map IP addresses to autonomous system (AS)numbers.
 
@@ -64,7 +63,6 @@ if( pref = script_get_preference("dns :")){
   argv = make_list(argv, "--script-args=dns="+pref);
 }
 
-## Run nmap and Get the Result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180509_lin.nasl 10113 2018-06-07 10:05:13Z asteins $
+# $Id: gb_jenkins_20180509_lin.nasl 10586 2018-07-24 08:26:45Z asteins $
 #
 # Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112297");
-  script_version("$Revision: 10113 $");
+  script_version("$Revision: 10586 $");
   script_cve_id("CVE-2018-1000192", "CVE-2018-1000193", "CVE-2018-1000194", "CVE-2018-1000195");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:05:13 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 10:26:45 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 11:35:00 +0200 (Thu, 07 Jun 2018)");
   script_name("Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -62,7 +62,7 @@ files on the Jenkins master, bypassing the agent-to-master security subsystem pr
 - A server-side request forgery vulnerability in ZipExtractionInstaller.java that allows users with Overall/Read permission to have
 Jenkins submit a HTTP GET request to an arbitrary URL and learn whether the response is successful (200) or not. (CVE-2018-1000195)");
 
-  script_tag(name:"affected", value:"Jenkins LTS up to and including 2.107.2, Jenkins weekly up to  and including 2.120.");
+  script_tag(name:"affected", value:"Jenkins LTS up to and including 2.107.2, Jenkins weekly up to and including 2.120.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.121 or later / Jenkins LTS to 2.107.3 or
   later. For more updates refer to https://www.cloudbees.com");

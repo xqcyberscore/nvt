@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_telnet_brute.nasl 10574 2018-07-23 11:55:34Z cfischer $
+# $Id: gb_nmap_telnet_brute.nasl 10580 2018-07-23 13:56:07Z cfischer $
 #
 # Wrapper for Nmap Telnet Brute NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801670");
-  script_version("$Revision: 10574 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 13:55:34 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10580 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:56:07 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 14:48:59 +0100 (Mon, 27 Dec 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,14 +39,15 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("find_service.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "nmap_nse.nasl");
+  script_require_ports("Services/telnet", 23);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "userdb :", value: "",type: "entry");
-  script_add_preference(name: "passdb :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.passlimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.timelimit :", value: "",type: "entry");
-  script_add_preference(name: "unpwdb.userlimit :", value: "",type: "entry");
+  script_add_preference(name:"userdb :", value:"", type:"entry");
+  script_add_preference(name:"passdb :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.passlimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.timelimit :", value:"", type:"entry");
+  script_add_preference(name:"unpwdb.userlimit :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to get Telnet login credentials by guessing
   usernames and passwords.
@@ -57,23 +57,13 @@ if(description)
   exit(0);
 }
 
-
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-port = get_kb_item("Services/telnet");
-if(!port){
-   port = 23;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
-
-argv = make_list("nmap", "--script=telnet-brute.nse", "-p", port, get_host_ip());
+include("telnet_func.inc");
 
 i = 0;
 
@@ -97,6 +87,10 @@ if( pref = script_get_preference("unpwdb.userlimit :")){
   args[i++] = "unpwdb.userlimit="+pref;
 }
 
+port = get_telnet_port(default:23);
+
+argv = make_list("nmap", "--script=telnet-brute.nse", "-p", port, get_host_ip());
+
 if(i > 0)
 {
   scriptArgs= "--script-args=";
@@ -106,7 +100,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {

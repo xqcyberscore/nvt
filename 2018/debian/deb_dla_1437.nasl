@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1437.nasl 10566 2018-07-23 07:41:10Z cfischer $
+# $Id: deb_dla_1437.nasl 10583 2018-07-24 05:32:53Z cfischer $
 #
 # Auto-generated from advisory DLA 1437-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891437");
-  script_version("$Revision: 10566 $");
+  script_version("$Revision: 10583 $");
   script_cve_id("CVE-2018-10995", "CVE-2018-7033");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1437-1] slurm-llnl security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 09:41:10 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 07:32:53 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 00:00:00 +0200 (Mon, 23 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

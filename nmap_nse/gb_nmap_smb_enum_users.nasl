@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_enum_users.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_smb_enum_users.nasl 10579 2018-07-23 13:27:53Z cfischer $
 #
 # Wrapper for Nmap SMB Enum Users NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801271");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10579 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -43,18 +42,18 @@ if(description)
   script_dependencies("nmap_nse.nasl");
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
-  script_add_preference(name: "samronly :", value: "no",type: "checkbox");
-  script_add_preference(name: "lsaonly :", value: "no",type: "checkbox");
-  script_add_preference(name: "smbusername :", value: "",type: "entry");
-  script_add_preference(name: "smbpassword :", value: "",type: "entry");
-  script_add_preference(name: "smbdomain :", value: "",type: "entry");
-  script_add_preference(name: "smbport :", value: "",type: "entry");
-  script_add_preference(name: "smbtype :", value: "",type: "entry");
-  script_add_preference(name: "smbnoguest :", value: "",type: "entry");
-  script_add_preference(name: "smbhash :", value: "",type: "entry");
-  script_add_preference(name: "smbbasic :", value: "",type: "entry");
-  script_add_preference(name: "smbsign :", value: "",type: "entry");
-  script_add_preference(name: "randomseed :", value: "",type: "entry");
+  script_add_preference(name:"samronly :", value:"no", type:"checkbox");
+  script_add_preference(name:"lsaonly :", value:"no", type:"checkbox");
+  script_add_preference(name:"smbusername :", value:"", type:"entry");
+  script_add_preference(name:"smbpassword :", value:"", type:"entry");
+  script_add_preference(name:"smbdomain :", value:"", type:"entry");
+  script_add_preference(name:"smbport :", value:"", type:"entry");
+  script_add_preference(name:"smbtype :", value:"", type:"entry");
+  script_add_preference(name:"smbnoguest :", value:"", type:"entry");
+  script_add_preference(name:"smbhash :", value:"", type:"entry");
+  script_add_preference(name:"smbbasic :", value:"", type:"entry");
+  script_add_preference(name:"smbsign :", value:"", type:"entry");
+  script_add_preference(name:"randomseed :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to enumerate the users on a remote Windows system,
   with as much information as possible.
@@ -63,7 +62,6 @@ if(description)
 
   exit(0);
 }
-
 
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
@@ -77,8 +75,7 @@ if (port !~ '^[0-9]+$')
   port = 445;
 }
 
-argv = make_list("nmap", "--script=smb-enum-users.nse", "-p", port,
-                  get_host_ip());
+argv = make_list("nmap", "--script=smb-enum-users.nse", "-p", port, get_host_ip());
 
 i = 0;
 if( "yes" == script_get_preference("samronly :")){
@@ -134,7 +131,6 @@ if(i > 0)
   argv = make_list(argv,scriptArgs);
 }
 
-## Run nmap and Get the result
 res = pread(cmd: "nmap", argv: argv);
 if(res)
 {
